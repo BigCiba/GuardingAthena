@@ -1,0 +1,230 @@
+.ScoreboardRoot
+{
+	visibility: visible;
+    width: 100%;
+    height: 100%;
+    opacity: 0; 
+    transform: translatex( -100px );
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier( 0.68, -0.55, 0.27, 1.25 ),ease-in-out;
+    transition-duration: 0.2s,0.2s;
+}
+.ScoreboardRoot.flyout_scoreboard_visible
+{
+    opacity: 1; 
+    transform: translatex( 0px );
+}
+.HorizonLine
+{
+    width: 100%;
+    height: 3px;
+    vertical-align: bottom;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #6f829c00 ), color-stop( 0.3, #87CEEB88 ), color-stop( 0.37, #87CEEBff ), color-stop( 0.63, #87CEEBff ), color-stop( 0.7, #87CEEB88 ), to( #6f829c00 ) );
+}
+.HeadText
+{
+    margin-bottom: 10px;
+    font-size: 30px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 skyblue;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+#ScoreboardPanel
+{
+    align: left top;
+    flow-children: down;
+    margin-top: 280px;
+    width: 700px;
+}
+
+#ScoreboardContent
+{
+    margin-top: 10px;
+    width: 100%;
+    flow-children: down;
+}
+.ScoreCol
+{
+    margin-top: 10px;
+    width: 100%;
+    flow-children: right;
+}
+.ScoreColDetail
+{
+    margin-top: 10px;
+    width: 100%;
+    flow-children: right;
+}
+.PlayerPanel
+{
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB66 ), to( #87CEEB33 ) );
+    width: 100%;
+    height: 96px;
+    flow-children: down;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    margin-left: 2%;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.PlayerPanelCow
+{
+    width: 100%;
+    height: 50%;
+    flow-children: right;
+}
+.SelectedImage
+{
+    align: left center;
+    border-radius: 4px;
+    saturation: 1.0;
+    width: 72px;
+    height: 40px;
+    margin-left: 4%;
+    transition-property: transform, opacity, saturation;
+    transition-duration: 0.3s;
+}
+.PlayerName
+{
+    align: left center;
+    width: 23%;
+    margin-left: 5%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.Gold
+{
+    align: left center;
+    width: 13%;
+    margin-left: 2%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.0 palegoldenrod;
+    color: gold;
+}
+.Score
+{
+    align: left center;
+    width: 13%;
+    margin-left: 2%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.Level
+{
+    align: left center;
+    width: 12%;
+    margin-left: 3%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.GoldIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	margin-left: 3px;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/hud/icon_gold_psd.vtex");
+	background-size: 100%;
+}
+.ScoreIcon
+{
+    tooltip-position: bottom;
+    align: center center;
+    width: 26px;
+    height: 28px;
+    background-image: url("s2r://panorama/images/compendium/winter/totaltokens_psd.vtex");
+    background-size: 100%;
+}
+.LevelIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	width: 24px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/control_icons/battlepass_logo_grayscale_small_png.vtex");
+	background-size: 100%;
+}
+.NormalText
+{
+    align: left center;
+    width: 13%;
+    margin-top: 10%;
+    margin-left: 2%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.StrIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	margin-left: 4%;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+	background-size: 100%;
+}
+.AgiIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+	background-size: 100%;
+}
+.IntIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+	background-size: 100%;
+}
+.PrimaryAttribute
+{
+	align: center center;
+	width: 32px;
+	height: 32px;
+	background-image: url("s2r://panorama/images/control_icons/wagertoken_psd.vtex");
+	background-size: 100%;
+}
+.DefIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/status_icons/itemdrop_psd.vtex");
+	background-size: 100%;
+}
+.DamageIcon
+{
+	tooltip-position: bottom;
+	align: center center;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/hud/icon_roshan_psd.vtex");
+	background-size: 100%;
+}

@@ -1,0 +1,87 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 40
+	m_flConstantRadius = 1.0
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			VisibilityInputs = 
+			{
+				m_nCPin = 0
+				m_flProxyRadius = 2.25
+				m_flAlphaScaleMax = 10.0
+				m_flRadiusScaleMin = 0.5
+				m_flRadiusScaleMax = 1.25
+			}
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_bDisableZBuffering = true
+			m_flOverbrightFactor = 15.0
+			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 2.0
+			m_flEndScale = 4.0
+			m_flBias = 0.95
+		},
+		{
+			_class = "C_OP_FadeOut"
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_nControlPointNumber = 1
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_nControlPointNumber = 1
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.1
+			m_fLifetimeMin = 0.1
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 1.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 1.0 ]
+			m_bLocalCoords = true
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 9.5
+			m_flRadiusRandExponent = 2.0
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 39, 78, 246, 255 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 0.7
+			m_flEmitRate = 80.0
+		},
+	]
+}

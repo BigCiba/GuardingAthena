@@ -1,0 +1,28 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_cowlofice_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_ice_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_ring_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_snow.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_somke_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_wave.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/chilliness_burst_flash_a.vpcf"
+		},
+	]
+}

@@ -1,0 +1,156 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 16
+	m_ConstantColor = [ 255, 255, 255, 64 ]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_hTexture = resource:"materials/particle/beam_jagged_02.vtex"
+			m_flRadiusScale = 0.5
+			m_flFinalTextureScaleU = -1.0
+			m_flFinalTextureOffsetU = 1.0
+			m_flTextureVWorldSize = 166.666672
+			m_flTextureVScrollRate = -166.666824
+			m_nMaxTesselation = 3
+			m_nMinTesselation = 3
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOut"
+			m_flFadeOutTimeMax = 0.17
+			m_flFadeOutTimeMin = 0.0
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 3.0
+		},
+		{
+			_class = "C_OP_OscillateVector"
+			m_RateMin = [ -1464.0, -1464.0, -64.0 ]
+			m_RateMax = [ 1464.0, 1464.0, 64.0 ]
+			m_FrequencyMin = [ 1.0, 1.0, 0.0 ]
+			m_FrequencyMax = [ 2.0, 2.0, 0.0 ]
+		},
+		{
+			_class = "C_OP_DampenToCP"
+			m_nControlPointNumber = 1
+			m_flRange = 64.0
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 76, 109, 249, 255 ]
+			m_flFadeStartTime = 0.9
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 3
+			m_vecCP1Pos = [ 0.0, 0.0, 0.0 ]
+			m_nHeadLocation = 1
+		},
+		{
+			_class = "C_OP_MaxVelocity"
+			m_flMaxVelocity = 32.0
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateSequentialPath"
+			m_flNumToAssign = 32.0
+			m_PathParams = 
+			{
+				m_nEndControlPointNumber = 1
+			}
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 204, 223, 255, 255 ]
+			m_ColorMin = [ 197, 205, 255, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.285
+			m_fLifetimeMin = 0.285
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 16.0, 16.0, -3000.0 ]
+			m_OffsetMin = [ -16.0, -16.0, -3000.0 ]
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMax = [ 1332.0, 1332.0, 32.0 ]
+			m_vecOutputMin = [ -1332.0, -332.0, -32.0 ]
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 32.0
+			m_flRadiusMin = 6.0
+		},
+		{
+			_class = "C_INIT_DistanceToCPInit"
+			m_flInputMin = 2.0
+			m_nFieldOutput = 7
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_nInputMax = 15
+			m_flOutputMin = 2.0
+			m_flOutputMax = 0.1
+			m_bScaleInitialRange = true
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 16
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a0.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a1.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a3.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a4.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a5.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a6.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/mechanic/thunder_punish_a7.vpcf"
+		},
+	]
+}

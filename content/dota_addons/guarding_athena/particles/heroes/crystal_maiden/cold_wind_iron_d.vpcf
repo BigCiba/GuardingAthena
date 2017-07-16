@@ -1,0 +1,109 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 264
+	m_ConstantColor = [ 94, 94, 94, 125 ]
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderTrails"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_flOverbrightFactor = 2.0
+			m_hTexture = resource:"materials/particle/wisp/particle_swirl.vtex"
+			m_bIgnoreDT = true
+			m_flMaxLength = 800.0
+			m_flLengthFadeInTime = 3.0
+			m_flAnimationRate = 0.5
+			m_flRadiusScale = 0.5
+			m_flFinalTextureScaleV = -1.0
+			m_flFinalTextureOffsetV = 1.0
+			m_vEndTrailTintFactor = [ 2.0, 2.0, 4.0, 0.0 ]
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 52, 66, 146, 255 ]
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.0
+			m_flBias = 0.48
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.9
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_flEndTime_max = 0.25
+			m_flEndTime_min = 0.25
+			m_flStartTime_max = -1.0
+			m_flStartTime_min = -1.0
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.1
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 2
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 5.0
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 250.0
+			m_flRadiusMin = 150.0
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 1.0
+			m_fLifetimeMin = 0.8
+		},
+		{
+			_class = "C_INIT_OffsetVectorToVector"
+			m_vecOutputMax = [ 0.0, 0.0, 1500.0 ]
+			m_vecOutputMin = [ 0.0, 0.0, 500.0 ]
+			m_nFieldOutput = 2
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMaxLength = 1.0
+			m_flMinLength = 1.0
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 256.0
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_d0.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_d1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_d2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_d3.vpcf"
+		},
+	]
+}

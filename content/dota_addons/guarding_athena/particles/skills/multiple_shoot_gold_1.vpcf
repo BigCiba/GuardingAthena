@@ -1,0 +1,46 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_flConstantRadius = 2.000000
+	m_bShouldSort = false
+	m_flMaxRecreationTime = -1.000000
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_4.vpcf"
+		},
+		{
+			m_bEndCap = true
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_5.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_6.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_7.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_8.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_9.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/multiple_shoot_gold_1_10.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/arrow_storm_gold_3.vpcf"
+		},
+	]
+}

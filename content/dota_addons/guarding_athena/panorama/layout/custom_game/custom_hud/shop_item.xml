@@ -1,0 +1,20 @@
+<root>
+    <styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/custom_hud/shop.css" />
+    </styles>
+
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/shop.js" />
+    </scripts>
+
+  <Panel hittest="false" class="ItemRoot">
+		<Panel class="ItemPanel">
+            <DOTAItemImage class="ItemLabel"/>
+            <Label class="ItemName"/>
+            <Label class="CostLabel"/>
+        </Panel>
+  </Panel>
+</root>
+
+

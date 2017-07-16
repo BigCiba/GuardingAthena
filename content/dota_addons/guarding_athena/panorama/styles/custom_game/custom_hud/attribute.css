@@ -1,0 +1,92 @@
+.AttributePanel{
+        align: center bottom;
+        width: 100%;
+        height: 136px;
+}
+#AttributeBG
+{
+        align: center bottom;
+        visibility: collapse;
+        flow-children: down;
+        width: 200px;
+        height: 100%;
+        margin-left: 930px;
+        transition-duration: 0.05s;
+        transition-property: background-image;
+        transition-timing-function: ease-in-out;
+        background-image: url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+        background-size: 100%;
+        vertical-align: bottom;
+}
+.CowPanel
+{
+        flow-children: right;
+        width: 100%;
+        height: 33%;
+}
+.StrIcon
+{
+        tooltip-position: bottom;
+        align: center center;
+        margin-left: 12px;
+        width: 28px;
+        height: 28px;
+        background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+        background-size: 100%;
+}
+.AgiIcon
+{
+        tooltip-position: bottom;
+        align: center center;
+        margin-left: 12px;
+        width: 28px;
+        height: 28px;
+        background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+        background-size: 100%;
+}
+.IntIcon
+{
+        tooltip-position: bottom;
+        align: center center;
+        margin-left: 12px;
+        width: 28px;
+        height: 28px;
+        background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+        background-size: 100%;
+}
+.NormalText
+{
+    align: left center;
+    width: fit-children;
+    margin-left: 6px;
+    font-size: 20px;
+    font-weight: medium;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px 2.0 #000000;
+    color: white;
+}
+.BonusText
+{
+    align: left center;
+    width: fit-children;
+    margin-left: 6px;
+    font-size: 20px;
+    font-weight: medium;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px 2.0 #000000;
+    color: #3ED038;
+}
+.RightSide
+{
+    align: center bottom;
+    background-image: url("s2r://panorama/images/hud/reborn/side_flare_tall_psd.vtex");
+    background-size: 100%;
+    transform: scaleX(-1);
+    width: 52px;
+    height: 138px;
+    margin-left: 782px;
+}

@@ -1,0 +1,78 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 10
+	m_bShouldSort = false
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_LockToBone"
+			m_bRigid = true
+		},
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_SetPerChildControlPoint"
+			m_nNumControlPoints = 10
+			m_nFirstControlPoint = 4
+		},
+		{
+			_class = "C_OP_RemapSpeedtoCP"
+			m_nInControlPointNumber = 1
+			m_flInputMin = 100.0
+			m_flInputMax = 200.0
+			m_nOutControlPointNumber = 3
+			m_flOutputMin = 0.2
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateOnModel"
+			m_bLocalCoords = true
+			m_vecDirectionBias = [ 0.0, 0.0, 0.1 ]
+			m_flHitBoxScale = 0.5
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 4.0
+			m_fLifetimeMin = 2.0
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 8
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_flDelay = 0.35
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_f0a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_f0b.vpcf"
+		},
+		{
+			m_flDelay = 0.125
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_f0b.vpcf"
+		},
+		{
+			m_flDelay = 0.35
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_f0c.vpcf"
+		},
+		{
+			m_flDelay = 0.25
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_f0b.vpcf"
+		},
+		{
+			m_flDelay = 0.5
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/cold_wind_iron_f0c.vpcf"
+		},
+	]
+}

@@ -1,0 +1,71 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 64
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_nControlPointNumber = 3
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bAdditive = true
+			m_flAddSelfAmount = 20.0
+			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+		},
+		{
+			_class = "C_OP_RenderDeferredLight"
+			m_flRadiusScale = 80.0
+			m_flAlphaScale = 5.0
+			m_flLightDistance = 10.0
+			m_ColorScale = [ 255, 255, 255 ]
+			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.1
+			m_fLifetimeMax = 0.2
+		},
+		{
+			_class = "C_INIT_CreateFromCPs"
+			m_nIncrement = 100
+			m_nMinCP = 3
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 20
+			m_nAlphaMax = 240
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 232, 134, 70, 255 ]
+			m_ColorMax = [ 233, 55, 31, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 180.0
+			m_flRadiusMax = 250.0
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 4.0
+			m_flEmitRate = 16.0
+		},
+	]
+}

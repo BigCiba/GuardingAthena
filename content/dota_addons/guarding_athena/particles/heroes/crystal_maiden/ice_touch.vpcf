@@ -1,0 +1,104 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_ConstantColor = [ 212, 222, 255, 255 ]
+	m_nMaxParticles = 5
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_PositionLock"
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 3.0
+			m_flEndScale = 6.0
+		},
+		{
+			_class = "C_OP_Spin"
+			m_nSpinRateDegrees = 5
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flStartAlpha = 0.0
+		},
+		{
+			_class = "C_OP_StopAfterCPDuration"
+			m_flDuration = 2.9
+			m_bDestroyImmediately = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_bSetOnce = true
+			m_nCP1 = 4
+			m_vecCP1Pos = [ 0.0, 0.0, 0.0 ]
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bRefract = true
+			m_flRefractAmount = 0.05
+			m_nRefractBlurRadius = 3
+			m_nRefractBlurType = "BLURFILTER_BOX"
+			m_hTexture = resource:"materials/particle/warp_ripple_normal.vtex"
+			m_bDisableZBuffering = true
+			m_bDisableOperator = true
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 29.282
+			m_flRadiusMax = 29.282
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 1.0
+			m_flEmitRate = 2.0
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_b.vpcf"
+			m_flDelay = 1.0
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_c.vpcf"
+			m_flDelay = 1.0
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_e.vpcf"
+			m_bEndCap = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_e7.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/crystal_maiden/ice_touch_g.vpcf"
+		},
+	]
+	m_flConstantLifespan = 2.0
+	m_nInitialParticles = 1
+}

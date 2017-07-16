@@ -1,0 +1,575 @@
+.MainPanel
+{
+    width: 100%;
+    height: 100%;
+    /*background-color: gradient( linear, 0% 0%, 0% 100%, from( #fbfbfbff ), color-stop( 0.3, #ebebebff ), to( #c0c0c0c0 ) );*/
+}
+#HeroSelectionBackground
+{
+    /*background-color: gradient(linear, 100% 0%, 0% 0%, from(black), color-stop(0.6, black), to(#c0c0c0c0));*/
+    visibility: visible;
+    width: 100%;
+    height: 100%;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+#HeroSelectionBackgroundScene
+{
+    blur: gaussian( 2, 2, 1 );
+    width: 50%;
+    height: 51%;
+    pre-transform-scale2d: 2;
+    vertical-align: middle;
+    horizontal-align: center;
+    background-color: rgb(29, 39, 46);
+    transform: none;
+    transition-property: transform, blur, opacity;
+    transition-duration: 0.45s;
+    transition-delay: 0.0s;
+    transition-timing-function: ease-in;
+}
+.HeroScene
+{
+    opacity-mask: url("s2r://panorama/images/masks/hud_hero_inspect_psd.vtex");
+}
+#HeroSelectionTopGradient
+{
+    width: 100%;
+    height: 150px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #00000000 ) );
+}
+#PassWordPanel
+{
+    align: center top;
+    flow-children: down;
+    width: 100%;
+    margin-top: 5%;
+}
+#HeroListCol
+{
+    align: center center;
+    width: 100%;
+    height: 450px;
+    flow-children: down;
+    /*background-color: #00265420;*/
+    overflow: squish scroll;
+}
+#HeroListCol VerticalScrollBar .ScrollThumb, HTMLVerticalScrollBar .ScrollThumb{
+    visibility: visible;
+    background-color: #bae3f1;
+    border-right: 0px;
+    border-radius: 20px;
+}
+.HeroListRow
+{
+    align: center center;
+    width: 70%;
+    flow-children: right;
+    /*background-color: #00265420;*/
+}
+#HeroName
+{
+    margin-top: 80px;
+}
+#InspectHeroModelEffect
+{
+    width: 800px;
+    height: 800px;
+    //margin-bottom: 80px;
+    vertical-align: bottom;
+    horizontal-align: center;
+    opacity: 0.7;
+
+}
+#HeroesScene
+{
+    align: center center;
+    margin-bottom: 300px;
+    width: 30%;
+}
+#HeroConfirm
+{
+    align: center bottom;
+    flow-children: down;
+    margin-bottom: 2%;
+    width: 30%;
+}
+#HeroConfirmButton
+{
+    align: center center;
+    margin-bottom: 2%;
+    width: 80%;
+    height: 50px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6f829c22 ), to( #87CEEB44 ) );
+    border-style: solid;
+    border-width: 1px;
+    border-top-color: #87CEEB44;
+    border-left-color: #494949;
+    border-bottom-color: #333333;
+    border-right-color: #404040;
+    transition-property: background-color;
+    transition-duration: 0.05s;
+    transition-timing-function: linear;
+    box-shadow: #00000055 -2px -2px 4px 4px;
+}
+#HeroConfirmButton:hover
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6f829c44 ), to( #87CEEB88 ) );
+
+    border-top-color: #aaaaaa77;
+    border-left-color: #aaaaaa33;
+    border-bottom-color: #333333;
+    border-right-color: #404040;
+}
+#HeroConfirmButton:active
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #393939), to( #555555 ) );
+
+    border-top-color: #222222;
+    border-left-color: #303030;
+    border-bottom-color: #666666;
+    border-right-color: #444444;
+    sound: "ui_generic_button_click";
+}
+#PassWordButton
+{
+    align: center center;
+    margin-bottom: 2%;
+    width: 30%;
+    height: 50px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6f829c22 ), to( #87CEEB44 ) );
+    border-style: solid;
+    border-width: 1px;
+    border-top-color: #87CEEB44;
+    border-left-color: #494949;
+    border-bottom-color: #333333;
+    border-right-color: #404040;
+    transition-property: background-color;
+    transition-duration: 0.05s;
+    transition-timing-function: linear;
+    box-shadow: #00000055 -2px -2px 4px 4px;
+}
+#PassWordButton:hover
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #6f829c44 ), to( #87CEEB88 ) );
+
+    border-top-color: #aaaaaa77;
+    border-left-color: #aaaaaa33;
+    border-bottom-color: #333333;
+    border-right-color: #404040;
+}
+#LeftSide
+{
+    align: left top;
+    flow-children: down;
+    margin-top: 100px;
+    width: 30%;
+}
+#LeftDownSide
+{
+    align: left top;
+    flow-children: down;
+    margin-top: 55%;
+    width: 30%;
+}
+#RightSide
+{
+    align: right top;
+    flow-children: down;
+    width: 38%;
+    margin-top: 100px;  
+}
+#HeroAbilities
+{
+    flow-children: right;
+    align: center bottom;
+    margin-bottom: 260px;
+    margin-right: 25px;
+}
+#PlayersContent
+{
+    margin-top: 30px;
+    width: 100%;
+    flow-children: down;
+}
+#HardSelectPlane
+{
+    flow-children: right;
+    width: 100%;
+    margin-left: 8%;
+}
+.NoColor
+{
+    saturation: 0.0;
+}
+.PlayerDifficultyNoSelect
+{
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB66 ), to( #87CEEB12 ) );
+    border-radius: 4px;
+    box-shadow: #87CEEB66 0px 0px 8px 0px;
+    width: 20%;
+    height: 50%;
+}
+.PlayerDifficultyEasyButton
+{
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #89FA8A66 ), to( #89FA8A12 ) );
+    border-radius: 4px;
+    box-shadow: #89FA8A66 0px 0px 8px 0px;
+    width: 20%;
+    height: 50%;
+}
+.PlayerDifficultyNormalButton
+{
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #FFF08766 ), to( #FFF08712 ) );
+    border-radius: 4px;
+    box-shadow: #FFF08766 0px 0px 8px 0px;
+    width: 20%;
+    height: 50%;
+}
+.PlayerDifficultyHardButton
+{
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #F9444466 ), to( #F9444412 ) );
+    border-radius: 4px;
+    box-shadow: #F9444466 0px 0px 8px 0px;
+    width: 20%;
+    height: 50%;
+}
+.PlayerDifficultyDemonButton
+{
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #AE3F93aa ), to( #AE3F9312 ) );
+    border-radius: 4px;
+    box-shadow: #AE3F93ee 0px 0px 8px 0px;
+    width: 20%;
+    height: 50%;
+}
+.PlayerDifficultyTeamButton
+{
+    align: center center;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #FF9B2A66 ), to( #FF9B2A12 ) );
+    border-radius: 4px;
+    box-shadow: #FF9B2A66 0px 0px 8px 0px;
+    width: 20%;
+    height: 50%;
+}
+.PlayerDifficultyText
+{
+    align: center center;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+#EasyButton
+{
+    margin-top: 15%;
+    width: 12%;
+    height: 200px;
+    margin-left: 5%;
+    border-radius: 4px;
+    box-shadow: #89FA8A44 0px 0px 8px 0px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #89FA8A44 ), to( #89FA8A00 ) );
+}
+#NormalButton
+{
+    margin-top: 15%;
+    width: 12%;
+    height: 200px;
+    margin-left: 5%;
+    border-radius: 4px;
+    box-shadow: #FFF08744 0px 0px 8px 0px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #FFF08744 ), to( #FFF08700 ) );
+}
+#HardButton
+{
+    margin-top: 15%;
+    width: 12%;
+    height: 200px;
+    margin-left: 5%;
+    border-radius: 4px;
+    box-shadow: #F9444444 0px 0px 8px 0px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #F9444444 ), to( #F9444400 ) );
+}
+#DemonButton
+{
+    margin-top: 15%;
+    width: 12%;
+    height: 200px;
+    margin-left: 5%;
+    border-radius: 4px;
+    box-shadow: #AE3F9344 0px 0px 8px 0px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #AE3F9344 ), to( #AE3F9300 ) );
+}
+#TeamButton
+{
+    margin-top: 15%;
+    width: 12%;
+    height: 200px;
+    margin-left: 5%;
+    border-radius: 4px;
+    box-shadow: #FF9B2A44 0px 0px 8px 0px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #FF9B2A44 ), to( #FF9B2A00 ) );
+}
+#DifficultyTip
+{
+    margin-top: 15%;
+    margin-left: 5%;
+    width: 24px;
+    height: 24px;
+}
+.DifficultyLabel
+{
+    align: center center;
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.HtmlText
+{
+    align: center center;
+    width: 50%;
+    font-size: 24px;
+    text-align: center;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.HorizonLine
+{
+    width: 100%;
+    height: 3px;
+    vertical-align: bottom;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #6f829c00 ), color-stop( 0.3, #87CEEB88 ), color-stop( 0.37, #87CEEBff ), color-stop( 0.63, #87CEEBff ), color-stop( 0.7, #87CEEB88 ), to( #6f829c00 ) );
+    margin-bottom: 10.5px;
+}
+.LockHero
+{
+    background-image: url("file://{images}/custom_game/lock.png");
+}
+.BottomHorizonLine
+{
+    width: 100%;
+    height: 3px;
+    vertical-align: bottom;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #6f829c00 ), color-stop( 0.3, #87CEEB88 ), color-stop( 0.37, #87CEEBff ), color-stop( 0.63, #87CEEBff ), color-stop( 0.7, #87CEEB88 ), to( #6f829c00 ) );
+    margin-top: 40px;
+}
+.AbilityLabel
+{
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+    width:64px;
+    height:64px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.HeroCard
+{
+    margin-left: 20px;
+    margin-top: 20px;
+    saturation: 0.3;
+    width:20%;
+    height:130px;
+    border-radius: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 6px 0px;
+}
+.HeroCardTip
+{
+    align: center bottom;
+    width: 100%;
+    height: 20%;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    background-color: #111111cc;
+    animation-duration: 0.2s;
+    animation-name: HeroCardTipAppear;
+}
+.FullColor
+{
+    saturation: 1.0;
+    transition-property: transform, opacity, saturation;
+    transition-duration: 0.3s;
+    sound: "ui_hero_hat_select";
+}
+.SelectColor
+{
+    saturation: 1.0;
+    transition-property: transform, opacity, saturation;
+    transition-duration: 0.3s;
+    sound: "ui_hero_select_slide";
+}
+.HeroPreviewIn
+{
+    transform: translateX(0px);
+    opacity: 1.0;
+}
+.PlayerPanel
+{
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB11 ) );
+    width: 100%;
+    height: 64px;
+    flow-children: right;
+    border-radius: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 8px 0px;
+    margin-bottom: 4px;
+    margin-left: 5%;
+}
+.PlayerPanelComfirm
+{
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB11 ) );
+    width: 100%;
+    height: 64px;
+    flow-children: right;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: fill #87CEEB66 0px 0px 8px 0px;
+    margin-left: 5%;
+}
+.PlayerName
+{
+    visibility: visible;
+    align: center center;
+    width: 40%;
+    margin-left: 2%;
+    font-size: 28px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.SelectionImage
+{
+    vertical-align: center;
+    border-radius: 4px;
+    saturation: 0.0;
+    width: 72px;
+    height: 40px;
+    margin-left: 6%;
+    transition-property: transform, opacity, saturation;
+    transition-duration: 0.3s;
+}
+.SelectedImage
+{
+    vertical-align: center;
+    border-radius: 4px;
+    saturation: 1.0;
+    width: 72px;
+    height: 40px;
+    margin-left: 6%;
+    transition-property: transform, opacity, saturation;
+    transition-duration: 0.3s;
+}
+.ConnectionStatePanel
+{
+    width: 100%;
+    height: 100%;
+}
+.BlueLabel
+{
+    margin-bottom: 40px;
+    font-size: 42px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 skyblue;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+.YellowLabel
+{
+    font-size: 42px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 gold;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+}
+.PassWordTitle
+{
+    font-size: 42px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 skyblue;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+.TextEntry
+{
+    align:center center;
+    height: 40px;
+    border-radius: 8px;
+    blur: gaussian( 2.5 );
+}
+.PassWordTip
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+.ExitGameOverlay
+{
+    background-image: url("file://{images}/control_icons/return_to_game.png");
+    width: 62px;
+    height: 57px;
+    background-size: 30px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+#TimerText
+{
+    margin-top: 40px;
+    font-size: 48px;
+    horizontal-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 red;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-align: center;
+}
+@keyframes 'HeroCardTipAppear'
+{
+        0%{transform: translatey( 100% );}
+        100%{transform: translatey( 0% );}
+}
+@keyframes 'buttonClickAnim'
+{
+        0%
+        {
+                transform: translateZ(-20px);
+        }
+        100%
+        {
+ 
+        }
+}

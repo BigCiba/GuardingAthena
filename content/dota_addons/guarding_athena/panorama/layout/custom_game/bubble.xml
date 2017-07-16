@@ -1,0 +1,20 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/bubble.css" />
+		<include src="file://{resources}/styles/custom_game/avalon.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/bubble.js" />
+	</scripts>
+	<snippets>
+		<snippet name="bubble">
+			<Panel class="bubble" hittest="false">
+				<Label id="Text" hittest="false" html="true" text="" />
+				<Panel id="Arrow" hittest="false" />
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel hittest="false" class="Root" >
+	</Panel>
+</root>

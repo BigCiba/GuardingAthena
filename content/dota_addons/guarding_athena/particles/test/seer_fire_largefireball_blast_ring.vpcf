@@ -1,0 +1,49 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flEndFadeInTime = 0.0
+			m_flStartFadeOutTime = 0.2
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 0.2
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nOrientationType = 2
+			m_hTexture = resource:"materials/particle/particle_ring_soft_inner.vtex"
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.2
+			m_fLifetimeMax = 0.2
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 246, 117, 71, 255 ]
+			m_ColorMax = [ 240, 181, 109, 255 ]
+		},
+		{
+			_class = "C_INIT_CreateFromCPs"
+			m_nMinCP = 3
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 1
+		},
+	]
+	m_flConstantRadius = 250.0
+}

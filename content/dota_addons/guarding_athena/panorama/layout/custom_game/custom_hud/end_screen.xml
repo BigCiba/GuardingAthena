@@ -1,0 +1,26 @@
+<root>
+    <styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/custom_hud/end_screen.css" />
+    </styles>
+
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/end_screen.js" />
+    </scripts>
+
+  <Panel hittest="false" class="EndScreenRoot">
+		<Panel id="EndScreenPanel">
+        <!--计分界面-->
+            <Label id="EndScreenLabel" />
+            <Panel class="HorizonLine"/>
+            <!--玩家列表文本-->
+            <Panel id="EndScreenContent" class="TeamPanel"/>
+            <!--玩家内容-->
+            <Button id="EndGame" class="EndGameButton" onactivate="EndGame()">
+                <Label class="EndText" text="#quit_game"/>
+            </Button>
+        </Panel>
+  </Panel>
+</root>
+
+

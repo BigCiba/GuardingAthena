@@ -1,0 +1,23 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/athena_skill/upgrade.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/athena_skill/upgrade.js" />
+    </scripts>
+
+    <Panel class="UpgradePanel" hittest="false">
+        <Panel id="UpgradeBG">
+            <Button id="HpButton" class="UpgradeButton" onactivate="HpButton()" onmouseover="DOTAShowTextTooltip(#hp_tip)" onmouseout="DOTAHideTextTooltip()">
+                <Label class="ShopButtonValueLabel" text="生命" />
+            </Button>
+            <Button id="ArmorButton" class="UpgradeButton" onactivate="ArmorButton()" onmouseover="DOTAShowTextTooltip(#armor_tip)" onmouseout="DOTAHideTextTooltip()">
+                <Label class="ShopButtonValueLabel" text="护甲" />
+            </Button>
+            <Button id="RegenButton" class="UpgradeButton" onactivate="RegenButton()" onmouseover="DOTAShowTextTooltip(#regen_tip)" onmouseout="DOTAHideTextTooltip()">
+                <Label class="ShopButtonValueLabel" text="回复" />
+            </Button>
+        </Panel>
+    </Panel>
+</root>

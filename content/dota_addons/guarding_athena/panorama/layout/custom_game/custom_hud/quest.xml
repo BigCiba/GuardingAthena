@@ -1,0 +1,20 @@
+<root>
+    <styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/custom_hud/quest.css" />
+    </styles>
+
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/quest.js" />
+    </scripts>
+
+  <Panel hittest="false" class="QuestRoot">
+		<Panel id="QuestPanel">
+            <Label id="QuestLabel" text="#quest" class="HeadText"/>
+            <Panel class="HorizonLine"/>
+            <Panel id="QuestContent" class="TeamPanel"/>
+        </Panel>
+  </Panel>
+</root>
+
+

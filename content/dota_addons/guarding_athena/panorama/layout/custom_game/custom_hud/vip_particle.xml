@@ -1,0 +1,44 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/custom_hud/vip_particle.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/vip_particle.js" />
+    </scripts>
+
+    <Panel class="VipParticlePanel" hittest="false">
+        <Panel id="VipParticleBackGround" hittest="false">
+            <Button id="VipParticleIcon" onactivate="ToggleStyle( VipParticleSelect,VipParticleSelectExpanded ) RemoveStyle( VipParticleSelect,VipParticleSelectDetails ) ">
+                <Image src="file://{images}/compendium/spring2016/rewards/mystery_item.png" />
+            </Button>
+            <Panel id="VipParticleSelect" hittest="false" >
+                <Panel id="VipParticleTopBar" hittest="false">
+                    <Label class="BlueLabel" text="选择一个装逼款式"/>
+                </Panel>
+                <DropDown id="VipParticleDrop" oninputsubmit="OnDropDownChanged()">
+                  <Label text="天下无敌" id="vip_1"/>
+                  <Label text="逮妹狂魔" id="vip_2"/>
+                  <Label text="我就是这么屌" id="vip_3"/>
+                  <Label text="老司机" id="vip_4"/>
+                  <Label text="器大活好" id="vip_5"/>
+                  <Label text="渣渣" id="vip_6"/>
+                  <Label text="LOL" id="vip_7"/>
+                  <Label text="+1s" id="vip_8"/>
+                  <Label text="蛤？" id="vip_9"/>
+                  <Label text="我是智障" id="vip_10"/>
+                  <Label text="GG" id="vip_11"/>
+                  <Label text="stfu" id="vip_12"/>
+                </DropDown>
+                <Panel id="VipParticleButtonPanel" hittest="false">
+                    <Button id="CreateParticle" class="VipParticleButton" onactivate="CreateParticle()">
+                        <Label class="NormalText" text="开始装逼"/>
+                    </Button>
+                    <Button id="RemoveParticle" class="VipParticleButton" onactivate="RemoveParticle()">
+                        <Label class="NormalText" text="结束装逼"/>
+                    </Button>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

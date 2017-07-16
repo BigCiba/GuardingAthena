@@ -1,0 +1,119 @@
+.TimeRoot
+{
+	width: 100%;
+	height: 80px;
+}
+#TimePanel
+{
+	visibility: collapse;
+	vertical-align: top;
+	horizontal-align: center;
+	height: 80px;
+	width: 120px;
+}
+#TimeButton
+{
+	horizontal-align: center;
+	z-index: 3;
+	width: 90px;
+	height: 46px;
+}
+#TimeButton:hover
+{
+	box-shadow: fill #87CEEB66 0px 0px 8px 0px;
+}
+#TimeOfDayBG
+{
+	horizontal-align: center;
+	z-index: 2;
+	background-image: url("file://{images}/custom_game/bg_timer_psd.png");
+	background-size: 100%;
+	width: 90px;
+	height: 46px;
+}
+#TimeOfDay
+{
+	width: 80px;
+	height: 50px;
+	horizontal-align: center;
+	vertical-align: top;
+	z-index: 2;
+	background-size: cover;
+}
+.TimeOfDayIcon
+{
+	width: 23px;
+	height: 23px;
+	horizontal-align: center;
+	background-size: cover;
+	z-index: 50;
+	margin-top: 2px;
+	margin-right: 1px;
+}
+.DayIcon
+{
+	background-image: url("s2r://panorama/images/hud/reborn/icon_sun_psd.vtex");
+}
+.NightIcon
+{
+	transform: scaleX(-1);
+	background-image: url("s2r://panorama/images/hud/reborn/icon_moon_psd.vtex");
+}
+#DayGlow
+{
+	width: 90px;
+	height: 46px;
+	horizontal-align: center;
+	vertical-align: top;
+	opacity: 0.2;
+	z-index: 2;
+	background-size: cover;
+	background-image: url("s2r://panorama/images/hud/reborn/glow_day_psd.vtex");
+	background-repeat: no-repeat;
+}
+#NightGlow
+{
+	width: 90px;
+	height: 46px;
+	horizontal-align: center;
+	vertical-align: top;
+	opacity: 0.2;
+	z-index: 2;
+	background-size: cover;
+	background-image: url("s2r://panorama/images/hud/reborn/glow_night_psd.vtex");
+	background-repeat: no-repeat;
+}
+.HideElement
+{
+	opacity: 0;
+}
+#GameTime
+{
+	visibility: visible;
+	color: white;
+	vertical-align: bottom;
+	horizontal-align: center;
+	margin-bottom: 9px;
+	letter-spacing: 1px;
+	font-family: RadianceM;
+	font-size: 14px;
+	font-weight: bold;
+	width: 200px;
+	text-align: center;
+	text-shadow: 1px 1px 2px 2.0 #00000011;
+}
+#DotaTime
+{
+	visibility: collapse;
+	color: white;
+	vertical-align: bottom;
+	horizontal-align: center;
+	margin-bottom: 9px;
+	letter-spacing: 1px;
+	font-family: RadianceM;
+	font-size: 14px;
+	font-weight: bold;
+	width: 200px;
+	text-align: center;
+	text-shadow: 1px 1px 2px 2.0 #00000011;
+}

@@ -1,0 +1,17 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/custom_hud/left_list.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/left_list.js" />
+    </scripts>
+
+    <Panel class="LeftListPanel" hittest="false">
+        <Panel id="LeftListBG">
+            <Label id="ScoreboardButton" class="NormalButton" text="#score_button" onactivate="ScoreboardActive()"/>
+            <Label id="QuestButton" class="NormalButton" text="#quest_button" onactivate="QuestActive()" />
+            <Label id="ShopButton" class="NormalButton" text="#shop_button" onactivate="ShopActive()" />
+        </Panel>
+    </Panel>
+</root>

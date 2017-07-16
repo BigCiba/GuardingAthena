@@ -1,0 +1,72 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 32
+	m_BoundingBoxMin =
+	[
+		-512.000000,
+		-512.000000,
+		-512.000000,
+	]
+	m_BoundingBoxMax =
+	[
+		512.000000,
+		512.000000,
+		0.000000,
+	]
+	m_nFallbackMaxCount = 2
+	m_flConstantRadius = 15.000000
+	m_ConstantColor =
+	[
+		255,
+		215,
+		109,
+		255,
+	]
+	m_nConstantSequenceNumber = 2
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_char.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_edge_crust_1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_edge_dark.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_infernal_edge_dark.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_edge.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_edge_crust.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_smoke_3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_infernal_pool_1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_smoke_2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_infernal_pool.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_infernal_lava_outer.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_infernal_light.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/skills/hell_field_smoke.vpcf"
+		},
+	]
+}

@@ -1,0 +1,22 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/athena_skill/teleport.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/athena_skill/teleport.js" />
+    </scripts>
+
+    <Panel class="TeleportPanel" hittest="false">
+        <Panel id="TeleportBG">
+            <Button id="GoldButton" onmouseover="DOTAHUDShowGoldTooltip()" onmouseout="DOTAHUDHideGoldTooltip()" onactivate="DOTAHUDToggleShop();">
+                <Label id="GoldLabel" class="ShopButtonValueLabel" text="0" />
+                <Panel id="GoldIcon" />
+            </Button>
+            <Button id="TeleportButton" onactivate="OnTeleportClick()" onmouseover="DOTAShowTextTooltip(#hg)" onmouseout="DOTAHideTextTooltip()">
+                <Label id="TeleportLabel" class="ShopButtonValueLabel" text="回程" />
+                <Panel id="GlyphIcon" />
+            </Button>
+        </Panel>
+    </Panel>
+</root>

@@ -1,0 +1,33 @@
+<root>
+    <styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/custom_hud/shop.css" />
+    </styles>
+
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/shop.js" />
+    </scripts>
+
+  <Panel hittest="false" class="ShopRoot">
+		<Panel id="ShopPanel">
+            <Label id="ShopLabel" text="#shop" class="HeadText"/>
+            <Panel class="HorizonLine"/>
+            <Panel id="TabContent">
+                <Panel class="DefShop" onactivate="DefShopActive()">
+                    <Label id="DefShop" text="#def_point" class="ShopName"/>
+                </Panel>
+                <Panel class="PracticeShop" onactivate="PracticeShopActive()">
+                    <Label id="PracticeShop" text="#practice_point" class="ShopName"/>
+                </Panel>
+                <Panel class="BossShop" onactivate="BossShopActive()">
+                    <Label id="BossShop" text="#boss_point" class="ShopName"/>
+                </Panel>
+            </Panel>
+            <Panel class="PointPanel">
+                <Label id="Point" text="20000" class="PointLabel"/>
+            </Panel>
+        </Panel>
+  </Panel>
+</root>
+
+

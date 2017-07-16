@@ -1,0 +1,29 @@
+<root>
+    <styles>
+        <include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/custom_hud/attribute.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/attribute.js" />
+    </scripts>
+
+    <Panel class="AttributePanel" hittest="false">
+        <Panel id="AttributeBG">
+            <Panel class="CowPanel">
+                <Panel class="StrIcon"/>
+                <Label id="StrText" text="14" class="NormalText"/>
+                <Label id="StrBonusText" text="+ 6" class="BonusText"/>
+            </Panel>
+            <Panel class="CowPanel">
+                <Panel class="AgiIcon"/>
+                <Label id="AgiText" text="14" class="NormalText"/>
+                <Label id="AgiBonusText" text="+ 6" class="BonusText"/>
+            </Panel>
+            <Panel class="CowPanel">
+                <Panel class="IntIcon"/>
+                <Label id="IntText" text="14" class="NormalText"/>
+                <Label id="IntBonusText" text="+ 6" class="BonusText"/>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

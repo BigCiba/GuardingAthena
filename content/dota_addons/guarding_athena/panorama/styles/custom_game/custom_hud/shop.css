@@ -1,0 +1,256 @@
+.ShopRoot
+{
+	visibility: visible;
+    width: 100%;
+    height: 100%;
+    opacity: 0; 
+    transform: translatex( -100px );
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier( 0.68, -0.55, 0.27, 1.25 ),ease-in-out;
+    transition-duration: 0.2s,0.2s;
+}
+.ShopRoot.flyout_shop_visible
+{
+    opacity: 1; 
+    transform: translatex( 0px );
+}
+.HorizonLine
+{
+    width: 100%;
+    height: 3px;
+    vertical-align: bottom;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #6f829c00 ), color-stop( 0.3, #87CEEB88 ), color-stop( 0.37, #87CEEBff ), color-stop( 0.63, #87CEEBff ), color-stop( 0.7, #87CEEB88 ), to( #6f829c00 ) );
+}
+.HeadText
+{
+    margin-bottom: 10px;
+    font-size: 30px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 skyblue;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+#ShopPanel
+{
+    align: left top;
+    flow-children: down;
+    margin-top: 280px;
+    width: 550px;
+    height: 480px;
+}
+#TabContent
+{
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 2%;
+    flow-children: right;
+}
+.ShopContent
+{
+    visibility: collapse;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    border-radius: 4px;
+    margin-left: 2%;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+    overflow: squish scroll;
+    opacity: 0; 
+    transform: translatey( -50px );
+    transition-property: transform, opacity, position;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s,0.4s,0.2s;
+}
+.ShopContent VerticalScrollBar .ScrollThumb, HTMLVerticalScrollBar .ScrollThumb{
+    visibility: visible;
+    background-color: #bae3f1;
+    border-right: 0px;
+    border-radius: 20px;
+}
+.ShopContent.shop_flyout
+{
+    opacity: 1; 
+    transform: translatey( 0px );
+}
+.ShopContent.shop_visible
+{
+    opacity: 1; 
+    transform: translatey( 0px );
+    visibility: visible;
+    transition-property: transform, opacity, position;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s,0.4s,0.2s;
+}
+.PointPanel
+{
+    margin-top: 10px;
+    width: 100%;
+    height: 32px;
+    flow-children: down;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    border-radius: 4px;
+    margin-left: 2%;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.ShopPanel
+{
+    visibility: collapse;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    width: 100%;
+    height: 64px;
+    flow-children: right;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    margin-left: 2%;
+    opacity: 0; 
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+    transform: translatex( -100px );
+    transition-property: transform, opacity, position;
+    transition-timing-function: cubic-bezier( 0.68, -0.55, 0.27, 1.25 ),ease-in-out;
+    transition-duration: 0.2s,0.2s;
+}
+.ShopPanel.shop_flyout
+{
+    opacity: 1; 
+    transform: translatex( 0px );
+}
+.ShopPanel.shop_visible
+{
+    visibility: visible;
+}
+.DefShop
+{
+    align: left center;
+    width: 176px;
+    height: 48px;
+    margin-right: 11px;
+    color: white;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    border-radius: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.PracticeShop
+{
+    align: left center;
+    width: 176px;
+    height: 48px;
+    margin-right: 11px;
+    color: white;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    border-radius: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.BossShop
+{
+    align: left center;
+    width: 176px;
+    height: 48px;
+    color: white;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    border-radius: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.DefShop:hover
+{
+    box-shadow: fill #87CEEB66 0px 0px 8px 0px;
+}
+.PracticeShop:hover
+{
+    box-shadow: fill #87CEEB66 0px 0px 8px 0px;
+}
+.BossShop:hover
+{
+    box-shadow: fill #87CEEB66 0px 0px 8px 0px;
+}
+.ShopName
+{
+    align: center center;
+    width: fit-children;
+    font-size: 24px;
+    text-align: center;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.ItemPanel
+{
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    width: 100%;
+    height: 50px;
+    flow-children: right;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+    transition-property: transform,pre-transform-scale2d;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+}
+.ItemPanel:hover
+{
+    transition-property: transform,pre-transform-scale2d;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+    box-shadow: fill #87CEEB66 0px 0px 8px 0px;
+    pre-transform-scale2d: 1.02, 1.1;
+}
+.ItemCantBuy
+{
+    saturation: 0;
+}
+.ItemLabel
+{
+    align: left center;
+    margin-left: 20px;
+    width:66px;
+    height:50px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}
+.ItemName
+{
+    align: left center;
+    width: fit-children;
+    margin-left: 5%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.CostLabel
+{
+    align: right center;
+    width: 150px;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.PointLabel
+{
+    align: right center;
+    width: fit-children;
+    margin-right: 5%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}

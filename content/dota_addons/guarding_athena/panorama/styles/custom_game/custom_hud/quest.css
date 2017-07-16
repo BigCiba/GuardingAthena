@@ -1,0 +1,129 @@
+.QuestRoot
+{
+	visibility: visible;
+    width: 100%;
+    height: 100%;
+    opacity: 0; 
+    transform: translatex( -100px );
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier( 0.68, -0.55, 0.27, 1.25 ),ease-in-out;
+    transition-duration: 0.2s,0.2s;
+}
+.QuestRoot.flyout_quest_visible
+{
+    opacity: 1; 
+    transform: translatex( 0px );
+}
+.HorizonLine
+{
+    width: 100%;
+    height: 3px;
+    vertical-align: bottom;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #6f829c00 ), color-stop( 0.3, #87CEEB88 ), color-stop( 0.37, #87CEEBff ), color-stop( 0.63, #87CEEBff ), color-stop( 0.7, #87CEEB88 ), to( #6f829c00 ) );
+}
+.HeadText
+{
+    margin-bottom: 10px;
+    font-size: 30px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px 2.0 skyblue;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+#QuestPanel
+{
+    align: left top;
+    flow-children: down;
+    margin-top: 280px;
+    width: 550px;
+}
+#QuestContent
+{
+    margin-top: 10px;
+    width: 100%;
+    flow-children: down;
+}
+.QuestPanel
+{
+    visibility: collapse;
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    width: 100%;
+    height: 64px;
+    flow-children: right;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    margin-left: 2%;
+    opacity: 0; 
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+    transform: translatex( -100px );
+    transition-property: transform, opacity, position;
+    transition-timing-function: cubic-bezier( 0.68, -0.55, 0.27, 1.25 ),ease-in-out;
+    transition-duration: 0.2s,0.2s;
+}
+.QuestPanel.quest_flyout
+{
+    opacity: 1; 
+    transform: translatex( 0px );
+}
+.QuestPanel.quest_visible
+{
+    visibility: visible;
+}
+.QuestName
+{
+    align: left center;
+    width: fit-children;
+    margin-left: 5%;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.QuestCount
+{
+    align: left center;
+    width: fit-children;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    padding-top: 8px;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.QuestRewardPanel
+{
+    flow-children: right;
+    align: right center;
+    width: fit-children;
+    font-size: 24px;
+    text-align: left;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.QuestReward
+{
+    align: right center;
+    width: fit-children;
+    font-size: 24px;
+    text-align: right;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-shadow: 0px 0px 1px 1.3 skyblue;
+    color: white;
+}
+.ItemLabel
+{
+    align: right center;
+    margin-right: 20px;
+    width:88px;
+    height:64px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}

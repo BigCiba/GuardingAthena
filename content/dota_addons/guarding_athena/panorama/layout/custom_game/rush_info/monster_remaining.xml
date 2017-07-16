@@ -1,0 +1,16 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/rush_info/monster_remaining.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/rush_info/monster_remaining.js" />
+    </scripts>
+
+    <Panel class="MonsterRemainingPanel" hittest="false">
+        <Panel id="MonsterRemainingBG">
+            
+            <Label id="EventLabel" class="EventListLabel" text="第1波怪剩余数量" />
+        </Panel>
+    </Panel>
+</root>

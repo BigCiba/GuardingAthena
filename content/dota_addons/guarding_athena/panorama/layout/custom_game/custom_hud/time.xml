@@ -1,0 +1,23 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/custom_hud/time.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/custom_hud/time.js" />
+	</scripts>
+	<Panel hittest="false" class="TimeRoot">
+		<Panel id="TimePanel" >
+			<Panel id="TimeOfDayBG" />
+			<Panel id="TimeOfDay">
+	            <Panel id="DayTime" class="TimeOfDayIcon DayIcon" />
+	            <Panel id="NightTime" class="TimeOfDayIcon NightIcon HideElement" />
+	            <Label id="GameTime" text=" 0:00" />
+	            <Label id="DotaTime" text=" 0:00" />
+	        </Panel>
+	        <Panel id="DayGlow" class="HideElement" hittest="false" />
+	        <Panel id="NightGlow" class="HideElement" hittest="false" />
+	        <Button id="TimeButton" onactivate="OnClick()"/>
+	    </Panel>
+	</Panel>
+</root>

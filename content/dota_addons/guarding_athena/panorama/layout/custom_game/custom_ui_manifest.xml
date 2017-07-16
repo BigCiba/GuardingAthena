@@ -1,0 +1,55 @@
+<root>
+	<script>
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, true );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
+
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_GAME_NAME, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_CLOCK, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_PROTECT, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_PANEL, true );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_KILLCAM, false );
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP, true );
+		GameUI.CustomUIConfig().team_colors = {}
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "#1bc0d8;"; // { 61, 210, 150 }	--		Teal
+		GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_BADGUYS ] = "#F3C909;"; // { 243, 201, 9 }		--		Yellow
+		var customRootUI = $.GetContextPanel().GetParent().GetParent();
+		customRootUI.FindChildTraverse("ShopCourierControls").style.visibility = "collapse";
+		customRootUI.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+		//customRootUI.FindChildTraverse("CommonItems").SetPanelEvent("onmouseover", function(){});
+		//customRootUI.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function(){});
+		customRootUI.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
+		//customRootUI.FindChildTraverse("AttackSpeed").style.visibility = "collapse";
+		//customRootUI.FindChildTraverse("MagicResistance").style.visibility = "collapse";
+		//customRootUI.FindChildTraverse("right_flare").style.visibility = "collapse";
+		customRootUI.FindChildTraverse("quickstats").style.visibility = "collapse";
+
+	</script>
+		
+	<Panel>
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" /> 
+		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/overthrow_item_notification.xml" />
+		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/pick_hero.xml" />
+		<CustomUIElement type="GameSetup"			layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
+		<!--<CustomUIElement type="GameInfo" 			layoutfile="file://{resources}/layout/custom_game/game_info.xml" />-->
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/rush_info/difficulty.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/rush_info/time_remaining.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/rush_info/monster_remaining.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/left_list.xml" />
+		<!--<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/attribute.xml" />-->
+		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/athena_skill/teleport.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/athena_skill/upgrade.xml" />
+		<CustomUIElement type="FlyoutScoreboard"	layoutfile="file://{resources}/layout/custom_game/custom_hud/scoreboard.xml" />
+		<CustomUIElement type="EndScreen" 			layoutfile="file://{resources}/layout/custom_game/custom_hud/end_screen.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/quest.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/shop.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/time.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/bubble.xml" />
+		<!--<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />-->
+	</Panel>
+</root>

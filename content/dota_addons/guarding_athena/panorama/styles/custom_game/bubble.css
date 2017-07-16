@@ -1,0 +1,33 @@
+.Root{
+	width: 100%;
+	height: 100%;
+}
+
+#Text{
+	width: 300px;
+	min-width: 100px;
+	max-width: 300px;
+	background-color: gradient( linear, 0% 100%, 0% 0%, from( #104658 ), to( #005395 ) );
+	border-radius: 5px;
+	padding: 8px;
+	color: #FFF;
+	box-shadow: #000 0px 0px 6px;
+	border: 1px solid #000;
+	font-size: 22px;
+}
+
+#Arrow{
+	width: 25px;
+	height: 25px;
+	wash-color: #104658;
+	background-image: url("file://{images}/custom_game/bubble_arrow.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	transform: translateX(30%) translateY(-4px);
+}
+
+.bubble{
+	flow-children: down;
+	padding: 10px;
+}

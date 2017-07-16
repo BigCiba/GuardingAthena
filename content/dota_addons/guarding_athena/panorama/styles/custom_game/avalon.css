@@ -1,0 +1,438 @@
+/*
+//=========== Copyright (c) Avalon Studio Offical, All rights reserved. ===========
+//
+// Programmer: Avalon.RobinCode
+//
+// 通用样式
+//
+//=================================================================================
+*/
+
+/*横向排列*/
+.ARight{
+	flow-children:right;
+}
+.row{
+	flow-children:right;
+}
+
+/*纵向排列*/
+.ADown{
+	flow-children:down;
+}
+.col{
+	flow-children:down;
+}
+
+/*水平居左*/
+.AHToLeft{
+	horizontal-align: left;
+}
+.left{
+	horizontal-align: left;
+}
+
+/*水平居中*/
+.AHToMid{
+	horizontal-align: center;
+}
+.center{
+	horizontal-align: center;
+}
+
+/*水平居右*/
+.AHToRight{
+	horizontal-align: right;
+}
+.right{
+	horizontal-align: right;
+}
+
+/*垂直居顶*/
+.AVToTop{
+	vertical-align: top;
+}
+.top{
+	vertical-align: top;
+}
+
+/*垂直居中*/
+.AVToMid{
+	vertical-align: middle;
+}
+.middle{
+	vertical-align: middle;
+}
+
+/*垂直居低*/
+.AVToBottom{
+	vertical-align: bottom;
+}
+.bottom{
+	vertical-align: bottom;
+}
+
+/*横竖居中*/
+.AHVToMid{
+	vertical-align: middle;
+	horizontal-align: middle;
+}
+
+.mid{
+	horizontal-align: center;
+	vertical-align: middle;
+}
+
+/*长宽100%*/
+.AWidthHeight{
+	width: 100%;
+	height: 100%;
+}
+.full{
+	width: 100%;
+	height: 100%;
+}
+
+/*长100%*/
+.AWidth{
+	width: 100%;
+}
+.width-1{
+	width: 10%;
+}
+.width-2{
+	width: 20%;
+}
+.width-3{
+	width: 30%;
+}
+.width-4{
+	width: 40%;
+}
+.width-5{
+	width: 50%;
+}
+.width-6{
+	width: 60%;
+}
+.width-7{
+	width: 70%;
+}
+.width-8{
+	width: 80%;
+}
+.width-9{
+	width: 90%;
+}
+.width-f{
+	width: 100%;
+}
+
+/*宽100%*/
+.AHeight{
+	height: 100%;
+}
+.height-1{
+	height: 10%;
+}
+.height-2{
+	height: 20%;
+}
+.height-3{
+	height: 30%;
+}
+.height-4{
+	height: 40%;
+}
+.height-5{
+	height: 50%;
+}
+.height-6{
+	height: 60%;
+}
+.height-7{
+	height: 70%;
+}
+.height-8{
+	height: 80%;
+}
+.height-9{
+	height: 90%;
+}
+.height-f{
+	height: 100%;
+}
+
+/*显示*/
+.AShow{
+	visibility: visible;
+}
+.show{
+	visibility: visible;
+}
+
+/*隐藏*/
+.AHide{
+	visibility: collapse;
+}
+.hide{
+	visibility: collapse;
+}
+
+/*文字居中*/
+.text-center{
+	text-align: center;
+}
+
+/*文字居右*/
+.text-right{
+	text-align: right;
+}
+
+/*文字居左*/
+.text-left{
+	text-align: left;
+}
+
+/*大写*/
+.text-uppercase{
+	text-transform: uppercase;
+}
+
+/*小写*/
+.text-lowercase{
+	text-transform: lowercase;
+}
+
+/*tooltip显示的位置*/
+.tooltip-left{
+	tooltip-position: left;
+}
+.tooltip-top{
+	tooltip-position: top;
+}
+.tooltip-right{
+	tooltip-position: right;
+}
+.tooltip-bottom{
+	tooltip-position: bottom;
+}
+
+.AWidthFill{
+	width: fill-parent-flow(1);
+}
+
+.AHeightFill{
+	height: fill-parent-flow(1);
+}
+
+/*长宽比重*/
+.row-w-1{
+	width: fill-parent-flow(0.1);
+}
+.row-w-2{
+	width: fill-parent-flow(0.2);
+}
+.row-w-3{
+	width: fill-parent-flow(0.3);
+}
+.row-w-4{
+	width: fill-parent-flow(0.4);
+}
+.row-w-5{
+	width: fill-parent-flow(0.5);
+}
+.row-w-6{
+	width: fill-parent-flow(0.6);
+}
+.row-w-7{
+	width: fill-parent-flow(0.7);
+}
+.row-w-8{
+	width: fill-parent-flow(0.8);
+}
+.row-w-9{
+	width: fill-parent-flow(0.9);
+}
+.row-w-f{
+	width: fill-parent-flow(1);
+}
+.col-w-1{
+	height: fill-parent-flow(0.1);
+}
+.col-w-2{
+	height: fill-parent-flow(0.2);
+}
+.col-w-3{
+	height: fill-parent-flow(0.3);
+}
+.col-w-4{
+	height: fill-parent-flow(0.4);
+}
+.col-w-5{
+	height: fill-parent-flow(0.5);
+}
+.col-w-6{
+	height: fill-parent-flow(0.6);
+}
+.col-w-7{
+	height: fill-parent-flow(0.7);
+}
+.col-w-8{
+	height: fill-parent-flow(0.8);
+}
+.col-w-9{
+	height: fill-parent-flow(0.9);
+}
+.col-w-f{
+	height: fill-parent-flow(1);
+}
+
+/*字体颜色*/
+.color-white{
+	color: white;
+}
+.color-red{
+	color: red;
+}
+.color-yellow{
+	color: yellow;
+}
+.color-green{
+	color: green;
+}
+.color-black{
+	color: black;
+}
+.color-blue{
+	color: blue;
+}
+.color-gold{
+	color: gold;
+}
+.color-orange{
+	color: orange;
+}
+
+/*背景色*/
+.background-white{
+	background-color: white;
+}
+.background-red{
+	background-color: red;
+}
+.background-yellow{
+	background-color: yellow;
+}
+.background-green{
+	background-color: green;
+}
+.background-black{
+	background-color: black;
+}
+.background-blue{
+	background-color: blue;
+}
+.background-gold{
+	background-color: gold;
+}
+.background-orange{
+	background-color: orange;
+}
+
+/*透明度*/
+.opacity-0{
+	opacity: 0;
+}
+.opacity-1{
+	opacity: 0.1;
+}
+.opacity-2{
+	opacity: 0.2;
+}
+.opacity-3{
+	opacity: 0.3;
+}
+.opacity-4{
+	opacity: 0.4;
+}
+.opacity-5{
+	opacity: 0.5;
+}
+.opacity-6{
+	opacity: 0.6;
+}
+.opacity-7{
+	opacity: 0.7;
+}
+.opacity-8{
+	opacity: 0.8;
+}
+.opacity-9{
+	opacity: 0.9;
+}
+
+/*矩形*/
+.rect-32{
+	width:32px;
+	height:32px;
+}
+.rect-64{
+	width: 64px;
+	height: 64px;
+}
+.rect-128{
+	width: 128px;
+	height: 128px;
+}
+
+.rect-256{
+	width: 256px;
+	height: 256px;
+}
+
+.rect-512{
+	width: 512px;
+	height: 512px;
+}
+
+.rect-1024{
+	width: 1024px;
+	height: 1024px;
+}
+
+.scroll{
+	overflow: scroll;
+}
+
+.scroll-right{
+	overflow: squish scroll;
+}
+
+.scroll-bottom{
+	overflow: scroll squish;
+}
+
+/*表格*/
+.table{
+	width: 100%;
+	flow-children: down;
+	border-right: 2px solid #555;
+	border-bottom: 2px solid #555;
+}
+.table .tr{
+	width: 100%;
+	flow-children: right;
+}
+
+.table .tr .th,
+.table .tr .td{
+	width: fill-parent-flow(1);
+	border-left: 2px solid #555;
+	border-top: 2px solid #555;
+}
+
+.table Label{
+	color: #aaa;
+	margin: 10px;
+}
