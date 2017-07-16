@@ -1,4 +1,6 @@
 # dota
+.dota2editor/
+*.vpk
 *.exe
 *.bin
 *.vpcf_c

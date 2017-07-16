@@ -18,7 +18,7 @@ function OnDeath( t )
                 Timers:CreateTimer(1,function ()
                     caster:RespawnUnit()
                     caster:AddNewModifier(unit, nil, "modifier_kill", {duration = 60})
-                    caster.sishi = true
+                    caster.corpse = true
                     caster.fuhuozhong = false
                 end)
             end

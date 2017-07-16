@@ -1,5 +1,4 @@
 if Quest == nil then
-  	--print ( '[Spawner] creating Spawner' )
   	Quest = {}
   	Quest.__index = Quest
 end

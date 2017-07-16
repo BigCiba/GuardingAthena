@@ -28,7 +28,7 @@ function GuardingAthena:InitGameMode()
 	self.athena_armor_lv = 0
 	self.sandking = 0
 	self.athena_reborn = true
-	self.Nec = nil
+	self.final_boss = nil
 	self.player_gold_save = {0,0,0,0}
 	self.clotho_lv = 1
 	self.iapetos = nil
@@ -141,29 +141,6 @@ function GuardingAthena:InitGameMode()
 	ListenToGameEvent('player_chat', Dynamic_Wrap(GuardingAthena, 'OnPlayerChat'), self)
 	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(GuardingAthena, 'OnPlayerLevelUp'), self)
 	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(GuardingAthena, 'OnUsedAbility'), self )
-	--ListenToGameEvent('player_connect', Dynamic_Wrap(GuardingAthena, 'PlayerConnect'), self)
-	--ListenToGameEvent('entity_hurt', Dynamic_Wrap(GuardingAthena, 'OnEntityHurt'), self)
-	--ListenToGameEvent('tree_cut', Dynamic_Wrap(GuardingAthena, 'OnTreeCut'), self)
-	--ListenToGameEvent('dota_player_update_selected_unit', Dynamic_Wrap(GuardingAthena, 'OnPlayerSelected'), self)
-	--ListenToGameEvent('player_reconnected', Dynamic_Wrap(GuardingAthena, 'OnPlayerReconnect'), self)
-	--ListenToGameEvent('player_disconnect', Dynamic_Wrap(GuardingAthena, 'OnDisconnect'), self)
-	--ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(GuardingAthena, 'OnItemPickedUp'), self)
-	--ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(GuardingAthena, 'OnItemPurchased'), self)
-	--ListenToGameEvent('dota_item_gifted', Dynamic_Wrap(GuardingAthena, 'OnItemGifted'), self)
-	--ListenToGameEvent('last_hit', Dynamic_Wrap(GuardingAthena, 'OnLastHit'), self)
-	--ListenToGameEvent('dota_non_player_used_ability', Dynamic_Wrap(GuardingAthena, 'OnNonPlayerUsedAbility'), self)
-	--ListenToGameEvent('player_changename', Dynamic_Wrap(GuardingAthena, 'OnPlayerChangedName'), self)
-	--ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(GuardingAthena, 'OnRuneActivated'), self)
-	--ListenToGameEvent('dota_player_take_tower_damage', Dynamic_Wrap(GuardingAthena, 'OnPlayerTakeTowerDamage'), self)
-	--ListenToGameEvent('dota_team_kill_credit', Dynamic_Wrap(GuardingAthena, 'OnTeamKillCredit'), self)
-	--ListenToGameEvent('player_spawn', Dynamic_Wrap(GuardingAthena, 'OnPlayerSpawn'), self)
-	--ListenToGameEvent('dota_unit_event', Dynamic_Wrap(GuardingAthena, 'OnDotaUnitEvent'), self)
-	--ListenToGameEvent('nommed_tree', Dynamic_Wrap(GuardingAthena, 'OnPlayerAteTree'), self)
-	--ListenToGameEvent('player_completed_game', Dynamic_Wrap(GuardingAthena, 'OnPlayerCompletedGame'), self)
-	--ListenToGameEvent('dota_match_done', Dynamic_Wrap(GuardingAthena, 'OnDotaMatchDone'), self)
-	--ListenToGameEvent('dota_combatlog', Dynamic_Wrap(GuardingAthena, 'OnCombatLogEvent'), self)
-	--ListenToGameEvent('dota_player_killed', Dynamic_Wrap(GuardingAthena, 'OnPlayerKilled'), self)
-	--ListenToGameEvent('player_team', Dynamic_Wrap(GuardingAthena, 'OnPlayerTeam'), self)
 
 	--自定义控制台命令
 	Convars:RegisterCommand( "-testmode", function(...) return self:TestMode( ... ) end, "Test Mode.", FCVAR_CHEAT )
@@ -274,12 +251,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 			--CustomNetTables:SetTableValue( "scoreboard", tostring(k), { lv=1, str=0, agi=0, int=0, wavedef=0, damagesave=0, goldsave=0 } )
 			CustomNetTables:SetTableValue( "difficulty", tostring(k), {difficulty="NoSelect"} )
 		end
-		-- 初始化练功房
-		--local count = 0
-		--[[Timers:CreateTimer(1, function() count = count + 1
-			--print(count)
-			return 1
-		end)]]--
+
 		--初始化英雄数据
 		HeroState:Init()
 		Quest:Init()
@@ -293,8 +265,9 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 	if newState == DOTA_GAMERULES_STATE_PRE_GAME then
 		
 		--难度计算
-		Timers:CreateTimer(20, function()
+		Timers:CreateTimer(HERO_SELECTION_TIME, function()
 			self.GameStartTime = GameRules:GetGameTime()
+			-- 难度投票计算
 			local difficulty_count = {0,0,0,0,0}
 			for playerID,difficulty_select in pairs(self.SelectDifficulty) do
 				difficulty_count[difficulty_select] = difficulty_count[difficulty_select] + 1
@@ -346,8 +319,6 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 		end)
 		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
 		self.player_count = Players
-		--QuestSystem("#Quest1",29)
-		--CustomUI:DynamicHud_Destroy(-1,"SelectHeroPanel")
 		for i=1,Players do
 			local playerid = i - 1 
 			CustomNetTables:SetTableValue( "scoreboard", tostring(i-1), { lv=1, str=0, agi=0, int=0, wavedef=0, damagesave=0, goldsave=0 } )

@@ -4,7 +4,7 @@ ALLOW_SAME_HERO_SELECTION = true        -- 是否允许相同英雄
 
 HERO_SELECTION_TIME = 20.0              -- 英雄选择时间
 PRE_GAME_TIME = 50.0                    -- 游戏开始前的准备时间
-POST_GAME_TIME = 120.0                   -- 游戏结束后自动退出的时间
+POST_GAME_TIME = 120.0                  -- 游戏结束后自动退出的时间
 TREE_REGROW_TIME = 60.0                 -- 树木重生时间
 
 GOLD_PER_TICK = 1                       -- 固定金钱获得

@@ -50,7 +50,7 @@ function OnDeath( t )
 							local cd = ability_mubei:GetSpecialValueFor("cooldown")
 							ability_mubei:StartCooldown(cd)
 							EmitSoundOn("Greevil.FleshGolem.Cast", rebornUnit)
-							rebornUnit.sishi = true
+							rebornUnit.corpse = true
 						end)
 					end
 				end
