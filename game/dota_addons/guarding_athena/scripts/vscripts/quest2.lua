@@ -2,7 +2,35 @@ if Quest == nil then
   	Quest = {}
   	Quest.__index = Quest
 end
+-- 初始化
+function Quest:Init()
+	ListenToGameEvent('entity_killed', Dynamic_Wrap(Quest, 'OnUnitKilled'), self)
+	self.questInfo = LoadKeyValues("scripts/kv/quest_info.kv")
+end
 
+function Quest:OnUnitKilled(t)
+    local victim = EntIndexToHScript(t.entindex_killed)
+	local killer = EntIndexToHScript(t.entindex_attacker)
+    local playerID
+    if killer:isIllusion() then
+        if killer.caster_hero then
+            killer = killer.caster_hero
+        end
+    end
+    if killer:isRealHero() then
+        playerID = killer:GetPlayerID()
+    end
+    if entity then
+        local entityName = entity:GetUnitName()
+        local playerQuests = QuestManager:getQuests(playerID)
+        for k,v in pairs(playerQuests) do
+            if v["Monster"] == entityName then
+                v:deCount()
+            end
+        end
+    end
+
+end
 function Quest:finish()
 	self["Count"] = -1
 	--这里写给玩家啥东西啥东西的
@@ -41,8 +69,9 @@ function Quest:delete()
 end
 
 function QuestEasy( trigger )
-	caster = trigger.activator;
+	local caster = trigger.activator;
 	local playerID = caster:GetPlayerID()
+	local npc = Entities:FindByName( nil, "quest_easy" )
 	local quest1 = {
 		["Type"] = "Kill",
 		["Name"] = "杀死恶魔",

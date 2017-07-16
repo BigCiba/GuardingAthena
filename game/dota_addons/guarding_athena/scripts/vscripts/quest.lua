@@ -5,6 +5,8 @@ end
 -- 初始化
 function Quest:Init()
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(Quest, 'OnUnitKilled'), self)
+	local questInfo = LoadKeyValues("scripts/kv/quest_info.kv")
+	PrintTable(questInfo)
 end
 function Quest:OnUnitKilled(t)
 	local killedUnit = EntIndexToHScript(t.entindex_killed)

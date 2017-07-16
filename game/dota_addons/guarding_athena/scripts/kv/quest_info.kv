@@ -1,0 +1,25 @@
+"Quests"
+{
+    "KillKobold"
+    {
+        "triggerType"       "npc"
+        "triggerName"       ""
+        "frontRequireType"  ""
+        "frontRequire"      ""
+        "questType"         "kill"
+        "demandCount"       "3"
+        "rewardType"        "item"
+        "rewardContent"     "item_zhangu"
+    }
+    "KillBeast"
+    {
+        "triggerType"       "npc"
+        "triggerName"       ""
+        "frontRequireType"  "quest"
+        "frontRequire"      "KillKobold"
+        "questType"         "kill"
+        "demandCount"       "2"
+        "rewardType"        "item"
+        "rewardContent"     "item_xiongpi"
+    }
+}
