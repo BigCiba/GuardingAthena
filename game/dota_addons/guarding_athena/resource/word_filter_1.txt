@@ -1,0 +1,8400 @@
+"FilteredWords"
+{
+	"Version"		"0"
+	"GCListVersion"		"0x0000000000000005"
+	"14193"
+	{
+		"Word"		"F_Y~P{"
+		"Filter"		"0"
+	}
+	"14192"
+	{
+		"Word"		"Y~P{"
+		"Filter"		"0"
+	}
+	"14182"
+	{
+		"Word"		"YLZIZI"
+		"Filter"		"0"
+	}
+	"14181"
+	{
+		"Word"		"L[MW"
+		"Filter"		"0"
+	}
+	"14180"
+	{
+		"Word"		"XrkPBwhZ"
+		"Filter"		"0"
+	}
+	"14179"
+	{
+		"Word"		"LRre"
+		"Filter"		"0"
+	}
+	"14178"
+	{
+		"Word"		"oGPm"
+		"Filter"		"0"
+	}
+	"14177"
+	{
+		"Word"		"MVPm"
+		"Filter"		"0"
+	}
+	"14176"
+	{
+		"Word"		"p[`P_@"
+		"Filter"		"0"
+	}
+	"14175"
+	{
+		"Word"		"yOMv"
+		"Filter"		"0"
+	}
+	"14174"
+	{
+		"Word"		"fBMv"
+		"Filter"		"0"
+	}
+	"14173"
+	{
+		"Word"		"Xfo"
+		"Filter"		"0"
+	}
+	"14172"
+	{
+		"Word"		"XZK"
+		"Filter"		"0"
+	}
+	"14171"
+	{
+		"Word"		"pKE["
+		"Filter"		"0"
+	}
+	"14170"
+	{
+		"Word"		"FLE["
+		"Filter"		"0"
+	}
+	"14169"
+	{
+		"Word"		"zNYQcw"
+		"Filter"		"0"
+	}
+	"14168"
+	{
+		"Word"		"exDr"
+		"Filter"		"0"
+	}
+	"14167"
+	{
+		"Word"		"rW\~"
+		"Filter"		"0"
+	}
+	"14166"
+	{
+		"Word"		"KrMF"
+		"Filter"		"0"
+	}
+	"14165"
+	{
+		"Word"		"J[sU"
+		"Filter"		"0"
+	}
+	"14164"
+	{
+		"Word"		"zNDW"
+		"Filter"		"0"
+	}
+	"14163"
+	{
+		"Word"		"gqzXIM"
+		"Filter"		"0"
+	}
+	"14162"
+	{
+		"Word"		"GRpPOnct"
+		"Filter"		"0"
+	}
+	"14161"
+	{
+		"Word"		"zVctTi"
+		"Filter"		"0"
+	}
+	"14160"
+	{
+		"Word"		"\F}u\Fct"
+		"Filter"		"0"
+	}
+	"14159"
+	{
+		"Word"		"\FGR\FpO"
+		"Filter"		"0"
+	}
+	"14158"
+	{
+		"Word"		"iOiyct"
+		"Filter"		"0"
+	}
+	"14157"
+	{
+		"Word"		"kQL\XrkP"
+		"Filter"		"0"
+	}
+	"14156"
+	{
+		"Word"		"[VQvisvqvuNbVnB"
+		"Filter"		"0"
+	}
+	"14155"
+	{
+		"Word"		"GRctsvqvuNbVnB"
+		"Filter"		"0"
+	}
+	"14154"
+	{
+		"Word"		"svqvuNbVnB"
+		"Filter"		"0"
+	}
+	"14153"
+	{
+		"Word"		"[A@b`Exnc|"
+		"Filter"		"0"
+	}
+	"14152"
+	{
+		"Word"		"zNk\GDAV"
+		"Filter"		"0"
+	}
+	"14151"
+	{
+		"Word"		"svqvuN"
+		"Filter"		"0"
+	}
+	"14150"
+	{
+		"Word"		"GuYL"
+		"Filter"		"0"
+	}
+	"14149"
+	{
+		"Word"		"PVWwBM"
+		"Filter"		"0"
+	}
+	"14148"
+	{
+		"Word"		"GuYL"
+		"Filter"		"0"
+	}
+	"14147"
+	{
+		"Word"		"zSQvN"
+		"Filter"		"0"
+	}
+	"14146"
+	{
+		"Word"		"ZaIlhz"
+		"Filter"		"0"
+	}
+	"14145"
+	{
+		"Word"		"jytf|W"
+		"Filter"		"0"
+	}
+	"14144"
+	{
+		"Word"		"zSQv|W"
+		"Filter"		"0"
+	}
+	"14143"
+	{
+		"Word"		"EED\c|"
+		"Filter"		"0"
+	}
+	"14142"
+	{
+		"Word"		"[AXnf]"
+		"Filter"		"0"
+	}
+	"14141"
+	{
+		"Word"		"|Jk@N"
+		"Filter"		"0"
+	}
+	"14140"
+	{
+		"Word"		"HZjyN"
+		"Filter"		"0"
+	}
+	"14139"
+	{
+		"Word"		"pPAzd_"
+		"Filter"		"0"
+	}
+	"14138"
+	{
+		"Word"		"[Ac|GDAV"
+		"Filter"		"0"
+	}
+	"14137"
+	{
+		"Word"		"HTW|"
+		"Filter"		"0"
+	}
+	"14136"
+	{
+		"Word"		"HZWtf]"
+		"Filter"		"0"
+	}
+	"14135"
+	{
+		"Word"		"Xnu|W"
+		"Filter"		"0"
+	}
+	"14134"
+	{
+		"Word"		"µΩ"
+		"Filter"		"0"
+	}
+	"14133"
+	{
+		"Word"		"yphZhh"
+		"Filter"		"0"
+	}
+	"14132"
+	{
+		"Word"		"HTPd"
+		"Filter"		"0"
+	}
+	"14131"
+	{
+		"Word"		"bA"
+		"Filter"		"0"
+	}
+	"14130"
+	{
+		"Word"		"TgEh\mRo"
+		"Filter"		"0"
+	}
+	"14129"
+	{
+		"Word"		"uhhZ"
+		"Filter"		"0"
+	}
+	"14128"
+	{
+		"Word"		"zNsU"
+		"Filter"		"0"
+	}
+	"14127"
+	{
+		"Word"		"HTjV"
+		"Filter"		"0"
+	}
+	"14126"
+	{
+		"Word"		"GPALAY"
+		"Filter"		"0"
+	}
+	"14125"
+	{
+		"Word"		"DrXk"
+		"Filter"		"0"
+	}
+	"14124"
+	{
+		"Word"		"YLUB"
+		"Filter"		"0"
+	}
+	"14123"
+	{
+		"Word"		"HT"
+		"Filter"		"0"
+	}
+	"14122"
+	{
+		"Word"		"}dE["
+		"Filter"		"0"
+	}
+	"14121"
+	{
+		"Word"		"DrEtXkl^c|"
+		"Filter"		"0"
+	}
+	"14120"
+	{
+		"Word"		"RTix"
+		"Filter"		"0"
+	}
+	"14119"
+	{
+		"Word"		"FFG|zT"
+		"Filter"		"0"
+	}
+	"14118"
+	{
+		"Word"		"QtZitN"
+		"Filter"		"0"
+	}
+	"14117"
+	{
+		"Word"		"ctgMXnHZXk"
+		"Filter"		"0"
+	}
+	"14116"
+	{
+		"Word"		"FFYLUBC"
+		"Filter"		"0"
+	}
+	"14115"
+	{
+		"Word"		"G_Nq"
+		"Filter"		"0"
+	}
+	"14114"
+	{
+		"Word"		"QtZenc"
+		"Filter"		"0"
+	}
+	"14113"
+	{
+		"Word"		"ctgM|W"
+		"Filter"		"0"
+	}
+	"14112"
+	{
+		"Word"		"FFYLUBù"
+		"Filter"		"0"
+	}
+	"14111"
+	{
+		"Word"		"G_"
+		"Filter"		"0"
+	}
+	"14110"
+	{
+		"Word"		"eKAm"
+		"Filter"		"0"
+	}
+	"14109"
+	{
+		"Word"		"|RCPd{"
+		"Filter"		"0"
+	}
+	"14108"
+	{
+		"Word"		"bNc`LzIiPbY\FMT~l"
+		"Filter"		"0"
+	}
+	"14107"
+	{
+		"Word"		"bcbo"
+		"Filter"		"0"
+	}
+	"14106"
+	{
+		"Word"		"prtj"
+		"Filter"		"0"
+	}
+	"14105"
+	{
+		"Word"		"DA"
+		"Filter"		"0"
+	}
+	"14104"
+	{
+		"Word"		"[c|z"
+		"Filter"		"0"
+	}
+	"14103"
+	{
+		"Word"		"bictZa[A"
+		"Filter"		"0"
+	}
+	"14102"
+	{
+		"Word"		"Z@hp"
+		"Filter"		"0"
+	}
+	"14101"
+	{
+		"Word"		"nvurtN"
+		"Filter"		"0"
+	}
+	"14100"
+	{
+		"Word"		"cNGBoy"
+		"Filter"		"0"
+	}
+	"14099"
+	{
+		"Word"		"k`Kvvx"
+		"Filter"		"0"
+	}
+	"14098"
+	{
+		"Word"		"AcRTRo"
+		"Filter"		"0"
+	}
+	"14097"
+	{
+		"Word"		"IW\"
+		"Filter"		"0"
+	}
+	"14096"
+	{
+		"Word"		"Il[AoyEtc|"
+		"Filter"		"0"
+	}
+	"14095"
+	{
+		"Word"		"rx[V"
+		"Filter"		"0"
+	}
+	"14094"
+	{
+		"Word"		"AczmRo"
+		"Filter"		"0"
+	}
+	"14093"
+	{
+		"Word"		"ImspP"
+		"Filter"		"0"
+	}
+	"14092"
+	{
+		"Word"		"Il@`[Ac|oyEtc|"
+		"Filter"		"0"
+	}
+	"14091"
+	{
+		"Word"		"pGLj|W"
+		"Filter"		"0"
+	}
+	"14090"
+	{
+		"Word"		"D\dDN"
+		"Filter"		"0"
+	}
+	"14089"
+	{
+		"Word"		"oi_RqV"
+		"Filter"		"0"
+	}
+	"14088"
+	{
+		"Word"		"xnR\hZ"
+		"Filter"		"0"
+	}
+	"14087"
+	{
+		"Word"		"WztfGBN"
+		"Filter"		"0"
+	}
+	"14086"
+	{
+		"Word"		"zvgqhZ_N"
+		"Filter"		"0"
+	}
+	"14085"
+	{
+		"Word"		"oi_RGG"
+		"Filter"		"0"
+	}
+	"14084"
+	{
+		"Word"		"xnhZwo"
+		"Filter"		"0"
+	}
+	"14083"
+	{
+		"Word"		"OKqDDuAi"
+		"Filter"		"0"
+	}
+	"14082"
+	{
+		"Word"		"Q^oyl^"
+		"Filter"		"0"
+	}
+	"14081"
+	{
+		"Word"		"zfrvN"
+		"Filter"		"0"
+	}
+	"14080"
+	{
+		"Word"		"ZFYSe{"
+		"Filter"		"0"
+	}
+	"14079"
+	{
+		"Word"		"Q^oyEEl^"
+		"Filter"		"0"
+	}
+	"14078"
+	{
+		"Word"		"FFYLUB"
+		"Filter"		"0"
+	}
+	"14077"
+	{
+		"Word"		"ZFUBe{"
+		"Filter"		"0"
+	}
+	"14076"
+	{
+		"Word"		"åù"
+		"Filter"		"0"
+	}
+	"14075"
+	{
+		"Word"		"XGi`L"
+		"Filter"		"0"
+	}
+	"14074"
+	{
+		"Word"		"FFYL"
+		"Filter"		"0"
+	}
+	"14073"
+	{
+		"Word"		"iP[Xah"
+		"Filter"		"0"
+	}
+	"14072"
+	{
+		"Word"		"UBù"
+		"Filter"		"0"
+	}
+	"14071"
+	{
+		"Word"		"daOno|NS}v"
+		"Filter"		"0"
+	}
+	"14070"
+	{
+		"Word"		"GRrhJH"
+		"Filter"		"0"
+	}
+	"14069"
+	{
+		"Word"		"OKwV|W"
+		"Filter"		"0"
+	}
+	"14068"
+	{
+		"Word"		"OphZcS"
+		"Filter"		"0"
+	}
+	"14067"
+	{
+		"Word"		"[XED"
+		"Filter"		"0"
+	}
+	"14066"
+	{
+		"Word"		"[EW~"
+		"Filter"		"0"
+	}
+	"14065"
+	{
+		"Word"		"FFYL~Pr"
+		"Filter"		"0"
+	}
+	"14064"
+	{
+		"Word"		"OpLvKk\F|q"
+		"Filter"		"0"
+	}
+	"14063"
+	{
+		"Word"		"[XuNΩ"
+		"Filter"		"0"
+	}
+	"14062"
+	{
+		"Word"		"XdYLWg"
+		"Filter"		"0"
+	}
+	"14061"
+	{
+		"Word"		"FFYL"
+		"Filter"		"0"
+	}
+	"14060"
+	{
+		"Word"		"XdYLPr"
+		"Filter"		"0"
+	}
+	"14059"
+	{
+		"Word"		"FFtqWg"
+		"Filter"		"0"
+	}
+	"14058"
+	{
+		"Word"		"{vHKBS"
+		"Filter"		"0"
+	}
+	"14057"
+	{
+		"Word"		"XdYL~GT"
+		"Filter"		"0"
+	}
+	"14056"
+	{
+		"Word"		"BdZi"
+		"Filter"		"0"
+	}
+	"14055"
+	{
+		"Word"		"bNU~"
+		"Filter"		"0"
+	}
+	"14054"
+	{
+		"Word"		"Rct"
+		"Filter"		"0"
+	}
+	"14053"
+	{
+		"Word"		"XdYL~Pr"
+		"Filter"		"0"
+	}
+	"14052"
+	{
+		"Word"		"Bdjf"
+		"Filter"		"0"
+	}
+	"14051"
+	{
+		"Word"		"bN]btNV`"
+		"Filter"		"0"
+	}
+	"14050"
+	{
+		"Word"		"ixvVN"
+		"Filter"		"0"
+	}
+	"14049"
+	{
+		"Word"		"XdYLzS"
+		"Filter"		"0"
+	}
+	"14048"
+	{
+		"Word"		"D]vV"
+		"Filter"		"0"
+	}
+	"14047"
+	{
+		"Word"		"x\RepO"
+		"Filter"		"0"
+	}
+	"14046"
+	{
+		"Word"		"XdYLwG"
+		"Filter"		"0"
+	}
+	"14045"
+	{
+		"Word"		"prhZ"
+		"Filter"		"0"
+	}
+	"14044"
+	{
+		"Word"		"}DN{"
+		"Filter"		"0"
+	}
+	"14043"
+	{
+		"Word"		"EEOn[Xc|_}"
+		"Filter"		"0"
+	}
+	"14042"
+	{
+		"Word"		"pr~oXkl^c|"
+		"Filter"		"0"
+	}
+	"14041"
+	{
+		"Word"		"}DΩ"
+		"Filter"		"0"
+	}
+	"14040"
+	{
+		"Word"		"uvﬂﬂL\"
+		"Filter"		"0"
+	}
+	"14039"
+	{
+		"Word"		"LjwIAY"
+		"Filter"		"0"
+	}
+	"14038"
+	{
+		"Word"		"NsG|"
+		"Filter"		"0"
+	}
+	"14037"
+	{
+		"Word"		"QEvt"
+		"Filter"		"0"
+	}
+	"14036"
+	{
+		"Word"		"ahZRN"
+		"Filter"		"0"
+	}
+	"14035"
+	{
+		"Word"		"Ljf]"
+		"Filter"		"0"
+	}
+	"14034"
+	{
+		"Word"		"NsYL"
+		"Filter"		"0"
+	}
+	"14033"
+	{
+		"Word"		"QEEEuP"
+		"Filter"		"0"
+	}
+	"14032"
+	{
+		"Word"		"ahBU"
+		"Filter"		"0"
+	}
+	"14031"
+	{
+		"Word"		"LjZ@iP"
+		"Filter"		"0"
+	}
+	"14030"
+	{
+		"Word"		"NsPd"
+		"Filter"		"0"
+	}
+	"14029"
+	{
+		"Word"		"QEEE"
+		"Filter"		"0"
+	}
+	"14028"
+	{
+		"Word"		"NsG_"
+		"Filter"		"0"
+	}
+	"14027"
+	{
+		"Word"		"~kLKixgd"
+		"Filter"		"0"
+	}
+	"14026"
+	{
+		"Word"		"LX\`N"
+		"Filter"		"0"
+	}
+	"14025"
+	{
+		"Word"		"Ns»"
+		"Filter"		"0"
+	}
+	"14024"
+	{
+		"Word"		"~kLK"
+		"Filter"		"0"
+	}
+	"14023"
+	{
+		"Word"		"~Powct[Xc|"
+		"Filter"		"0"
+	}
+	"14022"
+	{
+		"Word"		"Ns"
+		"Filter"		"0"
+	}
+	"14021"
+	{
+		"Word"		"}S|zhZ"
+		"Filter"		"0"
+	}
+	"14020"
+	{
+		"Word"		"~Powct"
+		"Filter"		"0"
+	}
+	"14019"
+	{
+		"Word"		"fCNj_kVIGR@|"
+		"Filter"		"0"
+	}
+	"14018"
+	{
+		"Word"		"dDd\c|"
+		"Filter"		"0"
+	}
+	"14017"
+	{
+		"Word"		"MhwIhqj^"
+		"Filter"		"0"
+	}
+	"14016"
+	{
+		"Word"		"~P[X"
+		"Filter"		"0"
+	}
+	"14015"
+	{
+		"Word"		"fCkFXk"
+		"Filter"		"0"
+	}
+	"14014"
+	{
+		"Word"		"GbctGDAV"
+		"Filter"		"0"
+	}
+	"14013"
+	{
+		"Word"		"_]NS"
+		"Filter"		"0"
+	}
+	"14012"
+	{
+		"Word"		"\wO"
+		"Filter"		"0"
+	}
+	"14011"
+	{
+		"Word"		"EsFf`EzO|E"
+		"Filter"		"0"
+	}
+	"14010"
+	{
+		"Word"		"bqoJg_"
+		"Filter"		"0"
+	}
+	"14009"
+	{
+		"Word"		"EsC"
+		"Filter"		"0"
+	}
+	"14008"
+	{
+		"Word"		"cOcxN"
+		"Filter"		"0"
+	}
+	"14007"
+	{
+		"Word"		"oFixpR"
+		"Filter"		"0"
+	}
+	"14006"
+	{
+		"Word"		"bqnamO"
+		"Filter"		"0"
+	}
+	"14005"
+	{
+		"Word"		"EsN{"
+		"Filter"		"0"
+	}
+	"14004"
+	{
+		"Word"		"fLxLTt"
+		"Filter"		"0"
+	}
+	"14003"
+	{
+		"Word"		"~ljf"
+		"Filter"		"0"
+	}
+	"14002"
+	{
+		"Word"		"fLOKv~"
+		"Filter"		"0"
+	}
+	"14001"
+	{
+		"Word"		"x}ixpP"
+		"Filter"		"0"
+	}
+	"14000"
+	{
+		"Word"		"dcTuuP"
+		"Filter"		"0"
+	}
+	"13999"
+	{
+		"Word"		"fLvPQx"
+		"Filter"		"0"
+	}
+	"13998"
+	{
+		"Word"		"bqQp@h"
+		"Filter"		"0"
+	}
+	"13997"
+	{
+		"Word"		"n\ixpP"
+		"Filter"		"0"
+	}
+	"13996"
+	{
+		"Word"		"Uk^wN"
+		"Filter"		"0"
+	}
+	"13995"
+	{
+		"Word"		"Dux\"
+		"Filter"		"0"
+	}
+	"13994"
+	{
+		"Word"		"bqKU@h"
+		"Filter"		"0"
+	}
+	"13993"
+	{
+		"Word"		"bNEahz[T"
+		"Filter"		"0"
+	}
+	"13992"
+	{
+		"Word"		"cbQQ"
+		"Filter"		"0"
+	}
+	"13991"
+	{
+		"Word"		"xIjf"
+		"Filter"		"0"
+	}
+	"13990"
+	{
+		"Word"		"DWGDGR"
+		"Filter"		"0"
+	}
+	"13989"
+	{
+		"Word"		"k\SuN"
+		"Filter"		"0"
+	}
+	"13988"
+	{
+		"Word"		"rWTt"
+		"Filter"		"0"
+	}
+	"13987"
+	{
+		"Word"		"D\^W[Xc|"
+		"Filter"		"0"
+	}
+	"13986"
+	{
+		"Word"		"pmYL"
+		"Filter"		"0"
+	}
+	"13985"
+	{
+		"Word"		"iO~axEvw"
+		"Filter"		"0"
+	}
+	"13984"
+	{
+		"Word"		"[X^Ω"
+		"Filter"		"0"
+	}
+	"13983"
+	{
+		"Word"		"pmYL"
+		"Filter"		"0"
+	}
+	"13982"
+	{
+		"Word"		"~PdRo"
+		"Filter"		"0"
+	}
+	"13981"
+	{
+		"Word"		"iO~aAY"
+		"Filter"		"0"
+	}
+	"13980"
+	{
+		"Word"		"[X^djf"
+		"Filter"		"0"
+	}
+	"13979"
+	{
+		"Word"		"~e{d"
+		"Filter"		"0"
+	}
+	"13978"
+	{
+		"Word"		"~iwO"
+		"Filter"		"0"
+	}
+	"13977"
+	{
+		"Word"		"iOpP[A"
+		"Filter"		"0"
+	}
+	"13976"
+	{
+		"Word"		"[XEDMF"
+		"Filter"		"0"
+	}
+	"13975"
+	{
+		"Word"		"GBoy"
+		"Filter"		"0"
+	}
+	"13974"
+	{
+		"Word"		"~iPr"
+		"Filter"		"0"
+	}
+	"13973"
+	{
+		"Word"		"iODW"
+		"Filter"		"0"
+	}
+	"13972"
+	{
+		"Word"		"[XEDWF{}"
+		"Filter"		"0"
+	}
+	"13971"
+	{
+		"Word"		"GBN"
+		"Filter"		"0"
+	}
+	"13970"
+	{
+		"Word"		"SWN{"
+		"Filter"		"0"
+	}
+	"13969"
+	{
+		"Word"		"Qhjf"
+		"Filter"		"0"
+	}
+	"13968"
+	{
+		"Word"		"cS=HtvfD"
+		"Filter"		"0"
+	}
+	"13967"
+	{
+		"Word"		"GR[QdDYipO"
+		"Filter"		"0"
+	}
+	"13966"
+	{
+		"Word"		"hZYLWg"
+		"Filter"		"0"
+	}
+	"13965"
+	{
+		"Word"		"ãëëõ"
+		"Filter"		"0"
+	}
+	"13964"
+	{
+		"Word"		"eKAm"
+		"Filter"		"0"
+	}
+	"13963"
+	{
+		"Word"		"GR[Q"
+		"Filter"		"0"
+	}
+	"13962"
+	{
+		"Word"		"hZYLUBjYC"
+		"Filter"		"0"
+	}
+	"13961"
+	{
+		"Word"		"´≤ª"
+		"Filter"		"0"
+	}
+	"13960"
+	{
+		"Word"		"eKtj"
+		"Filter"		"0"
+	}
+	"13959"
+	{
+		"Word"		"GRQ\|W"
+		"Filter"		"0"
+	}
+	"13958"
+	{
+		"Word"		"hZYLUB"
+		"Filter"		"0"
+	}
+	"13957"
+	{
+		"Word"		"\`Nq"
+		"Filter"		"0"
+	}
+	"13956"
+	{
+		"Word"		"GW"
+		"Filter"		"0"
+	}
+	"13955"
+	{
+		"Word"		"GRrhJH"
+		"Filter"		"0"
+	}
+	"13954"
+	{
+		"Word"		"@bPyN"
+		"Filter"		"0"
+	}
+	"13953"
+	{
+		"Word"		"GRXnf]"
+		"Filter"		"0"
+	}
+	"13952"
+	{
+		"Word"		"AYzSDL"
+		"Filter"		"0"
+	}
+	"13951"
+	{
+		"Word"		"hZcSSCRo"
+		"Filter"		"0"
+	}
+	"13950"
+	{
+		"Word"		"@bd\c|"
+		"Filter"		"0"
+	}
+	"13949"
+	{
+		"Word"		"GRpPEEOnzNmsct"
+		"Filter"		"0"
+	}
+	"13948"
+	{
+		"Word"		"vwBM"
+		"Filter"		"0"
+	}
+	"13947"
+	{
+		"Word"		"@bx\"
+		"Filter"		"0"
+	}
+	"13946"
+	{
+		"Word"		"GRctzNk\DW"
+		"Filter"		"0"
+	}
+	"13945"
+	{
+		"Word"		"BHHZ"
+		"Filter"		"0"
+	}
+	"13944"
+	{
+		"Word"		"hZcS"
+		"Filter"		"0"
+	}
+	"13943"
+	{
+		"Word"		"GSFUN"
+		"Filter"		"0"
+	}
+	"13942"
+	{
+		"Word"		"GRct"
+		"Filter"		"0"
+	}
+	"13941"
+	{
+		"Word"		"QvzWoyEtc|"
+		"Filter"		"0"
+	}
+	"13940"
+	{
+		"Word"		"}p"
+		"Filter"		"0"
+	}
+	"13939"
+	{
+		"Word"		"GRzNGR[Q"
+		"Filter"		"0"
+	}
+	"13938"
+	{
+		"Word"		"QvzWd\Q^"
+		"Filter"		"0"
+	}
+	"13937"
+	{
+		"Word"		"EETk}GBw"
+		"Filter"		"0"
+	}
+	"13936"
+	{
+		"Word"		"ºº´©"
+		"Filter"		"0"
+	}
+	"13935"
+	{
+		"Word"		"GRzN"
+		"Filter"		"0"
+	}
+	"13934"
+	{
+		"Word"		"QvzW|W"
+		"Filter"		"0"
+	}
+	"13933"
+	{
+		"Word"		"EEEt|W"
+		"Filter"		"0"
+	}
+	"13932"
+	{
+		"Word"		"dFtCHb"
+		"Filter"		"0"
+	}
+	"13931"
+	{
+		"Word"		"xKFDun"
+		"Filter"		"0"
+	}
+	"13930"
+	{
+		"Word"		"Qvrh"
+		"Filter"		"0"
+	}
+	"13929"
+	{
+		"Word"		"lrYLUBN{"
+		"Filter"		"0"
+	}
+	"13928"
+	{
+		"Word"		"LUU]N"
+		"Filter"		"0"
+	}
+	"13927"
+	{
+		"Word"		"Qvc_zQ"
+		"Filter"		"0"
+	}
+	"13926"
+	{
+		"Word"		"sxOql^"
+		"Filter"		"0"
+	}
+	"13925"
+	{
+		"Word"		"Qvoyc|"
+		"Filter"		"0"
+	}
+	"13924"
+	{
+		"Word"		"lrYL"
+		"Filter"		"0"
+	}
+	"13923"
+	{
+		"Word"		"k@Qu"
+		"Filter"		"0"
+	}
+	"13922"
+	{
+		"Word"		"Qvtv"
+		"Filter"		"0"
+	}
+	"13921"
+	{
+		"Word"		"lrYL"
+		"Filter"		"0"
+	}
+	"13920"
+	{
+		"Word"		"Rvd\c|"
+		"Filter"		"0"
+	}
+	"13919"
+	{
+		"Word"		"QvbaDinB"
+		"Filter"		"0"
+	}
+	"13918"
+	{
+		"Word"		"¨≤"
+		"Filter"		"0"
+	}
+	"13917"
+	{
+		"Word"		"c`i{@r"
+		"Filter"		"0"
+	}
+	"13916"
+	{
+		"Word"		"lr"
+		"Filter"		"0"
+	}
+	"13915"
+	{
+		"Word"		"c`oyjf"
+		"Filter"		"0"
+	}
+	"13914"
+	{
+		"Word"		"g@tvLjvF"
+		"Filter"		"0"
+	}
+	"13913"
+	{
+		"Word"		"hprW"
+		"Filter"		"0"
+	}
+	"13912"
+	{
+		"Word"		"g@tv"
+		"Filter"		"0"
+	}
+	"13911"
+	{
+		"Word"		"[Ud\"
+		"Filter"		"0"
+	}
+	"13910"
+	{
+		"Word"		"CJTtgs"
+		"Filter"		"0"
+	}
+	"13909"
+	{
+		"Word"		"g@v~"
+		"Filter"		"0"
+	}
+	"13908"
+	{
+		"Word"		"{f{aYLWg"
+		"Filter"		"0"
+	}
+	"13907"
+	{
+		"Word"		"^aYLPr"
+		"Filter"		"0"
+	}
+	"13906"
+	{
+		"Word"		"KQr^IR"
+		"Filter"		"0"
+	}
+	"13905"
+	{
+		"Word"		"{f{aYLPr"
+		"Filter"		"0"
+	}
+	"13904"
+	{
+		"Word"		"LBYL~GT"
+		"Filter"		"0"
+	}
+	"13903"
+	{
+		"Word"		"dAzIKz"
+		"Filter"		"0"
+	}
+	"13902"
+	{
+		"Word"		"{f{aYL~GT"
+		"Filter"		"0"
+	}
+	"13901"
+	{
+		"Word"		"^aYL~Pr"
+		"Filter"		"0"
+	}
+	"13900"
+	{
+		"Word"		"dA`F}q"
+		"Filter"		"0"
+	}
+	"13899"
+	{
+		"Word"		"{f{aYL~Pr"
+		"Filter"		"0"
+	}
+	"13898"
+	{
+		"Word"		"LBYLzS"
+		"Filter"		"0"
+	}
+	"13897"
+	{
+		"Word"		"hV\P"
+		"Filter"		"0"
+	}
+	"13896"
+	{
+		"Word"		"{f{aYLzS"
+		"Filter"		"0"
+	}
+	"13895"
+	{
+		"Word"		"{f{aYLwG"
+		"Filter"		"0"
+	}
+	"13894"
+	{
+		"Word"		"{oqO"
+		"Filter"		"0"
+	}
+	"13893"
+	{
+		"Word"		"{oHK"
+		"Filter"		"0"
+	}
+	"13892"
+	{
+		"Word"		"GRyThZN"
+		"Filter"		"0"
+	}
+	"13891"
+	{
+		"Word"		"{ozT"
+		"Filter"		"0"
+	}
+	"13890"
+	{
+		"Word"		"GR[Qk@MDN"
+		"Filter"		"0"
+	}
+	"13889"
+	{
+		"Word"		"yNPkWz"
+		"Filter"		"0"
+	}
+	"13888"
+	{
+		"Word"		"@m@nFL"
+		"Filter"		"0"
+	}
+	"13887"
+	{
+		"Word"		"SbhREE"
+		"Filter"		"0"
+	}
+	"13886"
+	{
+		"Word"		"CJYjgq"
+		"Filter"		"0"
+	}
+	"13885"
+	{
+		"Word"		"xUMDV`hc"
+		"Filter"		"0"
+	}
+	"13884"
+	{
+		"Word"		"hprW"
+		"Filter"		"0"
+	}
+	"13883"
+	{
+		"Word"		"oL{dtN"
+		"Filter"		"0"
+	}
+	"13882"
+	{
+		"Word"		"CJ]zVq"
+		"Filter"		"0"
+	}
+	"13881"
+	{
+		"Word"		"xU{e"
+		"Filter"		"0"
+	}
+	"13880"
+	{
+		"Word"		"~kLK"
+		"Filter"		"0"
+	}
+	"13879"
+	{
+		"Word"		"bqRGwv"
+		"Filter"		"0"
+	}
+	"13878"
+	{
+		"Word"		"n\DEpP"
+		"Filter"		"0"
+	}
+	"13877"
+	{
+		"Word"		"QvzWN"
+		"Filter"		"0"
+	}
+	"13876"
+	{
+		"Word"		"ixgd"
+		"Filter"		"0"
+	}
+	"13875"
+	{
+		"Word"		"YSYC"
+		"Filter"		"0"
+	}
+	"13874"
+	{
+		"Word"		"D|R`[x"
+		"Filter"		"0"
+	}
+	"13873"
+	{
+		"Word"		"\bC"
+		"Filter"		"0"
+	}
+	"13872"
+	{
+		"Word"		"bNU~"
+		"Filter"		"0"
+	}
+	"13871"
+	{
+		"Word"		"@|_gs"
+		"Filter"		"0"
+	}
+	"13870"
+	{
+		"Word"		"bqzyIB"
+		"Filter"		"0"
+	}
+	"13869"
+	{
+		"Word"		"ctQvN"
+		"Filter"		"0"
+	}
+	"13868"
+	{
+		"Word"		"bNc`wAzIiPbY"
+		"Filter"		"0"
+	}
+	"13867"
+	{
+		"Word"		"ZufI"
+		"Filter"		"0"
+	}
+	"13866"
+	{
+		"Word"		"g@GrAypo=Hg@Gr|ByNZ@po"
+		"Filter"		"0"
+	}
+	"13865"
+	{
+		"Word"		"\bN{"
+		"Filter"		"0"
+	}
+	"13864"
+	{
+		"Word"		"iyrW"
+		"Filter"		"0"
+	}
+	"13863"
+	{
+		"Word"		"bqPzGR"
+		"Filter"		"0"
+	}
+	"13862"
+	{
+		"Word"		"fLZqz|"
+		"Filter"		"0"
+	}
+	"13861"
+	{
+		"Word"		"BvLjCU"
+		"Filter"		"0"
+	}
+	"13860"
+	{
+		"Word"		"ixgd"
+		"Filter"		"0"
+	}
+	"13859"
+	{
+		"Word"		"oStC"
+		"Filter"		"0"
+	}
+	"13858"
+	{
+		"Word"		"fBTt@N"
+		"Filter"		"0"
+	}
+	"13857"
+	{
+		"Word"		"GDGR"
+		"Filter"		"0"
+	}
+	"13856"
+	{
+		"Word"		"hprW"
+		"Filter"		"0"
+	}
+	"13855"
+	{
+		"Word"		"nW@`"
+		"Filter"		"0"
+	}
+	"13854"
+	{
+		"Word"		"YSoSZE"
+		"Filter"		"0"
+	}
+	"13853"
+	{
+		"Word"		"pO~\‹‹"
+		"Filter"		"0"
+	}
+	"13852"
+	{
+		"Word"		"CJFL"
+		"Filter"		"0"
+	}
+	"13851"
+	{
+		"Word"		"GjHKtv=H_Cwhch}n"
+		"Filter"		"0"
+	}
+	"13850"
+	{
+		"Word"		"cNAH"
+		"Filter"		"0"
+	}
+	"13849"
+	{
+		"Word"		"pO~\ct"
+		"Filter"		"0"
+	}
+	"13848"
+	{
+		"Word"		"ZuBkPU"
+		"Filter"		"0"
+	}
+	"13847"
+	{
+		"Word"		"g@Md=Hg@hEfvAq"
+		"Filter"		"0"
+	}
+	"13846"
+	{
+		"Word"		"nWOGEH"
+		"Filter"		"0"
+	}
+	"13845"
+	{
+		"Word"		"Z@hp‹‹"
+		"Filter"		"0"
+	}
+	"13844"
+	{
+		"Word"		"wKXvct"
+		"Filter"		"0"
+	}
+	"13843"
+	{
+		"Word"		"bcbmah"
+		"Filter"		"0"
+	}
+	"13842"
+	{
+		"Word"		"[iOwN"
+		"Filter"		"0"
+	}
+	"13841"
+	{
+		"Word"		"Z@hpct"
+		"Filter"		"0"
+	}
+	"13840"
+	{
+		"Word"		"R`DE`N"
+		"Filter"		"0"
+	}
+	"13839"
+	{
+		"Word"		"Difi"
+		"Filter"		"0"
+	}
+	"13838"
+	{
+		"Word"		"[iE[|W"
+		"Filter"		"0"
+	}
+	"13837"
+	{
+		"Word"		"dFDEgq"
+		"Filter"		"0"
+	}
+	"13836"
+	{
+		"Word"		"YSxN"
+		"Filter"		"0"
+	}
+	"13835"
+	{
+		"Word"		"vM|z"
+		"Filter"		"0"
+	}
+	"13834"
+	{
+		"Word"		"qttb@u"
+		"Filter"		"0"
+	}
+	"13833"
+	{
+		"Word"		"]~zv|w"
+		"Filter"		"0"
+	}
+	"13832"
+	{
+		"Word"		"^nct^d"
+		"Filter"		"0"
+	}
+	"13831"
+	{
+		"Word"		"Aovrqe"
+		"Filter"		"0"
+	}
+	"13830"
+	{
+		"Word"		"uvDIbN"
+		"Filter"		"0"
+	}
+	"13829"
+	{
+		"Word"		"eKeBoU"
+		"Filter"		"0"
+	}
+	"13828"
+	{
+		"Word"		"GvboAi"
+		"Filter"		"0"
+	}
+	"13827"
+	{
+		"Word"		"|RCPd{"
+		"Filter"		"0"
+	}
+	"13826"
+	{
+		"Word"		"NURXNN"
+		"Filter"		"0"
+	}
+	"13825"
+	{
+		"Word"		"fLgsfE"
+		"Filter"		"0"
+	}
+	"13824"
+	{
+		"Word"		"GvqDDuAi"
+		"Filter"		"0"
+	}
+	"13823"
+	{
+		"Word"		"uvQIAV"
+		"Filter"		"0"
+	}
+	"13822"
+	{
+		"Word"		"k\WF~M"
+		"Filter"		"0"
+	}
+	"13821"
+	{
+		"Word"		"GvfU"
+		"Filter"		"0"
+	}
+	"13820"
+	{
+		"Word"		"nWOpHb"
+		"Filter"		"0"
+	}
+	"13819"
+	{
+		"Word"		"davPqv"
+		"Filter"		"0"
+	}
+	"13818"
+	{
+		"Word"		"pGYSAV=HoJudlYwAcO"
+		"Filter"		"0"
+	}
+	"13817"
+	{
+		"Word"		"bqis"
+		"Filter"		"0"
+	}
+	"13816"
+	{
+		"Word"		"bqztCH"
+		"Filter"		"0"
+	}
+	"13815"
+	{
+		"Word"		"bqDEct"
+		"Filter"		"0"
+	}
+	"13814"
+	{
+		"Word"		"p|EtQ["
+		"Filter"		"0"
+	}
+	"13813"
+	{
+		"Word"		"fLTE"
+		"Filter"		"0"
+	}
+	"13812"
+	{
+		"Word"		"qt@hpr"
+		"Filter"		"0"
+	}
+	"13811"
+	{
+		"Word"		"nWoJAM"
+		"Filter"		"0"
+	}
+	"13810"
+	{
+		"Word"		"M^k@|W"
+		"Filter"		"0"
+	}
+	"13809"
+	{
+		"Word"		"k^RY"
+		"Filter"		"0"
+	}
+	"13808"
+	{
+		"Word"		"fLQhww"
+		"Filter"		"0"
+	}
+	"13807"
+	{
+		"Word"		"fLxLTt"
+		"Filter"		"0"
+	}
+	"13806"
+	{
+		"Word"		"G|D"
+		"Filter"		"0"
+	}
+	"13805"
+	{
+		"Word"		"fLAHug"
+		"Filter"		"0"
+	}
+	"13804"
+	{
+		"Word"		"AzPsms"
+		"Filter"		"0"
+	}
+	"13803"
+	{
+		"Word"		"pPDEjp"
+		"Filter"		"0"
+	}
+	"13802"
+	{
+		"Word"		"G|ouwA"
+		"Filter"		"0"
+	}
+	"13801"
+	{
+		"Word"		"nWk`L]"
+		"Filter"		"0"
+	}
+	"13800"
+	{
+		"Word"		"qM{^jp"
+		"Filter"		"0"
+	}
+	"13799"
+	{
+		"Word"		"`ljlAH"
+		"Filter"		"0"
+	}
+	"13798"
+	{
+		"Word"		"yOPm"
+		"Filter"		"0"
+	}
+	"13797"
+	{
+		"Word"		"RTk@vr"
+		"Filter"		"0"
+	}
+	"13796"
+	{
+		"Word"		"ahixCU"
+		"Filter"		"0"
+	}
+	"13795"
+	{
+		"Word"		"|pdMzIcW_C"
+		"Filter"		"0"
+	}
+	"13794"
+	{
+		"Word"		"fLdH"
+		"Filter"		"0"
+	}
+	"13793"
+	{
+		"Word"		"oStC"
+		"Filter"		"0"
+	}
+	"13792"
+	{
+		"Word"		"CPd"
+		"Filter"		"0"
+	}
+	"13791"
+	{
+		"Word"		"bqddci"
+		"Filter"		"0"
+	}
+	"13790"
+	{
+		"Word"		"{XWGiF"
+		"Filter"		"0"
+	}
+	"13789"
+	{
+		"Word"		"i{yfAy"
+		"Filter"		"0"
+	}
+	"13788"
+	{
+		"Word"		"N{Pd"
+		"Filter"		"0"
+	}
+	"13787"
+	{
+		"Word"		"uv@hDr"
+		"Filter"		"0"
+	}
+	"13786"
+	{
+		"Word"		"{RoSe"
+		"Filter"		"0"
+	}
+	"13785"
+	{
+		"Word"		"zSQv"
+		"Filter"		"0"
+	}
+	"13784"
+	{
+		"Word"		"Xc~viO"
+		"Filter"		"0"
+	}
+	"13783"
+	{
+		"Word"		"bqxnpP"
+		"Filter"		"0"
+	}
+	"13782"
+	{
+		"Word"		"|RCPd{"
+		"Filter"		"0"
+	}
+	"13781"
+	{
+		"Word"		"N{"
+		"Filter"		"0"
+	}
+	"13780"
+	{
+		"Word"		"AoKFpM"
+		"Filter"		"0"
+	}
+	"13779"
+	{
+		"Word"		"RTQIR\"
+		"Filter"		"0"
+	}
+	"13778"
+	{
+		"Word"		"Aovrqe"
+		"Filter"		"0"
+	}
+	"13777"
+	{
+		"Word"		"SWC"
+		"Filter"		"0"
+	}
+	"13776"
+	{
+		"Word"		"OFkeOn"
+		"Filter"		"0"
+	}
+	"13775"
+	{
+		"Word"		"s]~ts{"
+		"Filter"		"0"
+	}
+	"13774"
+	{
+		"Word"		"¥DinB"
+		"Filter"		"0"
+	}
+	"13773"
+	{
+		"Word"		"Ωre\T"
+		"Filter"		"0"
+	}
+	"13772"
+	{
+		"Word"		"¥Mv"
+		"Filter"		"0"
+	}
+	"13771"
+	{
+		"Word"		"Q^oyl^"
+		"Filter"		"0"
+	}
+	"13770"
+	{
+		"Word"		"Q^oyl^"
+		"Filter"		"0"
+	}
+	"13769"
+	{
+		"Word"		"Ωre\T"
+		"Filter"		"0"
+	}
+	"13768"
+	{
+		"Word"		"DA"
+		"Filter"		"0"
+	}
+	"13767"
+	{
+		"Word"		"wdΩ"
+		"Filter"		"0"
+	}
+	"13766"
+	{
+		"Word"		"}DPk"
+		"Filter"		"0"
+	}
+	"13765"
+	{
+		"Word"		"ehFw"
+		"Filter"		"0"
+	}
+	"13764"
+	{
+		"Word"		"EEOnu^s"
+		"Filter"		"0"
+	}
+	"13763"
+	{
+		"Word"		"Z@hpixgd"
+		"Filter"		"0"
+	}
+	"13762"
+	{
+		"Word"		"EEOnhZ_N"
+		"Filter"		"0"
+	}
+	"13761"
+	{
+		"Word"		"bqKU@h"
+		"Filter"		"0"
+	}
+	"13760"
+	{
+		"Word"		"}p"
+		"Filter"		"0"
+	}
+	"13759"
+	{
+		"Word"		"EEOn"
+		"Filter"		"0"
+	}
+	"13758"
+	{
+		"Word"		"EEBw"
+		"Filter"		"0"
+	}
+	"13757"
+	{
+		"Word"		"gGz@FT"
+		"Filter"		"0"
+	}
+	"13756"
+	{
+		"Word"		"qDRD"
+		"Filter"		"0"
+	}
+	"13755"
+	{
+		"Word"		"nWOGEH"
+		"Filter"		"0"
+	}
+	"13754"
+	{
+		"Word"		"KN"
+		"Filter"		"0"
+	}
+	"13753"
+	{
+		"Word"		"hprW"
+		"Filter"		"0"
+	}
+	"13752"
+	{
+		"Word"		"gi"
+		"Filter"		"0"
+	}
+	"13751"
+	{
+		"Word"		"[q"
+		"Filter"		"0"
+	}
+	"13750"
+	{
+		"Word"		"YSe{"
+		"Filter"		"0"
+	}
+	"13749"
+	{
+		"Word"		"aL"
+		"Filter"		"0"
+	}
+	"13748"
+	{
+		"Word"		"GrAhGrzX"
+		"Filter"		"0"
+	}
+	"13747"
+	{
+		"Word"		"Di{xe{"
+		"Filter"		"0"
+	}
+	"13746"
+	{
+		"Word"		"wdΩ"
+		"Filter"		"0"
+	}
+	"13745"
+	{
+		"Word"		"Di{x{a"
+		"Filter"		"0"
+	}
+	"13744"
+	{
+		"Word"		"X~cr"
+		"Filter"		"0"
+	}
+	"13743"
+	{
+		"Word"		"LctCH"
+		"Filter"		"0"
+	}
+	"13742"
+	{
+		"Word"		"DnvtDW"
+		"Filter"		"0"
+	}
+	"13741"
+	{
+		"Word"		"UBL\UBN~"
+		"Filter"		"0"
+	}
+	"13740"
+	{
+		"Word"		"@aR\~M"
+		"Filter"		"0"
+	}
+	"13739"
+	{
+		"Word"		"LctCH"
+		"Filter"		"0"
+	}
+	"13738"
+	{
+		"Word"		"UBPk"
+		"Filter"		"0"
+	}
+	"13737"
+	{
+		"Word"		"xUQE"
+		"Filter"		"0"
+	}
+	"13736"
+	{
+		"Word"		"JHKtN"
+		"Filter"		"0"
+	}
+	"13735"
+	{
+		"Word"		"AzﬂFF"
+		"Filter"		"0"
+	}
+	"13734"
+	{
+		"Word"		"tNd{K@J]n"
+		"Filter"		"0"
+	}
+	"13733"
+	{
+		"Word"		"nWOGEH"
+		"Filter"		"0"
+	}
+	"13732"
+	{
+		"Word"		"JHKdd_"
+		"Filter"		"0"
+	}
+	"13731"
+	{
+		"Word"		"[XGT"
+		"Filter"		"0"
+	}
+	"13730"
+	{
+		"Word"		"JHhcGBBM"
+		"Filter"		"0"
+	}
+	"13729"
+	{
+		"Word"		"hz~uN"
+		"Filter"		"0"
+	}
+	"13728"
+	{
+		"Word"		"uvdMNN"
+		"Filter"		"0"
+	}
+	"13727"
+	{
+		"Word"		"CJTgEh"
+		"Filter"		"0"
+	}
+	"13726"
+	{
+		"Word"		"ctLxXk"
+		"Filter"		"0"
+	}
+	"13725"
+	{
+		"Word"		"iS`L"
+		"Filter"		"0"
+	}
+	"13724"
+	{
+		"Word"		"NUKt"
+		"Filter"		"0"
+	}
+	"13723"
+	{
+		"Word"		"ct_kQ["
+		"Filter"		"0"
+	}
+	"13722"
+	{
+		"Word"		"oIuT"
+		"Filter"		"0"
+	}
+	"13721"
+	{
+		"Word"		"wdΩ"
+		"Filter"		"0"
+	}
+	"13720"
+	{
+		"Word"		"AMZR|W"
+		"Filter"		"0"
+	}
+	"13719"
+	{
+		"Word"		"daHK"
+		"Filter"		"0"
+	}
+	"13718"
+	{
+		"Word"		"bqEoBQ"
+		"Filter"		"0"
+	}
+	"13717"
+	{
+		"Word"		"me"
+		"Filter"		"0"
+	}
+	"13716"
+	{
+		"Word"		"bqztCH"
+		"Filter"		"0"
+	}
+	"13715"
+	{
+		"Word"		"O\N^N"
+		"Filter"		"0"
+	}
+	"13714"
+	{
+		"Word"		"V`HK"
+		"Filter"		"0"
+	}
+	"13713"
+	{
+		"Word"		"YLXZXZe{"
+		"Filter"		"0"
+	}
+	"13712"
+	{
+		"Word"		"fQES"
+		"Filter"		"0"
+	}
+	"13711"
+	{
+		"Word"		"V`zT"
+		"Filter"		"0"
+	}
+	"13710"
+	{
+		"Word"		"uvDIbN"
+		"Filter"		"0"
+	}
+	"13709"
+	{
+		"Word"		"YLXZ"
+		"Filter"		"0"
+	}
+	"13708"
+	{
+		"Word"		"Dy^h"
+		"Filter"		"0"
+	}
+	"13707"
+	{
+		"Word"		"davPqv"
+		"Filter"		"0"
+	}
+	"13706"
+	{
+		"Word"		"uvdMNN"
+		"Filter"		"0"
+	}
+	"13705"
+	{
+		"Word"		"rh_DRo"
+		"Filter"		"0"
+	}
+	"13704"
+	{
+		"Word"		"_K\a"
+		"Filter"		"0"
+	}
+	"13703"
+	{
+		"Word"		"dajf"
+		"Filter"		"0"
+	}
+	"13702"
+	{
+		"Word"		"rh~Pd`"
+		"Filter"		"0"
+	}
+	"13701"
+	{
+		"Word"		"dada"
+		"Filter"		"0"
+	}
+	"13700"
+	{
+		"Word"		"davPqv"
+		"Filter"		"0"
+	}
+	"13699"
+	{
+		"Word"		"YLWge{"
+		"Filter"		"0"
+	}
+	"13698"
+	{
+		"Word"		"N~cC"
+		"Filter"		"0"
+	}
+	"13697"
+	{
+		"Word"		"qtMoNN"
+		"Filter"		"0"
+	}
+	"13696"
+	{
+		"Word"		"YLYSe{"
+		"Filter"		"0"
+	}
+	"13695"
+	{
+		"Word"		"BRc`"
+		"Filter"		"0"
+	}
+	"13694"
+	{
+		"Word"		"D|ﬂﬂpu"
+		"Filter"		"0"
+	}
+	"13693"
+	{
+		"Word"		"YLUBe{"
+		"Filter"		"0"
+	}
+	"13692"
+	{
+		"Word"		"foAz"
+		"Filter"		"0"
+	}
+	"13691"
+	{
+		"Word"		"mO@bGBN"
+		"Filter"		"0"
+	}
+	"13690"
+	{
+		"Word"		"YL~Pre{"
+		"Filter"		"0"
+	}
+	"13689"
+	{
+		"Word"		"pPDEjp"
+		"Filter"		"0"
+	}
+	"13688"
+	{
+		"Word"		"fOqi"
+		"Filter"		"0"
+	}
+	"13687"
+	{
+		"Word"		"pPcttm"
+		"Filter"		"0"
+	}
+	"13686"
+	{
+		"Word"		"@m@nFL"
+		"Filter"		"0"
+	}
+	"13685"
+	{
+		"Word"		"ixsi[XbVnB"
+		"Filter"		"0"
+	}
+	"13684"
+	{
+		"Word"		"VyiPah"
+		"Filter"		"0"
+	}
+	"13683"
+	{
+		"Word"		"iOiyrWTt"
+		"Filter"		"0"
+	}
+	"13682"
+	{
+		"Word"		"VyBjDgAH"
+		"Filter"		"0"
+	}
+	"13681"
+	{
+		"Word"		"KvvxG\"
+		"Filter"		"0"
+	}
+	"13680"
+	{
+		"Word"		"pO~\Gbct"
+		"Filter"		"0"
+	}
+	"13679"
+	{
+		"Word"		"nVijf"
+		"Filter"		"0"
+	}
+	"13678"
+	{
+		"Word"		"unwIun"
+		"Filter"		"0"
+	}
+	"13677"
+	{
+		"Word"		"KvvxIM"
+		"Filter"		"0"
+	}
+	"13676"
+	{
+		"Word"		"~oiJ{Fk"
+		"Filter"		"0"
+	}
+	"13675"
+	{
+		"Word"		"clD@"
+		"Filter"		"0"
+	}
+	"13674"
+	{
+		"Word"		"DZqiwIKa"
+		"Filter"		"0"
+	}
+	"13673"
+	{
+		"Word"		"Kvvx"
+		"Filter"		"0"
+	}
+	"13672"
+	{
+		"Word"		"bNU~"
+		"Filter"		"0"
+	}
+	"13671"
+	{
+		"Word"		"q`Ro|BV`Xt"
+		"Filter"		"0"
+	}
+	"13670"
+	{
+		"Word"		"CuiPgR"
+		"Filter"		"0"
+	}
+	"13669"
+	{
+		"Word"		"GT_R[ue{"
+		"Filter"		"0"
+	}
+	"13668"
+	{
+		"Word"		"bS"
+		"Filter"		"0"
+	}
+	"13667"
+	{
+		"Word"		"@aR\~M"
+		"Filter"		"0"
+	}
+	"13666"
+	{
+		"Word"		"Cuch"
+		"Filter"		"0"
+	}
+	"13665"
+	{
+		"Word"		"GTe{"
+		"Filter"		"0"
+	}
+	"13664"
+	{
+		"Word"		"IW\"
+		"Filter"		"0"
+	}
+	"13663"
+	{
+		"Word"		"~u^s"
+		"Filter"		"0"
+	}
+	"13662"
+	{
+		"Word"		"Cutvzt"
+		"Filter"		"0"
+	}
+	"13661"
+	{
+		"Word"		"RGBQ"
+		"Filter"		"0"
+	}
+	"13660"
+	{
+		"Word"		"ztah_l"
+		"Filter"		"0"
+	}
+	"13659"
+	{
+		"Word"		"~uwMQ^oyl^"
+		"Filter"		"0"
+	}
+	"13658"
+	{
+		"Word"		"\F[c|z"
+		"Filter"		"0"
+	}
+	"13657"
+	{
+		"Word"		"pPr^d_"
+		"Filter"		"0"
+	}
+	"13656"
+	{
+		"Word"		"EEOnD\_K"
+		"Filter"		"0"
+	}
+	"13655"
+	{
+		"Word"		"\FctzVwI"
+		"Filter"		"0"
+	}
+	"13654"
+	{
+		"Word"		"XE["
+		"Filter"		"0"
+	}
+	"13653"
+	{
+		"Word"		"pPr^nv"
+		"Filter"		"0"
+	}
+	"13652"
+	{
+		"Word"		"wwZQun"
+		"Filter"		"0"
+	}
+	"13651"
+	{
+		"Word"		"EED\c|"
+		"Filter"		"0"
+	}
+	"13650"
+	{
+		"Word"		"@^~Pk\ZR|W"
+		"Filter"		"0"
+	}
+	"13649"
+	{
+		"Word"		"YLDZwMYL\bCON|BWfwn"
+		"Filter"		"0"
+	}
+	"13648"
+	{
+		"Word"		"fHQIp`"
+		"Filter"		"0"
+	}
+	"13647"
+	{
+		"Word"		"^aYL~Pr"
+		"Filter"		"0"
+	}
+	"13646"
+	{
+		"Word"		"YLXZXZe{"
+		"Filter"		"0"
+	}
+	"13645"
+	{
+		"Word"		"Dy^h"
+		"Filter"		"0"
+	}
+	"13644"
+	{
+		"Word"		"lrYL~Pr"
+		"Filter"		"0"
+	}
+	"13643"
+	{
+		"Word"		"lrYLUBtN{"
+		"Filter"		"0"
+	}
+	"13642"
+	{
+		"Word"		"hZYLUBjYN{"
+		"Filter"		"0"
+	}
+	"13641"
+	{
+		"Word"		"G_"
+		"Filter"		"0"
+	}
+	"13640"
+	{
+		"Word"		"lrYL~UB"
+		"Filter"		"0"
+	}
+	"13639"
+	{
+		"Word"		"lrYLUBtΩ"
+		"Filter"		"0"
+	}
+	"13638"
+	{
+		"Word"		"hZYLUBjYC"
+		"Filter"		"0"
+	}
+	"13637"
+	{
+		"Word"		"Ns"
+		"Filter"		"0"
+	}
+	"13636"
+	{
+		"Word"		"FFYL~Pr"
+		"Filter"		"0"
+	}
+	"13635"
+	{
+		"Word"		"\bN{n]"
+		"Filter"		"0"
+	}
+	"13634"
+	{
+		"Word"		"me"
+		"Filter"		"0"
+	}
+	"13633"
+	{
+		"Word"		"FFYL~Pr"
+		"Filter"		"0"
+	}
+	"13632"
+	{
+		"Word"		"UBL\UBN~"
+		"Filter"		"0"
+	}
+	"13631"
+	{
+		"Word"		"\bCn]"
+		"Filter"		"0"
+	}
+	"13630"
+	{
+		"Word"		"HT"
+		"Filter"		"0"
+	}
+	"13629"
+	{
+		"Word"		"[X^Ω"
+		"Filter"		"0"
+	}
+	"13628"
+	{
+		"Word"		"wZDiUBe{\b"
+		"Filter"		"0"
+	}
+	"13627"
+	{
+		"Word"		"ZG"
+		"Filter"		"0"
+	}
+	"13626"
+	{
+		"Word"		"dapR"
+		"Filter"		"0"
+	}
+	"13625"
+	{
+		"Word"		"[XuNΩ"
+		"Filter"		"0"
+	}
+	"13624"
+	{
+		"Word"		"SWN{"
+		"Filter"		"0"
+	}
+	"13623"
+	{
+		"Word"		"N{"
+		"Filter"		"0"
+	}
+	"13622"
+	{
+		"Word"		"V`zT"
+		"Filter"		"0"
+	}
+	"13621"
+	{
+		"Word"		"HTPd"
+		"Filter"		"0"
+	}
+	"13620"
+	{
+		"Word"		"SWC"
+		"Filter"		"0"
+	}
+	"13619"
+	{
+		"Word"		"EsC"
+		"Filter"		"0"
+	}
+	"13618"
+	{
+		"Word"		"YL~Pre{"
+		"Filter"		"0"
+	}
+	"13617"
+	{
+		"Word"		"daHK"
+		"Filter"		"0"
+	}
+	"13616"
+	{
+		"Word"		"NsPd"
+		"Filter"		"0"
+	}
+	"13615"
+	{
+		"Word"		"EsN{"
+		"Filter"		"0"
+	}
+	"13614"
+	{
+		"Word"		"lrYL"
+		"Filter"		"0"
+	}
+	"13613"
+	{
+		"Word"		"V`HK"
+		"Filter"		"0"
+	}
+	"13612"
+	{
+		"Word"		"CPd"
+		"Filter"		"0"
+	}
+	"13611"
+	{
+		"Word"		"lrYL[XwE"
+		"Filter"		"0"
+	}
+	"13610"
+	{
+		"Word"		"lrYL"
+		"Filter"		"0"
+	}
+	"13609"
+	{
+		"Word"		"FFYLUB"
+		"Filter"		"0"
+	}
+	"13608"
+	{
+		"Word"		"N{Pd"
+		"Filter"		"0"
+	}
+	"13607"
+	{
+		"Word"		"}DPk"
+		"Filter"		"0"
+	}
+	"13606"
+	{
+		"Word"		"FFYLUB"
+		"Filter"		"0"
+	}
+	"13605"
+	{
+		"Word"		"YLWge{"
+		"Filter"		"0"
+	}
+	"13604"
+	{
+		"Word"		"lrYLUB"
+		"Filter"		"0"
+	}
+	"13603"
+	{
+		"Word"		"x}ixpP"
+		"Filter"		"0"
+	}
+	"13602"
+	{
+		"Word"		"}DN{"
+		"Filter"		"0"
+	}
+	"13601"
+	{
+		"Word"		"FFG|zT"
+		"Filter"		"0"
+	}
+	"13600"
+	{
+		"Word"		"n\ixpP"
+		"Filter"		"0"
+	}
+	"13599"
+	{
+		"Word"		"hZYLWg"
+		"Filter"		"0"
+	}
+	"13598"
+	{
+		"Word"		"lrYLZiQh"
+		"Filter"		"0"
+	}
+	"13597"
+	{
+		"Word"		"lrYLWg"
+		"Filter"		"0"
+	}
+	"13596"
+	{
+		"Word"		"lrYLZiQh"
+		"Filter"		"0"
+	}
+	"13595"
+	{
+		"Word"		"lrYLWg"
+		"Filter"		"0"
+	}
+	"13594"
+	{
+		"Word"		"}DΩ"
+		"Filter"		"0"
+	}
+	"13593"
+	{
+		"Word"		"fOqi"
+		"Filter"		"0"
+	}
+	"13592"
+	{
+		"Word"		"xIjf"
+		"Filter"		"0"
+	}
+	"13591"
+	{
+		"Word"		"ZFYSe{"
+		"Filter"		"0"
+	}
+	"13590"
+	{
+		"Word"		"YLXZ"
+		"Filter"		"0"
+	}
+	"13589"
+	{
+		"Word"		"\`Nq"
+		"Filter"		"0"
+	}
+	"13588"
+	{
+		"Word"		"xIpT"
+		"Filter"		"0"
+	}
+	"13587"
+	{
+		"Word"		"ZFUBe{"
+		"Filter"		"0"
+	}
+	"13586"
+	{
+		"Word"		"\bN{"
+		"Filter"		"0"
+	}
+	"13585"
+	{
+		"Word"		"XdYL~GT"
+		"Filter"		"0"
+	}
+	"13584"
+	{
+		"Word"		"\bC"
+		"Filter"		"0"
+	}
+	"13583"
+	{
+		"Word"		"G_Nq"
+		"Filter"		"0"
+	}
+	"13582"
+	{
+		"Word"		"XdYLzS"
+		"Filter"		"0"
+	}
+	"13581"
+	{
+		"Word"		"DiUBe{"
+		"Filter"		"0"
+	}
+	"13580"
+	{
+		"Word"		"Ns»"
+		"Filter"		"0"
+	}
+	"13579"
+	{
+		"Word"		"XdYLPr"
+		"Filter"		"0"
+	}
+	"13578"
+	{
+		"Word"		"YLYSe{"
+		"Filter"		"0"
+	}
+	"13577"
+	{
+		"Word"		"lrYLzWQI"
+		"Filter"		"0"
+	}
+	"13576"
+	{
+		"Word"		"NsG|"
+		"Filter"		"0"
+	}
+	"13575"
+	{
+		"Word"		"XdYLwG"
+		"Filter"		"0"
+	}
+	"13574"
+	{
+		"Word"		"[Ud\"
+		"Filter"		"0"
+	}
+	"13573"
+	{
+		"Word"		"NsG_"
+		"Filter"		"0"
+	}
+	"13572"
+	{
+		"Word"		"XdYLWg"
+		"Filter"		"0"
+	}
+	"13571"
+	{
+		"Word"		"NsYL"
+		"Filter"		"0"
+	}
+	"13570"
+	{
+		"Word"		"XdYL~Pr"
+		"Filter"		"0"
+	}
+	"13569"
+	{
+		"Word"		"YLYSe{"
+		"Filter"		"0"
+	}
+	"13568"
+	{
+		"Word"		"RDzWQI"
+		"Filter"		"0"
+	}
+	"13567"
+	{
+		"Word"		"NsYL"
+		"Filter"		"0"
+	}
+	"13566"
+	{
+		"Word"		"^aYL~GT"
+		"Filter"		"0"
+	}
+	"13565"
+	{
+		"Word"		"YLUBe{"
+		"Filter"		"0"
+	}
+	"13564"
+	{
+		"Word"		"GT_R[ue{"
+		"Filter"		"0"
+	}
+	"13563"
+	{
+		"Word"		"~Pr"
+		"Filter"		"0"
+	}
+	"13562"
+	{
+		"Word"		"^aYLPr"
+		"Filter"		"0"
+	}
+	"13561"
+	{
+		"Word"		"FFtqWg"
+		"Filter"		"0"
+	}
+	"13560"
+	{
+		"Word"		"wZDZwMYLgP[Ud\wnONjYL"
+		"Filter"		"0"
+	}
+	"13559"
+	{
+		"Word"		"NsZ@"
+		"Filter"		"0"
+	}
+	"13558"
+	{
+		"Word"		"^aYLzS"
+		"Filter"		"0"
+	}
+	"13557"
+	{
+		"Word"		"FFYLWg"
+		"Filter"		"0"
+	}
+	"13556"
+	{
+		"Word"		"YLne{daHKjHRUEyoX"
+		"Filter"		"0"
+	}
+	"13555"
+	{
+		"Word"		"\`meNq"
+		"Filter"		"0"
+	}
+	"13554"
+	{
+		"Word"		"^aYLwG"
+		"Filter"		"0"
+	}
+	"13553"
+	{
+		"Word"		"FFYLWg"
+		"Filter"		"0"
+	}
+	"13552"
+	{
+		"Word"		"YLDZwMYL\bN{ON|BWfwn"
+		"Filter"		"0"
+	}
+	"13551"
+	{
+		"Word"		"oTme"
+		"Filter"		"0"
+	}
+	"13550"
+	{
+		"Word"		"^aYLWg"
+		"Filter"		"0"
+	}
+	"13549"
+	{
+		"Word"		"UBe{"
+		"Filter"		"0"
+	}
+	"13548"
+	{
+		"Word"		"@^WUN"
+		"Filter"		"0"
+	}
+	"13547"
+	{
+		"Word"		"qtzyct"
+		"Filter"		"0"
+	}
+	"13546"
+	{
+		"Word"		"[Vex"
+		"Filter"		"0"
+	}
+	"13545"
+	{
+		"Word"		"iO~axEvwGBBM"
+		"Filter"		"0"
+	}
+	"13544"
+	{
+		"Word"		"[VQviEtDI"
+		"Filter"		"0"
+	}
+	"13543"
+	{
+		"Word"		"xUQE"
+		"Filter"		"0"
+	}
+	"13542"
+	{
+		"Word"		"RPx"
+		"Filter"		"0"
+	}
+	"13541"
+	{
+		"Word"		"qtvd"
+		"Filter"		"0"
+	}
+	"13540"
+	{
+		"Word"		"[VQvi"
+		"Filter"		"0"
+	}
+	"13539"
+	{
+		"Word"		"[Xc|_}"
+		"Filter"		"0"
+	}
+	"13538"
+	{
+		"Word"		"Tk}MGBN"
+		"Filter"		"0"
+	}
+	"13537"
+	{
+		"Word"		"DEWR|W"
+		"Filter"		"0"
+	}
+	"13536"
+	{
+		"Word"		"tvXyiPpMwAAH"
+		"Filter"		"0"
+	}
+	"13535"
+	{
+		"Word"		"EE[X"
+		"Filter"		"0"
+	}
+	"13534"
+	{
+		"Word"		"koQImx"
+		"Filter"		"0"
+	}
+	"13533"
+	{
+		"Word"		"U]P`f]"
+		"Filter"		"0"
+	}
+	"13532"
+	{
+		"Word"		"Onk@|W"
+		"Filter"		"0"
+	}
+	"13531"
+	{
+		"Word"		"uvL\"
+		"Filter"		"0"
+	}
+	"13530"
+	{
+		"Word"		"EE[XD\^W"
+		"Filter"		"0"
+	}
+	"13529"
+	{
+		"Word"		"d\Q^N"
+		"Filter"		"0"
+	}
+	"13528"
+	{
+		"Word"		"n}XlQ"
+		"Filter"		"0"
+	}
+	"13527"
+	{
+		"Word"		"d\P`|W"
+		"Filter"		"0"
+	}
+	"13526"
+	{
+		"Word"		"On~t"
+		"Filter"		"0"
+	}
+	"13525"
+	{
+		"Word"		"cttff]"
+		"Filter"		"0"
+	}
+	"13524"
+	{
+		"Word"		"zRdd"
+		"Filter"		"0"
+	}
+	"13523"
+	{
+		"Word"		"ZG"
+		"Filter"		"0"
+	}
+	"13522"
+	{
+		"Word"		"OnMDW"
+		"Filter"		"0"
+	}
+	"13521"
+	{
+		"Word"		"ctc`LxEo|W"
+		"Filter"		"0"
+	}
+	"13520"
+	{
+		"Word"		"zR=Hdd"
+		"Filter"		"0"
+	}
+	"13519"
+	{
+		"Word"		"OnwUN"
+		"Filter"		"0"
+	}
+	"13518"
+	{
+		"Word"		"ctOnDW"
+		"Filter"		"0"
+	}
+	"13517"
+	{
+		"Word"		"|zvM"
+		"Filter"		"0"
+	}
+	"13516"
+	{
+		"Word"		"PyQh"
+		"Filter"		"0"
+	}
+	"13515"
+	{
+		"Word"		"ctQIGDY~|WXk"
+		"Filter"		"0"
+	}
+	"13514"
+	{
+		"Word"		"YUOnDW"
+		"Filter"		"0"
+	}
+	"13513"
+	{
+		"Word"		"XgdGjH"
+		"Filter"		"0"
+	}
+	"13512"
+	{
+		"Word"		"ctQIOnXk"
+		"Filter"		"0"
+	}
+	"13511"
+	{
+		"Word"		"|nAY"
+		"Filter"		"0"
+	}
+	"13510"
+	{
+		"Word"		"Wwk`Xk"
+		"Filter"		"0"
+	}
+	"13509"
+	{
+		"Word"		"mfp[~kRo"
+		"Filter"		"0"
+	}
+	"13508"
+	{
+		"Word"		"ctedLjf]"
+		"Filter"		"0"
+	}
+	"13507"
+	{
+		"Word"		"jf}M|W"
+		"Filter"		"0"
+	}
+	"13506"
+	{
+		"Word"		"N`zT"
+		"Filter"		"0"
+	}
+	"13505"
+	{
+		"Word"		"AqwV_z"
+		"Filter"		"0"
+	}
+	"13504"
+	{
+		"Word"		"ctQ^N"
+		"Filter"		"0"
+	}
+	"13503"
+	{
+		"Word"		"jfQg"
+		"Filter"		"0"
+	}
+	"13502"
+	{
+		"Word"		"`Eb\jf"
+		"Filter"		"0"
+	}
+	"13501"
+	{
+		"Word"		"AqctBS"
+		"Filter"		"0"
+	}
+	"13500"
+	{
+		"Word"		"EZXmzG"
+		"Filter"		"0"
+	}
+	"13499"
+	{
+		"Word"		"`Eb\"
+		"Filter"		"0"
+	}
+	"13498"
+	{
+		"Word"		"Aqct"
+		"Filter"		"0"
+	}
+	"13497"
+	{
+		"Word"		"hqj^vx"
+		"Filter"		"0"
+	}
+	"13496"
+	{
+		"Word"		"E[e|W"
+		"Filter"		"0"
+	}
+	"13495"
+	{
+		"Word"		"`EcOJ{Fk"
+		"Filter"		"0"
+	}
+	"13494"
+	{
+		"Word"		"PdGDGR"
+		"Filter"		"0"
+	}
+	"13493"
+	{
+		"Word"		"hqj^_@"
+		"Filter"		"0"
+	}
+	"13492"
+	{
+		"Word"		"k\GRR\"
+		"Filter"		"0"
+	}
+	"13491"
+	{
+		"Word"		"hqj^"
+		"Filter"		"0"
+	}
+	"13490"
+	{
+		"Word"		"k\Ilct"
+		"Filter"		"0"
+	}
+	"13489"
+	{
+		"Word"		"daqO"
+		"Filter"		"0"
+	}
+	"13488"
+	{
+		"Word"		"YStNFb"
+		"Filter"		"0"
+	}
+	"13487"
+	{
+		"Word"		"k\Dt`L"
+		"Filter"		"0"
+	}
+	"13486"
+	{
+		"Word"		"dauR"
+		"Filter"		"0"
+	}
+	"13485"
+	{
+		"Word"		"YSL\YSN~"
+		"Filter"		"0"
+	}
+	"13484"
+	{
+		"Word"		"iyrW"
+		"Filter"		"0"
+	}
+	"13483"
+	{
+		"Word"		"dapR"
+		"Filter"		"0"
+	}
+	"13482"
+	{
+		"Word"		"t}lrYLzWQI"
+		"Filter"		"0"
+	}
+	"13481"
+	{
+		"Word"		"N`GDGR"
+		"Filter"		"0"
+	}
+	"13480"
+	{
+		"Word"		"tatj@becN"
+		"Filter"		"0"
+	}
+	"13479"
+	{
+		"Word"		"@Tzt"
+		"Filter"		"0"
+	}
+	"13478"
+	{
+		"Word"		"UBZi"
+		"Filter"		"0"
+	}
+	"13477"
+	{
+		"Word"		"wdNs"
+		"Filter"		"0"
+	}
+	"13476"
+	{
+		"Word"		"p\E["
+		"Filter"		"0"
+	}
+	"13475"
+	{
+		"Word"		"QQhp"
+		"Filter"		"0"
+	}
+	"13474"
+	{
+		"Word"		"N`_G@|"
+		"Filter"		"0"
+	}
+	"13473"
+	{
+		"Word"		"wdC"
+		"Filter"		"0"
+	}
+	"13472"
+	{
+		"Word"		"GsvFtm"
+		"Filter"		"0"
+	}
+	"13471"
+	{
+		"Word"		"ixsi|W"
+		"Filter"		"0"
+	}
+	"13470"
+	{
+		"Word"		"wdN{"
+		"Filter"		"0"
+	}
+	"13469"
+	{
+		"Word"		"~oiwyRo"
+		"Filter"		"0"
+	}
+	"13468"
+	{
+		"Word"		"Gstvzt"
+		"Filter"		"0"
+	}
+	"13467"
+	{
+		"Word"		"ETGBoy"
+		"Filter"		"0"
+	}
+	"13466"
+	{
+		"Word"		"[iBfN"
+		"Filter"		"0"
+	}
+	"13465"
+	{
+		"Word"		"Q]wIcrtfEEl^"
+		"Filter"		"0"
+	}
+	"13464"
+	{
+		"Word"		"Z@hprWTt"
+		"Filter"		"0"
+	}
+	"13463"
+	{
+		"Word"		"pO~P"
+		"Filter"		"0"
+	}
+	"13462"
+	{
+		"Word"		"oL{"
+		"Filter"		"0"
+	}
+	"13461"
+	{
+		"Word"		"[iﬂﬂs}"
+		"Filter"		"0"
+	}
+	"13460"
+	{
+		"Word"		"^dk`|W"
+		"Filter"		"0"
+	}
+	"13459"
+	{
+		"Word"		"vgQ^oyEtc|"
+		"Filter"		"0"
+	}
+	"13458"
+	{
+		"Word"		"pOAY"
+		"Filter"		"0"
+	}
+	"13457"
+	{
+		"Word"		"W~s`k"
+		"Filter"		"0"
+	}
+	"13456"
+	{
+		"Word"		"JNWwN"
+		"Filter"		"0"
+	}
+	"13455"
+	{
+		"Word"		"DiYSe{"
+		"Filter"		"0"
+	}
+	"13454"
+	{
+		"Word"		"oLﬂﬂ{"
+		"Filter"		"0"
+	}
+	"13453"
+	{
+		"Word"		"W~stC"
+		"Filter"		"0"
+	}
+	"13452"
+	{
+		"Word"		"oJ~l|W"
+		"Filter"		"0"
+	}
+	"13451"
+	{
+		"Word"		"RTGRNN"
+		"Filter"		"0"
+	}
+	"13450"
+	{
+		"Word"		"IMQ^"
+		"Filter"		"0"
+	}
+	"13449"
+	{
+		"Word"		"wkZ@"
+		"Filter"		"0"
+	}
+	"13448"
+	{
+		"Word"		"RTGDf"
+		"Filter"		"0"
+	}
+	"13447"
+	{
+		"Word"		"dada"
+		"Filter"		"0"
+	}
+	"13446"
+	{
+		"Word"		"bqfDCb"
+		"Filter"		"0"
+	}
+	"13445"
+	{
+		"Word"		"RD∏ª"
+		"Filter"		"0"
+	}
+	"13444"
+	{
+		"Word"		"Ylf]"
+		"Filter"		"0"
+	}
+	"13443"
+	{
+		"Word"		"bqKUMD"
+		"Filter"		"0"
+	}
+	"13442"
+	{
+		"Word"		"pTEu"
+		"Filter"		"0"
+	}
+	"13441"
+	{
+		"Word"		"bqMeGz"
+		"Filter"		"0"
+	}
+	"13440"
+	{
+		"Word"		"RD∏≤"
+		"Filter"		"0"
+	}
+	"13439"
+	{
+		"Word"		"CUZG"
+		"Filter"		"0"
+	}
+	"13438"
+	{
+		"Word"		"Ov~Z^s"
+		"Filter"		"0"
+	}
+	"13437"
+	{
+		"Word"		"fOPd"
+		"Filter"		"0"
+	}
+	"13436"
+	{
+		"Word"		"cNqk`E"
+		"Filter"		"0"
+	}
+	"13435"
+	{
+		"Word"		"DZqixLKa"
+		"Filter"		"0"
+	}
+	"13434"
+	{
+		"Word"		"CHZG"
+		"Filter"		"0"
+	}
+	"13433"
+	{
+		"Word"		"bqJS"
+		"Filter"		"0"
+	}
+	"13432"
+	{
+		"Word"		"C`[XvVt|"
+		"Filter"		"0"
+	}
+	"13431"
+	{
+		"Word"		"WHMW"
+		"Filter"		"0"
+	}
+	"13430"
+	{
+		"Word"		"CJAHN`"
+		"Filter"		"0"
+	}
+	"13429"
+	{
+		"Word"		"fOOpmj[X"
+		"Filter"		"0"
+	}
+	"13428"
+	{
+		"Word"		"dazT"
+		"Filter"		"0"
+	}
+	"13427"
+	{
+		"Word"		"qtW}Lv"
+		"Filter"		"0"
+	}
+	"13426"
+	{
+		"Word"		"wnFF"
+		"Filter"		"0"
+	}
+	"13425"
+	{
+		"Word"		"fOkx"
+		"Filter"		"0"
+	}
+	"13424"
+	{
+		"Word"		"AzFF"
+		"Filter"		"0"
+	}
+	"13423"
+	{
+		"Word"		"wnlr"
+		"Filter"		"0"
+	}
+	"13422"
+	{
+		"Word"		"L\HT"
+		"Filter"		"0"
+	}
+	"13421"
+	{
+		"Word"		"bqjHgZ"
+		"Filter"		"0"
+	}
+	"13420"
+	{
+		"Word"		"}DC"
+		"Filter"		"0"
+	}
+	"13419"
+	{
+		"Word"		"DrYl"
+		"Filter"		"0"
+	}
+	"13418"
+	{
+		"Word"		"oLQgR\"
+		"Filter"		"0"
+	}
+	"13417"
+	{
+		"Word"		"lrYLUB"
+		"Filter"		"0"
+	}
+	"13416"
+	{
+		"Word"		"lrC"
+		"Filter"		"0"
+	}
+	"13415"
+	{
+		"Word"		"D|pu"
+		"Filter"		"0"
+	}
+	"13414"
+	{
+		"Word"		"lrYLZIZI"
+		"Filter"		"0"
+	}
+	"13413"
+	{
+		"Word"		"N~}^"
+		"Filter"		"0"
+	}
+	"13412"
+	{
+		"Word"		"dActzI"
+		"Filter"		"0"
+	}
+	"13411"
+	{
+		"Word"		"X{^|B"
+		"Filter"		"0"
+	}
+	"13410"
+	{
+		"Word"		"fO~l"
+		"Filter"		"0"
+	}
+	"13409"
+	{
+		"Word"		"LwzIah"
+		"Filter"		"0"
+	}
+	"13408"
+	{
+		"Word"		"qtzTdt"
+		"Filter"		"0"
+	}
+	"13407"
+	{
+		"Word"		"fO|W"
+		"Filter"		"0"
+	}
+	"13406"
+	{
+		"Word"		"ETQIPI"
+		"Filter"		"0"
+	}
+	"13405"
+	{
+		"Word"		"thhZe{"
+		"Filter"		"0"
+	}
+	"13404"
+	{
+		"Word"		"HTV]"
+		"Filter"		"0"
+	}
+	"13403"
+	{
+		"Word"		"oL}Yct"
+		"Filter"		"0"
+	}
+	"13402"
+	{
+		"Word"		"hZDiWg"
+		"Filter"		"0"
+	}
+	"13401"
+	{
+		"Word"		"mmO@"
+		"Filter"		"0"
+	}
+	"13400"
+	{
+		"Word"		"|^sY@["
+		"Filter"		"0"
+	}
+	"13399"
+	{
+		"Word"		"VuRo"
+		"Filter"		"0"
+	}
+	"13398"
+	{
+		"Word"		"[XA@"
+		"Filter"		"0"
+	}
+	"13397"
+	{
+		"Word"		"N`A[On"
+		"Filter"		"0"
+	}
+	"13396"
+	{
+		"Word"		"jVVY"
+		"Filter"		"0"
+	}
+	"13395"
+	{
+		"Word"		"thN~"
+		"Filter"		"0"
+	}
+	"13394"
+	{
+		"Word"		"{XOpFL"
+		"Filter"		"0"
+	}
+	"13393"
+	{
+		"Word"		"cwIl"
+		"Filter"		"0"
+	}
+	"13392"
+	{
+		"Word"		"zNk\DW"
+		"Filter"		"0"
+	}
+	"13391"
+	{
+		"Word"		"uvOnZx"
+		"Filter"		"0"
+	}
+	"13390"
+	{
+		"Word"		"szeQ"
+		"Filter"		"0"
+	}
+	"13389"
+	{
+		"Word"		"x\ReLI"
+		"Filter"		"0"
+	}
+	"13388"
+	{
+		"Word"		"|^}Y"
+		"Filter"		"0"
+	}
+	"13387"
+	{
+		"Word"		"oFjR"
+		"Filter"		"0"
+	}
+	"13386"
+	{
+		"Word"		"~oiGDAV"
+		"Filter"		"0"
+	}
+	"13385"
+	{
+		"Word"		"IfKTfB"
+		"Filter"		"0"
+	}
+	"13384"
+	{
+		"Word"		"TiQ]"
+		"Filter"		"0"
+	}
+	"13383"
+	{
+		"Word"		"pO~\rWTt"
+		"Filter"		"0"
+	}
+	"13382"
+	{
+		"Word"		"whkP"
+		"Filter"		"0"
+	}
+	"13381"
+	{
+		"Word"		"YlZL"
+		"Filter"		"0"
+	}
+	"13380"
+	{
+		"Word"		"pOrW"
+		"Filter"		"0"
+	}
+	"13379"
+	{
+		"Word"		"~V_CiP"
+		"Filter"		"0"
+	}
+	"13378"
+	{
+		"Word"		"FLw@"
+		"Filter"		"0"
+	}
+	"13377"
+	{
+		"Word"		"LjCU[XLj"
+		"Filter"		"0"
+	}
+	"13376"
+	{
+		"Word"		"YSztb"
+		"Filter"		"0"
+	}
+	"13375"
+	{
+		"Word"		"Ac_R"
+		"Filter"		"0"
+	}
+	"13374"
+	{
+		"Word"		"LjCUu`"
+		"Filter"		"0"
+	}
+	"13373"
+	{
+		"Word"		"nW~VAy"
+		"Filter"		"0"
+	}
+	"13372"
+	{
+		"Word"		"HTOK"
+		"Filter"		"0"
+	}
+	"13371"
+	{
+		"Word"		"LjCU"
+		"Filter"		"0"
+	}
+	"13370"
+	{
+		"Word"		"PdA[bN"
+		"Filter"		"0"
+	}
+	"13369"
+	{
+		"Word"		"{dDt"
+		"Filter"		"0"
+	}
+	"13368"
+	{
+		"Word"		"tvfD"
+		"Filter"		"0"
+	}
+	"13367"
+	{
+		"Word"		"uN`L"
+		"Filter"		"0"
+	}
+	"13366"
+	{
+		"Word"		"iV~kXy"
+		"Filter"		"0"
+	}
+	"13365"
+	{
+		"Word"		"ZIRo"
+		"Filter"		"0"
+	}
+	"13364"
+	{
+		"Word"		"OpLv"
+		"Filter"		"0"
+	}
+	"13363"
+	{
+		"Word"		"B_ZIZI"
+		"Filter"		"0"
+	}
+	"13362"
+	{
+		"Word"		"KNKX"
+		"Filter"		"0"
+	}
+	"13361"
+	{
+		"Word"		"aUkPCFrP"
+		"Filter"		"0"
+	}
+	"13360"
+	{
+		"Word"		"Jsre"
+		"Filter"		"0"
+	}
+	"13359"
+	{
+		"Word"		"oGPm"
+		"Filter"		"0"
+	}
+	"13358"
+	{
+		"Word"		"KVPm"
+		"Filter"		"0"
+	}
+	"13357"
+	{
+		"Word"		"p[`P]N"
+		"Filter"		"0"
+	}
+	"13356"
+	{
+		"Word"		"yOMv"
+		"Filter"		"0"
+	}
+	"13355"
+	{
+		"Word"		"fBMv"
+		"Filter"		"0"
+	}
+	"13354"
+	{
+		"Word"		"Xfo"
+		"Filter"		"0"
+	}
+	"13353"
+	{
+		"Word"		"XZK"
+		"Filter"		"0"
+	}
+	"13352"
+	{
+		"Word"		"pKE["
+		"Filter"		"0"
+	}
+	"13351"
+	{
+		"Word"		"FLE["
+		"Filter"		"0"
+	}
+	"13350"
+	{
+		"Word"		"zNr\cw"
+		"Filter"		"0"
+	}
+	"13349"
+	{
+		"Word"		"exyd"
+		"Filter"		"0"
+	}
+	"13348"
+	{
+		"Word"		"tS\~"
+		"Filter"		"0"
+	}
+	"13347"
+	{
+		"Word"		"ELMF"
+		"Filter"		"0"
+	}
+	"13346"
+	{
+		"Word"		"J[sU"
+		"Filter"		"0"
+	}
+	"13345"
+	{
+		"Word"		"zNze"
+		"Filter"		"0"
+	}
+	"13344"
+	{
+		"Word"		"gqzXBn"
+		"Filter"		"0"
+	}
+	"13343"
+	{
+		"Word"		"GRrqOndB"
+		"Filter"		"0"
+	}
+	"13342"
+	{
+		"Word"		"G[dBQE"
+		"Filter"		"0"
+	}
+	"13341"
+	{
+		"Word"		"GAFGdB"
+		"Filter"		"0"
+	}
+	"13340"
+	{
+		"Word"		"GGRGpO"
+		"Filter"		"0"
+	}
+	"13339"
+	{
+		"Word"		"iOiydB"
+		"Filter"		"0"
+	}
+	"13338"
+	{
+		"Word"		"kQriaUkP"
+		"Filter"		"0"
+	}
+	"13337"
+	{
+		"Word"		"åóûùñ"
+		"Filter"		"0"
+	}
+	"13336"
+	{
+		"Word"		"[VQvhWsvqvuNbVnB"
+		"Filter"		"0"
+	}
+	"13335"
+	{
+		"Word"		"GRdBsvqvuNbVnB"
+		"Filter"		"0"
+	}
+	"13334"
+	{
+		"Word"		"svqvuNbVnB"
+		"Filter"		"0"
+	}
+	"13333"
+	{
+		"Word"		"[A@b`ExnCe"
+		"Filter"		"0"
+	}
+	"13332"
+	{
+		"Word"		"zNEXGDFv"
+		"Filter"		"0"
+	}
+	"13331"
+	{
+		"Word"		"svqvuN"
+		"Filter"		"0"
+	}
+	"13330"
+	{
+		"Word"		"GuB_"
+		"Filter"		"0"
+	}
+	"13329"
+	{
+		"Word"		"Q^Q^BM"
+		"Filter"		"0"
+	}
+	"13328"
+	{
+		"Word"		"GuYL"
+		"Filter"		"0"
+	}
+	"13327"
+	{
+		"Word"		"zSQvN"
+		"Filter"		"0"
+	}
+	"13326"
+	{
+		"Word"		"ZaDphz"
+		"Filter"		"0"
+	}
+	"13325"
+	{
+		"Word"		"jyu^|W"
+		"Filter"		"0"
+	}
+	"13324"
+	{
+		"Word"		"zSQv|W"
+		"Filter"		"0"
+	}
+	"13323"
+	{
+		"Word"		"EED\Ce"
+		"Filter"		"0"
+	}
+	"13322"
+	{
+		"Word"		"[AXnf]"
+		"Filter"		"0"
+	}
+	"13321"
+	{
+		"Word"		"}Qk@N"
+		"Filter"		"0"
+	}
+	"13320"
+	{
+		"Word"		"HZjyN"
+		"Filter"		"0"
+	}
+	"13319"
+	{
+		"Word"		"pPAzd_"
+		"Filter"		"0"
+	}
+	"13318"
+	{
+		"Word"		"[ACeGDFv"
+		"Filter"		"0"
+	}
+	"13317"
+	{
+		"Word"		"HTW|"
+		"Filter"		"0"
+	}
+	"13316"
+	{
+		"Word"		"HZWtf]"
+		"Filter"		"0"
+	}
+	"13315"
+	{
+		"Word"		"Xnu|W"
+		"Filter"		"0"
+	}
+	"13314"
+	{
+		"Word"		"µΩ"
+		"Filter"		"0"
+	}
+	"13313"
+	{
+		"Word"		"yprPhh"
+		"Filter"		"0"
+	}
+	"13312"
+	{
+		"Word"		"HTPd"
+		"Filter"		"0"
+	}
+	"13311"
+	{
+		"Word"		"bA"
+		"Filter"		"0"
+	}
+	"13310"
+	{
+		"Word"		"TgGB\mRo"
+		"Filter"		"0"
+	}
+	"13309"
+	{
+		"Word"		"uhhZ"
+		"Filter"		"0"
+	}
+	"13308"
+	{
+		"Word"		"zNsU"
+		"Filter"		"0"
+	}
+	"13307"
+	{
+		"Word"		"HTr^"
+		"Filter"		"0"
+	}
+	"13306"
+	{
+		"Word"		"GPALua"
+		"Filter"		"0"
+	}
+	"13305"
+	{
+		"Word"		"ydXk"
+		"Filter"		"0"
+	}
+	"13304"
+	{
+		"Word"		"B_Yw"
+		"Filter"		"0"
+	}
+	"13303"
+	{
+		"Word"		"HT"
+		"Filter"		"0"
+	}
+	"13302"
+	{
+		"Word"		"}dE["
+		"Filter"		"0"
+	}
+	"13301"
+	{
+		"Word"		"ydEtXkngCe"
+		"Filter"		"0"
+	}
+	"13300"
+	{
+		"Word"		"Rfix"
+		"Filter"		"0"
+	}
+	"13299"
+	{
+		"Word"		"FMG|zT"
+		"Filter"		"0"
+	}
+	"13298"
+	{
+		"Word"		"QtZitN"
+		"Filter"		"0"
+	}
+	"13297"
+	{
+		"Word"		"dBgMXnHZXk"
+		"Filter"		"0"
+	}
+	"13296"
+	{
+		"Word"		"FMB_YwC"
+		"Filter"		"0"
+	}
+	"13295"
+	{
+		"Word"		"G_Nq"
+		"Filter"		"0"
+	}
+	"13294"
+	{
+		"Word"		"QtZenc"
+		"Filter"		"0"
+	}
+	"13293"
+	{
+		"Word"		"dBgM|W"
+		"Filter"		"0"
+	}
+	"13292"
+	{
+		"Word"		"FMB_Ywù"
+		"Filter"		"0"
+	}
+	"13291"
+	{
+		"Word"		"G_"
+		"Filter"		"0"
+	}
+	"13290"
+	{
+		"Word"		"eKAm"
+		"Filter"		"0"
+	}
+	"13289"
+	{
+		"Word"		"|RCPd{"
+		"Filter"		"0"
+	}
+	"13288"
+	{
+		"Word"		"Gcc`LzIiPbYGKP~l"
+		"Filter"		"0"
+	}
+	"13287"
+	{
+		"Word"		"bfbo"
+		"Filter"		"0"
+	}
+	"13286"
+	{
+		"Word"		"pruW"
+		"Filter"		"0"
+	}
+	"13285"
+	{
+		"Word"		"[c|z"
+		"Filter"		"0"
+	}
+	"13284"
+	{
+		"Word"		"bidBZa[A"
+		"Filter"		"0"
+	}
+	"13283"
+	{
+		"Word"		"Z@hp"
+		"Filter"		"0"
+	}
+	"13282"
+	{
+		"Word"		"pIvntN"
+		"Filter"		"0"
+	}
+	"13281"
+	{
+		"Word"		"cNDoy"
+		"Filter"		"0"
+	}
+	"13280"
+	{
+		"Word"		"k`GYvx"
+		"Filter"		"0"
+	}
+	"13279"
+	{
+		"Word"		"A`RfRo"
+		"Filter"		"0"
+	}
+	"13278"
+	{
+		"Word"		"IW\"
+		"Filter"		"0"
+	}
+	"13277"
+	{
+		"Word"		"Dp[AoyEtCe"
+		"Filter"		"0"
+	}
+	"13276"
+	{
+		"Word"		"rx[V"
+		"Filter"		"0"
+	}
+	"13275"
+	{
+		"Word"		"A`{@Ro"
+		"Filter"		"0"
+	}
+	"13274"
+	{
+		"Word"		"Imsrq"
+		"Filter"		"0"
+	}
+	"13273"
+	{
+		"Word"		"DpJq[ACeoyEtCe"
+		"Filter"		"0"
+	}
+	"13272"
+	{
+		"Word"		"pGLj|W"
+		"Filter"		"0"
+	}
+	"13271"
+	{
+		"Word"		"F@kJN"
+		"Filter"		"0"
+	}
+	"13270"
+	{
+		"Word"		"nx[KqV"
+		"Filter"		"0"
+	}
+	"13269"
+	{
+		"Word"		"xnR\hZ"
+		"Filter"		"0"
+	}
+	"13268"
+	{
+		"Word"		"Wqu^DN"
+		"Filter"		"0"
+	}
+	"13267"
+	{
+		"Word"		"zvgqhZuZ"
+		"Filter"		"0"
+	}
+	"13266"
+	{
+		"Word"		"nx[KGG"
+		"Filter"		"0"
+	}
+	"13265"
+	{
+		"Word"		"xnhZwo"
+		"Filter"		"0"
+	}
+	"13264"
+	{
+		"Word"		"OKqDBYDn"
+		"Filter"		"0"
+	}
+	"13263"
+	{
+		"Word"		"Q^oyng"
+		"Filter"		"0"
+	}
+	"13262"
+	{
+		"Word"		"|`rvN"
+		"Filter"		"0"
+	}
+	"13261"
+	{
+		"Word"		"ZFVSe{"
+		"Filter"		"0"
+	}
+	"13260"
+	{
+		"Word"		"Q^oyEEng"
+		"Filter"		"0"
+	}
+	"13259"
+	{
+		"Word"		"FMB_Yw"
+		"Filter"		"0"
+	}
+	"13258"
+	{
+		"Word"		"ZFYwe{"
+		"Filter"		"0"
+	}
+	"13257"
+	{
+		"Word"		"åù"
+		"Filter"		"0"
+	}
+	"13256"
+	{
+		"Word"		"X}Gi`L"
+		"Filter"		"0"
+	}
+	"13255"
+	{
+		"Word"		"iP[Xah"
+		"Filter"		"0"
+	}
+	"13254"
+	{
+		"Word"		"Ywù"
+		"Filter"		"0"
+	}
+	"13253"
+	{
+		"Word"		"daOno|sU}v"
+		"Filter"		"0"
+	}
+	"13252"
+	{
+		"Word"		"GRrhJH"
+		"Filter"		"0"
+	}
+	"13251"
+	{
+		"Word"		"OKwV|W"
+		"Filter"		"0"
+	}
+	"13250"
+	{
+		"Word"		"OphZcS"
+		"Filter"		"0"
+	}
+	"13249"
+	{
+		"Word"		"[XED"
+		"Filter"		"0"
+	}
+	"13248"
+	{
+		"Word"		"[EW~"
+		"Filter"		"0"
+	}
+	"13247"
+	{
+		"Word"		"FMYL~Pr"
+		"Filter"		"0"
+	}
+	"13246"
+	{
+		"Word"		"OpLvEPG|q"
+		"Filter"		"0"
+	}
+	"13245"
+	{
+		"Word"		"[XuNΩ"
+		"Filter"		"0"
+	}
+	"13244"
+	{
+		"Word"		"VIB_Wg"
+		"Filter"		"0"
+	}
+	"13243"
+	{
+		"Word"		"FMYL"
+		"Filter"		"0"
+	}
+	"13242"
+	{
+		"Word"		"VIB_Pr"
+		"Filter"		"0"
+	}
+	"13241"
+	{
+		"Word"		"FMtqWg"
+		"Filter"		"0"
+	}
+	"13240"
+	{
+		"Word"		"F^HKBS"
+		"Filter"		"0"
+	}
+	"13239"
+	{
+		"Word"		"VIB_~Gw"
+		"Filter"		"0"
+	}
+	"13238"
+	{
+		"Word"		"BdZi"
+		"Filter"		"0"
+	}
+	"13237"
+	{
+		"Word"		"GcU~"
+		"Filter"		"0"
+	}
+	"13236"
+	{
+		"Word"		"RdB"
+		"Filter"		"0"
+	}
+	"13235"
+	{
+		"Word"		"VIB_~Pr"
+		"Filter"		"0"
+	}
+	"13234"
+	{
+		"Word"		"Bdjf"
+		"Filter"		"0"
+	}
+	"13233"
+	{
+		"Word"		"Gcb^tNcE"
+		"Filter"		"0"
+	}
+	"13232"
+	{
+		"Word"		"ixvVN"
+		"Filter"		"0"
+	}
+	"13231"
+	{
+		"Word"		"VIB_zS"
+		"Filter"		"0"
+	}
+	"13230"
+	{
+		"Word"		"mlNCpO"
+		"Filter"		"0"
+	}
+	"13229"
+	{
+		"Word"		"VIB_wG"
+		"Filter"		"0"
+	}
+	"13228"
+	{
+		"Word"		"prhZ"
+		"Filter"		"0"
+	}
+	"13227"
+	{
+		"Word"		"}DN{"
+		"Filter"		"0"
+	}
+	"13226"
+	{
+		"Word"		"EEOn[XCe_}"
+		"Filter"		"0"
+	}
+	"13225"
+	{
+		"Word"		"pr~oXkngCe"
+		"Filter"		"0"
+	}
+	"13224"
+	{
+		"Word"		"}DΩ"
+		"Filter"		"0"
+	}
+	"13223"
+	{
+		"Word"		"wgﬂﬂHx"
+		"Filter"		"0"
+	}
+	"13222"
+	{
+		"Word"		"LjwIua"
+		"Filter"		"0"
+	}
+	"13221"
+	{
+		"Word"		"NsG|"
+		"Filter"		"0"
+	}
+	"13220"
+	{
+		"Word"		"bvt"
+		"Filter"		"0"
+	}
+	"13219"
+	{
+		"Word"		"ahGeN"
+		"Filter"		"0"
+	}
+	"13218"
+	{
+		"Word"		"Ljf]"
+		"Filter"		"0"
+	}
+	"13217"
+	{
+		"Word"		"NsYL"
+		"Filter"		"0"
+	}
+	"13216"
+	{
+		"Word"		"bEEuP"
+		"Filter"		"0"
+	}
+	"13215"
+	{
+		"Word"		"ahBU"
+		"Filter"		"0"
+	}
+	"13214"
+	{
+		"Word"		"LjZ@iP"
+		"Filter"		"0"
+	}
+	"13213"
+	{
+		"Word"		"NsPd"
+		"Filter"		"0"
+	}
+	"13212"
+	{
+		"Word"		"NsG_"
+		"Filter"		"0"
+	}
+	"13211"
+	{
+		"Word"		"AAJiixgd"
+		"Filter"		"0"
+	}
+	"13210"
+	{
+		"Word"		"MQ\`N"
+		"Filter"		"0"
+	}
+	"13209"
+	{
+		"Word"		"Ns»"
+		"Filter"		"0"
+	}
+	"13208"
+	{
+		"Word"		"AAJi"
+		"Filter"		"0"
+	}
+	"13207"
+	{
+		"Word"		"~kowdB[XCe"
+		"Filter"		"0"
+	}
+	"13206"
+	{
+		"Word"		"Ns"
+		"Filter"		"0"
+	}
+	"13205"
+	{
+		"Word"		"}S|zrP"
+		"Filter"		"0"
+	}
+	"13204"
+	{
+		"Word"		"~kowdB"
+		"Filter"		"0"
+	}
+	"13203"
+	{
+		"Word"		"pnNj_kVIGR@|"
+		"Filter"		"0"
+	}
+	"13202"
+	{
+		"Word"		"kJdnCe"
+		"Filter"		"0"
+	}
+	"13201"
+	{
+		"Word"		"MhwIohj^"
+		"Filter"		"0"
+	}
+	"13200"
+	{
+		"Word"		"~k[X"
+		"Filter"		"0"
+	}
+	"13199"
+	{
+		"Word"		"pnkFXk"
+		"Filter"		"0"
+	}
+	"13198"
+	{
+		"Word"		"GbdBGDFv"
+		"Filter"		"0"
+	}
+	"13197"
+	{
+		"Word"		"_]sU"
+		"Filter"		"0"
+	}
+	"13196"
+	{
+		"Word"		"@awg"
+		"Filter"		"0"
+	}
+	"13195"
+	{
+		"Word"		"EsFf`EzO|E"
+		"Filter"		"0"
+	}
+	"13194"
+	{
+		"Word"		"bql~g_"
+		"Filter"		"0"
+	}
+	"13193"
+	{
+		"Word"		"EsC"
+		"Filter"		"0"
+	}
+	"13192"
+	{
+		"Word"		"cOcxN"
+		"Filter"		"0"
+	}
+	"13191"
+	{
+		"Word"		"oFixpR"
+		"Filter"		"0"
+	}
+	"13190"
+	{
+		"Word"		"bqnaqP"
+		"Filter"		"0"
+	}
+	"13189"
+	{
+		"Word"		"EsN{"
+		"Filter"		"0"
+	}
+	"13188"
+	{
+		"Word"		"fwxLTt"
+		"Filter"		"0"
+	}
+	"13187"
+	{
+		"Word"		"~ljf"
+		"Filter"		"0"
+	}
+	"13186"
+	{
+		"Word"		"fwOKv~"
+		"Filter"		"0"
+	}
+	"13185"
+	{
+		"Word"		"x}ixrq"
+		"Filter"		"0"
+	}
+	"13184"
+	{
+		"Word"		"dhU|uP"
+		"Filter"		"0"
+	}
+	"13183"
+	{
+		"Word"		"fwvPQx"
+		"Filter"		"0"
+	}
+	"13182"
+	{
+		"Word"		"bqQp@h"
+		"Filter"		"0"
+	}
+	"13181"
+	{
+		"Word"		"n\ixrq"
+		"Filter"		"0"
+	}
+	"13180"
+	{
+		"Word"		"^\^wN"
+		"Filter"		"0"
+	}
+	"13179"
+	{
+		"Word"		"BYx\"
+		"Filter"		"0"
+	}
+	"13178"
+	{
+		"Word"		"bqKU@h"
+		"Filter"		"0"
+	}
+	"13177"
+	{
+		"Word"		"GcEehz[T"
+		"Filter"		"0"
+	}
+	"13176"
+	{
+		"Word"		"cbMc"
+		"Filter"		"0"
+	}
+	"13175"
+	{
+		"Word"		"xmjf"
+		"Filter"		"0"
+	}
+	"13174"
+	{
+		"Word"		"zeGDGR"
+		"Filter"		"0"
+	}
+	"13173"
+	{
+		"Word"		"EXb|N"
+		"Filter"		"0"
+	}
+	"13172"
+	{
+		"Word"		"D\^W[XCe"
+		"Filter"		"0"
+	}
+	"13171"
+	{
+		"Word"		"pmYL"
+		"Filter"		"0"
+	}
+	"13170"
+	{
+		"Word"		"iOhDxEvw"
+		"Filter"		"0"
+	}
+	"13169"
+	{
+		"Word"		"[X^Ω"
+		"Filter"		"0"
+	}
+	"13168"
+	{
+		"Word"		"pmB_"
+		"Filter"		"0"
+	}
+	"13167"
+	{
+		"Word"		"~PdRo"
+		"Filter"		"0"
+	}
+	"13166"
+	{
+		"Word"		"iOhDua"
+		"Filter"		"0"
+	}
+	"13165"
+	{
+		"Word"		"[XrTjf"
+		"Filter"		"0"
+	}
+	"13164"
+	{
+		"Word"		"~ewN"
+		"Filter"		"0"
+	}
+	"13163"
+	{
+		"Word"		"c\wg"
+		"Filter"		"0"
+	}
+	"13162"
+	{
+		"Word"		"iOrq[A"
+		"Filter"		"0"
+	}
+	"13161"
+	{
+		"Word"		"[XEDMF"
+		"Filter"		"0"
+	}
+	"13160"
+	{
+		"Word"		"Doy"
+		"Filter"		"0"
+	}
+	"13159"
+	{
+		"Word"		"c\Pr"
+		"Filter"		"0"
+	}
+	"13158"
+	{
+		"Word"		"iOze"
+		"Filter"		"0"
+	}
+	"13157"
+	{
+		"Word"		"[XED_n{}"
+		"Filter"		"0"
+	}
+	"13156"
+	{
+		"Word"		"DN"
+		"Filter"		"0"
+	}
+	"13155"
+	{
+		"Word"		"SWN{"
+		"Filter"		"0"
+	}
+	"13154"
+	{
+		"Word"		"Qhjf"
+		"Filter"		"0"
+	}
+	"13153"
+	{
+		"Word"		"®∏"
+		"Filter"		"0"
+	}
+	"13152"
+	{
+		"Word"		"cS=HtvfD"
+		"Filter"		"0"
+	}
+	"13151"
+	{
+		"Word"		"GR[QkJXypO"
+		"Filter"		"0"
+	}
+	"13150"
+	{
+		"Word"		"hZB_Wg"
+		"Filter"		"0"
+	}
+	"13149"
+	{
+		"Word"		"ãëëõ"
+		"Filter"		"0"
+	}
+	"13148"
+	{
+		"Word"		"eKAm"
+		"Filter"		"0"
+	}
+	"13147"
+	{
+		"Word"		"GR[Q"
+		"Filter"		"0"
+	}
+	"13146"
+	{
+		"Word"		"hZB_YwjYC"
+		"Filter"		"0"
+	}
+	"13145"
+	{
+		"Word"		"´≤ª"
+		"Filter"		"0"
+	}
+	"13144"
+	{
+		"Word"		"eKuW"
+		"Filter"		"0"
+	}
+	"13143"
+	{
+		"Word"		"GRQ\|W"
+		"Filter"		"0"
+	}
+	"13142"
+	{
+		"Word"		"hZB_Yw"
+		"Filter"		"0"
+	}
+	"13141"
+	{
+		"Word"		"\`Nq"
+		"Filter"		"0"
+	}
+	"13140"
+	{
+		"Word"		"GW"
+		"Filter"		"0"
+	}
+	"13139"
+	{
+		"Word"		"GRrhJH"
+		"Filter"		"0"
+	}
+	"13138"
+	{
+		"Word"		"@bPyN"
+		"Filter"		"0"
+	}
+	"13137"
+	{
+		"Word"		"GRXnf]"
+		"Filter"		"0"
+	}
+	"13136"
+	{
+		"Word"		"uazSqz"
+		"Filter"		"0"
+	}
+	"13135"
+	{
+		"Word"		"hZcSSCRo"
+		"Filter"		"0"
+	}
+	"13134"
+	{
+		"Word"		"@bdnCe"
+		"Filter"		"0"
+	}
+	"13133"
+	{
+		"Word"		"GRrqEEOnzNmsdB"
+		"Filter"		"0"
+	}
+	"13132"
+	{
+		"Word"		"vwBM"
+		"Filter"		"0"
+	}
+	"13131"
+	{
+		"Word"		"hZcS≠∂±∏"
+		"Filter"		"0"
+	}
+	"13130"
+	{
+		"Word"		"@bml"
+		"Filter"		"0"
+	}
+	"13129"
+	{
+		"Word"		"GRdBzNEXze"
+		"Filter"		"0"
+	}
+	"13128"
+	{
+		"Word"		"B]HZ"
+		"Filter"		"0"
+	}
+	"13127"
+	{
+		"Word"		"hZcS"
+		"Filter"		"0"
+	}
+	"13126"
+	{
+		"Word"		"JtDgN"
+		"Filter"		"0"
+	}
+	"13125"
+	{
+		"Word"		"QvzWoyEtCe"
+		"Filter"		"0"
+	}
+	"13124"
+	{
+		"Word"		"}p"
+		"Filter"		"0"
+	}
+	"13123"
+	{
+		"Word"		"GRzNGR[Q"
+		"Filter"		"0"
+	}
+	"13122"
+	{
+		"Word"		"QvzWdnQ^"
+		"Filter"		"0"
+	}
+	"13121"
+	{
+		"Word"		"EEBl}GCF"
+		"Filter"		"0"
+	}
+	"13120"
+	{
+		"Word"		"ºº´©"
+		"Filter"		"0"
+	}
+	"13119"
+	{
+		"Word"		"GRzN"
+		"Filter"		"0"
+	}
+	"13118"
+	{
+		"Word"		"QvzW|W"
+		"Filter"		"0"
+	}
+	"13117"
+	{
+		"Word"		"EEEt|W"
+		"Filter"		"0"
+	}
+	"13116"
+	{
+		"Word"		"dFm]Hb"
+		"Filter"		"0"
+	}
+	"13115"
+	{
+		"Word"		"xKFDv}"
+		"Filter"		"0"
+	}
+	"13114"
+	{
+		"Word"		"Qvrh"
+		"Filter"		"0"
+	}
+	"13113"
+	{
+		"Word"		"lrB_YwN{"
+		"Filter"		"0"
+	}
+	"13112"
+	{
+		"Word"		"KW\N"
+		"Filter"		"0"
+	}
+	"13111"
+	{
+		"Word"		"Qvc_zQ"
+		"Filter"		"0"
+	}
+	"13110"
+	{
+		"Word"		"sxPCng"
+		"Filter"		"0"
+	}
+	"13109"
+	{
+		"Word"		"QvoyCe"
+		"Filter"		"0"
+	}
+	"13108"
+	{
+		"Word"		"lrYL"
+		"Filter"		"0"
+	}
+	"13107"
+	{
+		"Word"		"k@pg"
+		"Filter"		"0"
+	}
+	"13106"
+	{
+		"Word"		"Qvtv"
+		"Filter"		"0"
+	}
+	"13105"
+	{
+		"Word"		"åëûãúó"
+		"Filter"		"0"
+	}
+	"13104"
+	{
+		"Word"		"lrB_"
+		"Filter"		"0"
+	}
+	"13103"
+	{
+		"Word"		"P~dnCe"
+		"Filter"		"0"
+	}
+	"13102"
+	{
+		"Word"		"QvbaDinB"
+		"Filter"		"0"
+	}
+	"13101"
+	{
+		"Word"		"¨≤"
+		"Filter"		"0"
+	}
+	"13100"
+	{
+		"Word"		"c`i{@r"
+		"Filter"		"0"
+	}
+	"13099"
+	{
+		"Word"		"lr"
+		"Filter"		"0"
+	}
+	"13098"
+	{
+		"Word"		"c`oyjf"
+		"Filter"		"0"
+	}
+	"13097"
+	{
+		"Word"		"g@tvLjvF"
+		"Filter"		"0"
+	}
+	"13096"
+	{
+		"Word"		"hptS"
+		"Filter"		"0"
+	}
+	"13095"
+	{
+		"Word"		"g@tv"
+		"Filter"		"0"
+	}
+	"13094"
+	{
+		"Word"		"[Udn"
+		"Filter"		"0"
+	}
+	"13093"
+	{
+		"Word"		"C_Ttgs"
+		"Filter"		"0"
+	}
+	"13092"
+	{
+		"Word"		"g@v~"
+		"Filter"		"0"
+	}
+	"13091"
+	{
+		"Word"		"åóöëòõû"
+		"Filter"		"0"
+	}
+	"13090"
+	{
+		"Word"		"{f{aB_Wg"
+		"Filter"		"0"
+	}
+	"13089"
+	{
+		"Word"		"^aB_Pr"
+		"Filter"		"0"
+	}
+	"13088"
+	{
+		"Word"		"vqr^DK"
+		"Filter"		"0"
+	}
+	"13087"
+	{
+		"Word"		"{f{aB_Pr"
+		"Filter"		"0"
+	}
+	"13086"
+	{
+		"Word"		"JdB_~Gw"
+		"Filter"		"0"
+	}
+	"13085"
+	{
+		"Word"		"dAEyE]"
+		"Filter"		"0"
+	}
+	"13084"
+	{
+		"Word"		"{f{aB_~Gw"
+		"Filter"		"0"
+	}
+	"13083"
+	{
+		"Word"		"åöá"
+		"Filter"		"0"
+	}
+	"13082"
+	{
+		"Word"		"^aB_~Pr"
+		"Filter"		"0"
+	}
+	"13081"
+	{
+		"Word"		"dA`F}q"
+		"Filter"		"0"
+	}
+	"13080"
+	{
+		"Word"		"{f{aB_~Pr"
+		"Filter"		"0"
+	}
+	"13079"
+	{
+		"Word"		"åöòû"
+		"Filter"		"0"
+	}
+	"13078"
+	{
+		"Word"		"JdB_zS"
+		"Filter"		"0"
+	}
+	"13077"
+	{
+		"Word"		"hVZR"
+		"Filter"		"0"
+	}
+	"13076"
+	{
+		"Word"		"{f{aB_zS"
+		"Filter"		"0"
+	}
+	"13075"
+	{
+		"Word"		"åúçöà"
+		"Filter"		"0"
+	}
+	"13074"
+	{
+		"Word"		"{f{aB_wG"
+		"Filter"		"0"
+	}
+	"13073"
+	{
+		"Word"		"åù"
+		"Filter"		"0"
+	}
+	"13072"
+	{
+		"Word"		"{oqO"
+		"Filter"		"0"
+	}
+	"13071"
+	{
+		"Word"		"{oHK"
+		"Filter"		"0"
+	}
+	"13070"
+	{
+		"Word"		"GRsDrPN"
+		"Filter"		"0"
+	}
+	"13069"
+	{
+		"Word"		"{ozT"
+		"Filter"		"0"
+	}
+	"13068"
+	{
+		"Word"		"GR[Qk@MDN"
+		"Filter"		"0"
+	}
+	"13067"
+	{
+		"Word"		"èöëñå"
+		"Filter"		"0"
+	}
+	"13066"
+	{
+		"Word"		"|RPkWz"
+		"Filter"		"0"
+	}
+	"13065"
+	{
+		"Word"		"F_@nFL"
+		"Filter"		"0"
+	}
+	"13064"
+	{
+		"Word"		"O]hREE"
+		"Filter"		"0"
+	}
+	"13063"
+	{
+		"Word"		"C_Yjgq"
+		"Filter"		"0"
+	}
+	"13062"
+	{
+		"Word"		"xUMDcEzL"
+		"Filter"		"0"
+	}
+	"13061"
+	{
+		"Word"		"hptS"
+		"Filter"		"0"
+	}
+	"13060"
+	{
+		"Word"		"oKwNtN"
+		"Filter"		"0"
+	}
+	"13059"
+	{
+		"Word"		"C_]z]i"
+		"Filter"		"0"
+	}
+	"13058"
+	{
+		"Word"		"xU{e"
+		"Filter"		"0"
+	}
+	"13057"
+	{
+		"Word"		"AAJi"
+		"Filter"		"0"
+	}
+	"13056"
+	{
+		"Word"		"bqRYGA"
+		"Filter"		"0"
+	}
+	"13055"
+	{
+		"Word"		"n\DErq"
+		"Filter"		"0"
+	}
+	"13054"
+	{
+		"Word"		"QvzWN"
+		"Filter"		"0"
+	}
+	"13053"
+	{
+		"Word"		"ixgd"
+		"Filter"		"0"
+	}
+	"13052"
+	{
+		"Word"		"VSYC"
+		"Filter"		"0"
+	}
+	"13051"
+	{
+		"Word"		"D{R`[r"
+		"Filter"		"0"
+	}
+	"13050"
+	{
+		"Word"		"\zC"
+		"Filter"		"0"
+	}
+	"13049"
+	{
+		"Word"		"GcU~"
+		"Filter"		"0"
+	}
+	"13048"
+	{
+		"Word"		"@|_gs"
+		"Filter"		"0"
+	}
+	"13047"
+	{
+		"Word"		"bqzy{P"
+		"Filter"		"0"
+	}
+	"13046"
+	{
+		"Word"		"dBQvN"
+		"Filter"		"0"
+	}
+	"13045"
+	{
+		"Word"		"Gcc`OkzIiPbY"
+		"Filter"		"0"
+	}
+	"13044"
+	{
+		"Word"		"bWfI"
+		"Filter"		"0"
+	}
+	"13043"
+	{
+		"Word"		"g@GrbZpo=Hg@Gr|B|RZ@po"
+		"Filter"		"0"
+	}
+	"13042"
+	{
+		"Word"		"\zN{"
+		"Filter"		"0"
+	}
+	"13041"
+	{
+		"Word"		"iytS"
+		"Filter"		"0"
+	}
+	"13040"
+	{
+		"Word"		"bqPzGR"
+		"Filter"		"0"
+	}
+	"13039"
+	{
+		"Word"		"fwZqz|"
+		"Filter"		"0"
+	}
+	"13038"
+	{
+		"Word"		"BSLjBQ"
+		"Filter"		"0"
+	}
+	"13037"
+	{
+		"Word"		"ixgd"
+		"Filter"		"0"
+	}
+	"13036"
+	{
+		"Word"		"Gxm]"
+		"Filter"		"0"
+	}
+	"13035"
+	{
+		"Word"		"fBTt@N"
+		"Filter"		"0"
+	}
+	"13034"
+	{
+		"Word"		"GDGR"
+		"Filter"		"0"
+	}
+	"13033"
+	{
+		"Word"		"hptS"
+		"Filter"		"0"
+	}
+	"13032"
+	{
+		"Word"		"nWJq"
+		"Filter"		"0"
+	}
+	"13031"
+	{
+		"Word"		"VSGxZE"
+		"Filter"		"0"
+	}
+	"13030"
+	{
+		"Word"		"pOFA‹‹"
+		"Filter"		"0"
+	}
+	"13029"
+	{
+		"Word"		"C_FL"
+		"Filter"		"0"
+	}
+	"13028"
+	{
+		"Word"		"GjHKtv=H_CwhchbO"
+		"Filter"		"0"
+	}
+	"13027"
+	{
+		"Word"		"cNAH"
+		"Filter"		"0"
+	}
+	"13026"
+	{
+		"Word"		"pOFAdB"
+		"Filter"		"0"
+	}
+	"13025"
+	{
+		"Word"		"bWK~PU"
+		"Filter"		"0"
+	}
+	"13024"
+	{
+		"Word"		"g@Md=Hg@hEftAq"
+		"Filter"		"0"
+	}
+	"13023"
+	{
+		"Word"		"nWOGEH"
+		"Filter"		"0"
+	}
+	"13022"
+	{
+		"Word"		"Z@hp‹‹"
+		"Filter"		"0"
+	}
+	"13021"
+	{
+		"Word"		"wKXvdB"
+		"Filter"		"0"
+	}
+	"13020"
+	{
+		"Word"		"bcbmah"
+		"Filter"		"0"
+	}
+	"13019"
+	{
+		"Word"		"[iGlN"
+		"Filter"		"0"
+	}
+	"13018"
+	{
+		"Word"		"Z@hpdB"
+		"Filter"		"0"
+	}
+	"13017"
+	{
+		"Word"		"R`DE`N"
+		"Filter"		"0"
+	}
+	"13016"
+	{
+		"Word"		"Difi"
+		"Filter"		"0"
+	}
+	"13015"
+	{
+		"Word"		"[iE[|W"
+		"Filter"		"0"
+	}
+	"13014"
+	{
+		"Word"		"dFDEgq"
+		"Filter"		"0"
+	}
+	"13013"
+	{
+		"Word"		"VSxP"
+		"Filter"		"0"
+	}
+	"13012"
+	{
+		"Word"		"vM|z"
+		"Filter"		"0"
+	}
+	"13011"
+	{
+		"Word"		"qt|c@u"
+		"Filter"		"0"
+	}
+	"13010"
+	{
+		"Word"		"]~zv|w"
+		"Filter"		"0"
+	}
+	"13009"
+	{
+		"Word"		"^ndBrT"
+		"Filter"		"0"
+	}
+	"13008"
+	{
+		"Word"		"Aovrqe"
+		"Filter"		"0"
+	}
+	"13007"
+	{
+		"Word"		"wgDIGc"
+		"Filter"		"0"
+	}
+	"13006"
+	{
+		"Word"		"GZeBoU"
+		"Filter"		"0"
+	}
+	"13005"
+	{
+		"Word"		"GvknDn"
+		"Filter"		"0"
+	}
+	"13004"
+	{
+		"Word"		"|RCPd{"
+		"Filter"		"0"
+	}
+	"13003"
+	{
+		"Word"		"NURXNN"
+		"Filter"		"0"
+	}
+	"13002"
+	{
+		"Word"		"fwgsfE"
+		"Filter"		"0"
+	}
+	"13001"
+	{
+		"Word"		"GvqDBYDn"
+		"Filter"		"0"
+	}
+	"13000"
+	{
+		"Word"		"wgQIFv"
+		"Filter"		"0"
+	}
+	"12999"
+	{
+		"Word"		"mt_n\O"
+		"Filter"		"0"
+	}
+	"12998"
+	{
+		"Word"		"GvfU"
+		"Filter"		"0"
+	}
+	"12997"
+	{
+		"Word"		"nWOpHb"
+		"Filter"		"0"
+	}
+	"12996"
+	{
+		"Word"		"davPqv"
+		"Filter"		"0"
+	}
+	"12995"
+	{
+		"Word"		"pGVSFv=Hl~udlYOkcO"
+		"Filter"		"0"
+	}
+	"12994"
+	{
+		"Word"		"bqis"
+		"Filter"		"0"
+	}
+	"12993"
+	{
+		"Word"		"bqztCE"
+		"Filter"		"0"
+	}
+	"12992"
+	{
+		"Word"		"bqDEdB"
+		"Filter"		"0"
+	}
+	"12991"
+	{
+		"Word"		"p}EtQ["
+		"Filter"		"0"
+	}
+	"12990"
+	{
+		"Word"		"fwTE"
+		"Filter"		"0"
+	}
+	"12989"
+	{
+		"Word"		"qt@hpr"
+		"Filter"		"0"
+	}
+	"12988"
+	{
+		"Word"		"nWl~yc"
+		"Filter"		"0"
+	}
+	"12987"
+	{
+		"Word"		"K]k@|W"
+		"Filter"		"0"
+	}
+	"12986"
+	{
+		"Word"		"k^RY"
+		"Filter"		"0"
+	}
+	"12985"
+	{
+		"Word"		"fwQhzK"
+		"Filter"		"0"
+	}
+	"12984"
+	{
+		"Word"		"fwxLTt"
+		"Filter"		"0"
+	}
+	"12983"
+	{
+		"Word"		"G|D"
+		"Filter"		"0"
+	}
+	"12982"
+	{
+		"Word"		"fwAHlR"
+		"Filter"		"0"
+	}
+	"12981"
+	{
+		"Word"		"BhPsms"
+		"Filter"		"0"
+	}
+	"12980"
+	{
+		"Word"		"rqDEjp"
+		"Filter"		"0"
+	}
+	"12979"
+	{
+		"Word"		"G|qNOk"
+		"Filter"		"0"
+	}
+	"12978"
+	{
+		"Word"		"nWk`K["
+		"Filter"		"0"
+	}
+	"12977"
+	{
+		"Word"		"qvh_jp"
+		"Filter"		"0"
+	}
+	"12976"
+	{
+		"Word"		"`VoPAH"
+		"Filter"		"0"
+	}
+	"12975"
+	{
+		"Word"		"yOPm"
+		"Filter"		"0"
+	}
+	"12974"
+	{
+		"Word"		"Rfk@vr"
+		"Filter"		"0"
+	}
+	"12973"
+	{
+		"Word"		"ahixCU"
+		"Filter"		"0"
+	}
+	"12972"
+	{
+		"Word"		"FsEnzIcW_C"
+		"Filter"		"0"
+	}
+	"12971"
+	{
+		"Word"		"fwdH"
+		"Filter"		"0"
+	}
+	"12970"
+	{
+		"Word"		"Gxm]"
+		"Filter"		"0"
+	}
+	"12969"
+	{
+		"Word"		"CPd"
+		"Filter"		"0"
+	}
+	"12968"
+	{
+		"Word"		"bqddci"
+		"Filter"		"0"
+	}
+	"12967"
+	{
+		"Word"		"}lcKiF"
+		"Filter"		"0"
+	}
+	"12966"
+	{
+		"Word"		"i{yfbZ"
+		"Filter"		"0"
+	}
+	"12965"
+	{
+		"Word"		"N{Pd"
+		"Filter"		"0"
+	}
+	"12964"
+	{
+		"Word"		"wg@hyd"
+		"Filter"		"0"
+	}
+	"12963"
+	{
+		"Word"		"|nGxe"
+		"Filter"		"0"
+	}
+	"12962"
+	{
+		"Word"		"zSQv"
+		"Filter"		"0"
+	}
+	"12961"
+	{
+		"Word"		"XcC`iO"
+		"Filter"		"0"
+	}
+	"12960"
+	{
+		"Word"		"bqxnrq"
+		"Filter"		"0"
+	}
+	"12959"
+	{
+		"Word"		"|RCPd{"
+		"Filter"		"0"
+	}
+	"12958"
+	{
+		"Word"		"N{"
+		"Filter"		"0"
+	}
+	"12957"
+	{
+		"Word"		"AoDrpM"
+		"Filter"		"0"
+	}
+	"12956"
+	{
+		"Word"		"RfQIR\"
+		"Filter"		"0"
+	}
+	"12955"
+	{
+		"Word"		"Aovrqe"
+		"Filter"		"0"
+	}
+	"12954"
+	{
+		"Word"		"SWC"
+		"Filter"		"0"
+	}
+	"12953"
+	{
+		"Word"		"OFkeOn"
+		"Filter"		"0"
+	}
+	"12952"
+	{
+		"Word"		"mN@oBj"
+		"Filter"		"0"
+	}
+	"12951"
+	{
+		"Word"		"êçòûåíäå"
+		"Filter"		"0"
+	}
+	"12950"
+	{
+		"Word"		"ëëõ"
+		"Filter"		"0"
+	}
+	"12949"
+	{
+		"Word"		"±≤ª"
+		"Filter"		"0"
+	}
+	"12948"
+	{
+		"Word"		"¥DinB"
+		"Filter"		"0"
+	}
+	"12947"
+	{
+		"Word"		"Ωre\T"
+		"Filter"		"0"
+	}
+	"12946"
+	{
+		"Word"		"¥Mv"
+		"Filter"		"0"
+	}
+	"12945"
+	{
+		"Word"		"Q^oyl^"
+		"Filter"		"0"
+	}
+	"12944"
+	{
+		"Word"		"îûê"
+		"Filter"		"0"
+	}
+	"12943"
+	{
+		"Word"		"úûê"
+		"Filter"		"0"
+	}
+	"12942"
+	{
+		"Word"		"Q^oyng"
+		"Filter"		"0"
+	}
+	"12941"
+	{
+		"Word"		"∏≤"
+		"Filter"		"0"
+	}
+	"12940"
+	{
+		"Word"		"Ωre\T"
+		"Filter"		"0"
+	}
+	"12939"
+	{
+		"Word"		"òí"
+		"Filter"		"0"
+	}
+	"12938"
+	{
+		"Word"		"åóöëòõû"
+		"Filter"		"0"
+	}
+	"12937"
+	{
+		"Word"		"∏æ≤∫≤æ¨´∫≠"
+		"Filter"		"0"
+	}
+	"12936"
+	{
+		"Word"		"∏ûíö≤ûåãöç"
+		"Filter"		"0"
+	}
+	"12935"
+	{
+		"Word"		"|}Ω"
+		"Filter"		"0"
+	}
+	"12934"
+	{
+		"Word"		"}DPk"
+		"Filter"		"0"
+	}
+	"12933"
+	{
+		"Word"		"ΩëΩ"
+		"Filter"		"0"
+	}
+	"12932"
+	{
+		"Word"		"ehWM"
+		"Filter"		"0"
+	}
+	"12931"
+	{
+		"Word"		"EEOnlI^s"
+		"Filter"		"0"
+	}
+	"12930"
+	{
+		"Word"		"Z@hpixgd"
+		"Filter"		"0"
+	}
+	"12929"
+	{
+		"Word"		"EEOnhZuZ"
+		"Filter"		"0"
+	}
+	"12928"
+	{
+		"Word"		"bqKU@h"
+		"Filter"		"0"
+	}
+	"12927"
+	{
+		"Word"		"}p"
+		"Filter"		"0"
+	}
+	"12926"
+	{
+		"Word"		"æõíñë"
+		"Filter"		"0"
+	}
+	"12925"
+	{
+		"Word"		"EECF"
+		"Filter"		"0"
+	}
+	"12924"
+	{
+		"Word"		"gGz@GQ"
+		"Filter"		"0"
+	}
+	"12923"
+	{
+		"Word"		"nWOGEH"
+		"Filter"		"0"
+	}
+	"12922"
+	{
+		"Word"		"KN"
+		"Filter"		"0"
+	}
+	"12921"
+	{
+		"Word"		"hptS"
+		"Filter"		"0"
+	}
+	"12920"
+	{
+		"Word"		"gi"
+		"Filter"		"0"
+	}
+	"12919"
+	{
+		"Word"		"úúãâ"
+		"Filter"		"0"
+	}
+	"12918"
+	{
+		"Word"		"VSe{"
+		"Filter"		"0"
+	}
+	"12917"
+	{
+		"Word"		"aL"
+		"Filter"		"0"
+	}
+	"12916"
+	{
+		"Word"		"GrAhGryz"
+		"Filter"		"0"
+	}
+	"12915"
+	{
+		"Word"		"ôäú"
+		"Filter"		"0"
+	}
+	"12914"
+	{
+		"Word"		"∏ûíö≤ûåãöç"
+		"Filter"		"0"
+	}
+	"12913"
+	{
+		"Word"		"ôä◊"
+		"Filter"		"0"
+	}
+	"12912"
+	{
+		"Word"		"∏æ≤∫≤æ¨´∫≠"
+		"Filter"		"0"
+	}
+	"12911"
+	{
+		"Word"		"ôêåûêë"
+		"Filter"		"0"
+	}
+	"12910"
+	{
+		"Word"		"Di{xe{"
+		"Filter"		"0"
+	}
+	"12909"
+	{
+		"Word"		"Àô"
+		"Filter"		"0"
+	}
+	"12908"
+	{
+		"Word"		"|}Ω"
+		"Filter"		"0"
+	}
+	"12907"
+	{
+		"Word"		"Di{x{a"
+		"Filter"		"0"
+	}
+	"12906"
+	{
+		"Word"		"X~cr"
+		"Filter"		"0"
+	}
+	"12905"
+	{
+		"Word"		"KEdBCE"
+		"Filter"		"0"
+	}
+	"12904"
+	{
+		"Word"		"Dnvtze"
+		"Filter"		"0"
+	}
+	"12903"
+	{
+		"Word"		"YwriYwN~"
+		"Filter"		"0"
+	}
+	"12902"
+	{
+		"Word"		"@aR\\O"
+		"Filter"		"0"
+	}
+	"12901"
+	{
+		"Word"		"KEdBCE"
+		"Filter"		"0"
+	}
+	"12900"
+	{
+		"Word"		"YwPk"
+		"Filter"		"0"
+	}
+	"12899"
+	{
+		"Word"		"JHKtN"
+		"Filter"		"0"
+	}
+	"12898"
+	{
+		"Word"		"BhﬂFM"
+		"Filter"		"0"
+	}
+	"12897"
+	{
+		"Word"		"tNd{EU@J]n"
+		"Filter"		"0"
+	}
+	"12896"
+	{
+		"Word"		"nWOGEH"
+		"Filter"		"0"
+	}
+	"12895"
+	{
+		"Word"		"JHKdd_"
+		"Filter"		"0"
+	}
+	"12894"
+	{
+		"Word"		"JHzLDBM"
+		"Filter"		"0"
+	}
+	"12893"
+	{
+		"Word"		"hzGGN"
+		"Filter"		"0"
+	}
+	"12892"
+	{
+		"Word"		"wgEnNN"
+		"Filter"		"0"
+	}
+	"12891"
+	{
+		"Word"		"C_TgGB"
+		"Filter"		"0"
+	}
+	"12890"
+	{
+		"Word"		"dBJ{Xk"
+		"Filter"		"0"
+	}
+	"12889"
+	{
+		"Word"		"Fk`L"
+		"Filter"		"0"
+	}
+	"12888"
+	{
+		"Word"		"NUKt"
+		"Filter"		"0"
+	}
+	"12887"
+	{
+		"Word"		"dB_kQ["
+		"Filter"		"0"
+	}
+	"12886"
+	{
+		"Word"		"u]uT"
+		"Filter"		"0"
+	}
+	"12885"
+	{
+		"Word"		"|}Ω"
+		"Filter"		"0"
+	}
+	"12884"
+	{
+		"Word"		"ycGe|W"
+		"Filter"		"0"
+	}
+	"12883"
+	{
+		"Word"		"G^HK"
+		"Filter"		"0"
+	}
+	"12882"
+	{
+		"Word"		"bqEoBQ"
+		"Filter"		"0"
+	}
+	"12881"
+	{
+		"Word"		"rD"
+		"Filter"		"0"
+	}
+	"12880"
+	{
+		"Word"		"bqztCE"
+		"Filter"		"0"
+	}
+	"12879"
+	{
+		"Word"		"OkN^N"
+		"Filter"		"0"
+	}
+	"12878"
+	{
+		"Word"		"cEHK"
+		"Filter"		"0"
+	}
+	"12877"
+	{
+		"Word"		"B_XZXZe{"
+		"Filter"		"0"
+	}
+	"12876"
+	{
+		"Word"		"fQES"
+		"Filter"		"0"
+	}
+	"12875"
+	{
+		"Word"		"cEzT"
+		"Filter"		"0"
+	}
+	"12874"
+	{
+		"Word"		"wgDIGc"
+		"Filter"		"0"
+	}
+	"12873"
+	{
+		"Word"		"B_XZ"
+		"Filter"		"0"
+	}
+	"12872"
+	{
+		"Word"		"Dy^h"
+		"Filter"		"0"
+	}
+	"12871"
+	{
+		"Word"		"davPqv"
+		"Filter"		"0"
+	}
+	"12870"
+	{
+		"Word"		"wgEnNN"
+		"Filter"		"0"
+	}
+	"12869"
+	{
+		"Word"		"rhdQRo"
+		"Filter"		"0"
+	}
+	"12868"
+	{
+		"Word"		"dajf"
+		"Filter"		"0"
+	}
+	"12867"
+	{
+		"Word"		"rh~kd`"
+		"Filter"		"0"
+	}
+	"12866"
+	{
+		"Word"		"dada"
+		"Filter"		"0"
+	}
+	"12865"
+	{
+		"Word"		"davPqv"
+		"Filter"		"0"
+	}
+	"12864"
+	{
+		"Word"		"YLWge{"
+		"Filter"		"0"
+	}
+	"12863"
+	{
+		"Word"		"N~cC"
+		"Filter"		"0"
+	}
+	"12862"
+	{
+		"Word"		"qtMoNN"
+		"Filter"		"0"
+	}
+	"12861"
+	{
+		"Word"		"YLVSe{"
+		"Filter"		"0"
+	}
+	"12860"
+	{
+		"Word"		"BRc`"
+		"Filter"		"0"
+	}
+	"12859"
+	{
+		"Word"		"D{ﬂﬂpu"
+		"Filter"		"0"
+	}
+	"12858"
+	{
+		"Word"		"YLYwe{"
+		"Filter"		"0"
+	}
+	"12857"
+	{
+		"Word"		"foAz"
+		"Filter"		"0"
+	}
+	"12856"
+	{
+		"Word"		"qP@bDN"
+		"Filter"		"0"
+	}
+	"12855"
+	{
+		"Word"		"YL~Pre{"
+		"Filter"		"0"
+	}
+	"12854"
+	{
+		"Word"		"rqDEjp"
+		"Filter"		"0"
+	}
+	"12853"
+	{
+		"Word"		"gKsq"
+		"Filter"		"0"
+	}
+	"12852"
+	{
+		"Word"		"rqdBkt"
+		"Filter"		"0"
+	}
+	"12851"
+	{
+		"Word"		"F_@nFL"
+		"Filter"		"0"
+	}
+	"12850"
+	{
+		"Word"		"ºº´©"
+		"Filter"		"0"
+	}
+	"12849"
+	{
+		"Word"		"ixsi[XbVnB"
+		"Filter"		"0"
+	}
+	"12848"
+	{
+		"Word"		"VyiPah"
+		"Filter"		"0"
+	}
+	"12847"
+	{
+		"Word"		"iOiytSTt"
+		"Filter"		"0"
+	}
+	"12846"
+	{
+		"Word"		"VyBjDgAH"
+		"Filter"		"0"
+	}
+	"12845"
+	{
+		"Word"		"GYvxG\"
+		"Filter"		"0"
+	}
+	"12844"
+	{
+		"Word"		"pOFAGbdB"
+		"Filter"		"0"
+	}
+	"12843"
+	{
+		"Word"		"nVhWjf"
+		"Filter"		"0"
+	}
+	"12842"
+	{
+		"Word"		"unwIv}"
+		"Filter"		"0"
+	}
+	"12841"
+	{
+		"Word"		"GYvxIM"
+		"Filter"		"0"
+	}
+	"12840"
+	{
+		"Word"		"~oiD{Dx"
+		"Filter"		"0"
+	}
+	"12839"
+	{
+		"Word"		"cyD^"
+		"Filter"		"0"
+	}
+	"12838"
+	{
+		"Word"		"DZsqwIKa"
+		"Filter"		"0"
+	}
+	"12837"
+	{
+		"Word"		"GYvx"
+		"Filter"		"0"
+	}
+	"12836"
+	{
+		"Word"		"GcU~"
+		"Filter"		"0"
+	}
+	"12835"
+	{
+		"Word"		"q`Ro|BcEa{"
+		"Filter"		"0"
+	}
+	"12834"
+	{
+		"Word"		"CuiPzO"
+		"Filter"		"0"
+	}
+	"12833"
+	{
+		"Word"		"GT[KzDe{"
+		"Filter"		"0"
+	}
+	"12832"
+	{
+		"Word"		"bS"
+		"Filter"		"0"
+	}
+	"12831"
+	{
+		"Word"		"@aR\\O"
+		"Filter"		"0"
+	}
+	"12830"
+	{
+		"Word"		"Cuch"
+		"Filter"		"0"
+	}
+	"12829"
+	{
+		"Word"		"GTe{"
+		"Filter"		"0"
+	}
+	"12828"
+	{
+		"Word"		"IW\"
+		"Filter"		"0"
+	}
+	"12827"
+	{
+		"Word"		"GG^s"
+		"Filter"		"0"
+	}
+	"12826"
+	{
+		"Word"		"Cutvzt"
+		"Filter"		"0"
+	}
+	"12825"
+	{
+		"Word"		"RYBQ"
+		"Filter"		"0"
+	}
+	"12824"
+	{
+		"Word"		"ztah^@"
+		"Filter"		"0"
+	}
+	"12823"
+	{
+		"Word"		"GGwpQ^oyng"
+		"Filter"		"0"
+	}
+	"12822"
+	{
+		"Word"		"G[c|z"
+		"Filter"		"0"
+	}
+	"12821"
+	{
+		"Word"		"pPr^d_"
+		"Filter"		"0"
+	}
+	"12820"
+	{
+		"Word"		"EEOnF@cE"
+		"Filter"		"0"
+	}
+	"12819"
+	{
+		"Word"		"GdBG[wI"
+		"Filter"		"0"
+	}
+	"12818"
+	{
+		"Word"		"XE["
+		"Filter"		"0"
+	}
+	"12817"
+	{
+		"Word"		"pPr^pI"
+		"Filter"		"0"
+	}
+	"12816"
+	{
+		"Word"		"zKZtv}"
+		"Filter"		"0"
+	}
+	"12815"
+	{
+		"Word"		"EED\Ce"
+		"Filter"		"0"
+	}
+	"12814"
+	{
+		"Word"		"@^~PEXGe|W"
+		"Filter"		"0"
+	}
+	"12813"
+	{
+		"Word"		"B_DZGEB_\zCON|BUhwn"
+		"Filter"		"0"
+	}
+	"12812"
+	{
+		"Word"		"fHQIlM"
+		"Filter"		"0"
+	}
+	"12811"
+	{
+		"Word"		"^aB_~Pr"
+		"Filter"		"0"
+	}
+	"12810"
+	{
+		"Word"		"B_XZXZe{"
+		"Filter"		"0"
+	}
+	"12809"
+	{
+		"Word"		"Dy^h"
+		"Filter"		"0"
+	}
+	"12808"
+	{
+		"Word"		"lrB_~Pr"
+		"Filter"		"0"
+	}
+	"12807"
+	{
+		"Word"		"lrB_YwGUN{"
+		"Filter"		"0"
+	}
+	"12806"
+	{
+		"Word"		"hZB_YwjYN{"
+		"Filter"		"0"
+	}
+	"12805"
+	{
+		"Word"		"G_"
+		"Filter"		"0"
+	}
+	"12804"
+	{
+		"Word"		"lrB_~Yw"
+		"Filter"		"0"
+	}
+	"12803"
+	{
+		"Word"		"lrB_YwGUΩ"
+		"Filter"		"0"
+	}
+	"12802"
+	{
+		"Word"		"hZB_YwjYC"
+		"Filter"		"0"
+	}
+	"12801"
+	{
+		"Word"		"Ns"
+		"Filter"		"0"
+	}
+	"12800"
+	{
+		"Word"		"FMYL~Pr"
+		"Filter"		"0"
+	}
+	"12799"
+	{
+		"Word"		"\zN{n]"
+		"Filter"		"0"
+	}
+	"12798"
+	{
+		"Word"		"rD"
+		"Filter"		"0"
+	}
+	"12797"
+	{
+		"Word"		"FMB_~Pr"
+		"Filter"		"0"
+	}
+	"12796"
+	{
+		"Word"		"YwriYwN~"
+		"Filter"		"0"
+	}
+	"12795"
+	{
+		"Word"		"\zCn]"
+		"Filter"		"0"
+	}
+	"12794"
+	{
+		"Word"		"HT"
+		"Filter"		"0"
+	}
+	"12793"
+	{
+		"Word"		"[X^Ω"
+		"Filter"		"0"
+	}
+	"12792"
+	{
+		"Word"		"wTDiYwe{\z"
+		"Filter"		"0"
+	}
+	"12791"
+	{
+		"Word"		"ZG"
+		"Filter"		"0"
+	}
+	"12790"
+	{
+		"Word"		"G^pR"
+		"Filter"		"0"
+	}
+	"12789"
+	{
+		"Word"		"[XuNΩ"
+		"Filter"		"0"
+	}
+	"12788"
+	{
+		"Word"		"SWN{"
+		"Filter"		"0"
+	}
+	"12787"
+	{
+		"Word"		"N{"
+		"Filter"		"0"
+	}
+	"12786"
+	{
+		"Word"		"cEzT"
+		"Filter"		"0"
+	}
+	"12785"
+	{
+		"Word"		"HTPd"
+		"Filter"		"0"
+	}
+	"12784"
+	{
+		"Word"		"SWC"
+		"Filter"		"0"
+	}
+	"12783"
+	{
+		"Word"		"EsC"
+		"Filter"		"0"
+	}
+	"12782"
+	{
+		"Word"		"YL~Pre{"
+		"Filter"		"0"
+	}
+	"12781"
+	{
+		"Word"		"G^HK"
+		"Filter"		"0"
+	}
+	"12780"
+	{
+		"Word"		"NsPd"
+		"Filter"		"0"
+	}
+	"12779"
+	{
+		"Word"		"EsN{"
+		"Filter"		"0"
+	}
+	"12778"
+	{
+		"Word"		"lrYL"
+		"Filter"		"0"
+	}
+	"12777"
+	{
+		"Word"		"cEHK"
+		"Filter"		"0"
+	}
+	"12776"
+	{
+		"Word"		"CPd"
+		"Filter"		"0"
+	}
+	"12775"
+	{
+		"Word"		"lrB_[XwH"
+		"Filter"		"0"
+	}
+	"12774"
+	{
+		"Word"		"lrB_"
+		"Filter"		"0"
+	}
+	"12773"
+	{
+		"Word"		"FMYLYw"
+		"Filter"		"0"
+	}
+	"12772"
+	{
+		"Word"		"N{Pd"
+		"Filter"		"0"
+	}
+	"12771"
+	{
+		"Word"		"}DPk"
+		"Filter"		"0"
+	}
+	"12770"
+	{
+		"Word"		"FMB_Yw"
+		"Filter"		"0"
+	}
+	"12769"
+	{
+		"Word"		"YLWge{"
+		"Filter"		"0"
+	}
+	"12768"
+	{
+		"Word"		"lrYLYw"
+		"Filter"		"0"
+	}
+	"12767"
+	{
+		"Word"		"x}ixrq"
+		"Filter"		"0"
+	}
+	"12766"
+	{
+		"Word"		"}DN{"
+		"Filter"		"0"
+	}
+	"12765"
+	{
+		"Word"		"FMG|zT"
+		"Filter"		"0"
+	}
+	"12764"
+	{
+		"Word"		"n\ixrq"
+		"Filter"		"0"
+	}
+	"12763"
+	{
+		"Word"		"hZB_Wg"
+		"Filter"		"0"
+	}
+	"12762"
+	{
+		"Word"		"lrYLZiQh"
+		"Filter"		"0"
+	}
+	"12761"
+	{
+		"Word"		"lrB_Wg"
+		"Filter"		"0"
+	}
+	"12760"
+	{
+		"Word"		"lrB_ZiQh"
+		"Filter"		"0"
+	}
+	"12759"
+	{
+		"Word"		"lrYLWg"
+		"Filter"		"0"
+	}
+	"12758"
+	{
+		"Word"		"}DΩ"
+		"Filter"		"0"
+	}
+	"12757"
+	{
+		"Word"		"gKsq"
+		"Filter"		"0"
+	}
+	"12756"
+	{
+		"Word"		"xmjf"
+		"Filter"		"0"
+	}
+	"12755"
+	{
+		"Word"		"ZFVSe{"
+		"Filter"		"0"
+	}
+	"12754"
+	{
+		"Word"		"B_XZ"
+		"Filter"		"0"
+	}
+	"12753"
+	{
+		"Word"		"\`Nq"
+		"Filter"		"0"
+	}
+	"12752"
+	{
+		"Word"		"xmpT"
+		"Filter"		"0"
+	}
+	"12751"
+	{
+		"Word"		"ZFYwe{"
+		"Filter"		"0"
+	}
+	"12750"
+	{
+		"Word"		"\zN{"
+		"Filter"		"0"
+	}
+	"12749"
+	{
+		"Word"		"VIB_~Gw"
+		"Filter"		"0"
+	}
+	"12748"
+	{
+		"Word"		"\zC"
+		"Filter"		"0"
+	}
+	"12747"
+	{
+		"Word"		"G_Nq"
+		"Filter"		"0"
+	}
+	"12746"
+	{
+		"Word"		"VIB_zS"
+		"Filter"		"0"
+	}
+	"12745"
+	{
+		"Word"		"DiYwe{"
+		"Filter"		"0"
+	}
+	"12744"
+	{
+		"Word"		"Ns»"
+		"Filter"		"0"
+	}
+	"12743"
+	{
+		"Word"		"VIB_Pr"
+		"Filter"		"0"
+	}
+	"12742"
+	{
+		"Word"		"YLVSe{"
+		"Filter"		"0"
+	}
+	"12741"
+	{
+		"Word"		"lrB_zWQI"
+		"Filter"		"0"
+	}
+	"12740"
+	{
+		"Word"		"NsG|"
+		"Filter"		"0"
+	}
+	"12739"
+	{
+		"Word"		"VIB_wG"
+		"Filter"		"0"
+	}
+	"12738"
+	{
+		"Word"		"[Udn"
+		"Filter"		"0"
+	}
+	"12737"
+	{
+		"Word"		"NsG_"
+		"Filter"		"0"
+	}
+	"12736"
+	{
+		"Word"		"VIB_Wg"
+		"Filter"		"0"
+	}
+	"12735"
+	{
+		"Word"		"NsYL"
+		"Filter"		"0"
+	}
+	"12734"
+	{
+		"Word"		"VIB_~Pr"
+		"Filter"		"0"
+	}
+	"12733"
+	{
+		"Word"		"B_VSe{"
+		"Filter"		"0"
+	}
+	"12732"
+	{
+		"Word"		"RDzWQI"
+		"Filter"		"0"
+	}
+	"12731"
+	{
+		"Word"		"NsB_"
+		"Filter"		"0"
+	}
+	"12730"
+	{
+		"Word"		"^aB_~Gw"
+		"Filter"		"0"
+	}
+	"12729"
+	{
+		"Word"		"B_Ywe{"
+		"Filter"		"0"
+	}
+	"12728"
+	{
+		"Word"		"GT[KzDe{"
+		"Filter"		"0"
+	}
+	"12727"
+	{
+		"Word"		"~Pr"
+		"Filter"		"0"
+	}
+	"12726"
+	{
+		"Word"		"^aB_Pr"
+		"Filter"		"0"
+	}
+	"12725"
+	{
+		"Word"		"FMtqWg"
+		"Filter"		"0"
+	}
+	"12724"
+	{
+		"Word"		"wTDZGEB_gP[UdnwnONjB_"
+		"Filter"		"0"
+	}
+	"12723"
+	{
+		"Word"		"NsZ@"
+		"Filter"		"0"
+	}
+	"12722"
+	{
+		"Word"		"^aB_zS"
+		"Filter"		"0"
+	}
+	"12721"
+	{
+		"Word"		"FMYLWg"
+		"Filter"		"0"
+	}
+	"12720"
+	{
+		"Word"		"B_ne{G^HKj@RUEyoX"
+		"Filter"		"0"
+	}
+	"12719"
+	{
+		"Word"		"\`rDNq"
+		"Filter"		"0"
+	}
+	"12718"
+	{
+		"Word"		"^aB_wG"
+		"Filter"		"0"
+	}
+	"12717"
+	{
+		"Word"		"FMB_Wg"
+		"Filter"		"0"
+	}
+	"12716"
+	{
+		"Word"		"B_DZGEB_\zN{ON|BUhwn"
+		"Filter"		"0"
+	}
+	"12715"
+	{
+		"Word"		"oTrD"
+		"Filter"		"0"
+	}
+	"12714"
+	{
+		"Word"		"^aB_Wg"
+		"Filter"		"0"
+	}
+	"12713"
+	{
+		"Word"		"Ywe{"
+		"Filter"		"0"
+	}
+	"12712"
+	{
+		"Word"		"@^Q@N"
+		"Filter"		"0"
+	}
+	"12711"
+	{
+		"Word"		"qtzydB"
+		"Filter"		"0"
+	}
+	"12710"
+	{
+		"Word"		"[Vex"
+		"Filter"		"0"
+	}
+	"12709"
+	{
+		"Word"		"iOhDxEvwDBM"
+		"Filter"		"0"
+	}
+	"12708"
+	{
+		"Word"		"[VQvhWEtDI"
+		"Filter"		"0"
+	}
+	"12707"
+	{
+		"Word"		"RPx"
+		"Filter"		"0"
+	}
+	"12706"
+	{
+		"Word"		"qtwe"
+		"Filter"		"0"
+	}
+	"12705"
+	{
+		"Word"		"[VQvhW"
+		"Filter"		"0"
+	}
+	"12704"
+	{
+		"Word"		"N`úêçö"
+		"Filter"		"0"
+	}
+	"12703"
+	{
+		"Word"		"[XCe_}"
+		"Filter"		"0"
+	}
+	"12702"
+	{
+		"Word"		"Bl}MDN"
+		"Filter"		"0"
+	}
+	"12701"
+	{
+		"Word"		"DEQA|W"
+		"Filter"		"0"
+	}
+	"12700"
+	{
+		"Word"		"tvXyiPpMOkAH"
+		"Filter"		"0"
+	}
+	"12699"
+	{
+		"Word"		"EE[X"
+		"Filter"		"0"
+	}
+	"12698"
+	{
+		"Word"		"koQImx"
+		"Filter"		"0"
+	}
+	"12697"
+	{
+		"Word"		"\P`f]"
+		"Filter"		"0"
+	}
+	"12696"
+	{
+		"Word"		"Onk@|W"
+		"Filter"		"0"
+	}
+	"12695"
+	{
+		"Word"		"wgHx"
+		"Filter"		"0"
+	}
+	"12694"
+	{
+		"Word"		"EE[XD\^W"
+		"Filter"		"0"
+	}
+	"12693"
+	{
+		"Word"		"dnQ^N"
+		"Filter"		"0"
+	}
+	"12692"
+	{
+		"Word"		"ojXqM"
+		"Filter"		"0"
+	}
+	"12691"
+	{
+		"Word"		"dnP`|W"
+		"Filter"		"0"
+	}
+	"12690"
+	{
+		"Word"		"On@o"
+		"Filter"		"0"
+	}
+	"12689"
+	{
+		"Word"		"dBu^f]"
+		"Filter"		"0"
+	}
+	"12688"
+	{
+		"Word"		"ZG"
+		"Filter"		"0"
+	}
+	"12687"
+	{
+		"Word"		"On@dze"
+		"Filter"		"0"
+	}
+	"12686"
+	{
+		"Word"		"dBc`J{Eo|W"
+		"Filter"		"0"
+	}
+	"12685"
+	{
+		"Word"		"zR=Hdd"
+		"Filter"		"0"
+	}
+	"12684"
+	{
+		"Word"		"OnwUN"
+		"Filter"		"0"
+	}
+	"12683"
+	{
+		"Word"		"dBOnze"
+		"Filter"		"0"
+	}
+	"12682"
+	{
+		"Word"		"|zvM"
+		"Filter"		"0"
+	}
+	"12681"
+	{
+		"Word"		"PyQh"
+		"Filter"		"0"
+	}
+	"12680"
+	{
+		"Word"		"dBQIGDY~|WXk"
+		"Filter"		"0"
+	}
+	"12679"
+	{
+		"Word"		"EMOnze"
+		"Filter"		"0"
+	}
+	"12678"
+	{
+		"Word"		"XgFYj@"
+		"Filter"		"0"
+	}
+	"12677"
+	{
+		"Word"		"dBQIOnXk"
+		"Filter"		"0"
+	}
+	"12676"
+	{
+		"Word"		"AWua"
+		"Filter"		"0"
+	}
+	"12675"
+	{
+		"Word"		"Q^k`Xk"
+		"Filter"		"0"
+	}
+	"12674"
+	{
+		"Word"		"mfp[AARo"
+		"Filter"		"0"
+	}
+	"12673"
+	{
+		"Word"		"dBfzLjf]"
+		"Filter"		"0"
+	}
+	"12672"
+	{
+		"Word"		"jf}M|W"
+		"Filter"		"0"
+	}
+	"12671"
+	{
+		"Word"		"AqwVbe"
+		"Filter"		"0"
+	}
+	"12670"
+	{
+		"Word"		"dBQ^N"
+		"Filter"		"0"
+	}
+	"12669"
+	{
+		"Word"		"jfQg"
+		"Filter"		"0"
+	}
+	"12668"
+	{
+		"Word"		"`Eb\jf"
+		"Filter"		"0"
+	}
+	"12667"
+	{
+		"Word"		"AqdBBS"
+		"Filter"		"0"
+	}
+	"12666"
+	{
+		"Word"		"EYXmzG"
+		"Filter"		"0"
+	}
+	"12665"
+	{
+		"Word"		"`Eb\"
+		"Filter"		"0"
+	}
+	"12664"
+	{
+		"Word"		"ohj^vx"
+		"Filter"		"0"
+	}
+	"12663"
+	{
+		"Word"		"E[e|W"
+		"Filter"		"0"
+	}
+	"12662"
+	{
+		"Word"		"`EcOD{Dx"
+		"Filter"		"0"
+	}
+	"12661"
+	{
+		"Word"		"PdGDGR"
+		"Filter"		"0"
+	}
+	"12660"
+	{
+		"Word"		"ohj^]N"
+		"Filter"		"0"
+	}
+	"12659"
+	{
+		"Word"		"mtGRR\"
+		"Filter"		"0"
+	}
+	"12658"
+	{
+		"Word"		"ohj^"
+		"Filter"		"0"
+	}
+	"12657"
+	{
+		"Word"		"mtDpdB"
+		"Filter"		"0"
+	}
+	"12656"
+	{
+		"Word"		"G^qO"
+		"Filter"		"0"
+	}
+	"12655"
+	{
+		"Word"		"VStNFb"
+		"Filter"		"0"
+	}
+	"12654"
+	{
+		"Word"		"mtDt`L"
+		"Filter"		"0"
+	}
+	"12653"
+	{
+		"Word"		"G^uR"
+		"Filter"		"0"
+	}
+	"12652"
+	{
+		"Word"		"VSriVSN~"
+		"Filter"		"0"
+	}
+	"12651"
+	{
+		"Word"		"iytS"
+		"Filter"		"0"
+	}
+	"12650"
+	{
+		"Word"		"G^pR"
+		"Filter"		"0"
+	}
+	"12649"
+	{
+		"Word"		"t}lrB_zWQI"
+		"Filter"		"0"
+	}
+	"12648"
+	{
+		"Word"		"N`GDGR"
+		"Filter"		"0"
+	}
+	"12647"
+	{
+		"Word"		"uLuW@becN"
+		"Filter"		"0"
+	}
+	"12646"
+	{
+		"Word"		"YwZi"
+		"Filter"		"0"
+	}
+	"12645"
+	{
+		"Word"		"|}Ns"
+		"Filter"		"0"
+	}
+	"12644"
+	{
+		"Word"		"p\E["
+		"Filter"		"0"
+	}
+	"12643"
+	{
+		"Word"		"Mchp"
+		"Filter"		"0"
+	}
+	"12642"
+	{
+		"Word"		"N`_G@|"
+		"Filter"		"0"
+	}
+	"12641"
+	{
+		"Word"		"|}C"
+		"Filter"		"0"
+	}
+	"12640"
+	{
+		"Word"		"GsvFtm"
+		"Filter"		"0"
+	}
+	"12639"
+	{
+		"Word"		"ixsi|W"
+		"Filter"		"0"
+	}
+	"12638"
+	{
+		"Word"		"|}N{"
+		"Filter"		"0"
+	}
+	"12637"
+	{
+		"Word"		"~oiwyRo"
+		"Filter"		"0"
+	}
+	"12636"
+	{
+		"Word"		"Gstvzt"
+		"Filter"		"0"
+	}
+	"12635"
+	{
+		"Word"		"GVDoy"
+		"Filter"		"0"
+	}
+	"12634"
+	{
+		"Word"		"[iNxN"
+		"Filter"		"0"
+	}
+	"12633"
+	{
+		"Word"		"Q]wHcru^EEng"
+		"Filter"		"0"
+	}
+	"12632"
+	{
+		"Word"		"Z@hptSTt"
+		"Filter"		"0"
+	}
+	"12631"
+	{
+		"Word"		"pO~k"
+		"Filter"		"0"
+	}
+	"12630"
+	{
+		"Word"		"[is}"
+		"Filter"		"0"
+	}
+	"12629"
+	{
+		"Word"		"rTk`|W"
+		"Filter"		"0"
+	}
+	"12628"
+	{
+		"Word"		"vgQ^oyEtCe"
+		"Filter"		"0"
+	}
+	"12627"
+	{
+		"Word"		"pOua"
+		"Filter"		"0"
+	}
+	"12626"
+	{
+		"Word"		"W~s`k"
+		"Filter"		"0"
+	}
+	"12625"
+	{
+		"Word"		"D`Q^N"
+		"Filter"		"0"
+	}
+	"12624"
+	{
+		"Word"		"DiVSe{"
+		"Filter"		"0"
+	}
+	"12623"
+	{
+		"Word"		"oKDU"
+		"Filter"		"0"
+	}
+	"12622"
+	{
+		"Word"		"W~sm]"
+		"Filter"		"0"
+	}
+	"12621"
+	{
+		"Word"		"l~~l|W"
+		"Filter"		"0"
+	}
+	"12620"
+	{
+		"Word"		"RfGRNN"
+		"Filter"		"0"
+	}
+	"12619"
+	{
+		"Word"		"wkZ@"
+		"Filter"		"0"
+	}
+	"12618"
+	{
+		"Word"		"RfGDf"
+		"Filter"		"0"
+	}
+	"12617"
+	{
+		"Word"		"G^G^"
+		"Filter"		"0"
+	}
+	"12616"
+	{
+		"Word"		"bqfDAv"
+		"Filter"		"0"
+	}
+	"12615"
+	{
+		"Word"		"Ylf]"
+		"Filter"		"0"
+	}
+	"12614"
+	{
+		"Word"		"bqKUMD"
+		"Filter"		"0"
+	}
+	"12613"
+	{
+		"Word"		"ôâú"
+		"Filter"		"0"
+	}
+	"12612"
+	{
+		"Word"		"pTEu"
+		"Filter"		"0"
+	}
+	"12611"
+	{
+		"Word"		"bqMeGz"
+		"Filter"		"0"
+	}
+	"12610"
+	{
+		"Word"		"RD∏≤"
+		"Filter"		"0"
+	}
+	"12609"
+	{
+		"Word"		"BQZG"
+		"Filter"		"0"
+	}
+	"12608"
+	{
+		"Word"		"Ov~Z^s"
+		"Filter"		"0"
+	}
+	"12607"
+	{
+		"Word"		"åóñã"
+		"Filter"		"0"
+	}
+	"12606"
+	{
+		"Word"		"gKPd"
+		"Filter"		"0"
+	}
+	"12605"
+	{
+		"Word"		"cNqk`E"
+		"Filter"		"0"
+	}
+	"12604"
+	{
+		"Word"		"DZsqxLKa"
+		"Filter"		"0"
+	}
+	"12603"
+	{
+		"Word"		"CEZG"
+		"Filter"		"0"
+	}
+	"12602"
+	{
+		"Word"		"bqFp"
+		"Filter"		"0"
+	}
+	"12601"
+	{
+		"Word"		"C`[XvVt|"
+		"Filter"		"0"
+	}
+	"12600"
+	{
+		"Word"		"UeKX"
+		"Filter"		"0"
+	}
+	"12599"
+	{
+		"Word"		"C_AHN`"
+		"Filter"		"0"
+	}
+	"12598"
+	{
+		"Word"		"¨™º¥"
+		"Filter"		"0"
+	}
+	"12597"
+	{
+		"Word"		"¨äúî"
+		"Filter"		"0"
+	}
+	"12596"
+	{
+		"Word"		"åäúî"
+		"Filter"		"0"
+	}
+	"12595"
+	{
+		"Word"		"gKOpmj[X"
+		"Filter"		"0"
+	}
+	"12594"
+	{
+		"Word"		"G^zT"
+		"Filter"		"0"
+	}
+	"12593"
+	{
+		"Word"		"qtFoLv"
+		"Filter"		"0"
+	}
+	"12592"
+	{
+		"Word"		"gKkx"
+		"Filter"		"0"
+	}
+	"12591"
+	{
+		"Word"		"BhFM"
+		"Filter"		"0"
+	}
+	"12590"
+	{
+		"Word"		"wnlr"
+		"Filter"		"0"
+	}
+	"12589"
+	{
+		"Word"		"riHT"
+		"Filter"		"0"
+	}
+	"12588"
+	{
+		"Word"		"bqj@gZ"
+		"Filter"		"0"
+	}
+	"12587"
+	{
+		"Word"		"û€åóêìö"
+		"Filter"		"0"
+	}
+	"12586"
+	{
+		"Word"		"}DC"
+		"Filter"		"0"
+	}
+	"12585"
+	{
+		"Word"		"ydYl"
+		"Filter"		"0"
+	}
+	"12584"
+	{
+		"Word"		"oKQgR\"
+		"Filter"		"0"
+	}
+	"12583"
+	{
+		"Word"		"ûå€óêìö"
+		"Filter"		"0"
+	}
+	"12582"
+	{
+		"Word"		"lrB_Yw"
+		"Filter"		"0"
+	}
+	"12581"
+	{
+		"Word"		"lrC"
+		"Filter"		"0"
+	}
+	"12580"
+	{
+		"Word"		"D{pu"
+		"Filter"		"0"
+	}
+	"12579"
+	{
+		"Word"		"û€€óêìö"
+		"Filter"		"0"
+	}
+	"12578"
+	{
+		"Word"		"lrB_ZIZI"
+		"Filter"		"0"
+	}
+	"12577"
+	{
+		"Word"		"N~}^"
+		"Filter"		"0"
+	}
+	"12576"
+	{
+		"Word"		"dAdBEy"
+		"Filter"		"0"
+	}
+	"12575"
+	{
+		"Word"		"øååóêìö"
+		"Filter"		"0"
+	}
+	"12574"
+	{
+		"Word"		"Xh_|B"
+		"Filter"		"0"
+	}
+	"12573"
+	{
+		"Word"		"gK~l"
+		"Filter"		"0"
+	}
+	"12572"
+	{
+		"Word"		"KAEyah"
+		"Filter"		"0"
+	}
+	"12571"
+	{
+		"Word"		"åóﬁã"
+		"Filter"		"0"
+	}
+	"12570"
+	{
+		"Word"		"qtzTdt"
+		"Filter"		"0"
+	}
+	"12569"
+	{
+		"Word"		"gK|W"
+		"Filter"		"0"
+	}
+	"12568"
+	{
+		"Word"		"GVQIQb"
+		"Filter"		"0"
+	}
+	"12567"
+	{
+		"Word"		"åóÜã"
+		"Filter"		"0"
+	}
+	"12566"
+	{
+		"Word"		"thhZe{"
+		"Filter"		"0"
+	}
+	"12565"
+	{
+		"Word"		"HTXB"
+		"Filter"		"0"
+	}
+	"12564"
+	{
+		"Word"		"oK}YdB"
+		"Filter"		"0"
+	}
+	"12563"
+	{
+		"Word"		"àãô"
+		"Filter"		"0"
+	}
+	"12562"
+	{
+		"Word"		"hZDiWg"
+		"Filter"		"0"
+	}
+	"12561"
+	{
+		"Word"		"mmO@"
+		"Filter"		"0"
+	}
+	"12560"
+	{
+		"Word"		"|^kYId"
+		"Filter"		"0"
+	}
+	"12559"
+	{
+		"Word"		"ôäî"
+		"Filter"		"0"
+	}
+	"12558"
+	{
+		"Word"		"VuRo"
+		"Filter"		"0"
+	}
+	"12557"
+	{
+		"Word"		"[XA@"
+		"Filter"		"0"
+	}
+	"12556"
+	{
+		"Word"		"N`LBOn"
+		"Filter"		"0"
+	}
+	"12555"
+	{
+		"Word"		"èóäú"
+		"Filter"		"0"
+	}
+	"12554"
+	{
+		"Word"		"r^Yx"
+		"Filter"		"0"
+	}
+	"12553"
+	{
+		"Word"		"thN~"
+		"Filter"		"0"
+	}
+	"12552"
+	{
+		"Word"		"}lOpFL"
+		"Filter"		"0"
+	}
+	"12551"
+	{
+		"Word"		"ôûò"
+		"Filter"		"0"
+	}
+	"12550"
+	{
+		"Word"		"cwDp"
+		"Filter"		"0"
+	}
+	"12549"
+	{
+		"Word"		"zNEXze"
+		"Filter"		"0"
+	}
+	"12548"
+	{
+		"Word"		"wgOnZx"
+		"Filter"		"0"
+	}
+	"12547"
+	{
+		"Word"		"ùäããóöûõ"
+		"Filter"		"0"
+	}
+	"12546"
+	{
+		"Word"		"szeQ"
+		"Filter"		"0"
+	}
+	"12545"
+	{
+		"Word"		"mlNCMd"
+		"Filter"		"0"
+	}
+	"12544"
+	{
+		"Word"		"|^}Y"
+		"Filter"		"0"
+	}
+	"12543"
+	{
+		"Word"		"ùäããóêìö"
+		"Filter"		"0"
+	}
+	"12542"
+	{
+		"Word"		"oFoX"
+		"Filter"		"0"
+	}
+	"12541"
+	{
+		"Word"		"~oiGDFv"
+		"Filter"		"0"
+	}
+	"12540"
+	{
+		"Word"		"JJKTgL"
+		"Filter"		"0"
+	}
+	"12539"
+	{
+		"Word"		"ùûåãûçõ"
+		"Filter"		"0"
+	}
+	"12538"
+	{
+		"Word"		"TiQ]"
+		"Filter"		"0"
+	}
+	"12537"
+	{
+		"Word"		"pOFAtSTt"
+		"Filter"		"0"
+	}
+	"12536"
+	{
+		"Word"		"whQ~"
+		"Filter"		"0"
+	}
+	"12535"
+	{
+		"Word"		"ùñãúó"
+		"Filter"		"0"
+	}
+	"12534"
+	{
+		"Word"		"YlZL"
+		"Filter"		"0"
+	}
+	"12533"
+	{
+		"Word"		"pOtS"
+		"Filter"		"0"
+	}
+	"12532"
+	{
+		"Word"		"~V_CiP"
+		"Filter"		"0"
+	}
+	"12531"
+	{
+		"Word"		"õûíí"
+		"Filter"		"0"
+	}
+	"12530"
+	{
+		"Word"		"FLw@"
+		"Filter"		"0"
+	}
+	"12529"
+	{
+		"Word"		"LjBQ[XLj"
+		"Filter"		"0"
+	}
+	"12528"
+	{
+		"Word"		"VSztb"
+		"Filter"		"0"
+	}
+	"12527"
+	{
+		"Word"		"õûíë"
+		"Filter"		"0"
+	}
+	"12526"
+	{
+		"Word"		"A`[K"
+		"Filter"		"0"
+	}
+	"12525"
+	{
+		"Word"		"LjBQu`"
+		"Filter"		"0"
+	}
+	"12524"
+	{
+		"Word"		"nW~VbZ"
+		"Filter"		"0"
+	}
+	"12523"
+	{
+		"Word"		"úäëã"
+		"Filter"		"0"
+	}
+	"12522"
+	{
+		"Word"		"HTOK"
+		"Filter"		"0"
+	}
+	"12521"
+	{
+		"Word"		"LjBQ"
+		"Filter"		"0"
+	}
+	"12520"
+	{
+		"Word"		"PdLBGc"
+		"Filter"		"0"
+	}
+	"12519"
+	{
+		"Word"		"wNDt"
+		"Filter"		"0"
+	}
+	"12518"
+	{
+		"Word"		"tvfD"
+		"Filter"		"0"
+	}
+	"12517"
+	{
+		"Word"		"uN`L"
+		"Filter"		"0"
+	}
+	"12516"
+	{
+		"Word"		"oWAAXy"
+		"Filter"		"0"
+	}
+	"12515"
+	{
+		"Word"		"ZIRo"
+		"Filter"		"0"
+	}
+	"12514"
+	{
+		"Word"		"OpLv"
+		"Filter"		"0"
+	}
+	"12513"
+	{
+		"Word"		"èñåå"
+		"Filter"		"0"
+	}
+	"12512"
+	{
+		"Word"		"ûååóêìö"
+		"Filter"		"0"
+	}
+	"12511"
+	{
+		"Word"		"ª∂º¥"
+		"Filter"		"0"
+	}
+	"12510"
+	{
+		"Word"		"ªñúî"
+		"Filter"		"0"
+	}
+	"12509"
+	{
+		"Word"		"õñúî"
+		"Filter"		"0"
+	}
+	"12508"
+	{
+		"Word"		"π™º¥"
+		"Filter"		"0"
+	}
+	"12507"
+	{
+		"Word"		"πäúî"
+		"Filter"		"0"
+	}
+	"12506"
+	{
+		"Word"		"ôäúî"
+		"Filter"		"0"
+	}
+}

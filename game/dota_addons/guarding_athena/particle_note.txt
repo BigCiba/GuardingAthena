@@ -1,0 +1,118 @@
+==============================================================================================
+== Base Properties    //基础属性
+== 这些都是特效的核心属性。大部分这些都位于操作器的范围之外，许多设定低级别的引擎设置通常都是使用这个默认值。
+== 通常会被修改的属性是：
+==    ·initial_particles
+==    ·bounding_box_min and bounding_box_max
+==    ·fallback replacement definition 
+==    ·view model effect 
+==    ·screen space effect 
+==    ·max_particles 
+== 此外，一些属性提供一个简单的机制来定义默认的特效，当你需要时可以通过Operator来覆盖。这些包括：
+==    ·color
+==    ·radius
+==    ·rotation
+==    ·rotation_speed
+==    ·lifetime
+==    ·sequence_number
+==    ·sequence_number 1
+==============================================================================================
+·Initial Particles							//初始粒子
+	特效创建时发射的附加粒子的数量，独立于任何Emitter与Operator。实际测试没有什么作用，默认即可。
+·Bounding Box Min							//包围盒最小尺寸
+	设定包围盒的最小尺寸，三个数据分别为长宽高，默认即可。
+·Bounding Box Max							//包围盒最大尺寸
+	设定包围盒的最大尺寸，三个数据分别为长宽高，默认即可。
+·Snapshot Control Point						//快照控制点
+	--待测
+·Target Layer ID For Rendering				//渲染的目标层ID
+	--待测
+·Time To Recreate							//重新创造的时间 
+	--待测
+·Color										//颜色
+	每个粒子的基础色调。
+·Normal										//正常
+	粒子的法线对齐方式，取值范围为在0和1之间，对于大多数的特效应保持默认不变（0,0,1）。
+	在Render里将orientation_type属性设置为"Particle Normal Align"或者"Screen & Particle Normal Align"，否则这个属性将无效。
+	实测用处不大，对于render model时有点作用。
+·Radius										//每个粒子的半径
+	每个粒子的半径，可通过Operator修改。
+·Rotation									//旋转
+	以法线为中轴旋转粒子。
+·Rotation Speed								//旋转速度
+	粒子旋转的速度，需要在Operator里先定义rotation base属性。
+·Lifetime									//生命周期
+	每一个粒子的生命周期，在很短的时间内，每个粒子都会在被摧毁前存在。
+·Sequence Number							//序列号
+	当你的渲染的贴图有一个以上的贴图样式时可通过序列来选择你需要的样式。可通过Operator来制作随机样式等效果。
+·Sequence Number1							//序列号1
+	--待测
+	arc a 0.2 start 0.45 0.05 0.4	
+==============================================================================================
+== Operator    //操作器
+== 用于设定粒子属性
+==============================================================================================
+·Inherit attribute from parent particle    //将父粒子的属性分配给系统中的每个粒子
+	每一帧实时继承
+·Movement dampen relative to control point		//运动抑制相对控制点
+	当粒子接近指定的控制点时，消耗其内部速度，如果没有其他外力影响，粒子最终会停止。也可以用来锁定线的端点，同时允许中间部分自由移动
+	control point number 指定的控制点
+	falloff range 开始消耗速度的距离
+	dampen scale 抑制强度
+==============================================================================================
+== Initializer    //初始化
+== 用于初始化粒子属性
+==============================================================================================
+·Position Along Epitrochoid		//使粒子呈外旋轮线排列
+	首先你得了解什么是外旋轮线https://en.wikipedia.org/wiki/Epitrochoid
+	first dimension 定义第一个维度，数值对应公式里的x。
+	second dimension 定义第二个维度，数值对应公式里的y。与第一维度定义出外旋轮线的平面
+	control point number 设定控制点控制外旋轮线中心点位置
+	scale from control point 设定控制点控制radius1/radius2/offset三个值
+	particle density 粒子密度
+	point offset 对应公式里的d
+	radius1 对应公式里的R
+	radius2 对应公式里的r
+	use particle count instead of creation time 使用粒子数代替创建时间，使粒子平均分配在外旋轮线上，根据rander的不同与粒子密度可以创建出很多不同效果。
+·Position along path sequential		//使粒子沿路径顺序排列
+	maximum distance 粒子离路径的最大距离，实际距离会在0到这个值之间随机
+	particles to map from start to end 将该粒子数量平均分配到路径上
+	random bulge 使路径朝随机的位置凸出
+·Position on spiral sphere    //使粒子呈螺旋球排列
+	用来使发射的粒子围成一个球形，设定速度会使粒子向外扩张。一般会勾选use particle count as density scale来定义密度。
+·Position modify offset random    //使粒子位置偏移
+	比较常用的用来改变粒子位置的属性
+	offset min/max 偏移量，取范围内的随机值，三个数值分别对应x，y，z轴。
+	control point number 使用控制点来控制偏移量，注意offset min/max的值依然会生效。
+	offset in local space 0/1 布林值0或1，是否使用世界或局部（发射器）空间做偏移。
+	offset proportional to radius 0/1 布林值0或1，设置是否处理的偏移值为量相对于粒子的半径。例如，如果偏移量设置为0 0 2，有两个半径为32和64粒子，他们会分别被垂直移动64和128个单位。
+·Color random    //随机颜色
+	tint clamp min 用来调整图像中包含的颜色信息最小值
+	tint clamp max 用来调整图像中包含的颜色信息最大值
+	tine perc 百分比的缩写，一般取值0到1。并按百分比确定使用上面范围中的某个值。
+·Inherit initial value from parent particle    //从父粒子继承属性
+	只会在粒子初始化的时候运行一次
+·Remap control point to scalar    //映射控制点到数量
+	用来使用控制点控制粒子半径颜色等的值
+	output field 选择你要控制的对象
+	input field 选择使用传入控制点的XYZ中的某一域
+	input minmum/maxmum 由控制点输入的值的有效范围，超过则取对应最大或最小值。实际起作用的值为控制点输入值占最大最小差值的百分比。
+	output minmum/maxmum 输出值的有效范围，实际起作用的值与输入百分比有关，比如输入百分比为50%，输出最小值为25，输出最大值为35，那最终输出结果为30。
+	output is scalar of initial random range 勾选后输出值是初始值的倍数关系。比如半径初始是5，输入百分比为100%，输出最小值为0，输出最大值为2，那最终输出结果为10
+·Remap control point to vector    //映射控制点到向量
+	用来使用控制点控制粒子半径颜色等的值
+	output field 选择你要控制的对象
+	input field 选择使用传入控制点的XYZ中的某一域
+	input minmum/maxmum 由控制点输入的值的有效范围，超过则取对应最大或最小值。实际起作用的值为控制点输入值占最大最小差值的百分比。
+	output minmum/maxmum 输出值的有效范围，实际起作用的值与输入百分比有关，比如输入百分比为50%，输出最小值为25，输出最大值为35，那最终输出结果为30。
+	output is scalar of initial random range 勾选后输出值是初始值的倍数关系。比如半径初始是5，输入百分比为100%，输出最小值为0，输出最大值为2，那最终输出结果为10
+·Velocity inherit from control point	//从控制点继承速度
+	设定粒子的速度为控制点的速度的一定比例，比如投射物击中敌人后溅射的粒子效果想要往投射物的方向抛射就可以使用
+	control point number 设定继承的控制点
+	velocity scale 速度比例
+==============================================================================================
+== Constraint    //约束
+== 用于约束粒子行为
+==============================================================================================
+·Constrain Distance to Control Point
+	将粒子的位置锁定到指定的控制点的径向范围内。

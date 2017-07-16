@@ -1,0 +1,39 @@
+"AddonInfo"
+{
+	"TeamCount"		"2"
+	"maps"			"guarding_athena"
+	"IsPlayable"	"1"
+
+	"guarding_athena"
+	{
+		"MaxPlayers"                    "4"
+	}
+
+	"Default_Keys"
+	{
+		"01"
+		{
+			"Key"		"J"
+			"Command"		"HG"
+			"Name"		"Execute Ability 1"
+		}
+		"02"
+		{
+			"Key"		"`"
+			"Command"		"SCORE"
+			"Name"		"Execute Ability 2"
+		}
+		"03"
+		{
+			"Key"		"K"
+			"Command"		"QUEST"
+			"Name"		"Execute Ability 2"
+		}
+		"04"
+		{
+			"Key"		"U"
+			"Command"		"SHOP"
+			"Name"		"Execute Ability 2"
+		}
+	}
+}

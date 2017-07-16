@@ -1,0 +1,129 @@
+"dota_shops"
+{
+        "consumables"  //消耗品
+        {          
+           "item"                 "item_salve1"
+           "item"                 "item_salve2"
+           "item"                 "item_salve3"
+           "item"                 "item_salve4"
+           "item"                 "item_salve1_pack"
+           "item"                 "item_clarity1"
+           "item"                 "item_clarity2"
+           "item"                 "item_clarity3"
+           "item"                 "item_clarity4"
+           "item"                 "item_clarity1_pack"
+           "item"                 "item_gem"
+        }
+
+        "attributes"  //属性物品
+        {
+           "item"                 "item_shipin_1"
+           "item"                 "item_shipin_2"
+           "item"                 "item_shipin_3"
+           "item"                 "item_shipin_4"
+           "item"                 "item_shipin_5"
+           "item"                 "item_craft_dun"
+           "item"                 "item_craft_fu"
+           "item"                 "item_craft_chui"
+           "item"                 "item_craft_shu"
+        }
+
+        "weapons_armor"
+        {   
+            "item"                 "item_jian_1" 
+            "item"                 "item_gong_1" 
+            "item"                 "item_fazhang_1"
+            "item"                 "item_jia_1"
+            "item"                 "item_xie_1"
+        }
+                        
+        "misc"
+        {
+            "item"                 "item_str_book"
+            "item"                 "item_agi_book"
+            "item"                 "item_int_book"
+            "item"                 "item_str_book_pack"
+            "item"                 "item_agi_book_pack"
+            "item"                 "item_int_book_pack"
+            "item"                 "item_fumo_xixue" 
+            "item"                 "item_fumo_jianjia"
+            "item"                 "item_fumo_mokang"
+            "item"                 "item_fumo_baoji" 
+        }        
+        
+        // Level 1 - Green Recipes
+        "basics"
+        {
+        }
+
+        // Level 2 - Blue Recipes
+        "support"
+        {
+        }
+                                
+        "magics"                        
+        {
+        }
+                
+        // Level 3 - Purple Recipes        
+        "defense"
+        {
+            "item"                 "item_vanguard"
+            "item"                 "item_shivas_guard"
+            "item"                 "item_bloodstone"
+            "item"                 "item_manta"
+            "item"                 "item_heart"
+            "item"                 "item_mjollnir"
+            "item"                 "item_assault"
+        }
+                        
+        "weapons"
+        {
+            "item"                 "item_lesser_crit"
+            "item"                 "item_greater_crit"
+            "item"                 "item_monkey_king_bar"
+            "item"                 "item_abyssal_blade"
+            "item"                 "item_butterfly"
+            "item"                 "item_radiance"
+            "item"                 "item_silver_edge"
+            "item"                 "item_ethereal_blade"
+            "item"                 "item_rapier"
+        }
+                
+        // Level 4 - Orange / Orb / Artifacts                                
+        "artifacts" 
+        {        
+        }
+
+        "sideshop1"  //路边商店1
+        {
+            "item"                 "item_fenliebaoshi" 
+            "item"                 "item_fenliebaoshi1"
+            "item"                 "item_fenliebaoshi2"
+            "item"                 "item_fenliebaoshi3" 
+            "item"                 "item_fenliebaoshi4"
+            "item"                 "item_xixuebaoshi"
+            "item"                 "item_xixuebaoshi1"
+            "item"                 "item_xixuebaoshi2"
+            "item"                 "item_xixuebaoshi3" 
+            "item"                 "item_xixuebaoshi4"
+        }
+
+        "sideshop2"  //路边商店2
+        {
+            "item"                 "item_fangyubaoshi" 
+            "item"                 "item_fangyubaoshi1"
+            "item"                 "item_fangyubaoshi2"
+            "item"                 "item_fangyubaoshi3" 
+            "item"                 "item_fangyubaoshi4"
+            "item"                 "item_jiancdbaoshi"
+            "item"                 "item_jiancdbaoshi1"
+            "item"                 "item_jiancdbaoshi2"
+            "item"                 "item_jiancdbaoshi3" 
+            "item"                 "item_jiancdbaoshi4"
+        }
+        
+        "secretshop"  //神秘商店
+        {   
+        }        
+}

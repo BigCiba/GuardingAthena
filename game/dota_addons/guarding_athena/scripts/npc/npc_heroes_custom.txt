@@ -1,0 +1,628 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAHeroes"
+{
+	"Version"		"1"
+
+	// =================================================================================================================
+	// HERO: Templar Assassin
+	// =================================================================================================================
+	"npc_dota_hero_mechanic"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_omniknight"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		// 基础力量
+		"AttributeBaseStrength"	"28"
+		// 力量成长
+		"AttributeStrengthGain"	"3.0"
+		// 基础敏捷
+		"AttributeBaseAgility"	"13"
+		// 敏捷成长
+		"AttributeAgilityGain"	"1.8"
+		// 基础智力
+		"AttributeBaseIntelligence"	"22"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.0"
+		"AttackRate"	"1.4"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"thunder_power"
+		"Ability2"	"thunder_strike"
+		"Ability3"	"heal_device"
+		"Ability4"	"weightlifting"
+		"Ability5"	"void_barrier"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+	}
+
+	"npc_dota_hero_windrunner_override"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_windrunner"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"17"
+		// 力量成长
+		"AttributeStrengthGain"	"2.4"
+		// 基础敏捷
+		"AttributeBaseAgility"	"22"
+		// 敏捷成长
+		"AttributeAgilityGain"	"3.0"
+		// 基础智力
+		"AttributeBaseIntelligence"	"15"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.1"
+		"AttackRate"	"1.4"
+		"AttackRange"	"550"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"chase_moon_and_star"
+		"Ability2"	"multiple_shoot"
+		"Ability3"	"gust"
+		"Ability4"	"alacrity"
+		"Ability5"	"arrow_strom"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+	}
+
+	"npc_dota_hero_shadow_moon_warden"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_phantom_assassin"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"14"
+		// 力量成长
+		"AttributeStrengthGain"	"1.3"
+		// 基础敏捷
+		"AttributeBaseAgility"	"28"
+		// 敏捷成长
+		"AttributeAgilityGain"	"3.4"
+		// 基础智力
+		"AttributeBaseIntelligence"	"12"
+		// 智力成长
+		"AttributeIntelligenceGain"	"1.2"
+		"AttackRate"	"1.4"
+		"AbilityLayout"	"5"
+		"Ability1"	"abstrusemoon_shadow"
+		"Ability2"	"shadowmoon_wheeldance"
+		"Ability3"	"moonlight_projection"
+		"Ability4"	"clusters_stars"
+		"Ability5"	"shadow_rift_garrotte"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"MovementTurnRate"	"1.2"
+	}
+
+	"npc_dota_hero_fire_spirit"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_ember_spirit"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"18"
+		// 力量成长
+		"AttributeStrengthGain"	"1.6"
+		// 基础敏捷
+		"AttributeBaseAgility"	"25"
+		// 敏捷成长
+		"AttributeAgilityGain"	"2.9"
+		// 基础智力
+		"AttributeBaseIntelligence"	"16"
+		// 智力成长
+		"AttributeIntelligenceGain"	"1.4"
+		"AttackRate"	"1.2"
+		"AbilityLayout"	"5"
+		"Ability1"	"fire_spirit_0"
+		"Ability2"	"fire_spirit_1"
+		"Ability3"	"fire_spirit_2"
+		"Ability4"	"fire_spirit_3"
+		"Ability5"	"fire_spirit_4"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+	}
+
+	"npc_dota_hero_revelater"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_templar_assassin"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"22"
+		// 力量成长
+		"AttributeStrengthGain"	"2.6"
+		// 基础敏捷
+		"AttributeBaseAgility"	"28"
+		// 敏捷成长
+		"AttributeAgilityGain"	"2.8"
+		// 基础智力
+		"AttributeBaseIntelligence"	"24"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.4"
+		"AttackRate"	"1.2"
+		"AbilityLayout"	"5"
+		"Ability1"	"revelater_0"
+		"Ability2"	"revelater_1"
+		"Ability3"	"revelater_2"
+		"Ability4"	"revelater_3"
+		"Ability5"	"revelater_4"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"AttackRange"	"350"
+	}
+
+	"npc_dota_hero_chronos_magic"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_rubick"
+		// 基础力量
+		"AttributeBaseStrength"	"18"
+		// 力量成长
+		"AttributeStrengthGain"	"1.6"
+		// 基础敏捷
+		"AttributeBaseAgility"	"13"
+		// 敏捷成长
+		"AttributeAgilityGain"	"1.2"
+		// 基础智力
+		"AttributeBaseIntelligence"	"26"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.8"
+		"AttackRate"	"1.8"
+		"AbilityLayout"	"5"
+		"Ability1"	"space_rift"
+		"Ability2"	"chronos_magic"
+		"Ability3"	"teleport_phase"
+		"Ability4"	"space_barrier"
+		"Ability5"	"fluctuation"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+	}
+
+	"npc_dota_hero_juggernaut_override"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_juggernaut"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"17"
+		// 力量成长
+		"AttributeStrengthGain"	"2.4"
+		// 基础敏捷
+		"AttributeBaseAgility"	"22"
+		// 敏捷成长
+		"AttributeAgilityGain"	"3.0"
+		// 基础智力
+		"AttributeBaseIntelligence"	"15"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.1"
+		"AttackRate"	"1.4"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"minjiejingtong"
+		"Ability2"	"space_cut"
+		"Ability3"	"images"
+		"Ability4"	"blade_dance"
+		"Ability5"	"jianrenfengbao"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+	}
+
+	"npc_dota_hero_demonhunter"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_antimage"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"20"
+		// 力量成长
+		"AttributeStrengthGain"	"2.8"
+		// 基础敏捷
+		"AttributeBaseAgility"	"23"
+		// 敏捷成长
+		"AttributeAgilityGain"	"2.8"
+		// 基础智力
+		"AttributeBaseIntelligence"	"15"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.0"
+		// 投射物，可在粒子特效中找到
+		"ProjectileModel"	"particles/base_attacks/ranged_badguy.vpcf"
+		// 投射速率
+		"ProjectileSpeed"	"900"
+		"AttackRate"	"1.4"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"demon_hunter"
+		"Ability2"	"soulblade"
+		"Ability3"	"soulring"
+		"Ability4"	"magic_blade"
+		"Ability5"	"metamorphosis"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+	}
+
+	"npc_dota_hero_sf"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_nevermore"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		// 基础力量
+		"AttributeBaseStrength"	"22"
+		// 力量成长
+		"AttributeStrengthGain"	"3"
+		// 基础敏捷
+		"AttributeBaseAgility"	"20"
+		// 敏捷成长
+		"AttributeAgilityGain"	"2.1"
+		// 基础智力
+		"AttributeBaseIntelligence"	"17"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.1"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"fractured_soul"
+		"Ability2"	"destory_hit"
+		"Ability3"	"hell_field"
+		"Ability4"	"infernal_fire"
+		"Ability5"	"soul_requiem"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"AttackRange"	"600"
+	}
+
+	"npc_dota_hero_lina"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_lina"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+		// 基础力量
+		"AttributeBaseStrength"	"18"
+		// 力量成长
+		"AttributeStrengthGain"	"2.4"
+		// 基础敏捷
+		"AttributeBaseAgility"	"16"
+		// 敏捷成长
+		"AttributeAgilityGain"	"1.8"
+		// 基础智力
+		"AttributeBaseIntelligence"	"24"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.4"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"ashes"
+		"Ability2"	"dark_fire"
+		"Ability3"	"light_array"
+		"Ability4"	"endless_ignite"
+		"Ability5"	"meteor_storm"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"AttackRange"	"600"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"	"particles/skills/ignite_attack.vpcf"
+		"ProjectileSpeed"	"900"
+	}
+
+	"npc_dota_hero_legion"
+	{
+		"Ability1"	"war_honor"
+		"Ability2"	"queen_curse"
+		"Ability3"	"war_arua"
+		"Ability4"	"courage_moment"
+		"Ability5"	"war_god"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"override_hero"	"npc_dota_hero_legion_commander"
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"	"22"
+		"AttributeBaseAgility"	"16"
+		"AttributeBaseIntelligence"	"20"
+		"AttributeIntelligenceGain"	"2.0"
+		"AttributeAgilityGain"	"1.6"
+		"AttributeStrengthGain"	"2.2"
+		"AbilityLayout"	"5"
+	}
+
+	"npc_dota_hero_cm"
+	{
+		"Ability1"	"frost_sigil"
+		"Ability2"	"chilliness_burst"
+		"Ability3"	"snowstorm"
+		"Ability4"	"frozen_aura"
+		"Ability5"	"chilling_touch"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"override_hero"	"npc_dota_hero_crystal_maiden"
+		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"	"12"
+		"AttributeBaseAgility"	"15"
+		"AttributeBaseIntelligence"	"21"
+		"AttributeIntelligenceGain"	"2.2"
+		"AttributeAgilityGain"	"1.6"
+		"AttributeStrengthGain"	"1.3"
+		"AbilityLayout"	"5"
+		"MovementSpeed"	"300"
+	}
+
+	"npc_dota_hero_monkey_king"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_monkey_king"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"26"
+		// 力量成长
+		"AttributeStrengthGain"	"2.4"
+		// 基础敏捷
+		"AttributeBaseAgility"	"30"
+		// 敏捷成长
+		"AttributeAgilityGain"	"2.6"
+		// 基础智力
+		"AttributeBaseIntelligence"	"18"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.2"
+		"AttackRate"	"1.2"
+		"AbilityLayout"	"5"
+		"Ability1"	"piercing_eye"
+		"Ability2"	"revelater_1"
+		"Ability3"	"revelater_2"
+		"Ability4"	"endless_offensive"
+		"Ability5"	"revelater_4"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"AttackRange"	"300"
+	}
+}
