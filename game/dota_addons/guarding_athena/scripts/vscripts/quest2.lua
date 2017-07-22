@@ -3,6 +3,7 @@ if Quest == nil then
   	Quest.__index = Quest
 end
 -- 初始化
+--
 function Quest:Init()
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(Quest, 'OnUnitKilled'), self)
 	self.questInfo = LoadKeyValues("scripts/kv/quest_info.kv")
@@ -91,22 +92,6 @@ function Quest:DeCount(killer, questName)
 	killer[questName].reamainCount = killer[questName].reamainCount + 1
 	if killer[questName].reamainCount >= killer[questName].demandCount then
 		killer[questName].reamainCount = killer[questName].demandCount
-	end
-end
-
-function Quest:new(data)
-	if(data["Type"] == "Kill") then
-		local obj = {
-			["Type"] = data["Type"],
-			["Name"] = data["Name"],
-			["Monster"] = data["Monster"],
-			["Count"] = data["Count"],
-			["RewardItem"] = data["RewardItem"],
-			["RewardMoney"] = data["RewardMoney"],
-			["RewardScore"] = data["RewardScore"]
-		}
-		setmetatable(obj,self);
-		return obj;
 	end
 end
 
