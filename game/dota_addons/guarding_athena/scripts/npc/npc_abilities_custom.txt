@@ -13907,4 +13907,72 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
 	}
+
+	"quest_aura"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"bounty_hunter_track"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"precache"
+		{
+			"particle"	"particles/map/quest.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_quest_aura"
+			{
+				"Passive"	"1"
+				"IsHidden"	"0"
+				"Aura"	"modifier_quest_aura_buff"
+				"Aura_Radius"	"400"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"	{}
+				"Aura_ApplyToCaster"	"0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+						"Function"	"QuestInit"
+					}
+					"DelayedAction"
+					{
+						"Action"
+						{
+							"AttachEffect"
+							{
+								"Target"	"CASTER"
+								"ControlPoints"	{}
+								"ControlPointEntities"	{}
+								"EffectAttachType"	"follow_overhead"
+								"EffectName"	"particles/map/quest.vpcf"
+							}
+						}
+						"Delay"	"10"
+					}
+				}
+			}
+			"modifier_quest_aura_buff"
+			{
+				"IsHidden"	"0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/quest2.lua"
+						"Function"	"QuestTriggerNpc"
+					}
+				}
+				"Passive"	"0"
+			}
+		}
+	}
 }

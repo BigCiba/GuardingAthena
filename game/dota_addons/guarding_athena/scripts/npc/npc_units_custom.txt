@@ -5,9 +5,6 @@
 {
 	"Version"		"1"
 
-	// =================================================================================
-	// 雅典娜
-	// =================================================================================
 	"athena"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -320,6 +317,98 @@
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackRange"	"400"
 		"HasAggressiveStance"	"1"
+	}
+
+	"bounty_hunter"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/courier/huntling/huntling.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"1.8"
+		// 单位等级
+		"Level"	"30"
+		"CanBeDominated"	"0"
+		"IsAncient"	"0"
+		"IsNeutralUnitType"	"0"
+		"UseNeutralCreepBehavior"	"0"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"60"
+		// 魔抗
+		"MagicalResistance"	"60"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为近战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"100"
+		// 最高攻击伤害
+		"AttackDamageMax"	"100"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.4"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"100"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"300"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"10000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"500"
+		// 基础魔法值
+		"StatusMana"	"10000"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"100"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		// Ability 1
+		"Ability1"	"quest_aura"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
 	}
 
 	"heal_device"

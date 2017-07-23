@@ -251,7 +251,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 			--CustomNetTables:SetTableValue( "scoreboard", tostring(k), { lv=1, str=0, agi=0, int=0, wavedef=0, damagesave=0, goldsave=0 } )
 			CustomNetTables:SetTableValue( "difficulty", tostring(k), {difficulty="NoSelect"} )
 		end
-
+	
 		--初始化英雄数据
 		HeroState:Init()
 		Quest:Init()

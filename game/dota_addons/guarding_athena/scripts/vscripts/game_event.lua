@@ -709,9 +709,6 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 	local player = EntIndexToHScript(keys.player)
 	local hero = player:GetAssignedHero()
 	local level = keys.level
-	print(hero:GetPhysicalArmorValue())
-	print(hero:GetMagicalArmorValue())
-	print(hero:GetAttackSpeed())
 	-- 额外属性成长
 	if hero.str_gain then
 		PropertySystem(hero,DOTA_ATTRIBUTE_STRENGTH,hero.str_gain,0)

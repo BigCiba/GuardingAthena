@@ -3,7 +3,6 @@ if Quest == nil then
   	Quest.__index = Quest
 end
 -- 初始化
---
 function Quest:Init()
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(Quest, 'OnUnitKilled'), self)
 	self.questInfo = LoadKeyValues("scripts/kv/quest_info.kv")
@@ -20,14 +19,14 @@ function QuestTriggerNpc( t )
 			if caster[questName] == nil then
 				-- 判断前置条件
 				if Quest:FrontRequireCheck(questName, questInfo, caster) then
-					Quest:AddQuest(caster, questName, questInfo)
+					Quest:AddQuest(caster, npc, questName, questInfo)
 				end
 			else
 				local currentQuest = caster[questName]
 				if currentQuest.reamainCount < currentQuest.demandCount then
 					self:ShowQuestDialog(false)
 				else
-					self:Finish()
+					self:Finish(caster)
 					self:ShowQuestDialog(true)
 				end
 			end
@@ -37,7 +36,7 @@ end
 -- 前置条件检测
 -- 等级,任务,其他
 function Quest:FrontRequireCheck(questName, questInfo, caster)
-	if questInfo.frontRequireType == "nil" then
+	if questInfo.frontRequireType == "" then
 		return true
 	elseif questInfo.frontRequireType == "quest" then
 		-- 是否满足前置条件
@@ -53,18 +52,22 @@ function Quest:FrontRequireCheck(questName, questInfo, caster)
 end
 -- 接受任务
 -- 将任务信息绑定在单位身上，并标记为未完成
-function Quest:AddQuest(caster, questName, questInfo)
+function Quest:AddQuest(caster, npc, questName, questInfo)
 	questInfo["reamainCount"] = 0
 	questInfo["demandCount"] = questInfo.demandCount
 	questInfo["completed"] = false
+	questInfo["npc"] = npc
 	caster[questName] = questInfo
+	local playerID = caster:GetPlayerID()
+	CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableKobold",count=0,create=true,finish=false} )
+	CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=npc:GetEntityIndex(),text='OnQuestKobold',duration=5})
 end
 -- 任务完成过程检测
 -- 击杀，收集
 function Quest:OnUnitKilled(t)
     local victim = EntIndexToHScript(t.entindex_killed)
 	local killer = EntIndexToHScript(t.entindex_attacker)
-    if killer:isIllusion() then
+    if killer:IsIllusion() then
         if killer.caster_hero then
             killer = killer.caster_hero
         end
@@ -72,9 +75,9 @@ function Quest:OnUnitKilled(t)
 	if victim then
 		for questName,questInfo in pairs(self.questInfo) do
 			-- 判断是否是任务需求单位
-			if questInfo.triggerName == victim:GetUnitName() then
+			if questInfo.targetName == victim:GetUnitName() then
 				-- 判断已接受任务且未完成
-				if killer[questName] then)
+				if killer[questName] then
 					if killer[questName].completed == false then
 						self:DeCount(killer, questName)
 					end
@@ -83,16 +86,22 @@ function Quest:OnUnitKilled(t)
 		end
 	end
 end
-function Quest:Finish()
-	self["Count"] = -1
-	--这里写给玩家啥东西啥东西的
+function Quest:Finish(caster)
+	CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=caster:GetEntityIndex(),text='CompleteQuestKobold',duration=5})
+	local newItem = CreateItem("item_zhanqi", caster, caster)
+	caster:AddItem(newItem)
+	CustomNetTables:SetTableValue( "quest", tostring(0), {name="QuestTableKobold",count=3,create=false,finish=true} )
 end
 
 function Quest:DeCount(killer, questName)
 	killer[questName].reamainCount = killer[questName].reamainCount + 1
 	if killer[questName].reamainCount >= killer[questName].demandCount then
 		killer[questName].reamainCount = killer[questName].demandCount
+		CustomNetTables:SetTableValue( "quest", tostring(0), {name="QuestTableKobold",count=killer[questName].reamainCount,create=false,finish=false} )
 	end
+end
+function Quest:ShowQuestDialog(  )
+	-- body
 end
 
 function Quest:delete()

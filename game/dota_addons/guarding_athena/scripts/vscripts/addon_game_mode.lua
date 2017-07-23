@@ -5,7 +5,7 @@ end
 require("guarding_athena")
 require("teleport")
 require("practice")
-require("quest")
+require("quest2")
 require("ability_hero")
 require("ability_unit")
 require("ability_item")

@@ -64,6 +64,13 @@ function AthenaOnAttacked( keys )
 		end)
 	end
 end
+function QuestInit( t )
+    local caster = t.caster
+    Timers:CreateTimer(10,function ()
+        local p1 = CreateParticle("particles/map/quest.vpcf",PATTACH_OVERHEAD_FOLLOW,caster)
+        ParticleManager:SetParticleControlEnt(p1, 0, caster, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+    end)
+end
 function Ciba( keys )
     local caster = keys.caster
     local ability = keys.ability
