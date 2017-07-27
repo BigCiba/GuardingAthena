@@ -2,55 +2,43 @@ var questList = []
 var countList = []
 var finishList = []
 //更新任务
-function UpdataQuest(){
-    var table = CustomNetTables.GetTableValue("quest",Game.GetLocalPlayerID());
-    var panel = questList[table.name];
-    var label = countList[table.name];
-    if(table.create == true){
-        GameUI.CustomUIConfig().quest = true;
-        GameUI.CustomUIConfig().scoreboard = false;
-    }
-    if(table.finish == true){
-        panel.SetHasClass( "quest_flyout", false );
-        $.Schedule(0.2,function(){panel.SetHasClass( "quest_visible", false )});
-    }
-    else{
-        label.text = table.count;
-        panel.SetHasClass( "quest_flyout", true );
-        panel.SetHasClass( "quest_visible", true );
-    }
+function UpdataQuest(data){
+    var questPanel = questList[data.quest_name];
+    var countLabel = countList[data.quest_name];
+    countLabel.text = data.reamain_count;
 }
 //初始化任务
-function CreateQuest(){
-    var name = CustomNetTables.GetTableValue("quest","name");
-    var require = CustomNetTables.GetTableValue("quest","require");
-    var reward = CustomNetTables.GetTableValue("quest","reward");
+function CreateQuest(data){
     var questContent = $("#QuestContent");
-    for (var i = 1; i <= 5; i++) {
-        var questPanel = $.CreatePanel("Panel", questContent, "");
-        questPanel.AddClass("QuestPanel");
-        var questNameLabel = $.CreatePanel("Label", questPanel, "");
-        questNameLabel.AddClass("QuestName");
-        questNameLabel.text = $.Localize("#" + name[i]);
-        var countLabel = $.CreatePanel("Label", questPanel, "");
-        countLabel.AddClass("QuestCount");
-        countLabel.text = "0";
-        var questCountLabel = $.CreatePanel("Label", questPanel, "");
-        questCountLabel.AddClass("QuestCount");
-        questCountLabel.text = "/"+ require[i];
-        var rewardPanel = $.CreatePanel("Panel", questPanel, "");
-        rewardPanel.AddClass("QuestRewardPanel");
-        var rewardLabel = $.CreatePanel("Label", rewardPanel, "");
-        rewardLabel.AddClass("QuestReward");
-        rewardLabel.text = $.Localize("#reward");
-        var item = $.CreatePanel('DOTAItemImage', rewardPanel, '');
-        var itemName = reward[i];
-        item.itemname = itemName;
-        item.AddClass("ItemLabel");
-        SetAbilityButtonTooltipEvents(item,itemName);
-        questList[name[i]] = questPanel;
-        countList[name[i]] = countLabel;
-    }
+    var questPanel = $.CreatePanel("Panel", questContent, "");
+    questPanel.AddClass("QuestPanel");
+    questList[data.quest_name] = questPanel;
+    var questNameLabel = $.CreatePanel("Label", questPanel, "");
+    questNameLabel.AddClass("QuestName");
+    questNameLabel.text = $.Localize("#" + data.quest_name);
+    var countLabel = $.CreatePanel("Label", questPanel, "");
+    countLabel.AddClass("QuestCount");
+    countLabel.text = "0";
+    countList[data.quest_name] = countLabel;
+    var questCountLabel = $.CreatePanel("Label", questPanel, "");
+    questCountLabel.AddClass("QuestCount");
+    questCountLabel.text = "/"+ data.demand_count;
+    var rewardPanel = $.CreatePanel("Panel", questPanel, "");
+    rewardPanel.AddClass("QuestRewardPanel");
+    var rewardLabel = $.CreatePanel("Label", rewardPanel, "");
+    rewardLabel.AddClass("QuestReward");
+    rewardLabel.text = $.Localize("#reward");
+    var item = $.CreatePanel('DOTAItemImage', rewardPanel, '');
+    var itemName = data.reward_content;
+    item.itemname = itemName;
+    item.AddClass("ItemLabel");
+    SetAbilityButtonTooltipEvents(item,itemName);
+    questPanel.SetHasClass( "quest_flyout", true );
+}
+function DestoryQuest(data) {
+    var questPanel = questList[data.quest_name]
+    questPanel.SetHasClass( "quest_flyout", false );
+    $.Schedule(0.2, function(){questPanel.DeleteAsync(0)});
 }
 function SetAbilityButtonTooltipEvents(button, name) {
     button.SetPanelEvent("onmouseover", function() {
@@ -85,13 +73,14 @@ function ShowQuest()
 (function () {
     GameUI.CustomUIConfig().quest = false;
     $.Schedule(21, function(){
-        CreateQuest();
+        //CreateQuest();
         SetFlyoutQuestVisible( false );
         TimeRemaining();
         Game.AddCommand( "QUEST", ShowQuest, "", 0 );
-        CustomNetTables.SubscribeNetTableListener( "quest",UpdataQuest );
+        //CustomNetTables.SubscribeNetTableListener( "quest",UpdataQuest );
     });
     //$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 })();
-//GameEvents.Subscribe( "create_quest", CreateQuest);
-//GameEvents.Subscribe( "updata_quest", UpdataQuest);
+GameEvents.Subscribe( "create_quest", CreateQuest);
+GameEvents.Subscribe( "destory_quest", DestoryQuest);
+GameEvents.Subscribe( "updata_quest", UpdataQuest);

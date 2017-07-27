@@ -131,17 +131,17 @@ function GuardingAthena:OnEntityKilled( event )
 			end)
 	    end)
 	end
-	if killedUnit:GetUnitName() == "boss_fire_demon" then
+	if killedUnit:GetUnitName() == "fire_demon" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
 	    for _,unit in ipairs(units) do
 	    	PropertySystem(unit,3,RandomInt(5, 10))
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
-	    	local point = Entities:FindByName( nil, "boss_fire_demon_reborn" ):GetAbsOrigin()
-	    	PrecacheUnitByNameAsync("boss_fire_demon",
+	    	local point = Entities:FindByName( nil, "fire_demon_reborn" ):GetAbsOrigin()
+	    	PrecacheUnitByNameAsync("fire_demon",
 			    function()
-					local unit = CreateUnitByName("boss_fire_demon", point, true, nil, nil, DOTA_TEAM_BADGUYS )
+					local unit = CreateUnitByName("fire_demon", point, true, nil, nil, DOTA_TEAM_BADGUYS )
 			end)
 	    end)
 	end

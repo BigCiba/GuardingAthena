@@ -20,51 +20,51 @@ function Quest:OnUnitKilled(t)
 	if killerUnit:IsRealHero() then
 		playerID = killerUnit:GetPlayerID()
 	end
-	if killedUnit and string.find(killedUnit:GetUnitName(), "boss_kobold") and killerUnit.onQuestKobold and not killerUnit.completeQuestKobold then
+	if killedUnit and string.find(killedUnit:GetUnitName(), "kobold_lord") and killerUnit.onQuestKobold and not killerUnit.completeQuestKobold then
     	if killerUnit.KoboldCount == 3 then
     		killerUnit.completeQuestKobold = true
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableKobold",count=3,create=false,finish=false} )
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillKoboldLord",count=3,create=false,finish=false} )
 		else 
 			if killerUnit.KoboldCount == nil then
 				killerUnit.KoboldCount = 1
 			end
 			killerUnit.KoboldCount = killerUnit.KoboldCount + 1
 			print(killerUnit.KoboldCount)
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableKobold",count=killerUnit.KoboldCount-1,create=false,finish=false} )
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillKoboldLord",count=killerUnit.KoboldCount-1,create=false,finish=false} )
 		end
     end
-    if killedUnit and string.find(killedUnit:GetUnitName(), "boss_beast") and killerUnit.onQuestBeast and not killerUnit.completeQuestBeast then
+    if killedUnit and string.find(killedUnit:GetUnitName(), "hell_beast") and killerUnit.onQuestBeast and not killerUnit.completeQuestBeast then
     	if killerUnit.BeastCount == 2 then
     		killerUnit.completeQuestBeast = true
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableBeast",count=killerUnit.BeastCount,create=false,finish=false} )
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillHellBeast",count=killerUnit.BeastCount,create=false,finish=false} )
 		else 
 			if killerUnit.BeastCount == nil then
 				killerUnit.BeastCount = 1
 			end
 			killerUnit.BeastCount = killerUnit.BeastCount + 1
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableBeast",count=killerUnit.BeastCount-1,create=false,finish=false} )
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillHellBeast",count=killerUnit.BeastCount-1,create=false,finish=false} )
 		end
     end
-    if killedUnit and string.find(killedUnit:GetUnitName(), "boss_golem") and killerUnit.onQuestGolem and not killerUnit.completeQuestGolem then
+    if killedUnit and string.find(killedUnit:GetUnitName(), "ancient_golem") and killerUnit.onQuestGolem and not killerUnit.completeQuestGolem then
     	killerUnit.completeQuestGolem = true
-    	CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableGolem",count=1,create=false,finish=false} )
+    	CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillAcientGolem",count=1,create=false,finish=false} )
     end
-    if killedUnit and string.find(killedUnit:GetUnitName(), "boss_fire_demon") and killerUnit.onQuestDemon and not killerUnit.completeQuestDemon then
+    if killedUnit and string.find(killedUnit:GetUnitName(), "fire_demon") and killerUnit.onQuestDemon and not killerUnit.completeQuestDemon then
     	killerUnit.completeQuestDemon = true
-    	CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableDemon",count=1,create=false,finish=false} )
+    	CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillFireDemon",count=1,create=false,finish=false} )
     end
 	-- QuestOnly
     if killedUnit and string.find(killedUnit:GetUnitName(), "dragon_") and killerUnit.onQuestOnly and not killerUnit.completedQuestOnly then
     	if killerUnit.DragonCount == 15 then
     		killerUnit.completeQuestOnly = true
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableOnly",count=killerUnit.DragonCount,create=false,finish=false} )
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillDragon",count=killerUnit.DragonCount,create=false,finish=false} )
     		SetQuestKillCount(playerID,killerUnit.DragonCount+1,15,5)
 		else 
 			if killerUnit.DragonCount == nil then
 				killerUnit.DragonCount = 1
 			end
 			killerUnit.DragonCount = killerUnit.DragonCount + 1
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableOnly",count=killerUnit.DragonCount-1,create=false,finish=false} )
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillDragon",count=killerUnit.DragonCount-1,create=false,finish=false} )
 			--SetQuestKillCount(playerID,killerUnit.DragonCount,15,5)
 		end
     end
@@ -94,7 +94,7 @@ function QuestSolo( trigger )
 				local newItem = CreateItem("item_yunshizhaohuan", caster, caster)
 	            caster:AddItem(newItem)
 	            caster.questcount = caster.questcount - 1
-				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableDemon",count=1,create=false,finish=true} )
+				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillFireDemon",count=1,create=false,finish=true} )
 	            --CloseQuest(playerID,4,caster.questcount)
 			else
 				--quester:DestroyAllSpeechBubbles()
@@ -108,8 +108,8 @@ function QuestSolo( trigger )
 			CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=quester:GetEntityIndex(),text='QuestDemon',duration=5})
 			local questCount = caster.questcount or 0
 			caster.questcount = questCount + 1
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableDemon",count=0,create=true,finish=false} )
-			--SetQuest(playerID,"QuestTableDemon",1,caster.questcount,4)
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillFireDemon",count=0,create=true,finish=false} )
+			--SetQuest(playerID,"KillFireDemon",1,caster.questcount,4)
 		end
 	end
 end
@@ -140,7 +140,7 @@ function QuestEasy( trigger )
 						local newItem = CreateItem("item_hexin", caster, caster)
                     	caster:AddItem(newItem)
 						caster.questcount = caster.questcount - 1
-						CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableGolem",count=1,create=false,finish=true} )
+						CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillAcientGolem",count=1,create=false,finish=true} )
                     	--CloseQuest(playerID,3,caster.questcount)
 					else
 						--quester:DestroyAllSpeechBubbles()
@@ -154,8 +154,8 @@ function QuestEasy( trigger )
 					CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=quester:GetEntityIndex(),text='QuestGolem',duration=5})
 					local questCount = caster.questcount or 0
 					caster.questcount = questCount + 1
-					CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableGolem",count=0,create=true,finish=false} )
-					--SetQuest(playerID,"QuestTableGolem",1,caster.questcount,3)
+					CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillAcientGolem",count=0,create=true,finish=false} )
+					--SetQuest(playerID,"KillAcientGolem",1,caster.questcount,3)
 				end
 			end
 		else
@@ -175,7 +175,7 @@ function QuestEasy( trigger )
 					local newItem = CreateItem("item_xiongpi", caster, caster)
                     caster:AddItem(newItem)
                     caster.questcount = caster.questcount - 1
-					CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableBeast",count=2,create=false,finish=true} )
+					CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillHellBeast",count=2,create=false,finish=true} )
                     --CloseQuest(playerID,2,caster.questcount)
 				else
 					--quester:DestroyAllSpeechBubbles()
@@ -189,8 +189,8 @@ function QuestEasy( trigger )
 				CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=quester:GetEntityIndex(),text='QuestBeast',duration=5})
 				local questCount = caster.questcount or 0
 				caster.questcount = questCount + 1
-				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableBeast",count=0,create=true,finish=false} )
-				--SetQuest(playerID,"QuestTableBeast",2,caster.questcount,2)
+				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillHellBeast",count=0,create=true,finish=false} )
+				--SetQuest(playerID,"KillHellBeast",2,caster.questcount,2)
 			end
 		end
 	else
@@ -209,7 +209,7 @@ function QuestEasy( trigger )
 				local newItem = CreateItem("item_zhanqi", caster, caster)
                 caster:AddItem(newItem)
                 caster.questcount = caster.questcount - 1
-				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableKobold",count=3,create=false,finish=true} )
+				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillKoboldLord",count=3,create=false,finish=true} )
                 --CloseQuest(playerID,1,caster.questcount)
 			else
 				--quester:DestroyAllSpeechBubbles()
@@ -223,8 +223,8 @@ function QuestEasy( trigger )
 			CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=quester:GetEntityIndex(),text='QuestKobold',duration=5})
 			local questCount = caster.questcount or 0
 			caster.questcount = questCount + 1
-			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableKobold",count=0,create=true,finish=false} )
-			--SetQuest(playerID,"QuestTableKobold",3,caster.questcount,1)
+			CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillKoboldLord",count=0,create=true,finish=false} )
+			--SetQuest(playerID,"KillKoboldLord",3,caster.questcount,1)
 		end
 	end
 end
@@ -317,7 +317,7 @@ function QuestOnly( trigger )
 		            	caster:AddItem(newItem)
 					end
 					caster.questcount = caster.questcount - 1
-					CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableOnly",count=15,create=false,finish=true} )
+					CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillDragon",count=15,create=false,finish=true} )
 					--CloseQuest(playerID,5,caster.questcount)
 				else
 					--quester:DestroyAllSpeechBubbles()
@@ -331,8 +331,8 @@ function QuestOnly( trigger )
 				CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=quester:GetEntityIndex(),text='QuestOnly',duration=5})
 				local questCount = caster.questcount or 0
 				caster.questcount = questCount + 1
-				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableOnly",count=0,create=true,finish=false} )
-				--SetQuest(playerID,"QuestTableOnly",15,caster.questcount,5)
+				CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="KillDragon",count=0,create=true,finish=false} )
+				--SetQuest(playerID,"KillDragon",15,caster.questcount,5)
 			end
 		end
 	else

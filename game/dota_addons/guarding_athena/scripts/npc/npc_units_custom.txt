@@ -1353,7 +1353,7 @@
 		"Ability16"	""
 	}
 
-	"boss_kobold"
+	"kobold_lord"
 	{
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"
@@ -1364,7 +1364,7 @@
 		// 单位等级
 		"Level"	"10"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_beast_aura"
+		"Ability1"	"hell_beast_aura"
 		"IsNeutralUnitType"	"1"
 		"WakesNeutrals"	"1"
 		"MinimapIcon"	"minimap_creep"
@@ -1563,7 +1563,7 @@
 		"Ability16"	""
 	}
 
-	"boss_beast"
+	"hell_beast"
 	{
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl"
@@ -1678,7 +1678,7 @@
 		"Ability16"	""
 	}
 
-	"boss_golem"
+	"ancient_golem"
 	{
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
@@ -3096,7 +3096,7 @@
 		"Ability16"	""
 	}
 
-	"boss_fire_demon"
+	"fire_demon"
 	{
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/warlock/golem/hellsworn_golem/hellsworn_golem.vmdl"

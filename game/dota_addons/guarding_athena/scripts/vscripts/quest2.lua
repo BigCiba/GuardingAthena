@@ -1,3 +1,8 @@
+local ACCEPT = 0
+local INPROGRESS = 1
+local FINISH = 2
+local NOQUEST =3
+local FAIL = 4
 if Quest == nil then
   	Quest = {}
   	Quest.__index = Quest
@@ -18,16 +23,20 @@ function QuestTriggerNpc( t )
 			-- 是否已接受或完成任务
 			if caster[questName] == nil then
 				-- 判断前置条件
-				if Quest:FrontRequireCheck(questName, questInfo, caster) then
+				if Quest:FrontRequireCheck(caster, questName, questInfo) then
 					Quest:AddQuest(caster, npc, questName, questInfo)
+					Quest:ShowDialog(caster, npc, questName, ACCEPT)
+					break
 				end
 			else
 				local currentQuest = caster[questName]
-				if currentQuest.reamainCount < currentQuest.demandCount then
-					self:ShowQuestDialog(false)
-				else
-					self:Finish(caster)
-					self:ShowQuestDialog(true)
+				if caster[questName].completed == false then
+					Quest:ShowDialog(caster, npc, questName, INPROGRESS)
+					break
+				elseif caster[questName].getReward == false then
+					Quest:Finish(caster, questName)
+					Quest:ShowDialog(caster, npc, questName, FINISH)
+					break
 				end
 			end
 		end
@@ -35,13 +44,15 @@ function QuestTriggerNpc( t )
 end
 -- 前置条件检测
 -- 等级,任务,其他
-function Quest:FrontRequireCheck(questName, questInfo, caster)
+function Quest:FrontRequireCheck(caster, questName, questInfo)
 	if questInfo.frontRequireType == "" then
 		return true
 	elseif questInfo.frontRequireType == "quest" then
 		-- 是否满足前置条件
 		if caster[questInfo.frontRequire] then
-			return true
+			if caster[questInfo.frontRequire].getReward then
+				return true
+			end
 		end
 	elseif questInfo.frontRequireType == "level" then
 		if caster:GetLevel() >= questInfo.frontRequire then
@@ -54,13 +65,11 @@ end
 -- 将任务信息绑定在单位身上，并标记为未完成
 function Quest:AddQuest(caster, npc, questName, questInfo)
 	questInfo["reamainCount"] = 0
-	questInfo["demandCount"] = questInfo.demandCount
+	questInfo["getReward"] = false
 	questInfo["completed"] = false
 	questInfo["npc"] = npc
 	caster[questName] = questInfo
-	local playerID = caster:GetPlayerID()
-	CustomNetTables:SetTableValue( "quest", tostring(playerID), {name="QuestTableKobold",count=0,create=true,finish=false} )
-	CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=npc:GetEntityIndex(),text='OnQuestKobold',duration=5})
+	self:CreateUI(caster,questName)
 end
 -- 任务完成过程检测
 -- 击杀，收集
@@ -86,42 +95,52 @@ function Quest:OnUnitKilled(t)
 		end
 	end
 end
-function Quest:Finish(caster)
-	CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(),"avalon_display_bubble", {unit=caster:GetEntityIndex(),text='CompleteQuestKobold',duration=5})
-	local newItem = CreateItem("item_zhanqi", caster, caster)
-	caster:AddItem(newItem)
-	CustomNetTables:SetTableValue( "quest", tostring(0), {name="QuestTableKobold",count=3,create=false,finish=true} )
+function Quest:Finish(caster, questName)
+	if caster[questName].rewardType == "item" then
+		local newItem = CreateItem(caster[questName].rewardContent, caster, caster)
+		caster:AddItem(newItem)
+		self:DestoryUI(caster, questName)
+		caster[questName].getReward = true
+	end
 end
 
 function Quest:DeCount(killer, questName)
 	killer[questName].reamainCount = killer[questName].reamainCount + 1
 	if killer[questName].reamainCount >= killer[questName].demandCount then
 		killer[questName].reamainCount = killer[questName].demandCount
-		CustomNetTables:SetTableValue( "quest", tostring(0), {name="QuestTableKobold",count=killer[questName].reamainCount,create=false,finish=false} )
+		killer[questName].completed = true
 	end
+	self:UpdataUI(killer, questName)
 end
-function Quest:ShowQuestDialog(  )
-	-- body
-end
-
-function Quest:delete()
-	for k,v in pairs(self) do
-		self[k] = nil;
+function Quest:ShowDialog( caster, npc, questName, showType )
+	local player = caster:GetPlayerOwner()
+	local showerIndex = npc:GetEntityIndex()
+	local showContent = questName
+	if showType == ACCEPT then
+		showContent = questName.."Accept"
+	elseif showType == INPROGRESS then
+		showContent = questName.."Inprogress"
+	elseif showType == FINISH then
+		showContent = questName.."Finish"
+	elseif showType == NOQUEST then
+		showContent = questName.."Noquest"
+	elseif showType == FAIL then
+		showContent = questName.."Fail"
 	end
+	CustomGameEventManager:Send_ServerToPlayer(player,"avalon_display_bubble", {unit=showerIndex,text=showContent,duration=5})
 end
-
-function QuestEasy( trigger )
-	local caster = trigger.activator;
-	local playerID = caster:GetPlayerID()
-	local npc = Entities:FindByName( nil, "quest_easy" )
-	local quest1 = {
-		["Type"] = "Kill",
-		["Name"] = "杀死恶魔",
-		["Monster"] = "Devil",
-		["Count"] = 1,
-		["RewardItem"] = nil,
-		["RewardMoney"] = 1000,
-		["RewardScore"] = 0
-	}
-	QuestManager:addQuest(playerID,quest1)
+function Quest:CreateUI( caster, questName )
+	local player = caster:GetPlayerOwner()
+	local demandCount = caster[questName].demandCount
+	local rewardContent = caster[questName].rewardContent
+	CustomGameEventManager:Send_ServerToPlayer(player,"create_quest", {quest_name=questName,demand_count=demandCount,reward_content=rewardContent})
+end
+function Quest:DestoryUI( caster, questName )
+	local player = caster:GetPlayerOwner()
+	CustomGameEventManager:Send_ServerToPlayer(player,"destory_quest", {quest_name=questName})
+end
+function Quest:UpdataUI( caster, questName )
+	local player = caster:GetPlayerOwner()
+	local reamainCount = caster[questName].reamainCount
+	CustomGameEventManager:Send_ServerToPlayer(player,"updata_quest", {quest_name=questName,reamain_count=reamainCount})
 end
