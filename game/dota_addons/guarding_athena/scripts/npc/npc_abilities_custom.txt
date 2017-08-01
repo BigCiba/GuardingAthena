@@ -13962,7 +13962,7 @@
 			}
 			"modifier_quest_aura_buff"
 			{
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"RunScript"

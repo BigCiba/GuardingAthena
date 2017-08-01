@@ -8484,6 +8484,7 @@
 				"bonus_attack_speed"	"150"
 			}
 		}
+		"ActiveDescriptionLine"	"1"
 	}
 
 	"item_craft_dun"
@@ -12520,7 +12521,7 @@
 		}
 	}
 
-	"item_duochong"
+	"item_npc_dota_hero_windrunner"
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
@@ -12599,7 +12600,7 @@
 		"ItemRequirements"	{}
 	}
 
-	"item_duochong1"
+	"item_npc_dota_hero_windrunner1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -12665,17 +12666,17 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_duochong1"
+		"ItemResult"	"item_npc_dota_hero_windrunner1"
 		"ItemRequirements"
 		{
-			"01"	"item_duochong;item_original_agi_15"
+			"01"	"item_npc_dota_hero_windrunner;item_original_agi_15"
 		}
 	}
 
 	// Rewrite of Skull Basher
 	// Author: Rook
 	// Date: February 1, 2015
-	"item_zhuanshupa"
+	"item_npc_dota_hero_phantom_assassin"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -12726,7 +12727,7 @@
 		}
 	}
 
-	"item_zhuanshupa1"
+	"item_npc_dota_hero_phantom_assassin1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -12797,14 +12798,14 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshupa1"
+		"ItemResult"	"item_npc_dota_hero_phantom_assassin1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshupa;item_original_agi_15"
+			"01"	"item_npc_dota_hero_phantom_assassin;item_original_agi_15"
 		}
 	}
 
-	"item_zhuanshuok"
+	"item_npc_dota_hero_omniknight"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshuok"
@@ -12860,7 +12861,7 @@
 		"AbilityDuration"	"10.0"
 	}
 
-	"item_zhuanshuok1"
+	"item_npc_dota_hero_omniknight1"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshuok1"
@@ -12937,10 +12938,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshuok1"
+		"ItemResult"	"item_npc_dota_hero_omniknight1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshuok;item_original_str_15"
+			"01"	"item_npc_dota_hero_omniknight;item_original_str_15"
 		}
 	}
 
@@ -13458,7 +13459,7 @@
 		}
 	}
 
-	"item_zhuanshurb"
+	"item_npc_dota_hero_rubick"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13516,7 +13517,7 @@
 		}
 	}
 
-	"item_zhuanshurb1"
+	"item_npc_dota_hero_rubick1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13642,14 +13643,14 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshurb1"
+		"ItemResult"	"item_npc_dota_hero_rubick1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshurb;item_original_int_15"
+			"01"	"item_npc_dota_hero_rubick;item_original_int_15"
 		}
 	}
 
-	"item_zhuanshujugg1"
+	"item_npc_dota_hero_juggernaut1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13698,13 +13699,13 @@
 							"ApplyModifier"
 							{
 								"Target"	"TARGET"
-								"ModifierName"	"modifier_item_zhuanshujugg1"
+								"ModifierName"	"modifier_item_npc_dota_hero_juggernaut1"
 							}
 						}
 					}
 				}
 			}
-			"modifier_item_zhuanshujugg1"
+			"modifier_item_npc_dota_hero_juggernaut1"
 			{
 				"Duration"	"0.5"
 				"IsDebuff"	"1"
@@ -13776,15 +13777,15 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshujugg1"
+		"ItemResult"	"item_npc_dota_hero_juggernaut1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshujugg;item_original_agi_15"
+			"01"	"item_npc_dota_hero_juggernaut;item_original_agi_15"
 		}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	}
 
-	"item_zhuanshujugg"
+	"item_npc_dota_hero_juggernaut"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13832,7 +13833,7 @@
 		}
 	}
 
-	"item_zhuanshudh1"
+	"item_npc_dota_hero_antimage1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13917,7 +13918,7 @@
 		}
 	}
 
-	"item_zhuanshusf1"
+	"item_npc_dota_hero_nevermore1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13997,7 +13998,7 @@
 		}
 	}
 
-	"item_zhuanshulina1"
+	"item_npc_dota_hero_lina1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14093,7 +14094,7 @@
 		}
 	}
 
-	"item_zhuanshulegion1"
+	"item_npc_dota_hero_legion_commander1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14173,7 +14174,7 @@
 		}
 	}
 
-	"item_zhuanshufs1"
+	"item_npc_dota_hero_ember_spirit1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14253,7 +14254,7 @@
 		}
 	}
 
-	"item_zhuanshuta1"
+	"item_npc_dota_hero_templar_assassin1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14333,7 +14334,7 @@
 		}
 	}
 
-	"item_zhuanshucm1"
+	"item_npc_dota_hero_crystal_maiden1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14429,10 +14430,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshudh1"
+		"ItemResult"	"item_npc_dota_hero_antimage1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshudh;item_original_agi_15"
+			"01"	"item_npc_dota_hero_antimage;item_original_agi_15"
 		}
 	}
 
@@ -14452,10 +14453,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshusf1"
+		"ItemResult"	"item_npc_dota_hero_nevermore1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshusf;item_original_str_15"
+			"01"	"item_npc_dota_hero_nevermore;item_original_str_15"
 		}
 	}
 
@@ -14475,10 +14476,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshulina1"
+		"ItemResult"	"item_npc_dota_hero_lina1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshulina;item_original_int_15"
+			"01"	"item_npc_dota_hero_lina;item_original_int_15"
 		}
 	}
 
@@ -14498,10 +14499,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshulegion1"
+		"ItemResult"	"item_npc_dota_hero_legion_commander1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshulegion;item_original_str_15"
+			"01"	"item_npc_dota_hero_legion_commander;item_original_str_15"
 		}
 	}
 
@@ -14521,10 +14522,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshufs1"
+		"ItemResult"	"item_npc_dota_hero_ember_spirit1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshufs;item_original_agi_15"
+			"01"	"item_npc_dota_hero_ember_spirit;item_original_agi_15"
 		}
 	}
 
@@ -14544,10 +14545,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshuta1"
+		"ItemResult"	"item_npc_dota_hero_templar_assassin1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshuta;item_original_agi_15"
+			"01"	"item_npc_dota_hero_templar_assassin;item_original_agi_15"
 		}
 	}
 
@@ -14567,14 +14568,14 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_zhuanshucm1"
+		"ItemResult"	"item_npc_dota_hero_crystal_maiden1"
 		"ItemRequirements"
 		{
-			"01"	"item_zhuanshucm;item_original_int_15"
+			"01"	"item_npc_dota_hero_crystal_maiden;item_original_int_15"
 		}
 	}
 
-	"item_zhuanshudh"
+	"item_npc_dota_hero_antimage"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshudh"
@@ -14615,7 +14616,7 @@
 		}
 	}
 
-	"item_zhuanshusf"
+	"item_npc_dota_hero_nevermore"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshusf"
@@ -14656,7 +14657,7 @@
 		}
 	}
 
-	"item_zhuanshulina"
+	"item_npc_dota_hero_lina"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_orchid"
@@ -14697,7 +14698,7 @@
 		}
 	}
 
-	"item_zhuanshulegion"
+	"item_npc_dota_hero_legion_commander"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_heavens_halberd"
@@ -14738,7 +14739,7 @@
 		}
 	}
 
-	"item_zhuanshufs"
+	"item_npc_dota_hero_ember_spirit"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshufs"
@@ -14779,7 +14780,7 @@
 		}
 	}
 
-	"item_zhuanshuta"
+	"item_npc_dota_hero_templar_assassin"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshuta"
@@ -14820,7 +14821,7 @@
 		}
 	}
 
-	"item_zhuanshucm"
+	"item_npc_dota_hero_crystal_maiden"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/zhuanshucm"

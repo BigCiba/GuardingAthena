@@ -103,6 +103,7 @@
 	"KillAcientGolemNoquest"				"我已经没有任务给你了。"
 	"KillFireDemonNoquest"					"我已经没有任务给你了。"
 	"KillDragonNoquest"						"你已经完成了专属任务。"
+	"Noquest"								"我已经没有任务给你了。"
 
 	"KillDragonFail"						"请转生之后再来把。"
 

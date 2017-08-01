@@ -21,6 +21,7 @@
 	SetCamera
 	SetRegionLimit
 	PrintTable
+	string.split
 ]]
 -- 造成伤害
 -- 填写ability会判定为技能伤害
@@ -75,7 +76,7 @@ function PropertySystem( ... )
 		caster:ModifyAgility(count)
 		caster:ModifyIntellect(count)
 	end
-	if duration > 0 then
+	if duration then
 		Timers:CreateTimer(duration,function ()
 		 	if property == 0 then
 			 	caster:ModifyStrength(-count)
@@ -579,3 +580,16 @@ function CreateNumberEffect( ... )
     ParticleManager:SetParticleControl(particle,2,Vector(duration,number_count,0))
     ParticleManager:SetParticleControl(particle,3,color_vec)
 end
+function string.split(input, delimiter)  
+    input = tostring(input)  
+    delimiter = tostring(delimiter)  
+    if (delimiter=='') then return false end  
+    local pos,arr = 0, {}  
+    -- for each divider found  
+    for st,sp in function() return string.find(input, delimiter, pos, true) end do  
+        table.insert(arr, string.sub(input, pos, st - 1))  
+        pos = sp + 1  
+    end  
+    table.insert(arr, string.sub(input, pos))  
+    return arr  
+end  

@@ -185,7 +185,14 @@ function GuardingAthena:ItemAddedFilter( keys )
 		end
 		PlayerResource:ModifyGold(playerID,5000, true, 0)
 		return false
+	-- 专属装备
+	elseif currentItemName == "item_zhuanshu" then
 	-- 戒指
+		local currentUnitName = currentUnit:GetUnitName()
+		local newItemName = "item_"..currentUnitName
+		local item = CreateItem(newItemName, currentUnit, currentUnit)
+		currentUnit:AddItem(item)
+		return false
 	elseif currentItemName == "item_ring_shop" then
 		--[[
 			6-8     晨辉      生命魔法回复6%/s          晨辉+宝石       受到伤害时有25%%的几率回复10%%的生命

@@ -34,6 +34,7 @@ function CreateQuest(data){
     item.AddClass("ItemLabel");
     SetAbilityButtonTooltipEvents(item,itemName);
     questPanel.SetHasClass( "quest_flyout", true );
+    ShowQuest()
 }
 function DestoryQuest(data) {
     var questPanel = questList[data.quest_name]

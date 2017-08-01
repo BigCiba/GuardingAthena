@@ -39,11 +39,11 @@
     "KillFireDemon"
     {
         "triggerType"       "npc"
-        "triggerName"       ""
+        "triggerName"       "cuihua"
         "frontRequireType"  ""
         "frontRequire"      ""
         "questType"         "kill"
-        "targetName"        "fire_demon"
+        "targetName"        "boss_fire_demon"
         "demandCount"       "1"
         "rewardType"        "item"
         "rewardContent"     "item_yunshizhaohuan"
@@ -51,11 +51,15 @@
     "KillDragon"
     {
         "triggerType"       "npc"
-        "triggerName"       ""
+        "triggerName"       "bajie"
         "frontRequireType"  "level"
         "frontRequire"      "101"
         "questType"         "kill"
-        "targetName"        "dragon"
+        "targetName"        {
+                                "1"    "dragon_1"
+                                "2"    "dragon_2"
+                                "3"    "dragon_3"
+                            }
         "demandCount"       "15"
         "rewardType"        "item"
         "rewardContent"     "item_zhuanshu"

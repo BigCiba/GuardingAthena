@@ -131,17 +131,17 @@ function GuardingAthena:OnEntityKilled( event )
 			end)
 	    end)
 	end
-	if killedUnit:GetUnitName() == "fire_demon" then
+	if killedUnit:GetUnitName() == "boss_fire_demon" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
 	    for _,unit in ipairs(units) do
 	    	PropertySystem(unit,3,RandomInt(5, 10))
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
-	    	local point = Entities:FindByName( nil, "fire_demon_reborn" ):GetAbsOrigin()
-	    	PrecacheUnitByNameAsync("fire_demon",
+	    	local point = Entities:FindByName( nil, "boss_fire_demon_reborn" ):GetAbsOrigin()
+	    	PrecacheUnitByNameAsync("boss_fire_demon",
 			    function()
-					local unit = CreateUnitByName("fire_demon", point, true, nil, nil, DOTA_TEAM_BADGUYS )
+					local unit = CreateUnitByName("boss_fire_demon", point, true, nil, nil, DOTA_TEAM_BADGUYS )
 			end)
 	    end)
 	end
@@ -468,6 +468,10 @@ function GuardingAthena:OnPlayerChat(keys)
 	if text == "getlocation" then
 		print(tostring(PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()))
 	end 
+	if text == "getdisobb" then
+		local dis = CalcDistanceBetweenEntityOBB(PlayerResource:GetPlayer(playerid):GetAssignedHero(), Entities:FindByName(nil, "boss_sandking_reborn"))
+		print(dis)
+	end 
 	if text == "getscore" then
 		updateScore(function()
 			print("haha")
@@ -523,7 +527,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
 		hero:AddItem(CreateItem("item_dun_5", hero, hero))
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
-		hero:AddItem(CreateItem("item_zhuanshuok1", hero, hero))
+		hero:AddItem(CreateItem("item_npc_dota_hero_omniknight1", hero, hero))
 	end
 	if string.sub(text,0,9) == "autospawn" then
 		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()

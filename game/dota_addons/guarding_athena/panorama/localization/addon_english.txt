@@ -98,6 +98,7 @@
 	"KillAcientGolemNoquest"	"I have no more quest for you."
 	"KillFireDemonNoquest"	"I have no more quest for you."
 	"KillDragonNoquest"	"You have completed your own task."
+	"Noquest"								"I have no more quest for you."
 	"KillDragonFail"	"Please come back after reincarnation."
 	"shop"	"Shop"
 	"def_point"	"Guard Point"

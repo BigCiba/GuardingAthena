@@ -183,19 +183,6 @@ function GuardingAthena:ReadGameConfiguration()
 	for k,v in pairs(AbilityTable) do
 		CustomNetTables:SetTableValue( "ability_table", k, v )
 	end
-	-- 任务
-	local questInfo = LoadKeyValues("scripts/kv/quest_list.kv")
-	local questTable = {}
-	local exclusive = {}
-	for k,v in pairs(questInfo) do
-		questTable[k] = {}
-		for i=1,5 do
-			table.insert(questTable[k], v[tostring(i)])
-		end
-	end
-	for k,v in pairs(questTable) do
-		CustomNetTables:SetTableValue( "quest", k, v )
-	end
 	-- 商店
 	local shopInfo = LoadKeyValues("scripts/kv/shop.kv")
 	local costInfo = LoadKeyValues("scripts/npc/npc_items_custom.txt")
@@ -336,12 +323,6 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 		if self.testmode then
 			return
 		end
-		--喷泉
-		Timers:CreateTimer(function()
-			local entity = Entities:FindByName( nil, "fountain" )
-			CreateParticle("particles/econ/items/kunkka/kunkka_torrent_base/kunkka_spell_torrent_splash_econ.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,entity,4)
-			return 4
-		end)
 		-- 开始刷怪
 		Spawner:AutoSpawn()
 		Spawner:NatureStart()

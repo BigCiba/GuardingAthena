@@ -53,7 +53,7 @@ function EndlessOffensive( t )
                             unit:AddItem(newItem)
                         end
                     end
-                    SetUnitPosition(UnitCanRespawn(),target:GetAbsOrigin() + Vector(RandomInt(-200, 200),RandomInt(-200, 200),0))
+                    SetUnitPosition(unit,target:GetAbsOrigin() + Vector(RandomInt(-200, 200),RandomInt(-200, 200),0))
                     unit:RemoveModifierByName("modifier_endless_offensive_debuff")
                     unit:MoveToTargetToAttack(target)
                     unit:RemoveNoDraw()

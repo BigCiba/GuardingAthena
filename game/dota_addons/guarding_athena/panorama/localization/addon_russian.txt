@@ -98,6 +98,7 @@
 	"KillAcientGolemNoquest"	"У меня больше нет заданий!"
 	"KillFireDemonNoquest"	"У меня больше нет заданий."
 	"KillDragonNoquest"	"Вы справились с задачей!"
+	"Noquest"								"У меня больше нет заданий!"
 	"KillDragonFail"	"Пожалуйста, вернитесь после Реинкарнации."
 	"shop"	"Shop"
 	"def_point"	"Guard Point"
