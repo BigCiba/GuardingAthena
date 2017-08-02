@@ -82,7 +82,6 @@ function GuardingAthena:ExecuteOrderFilter( args )
 	end
 	return true
 end
-
 function GuardingAthena:DamageFilter( args )
 	--PrintTable(args)
 	local damage = args.damage
