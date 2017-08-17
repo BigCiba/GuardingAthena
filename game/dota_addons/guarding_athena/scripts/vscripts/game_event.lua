@@ -332,15 +332,17 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		-- vip
 		local req = CreateHTTPRequestScriptVM("GET", "http://106.14.56.2/haha2.php" )
 		req:Send(function(result)
-			local vipTable = JSON:decode(result.Body)
-			local heroEntity = EntIndexToHScript(keys.heroindex)
-			local player = heroEntity:GetPlayerOwner()
-			local playerID = heroEntity:GetPlayerID()
-			for k,v in pairs(vipTable) do
-				if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
-					player.gold_gift = true
-					player.potion_gift = true
-					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
+			if #result > 0 then
+				local vipTable = JSON:decode(result.Body)
+				local heroEntity = EntIndexToHScript(keys.heroindex)
+				local player = heroEntity:GetPlayerOwner()
+				local playerID = heroEntity:GetPlayerID()
+				for k,v in pairs(vipTable) do
+					if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
+						player.gold_gift = true
+						player.potion_gift = true
+						CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
+					end
 				end
 			end
 		end)
@@ -367,11 +369,13 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	-- vip
 	local req = CreateHTTPRequestScriptVM("GET", "http://106.14.56.2/haha2.php" )
 	req:Send(function(result)
-		local vipTable = JSON:decode(result.Body)
-		--PrintTable(vipTable)
-		for k,v in pairs(vipTable) do
-			if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
-				CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+		if #result > 0 then
+			local vipTable = JSON:decode(result.Body)
+			--PrintTable(vipTable)
+			for k,v in pairs(vipTable) do
+				if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
+					CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+				end
 			end
 		end
 	end)

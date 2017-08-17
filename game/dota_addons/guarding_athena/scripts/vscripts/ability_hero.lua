@@ -35,14 +35,17 @@ function DemonHunterSpell( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 	local id = caster:GetPlayerID() + 1
+    if caster.soul_stack == nil then
+        caster.soul_stack = 0
+    end
 	ability:ApplyDataDrivenModifier(caster,caster,"modifier_demon_hunter_spell",{duration = 10})
 	local fxIndex = CreateParticle( "particles/skills/dh_demonhunter.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
 	Timers:CreateTimer(10,function ()
 		local stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
-		Demon_Hunter[id] = Demon_Hunter[id] + stackcount
+		caster.soul_stack = caster.soul_stack + stackcount
 		ParticleManager:DestroyParticle(fxIndex,false)
-		if Demon_Hunter[id] >= 100 then
-			Demon_Hunter[id] = Demon_Hunter[id] - 100
+		if caster.soul_stack >= 100 then
+			caster.soul_stack = caster.soul_stack - 100
 			caster:SetBaseStrength(caster:GetBaseStrength() + 10)
 			caster:SetBaseAgility(caster:GetBaseAgility() + 10)
 			caster:SetBaseIntellect(caster:GetBaseIntellect() + 10)
@@ -51,8 +54,8 @@ function DemonHunterSpell( keys )
 			EmitSoundOn("Hero_Terrorblade.Metamorphosis", caster)
 			local particle = CreateParticle( "particles/skills/dh_demonhunter_2.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
 			Timers:CreateTimer(5,function() ParticleManager:DestroyParticle(particle,false) end)
-			if Demon_Hunter[id] >= 100 then
-				Demon_Hunter[id] = Demon_Hunter[id] - 100
+			if caster.soul_stack >= 100 then
+				caster.soul_stack = caster.soul_stack - 100
 				caster:SetBaseStrength(caster:GetBaseStrength() + 10)
 				caster:SetBaseAgility(caster:GetBaseAgility() + 10)
 				caster:SetBaseIntellect(caster:GetBaseIntellect() + 10)

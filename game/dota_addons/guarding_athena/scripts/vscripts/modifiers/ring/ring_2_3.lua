@@ -23,19 +23,19 @@ function ring_2_3:OnAttackLanded( t )
             local caster = t.attacker
             local primaryAttribute = caster:GetPrimaryAttribute()
             if primaryAttribute == 0 then
-                local baseStr = caster:GetBaseStrength() * 0.01
+                local baseStr = caster:GetBaseStrength() * 0.02
                 caster.ring_2_3_str = caster.ring_2_3_str + baseStr
                 Timers:CreateTimer(10,function ()
                     caster.ring_2_3_str = caster.ring_2_3_str - baseStr
                 end)
             elseif primaryAttribute == 1 then
-                local baseAgi = caster:GetBaseAgility() * 0.01
+                local baseAgi = caster:GetBaseAgility() * 0.02
                 caster.ring_2_3_agi = caster.ring_2_3_agi + baseAgi
                 Timers:CreateTimer(10,function ()
                     caster.ring_2_3_agi = caster.ring_2_3_agi - baseAgi
                 end)
             elseif primaryAttribute == 2 then
-                local baseInt = caster:GetBaseIntellect() * 0.01
+                local baseInt = caster:GetBaseIntellect() * 0.02
                 caster.ring_2_3_int = caster.ring_2_3_int + baseInt
                 Timers:CreateTimer(10,function ()
                     caster.ring_2_3_int = caster.ring_2_3_int - baseInt
