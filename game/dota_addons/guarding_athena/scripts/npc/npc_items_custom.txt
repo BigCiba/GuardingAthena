@@ -1107,7 +1107,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"80"
+				"bonus_damage"	"40"
 			}
 			"02"
 			{
@@ -1186,7 +1186,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"160"
+				"bonus_damage"	"80"
 			}
 			"02"
 			{
@@ -1265,7 +1265,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"320"
+				"bonus_damage"	"120"
 			}
 			"02"
 			{
@@ -1344,7 +1344,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"640"
+				"bonus_damage"	"160"
 			}
 			"02"
 			{
@@ -1422,7 +1422,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"1280"
+				"bonus_damage"	"200"
 			}
 			"02"
 			{
@@ -9417,6 +9417,7 @@
 				"bonus_attack_speed"	"150"
 			}
 		}
+		"ActiveDescriptionLine"	"1"
 	}
 
 	"item_craft_fu"
@@ -10385,6 +10386,7 @@
 				"bonus_attack_speed"	"150"
 			}
 		}
+		"ActiveDescriptionLine"	"1"
 	}
 
 	"item_craft_chui"
@@ -12650,7 +12652,7 @@
 		}
 	}
 
-	"item_recipe_duochong1"
+	"item_recipe_npc_dota_hero_windrunner1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -12782,7 +12784,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshupa1"
+	"item_recipe_npc_dota_hero_phantom_assassin1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -12813,7 +12815,7 @@
 		"AbilityCastPoint"	"0.0"
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1048"
-		"ItemQuality"	"epic"
+		"ItemQuality"	"common"
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
@@ -12831,15 +12833,31 @@
 		}
 		"Modifiers"
 		{
-			"modifier_zhuanshuok_state"
+			"modifier_npc_dota_hero_omniknight"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_int"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+						"Function"	"ExclusiveCreate"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+						"Function"	"ExclusiveRemove"
+					}
 				}
 			}
 		}
@@ -12850,36 +12868,40 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"bonus_str"	"20"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"10"
+				"bonus_agi"	"10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_int"	"10"
 			}
 		}
 		"AbilityDuration"	"10.0"
 	}
 
-	"item_npc_dota_hero_omniknight1"
+	"item_npc_dota_hero_omniknight_up1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshuok1"
+		"AbilityTextureName"	"custom/zhuanshuok"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityCastPoint"	"0.0"
 		// Valve's version of this item uses the ID "143".
-		"ID"	"1049"
-		"ItemQuality"	"epic"
+		"ID"	"1651"
+		"ItemQuality"	"rare"
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
 		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
@@ -12894,13 +12916,9 @@
 				"IsHidden"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"200"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"200"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"4000"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"2000"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"400"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"100"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_int"
 				}
 			}
 		}
@@ -12911,38 +12929,172 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"10"
+				"bonus_str"	"40"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"400"
+				"bonus_agi"	"20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_int"	"20"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_per_str"	"5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_per_int"	"2"
 			}
 		}
 		"AbilityDuration"	"10.0"
 	}
 
-	"item_recipe_zhuanshuok1"
+	"item_npc_dota_hero_omniknight_up2"
 	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1050"
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"AbilityTextureName"	"custom/zhuanshuok"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastPoint"	"0.0"
+		// Valve's version of this item uses the ID "143".
+		"ID"	"1652"
+		"ItemQuality"	"epic"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
+		"ItemCost"	"1"
 		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_omniknight1"
-		"ItemRequirements"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemShopTags"	"damage;str;hard_to_tag"
+		"ItemRequirements"	{}
+		"precache"
 		{
-			"01"	"item_npc_dota_hero_omniknight;item_original_str_15"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"	"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+			"particle"	"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 		}
+		"Modifiers"
+		{
+			"modifier_zhuanshuok_state"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_int"
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_str"	"80"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agi"	"40"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_int"	"40"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_per_str"	"5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_per_int"	"2"
+			}
+		}
+		"AbilityDuration"	"10.0"
+	}
+
+	"item_npc_dota_hero_omniknight_up3"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"custom/zhuanshuok"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastPoint"	"0.0"
+		// Valve's version of this item uses the ID "143".
+		"ID"	"1653"
+		"ItemQuality"	"artifact"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"1"
+		"ItemPurchasable"	"0"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemShopTags"	"damage;str;hard_to_tag"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"	"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+			"particle"	"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_zhuanshuok_state"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_int"
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_str"	"160"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agi"	"80"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_int"	"80"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_per_str"	"5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_per_int"	"2"
+			}
+		}
+		"AbilityDuration"	"10.0"
 	}
 
 	"item_blood_mask_broken"
@@ -13627,7 +13779,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshurb1"
+	"item_recipe_npc_dota_hero_rubick1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -13761,7 +13913,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshujugg1"
+	"item_recipe_npc_dota_hero_juggernaut1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14414,7 +14566,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshudh1"
+	"item_recipe_npc_dota_hero_antimage1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14437,7 +14589,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshusf1"
+	"item_recipe_npc_dota_hero_nevermore1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14460,7 +14612,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshulina1"
+	"item_recipe_npc_dota_hero_lina1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14483,7 +14635,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshulegion1"
+	"item_recipe_npc_dota_hero_legion_commander1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14506,7 +14658,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshufs1"
+	"item_recipe_npc_dota_hero_ember_spirit1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14529,7 +14681,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshuta1"
+	"item_recipe_npc_dota_hero_templar_assassin1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -14552,7 +14704,7 @@
 		}
 	}
 
-	"item_recipe_zhuanshucm1"
+	"item_recipe_npc_dota_hero_crystal_maiden1"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------

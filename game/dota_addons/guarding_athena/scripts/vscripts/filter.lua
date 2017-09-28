@@ -72,7 +72,7 @@ function GuardingAthena:ExecuteOrderFilter( args )
                 if PlayerResource:GetGold(playerid) >= tombTable.cost[i] then
                     PlayerResource:SpendGold( playerid, tombTable.cost[i], 0 )
                     local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-                    PropertySystem( hero, tombTable.stat[i], tombTable.count[i], 0 )
+                    PropertySystem( hero, tombTable.stat[i], tombTable.count[i] )
                     EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
                     CreateParticle("particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,hero,1)
                 end
@@ -245,7 +245,7 @@ function GuardingAthena:ItemAddedFilter( keys )
 		return false
 	elseif string.sub(currentItemName,0,10) == "item_ring_" then
 		local id = tonumber(string.sub(currentItemName,11,12))
-		if type(id) == "number" then
+		if type(id) == "number" and currentUnit:IsRealHero() then
 			table.insert(currentUnit.ringList,id)
 		end
 	elseif currentItemName == "item_athena_momian" then

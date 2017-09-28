@@ -65,13 +65,13 @@ end
 -- 基础属性值系统
 function PropertySystem( ... )
 	local caster,property,count,duration = ...
-	if property == 0 then
+	if property == DOTA_ATTRIBUTE_STRENGTH then
 		caster:ModifyStrength(count)
-	elseif property == 1 then
+	elseif property == DOTA_ATTRIBUTE_AGILITY then
 		caster:ModifyAgility(count)
-	elseif property == 2 then
+	elseif property == DOTA_ATTRIBUTE_INTELLECT then
 		caster:ModifyIntellect(count)
-	elseif property == 3 then
+	elseif property == DOTA_ATTRIBUTE_MAX then
 		caster:ModifyStrength(count)
 		caster:ModifyAgility(count)
 		caster:ModifyIntellect(count)

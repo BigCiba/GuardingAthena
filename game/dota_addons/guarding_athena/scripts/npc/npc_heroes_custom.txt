@@ -15,25 +15,25 @@
 		// 主属性
 		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
 		// 基础力量
-		"AttributeBaseStrength"	"28"
+		"AttributeBaseStrength"	"22"
 		// 力量成长
-		"AttributeStrengthGain"	"3.0"
+		"AttributeStrengthGain"	"2.0"
 		// 基础敏捷
 		"AttributeBaseAgility"	"13"
 		// 敏捷成长
-		"AttributeAgilityGain"	"1.8"
+		"AttributeAgilityGain"	"1.4"
 		// 基础智力
 		"AttributeBaseIntelligence"	"22"
 		// 智力成长
 		"AttributeIntelligenceGain"	"2.0"
-		"AttackRate"	"1.4"
+		"AttackRate"	"1.8"
 		"AbilityLayout"	"5"
 		// Ability 1
 		"Ability1"	"thunder_power"
 		"Ability2"	"thunder_strike"
 		"Ability3"	"heal_device"
 		"Ability4"	"weightlifting"
-		"Ability5"	"void_barrier"
+		"Ability5"	"static_touch"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
 		"Ability6"	""
@@ -55,6 +55,17 @@
 		"Ability22"	"tt6"
 		"Ability23"	"tt7"
 		"Ability24"	"tt8"
+		"ArmorPhysical"	"2"
+		"StatusHealth"	"120"
+		"StatusMana"	"80"
+		"StatusHealthRegen"	"0.25"
+		"StatusManaRegen"	"0.01"
+		"StatusStartingMana"	"0"
+		"AttackDamageMin"	"26"
+		"AttackDamageMax"	"36"
+		"MagicalResistance"	"5"
+		"MovementSpeed"	"295"
+		"AttackRange"	"128"
 	}
 
 	"npc_dota_hero_windrunner_override"

@@ -3745,7 +3745,7 @@
 		// 奖励
 		// ----------------------------------------------------------------
 		// 经验奖励
-		"BountyXP"	"10000"
+		"BountyXP"	"0"
 		// 最低金钱奖励
 		"BountyGoldMin"	"1000"
 		// 最高金钱奖励
@@ -3795,7 +3795,7 @@
 			"ArmorGain"	"50"
 			"MagicResistGain"	"10"
 			"MoveSpeedGain"	"0"
-			"BountyGain"	"500"
+			"BountyGain"	"0"
 			"XPGain"	"0"
 			// 饰品设置
 			"AttachWearables"

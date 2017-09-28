@@ -282,7 +282,7 @@ function TimeRemaining(){
         $("#TimerText").text = HeroSelectionTime;
         var game_time = Math.floor(Game.GetGameTime());
         var time = game_time - StartGameTime;
-        HeroSelectionTime = 20 - time;
+        HeroSelectionTime = 2 - time;
         //$.Msg("time:" + game_time);
         $.Schedule(0.1, TimeRemaining);
     }

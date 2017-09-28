@@ -286,11 +286,11 @@ function GuardingAthena:OnNPCSpawned(keys)
 		    	spawnedUnit:RemoveModifierByName("modifier_buyback_gold_penalty")
 		    end
 	    end)
-		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
+		--[[ local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
 		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false then
 			spawnedUnit:AddAbility("singlehero")
 			spawnedUnit:FindAbilityByName("singlehero"):SetLevel(1)
-		end
+		end ]]
 		-- 初始化经验获得率
 		if spawnedUnit.GetExpRate == nil then
 			spawnedUnit.GetExpRate = 0
@@ -719,16 +719,16 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 	local level = keys.level
 	-- 额外属性成长
 	if hero.str_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_STRENGTH,hero.str_gain,0)
+		PropertySystem(hero,DOTA_ATTRIBUTE_STRENGTH,hero.str_gain)
 	end
 	if hero.agi_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_AGILITY,hero.agi_gain,0)
+		PropertySystem(hero,DOTA_ATTRIBUTE_AGILITY,hero.agi_gain)
 	end
 	if hero.int_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain,0)
+		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain)
 	end
 	-- 修正技能点17 19 21 22 23 24 
-	if level <= 188 then
+	--[[ if level <= 188 then
 		local mod = math.fmod(level,3)
 		if level > 8 then
 			if mod == 2 then
@@ -746,6 +746,35 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 					hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
 				end
 			end
+		end
+	else
+		hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
+	end ]]
+	if level > 10 and level <=25 then
+		local mod = math.fmod(level,2)
+		if level == 17 or level == 19 then
+			hero:SetAbilityPoints(hero:GetAbilityPoints() + 1)
+		end
+		if level >= 21 and level <= 24 then
+			hero:SetAbilityPoints(hero:GetAbilityPoints() + 1)
+		end
+		if mod ~= 1 then
+			hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
+		end
+	elseif level > 25 and level <= 50 then
+		local mod = math.fmod(level,2)
+		if mod ~= 0 then
+			hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
+		end
+	elseif level > 50 and level <= 100 then
+		local mod = math.fmod(level,4)
+		if mod ~= 0 then
+			hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
+		end
+	elseif level > 100 and level <= 200 then
+		local mod = math.fmod(level,5)
+		if mod ~= 0 then
+			hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
 		end
 	else
 		hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
