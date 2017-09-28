@@ -28,11 +28,10 @@ function HeroReborn( trigger )
 	if caster.trigger_iapetos == nil then
 		caster.trigger_iapetos = false
 	end
-	local levelTable = {25,50,100}
 	-- 转生判断
 	if caster.can_reborn then
-		if level >= levelTable[reborn_times + 1] then
-			--[[ if gift then
+		if level >= (reborn_times + 1) * 100 then
+			if gift then
 				if caster:GetUnitName() == "npc_dota_hero_nevermore" or caster:GetUnitName() == "npc_dota_hero_crystal_maiden" then
 					caster:AddAbility("wing_gold_sf")
 					caster:FindAbilityByName("wing_gold_sf"):SetLevel(1)
@@ -43,7 +42,7 @@ function HeroReborn( trigger )
 			else
 				caster:AddAbility("wing")
 				caster:FindAbilityByName("wing"):SetLevel(1)
-			end ]]
+			end
 			caster.can_reborn = false
 			caster.reborn_time = reborn_times + 1
 			caster.reborn = true
@@ -52,33 +51,8 @@ function HeroReborn( trigger )
 			ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
 			ParticleManager:SetParticleControl(particle, 2, caster:GetAbsOrigin())
 			caster:EmitSound("Hero_FacelessVoid.TimeWalk")
-			-- new setting
-			local ability0 = caster:GetAbilityByIndex(0):GetAbilityName()
-			local ability1 = caster:GetAbilityByIndex(1):GetAbilityName()
-			local ability2 = caster:GetAbilityByIndex(2):GetAbilityName()
-			local ability3 = caster:GetAbilityByIndex(3):GetAbilityName()
-			local ability4 = caster:GetAbilityByIndex(4):GetAbilityName()
-			caster:RemoveAbility(ability0)
-			caster:RemoveAbility(ability1)
-			caster:RemoveAbility(ability2)
-			caster:RemoveAbility(ability3)
-			caster:RemoveAbility(ability4)
-			if string.find( ability0,"_up" ) then
-				caster:AddAbility(string.sub(ability0, 1, string.len(ability0) - 1)..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(string.sub(ability1, 1, string.len(ability1) - 1)..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(string.sub(ability2, 1, string.len(ability2) - 1)..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(string.sub(ability3, 1, string.len(ability3) - 1)..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(string.sub(ability4, 1, string.len(ability4) - 1)..reborn_times + 1):SetLevel(1)
-			else
-				caster:AddAbility(ability0.."_up"..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(ability1.."_up"..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(ability2.."_up"..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(ability3.."_up"..reborn_times + 1):SetLevel(1)
-				caster:AddAbility(ability4.."_up"..reborn_times + 1):SetLevel(1)
-			end
-			caster:SetAbilityPoints(caster:GetAbilityPoints() + 1)
 		end
-	elseif level ~= 1 + levelTable[reborn_times+1] and reborn_times <= 3 and caster.kill_iapetos == false  then
+	elseif level ~= 1 + (reborn_times * 100) and reborn_times <= 3 and caster.kill_iapetos == false  then
 		if GuardingAthena.iapetos == nil then
 			local ent = Entities:FindByName(nil,"boss_lapetos_reborn")
 	 		local point = ent:GetAbsOrigin()

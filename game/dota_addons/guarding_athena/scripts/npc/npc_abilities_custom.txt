@@ -8572,7 +8572,7 @@
 				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
 				"IsDebuff"	"1"
-				"Duration"	"%stun_duration"
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -8580,298 +8580,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"3"
+				"duration"	"2"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"10"
+				"rate"	"10"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
+				"scale"	"5"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"cooldown"	"2.5"
-			}
-		}
-	}
-
-	"thunder_power_up1"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/thunder_power"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"D"
-		"MaxLevel"	"1"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"precache"
-		{
-			"particle"	"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf"
-			"particle"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
-		}
-		"Modifiers"
-		{
-			"modifier_thunder_power"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderPower"
-					}
-				}
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"CASTER"
-						"ControlPointEntities"
-						{
-							"CASTER"	"attach_attack1"
-						}
-						"EffectName"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-						"EffectAttachType"	"follow_customorigin"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderPowerCreated"
-					}
-				}
-			}
-			"modifier_thunder_power_stun"
-			{
-				"Properties"	{}
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-				"IsDebuff"	"1"
-				"Duration"	"%stun_duration"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"10"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"cooldown"	"2.5"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"200"
-			}
-		}
-	}
-
-	"thunder_power_up2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/thunder_power"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"D"
-		"MaxLevel"	"1"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"precache"
-		{
-			"particle"	"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf"
-			"particle"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
-		}
-		"Modifiers"
-		{
-			"modifier_thunder_power"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderPower"
-					}
-				}
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"CASTER"
-						"ControlPointEntities"
-						{
-							"CASTER"	"attach_attack1"
-						}
-						"EffectName"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-						"EffectAttachType"	"follow_customorigin"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderPowerCreated"
-					}
-				}
-			}
-			"modifier_thunder_power_stun"
-			{
-				"Properties"	{}
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-				"IsDebuff"	"1"
-				"Duration"	"%stun_duration"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"7"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"10"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"cooldown"	"2.5"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"200"
-			}
-		}
-	}
-
-	"thunder_power_up3"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/thunder_power"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"D"
-		"MaxLevel"	"1"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"precache"
-		{
-			"particle"	"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf"
-			"particle"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
-		}
-		"Modifiers"
-		{
-			"modifier_thunder_power"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderPower"
-					}
-				}
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"CASTER"
-						"ControlPointEntities"
-						{
-							"CASTER"	"attach_attack1"
-						}
-						"EffectName"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-						"EffectAttachType"	"follow_customorigin"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderPowerCreated"
-					}
-				}
-			}
-			"modifier_thunder_power_stun"
-			{
-				"Properties"	{}
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-				"IsDebuff"	"1"
-				"Duration"	"%stun_duration"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"9"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"10"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"cooldown"	"2.5"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"200"
 			}
 		}
 	}
@@ -8886,13 +8610,13 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"Q"
-		"MaxLevel"	"5"
+		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"8"
-		"AbilityManaCost"	"80 85 90 95 100"
+		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"precache"
 		{
 			"particle"	"particles/skills/thunder_strike.vpcf"
@@ -8938,7 +8662,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderStrikeCreate"
+						"Function"	"ThunderStrikeCreat"
 					}
 				}
 				"ThinkInterval"	"8"
@@ -8949,12 +8673,12 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"30 60 90 120 150"
+				"damage"	"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"1 2 3 4 5"
+				"scale"	"5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24"
 			}
 			"03"
 			{
@@ -8965,305 +8689,6 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"regen_time"	"8"
-			}
-		}
-	}
-
-	// 雷霆一击
-	"thunder_strike_up1"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/thunder_strike"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"Q"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"25"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCooldown"	"8"
-		"AbilityManaCost"	"80 85 90 95 100"
-		"precache"
-		{
-			"particle"	"particles/skills/thunder_strike.vpcf"
-			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"ThunderStrike"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/skills/thunder_strike.vpcf"
-				"Target"	"CASTER"
-				"EffectAttachType"	"attach_origin"
-			}
-			"FireSound"
-			{
-				"EffectName"	"n_creep_Thunderlizard_Big.Stomp"
-				"Target"	"CASTER"
-			}
-			"Stun"
-			{
-				"Target"
-				{
-					"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-				}
-				"Duration"	"%duration"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_thunder_strike"
-			{
-				"Passive"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderStrikeCreate"
-					}
-				}
-				"ThinkInterval"	"8"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"200 300 400 500 600"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"6 7 8 9 10"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"400"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"regen_time"	"8"
-			}
-		}
-	}
-
-	// 雷霆一击
-	"thunder_strike_up2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/thunder_strike"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"Q"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"50"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCooldown"	"8"
-		"AbilityManaCost"	"80 85 90 95 100"
-		"precache"
-		{
-			"particle"	"particles/skills/thunder_strike.vpcf"
-			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"ThunderStrike"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/skills/thunder_strike.vpcf"
-				"Target"	"CASTER"
-				"EffectAttachType"	"attach_origin"
-			}
-			"FireSound"
-			{
-				"EffectName"	"n_creep_Thunderlizard_Big.Stomp"
-				"Target"	"CASTER"
-			}
-			"Stun"
-			{
-				"Target"
-				{
-					"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-				}
-				"Duration"	"%duration"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_thunder_strike"
-			{
-				"Passive"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderStrikeCreate"
-					}
-				}
-				"ThinkInterval"	"8"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"1000 1400 1800 2200 2600"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"11 12 13 14 15"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"400"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"regen_time"	"8"
-			}
-		}
-	}
-
-	// 雷霆一击
-	"thunder_strike_up3"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/thunder_strike"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"Q"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"100"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCooldown"	"8"
-		"AbilityManaCost"	"80 85 90 95 100"
-		"precache"
-		{
-			"particle"	"particles/skills/thunder_strike.vpcf"
-			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"ThunderStrike"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/skills/thunder_strike.vpcf"
-				"Target"	"CASTER"
-				"EffectAttachType"	"attach_origin"
-			}
-			"FireSound"
-			{
-				"EffectName"	"n_creep_Thunderlizard_Big.Stomp"
-				"Target"	"CASTER"
-			}
-			"Stun"
-			{
-				"Target"
-				{
-					"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-				}
-				"Duration"	"%duration"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_thunder_strike"
-			{
-				"Passive"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"ThunderStrikeCreate"
-					}
-				}
-				"ThinkInterval"	"8"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"3000 4000 5000 6000 7000"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"16 17 18 19 20"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"400"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"regen_time"	"8"
 			}
 		}
 	}
@@ -9277,13 +8702,13 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"W"
-		"MaxLevel"	"5"
+		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"80 95 110 125 140"
+		"AbilityManaCost"	"80 95 110 125 140 155 170 185 200 215 230 245 260 275 290 305 320 335 350 365"
 		"AbilityCastRange"	"600"
 		"precache"
 		{
@@ -9326,6 +8751,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%heal_hp"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%heal_hp_per"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%heal_mana"
 				}
 				"OnCreated"
@@ -9351,328 +8777,24 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heal_hp"	"10 20 30 40 50"
+				"heal_hp"	"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heal_mana"	"4 8 12 16 20"
+				"heal_mana"	"4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80"
 			}
 			"03"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"chance"	"60"
+				"var_type"	"FIELD_FLOAT"
+				"heal_hp_per"	"0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"40"
-			}
-		}
-	}
-
-	// 治疗守卫
-	"heal_device_up1"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/heal_device"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"W"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"25"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"80 95 110 125 140"
-		"AbilityCastRange"	"600"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
-			"particle"	"particles/skills/heal_device.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"CreateHealDevice"
-			}
-			"FireSound"
-			{
-				"Target"	"CASTER"
-				"EffectName"	"Hero_Tinker.GridEffect"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_device_heal"
-			{
-				"IsHidden"	"1"
-				"Aura"	"modifier_device_heal_aura"
-				"Aura_Radius"	"600"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
-				"EffectName"	"particles/skills/heal_device.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"States"
-				{
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			"modifier_device_heal_aura"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%heal_hp"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%heal_mana"
-				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"OnHealIn"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"OnHealOut"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"heal_hp"	"80 120 160 200 240"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"heal_mana"	"40 60 80 100 120"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
 				"chance"	"60"
 			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"40"
-			}
-		}
-	}
-
-	// 治疗守卫
-	"heal_device_up2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/heal_device"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"W"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"50"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"80 95 110 125 140"
-		"AbilityCastRange"	"600"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
-			"particle"	"particles/skills/heal_device.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"CreateHealDevice"
-			}
-			"FireSound"
-			{
-				"Target"	"CASTER"
-				"EffectName"	"Hero_Tinker.GridEffect"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_device_heal"
-			{
-				"IsHidden"	"1"
-				"Aura"	"modifier_device_heal_aura"
-				"Aura_Radius"	"600"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
-				"EffectName"	"particles/skills/heal_device.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"States"
-				{
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			"modifier_device_heal_aura"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%heal_hp"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%heal_mana"
-				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"OnHealIn"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"OnHealOut"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"heal_hp"	"300 400 500 600 700"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"heal_mana"	"200 280 360 440 520"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"chance"	"60"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"40"
-			}
-		}
-	}
-
-	// 治疗守卫
-	"heal_device_up3"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/heal_device"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"W"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"100"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0.3"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"80 95 110 125 140"
-		"AbilityCastRange"	"600"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
-			"particle"	"particles/skills/heal_device.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"CreateHealDevice"
-			}
-			"FireSound"
-			{
-				"Target"	"CASTER"
-				"EffectName"	"Hero_Tinker.GridEffect"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_device_heal"
-			{
-				"IsHidden"	"1"
-				"Aura"	"modifier_device_heal_aura"
-				"Aura_Radius"	"600"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
-				"EffectName"	"particles/skills/heal_device.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"States"
-				{
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			"modifier_device_heal_aura"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%heal_hp"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%heal_mana"
-				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"OnHealIn"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"OnHealOut"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"heal_hp"	"1000 1200 1400 1600 1800"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"heal_mana"	"600 700 800 900 1000"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"chance"	"60"
-			}
-			"04"
+			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"40"
@@ -9688,7 +8810,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
-		"MaxLevel"	"5"
+		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"Modifiers"
@@ -9699,7 +8821,7 @@
 				"IsHidden"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
 				}
 				"OnAttackLanded"
@@ -9717,259 +8839,158 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"5 10 15 20 25"
+				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"str"	"5 10 15 20 25"
+				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"1 2 3 4 5"
+				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
 			}
 		}
 	}
 
-	// 举重
-	"weightlifting_up1"
+	// 真空屏障
+	"void_barrier"
 	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/weightlifting"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	"custom/void_barrier"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"E"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"25"
-		"LevelsBetweenUpgrades"	"2"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"HotKeyOverride"	"R"
+		"MaxLevel"	"8"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"60 120 180 240 300 360 420 480"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/skills/void_barrier.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+			"particle"	"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_end.vpcf"
+		}
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_void_barrier"
+				"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+				"Function"	"VoidBarrierOn"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_void_barrier"
+				"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+				"Function"	"VoidBarrierOff"
+			}
+		}
 		"Modifiers"
 		{
-			"modifier_weightlifting"
+			"modifier_void_barrier"
 			{
-				"Passive"	"1"
+				"Aura"	"modifier_void_barrier_arua"
+				"Aura_Radius"	"600"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Terrorblade.Reflection"
+						"Target"	"CASTER"
+					}
+					"AttachEffect"
+					{
+						"EffectName"	"particles/skills/void_barrier.vpcf"
+						"Target"	"CASTER"
+						"EffectAttachType"	"follow_chest"
+					}
+				}
+				"OnAttacked"
+				{
+					// 击晕
+					"Random"
+					{
+						"Chance"	"30"
+						"PseudeoRandom"	"DOTA_PSEUDO_RANDOM_JUGG_CRIT"
+						"OnSuccess"
+						{
+							"Stun"
+							{
+								"Target"	"ATTACKER"
+								"Duration"	"%duration"
+							}
+							"Damage"
+							{
+								"Target"	"ATTACKER"
+								"Type"	"DAMAGE_TYPE_MAGICAL"
+								"Damage"	"%damage"
+							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+								"Function"	"VoidBarrierDamage"
+								"Target"	"ATTACKER"
+								"Damage"	"%damage"
+							}
+							"FireSound"
+							{
+								"EffectName"	"Hero_KeeperOfTheLight.BlindingLight"
+								"Target"	"CASTER"
+							}
+							"AttachEffect"
+							{
+								"EffectName"	"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_end.vpcf"
+								"Target"	"ATTACKER"
+								"EffectAttachType"	"follow_chest"
+								"ControlPoints"	{}
+								"ControlPointEntities"	{}
+							}
+						}
+					}
+				}
+				"OnIntervalThink"
+				{
+					"SpendMana"
+					{
+						"Mana"	"%manacost"
+					}
+				}
+				"ThinkInterval"	"1"
+			}
+			"modifier_void_barrier_arua"
+			{
 				"IsHidden"	"1"
 				"Properties"
 				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-				}
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"WeightLifting"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"30 35 40 45 50"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"str"	"30 35 40 45 50"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"6 7 8 9 10"
-			}
-		}
-	}
-
-	// 举重
-	"weightlifting_up2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/weightlifting"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"E"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"50"
-		"LevelsBetweenUpgrades"	"2"
-		"Modifiers"
-		{
-			"modifier_weightlifting"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-				}
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"WeightLifting"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"55 60 65 70 75"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"str"	"55 60 65 70 75"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"11 12 13 14 15"
-			}
-		}
-	}
-
-	// 举重
-	"weightlifting_up3"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/weightlifting"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"E"
-		"MaxLevel"	"5"
-		"RequiredLevel"	"100"
-		"LevelsBetweenUpgrades"	"2"
-		"Modifiers"
-		{
-			"modifier_weightlifting"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-				}
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"WeightLifting"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"80 85 90 95 100"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"str"	"80 85 90 95 100"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"16 17 18 19 20"
-			}
-		}
-	}
-
-	// 真空屏障
-	"static_touch"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/void_barrier"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
-		"HotKeyOverride"	"R"
-		"MaxLevel"	"3"
-		"RequiredLevel"	"6"
-		"LevelsBetweenUpgrades"	"8"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"	"0"
-		// Cost
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"60 120 180"
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"	"particles/skills/void_barrier.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_static_touch"
-				"Target"	"CASTER"
-				"Duration"	"%duration"
-			}
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"VoidBarrier"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_static_touch"
-			{
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Terrorblade.Reflection"
-						"Target"	"CASTER"
-					}
-					"AttachEffect"
-					{
-						"EffectName"	"particles/skills/void_barrier.vpcf"
-						"Target"	"CASTER"
-						"EffectAttachType"	"follow_chest"
-					}
-				}
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOnAttack"
-					}
-				}
-				"ThinkInterval"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movespeed"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOff"
-					}
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magicdef"
 				}
 			}
 		}
@@ -9979,459 +9000,38 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"scale"	"1.5 2 2.5"
+				"var_type"	"FIELD_INTEGER"
+				"manacost"	"10 20 30 40 50 60 70 80"
 			}
 			"02"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"2 4 6"
+				"var_type"	"FIELD_FLOAT"
+				"scale"	"1.5 2 2.5 3 3.5 4 4.5 5"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"25"
+				"damage"	"5 10 15 20 25 30 35 40"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
+				"attackspeed"	"30 40 50 60 70 80 90 100"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"15 30 45"
+				"movespeed"	"10 12 14 16 18 20 22 24"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"movespeed"	"10 20 30"
+				"magicdef"	"5 10 15 20 25 30 35 40"
 			}
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"resistance"	"10 15 20"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"jump_count"	"3"
-			}
-		}
-	}
-
-	// 真空屏障
-	"static_touch_up1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/void_barrier"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
-		"HotKeyOverride"	"R"
-		"MaxLevel"	"3"
-		"RequiredLevel"	"31"
-		"LevelsBetweenUpgrades"	"8"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"	"0"
-		// Cost
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"60 120 180"
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"	"particles/skills/void_barrier.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_static_touch"
-				"Target"	"CASTER"
-				"Duration"	"%duration"
-			}
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"VoidBarrier"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_static_touch"
-			{
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Terrorblade.Reflection"
-						"Target"	"CASTER"
-					}
-					"AttachEffect"
-					{
-						"EffectName"	"particles/skills/void_barrier.vpcf"
-						"Target"	"CASTER"
-						"EffectAttachType"	"follow_chest"
-					}
-				}
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOnAttack"
-					}
-				}
-				"ThinkInterval"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movespeed"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOff"
-					}
-				}
-			}
-		}
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"scale"	"1.5 2 2.5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"8 10 12"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"25"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"60 75 90"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"movespeed"	"40 50 60"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"resistance"	"25 30 35"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"jump_count"	"3"
-			}
-		}
-	}
-
-	// 真空屏障
-	"static_touch_up2"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/void_barrier"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
-		"HotKeyOverride"	"R"
-		"MaxLevel"	"3"
-		"RequiredLevel"	"56"
-		"LevelsBetweenUpgrades"	"8"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"	"0"
-		// Cost
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"60 120 180"
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"	"particles/skills/void_barrier.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_static_touch"
-				"Target"	"CASTER"
-				"Duration"	"%duration"
-			}
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"VoidBarrier"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_static_touch"
-			{
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Terrorblade.Reflection"
-						"Target"	"CASTER"
-					}
-					"AttachEffect"
-					{
-						"EffectName"	"particles/skills/void_barrier.vpcf"
-						"Target"	"CASTER"
-						"EffectAttachType"	"follow_chest"
-					}
-				}
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOnAttack"
-					}
-				}
-				"ThinkInterval"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movespeed"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOff"
-					}
-				}
-			}
-		}
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"scale"	"1.5 2 2.5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"14 16 18"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"25"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"105 120 135"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"movespeed"	"70 80 90"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"resistance"	"40 45 50"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"jump_count"	"3"
-			}
-		}
-	}
-
-	// 真空屏障
-	"static_touch_up3"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/void_barrier"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
-		"HotKeyOverride"	"R"
-		"MaxLevel"	"3"
-		"RequiredLevel"	"106"
-		"LevelsBetweenUpgrades"	"8"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"	"0"
-		// Cost
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"60 120 180"
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"	"particles/skills/void_barrier.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_static_touch"
-				"Target"	"CASTER"
-				"Duration"	"%duration"
-			}
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-				"Function"	"VoidBarrier"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_static_touch"
-			{
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Terrorblade.Reflection"
-						"Target"	"CASTER"
-					}
-					"AttachEffect"
-					{
-						"EffectName"	"particles/skills/void_barrier.vpcf"
-						"Target"	"CASTER"
-						"EffectAttachType"	"follow_chest"
-					}
-				}
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOnAttack"
-					}
-				}
-				"ThinkInterval"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movespeed"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"VoidBarrierOff"
-					}
-				}
-			}
-		}
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"scale"	"1.5 2 2.5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_str"	"20 22 24"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_chance"	"25"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_duration"	"2"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"150 165 180"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"movespeed"	"100 110 120"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"resistance"	"55 60 65"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"jump_count"	"3"
+				"duration"	"2"
 			}
 		}
 	}
@@ -15367,7 +13967,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/libraries/quest.lua"
+						"ScriptFile"	"scripts/vscripts/quest2.lua"
 						"Function"	"QuestTriggerNpc"
 					}
 				}
