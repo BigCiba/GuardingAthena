@@ -13967,7 +13967,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/quest2.lua"
+						"ScriptFile"	"scripts/vscripts/libraries/quest.lua"
 						"Function"	"QuestTriggerNpc"
 					}
 				}

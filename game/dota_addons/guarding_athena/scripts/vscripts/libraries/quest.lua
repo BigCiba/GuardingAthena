@@ -16,6 +16,7 @@ end
 -- 触发任务
 -- npc,物品,区域,时间,随机
 function QuestTriggerNpc( t )
+	print("QuestTriggerNpc")
 	local npc = t.caster
 	local caster = t.target
 	local questCount = 0
@@ -57,6 +58,8 @@ end
 -- 前置条件检测
 -- 等级,任务,其他
 function Quest:FrontRequireCheck(caster, questName, questInfo)
+	print("FrontRequireCheck")
+	local checkResult,showDialog
 	if questInfo.frontRequireType == "" then
 		return true
 	elseif questInfo.frontRequireType == "quest" then
@@ -78,11 +81,12 @@ end
 -- 接受任务
 -- 将任务信息绑定在单位身上，并标记为未完成
 function Quest:AddQuest(caster, npc, questName, questInfo)
-	questInfo["reamainCount"] = 0
-	questInfo["getReward"] = false
-	questInfo["completed"] = false
-	questInfo["npc"] = npc
-	caster[questName] = questInfo
+	local casterQuestInfo = DeepCopy(questInfo)
+	casterQuestInfo["reamainCount"] = 0
+	casterQuestInfo["getReward"] = false
+	casterQuestInfo["completed"] = false
+	casterQuestInfo["npc"] = npc
+	caster[questName] = casterQuestInfo
 	self:CreateUI(caster,questName)
 end
 -- 任务完成过程检测
@@ -123,6 +127,7 @@ function Quest:OnUnitKilled(t)
 	end
 end
 function Quest:Finish(caster, questName)
+	print("Finish")
 	if caster[questName].rewardType == "item" then
 		local newItem = CreateItem(caster[questName].rewardContent, caster, caster)
 		caster:AddItem(newItem)
@@ -132,6 +137,7 @@ function Quest:Finish(caster, questName)
 end
 
 function Quest:DeCount(killer, questName)
+	print("DeCount")
 	killer[questName].reamainCount = killer[questName].reamainCount + 1
 	if killer[questName].reamainCount >= killer[questName].demandCount then
 		killer[questName].reamainCount = killer[questName].demandCount
@@ -140,6 +146,7 @@ function Quest:DeCount(killer, questName)
 	self:UpdataUI(killer, questName)
 end
 function Quest:ShowDialog( caster, npc, questName, showType )
+	print("DeCount")
 	local player = caster:GetPlayerOwner()
 	local showerIndex = npc:GetEntityIndex()
 	local showContent = questName
@@ -157,6 +164,7 @@ function Quest:ShowDialog( caster, npc, questName, showType )
 	CustomGameEventManager:Send_ServerToPlayer(player,"avalon_display_bubble", {unit=showerIndex,text=showContent,duration=5})
 end
 function Quest:CreateUI( caster, questName )
+	print("CreateUI")
 	local player = caster:GetPlayerOwner()
 	local demandCount = caster[questName].demandCount
 	local rewardContent = caster[questName].rewardContent
@@ -167,6 +175,7 @@ function Quest:DestoryUI( caster, questName )
 	CustomGameEventManager:Send_ServerToPlayer(player,"destory_quest", {quest_name=questName})
 end
 function Quest:UpdataUI( caster, questName )
+	print("UpdataUI")
 	local player = caster:GetPlayerOwner()
 	local reamainCount = caster[questName].reamainCount
 	CustomGameEventManager:Send_ServerToPlayer(player,"updata_quest", {quest_name=questName,reamain_count=reamainCount})

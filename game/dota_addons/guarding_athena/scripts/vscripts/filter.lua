@@ -72,7 +72,7 @@ function GuardingAthena:ExecuteOrderFilter( args )
                 if PlayerResource:GetGold(playerid) >= tombTable.cost[i] then
                     PlayerResource:SpendGold( playerid, tombTable.cost[i], 0 )
                     local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-                    PropertySystem( hero, tombTable.stat[i], tombTable.count[i], 0 )
+                    PropertySystem( hero, tombTable.stat[i], tombTable.count[i])
                     EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
                     CreateParticle("particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,hero,1)
                 end

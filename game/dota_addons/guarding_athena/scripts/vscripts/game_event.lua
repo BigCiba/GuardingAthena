@@ -456,6 +456,13 @@ function GuardingAthena:OnPlayerChat(keys)
 			Spawner.gameRound = wave - 1
 		end
 	end
+	if text == "createhero" then
+		self.testhero = CreateHeroForPlayer("npc_dota_hero_omniknight", PlayerResource:GetPlayer(playerid))
+	end
+	if text == "movehero" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		self.testhero:SetAbsOrigin(hero:GetAbsOrigin())
+	end
 	if string.sub(text,0,5) == "troll" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		PrecacheUnitByNameAsync(text,function()
@@ -719,13 +726,13 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 	local level = keys.level
 	-- 额外属性成长
 	if hero.str_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_STRENGTH,hero.str_gain,0)
+		PropertySystem(hero,DOTA_ATTRIBUTE_STRENGTH,hero.str_gain)
 	end
 	if hero.agi_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_AGILITY,hero.agi_gain,0)
+		PropertySystem(hero,DOTA_ATTRIBUTE_AGILITY,hero.agi_gain)
 	end
 	if hero.int_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain,0)
+		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain)
 	end
 	-- 修正技能点17 19 21 22 23 24 
 	if level <= 188 then
