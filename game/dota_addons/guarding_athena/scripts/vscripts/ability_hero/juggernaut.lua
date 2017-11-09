@@ -89,7 +89,7 @@ function SpaceCutIllusion( keys )
 	    for k, v in pairs( illusions ) do
 	    	ability:ApplyDataDrivenModifier(caster, v, "modifier_space_cut", nil)
 	    	v:SetForwardVector((target_location - caster_location):Normalized())
-	        v:StartGesture(1505)
+	        v:StartGesture(ACT_DOTA_ATTACK_EVENT)
 	    end
 	end
 end

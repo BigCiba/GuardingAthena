@@ -311,7 +311,12 @@ function GuardingAthena:OnNPCSpawned(keys)
 	    local ability = spawnedUnit:GetAbilityByIndex(0)
 	    if ability:GetLevel() == 0 then
 	        ability:SetLevel(1)
-	    end
+		end
+		-- 垃圾v社
+		Timers:CreateTimer(0.1,function ()
+			local tpScroll = spawnedUnit:GetItemInSlot(0)
+			spawnedUnit:RemoveItem(tpScroll)
+	    end)
 	    -- 作者buff
 	    if PlayerResource:GetSteamAccountID(spawnedUnit:GetPlayerID()) == 128320546 then
 	    	--spawnedUnit:AddAbility("autor_buff")
