@@ -15,7 +15,6 @@ function OnAbsorb( t )
 		local heal = caster:GetMaxHealth() * heal_percent
 		CauseDamage( caster, unit, damage, DAMAGE_TYPE_MAGICAL )
 		Heal( caster, heal, 0, true )
-		print(heal)
 		local particle_tril = CreateParticle( "particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay_strength_xfer.vpcf", PATTACH_CUSTOMORIGIN, caster )
 		ParticleManager:SetParticleControl( particle_tril, 0, unit:GetAbsOrigin() + Vector(0,0,64) )
 		ParticleManager:SetParticleControl( particle_tril, 1, caster_location + Vector(0,0,64) )
@@ -28,7 +27,6 @@ function OnDeath( t )
 	local unitName = "mubei"
 	local duration = ability:GetSpecialValueFor("duration")
 	local bonus_health = ability:GetSpecialValueFor("health")
-	print(bonus_health)
 	if ability:IsCooldownReady() then
 		PrecacheUnitByNameAsync(unitName,function()
 			local unit = CreateUnitByName(unitName, caster_location, true, nil, nil, DOTA_TEAM_BADGUYS )

@@ -226,13 +226,6 @@ function GuardingAthena:ItemAddedFilter( keys )
 				if time > ringTable.timeStart[i] and time < ringTable.timeOver[i] then
 					local item = CreateItem(ringTable.ringName[i], currentUnit, currentUnit)
 					currentUnit:AddItem(item)
-					--table.insert(currentUnit.ringList,i)
-					PrintTable( currentUnit.ringList )
-					--[[if currentUnit.ringCount == 0 then
-						currentUnit.ring_1 = i
-					else
-						currentUnit.ring_2 = i
-					end]]
 				end
 			end
 			currentUnit.ringCount = currentUnit.ringCount + 1

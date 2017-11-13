@@ -160,6 +160,14 @@
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemRequirements"	{}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_str"	"10"
+			}
+		}
 	}
 
 	"item_str_book_pack"
@@ -179,6 +187,14 @@
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemRequirements"	{}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_str"	"100"
+			}
+		}
 	}
 
 	"item_agi_book"
@@ -198,6 +214,14 @@
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemRequirements"	{}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agi"	"10"
+			}
+		}
 	}
 
 	"item_agi_book_pack"
@@ -217,6 +241,14 @@
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemRequirements"	{}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agi"	"100"
+			}
+		}
 	}
 
 	"item_int_book"
@@ -236,6 +268,14 @@
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemRequirements"	{}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_int"	"10"
+			}
+		}
 	}
 
 	"item_int_book_pack"
@@ -255,6 +295,14 @@
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemRequirements"	{}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_int"	"100"
+			}
+		}
 	}
 
 	"item_clarity1"
@@ -12673,9 +12721,6 @@
 		}
 	}
 
-	// Rewrite of Skull Basher
-	// Author: Rook
-	// Date: February 1, 2015
 	"item_npc_dota_hero_phantom_assassin"
 	{
 		// General

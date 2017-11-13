@@ -230,7 +230,6 @@ function AlienParasitismAttack( t )
     local brith_location = target:GetAbsOrigin()
     local level = caster:GetLevel()
     local damage = ability:GetSpecialValueFor("damage") * (1 + 0.1 * level)
-    print(damage)
     local count = ability:GetSpecialValueFor("count")
     CauseDamage( caster, target, damage, DAMAGE_TYPE_PURE )
     if damage > target:GetHealth() then

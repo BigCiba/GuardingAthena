@@ -263,7 +263,7 @@ function GuardingAthena:OnConnectFull(keys)
 				"npc_dota_hero_ember_spirit"
 			}
 			local currentHero = randomHeroTable[RandomInt(1,9)]
-			print(currentHero)
+			--print(currentHero)
 			PrecacheUnitByNameAsync(currentHero,function()
 				PlayerResource:ReplaceHeroWith(playerID,currentHero,PlayerResource:GetGold(heroEntity:GetPlayerID()),0)
 				heroEntity:RemoveSelf()
@@ -312,11 +312,7 @@ function GuardingAthena:OnNPCSpawned(keys)
 	    if ability:GetLevel() == 0 then
 	        ability:SetLevel(1)
 		end
-		-- 垃圾v社
-		Timers:CreateTimer(0.1,function ()
-			local tpScroll = spawnedUnit:GetItemInSlot(0)
-			spawnedUnit:RemoveItem(tpScroll)
-	    end)
+		
 	    -- 作者buff
 	    if PlayerResource:GetSteamAccountID(spawnedUnit:GetPlayerID()) == 128320546 then
 	    	--spawnedUnit:AddAbility("autor_buff")
@@ -362,6 +358,11 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	-- 记录当前英雄
 	local playerID = heroEntity:GetPlayerID()
 	HERO_TABLE[playerID + 1] = heroEntity
+	-- 垃圾v社
+	local tpScroll = heroEntity:GetItemInSlot(0)
+	if tpScroll:GetAbilityName() == "item_tpscroll" then
+		heroEntity:RemoveItem(tpScroll)
+	end
 	-- 金色特效
 	if player.gold_gift then
 		heroEntity.gift = true

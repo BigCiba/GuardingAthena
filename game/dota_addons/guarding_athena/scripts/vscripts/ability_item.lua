@@ -238,7 +238,6 @@ function BattlefuryMeteoriteRing( keys )
     for i,unit in pairs(unitGroup) do
         CauseDamage(caster, unit, damage + absorbAmount, DAMAGE_TYPE_PURE,ability)
     end
-    print(damage + absorbAmount)
     if caster:HasModifier("modifier_war_honor") then
         local ability = caster:FindAbilityByName("war_honor")
         local damagetaken = caster:GetHealth() * 0.9
@@ -708,7 +707,6 @@ function RingSecretCreate( t )
     local ring_1_name = "ring_0_"..ring_1
     local ring_2_name = "ring_0_"..ring_2
     local ring_secret = "ring_"..ring_1.."_"..ring_2
-    print(ring_secret)
     local ringName = {"item_ring_"..ring_1,"item_ring_"..ring_2}
     local timeStart = {}
     local timeOver = {}

@@ -26,7 +26,6 @@ function HeroState:InitHero(hero)
     hero.reborn_time = 0                --转生次数
     hero.def_point = 0                  --防守积分
     local score = getPlayerScore(hero:GetPlayerID())
-    print(score)
     hero.boss_point = score                 --Boss积分
     hero.practice_point = 0             --练习积分
     -- 戒指
