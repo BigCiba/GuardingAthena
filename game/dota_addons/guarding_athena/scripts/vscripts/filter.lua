@@ -237,9 +237,11 @@ function GuardingAthena:ItemAddedFilter( keys )
 		end
 		return false
 	elseif string.sub(currentItemName,0,10) == "item_ring_" then
-		local id = tonumber(string.sub(currentItemName,11,12))
-		if type(id) == "number" then
-			table.insert(currentUnit.ringList,id)
+		if currentUnit:IsRealHero() then
+			local id = tonumber(string.sub(currentItemName,11,12))
+			if type(id) == "number" then
+				table.insert(currentUnit.ringList,id)
+			end
 		end
 	elseif currentItemName == "item_athena_momian" then
 		local athena = self.entAthena
