@@ -70,6 +70,17 @@ function IndestructibleAbsorb( t )
     caster.IndestructibleAbsorb = caster.IndestructibleAbsorb + damage
     Heal(caster,damage,0,false)
 end
+function IndestructibleCD( t )
+    local caster = t.caster
+    local ability = t.ability
+    if caster.IndestructibleAbsorb == 0 then
+        local cd = ability:GetCooldownTimeRemaining() * 0.2
+        ability:EndCooldown()
+        ability:StartCooldown(cd)
+    else
+        ability:ApplyDataDrivenModifier(caster, caster, "modifier_indestructible_buff", nil)
+    end
+end
 function IndestructibleArmor( t )
     local caster = t.caster
     local damage = t.DamageTaken

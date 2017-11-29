@@ -1,3 +1,7 @@
+v1.2.8
+- 修改了物品的文本显示
+- 修复信使拾取戒指的bug
+
 在自定义游戏里面加入GameRules:IsCheatMode() API用于检测允许作弊或者sv_cheats 1指令启动的房间。
 keys.inflicator用来获取一个单位是被什么技能杀死的，把entity killed打印一下就看到了是一个entity index技能也是entity
 V1.1.9
