@@ -8390,6 +8390,61 @@
 		}
 	}
 
+	// 影缝绞杀
+	"test_skill_1"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/shadow_rift_garrotte"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"HotKeyOverride"	"R"
+		"MaxLevel"	"8"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_SPAWN"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"100"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"0"
+		"precache"
+		{
+			"particle"	"particles/skills/void_blink.vpcf"
+			"particle"	"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_swarm_pnt.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/shadowmoon_warden.lua"
+				"Function"	"TestSkill"
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"900"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"1 2 3 4 5 6 7 8"
+			}
+		}
+	}
+
 	"soul_requiem"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -8863,7 +8918,7 @@
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
-		"AbilityCooldown"	"18"
+		"AbilityCooldown"	"12"
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -8937,10 +8992,11 @@
 				}
 				"OnDestroy"
 				{
-					"RunScript"
+					"ApplyModifier"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
-						"Function"	"IndestructibleCD"
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_indestructible_buff"
+						"Duration"	"%duration"
 					}
 				}
 			}

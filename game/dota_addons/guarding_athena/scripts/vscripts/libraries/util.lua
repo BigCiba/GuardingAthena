@@ -17,6 +17,7 @@
 	RollDrops
 	IsFullSolt
 	ItemTypeCheck
+	Jump
 	KnockBack
 	SetCamera
 	SetRegionLimit
@@ -478,6 +479,39 @@ function SetCamera( ... )
 	end
 	Timers:CreateTimer(0.1,function()
 		PlayerResource:SetCameraTarget(playerID, nil)
+	end)
+end
+-- 跳跃
+function Jump( ... )
+	local caster,target_location,speed,height,findPath,callback = ...
+	local caster_location = caster:GetAbsOrigin()
+	local fix_location = target_location
+	local direction = (target_location - caster_location):Normalized()
+	if findPath then
+		if GridNav:CanFindPath(caster_location, target_location) == false then
+			while(GridNav:CanFindPath(caster_location, fix_location) == false)
+			do
+				fix_location = fix_location - direction * 50
+			end
+			target_location = fix_location
+		end
+	end
+	local distance = (target_location - caster:GetAbsOrigin()):Length2D()
+	local height_fix = (caster_location.z - target_location.z) / distance
+	local currentPos = Vector(0,0,0)
+	speed = speed / 30
+	local traveled_distance = 0
+	Timers:CreateTimer(function ()
+		if traveled_distance < distance then
+			currentPos = caster:GetAbsOrigin() + direction * speed
+			currentPos.z = caster_location.z + (-4 * height) / (distance ^ 2) * traveled_distance ^ 2 + (4 * height) / distance * traveled_distance - height_fix * traveled_distance
+			SetUnitPosition(caster, currentPos, true)
+			traveled_distance = traveled_distance + speed
+			return 0.01
+		else
+			SetUnitPosition(caster, target_location)
+			if callback ~= nil then callback() end
+		end
 	end)
 end
 -- 简易击退
