@@ -30,17 +30,35 @@
 -- 暴击率以百分比计算
 function CauseDamage( ... )
 	local attacker,victim,damage,damageType,ability,criticalChance,criticalDamage = ...
-	if attacker:IsNull() or victim:IsAlive() == false then
+	if attacker:IsNull() then
 		return
 	end
-	if criticalChance then
-		if RollPercentage(criticalChance) then
-			damage = damage * criticalDamage * 0.01
-			CreateNumberEffect(victim,damage,1,MSG_ORIT ,"red",4)
+	if IsValidEntity(victim) then
+		if victim:IsAlive() == false then
+			return
+		end
+		if criticalChance then
+			if RollPercentage(criticalChance) then
+				damage = damage * criticalDamage * 0.01
+				CreateNumberEffect(victim,damage,1,MSG_ORIT ,"red",4)
+			end
+		end
+		local damageTable = {victim = victim,attacker = attacker,damage = damage,damage_type = damageType,ability = ability}
+		ApplyDamage(damageTable)
+	else
+		for k,v in pairs(victim) do
+			if v:IsAlive() then
+				if criticalChance then
+					if RollPercentage(criticalChance) then
+						local currentDamage = damage * criticalDamage * 0.01
+						CreateNumberEffect(v,currentDamage,1,MSG_ORIT ,"red",4)
+					end
+				end
+				local damageTable = {victim = v,attacker = attacker,damage = damage,damage_type = damageType,ability = ability}
+				ApplyDamage(damageTable)
+			end
 		end
 	end
-	local damageTable = {victim = victim,attacker = attacker,damage = damage,damage_type = damageType,ability = ability}
-	ApplyDamage(damageTable)
 end
 -- 恢复生命与魔法
 function Heal( ... )

@@ -9021,18 +9021,18 @@
 		}
 	}
 
-	"Jingubang"
+	"jingubang"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"earthshaker_fissure_alt"
+		"AbilityTextureName"	"stick_wind"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-		"HotKeyOverride"	"W"
-		"MaxLevel"	"20"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"HotKeyOverride"	"R"
+		"MaxLevel"	"8"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastAnimation"	"ACT_DOTA_MK_STRIKE"
 		"AbilityCooldown"	"10"
 		"precache"
@@ -9073,6 +9073,77 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"2"
+			}
+		}
+	}
+
+	"stick_wind"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"stick_wind"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"HotKeyOverride"	"W"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastAnimation"	"ACT_DOTA_MK_STRIKE"
+		"AbilityCooldown"	"10"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_strike_cast.vpcf"
+			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_strike.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
+				"Function"	"StickWind"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_jingubang_debuff"
+			{
+				"Properties"	{}
+				"Duration"	"%duration"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"1200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1200"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"350"
 			}
 		}
 	}
@@ -13796,7 +13867,7 @@
 	"endless_offensive"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/endless_offensive"
+		"AbilityTextureName"	"endless_offensive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"

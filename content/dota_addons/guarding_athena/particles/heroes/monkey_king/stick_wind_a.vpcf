@@ -16,11 +16,12 @@
 			m_flRadiusScale = 0.5
 			m_flFinalTextureScaleU = -1.0
 			m_flFinalTextureOffsetU = 1.0
-			m_flTextureVWorldSize = 100.0
+			m_flTextureVWorldSize = 200.0
 			m_nMaxTesselation = 2
 			m_nMinTesselation = 2
 			m_bSaturateColorPreAlphaBlend = false
 			m_flAddSelfAmount = 2.0
+			m_flTextureVScrollRate = -200.0
 		},
 	]
 	m_Operators = 

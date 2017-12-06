@@ -12,6 +12,41 @@ function PiercingEyeDamage( caster, target, damage, damageType, ability )
     local damageDeepen = (100 - target:GetHealthPercent()) * 0.05 + 1
     CauseDamage( caster, target, damage * damageDeepen, damageType, ability )
 end
+function StickWind( t )
+    local caster = t.caster
+    local ability = t.ability
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster) * 0.1
+    local damageType = ability:GetAbilityDamageType()
+    local caster_location = caster:GetAbsOrigin()
+    local target_point = t.target_points[1]
+    local speed = ability:GetSpecialValueFor("speed")
+    local radius = ability:GetSpecialValueFor("radius")
+	local distance = (target_point - caster_location):Length2D()
+    local traveled_distance = 0
+	local maxDistance = ability:GetSpecialValueFor("distance")
+	if distance > maxDistance then
+		distance = maxDistance
+	end
+	local direction = (target_point - caster_location):Normalized()
+    local duration = distance/speed
+    speed = speed / 30
+    CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
+    Timers:CreateTimer(function ()
+        if traveled_distance < distance then
+            local nextPath = caster:GetAbsOrigin() + direction * speed
+            if GridNav:CanFindPath(caster:GetAbsOrigin(), nextPath) and #GetUnitsInRadius(caster,ability,nextPath,50) == 0 then
+                SetUnitPosition(caster, nextPath, true)
+            end
+			traveled_distance = traveled_distance + speed
+            ProjectileManager:ProjectileDodge(caster)
+            local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
+            CauseDamage(caster,unitGroup,damage,damageType,ability)
+			return 0.01
+		else
+			--SetUnitPosition(caster, caster:GetAbsOrigin())
+		end
+	end)
+end
 function Jingubang( t )
     local caster = t.caster
     local ability = t.ability

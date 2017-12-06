@@ -74,6 +74,8 @@
 			m_flInitialRadius = 200.0
 			m_bEvenDistribution = true
 			m_flParticlesPerOrbit = 20.0
+			m_flInitialSpeedMin = 200.0
+			m_flInitialSpeedMax = 200.0
 		},
 		{
 			_class = "C_INIT_RandomColor"
@@ -101,8 +103,8 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMax = [ 0.0, 0.0, 48.0 ]
-			m_OffsetMin = [ 0.0, 0.0, 48.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 80.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 80.0 ]
 		},
 		{
 			_class = "C_INIT_RemapScalar"

@@ -595,10 +595,10 @@
 		"AttackRate"	"1.2"
 		"AbilityLayout"	"5"
 		"Ability1"	"piercing_eye"
-		"Ability2"	"Jingubang"
+		"Ability2"	"stick_wind"
 		"Ability3"	"indestructible"
 		"Ability4"	"endless_offensive"
-		"Ability5"	"revelater_4"
+		"Ability5"	"jingubang"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
 		"Ability6"	""

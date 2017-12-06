@@ -4,7 +4,7 @@
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 22
 	m_flConstantRadius = 50.0
-	m_ConstantColor = [ 255, 255, 127, 255 ]
+	m_ConstantColor = [ 139, 0, 0, 255 ]
 	m_Renderers = 
 	[
 		{
@@ -55,7 +55,7 @@
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 255, 0, 0, 255 ]
+			m_ColorFade = [ 255, 99, 71, 255 ]
 			m_flFadeStartTime = 0.7
 			m_flFadeEndTime = 0.75
 		},
@@ -126,7 +126,12 @@
 		},
 		{
 			m_ChildRef = resource:"particles/heroes/monkey_king/stick_wind_e.vpcf"
-			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/monkey_king/stick_wind_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/monkey_king/stick_wind_glow.vpcf"
 		},
 	]
 	m_controlPointConfigurations = 

@@ -73,6 +73,9 @@
 		{
 			_class = "C_OP_Decay"
 		},
+		{
+			_class = "C_OP_PositionLock"
+		},
 	]
 	m_Initializers = 
 	[
@@ -83,9 +86,8 @@
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMax = 1.0
-			m_fLifetimeMin = 1.0
-			m_bDisableOperator = true
+			m_fLifetimeMax = 0.2
+			m_fLifetimeMin = 0.2
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
