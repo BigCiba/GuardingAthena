@@ -4,18 +4,35 @@ function PiercingEye( t )
     local ability = t.ability
     local damage = t.DamageTaken
     local change = ability:GetSpecialValueFor("chance")
-    if RollPercentage(change) then
-        PiercingEyeDamage( caster, target, damage, DAMAGE_TYPE_PURE, ability )
-    end
+    PiercingEyeDamage( caster, target, damage, DAMAGE_TYPE_PURE, ability )
 end
 function PiercingEyeDamage( caster, target, damage, damageType, ability )
     local damageDeepen = (100 - target:GetHealthPercent()) * 0.05 + 1
     CauseDamage( caster, target, damage * damageDeepen, damageType, ability )
 end
+function OnDealDamage( t )
+    local caster = t.caster
+    local target = t.unit
+    local damage = t.DamageTaken
+    local damageDeepen = (100 - target:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_deep") * 0.01
+    if caster.dealDeepDamage == nil then
+        caster.dealDeepDamage = true
+        CauseDamage( caster, target, damage * damageDeepen, DAMAGE_TYPE_PURE, ability )
+        caster.dealDeepDamage = nil
+    end
+end
+function OnTakeDamage( t )
+    local caster = t.caster
+    local attacker = t.attacker
+    local damage = t.DamageTaken
+    local damageReduce = (100 - attacker:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_reduce") * 0.01
+    Heal(caster,damage * damageReduce,0,false)
+end
 function StickWind( t )
     local caster = t.caster
     local ability = t.ability
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster) * 0.1
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster) + ability:GetSpecialValueFor("base_damage")
+    local strikeDamage = ability:GetSpecialValueFor("strike_damage") * caster:GetAgility()
     local damageType = ability:GetAbilityDamageType()
     local caster_location = caster:GetAbsOrigin()
     local target_point = t.target_points[1]
@@ -31,6 +48,9 @@ function StickWind( t )
     local duration = distance/speed
     speed = speed / 30
     CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
+    CreateSound("Hero_Juggernaut.BladeFuryStart",caster,duration)
+    caster:StartGestureWithPlaybackRate(ACT_DOTA_MK_STRIKE, 1 - 0.5 * duration )
+    ability:ApplyDataDrivenModifier(caster, caster, "modifier_stick_wind", {duration=duration})
     Timers:CreateTimer(function ()
         if traveled_distance < distance then
             local nextPath = caster:GetAbsOrigin() + direction * speed
@@ -40,10 +60,26 @@ function StickWind( t )
 			traveled_distance = traveled_distance + speed
             ProjectileManager:ProjectileDodge(caster)
             local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
-            CauseDamage(caster,unitGroup,damage,damageType,ability)
+            for k,v in pairs(unitGroup) do
+                ability:ApplyDataDrivenModifier(caster, v, "modifier_stick_wind_debuff", nil)
+            end
+            CauseDamage(caster,unitGroup,damage * 0.01,damageType,ability)
+            print(damage)
 			return 0.01
-		else
-			--SetUnitPosition(caster, caster:GetAbsOrigin())
+        else
+            local p = CreateParticle("particles/heroes/monkey_king/stick_wind_strike.vpcf",PATTACH_ABSORIGIN,caster,3)
+            ParticleManager:SetParticleControl(p, 1, Vector(400,1,1))
+            ParticleManager:SetParticleControl(p, 2, Vector(400,0,0))
+            CreateSound("Hero_MonkeyKing.Strike.Impact.Immortal",caster)
+			local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
+            for k,v in pairs(unitGroup) do
+                CauseDamage(caster,v,damage * duration,damageType,ability)
+                print(damage * duration)
+                ability:ApplyDataDrivenModifier(caster, v, "modifier_stick_wind_knockback", nil)
+                local direction = (v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized()
+                local target_location = v:GetAbsOrigin() + direction * 100
+                Jump(v,target_location,150,150,false,nil)
+            end
 		end
 	end)
 end
@@ -94,10 +130,18 @@ function Jingubang( t )
 end
 function Indestructible( t )
     local caster = t.caster
+    local ability = t.ability
     if caster.IndestructibleAbsorb == nil then
         caster.IndestructibleAbsorb = 0
     end
-    t.caster.percent_reduce_damage = t.ability:GetSpecialValueFor("damage_reduce_percent")
+    if ability.reduceValue == nil then
+        ability.reduceValue = ability:GetSpecialValueFor("damage_reduce_percent")
+        caster.percent_reduce_damage = caster.percent_reduce_damage + ability.reduceValue
+    elseif ability.reduceValue ~= ability:GetSpecialValueFor("damage_reduce_percent") then
+        caster.percent_reduce_damage = caster.percent_reduce_damage - ability.reduceValue
+        ability.reduceValue = ability:GetSpecialValueFor("damage_reduce_percent")
+        caster.percent_reduce_damage = caster.percent_reduce_damage + ability.reduceValue
+    end
 end
 function IndestructibleAbsorb( t )
     local caster = t.caster
@@ -114,6 +158,7 @@ function IndestructibleCD( t )
         ability:StartCooldown(cd)
     else
         ability:ApplyDataDrivenModifier(caster, caster, "modifier_indestructible_buff", nil)
+        CreateSound("Hero_Chen.PenitenceCast",caster)
     end
 end
 function IndestructibleArmor( t )
@@ -203,7 +248,7 @@ function EndlessOffensiveCleave( t )
     local unitGroup = GetUnitsInSector( caster, ability, position, forwardVector, radius, radius )
     for k,v in pairs(unitGroup) do
         if v ~= target then
-            PiercingEyeDamage( caster, v, damage, DAMAGE_TYPE_PURE, ability )
+            CauseDamage(caster,v,damage,DAMAGE_TYPE_PURE,ability)
         end
     end
 end

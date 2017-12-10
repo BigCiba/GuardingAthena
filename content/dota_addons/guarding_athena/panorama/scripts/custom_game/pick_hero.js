@@ -78,7 +78,7 @@ var heroPreviews = []
 var abilityTable = []
 var activePreview = null
 var activeHeroCard = null
-var HeroSelectionTime = 20
+var HeroSelectionTime = CustomNetTables.GetTableValue("difficulty","setting").hero_selection_time
 var StartGameTime = null
 var HeroComfirm = false
 var currentHero = null
@@ -282,7 +282,7 @@ function TimeRemaining(){
         $("#TimerText").text = HeroSelectionTime;
         var game_time = Math.floor(Game.GetGameTime());
         var time = game_time - StartGameTime;
-        HeroSelectionTime = 20 - time;
+        HeroSelectionTime = CustomNetTables.GetTableValue("difficulty","setting").hero_selection_time - time;
         //$.Msg("time:" + game_time);
         $.Schedule(0.1, TimeRemaining);
     }

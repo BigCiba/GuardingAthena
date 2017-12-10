@@ -8918,7 +8918,14 @@
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
-		"AbilityCooldown"	"12"
+		"AbilityCooldown"	"16"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+			"particle"	"particles/heroes/monkey_king/indestructible_shield.vpcf"
+			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_overhead.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -8926,6 +8933,11 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_indestructible_absorb"
 				"Duration"	"2"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_KeeperOfTheLight.ManaLeak.Target"
 			}
 		}
 		"Modifiers"
@@ -8953,10 +8965,7 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
 				}
 				"Duration"	"%duration"
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
+				"States"	{}
 				"OnTakeDamage"
 				{
 					"RunScript"
@@ -8974,6 +8983,8 @@
 						"Function"	"IndestructibleRemove"
 					}
 				}
+				"EffectName"	"particles/heroes/monkey_king/indestructible_shield.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 			"modifier_indestructible_absorb"
 			{
@@ -8992,13 +9003,14 @@
 				}
 				"OnDestroy"
 				{
-					"ApplyModifier"
+					"RunScript"
 					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_indestructible_buff"
-						"Duration"	"%duration"
+						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
+						"Function"	"IndestructibleCD"
 					}
 				}
+				"EffectName"	"particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_overhead.vpcf"
+				"EffectAttachType"	"follow_overhead"
 			}
 		}
 		"AbilitySpecial"
@@ -9016,7 +9028,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"6"
+				"duration"	"10"
 			}
 		}
 	}
@@ -9107,15 +9119,33 @@
 		}
 		"Modifiers"
 		{
-			"modifier_jingubang_debuff"
+			"modifier_stick_wind_debuff"
 			{
-				"Properties"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss"
+				}
 				"Duration"	"%duration"
+				"States"	{}
+				"IsDebuff"	"1"
+			}
+			"modifier_stick_wind_knockback"
+			{
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"Duration"	"1"
+			}
+			"modifier_stick_wind"
+			{
+				"IsBuff"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -9123,27 +9153,42 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
+				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"speed"	"1200"
+				"strike_damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"distance"	"1200"
+				"miss"	"60"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
+				"speed"	"1200"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1200"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
 				"radius"	"350"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
 			}
 		}
 	}
@@ -13756,26 +13801,40 @@
 		{
 			"modifier_piercing_eye"
 			{
-				"OnAttackLanded"
+				"OnDealDamage"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
-						"Function"	"PiercingEye"
+						"Function"	"OnDealDamage"
 						"DamageTaken"	"%attack_damage"
 					}
 				}
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"AllowIllusionDuplicate"	"1"
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
+						"Function"	"OnTakeDamage"
+						"DamageTaken"	"%attack_damage"
+					}
+				}
 			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_reduce"	"0.5"
+			}
+			"02"
+			{
 				"var_type"	"FIELD_INTEGER"
-				"chance"	"25"
+				"damage_deep"	"3"
 			}
 		}
 	}
@@ -13903,6 +13962,11 @@
 				"Target"	"CASTER"
 				"EffectName"	"particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_start.vpcf"
 				"EffectAttachType"	"attach_origin"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_MonkeyKing.IronCudgel"
 			}
 		}
 		"Modifiers"

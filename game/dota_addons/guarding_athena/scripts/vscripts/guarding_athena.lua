@@ -46,12 +46,17 @@ function GuardingAthena:InitGameMode()
 		--print( "Athena entity not found!" )
 	end
 
+	if IsInToolsMode() then
+		HERO_SELECTION_TIME = 2
+	end
+
 	-- 初始化游戏参数
     self:ReadGameConfiguration()
     -- 设置游戏系统规则
     GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
     GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
-    GameRules:SetHeroSelectionTime( HERO_SELECTION_TIME )
+	GameRules:SetHeroSelectionTime( HERO_SELECTION_TIME )
+	CustomNetTables:SetTableValue( "difficulty", "setting", {hero_selection_time = HERO_SELECTION_TIME} )
     GameRules:SetPreGameTime( PRE_GAME_TIME )
     GameRules:SetPostGameTime( POST_GAME_TIME )
     GameRules:SetTreeRegrowTime( TREE_REGROW_TIME )
