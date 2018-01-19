@@ -105,6 +105,15 @@ function GuardingAthena:DamageFilter( args )
 			args.damage = args.damage/(1+((caster:GetIntellect()/16)/100))
 		end
 	end
+	-- 特殊处理
+	if caster.DamageFilterAttacker then
+		args.damage = caster.DamageFilterAttacker(args.damage,victim)
+		print("attack"..damage)
+	end
+	if victim.DamageFilterVictim then
+		args.damage = victim.DamageFilterVictim(args.damage,caster)
+		print("victim"..damage)
+	end
 	-- 魔法伤害
 	if damageType == DAMAGE_TYPE_MAGICAL then
         -- 百分比增加魔法伤害

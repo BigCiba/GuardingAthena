@@ -56,11 +56,11 @@ function HeroState:InitUnit(unit)
     unit.gold_rate = 1
 end
 function HeroState:InitIllusion(unit)
-    hero.bonus_magic_damage = 0         --额外百分比魔法伤害
-    hero.bonus_physical_damage = 0      --额外无视护甲物理伤害
-    hero.percent_bonus_damage = 0       --额外百分比所有伤害
-    hero.const_reduce_damage = 0        --定值伤害减少
-    hero.percent_reduce_damage = 0      --百分比伤害减少
+    unit.bonus_magic_damage = 0         --额外百分比魔法伤害
+    unit.bonus_physical_damage = 0      --额外无视护甲物理伤害
+    unit.percent_bonus_damage = 0       --额外百分比所有伤害
+    unit.const_reduce_damage = 0        --定值伤害减少
+    unit.percent_reduce_damage = 0      --百分比伤害减少
     unit.str_gain = 0
     unit.agi_gain = 0
     unit.int_gain = 0

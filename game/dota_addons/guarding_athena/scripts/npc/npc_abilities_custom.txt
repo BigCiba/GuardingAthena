@@ -8966,15 +8966,6 @@
 				}
 				"Duration"	"%duration"
 				"States"	{}
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
-						"Function"	"IndestructibleArmor"
-						"DamageTaken"	"%attack_damage"
-					}
-				}
 				"OnDestroy"
 				{
 					"RunScript"
@@ -8991,15 +8982,6 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"120"
-				}
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
-						"Function"	"IndestructibleAbsorb"
-						"DamageTaken"	"%attack_damage"
-					}
 				}
 				"OnDestroy"
 				{
@@ -13801,25 +13783,15 @@
 		{
 			"modifier_piercing_eye"
 			{
-				"OnDealDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
-						"Function"	"OnDealDamage"
-						"DamageTaken"	"%attack_damage"
-					}
-				}
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"AllowIllusionDuplicate"	"1"
-				"OnTakeDamage"
+				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
-						"Function"	"OnTakeDamage"
-						"DamageTaken"	"%attack_damage"
+						"Function"	"OnCreated"
 					}
 				}
 			}
@@ -13834,7 +13806,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_deep"	"3"
+				"damage_deep"	"2"
 			}
 		}
 	}
@@ -14058,14 +14030,39 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"angle"	"165 170 175 180 185 190 195 200 205 210 215 220 225 230 235 240 245 250 255 260"
+				"near_angle"	"360"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"350"
+				"mid_angle"	"150"
 			}
 			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"far_angle"	"75"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"near_range"	"125"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mid_range"	"225"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"far_range"	"300"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cleave_damage"	"24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100"
+			}
+			"08"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"6.5 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14 14.5 15 15.5 16"

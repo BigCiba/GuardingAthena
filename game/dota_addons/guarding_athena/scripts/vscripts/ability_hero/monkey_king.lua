@@ -10,23 +10,30 @@ function PiercingEyeDamage( caster, target, damage, damageType, ability )
     local damageDeepen = (100 - target:GetHealthPercent()) * 0.05 + 1
     CauseDamage( caster, target, damage * damageDeepen, damageType, ability )
 end
-function OnDealDamage( t )
+function OnCreated( t )
     local caster = t.caster
-    local target = t.unit
-    local damage = t.DamageTaken
-    local damageDeepen = (100 - target:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_deep") * 0.01
-    if caster.dealDeepDamage == nil then
-        caster.dealDeepDamage = true
-        CauseDamage( caster, target, damage * damageDeepen, DAMAGE_TYPE_PURE, ability )
-        caster.dealDeepDamage = nil
+    caster.DamageFilterAttacker = function (damage,victim)
+        local damageDeepen = (100 - victim:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_deep") * 0.01
+        damage = damage * (1 + damageDeepen)
+        return damage
     end
-end
-function OnTakeDamage( t )
-    local caster = t.caster
-    local attacker = t.attacker
-    local damage = t.DamageTaken
-    local damageReduce = (100 - attacker:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_reduce") * 0.01
-    Heal(caster,damage * damageReduce,0,false)
+    caster.DamageFilterVictim = function (damage,attacker)
+        local damageReduce = (100 - caster:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_reduce") * 0.01
+        if caster:HasModifier("modifier_indestructible_absorb") then
+            damageReduce = 1
+            caster.IndestructibleAbsorb = caster.IndestructibleAbsorb + damage
+        end
+        if caster:HasModifier("modifier_indestructible_buff") then
+            damageReduce = 1
+            if caster.IndestructibleAbsorb > damage then
+                caster.IndestructibleAbsorb = caster.IndestructibleAbsorb - damage
+            else
+                caster:RemoveModifierByName("modifier_indestructible_buff")
+            end
+        end
+        damage = damage * (1 - damageReduce)
+        return damage
+    end
 end
 function StickWind( t )
     local caster = t.caster
@@ -143,12 +150,6 @@ function Indestructible( t )
         caster.percent_reduce_damage = caster.percent_reduce_damage + ability.reduceValue
     end
 end
-function IndestructibleAbsorb( t )
-    local caster = t.caster
-    local damage = t.DamageTaken
-    caster.IndestructibleAbsorb = caster.IndestructibleAbsorb + damage
-    Heal(caster,damage,0,false)
-end
 function IndestructibleCD( t )
     local caster = t.caster
     local ability = t.ability
@@ -160,17 +161,6 @@ function IndestructibleCD( t )
         ability:ApplyDataDrivenModifier(caster, caster, "modifier_indestructible_buff", nil)
         CreateSound("Hero_Chen.PenitenceCast",caster)
     end
-end
-function IndestructibleArmor( t )
-    local caster = t.caster
-    local damage = t.DamageTaken
-    local healAmount = damage
-    if caster.IndestructibleAbsorb > damage then
-        caster.IndestructibleAbsorb = caster.IndestructibleAbsorb - damage
-    else
-        healAmount = damage - caster.IndestructibleAbsorb
-    end
-    Heal(caster,healAmount,0,false)
 end
 function IndestructibleRemove( t )
     local caster = t.caster
@@ -241,11 +231,25 @@ function EndlessOffensiveCleave( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = t.DamageTaken
+    local damage = t.DamageTaken * ability:GetSpecialValueFor("cleave_damage") * 0.01
     local position = caster:GetAbsOrigin()
-    local radius = ability:GetSpecialValueFor("radius")
+    local radius = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D()
+    local nearRange = ability:GetSpecialValueFor("near_range")
+    local midRange = ability:GetSpecialValueFor("mid_range")
+    local farRange = ability:GetSpecialValueFor("far_range")
+    local angle = 360
+    if radius < nearRange then
+        angle = ability:GetSpecialValueFor("near_angle")
+        radius = nearRange
+    elseif radius < midRange then
+        angle = ability:GetSpecialValueFor("mid_angle")
+        radius = midRange
+    else
+        angle = ability:GetSpecialValueFor("far_angle")
+        radius = farRange
+    end
     local forwardVector = (target:GetAbsOrigin() - position):Normalized()
-    local unitGroup = GetUnitsInSector( caster, ability, position, forwardVector, radius, radius )
+    local unitGroup = GetUnitsInSector( caster, ability, position, forwardVector, angle, radius )
     for k,v in pairs(unitGroup) do
         if v ~= target then
             CauseDamage(caster,v,damage,DAMAGE_TYPE_PURE,ability)
@@ -295,16 +299,6 @@ function EndlessOffensiveCreate( t )
             end
         end
         unit:SetAbilityPoints(0)
-        --[[for abilitySlot=0,6 do
-            local illusionAbility = caster:GetAbilityByIndex(abilitySlot)
-            if illusionAbility ~= nil then 
-                local abilityLevel = illusionAbility:GetLevel()
-                local unitAbility = unit:GetAbilityByIndex(abilitySlot)
-                if unitAbility then
-                    unitAbility:SetLevel(abilityLevel)
-                end
-            end
-        end]]--
         for itemSlot=0,5 do
             local itemOld = unit:GetItemInSlot(itemSlot)
             if itemOld then
