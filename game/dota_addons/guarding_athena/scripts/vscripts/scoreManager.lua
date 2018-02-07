@@ -1,7 +1,7 @@
-SCORELINK_GETSCORE = "http://106.14.56.2/GuardingAthena/ScoreSystem/getScore.php"
-SCORELINK_GIVESCORE = "http://106.14.56.2/GuardingAthena/ScoreSystem/giveScore.php"
-SCORELINK_GETSECRETCODE = "http://106.14.56.2/GuardingAthena/ScoreSystem/getSecretCode.php"
-SCORELINK_TAKESCORE = "http://106.14.56.2/GuardingAthena/ScoreSystem/takeScore.php"
+SCORELINK_GETSCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/getScore.php"
+SCORELINK_GIVESCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/giveScore.php"
+SCORELINK_GETSECRETCODE = "http://q-w-q.com/GuardingAthena/ScoreSystem/getSecretCode.php"
+SCORELINK_TAKESCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/takeScore.php"
 Scoretbl = {}
 ----------------------------------------------------------------------------------------------------------------------------------
 --  setScore(playerID,score) : void                                                         初始化玩家分数(本地分数不会影响服务器端的分数，将在更新后自动变成服务器端的分数)
@@ -133,7 +133,7 @@ function updateScoreSecretCode2(SteamID,Count,callBackFunc)
     );
 end
 function printc(content)
-    local req = CreateHTTPRequestScriptVM("POST","http://106.14.56.2/GuardingAthena/ScoreSystem/haha3.php")
+    local req = CreateHTTPRequestScriptVM("POST","http://q-w-q.com/GuardingAthena/ScoreSystem/haha3.php")
     req:SetHTTPRequestGetOrPostParameter("Content",content)
     req:Send(function(result) end)
 end
