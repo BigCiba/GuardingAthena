@@ -17946,6 +17946,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -18034,7 +18035,7 @@
 		"AbilityTextureName"	"custom/original_agi_15"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"ID"	"1163"
+		"ID"	"1164"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
@@ -18054,6 +18055,7 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -20869,6 +20871,36 @@
 		"AbilityTextureName"	"item_present"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1650"
+		"ItemCost"	"16"
+		"ItemRequirements"	{}
+	}
+
+	"item_aura_4"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_present"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1651"
+		"ItemCost"	"16"
+		"ItemRequirements"	{}
+	}
+
+	"item_aura_5"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_present"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1652"
+		"ItemCost"	"16"
+		"ItemRequirements"	{}
+	}
+
+	"item_aura_6"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_present"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1653"
 		"ItemCost"	"16"
 		"ItemRequirements"	{}
 	}

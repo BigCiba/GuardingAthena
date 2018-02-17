@@ -1,0 +1,87 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf1:version{d47d07e6-072c-49cb-9718-5bfd8d6c3d21} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_flCullRadius = 90.0
+	m_flMaxDrawDistance = 2000.0
+	m_flNoDrawTimeToGoToSleep = 2.0
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/player/aura_5_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_e.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_h.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_i.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_j.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_k.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_m.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_n.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_o.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_p.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/player/aura_5_q.vpcf"
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 1.0, 1.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

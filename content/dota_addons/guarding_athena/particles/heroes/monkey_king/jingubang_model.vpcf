@@ -12,11 +12,12 @@
 			m_ModelList = 
 			[
 				{
-					m_model = resource:"models/particle/legion_arrow.vmdl"
+					m_model = resource:"models/heroes/monkey_king/monkey_king_base_weapon.vmdl"
 				},
 			]
 			m_bAnimated = true
 			m_nLOD = 1
+			m_bIgnoreNormal = true
 		},
 	]
 	m_Operators = 
@@ -78,7 +79,8 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 2.0
+			m_flRadiusMax = 20.0
+			m_flRadiusMin = 20.0
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
@@ -86,6 +88,12 @@
 		},
 		{
 			_class = "C_INIT_RandomRotation"
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, -150.0 ]
+			m_OffsetMax = [ 0.0, 0.0, -200.0 ]
 		},
 	]
 	m_Emitters = 
@@ -103,12 +111,6 @@
 			m_fForceAmount = 9999999.0
 			m_flOpEndFadeOutTime = 0.05
 			m_flOpStartFadeOutTime = 0.05
-		},
-	]
-	m_Children = 
-	[
-		{
-			m_ChildRef = resource:"particles/skills/arrow_strom_1_1_1.vpcf"
 		},
 	]
 	m_controlPointConfigurations = 

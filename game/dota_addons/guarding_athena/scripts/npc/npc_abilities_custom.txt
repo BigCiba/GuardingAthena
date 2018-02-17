@@ -8919,6 +8919,7 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCooldown"	"16"
+		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
@@ -9018,8 +9019,8 @@
 	"jingubang"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"stick_wind"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"	"monkey_king_primal_spring"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
@@ -9028,11 +9029,15 @@
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastAnimation"	"ACT_DOTA_MK_STRIKE"
-		"AbilityCooldown"	"10"
+		"AbilityCooldown"	"60"
+		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		"AbilityCastRange"	"%thump_radius"
+		"AOERadius"	"400"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_strike_cast.vpcf"
 			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_strike.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -9045,10 +9050,20 @@
 		}
 		"Modifiers"
 		{
-			"modifier_jingubang_debuff"
+			"modifier_jingubang_thump_debuff"
 			{
 				"Properties"	{}
-				"Duration"	"%duration"
+				"Duration"	"%thump_duration"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+			}
+			"modifier_jingubang_crush_debuff"
+			{
+				"Properties"	{}
+				"Duration"	"%crush_duration"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -9061,12 +9076,32 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"thump_damage"	"40 80 120 160 200 240 280 320"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
+				"thump_radius"	"1200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"thump_duration"	"1"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"crush_damage"	"80 160 240 320 400 480 560 640"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"crush_radius"	"400"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"crush_duration"	"4"
 			}
 		}
 	}
@@ -9085,6 +9120,7 @@
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastAnimation"	"ACT_DOTA_MK_STRIKE"
 		"AbilityCooldown"	"10"
+		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_strike_cast.vpcf"
@@ -13768,7 +13804,7 @@
 	"piercing_eye"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/piercing_eye"
+		"AbilityTextureName"	"piercing_eye_backup"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13904,11 +13940,11 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"D"
-		"MaxLevel"	"20"
+		"MaxLevel"	"30"
 		"RequiredLevel"	"0"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastAnimation"	"mk_attack_01_near"
-		"AbilityCooldown"	"8"
+		"AbilityCooldown"	"20"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
 		"precache"
 		{

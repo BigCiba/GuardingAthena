@@ -1,15 +1,3 @@
-function PiercingEye( t )
-    local caster = t.caster
-    local target = t.target
-    local ability = t.ability
-    local damage = t.DamageTaken
-    local change = ability:GetSpecialValueFor("chance")
-    PiercingEyeDamage( caster, target, damage, DAMAGE_TYPE_PURE, ability )
-end
-function PiercingEyeDamage( caster, target, damage, damageType, ability )
-    local damageDeepen = (100 - target:GetHealthPercent()) * 0.05 + 1
-    CauseDamage( caster, target, damage * damageDeepen, damageType, ability )
-end
 function OnCreated( t )
     local caster = t.caster
     caster.DamageFilterAttacker = function (damage,victim)
@@ -57,21 +45,24 @@ function StickWind( t )
     CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
     CreateSound("Hero_Juggernaut.BladeFuryStart",caster,duration)
     caster:StartGestureWithPlaybackRate(ACT_DOTA_MK_STRIKE, 1 - 0.5 * duration )
-    ability:ApplyDataDrivenModifier(caster, caster, "modifier_stick_wind", {duration=duration})
+    ability:ApplyDataDrivenModifier(caster, caster, "modifier_stick_wind", {duration = duration})
+    caster:AddNewModifier(nil, nil, "modifier_phased", {duration = duration})
     Timers:CreateTimer(function ()
         if traveled_distance < distance then
             local nextPath = caster:GetAbsOrigin() + direction * speed
-            if GridNav:CanFindPath(caster:GetAbsOrigin(), nextPath) and #GetUnitsInRadius(caster,ability,nextPath,50) == 0 then
-                SetUnitPosition(caster, nextPath, true)
-            end
+            --if GridNav:CanFindPath(caster:GetAbsOrigin(), nextPath) and #GetUnitsInRadius(caster,ability,nextPath,50) == 0 then
+                SetUnitPosition(caster, nextPath, false)
+            --end
 			traveled_distance = traveled_distance + speed
             ProjectileManager:ProjectileDodge(caster)
             local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
             for k,v in pairs(unitGroup) do
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_stick_wind_debuff", nil)
+                v:AddNewModifier(nil, nil, "modifier_phased", {duration = 0.02})
+                SetUnitPosition(v, v:GetAbsOrigin() + direction * speed, false)
             end
             CauseDamage(caster,unitGroup,damage * 0.01,damageType,ability)
-            print(damage)
+            --print(damage)
 			return 0.01
         else
             local p = CreateParticle("particles/heroes/monkey_king/stick_wind_strike.vpcf",PATTACH_ABSORIGIN,caster,3)
@@ -81,7 +72,7 @@ function StickWind( t )
 			local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
             for k,v in pairs(unitGroup) do
                 CauseDamage(caster,v,damage * duration,damageType,ability)
-                print(damage * duration)
+                --print(damage * duration)
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_stick_wind_knockback", nil)
                 local direction = (v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized()
                 local target_location = v:GetAbsOrigin() + direction * 100
@@ -95,23 +86,52 @@ function Jingubang( t )
     local ability = t.ability
     local caster_location = caster:GetAbsOrigin()
     local cast_location = t.target_points[1]
-    local targetDirection = (cast_location - caster_location):Normalized()
-    local target_location = caster_location + targetDirection * 1200
-    local p0 = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_strike_cast.vpcf",PATTACH_ABSORIGIN,caster,2)
-    ParticleManager:SetParticleControlForward(p0,0,targetDirection)
+    local damageType = ability:GetAbilityDamageType()
+    local thumpDamage = ability:GetSpecialValueFor("thump_damage") * caster:GetAgility()
+    local thumpRadius = ability:GetSpecialValueFor("thump_radius")
+    local thumpDuration = ability:GetSpecialValueFor("thump_duration")
+    local crushDamage = ability:GetSpecialValueFor("crush_damage") * caster:GetAgility()
+    local crushRadius = ability:GetSpecialValueFor("crush_radius")
+    local crushDuration = ability:GetSpecialValueFor("crush_duration")
+    local angle = 0
+    for i=1,18 do
+        local target_location = GetRotationPoint(caster_location, thumpRadius, angle)
+        local targetDirection = (target_location - caster_location):Normalized()
+        local p0 = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_strike_cast.vpcf",PATTACH_ABSORIGIN,caster,2)
+        ParticleManager:SetParticleControlForward(p0,0,targetDirection)
+        Timers:CreateTimer(0.2,function ()
+            local p1 = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_strike.vpcf",PATTACH_ABSORIGIN,caster,2)
+            ParticleManager:SetParticleControlForward(p1,0,targetDirection)
+            ParticleManager:SetParticleControl(p1, 1, target_location)
+        end)
+        angle = angle + 20
+    end
+    CreateSound("Hero_MonkeyKing.Strike.Cast",caster)
     Timers:CreateTimer(0.2,function ()
-        local unitGroup = GetUnitsInLine(caster,ability,caster_location,target_location,150)
+        CreateSound("Hero_MonkeyKing.Strike.Impact",caster)
+        local unitGroup = GetUnitsInRadius(caster,ability,caster_location,thumpRadius)
         for k,v in pairs(unitGroup) do
-            local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster)
-            local damageType = ability:GetAbilityDamageType()
-            ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_debuff", nil)
-            CauseDamage(caster,v,damage,damageType,ability)
+            ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_thump_debuff", nil)
+            CauseDamage(caster,v,thumpDamage,damageType,ability)
+            local direction = (v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized()
+            local target_location = v:GetAbsOrigin() + direction * 50
+            Jump(v,target_location,50,150,false)
         end
-        local p1 = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_strike.vpcf",PATTACH_ABSORIGIN,caster,2)
-        ParticleManager:SetParticleControlForward(p1,0,targetDirection)
-        ParticleManager:SetParticleControl(p1, 1, target_location)
     end)
-    for i,unit in pairs(caster.illusion_table) do
+    Timers:CreateTimer(1,function ()
+        local p1 = CreateParticle("particles/heroes/monkey_king/jingubang.vpcf",PATTACH_ABSORIGIN,caster,5)
+        ParticleManager:SetParticleControl(p1,0,cast_location)
+        ParticleManager:SetParticleControl(p1,1,cast_location)
+        Timers:CreateTimer(0.3,function ()
+            CreateSound("Hero_ElderTitan.EchoStomp",caster)
+            local unitGroup = GetUnitsInRadius(caster,ability,cast_location,crushRadius)
+            for k,v in pairs(unitGroup) do
+                ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_crush_debuff", nil)
+                CauseDamage(caster,v,crushDamage,damageType,ability)
+            end
+        end)
+    end)
+    --[[for i,unit in pairs(caster.illusion_table) do
         if unit.use == true then
             unit:StartGesture(ACT_DOTA_MK_STRIKE)
             local unit_location = unit:GetAbsOrigin()
@@ -133,7 +153,7 @@ function Jingubang( t )
                 ParticleManager:SetParticleControl(p1, 1, target_pos)
             end)
         end
-    end
+    end]]
 end
 function Indestructible( t )
     local caster = t.caster
@@ -183,7 +203,7 @@ function EndlessOffensive( t )
                             unit:HeroLevelUp(false)
                         end
                     end
-                    unit:SetAbilityPoints(0)
+                    --unit:SetAbilityPoints(0)
                     for abilitySlot=0,15 do
                         local illusionAbility = caster:GetAbilityByIndex(abilitySlot)
                         if illusionAbility ~= nil then 
@@ -298,7 +318,7 @@ function EndlessOffensiveCreate( t )
                 unit:HeroLevelUp(false)
             end
         end
-        unit:SetAbilityPoints(0)
+        --unit:SetAbilityPoints(0)
         for itemSlot=0,5 do
             local itemOld = unit:GetItemInSlot(itemSlot)
             if itemOld then
