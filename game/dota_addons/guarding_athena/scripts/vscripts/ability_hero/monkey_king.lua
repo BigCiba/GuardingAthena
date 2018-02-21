@@ -41,6 +41,10 @@ function StickWind( t )
 	end
 	local direction = (target_point - caster_location):Normalized()
     local duration = distance/speed
+    if caster:HasModifier("modifier_monkey_king_bar") then
+        speed = speed * 2
+        duration = 1
+    end
     speed = speed / 30
     CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
     CreateSound("Hero_Juggernaut.BladeFuryStart",caster,duration)
@@ -61,7 +65,7 @@ function StickWind( t )
                 v:AddNewModifier(nil, nil, "modifier_phased", {duration = 0.02})
                 SetUnitPosition(v, v:GetAbsOrigin() + direction * speed, false)
             end
-            CauseDamage(caster,unitGroup,damage * 0.01,damageType,ability)
+            CauseDamage(caster,unitGroup,damage * 0.033,damageType,ability)
             --print(damage)
 			return 0.01
         else
@@ -178,6 +182,7 @@ function IndestructibleCD( t )
         ability:EndCooldown()
         ability:StartCooldown(cd)
     else
+        caster.indestructible_armor = caster.IndestructibleAbsorb
         ability:ApplyDataDrivenModifier(caster, caster, "modifier_indestructible_buff", nil)
         CreateSound("Hero_Chen.PenitenceCast",caster)
     end
@@ -185,6 +190,10 @@ end
 function IndestructibleRemove( t )
     local caster = t.caster
     caster.IndestructibleAbsorb = 0
+    if caster:HasModifier("modifier_monkey_king_bar") then
+        local unitGroup = GetUnitsInRadius(caster,t.ability,caster:GetAbsOrigin(),600)
+        CauseDamage(caster,unitGroup,caster.indestructible_armor,DAMAGE_TYPE_MAGICAL,t.ability)
+    end
 end
 function EndlessOffensive( t )
     local caster = t.caster

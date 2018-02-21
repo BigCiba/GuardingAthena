@@ -12990,6 +12990,29 @@
 		}
 	}
 
+	"item_recipe_npc_dota_hero_monkey_king1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1657"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemPurchasable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_npc_dota_hero_monkey_king1"
+		"ItemRequirements"
+		{
+			"01"	"item_npc_dota_hero_monkey_king_original_agi_15"
+		}
+	}
+
 	"item_blood_mask_broken"
 	{
 		"BaseClass"	"item_datadriven"
@@ -13806,6 +13829,91 @@
 		}
 	}
 
+	"item_npc_dota_hero_monkey_king1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_monkey_king_bar"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1655"
+		"ItemQuality"	"component"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemCost"	"1"
+		"ItemSellable"	"0"
+		"ItemPurchasable"	"1"
+		"ItemShopTags"	"magic_resist"
+		"ItemRequirements"	{}
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"Modifiers"
+		{
+			"modifier_monkey_king_bar"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%hp"
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mp"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"200"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agi"	"400"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"int"	"200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp"	"4000"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp"	"2000"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"400"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_regen"	"100"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0.5"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"10"
+			}
+		}
+	}
+
 	"item_recipe_npc_dota_hero_juggernaut1"
 	{
 		// General
@@ -13854,6 +13962,54 @@
 		"Modifiers"
 		{
 			"modifier_zhuanshujiansheng"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_all_stats"	"-500"
+			}
+		}
+	}
+
+	"item_npc_dota_hero_monkey_king"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_monkey_king_bar"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"0.0"
+		// Valve's version of this item uses the ID "143".
+		"ID"	"1654"
+		"ItemQuality"	"epic"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"1"
+		"ItemPurchasable"	"0"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_monkey_king_bar"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -20913,5 +21069,85 @@
 		"ID"	"1645"
 		"ItemCost"	"0"
 		"ItemRequirements"	{}
+	}
+
+	"item_chaos_plate"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_aeon_disk"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"90"
+		"ID"	"1658"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_chaos_plate"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%attribute"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/chaos_plate.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/chaos_plate.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/chaos_plate.lua"
+						"Function"	"OnDeath"
+					}
+				}
+			}
+			"modifier_item_chaos_plate_buff"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Duration"	"%duration"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attribute"	"3000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_deepen"	"50"
+			}
+		}
 	}
 }

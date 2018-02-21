@@ -134,7 +134,11 @@ function GuardingAthena:DamageFilter( args )
     -- 百分比增加/减少伤害输出
     if caster.percent_bonus_damage and caster.percent_bonus_damage ~= 0 then
         args.damage = args.damage * (1 + caster.percent_bonus_damage * 0.01)
-    end
+	end
+	-- 护盾
+	if victim.ShieldFilter then
+		args.damage = victim.ShieldFilter(args.damage,victim)
+	end
     -- 减少固定值伤害
     if victim.const_reduce_damage and victim.const_reduce_damage > 0 then
         args.damage = args.damage - victim.const_reduce_damage

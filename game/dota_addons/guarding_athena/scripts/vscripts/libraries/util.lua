@@ -13,6 +13,7 @@
 	GetUnitsInSector
 	GetRandomPoint
 	GetRotationPoint
+	ClearBuff
 	DropItem
 	RollDrops
 	IsFullSolt
@@ -389,6 +390,28 @@ function GetRotationPoint( ... )
 	local y = math.sin(radAngle) * radius + originPoint.y
 	local position = Vector(x, y, originPoint.z)
 	return position
+end
+-- 清除buff
+function ClearBuff( ... )
+	local caster,buffType,count
+	if count == nil then
+		count = caster:GetModifierCount()
+	end
+	allBuffs = caster:FindAllModifiers()
+	if buffType == "buff" then
+		for i=1,count do
+			if allBuffs[i]:IsDebuff() == false and allBuffs[i]:IsPurgable() then
+				caster:RemoveModifierByName(caster:GetModifierNameByIndex(i))
+			end
+		end
+	end
+	if buffType == "debuff" then
+		for i=1,count do
+			if allBuffs[i]:IsDebuff() and allBuffs[i]:IsPurgable() then
+				caster:RemoveModifierByName(caster:GetModifierNameByIndex(i))
+			end
+		end
+	end
 end
 function SetRegionLimit( ... )
 	local caster,regionEntity = ...
