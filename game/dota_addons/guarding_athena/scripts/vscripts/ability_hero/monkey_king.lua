@@ -122,19 +122,29 @@ function Jingubang( t )
             Jump(v,target_location,50,150,false)
         end
     end)
+    local count = 0
+    if caster:HasModifier("modifier_monkey_king_bar") then
+        crushDamage = crushDamage * 0.2
+    end
     Timers:CreateTimer(1,function ()
-        local p1 = CreateParticle("particles/heroes/monkey_king/jingubang.vpcf",PATTACH_ABSORIGIN,caster,5)
-        ParticleManager:SetParticleControl(p1,0,cast_location)
-        ParticleManager:SetParticleControl(p1,1,cast_location)
-        Timers:CreateTimer(0.3,function ()
-            CreateSound("Hero_ElderTitan.EchoStomp",caster)
-            local unitGroup = GetUnitsInRadius(caster,ability,cast_location,crushRadius)
-            for k,v in pairs(unitGroup) do
-                ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_crush_debuff", nil)
-                v:InterruptMotionControllers(false)
-                CauseDamage(caster,v,crushDamage,damageType,ability)
-            end
-        end)
+        if count < 9 then
+            local randomLocation = Vector(RandomInt(-100, 100),RandomInt(-100, 100),0)
+            local p1 = CreateParticle("particles/heroes/monkey_king/jingubang.vpcf",PATTACH_ABSORIGIN,caster,5)
+            ParticleManager:SetParticleControl(p1,0,cast_location + randomLocation)
+            ParticleManager:SetParticleControl(p1,1,cast_location + randomLocation)
+            Timers:CreateTimer(0.3,function ()
+                CreateSound("Hero_ElderTitan.EchoStomp",caster)
+                local unitGroup = GetUnitsInRadius(caster,ability,cast_location + randomLocation,crushRadius)
+                for k,v in pairs(unitGroup) do
+                    ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_crush_debuff", nil)
+                    CauseDamage(caster,v,crushDamage,damageType,ability)
+                end
+            end)
+            if caster:HasModifier("modifier_monkey_king_bar") then
+                count = count + 1
+                return 1
+            end 
+        end
     end)
     --[[for i,unit in pairs(caster.illusion_table) do
         if unit.use == true then
@@ -185,17 +195,20 @@ function IndestructibleCD( t )
     else
         caster.indestructible_armor = caster.IndestructibleAbsorb
         ability:ApplyDataDrivenModifier(caster, caster, "modifier_indestructible_buff", nil)
+        ability.shield_particle = CreateParticle("particles/heroes/monkey_king/indestructible_shield.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,10)
         CreateSound("Hero_Chen.PenitenceCast",caster)
     end
 end
 function IndestructibleRemove( t )
     local caster = t.caster
+    local ability = t.ability
     caster.IndestructibleAbsorb = 0
     if caster:HasModifier("modifier_monkey_king_bar") then
         local unitGroup = GetUnitsInRadius(caster,t.ability,caster:GetAbsOrigin(),600)
-        CauseDamage(caster,unitGroup,caster.indestructible_armor,DAMAGE_TYPE_MAGICAL,t.ability)
+        CauseDamage(caster,unitGroup,caster.indestructible_armor,ability:GetAbilityDamageType(),ability)
         CreateParticle("particles/heroes/monkey_king/shield_broke.vpcf",PATTACH_ABSORIGIN,caster,2)
     end
+    ParticleManager:DestroyParticle(ability.shield_particle, true)
 end
 function EndlessOffensive( t )
     local caster = t.caster
@@ -208,13 +221,16 @@ function EndlessOffensive( t )
             for i,unit in pairs(caster.illusion_table) do
                 if unit.use == false then
                     unit.use = true
-                    local heroLevel = caster:GetLevel() - unit:GetLevel()
+                    --[[local heroLevel = caster:GetLevel() - unit:GetLevel()
                     if heroLevel > 0 then 
                         for i=1,heroLevel do
                             unit:HeroLevelUp(false)
                         end
-                    end
+                    end]]
                     --unit:SetAbilityPoints(0)
+                    unit:SetBaseStrength(caster:GetBaseStrength())
+                    unit:SetBaseAgility(caster:GetBaseAgility())
+                    unit:SetBaseIntellect(caster:GetBaseIntellect())
                     for abilitySlot=0,15 do
                         local illusionAbility = caster:GetAbilityByIndex(abilitySlot)
                         if illusionAbility ~= nil then 
@@ -326,12 +342,12 @@ function EndlessOffensiveCreate( t )
         unit.caster_hero = caster
         HeroState:InitIllusion(unit)
         unit:MakeIllusion()
-        local heroLevel = caster:GetLevel() - unit:GetLevel()
+        --[[local heroLevel = caster:GetLevel() - unit:GetLevel()
         if heroLevel > 0 then 
             for i=1,heroLevel do
                 unit:HeroLevelUp(false)
             end
-        end
+        end]]--
         --unit:SetAbilityPoints(0)
         for itemSlot=0,5 do
             local itemOld = unit:GetItemInSlot(itemSlot)

@@ -13848,6 +13848,10 @@
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/items_fx/aegis_respawn.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_monkey_king_bar"
@@ -21086,6 +21090,10 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCooldown"	"90"
 		"ID"	"1658"
+		"ItemCost"	"20000"
+		"ItemSellable"	"1"
+		"ItemPurchasable"	"0"
+		"ItemKillable"	"0"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -21143,7 +21151,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attribute"	"3000"
+				"attribute"	"1000"
 			}
 			"03"
 			{
@@ -21154,6 +21162,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage_deepen"	"50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shield"	"30"
 			}
 		}
 	}

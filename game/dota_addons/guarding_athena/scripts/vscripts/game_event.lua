@@ -736,7 +736,7 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 	if hero.int_gain then
 		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain)
 	end
-	-- 修正技能点17 19 21 22 23 24 
+	-- 修正技能点17 19 21 22 23 24
 	if level <= 188 then
 		local mod = math.fmod(level,3)
 		if level > 8 then

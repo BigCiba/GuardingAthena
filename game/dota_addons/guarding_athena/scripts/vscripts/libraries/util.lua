@@ -409,13 +409,15 @@ function ClearBuff( ... )
 		for i=1,count do
 			local buffName = caster:GetModifierNameByIndex(i-1)
 			local buff = caster:FindModifierByName(buffName)
-			local owner = buff:GetCaster()
-			if owner then
-				if owner:GetTeamNumber() == DOTA_TEAM_BADGUYS or owner:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+			if buff then
+				local owner = buff:GetCaster()
+				if owner then
+					if owner:GetTeamNumber() == DOTA_TEAM_BADGUYS or owner:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+						caster:RemoveModifierByName(buffName)
+					end
+				else
 					caster:RemoveModifierByName(buffName)
 				end
-			else
-				caster:RemoveModifierByName(buffName)
 			end
 			--[[if buff:IsDebuff() and buff:IsPurgable() then
 			end]]

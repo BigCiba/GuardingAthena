@@ -8914,6 +8914,9 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"zuus_static_field_alt1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
@@ -8924,7 +8927,6 @@
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
-			"particle"	"particles/heroes/monkey_king/indestructible_shield.vpcf"
 			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_overhead.vpcf"
 		}
 		"OnSpellStart"
@@ -8975,8 +8977,6 @@
 						"Function"	"IndestructibleRemove"
 					}
 				}
-				"EffectName"	"particles/heroes/monkey_king/indestructible_shield.vpcf"
-				"EffectAttachType"	"follow_origin"
 			}
 			"modifier_indestructible_absorb"
 			{
@@ -9069,7 +9069,7 @@
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"IsDebuff"	"1"
-				"IsPurgable"	"0"
+				"IsPurgable"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -9172,7 +9172,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"02"
 			{
@@ -14072,17 +14072,17 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"mid_angle"	"150"
+				"mid_angle"	"270"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"far_angle"	"75"
+				"far_angle"	"180"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"near_range"	"125"
+				"near_range"	"150"
 			}
 			"05"
 			{
