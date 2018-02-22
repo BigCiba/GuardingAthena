@@ -393,7 +393,7 @@ function GetRotationPoint( ... )
 end
 -- 清除buff
 function ClearBuff( ... )
-	local caster,buffType,count
+	local caster,buffType,count = ...
 	if count == nil then
 		count = caster:GetModifierCount()
 	end
@@ -407,9 +407,19 @@ function ClearBuff( ... )
 	end
 	if buffType == "debuff" then
 		for i=1,count do
-			if allBuffs[i]:IsDebuff() and allBuffs[i]:IsPurgable() then
-				caster:RemoveModifierByName(caster:GetModifierNameByIndex(i))
+			local buffName = caster:GetModifierNameByIndex(i-1)
+			local buff = caster:FindModifierByName(buffName)
+			local owner = buff:GetCaster()
+			if owner then
+				if owner:GetTeamNumber() == DOTA_TEAM_BADGUYS or owner:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+					caster:RemoveModifierByName(buffName)
+				end
+			else
+				caster:RemoveModifierByName(buffName)
 			end
+			--[[if buff:IsDebuff() and buff:IsPurgable() then
+			end]]
+			--print(buff:GetName())
 		end
 	end
 end

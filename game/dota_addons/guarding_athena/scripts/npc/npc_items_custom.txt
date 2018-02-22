@@ -13009,7 +13009,7 @@
 		"ItemResult"	"item_npc_dota_hero_monkey_king1"
 		"ItemRequirements"
 		{
-			"01"	"item_npc_dota_hero_monkey_king_original_agi_15"
+			"01"	"item_npc_dota_hero_monkey_king;item_original_agi_15"
 		}
 	}
 
@@ -13836,6 +13836,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_monkey_king_bar"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"ID"	"1655"
 		"ItemQuality"	"component"
 		"Model"	"models/props_gameplay/red_box.vmdl"
@@ -13993,6 +13996,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_monkey_king_bar"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"0.0"
@@ -21116,6 +21122,7 @@
 						"Function"	"OnDeath"
 					}
 				}
+				"Passive"	"1"
 			}
 			"modifier_item_chaos_plate_buff"
 			{

@@ -41,9 +41,9 @@ function StickWind( t )
 	end
 	local direction = (target_point - caster_location):Normalized()
     local duration = distance/speed
+    local damageAdd = distance/speed
     if caster:HasModifier("modifier_monkey_king_bar") then
-        speed = speed * 2
-        duration = 1
+        damageAdd = 1
     end
     speed = speed / 30
     CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
@@ -75,7 +75,7 @@ function StickWind( t )
             CreateSound("Hero_MonkeyKing.Strike.Impact.Immortal",caster)
 			local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
             for k,v in pairs(unitGroup) do
-                CauseDamage(caster,v,damage * duration,damageType,ability)
+                CauseDamage(caster,v,damage * damageAdd,damageType,ability)
                 --print(damage * duration)
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_stick_wind_knockback", nil)
                 local direction = (v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized()
@@ -131,6 +131,7 @@ function Jingubang( t )
             local unitGroup = GetUnitsInRadius(caster,ability,cast_location,crushRadius)
             for k,v in pairs(unitGroup) do
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_crush_debuff", nil)
+                v:InterruptMotionControllers(false)
                 CauseDamage(caster,v,crushDamage,damageType,ability)
             end
         end)
@@ -193,6 +194,7 @@ function IndestructibleRemove( t )
     if caster:HasModifier("modifier_monkey_king_bar") then
         local unitGroup = GetUnitsInRadius(caster,t.ability,caster:GetAbsOrigin(),600)
         CauseDamage(caster,unitGroup,caster.indestructible_armor,DAMAGE_TYPE_MAGICAL,t.ability)
+        CreateParticle("particles/heroes/monkey_king/shield_broke.vpcf",PATTACH_ABSORIGIN,caster,2)
     end
 end
 function EndlessOffensive( t )
@@ -321,6 +323,9 @@ function EndlessOffensiveCreate( t )
         local unit = CreateUnitByName("npc_dota_hero_monkey_king", caster:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS )
         unit:SetOwner(caster:GetPlayerOwner())
         unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+        unit.caster_hero = caster
+        HeroState:InitIllusion(unit)
+        unit:MakeIllusion()
         local heroLevel = caster:GetLevel() - unit:GetLevel()
         if heroLevel > 0 then 
             for i=1,heroLevel do
@@ -340,9 +345,6 @@ function EndlessOffensiveCreate( t )
                 unit:AddItem(newItem)
             end
         end
-        unit.caster_hero = caster
-        HeroState:InitIllusion(unit)
-        unit:MakeIllusion()
         ability:ApplyDataDrivenModifier(caster, unit, "modifier_endless_offensive_illusion", nil)
         unit.use = false
         unit:AddNoDraw()

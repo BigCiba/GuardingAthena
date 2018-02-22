@@ -9069,6 +9069,7 @@
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"IsDebuff"	"1"
+				"IsPurgable"	"0"
 			}
 		}
 		"AbilitySpecial"

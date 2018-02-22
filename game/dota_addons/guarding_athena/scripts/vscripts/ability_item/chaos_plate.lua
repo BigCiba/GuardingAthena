@@ -10,7 +10,8 @@ function OnCreated( t )
 		else
 			damage = damage - ability.shield_health
 			ability.shield_health = 0
-		end
+        end
+        return damage
     end
     caster.percent_bonus_damage = caster.percent_bonus_damage + ability:GetSpecialValueFor("damage_deepen")
     ability.timer = Timers:CreateTimer(function ()
