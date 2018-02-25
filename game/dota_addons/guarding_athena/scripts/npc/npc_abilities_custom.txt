@@ -14021,6 +14021,10 @@
 						"Function"	"AttackEffect"
 					}
 				}
+				"Properties"	{}
+				"States"
+				{
+				}
 			}
 			"modifier_endless_offensive_illusion"
 			{
@@ -14035,6 +14039,7 @@
 					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"OnAttackLanded"
 				{
@@ -14058,6 +14063,7 @@
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Properties"	{}
 			}

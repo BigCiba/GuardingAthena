@@ -12426,7 +12426,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/refresher1"
+		"AbilityTextureName"	"item_refresher_shard"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -20436,7 +20436,7 @@
 		}
 	}
 
-	"item_recipe_tree_4_"
+	"item_recipe_tree_4"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -20455,7 +20455,7 @@
 		"ItemResult"	"item_tree_4"
 		"ItemRequirements"
 		{
-			"01"	"item_tree_1;item_tree_2;item_tree_3;item_tree_3;item_tree_3;"
+			"01"	"item_tree_1;item_tree_2;item_tree_3;item_tree_3;item_tree_3"
 		}
 	}
 
@@ -20475,10 +20475,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_tree_4"
+		"ItemResult"	"item_soul_dead_god"
 		"ItemRequirements"
 		{
-			"01"	"item_tree_1;item_tree_2;item_tree_3;item_tree_3;item_tree_3;"
+			"01"	"item_refresher1;item_soul_eye;soul_cloak"
 		}
 	}
 
@@ -20498,10 +20498,10 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_tree_4"
+		"ItemResult"	"item_fire_mask"
 		"ItemRequirements"
 		{
-			"01"	"item_tree_1;item_tree_2;item_tree_3;item_tree_3;item_tree_3;"
+			"01"	"fire_glove;fire_head;fire_heart"
 		}
 	}
 
@@ -20517,7 +20517,7 @@
 		"ItemPermanent"	"0"
 		"ItemRequiresCharges"	"1"
 		"ItemInitialCharges"	"1"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -20591,7 +20591,7 @@
 		"ItemPermanent"	"0"
 		"ItemRequiresCharges"	"1"
 		"ItemInitialCharges"	"1"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemRequirements"	{}
 		"OnSpellStart"
 		{
@@ -20621,7 +20621,7 @@
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"0"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemRequirements"	{}
 	}
 
@@ -20629,14 +20629,15 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/tree_4"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"	"30"
 		"ID"	"1700"
 		"ItemCost"	"10000"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"0"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -20649,6 +20650,7 @@
 			{
 				"ModifierName"	"modifier_item_tree_4_buff"
 				"Duration"	"20"
+				"Target"	"CASTER"
 			}
 			"FireSound"
 			{
@@ -21094,6 +21096,7 @@
 		"ItemSellable"	"1"
 		"ItemPurchasable"	"0"
 		"ItemKillable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -21131,14 +21134,23 @@
 					}
 				}
 				"Passive"	"1"
+				"IsHidden"	"1"
 			}
 			"modifier_item_chaos_plate_buff"
 			{
 				"States"
 				{
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Duration"	"%duration"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -21151,12 +21163,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attribute"	"1000"
+				"attribute"	"1"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
+				"duration"	"10"
 			}
 			"04"
 			{

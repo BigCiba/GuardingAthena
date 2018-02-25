@@ -159,7 +159,13 @@ function GuardingAthena:DamageFilter( args )
     -- 闪避所有伤害
     if victim.dodge_damage then
         return false
-    end
+	end
+	-- 重生
+	if victim.resurrection then
+		if args.damage > victim:GetHealth() then
+			args.damage = victim.resurrection(args.damage)
+		end
+	end
     -- 伤害记录
 	if caster:IsRealHero() then
 		if victim == Spawner.bossCurrent then

@@ -221,13 +221,7 @@ function EndlessOffensive( t )
             for i,unit in pairs(caster.illusion_table) do
                 if unit.use == false then
                     unit.use = true
-                    --[[local heroLevel = caster:GetLevel() - unit:GetLevel()
-                    if heroLevel > 0 then 
-                        for i=1,heroLevel do
-                            unit:HeroLevelUp(false)
-                        end
-                    end]]
-                    --unit:SetAbilityPoints(0)
+                    unit:SetAbilityPoints(0)
                     unit:SetBaseStrength(caster:GetBaseStrength())
                     unit:SetBaseAgility(caster:GetBaseAgility())
                     unit:SetBaseIntellect(caster:GetBaseIntellect())
@@ -243,10 +237,6 @@ function EndlessOffensive( t )
                         end
                     end
                     for itemSlot=0,5 do
-                        local itemOld = unit:GetItemInSlot(itemSlot)
-                        if itemOld then
-                            unit:RemoveItem(itemOld)
-                        end
                         local item = caster:GetItemInSlot(itemSlot)
                         if item ~= nil then
                             local itemName = item:GetName()
@@ -261,6 +251,12 @@ function EndlessOffensive( t )
                     local particle = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN, unit)
                     Timers:CreateTimer(3,function ()
                         unit.use = false
+                        for itemSlot=0,5 do
+                            local itemOld = unit:GetItemInSlot(itemSlot)
+                            if itemOld then
+                                unit:RemoveItem(itemOld)
+                            end
+                        end
                         unit:AddNoDraw()
                         ability:ApplyDataDrivenModifier(unit, unit, "modifier_endless_offensive_debuff", nil)
                         unit:Stop()
@@ -342,13 +338,7 @@ function EndlessOffensiveCreate( t )
         unit.caster_hero = caster
         HeroState:InitIllusion(unit)
         unit:MakeIllusion()
-        --[[local heroLevel = caster:GetLevel() - unit:GetLevel()
-        if heroLevel > 0 then 
-            for i=1,heroLevel do
-                unit:HeroLevelUp(false)
-            end
-        end]]--
-        --unit:SetAbilityPoints(0)
+        unit:SetAbilityPoints(0)
         for itemSlot=0,5 do
             local itemOld = unit:GetItemInSlot(itemSlot)
             if itemOld then

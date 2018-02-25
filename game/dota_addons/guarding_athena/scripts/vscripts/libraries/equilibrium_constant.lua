@@ -127,8 +127,8 @@ function equilibrium_constant:DeclareFunctions()
         MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,]]
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,]]
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MOVESPEED_MAX,
         MODIFIER_PROPERTY_MOVESPEED_LIMIT,
     }
@@ -235,33 +235,31 @@ function equilibrium_constant:GetModifierMagicalResistanceBonus( params )
         end
         return ResistBonus
     end
-end
+end]]
 
 function equilibrium_constant:GetModifierMoveSpeedBonus_Constant( params )
     if IsServer() then
         local owner = self:GetParent()
-        local agi = owner:GetAgility()
-        local MoveBonus = -0.06 * agi
         local heroType = owner:GetPrimaryAttribute()
-        if heroType == DOTA_ATTRIBUTE_STRENGTH then
-            MoveBonus = STR_HERO.MOVSPD_PER_AGI * agi
-        elseif heroType == DOTA_ATTRIBUTE_AGILITY then
-            MoveBonus = AGI_HERO.MOVSPD_PER_AGI * agi
-        elseif heroType == DOTA_ATTRIBUTE_INTELLECT then
-            MoveBonus = INT_HERO.MOVSPD_PER_AGI * agi
+        if heroType == DOTA_ATTRIBUTE_AGILITY then
+            local agi = owner:GetAgility()
+            local moveSpeed = owner:GetBaseMoveSpeed()
+            local MoveBonus = -(0.0006 * agi * moveSpeed) / ( 1 + 0.0006 * agi)
+            return MoveBonus
+        else
+            return 0
         end
-        return MoveBonus
     end
-end]]
+end
 
-function equilibrium_constant:GetModifierMoveSpeedBonus_Percentage( params )
+--[[function equilibrium_constant:GetModifierMoveSpeedBonus_Percentage( params )
     if IsServer() then
         local owner = self:GetParent()
         local agi = owner:GetAgility()
         local MoveBonus = -0.03 * agi
         return MoveBonus
     end
-end
+end]]
 
 --[[function equilibrium_constant:GetModifierConstantManaRegen( params )
     if IsServer() then
