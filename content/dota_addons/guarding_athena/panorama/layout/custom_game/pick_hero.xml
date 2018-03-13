@@ -10,6 +10,8 @@
 
     <Panel class="MainPanel" hittest="false">
         <Panel id="HeroSelectionBackground" hittest="false">
+            <!--<DOTAScenePanel hittest="false" id="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>-->
+        
             <DOTAScenePanel hittest="false" id="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
             <Panel class="ExitGameOverlay" hittest="false"/>
             <Panel id="LeftSide">
