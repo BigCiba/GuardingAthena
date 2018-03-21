@@ -99,12 +99,12 @@ function GuardingAthena:DamageFilter( args )
 		return
 	end	
 	local victim = EntIndexToHScript(args.entindex_victim_const)
-	-- 修正智力伤害系数
+	--[[修正智力伤害系数
 	if args.entindex_inflictor_const then
 		if caster:IsRealHero() then
 			args.damage = args.damage/(1+((caster:GetIntellect()/16)/100))
 		end
-	end
+	end]]
 	-- 特殊处理
 	if caster.DamageFilterAttacker then
 		args.damage = caster.DamageFilterAttacker(args.damage,victim)

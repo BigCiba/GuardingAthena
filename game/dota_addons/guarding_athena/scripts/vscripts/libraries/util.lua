@@ -441,6 +441,9 @@ function SetRegionLimit( ... )
 end
 function SetUnitPosition( ... )
 	local caster,position,setPos = ...
+	if position.z<-1000 then
+		position.z = 0
+	end
 	if caster.limitRegion then
 		local limitRegion = caster.limitRegion
 		if position.x > limitRegion.right then

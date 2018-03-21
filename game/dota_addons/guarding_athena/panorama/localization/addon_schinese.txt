@@ -81,24 +81,28 @@
 	"KillAcientGolem"						"击杀石头人："
 	"KillFireDemon"							"击杀地狱火焰恶魔："
 	"KillDragon"							"击杀黑龙："
+	"Trial"									"击杀试炼小兵："
 	
 	"KillKoboldLordAccept"					"我这有一个赏金任务，帮我杀死3只【哥布林领主】，我会给你一些独特的奖励。"
 	"KillHellBeastAccept"					"这里又有一个新的赏金任务，帮我杀死2只【地狱熊怪】，报酬会让你满意的。"
 	"KillAcientGolemAccept"					"帮我杀死那只【大石头】，报酬是一个神秘礼物。"
 	"KillFireDemonAccept"					"如果你能帮我击杀掉那只【火焰恶魔】，我会给你一个特殊召唤物"
 	"KillDragonAccept"						"杀死15只【黑龙】来证明你的实力"
+	"TrialAccept"							"击杀试炼小兵来证明自己的实力"
 
 	"KillKoboldLordInprogress"				"你以为我会算错数量吗?"
 	"KillHellBeastInprogress"				"完成任务了再回来找我吧。"
 	"KillAcientGolemInprogress"				"你在逗我，那个大个子还在那把?"
 	"KillFireDemonInprogress"				"还没有杀掉吗?"
 	"KillDragonInprogress"					"还不够"
+	"TrialInprogress"						"完成试炼再回来找我"
 
 	"KillKoboldLordFinish"					"这是给你的奖励"
 	"KillHellBeastFinish"					"这是给你的奖励"
 	"KillAcientGolemFinish"					"这是给你的奖励，收好了。"
 	"KillFireDemonFinish"					"这是一个特殊的召唤物，请不要在家玩火。"
 	"KillDragonFinish"						"这是给你的专属装备。"
+	"TrialFinish"							"这是给你的专属装备。"
 
 	"KillAcientGolemNoquest"				"我已经没有任务给你了。"
 	"KillFireDemonNoquest"					"我已经没有任务给你了。"

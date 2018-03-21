@@ -7951,7 +7951,7 @@
 	"fire_spirit_1"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ember_spirit_activate_fire_remnant"
+		"AbilityTextureName"	"fire_spirit_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -8023,7 +8023,7 @@
 	"fire_spirit_2"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"phoenix_icarus_dive"
+		"AbilityTextureName"	"fire_spirit_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -8113,7 +8113,7 @@
 	"fire_spirit_3"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ember_spirit_fire_remnant"
+		"AbilityTextureName"	"fire_spirit_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -8201,7 +8201,7 @@
 	"fire_spirit_4"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ember_spirit_flame_guard"
+		"AbilityTextureName"	"fire_spirit_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"HotKeyOverride"	"R"
@@ -8326,7 +8326,7 @@
 		"AbilityCooldown"	"100"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		"AbilityManaCost"	"200 300 400 500 600 700 800 900"
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"	"0"
@@ -8448,7 +8448,7 @@
 	"soul_requiem"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"nevermore_requiem_demon"
+		"AbilityTextureName"	"soul_requiem"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -8457,7 +8457,6 @@
 		"MaxLevel"	"8"
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
-		"AbilityCastPoint"	"0.0"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_6"
 		"AnimationPlaybackRate"	"1.4"
@@ -8466,7 +8465,7 @@
 		"AbilityCooldown"	"100"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		"AbilityManaCost"	"200 300 400 500 600 700 800 900"
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"	"0"
@@ -8912,7 +8911,7 @@
 	"indestructible"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"zuus_static_field_alt1"
+		"AbilityTextureName"	"indestructible"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -9019,7 +9018,7 @@
 	"jingubang"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"monkey_king_primal_spring"
+		"AbilityTextureName"	"jingubang"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -9030,7 +9029,7 @@
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastAnimation"	"ACT_DOTA_MK_STRIKE"
 		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		"AbilityManaCost"	"200 300 400 500 600 700 800 900"
 		"AbilityCastRange"	"%thump_radius"
 		"AOERadius"	"400"
 		"precache"
@@ -9759,7 +9758,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"phoenix_sun_ray"
+		"AbilityTextureName"	"dark_fire"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -9857,7 +9856,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"phoenix_sun_ray"
+		"AbilityTextureName"	"dark_fire"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -9953,7 +9952,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"lina_light_strike_array"
+		"AbilityTextureName"	"light_array"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -10240,7 +10239,7 @@
 	"meteor_storm"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"gyrocopter_skyhigh_rocket_barrage"
+		"AbilityTextureName"	"meteor_storm"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -10820,7 +10819,7 @@
 	"fire_spirit_0"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"chaos_knight_reality_rift"
+		"AbilityTextureName"	"fire_spirit_0"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -11015,6 +11014,7 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCooldown"	"30"
+		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"Precache"
 		{
 			"particle"	"particles/heroes/juggernaut/mirror_image.vpcf"
@@ -11180,7 +11180,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ogre_magi_ignite"
+		"AbilityTextureName"	"endless_ignite"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -11388,7 +11388,7 @@
 	"demon_hunter"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"terrorblade_sunder"
+		"AbilityTextureName"	"demon_hunter"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"HotKeyOverride"	"D"
 		"MaxLevel"	"1"
@@ -11447,7 +11447,7 @@
 	"soulblade"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"antimage_mana_break"
+		"AbilityTextureName"	"soulblade"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -11505,7 +11505,7 @@
 	"soulring"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"antimage_spell_shield"
+		"AbilityTextureName"	"soulring"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -11576,7 +11576,7 @@
 	"magic_blade"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"antimage_mana_void"
+		"AbilityTextureName"	"magic_blade"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
@@ -11650,7 +11650,7 @@
 	"metamorphosis"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"terrorblade_metamorphosis"
+		"AbilityTextureName"	"metamorphosis"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12015,7 +12015,7 @@
 	"fractured_soul"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"terrorblade_reflection_alt1"
+		"AbilityTextureName"	"fractured_soul"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12059,7 +12059,7 @@
 	"ashes"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"lina_fiery_soul_alt1"
+		"AbilityTextureName"	"ashes"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12119,7 +12119,7 @@
 	"war_honor"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"skywrath_mage_ancient_seal"
+		"AbilityTextureName"	"war_honor"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"HotKeyOverride"	"D"
@@ -12146,7 +12146,7 @@
 	"hell_field"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"doom_bringer_scorched_earth"
+		"AbilityTextureName"	"hell_field"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12232,7 +12232,7 @@
 	"infernal_fire"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"nevermore_necromastery_demon"
+		"AbilityTextureName"	"infernal_fire"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12354,7 +12354,7 @@
 	"destory_hit"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"nevermore_shadowraze2"
+		"AbilityTextureName"	"destory_hit"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12409,7 +12409,7 @@
 	"courage_moment"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"legion_commander_moment_of_courage"
+		"AbilityTextureName"	"courage_moment"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12529,7 +12529,7 @@
 	"war_arua"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"rubick_null_field"
+		"AbilityTextureName"	"war_arua"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -12640,7 +12640,7 @@
 	"war_god"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"legion_commander_duel_alt1"
+		"AbilityTextureName"	"war_god"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -12761,7 +12761,7 @@
 	"queen_curse"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"legion_commander_press_the_attack"
+		"AbilityTextureName"	"queen_curse"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13031,7 +13031,7 @@
 	"revelater_1"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/revelater_1"
+		"AbilityTextureName"	"revelater_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13261,7 +13261,7 @@
 	"snowstorm"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"crystal_maiden_freezing_field"
+		"AbilityTextureName"	"snowstorm"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13348,7 +13348,7 @@
 	"frozen_aura"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"crystal_maiden_brilliance_aura"
+		"AbilityTextureName"	"frozen_aura"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -13482,7 +13482,7 @@
 	"revelater_4"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"luna_eclipse"
+		"AbilityTextureName"	"revelater_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13492,9 +13492,10 @@
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		"AbilityManaCost"	"200 300 400 500 600 700 800 900"
 		"precache"
 		{
+			"particle"	"particles/heroes/revelater/revelater_trail_ultimate.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
 		}
@@ -13580,7 +13581,7 @@
 	"chilling_touch"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ancient_apparition_ice_blast"
+		"AbilityTextureName"	"chilling_touch"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13590,7 +13591,7 @@
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCooldown"	"30"
-		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
+		"AbilityManaCost"	"200 300 400 500 600 700 800 900"
 		"precache"
 		{
 			"particle"	"particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_freezing_field_snow_arcana1.vpcf"
@@ -13683,7 +13684,7 @@
 	"revelater_0"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"templar_assassin_meld"
+		"AbilityTextureName"	"revelater_0"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"HotKeyOverride"	"D"
 		"MaxLevel"	"1"
@@ -13768,7 +13769,7 @@
 	"frost_sigil"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"tusk_frozen_sigil"
+		"AbilityTextureName"	"frost_sigil"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"1"
@@ -13851,7 +13852,7 @@
 	"revelater_3"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"templar_assassin_psi_blades"
+		"AbilityTextureName"	"revelater_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -14022,9 +14023,7 @@
 					}
 				}
 				"Properties"	{}
-				"States"
-				{
-				}
+				"States"	{}
 			}
 			"modifier_endless_offensive_illusion"
 			{
@@ -14370,6 +14369,126 @@
 					}
 				}
 				"Passive"	"0"
+			}
+		}
+	}
+
+	"bash"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"bounty_hunter_twinblade_jinada"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"Modifiers"
+		{
+			"modifier_bash_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+				}
+			}
+			"modifier_bash"
+			{
+				"Passive"	"1"
+				"States"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"60"
+				}
+				"OnAttackStart"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_bash_cri"
+					}
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_bash_cri"
+							}
+						}
+						"Chance"	"%chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_JUGG_CRIT"
+					}
+				}
+			}
+			"modifier_bash_cri"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%damage"
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_bash_cri"
+					}
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_bash_debuff"
+						"Duration"	"%duration"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"25"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"300"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow"	"-50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"2"
+			}
+		}
+	}
+
+	"trial"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"brewmaster_primal_split"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	}
+
+	"shield_block"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"pangolier_shield_crash"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"Modifiers"
+		{
+			"modifier_shield_block"
+			{
+				"Passive"	"1"
 			}
 		}
 	}

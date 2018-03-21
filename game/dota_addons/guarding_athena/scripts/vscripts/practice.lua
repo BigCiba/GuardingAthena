@@ -25,9 +25,9 @@ function PracticeThink( caller, caster )
 	Timers:CreateTimer(1,function()
 		if caller.used >= 1 then
 			if #caller.unitRemaining <= 0 then
-	        	PracticeDoSpawn( caller, caster )
+				PracticeDoSpawn( caller, caster )
 	        	return 2
-	        else
+			else
 	        	return 2
 	        end
 	    end

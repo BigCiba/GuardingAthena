@@ -6,14 +6,15 @@ function PracticeTeleport( trigger )
 			if caller == "practice_teleport_"..tostring(i) then
 				local ent = Entities:FindByName(nil,"practice_"..tostring(i))
 				local point=ent:GetAbsOrigin()
-				SetUnitPosition(trigger.activator, point)
 				trigger.activator:Stop()
-				PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
 				Timers:CreateTimer(0.1,
-					function()
-						PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
-					end)
-				caster.onthink = true
+				function()
+					PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
+				end)
+				SetUnitPosition(trigger.activator, point)
+				PracticeStart( {activator=caster,caller=Entities:FindByName(nil,"practice_"..tostring(i))} )
+				PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
+				--caster.onthink = true
 				break
 			end
 		end

@@ -21163,7 +21163,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attribute"	"1"
+				"attribute"	"800"
 			}
 			"03"
 			{

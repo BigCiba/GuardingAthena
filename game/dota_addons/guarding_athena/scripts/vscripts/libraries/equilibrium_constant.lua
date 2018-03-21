@@ -127,8 +127,8 @@ function equilibrium_constant:DeclareFunctions()
         MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,]]
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,]]
         MODIFIER_PROPERTY_MOVESPEED_MAX,
         MODIFIER_PROPERTY_MOVESPEED_LIMIT,
     }
@@ -235,7 +235,7 @@ function equilibrium_constant:GetModifierMagicalResistanceBonus( params )
         end
         return ResistBonus
     end
-end]]
+end
 
 function equilibrium_constant:GetModifierMoveSpeedBonus_Constant( params )
     if IsServer() then

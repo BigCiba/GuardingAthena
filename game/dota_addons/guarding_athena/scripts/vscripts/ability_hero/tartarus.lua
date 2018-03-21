@@ -35,7 +35,7 @@ function FracturedSoul( keys )
 	for k, v in pairs( unitGroup ) do
 		CauseDamage(caster, v, damage, damageType,ability)
 	end
-	local p1 = CreateParticle( "particles/skills/fractured_soul.vpcf", PATTACH_ABSORIGIN, caster )
+	local p1 = CreateParticle( "particles/heroes/tartarus/fractured_soul.vpcf", PATTACH_ABSORIGIN, caster )
 	ParticleManager:SetParticleControl( p1, 0, target_location )
 	EmitSoundOn("Hero_Nevermore.Shadowraze", caster)
 end
@@ -95,11 +95,11 @@ function DestoryHit( keys )
 	local time = 0
 	Timers:CreateTimer(function()
 		if time < 3 then
-			local p1 = CreateParticle( "particles/skills/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
+			local p1 = CreateParticle( "particles/heroes/tartarus/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
 			ParticleManager:SetParticleControl( p1, 0, point )
 			local point_1 = point
 			Timers:CreateTimer(0.8,function()
-				local p2 = CreateParticle( "particles/skills/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
+				local p2 = CreateParticle( "particles/heroes/tartarus/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
 				ParticleManager:SetParticleControl( p2, 0, point_1 )
 				local unitGroup = FindUnitsInRadius(teamNumber, point_1, caster, radius, targetTeam, targetType, targetFlag, 0, false)
 				for k, v in pairs( unitGroup ) do
@@ -152,7 +152,7 @@ function InfernalFireMagic( keys )
 	if not caster:HasModifier("modifier_fractured_soul_buff") then
 		return
 	end
-	caster:SetRangedProjectileName("particles/skills/infernal_fire_desolator.vpcf")
+	caster:SetRangedProjectileName("particles/heroes/tartarus/infernal_fire_desolator.vpcf")
 	local buffcount = caster:GetStrength()
 	local damage = buffcount * attack
 	CauseDamage(caster, target, damage, damageType, ability)
@@ -204,7 +204,7 @@ function SoulRequiem( keys )
 	local targetType = ability:GetAbilityTargetType()
 	local targetFlag = ability:GetAbilityTargetFlags()
 	for i=1,24 do
-		local p1 = CreateParticle( "particles/skills/soul_requiem_ofsouls_line.vpcf", PATTACH_CUSTOMORIGIN, caster )
+		local p1 = CreateParticle( "particles/heroes/tartarus/soul_requiem_ofsouls_line.vpcf", PATTACH_CUSTOMORIGIN, caster )
 		ParticleManager:SetParticleControl( p1, 0, caster_location )
 		ParticleManager:SetParticleControl( p1, 1, vector )
 		ParticleManager:SetParticleControl( p1, 2, Vector(0,1,0) )
@@ -242,11 +242,11 @@ function SoulRequiem( keys )
 			local time = 0
 			Timers:CreateTimer(function()
 				if time < 3 then
-					local p1 = CreateParticle( "particles/skills/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
+					local p1 = CreateParticle( "particles/heroes/tartarus/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
 					ParticleManager:SetParticleControl( p1, 0, point )
 					local point_1 = point
 					Timers:CreateTimer(0.8,function()
-						local p2 = CreateParticle( "particles/skills/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
+						local p2 = CreateParticle( "particles/heroes/tartarus/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
 						ParticleManager:SetParticleControl( p2, 0, point_1 )
 						local unitGroup = FindUnitsInRadius(teamNumber, point_1, caster, radius, targetTeam, targetType, targetFlag, 0, false)
 						for k, v in pairs( unitGroup ) do
