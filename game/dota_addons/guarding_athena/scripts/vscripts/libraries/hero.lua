@@ -25,8 +25,8 @@ function HeroState:InitHero(hero)
     hero.gold_rate = 1                  --金钱获取率
     hero.reborn_time = 0                --转生次数
     hero.def_point = 0                  --防守积分
-    local score = getPlayerScore(hero:GetPlayerID())
-    hero.boss_point = score                 --Boss积分
+    --local score = hero:GetPlayerOwner().ServerInfo.score or 0
+    hero.boss_point = 0                 --Boss积分
     hero.practice_point = 0             --练习积分
     -- 戒指
     hero.ringCount = 0                  --记录戒指数量

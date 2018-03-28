@@ -12,7 +12,11 @@ function PracticeTeleport( trigger )
 					PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
 				end)
 				SetUnitPosition(trigger.activator, point)
-				PracticeStart( {activator=caster,caller=Entities:FindByName(nil,"practice_"..tostring(i))} )
+				targetCaller = Entities:FindByName(nil,"practice_"..tostring(i))
+				PracticeStart( {activator=caster,caller=targetCaller} )
+				Timers:CreateTimer(4,function ()
+					targetCaller.used = targetCaller.used - 1
+				end)
 				PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
 				--caster.onthink = true
 				break
@@ -68,6 +72,7 @@ function HeroReborn( trigger )
 				unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
 				unit:CreatureLevelUp(reborn_times)
 				unit.caller = caster
+				caster.iapetos = unit
 				SetRegionLimit(unit,Entities:FindByName(nil,"reborn_room"))
 				for i=1,16 do
 					if unit:GetAbilityByIndex(i-1) then
@@ -81,7 +86,7 @@ function HeroReborn( trigger )
 	end
 end
 function RebornRoom( trigger )
-	local caster = trigger.activator
+	--[[local caster = trigger.activator
 	local caller = trigger.caller
 	if GuardingAthena.iapetos ~= nil then
 		local iapetos = GuardingAthena.iapetos
@@ -104,5 +109,5 @@ function RebornRoom( trigger )
 				return 1
 			end
 		end)
-	end
+	end]]
 end

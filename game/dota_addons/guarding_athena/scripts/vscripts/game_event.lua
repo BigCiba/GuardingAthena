@@ -23,6 +23,10 @@ function GuardingAthena:OnEntityKilled( event )
 		PlayerResource:SetCustomBuybackCost(playerID, cost)
 		-- 设定区域限制解除
 		killedUnit.limitRegion = nil
+		if killedUnit.iapetos then
+			GuardingAthena.iapetos:RemoveSelf()
+			GuardingAthena.iapetos = nil
+		end
 	end
 	-- 雅典娜重生
 	if killedUnit == self.entAthena then
@@ -57,7 +61,8 @@ function GuardingAthena:OnEntityKilled( event )
 			Timers:CreateTimer(10,function ()
 		    	GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 				if self.is_cheat == false then
-					giveScore()
+					--giveScore()
+					Server:UpdataScore()
 				end
 		    end)
 			HeroState:SendFinallyData()
@@ -237,13 +242,17 @@ function GuardingAthena:OnConnectFull(keys)
 	self.Players[keys.PlayerID] = playerEntity
 	local entIndex = keys.index+1
 	-- The Player entity of the joining user
-	local ply = EntIndexToHScript(entIndex)
+	local player = EntIndexToHScript(entIndex)
 
 	-- The Player ID of the joining player
-	local playerID = ply:GetPlayerID()
+	local playerID = player:GetPlayerID()
 
 	-- 初始化分数
-	setScore(playerID,0)
+	--setScore(playerID,0)
+	Server:GetPlayerInfo(playerID,function()
+		--local hero = player:GetAssignedHero()
+		--hero.boss_point = player.ServerInfo.score
+	end)
 
 	GameRules:GetGameModeEntity():SetHUDVisible(8, false)
 	GameRules:GetGameModeEntity():SetHUDVisible(9, false)
@@ -327,11 +336,42 @@ end
 -- 监听玩家选择英雄
 function GuardingAthena:OnPlayerPickHero(keys)
 	--print ('[GuardingAthena] OnPlayerPickHero')
-	--DeepPrintTable(keys)
+	PrintTable(keys)
 	if keys.hero == "npc_dota_hero_wisp" then
 		--EntIndexToHScript(keys.heroindex):SetModelScale(0.01)
 		-- vip
-		local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
+		local count = 0
+		local heroEntity = EntIndexToHScript(keys.heroindex)
+		local player = heroEntity:GetPlayerOwner()
+		local playerID = heroEntity:GetPlayerID()
+		Timers:CreateTimer(function ( )
+			if player.ServerInfo then
+				if player.ServerInfo.vip == "1" then
+					player.gold_gift = true
+					player.potion_gift = true
+					CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
+				end
+				if player.ServerInfo.sf == "1" then
+					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_nevermore"} )
+				end
+				if player.ServerInfo.ta == "1" then
+					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_templar_assassin"} )
+				end
+				if player.ServerInfo.gold == "1" then
+					player.gold_gift = true
+				end
+				if player.ServerInfo.potion == "1" then
+					player.potion_gift = true
+				end
+			else
+				if count < 300 then
+					count = count + 1
+					return 1
+				end
+			end
+		end)
+		--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
 		req:Send(function(result)
 			local vipTable = JSON:decode(result.Body)
 			local heroEntity = EntIndexToHScript(keys.heroindex)
@@ -344,17 +384,18 @@ function GuardingAthena:OnPlayerPickHero(keys)
 					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
 				end
 			end
-		end)
+		end)]]
 		return
 	end
 	local heroEntity = EntIndexToHScript(keys.heroindex)
 	if keys.player == -1 then
 		return
 	end
-	HeroState:InitHero(heroEntity)
+	
 	local player = heroEntity:GetPlayerOwner()
-	-- 记录当前英雄
 	local playerID = heroEntity:GetPlayerID()
+	HeroState:InitHero(heroEntity)
+	-- 记录当前英雄
 	HERO_TABLE[playerID + 1] = heroEntity
 	-- 垃圾v社
 	local tpScroll = heroEntity:GetItemInSlot(0)
@@ -367,11 +408,12 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
 			CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
 		else
-			CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+			local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+			--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
 		end
 	end
 	-- vip
-	local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
+	--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
 	req:Send(function(result)
 		local vipTable = JSON:decode(result.Body)
 		--PrintTable(vipTable)
@@ -380,7 +422,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 				CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
 			end
 		end
-	end)
+	end)]]
 	local playerCount = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
 	if self.creatCourier < playerCount then
 		local heroEntity = EntIndexToHScript(keys.heroindex)
@@ -412,6 +454,18 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end)
 	end
+	-- 设定通关积分
+	local count = 0
+	Timers:CreateTimer(function ()
+		if player.ServerInfo then
+			heroEntity.boss_point = player.ServerInfo.score
+		else
+			if count < 300 then
+				count = count + 1
+				return 1
+			end
+		end
+	end)
 	SendToConsole("dota_max_physical_items_purchase_limit 125")
 end
 -- 监听玩家聊天
@@ -496,7 +550,7 @@ function GuardingAthena:OnPlayerChat(keys)
 			giveScore()
 		end
 	end 
-	if text == "allring" then
+	if text == "-allring" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero:AddNewModifier(hero, nil, "ring_0_1", nil)
 		hero:AddNewModifier(hero, nil, "ring_0_2", nil)
@@ -562,6 +616,10 @@ function GuardingAthena:OnPlayerChat(keys)
 				self.testunit = nature
 			end
 		end)
+	end
+	if text == "testpay" then
+		local ent = Entities:FindByName( nil, "athena" )
+		ent:FireOutput("OnUser2", ent, ent, ent, 0)
 	end
 	if string.sub(text,0,8) == "addskill" then
 		local unit = self.testunit

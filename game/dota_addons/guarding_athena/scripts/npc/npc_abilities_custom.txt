@@ -266,6 +266,27 @@
 		}
 	}
 
+	"courier_suicide"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"leoric_reincarnate"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"CourierSuicide"
+				"Target"	"POINT"
+			}
+		}
+	}
+
 	"courier_teleport"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -8673,7 +8694,6 @@
 		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"precache"
 		{
-			"particle"	"particles/skills/thunder_strike.vpcf"
 			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
 		}
 		"OnSpellStart"
@@ -8682,12 +8702,6 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
 				"Function"	"ThunderStrike"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/skills/thunder_strike.vpcf"
-				"Target"	"CASTER"
-				"EffectAttachType"	"attach_origin"
 			}
 			"FireSound"
 			{
@@ -8861,6 +8875,162 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/weightlifting"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"Modifiers"
+		{
+			"modifier_weightlifting"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+						"Function"	"WeightLifting"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+		}
+	}
+
+	// 举重
+	"spectre_3"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"spectre_dispersion"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"Modifiers"
+		{
+			"modifier_weightlifting"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+						"Function"	"WeightLifting"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+		}
+	}
+
+	// 举重
+	"spectre_4"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"necrolyte_reapers_scythe"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"Modifiers"
+		{
+			"modifier_weightlifting"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+						"Function"	"WeightLifting"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+		}
+	}
+
+	// 举重
+	"spectre_2"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"spectre_desolate"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"

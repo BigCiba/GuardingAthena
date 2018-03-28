@@ -1,0 +1,93 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf1:version{d47d07e6-072c-49cb-9718-5bfd8d6c3d21} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 256
+	m_flConstantRadius = 128.0
+	m_flConstantLifespan = 0.25
+	m_ConstantColor = [ 59, 62, 41, 50 ]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bMod2X = true
+			m_flStartFadeSize = 0.4
+			m_flEndFadeSize = 0.5
+			m_flOverbrightFactor = 4.0
+			m_hTexture = resource:"materials/particle/particle_flares/particle_flare_004b_mod.vtex"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.75
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, -900.0 ]
+		},
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_flRotRate = 20.0
+		},
+		{
+			_class = "C_OP_LerpScalar"
+			m_nFieldOutput = 10
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomAlpha"
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMinLength = 0.0
+			m_flMaxLength = 0.0
+		},
+		{
+			_class = "C_INIT_VelocityRandom"
+			m_LocalCoordinateSystemSpeedMin = [ 0.0, 0.0, -330.0 ]
+			m_LocalCoordinateSystemSpeedMax = [ 0.0, 0.0, 630.0 ]
+		},
+		{
+			_class = "C_INIT_CreateSpiralSphere"
+			m_flInitialRadius = 1.0
+			m_nDensity = 1
+			m_nOverrideCP = 1
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 0.25
+			m_flEmitRate = 1000.0
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_TurbulenceForce"
+			m_flNoiseCoordScale0 = 0.01
+			m_vecNoiseAmount0 = [ 128.0, 128.0, 128.0 ]
+		},
+	]
+	m_Constraints = 
+	[
+		{
+			_class = "C_OP_ConstrainDistance"
+			m_fMinDistance = 0.99
+			m_fMaxDistance = 1.0
+			m_nScaleCP = 1
+		},
+	]
+}

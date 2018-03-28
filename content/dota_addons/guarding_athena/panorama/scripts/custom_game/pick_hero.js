@@ -367,8 +367,13 @@ function VIPUnlock(data){
     lockImages["npc_dota_hero_templar_assassin"].style.visibility = "collapse";
     unlockHeroes[1] = "npc_dota_hero_templar_assassin";
 }
+function Unlock(data){
+    lockImages[data.heroName].style.visibility = "collapse";
+    unlockHeroes.push(data.heroName);
+}
 (function () {
     GameEvents.Subscribe( "vip", VIPUnlock);
+    GameEvents.Subscribe( "unlock", Unlock);
     if (Game.GameStateIsAfter( DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME ))
     {
         $("#HeroSelectionBackground").style.visibility = "collapse";

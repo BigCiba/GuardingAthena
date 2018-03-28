@@ -247,7 +247,7 @@
 		"Ability3"	"courier_bag"
 		"Ability4"	"courier_auto_potion"
 		"Ability5"	"courier_swap"
-		"Ability6"	""
+		"Ability6"	"courier_suicide"
 		"Ability7"	""
 		"Ability8"	""
 		"Ability9"	""
@@ -259,7 +259,7 @@
 		"Ability15"	""
 		"Ability16"	""
 		"ConsideredHero"	"1"
-		"AbilityLayout"	"4"
+		"AbilityLayout"	"6"
 	}
 
 	"majia"
@@ -1097,9 +1097,9 @@
 	"hero_statue_1"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/tower_bad.vmdl"
+		"Model"	"models/props_structures/tower_good.vmdl"
 		// 模型大小
-		"ModelScale"	"1"
+		"ModelScale"	"2"
 		// 单位等级
 		"Level"	"1"
 		"IsAncient"	"1"
@@ -1157,9 +1157,9 @@
 	"hero_statue_2"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/dire_tower002.vmdl"
+		"Model"	"models/props_structures/tower_good.vmdl"
 		// 模型大小
-		"ModelScale"	"1"
+		"ModelScale"	"2"
 		// 单位等级
 		"Level"	"1"
 		"IsAncient"	"1"

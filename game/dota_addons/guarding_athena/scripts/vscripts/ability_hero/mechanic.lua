@@ -13,7 +13,12 @@ function ThunderStrike( t )
 			ThunderPowerDamage( caster,unit )
 		end
         CauseDamage( caster, unit, damage, DAMAGE_TYPE_MAGICAL, ability )
-	end
+    end
+    local particleName = "particles/skills/thunder_strike.vpcf"
+    if caster.gift then
+        particleName = "particles/skills/thunder_strike_gold.vpcf"
+    end
+    CreateParticle(particleName,PATTACH_ABSORIGIN,caster,3)
 	-- 冷却时间
 	ThunderStrikeCoolDown(t)
 end
@@ -79,6 +84,7 @@ function ThunderPower( t )
 	end
     if ability:IsCooldownReady() then
         if RollPercentage(stun_chance) then
+            caster:ModifyStrength(1)
             ability:ApplyDataDrivenModifier(caster, target, "modifier_thunder_power_stun", nil)
             ability:StartCooldown(cd)
             if caster:HasModifier("modifier_device_heal_aura") then
@@ -101,6 +107,7 @@ function CreateHealDevice( t )
     local point = t.target_points[1]
     local ability = t.ability
     local Duration = ability:GetSpecialValueFor("duration")
+    local str = caster:GetStrength()
     local unitName = "heal_device"
     if caster:HasModifier("modifier_zhuanshuok_state") then
         unitName = "heal_device_move"
@@ -108,6 +115,10 @@ function CreateHealDevice( t )
     PrecacheUnitByNameAsync(unitName,function()
         local nature = CreateUnitByName(unitName, point, true, caster, caster, DOTA_TEAM_GOODGUYS )
         nature:SetControllableByPlayer(caster:GetPlayerID(), true)
+        nature:SetMaxHealth(str * 100)
+        nature:SetHealth(str * 100)
+        nature:SetBaseMaxHealth(str * 100)
+        nature:SetPhysicalArmorBaseValue(str)
         nature:AddNewModifier(nature, nil, "modifier_kill", {duration=Duration})
         ability:ApplyDataDrivenModifier(caster, nature, "modifier_device_heal", nil)
     end)
@@ -171,5 +182,41 @@ function VoidBarrierDamage( t )
 	local target = t.attacker
 	local damage = t.Damage * caster:GetStrength()
 	local damageType = t.ability:GetAbilityDamageType()
-	CauseDamage(caster,target,damage,damageType,t.ability)
+    CauseDamage(caster,target,damage,damageType,t.ability)
+    ArcLightning(t)
+end
+function ArcLightning(t)
+    local caster = t.caster
+    local target = t.attacker
+    local ability = t.ability
+	local damage = caster:GetStrength() * 5 * caster.voidBarrierScale
+	local damageType = ability:GetAbilityDamageType()
+    local damage = caster:GetStrength() * 5
+    local count = 1
+    local unit_start = caster
+    local unit_end = target
+    if caster:HasModifier("modifier_zhuanshuok_state") then
+		count = 3
+	end
+    Timers:CreateTimer(function()
+        if count > 0 and unit_start ~= unit_end then
+            local particle = CreateParticle("particles/heroes/mechanic/arc_lightning.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,caster,3)
+            ParticleManager:SetParticleControlEnt(particle, 0, unit_start, PATTACH_POINT_FOLLOW, "attach_hitloc", unit_start:GetAbsOrigin(), true)
+            ParticleManager:SetParticleControlEnt(particle, 1, unit_end, PATTACH_POINT_FOLLOW, "attach_hitloc", unit_end:GetAbsOrigin(), true)
+            CauseDamage(caster,unit_end,damage,damageType,ability)
+            if unit_end:IsStunned() then
+                ThunderPowerDamage( caster,unit_end )
+            end
+            unit_start = unit_end
+            unitGroup = GetUnitsInRadius(caster,ability,unit_end:GetAbsOrigin(),500)
+            for k,v in pairs(unitGroup) do
+                if v:IsAlive() then
+                    unit_end = v
+                    break
+                end
+            end
+            count = count - 1
+            return 0.3
+        end
+    end)
 end

@@ -314,7 +314,7 @@ function ZhuanShuRB( keys )
         }
         ApplyDamage( centerdamageTable )
     end
-    local fxIndex = CreateParticle( "particles/skills/space_phase.vpcf", PATTACH_CUSTOMORIGIN, caster )
+    local fxIndex = CreateParticle( "particles/heroes/chronos_magic/space_phase.vpcf", PATTACH_CUSTOMORIGIN, caster )
     ParticleManager:SetParticleControl( fxIndex, 0, attackPoint )
     Timers:CreateTimer(2,
         function()

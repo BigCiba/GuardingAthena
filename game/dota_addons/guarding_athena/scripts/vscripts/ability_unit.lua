@@ -125,6 +125,11 @@ function CourierTeleport( keys )
     SetUnitPosition(target, point)
     local p1 = CreateParticle( "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_recall_poof.vpcf", PATTACH_ABSORIGIN_FOLLOW, target )
 end
+function CourierSuicide( keys )
+    local caster = keys.caster
+    local target = caster.currentHero
+    target:ForceKill(true)
+end
 function CourierBag( keys )
     local caster = keys.caster
     local itemTable = {}

@@ -99,19 +99,12 @@
 			m_drivers = 
 			[
 				{
-					m_iAttachType = "PATTACH_POINT_FOLLOW"
-					m_entityName = "parent"
-					m_attachmentName = "attach_hitloc"
+					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
 				},
 			]
-			m_previewState = 
-			{
-				m_previewModel = "models/courier/donkey_ti7/donkey_ti7.vmdl"
-				m_sequenceName = "donkey_ti7_idle"
-				m_hitboxSetName = "default"
-			}
 		},
 	]
 }
