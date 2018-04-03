@@ -3,14 +3,11 @@ function ThunderStrike( t )
 	local ability = t.ability
     local caster_location = caster:GetAbsOrigin()
     local radius = ability:GetSpecialValueFor("radius")
-    if caster.voidBarrierScale == nil then
-        caster.voidBarrierScale = 1
-    end
-	local damage = (ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("scale") * caster:GetStrength()) * caster.voidBarrierScale
+	local damage = (ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("scale") * caster:GetStrength())
 	local unitGroup = GetUnitsInRadius( caster, ability, caster_location, radius )
 	for i,unit in pairs(unitGroup) do
 		if unit:IsStunned() then
-			ThunderPowerDamage( caster,unit )
+			ThunderPowerDamage( caster,unit,ability )
 		end
         CauseDamage( caster, unit, damage, DAMAGE_TYPE_MAGICAL, ability )
     end
@@ -114,6 +111,7 @@ function CreateHealDevice( t )
     end
     PrecacheUnitByNameAsync(unitName,function()
         local nature = CreateUnitByName(unitName, point, true, caster, caster, DOTA_TEAM_GOODGUYS )
+        nature.ownerHero = caster
         nature:SetControllableByPlayer(caster:GetPlayerID(), true)
         nature:SetMaxHealth(str * 100)
         nature:SetHealth(str * 100)
@@ -121,6 +119,20 @@ function CreateHealDevice( t )
         nature:SetPhysicalArmorBaseValue(str)
         nature:AddNewModifier(nature, nil, "modifier_kill", {duration=Duration})
         ability:ApplyDataDrivenModifier(caster, nature, "modifier_device_heal", nil)
+        if caster:HasModifier("modifier_zhuanshuok_state") then
+            Timers:CreateTimer(function ()
+                if nature:IsAlive() then
+                    local unitGroup = GetUnitsInRadius(nature,ability,nature:GetAbsOrigin(),600)
+                    for i,v in ipairs(unitGroup) do
+                        ArcLightning({caster=nature,attacker=v,ability=ability})
+                        if i >=3 then
+                            break
+                        end
+                    end
+                    return 1
+                end
+            end)
+        end
     end)
 end
 function OnHealIn( t )
@@ -141,19 +153,18 @@ function HealMove( t )
     end
 end
 function ThunderPowerDamage( caster,target,ability )
-    if caster.voidBarrierScale == nil then
-        caster.voidBarrierScale = 1
-    end
-    local damage = caster:GetStrength() * 5 * caster.voidBarrierScale
-    if caster:HasModifier("modifier_zhuanshuok_state") then
-        damage = damage * 2
-    end
-    CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL, ability )
+    local scale = caster:GetAbilityByIndex(0):GetSpecialValueFor("scale") + caster:GetAbilityByIndex(3):GetSpecialValueFor("damage_scale")
+    local damage = caster:GetStrength() * scale
     local target_location = target:GetAbsOrigin()
     local particle = CreateParticle("particles/heroes/mechanic/thunder_punish.vpcf", PATTACH_CUSTOMORIGIN, target)
     ParticleManager:SetParticleControl(particle, 0, target_location + Vector(0, 0, 5000))
 	ParticleManager:SetParticleControl(particle, 1, target_location)
     ParticleManager:SetParticleControl(particle, 3, target_location)
+    if caster:HasModifier("modifier_zhuanshuok_state") then
+        damage = damage * 2
+        target = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),300)
+    end
+    CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL, ability )
 end
 function WeightLifting( t )
 	local caster = t.caster
@@ -170,30 +181,27 @@ function VoidBarrierOn( t )
 	local caster = t.caster
 	local ability = t.ability
     local scale = ability:GetSpecialValueFor("scale")
-    caster.voidBarrierScale = scale
+    ability.barrier = scale
+    caster.percent_bonus_damage = caster.percent_bonus_damage + ability.barrier
 end
 function VoidBarrierOff( t )
 	local caster = t.caster
 	local ability = t.ability
-    caster.voidBarrierScale = 1
-end
-function VoidBarrierDamage( t )
-	local caster = t.caster
-	local target = t.attacker
-	local damage = t.Damage * caster:GetStrength()
-	local damageType = t.ability:GetAbilityDamageType()
-    CauseDamage(caster,target,damage,damageType,t.ability)
-    ArcLightning(t)
+    caster.percent_bonus_damage = caster.percent_bonus_damage - ability.barrier
 end
 function ArcLightning(t)
     local caster = t.caster
     local target = t.attacker
+    local device = caster
+    if not caster:IsRealHero() then
+        caster = caster.ownerHero
+    end
     local ability = t.ability
-	local damage = caster:GetStrength() * 5 * caster.voidBarrierScale
+	local damage = caster:GetStrength() * 5
 	local damageType = ability:GetAbilityDamageType()
     local damage = caster:GetStrength() * 5
     local count = 1
-    local unit_start = caster
+    local unit_start = device
     local unit_end = target
     if caster:HasModifier("modifier_zhuanshuok_state") then
 		count = 3
@@ -205,7 +213,7 @@ function ArcLightning(t)
             ParticleManager:SetParticleControlEnt(particle, 1, unit_end, PATTACH_POINT_FOLLOW, "attach_hitloc", unit_end:GetAbsOrigin(), true)
             CauseDamage(caster,unit_end,damage,damageType,ability)
             if unit_end:IsStunned() then
-                ThunderPowerDamage( caster,unit_end )
+                ThunderPowerDamage( caster,unit_end,ability )
             end
             unit_start = unit_end
             unitGroup = GetUnitsInRadius(caster,ability,unit_end:GetAbsOrigin(),500)

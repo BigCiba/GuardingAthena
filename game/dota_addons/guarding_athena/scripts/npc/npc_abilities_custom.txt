@@ -8593,6 +8593,8 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/thunder_power"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"D"
 		"MaxLevel"	"1"
@@ -8669,13 +8671,12 @@
 			}
 			"04"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"cooldown"	"2.5"
+				"var_type"	"FIELD_INTEGER"
+				"cooldown"	"2"
 			}
 		}
 	}
 
-	// 雷霆一击
 	"thunder_strike"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -8746,7 +8747,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"scale"	"5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24"
+				"scale"	"4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80"
 			}
 			"03"
 			{
@@ -8758,16 +8759,21 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"2"
 			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"buffpoint"	"2"
+			}
 		}
 	}
 
-	// 治疗守卫
 	"heal_device"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/heal_device"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
@@ -8839,6 +8845,7 @@
 					}
 				}
 			}
+			"modifier_heal_device_chain"	{}
 		}
 		"AbilitySpecial"
 		{
@@ -8860,7 +8867,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"chance"	"60"
+				"chance"	"61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80"
 			}
 			"05"
 			{
@@ -8870,7 +8877,6 @@
 		}
 	}
 
-	// 举重
 	"weightlifting"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -8907,7 +8913,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"bonus_attackspeed"	"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
 			}
 			"02"
 			{
@@ -8917,7 +8923,12 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"str"	"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_scale"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 		}
 	}
@@ -9381,7 +9392,6 @@
 		}
 	}
 
-	// 真空屏障
 	"void_barrier"
 	{
 		// General
@@ -9472,16 +9482,10 @@
 								"Target"	"ATTACKER"
 								"Duration"	"%duration"
 							}
-							"Damage"
-							{
-								"Target"	"ATTACKER"
-								"Type"	"DAMAGE_TYPE_MAGICAL"
-								"Damage"	"%damage"
-							}
 							"RunScript"
 							{
 								"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-								"Function"	"VoidBarrierDamage"
+								"Function"	"ArcLightning"
 								"Target"	"ATTACKER"
 								"Damage"	"%damage"
 							}
@@ -9533,7 +9537,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"scale"	"1.5 2 2.5 3 3.5 4 4.5 5"
+				"scale"	"150 200 250 300 350 400 450 500"
 			}
 			"03"
 			{
@@ -10491,10 +10495,6 @@
 		}
 	}
 
-	// =================================================================================================================
-	// 时空魔术师
-	// =================================================================================================================
-	// 时空裂缝
 	"space_rift"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -10530,7 +10530,6 @@
 		}
 	}
 
-	// 空间魔法
 	"chronos_magic"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -10620,7 +10619,6 @@
 		}
 	}
 
-	// 传送
 	"teleport_phase"
 	{
 		// General
@@ -10709,7 +10707,6 @@
 		}
 	}
 
-	// 传送
 	"teleport_phase_up"
 	{
 		// General
@@ -10781,7 +10778,6 @@
 		}
 	}
 
-	// 空间结界
 	"space_barrier"
 	{
 		// General
@@ -10846,17 +10842,16 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"delay"	"1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+				"delay"	"1"
 			}
 		}
 	}
 
-	// 世界投影
 	"fluctuation"
 	{
 		// General

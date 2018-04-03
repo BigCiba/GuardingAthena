@@ -118,9 +118,16 @@ function SpaceBarrier( t )
     local damageType = ability:GetAbilityDamageType()
     local delay = ability:GetSpecialValueFor("delay")
     local radius = ability:GetSpecialValueFor("radius")
+    local interval = 0.5
+    local times = 10
     local particleName = "particles/heroes/chronos_magic/space_barrier.vpcf"
     if caster.gift then
         particleName = "particles/heroes/chronos_magic/space_barrier_gold.vpcf"
+    end
+    if caster:HasModifier("modifier_zhuanshurb1") then
+        delay = 0
+        interval = 0.25
+        times = 20
     end
     local patticle = CreateParticle(particleName,PATTACH_CUSTOMORIGIN,caster,6)
     ParticleManager:SetParticleControl( patticle, 0, target_location )
@@ -146,16 +153,15 @@ function SpaceBarrier( t )
         		return 0.1
         	end
         end)
-        local times = 0
         Timers:CreateTimer(function()
-            if times < 10 then
+            if times > 0 then
                 local barrierUnitGroup = GetUnitsInRadius( caster, ability, target_location, radius )
                 for k, v in pairs( barrierUnitGroup ) do
                     CauseDamage( caster, v, damage, damageType, ability )
                 end
                 SpaceRift( caster,target_location,10,350 )
-                times = times + 1
-                return 0.5
+                times = times - 1
+                return interval
             end
         end)
     end)
@@ -172,24 +178,32 @@ function Fluctuation( t )
     if caster.gift then
         particleName = "particles/heroes/chronos_magic/fluctuation_gold.vpcf"
     end
-    local patticle = CreateParticle(particleName,PATTACH_CUSTOMORIGIN,caster,12.5)
+    local time = 0
+    local interval = 1
+    local damageDeep = 1.0
+    local count = 50
+    local duration = 12.5
+    if caster:HasModifier("modifier_zhuanshurb1") then
+        count = 80
+        duration = 13.5
+    end
+    local patticle = CreateParticle(particleName,PATTACH_CUSTOMORIGIN,caster,duration)
     ParticleManager:SetParticleControl( patticle, 0, target_location )
     ParticleManager:SetParticleControl( patticle, 1, target_location )
     ParticleManager:SetParticleControl( patticle, 2, target_location )
     ParticleManager:SetParticleControl( patticle, 4, target_location )
     ParticleManager:SetParticleControl( patticle, 5, target_location )
     EmitSoundOn("Hero_FacelessVoid.Chronosphere",caster)
-    local time = 0
-    local interval = 1
     Timers:CreateTimer(function()
-        if time < 50 then
+        if time < count then
             local barrierUnitGroup = GetUnitsInRadius( caster, ability, target_location, radius )
             for k, v in pairs( barrierUnitGroup ) do
-                CauseDamage( caster, v, damage, damageType, ability )
+                CauseDamage( caster, v, damage * damageDeep, damageType, ability )
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_fluctuation", {duration = 1})
             end
             SpaceRift( caster,target_location,10,600 )
             time = time + 1
+            damageDeep = damageDeep + 0.1
             interval = interval * 0.925
             return interval
         end

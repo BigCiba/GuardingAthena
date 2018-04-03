@@ -246,7 +246,8 @@ function GuardingAthena:OnConnectFull(keys)
 
 	-- The Player ID of the joining player
 	local playerID = player:GetPlayerID()
-
+	local steamid = PlayerResource:GetSteamAccountID(playerID)
+	CustomNetTables:SetTableValue( "playerInfo", tostring(playerID), {steamid=tostring(steamid)} )
 	-- 初始化分数
 	--setScore(playerID,0)
 	Server:GetPlayerInfo(playerID,function()
@@ -336,7 +337,7 @@ end
 -- 监听玩家选择英雄
 function GuardingAthena:OnPlayerPickHero(keys)
 	--print ('[GuardingAthena] OnPlayerPickHero')
-	PrintTable(keys)
+	--PrintTable(keys)
 	if keys.hero == "npc_dota_hero_wisp" then
 		--EntIndexToHScript(keys.heroindex):SetModelScale(0.01)
 		-- vip

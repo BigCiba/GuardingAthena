@@ -106,7 +106,7 @@
                     <TextEntry id="password" class="TextEntry" maxchars="100" placeholder="#PasswordTip3" oninputsubmit="OnSubmitted()" />
                     <Label text="#PasswordTip2" class="PassWordTip"></Label>
                     <Button id="PassWordButton">
-                        <Label html="true" text="&lt;a href=&quot;http://www.17wanba.cc/thread-5170-1-1.html&quot;&gt;点击领取&lt;a&gt;" class="HtmlText"/>
+                        <!--<Label html="true" text="&lt;a href=&quot;http://www.17wanba.cc/thread-5170-1-1.html&quot;&gt;点击领取&lt;a&gt;" class="HtmlText"/>-->
                     </Button>
                 </Panel>
             </Panel>

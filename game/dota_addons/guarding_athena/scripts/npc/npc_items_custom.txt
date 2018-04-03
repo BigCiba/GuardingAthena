@@ -13615,7 +13615,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"OnAttackLanded"
 				{
 					"RunScript"

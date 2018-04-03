@@ -220,6 +220,9 @@ function PickHeroInit(){
         preview.style.visibility = "collapse";
         heroPreviews[hero] = preview;
     }
+    var payButton = $("#PassWordButton")
+    var steam = CustomNetTables.GetTableValue("playerInfo",Game.GetLocalPlayerID()).steamid;
+    payButton.BCreateChildren("<Label html='true' text='&lt;a href=&quot;http://bigciba.applinzi.com/GAshop/index.php?steamid="+steam+"&quot;&gt;点击购买&lt;a&gt;' class='HtmlText'/>", false, false );
     //添加难度按钮事件
     for (var button of allDifficulty) {
         AddButtonEvents(button);

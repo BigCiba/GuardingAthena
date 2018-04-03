@@ -7,6 +7,7 @@
 		"ability_table",
 		"player_hero",
 		"difficulty",
-		"shop"
+		"shop",
+		"playerInfo"
 	]
 }
