@@ -8667,7 +8667,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"scale"	"5"
+				"scale"	"10"
 			}
 			"04"
 			{
@@ -12173,10 +12173,6 @@
 		}
 	}
 
-	// =================================================================================================================
-	// 时空魔术师
-	// =================================================================================================================
-	// 时空裂缝
 	"fractured_soul"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12201,12 +12197,12 @@
 					}
 				}
 				"IsHidden"	"1"
-				"OnCreated"
+				"OnAttackLanded"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
-						"Function"	"FracturedSoulStart"
+						"Function"	"OnAttackLanded"
 					}
 				}
 			}
@@ -12412,34 +12408,19 @@
 		"AbilityManaCost"	"0"
 		"OnToggleOn"
 		{
-			"ApplyModifier"
+			"RunScript"
 			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_infernal_fire_magic"
-			}
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_infernal_fire_physics"
-			}
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_infernal_fire_physics_buff"
+				"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
+				"Function"	"OnToggleOn"
 			}
 		}
 		"OnToggleOff"
 		{
 			"DeleteOnHit"	"1"
-			"ApplyModifier"
+			"RunScript"
 			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_infernal_fire_physics"
-			}
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_infernal_fire_magic"
+				"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
+				"Function"	"OnToggleOff"
 			}
 		}
 		"Modifiers"
@@ -12538,7 +12519,6 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
 				"Function"	"DestoryHit"
-				"Damage"	"%damage"
 			}
 		}
 		"Modifiers"
@@ -12546,14 +12526,7 @@
 			"modifier_destory_hit"
 			{
 				"IsDebuff"	"1"
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
-						"Function"	"OnRemove"
-					}
-				}
+				"Properties"	{}
 			}
 		}
 		"AbilitySpecial"
@@ -12567,6 +12540,83 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_damage"	"30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_move"	"-30"
+			}
+		}
+	}
+
+	"destory_hit_up"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"nevermore_shadowraze2_demon"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"0"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_RAZE_2"
+		"AbilityCooldown"	"8"
+		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
+				"Function"	"DestoryHitUp"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_destory_hit"
+			{
+				"IsDebuff"	"1"
+				"Properties"	{}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_damage"	"30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_move"	"-30"
 			}
 		}
 	}

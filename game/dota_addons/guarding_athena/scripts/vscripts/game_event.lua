@@ -467,7 +467,6 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end
 	end)
-	SendToConsole("dota_max_physical_items_purchase_limit 125")
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)

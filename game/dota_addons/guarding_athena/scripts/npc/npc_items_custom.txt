@@ -13263,7 +13263,7 @@
 		"ID"	"1104"
 		"ItemQuality"	"artifact"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/items/item_battlefury_meteorite_ring.vpcf"
+		"Effect"	"particles/items/battlefury_ring_absorb.vpcf"
 		"ItemCost"	"322"
 		// 是否可丢弃
 		"ItemDroppable"	"0"
@@ -13285,9 +13285,8 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
-			"particle"	"particles/items/item_battlefury_meteorite_ring_active.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
-			"particle"	"particles/items/item_battlefury_meteorite_ring.vpcf"
+			"particle"	"particles/items/battlefury_ring_absorb.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -13295,12 +13294,6 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_item.lua"
 				"Function"	"BattlefuryMeteoriteRing"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/items/item_battlefury_meteorite_ring_active.vpcf"
-				"Target"	"CASTER"
-				"EffectAttachType"	"follow_origin"
 			}
 			"FireSound"
 			{
@@ -13318,7 +13311,7 @@
 				{
 					"AttachEffect"
 					{
-						"EffectName"	"particles/items/item_battlefury_meteorite_ring.vpcf"
+						"EffectName"	"particles/items/battlefury_ring_absorb.vpcf"
 						"Target"	"CASTER"
 						"EffectAttachType"	"follow_chest"
 					}
@@ -14166,6 +14159,22 @@
 					"MODIFIER_PROPERTY_MANA_BONUS"	"%mp"
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"UpgradeDestoryHit"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"DowngradeDestoryHit"
+					}
 				}
 			}
 		}

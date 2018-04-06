@@ -463,6 +463,16 @@ function SetUnitPosition( ... )
 		FindClearSpaceForUnit(caster, position, false)
 	end
 end
+-- 设置单位百分比伤害输出
+function SetUnitDamagePercent( ... )
+	local caster,percent,duration = ...
+	caster.percent_bonus_damage = caster.percent_bonus_damage + percent
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			caster.percent_bonus_damage = caster.percent_bonus_damage - percent
+		end)
+	end
+end
 -- 打印表
 function PrintTable( keys )
 	print("----------------------------------")

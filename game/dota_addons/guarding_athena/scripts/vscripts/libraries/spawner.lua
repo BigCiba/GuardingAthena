@@ -65,8 +65,10 @@ function Spawner:Setting()
 		maxArmorRandomFactor = self.difficulty * 0.2 + 1.2,						--最大护甲系数
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--最大生命系数
 		maxMeleeDamageFactor = 1,												--最大近战攻击系数
-		difficultyFactor = self.difficulty										--难度系数
+		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
+		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
+	print(self.unitFactor.difficultyFactor)
 	self.damageRecorder = {}													--每波施加伤害记录器
 	self.victimRecorder = {}													--每波承受伤害记录器
 	-- 野怪
@@ -91,7 +93,8 @@ function Spawner:Setting()
 		maxArmorRandomFactor = self.difficulty * 0.2 + 1.2,						--野怪最大护甲系数
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--野怪最大生命系数
 		maxMeleeDamageFactor = 0,												--野怪最大近战攻击系数
-		difficultyFactor = 1													--难度系数
+		difficultyFactor = 1,													--难度系数
+		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
 	-- 特殊进攻
 	self.specialRushList = kv.special_rush_list									--读取图像资料
@@ -105,7 +108,8 @@ function Spawner:Setting()
 		maxArmorRandomFactor = self.difficulty * 0.2 + 1.2,						--最大护甲系数
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--最大生命系数
 		maxMeleeDamageFactor = 0,												--最大近战攻击系数
-		difficultyFactor = self.difficulty										--难度系数
+		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
+		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
 end
 -- 开始自动刷怪
@@ -185,9 +189,9 @@ function Spawner:UnitProperty( unit,factor )
 	else
 		factor.maxMeleeDamageFactor = 1
 	end
-	local unitDamageFactor = RandomFloat(1,factor.maxDamageRandomFactor) * factor.difficultyFactor * factor.maxMeleeDamageFactor
-	local unitArmorFactor = RandomFloat(1,factor.maxArmorRandomFactor) * factor.difficultyFactor
-	local unitHealthFactor = RandomFloat(1,factor.maxHealthRandomFactor) * factor.difficultyFactor
+	local unitDamageFactor = RandomFloat(1,factor.maxDamageRandomFactor) * factor.difficultyFactor * factor.maxMeleeDamageFactor * factor.waveFactor ^ self.gameRound
+	local unitArmorFactor = RandomFloat(1,factor.maxArmorRandomFactor) * factor.difficultyFactor * factor.waveFactor ^ self.gameRound
+	local unitHealthFactor = RandomFloat(1,factor.maxHealthRandomFactor) * factor.difficultyFactor * factor.waveFactor ^ self.gameRound
 	unit:SetDeathXP(unit:GetDeathXP() * 1.6)
 	unit:SetMinimumGoldBounty(unit:GetGoldBounty() * 1.6)
 	unit:SetMaximumGoldBounty(unit:GetGoldBounty() * 1.6)

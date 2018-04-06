@@ -42,6 +42,11 @@ function HeroState:InitHero(hero)
     end)
 end
 function HeroState:InitUnit(unit)
+    unit.bonus_magic_damage = 0         --额外百分比魔法伤害
+    unit.bonus_physical_damage = 0      --额外无视护甲物理伤害
+    unit.percent_bonus_damage = 0       --额外百分比所有伤害
+    unit.const_reduce_damage = 0        --定值伤害减少
+    unit.percent_reduce_damage = 0      --百分比伤害减少
     unit.str_gain = 0
     unit.agi_gain = 0
     unit.int_gain = 0

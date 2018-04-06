@@ -195,6 +195,7 @@ function BattlefuryRingAbsorb( keys )
     local aura_interval = ability:GetSpecialValueFor("aura_interval")
     local bonus_damage = ability:GetSpecialValueFor("bonus_damage")
     caster.percent_bonus_damage = caster.percent_bonus_damage + bonus_damage
+    ability.no_damage_filter = true
     Timers:CreateTimer(function ()
         caster_location = caster:GetAbsOrigin()
         local unitGroup = GetUnitsInRadius( caster, ability, caster_location, aura_radius )
@@ -249,6 +250,9 @@ function BattlefuryMeteoriteRing( keys )
     else
         CauseDamage(caster, caster, caster:GetMaxHealth() * 0.5, DAMAGE_TYPE_PURE,ability)
     end
+    local p = CreateParticle("particles/items/battlefury_ring.vpcf",PATTACH_ABSORIGIN,caster,5)
+    ParticleManager:SetParticleControl(p, 1, Vector(600,1,1))
+    ParticleManager:SetParticleControl(p, 2, Vector(1,1,600))
     caster.percent_bonus_damage = caster.percent_bonus_damage + 50
     Timers:CreateTimer(3,function ()
         caster.percent_bonus_damage = caster.percent_bonus_damage - 50
@@ -341,6 +345,26 @@ function DowngradeTeleport( t )
         new_ability:SetLevel(ability:GetLevel())
         caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
         caster:RemoveAbility("teleport_phase_up")
+    end
+end
+function UpgradeDestoryHit( t )
+    local caster = t.caster
+    local ability = caster:FindAbilityByName("destory_hit")
+    if ability then
+        new_ability = caster:AddAbility("destory_hit_up")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+        caster:RemoveAbility("destory_hit")
+    end
+end
+function DowngradeDestoryHit( t )
+    local caster = t.caster
+    local ability = caster:FindAbilityByName("destory_hit_up")
+    if ability then
+        new_ability = caster:AddAbility("destory_hit")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
+        caster:RemoveAbility("destory_hit_up")
     end
 end
 function UpgradeDarkFire( t )
