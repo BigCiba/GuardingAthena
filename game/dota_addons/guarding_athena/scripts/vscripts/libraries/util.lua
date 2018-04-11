@@ -466,10 +466,26 @@ end
 -- 设置单位百分比伤害输出
 function SetUnitDamagePercent( ... )
 	local caster,percent,duration = ...
+	if caster.percent_bonus_damage == nil then
+		caster.percent_bonus_damage = 0
+	end
 	caster.percent_bonus_damage = caster.percent_bonus_damage + percent
 	if duration then
 		Timers:CreateTimer(duration,function ()
 			caster.percent_bonus_damage = caster.percent_bonus_damage - percent
+		end)
+	end
+end
+-- 设置单位接受百分比伤害增加
+function SetUnitIncomingDamagePercent( ... )
+	local caster,percent,duration = ...
+	if caster.percent_increase_damage == nil then
+		caster.percent_increase_damage = 0
+	end
+	caster.percent_increase_damage = caster.percent_increase_damage + percent
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			caster.percent_increase_damage = caster.percent_increase_damage - percent
 		end)
 	end
 end

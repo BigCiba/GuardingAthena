@@ -253,10 +253,7 @@ function BattlefuryMeteoriteRing( keys )
     local p = CreateParticle("particles/items/battlefury_ring.vpcf",PATTACH_ABSORIGIN,caster,5)
     ParticleManager:SetParticleControl(p, 1, Vector(600,1,1))
     ParticleManager:SetParticleControl(p, 2, Vector(1,1,600))
-    caster.percent_bonus_damage = caster.percent_bonus_damage + 50
-    Timers:CreateTimer(3,function ()
-        caster.percent_bonus_damage = caster.percent_bonus_damage - 50
-    end)
+    SetUnitDamagePercent(caster,50,3)
 end
 function item_refresher1_on_spell_start(keys)
     --Refresh all abilities on the caster.

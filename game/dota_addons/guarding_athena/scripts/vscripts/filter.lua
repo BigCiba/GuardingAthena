@@ -146,6 +146,10 @@ function GuardingAthena:DamageFilter( args )
     -- 减少固定值伤害
     if victim.const_reduce_damage and victim.const_reduce_damage > 0 then
         args.damage = args.damage - victim.const_reduce_damage
+	end
+	-- 增加百分比伤害
+    if victim.percent_increase_damage and victim.percent_increase_damage > 0 then
+        args.damage = args.damage * (1 + victim.percent_increase_damage * 0.01)
     end
     -- 减少百分比伤害
     if victim.percent_reduce_damage and victim.percent_reduce_damage > 0 then

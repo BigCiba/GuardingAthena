@@ -2,8 +2,6 @@ function OnAttackLanded(t)
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = t.DamageTaken
-    local critical = ability:GetSpecialValueFor("critical") * 0.01
-    damage = damage * critical
-    CauseDamage(caster,target,damage,DAMAGE_TYPE_PURE)
+    local duration = ability:GetSpecialValueFor("duration")
+    AddModifierStackCount(caster,target,ability,"modifier_jugg_attack_debuff",1,duration,true)
 end

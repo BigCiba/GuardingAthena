@@ -68,7 +68,6 @@ function Spawner:Setting()
 		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
 		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
-	print(self.unitFactor.difficultyFactor)
 	self.damageRecorder = {}													--每波施加伤害记录器
 	self.victimRecorder = {}													--每波承受伤害记录器
 	-- 野怪

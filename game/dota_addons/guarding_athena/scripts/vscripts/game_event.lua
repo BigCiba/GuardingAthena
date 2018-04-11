@@ -511,7 +511,11 @@ function GuardingAthena:OnPlayerChat(keys)
 		local heroName = hero:GetUnitName()
 		hero:AddItem(CreateItem("item_"..heroName.."1", hero, hero))
 	end
-
+	if text == "givezs" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		local heroName = hero:GetUnitName()
+		hero:AddItem(CreateItem("item_"..heroName.."1", hero, hero))
+	end
 	--设置波数
 	if string.sub(text,0,6) == "waveto" then
 		local wave = tonumber(string.sub(text,7,string.len(text)))

@@ -2,6 +2,10 @@ function FracturedSoul( keys )
 	local caster = keys.caster
 	local target = keys.unit
 	local ability = keys.ability
+	local cooldown = 1
+	if caster:HasModifier("modifier_zhuanshusf") then
+		cooldown = 0.5
+	end
 	if caster:HasModifier("modifier_fractured_soul_buff") then
 		local stackcount = caster:GetModifierStackCount("modifier_fractured_soul_buff", caster) + 1
 		if stackcount <= caster:GetBaseStrength() then
@@ -17,7 +21,7 @@ function FracturedSoul( keys )
 	local damageType = ability:GetAbilityDamageType()
 	local radius = 250
 	local unitGroup = GetUnitsInRadius(caster,ability,target_location,radius)
-	ability:StartCooldown(1)
+	ability:StartCooldown(cooldown)
 	CauseDamage(caster, unitGroup, damage, damageType,ability)
 	local p1 = CreateParticle( "particles/heroes/tartarus/fractured_soul.vpcf", PATTACH_ABSORIGIN, caster )
 	ParticleManager:SetParticleControl( p1, 0, target_location )
@@ -37,6 +41,7 @@ function HellField( keys )
 	local caster_location = caster:GetAbsOrigin()
 	local damage = keys.Damage * 0.2 * caster:GetStrength() + ability:GetSpecialValueFor("base_damage")
 	local damageType = ability:GetAbilityDamageType()
+	local damageDeep = ability:GetSpecialValueFor("bonus_damage_percent")
 	local radius = 900
 	local time = 0
 	local p2 = CreateParticle( "particles/skills/hell_field_hellborn.vpcf", PATTACH_CUSTOMORIGIN, caster )
@@ -58,6 +63,7 @@ function HellField( keys )
 			local unitGroup = GetUnitsInRadius(caster,ability,caster_location,radius)
 			for k, v in pairs( unitGroup ) do
 				ability:ApplyDataDrivenModifier(caster, v, "modifier_hell_field_debuff", nil)
+				SetUnitIncomingDamagePercent(v,damageDeep,0.2)
 				CauseDamage(caster, v, damage, damageType, ability)
 			end
 			time = time + 1
@@ -96,7 +102,7 @@ function DestoryHit( keys )
 					CauseDamage(caster, v, damage, damageType, ability)
 					if v:HasModifier("modifier_destory_hit") then
 						local stackcount = v:GetModifierStackCount("modifier_destory_hit", caster)
-						ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 6})
+						ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 3})
 						v:SetModifierStackCount("modifier_destory_hit", caster, stackcount + 1)
 						SetUnitDamagePercent(v,damageReduce,duration-0.1)
 					else
@@ -141,7 +147,7 @@ function DestoryHitUp( keys )
 				CauseDamage(caster, v, damage, damageType, ability)
 				if v:HasModifier("modifier_destory_hit") then
 					local stackcount = v:GetModifierStackCount("modifier_destory_hit", caster)
-					ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 6})
+					ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 3})
 					v:SetModifierStackCount("modifier_destory_hit", caster, stackcount + 1)
 					SetUnitDamagePercent(v,damageReduce,duration)
 				else

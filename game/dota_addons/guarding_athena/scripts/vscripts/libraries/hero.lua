@@ -13,6 +13,7 @@ function HeroState:InitHero(hero)
     hero.percent_bonus_damage = 0       --额外百分比所有伤害
     hero.const_reduce_damage = 0        --定值伤害减少
     hero.percent_reduce_damage = 0      --百分比伤害减少
+    hero.percent_increase_damage = 0    --百分比伤害增加
     -- 初始化需要记录的数据
     hero.str_gain = 0                   --力量成长
     hero.agi_gain = 0                   --敏捷成长
@@ -47,6 +48,7 @@ function HeroState:InitUnit(unit)
     unit.percent_bonus_damage = 0       --额外百分比所有伤害
     unit.const_reduce_damage = 0        --定值伤害减少
     unit.percent_reduce_damage = 0      --百分比伤害减少
+    unit.percent_increase_damage = 0    --百分比伤害增加
     unit.str_gain = 0
     unit.agi_gain = 0
     unit.int_gain = 0
@@ -66,6 +68,7 @@ function HeroState:InitIllusion(unit)
     unit.percent_bonus_damage = 0       --额外百分比所有伤害
     unit.const_reduce_damage = 0        --定值伤害减少
     unit.percent_reduce_damage = 0      --百分比伤害减少
+    unit.percent_increase_damage = 0    --百分比伤害增加
     unit.str_gain = 0
     unit.agi_gain = 0
     unit.int_gain = 0
