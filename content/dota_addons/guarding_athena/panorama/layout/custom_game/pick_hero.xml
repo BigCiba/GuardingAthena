@@ -49,6 +49,7 @@
                 <!--中间英雄界面-->
                  <Label id="HeroName" class="YellowLabel"></Label>
                  <DOTAScenePanel id="InspectHeroModelEffect" class="SceneLoaded" hittest="false" map="scenes/inspect_hero_model_effect" camera="camera_1" />
+                 <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>
                 <!--英雄名字-->
             </Panel>
             <Panel id="HeroConfirm">

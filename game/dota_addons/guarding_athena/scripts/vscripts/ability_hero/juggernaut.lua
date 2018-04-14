@@ -241,6 +241,20 @@ function BladeDanceDamage( keys )
     	caster:SetModifierStackCount("modifier_blade_dance_attack_speed", caster, 1)
     end]]--
 end
+function PhantomSwordDance( t )
+    local ability = t.ability
+	local caster = t.caster
+    local target = t.target
+    local count = 0
+    Timers:CreateTimer(function()
+        if count < 500 then
+            local fxIndex = CreateParticle( "particles/heroes/juggernaut/phantom_sword_dance.vpcf", PATTACH_ABSORIGIN, caster )
+            ParticleManager:SetParticleControlForward( fxIndex, 0, Vector(RandomFloat(-1,1),RandomFloat(-1,1),RandomFloat(-1,1)) )
+            count = count + 1
+            return 0.01
+        end
+    end)
+end
 function jianrenfengbao( keys )
 	local ability = keys.ability
 	local caster = keys.caster

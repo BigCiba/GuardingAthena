@@ -474,13 +474,35 @@ function ExpFruit( keys )
     local caster = keys.caster
     local level = GuardingAthena.clotho_lv
     PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-    caster.exp_rate = caster.exp_rate + 0.1
+    caster.exp_rate = caster.exp_rate + 0.1 * level
 end
 function GoldFruit( keys )
     local caster = keys.caster
     local level = GuardingAthena.clotho_lv
     PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-    caster.gold_rate = caster.gold_rate + 0.1
+    caster.gold_rate = caster.gold_rate + 0.1 * level
+end
+function FenLie( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local bonus_attack = ability:GetSpecialValueFor("bonus_attack")
+    local unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),700)
+    for i,v in ipairs(unitGroup) do
+        if i <= bonus_attack then
+            CreateTrackingProjectile(caster,v,ability,caster:GetRangedProjectileName(),900)
+        else
+            break
+        end
+    end
+end
+function OnProjectileHitUnit( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local damage = caster:GetAverageTrueAttackDamage()
+    local damageType = ability:GetAbilityDamageType()
+    CauseDamage(caster,target,damage,damageType,ability)
 end
 function RangeCheck( keys )
     local caster = keys.caster

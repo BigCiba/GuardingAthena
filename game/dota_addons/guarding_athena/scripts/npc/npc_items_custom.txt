@@ -2065,6 +2065,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"1"
 		"RequiredLevel"	"1"
@@ -2089,6 +2090,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_1"
@@ -2127,18 +2136,10 @@
 			{
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -2168,6 +2169,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"1"
 		"RequiredLevel"	"1"
@@ -2192,6 +2194,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_2"
@@ -2230,18 +2240,10 @@
 			{
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -2271,6 +2273,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"1"
 		"RequiredLevel"	"1"
@@ -2295,6 +2298,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_3"
@@ -2333,18 +2344,10 @@
 			{
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -2374,6 +2377,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"1"
 		"RequiredLevel"	"1"
@@ -2398,6 +2402,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_4"
@@ -2436,18 +2448,10 @@
 			{
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -2477,6 +2481,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"1"
 		"RequiredLevel"	"1"
@@ -2501,6 +2506,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_5"
@@ -2539,18 +2552,10 @@
 			{
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -5528,7 +5533,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/gong_6"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -5553,6 +5560,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_6"
@@ -5594,18 +5609,10 @@
 				"Properties"	{}
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -5802,7 +5809,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/gong_7"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -5827,6 +5836,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_7"
@@ -5871,18 +5888,10 @@
 				"Properties"	{}
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -6084,7 +6093,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/gong_8"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -6109,6 +6120,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_8"
@@ -6153,18 +6172,10 @@
 				"Properties"	{}
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -6366,7 +6377,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"custom/gong_9"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -6391,6 +6404,14 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_gong_9"
@@ -6435,18 +6456,10 @@
 				"Properties"	{}
 				"OnAttackLanded"
 				{
-					// 额外攻击
-					"CreateBonusAttack"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"700"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"MaxTargets"	"%bonus_attack"
-							"Random"	"0"
-						}
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"FenLie"
 					}
 				}
 				"IsHidden"	"1"
@@ -8410,7 +8423,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/dun_5"
+		"AbilityTextureName"	"dun_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -15435,6 +15448,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -15961,7 +15975,7 @@
 		"ID"	"1142"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"4000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -15978,6 +15992,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -16069,7 +16084,7 @@
 		"ID"	"1143"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"3000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -16086,6 +16101,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -16609,7 +16625,7 @@
 		"ID"	"1148"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"8000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -17148,6 +17164,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -17580,6 +17597,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -17671,7 +17689,7 @@
 		"ID"	"1158"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"4000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -17688,6 +17706,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -18213,7 +18232,7 @@
 		"ID"	"1164"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"8000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19171,7 +19190,7 @@
 		"ID"	"1172"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"4000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19188,6 +19207,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -19279,7 +19299,7 @@
 		"ID"	"1173"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"3000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19296,6 +19316,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -19821,7 +19842,7 @@
 		"ID"	"1178"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"8000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19909,7 +19930,7 @@
 		"ID"	"1179"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"24000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售

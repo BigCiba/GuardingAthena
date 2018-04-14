@@ -99,9 +99,11 @@ function OnHeroCardActive(heroname) {
     if (HeroComfirm==false) {
         GameEvents.SendCustomGameEventToServer("selection_hero_click", { "hero": heroname });
         activeHeroCard.RemoveClass("SelectColor");
-        activePreview.style.visibility = "collapse";
-        heroPreviews[heroname].style.visibility = "visible";
-        activePreview = heroPreviews[heroname];
+        //activePreview.style.visibility = "collapse";
+        //heroPreviews[heroname].style.visibility = "visible";
+        //activePreview = heroPreviews[heroname];
+        DeleteChildrenWithClass($("#HeroesScene"), "HeroScene");
+        $("#HeroesScene").BCreateChildren('<DOTAScenePanel class="HeroScene" unit="' + heroname + '" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>', false, false );
         $("#HeroName").text = $.Localize("#"+heroname);
         $("#"+heroname).AddClass("SelectColor");
         activeHeroCard = $("#"+heroname);
@@ -214,11 +216,11 @@ function PickHeroInit(){
     for (var hero of allHeroes) {
         AddHeroCardEvents(hero);
         var previewStyle = "width:600px;height:600px;";
-        var preview = $.CreatePanel("Panel", $("#HeroesScene"), "");
-        preview.BCreateChildren('<DOTAScenePanel style="width: 1060px; height: 1060px;" unit="' + hero + '"/>', false, false );
-        preview.AddClass("HeroScene");
-        preview.style.visibility = "collapse";
-        heroPreviews[hero] = preview;
+        //var preview = $.CreatePanel("Panel", $("#HeroesScene"), "");
+        //preview.BCreateChildren('<DOTAScenePanel style="width: 1060px; height: 1060px;" unit="' + hero + '" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>', false, false );
+        //preview.AddClass("HeroScene");
+        //preview.style.visibility = "collapse";
+        //heroPreviews[hero] = preview;
     }
     var payButton = $("#PassWordButton")
     var steam = CustomNetTables.GetTableValue("playerInfo",Game.GetLocalPlayerID()).steamid;
@@ -235,8 +237,8 @@ function PickHeroInit(){
         lockImages[lockHero] = preview;
     }
     //初始英雄
-    heroPreviews["npc_dota_hero_omniknight"].style.visibility = "visible";
-    activePreview = heroPreviews["npc_dota_hero_omniknight"];
+    //heroPreviews["npc_dota_hero_omniknight"].style.visibility = "visible";
+    //activePreview = heroPreviews["npc_dota_hero_omniknight"];
     currentHero = "npc_dota_hero_omniknight";
     activeDifficulty = $("#NormalButton");
     activeHeroCard = $("#npc_dota_hero_omniknight");

@@ -1,4 +1,4 @@
-TIME_BOSS_REBORN = 120
+TIME_BOSS_REBORN = 60
 GOLD_USED_TABLE ={}
 SF_USED_TABLE ={}
 HERO_TABLE = {}
@@ -139,7 +139,7 @@ function GuardingAthena:InitGameMode()
 	GameMode:SetModifyGoldFilter( Dynamic_Wrap( GuardingAthena, "ModifyGoldFilter" ), self )
 	GameMode:SetThink("DetectCheatsThinker")
 	-- 设定平衡常数
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_DAMAGE,1)
+	--[[GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_DAMAGE,1)
 	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP,20)
 	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP_REGEN_PERCENT,0.003)
 	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT,0)
@@ -151,7 +151,7 @@ function GuardingAthena:InitGameMode()
 	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA,11)
 	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN_PERCENT,0.002)
 	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT,0)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT,0)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT,0)]]
 	--GameMode:SetAbilityTuningValueFilter( Dynamic_Wrap( GuardingAthena, "AbilityTuningValueFilter" ), self )
 
 	--监听事件

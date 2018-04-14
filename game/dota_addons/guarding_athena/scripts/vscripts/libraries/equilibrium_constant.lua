@@ -125,10 +125,11 @@ function equilibrium_constant:DeclareFunctions()
         MODIFIER_PROPERTY_MANA_BONUS,
         MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
         MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-        MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,]]
+        MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,]]
+        MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MOVESPEED_MAX,
         MODIFIER_PROPERTY_MOVESPEED_LIMIT,
     }
@@ -221,37 +222,70 @@ function equilibrium_constant:GetModifierPhysicalArmorBonus( params )
 end
 
 function equilibrium_constant:GetModifierMagicalResistanceBonus( params )
-    if IsServer() then
-        local owner = self:GetParent()
-        local int = owner:GetIntellect()
-        local ResistBonus
-        local heroType = owner:GetPrimaryAttribute()
-        if heroType == DOTA_ATTRIBUTE_STRENGTH then
-            ResistBonus = STR_HERO.RESIST_PER_INT * int
-        elseif heroType == DOTA_ATTRIBUTE_AGILITY then
-            ResistBonus = AGI_HERO.RESIST_PER_INT * int
-        elseif heroType == DOTA_ATTRIBUTE_INTELLECT then
-            ResistBonus = INT_HERO.RESIST_PER_INT * int
+    local ResistBonus = 0
+    local attributes = CustomNetTables:GetTableValue("courier_attributes","courier_attributes" .. self:GetParent():GetEntityIndex())
+    if attributes and attributes.str then
+        local str = attributes.str
+        local agi = attributes.agi
+        local int = attributes.int
+        local x = 0.0008
+        if str > agi and str > int then
+            x = 0.001
         end
-        return ResistBonus
+        ResistBonus = -75 * str * x
     end
-end
+    return 0
+end]]
 
 function equilibrium_constant:GetModifierMoveSpeedBonus_Constant( params )
     if IsServer() then
         local owner = self:GetParent()
         local heroType = owner:GetPrimaryAttribute()
+        local x = 0.0005
         if heroType == DOTA_ATTRIBUTE_AGILITY then
-            local agi = owner:GetAgility()
-            local moveSpeed = owner:GetBaseMoveSpeed()
-            local MoveBonus = -(0.0006 * agi * moveSpeed) / ( 1 + 0.0006 * agi)
-            return MoveBonus
-        else
-            return 0
+            x = 0.00062
         end
+        local agi = owner:GetAgility()
+        local moveSpeed = owner:GetBaseMoveSpeed()
+        local MoveBonus = -(x * agi * moveSpeed) / ( 1 + x * agi)
+        return MoveBonus
+    end
+    local attributes = CustomNetTables:GetTableValue("courier_attributes","courier_attributes" .. self:GetParent():GetEntityIndex())
+    if attributes and attributes.agi then
+        local agi = attributes.agi
+        local x = 0.0005
+        local moveSpeed = self:GetParent():GetBaseMoveSpeed()
+        local MoveBonus = -(x * agi * moveSpeed) / ( 1 + x * agi)
+        return MoveBonus
     end
 end
+function equilibrium_constant:GetModifierConstantHealthRegen()
+    if IsServer() then
+        -- 如果属性发生了改变，将属性数据发送给客户端
+        local parent = self:GetParent()
+        parent.vAttributeForClient_equilibrium_constant = parent.vAttributeForClient_equilibrium_constant or {}
+        parent.vAttributeForClient_equilibrium_constant.str = parent.vAttributeForClient_equilibrium_constant.str or -1
+        parent.vAttributeForClient_equilibrium_constant.agi = parent.vAttributeForClient_equilibrium_constant.agi or -1
+        parent.vAttributeForClient_equilibrium_constant.int = parent.vAttributeForClient_equilibrium_constant or -1
+        
+        local u = false
+        local str, agi, int = parent:GetStrength(), parent:GetAgility(), parent:GetIntellect()
 
+        if str ~= parent.vAttributeForClient_equilibrium_constant.str then
+            u = true; parent.vAttributeForClient_equilibrium_constant.str = str
+        end
+        if agi ~= parent.vAttributeForClient_equilibrium_constant.agi then
+            u = true; parent.vAttributeForClient_equilibrium_constant.agi = agi
+        end
+        if int ~= parent.vAttributeForClient_equilibrium_constant.int then
+            u = true; parent.vAttributeForClient_equilibrium_constant.int = int
+        end
+
+        CustomNetTables:SetTableValue("courier_attributes","courier_attributes" .. self:GetParent():GetEntityIndex(),parent.vAttributeForClient_equilibrium_constant)
+
+        return 0
+    end
+end
 --[[function equilibrium_constant:GetModifierMoveSpeedBonus_Percentage( params )
     if IsServer() then
         local owner = self:GetParent()

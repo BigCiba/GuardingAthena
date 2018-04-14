@@ -100,6 +100,21 @@ function ApplyWingsCooldown( keys )
     local caster = keys.caster
     local reduction_const = caster.reduction_const or 0
     caster.reduction_const = reduction_const + 2
+    local wingsType = "particles/skills/wing_sky.vpcf"
+    if caster:GetUnitName() == "npc_dota_hero_omniknight" then wingsType = "particles/skills/wing_thunder.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_windrunner" then wingsType = "particles/skills/wing_wind.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_rubick" then wingsType = "particles/skills/wing_space.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_lina" then wingsType = "particles/skills/wing_fire.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_nevermore" then wingsType = "particles/skills/wing_hell.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_legion_commander" then wingsType = "particles/skills/wing_hell.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_fire_spirit" then wingsType = "particles/skills/wing_fire.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_revelater" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_juggernaut" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_antimage" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_crystal_maiden" then wingsType = "particles/skills/wing_ice.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_monkey_king" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_spectre" then wingsType = "particles/skills/wing_sky.vpcf" end
+    CreateParticle(wingsType,PATTACH_ABSORIGIN_FOLLOW,caster)
 end
 function CourierBlink(keys)
 	--PrintTable(keys)
@@ -257,13 +272,6 @@ function voodoo_start( keys )
     else
         target:AddNewModifier(caster, ability, "modifier_hex", {duration = duration})
     end
-end
-function SuicideParticle( keys )
-    local caster = keys.caster
-    local particle = CreateParticle( "particles/units/heroes/hero_techies/techies_suicide.vpcf", PATTACH_WORLDORIGIN, caster )
-    ParticleManager:SetParticleControl( particle, 0, caster:GetAbsOrigin() )
-    ParticleManager:SetParticleControl( particle, 3, caster:GetAbsOrigin() )
-    caster:EmitSound("Hero_Techies.Suicide.Arcana")   
 end
 function fury_swipes_attack( keys )
     -- Variables

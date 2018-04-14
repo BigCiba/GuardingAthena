@@ -703,6 +703,14 @@ function GuardingAthena:OnPlayerChat(keys)
 			hero:SetBaseIntellect(move)
 		end
 	end
+	if string.sub(text,0,6) == "setstr" then
+		local move = tonumber(string.sub(text,7,string.len(text)))
+		if move >= 0 then
+			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+			hero:SetBaseStrength(move)
+			print("str:"..hero:GetStrength().."res:"..hero:GetMagicalArmorValue())
+		end
+	end
 	--设置最大生命
 	if string.sub(text,0,8) == "setmaxhp" then
 		local hp = tonumber(string.sub(text,9,string.len(text)))

@@ -8,6 +8,7 @@
 		"player_hero",
 		"difficulty",
 		"shop",
-		"playerInfo"
+		"playerInfo",
+		"courier_attributes"
 	]
 }

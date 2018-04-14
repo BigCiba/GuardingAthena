@@ -212,6 +212,7 @@ function Spawner:UnitProperty( unit,factor )
 	unit.percent_bonus_damage = 0
 	unit.const_reduce_damage = 0
 	unit.percent_reduce_damage = 0
+	unit.percent_increase_damage = 0
 	unit.dodge_damage = false
 	unit.bonus_magic_damage = 0
 end
@@ -360,7 +361,7 @@ function Spawner:OnUnitKilled( t )
 		HeroState:InitUnit(attacker)
 	end
 	-- 练功房
-	if caster:GetUnitName() == "practicer" then
+	if caster.practicer then
 		local room = caster.room
 		for i, unit in pairs( room.unitRemaining ) do
 			if caster == unit then

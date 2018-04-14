@@ -409,6 +409,8 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"MinimapIcon"	"minimap_speech"
+		"MinimapIconSize"	"800"
 	}
 
 	"cuihua"
@@ -501,6 +503,8 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"MinimapIcon"	"minimap_speech"
+		"MinimapIconSize"	"800"
 	}
 
 	"bajie"
@@ -593,6 +597,8 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"MinimapIcon"	"minimap_speech"
+		"MinimapIconSize"	"800"
 	}
 
 	"heal_device"
@@ -1151,7 +1157,8 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"2000"
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
 	}
 
 	"hero_statue_2"
@@ -1211,17 +1218,18 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"2000"
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
 	}
 
 	"practicer"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"
+		"Model"	"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
 		// 音效文件
 		"SoundSet"	"Creep_Bad_Melee"
 		// 模型大小
-		"ModelScale"	"0.8"
+		"ModelScale"	"1"
 		// 单位等级
 		"Level"	"1"
 		"IsNeutralUnitType"	"1"
@@ -1236,12 +1244,12 @@
 		// 攻击方式，此为近战攻击
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		// 最低攻击伤害
-		"AttackDamageMin"	"24"
+		"AttackDamageMin"	"9"
 		// 最高攻击伤害
-		"AttackDamageMax"	"24"
+		"AttackDamageMax"	"9"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// 攻击间隔，与攻击速度是两个概念
-		"AttackRate"	"1.2"
+		"AttackRate"	"1.5"
 		// 侦测范围
 		"AttackAcquisitionRange"	"600"
 		// 攻击范围
@@ -1269,13 +1277,13 @@
 		// 移动类型
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		// 移动速度
-		"MovementSpeed"	"325"
+		"MovementSpeed"	"300"
 		// 转身速度
 		"MovementTurnRate"	"0.5"
 		// 生命值和魔法值
 		// ----------------------------------------------------------------
 		// 基础生命值
-		"StatusHealth"	"350"
+		"StatusHealth"	"250"
 		// 基础生命回复速度
 		"StatusHealthRegen"	"5"
 		// 基础魔法值
@@ -2088,8 +2096,8 @@
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"WakesNeutrals"	"1"
-		"MinimapIcon"	"minimap_creep"
-		"MinimapIconSize"	"200"
+		"MinimapIcon"	"minimap_ancient"
+		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"1"
 		// 护甲
 		// ----------------------------------------------------------------
@@ -3012,7 +3020,7 @@
 		"Ability3"	"boss_epicenter"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
-		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIcon"	"minimap_ancient"
 		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"1"
 		// 护甲
@@ -3174,7 +3182,7 @@
 		"Ability3"	"boss_soulclash"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
-		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIcon"	"minimap_ancient"
 		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"1"
 		// 护甲
@@ -3297,7 +3305,7 @@
 		"Ability3"	"boss_fire_reborn"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
-		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIcon"	"minimap_ancient"
 		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"1"
 		// 护甲
@@ -3403,7 +3411,7 @@
 		"Ability3"	"boss_overgrowth"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
-		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIcon"	"minimap_ancient"
 		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"1"
 		// 护甲
@@ -3569,7 +3577,7 @@
 		"Ability2"	"hit_back"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
-		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIcon"	"minimap_ancient"
 		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"1"
 		// 护甲
@@ -3651,9 +3659,9 @@
 			"HPGain"	"100000"
 			"DamageGain"	"2000"
 			"ArmorGain"	"10"
-			"MagicResistGain"	"5"
+			"MagicResistGain"	"2"
 			"MoveSpeedGain"	"0"
-			"BountyGain"	"500"
+			"BountyGain"	"5000"
 			"XPGain"	"5000"
 			// 饰品设置
 			"AttachWearables"
@@ -3711,7 +3719,7 @@
 		"Ability2"	"original_crash"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
-		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIcon"	"minimap_ancient"
 		"MinimapIconSize"	"800"
 		"UseNeutralCreepBehavior"	"0"
 		// 护甲
@@ -6571,9 +6579,9 @@
 		// 经验奖励
 		"BountyXP"	"250"
 		// 最低金钱奖励
-		"BountyGoldMin"	"74"
+		"BountyGoldMin"	"100"
 		// 最高金钱奖励
-		"BountyGoldMax"	"74"
+		"BountyGoldMax"	"2000"
 		// 碰撞
 		// ----------------------------------------------------------------
 		// 碰撞类型

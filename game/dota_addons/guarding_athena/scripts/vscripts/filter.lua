@@ -101,13 +101,17 @@ function GuardingAthena:DamageFilter( args )
 	local victim = EntIndexToHScript(args.entindex_victim_const)
 	--修正智力伤害系数
 	if args.entindex_inflictor_const then
+		-- 不适用伤害修改的技能
 		local ability = EntIndexToHScript(args.entindex_inflictor_const)
 		if ability.no_damage_filter then
 			return true
 		end
-		--if caster:IsRealHero() then
-			--args.damage = args.damage/(1+((caster:GetIntellect()/16)/100))
-		--end
+		-- 修正智力伤害
+		if caster:IsRealHero() then
+			local x = 0.0007
+			if caster:GetPrimaryAttribute() == 2 then x = 0.00087 end
+			args.damage = args.damage / (1 + caster:GetIntellect() * x)
+		end
 	end
 	-- 特殊处理
 	if caster.DamageFilterAttacker then

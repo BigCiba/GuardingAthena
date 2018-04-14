@@ -460,6 +460,20 @@ function CastAbility3( t )
 			return 0.1
 		end
 	end)
+	if caster:HasModifier("modifier_zhuanshuta") then
+		Timers:CreateTimer(0.5,function ()
+			if caster.dodge_damage == nil then
+				caster.dodge_damage = 0
+			end
+			caster.dodge_damage = caster.dodge_damage + 1
+		end)
+		Timers:CreateTimer(1.5,function ()
+			caster.dodge_damage = caster.dodge_damage - 1
+			if caster.dodge_damage <= 0 then
+				caster.dodge_damage = nil
+			end
+		end)
+	end
 	CreateParticle("particles/heroes/revelater/revelater_trail.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,1)
 	Timers:CreateTimer(0.5,function ()
 		CreateParticle("particles/heroes/revelater/revelater_trail_blade.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,1)

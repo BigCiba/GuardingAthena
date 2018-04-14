@@ -82,7 +82,7 @@ function OnLightCreated(t)
 		stackcount = caster:GetModifierStackCount("modifier_electrostatic_field_buff", caster)
 	end
     local damage = ability:GetSpecialValueFor("damage") * (1 + stackcount * 0.01)
-	CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL )
+	CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL,ability )
 	target:RemoveModifierByName("modifier_lightning_attack_buff")
 	Timers:CreateTimer(0.25,function()
 		local current

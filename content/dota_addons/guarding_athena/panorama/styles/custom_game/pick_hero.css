@@ -30,7 +30,9 @@
 }
 .HeroScene
 {
-    opacity-mask: url("s2r://panorama/images/masks/hud_hero_inspect_psd.vtex");
+    /*opacity-mask: url("s2r://panorama/images/masks/hud_hero_inspect_psd.vtex");*/
+    width: 1060px; 
+    height: 1060px;
 }
 #HeroSelectionTopGradient
 {

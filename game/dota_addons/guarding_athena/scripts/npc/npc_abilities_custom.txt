@@ -19,12 +19,13 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"OnAttacked"
+				"OnTakeDamage"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
 						"Function"	"Anneal"
+						"DamageTaken"	"%attack_damage"
 					}
 				}
 				"Properties"
@@ -1221,6 +1222,9 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"techies_suicide"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"FightRecapLevel"	"1"
 		"MaxLevel"	"5"
 		"precache"
@@ -1248,21 +1252,8 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
-						"Function"	"SuicideParticle"
-					}
-					"Damage"
-					{
-						"Target"
-						{
-							"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
-							"Center"	"CASTER"
-							"Radius"	"600"
-						}
-						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"%damage"
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_22.lua"
+						"Function"	"OnDeath"
 					}
 				}
 			}
@@ -1273,6 +1264,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage"	"6000 8000 10000 12000 24000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
 			}
 		}
 	}
@@ -4021,10 +4017,6 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"night_stalker_hunter_in_the_night"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"precache"
-		{
-			"particle"	"particles/skills/wing_sky.vpcf"
-		}
 		"Modifiers"
 		{
 			"modifier_wing"
@@ -4032,12 +4024,6 @@
 				"Passive"	"1"
 				"OnCreated"
 				{
-					"AttachEffect"
-					{
-						"EffectName"	"particles/skills/wing_sky.vpcf"
-						"Target"	"CASTER"
-						"EffectAttachType"	"follow_origin"
-					}
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
@@ -5376,7 +5362,6 @@
 				"States"
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 			"modifier_solar_ghost_illusion"
@@ -11584,6 +11569,96 @@
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"2000"
 				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"24 48 72 96 120 144 168 192"
+			}
+		}
+		"AbilityDuration"	"9"
+	}
+
+	// 剑刃风暴
+	"phantom_sword_dance"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"juggernaut_omni_slash_arcana"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"HotKeyOverride"	"R"
+		"MaxLevel"	"8"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
+		"AbilityCastPoint"	"0"
+		"AbilityCastAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"120"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"110"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"400"
+		"AOERadius"	"600"
+		// Data driven
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_EmberSpirit.FlameGuard.Cast"
+			}
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_jianrenfengbao"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
+				"Function"	"PhantomSwordDance"
+				"Target"	"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_jianrenfengbao"
+			{
+				"Duration"	"%duration"
+				"OverrideAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_1"
+				"States"
+				{
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"	{}
 			}
 		}
 		// Special

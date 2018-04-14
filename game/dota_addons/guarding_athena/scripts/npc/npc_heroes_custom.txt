@@ -57,7 +57,7 @@
 		"AttackRange"	"150"
 		"MovementSpeed"	"305"
 		"ArmorPhysical"	"5.1"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 	}
 
 	"npc_dota_hero_windrunner_override"
@@ -113,6 +113,9 @@
 		"MovementSpeed"	"295"
 		"ArmorPhysical"	"1.38"
 		"MagicalResistance"	"25"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"	"particles/heroes/windrunner/windrunner_base_attack.vpcf"
+		"ProjectileSpeed"	"900"
 	}
 
 	"npc_dota_hero_shadow_moon_warden"
