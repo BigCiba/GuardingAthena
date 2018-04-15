@@ -11117,7 +11117,7 @@
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"juggernaut_blade_dance"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
@@ -11145,6 +11145,7 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
 				"Function"	"SpaceCut"
+				"Target"	"POINT"
 			}
 			"FireEffect"
 			{
@@ -11164,6 +11165,7 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
 				"Function"	"SpaceCutIllusion"
+				"Target"	"POINT"
 			}
 		}
 		"Modifiers"
@@ -11700,7 +11702,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+				"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 				"Function"	"DemonHunterSpell"
 			}
 		}
@@ -11714,7 +11716,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"DemonHunter"
 					}
 				}
@@ -11761,7 +11763,6 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"	"particles/skills/dh_soulblade.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -11772,17 +11773,9 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+				"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 				"Function"	"SoulBlade"
-				"Damage"	"%damage"
-				"Basedamage"	"%base_damage"
 				"Target"	"POINT"
-			}
-			"FireEffect"
-			{
-				"EffectName"	"particles/skills/dh_soulblade.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"Target"	"CASTER"
 			}
 		}
 		"AbilitySpecial"
@@ -11796,6 +11789,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"base_damage"	"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
 			}
 		}
 	}
@@ -11830,7 +11828,7 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+				"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 				"Function"	"SoulRing"
 				"Damage"	"%damage"
 				"Radius"	"%radius"
@@ -11850,8 +11848,8 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"damage"	"1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 10.5 11"
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"02"
 			{
@@ -11892,21 +11890,26 @@
 			{
 				"IsHidden"	"1"
 				"Passive"	"1"
-				"OnAttackLanded"
+				"OnDealDamage"
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"MagicBlade"
-						"Attack"	"%attack"
-						"Damage"	"%damage"
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
+						"Function"	"OnCreated"
 					}
 				}
 			}
 			"modifier_magic_blade_buff"
 			{
 				"IsHidden"	"0"
-				"Duration"	"%duration"
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
@@ -11960,7 +11963,7 @@
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"140.0"
+		"AbilityCooldown"	"100"
 		"AbilityManaCost"	"300 450 600 750 900 1050 1200 1350"
 		"precache"
 		{
@@ -11998,7 +12001,7 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+				"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 				"Function"	"ExorcismDeath"
 			}
 			"RemoveModifier"
@@ -12031,7 +12034,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"MetamorphosisDamage"
 						"DamageTaken"	"%attack_damage"
 						"Radius"	"%cleave_radius"
@@ -12041,14 +12044,14 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ModelSwapStart"
 						"model"	"models/heroes/terrorblade/demon.vmdl"
 						"projectile_model"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"HideWearables"
 					}
 					"AttachEffect"
@@ -12068,12 +12071,12 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ModelSwapEnd"
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ShowWearables"
 					}
 				}
@@ -12084,7 +12087,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ExorcismStart"
 					}
 					"FireSound"
@@ -12097,7 +12100,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ExorcismAttack"
 					}
 				}
@@ -12105,7 +12108,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ExorcismDeath"
 					}
 					"FireSound"
@@ -12118,7 +12121,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ExorcismEnd"
 					}
 				}
@@ -12129,12 +12132,12 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"ExorcismPhysics"
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero.lua"
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"MetamorphosisGhost"
 						"Target"	"TARGET"
 					}
@@ -12184,7 +12187,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_range"	"422"
+				"bonus_range"	"800"
 			}
 			"05"
 			{
@@ -13618,7 +13621,7 @@
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCooldown"	"22"
+		"AbilityCooldown"	"18"
 		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"AbilityCastRange"	"800"
 		"AOERadius"	"400"
@@ -14835,6 +14838,29 @@
 			"modifier_shield_block"
 			{
 				"Passive"	"1"
+			}
+		}
+	}
+
+	"elite"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"life_stealer_rage_immortal"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_elite"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"StatusEffectName"	"particles/status_fx/status_effect_huskar_lifebreak.vpcf"
+				"StatusEffectPriority"	"10"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"100"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"1"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"50"
+				}
 			}
 		}
 	}

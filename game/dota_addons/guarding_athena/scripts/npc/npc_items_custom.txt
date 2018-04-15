@@ -14088,6 +14088,14 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
 				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
 			}
 		}
 		"AbilitySpecial"

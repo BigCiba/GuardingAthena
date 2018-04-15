@@ -128,7 +128,7 @@ function GuardingAthena:OnEntityKilled( event )
 	    for _,unit in ipairs(units) do
 	    	PropertySystem(unit,3,RandomInt(5, 10))
 	    end
-	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
+	    Timers:CreateTimer(120,function ()
 	    	local point = Entities:FindByName( nil, "boss_treant_reborn" ):GetAbsOrigin()
 	    	PrecacheUnitByNameAsync("boss_treant",
 			    function()

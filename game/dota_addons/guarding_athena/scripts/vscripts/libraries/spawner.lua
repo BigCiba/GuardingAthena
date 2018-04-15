@@ -181,6 +181,7 @@ function Spawner:UpData()
 end
 -- 设置单位属性
 function Spawner:UnitProperty( unit,factor )
+	HeroState:InitUnit(unit)
 	if factor.maxMeleeDamageFactor == 1 then
 		if not unit:IsRangedAttacker() then
 			factor.maxMeleeDamageFactor = (self.gameRound ^ 2 - self.gameRound +100) * 0.01
@@ -200,6 +201,24 @@ function Spawner:UnitProperty( unit,factor )
 	unit:SetMaxHealth(unit:GetBaseMaxHealth())
 	unit:SetHealth(unit:GetBaseMaxHealth())
 	unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
+	-- 精英怪
+	if self.difficulty >= 3 then
+		if RollPercentage(self.difficulty * 2) then
+			unit:SetModelScale(1.5)
+			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty)
+			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty)
+			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty)
+			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty)
+			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty)
+			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty)
+			unit:SetMaxHealth(unit:GetBaseMaxHealth())
+			unit:SetHealth(unit:GetBaseMaxHealth())
+			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty)
+			unit:AddAbility("elite")
+			unit.percent_bonus_damage = unit.percent_bonus_damage + self.difficulty * 20
+			unit.percent_reduce_damage = unit.percent_reduce_damage + self.difficulty * 10
+		end
+	end
 	for i=1,16 do
 		if unit:GetAbilityByIndex(i-1) then
 			local ability = unit:GetAbilityByIndex(i-1)

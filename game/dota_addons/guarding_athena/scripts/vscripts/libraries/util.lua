@@ -610,15 +610,13 @@ function KnockBack( ... )
 	local point
 	local speed = distance / duration * interval
 	caster:AddNewModifier(nil, nil, "modifier_phased", {duration=duration})
-	caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=duration})
+	--caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=duration})
 	Timers:CreateTimer(function (  )
 		if time < duration then
 			time = time + interval
-			point = caster_location + speed * direction
-			caster:SetAbsOrigin(point)
+			point = caster:GetAbsOrigin() + speed * direction
+			SetUnitPosition(caster,point,false)
 			return interval
-		else
-			print("time="..time)
 		end
 	end)
 end

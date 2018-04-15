@@ -1157,7 +1157,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"0"
+		"ArmorPhysical"	"2000"
 		"MagicalResistance"	"0"
 	}
 
@@ -1218,7 +1218,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"0"
+		"ArmorPhysical"	"2000"
 		"MagicalResistance"	"0"
 	}
 
@@ -1244,9 +1244,9 @@
 		// 攻击方式，此为近战攻击
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		// 最低攻击伤害
-		"AttackDamageMin"	"9"
+		"AttackDamageMin"	"24"
 		// 最高攻击伤害
-		"AttackDamageMax"	"9"
+		"AttackDamageMax"	"24"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// 攻击间隔，与攻击速度是两个概念
 		"AttackRate"	"1.5"
@@ -1283,7 +1283,7 @@
 		// 生命值和魔法值
 		// ----------------------------------------------------------------
 		// 基础生命值
-		"StatusHealth"	"250"
+		"StatusHealth"	"350"
 		// 基础生命回复速度
 		"StatusHealthRegen"	"5"
 		// 基础魔法值

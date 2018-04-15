@@ -488,11 +488,20 @@ function FenLie( t )
     local ability = t.ability
     local bonus_attack = ability:GetSpecialValueFor("bonus_attack")
     local unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),700)
+    local finalGroup = {}
     for i,v in ipairs(unitGroup) do
         if i <= bonus_attack then
-            CreateTrackingProjectile(caster,v,ability,caster:GetRangedProjectileName(),900)
+            table.insert( finalGroup, v )
+            CreateTrackingProjectile(caster,v,ability,caster:GetRangedProjectileName(),1200)
         else
             break
+        end
+    end
+    if #finalGroup < bonus_attack then
+        for i=1,bonus_attack - #finalGroup do
+            for k,v in pairs(unitGroup) do
+                CreateTrackingProjectile(caster,v,ability,caster:GetRangedProjectileName(),1200)
+            end
         end
     end
 end
@@ -500,7 +509,7 @@ function OnProjectileHitUnit( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = caster:GetAverageTrueAttackDamage()
+    local damage = caster:GetAverageTrueAttackDamage(damage)
     local damageType = ability:GetAbilityDamageType()
     CauseDamage(caster,target,damage,damageType,ability)
 end

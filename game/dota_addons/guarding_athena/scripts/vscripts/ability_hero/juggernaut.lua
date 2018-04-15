@@ -12,16 +12,29 @@ function minjiejingtong( keys )
 	caster:SetBaseAttackTime(attack_rate)
 	Timers:CreateTimer(5,function (  )
 		caster:SetBaseAttackTime(1.4)
-	end)
+    end)
+    if caster:HasModifier("modifier_jiansheng") then
+        local illusions = caster.mirror_image_illusions
+        for k,v in pairs(illusions) do
+            if not v:IsNull() then 
+                v:SetBaseAttackTime(attack_rate)
+                ability:ApplyDataDrivenModifier(caster, v, "modifier_minjiejingtong", {duration=5})
+                Timers:CreateTimer(5,function ()
+                    if not v:IsNull() then
+                        v:SetBaseAttackTime(1.4)
+                    end
+                end)
+            end
+        end
+    end
 end
 function SpaceCut( keys )
 	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
+    local ability = keys.ability
+    local target_point = keys.target_points[1]
 	local caster_location = caster:GetAbsOrigin()
-	local target_location = target:GetAbsOrigin()
 	local vector = caster:GetForwardVector()
-	local point = target_location + vector * 100
+	local point = target_point + vector * 100
 	SetUnitPosition(caster, point)
 	local teamNumber = caster:GetTeamNumber()
 	local targetTeam = ability:GetAbilityTargetTeam()
@@ -34,7 +47,6 @@ function SpaceCut( keys )
         local duration = damage / v:GetMaxHealth() * 10
         ability:ApplyDataDrivenModifier(caster, v, "modifier_space_cut_debuff", {duration = duration})
     end
-    --local find_illusions = FindUnitsInRadius(teamNumber, caster_location, caster, 1200, DOTA_UNIT_TARGET_TEAM_FRIENDLY, targetType, targetFlag, 0, false)
 	if not caster.mirror_image_illusions then
         caster.mirror_image_illusions = {}
     end
@@ -44,11 +56,6 @@ function SpaceCut( keys )
             table.remove(illusions, k)
         end
     end
-    --[[for k, v in pairs( find_illusions ) do
-        if v:IsIllusion() then
-        	table.insert(illusions,v)
-        end
-    end]]--
     if #illusions > 0 then
 	    for k, v in pairs( illusions ) do
             if not v:IsNull() then
@@ -57,7 +64,7 @@ function SpaceCut( keys )
                     local fxIndex = CreateParticle( "particles/skills/space_cut_blade.vpcf", PATTACH_ABSORIGIN_FOLLOW, v )
                     local illusion_location = v:GetAbsOrigin()
                     local illusion_vector = v:GetForwardVector()
-                    local point = target_location + vector * 100
+                    local point = target_point + vector * 100
                     SetUnitPosition(v, point)
                     local unitGroup = FindUnitsInLine( teamNumber, illusion_location, point, nil, 100, targetTeam, targetType, FIND_CLOSEST)
                     for k, v in pairs( unitGroup ) do
@@ -70,10 +77,9 @@ function SpaceCut( keys )
 end
 function SpaceCutIllusion( keys )
 	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
+    local ability = keys.ability
+    local target_point = keys.target_points[1]
 	local caster_location = caster:GetAbsOrigin()
-	local target_location = target:GetAbsOrigin()
 	local teamNumber = caster:GetTeamNumber()
 	local targetTeam = ability:GetAbilityTargetTeam()
 	local targetType = ability:GetAbilityTargetType()
@@ -88,7 +94,7 @@ function SpaceCutIllusion( keys )
     if #illusions > 0 then
 	    for k, v in pairs( illusions ) do
 	    	ability:ApplyDataDrivenModifier(caster, v, "modifier_space_cut", nil)
-	    	v:SetForwardVector((target_location - caster_location):Normalized())
+	    	v:SetForwardVector((target_point - caster_location):Normalized())
 	        v:StartGesture(ACT_DOTA_ATTACK_EVENT)
 	    end
 	end

@@ -45,14 +45,19 @@ function PracticeThink( caller, caster )
 end
 function PracticeDoSpawn( caller, caster )
 	local practice_level = math.floor(caster.practice * 0.02)
-	local unitName = Spawner.unitName or "practicer"
+	local unitName = "practicer"
+	if Spawner.spawnList["wave_"..Spawner.gameRound-1] then
+		unitName = Spawner.spawnList["wave_"..Spawner.gameRound-1].unitName
+	end
 	for i=1,10 do
 		PrecacheUnitByNameAsync( unitName, function()
 			local SpawnPoint = caller:GetAbsOrigin()
 			local unit = CreateUnitByName(unitName, SpawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS )
 			unit.practicer = true
 			--local level = Spawner.gameRound or 1
-			Spawner:UnitProperty(unit,Spawner.unitFactor)
+			if unitName ~= "practicer" then
+				Spawner:UnitProperty(unit,Spawner.unitFactor)
+			end
 			HeroState:InitUnit(unit)
 			unit.percent_bonus_damage = unit.percent_bonus_damage - 50
 			unit.percent_increase_damage = unit.percent_increase_damage + 100

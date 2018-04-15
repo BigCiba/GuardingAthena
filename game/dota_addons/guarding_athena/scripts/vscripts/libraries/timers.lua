@@ -221,7 +221,9 @@ function Timers:CreateTimer(name, args, context)
 
   return name
 end
-
+function Timers:ResetDelayTime(name,time)
+  Timers.timers[name].endTime = GameRules:GetGameTime() + time
+end
 function Timers:RemoveTimer(name)
   Timers.timers[name] = nil
 end
