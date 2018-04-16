@@ -5009,8 +5009,8 @@
 		"VisionDaytimeRange"	"950"
 		// 夜晚视野
 		"VisionNighttimeRange"	"800"
-		"Ability1"	""
-		"Ability2"	""
+		"Ability1"	"water_damage"
+		"Ability2"	"water_shield"
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""
@@ -6581,7 +6581,7 @@
 		// 最低金钱奖励
 		"BountyGoldMin"	"100"
 		// 最高金钱奖励
-		"BountyGoldMax"	"2000"
+		"BountyGoldMax"	"500"
 		// 碰撞
 		// ----------------------------------------------------------------
 		// 碰撞类型

@@ -19,7 +19,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"OnTakeDamage"
+				"OnAttacked"
 				{
 					"RunScript"
 					{
@@ -499,7 +499,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"100 150 200 250 500"
+				"damage"	"150 300 450 600 750"
 			}
 		}
 	}
@@ -550,12 +550,70 @@
 				"Target"	"TARGET"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_water_shield"
+			{
+				"OnDeath"
+				{
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Center"	"CASTER"
+							"Radius"	"300"
+						}
+						"ModifierName"	"modifier_water_shield_buff"
+						"Duration"	"5"
+					}
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Center"	"CASTER"
+							"Radius"	"300"
+						}
+						"ModifierName"	"modifier_water_shield_debuff"
+						"Duration"	"5"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+			"modifier_water_shield_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+				}
+				"IsDebuff"	"1"
+			}
+			"modifier_water_shield_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%heal"
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"IsBuff"	"1"
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"100 150 200 250 500"
+				"heal"	"4 8 12 16 20"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attackspeed"	"-50 -100 -150 -200 -250"
 			}
 		}
 	}
@@ -606,12 +664,37 @@
 				"Target"	"TARGET"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_water_damage"
+			{
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_water_damage_debuff"
+						"Duration"	"5"
+					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+			"modifier_water_damage_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move"
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"100 150 200 250 500"
+				"move"	"-40 -60 -80 -100 -120"
 			}
 		}
 	}
@@ -11718,6 +11801,14 @@
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"DemonHunter"
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
+						"Function"	"OnCreated"
 					}
 				}
 			}

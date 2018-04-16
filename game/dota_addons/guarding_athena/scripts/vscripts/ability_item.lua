@@ -474,13 +474,13 @@ function ExpFruit( keys )
     local caster = keys.caster
     local level = GuardingAthena.clotho_lv
     PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-    caster.exp_rate = caster.exp_rate + 0.1 * level
+    caster.exp_rate = caster.exp_rate + 0.1
 end
 function GoldFruit( keys )
     local caster = keys.caster
     local level = GuardingAthena.clotho_lv
     PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-    caster.gold_rate = caster.gold_rate + 0.1 * level
+    caster.gold_rate = caster.gold_rate + 0.1
 end
 function FenLie( t )
     local caster = t.caster

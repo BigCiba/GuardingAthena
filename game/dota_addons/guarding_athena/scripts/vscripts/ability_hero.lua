@@ -3,12 +3,12 @@ function Anneal( keys )
     local damage = 100
     if keys.DamageTaken then damage =  keys.DamageTaken end
     local award = math.floor(damage * 0.2)
-    if award < 20 then award = 20 end
+    --if award < 20 then award = 20 end
     if award > 100 then award = 100 end
 	if target:IsRealHero() then
-		PlayerResource:ModifyGold(target:GetPlayerID(),award, true, 0)
-        target.total_gold = target.total_gold + award
-		target:AddExperience(award,false,false)
+		PlayerResource:ModifyGold(target:GetPlayerID(),20, true, 0)
+        target.total_gold = target.total_gold + 20
+		target:AddExperience(40,false,false)
 	end
 end
 function SingleHero( keys )

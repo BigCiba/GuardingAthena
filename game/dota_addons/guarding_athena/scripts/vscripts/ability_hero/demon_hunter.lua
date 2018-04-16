@@ -1,3 +1,12 @@
+function OnCreated( t )
+    local ability = t.ability
+    local abilityIndex = ability:GetAbilityIndex()
+    if abilityIndex == 0 then
+        ability.cooldown_reduce = false
+    elseif abilityIndex == 3 then
+        t.ability.MagicBlade = true
+    end
+end
 function DemonHunter( keys )
 	local caster = keys.caster
 	local ability = keys.ability
@@ -118,9 +127,6 @@ function SoulBlade( keys )
         KnockBack(v,(v:GetAbsOrigin()-caster:GetAbsOrigin()):Normalized(),distance,0.3)
         Heal(caster,damage * 0.3 ,0,false)
     end
-end
-function OnCreated( t )
-    t.ability.MagicBlade = true
 end
 function OnAttackLanded( t )
     local caster = t.caster

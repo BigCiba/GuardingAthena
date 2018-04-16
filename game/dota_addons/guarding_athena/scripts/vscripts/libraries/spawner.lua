@@ -202,18 +202,18 @@ function Spawner:UnitProperty( unit,factor )
 	unit:SetHealth(unit:GetBaseMaxHealth())
 	unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
 	-- 精英怪
-	if self.difficulty >= 3 then
+	if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
 		if RollPercentage(self.difficulty * 2) then
 			unit:SetModelScale(1.5)
-			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty)
-			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty)
-			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty)
-			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty)
-			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty)
-			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty)
+			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty * 0.5)
+			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
+			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
+			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty  * 0.5)
+			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty  * 0.5)
+			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty  * 0.5)
 			unit:SetMaxHealth(unit:GetBaseMaxHealth())
 			unit:SetHealth(unit:GetBaseMaxHealth())
-			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty)
+			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty * 0.5)
 			unit:AddAbility("elite")
 			unit.percent_bonus_damage = unit.percent_bonus_damage + self.difficulty * 20
 			unit.percent_reduce_damage = unit.percent_reduce_damage + self.difficulty * 10
@@ -225,15 +225,6 @@ function Spawner:UnitProperty( unit,factor )
 		    ability:SetLevel(self.difficulty)
 		end
 	end
-	-- 初始化伤害过滤器
-	unit.bonus_magic_damage = 0
-	unit.bonus_physical_damage = 0
-	unit.percent_bonus_damage = 0
-	unit.const_reduce_damage = 0
-	unit.percent_reduce_damage = 0
-	unit.percent_increase_damage = 0
-	unit.dodge_damage = false
-	unit.bonus_magic_damage = 0
 end
 -- 循环进攻命令
 function Spawner:AttackOnTarget()
@@ -398,8 +389,10 @@ function Spawner:OnUnitKilled( t )
 	-- 进攻怪
 	for i, unit in pairs( self.unitRemaining ) do
 		if caster == unit then
+			local point = unit.wave
+			if self.spawnCount < 20 then point = 4 * point end
 			attacker.wave_def = attacker.wave_def + 1
-			attacker.def_point = attacker.def_point + unit.wave
+			attacker.def_point = attacker.def_point + point
 			table.remove( self.unitRemaining, i )
 			self:QuestPanel(caster.wave)
 			break
