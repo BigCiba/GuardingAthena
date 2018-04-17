@@ -1892,7 +1892,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"40"
 		// 魔抗
-		"MagicalResistance"	"20"
+		"MagicalResistance"	"0"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -2104,7 +2104,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"40"
 		// 魔抗
-		"MagicalResistance"	"40"
+		"MagicalResistance"	"0"
 		"DisableResistance"	"80.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -5009,8 +5009,8 @@
 		"VisionDaytimeRange"	"950"
 		// 夜晚视野
 		"VisionNighttimeRange"	"800"
-		"Ability1"	"water_damage"
-		"Ability2"	"water_shield"
+		"Ability1"	""
+		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""
@@ -6581,7 +6581,7 @@
 		// 最低金钱奖励
 		"BountyGoldMin"	"100"
 		// 最高金钱奖励
-		"BountyGoldMax"	"500"
+		"BountyGoldMax"	"2000"
 		// 碰撞
 		// ----------------------------------------------------------------
 		// 碰撞类型

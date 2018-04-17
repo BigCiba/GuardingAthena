@@ -7,6 +7,23 @@ function OnCreated( t )
         t.ability.MagicBlade = true
     end
 end
+function AutoCast( t )
+    local caster = t.caster
+    local ability = t.ability
+    local soulCount = 50
+    local stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
+    ability.timers = Timers:CreateTimer(function ()
+        stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
+        if caster:HasModifier("modifier_zhuanshudh") then soulCount = 100 end
+        if ability:GetAutoCastState() and ability:IsCooldownReady() and ability:IsActivated() then
+            if stackcount == soulCount then
+                ability:StartCooldown(10)
+                DemonHunterSpell(t)
+            end
+        end
+        return 0.5
+    end)
+end
 function DemonHunter( keys )
 	local caster = keys.caster
 	local ability = keys.ability
@@ -132,7 +149,8 @@ function OnAttackLanded( t )
     local caster = t.caster
     local target = t.target
     local direction = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized()
-    local distance = 100
+    local length = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D()
+    local distance = (800 - length) * 200 / 800
     local duration = 0.3
     if caster:HasModifier("modifier_metamorphosis") then
         KnockBack(target,direction,distance,duration)

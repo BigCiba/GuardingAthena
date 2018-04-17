@@ -15548,7 +15548,7 @@
 		"ID"	"1138"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"1200"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -15565,6 +15565,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -15983,7 +15984,7 @@
 		"ID"	"1142"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"4000"
+		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -16092,7 +16093,7 @@
 		"ID"	"1143"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"3000"
+		"ItemCost"	"2400"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -16109,6 +16110,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -16326,6 +16328,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -16633,7 +16636,7 @@
 		"ID"	"1148"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"8000"
+		"ItemCost"	"4800"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -16650,6 +16653,7 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -17155,7 +17159,7 @@
 		"ID"	"1153"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"1200"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -17172,6 +17176,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -17281,6 +17286,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -17697,7 +17703,7 @@
 		"ID"	"1158"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"4000"
+		"ItemCost"	"2400"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -17714,6 +17720,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -18240,7 +18247,7 @@
 		"ID"	"1164"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"8000"
+		"ItemCost"	"4800"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -18257,6 +18264,7 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -18764,7 +18772,7 @@
 		"ID"	"1168"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"1200"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -18781,6 +18789,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -19307,7 +19316,7 @@
 		"ID"	"1173"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"3000"
+		"ItemCost"	"2400"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19324,6 +19333,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -19850,7 +19860,7 @@
 		"ID"	"1178"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"8000"
+		"ItemCost"	"4800"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19867,6 +19877,7 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -19938,7 +19949,7 @@
 		"ID"	"1179"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"24000"
+		"ItemCost"	"10000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -19955,6 +19966,7 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"

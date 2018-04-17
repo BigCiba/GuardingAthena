@@ -538,7 +538,7 @@ function GuardingAthena:OnPlayerChat(keys)
 	end
 	if text == "point" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		hero.def_point = 10000
+		hero.def_point = 90000
 	end
 	if text == "printtbl" then
 		printtbl()
@@ -556,10 +556,9 @@ function GuardingAthena:OnPlayerChat(keys)
 			print(getPlayerScore(0))
 		end)
 	end 
-	if text == "givescore" then
-		if self.is_cheat == false then
-			giveScore()
-		end
+	if text == "defpoint" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		hero.practice_point = 90000
 	end 
 	if text == "-allring" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
@@ -602,7 +601,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		skill_2:SetLevel(20)
 		skill_3:SetLevel(20)
 		skill_4:SetLevel(8)
-		hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
+		--hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
 		hero:AddItem(CreateItem("item_dun_5", hero, hero))
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
 		hero:AddItem(CreateItem("item_npc_dota_hero_omniknight1", hero, hero))
