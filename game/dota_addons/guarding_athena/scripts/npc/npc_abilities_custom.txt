@@ -11773,7 +11773,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"demon_hunter"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"HotKeyOverride"	"D"
 		"MaxLevel"	"1"
 		"AbilityCooldown"	"10"
@@ -11810,7 +11810,13 @@
 						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
 						"Function"	"OnCreated"
 					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
+						"Function"	"AutoCast"
+					}
 				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			}
 			"modifier_demon_hunter_buff"
 			{
