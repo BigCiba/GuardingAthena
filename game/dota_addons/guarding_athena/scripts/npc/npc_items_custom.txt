@@ -15113,7 +15113,7 @@
 		"ItemQuality"	"epic"
 		"ItemCastOnPickup"	"0"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"500"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -15130,6 +15130,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -16726,7 +16727,7 @@
 		"ItemQuality"	"epic"
 		"ItemCastOnPickup"	"0"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"500"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -16743,6 +16744,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -18337,7 +18339,7 @@
 		"ItemQuality"	"epic"
 		"ItemCastOnPickup"	"0"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"500"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -18354,6 +18356,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -20060,7 +20063,7 @@
 		"ID"	"1181"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"3000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -20077,6 +20080,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -20099,7 +20103,7 @@
 		"ID"	"1675"
 		"ItemQuality"	"epic"
 		"Model"	"models/props_gameplay/red_box.vmdl"
-		"ItemCost"	"2000"
+		"ItemCost"	"1000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
 		// 是否可出售
@@ -20116,6 +20120,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -20155,6 +20160,7 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"0"
+		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
