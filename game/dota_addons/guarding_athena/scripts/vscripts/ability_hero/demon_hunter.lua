@@ -16,8 +16,8 @@ function AutoCast( t )
         stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
         if caster:HasModifier("modifier_zhuanshudh") then soulCount = 100 end
         if ability:GetAutoCastState() and ability:IsCooldownReady() and ability:IsActivated() then
-            if stackcount == soulCount then
-                ability:StartCooldown(10)
+            if stackcount >= soulCount then
+                ability:StartCooldown(10.1)
                 DemonHunterSpell(t)
             end
         end
@@ -37,9 +37,7 @@ function DemonHunter( keys )
                 caster.soul_stack = 0
             end
             caster.soul_stack = caster.soul_stack + add
-            print(caster.soul_stack)
             if caster.soul_stack >= 100 then
-                print(caster.soul_stack)
                 caster.soul_stack = caster.soul_stack - 100
                 caster:SetBaseStrength(caster:GetBaseStrength() + 10)
                 caster:SetBaseAgility(caster:GetBaseAgility() + 10)
@@ -60,7 +58,7 @@ function DemonHunter( keys )
 		EmitSoundOn("Hero_Terrorblade.Attack.Rip", caster)
 		caster:CalculateStatBonus()
 	else
-		local stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
+        local stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
 		if stackcount < soulCount then
 			caster:SetModifierStackCount("modifier_demon_hunter_buff",caster,stackcount + add)
 			EmitSoundOn("Hero_Terrorblade.Attack.Rip", caster)

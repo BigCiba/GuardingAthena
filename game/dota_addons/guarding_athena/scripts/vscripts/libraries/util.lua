@@ -37,7 +37,6 @@ function CauseDamage( ... )
 	-- 修正伤害
 	if attacker:GetTeam() ~= DOTA_TEAM_GOODGUYS and damageType == DAMAGE_TYPE_MAGICAL then
 		damageType = DAMAGE_TYPE_PURE
-		damage = damage * 0.5
 	end
 	if IsValidEntity(victim) then
 		if victim:IsAlive() == false then

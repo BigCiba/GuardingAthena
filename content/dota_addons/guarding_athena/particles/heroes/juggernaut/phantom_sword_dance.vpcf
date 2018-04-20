@@ -2,141 +2,111 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 9
-	m_flConstantRadius = 10.0
-	m_ConstantColor = [ 250, 247, 134, 255 ]
+	m_nMaxParticles = 12
+	m_nGroupID = 3
+	m_flMaxDrawDistance = 2000.0
+	m_bShouldSort = false
 	m_Renderers = 
 	[
 		{
-			_class = "C_OP_RenderRopes"
+			_class = "C_OP_RenderTrails"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_bAdditive = true
-			m_nOrientationType = 3
-			m_hTexture = resource:"materials/particle/electricity/electricity_27_a.vtex"
+			m_flOverbrightFactor = 6.0
+			m_flAddSelfAmount = 2.0
+			m_bSaturateColorPreAlphaBlend = false
+			m_hTexture = resource:"materials/particle/lanaya/lanaya_weapon_ani.vtex"
+			m_flMinLength = 900.0
+			m_flMaxLength = 900.0
 			m_flRadiusScale = 0.5
-			m_flTextureVWorldSize = 800.0
-			m_nMaxTesselation = 5
-			m_nMinTesselation = 5
-			m_flOverbrightFactor = 8.0
+			m_flFinalTextureScaleV = -1.0
+			m_flFinalTextureOffsetV = 1.0
 		},
 	]
 	m_Operators = 
 	[
 		{
 			_class = "C_OP_Decay"
-			m_flOpEndFadeInTime = 0.5
-			m_flOpStartFadeInTime = 0.5
-		},
-		{
-			_class = "C_OP_BasicMovement"
+			m_flOpTimeOffsetMax = 1.0
+			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flBias = 0.25
+			m_flBias = 0.9
 			m_flEndScale = 0.0
-		},
-		{
-			_class = "C_OP_FadeInSimple"
-			m_flFadeInTime = 0.2
-		},
-		{
-			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 0.75
-		},
-		{
-			_class = "C_OP_SetControlPointOrientation"
-			m_bUseWorldLocation = true
-		},
-		{
-			_class = "C_OP_SetControlPointFromObjectScale"
+			m_flOpTimeOffsetMax = 1.0
+			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 243, 89, 0, 255 ]
-			m_flFadeEndTime = 0.5
+			m_bDisableOperator = true
+			m_ColorFade = [ 3, 66, 84, 255 ]
+			m_flFadeStartTime = 0.2
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.15
+		},
+		{
+			_class = "C_OP_FadeInSimple"
 		},
 	]
 	m_Initializers = 
 	[
 		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 45.0
+			m_flRadiusMax = 90.0
+			m_flOpTimeOffsetMax = 1.0
+			m_flOpStrengthMinScale = 0.0
+		},
+		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMax = 0.125
-			m_fLifetimeMin = 0.125
+			m_fLifetimeMin = 0.3
+			m_fLifetimeMax = 0.6
+			m_flOpTimeOffsetMax = 1.0
+			m_flOpStrengthMinScale = 0.0
 		},
 		{
-			_class = "C_INIT_RingWave"
-			m_flInitialRadius = 600.0
-			m_bEvenDistribution = true
-			m_flParticlesPerOrbit = 16.0
-			m_flYaw = 180.0
-			m_flRoll = 90.0
-			m_nOverrideCP2 = 2
+			_class = "C_INIT_RandomRotation"
+			m_flOpTimeOffsetMax = 1.0
+			m_flOpStrengthMinScale = 0.0
 		},
 		{
-			_class = "C_INIT_RemapParticleCountToScalar"
-			m_nInputMax = 8
-			m_flOutputMax = 120.0
-			m_flOutputMin = 80.0
+			_class = "C_INIT_RandomAlpha"
+			m_flOpTimeOffsetMax = 1.0
+			m_flOpStrengthMinScale = 0.0
+			m_nAlphaMin = 100
 		},
 		{
-			_class = "C_INIT_RemapParticleCountToScalar"
-			m_nInputMax = 5
-			m_nFieldOutput = 7
-			m_flOutputMax = 0.5
-			m_bActiveRange = true
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 209, 77, 37, 255 ]
+			m_ColorMax = [ 255, 0, 0, 255 ]
 		},
 		{
-			_class = "C_INIT_RemapParticleCountToScalar"
-			m_nInputMin = 6
-			m_nInputMax = 8
-			m_nFieldOutput = 7
-			m_flOutputMin = 0.5
-			m_flOutputMax = 0.0
-			m_bActiveRange = true
-		},
-		{
-			_class = "C_INIT_RemapParticleCountToScalar"
-			m_flOutputMin = 0.125
-			m_nInputMax = 8
-			m_nFieldOutput = 1
-			m_flOutputMax = 0.175
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 400.0
+			m_LocalCoordinateSystemSpeedMin = [ -500.0, -500.0, -100.0 ]
+			m_LocalCoordinateSystemSpeedMax = [ 500.0, 500.0, 100.0 ]
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 15.0, -50.0, 140.0 ]
-			m_OffsetMax = [ 15.0, -50.0, 140.0 ]
-			m_bLocalCoords = true
+			m_OffsetMax = [ 0.0, 0.0, 64.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 64.0 ]
 		},
 		{
-			_class = "C_INIT_NormalAlignToCP"
-			m_nControlPointNumber = 1
-		},
-		{
-			_class = "C_INIT_PositionWarp"
-			m_nScaleControlPointNumber = 1
+			_class = "C_INIT_RandomTrailLength"
+			m_flMinLength = 0.4
+			m_flMaxLength = 1.0
 		},
 	]
 	m_Emitters = 
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 90.0
-			m_flEmissionDuration = 0.09
-		},
-	]
-	m_Children = 
-	[
-		{
-			m_ChildRef = resource:"particles/heroes/juggernaut/phantom_sword_dance_a.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/heroes/juggernaut/phantom_sword_dance_b.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/heroes/juggernaut/phantom_sword_dance_c.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/heroes/juggernaut/phantom_sword_dance_d.vpcf"
 		},
 	]
 	m_controlPointConfigurations = 
@@ -148,20 +118,6 @@
 				{
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 1
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 1.0, 1.0, 1.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 2
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 1.0, 1.0, 1.0 ]
 					m_angOffset = [ null, null, null ]
 					m_entityName = "self"
 				},

@@ -6,12 +6,12 @@ function minjiejingtong( keys )
 		stackcount = 1
 	end
 	local attack_rate = caster:GetBaseAttackTime() - stackcount
-	if attack_rate < 0.4 then
+	--[[if attack_rate < 0.4 then
 		attack_rate = 0.4
-	end
-	caster:SetBaseAttackTime(attack_rate)
+	end]]
+    caster:SetBaseAttackTime(attack_rate)
 	Timers:CreateTimer(5,function (  )
-		caster:SetBaseAttackTime(1.4)
+		caster:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
     end)
     if caster:HasModifier("modifier_jiansheng") then
         local illusions = caster.mirror_image_illusions
@@ -21,7 +21,7 @@ function minjiejingtong( keys )
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_minjiejingtong", {duration=5})
                 Timers:CreateTimer(5,function ()
                     if not v:IsNull() then
-                        v:SetBaseAttackTime(1.4)
+                        v:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
                     end
                 end)
             end

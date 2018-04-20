@@ -58,6 +58,7 @@
 		"MovementSpeed"	"305"
 		"ArmorPhysical"	"5.1"
 		"MagicalResistance"	"0"
+		"StatusHealthRegen"	"1"
 	}
 
 	"npc_dota_hero_windrunner_override"
@@ -112,7 +113,7 @@
 		"AttackDamageMax"	"34"
 		"MovementSpeed"	"295"
 		"ArmorPhysical"	"1.38"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"ProjectileModel"	"particles/heroes/windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"	"900"
@@ -167,7 +168,7 @@
 		"MovementTurnRate"	"1.2"
 		"AttackDamageMin"	"23"
 		"AttackDamageMax"	"25"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"ArmorPhysical"	"4.22"
 		"AttackRange"	"150"
 		"MovementSpeed"	"305"
@@ -221,7 +222,7 @@
 		"AttackDamageMin"	"17"
 		"AttackRange"	"550"
 		"ArmorPhysical"	"0.96"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"MovementSpeed"	"290"
 	}
 
@@ -243,7 +244,7 @@
 		"AttributeBaseIntelligence"	"15"
 		// 智力成长
 		"AttributeIntelligenceGain"	"2.1"
-		"AttackRate"	"1.4"
+		"AttackRate"	"1.6"
 		"AbilityLayout"	"5"
 		// Ability 1
 		"Ability1"	"minjiejingtong"
@@ -277,7 +278,7 @@
 		"AttackDamageMin"	"22"
 		"AttackDamageMax"	"26"
 		"MovementSpeed"	"295"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 	}
 
 	"npc_dota_hero_demonhunter"
@@ -336,7 +337,7 @@
 		"MovementSpeed"	"310"
 		"AttackDamageMin"	"27"
 		"AttackDamageMax"	"31"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 	}
 
 	"npc_dota_hero_lina"
@@ -391,7 +392,7 @@
 		"ProjectileSpeed"	"900"
 		"AttackRate"	"1.6"
 		"ArmorPhysical"	"1.24"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"MovementSpeed"	"295"
 		"AttackDamageMax"	"28"
 		"AttackDamageMin"	"16"
@@ -449,7 +450,7 @@
 		"AttackDamageMin"	"15"
 		"AttackDamageMax"	"21"
 		"ArmorPhysical"	"0.8"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 	}
 
 	"npc_dota_hero_legion"
@@ -493,7 +494,7 @@
 		"AttackRange"	"150"
 		"ArmorPhysical"	"2.52"
 		"MovementSpeed"	"320"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 	}
 
 	"npc_dota_hero_fire_spirit"
@@ -546,7 +547,7 @@
 		"AttackDamageMax"	"34"
 		"ArmorPhysical"	"1.08"
 		"MovementSpeed"	"305"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"AttackRange"	"150"
 	}
 
@@ -601,7 +602,7 @@
 		"AttackDamageMax"	"36"
 		"ArmorPhysical"	"4.22"
 		"MovementSpeed"	"300"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 	}
 
 	"npc_dota_hero_cm"
@@ -641,7 +642,7 @@
 		"AbilityLayout"	"5"
 		"MovementSpeed"	"300"
 		"ArmorPhysical"	"1.24"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"AttackRange"	"600"
 		"AttackDamageMin"	"19"
 		"AttackDamageMax"	"25"
@@ -698,7 +699,7 @@
 		"AttackDamageMin"	"29"
 		"AttackDamageMax"	"35"
 		"ArmorPhysical"	"0.08"
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"0"
 		"MovementSpeed"	"300"
 	}
 

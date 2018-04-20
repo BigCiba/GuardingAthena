@@ -396,6 +396,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	local player = heroEntity:GetPlayerOwner()
 	local playerID = heroEntity:GetPlayerID()
 	HeroState:InitHero(heroEntity)
+	Attributes:ModifyBonuses(heroEntity)
 	-- 记录当前英雄
 	HERO_TABLE[playerID + 1] = heroEntity
 	-- 垃圾v社
@@ -700,6 +701,13 @@ function GuardingAthena:OnPlayerChat(keys)
 		if move >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseIntellect(move)
+		end
+	end
+	if string.sub(text,0,6) == "setagi" then
+		local move = tonumber(string.sub(text,7,string.len(text)))
+		if move >= 0 then
+			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+			hero:SetBaseAgility(move)
 		end
 	end
 	if string.sub(text,0,6) == "setstr" then

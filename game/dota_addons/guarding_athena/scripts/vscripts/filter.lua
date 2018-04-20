@@ -107,11 +107,11 @@ function GuardingAthena:DamageFilter( args )
 			return true
 		end
 		-- 修正智力伤害
-		if caster:IsRealHero() then
+		--[[if caster:IsRealHero() then
 			local x = 0.0007
 			if caster:GetPrimaryAttribute() == 2 then x = 0.00087 end
 			args.damage = args.damage / (1 + caster:GetIntellect() * x)
-		end
+		end]]
 	end
 	-- 特殊处理
 	if caster.DamageFilterAttacker then
@@ -133,10 +133,19 @@ function GuardingAthena:DamageFilter( args )
 		if caster.bonus_physical_damage and caster.bonus_physical_damage > 0 then
 			local armor = victim:GetPhysicalArmorValue()
 			if armor > 0 then
-				local reduce = (armor * 0.06)/(1 + armor * 0.06)
+				local reduce = (armor * 0.05)/(1 + armor * 0.05)
 				local initdamage = args.damage / (1 - reduce)
 				args.damage = args.damage + initdamage * caster.bonus_physical_damage * 0.01
+			else
+				args.damage = args.damage + args.damage * caster.bonus_physical_damage * 0.01
 			end
+		end
+	end
+	-- 纯粹伤害
+	if damageType == DAMAGE_TYPE_PURE then
+		if caster:GetTeam() ~= DOTA_TEAM_GOODGUYS then
+			local res = victim:GetBaseMagicalResistanceValue()
+			args.damage = args.damage * (1 - res)
 		end
 	end
     -- 百分比增加/减少伤害输出

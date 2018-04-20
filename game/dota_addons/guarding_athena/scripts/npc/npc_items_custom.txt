@@ -5,6 +5,115 @@
 {
 	"Version"		"1"
 
+	"item_stat_modifier"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_branches"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_health_bonus"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"1"
+				}
+			}
+			"modifier_health_regen_constant"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"0.01"
+				}
+			}
+			"modifier_mana_bonus"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"-1"
+				}
+			}
+			"modifier_base_mana_regen"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.01"
+				}
+			}
+			"modifier_movespeed_bonus_percentage"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-1"
+				}
+			}
+			"modifier_movespeed_bonus_constant"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1"
+				}
+			}
+			"modifier_attackspeed_bonus_constant"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-1"
+				}
+			}
+			"modifier_magical_resistance_bonus"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_ITEM_UNIQUE"	"-1"
+				}
+			}
+			"modifier_spell_damage_constant"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"-0.01"
+				}
+			}
+			"modifier_str_regen"
+			{
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"-1"
+				}
+			}
+			"modifier_str_status"
+			{
+				"IsHidden"	"0"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING"	"-1"
+				}
+			}
+		}
+	}
+
 	"item_bag_of_gold"
 	{
 		"BaseClass"	"item_datadriven"
@@ -7134,7 +7243,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_1"
+		"AbilityTextureName"	"shipin_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7188,7 +7297,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_2"
+		"AbilityTextureName"	"shipin_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7242,7 +7351,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_3"
+		"AbilityTextureName"	"shipin_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7296,7 +7405,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_4"
+		"AbilityTextureName"	"shipin_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7350,7 +7459,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_5"
+		"AbilityTextureName"	"shipin_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7404,7 +7513,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_6"
+		"AbilityTextureName"	"shipin_6"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7482,7 +7591,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shipin_7"
+		"AbilityTextureName"	"shipin_7"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7657,7 +7766,7 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"TextureName"	"custom/item_zhanqi"
+				"TextureName"	"item_zhanqi"
 			}
 		}
 		"AbilitySpecial"
@@ -7895,7 +8004,7 @@
 					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_attack"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 				}
-				"TextureName"	"custom/item_zhangu"
+				"TextureName"	"item_zhangu"
 			}
 			"modifier_item_zhangu_xixue"
 			{
@@ -7909,6 +8018,7 @@
 						"LifestealPercent"	"%bonus_lifesteal"
 					}
 				}
+				"TextureName"	"item_zhangu"
 			}
 		}
 		"AbilitySpecial"
@@ -8495,6 +8605,7 @@
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+				"TextureName"	"item_dun_5"
 			}
 		}
 		"AbilitySpecial"
@@ -9428,6 +9539,7 @@
 						"ModifierName"	"modifier_item_fu_cleave"
 					}
 				}
+				"TextureName"	"item_fu_5"
 			}
 		}
 		"AbilitySpecial"
@@ -10382,6 +10494,7 @@
 						"Chance"	"%stun_chance"
 					}
 				}
+				"TextureName"	"item_chui_5"
 			}
 			"modifier_item_chui_debuff"
 			{
@@ -10391,6 +10504,7 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-2000"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-2000"
 				}
+				"TextureName"	"item_chui_5"
 			}
 		}
 		"AbilitySpecial"
@@ -11076,7 +11190,10 @@
 					}
 				}
 			}
-			"modifier_item_shu_buff"	{}
+			"modifier_item_shu_buff"
+			{
+				"TextureName"	"item_shu_5"
+			}
 		}
 		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
 		// Special
@@ -21181,14 +21298,6 @@
 						"Function"	"OnDestroy"
 					}
 				}
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/chaos_plate.lua"
-						"Function"	"OnDeath"
-					}
-				}
 				"Passive"	"1"
 				"IsHidden"	"1"
 			}
@@ -21235,6 +21344,376 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"shield"	"30"
+			}
+		}
+	}
+
+	"item_world_editor"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"world_editor"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"90"
+		"ID"	"1659"
+		"ItemCost"	"20000"
+		"ItemSellable"	"1"
+		"ItemPurchasable"	"0"
+		"ItemKillable"	"0"
+		"ItemStockTime"	"0"
+		"ItemRequirements"	{}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
+				"Function"	"OnSpellStart"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_world_editor"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%attribute"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
+						"Function"	"OnDeath"
+					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Aura"	"modifier_item_world_editor_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+			"modifier_item_world_editor_regen"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%regen"
+				}
+				"TextureName"	"item_world_editor"
+			}
+			"modifier_item_world_editor_hp"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"1"
+				}
+				"IsHidden"	"1"
+			}
+			"modifier_item_world_editor_debuff"
+			{
+				"IsDebuff"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
+						"Function"	"DebuffCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
+						"Function"	"DebuffDestroy"
+					}
+				}
+				"TextureName"	"item_world_editor"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"regen"	"10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_deepen"	"50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attribute"	"800"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_reduce"	"25"
+			}
+		}
+	}
+
+	"item_longinus_spear"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"longinus_spear"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"90"
+		"AbilityCastRange"	"600"
+		"ID"	"1660"
+		"ItemCost"	"20000"
+		"ItemSellable"	"1"
+		"ItemPurchasable"	"0"
+		"ItemKillable"	"0"
+		"ItemStockTime"	"0"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_monkey_king.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+			"particle"	"particles/econ/items/shadow_fiend/sf_desolation/sf_desolation_ambient_blade_energy.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item/longinus_spear.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"Ability.StarfallImpact"
+			}
+			"DelayedAction"
+			{
+				"Action"
+				{
+					"FireSound"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"Hero_MonkeyKing.Spring.Impact"
+					}
+				}
+				"Delay"	"0.3"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_longinus_spear"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%attribute"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/longinus_spear.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/longinus_spear.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/longinus_spear.lua"
+						"Function"	"OnTakeDamage"
+						"DamageTaken"	"%attack_damage"
+					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"EffectName"	"particles/econ/items/shadow_fiend/sf_desolation/sf_desolation_ambient_blade_energy.vpcf"
+				"EffectAttachType"	"attach_attack1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attribute"	"800"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_percent"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"block_percent"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"magic_damage_increase"	"50"
+			}
+		}
+	}
+
+	"item_mystletainn"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"mystletainn"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"90"
+		"ID"	"1661"
+		"ItemCost"	"20000"
+		"ItemSellable"	"1"
+		"ItemPurchasable"	"0"
+		"ItemKillable"	"0"
+		"ItemStockTime"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_mystletainn"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/mystletainn.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/mystletainn.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/mystletainn.lua"
+						"Function"	"OnAttackLanded"
+						"DamageTaken"	"%attack_damage"
+					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attribute"	"500"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack"	"4444"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical"	"100"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"absorb"	"2"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_increase"	"20"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_rate"	"0.5"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_rate"	"10"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"1"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_deepen"	"100"
 			}
 		}
 	}

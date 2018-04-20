@@ -230,13 +230,13 @@ function GuardingAthena:ReadGameConfiguration()
 	for k,v in pairs(costInfo) do
 		if type(v) ~= "number" then
 			costTable[k] = {}
-			costTable[k] = v.ItemCost
+			costTable[k] = v.ItemCost or 0
 		end
 	end
 	for k,v in pairs(costInfo) do
 		if type(v) ~= "number" then
 			refreshTable[k] = {}
-			refreshTable[k] = v.ItemStockTime
+			refreshTable[k] = v.ItemStockTime or 0
 		end
 	end
 	for k,v in pairs(costInfo) do
@@ -266,6 +266,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 		--初始化英雄数据
 		HeroState:Init()
 		Quest:Init()
+		Attributes:Init()
 	end
 	
 	--选择英雄阶段

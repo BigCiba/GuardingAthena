@@ -30,7 +30,7 @@
 				}
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"10"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"10"
 				}
 				"States"
 				{
@@ -482,16 +482,15 @@
 					"TARGET"	"attach_hitloc"
 				}
 			}
-			"Damage"
-			{
-				"Target"	"TARGET"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"%damage"
-			}
 			"FireSound"
 			{
 				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
 				"Target"	"TARGET"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_7.lua"
+				"Function"	"LightningChain"
 			}
 		}
 		"AbilitySpecial"
@@ -11054,10 +11053,6 @@
 		}
 	}
 
-	// =================================================================================================================
-	// 剑圣
-	// =================================================================================================================
-	// ，剑圣 敏捷精通
 	"minjiejingtong"
 	{
 		"BaseClass"	"ability_datadriven"

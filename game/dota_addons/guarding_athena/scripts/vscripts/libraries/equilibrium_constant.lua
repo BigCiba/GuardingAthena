@@ -127,9 +127,9 @@ function equilibrium_constant:DeclareFunctions()
         MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,]]
-        MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
         MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+        MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,]]
         MODIFIER_PROPERTY_MOVESPEED_MAX,
         MODIFIER_PROPERTY_MOVESPEED_LIMIT,
     }
@@ -237,7 +237,7 @@ function equilibrium_constant:GetModifierMagicalResistanceBonus( params )
     return 0
 end]]
 
-function equilibrium_constant:GetModifierMoveSpeedBonus_Constant( params )
+--[[function equilibrium_constant:GetModifierMoveSpeedBonus_Constant( params )
     if IsServer() then
         local owner = self:GetParent()
         local heroType = owner:GetPrimaryAttribute()
@@ -258,8 +258,8 @@ function equilibrium_constant:GetModifierMoveSpeedBonus_Constant( params )
         local MoveBonus = -(x * agi * moveSpeed) / ( 1 + x * agi)
         return MoveBonus
     end
-end
-function equilibrium_constant:GetModifierConstantHealthRegen()
+end]]
+--[[function equilibrium_constant:GetModifierConstantHealthRegen()
     if IsServer() then
         -- 如果属性发生了改变，将属性数据发送给客户端
         local parent = self:GetParent()
@@ -285,7 +285,7 @@ function equilibrium_constant:GetModifierConstantHealthRegen()
 
         return 0
     end
-end
+end]]
 --[[function equilibrium_constant:GetModifierMoveSpeedBonus_Percentage( params )
     if IsServer() then
         local owner = self:GetParent()
