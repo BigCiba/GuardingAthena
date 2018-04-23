@@ -7,8 +7,8 @@ function CourageMoment( keys )
 	local targetType = ability:GetAbilityTargetType()
 	local targetFlag = ability:GetAbilityTargetFlags()
 	local cooldown = ability:GetSpecialValueFor("cooldown")
-	local chance = ability:GetSpecialValueFor("chance")
-	if caster:HasModifier("modifier_zhuanshulegion") then
+	local chance = ability:GetSpecialValueFor("chance") + (100 - caster:GetHealthPercent()) * 0.4
+	if HasExclusive(caster) then
 		cooldown = 2
 	end
 	local unitCount = #FindUnitsInRadius(teamNumber, caster_location, caster, 400, targetTeam, targetType, targetFlag, 0, false)
@@ -97,7 +97,7 @@ function QueenCurseEffect( keys )
 	if caster:HasModifier("modifier_war_god") then
 		radius = radius * 2
 	end
-	if caster:HasModifier("modifier_zhuanshulegion") then
+	if HasExclusive(caster) then
 		duration = 6
 	end
 	local time = 0
@@ -172,7 +172,7 @@ function WarAuraActivity( keys )
 	ability:ApplyDataDrivenModifier(caster,caster,"modifier_war_arua_caster",nil)
 	caster:SetModifierStackCount("modifier_war_arua_caster",caster,unitCount)
 	local hp_percent = 0.8
-	if caster:HasModifier("modifier_zhuanshulegion") then
+	if HasExclusive(caster) then
 		hp_percent = 0.6
 	end
     local damagetaken = caster:GetHealth() * hp_percent
@@ -189,7 +189,7 @@ function WarHonor( keys )
 	if caster:HasModifier("modifier_war_god") then
 		return
 	end
-	if caster:HasModifier("modifier_zhuanshulegion") then
+	if HasExclusive(caster) then
 		hp_percent = 0.3
 	end
 	if ability.damage then

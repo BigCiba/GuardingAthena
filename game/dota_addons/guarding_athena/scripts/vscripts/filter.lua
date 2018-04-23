@@ -210,6 +210,18 @@ function GuardingAthena:ItemAddedFilter( keys )
 	local currentItemName = currentItem:GetAbilityName()
 	local currentUnit = EntIndexToHScript(keys.inventory_parent_entindex_const)
 	local itemOwner = EntIndexToHScript(keys.item_parent_entindex_const)
+	if currentItemName == "item_chaos_plate" then
+		if RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_world_editor", currentUnit, currentUnit))
+			return false
+		elseif RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_longinus_spear", currentUnit, currentUnit))
+			return false
+		elseif RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_mystletainn", currentUnit, currentUnit))
+			return false
+		end
+	end
 	-- 原核与金袋
 	if string.sub(currentItemName,0,14) == "item_original_" then
 		return true

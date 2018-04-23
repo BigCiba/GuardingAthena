@@ -3539,7 +3539,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_6"
+		"AbilityTextureName"	"jian_6"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -3798,7 +3798,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_7"
+		"AbilityTextureName"	"jian_7"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -4065,7 +4065,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_8"
+		"AbilityTextureName"	"jian_8"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -4332,7 +4332,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_9"
+		"AbilityTextureName"	"jian_9"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -4598,7 +4598,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_6"
+		"AbilityTextureName"	"fazhang_6"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -4851,7 +4851,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_7"
+		"AbilityTextureName"	"fazhang_7"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -5112,7 +5112,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_8"
+		"AbilityTextureName"	"fazhang_8"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -5373,7 +5373,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_9"
+		"AbilityTextureName"	"fazhang_9"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -5640,7 +5640,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_6"
+		"AbilityTextureName"	"gong_6"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -5916,7 +5916,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_7"
+		"AbilityTextureName"	"gong_7"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -6200,7 +6200,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_8"
+		"AbilityTextureName"	"gong_8"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -6484,7 +6484,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_9"
+		"AbilityTextureName"	"gong_9"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -8878,6 +8878,11 @@
 						"Target"	"CASTER"
 						"ModifierName"	"modifier_item_fu_cleave"
 					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"OnFuDestory"
+					}
 				}
 			}
 			"modifier_item_fu_cleave"
@@ -9028,6 +9033,11 @@
 						"Target"	"CASTER"
 						"ModifierName"	"modifier_item_fu_cleave"
 					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"OnFuDestory"
+					}
 				}
 			}
 			"modifier_item_fu_cleave"
@@ -9177,6 +9187,11 @@
 						"Target"	"CASTER"
 						"ModifierName"	"modifier_item_fu_cleave"
 					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"OnFuDestory"
+					}
 				}
 			}
 			"modifier_item_fu_cleave"
@@ -9325,6 +9340,11 @@
 					{
 						"Target"	"CASTER"
 						"ModifierName"	"modifier_item_fu_cleave"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"OnFuDestory"
 					}
 				}
 			}
@@ -9493,6 +9513,11 @@
 					{
 						"Target"	"CASTER"
 						"ModifierName"	"modifier_item_fu_cleave"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"OnFuDestory"
 					}
 				}
 			}
@@ -12800,7 +12825,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"multishot_buff"
+			"modifier_npc_dota_hero_windrunner"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -12928,7 +12953,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshupa_state"
+			"modifier_npc_dota_hero_phantom_assassin"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -13063,7 +13088,7 @@
 		}
 		"Modifiers"
 		{
-			"modifier_zhuanshuok_state"
+			"modifier_npc_dota_hero_omniknight"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -13422,7 +13447,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/ability_item.lua"
+				"ScriptFile"	"scripts/vscripts/ability_item/battlefury_ring.lua"
 				"Function"	"BattlefuryMeteoriteRing"
 			}
 			"FireSound"
@@ -13447,7 +13472,7 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"ScriptFile"	"scripts/vscripts/ability_item/battlefury_ring.lua"
 						"Function"	"BattlefuryRingAbsorb"
 					}
 				}
@@ -13734,7 +13759,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshurb1"
+			"modifier_npc_dota_hero_rubick"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -13859,7 +13884,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_jiansheng"
+			"modifier_npc_dota_hero_juggernaut"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -13977,7 +14002,7 @@
 		}
 		"Modifiers"
 		{
-			"modifier_monkey_king_bar"
+			"modifier_npc_dota_hero_monkey_king"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14190,7 +14215,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshudh"
+			"modifier_npc_dota_hero_antimage"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14283,7 +14308,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshusf"
+			"modifier_npc_dota_hero_nevermore"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14379,7 +14404,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshulina"
+			"modifier_npc_dota_hero_lina"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14475,7 +14500,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshulegion"
+			"modifier_npc_dota_hero_legion_commander"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14555,7 +14580,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshufs"
+			"modifier_npc_dota_hero_ember_spirit"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14635,7 +14660,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshuta"
+			"modifier_npc_dota_hero_templar_assassin"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -14715,7 +14740,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
 		{
-			"modifier_zhuanshucm"
+			"modifier_npc_dota_hero_crystal_maiden"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -20175,7 +20200,7 @@
 	"item_blood_fruit"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/blood_fruit"
+		"AbilityTextureName"	"blood_fruit"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1181"
 		"ItemQuality"	"epic"
@@ -20732,6 +20757,7 @@
 						"EffectAttachType"	"follow_origin"
 					}
 				}
+				"TextureName"	"item_tree_4"
 			}
 		}
 		"AbilitySpecial"
@@ -20861,6 +20887,7 @@
 						"EffectAttachType"	"follow_origin"
 					}
 				}
+				"TextureName"	"item_tree_4"
 			}
 		}
 		"AbilitySpecial"
@@ -21051,16 +21078,54 @@
 		}
 	}
 
-	"water_gun"
+	"item_water_gun"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/water_gun"
+		"AbilityTextureName"	"water_gun"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"2"
 		"AbilityCastRange"	"900"
 		"ID"	"1698"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+				"MoveSpeed"	"1100"
+				"SourceAttachment"	"attach_hitloc"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_water_gun"
+				"Duration"	"5"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_water_gun"
+			{
+				"IsHidden"	"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-750"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"5"
+				}
+			}
+		}
 	}
 
 	"soul_cloak"
@@ -21338,7 +21403,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_deepen"	"50"
+				"damage_reduce"	"25"
 			}
 			"05"
 			{
@@ -21364,12 +21429,21 @@
 		"ItemKillable"	"0"
 		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_item/world_editor.lua"
 				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"DOTA_Item.BlackKingBar.Activate"
 			}
 		}
 		"Modifiers"
@@ -21426,7 +21500,7 @@
 			{
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"1"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"100"
 				}
 				"IsHidden"	"1"
 			}
@@ -21512,6 +21586,7 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_monkey_king.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
 			"particle"	"particles/econ/items/shadow_fiend/sf_desolation/sf_desolation_ambient_blade_energy.vpcf"
 		}
@@ -21524,20 +21599,8 @@
 			}
 			"FireSound"
 			{
-				"Target"	"TARGET"
+				"Target"	"CASTER"
 				"EffectName"	"Ability.StarfallImpact"
-			}
-			"DelayedAction"
-			{
-				"Action"
-				{
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"Hero_MonkeyKing.Spring.Impact"
-					}
-				}
-				"Delay"	"0.3"
 			}
 		}
 		"Modifiers"
@@ -21597,12 +21660,22 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"block_percent"	"10"
+				"block_percent"	"20"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"magic_damage_increase"	"50"
+				"magic_damage_increase"	"80"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"400"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"trigger_percent"	"10"
 			}
 		}
 	}

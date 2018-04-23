@@ -11,9 +11,9 @@ function ring_1_5:OnIntervalThink()
     if IsServer() then
         local caster = self:GetParent()
         local hpPercent = math.floor((100 - caster:GetHealthPercent()) / 10) + 1
-        caster.percent_bonus_damage = caster.percent_bonus_damage - caster.ring_1_5
+        SetUnitDamagePercent(caster,-caster.ring_1_5)
         caster.ring_1_5 = hpPercent * 20
-        caster.percent_bonus_damage = caster.percent_bonus_damage + caster.ring_1_5
+        SetUnitDamagePercent(caster,caster.ring_1_5)
     end
 end
 function ring_1_5:IsHidden() 

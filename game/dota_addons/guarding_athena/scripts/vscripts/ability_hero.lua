@@ -1,5 +1,6 @@
 function Anneal( keys )
-    local target = keys.attacker
+	local caster= keys.caster
+	local target = keys.attacker
     local damage = 100
     if keys.DamageTaken then damage =  keys.DamageTaken end
     local award = math.floor(damage * 0.2)
@@ -10,6 +11,11 @@ function Anneal( keys )
         target.total_gold = target.total_gold + 20
 		target:AddExperience(40,false,false)
 	end
+	caster.resurrection = function (damage)
+		CreateParticle("particles/items_fx/aegis_respawn.vpcf",PATTACH_ABSORIGIN,caster,5)
+		caster:SetHealth(caster:GetMaxHealth())
+		return 0
+    end
 end
 function SingleHero( keys )
 	local caster = keys.caster

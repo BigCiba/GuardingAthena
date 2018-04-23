@@ -26,6 +26,7 @@ function GuardingAthena:OnEntityKilled( event )
 		if killedUnit.iapetos then
 			GuardingAthena.iapetos:RemoveSelf()
 			GuardingAthena.iapetos = nil
+			killedUnit.iapetos = nil
 		end
 	end
 	-- 雅典娜重生
@@ -548,11 +549,12 @@ function GuardingAthena:OnPlayerChat(keys)
 		print(tostring(PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()))
 	end 
 	if text == "getdisobb" then
-		local dis = CalcDistanceBetweenEntityOBB(PlayerResource:GetPlayer(playerid):GetAssignedHero(), Entities:FindByName(nil, "boss_sandking_reborn"))
+		local dis = CalcDistanceBetweenEntityOBB(PlayerResource:GetPlayer(playerid):GetAssignedHero(), Entities:FindByName(nil, "test_entity"))
 		print(dis)
 	end 
 	if text == "getscore" then
 		updateScore(function()
+
 			print("haha")
 			print(getPlayerScore(0))
 		end)
@@ -652,6 +654,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		--HeroState:SendFinallyData()
 		--CustomUI:DynamicHud_Create(-1,"HeroSelectionBackground","file://{resources}/layout/custom_game/pick_hero.xml",nil)
 		self.testmode = true
+		CustomUI:DynamicHud_Create(playerid,"MysteryShop","file://{resources}/layout/custom_game/custom_hud/mystery_shop.xml",nil)
 	end
 	--取消测试
 	if text == "untest" then

@@ -29,7 +29,7 @@ function ThunderStrikeCoolDown( t )
 	local ability = t.ability
 	local stackcount = caster:GetModifierStackCount("modifier_thunder_strike",caster)
     local buffpoint = 2
-    if caster:HasModifier("modifier_zhuanshuok_state") then
+    if HasExclusive(caster) then
 		buffpoint = 3
 	end
 	if stackcount > 0 then
@@ -106,7 +106,7 @@ function CreateHealDevice( t )
     local Duration = ability:GetSpecialValueFor("duration")
     local str = caster:GetStrength()
     local unitName = "heal_device"
-    if caster:HasModifier("modifier_zhuanshuok_state") then
+    if HasExclusive(caster) then
         unitName = "heal_device_move"
     end
     PrecacheUnitByNameAsync(unitName,function()
@@ -119,7 +119,7 @@ function CreateHealDevice( t )
         nature:SetPhysicalArmorBaseValue(str)
         nature:AddNewModifier(nature, nil, "modifier_kill", {duration=Duration})
         ability:ApplyDataDrivenModifier(caster, nature, "modifier_device_heal", nil)
-        if caster:HasModifier("modifier_zhuanshuok_state") then
+        if HasExclusive(caster) then
             Timers:CreateTimer(function ()
                 if nature:IsAlive() then
                     local unitGroup = GetUnitsInRadius(nature,ability,nature:GetAbsOrigin(),600)
@@ -148,7 +148,7 @@ function HealMove( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    if caster:HasModifier("modifier_zhuanshuok_state") then
+    if HasExclusive(caster) then
         target:RemoveModifierByName("modifier_heal_device_move")
     end
 end
@@ -160,7 +160,7 @@ function ThunderPowerDamage( caster,target,ability )
     ParticleManager:SetParticleControl(particle, 0, target_location + Vector(0, 0, 5000))
 	ParticleManager:SetParticleControl(particle, 1, target_location)
     ParticleManager:SetParticleControl(particle, 3, target_location)
-    if caster:HasModifier("modifier_zhuanshuok_state") then
+    if HasExclusive(caster) then
         damage = damage * 2
         target = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),300)
     end
@@ -182,12 +182,12 @@ function VoidBarrierOn( t )
 	local ability = t.ability
     local scale = ability:GetSpecialValueFor("scale")
     ability.barrier = scale
-    caster.percent_bonus_damage = caster.percent_bonus_damage + ability.barrier
+    SetUnitDamagePercent(caster,ability.barrier)
 end
 function VoidBarrierOff( t )
 	local caster = t.caster
-	local ability = t.ability
-    caster.percent_bonus_damage = caster.percent_bonus_damage - ability.barrier
+    local ability = t.ability
+    SetUnitDamagePercent(caster,-ability.barrier)
 end
 function ArcLightning(t)
     local caster = t.caster
@@ -203,7 +203,7 @@ function ArcLightning(t)
     local count = 1
     local unit_start = device
     local unit_end = target
-    if caster:HasModifier("modifier_zhuanshuok_state") then
+    if HasExclusive(caster) then
 		count = 3
 	end
     Timers:CreateTimer(function()

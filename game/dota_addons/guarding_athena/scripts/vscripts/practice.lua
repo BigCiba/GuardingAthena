@@ -59,8 +59,8 @@ function PracticeDoSpawn( caller, caster )
 				Spawner:UnitProperty(unit,Spawner.unitFactor)
 			end
 			HeroState:InitUnit(unit)
-			unit.percent_bonus_damage = unit.percent_bonus_damage - 50
-			unit.percent_increase_damage = unit.percent_increase_damage + 100
+			SetUnitDamagePercent(unit,Spawner.gameRound - 80)
+			SetUnitIncomingDamageDeepen(unit,200 - Spawner.gameRound * 2)
 			unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
 			--unit:CreatureLevelUp(level)
 			unit:SetDeathXP(unit:GetDeathXP() * 1.6 * (1 + 0.01 * practice_level))

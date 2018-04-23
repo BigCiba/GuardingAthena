@@ -124,7 +124,7 @@ function SpaceBarrier( t )
     if caster.gift then
         particleName = "particles/heroes/chronos_magic/space_barrier_gold.vpcf"
     end
-    if caster:HasModifier("modifier_zhuanshurb1") then
+    if HasExclusive(caster) then
         delay = 0
         interval = 0.25
         times = 20
@@ -183,7 +183,7 @@ function Fluctuation( t )
     local damageDeep = 1.0
     local count = 50
     local duration = 12.5
-    if caster:HasModifier("modifier_zhuanshurb1") then
+    if HasExclusive(caster) then
         count = 80
         duration = 13.5
     end

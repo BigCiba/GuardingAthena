@@ -9,10 +9,7 @@ end
 function ring_2_5:OnAttackLanded( t )
     if IsServer() then
         if t.attacker == self:GetParent() then
-            t.attacker.percent_bonus_damage = t.attacker.percent_bonus_damage + 1
-            Timers:CreateTimer(10,function ()
-                t.attacker.percent_bonus_damage = t.attacker.percent_bonus_damage - 1
-            end)
+            SetUnitDamagePercent(t.attacker,1,10)
         end
     end
 end

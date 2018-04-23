@@ -7853,6 +7853,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"3"
 			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+			}
 		}
 	}
 
@@ -7922,6 +7927,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
 			}
 		}
 	}
@@ -8157,7 +8167,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"02"
 			{
@@ -8873,7 +8883,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"scale"	"4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80"
+				"scale"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"03"
 			{
@@ -9039,7 +9049,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attackspeed"	"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
+				"bonus_attackspeed"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
 			}
 			"02"
 			{
@@ -9663,7 +9673,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"scale"	"150 200 250 300 350 400 450 500"
+				"scale"	"100 125 150 175 200 225 250 275"
 			}
 			"03"
 			{
@@ -9862,8 +9872,8 @@
 			}
 			"02"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"03"
 			{
@@ -10515,7 +10525,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"4 8 12 16 20 24 28 32"
+				"damage"	"5 10 15 20 25 30 35 40"
 			}
 			"02"
 			{
@@ -11281,7 +11291,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"base_damage"	"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
+				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
 			}
 			"03"
 			{
@@ -12055,7 +12065,7 @@
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"100"
+		"AbilityCooldown"	"120"
 		"AbilityManaCost"	"300 450 600 750 900 1050 1200 1350"
 		"precache"
 		{
@@ -12942,12 +12952,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"3"
+				"cooldown"	"2"
 			}
 			"03"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"3"
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6"
 			}
 			"04"
 			{
@@ -14953,6 +14963,7 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"1"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"50"
 				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			}
 		}
 	}

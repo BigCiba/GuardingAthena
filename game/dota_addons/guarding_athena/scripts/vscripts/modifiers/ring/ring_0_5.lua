@@ -10,13 +10,13 @@ end
 function ring_0_5:OnCreated()
     if IsServer() then
         local caster = self:GetParent()
-        caster.percent_bonus_damage = caster.percent_bonus_damage + 10
+        SetUnitDamagePercent(caster,10)
     end
 end
 function ring_0_5:OnDestroy()
     if IsServer() then
         local caster = self:GetParent()
-        caster.percent_bonus_damage = caster.percent_bonus_damage - 10
+        SetUnitDamagePercent(caster,-10)
     end
 end
 function ring_0_5:GetModifierBonusStats_Strength( t )

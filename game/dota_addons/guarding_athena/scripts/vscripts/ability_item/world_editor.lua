@@ -1,30 +1,35 @@
+LinkLuaModifier("health","modifiers/generic/health.lua",LUA_MODIFIER_MOTION_NONE)
 function OnCreated( t )
     local caster = t.caster
     local ability = t.ability
-    caster.percent_bonus_damage = caster.percent_bonus_damage + ability:GetSpecialValueFor("magic_damage_increase")
+    SetUnitDamagePercent(caster,ability:GetSpecialValueFor("magic_damage_increase"))
 end
 function OnDestroy( t )
     local caster = t.caster
     local ability = t.ability
-    caster.percent_bonus_damage = caster.percent_bonus_damage - ability:GetSpecialValueFor("magic_damage_increase")
+    SetUnitDamagePercent(caster,-ability:GetSpecialValueFor("magic_damage_increase"))
 end
 function DebuffCreated( t )
     local ability = t.ability
     local target = t.target
-    target.percent_bonus_damage = target.percent_bonus_damage - ability:GetSpecialValueFor("damage_reduce")
+    SetUnitDamagePercent(target,-ability:GetSpecialValueFor("damage_reduce"))
 end
 function DebuffDestroy( t )
     local ability = t.ability
     local target = t.target
-    target.percent_bonus_damage = target.percent_bonus_damage + ability:GetSpecialValueFor("damage_reduce")
+    SetUnitDamagePercent(target,ability:GetSpecialValueFor("damage_reduce"))
 end
 function OnSpellStart( t )
     local caster = t.caster
     local ability = t.ability
     local duration = ability:GetSpecialValueFor("duration")
     local scale = ability:GetSpecialValueFor("health")
-    local health = caster:GetMaxHealth() * scale
-    ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_world_editor_hp", {duration=duration})
+    local health = caster:GetMaxHealth() * scale * 0.9
+    caster:AddNewModifier(caster,ability,"health",{health=health,duration=duration})
     ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_world_editor_regen", {duration=duration})
-    caster:SetModifierStackCount("modifier_item_world_editor_hp", caster, health)
+    caster:CalculateStatBonus()
+    SetModelScale(caster,caster:GetModelScale() + 0.5,true,duration)
+    Timers:CreateTimer(duration + 0.05,function ()
+        SetModelScale(caster,caster:GetModelScale() - 0.25,true,duration)
+    end)
 end

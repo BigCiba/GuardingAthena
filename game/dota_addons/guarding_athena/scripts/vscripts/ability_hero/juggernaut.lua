@@ -13,17 +13,19 @@ function minjiejingtong( keys )
 	Timers:CreateTimer(5,function (  )
 		caster:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
     end)
-    if caster:HasModifier("modifier_jiansheng") then
+    if HasExclusive(caster) then
         local illusions = caster.mirror_image_illusions
-        for k,v in pairs(illusions) do
-            if not v:IsNull() then 
-                v:SetBaseAttackTime(attack_rate)
-                ability:ApplyDataDrivenModifier(caster, v, "modifier_minjiejingtong", {duration=5})
-                Timers:CreateTimer(5,function ()
-                    if not v:IsNull() then
-                        v:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
-                    end
-                end)
+        if illusions then
+            for k,v in pairs(illusions) do
+                if not v:IsNull() then 
+                    v:SetBaseAttackTime(attack_rate)
+                    ability:ApplyDataDrivenModifier(caster, v, "modifier_minjiejingtong", {duration=5})
+                    Timers:CreateTimer(5,function ()
+                        if not v:IsNull() then
+                            v:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
+                        end
+                    end)
+                end
             end
         end
     end
@@ -165,6 +167,20 @@ function MirrorImage( event )
 
         illusion:SetAngles( casterAngles.x, casterAngles.y, casterAngles.z )
         
+        -- Set the unit as an illusion
+        -- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
+        illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = duration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+        ability:ApplyDataDrivenModifier(caster, illusion, "modifier_images_buff", nil)
+        --illusion:AddNewModifier(nil, nil, "modifier_phased", {duration = duration})
+        
+        -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
+        illusion:MakeIllusion()
+        -- Set the illusion hp to be the same as the caster
+        illusion:SetHealth(caster:GetHealth())
+
+        -- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
+        table.insert(caster.mirror_image_illusions, illusion)
+        
         -- Level Up the unit to the casters level
         local casterLevel = caster:GetLevel()
         for i=1,casterLevel-1 do
@@ -195,19 +211,6 @@ function MirrorImage( event )
             end
         end
 
-        -- Set the unit as an illusion
-        -- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
-        illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = duration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
-        ability:ApplyDataDrivenModifier(caster, illusion, "modifier_images_buff", nil)
-        --illusion:AddNewModifier(nil, nil, "modifier_phased", {duration = duration})
-        
-        -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
-        illusion:MakeIllusion()
-        -- Set the illusion hp to be the same as the caster
-        illusion:SetHealth(caster:GetHealth())
-
-        -- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
-        table.insert(caster.mirror_image_illusions, illusion)
 
     end
 end

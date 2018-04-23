@@ -7,7 +7,7 @@ end
 function FrostSigilCast( t )
     local caster = t.caster
     local ability = t.event_ability
-    if caster:HasModifier("modifier_zhuanshucm") then
+    if HasExclusive(caster) then
         if RollPercentage(15) then
             Timers:CreateTimer(0.03,function ()
                 ability:EndCooldown()
@@ -244,7 +244,7 @@ function ChillingTouch( t )
             if (caster:GetAbsOrigin() - caster_location):Length2D() < 600 then
                 ability:ApplyDataDrivenModifier(caster, caster, "modifier_chilling_touch", {duration=interval})
             end
-            if caster:HasModifier("modifier_zhuanshucm") then
+            if HasExclusive(caster) then
                 local unitGroup = FindUnitsInRadius( caster:GetTeamNumber(), caster_location, caster, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false )
                 for k,v in pairs(unitGroup) do
                     if caster ~= v then

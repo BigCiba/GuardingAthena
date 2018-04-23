@@ -204,7 +204,7 @@ function Spawner:UnitProperty( unit,factor )
 	-- 精英怪
 	if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
 		if RollPercentage(self.difficulty * 2) then
-			unit:SetModelScale(1.5)
+			unit:SetModelScale(unit:GetModelScale() + 0.5)
 			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty * 0.5)
 			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
 			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)

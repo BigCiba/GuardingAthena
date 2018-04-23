@@ -3,7 +3,7 @@ function FracturedSoul( keys )
 	local target = keys.unit
 	local ability = keys.ability
 	local cooldown = 1
-	if caster:HasModifier("modifier_zhuanshusf") then
+	if HasExclusive(caster) then
 		cooldown = 0.5
 	end
 	if caster:HasModifier("modifier_fractured_soul_buff") then
@@ -31,7 +31,7 @@ function OnAttackLanded( t )
 	local caster = t.caster
 	local target = t.target
 	local ability = t.ability
-	if caster:HasModifier("modifier_zhuanshusf") then
+	if HasExclusive(caster) then
 		FracturedSoul({caster=caster,unit=target,ability=ability})
 	end
 end
@@ -63,7 +63,7 @@ function HellField( keys )
 			local unitGroup = GetUnitsInRadius(caster,ability,caster_location,radius)
 			for k, v in pairs( unitGroup ) do
 				ability:ApplyDataDrivenModifier(caster, v, "modifier_hell_field_debuff", nil)
-				SetUnitIncomingDamagePercent(v,damageDeep,0.2)
+				SetUnitIncomingDamageDeepen(v,damageDeep,0.2)
 				CauseDamage(caster, v, damage, damageType, ability)
 			end
 			time = time + 1
@@ -166,7 +166,7 @@ function OnToggleOn( t )
 	local caster= t.caster
 	local ability = t.ability
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_infernal_fire_magic", nil)
-	if not caster:HasModifier("modifier_zhuanshusf") then
+	if not HasExclusive(caster) then
 		caster:RemoveModifierByName("modifier_infernal_fire_physics")
 		caster:RemoveModifierByName("modifier_infernal_fire_physics_buff")
 	end
@@ -247,7 +247,7 @@ function SoulRequiem( keys )
 	local vector = (point - caster_location):Normalized() * 1200
 	local num = -1
 	local abilityName = "destory_hit"
-	if caster:HasModifier("modifier_zhuanshusf") then
+	if HasExclusive(caster) then
 		abilityName = "destory_hit_up"
 	end
 	local damage = caster:FindAbilityByName(abilityName):GetSpecialValueFor("damage")
@@ -289,7 +289,7 @@ function SoulRequiem( keys )
 		angle = angle + 15
 		point = GetRotationPoint(caster_location, 1200, angle)
 		vector = (point - caster_location):Normalized() * 1200
-		if num == -1 and caster:HasModifier("modifier_zhuanshusf") then
+		if num == -1 and HasExclusive(caster) then
 			local skill = caster:FindAbilityByName(abilityName)
 			local vector_2 = (point - caster_location):Normalized()
 			local point = caster_location + vector_2 * 300
@@ -309,11 +309,11 @@ function SoulRequiem( keys )
 								local stackcount = v:GetModifierStackCount("modifier_destory_hit", caster)
 								skill:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 12})
 								v:SetModifierStackCount("modifier_destory_hit", caster, stackcount + 1)
-								v.percent_bonus_damage = (stackcount + 1) * -30
+								SetUnitDamagePercent(v,(stackcount + 1) * -30,12)
 							else
 								skill:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 6})
 								v:SetModifierStackCount("modifier_destory_hit", caster, 1)
-								v.percent_bonus_damage = -30
+								SetUnitDamagePercent(v,-30,6)
 							end
 						end
 						EmitSoundOn("Hero_Nevermore.Shadowraze", caster)

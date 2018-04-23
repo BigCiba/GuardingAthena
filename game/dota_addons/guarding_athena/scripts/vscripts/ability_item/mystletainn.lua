@@ -34,12 +34,7 @@ function OnAttackLanded( t )
     local duration = ability:GetSpecialValueFor("duration")
     local damageDeepen = ability:GetSpecialValueFor("damage_deepen")
     if RollPercentage(rate) then
-        target.percent_increase_damage = target.percent_increase_damage + damageDeepen
-        Timers:CreateTimer(duration,function ()
-            if not target:IsNull() then
-                target.percent_increase_damage = target.percent_increase_damage - damageDeepen
-            end
-        end)
+        SetUnitIncomingDamageDeepen(target,damageDeepen,duration)
         CauseDamage(caster,target,damage * critical,DAMAGE_TYPE_PHYSICAL,ability)
         CreateNumberEffect(target,damage * critical,1.5,MSG_ORIT ,"orange",4)
     end
