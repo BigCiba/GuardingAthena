@@ -81,7 +81,7 @@ function Attributes:ModifyBonuses(hero)
                 local itemName = item:GetAbilityName()
                 -- 循环所有物品判断是否是身上的物品
                 for k,v in pairs(self.itemTable) do
-                    if k == itemName then
+                    if k == itemName and v.Modifiers then
                         for k,v in pairs(v.Modifiers) do
                                 -- 判断是否有魔抗属性
                                 if v.Properties then

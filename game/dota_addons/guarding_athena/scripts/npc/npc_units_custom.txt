@@ -797,6 +797,81 @@
 		"Ability16"	""
 	}
 
+	"spectre"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Ability1"	""
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Model"	"models/heroes/spectre/spectre.vmdl"
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"6894"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"8916"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"8914"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"8913"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"9129"
+				}
+			}
+		}
+		"HasInventory"	"1"
+		"StatusHealth"	"10000"
+		"StatusHealthRegen"	"0"
+		"StatusMana"	"1000"
+		"StatusManaRegen"	"0"
+		"StatusStartingMana"	"1000"
+		"AttackDamageMin"	"10"
+		"AttackDamageMax"	"10"
+		"AttackRate"	"1.4"
+		"AttackRange"	"125"
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
+		"BountyXP"	"0"
+		"BountyGoldMin"	"0"
+		"BountyGoldMax"	"0"
+		"Level"	"1"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		"ModelScale"	"0.6"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"750"
+		"MovementTurnRate"	"0.5"
+		"SoundSet"	"Hero_Spectre"
+		"IdleSoundLoop"	"Hero_Spectre.IdleLoop"
+		"VoiceFile"	"scripts/voscripts/game_sounds_vo_spectre.txt"
+		"GameSoundsFile"	"scripts/game_sounds_heroes/game_sounds_spectre.txt"
+		"IgnoreAddSummonedToSelection"	"1"
+	}
+
 	"mubei"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -3585,7 +3660,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"20"
 		// 魔抗
-		"MagicalResistance"	"20"
+		"MagicalResistance"	"100"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------

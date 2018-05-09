@@ -9,6 +9,12 @@ end
 function health:OnCreated( t )
     if IsServer() then
         self.health = t.health
+        self.attribute = t.attribute or MODIFIER_ATTRIBUTE_NONE
+    end
+end
+function health:GetAttributes( t )
+    if IsServer() then
+        return self.attribute
     end
 end
 function health:GetModifierHealthBonus(t)
@@ -18,7 +24,4 @@ function health:GetModifierHealthBonus(t)
 end
 function health:IsHidden() 
 	return true
-end
-function health:GetTexture()
-    return "item_world_editor"
 end

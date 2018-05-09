@@ -25,7 +25,7 @@ function OnSpellStart( t )
     local duration = ability:GetSpecialValueFor("duration")
     local scale = ability:GetSpecialValueFor("health")
     local health = caster:GetMaxHealth() * scale * 0.9
-    caster:AddNewModifier(caster,ability,"health",{health=health,duration=duration})
+    caster:AddNewModifier(caster,ability,"health",{health=health,duration=duration,attribute=MODIFIER_ATTRIBUTE_MULTIPLE})
     ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_world_editor_regen", {duration=duration})
     caster:CalculateStatBonus()
     SetModelScale(caster,caster:GetModelScale() + 0.5,true,duration)

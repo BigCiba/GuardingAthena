@@ -14,10 +14,12 @@
                 <Label class="text-center align-center font-normal font-bold color-white text-shadow-blue" text="黑店"/>
                 <Panel class="margin-1 HorizonLine"/>
                 <Panel class="padding-1 ItemPanel flow-right align-center">
-                    <DOTAItemImage itemname="item_chaos_plate" />
-                    <DOTAItemImage itemname="item_world_editor" />
-                    <DOTAItemImage itemname="item_longinus_spear" />
-                    <DOTAItemImage itemname="item_mystletainn" />
+                    <DOTAShopItem class="margin-1">
+                        <DOTAItemImage itemname="item_chaos_plate" />
+                    </DOTAShopItem>
+                    <DOTAItemImage class="margin-1" itemname="item_world_editor" />
+                    <DOTAItemImage class="margin-1" itemname="item_longinus_spear" />
+                    <DOTAItemImage class="margin-1" itemname="item_mystletainn" />
                 </Panel>
             </Panel>
         </Panel>

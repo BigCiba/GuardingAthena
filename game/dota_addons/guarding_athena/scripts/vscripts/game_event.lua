@@ -298,7 +298,7 @@ function GuardingAthena:OnNPCSpawned(keys)
 		    end
 	    end)
 		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
-		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false then
+		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false and self.is_cheat== false then
 			spawnedUnit:AddAbility("singlehero")
 			spawnedUnit:FindAbilityByName("singlehero"):SetLevel(1)
 		end
@@ -667,11 +667,20 @@ function GuardingAthena:OnPlayerChat(keys)
 		print(tostring(heroabs))
 		print(tostring(hero))
 	end
-	--设置攻击穿透
-	if string.sub(text,0,10) == "-setdamage" then
-		local attack = tonumber(string.sub(text,11,string.len(text)))
+	--放技能
+	if string.sub(text,0,10) == "useskill" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		hero.bonus_physical_damage = hero.bonus_physical_damage + attack
+		local target = Entities:FindByName(nil, "boss_clotho")
+		local t_order = 
+        {
+            UnitIndex = hero:entindex(),
+            OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
+            TargetIndex = target:entindex(),
+            AbilityIndex = hero:FindAbilityByName("clusters_stars"):entindex(),
+            Position = nil,
+            Queue = 0
+        }
+        hero:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0.1)
 	end
 	--设置攻击力
 	if string.sub(text,0,10) == "-setattack" then

@@ -62,11 +62,13 @@ allHeroes[9] = "npc_dota_hero_crystal_maiden"
 allHeroes[10] = "npc_dota_hero_templar_assassin"
 allHeroes[11] = "npc_dota_hero_nevermore"
 allHeroes[12] = "npc_dota_hero_monkey_king"
+allHeroes[13] = "npc_dota_hero_spectre"
 var lockHeroes = []
 var unlockHeroes = []
 var lockImages = []
 lockHeroes[0] = "npc_dota_hero_nevermore"
 lockHeroes[1] = "npc_dota_hero_templar_assassin"
+lockHeroes[2] = "npc_dota_hero_spectre"
 var allDifficulty = []
 allDifficulty[0] = "EasyButton"
 allDifficulty[1] = "NormalButton"
@@ -371,6 +373,8 @@ function VIPUnlock(data){
     unlockHeroes[0] = "npc_dota_hero_nevermore";
     lockImages["npc_dota_hero_templar_assassin"].style.visibility = "collapse";
     unlockHeroes[1] = "npc_dota_hero_templar_assassin";
+    lockImages["npc_dota_hero_spectre"].style.visibility = "collapse";
+    unlockHeroes[2] = "npc_dota_hero_spectre";
 }
 function Unlock(data){
     lockImages[data.heroName].style.visibility = "collapse";

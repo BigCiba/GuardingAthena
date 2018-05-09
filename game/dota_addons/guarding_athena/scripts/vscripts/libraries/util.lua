@@ -32,6 +32,7 @@
 	SetUnitIncomingDamageReduce(caster,percent,duration)
 	SetCamera(playerID,arg)
 	SetRegionLimit(caster,regionEntity)
+	SetBaseResistance(caster,resistance,duration)
 	string.split
 ]]
 -- 造成伤害
@@ -46,6 +47,7 @@ function CauseDamage( ... )
 	if attacker:GetTeam() ~= DOTA_TEAM_GOODGUYS and damageType == DAMAGE_TYPE_MAGICAL then
 		damageType = DAMAGE_TYPE_PURE
 	end
+	
 	if IsValidEntity(victim) then
 		if victim:IsAlive() == false then
 			return
@@ -451,6 +453,17 @@ function SetRegionLimit( ... )
 	limitRegion.left = regionPos.x - width / 2
 	limitRegion.right = regionPos.x + width / 2
 	caster.limitRegion = limitRegion
+end
+-- 设置单位魔抗
+function SetBaseResistance( ... )
+	local caster,resistance,duration = ...
+	local temp = caster:GetBaseMagicalResistanceValue()
+	caster:SetBaseMagicalResistanceValue(resistance)
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			caster:SetBaseMagicalResistanceValue(temp)
+		end)
+	end
 end
 -- 设置单位模型
 function SetModelScale( ... )

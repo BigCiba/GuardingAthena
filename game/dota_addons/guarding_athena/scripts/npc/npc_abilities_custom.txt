@@ -509,7 +509,7 @@
 		"AbilityTextureName"	"morphling_morph_replicate"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"5"
 		"AbilityCastPoint"	"0.2"
@@ -560,24 +560,17 @@
 						"Target"
 						{
 							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-							"Center"	"CASTER"
-							"Radius"	"300"
-						}
-						"ModifierName"	"modifier_water_shield_buff"
-						"Duration"	"5"
-					}
-					"ApplyModifier"
-					{
-						"Target"
-						{
 							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 							"Center"	"CASTER"
-							"Radius"	"300"
+							"Radius"	"%radius"
 						}
 						"ModifierName"	"modifier_water_shield_debuff"
 						"Duration"	"5"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_5.lua"
+						"Function"	"OnDeath"
 					}
 				}
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
@@ -592,27 +585,23 @@
 				}
 				"IsDebuff"	"1"
 			}
-			"modifier_water_shield_buff"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%heal"
-				}
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"IsBuff"	"1"
-			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heal"	"4 8 12 16 20"
+				"attackspeed"	"-50 -100 -150 -200 -250"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"-50 -100 -150 -200 -250"
+				"radius"	"300"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
 			}
 		}
 	}
@@ -8552,7 +8541,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/shadow_rift_garrotte"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
@@ -8569,9 +8558,6 @@
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"	"0"
 		"precache"
 		{
 			"particle"	"particles/skills/void_blink.vpcf"
@@ -9069,34 +9055,49 @@
 		}
 	}
 
-	// 举重
 	"spectre_3"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"spectre_dispersion"
+		"AbilityTextureName"	"spectre_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+		}
 		"Modifiers"
 		{
-			"modifier_weightlifting"
+			"modifier_spectre_3"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-				}
-				"OnAttackLanded"
+				"Properties"	{}
+				"OnTakeDamage"
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"WeightLifting"
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnTakeDamage"
+						"DamageTaken"	"%attack_damage"
+					}
+					"FireSound"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"Hero_Spectre.HauntCast"
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnCreated"
 					}
 				}
 			}
@@ -9105,51 +9106,95 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"radius"	"350"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"regen"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_limit"	"0.01"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_radius"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"healamount"	"1"
 			}
 		}
 	}
 
-	// 举重
 	"spectre_4"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"necrolyte_reapers_scythe"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	"spectre_4"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
-		"MaxLevel"	"20"
+		"MaxLevel"	"8"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Necrolyte.ReapersScythe.Cast"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Necrolyte.ReapersScythe.Target"
+			}
+		}
 		"Modifiers"
 		{
-			"modifier_weightlifting"
+			"modifier_spectre_4_debuff"
 			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
+				"IsDebuff"	"1"
+				"Properties"	{}
+				"States"	{}
+			}
+			"modifier_spectre_4_stun"
+			{
+				"IsDebuff"	"1"
+				"Properties"	{}
+				"States"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-				}
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"WeightLifting"
-					}
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -9158,49 +9203,81 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"damage"	"25 50 75 100 125 150 175 200"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"soul_loss"	"30"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"damage_count"	"4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_bonus_damage"	"10"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"30"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.4"
 			}
 		}
 	}
 
-	// 举重
 	"spectre_2"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"spectre_desolate"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_spectre/spectre_death.vpcf"
+		}
 		"Modifiers"
 		{
-			"modifier_weightlifting"
+			"modifier_spectre_2"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-				}
 				"OnAttackLanded"
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
-						"Function"	"WeightLifting"
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnTakeDamage"
+						"DamageTaken"	"%attack_damage"
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnCreated"
 					}
 				}
 			}
@@ -9210,17 +9287,17 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attackspeed"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"rate"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"damage_limit"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"str"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+				"health_cost"	"1"
 			}
 		}
 	}
@@ -14964,6 +15041,210 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"50"
 				}
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			}
+		}
+	}
+
+	"spectre_0"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"spectre_0"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"1"
+		"Modifiers"
+		{
+			"modifier_spectre_0"
+			{
+				"OnAttackLanded"
+				{
+					"SpawnUnit"
+					{
+						"UnitName"	"spectre"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"ScriptSelectPoints"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+								"Function"	"GetSummonPoints"
+								"Target"	"CASTER"
+							}
+						}
+						"Duration"	"%duration"
+						"UnitCount"	"1"
+						"UnitLimit"	"%unitLimit"
+						"GrantsGold"	"0"
+						"GrantsXP"	"0"
+						"SpawnRadius"	"10"
+						"OnSpawn"
+						{
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+								"Function"	"OnSpawn"
+							}
+						}
+					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+			"modifier_spectre_0_illusion"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"50"
+				}
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnIllusionAttackLanded"
+					}
+				}
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnIllusionTakeDamage"
+						"DamageTaken"	"%attack_damage"
+					}
+				}
+				"Duration"	"%duration"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnIllusionDeath"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"unitLimit"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_count"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health"	"20"
+			}
+		}
+	}
+
+	"spectre_1"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"spectre_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+				"Function"	"OnSpellStart"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+				"Function"	"OnProjectileHitUnit"
+			}
+			"DeleteOnHit"	"0"
+		}
+		"Modifiers"
+		{
+			"modifier_spectre_1"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"3000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"2000"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"100"
+			}
+		}
+	}
+
+	"spectre_1_0"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"spectre_reality"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+				"Function"	"OnSpellStart"
 			}
 		}
 	}

@@ -98,6 +98,7 @@
                     <!--英雄头像列表-->
                         <!--蓝色文字面板类，用来显示文字：选择英雄-->
                         <DOTAHeroMovie id="npc_dota_hero_monkey_king" class="HeroCard" heroname="npc_dota_hero_monkey_king"/>
+                        <DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre"/>
                     </Panel>
                 </Panel>
                 <Panel class="BottomHorizonLine" tabindex="auto" />

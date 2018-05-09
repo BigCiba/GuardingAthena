@@ -55,12 +55,12 @@ function PracticeDoSpawn( caller, caster )
 			local unit = CreateUnitByName(unitName, SpawnPoint, true, nil, nil, DOTA_TEAM_BADGUYS )
 			unit.practicer = true
 			--local level = Spawner.gameRound or 1
+			HeroState:InitUnit(unit)
 			if unitName ~= "practicer" then
 				Spawner:UnitProperty(unit,Spawner.unitFactor)
+				SetUnitDamagePercent(unit,Spawner.gameRound - 80)
+				SetUnitIncomingDamageDeepen(unit,200 - Spawner.gameRound * 2)
 			end
-			HeroState:InitUnit(unit)
-			SetUnitDamagePercent(unit,Spawner.gameRound - 80)
-			SetUnitIncomingDamageDeepen(unit,200 - Spawner.gameRound * 2)
 			unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
 			--unit:CreatureLevelUp(level)
 			unit:SetDeathXP(unit:GetDeathXP() * 1.6 * (1 + 0.01 * practice_level))

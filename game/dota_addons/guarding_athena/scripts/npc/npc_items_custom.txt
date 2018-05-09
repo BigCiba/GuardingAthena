@@ -21261,6 +21261,16 @@
 		"ItemRequirements"	{}
 	}
 
+	"item_bet_1"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_hand_of_midas"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1662"
+		"ItemCost"	"4"
+		"ItemRequirements"	{}
+	}
+
 	"item_aura_2"
 	{
 		"BaseClass"	"item_datadriven"
@@ -21495,6 +21505,7 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%regen"
 				}
 				"TextureName"	"item_world_editor"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 			}
 			"modifier_item_world_editor_hp"
 			{

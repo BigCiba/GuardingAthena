@@ -36,6 +36,7 @@ function Precache( context )
 			PrecacheResource( "particle", "*.vpcf", context )
 			PrecacheResource( "particle_folder", "particles/folder", context )
 	]]
+	PrecacheResource( "model", "models/heroes/juggernaut/juggernaut.vmdl", context )
 	PrecacheResource( "model", "models/props_structures/tower_bad_sfm.vmdl", context )
 	PrecacheResource( "model", "models/props_gameplay/gold_bag.vmdl", context )
 	PrecacheResource( "model", "models/props_structures/dire_tower001.vmdl", context )
