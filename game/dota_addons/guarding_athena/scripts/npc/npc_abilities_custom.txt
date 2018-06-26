@@ -6239,7 +6239,6 @@
 				{
 					"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
 					"Center"	"CASTER"
 					"Radius"	"600"
 				}
@@ -9139,6 +9138,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"healamount"	"1"
 			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"trigge_percent"	"1"
+			}
 		}
 	}
 
@@ -9197,6 +9201,15 @@
 					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
+			"modifier_spectre_4_slience"
+			{
+				"IsDebuff"	"1"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -9230,6 +9243,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"stun_duration"	"1.4"
 			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"450"
+			}
 		}
 	}
 
@@ -9237,7 +9255,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"spectre_desolate"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -9248,6 +9266,22 @@
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_spectre/spectre_death.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+			"particle"	"particles/units/heroes/hero_bane/bane_nightmare.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Bane.BrainSap.Target"
+			}
 		}
 		"Modifiers"
 		{
@@ -9261,6 +9295,11 @@
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
 						"Function"	"OnAttackLanded"
+					}
+					"FireSound"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"Hero_Spectre.Desolate"
 					}
 				}
 				"OnTakeDamage"
@@ -9281,23 +9320,76 @@
 					}
 				}
 			}
+			"modifier_spectre_2_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1000"
+				}
+				"States"
+				{
+					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+				"Duration"	"%shock_duration"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnIntervalThink"
+					}
+				}
+				"ThinkInterval"	"1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare.vpcf"
+						"EffectAttachType"	"follow_overhead"
+					}
+				}
+			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_limit"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"damage_limit"	"4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"health_cost"	"1"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_active"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"heal"	"0.3 0.6 0.9 1.2 1.5 1.8 2.1 2.4 2.7 3 3.3 3.6 3.9 4.2 4.5 4.8 5.1 5.4 5.7 6"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"450"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shock_duration"	"3"
 			}
 		}
 	}
@@ -15155,7 +15247,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"30"
+				"damage"	"60"
 			}
 			"05"
 			{
@@ -15173,6 +15265,15 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"W"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -15180,6 +15281,11 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
 				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Spectre.DaggerCast"
 			}
 		}
 		"OnProjectileHitUnit"
@@ -15190,21 +15296,20 @@
 				"Function"	"OnProjectileHitUnit"
 			}
 			"DeleteOnHit"	"0"
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"Hero_Spectre.DaggerImpact"
+			}
 		}
 		"Modifiers"
 		{
-			"modifier_spectre_1"
+			"modifier_spectre_1_debuff"
 			{
-				"States"
+				"IsDebuff"	"1"
+				"Properties"
 				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
 				}
 			}
 		}
@@ -15213,7 +15318,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"02"
 			{
@@ -15230,6 +15335,26 @@
 				"var_type"	"FIELD_INTEGER"
 				"radius"	"100"
 			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"per_damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"-60"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"10"
+			}
 		}
 	}
 
@@ -15239,12 +15364,42 @@
 		"AbilityTextureName"	"spectre_reality"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"1"
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
 				"Function"	"OnSpellStart"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_spectre_1_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				}
+			}
+			"modifier_spectre_1_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"-60"
 			}
 		}
 	}

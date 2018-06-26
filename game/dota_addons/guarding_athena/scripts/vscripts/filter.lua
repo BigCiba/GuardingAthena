@@ -129,12 +129,21 @@ function GuardingAthena:DamageFilter( args )
 	end
 	-- 物理伤害
 	if damageType == DAMAGE_TYPE_PHYSICAL then
+		-- 计算原始伤害
+		local armor = victim:GetPhysicalArmorValue()
+		local initdamage = args.damage
+		if armor > 0 then
+			local reduce = (armor * 0.05)/(1 + armor * 0.05)
+			initdamage = args.damage / (1 - reduce)
+		end
+		-- 重新计算护甲
+		--args.damage = initdamage * 1000 / (1000 + 4 * armor)
         -- 物理伤害穿透额外无视护甲伤害
 		if caster.bonus_physical_damage and caster.bonus_physical_damage > 0 then
-			local armor = victim:GetPhysicalArmorValue()
+			--local armor = victim:GetPhysicalArmorValue()
 			if armor > 0 then
-				local reduce = (armor * 0.05)/(1 + armor * 0.05)
-				local initdamage = args.damage / (1 - reduce)
+				--local reduce = (armor * 0.05)/(1 + armor * 0.05)
+				--local initdamage = args.damage / (1 - reduce)
 				args.damage = args.damage + initdamage * caster.bonus_physical_damage * 0.01
 			else
 				args.damage = args.damage + args.damage * caster.bonus_physical_damage * 0.01

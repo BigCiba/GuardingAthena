@@ -16,8 +16,9 @@ function OnAttackLanded( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damageMax = ((ability.damageRecorder / caster:GetMaxHealth()) + 1)
-    local damage = RandomFloat(1, ability:GetSpecialValueFor("damage") * caster:GetStrength() * damageMax )
+    local damageMax = ability:GetSpecialValueFor("damage") + ability.damageRecorder
+    if damageMax > ability:GetSpecialValueFor("damage_limit") then damageMax = ability:GetSpecialValueFor("damage_limit") end
+    local damage = RandomFloat(1, damageMax * caster:GetStrength() )
     ability.damageRecorder = 0
     local damageType = ability:GetAbilityDamageType()
     ability.no_damage_filter = true
@@ -25,6 +26,9 @@ function OnAttackLanded( t )
     ability.no_damage_filter = nil
     CauseDamage(caster,target,damage,damageType,ability)
     CreateNumberEffect(target,damage,1,MSG_ORIT,{199,21,133},6)
+    local p = CreateParticle("particles/econ/items/spectre/spectre_weapon_diffusal/spectre_desolate_diffusal.vpcf",PATTACH_CUSTOMORIGIN,caster,2)
+    ParticleManager:SetParticleControl( p, 0, target:GetAbsOrigin() + Vector(0,0,64))
+    ParticleManager:SetParticleControlForward( p, 0, (target:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized())
 end
 function GetSummonPoints( t )
     local caster = t.caster
@@ -60,54 +64,63 @@ function OnIllusionAttackLanded( t )
     local owner = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = RandomFloat(1, owner:GetAbilityByIndex(2):GetSpecialValueFor("damage") * owner:GetStrength() * ability:GetSpecialValueFor("damage") * 0.01) 
-    local damageType = ability:GetAbilityDamageType()
-    ability.no_damage_filter = true
-    CauseDamage(caster,caster,caster:GetMaxHealth() * 0.01,damageType,ability)
-    ability.no_damage_filter = nil
-    CauseDamage(owner,target,damage,damageType,ability)
-    CreateNumberEffect(target,damage,1,MSG_ORIT,{148,0,211},6)
-    caster.attack_count = caster.attack_count - 1
-    if caster.attack_count <= 0 then
-        caster:ForceKill(false)
+    local ability_2 = owner:GetAbilityByIndex(2)
+    if ability_2:GetLevel() > 0 then
+        local damage = RandomFloat(1, ability_2:GetSpecialValueFor("damage") * owner:GetStrength() * ability:GetSpecialValueFor("damage") * 0.01) 
+        local damageType = ability:GetAbilityDamageType()
+        ability.no_damage_filter = true
+        CauseDamage(caster,caster,caster:GetMaxHealth() * 0.01,damageType,ability)
+        ability.no_damage_filter = nil
+        CauseDamage(owner,target,damage,damageType,ability)
+        CreateNumberEffect(target,damage,1,MSG_ORIT,{148,0,211},6)
+        caster.attack_count = caster.attack_count - 1
+        if caster.attack_count <= 0 then
+            caster:ForceKill(false)
+        end
+        local p = CreateParticle("particles/econ/items/spectre/spectre_weapon_diffusal/spectre_desolate_diffusal.vpcf",PATTACH_CUSTOMORIGIN,owner,2)
+        ParticleManager:SetParticleControlEnt( p, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetOrigin(), true )
+        ParticleManager:SetParticleControlEnt( p, 4, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetOrigin(), true )
     end
 end
 function OnIllusionTakeDamage( t )
     local caster = t.unit
     local owner = t.caster
-    local ability_0 = owner:GetAbilityByIndex(3)
+    local ability_0 = owner:GetAbilityByIndex(0)
     local ability_3 = owner:GetAbilityByIndex(3)
-    local damage_limit = ability_3:GetSpecialValueFor("damage_limit")
-    local radius = ability_3:GetSpecialValueFor("radius")
-    local percent = t.DamageTaken / caster:GetMaxHealth()
-    local illusionDamageScale = ability_0:GetSpecialValueFor("damage") * 0.01
-    if percent < damage_limit then percent = damage_limit end
-    local damage = math.ceil(percent * owner:GetStrength() * ability_3:GetSpecialValueFor("damage") * 100  * illusionDamageScale)
-    local damageType = ability_3:GetAbilityDamageType()
-    radius = radius + 300 * percent
-    local unitGroup = GetUnitsInRadius(caster,ability_3,caster:GetAbsOrigin(),radius)
-    if ability_3.canTrigger then
-        ability_3.canTrigger = false
-        CauseDamage(owner,unitGroup,damage,damageType,ability_3)
-    end
-    ability_3.canTrigger = true
-    if caster.timer then
-        Timers:ResetDelayTime(caster.timer,1)
-    else
-        local p = CreateParticle("particles/heroes/spectre/spectre_3.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster)
-        caster.timer = Timers:CreateTimer(1,function ()
-            ParticleManager:DestroyParticle(p, false)
-            if not caster:IsNull() then
-                caster.timer = nil
-            end
-        end)
+    if ability_3:GetLevel() > 0 then
+        local damage_limit = ability_3:GetSpecialValueFor("damage_limit")
+        local radius = ability_3:GetSpecialValueFor("radius")
+        local percent = t.DamageTaken / caster:GetMaxHealth()
+        local illusionDamageScale = ability_0:GetSpecialValueFor("damage") * 0.01
+        if percent < damage_limit then percent = damage_limit end
+        --print(percent.." and "..illusionDamageScale)
+        local damage = math.ceil(percent * owner:GetStrength() * ability_3:GetSpecialValueFor("damage") * 100  * illusionDamageScale)
+        local damageType = ability_3:GetAbilityDamageType()
+        radius = radius + 300 * percent
+        local unitGroup = GetUnitsInRadius(caster,ability_3,caster:GetAbsOrigin(),radius)
+        if ability_3.canTrigger then
+            ability_3.canTrigger = false
+            CauseDamage(owner,unitGroup,damage,damageType,ability_3)
+        end
+        ability_3.canTrigger = true
+        if caster.timer then
+            Timers:ResetDelayTime(caster.timer,1)
+        else
+            local p = CreateParticle("particles/heroes/spectre/spectre_3.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster)
+            caster.timer = Timers:CreateTimer(1,function ()
+                ParticleManager:DestroyParticle(p, false)
+                if not caster:IsNull() then
+                    caster.timer = nil
+                end
+            end)
+        end
     end
 end
 function OnIllusionDeath( t )
     local caster = t.unit
     local owner = t.caster
     caster:AddNoDraw()
-    local p = CreateParticle("particles/units/heroes/hero_spectre/spectre_death.vpcf",PATTACH_ABSORIGIN,ownerr,2)
+    local p = CreateParticle("particles/units/heroes/hero_spectre/spectre_death.vpcf",PATTACH_ABSORIGIN,owner,2)
     ParticleManager:SetParticleControl(p, 0, caster:GetAbsOrigin())
     OnIllusionTakeDamage( {unit=caster,caster=owner,DamageTaken=caster:GetMaxHealth()} )
 end
@@ -115,13 +128,15 @@ function OnTakeDamage( t )
     local caster = t.caster
     local ability = t.ability
     if ability:GetAbilityIndex() == 2 then
-        ability.damageRecorder = ability.damageRecorder + t.DamageTaken
+        ability.damageRecorder = ability.damageRecorder + ability:GetSpecialValueFor("damage_add")
     elseif ability:GetAbilityIndex() == 3 then
         local damage_limit = ability:GetSpecialValueFor("damage_limit")
         local regen = ability:GetSpecialValueFor("regen")
         local str = ability:GetSpecialValueFor("str")
         local heal = ability:GetSpecialValueFor("healamount")
         local healAmount = caster:GetStrength() * 0.01 * heal * (100 - caster:GetHealthPercent())
+        local percent = t.DamageTaken / caster:GetMaxHealth()
+        if percent < damage_limit then percent = damage_limit end
         Heal(caster,healAmount,0,false)
         ability.damageRecorder = ability.damageRecorder + t.DamageTaken
         if ability.damageRecorder > caster:GetMaxHealth() then
@@ -131,8 +146,6 @@ function OnTakeDamage( t )
             caster:SetBaseHealthRegen(caster:GetBaseHealthRegen() + regen)
         end
         local radius = ability:GetSpecialValueFor("radius")
-        local percent = t.DamageTaken / caster:GetMaxHealth()
-        if percent < damage_limit then percent = damage_limit end
         local damage = math.ceil(percent * caster:GetStrength() * ability:GetSpecialValueFor("damage") * 100)
         local damageType = ability:GetAbilityDamageType()
         radius = radius + 300 * percent
@@ -153,10 +166,19 @@ function OnTakeDamage( t )
         end
     end
 end
+function OnIntervalThink( t )
+    local caster = t.caster
+    local target = t.target
+    target:MoveToPosition(target:GetAbsOrigin() + Vector(RandomInt(-300, 300),RandomInt(-300, 300),0))
+end
 function OnSpellStart( t )
     local caster = t.caster
     local ability = t.ability
     if ability:GetAbilityIndex() == 1 then
+        local perDamage = ability:GetSpecialValueFor("per_damage") * caster:GetStrength()
+        local damageType = ability:GetAbilityDamageType()
+        local duration = ability:GetSpecialValueFor("duration")
+        local count = duration * 10
         if caster.useAbility1 == nil then caster.useAbility1 = false end
         if caster.useAbility1 == false then
             local point = t.target_points[1]
@@ -166,43 +188,85 @@ function OnSpellStart( t )
             local radius = ability:GetSpecialValueFor("radius")
             local maxDistance = ability:GetSpecialValueFor("distance")
             point = casterPos + direction * maxDistance
-            PrecacheUnitByNameAsync("majia",function()
-                local target = CreateUnitByName("majia", point, true, nil, nil, DOTA_TEAM_BADGUYS )
-                target:AddNewModifier(target, nil, "modifier_kill", {duration=1.6})
-                ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_1", {duration=1.6})
-                CreateTrackingProjectile(caster,target,ability,"particles/econ/items/spectre/spectre_transversant_soul/spectre_transversant_spectral_dagger_tracking.vpcf",speed)
-                CreateLinearProjectile(caster,ability,"",casterPos,radius,maxDistance,direction,speed,false)
-                local abilityHelp = caster:AddAbility("spectre_1_0")
-                abilityHelp:SetLevel(1)
-                abilityHelp.casterPos = casterPos
-                abilityHelp.target = target
-                abilityHelp.speed = speed
-                abilityHelp.direction = direction
-                abilityHelp.startTime = GameRules:GetGameTime()
-                caster:SwapAbilities("spectre_1", "spectre_1_0", false, true)
-                caster.useAbility1 = true
-                Timers:CreateTimer(1.5,function ()
-                    if caster.useAbility1 then
-                        caster.useAbility1 = false
-                        caster:SwapAbilities("spectre_1", "spectre_1_0", true, false)
-                        caster:RemoveAbility("spectre_1_0")
-                    end
-                end)
+            local abilityHelp = caster:AddAbility("spectre_1_0")
+            abilityHelp:SetLevel(1)
+            ability.casterPos = casterPos
+            ability.target = target
+            ability.speed = speed
+            ability.direction = direction
+            ability.startTime = GameRules:GetGameTime()
+            abilityHelp.ability = ability
+            caster:SwapAbilities("spectre_1", "spectre_1_0", false, true)
+            caster.useAbility1 = true
+            Timers:CreateTimer(1.5,function ()
+                if caster.useAbility1 then
+                    caster.useAbility1 = false
+                    caster:SwapAbilities("spectre_1", "spectre_1_0", true, false)
+                    caster:RemoveAbility("spectre_1_0")
+                    ForWithInterval(count,duration / count,function ()
+                        local unitGroup = GetUnitsInLine(caster,ability,casterPos,point,150)
+                        for k,v in pairs(unitGroup) do
+                            ability:ApplyDataDrivenModifier(caster, v, "modifier_spectre_1_debuff", {duration=1})
+                        end
+                        CauseDamage(caster,unitGroup,perDamage / 10,damageType,ability)
+                    end)
+                end
             end)
-            --CreateLinearProjectile(caster,ability,"particles/econ/items/spectre/spectre_transversant_soul/spectre_transversant_spectral_dagger.vpcf",casterPos,radius,maxDistance,direction,speed,false)
+            caster.linearP = CreateLinearProjectile(caster,ability,"particles/econ/items/spectre/spectre_transversant_soul/spectre_transversant_spectral_dagger.vpcf",casterPos,radius,maxDistance,direction,speed,false)
         else
-            local time = GameRules:GetGameTime() - ability.startTime
-            local pos = ability.casterPos + ability.direction * ability.speed * time
+            local ability_1 = ability.ability
+            local time = GameRules:GetGameTime() - ability_1.startTime
+            local pos = ability_1.casterPos + ability_1.direction * ability_1.speed * time
             CreateParticle("particles/heroes/spectre/spectre_2_illusion.vpcf",PATTACH_ABSORIGIN,caster,2)
-            SetUnitPosition(ability.target,pos)
             SetUnitPosition(caster,pos)
             CreateParticle("particles/heroes/spectre/spectre_2_illusion.vpcf",PATTACH_ABSORIGIN,caster,2)
             caster.useAbility1 = false
             caster:SwapAbilities("spectre_1", "spectre_1_0", true, false)
             caster:RemoveAbility("spectre_1_0")
+            ProjectileManager:DestroyLinearProjectile(caster.linearP)
+            local perDamage = ability_1:GetSpecialValueFor("per_damage") * caster:GetStrength()
+            local damageType = ability_1:GetAbilityDamageType()
+            local duration = ability_1:GetSpecialValueFor("duration")
+            local count = duration * 10
+            ForWithInterval(count,duration / count,function ()
+                local unitGroup = GetUnitsInLine(caster,ability_1,ability_1.casterPos,pos,150)
+                for k,v in pairs(unitGroup) do
+                    ability_1:ApplyDataDrivenModifier(caster, v, "modifier_spectre_1_debuff", {duration=1})
+                end
+                CauseDamage(caster,unitGroup,perDamage / 10,damageType,ability_1)
+            end)
         end
+    -- ability2
+    elseif ability:GetAbilityIndex() == 2 then
+        local healthCost = caster:GetHealth() * 0.3
+        local radius = ability:GetSpecialValueFor("radius")
+        local heal = ability:GetSpecialValueFor("heal")
+        local damage = ability:GetSpecialValueFor("damage_active") * healthCost
+        local damageType = ability:GetAbilityDamageType()
+        ability.no_damage_filter = true
+        CauseDamage(caster,caster,healthCost,damageType,ability)
+        ability.no_damage_filter = nil
+        CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,4)
+        -- shock
+        local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
+        for k,v in pairs(unitGroup) do
+            ability:ApplyDataDrivenModifier(caster, v, "modifier_spectre_2_debuff", nil)
+            v:Stop()
+        end
+        local count = 0
+        Timers:CreateTimer(function ()
+            if count < 10 then
+                local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
+                CauseDamage(caster,unitGroup,damage * 0.1,damageType,ability)
+                Heal(caster,heal * damage * #unitGroup * 0.1,0,false)
+                count = count + 1
+                return 0.1
+            end
+        end)
+    -- ability4
     elseif ability:GetAbilityIndex() == 4 then
         local target = t.target
+        local radius = ability:GetSpecialValueFor("radius")
         local damage = ability:GetSpecialValueFor("damage") * caster:GetStrength()
         local damageType = ability:GetAbilityDamageType()
         local damageCount = ability:GetSpecialValueFor("damage_count")
@@ -217,6 +281,11 @@ function OnSpellStart( t )
         ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_4_stun", {duration=stunDuration})
         ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_4_debuff", {duration=duration})
         target:AddNewModifier(caster, ability, "armor", {armor=-armor,duration=stunDuration})
+        -- slience
+        local unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),radius)
+        for k,v in pairs(unitGroup) do
+            ability:ApplyDataDrivenModifier(caster, v, "modifier_spectre_4_slience", {duration=5})
+        end
         --target:AddNewModifier(caster, ability, "resistance", {resistance=-resistance,duration=stunDuration})
         SetBaseResistance(target,0,stunDuration + 0.1)
         SetUnitMagicDamagePercent(target,-soulLoss,duration)
@@ -224,19 +293,27 @@ function OnSpellStart( t )
         -- damage
         Timers:CreateTimer(stunDuration,function ()
             local loseHealthPercent = targetHealthPercent - target:GetHealthPercent()
+            unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),radius)
             local bonusDamage = 0
             if loseHealthPercent > 0 then
                 if loseHealthPercent > 10 then loseHealthPercent = 10 end
                 bonusDamage = target:GetMaxHealth() * loseHealthPercent * 0.01
             end
             for i=1,damageCount do
-                CauseDamage(caster,target,damage + bonusDamage,damageType,ability)
-                print(target:GetMagicalArmorValue())
+                CauseDamage(caster,unitGroup,damage + bonusDamage,damageType,ability)
             end
+            local p = CreateParticle("particles/heroes/spectre/spectre_4_explode.vpcf",PATTACH_ABSORIGIN,caster,4)
+            ParticleManager:SetParticleControl(p, 0, target:GetAbsOrigin())
+            ParticleManager:SetParticleControl(p, 1, Vector(600,600,300))
+            local p = CreateParticle("particles/heroes/spectre/spectre_4_impact_f.vpcf",PATTACH_ABSORIGIN,caster,4)
+            ParticleManager:SetParticleControl(p, 1, target:GetAbsOrigin())
         end)
         -- particle
         local pLock = CreateParticle("particles/heroes/spectre/spectre_4_lock.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,caster,4)
         ParticleManager:SetParticleControlEnt(pLock, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+        local pGound = CreateParticle("particles/heroes/spectre/spectre_4_somke.vpcf",PATTACH_ABSORIGIN,caster,4)
+        ParticleManager:SetParticleControl(pGound, 0, target:GetAbsOrigin())
+        ParticleManager:SetParticleControl(pGound, 1, Vector(600,600,600))
         for i=1,4 do
             local p = CreateParticle("particles/heroes/spectre/spectre_4.vpcf",PATTACH_ABSORIGIN,caster,4)
             ParticleManager:SetParticleControl(p, 0, target:GetAbsOrigin())
@@ -254,7 +331,7 @@ function OnProjectileHitUnit( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetStrength()
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetStrength() + ability:GetSpecialValueFor("base_damage")
     local damageType = ability:GetAbilityDamageType()
     CauseDamage(caster,target,damage,damageType,ability)
 end

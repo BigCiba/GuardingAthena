@@ -9,6 +9,7 @@
 	CreateNumberEffect(entity,number,duration,msg_type,color,icon_type)
 	DeepCopy(table)
 	DropItem(item,hero)
+	ForWithInterval(count,interval,callback)
 	GetUnitsInRadius(caster,ability,point,radius)
 	GetUnitsInLine(caster,ability,start_point,end_point,width)
 	GetUnitsInSector(cacheUnit,ability,position,forwardVector,angle,radius)
@@ -318,6 +319,17 @@ function DropItem( item, hero )
     --finally, remove the item
     hero:RemoveItem(item)
     return newItem
+end
+-- 带延迟for循环
+function ForWithInterval( count,interval,callback )
+	local temp = 0
+	Timers:CreateTimer(function ()
+		if temp < count then
+			temp = temp + 1
+			callback()
+		end
+		return interval 
+	end)
 end
 -- 随机掉落物品
 function RollDrops(unit)

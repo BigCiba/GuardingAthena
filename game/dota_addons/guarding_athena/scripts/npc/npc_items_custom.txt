@@ -5877,7 +5877,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attack"	"9"
+				"bonus_attack"	"8"
 			}
 			"03"
 			{
@@ -6156,7 +6156,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attack"	"12"
+				"bonus_attack"	"10"
 			}
 			"03"
 			{
@@ -6440,7 +6440,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attack"	"15"
+				"bonus_attack"	"12"
 			}
 			"03"
 			{
@@ -6730,7 +6730,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attack"	"18"
+				"bonus_attack"	"14"
 			}
 			"03"
 			{

@@ -69,8 +69,8 @@ function Attributes:ModifyBonuses(hero)
         local intellect = hero:GetIntellect()
         
         -- Base Armor Bonus
-        local armor = agility * self.ARMOR_PER_AGI
-        hero:SetPhysicalArmorBaseValue(armor)
+        --local armor = agility * self.ARMOR_PER_AGI
+        --hero:SetPhysicalArmorBaseValue(armor)
         -- Base Magic Resistance
         local itemRes = 0
         for i=1,6 do

@@ -41,7 +41,7 @@
 		},
 		{
 			_class = "C_OP_Orient2DRelToCP"
-			m_nFieldOutput = 12
+			m_nFieldOutput = "12"
 			m_flRotOffset = -90.0
 			m_nCP = 1
 		},
@@ -122,6 +122,10 @@
 					m_entityName = "self"
 				},
 			]
+			m_previewState = 
+			{
+				m_previewModel = "models/heroes/pedestal/pedestal_2_ground.vmdl"
+			}
 		},
 	]
 	m_nSnapshotControlPoint = 12
@@ -156,6 +160,12 @@
 		{
 			m_ChildRef = resource:"particles/heroes/spectre/spectre_4_impact.vpcf"
 			m_flDelay = 1.4
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/spectre/spectre_4_explode.vpcf"
+			m_flDelay = 1.4
+			m_bDisableChild = true
 		},
 	]
 	m_ConstantColor = [ 0, 0, 0, 255 ]

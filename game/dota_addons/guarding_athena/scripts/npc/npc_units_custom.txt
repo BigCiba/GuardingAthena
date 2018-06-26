@@ -3660,7 +3660,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"20"
 		// 魔抗
-		"MagicalResistance"	"100"
+		"MagicalResistance"	"5"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------

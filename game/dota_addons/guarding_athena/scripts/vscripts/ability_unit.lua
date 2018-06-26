@@ -248,15 +248,19 @@ function AthenaArmor( keys )
 	local caster = keys.caster
 	caster:SetPhysicalArmorBaseValue(caster:GetPhysicalArmorBaseValue() + 1)
 end
-function SoulConnect( keys )
-	local damage = keys.DamageTaken * 0.5
-	local caster = keys.caster
-	local targets = keys.target_entities   --获取传递进来的单位组
-	local damageType = keys.ability:GetAbilityDamageType()
-	--利用Lua的循环迭代，循环遍历每一个单位组内的单位
-	for i,unit in pairs(targets) do
-		CauseDamage(caster,unit,damage,damageType)
-	end
+function SoulConnect( t )
+    local ability = t.ability
+	local damage = t.DamageTaken * 0.5
+	local caster = t.caster
+	local targets = t.target_entities   --获取传递进来的单位组
+	local damageType = t.ability:GetAbilityDamageType()
+    --利用Lua的循环迭代，循环遍历每一个单位组内的单位
+    if ability:IsCooldownReady() then
+        for i,unit in pairs(targets) do
+            CauseDamage(caster,unit,damage,damageType)
+            ability:StartCooldown(0.2)
+        end
+    end
 end
 LinkLuaModifier("modifier_hex", "modifiers/modifier_hex.lua", LUA_MODIFIER_MOTION_NONE)
 function voodoo_start( keys )
@@ -310,16 +314,20 @@ function fury_swipes_attack( keys )
     end
 end
 function SoulHurt( keys )
+    local ability= keys.ability
 	local damage = keys.DamageTaken * keys.Rate
 	local caster = keys.caster
 	local target = keys.attacker 
 	local damageType = keys.ability:GetAbilityDamageType()
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin() 
-	local distance = (caster_location - target_location):Length2D()
-	if distance <= 400 then
-		CauseDamage(caster,target,damage,damageType)
-	end
+    local distance = (caster_location - target_location):Length2D()
+    if ability:IsCooldownReady() then
+        if distance <= 400 then
+            CauseDamage(caster,target,damage,damageType)
+            ability:StartCooldown(0.2)
+        end
+    end
 end
 function Sunder( event )
     local caster = event.caster
