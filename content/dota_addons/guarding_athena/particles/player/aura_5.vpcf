@@ -10,12 +10,15 @@
 	[
 		{
 			m_ChildRef = resource:"particles/player/aura_5_a.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_b.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_c.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_d.vpcf"
@@ -26,6 +29,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_f.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_g.vpcf"
@@ -54,9 +58,11 @@
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_o.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_p.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/player/aura_5_q.vpcf"

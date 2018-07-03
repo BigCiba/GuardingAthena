@@ -7,6 +7,8 @@
 		"ability_table",
 		"player_hero",
 		"difficulty",
-		"shop"
+		"shop",
+		"playerInfo",
+		"courier_attributes"
 	]
 }

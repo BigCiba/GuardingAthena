@@ -6,7 +6,7 @@ function AbstrusemoonShadow( t )
 	local agi = caster:GetAgility()
 	local health = caster:GetMaxHealth() - caster:GetHealth()
 	local lifesteal = 0.5
-	if caster:HasModifier("modifier_zhuanshupa_state") then
+	if HasExclusive(caster) then
 		agi = agi * 2
 		lifesteal = 1
 	end
@@ -83,7 +83,7 @@ function ShadowmoonWheeldance( t )
 	local bonus_att = caster:GetAttackDamage() * 0.05
 	local targets = t.target_entities   --获取传递进来的单位组
 	local duration = ability:GetSpecialValueFor("duration")
-	local damage= att * t.DexTaken
+	local damage= att * t.DexTaken + ability:GetSpecialValueFor("base_damage")
 	local cooldamage = damage * 36
 	local damageType = ability:GetAbilityDamageType()
 	local void_level = ability:GetLevel()
@@ -97,7 +97,7 @@ function ShadowmoonWheeldance( t )
 	--利用Lua的循环迭代，循环遍历每一个单位组内的单位
 	for i,unit in pairs(targets) do
 		if RollPercentage(30) then
-			if caster:HasModifier("modifier_zhuanshupa_state") then
+			if HasExclusive(caster) then
 				CauseDamage(caster,unit,damage * 2,damageType,ability,100,scale)
 			else
 				CauseDamage(caster,unit,damage,damageType,ability,100,scale)
@@ -147,12 +147,12 @@ function VoidBlink(t)
 	ProjectileManager:ProjectileDodge(caster)
 	local unitGroup = FindUnitsInLine( teamNumber, caster_location, target_location, nil, 200, targetTeam, targetType, FIND_CLOSEST)
 	for k,v in pairs(unitGroup) do
-		local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster)
+		local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster)  + ability:GetSpecialValueFor("base_damage")
 		local damageType = t.ability:GetAbilityDamageType()
 		local void_level = caster:GetAbilityByIndex(3):GetLevel()
 		local scale = 100 + void_level * 25
 		if RollPercentage(30) then
-			if caster:HasModifier("modifier_zhuanshupa_state") then
+			if HasExclusive(caster) then
 				CauseDamage(caster,v,damage * 2,damageType,ability,100,scale)
 			else
 				CauseDamage(caster,v,damage,damageType,ability,100,scale)
@@ -171,7 +171,7 @@ function ClustersStars( t )
 	local void_level = t.ability:GetLevel()
 	local scale = 100 + void_level * 25
 	local damage = caster:GetAverageTrueAttackDamage(caster) * scale * 0.01
-	if caster:HasModifier("modifier_zhuanshupa_state") then
+	if HasExclusive(caster) then
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_clusters_stun", nil)
 		CauseDamage(caster,target,damage,DAMAGE_TYPE_PHYSICAL,ability,100,200)
 	end
@@ -220,7 +220,7 @@ function ShadowRiftGarrotte(t)
 				local void_level = caster:GetAbilityByIndex(3):GetLevel()
 				local scale = 100 + void_level * 25
 				if RollPercentage(30) then
-					if caster:HasModifier("modifier_zhuanshupa_state") then
+					if HasExclusive(caster) then
 						CauseDamage(caster,v,damage * 2,damageType,ability,100,scale)
 					else
 						CauseDamage(caster,v,damage,damageType,ability,100,scale)

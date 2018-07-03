@@ -34,7 +34,7 @@ function OnIntervalThink( t )
     elseif abilityIndex == 3 then
         local percent = ability:GetSpecialValueFor("percent")
         if target:IsRealHero() then
-            if target:GetHealthPercent() < percent then
+            if target:GetHealthPercent() < percent and target:HasModifier("modifier_reapers_scythe_datadriven") == false then
                 ability:ApplyDataDrivenModifier(caster,target,"modifier_reapers_scythe_datadriven",nil)
                 local particlestart = CreateParticle( "particles/units/heroes/hero_necrolyte/necrolyte_scythe.vpcf", PATTACH_CUSTOMORIGIN, caster )
                 ParticleManager:SetParticleControl( particlestart, 0, target:GetAbsOrigin() )

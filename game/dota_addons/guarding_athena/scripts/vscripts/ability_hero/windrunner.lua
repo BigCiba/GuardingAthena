@@ -15,7 +15,7 @@ function MultipleAttack( t )
 	local ability = t.ability
     local speed = 1000
 	local particleName = "particles/skills/moonstar_gold.vpcf"
-    if caster:HasModifier("multishot_buff") then
+    if HasExclusive(caster) then
         unitGroup = GetUnitsInRadius( caster, ability, target:GetAbsOrigin(), 400 )
         local Maxcount = ability:GetSpecialValueFor("count")
         local count = 0
@@ -34,7 +34,7 @@ function ChaseMoonAndStarDamage( t )
     local target = t.target
     local ability = t.ability
     local damage = caster:GetAverageTrueAttackDamage(caster)
-    if caster:HasModifier("multishot_buff") then
+    if HasExclusive(caster) then
         damage = damage + caster:GetAgility() * 3
     end
     local damageType = ability:GetAbilityDamageType()
@@ -158,7 +158,7 @@ function ArrowStromStart( t )
     ParticleManager:SetParticleControl( fxIndex, 6, attackPoint_2 )
     EmitSoundOn("Hero_DrowRanger.Attack",t.caster)
     Timers:CreateTimer(0.5,function()
-        if caster:HasModifier("multishot_buff") then 
+        if HasExclusive(caster) then 
             ability:ApplyDataDrivenModifier(caster, caster, "modifier_arrow_strom", {duration=8})
         else
             ability:ApplyDataDrivenModifier(caster, caster, "modifier_arrow_strom", {duration=4})
@@ -195,7 +195,7 @@ function ArrowStrom( t )
     local dy = castDistance * math.sin( angle )
     local dx = castDistance * math.cos( angle )
     local attackPoint = Vector( 0, 0, 0 )
-    if caster:HasModifier("multishot_buff") then
+    if HasExclusive(caster) then
         trackUnits = GetUnitsInRadius( caster, ability, caster:GetAbsOrigin(), 1200 )
         if #trackUnits > 0 then
             for k, v in pairs( trackUnits ) do

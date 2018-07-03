@@ -6,22 +6,37 @@ function minjiejingtong( keys )
 		stackcount = 1
 	end
 	local attack_rate = caster:GetBaseAttackTime() - stackcount
-	if attack_rate < 0.4 then
+	--[[if attack_rate < 0.4 then
 		attack_rate = 0.4
-	end
-	caster:SetBaseAttackTime(attack_rate)
+	end]]
+    caster:SetBaseAttackTime(attack_rate)
 	Timers:CreateTimer(5,function (  )
-		caster:SetBaseAttackTime(1.4)
-	end)
+		caster:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
+    end)
+    if HasExclusive(caster) then
+        local illusions = caster.mirror_image_illusions
+        if illusions then
+            for k,v in pairs(illusions) do
+                if not v:IsNull() then 
+                    v:SetBaseAttackTime(attack_rate)
+                    ability:ApplyDataDrivenModifier(caster, v, "modifier_minjiejingtong", {duration=5})
+                    Timers:CreateTimer(5,function ()
+                        if not v:IsNull() then
+                            v:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
+                        end
+                    end)
+                end
+            end
+        end
+    end
 end
 function SpaceCut( keys )
 	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
+    local ability = keys.ability
+    local target_point = keys.target_points[1]
 	local caster_location = caster:GetAbsOrigin()
-	local target_location = target:GetAbsOrigin()
 	local vector = caster:GetForwardVector()
-	local point = target_location + vector * 100
+	local point = target_point + vector * 100
 	SetUnitPosition(caster, point)
 	local teamNumber = caster:GetTeamNumber()
 	local targetTeam = ability:GetAbilityTargetTeam()
@@ -34,7 +49,6 @@ function SpaceCut( keys )
         local duration = damage / v:GetMaxHealth() * 10
         ability:ApplyDataDrivenModifier(caster, v, "modifier_space_cut_debuff", {duration = duration})
     end
-    --local find_illusions = FindUnitsInRadius(teamNumber, caster_location, caster, 1200, DOTA_UNIT_TARGET_TEAM_FRIENDLY, targetType, targetFlag, 0, false)
 	if not caster.mirror_image_illusions then
         caster.mirror_image_illusions = {}
     end
@@ -44,11 +58,6 @@ function SpaceCut( keys )
             table.remove(illusions, k)
         end
     end
-    --[[for k, v in pairs( find_illusions ) do
-        if v:IsIllusion() then
-        	table.insert(illusions,v)
-        end
-    end]]--
     if #illusions > 0 then
 	    for k, v in pairs( illusions ) do
             if not v:IsNull() then
@@ -57,7 +66,7 @@ function SpaceCut( keys )
                     local fxIndex = CreateParticle( "particles/skills/space_cut_blade.vpcf", PATTACH_ABSORIGIN_FOLLOW, v )
                     local illusion_location = v:GetAbsOrigin()
                     local illusion_vector = v:GetForwardVector()
-                    local point = target_location + vector * 100
+                    local point = target_point + vector * 100
                     SetUnitPosition(v, point)
                     local unitGroup = FindUnitsInLine( teamNumber, illusion_location, point, nil, 100, targetTeam, targetType, FIND_CLOSEST)
                     for k, v in pairs( unitGroup ) do
@@ -70,10 +79,9 @@ function SpaceCut( keys )
 end
 function SpaceCutIllusion( keys )
 	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
+    local ability = keys.ability
+    local target_point = keys.target_points[1]
 	local caster_location = caster:GetAbsOrigin()
-	local target_location = target:GetAbsOrigin()
 	local teamNumber = caster:GetTeamNumber()
 	local targetTeam = ability:GetAbilityTargetTeam()
 	local targetType = ability:GetAbilityTargetType()
@@ -88,7 +96,7 @@ function SpaceCutIllusion( keys )
     if #illusions > 0 then
 	    for k, v in pairs( illusions ) do
 	    	ability:ApplyDataDrivenModifier(caster, v, "modifier_space_cut", nil)
-	    	v:SetForwardVector((target_location - caster_location):Normalized())
+	    	v:SetForwardVector((target_point - caster_location):Normalized())
 	        v:StartGesture(ACT_DOTA_ATTACK_EVENT)
 	    end
 	end
@@ -159,6 +167,20 @@ function MirrorImage( event )
 
         illusion:SetAngles( casterAngles.x, casterAngles.y, casterAngles.z )
         
+        -- Set the unit as an illusion
+        -- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
+        illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = duration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+        ability:ApplyDataDrivenModifier(caster, illusion, "modifier_images_buff", nil)
+        --illusion:AddNewModifier(nil, nil, "modifier_phased", {duration = duration})
+        
+        -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
+        illusion:MakeIllusion()
+        -- Set the illusion hp to be the same as the caster
+        illusion:SetHealth(caster:GetHealth())
+
+        -- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
+        table.insert(caster.mirror_image_illusions, illusion)
+        
         -- Level Up the unit to the casters level
         local casterLevel = caster:GetLevel()
         for i=1,casterLevel-1 do
@@ -189,19 +211,6 @@ function MirrorImage( event )
             end
         end
 
-        -- Set the unit as an illusion
-        -- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
-        illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = duration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
-        ability:ApplyDataDrivenModifier(caster, illusion, "modifier_images_buff", nil)
-        --illusion:AddNewModifier(nil, nil, "modifier_phased", {duration = duration})
-        
-        -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
-        illusion:MakeIllusion()
-        -- Set the illusion hp to be the same as the caster
-        illusion:SetHealth(caster:GetHealth())
-
-        -- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
-        table.insert(caster.mirror_image_illusions, illusion)
 
     end
 end
@@ -240,6 +249,20 @@ function BladeDanceDamage( keys )
     	ability:ApplyDataDrivenModifier(caster, caster, "modifier_blade_dance_attack_speed", nil)
     	caster:SetModifierStackCount("modifier_blade_dance_attack_speed", caster, 1)
     end]]--
+end
+function PhantomSwordDance( t )
+    local ability = t.ability
+	local caster = t.caster
+    local target = t.target
+    local count = 0
+    Timers:CreateTimer(function()
+        if count < 500 then
+            local fxIndex = CreateParticle( "particles/heroes/juggernaut/phantom_sword_dance.vpcf", PATTACH_ABSORIGIN, caster )
+            ParticleManager:SetParticleControlForward( fxIndex, 0, Vector(RandomFloat(-1,1),RandomFloat(-1,1),RandomFloat(-1,1)) )
+            count = count + 1
+            return 0.01
+        end
+    end)
 end
 function jianrenfengbao( keys )
 	local ability = keys.ability

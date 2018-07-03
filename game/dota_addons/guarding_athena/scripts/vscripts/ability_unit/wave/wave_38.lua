@@ -82,7 +82,7 @@ function OnLightCreated(t)
 		stackcount = caster:GetModifierStackCount("modifier_electrostatic_field_buff", caster)
 	end
     local damage = ability:GetSpecialValueFor("damage") * (1 + stackcount * 0.01)
-	CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL )
+	CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL,ability )
 	target:RemoveModifierByName("modifier_lightning_attack_buff")
 	Timers:CreateTimer(0.25,function()
 		local current
@@ -214,17 +214,25 @@ end
 function ThunderWrath( keys )
     local caster = keys.caster
     local ability = keys.ability
-    local damage = ability:GetSpecialValueFor("damage")
+	local damage = ability:GetSpecialValueFor("damage")
+	local cdIncrease = ability:GetSpecialValueFor("cooldown_increase")
     local caster_location = caster:GetAbsOrigin()
     local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster_location, caster, 2000, ability:GetAbilityTargetTeam(), ability:GetAbilityTargetType(), ability:GetAbilityTargetFlags(), 0, false)
     for i,unit in pairs(targets) do
         CauseDamage(caster, unit, damage, DAMAGE_TYPE_MAGICAL)
         ability:ApplyDataDrivenModifier(caster, unit, "modifier_thunder_wrath_debuff", nil)
         for i=1,5 do
-            if unit:GetAbilityByIndex(i-1) then
-                local ability_cd = unit:GetAbilityByIndex(i-1)
-                local cd = ability_cd:GetCooldownTimeRemaining() + 30
-                ability_cd:StartCooldown(cd)
+			if unit:GetAbilityByIndex(i-1) then
+				if not ability:IsToggle() then
+					if ability:IsCooldownReady() then
+						local ability_cd = unit:GetAbilityByIndex(i-1)
+						ability_cd:StartCooldown(ability_cd:GetCooldownTime())
+					else
+						local ability_cd = unit:GetAbilityByIndex(i-1)
+						local cd = ability_cd:GetCooldownTimeRemaining() + cdIncrease
+						ability_cd:StartCooldown(cd)
+					end
+				end
             end
         end
         EmitSoundOn("Hero_Zuus.LightningBolt", unit)
@@ -305,7 +313,10 @@ function GodBody( t )
 	if damage > max_damage then
 		Heal( caster, damage - max_damage, 0, false )
 		local ability_crash = caster:FindAbilityByName("lightning_crash")
-		OnCrashCast( {caster=caster,unit=target,attacker=caster,ability=ability_crash} )
+		if ability:IsCooldownReady() then
+			OnCrashCast( {caster=caster,unit=target,attacker=caster,ability=ability_crash} )
+			ability:StartCooldown(2)
+		end
 	end
 end
 function ThunderWrathAI( keys )

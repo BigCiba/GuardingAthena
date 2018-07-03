@@ -96,8 +96,8 @@ function AlienObsidianStar( t )
                     local distance = (vector_distance):Length2D()
                     local direction = (vector_distance):Normalized()
                     local speed = distance / 10
-                    unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
-                    unit:SetAbsOrigin(unit_location + direction * speed)
+                    --unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
+                    --unit:SetAbsOrigin(unit_location + direction * speed)
                     CauseDamage(caster, unit, damage - ((distance / 400) * damage), DAMAGE_TYPE_PURE)
                 else
                     table.remove(unitGroup,_)
@@ -105,6 +105,9 @@ function AlienObsidianStar( t )
             end
             time = time + 1
             return 0.03
+        else
+            local unitGroup = GetUnitsInRadius( caster, ability, point, 400 )
+            CauseDamage(caster, unitGroup, damage * 10, DAMAGE_TYPE_PURE)
         end
     end)
 end

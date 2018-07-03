@@ -14,7 +14,7 @@ function OnCreated( t )
 	elseif abilityIndex == 4 then
 		caster.ultimate = ability:GetSpecialValueFor("damage")
 		caster.bonusbuff = ability:GetSpecialValueFor("attack")
-		if caster:HasModifier("modifier_zhuanshufs") then
+		if HasExclusive(caster) then
 			caster.hasitem = 0.5
 		else
 			caster.hasitem = 1
@@ -290,7 +290,7 @@ function CastAbility1( t )
 	local duration = #finalGroup * 0.1
 	caster:AddNewModifier(nil, nil, "modifier_phased", {duration=duration})
 	ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_1",{duration=duration})
-	if caster:HasModifier("modifier_zhuanshufs") then
+	if HasExclusive(caster) then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_1_2",{duration=duration})
 	end
 	--caster:AddNoDraw()

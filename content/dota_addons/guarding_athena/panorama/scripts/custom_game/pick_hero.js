@@ -62,11 +62,13 @@ allHeroes[9] = "npc_dota_hero_crystal_maiden"
 allHeroes[10] = "npc_dota_hero_templar_assassin"
 allHeroes[11] = "npc_dota_hero_nevermore"
 allHeroes[12] = "npc_dota_hero_monkey_king"
+allHeroes[13] = "npc_dota_hero_spectre"
 var lockHeroes = []
 var unlockHeroes = []
 var lockImages = []
 lockHeroes[0] = "npc_dota_hero_nevermore"
 lockHeroes[1] = "npc_dota_hero_templar_assassin"
+lockHeroes[2] = "npc_dota_hero_spectre"
 var allDifficulty = []
 allDifficulty[0] = "EasyButton"
 allDifficulty[1] = "NormalButton"
@@ -99,9 +101,11 @@ function OnHeroCardActive(heroname) {
     if (HeroComfirm==false) {
         GameEvents.SendCustomGameEventToServer("selection_hero_click", { "hero": heroname });
         activeHeroCard.RemoveClass("SelectColor");
-        activePreview.style.visibility = "collapse";
-        heroPreviews[heroname].style.visibility = "visible";
-        activePreview = heroPreviews[heroname];
+        //activePreview.style.visibility = "collapse";
+        //heroPreviews[heroname].style.visibility = "visible";
+        //activePreview = heroPreviews[heroname];
+        DeleteChildrenWithClass($("#HeroesScene"), "HeroScene");
+        $("#HeroesScene").BCreateChildren('<DOTAScenePanel class="HeroScene" unit="' + heroname + '" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>', false, false );
         $("#HeroName").text = $.Localize("#"+heroname);
         $("#"+heroname).AddClass("SelectColor");
         activeHeroCard = $("#"+heroname);
@@ -214,12 +218,15 @@ function PickHeroInit(){
     for (var hero of allHeroes) {
         AddHeroCardEvents(hero);
         var previewStyle = "width:600px;height:600px;";
-        var preview = $.CreatePanel("Panel", $("#HeroesScene"), "");
-        preview.BCreateChildren('<DOTAScenePanel style="width: 1060px; height: 1060px;" unit="' + hero + '"/>', false, false );
-        preview.AddClass("HeroScene");
-        preview.style.visibility = "collapse";
-        heroPreviews[hero] = preview;
+        //var preview = $.CreatePanel("Panel", $("#HeroesScene"), "");
+        //preview.BCreateChildren('<DOTAScenePanel style="width: 1060px; height: 1060px;" unit="' + hero + '" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>', false, false );
+        //preview.AddClass("HeroScene");
+        //preview.style.visibility = "collapse";
+        //heroPreviews[hero] = preview;
     }
+    var payButton = $("#PassWordButton")
+    var steam = CustomNetTables.GetTableValue("playerInfo",Game.GetLocalPlayerID()).steamid;
+    payButton.BCreateChildren("<Label html='true' text='&lt;a href=&quot;http://bigciba.applinzi.com/GAshop/index.php?steamid="+steam+"&quot;&gt;点击购买&lt;a&gt;' class='HtmlText'/>", false, false );
     //添加难度按钮事件
     for (var button of allDifficulty) {
         AddButtonEvents(button);
@@ -232,8 +239,8 @@ function PickHeroInit(){
         lockImages[lockHero] = preview;
     }
     //初始英雄
-    heroPreviews["npc_dota_hero_omniknight"].style.visibility = "visible";
-    activePreview = heroPreviews["npc_dota_hero_omniknight"];
+    //heroPreviews["npc_dota_hero_omniknight"].style.visibility = "visible";
+    //activePreview = heroPreviews["npc_dota_hero_omniknight"];
     currentHero = "npc_dota_hero_omniknight";
     activeDifficulty = $("#NormalButton");
     activeHeroCard = $("#npc_dota_hero_omniknight");
@@ -366,9 +373,16 @@ function VIPUnlock(data){
     unlockHeroes[0] = "npc_dota_hero_nevermore";
     lockImages["npc_dota_hero_templar_assassin"].style.visibility = "collapse";
     unlockHeroes[1] = "npc_dota_hero_templar_assassin";
+    lockImages["npc_dota_hero_spectre"].style.visibility = "collapse";
+    unlockHeroes[2] = "npc_dota_hero_spectre";
+}
+function Unlock(data){
+    lockImages[data.heroName].style.visibility = "collapse";
+    unlockHeroes.push(data.heroName);
 }
 (function () {
     GameEvents.Subscribe( "vip", VIPUnlock);
+    GameEvents.Subscribe( "unlock", Unlock);
     if (Game.GameStateIsAfter( DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME ))
     {
         $("#HeroSelectionBackground").style.visibility = "collapse";

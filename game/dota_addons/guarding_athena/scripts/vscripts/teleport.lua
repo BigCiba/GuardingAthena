@@ -1,20 +1,27 @@
 function PracticeTeleport( trigger )
 	local caster = trigger.activator
 	local caller = trigger.caller:GetName()
-	for i=1,4 do
-	 	if caller == "practice_teleport_"..tostring(i) then
-	 		local ent = Entities:FindByName(nil,"practice_"..tostring(i))
-	 		local point=ent:GetAbsOrigin()
-	 		SetUnitPosition(trigger.activator, point)
-	 		trigger.activator:Stop()
-	 		PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
-	 		Timers:CreateTimer(0.1,
-			    function()
-			        PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
-			    end)
-	 		caster.onthink = true
-	 		break
-	 	end
+	if (caster:GetAbsOrigin() - trigger.caller:GetAbsOrigin()):Length2D() < 150 then
+		for i=1,4 do
+			if caller == "practice_teleport_"..tostring(i) then
+				local ent = Entities:FindByName(nil,"practice_"..tostring(i))
+				local point=ent:GetAbsOrigin()
+				trigger.activator:Stop()
+				Timers:CreateTimer(0.1,
+				function()
+					PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
+				end)
+				SetUnitPosition(trigger.activator, point)
+				targetCaller = Entities:FindByName(nil,"practice_"..tostring(i))
+				PracticeStart( {activator=caster,caller=targetCaller} )
+				Timers:CreateTimer(4,function ()
+					targetCaller.used = targetCaller.used - 1
+				end)
+				PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
+				--caster.onthink = true
+				break
+			end
+		end
 	end
 end
 -- 转生
@@ -56,7 +63,7 @@ function HeroReborn( trigger )
 		if GuardingAthena.iapetos == nil then
 			local ent = Entities:FindByName(nil,"boss_lapetos_reborn")
 	 		local point = ent:GetAbsOrigin()
-	 		SetUnitPosition(caster, point)
+	 		SetUnitPosition(caster, point, true)
 	 		caster:Stop()
 			SetRegionLimit(caster,Entities:FindByName(nil,"reborn_room"))
 			SetCamera(playerid,caster)
@@ -65,6 +72,7 @@ function HeroReborn( trigger )
 				unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
 				unit:CreatureLevelUp(reborn_times)
 				unit.caller = caster
+				caster.iapetos = unit
 				SetRegionLimit(unit,Entities:FindByName(nil,"reborn_room"))
 				for i=1,16 do
 					if unit:GetAbilityByIndex(i-1) then
@@ -78,7 +86,7 @@ function HeroReborn( trigger )
 	end
 end
 function RebornRoom( trigger )
-	local caster = trigger.activator
+	--[[local caster = trigger.activator
 	local caller = trigger.caller
 	if GuardingAthena.iapetos ~= nil then
 		local iapetos = GuardingAthena.iapetos
@@ -101,5 +109,5 @@ function RebornRoom( trigger )
 				return 1
 			end
 		end)
-	end
+	end]]
 end

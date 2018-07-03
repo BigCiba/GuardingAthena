@@ -1,12 +1,12 @@
 function ThumpCreate( t )
     local target = t.target
     local ability = t.ability
-    target.percent_bonus_damage = target.percent_bonus_damage - 80
+    SetUnitDamagePercent(caster,-80)
 end
 function ThumpRemove( t )
     local target = t.target
     local ability = t.ability
-    target.percent_bonus_damage = target.percent_bonus_damage + 80
+    SetUnitDamagePercent(caster,80)
 end
 function TrollBlinkStart( keys )
     local caster = keys.caster

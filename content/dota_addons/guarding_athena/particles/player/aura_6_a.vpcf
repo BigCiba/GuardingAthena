@@ -64,7 +64,6 @@
 			_class = "C_INIT_CreateWithinSphere"
 			m_fRadiusMax = 24.0
 			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
-			m_nControlPointNumber = 1
 		},
 		{
 			_class = "C_INIT_InitialVelocityNoise"

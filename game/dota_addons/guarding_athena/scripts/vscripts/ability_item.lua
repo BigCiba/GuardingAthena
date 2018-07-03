@@ -186,74 +186,7 @@ function invoker_chaos_meteor_datadriven_on_spell_start(keys)
         end
     end)
 end
-function BattlefuryRingAbsorb( keys )
-    local caster = keys.caster
-    local caster_location = caster:GetAbsOrigin()
-    local ability = keys.ability
-    local aura_radius = ability:GetSpecialValueFor("aura_radius")
-    local aura_damage = ability:GetSpecialValueFor("aura_damage") * 0.01
-    local aura_interval = ability:GetSpecialValueFor("aura_interval")
-    local bonus_damage = ability:GetSpecialValueFor("bonus_damage")
-    caster.percent_bonus_damage = caster.percent_bonus_damage + bonus_damage
-    Timers:CreateTimer(function ()
-        caster_location = caster:GetAbsOrigin()
-        local unitGroup = GetUnitsInRadius( caster, ability, caster_location, aura_radius )
-        local interval = aura_interval - 0.2 * (100 - caster:GetHealthPercent()) / 10
-        local absorbAmount = 0
-        for i,unit in pairs(unitGroup) do
-            local damageValue = unit:GetHealth() * 0.01
-            CauseDamage(caster, unit, damageValue, DAMAGE_TYPE_PURE, ability)
-            absorbAmount = absorbAmount + damageValue
-            local bonusAttack = unit:GetAttackDamage() * 0.01
-            if unit:IsRangedAttacker() == false then
-                if string.find(unit:GetUnitName(), "guai_") then
-                    bonusAttack = bonusAttack / ((Spawner.gameRound^2 - Spawner.gameRound + 100) * 0.01)
-                end
-            end
-            bonusAttack = math.floor(bonusAttack)
-            AddModifierStackCount( caster, caster, ability, "modifier_meteorite_ring_buff",bonusAttack,10,true)
-        end
-        caster:Heal(absorbAmount,nil)
-        PropertySystem( caster, 3, 1)
-        return interval
-    end)
-end
-function BattlefuryMeteoriteRing( keys )
-    local caster = keys.caster             --获取施法者
-    local ability = keys.ability
-    local caster_location = caster:GetAbsOrigin()
-    local ability = keys.ability
-    local skill_radius = ability:GetSpecialValueFor("skill_radius")
-    local skill_damage = ability:GetSpecialValueFor("skill_damage")
-    local suicide = ability:GetSpecialValueFor("suicide")
-    local healthPercent = caster:GetHealthPercent()
-    local damage = (caster:GetStrength() + caster:GetAgility() + caster:GetIntellect()) * skill_damage * GameRules:GetDifficulty() * (1 + Spawner.gameRound * 0.01)
-    local absorbAmount = 0
-    local unitGroup = GetUnitsInRadius( caster, ability, caster_location, skill_radius )
-    for i,unit in pairs(unitGroup) do
-        local absorbHealth = unit:GetMaxHealth() * 0.02
-        absorbAmount = absorbAmount + absorbHealth
-        CauseDamage(caster, unit, absorbHealth, DAMAGE_TYPE_PURE,ability)
-    end
-    for i,unit in pairs(unitGroup) do
-        CauseDamage(caster, unit, damage + absorbAmount, DAMAGE_TYPE_PURE,ability)
-    end
-    if caster:HasModifier("modifier_war_honor") then
-        local ability = caster:FindAbilityByName("war_honor")
-        local damagetaken = caster:GetHealth() * 0.9
-        local table = {caster=caster,ability=ability,DamageTaken=damagetaken}
-        WarHonor(table)
-    end
-    if healthPercent > suicide then
-        caster:SetHealth(caster:GetMaxHealth() * (healthPercent - suicide) * 0.01)
-    else
-        CauseDamage(caster, caster, caster:GetMaxHealth() * 0.5, DAMAGE_TYPE_PURE,ability)
-    end
-    caster.percent_bonus_damage = caster.percent_bonus_damage + 50
-    Timers:CreateTimer(3,function ()
-        caster.percent_bonus_damage = caster.percent_bonus_damage - 50
-    end)
-end
+
 function item_refresher1_on_spell_start(keys)
     --Refresh all abilities on the caster.
     for i=0, 15, 1 do  --The maximum number of abilities a unit can have is currently 16.
@@ -314,7 +247,7 @@ function ZhuanShuRB( keys )
         }
         ApplyDamage( centerdamageTable )
     end
-    local fxIndex = CreateParticle( "particles/skills/space_phase.vpcf", PATTACH_CUSTOMORIGIN, caster )
+    local fxIndex = CreateParticle( "particles/heroes/chronos_magic/space_phase.vpcf", PATTACH_CUSTOMORIGIN, caster )
     ParticleManager:SetParticleControl( fxIndex, 0, attackPoint )
     Timers:CreateTimer(2,
         function()
@@ -341,6 +274,26 @@ function DowngradeTeleport( t )
         new_ability:SetLevel(ability:GetLevel())
         caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
         caster:RemoveAbility("teleport_phase_up")
+    end
+end
+function UpgradeDestoryHit( t )
+    local caster = t.caster
+    local ability = caster:FindAbilityByName("destory_hit")
+    if ability then
+        new_ability = caster:AddAbility("destory_hit_up")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+        caster:RemoveAbility("destory_hit")
+    end
+end
+function DowngradeDestoryHit( t )
+    local caster = t.caster
+    local ability = caster:FindAbilityByName("destory_hit_up")
+    if ability then
+        new_ability = caster:AddAbility("destory_hit")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
+        caster:RemoveAbility("destory_hit_up")
     end
 end
 function UpgradeDarkFire( t )
@@ -460,6 +413,37 @@ function GoldFruit( keys )
     local level = GuardingAthena.clotho_lv
     PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
     caster.gold_rate = caster.gold_rate + 0.1
+end
+function FenLie( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local bonus_attack = ability:GetSpecialValueFor("bonus_attack")
+    local unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),700)
+    local finalGroup = {}
+    for i,v in ipairs(unitGroup) do
+        if i <= bonus_attack then
+            table.insert( finalGroup, v )
+            CreateTrackingProjectile(caster,v,ability,caster:GetRangedProjectileName(),1200)
+        else
+            break
+        end
+    end
+    if #finalGroup < bonus_attack then
+        for i=1,bonus_attack - #finalGroup do
+            for k,v in pairs(unitGroup) do
+                CreateTrackingProjectile(caster,v,ability,caster:GetRangedProjectileName(),1200)
+            end
+        end
+    end
+end
+function OnProjectileHitUnit( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local damage = caster:GetAverageTrueAttackDamage(damage)
+    local damageType = ability:GetAbilityDamageType()
+    CauseDamage(caster,target,damage,damageType,ability)
 end
 function RangeCheck( keys )
     local caster = keys.caster
@@ -598,13 +582,19 @@ end
 function MeleeCheck( keys )
     local caster = keys.caster
     local ability = keys.ability
-    if caster:IsRangedAttacker() then
-        caster:RemoveModifierByName("modifier_item_fu_cleave")
-    else
-        if not caster:HasModifier("modifier_item_fu_cleave") then
-            ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_fu_cleave", nil )
+    caster.MeleeCheckTimer = Timers:CreateTimer(function ()
+        if caster:IsRangedAttacker() then
+            caster:RemoveModifierByName("modifier_item_fu_cleave")
+        else
+            if not caster:HasModifier("modifier_item_fu_cleave") then
+                ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_fu_cleave", nil )
+            end
         end
-    end
+        return 1
+    end)
+end
+function OnFuDestory( t )
+    Timers:RemoveTimer(t.caster.MeleeCheckTimer)
 end
 local timeTable = {
             am0 = 0,

@@ -56,7 +56,7 @@ end
 function DarkFire( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if caster:HasModifier("modifier_zhuanshulina") then
+	if HasExclusive(caster) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
@@ -117,7 +117,7 @@ end
 function DarkFireUp( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if caster:HasModifier("modifier_zhuanshulina") then
+	if HasExclusive(caster) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
@@ -188,7 +188,7 @@ end
 function FireButterfly( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if caster:HasModifier("modifier_zhuanshulina") then
+	if HasExclusive(caster) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
@@ -272,7 +272,7 @@ end
 function Ignite( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if caster:HasModifier("modifier_zhuanshulina") then
+	if HasExclusive(caster) then
 		ignite_duration = 10
 	end
 	local target = keys.target
@@ -323,7 +323,7 @@ end
 function MeteorStorm( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if caster:HasModifier("modifier_zhuanshulina") then
+	if HasExclusive(caster) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability

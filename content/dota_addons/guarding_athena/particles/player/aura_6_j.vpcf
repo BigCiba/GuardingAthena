@@ -49,7 +49,6 @@
 		},
 		{
 			_class = "C_OP_PositionLock"
-			m_nControlPointNumber = 1
 			m_flJumpThreshold = 50.0
 			m_flRange = 64.0
 			m_bLockRot = true
@@ -63,7 +62,6 @@
 	[
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 1
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -79,8 +77,12 @@
 			m_vecOutputMin = [ 100.0, 100.0, -64.0 ]
 			m_flNoiseScaleLoc = 0.0002
 			m_flOffset = 144.0
-			m_nControlPointNumber = 1
 			m_bLocalSpace = true
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 64.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 64.0 ]
 		},
 	]
 	m_Emitters = 
@@ -95,7 +97,6 @@
 	[
 		{
 			_class = "C_OP_AttractToControlPoint"
-			m_nControlPointNumber = 1
 			m_fForceAmount = -150.0
 			m_fFalloffPower = 0.05
 		},

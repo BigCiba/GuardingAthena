@@ -113,7 +113,6 @@
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 1
 		},
 	]
 	m_Emitters = 

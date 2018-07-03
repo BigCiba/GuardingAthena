@@ -1,4 +1,4 @@
-TIME_BOSS_REBORN = 120
+TIME_BOSS_REBORN = 60
 GOLD_USED_TABLE ={}
 SF_USED_TABLE ={}
 HERO_TABLE = {}
@@ -41,6 +41,9 @@ function GuardingAthena:InitGameMode()
 	self.Players = {}
 	self.GameStartTime = 0
 	self.is_cheat = false
+	self.timeStamp = nil
+	self.randomStr = nil
+	self.signature = nil
 
 	if not self.entAthena then
 		--print( "Athena entity not found!" )
@@ -135,6 +138,20 @@ function GuardingAthena:InitGameMode()
 	GameMode:SetModifyExperienceFilter( Dynamic_Wrap( GuardingAthena, "ModifyExperienceFilter" ), self )
 	GameMode:SetModifyGoldFilter( Dynamic_Wrap( GuardingAthena, "ModifyGoldFilter" ), self )
 	GameMode:SetThink("DetectCheatsThinker")
+	-- 设定平衡常数
+	--[[GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_DAMAGE,1)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP,20)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP_REGEN_PERCENT,0.003)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT,0)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_DAMAGE,1)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ARMOR,0.17)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED,1)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT,0)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE,1)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA,11)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN_PERCENT,0.002)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT,0)
+	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT,0)]]
 	--GameMode:SetAbilityTuningValueFilter( Dynamic_Wrap( GuardingAthena, "AbilityTuningValueFilter" ), self )
 
 	--监听事件
@@ -164,6 +181,8 @@ function GuardingAthena:InitGameMode()
 	CustomGameEventManager:RegisterListener( "UI_BuyItem", UI_BuyItem )
 	CustomGameEventManager:RegisterListener( "UI_BuyReward", UI_BuyReward )
 	
+	--玩家可买物品最大数目，不限制
+	SendToServerConsole("dota_max_physical_items_purchase_limit 9999")
 	--GameRules:GetGameModeEntity():SetThink( "OnThink", self, 30 ) 
 end
 --读取游戏配置
@@ -211,13 +230,13 @@ function GuardingAthena:ReadGameConfiguration()
 	for k,v in pairs(costInfo) do
 		if type(v) ~= "number" then
 			costTable[k] = {}
-			costTable[k] = v.ItemCost
+			costTable[k] = v.ItemCost or 0
 		end
 	end
 	for k,v in pairs(costInfo) do
 		if type(v) ~= "number" then
 			refreshTable[k] = {}
-			refreshTable[k] = v.ItemStockTime
+			refreshTable[k] = v.ItemStockTime or 0
 		end
 	end
 	for k,v in pairs(costInfo) do
@@ -247,6 +266,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 		--初始化英雄数据
 		HeroState:Init()
 		Quest:Init()
+		Attributes:Init()
 	end
 	
 	--选择英雄阶段

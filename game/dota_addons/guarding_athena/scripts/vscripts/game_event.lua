@@ -23,6 +23,11 @@ function GuardingAthena:OnEntityKilled( event )
 		PlayerResource:SetCustomBuybackCost(playerID, cost)
 		-- 设定区域限制解除
 		killedUnit.limitRegion = nil
+		if killedUnit.iapetos then
+			GuardingAthena.iapetos:RemoveSelf()
+			GuardingAthena.iapetos = nil
+			killedUnit.iapetos = nil
+		end
 	end
 	-- 雅典娜重生
 	if killedUnit == self.entAthena then
@@ -57,7 +62,8 @@ function GuardingAthena:OnEntityKilled( event )
 			Timers:CreateTimer(10,function ()
 		    	GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 				if self.is_cheat == false then
-					giveScore()
+					--giveScore()
+					Server:UpdataScore()
 				end
 		    end)
 			HeroState:SendFinallyData()
@@ -123,7 +129,7 @@ function GuardingAthena:OnEntityKilled( event )
 	    for _,unit in ipairs(units) do
 	    	PropertySystem(unit,3,RandomInt(5, 10))
 	    end
-	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
+	    Timers:CreateTimer(120,function ()
 	    	local point = Entities:FindByName( nil, "boss_treant_reborn" ):GetAbsOrigin()
 	    	PrecacheUnitByNameAsync("boss_treant",
 			    function()
@@ -237,13 +243,18 @@ function GuardingAthena:OnConnectFull(keys)
 	self.Players[keys.PlayerID] = playerEntity
 	local entIndex = keys.index+1
 	-- The Player entity of the joining user
-	local ply = EntIndexToHScript(entIndex)
+	local player = EntIndexToHScript(entIndex)
 
 	-- The Player ID of the joining player
-	local playerID = ply:GetPlayerID()
-
+	local playerID = player:GetPlayerID()
+	local steamid = PlayerResource:GetSteamAccountID(playerID)
+	CustomNetTables:SetTableValue( "playerInfo", tostring(playerID), {steamid=tostring(steamid)} )
 	-- 初始化分数
-	setScore(playerID,0)
+	--setScore(playerID,0)
+	Server:GetPlayerInfo(playerID,function()
+		--local hero = player:GetAssignedHero()
+		--hero.boss_point = player.ServerInfo.score
+	end)
 
 	GameRules:GetGameModeEntity():SetHUDVisible(8, false)
 	GameRules:GetGameModeEntity():SetHUDVisible(9, false)
@@ -287,7 +298,7 @@ function GuardingAthena:OnNPCSpawned(keys)
 		    end
 	    end)
 		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
-		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false then
+		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false and self.is_cheat== false then
 			spawnedUnit:AddAbility("singlehero")
 			spawnedUnit:FindAbilityByName("singlehero"):SetLevel(1)
 		end
@@ -327,11 +338,42 @@ end
 -- 监听玩家选择英雄
 function GuardingAthena:OnPlayerPickHero(keys)
 	--print ('[GuardingAthena] OnPlayerPickHero')
-	--DeepPrintTable(keys)
+	--PrintTable(keys)
 	if keys.hero == "npc_dota_hero_wisp" then
 		--EntIndexToHScript(keys.heroindex):SetModelScale(0.01)
 		-- vip
-		local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
+		local count = 0
+		local heroEntity = EntIndexToHScript(keys.heroindex)
+		local player = heroEntity:GetPlayerOwner()
+		local playerID = heroEntity:GetPlayerID()
+		Timers:CreateTimer(function ( )
+			if player.ServerInfo then
+				if player.ServerInfo.vip == "1" then
+					player.gold_gift = true
+					player.potion_gift = true
+					CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
+				end
+				if player.ServerInfo.sf == "1" then
+					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_nevermore"} )
+				end
+				if player.ServerInfo.ta == "1" then
+					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_templar_assassin"} )
+				end
+				if player.ServerInfo.gold == "1" then
+					player.gold_gift = true
+				end
+				if player.ServerInfo.potion == "1" then
+					player.potion_gift = true
+				end
+			else
+				if count < 300 then
+					count = count + 1
+					return 1
+				end
+			end
+		end)
+		--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
 		req:Send(function(result)
 			local vipTable = JSON:decode(result.Body)
 			local heroEntity = EntIndexToHScript(keys.heroindex)
@@ -344,17 +386,19 @@ function GuardingAthena:OnPlayerPickHero(keys)
 					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
 				end
 			end
-		end)
+		end)]]
 		return
 	end
 	local heroEntity = EntIndexToHScript(keys.heroindex)
 	if keys.player == -1 then
 		return
 	end
-	HeroState:InitHero(heroEntity)
+	
 	local player = heroEntity:GetPlayerOwner()
-	-- 记录当前英雄
 	local playerID = heroEntity:GetPlayerID()
+	HeroState:InitHero(heroEntity)
+	Attributes:ModifyBonuses(heroEntity)
+	-- 记录当前英雄
 	HERO_TABLE[playerID + 1] = heroEntity
 	-- 垃圾v社
 	local tpScroll = heroEntity:GetItemInSlot(0)
@@ -367,11 +411,12 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
 			CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
 		else
-			CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+			local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+			--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
 		end
 	end
 	-- vip
-	local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
+	--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
 	req:Send(function(result)
 		local vipTable = JSON:decode(result.Body)
 		--PrintTable(vipTable)
@@ -380,7 +425,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 				CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
 			end
 		end
-	end)
+	end)]]
 	local playerCount = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
 	if self.creatCourier < playerCount then
 		local heroEntity = EntIndexToHScript(keys.heroindex)
@@ -412,7 +457,18 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end)
 	end
-	SendToConsole("dota_max_physical_items_purchase_limit 125")
+	-- 设定通关积分
+	local count = 0
+	Timers:CreateTimer(function ()
+		if player.ServerInfo then
+			heroEntity.boss_point = player.ServerInfo.score
+		else
+			if count < 300 then
+				count = count + 1
+				return 1
+			end
+		end
+	end)
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)
@@ -450,7 +506,18 @@ function GuardingAthena:OnPlayerChat(keys)
         if string.match(text, cheat) then
             self.is_cheat = true
         end
-    end
+	end
+	--专属
+	if text == "-givezs" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		local heroName = hero:GetUnitName()
+		hero:AddItem(CreateItem("item_"..heroName.."1", hero, hero))
+	end
+	if text == "givezs" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		local heroName = hero:GetUnitName()
+		hero:AddItem(CreateItem("item_"..heroName.."1", hero, hero))
+	end
 	--设置波数
 	if string.sub(text,0,6) == "waveto" then
 		local wave = tonumber(string.sub(text,7,string.len(text)))
@@ -473,7 +540,7 @@ function GuardingAthena:OnPlayerChat(keys)
 	end
 	if text == "point" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		hero.def_point = 10000
+		hero.def_point = 90000
 	end
 	if text == "printtbl" then
 		printtbl()
@@ -482,21 +549,21 @@ function GuardingAthena:OnPlayerChat(keys)
 		print(tostring(PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()))
 	end 
 	if text == "getdisobb" then
-		local dis = CalcDistanceBetweenEntityOBB(PlayerResource:GetPlayer(playerid):GetAssignedHero(), Entities:FindByName(nil, "boss_sandking_reborn"))
+		local dis = CalcDistanceBetweenEntityOBB(PlayerResource:GetPlayer(playerid):GetAssignedHero(), Entities:FindByName(nil, "test_entity"))
 		print(dis)
 	end 
 	if text == "getscore" then
 		updateScore(function()
+
 			print("haha")
 			print(getPlayerScore(0))
 		end)
 	end 
-	if text == "givescore" then
-		if self.is_cheat == false then
-			giveScore()
-		end
+	if text == "defpoint" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		hero.practice_point = 90000
 	end 
-	if text == "allring" then
+	if text == "-allring" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero:AddNewModifier(hero, nil, "ring_0_1", nil)
 		hero:AddNewModifier(hero, nil, "ring_0_2", nil)
@@ -537,7 +604,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		skill_2:SetLevel(20)
 		skill_3:SetLevel(20)
 		skill_4:SetLevel(8)
-		hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
+		--hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
 		hero:AddItem(CreateItem("item_dun_5", hero, hero))
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
 		hero:AddItem(CreateItem("item_npc_dota_hero_omniknight1", hero, hero))
@@ -563,6 +630,10 @@ function GuardingAthena:OnPlayerChat(keys)
 			end
 		end)
 	end
+	if text == "testpay" then
+		local ent = Entities:FindByName( nil, "athena" )
+		ent:FireOutput("OnUser2", ent, ent, ent, 0)
+	end
 	if string.sub(text,0,8) == "addskill" then
 		local unit = self.testunit
 		unit:AddAbility(string.sub(text,9,string.len(text)))
@@ -583,6 +654,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		--HeroState:SendFinallyData()
 		--CustomUI:DynamicHud_Create(-1,"HeroSelectionBackground","file://{resources}/layout/custom_game/pick_hero.xml",nil)
 		self.testmode = true
+		CustomUI:DynamicHud_Create(playerid,"MysteryShop","file://{resources}/layout/custom_game/custom_hud/mystery_shop.xml",nil)
 	end
 	--取消测试
 	if text == "untest" then
@@ -595,11 +667,20 @@ function GuardingAthena:OnPlayerChat(keys)
 		print(tostring(heroabs))
 		print(tostring(hero))
 	end
-	--设置攻击穿透
-	if string.sub(text,0,10) == "-setdamage" then
-		local attack = tonumber(string.sub(text,11,string.len(text)))
+	--放技能
+	if string.sub(text,0,10) == "useskill" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		hero.bonus_physical_damage = hero.bonus_physical_damage + attack
+		local target = Entities:FindByName(nil, "boss_clotho")
+		local t_order = 
+        {
+            UnitIndex = hero:entindex(),
+            OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
+            TargetIndex = target:entindex(),
+            AbilityIndex = hero:FindAbilityByName("clusters_stars"):entindex(),
+            Position = nil,
+            Queue = 0
+        }
+        hero:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0.1)
 	end
 	--设置攻击力
 	if string.sub(text,0,10) == "-setattack" then
@@ -632,6 +713,21 @@ function GuardingAthena:OnPlayerChat(keys)
 		if move >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseIntellect(move)
+		end
+	end
+	if string.sub(text,0,6) == "setagi" then
+		local move = tonumber(string.sub(text,7,string.len(text)))
+		if move >= 0 then
+			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+			hero:SetBaseAgility(move)
+		end
+	end
+	if string.sub(text,0,6) == "setstr" then
+		local move = tonumber(string.sub(text,7,string.len(text)))
+		if move >= 0 then
+			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+			hero:SetBaseStrength(move)
+			print("str:"..hero:GetStrength().."res:"..hero:GetMagicalArmorValue())
 		end
 	end
 	--设置最大生命

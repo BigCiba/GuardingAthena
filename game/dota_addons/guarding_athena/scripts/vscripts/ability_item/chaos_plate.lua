@@ -29,7 +29,7 @@ function OnCreated( t )
             return damage
         end
     end
-    caster.percent_bonus_damage = caster.percent_bonus_damage + ability:GetSpecialValueFor("damage_deepen")
+    caster.percent_reduce_damage = caster.percent_reduce_damage + ability:GetSpecialValueFor("damage_reduce")
     caster.chaos_plate_timer = Timers:CreateTimer(function ()
         ClearBuff(caster,"debuff")
         ability.shield_health = caster:GetMaxHealth() * sheildPercent
@@ -42,7 +42,7 @@ end
 function OnDestroy( t )
     local caster = t.caster
     local ability = t.ability
-    caster.percent_bonus_damage = caster.percent_bonus_damage - ability:GetSpecialValueFor("damage_deepen")
+    caster.percent_reduce_damage = caster.percent_reduce_damage - ability:GetSpecialValueFor("damage_reduce")
     caster.resurrection = nil
     caster.ShieldFilter = nil
     if caster.shield_particle then

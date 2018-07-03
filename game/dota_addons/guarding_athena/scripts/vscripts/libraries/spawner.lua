@@ -65,7 +65,8 @@ function Spawner:Setting()
 		maxArmorRandomFactor = self.difficulty * 0.2 + 1.2,						--最大护甲系数
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--最大生命系数
 		maxMeleeDamageFactor = 1,												--最大近战攻击系数
-		difficultyFactor = self.difficulty										--难度系数
+		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
+		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
 	self.damageRecorder = {}													--每波施加伤害记录器
 	self.victimRecorder = {}													--每波承受伤害记录器
@@ -91,7 +92,8 @@ function Spawner:Setting()
 		maxArmorRandomFactor = self.difficulty * 0.2 + 1.2,						--野怪最大护甲系数
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--野怪最大生命系数
 		maxMeleeDamageFactor = 0,												--野怪最大近战攻击系数
-		difficultyFactor = 1													--难度系数
+		difficultyFactor = 1,													--难度系数
+		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
 	-- 特殊进攻
 	self.specialRushList = kv.special_rush_list									--读取图像资料
@@ -105,7 +107,8 @@ function Spawner:Setting()
 		maxArmorRandomFactor = self.difficulty * 0.2 + 1.2,						--最大护甲系数
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--最大生命系数
 		maxMeleeDamageFactor = 0,												--最大近战攻击系数
-		difficultyFactor = self.difficulty										--难度系数
+		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
+		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
 	}
 end
 -- 开始自动刷怪
@@ -178,6 +181,7 @@ function Spawner:UpData()
 end
 -- 设置单位属性
 function Spawner:UnitProperty( unit,factor )
+	HeroState:InitUnit(unit)
 	if factor.maxMeleeDamageFactor == 1 then
 		if not unit:IsRangedAttacker() then
 			factor.maxMeleeDamageFactor = (self.gameRound ^ 2 - self.gameRound +100) * 0.01
@@ -185,9 +189,9 @@ function Spawner:UnitProperty( unit,factor )
 	else
 		factor.maxMeleeDamageFactor = 1
 	end
-	local unitDamageFactor = RandomFloat(1,factor.maxDamageRandomFactor) * factor.difficultyFactor * factor.maxMeleeDamageFactor
-	local unitArmorFactor = RandomFloat(1,factor.maxArmorRandomFactor) * factor.difficultyFactor
-	local unitHealthFactor = RandomFloat(1,factor.maxHealthRandomFactor) * factor.difficultyFactor
+	local unitDamageFactor = RandomFloat(1,factor.maxDamageRandomFactor) * factor.difficultyFactor * factor.maxMeleeDamageFactor * factor.waveFactor ^ self.gameRound
+	local unitArmorFactor = RandomFloat(1,factor.maxArmorRandomFactor) * factor.difficultyFactor * factor.waveFactor ^ self.gameRound
+	local unitHealthFactor = RandomFloat(1,factor.maxHealthRandomFactor) * factor.difficultyFactor * factor.waveFactor ^ self.gameRound
 	unit:SetDeathXP(unit:GetDeathXP() * 1.6)
 	unit:SetMinimumGoldBounty(unit:GetGoldBounty() * 1.6)
 	unit:SetMaximumGoldBounty(unit:GetGoldBounty() * 1.6)
@@ -197,20 +201,30 @@ function Spawner:UnitProperty( unit,factor )
 	unit:SetMaxHealth(unit:GetBaseMaxHealth())
 	unit:SetHealth(unit:GetBaseMaxHealth())
 	unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
+	-- 精英怪
+	if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
+		if RollPercentage(self.difficulty * 2) then
+			unit:SetModelScale(unit:GetModelScale() + 0.5)
+			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty * 0.5)
+			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
+			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
+			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty  * 0.5)
+			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty  * 0.5)
+			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty  * 0.5)
+			unit:SetMaxHealth(unit:GetBaseMaxHealth())
+			unit:SetHealth(unit:GetBaseMaxHealth())
+			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty * 0.5)
+			unit:AddAbility("elite")
+			unit.percent_bonus_damage = unit.percent_bonus_damage + self.difficulty * 20
+			unit.percent_reduce_damage = unit.percent_reduce_damage + self.difficulty * 10
+		end
+	end
 	for i=1,16 do
 		if unit:GetAbilityByIndex(i-1) then
 			local ability = unit:GetAbilityByIndex(i-1)
 		    ability:SetLevel(self.difficulty)
 		end
 	end
-	-- 初始化伤害过滤器
-	unit.bonus_magic_damage = 0
-	unit.bonus_physical_damage = 0
-	unit.percent_bonus_damage = 0
-	unit.const_reduce_damage = 0
-	unit.percent_reduce_damage = 0
-	unit.dodge_damage = false
-	unit.bonus_magic_damage = 0
 end
 -- 循环进攻命令
 function Spawner:AttackOnTarget()
@@ -357,7 +371,7 @@ function Spawner:OnUnitKilled( t )
 		HeroState:InitUnit(attacker)
 	end
 	-- 练功房
-	if caster:GetUnitName() == "practicer" then
+	if caster.practicer then
 		local room = caster.room
 		for i, unit in pairs( room.unitRemaining ) do
 			if caster == unit then
@@ -375,8 +389,10 @@ function Spawner:OnUnitKilled( t )
 	-- 进攻怪
 	for i, unit in pairs( self.unitRemaining ) do
 		if caster == unit then
+			local point = unit.wave
+			if self.spawnCount < 20 then point = 4 * point end
 			attacker.wave_def = attacker.wave_def + 1
-			attacker.def_point = attacker.def_point + unit.wave
+			attacker.def_point = attacker.def_point + point
 			table.remove( self.unitRemaining, i )
 			self:QuestPanel(caster.wave)
 			break

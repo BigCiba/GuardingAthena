@@ -74,8 +74,8 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 255, 165, 0, 255 ]
-			m_ColorMax = [ 139, 69, 19, 255 ]
+			m_ColorMin = [ 255, 165, 0, 55 ]
+			m_ColorMax = [ 139, 69, 19, 155 ]
 			m_nTintBlendMode = "PARTICLEBLEND_DEFAULT"
 		},
 		{
@@ -92,6 +92,11 @@
 			_class = "C_INIT_PositionOffset"
 			m_OffsetMin = [ 0.0, 0.0, 100.0 ]
 			m_OffsetMax = [ 0.0, 0.0, 100.0 ]
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 53
+			m_nAlphaMax = 144
 		},
 	]
 	m_Emitters = 

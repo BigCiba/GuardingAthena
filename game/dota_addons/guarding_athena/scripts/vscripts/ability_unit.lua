@@ -100,6 +100,21 @@ function ApplyWingsCooldown( keys )
     local caster = keys.caster
     local reduction_const = caster.reduction_const or 0
     caster.reduction_const = reduction_const + 2
+    local wingsType = "particles/skills/wing_sky.vpcf"
+    if caster:GetUnitName() == "npc_dota_hero_omniknight" then wingsType = "particles/skills/wing_thunder.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_windrunner" then wingsType = "particles/skills/wing_wind.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_rubick" then wingsType = "particles/skills/wing_space.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_lina" then wingsType = "particles/skills/wing_fire.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_nevermore" then wingsType = "particles/skills/wing_hell.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_legion_commander" then wingsType = "particles/skills/wing_hell.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_fire_spirit" then wingsType = "particles/skills/wing_fire.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_revelater" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_juggernaut" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_antimage" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_crystal_maiden" then wingsType = "particles/skills/wing_ice.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_monkey_king" then wingsType = "particles/skills/wing_sky.vpcf" end
+    if caster:GetUnitName() == "npc_dota_hero_spectre" then wingsType = "particles/skills/wing_sky.vpcf" end
+    CreateParticle(wingsType,PATTACH_ABSORIGIN_FOLLOW,caster)
 end
 function CourierBlink(keys)
 	--PrintTable(keys)
@@ -124,6 +139,11 @@ function CourierTeleport( keys )
     local point = keys.target_points[1]
     SetUnitPosition(target, point)
     local p1 = CreateParticle( "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_recall_poof.vpcf", PATTACH_ABSORIGIN_FOLLOW, target )
+end
+function CourierSuicide( keys )
+    local caster = keys.caster
+    local target = caster.currentHero
+    target:ForceKill(true)
 end
 function CourierBag( keys )
     local caster = keys.caster
@@ -228,15 +248,19 @@ function AthenaArmor( keys )
 	local caster = keys.caster
 	caster:SetPhysicalArmorBaseValue(caster:GetPhysicalArmorBaseValue() + 1)
 end
-function SoulConnect( keys )
-	local damage = keys.DamageTaken * 0.5
-	local caster = keys.caster
-	local targets = keys.target_entities   --获取传递进来的单位组
-	local damageType = keys.ability:GetAbilityDamageType()
-	--利用Lua的循环迭代，循环遍历每一个单位组内的单位
-	for i,unit in pairs(targets) do
-		CauseDamage(caster,unit,damage,damageType)
-	end
+function SoulConnect( t )
+    local ability = t.ability
+	local damage = t.DamageTaken * 0.5
+	local caster = t.caster
+	local targets = t.target_entities   --获取传递进来的单位组
+	local damageType = t.ability:GetAbilityDamageType()
+    --利用Lua的循环迭代，循环遍历每一个单位组内的单位
+    if ability:IsCooldownReady() then
+        for i,unit in pairs(targets) do
+            CauseDamage(caster,unit,damage,damageType)
+            ability:StartCooldown(0.2)
+        end
+    end
 end
 LinkLuaModifier("modifier_hex", "modifiers/modifier_hex.lua", LUA_MODIFIER_MOTION_NONE)
 function voodoo_start( keys )
@@ -252,13 +276,6 @@ function voodoo_start( keys )
     else
         target:AddNewModifier(caster, ability, "modifier_hex", {duration = duration})
     end
-end
-function SuicideParticle( keys )
-    local caster = keys.caster
-    local particle = CreateParticle( "particles/units/heroes/hero_techies/techies_suicide.vpcf", PATTACH_WORLDORIGIN, caster )
-    ParticleManager:SetParticleControl( particle, 0, caster:GetAbsOrigin() )
-    ParticleManager:SetParticleControl( particle, 3, caster:GetAbsOrigin() )
-    caster:EmitSound("Hero_Techies.Suicide.Arcana")   
 end
 function fury_swipes_attack( keys )
     -- Variables
@@ -297,16 +314,20 @@ function fury_swipes_attack( keys )
     end
 end
 function SoulHurt( keys )
+    local ability= keys.ability
 	local damage = keys.DamageTaken * keys.Rate
 	local caster = keys.caster
 	local target = keys.attacker 
 	local damageType = keys.ability:GetAbilityDamageType()
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin() 
-	local distance = (caster_location - target_location):Length2D()
-	if distance <= 400 then
-		CauseDamage(caster,target,damage,damageType)
-	end
+    local distance = (caster_location - target_location):Length2D()
+    if ability:IsCooldownReady() then
+        if distance <= 400 then
+            CauseDamage(caster,target,damage,damageType)
+            ability:StartCooldown(0.2)
+        end
+    end
 end
 function Sunder( event )
     local caster = event.caster

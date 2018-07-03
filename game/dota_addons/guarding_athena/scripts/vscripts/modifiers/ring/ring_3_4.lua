@@ -9,18 +9,15 @@ end
 function ring_3_4:OnTakeDamage( t )
     if IsServer() then
         if t.unit == self:GetParent() then
-            if t.attacker.percent_bonus_damage == nil then
-                t.attacker.percent_bonus_damage = 0
-            end
             if t.attacker.ring_3_4_debuff == nil then
-                t.attacker.percent_bonus_damage = t.attacker.percent_bonus_damage - 50
+                SetUnitDamagePercent(t.attacker,-50)
                 t.attacker.ring_3_4_debuff = 10
                 Timers:CreateTimer(1,function ()
                     if t.attacker.ring_3_4_debuff > 0 then
                         t.attacker.ring_3_4_debuff = t.attacker.ring_3_4_debuff - 1
                         return 1
                     else
-                        t.attacker.percent_bonus_damage = t.attacker.percent_bonus_damage + 50
+                        SetUnitDamagePercent(t.attacker,50)
                         t.attacker.ring_3_4_debuff = nil
                     end
                 end)

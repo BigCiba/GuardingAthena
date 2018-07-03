@@ -1,4 +1,4 @@
-SCORELINK_GETSCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/getScore.php"
+    SCORELINK_GETSCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/getScore.php"
 SCORELINK_GIVESCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/giveScore.php"
 SCORELINK_GETSECRETCODE = "http://q-w-q.com/GuardingAthena/ScoreSystem/getSecretCode.php"
 SCORELINK_TAKESCORE = "http://q-w-q.com/GuardingAthena/ScoreSystem/takeScore.php"

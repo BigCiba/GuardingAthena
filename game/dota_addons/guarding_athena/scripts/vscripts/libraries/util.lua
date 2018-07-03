@@ -1,30 +1,40 @@
 --[[
-	CauseDamage
-	Heal
-	PropertySystem
-	AddModifierStackCount
-	CreateParticle
-	CreateNumberEffect
-	CreateTrackingProjectile
-	CreateLinearProjectile
-	CreateSound
-	GetUnitsInRadius
-	GetUnitsInLine
-	GetUnitsInSector
-	GetRandomPoint
-	GetRotationPoint
-	ClearBuff
-	DropItem
-	RollDrops
-	IsFullSolt
-	ItemTypeCheck
-	Jump
-	KnockBack
-	SetCamera
-	SetRegionLimit
-	PrintTable
+	AddModifierStackCount(caster,target,ability,modiferName,count,duration,independent)
+	CauseDamage(attacker,victim,damage,damageType,ability,~criticalChance,~criticalDamage)
+	ClearBuff(caster,buffType,count)
+	CreateSound(soundName,caster,~location,~duration,~delay)
+	CreateParticle(particleName,particleAttach,owningEntity,~duration,~immediately)
+	CreateLinearProjectile(caster,ability,particleName,spawnOrigin,radius,distance,direction,speed,deleteOnHit)
+	CreateTrackingProjectile(caster,target,ability,particleName,speed,~dodgeable,~vision,~visionRadius,~attach)
+	CreateNumberEffect(entity,number,duration,msg_type,color,icon_type)
+	DeepCopy(table)
+	DropItem(item,hero)
+	ForWithInterval(count,interval,callback)
+	GetUnitsInRadius(caster,ability,point,radius)
+	GetUnitsInLine(caster,ability,start_point,end_point,width)
+	GetUnitsInSector(cacheUnit,ability,position,forwardVector,angle,radius)
+	GetRandomPoint(originPoint, minRadius, maxRadius)
+	GetRotationPoint(originPoint, radius, angle)
+	GiveItem(caster,itemName,itemOwner)
+	HasExclusive(caster)
+	Heal(caster,heal,mana,show)
+	IsFullSolt(caster,bagType,tip)
+	ItemTypeCheck(caster,item)
+	Jump(caster,target_location,speed,height,findPath,callback)
+	KnockBack(caster,direction,distance,duration)
+	PropertySystem(caster,property,count,duration)
+	PrintTable(table)
+	RollDrops(unit)
+	SetModelScale(caster,scale,smooth,duration)
+	SetUnitPosition(caster,position,setPos)
+	SetUnitDamagePercent(caster,percent,duration)
+	SetUnitMagicDamagePercent(caster,percent,duration)
+	SetUnitIncomingDamageDeepen(caster,percent,duration)
+	SetUnitIncomingDamageReduce(caster,percent,duration)
+	SetCamera(playerID,arg)
+	SetRegionLimit(caster,regionEntity)
+	SetBaseResistance(caster,resistance,duration)
 	string.split
-	DeepCopy
 ]]
 -- 造成伤害
 -- 填写ability会判定为技能伤害
@@ -34,6 +44,11 @@ function CauseDamage( ... )
 	if attacker:IsNull() then
 		return
 	end
+	-- 修正伤害
+	if attacker:GetTeam() ~= DOTA_TEAM_GOODGUYS and damageType == DAMAGE_TYPE_MAGICAL then
+		damageType = DAMAGE_TYPE_PURE
+	end
+	
 	if IsValidEntity(victim) then
 		if victim:IsAlive() == false then
 			return
@@ -305,6 +320,17 @@ function DropItem( item, hero )
     hero:RemoveItem(item)
     return newItem
 end
+-- 带延迟for循环
+function ForWithInterval( count,interval,callback )
+	local temp = 0
+	Timers:CreateTimer(function ()
+		if temp < count then
+			temp = temp + 1
+			callback()
+		end
+		return interval 
+	end)
+end
 -- 随机掉落物品
 function RollDrops(unit)
     local DropInfo = GameRules.DropTable[unit:GetUnitName()]
@@ -425,6 +451,7 @@ function ClearBuff( ... )
 		end
 	end
 end
+-- 设置区域限制
 function SetRegionLimit( ... )
 	local caster,regionEntity = ...
 	local regionPos = regionEntity:GetAbsOrigin()
@@ -439,8 +466,56 @@ function SetRegionLimit( ... )
 	limitRegion.right = regionPos.x + width / 2
 	caster.limitRegion = limitRegion
 end
+-- 设置单位魔抗
+function SetBaseResistance( ... )
+	local caster,resistance,duration = ...
+	local temp = caster:GetBaseMagicalResistanceValue()
+	caster:SetBaseMagicalResistanceValue(resistance)
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			caster:SetBaseMagicalResistanceValue(temp)
+		end)
+	end
+end
+-- 设置单位模型
+function SetModelScale( ... )
+	local caster,scale,smooth,duration = ...
+	if not smooth then smooth = true end
+	local scaleDifference = scale - caster:GetModelScale()
+	local scaleInterval = scaleDifference * 0.1 
+	local c = 0
+	if smooth then
+		Timers:CreateTimer(function ()
+			if c < 10 then
+				caster:SetModelScale(caster:GetModelScale() + scaleInterval)
+				c = c + 1
+				return 0.05
+			end
+		end)
+	else
+		caster:SetModelScale(scale)
+	end
+	if duration then
+		local d = 0
+		if smooth then
+			Timers:CreateTimer(duration,function ()
+				if d < 10 then
+					caster:SetModelScale(caster:GetModelScale() - scaleInterval)
+					d = d + 1
+					return 0.05
+				end
+			end)
+		else
+			caster:SetModelScale(caster:GetModelScale() - scaleDifference)
+		end
+	end
+end
+-- 设置单位位置
 function SetUnitPosition( ... )
 	local caster,position,setPos = ...
+	if position.z<-1000 then
+		position.z = 0
+	end
 	if caster.limitRegion then
 		local limitRegion = caster.limitRegion
 		if position.x > limitRegion.right then
@@ -458,6 +533,66 @@ function SetUnitPosition( ... )
 		caster:SetAbsOrigin(position)
 	else
 		FindClearSpaceForUnit(caster, position, false)
+	end
+end
+-- 设置单位百分比伤害输出
+function SetUnitDamagePercent( ... )
+	local caster,percent,duration = ...
+	if caster.percent_bonus_damage == nil then
+		caster.percent_bonus_damage = 0
+	end
+	caster.percent_bonus_damage = caster.percent_bonus_damage + percent
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			if not caster:IsNull() then
+				caster.percent_bonus_damage = caster.percent_bonus_damage - percent
+			end
+		end)
+	end
+end
+-- 设置单位魔法百分比伤害输出
+function SetUnitMagicDamagePercent( ... )
+	local caster,percent,duration = ...
+	if caster.bonus_magic_damage == nil then
+		caster.bonus_magic_damage = 0
+	end
+	caster.bonus_magic_damage = caster.bonus_magic_damage + percent
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			if not caster:IsNull() then
+				caster.bonus_magic_damage = caster.bonus_magic_damage - percent
+			end
+		end)
+	end
+end
+-- 设置单位接受伤害加深百分比
+function SetUnitIncomingDamageDeepen( ... )
+	local caster,percent,duration = ...
+	if caster.percent_increase_damage == nil then
+		caster.percent_increase_damage = 0
+	end
+	caster.percent_increase_damage = caster.percent_increase_damage + percent
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			if not caster:IsNull() then
+				caster.percent_increase_damage = caster.percent_increase_damage - percent
+			end
+		end)
+	end
+end
+-- 设置单位接受伤害降低百分比
+function SetUnitIncomingDamageReduce( ... )
+	local caster,percent,duration = ...
+	if caster.percent_reduce_damage == nil then
+		caster.percent_reduce_damage = 0
+	end
+	caster.percent_reduce_damage = caster.percent_reduce_damage + percent
+	if duration then
+		Timers:CreateTimer(duration,function ()
+			if not caster:IsNull() then
+				caster.percent_reduce_damage = caster.percent_reduce_damage - percent
+			end
+		end)
 	end
 end
 -- 打印表
@@ -567,6 +702,12 @@ function Jump( ... )
 		end
 	end)
 end
+-- 拥有专属
+function HasExclusive( caster )
+	local exclusiveName = "modifier_"..caster:GetUnitName()
+	if caster:HasModifier(exclusiveName) then return true end
+	return false
+end
 -- 简易击退
 function KnockBack( ... )
 	local caster,direction,distance,duration = ...
@@ -576,15 +717,13 @@ function KnockBack( ... )
 	local point
 	local speed = distance / duration * interval
 	caster:AddNewModifier(nil, nil, "modifier_phased", {duration=duration})
-	caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=duration})
+	--caster:AddNewModifier(nil, nil, "modifier_stunned", {duration=duration})
 	Timers:CreateTimer(function (  )
 		if time < duration then
 			time = time + interval
-			point = caster_location + speed * direction
-			caster:SetAbsOrigin(point)
+			point = caster:GetAbsOrigin() + speed * direction
+			SetUnitPosition(caster,point,false)
 			return interval
-		else
-			print("time="..time)
 		end
 	end)
 end
@@ -668,6 +807,7 @@ function CreateNumberEffect( ... )
     ParticleManager:SetParticleControl(particle,2,Vector(duration,number_count,0))
     ParticleManager:SetParticleControl(particle,3,color_vec)
 end
+-- 拆分字符
 function string.split(input, delimiter)  
     input = tostring(input)  
     delimiter = tostring(delimiter)  
@@ -681,6 +821,7 @@ function string.split(input, delimiter)
     table.insert(arr, string.sub(input, pos))  
     return arr  
 end
+-- 复制表
 function DeepCopy( obj )      
     local InTable = {};  
     local function Func(obj)  

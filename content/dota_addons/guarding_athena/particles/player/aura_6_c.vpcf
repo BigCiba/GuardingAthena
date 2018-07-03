@@ -56,7 +56,6 @@
 			_class = "C_INIT_CreateWithinSphere"
 			m_fRadiusMax = 16.0
 			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
-			m_nControlPointNumber = 1
 		},
 		{
 			_class = "C_INIT_RandomRadius"
@@ -77,7 +76,6 @@
 			_class = "C_INIT_PositionOffset"
 			m_OffsetMin = [ 0.0, 0.0, -8.0 ]
 			m_OffsetMax = [ 0.0, 0.0, -10.0 ]
-			m_nControlPointNumber = 1
 			m_bLocalCoords = true
 		},
 		{

@@ -1,11 +1,11 @@
-function FracturedSoulStart( keys )
-	local caster = keys.caster
-	caster.FracturedSoul = 3
-end
 function FracturedSoul( keys )
 	local caster = keys.caster
 	local target = keys.unit
 	local ability = keys.ability
+	local cooldown = 1
+	if HasExclusive(caster) then
+		cooldown = 0.5
+	end
 	if caster:HasModifier("modifier_fractured_soul_buff") then
 		local stackcount = caster:GetModifierStackCount("modifier_fractured_soul_buff", caster) + 1
 		if stackcount <= caster:GetBaseStrength() then
@@ -15,29 +15,25 @@ function FracturedSoul( keys )
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_fractured_soul_buff", nil)
 		caster:SetModifierStackCount("modifier_fractured_soul_buff", caster, 1)
 	end
-	if caster.FracturedSoul == 0 then
-		return
-	end
+	if not ability:IsCooldownReady() then return end
 	local target_location = target:GetAbsOrigin()
 	local damage = caster:GetStrength() * 5
 	local damageType = ability:GetAbilityDamageType()
 	local radius = 250
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
-	local unitGroup = FindUnitsInRadius(teamNumber, target_location, caster, radius, targetTeam, targetType, targetFlag, 0, false)
-	caster.FracturedSoul = caster.FracturedSoul - 1
-	ability:StartCooldown(5)
-	Timers:CreateTimer(5,function ()
-		caster.FracturedSoul = caster.FracturedSoul + 1
-	end)
-	for k, v in pairs( unitGroup ) do
-		CauseDamage(caster, v, damage, damageType,ability)
-	end
-	local p1 = CreateParticle( "particles/skills/fractured_soul.vpcf", PATTACH_ABSORIGIN, caster )
+	local unitGroup = GetUnitsInRadius(caster,ability,target_location,radius)
+	ability:StartCooldown(cooldown)
+	CauseDamage(caster, unitGroup, damage, damageType,ability)
+	local p1 = CreateParticle( "particles/heroes/tartarus/fractured_soul.vpcf", PATTACH_ABSORIGIN, caster )
 	ParticleManager:SetParticleControl( p1, 0, target_location )
 	EmitSoundOn("Hero_Nevermore.Shadowraze", caster)
+end
+function OnAttackLanded( t )
+	local caster = t.caster
+	local target = t.target
+	local ability = t.ability
+	if HasExclusive(caster) then
+		FracturedSoul({caster=caster,unit=target,ability=ability})
+	end
 end
 function HellField( keys )
 	local caster = keys.caster
@@ -45,11 +41,8 @@ function HellField( keys )
 	local caster_location = caster:GetAbsOrigin()
 	local damage = keys.Damage * 0.2 * caster:GetStrength() + ability:GetSpecialValueFor("base_damage")
 	local damageType = ability:GetAbilityDamageType()
+	local damageDeep = ability:GetSpecialValueFor("bonus_damage_percent")
 	local radius = 900
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
 	local time = 0
 	local p2 = CreateParticle( "particles/skills/hell_field_hellborn.vpcf", PATTACH_CUSTOMORIGIN, caster )
 	ParticleManager:SetParticleControl( p2, 0, caster_location )
@@ -67,9 +60,10 @@ function HellField( keys )
 			if length <= 900 then
 				ability:ApplyDataDrivenModifier(caster, caster, "modifier_hell_field_buff", nil)
 			end
-			local unitGroup = FindUnitsInRadius(teamNumber, caster_location, caster, radius, targetTeam, targetType, targetFlag, 0, false)
+			local unitGroup = GetUnitsInRadius(caster,ability,caster_location,radius)
 			for k, v in pairs( unitGroup ) do
 				ability:ApplyDataDrivenModifier(caster, v, "modifier_hell_field_debuff", nil)
+				SetUnitIncomingDamageDeepen(v,damageDeep,0.2)
 				CauseDamage(caster, v, damage, damageType, ability)
 			end
 			time = time + 1
@@ -84,7 +78,9 @@ function DestoryHit( keys )
 	local ability = keys.ability
 	local caster_location = caster:GetAbsOrigin()
 	local direction = caster:GetForwardVector()
-	local damage = keys.Damage
+	local damage = ability:GetSpecialValueFor("damage") * caster:GetStrength() + ability:GetSpecialValueFor("base_damage")
+	local duration = ability:GetSpecialValueFor("duration")
+	local damageReduce = -ability:GetSpecialValueFor("reduce_damage")
 	local damageType = ability:GetAbilityDamageType()
 	local radius = 300
 	local teamNumber = caster:GetTeamNumber()
@@ -95,24 +91,24 @@ function DestoryHit( keys )
 	local time = 0
 	Timers:CreateTimer(function()
 		if time < 3 then
-			local p1 = CreateParticle( "particles/skills/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
+			local p1 = CreateParticle( "particles/heroes/tartarus/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
 			ParticleManager:SetParticleControl( p1, 0, point )
 			local point_1 = point
 			Timers:CreateTimer(0.8,function()
-				local p2 = CreateParticle( "particles/skills/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
+				local p2 = CreateParticle( "particles/heroes/tartarus/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
 				ParticleManager:SetParticleControl( p2, 0, point_1 )
 				local unitGroup = FindUnitsInRadius(teamNumber, point_1, caster, radius, targetTeam, targetType, targetFlag, 0, false)
 				for k, v in pairs( unitGroup ) do
-					CauseDamage(caster, v, damage * caster:GetStrength() + ability:GetSpecialValueFor("base_damage"), damageType, ability)
+					CauseDamage(caster, v, damage, damageType, ability)
 					if v:HasModifier("modifier_destory_hit") then
 						local stackcount = v:GetModifierStackCount("modifier_destory_hit", caster)
-						ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 6})
+						ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 3})
 						v:SetModifierStackCount("modifier_destory_hit", caster, stackcount + 1)
-						v.percent_bonus_damage = (stackcount + 1) * -30
+						SetUnitDamagePercent(v,damageReduce,duration-0.1)
 					else
 						ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 3})
 						v:SetModifierStackCount("modifier_destory_hit", caster, 1)
-						v.percent_bonus_damage = -30
+						SetUnitDamagePercent(v,damageReduce,duration-0.1)
 					end
 				end
 				EmitSoundOn("Hero_Nevermore.Shadowraze", caster)
@@ -123,9 +119,63 @@ function DestoryHit( keys )
 		end
 	end)
 end
-function OnRemove( t )
-	local target = t.target
-	target.percent_bonus_damage = 0
+function DestoryHitUp( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+	local caster_location = caster:GetAbsOrigin()
+	local direction = caster:GetForwardVector()
+	local damage = ability:GetSpecialValueFor("damage") * caster:GetStrength() + ability:GetSpecialValueFor("base_damage")
+	local duration = ability:GetSpecialValueFor("duration")
+	local damageReduce = -ability:GetSpecialValueFor("reduce_damage")
+	local damageType = ability:GetAbilityDamageType()
+	local radius = 300
+	local teamNumber = caster:GetTeamNumber()
+	local targetTeam = ability:GetAbilityTargetTeam()
+	local targetType = ability:GetAbilityTargetType()
+	local targetFlag = ability:GetAbilityTargetFlags()
+	local point = caster_location + direction * 300
+	local time = 0
+	local p1 = CreateParticle( "particles/heroes/tartarus/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
+	ParticleManager:SetParticleControl( p1, 0, point )
+	Timers:CreateTimer(0.8,function()
+		if time < 9 then
+			local point_circle = GetRandomPoint(point, 0, 300)
+			local p2 = CreateParticle( "particles/heroes/tartarus/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
+			ParticleManager:SetParticleControl( p2, 0, point_circle )
+			local unitGroup = FindUnitsInRadius(teamNumber, point_circle, caster, radius, targetTeam, targetType, targetFlag, 0, false)
+			for k, v in pairs( unitGroup ) do
+				CauseDamage(caster, v, damage, damageType, ability)
+				if v:HasModifier("modifier_destory_hit") then
+					local stackcount = v:GetModifierStackCount("modifier_destory_hit", caster)
+					ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 3})
+					v:SetModifierStackCount("modifier_destory_hit", caster, stackcount + 1)
+					SetUnitDamagePercent(v,damageReduce,duration)
+				else
+					ability:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 3})
+					v:SetModifierStackCount("modifier_destory_hit", caster, 1)
+					SetUnitDamagePercent(v,damageReduce,duration)
+				end
+			end
+			EmitSoundOn("Hero_Nevermore.Shadowraze", caster)
+			time = time + 1
+			return 0.1
+		end
+	end)
+end
+function OnToggleOn( t )
+	local caster= t.caster
+	local ability = t.ability
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_infernal_fire_magic", nil)
+	if not HasExclusive(caster) then
+		caster:RemoveModifierByName("modifier_infernal_fire_physics")
+		caster:RemoveModifierByName("modifier_infernal_fire_physics_buff")
+	end
+end
+function OnToggleOff( t )
+	local caster= t.caster
+	local ability = t.ability
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_infernal_fire_physics", nil)
+	caster:RemoveModifierByName("modifier_infernal_fire_magic")
 end
 function InfernalFirePhysics( keys )	
 	local caster = keys.caster
@@ -152,7 +202,7 @@ function InfernalFireMagic( keys )
 	if not caster:HasModifier("modifier_fractured_soul_buff") then
 		return
 	end
-	caster:SetRangedProjectileName("particles/skills/infernal_fire_desolator.vpcf")
+	caster:SetRangedProjectileName("particles/heroes/tartarus/infernal_fire_desolator.vpcf")
 	local buffcount = caster:GetStrength()
 	local damage = buffcount * attack
 	CauseDamage(caster, target, damage, damageType, ability)
@@ -196,7 +246,11 @@ function SoulRequiem( keys )
 	local point = GetRotationPoint(caster_location, 1200, angle)
 	local vector = (point - caster_location):Normalized() * 1200
 	local num = -1
-	local damage = caster:FindAbilityByName("destory_hit"):GetSpecialValueFor("damage")
+	local abilityName = "destory_hit"
+	if HasExclusive(caster) then
+		abilityName = "destory_hit_up"
+	end
+	local damage = caster:FindAbilityByName(abilityName):GetSpecialValueFor("damage")
 	local damageType = ability:GetAbilityDamageType()
 	local radius = 300
 	local teamNumber = caster:GetTeamNumber()
@@ -204,7 +258,7 @@ function SoulRequiem( keys )
 	local targetType = ability:GetAbilityTargetType()
 	local targetFlag = ability:GetAbilityTargetFlags()
 	for i=1,24 do
-		local p1 = CreateParticle( "particles/skills/soul_requiem_ofsouls_line.vpcf", PATTACH_CUSTOMORIGIN, caster )
+		local p1 = CreateParticle( "particles/heroes/tartarus/soul_requiem_ofsouls_line.vpcf", PATTACH_CUSTOMORIGIN, caster )
 		ParticleManager:SetParticleControl( p1, 0, caster_location )
 		ParticleManager:SetParticleControl( p1, 1, vector )
 		ParticleManager:SetParticleControl( p1, 2, Vector(0,1,0) )
@@ -235,18 +289,18 @@ function SoulRequiem( keys )
 		angle = angle + 15
 		point = GetRotationPoint(caster_location, 1200, angle)
 		vector = (point - caster_location):Normalized() * 1200
-		if num == -1 and caster:HasModifier("modifier_zhuanshusf") then
-			local skill = caster:FindAbilityByName("destory_hit")
+		if num == -1 and HasExclusive(caster) then
+			local skill = caster:FindAbilityByName(abilityName)
 			local vector_2 = (point - caster_location):Normalized()
 			local point = caster_location + vector_2 * 300
 			local time = 0
 			Timers:CreateTimer(function()
 				if time < 3 then
-					local p1 = CreateParticle( "particles/skills/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
+					local p1 = CreateParticle( "particles/heroes/tartarus/destory_hit_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
 					ParticleManager:SetParticleControl( p1, 0, point )
 					local point_1 = point
 					Timers:CreateTimer(0.8,function()
-						local p2 = CreateParticle( "particles/skills/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
+						local p2 = CreateParticle( "particles/heroes/tartarus/destory_hit.vpcf", PATTACH_CUSTOMORIGIN, caster )
 						ParticleManager:SetParticleControl( p2, 0, point_1 )
 						local unitGroup = FindUnitsInRadius(teamNumber, point_1, caster, radius, targetTeam, targetType, targetFlag, 0, false)
 						for k, v in pairs( unitGroup ) do
@@ -255,11 +309,11 @@ function SoulRequiem( keys )
 								local stackcount = v:GetModifierStackCount("modifier_destory_hit", caster)
 								skill:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 12})
 								v:SetModifierStackCount("modifier_destory_hit", caster, stackcount + 1)
-								v.percent_bonus_damage = (stackcount + 1) * -30
+								SetUnitDamagePercent(v,(stackcount + 1) * -30,12)
 							else
 								skill:ApplyDataDrivenModifier(caster, v, "modifier_destory_hit", {duration = 6})
 								v:SetModifierStackCount("modifier_destory_hit", caster, 1)
-								v.percent_bonus_damage = -30
+								SetUnitDamagePercent(v,-30,6)
 							end
 						end
 						EmitSoundOn("Hero_Nevermore.Shadowraze", caster)

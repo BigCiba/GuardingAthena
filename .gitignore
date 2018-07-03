@@ -1,7 +1,5 @@
 # dota
 backup/
-*.vpk
 *.exe
 *.bin
-*.vpcf_c
 *.vsnd_c

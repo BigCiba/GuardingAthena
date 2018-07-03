@@ -99,11 +99,19 @@ function GuardingAthena:DamageFilter( args )
 		return
 	end	
 	local victim = EntIndexToHScript(args.entindex_victim_const)
-	-- 修正智力伤害系数
+	--修正智力伤害系数
 	if args.entindex_inflictor_const then
-		if caster:IsRealHero() then
-			args.damage = args.damage/(1+((caster:GetIntellect()/16)/100))
+		-- 不适用伤害修改的技能
+		local ability = EntIndexToHScript(args.entindex_inflictor_const)
+		if ability.no_damage_filter then
+			return true
 		end
+		-- 修正智力伤害
+		--[[if caster:IsRealHero() then
+			local x = 0.0007
+			if caster:GetPrimaryAttribute() == 2 then x = 0.00087 end
+			args.damage = args.damage / (1 + caster:GetIntellect() * x)
+		end]]
 	end
 	-- 特殊处理
 	if caster.DamageFilterAttacker then
@@ -121,14 +129,32 @@ function GuardingAthena:DamageFilter( args )
 	end
 	-- 物理伤害
 	if damageType == DAMAGE_TYPE_PHYSICAL then
+		-- 计算原始伤害
+		local armor = victim:GetPhysicalArmorValue()
+		local initdamage = args.damage
+		if armor > 0 then
+			local reduce = (armor * 0.05)/(1 + armor * 0.05)
+			initdamage = args.damage / (1 - reduce)
+		end
+		-- 重新计算护甲
+		--args.damage = initdamage * 1000 / (1000 + 4 * armor)
         -- 物理伤害穿透额外无视护甲伤害
 		if caster.bonus_physical_damage and caster.bonus_physical_damage > 0 then
-			local armor = victim:GetPhysicalArmorValue()
+			--local armor = victim:GetPhysicalArmorValue()
 			if armor > 0 then
-				local reduce = (armor * 0.06)/(1 + armor * 0.06)
-				local initdamage = args.damage / (1 - reduce)
+				--local reduce = (armor * 0.05)/(1 + armor * 0.05)
+				--local initdamage = args.damage / (1 - reduce)
 				args.damage = args.damage + initdamage * caster.bonus_physical_damage * 0.01
+			else
+				args.damage = args.damage + args.damage * caster.bonus_physical_damage * 0.01
 			end
+		end
+	end
+	-- 纯粹伤害
+	if damageType == DAMAGE_TYPE_PURE then
+		if caster:GetTeam() ~= DOTA_TEAM_GOODGUYS then
+			local res = victim:GetBaseMagicalResistanceValue()
+			args.damage = args.damage * (1 - res)
 		end
 	end
     -- 百分比增加/减少伤害输出
@@ -142,6 +168,10 @@ function GuardingAthena:DamageFilter( args )
     -- 减少固定值伤害
     if victim.const_reduce_damage and victim.const_reduce_damage > 0 then
         args.damage = args.damage - victim.const_reduce_damage
+	end
+	-- 增加百分比伤害
+    if victim.percent_increase_damage and victim.percent_increase_damage > 0 then
+        args.damage = args.damage * (1 + victim.percent_increase_damage * 0.01)
     end
     -- 减少百分比伤害
     if victim.percent_reduce_damage and victim.percent_reduce_damage > 0 then
@@ -189,6 +219,18 @@ function GuardingAthena:ItemAddedFilter( keys )
 	local currentItemName = currentItem:GetAbilityName()
 	local currentUnit = EntIndexToHScript(keys.inventory_parent_entindex_const)
 	local itemOwner = EntIndexToHScript(keys.item_parent_entindex_const)
+	if currentItemName == "item_chaos_plate" then
+		if RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_world_editor", currentUnit, currentUnit))
+			return false
+		elseif RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_longinus_spear", currentUnit, currentUnit))
+			return false
+		elseif RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_mystletainn", currentUnit, currentUnit))
+			return false
+		end
+	end
 	-- 原核与金袋
 	if string.sub(currentItemName,0,14) == "item_original_" then
 		return true
