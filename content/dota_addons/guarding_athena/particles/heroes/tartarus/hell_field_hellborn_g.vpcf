@@ -1,0 +1,127 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf1:version{d47d07e6-072c-49cb-9718-5bfd8d6c3d21} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 64
+	m_flNoDrawTimeToGoToSleep = 2.0
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_hTexture = resource:"materials/particle/smoke/static/static_smoke.vtex"
+			m_bAnimateInFPS = true
+			m_flAnimationRate = 16.0
+			m_nOrientationType = 2
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.025
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 0.5
+			m_bEaseInAndOut = true
+			m_flBias = 0.6
+			m_flEndScale = 1.5
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
+		},
+		{
+			_class = "C_OP_Orient2DRelToCP"
+			m_flRotOffset = 180.0
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 213, 145, 26, 255 ]
+		},
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_flRotRate = 10.0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_nOpEndCapState = 1
+			m_nField = 16
+			m_Rate = -1.0
+			m_flEndTime = 100000000.0
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 200.0
+			m_flRadiusMax = 275.0
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 75
+			m_nAlphaMax = 120
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 244, 57, 0, 255 ]
+			m_ColorMin = [ 109, 15, 15, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMax = [ 26.0, 26.0, 52.0 ]
+			m_vecOutputMin = [ -26.0, -26.0, 32.0 ]
+			m_flNoiseScaleLoc = 0.05
+			m_flNoiseScale = 0.1
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 0.7
+			m_fRadiusMin = 0.0125
+			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
+			m_nScaleCP = 1
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 25.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 15.0 ]
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 4.0
+			m_fLifetimeMin = 3.0
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 5
+			m_nSequenceMin = 1
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 30.0
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_fFalloffPower = 0.1
+			m_fForceAmount = 40.0
+		},
+	]
+}

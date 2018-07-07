@@ -1,0 +1,27 @@
+<root>
+    <styles>
+        <include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/generic.css" />
+        <include src="file://{resources}/styles/custom_game/custom_hud/mystery_shop.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/mystery_shop.js" />
+    </scripts>
+
+    <Panel class="full" hittest="false">
+        <Panel id="MysteryShop" class="full" hittest="false">
+            <Panel class="MysteryShopPanel flow-down align-center align-bottom width-3 height-2">
+                <Label class="text-center align-center font-normal font-bold color-white text-shadow-blue" text="黑店"/>
+                <Panel class="margin-1 HorizonLine"/>
+                <Panel class="padding-1 ItemPanel flow-right align-center">
+                    <DOTAShopItem class="margin-1">
+                        <DOTAItemImage itemname="item_chaos_plate" />
+                    </DOTAShopItem>
+                    <DOTAItemImage class="margin-1" itemname="item_world_editor" />
+                    <DOTAItemImage class="margin-1" itemname="item_longinus_spear" />
+                    <DOTAItemImage class="margin-1" itemname="item_mystletainn" />
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

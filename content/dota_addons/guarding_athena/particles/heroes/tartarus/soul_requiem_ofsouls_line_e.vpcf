@@ -1,0 +1,84 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf1:version{d47d07e6-072c-49cb-9718-5bfd8d6c3d21} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 8
+	m_flConstantRadius = 350.0
+	m_nConstantSequenceNumber = 6
+	m_nGroupID = 1
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderDeferredLight"
+			m_bDisableOperator = true
+			m_flAlphaScale = 5.0
+			m_flStartFalloff = 0.0
+			m_ColorScale = [ 208, 0, 0 ]
+			m_flRadiusScale = 0.75
+			m_hTexture = resource:"materials/particle/sparks/sparks.vtex"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_OrientTo2dDirection"
+		},
+		{
+			_class = "C_OP_SetControlPointsToParticle"
+			m_nFirstControlPoint = 3
+			m_bSetOrientation = true
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 1.5
+			m_fLifetimeMax = 1.5
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 1
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e0.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e4.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e5.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/tartarus/soul_requiem_ofsouls_line_e6.vpcf"
+		},
+	]
+}
