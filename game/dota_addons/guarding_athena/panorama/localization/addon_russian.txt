@@ -20,7 +20,7 @@
 	"QuestKillGolem"						"Убей [Golem]："
 	"QuestKillBeast"						"Убей 2 pHell beast]："
 	"QuestKillKobold"						"Убей 3 [Kobold Banner]："
-	"QuestKillDragon"						"Убей 15 темных драконов："
+	"QuestKillDragon"						"Убей 15 Trial Creep："
 	"poseidon"								"Посейдон"
 	"nec"									"Гадес"
 	"zeus"									"Зевс"

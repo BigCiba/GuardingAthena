@@ -206,116 +206,6 @@ function item_refresher1_on_spell_start(keys)
         end
     end
 end
-function ZhuanShuRB( keys )
-    local caster = keys.caster
-    local target = keys.target
-    local intellect = caster:GetIntellect() * 5
-    local target_location = target:GetAbsOrigin()
-    local ability = caster:GetAbilityByIndex(0)
-    local damageType = ability:GetAbilityDamageType()
-    local targetTeam = ability:GetAbilityTargetTeam() -- DOTA_UNIT_TARGET_TEAM_ENEMY
-    local targetType = ability:GetAbilityTargetType() -- DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
-    local targetFlag = DOTA_UNIT_TARGET_FLAG_NONE
-    local castDistance = RandomInt( 10, 350 )
-    local angle = RandomInt( 0, 90 )
-    local dy = castDistance * math.sin( angle )
-    local dx = castDistance * math.cos( angle )
-    local attackPoint = Vector( 0, 0, 0 )
-    attackPoint = Vector( target_location.x - dx, target_location.y + dy, target_location.z )
-
-    local units = FindUnitsInRadius( caster:GetTeamNumber(), attackPoint, caster, 200,
-            targetTeam, targetType, targetFlag, 0, false )
-    for k, v in pairs( units ) do
-        local damageTable =
-        {
-            victim = v,
-            attacker = caster,
-            damage = intellect,
-            damage_type = damageType
-        }
-        ApplyDamage( damageTable )
-    end
-    local center_units = FindUnitsInRadius( caster:GetTeamNumber(), attackPoint, caster, 50,
-            targetTeam, targetType, targetFlag, 0, false )
-    for k, v in pairs( center_units ) do
-        local centerdamageTable =
-        {
-            victim = v,
-            attacker = caster,
-            damage = v:GetBaseMaxHealth() * 0.05,
-            damage_type = damageType
-        }
-        ApplyDamage( centerdamageTable )
-    end
-    local fxIndex = CreateParticle( "particles/heroes/chronos_magic/space_phase.vpcf", PATTACH_CUSTOMORIGIN, caster )
-    ParticleManager:SetParticleControl( fxIndex, 0, attackPoint )
-    Timers:CreateTimer(2,
-        function()
-            ParticleManager:DestroyParticle(fxIndex,false)
-        end
-    )
-    EmitSoundOn("Hero_SkywrathMage.MysticFlare.Target",keys.caster)
-end
-function UpgradeTeleport( t )
-    local caster = t.caster
-    local ability = caster:FindAbilityByName("teleport_phase")
-    if ability then
-        new_ability = caster:AddAbility("teleport_phase_up")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
-        caster:RemoveAbility("teleport_phase")
-    end
-end
-function DowngradeTeleport( t )
-    local caster = t.caster
-    local ability = caster:FindAbilityByName("teleport_phase_up")
-    if ability then
-        new_ability = caster:AddAbility("teleport_phase")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
-        caster:RemoveAbility("teleport_phase_up")
-    end
-end
-function UpgradeDestoryHit( t )
-    local caster = t.caster
-    local ability = caster:FindAbilityByName("destory_hit")
-    if ability then
-        new_ability = caster:AddAbility("destory_hit_up")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
-        caster:RemoveAbility("destory_hit")
-    end
-end
-function DowngradeDestoryHit( t )
-    local caster = t.caster
-    local ability = caster:FindAbilityByName("destory_hit_up")
-    if ability then
-        new_ability = caster:AddAbility("destory_hit")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
-        caster:RemoveAbility("destory_hit_up")
-    end
-end
-function UpgradeDarkFire( t )
-    local caster = t.caster
-    local ability = caster:FindAbilityByName("dark_fire")
-    if ability then
-        new_ability = caster:AddAbility("dark_fire_up")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
-        caster:RemoveAbility("dark_fire")
-    end
-end
-function DowngradeDarkFire( t )
-    local caster = t.caster
-    local ability = caster:FindAbilityByName("dark_fire_up")
-    if ability then
-        new_ability = caster:AddAbility("dark_fire")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
-        caster:RemoveAbility("dark_fire_up")
-    end
-end
 function AddCooldownReduceRate(keys)
     local caster = keys.caster
     local reduceRate = keys.ReduceRate * 0.01 
@@ -383,16 +273,6 @@ function jiancd4( keys )
         attribute = caster:GetBaseIntellect() * 0.5
     end
     PropertySystem(caster, caster:GetPrimaryAttribute(), attribute, 10)
-end
-function jianshengzhuanshu( keys )
-    local caster = keys.caster
-    local target = keys.target
-    local ability = keys.ability
-    local armor = target:GetPhysicalArmorBaseValue()
-    target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() - armor)
-    Timers:CreateTimer(0.5,function (  )
-        target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + armor)
-    end)
 end
 function BloodFruit( keys )
     local caster = keys.caster

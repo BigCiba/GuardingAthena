@@ -20,7 +20,7 @@
 	"QuestKillGolem"						"杀死石头人："
 	"QuestKillBeast"						"杀死2只地狱熊怪："
 	"QuestKillKobold"						"杀死3只哥布林领主："
-	"QuestKillDragon"						"杀死15只黑龙："
+	"QuestKillDragon"						"杀死试炼小兵："
 	"poseidon"								"波塞冬"
 	"nec"									"哈迪斯"
 	"zeus"									"宙斯"

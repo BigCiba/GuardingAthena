@@ -153,7 +153,7 @@
 	"item_original_int_pickup"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"ID"	"1680"
 		"ItemQuality"	"consumable"
@@ -187,7 +187,7 @@
 	"item_original_agi_pickup"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"ID"	"1681"
 		"ItemQuality"	"consumable"
@@ -221,7 +221,7 @@
 	"item_original_str_pickup"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"ID"	"1682"
 		"ItemQuality"	"consumable"
@@ -257,7 +257,7 @@
 		// datadriven类
 		"BaseClass"	"item_datadriven"
 		// 物品图标
-		"AbilityTextureName"	"custom/str_book"
+		"AbilityTextureName"	"item_str_book"
 		// 无目标技能
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1002"
@@ -284,7 +284,7 @@
 		// datadriven类
 		"BaseClass"	"item_datadriven"
 		// 物品图标
-		"AbilityTextureName"	"custom/str_book_pack"
+		"AbilityTextureName"	"item_str_book_pack"
 		// 无目标技能
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1709"
@@ -311,7 +311,7 @@
 		// datadriven类
 		"BaseClass"	"item_datadriven"
 		// 物品图标
-		"AbilityTextureName"	"custom/agi_book"
+		"AbilityTextureName"	"item_agi_book"
 		// 无目标技能
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1003"
@@ -338,7 +338,7 @@
 		// datadriven类
 		"BaseClass"	"item_datadriven"
 		// 物品图标
-		"AbilityTextureName"	"custom/agi_book_pack"
+		"AbilityTextureName"	"item_agi_book_pack"
 		// 无目标技能
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1710"
@@ -365,7 +365,7 @@
 		// datadriven类
 		"BaseClass"	"item_datadriven"
 		// 物品图标
-		"AbilityTextureName"	"custom/int_book"
+		"AbilityTextureName"	"item_int_book"
 		// 无目标技能
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1004"
@@ -392,7 +392,7 @@
 		// datadriven类
 		"BaseClass"	"item_datadriven"
 		// 物品图标
-		"AbilityTextureName"	"custom/int_book_pack"
+		"AbilityTextureName"	"item_int_book_pack"
 		// 无目标技能
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1711"
@@ -417,7 +417,7 @@
 	"item_clarity1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/clarity1"
+		"AbilityTextureName"	"item_clarity1"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -502,7 +502,7 @@
 	"item_clarity2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/clarity2"
+		"AbilityTextureName"	"item_clarity2"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -586,7 +586,7 @@
 	"item_clarity3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/clarity3"
+		"AbilityTextureName"	"item_clarity3"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -670,7 +670,7 @@
 	"item_clarity4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/clarity4"
+		"AbilityTextureName"	"item_clarity4"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -755,7 +755,7 @@
 	"item_salve1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/salve1"
+		"AbilityTextureName"	"item_salve1"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -840,7 +840,7 @@
 	"item_salve1_pack"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/salve1_pack"
+		"AbilityTextureName"	"item_salve1_pack"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -892,7 +892,7 @@
 	"item_clarity1_pack"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/clarity1_pack"
+		"AbilityTextureName"	"item_clarity1_pack"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -944,7 +944,7 @@
 	"item_salve2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/salve2"
+		"AbilityTextureName"	"item_salve2"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -1028,7 +1028,7 @@
 	"item_salve3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/salve3"
+		"AbilityTextureName"	"item_salve3"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -1112,7 +1112,7 @@
 	"item_salve4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/salve4"
+		"AbilityTextureName"	"item_salve4"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -1198,7 +1198,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_1"
+		"AbilityTextureName"	"item_jian_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1278,7 +1278,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_2"
+		"AbilityTextureName"	"item_jian_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -1357,7 +1357,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_3"
+		"AbilityTextureName"	"item_jian_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -1436,7 +1436,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_4"
+		"AbilityTextureName"	"item_jian_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -1515,7 +1515,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jian_5"
+		"AbilityTextureName"	"item_jian_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
@@ -1678,7 +1678,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_1"
+		"AbilityTextureName"	"item_fazhang_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1758,7 +1758,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_2"
+		"AbilityTextureName"	"item_fazhang_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1838,7 +1838,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_3"
+		"AbilityTextureName"	"item_fazhang_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1918,7 +1918,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_4"
+		"AbilityTextureName"	"item_fazhang_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1998,7 +1998,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fazhang_5"
+		"AbilityTextureName"	"item_fazhang_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2170,7 +2170,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_1"
+		"AbilityTextureName"	"item_gong_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2274,7 +2274,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_2"
+		"AbilityTextureName"	"item_gong_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2378,7 +2378,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_3"
+		"AbilityTextureName"	"item_gong_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2482,7 +2482,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_4"
+		"AbilityTextureName"	"item_gong_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2586,7 +2586,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/gong_5"
+		"AbilityTextureName"	"item_gong_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2783,7 +2783,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jia_1"
+		"AbilityTextureName"	"item_jia_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1526"
@@ -2841,7 +2841,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jia_2"
+		"AbilityTextureName"	"item_jia_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1527"
@@ -2899,7 +2899,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jia_3"
+		"AbilityTextureName"	"item_jia_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1528"
@@ -2957,7 +2957,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jia_4"
+		"AbilityTextureName"	"item_jia_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1529"
@@ -3015,7 +3015,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/jia_5"
+		"AbilityTextureName"	"item_jia_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1530"
@@ -3161,7 +3161,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/xie_1"
+		"AbilityTextureName"	"item_xie_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1517"
@@ -3219,7 +3219,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/xie_2"
+		"AbilityTextureName"	"item_xie_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1518"
@@ -3278,7 +3278,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/xie_3"
+		"AbilityTextureName"	"item_xie_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1519"
@@ -3336,7 +3336,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/xie_4"
+		"AbilityTextureName"	"item_xie_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1520"
@@ -3394,7 +3394,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/xie_5"
+		"AbilityTextureName"	"item_xie_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1521"
@@ -6774,7 +6774,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/butianshi"
+		"AbilityTextureName"	"item_butianshi"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7071,7 +7071,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fumo"
+		"AbilityTextureName"	"item_fumo"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7114,7 +7114,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fumo"
+		"AbilityTextureName"	"item_fumo"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7157,7 +7157,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fumo"
+		"AbilityTextureName"	"item_fumo"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7200,7 +7200,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fumo"
+		"AbilityTextureName"	"item_fumo"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7717,7 +7717,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhanqi"
+		"AbilityTextureName"	"item_zhanqi"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7793,7 +7793,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/xiongpi"
+		"AbilityTextureName"	"item_xiongpi"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7853,7 +7853,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/hexin"
+		"AbilityTextureName"	"item_hexin"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7927,7 +7927,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhangu"
+		"AbilityTextureName"	"item_zhangu"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8109,7 +8109,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/dun_1"
+		"AbilityTextureName"	"item_dun_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8215,7 +8215,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/dun_2"
+		"AbilityTextureName"	"item_dun_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8321,7 +8321,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/dun_3"
+		"AbilityTextureName"	"item_dun_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8427,7 +8427,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/dun_4"
+		"AbilityTextureName"	"item_dun_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8533,7 +8533,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"dun_5"
+		"AbilityTextureName"	"item_dun_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8605,7 +8605,6 @@
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				"TextureName"	"item_dun_5"
 			}
 		}
 		"AbilitySpecial"
@@ -8663,7 +8662,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/craft_dun"
+		"AbilityTextureName"	"item_craft_dun"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8805,7 +8804,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fu_1"
+		"AbilityTextureName"	"item_fu_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -8960,7 +8959,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fu_2"
+		"AbilityTextureName"	"item_fu_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -9114,7 +9113,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fu_3"
+		"AbilityTextureName"	"item_fu_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -9268,7 +9267,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fu_4"
+		"AbilityTextureName"	"item_fu_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -9422,7 +9421,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fu_5"
+		"AbilityTextureName"	"item_fu_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -9621,7 +9620,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/craft_fu"
+		"AbilityTextureName"	"item_craft_fu"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -9763,7 +9762,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/chui_1"
+		"AbilityTextureName"	"item_chui_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -9917,7 +9916,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/chui_2"
+		"AbilityTextureName"	"item_chui_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -10071,7 +10070,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/chui_3"
+		"AbilityTextureName"	"item_chui_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -10225,7 +10224,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/chui_4"
+		"AbilityTextureName"	"item_chui_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -10379,7 +10378,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/chui_5"
+		"AbilityTextureName"	"item_chui_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityCastPoint"	"0"
@@ -10591,7 +10590,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/craft_chui"
+		"AbilityTextureName"	"item_craft_chui"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -10734,7 +10733,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shu_1"
+		"AbilityTextureName"	"item_shu_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "145".
 		"ID"	"1609"
@@ -10837,7 +10836,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shu_2"
+		"AbilityTextureName"	"item_shu_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "145".
 		"ID"	"1610"
@@ -10940,7 +10939,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shu_3"
+		"AbilityTextureName"	"item_shu_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "145".
 		"ID"	"1611"
@@ -11043,7 +11042,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shu_4"
+		"AbilityTextureName"	"item_shu_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "145".
 		"ID"	"1612"
@@ -11146,7 +11145,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/shu_5"
+		"AbilityTextureName"	"item_shu_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCooldown"	"60"
 		// Valve's version of this item uses the ID "145".
@@ -11267,7 +11266,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/craft_shu"
+		"AbilityTextureName"	"item_craft_shu"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11409,7 +11408,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/baoshi_1"
+		"AbilityTextureName"	"item_baoshi_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11442,7 +11441,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/baoshi_2"
+		"AbilityTextureName"	"item_baoshi_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11475,7 +11474,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/baoshi_3"
+		"AbilityTextureName"	"item_baoshi_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11508,7 +11507,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/baoshi_4"
+		"AbilityTextureName"	"item_baoshi_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11541,7 +11540,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/baoshi_5"
+		"AbilityTextureName"	"item_baoshi_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11574,7 +11573,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_1"
+		"AbilityTextureName"	"item_ring_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11650,7 +11649,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_2"
+		"AbilityTextureName"	"item_ring_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11726,7 +11725,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_3"
+		"AbilityTextureName"	"item_ring_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11802,7 +11801,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_4"
+		"AbilityTextureName"	"item_ring_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11878,7 +11877,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_5"
+		"AbilityTextureName"	"item_ring_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -11959,7 +11958,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_6"
+		"AbilityTextureName"	"item_ring_6"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12035,7 +12034,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_secret"
+		"AbilityTextureName"	"item_ring_secret"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12102,7 +12101,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_broken"
+		"AbilityTextureName"	"item_ring_broken"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12169,7 +12168,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ronghe"
+		"AbilityTextureName"	"item_ronghe"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12202,7 +12201,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_world_broken"
+		"AbilityTextureName"	"item_ring_world_broken"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12319,7 +12318,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_world"
+		"AbilityTextureName"	"item_ring_world"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12546,7 +12545,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ring_shop"
+		"AbilityTextureName"	"item_ring_shop"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -12665,7 +12664,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/soul_eye"
+		"AbilityTextureName"	"item_soul_eye"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -12728,8 +12727,11 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/duochong"
+		"AbilityTextureName"	"item_duochong"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -12752,16 +12754,35 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"multishot_buff"
+			"modifier_npc_dota_hero_windrunner"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/windrunner.lua"
+						"Function"	"OnAttack"
+					}
 				}
 			}
 		}
@@ -12770,7 +12791,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -12808,7 +12829,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/duochong1"
+		"AbilityTextureName"	"item_duochong1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
@@ -12839,6 +12860,14 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"400"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"100"
 				}
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/windrunner.lua"
+						"Function"	"OnAttack"
+					}
+				}
 			}
 		}
 		// Special
@@ -12849,6 +12878,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_all_stats"	"400"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"10"
 			}
 		}
 	}
@@ -12881,8 +12915,11 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshupa"
+		"AbilityTextureName"	"item_zhuanshupa"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"0.0"
@@ -12901,17 +12938,27 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshupa_state"
+			"modifier_npc_dota_hero_phantom_assassin"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
 				}
 			}
 		}
@@ -12922,7 +12969,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -12932,7 +12979,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshupa1"
+		"AbilityTextureName"	"item_zhuanshupa1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -13008,8 +13055,11 @@
 	"item_npc_dota_hero_omniknight"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshuok"
+		"AbilityTextureName"	"item_zhuanshuok"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastPoint"	"0.0"
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1048"
@@ -13031,15 +13081,27 @@
 		}
 		"Modifiers"
 		{
-			"modifier_zhuanshuok_state"
+			"modifier_npc_dota_hero_omniknight"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
 				}
 			}
 		}
@@ -13050,7 +13112,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 			"02"
 			{
@@ -13064,7 +13126,7 @@
 	"item_npc_dota_hero_omniknight1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshuok1"
+		"AbilityTextureName"	"item_zhuanshuok1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityCastPoint"	"0.0"
 		// Valve's version of this item uses the ID "143".
@@ -13168,10 +13230,33 @@
 		}
 	}
 
+	"item_recipe_npc_dota_hero_spectre1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1727"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemPurchasable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_npc_dota_hero_spectre1"
+		"ItemRequirements"
+		{
+			"01"	"item_npc_dota_hero_spectre;item_original_str_15"
+		}
+	}
+
 	"item_blood_mask_broken"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/blood_mask_broken"
+		"AbilityTextureName"	"item_blood_mask_broken"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1051"
@@ -13219,7 +13304,7 @@
 	"item_blood_mask"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/blood_mask"
+		"AbilityTextureName"	"item_blood_mask"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1052"
@@ -13332,7 +13417,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/chaos_demon"
+		"AbilityTextureName"	"item_chaos_demon"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"FightRecapLevel"	"2"
@@ -13408,7 +13493,7 @@
 	"item_battlefury_ring"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/battlefury_ring"
+		"AbilityTextureName"	"item_battlefury_ring"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -13545,7 +13630,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/blink1"
+		"AbilityTextureName"	"item_blink1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"FightRecapLevel"	"1"
 		"AbilityCastPoint"	"0.0"
@@ -13680,8 +13765,11 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshurb"
+		"AbilityTextureName"	"item_zhuanshurb"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"0.0"
@@ -13700,24 +13788,45 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshurb"
+			"modifier_npc_dota_hero_rubick"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"	{}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/chronos_magician.lua"
+						"Function"	"UpgradeTeleport"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/chronos_magician.lua"
+						"Function"	"DowngradeTeleport"
+					}
+				}
 				"OnAttackLanded"
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"ZhuanShuRB"
+						"ScriptFile"	"scripts/vscripts/ability_hero/chronos_magician.lua"
+						"Function"	"OnAttackLanded"
 					}
-				}
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
 				}
 			}
 		}
@@ -13728,7 +13837,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -13738,7 +13847,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshurb1"
+		"AbilityTextureName"	"item_zhuanshurb1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -13871,7 +13980,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshujugg"
+		"AbilityTextureName"	"item_zhuanshujugg"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1128"
 		"ItemQuality"	"component"
@@ -14098,8 +14207,11 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshujugg"
+		"AbilityTextureName"	"item_zhuanshujugg"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"0.0"
@@ -14116,17 +14228,52 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshujiansheng"
+			"modifier_npc_dota_hero_juggernaut"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
 				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_npc_dota_hero_juggernaut_debuff"
+							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
+								"Function"	"OnAttackLanded"
+							}
+						}
+						"Chance"	"%critical_chance"
+					}
+				}
+			}
+			"modifier_npc_dota_hero_juggernaut_debuff"
+			{
+				"Duration"	"%duration"
+				"IsDebuff"	"1"
 			}
 		}
 		// Special
@@ -14136,7 +14283,17 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0.5"
 			}
 		}
 	}
@@ -14167,16 +14324,37 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_monkey_king_bar"
+			"modifier_npc_dota_hero_monkey_king"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
+						"Function"	"OnExclusiveCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
+						"Function"	"OnExclusiveDestory"
+					}
 				}
 			}
 		}
@@ -14187,7 +14365,32 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"critical"	"1.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"count"	"9"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_percent"	"20"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
 			}
 		}
 	}
@@ -14197,7 +14400,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshudh1"
+		"AbilityTextureName"	"item_zhuanshudh1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Casting
@@ -14290,7 +14493,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshusf1"
+		"AbilityTextureName"	"item_zhuanshusf1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Casting
@@ -14377,6 +14580,138 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"mp_regen"	"100"
+			}
+		}
+	}
+
+	"item_npc_dota_hero_spectre1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_diffusal_blade"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastRange"	"900"
+		"ID"	"1726"
+		"ItemQuality"	"component"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemCost"	"550"
+		"ItemSellable"	"0"
+		"ItemPurchasable"	"1"
+		"ItemShopTags"	"magic_resist"
+		"ItemRequirements"	{}
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"Modifiers"
+		{
+			"modifier_npc_dota_hero_spectre"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%hp"
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mp"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnExclusiveCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnExclusiveDestroy"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnDeath"
+					}
+				}
+				"OnAbilityExecuted"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnAbilityExecuted"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"400"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agi"	"200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"int"	"200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp"	"4000"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp"	"2000"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"400"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_regen"	"100"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_percent"	"100"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_limit"	"25"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cd_reduce"	"50"
 			}
 		}
 	}
@@ -14562,7 +14897,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshufs1"
+		"AbilityTextureName"	"item_zhuanshufs1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Casting
@@ -14642,7 +14977,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshuta1"
+		"AbilityTextureName"	"item_zhuanshuta1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Casting
@@ -14722,7 +15057,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshucm1"
+		"AbilityTextureName"	"item_zhuanshucm1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Casting
@@ -14738,6 +15073,14 @@
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"OnAbilityExecuted"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+				"Function"	"OnAbilityExecuted"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_npc_dota_hero_crystal_maiden"
@@ -14755,6 +15098,40 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
 				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnDestory"
+					}
+				}
+			}
+			"modifier_item_npc_dota_hero_crystal_maiden_debuff"
+			{
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_FROZEN"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -14793,6 +15170,21 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"mp_regen"	"100"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"rate"	"80"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"refresh"	"15"
 			}
 		}
 	}
@@ -14961,8 +15353,11 @@
 	"item_npc_dota_hero_antimage"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshudh"
+		"AbilityTextureName"	"item_zhuanshudh"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1133"
 		"ItemQuality"	"epic"
@@ -14976,16 +15371,35 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshudh"
+			"modifier_npc_dota_hero_antimage"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/demon_hunter.lua"
+						"Function"	"OnAttackLanded"
+					}
 				}
 			}
 		}
@@ -14994,7 +15408,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -15002,8 +15416,11 @@
 	"item_npc_dota_hero_nevermore"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshusf"
+		"AbilityTextureName"	"item_zhuanshusf"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1678"
 		"ItemQuality"	"epic"
@@ -15017,16 +15434,37 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshusf"
+			"modifier_npc_dota_hero_nevermore"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
+						"Function"	"OnExclusiveCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/tartarus.lua"
+						"Function"	"OnExclusiveDestory"
+					}
 				}
 			}
 		}
@@ -15035,7 +15473,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -15045,6 +15483,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_orchid"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1683"
 		"ItemQuality"	"epic"
@@ -15058,16 +15499,37 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshulina"
+			"modifier_npc_dota_hero_lina"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
+						"Function"	"OnExclusiveCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
+						"Function"	"OnExclusiveDestory"
+					}
 				}
 			}
 		}
@@ -15076,7 +15538,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -15086,6 +15548,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_heavens_halberd"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1687"
 		"ItemQuality"	"epic"
@@ -15099,16 +15564,27 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshulegion"
+			"modifier_npc_dota_hero_legion_commander"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
 				}
 			}
 		}
@@ -15117,7 +15593,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -15125,8 +15601,11 @@
 	"item_npc_dota_hero_ember_spirit"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshufs"
+		"AbilityTextureName"	"item_zhuanshufs"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1690"
 		"ItemQuality"	"epic"
@@ -15140,16 +15619,27 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshufs"
+			"modifier_npc_dota_hero_ember_spirit"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
 				}
 			}
 		}
@@ -15158,7 +15648,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
 			}
 		}
 	}
@@ -15166,8 +15656,11 @@
 	"item_npc_dota_hero_templar_assassin"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshuta"
+		"AbilityTextureName"	"item_zhuanshuta"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1695"
 		"ItemQuality"	"epic"
@@ -15181,16 +15674,27 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshuta"
+			"modifier_npc_dota_hero_templar_assassin"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
 				}
 			}
 		}
@@ -15199,7 +15703,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce"	"2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_interval"	"0.1"
 			}
 		}
 	}
@@ -15207,8 +15726,11 @@
 	"item_npc_dota_hero_crystal_maiden"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/zhuanshucm"
+		"AbilityTextureName"	"item_zhuanshucm"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"0.0"
 		"ID"	"1706"
 		"ItemQuality"	"epic"
@@ -15222,17 +15744,66 @@
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
-			"modifier_zhuanshucm"
+			"modifier_npc_dota_hero_crystal_maiden"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				"Properties"	{}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnCreated"
+					}
 				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnDestory"
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+				"OnAbilityExecuted"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+						"Function"	"OnAbilityExecuted"
+					}
+				}
+			}
+			"modifier_npc_dota_hero_crystal_maiden_debuff"
+			{
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_FROZEN"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"TextureName"	"item_npc_dota_hero_crystal_maiden"
 			}
 		}
 		"AbilitySpecial"
@@ -15240,7 +15811,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"-500"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"refresh_chance"	"15"
 			}
 		}
 	}
@@ -15248,7 +15834,7 @@
 	"item_original_str_1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1134"
@@ -15359,7 +15945,7 @@
 	"item_original_str_2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1135"
@@ -15467,7 +16053,7 @@
 	"item_original_str_3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1136"
@@ -15576,7 +16162,7 @@
 	"item_original_str_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1137"
@@ -15685,7 +16271,7 @@
 	"item_original_str_5"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1138"
@@ -15795,7 +16381,7 @@
 	"item_original_str_6"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1139"
@@ -15903,7 +16489,7 @@
 	"item_original_str_7"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_essence"
+		"AbilityTextureName"	"item_power_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1140"
@@ -16012,7 +16598,7 @@
 	"item_original_str_8"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1141"
@@ -16121,7 +16707,7 @@
 	"item_original_str_9"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1142"
@@ -16230,7 +16816,7 @@
 	"item_original_str_10"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1143"
@@ -16340,7 +16926,7 @@
 	"item_original_str_11"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1144"
@@ -16448,7 +17034,7 @@
 	"item_original_str_12"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1145"
@@ -16557,7 +17143,7 @@
 	"item_original_str_13"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1146"
@@ -16665,7 +17251,7 @@
 	"item_original_str_14"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/power_ball"
+		"AbilityTextureName"	"item_power_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1147"
@@ -16773,7 +17359,7 @@
 	"item_original_str_15"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/original_str_15"
+		"AbilityTextureName"	"item_original_str_15"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1148"
@@ -16862,7 +17448,7 @@
 	"item_original_agi_1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1149"
@@ -16973,7 +17559,7 @@
 	"item_original_agi_2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1150"
@@ -17081,7 +17667,7 @@
 	"item_original_agi_3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1151"
@@ -17189,7 +17775,7 @@
 	"item_original_agi_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1152"
@@ -17297,7 +17883,7 @@
 	"item_original_agi_5"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1153"
@@ -17407,7 +17993,7 @@
 	"item_original_agi_6"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1154"
@@ -17516,7 +18102,7 @@
 	"item_original_agi_7"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_essence"
+		"AbilityTextureName"	"item_fantasy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1155"
@@ -17624,7 +18210,7 @@
 	"item_original_agi_8"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1156"
@@ -17732,7 +18318,7 @@
 	"item_original_agi_9"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1157"
@@ -17841,7 +18427,7 @@
 	"item_original_agi_10"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1158"
@@ -17951,7 +18537,7 @@
 	"item_original_agi_11"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1159"
@@ -18060,7 +18646,7 @@
 	"item_original_agi_12"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1160"
@@ -18168,7 +18754,7 @@
 	"item_original_agi_13"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1161"
@@ -18276,7 +18862,7 @@
 	"item_original_agi_14"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/fantasy_ball"
+		"AbilityTextureName"	"item_fantasy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1162"
@@ -18385,7 +18971,7 @@
 	"item_original_agi_15"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/original_agi_15"
+		"AbilityTextureName"	"item_original_agi_15"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1164"
@@ -18474,7 +19060,7 @@
 	"item_original_int_1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1163"
@@ -18585,7 +19171,7 @@
 	"item_original_int_2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1165"
@@ -18694,7 +19280,7 @@
 	"item_original_int_3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1166"
@@ -18802,7 +19388,7 @@
 	"item_original_int_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1167"
@@ -18911,7 +19497,7 @@
 	"item_original_int_5"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1168"
@@ -19021,7 +19607,7 @@
 	"item_original_int_6"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1169"
@@ -19130,7 +19716,7 @@
 	"item_original_int_7"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_essence"
+		"AbilityTextureName"	"item_energy_essence"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1170"
@@ -19238,7 +19824,7 @@
 	"item_original_int_8"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1171"
@@ -19346,7 +19932,7 @@
 	"item_original_int_9"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1172"
@@ -19455,7 +20041,7 @@
 	"item_original_int_10"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1173"
@@ -19565,7 +20151,7 @@
 	"item_original_int_11"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1174"
@@ -19674,7 +20260,7 @@
 	"item_original_int_12"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1175"
@@ -19782,7 +20368,7 @@
 	"item_original_int_13"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1176"
@@ -19890,7 +20476,7 @@
 	"item_original_int_14"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/energy_ball"
+		"AbilityTextureName"	"item_energy_ball"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1177"
@@ -19999,7 +20585,7 @@
 	"item_original_int_15"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/original_int_15"
+		"AbilityTextureName"	"item_original_int_15"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1178"
@@ -20088,7 +20674,7 @@
 	"item_core_original"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/core_original"
+		"AbilityTextureName"	"item_core_original"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1179"
@@ -20359,7 +20945,7 @@
 	"item_ogre_1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ogre_1"
+		"AbilityTextureName"	"item_ogre_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -20452,7 +21038,7 @@
 	"item_ogre_2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ogre_2"
+		"AbilityTextureName"	"item_ogre_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1665"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -20483,7 +21069,7 @@
 	"item_ogre_3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ogre_3"
+		"AbilityTextureName"	"item_ogre_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1666"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -20514,7 +21100,7 @@
 	"item_ogre_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/ogre_4"
+		"AbilityTextureName"	"item_ogre_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -20827,7 +21413,7 @@
 	"item_tree_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/tree_4"
+		"AbilityTextureName"	"item_tree_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCooldown"	"30"
 		"ID"	"1700"
@@ -20918,7 +21504,7 @@
 	"item_tree_seed"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/tree_seed"
+		"AbilityTextureName"	"item_tree_seed"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1701"
 		"ItemCost"	"10000"
@@ -20933,7 +21519,7 @@
 	"item_athena_momian"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/athena_momian"
+		"AbilityTextureName"	"item_athena_momian"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -20964,7 +21550,7 @@
 	"item_athena_guard"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/athena_guard"
+		"AbilityTextureName"	"item_athena_guard"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -21010,7 +21596,7 @@
 	"item_athena_heal"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/athena_heal"
+		"AbilityTextureName"	"item_athena_heal"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -21051,7 +21637,7 @@
 	"item_athena_wudi"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/athena_wudi"
+		"AbilityTextureName"	"item_athena_wudi"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -21131,7 +21717,7 @@
 	"soul_cloak"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/soul_cloak"
+		"AbilityTextureName"	"item_soul_cloak"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ID"	"1703"
@@ -21151,7 +21737,7 @@
 	"fire_head"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/blood_mask_broken"
+		"AbilityTextureName"	"item_blood_mask_broken"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ID"	"1500"
@@ -21171,7 +21757,7 @@
 	"fire_mask"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/blood_mask"
+		"AbilityTextureName"	"item_blood_mask"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ID"	"1715"
@@ -21181,7 +21767,7 @@
 	"soul_dead_god"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/soul_dead_god"
+		"AbilityTextureName"	"item_soul_dead_god"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ID"	"1704"
@@ -21191,7 +21777,7 @@
 	"key_dadi"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_dadi"
+		"AbilityTextureName"	"item_key_dadi"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1635"
 		"ItemRequirements"	{}
@@ -21200,7 +21786,7 @@
 	"key_haiyang"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_haiyang"
+		"AbilityTextureName"	"item_key_haiyang"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1640"
 		"ItemRequirements"	{}
@@ -21209,7 +21795,7 @@
 	"key_diyu"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_diyu"
+		"AbilityTextureName"	"item_key_diyu"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1636"
 		"ItemRequirements"	{}
@@ -21218,7 +21804,7 @@
 	"key_shenyuan"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_shenyuan"
+		"AbilityTextureName"	"item_key_shenyuan"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1638"
 		"ItemRequirements"	{}
@@ -21227,7 +21813,7 @@
 	"key_hundun"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_hundun"
+		"AbilityTextureName"	"item_key_hundun"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1639"
 		"ItemRequirements"	{}
@@ -21236,7 +21822,7 @@
 	"key_tiankong"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_tiankong"
+		"AbilityTextureName"	"item_key_tiankong"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1641"
 		"ItemRequirements"	{}
@@ -21245,7 +21831,7 @@
 	"key_tiantang"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/key_tiantang"
+		"AbilityTextureName"	"item_key_tiantang"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1642"
 		"ItemRequirements"	{}
@@ -21800,5 +22386,104 @@
 				"damage_deepen"	"100"
 			}
 		}
+	}
+
+	"item_npc_dota_hero_spectre"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_diffusal_blade"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"ID"	"1725"
+		"Modifiers"
+		{
+			"modifier_npc_dota_hero_spectre"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnCreated"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnExclusiveCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
+						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnExclusiveDestroy"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnDeath"
+					}
+				}
+				"OnAbilityExecuted"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnAbilityExecuted"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_percent"	"100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cd_reduce"	"50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_limit"	"25"
+			}
+		}
+	}
+
+	"item_exclusive_trial"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_tpscroll"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"ID"	"1728"
 	}
 }

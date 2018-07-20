@@ -115,10 +115,14 @@ function GuardingAthena:DamageFilter( args )
 	end
 	-- 特殊处理
 	if caster.DamageFilterAttacker then
-		args.damage = caster.DamageFilterAttacker(args.damage,victim)
+		for name,filter in pairs(caster.DamageFilterAttacker) do
+			args.damage = filter(args.damage,victim)
+		end
 	end
 	if victim.DamageFilterVictim then
-		args.damage = victim.DamageFilterVictim(args.damage,caster)
+		for name,filter in pairs(victim.DamageFilterVictim) do
+			args.damage = filter(args.damage,caster)
+		end
 	end
 	-- 魔法伤害
 	if damageType == DAMAGE_TYPE_MAGICAL then

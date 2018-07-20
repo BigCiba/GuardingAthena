@@ -12,6 +12,49 @@ function OnCreated( t )
         ability.stackLevel = 0
     end
 end
+function OnDeath( t )
+    local caster = t.caster
+    if HasExclusive(caster,2) then
+        local ability = caster:GetAbilityByIndex(2)
+        local loc = caster:GetAbsOrigin()
+        local healthCost = caster:GetHealth() * 0.3
+        local radius = ability:GetSpecialValueFor("radius")
+        local damage = ability:GetSpecialValueFor("damage_active") * healthCost
+        local damageType = ability:GetAbilityDamageType()
+        local p = CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,GuardingAthena.entAthena,2.5)
+        ParticleManager:SetParticleControl( p, 0, caster:GetAbsOrigin())
+        -- shock
+        local unitGroup = GetUnitsInRadius(caster,ability,loc,radius)
+        for k,v in pairs(unitGroup) do
+            ability:ApplyDataDrivenModifier(caster, v, "modifier_spectre_2_debuff", nil)
+            v:Stop()
+        end
+        local count = 0
+        Timers:CreateTimer(function ()
+            if count < 30 then
+                local unitGroup = GetUnitsInRadius(caster,ability,loc,radius)
+                CauseDamage(caster,unitGroup,damage * 0.1,damageType,ability)
+                count = count + 1
+                return 0.1
+            end
+        end)
+    end
+end
+function OnExclusiveCreated( t )
+    local caster = t.caster
+    AddDamageFilterVictim(caster,"spectre",function (damage,attacker)
+        if HasExclusive(caster,3) then
+            local hpLimit = caster:GetMaxHealth() * 0.25
+            if damage > hpLimit then damage = hpLimit end
+            return damage
+        end
+        return damage
+    end)
+end
+function OnExclusiveDestory( t )
+    local caster = t.caster
+    RemoveDamageFilterVictim(caster,"spectre")
+end
 function OnAttackLanded( t )
     local caster = t.caster
     local target = t.target
@@ -52,9 +95,9 @@ function OnSpawn( t )
     local target = t.target
     local ability = t.ability
     local health = ability:GetSpecialValueFor("health")
-    target:SetBaseMaxHealth(caster:GetMaxHealth() * health)
-    target:SetMaxHealth(target:GetMaxHealth())
-    target:SetHealth(target:GetMaxHealth())
+    target:SetBaseMaxHealth(caster:GetMaxHealth())
+    target:SetMaxHealth(caster:GetMaxHealth())
+    target:SetHealth(target:GetMaxHealth() * health)
     target.attack_count = 3
     ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_0_illusion", nil)
     CreateParticle("particles/heroes/spectre/spectre_2_illusion.vpcf",PATTACH_ABSORIGIN,target,2)
@@ -65,8 +108,10 @@ function OnIllusionAttackLanded( t )
     local target = t.target
     local ability = t.ability
     local ability_2 = owner:GetAbilityByIndex(2)
+    local damagePercent = ability:GetSpecialValueFor("damage") * 0.01
+    if HasExclusive(owner,1) then damagePercent = 1 end
     if ability_2:GetLevel() > 0 then
-        local damage = RandomFloat(1, ability_2:GetSpecialValueFor("damage") * owner:GetStrength() * ability:GetSpecialValueFor("damage") * 0.01) 
+        local damage = RandomFloat(1, ability_2:GetSpecialValueFor("damage") * owner:GetStrength() * damagePercent) 
         local damageType = ability:GetAbilityDamageType()
         ability.no_damage_filter = true
         CauseDamage(caster,caster,caster:GetMaxHealth() * 0.01,damageType,ability)
@@ -169,7 +214,7 @@ end
 function OnIntervalThink( t )
     local caster = t.caster
     local target = t.target
-    target:MoveToPosition(target:GetAbsOrigin() + Vector(RandomInt(-300, 300),RandomInt(-300, 300),0))
+    target:MoveToPosition(target:GetAbsOrigin() + Vector(RandomInt(-200, 200),RandomInt(-200, 200),0))
 end
 function OnSpellStart( t )
     local caster = t.caster
@@ -244,9 +289,9 @@ function OnSpellStart( t )
         local damage = ability:GetSpecialValueFor("damage_active") * healthCost
         local damageType = ability:GetAbilityDamageType()
         ability.no_damage_filter = true
-        CauseDamage(caster,caster,healthCost,damageType,ability)
+        CauseDamage(caster,caster,healthCost,DAMAGE_TYPE_PURE,ability)
         ability.no_damage_filter = nil
-        CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,4)
+        CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,0.5)
         -- shock
         local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
         for k,v in pairs(unitGroup) do
@@ -280,6 +325,8 @@ function OnSpellStart( t )
         -- buff
         ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_4_stun", {duration=stunDuration})
         ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_4_debuff", {duration=duration})
+        SetModifierType(target,"modifier_spectre_4_stun","unpurgable")
+        SetModifierType(target,"modifier_spectre_4_debuff","unpurgable")
         target:AddNewModifier(caster, ability, "armor", {armor=-armor,duration=stunDuration})
         -- slience
         local unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),radius)
@@ -324,6 +371,24 @@ function OnSpellStart( t )
             local impact = CreateParticle("particles/heroes/spectre/spectre_4_impact.vpcf",PATTACH_ABSORIGIN,caster,4)
             ParticleManager:SetParticleControl(impact, 0, GetRotationPoint(target:GetAbsOrigin(),600,i*90))
             ParticleManager:SetParticleControl(impact, 1, GetRotationPoint(target:GetAbsOrigin(),600,i*90))
+        end
+    end
+end
+function OnAbilityExecuted( t )
+    local caster = t.caster
+    if HasExclusive(caster,4) then
+        local target = t.target
+        local ability = t.event_ability
+        local cdReduce = t.ability:GetSpecialValueFor("cd_reduce") * 0.01
+        local duration = ability:GetSpecialValueFor("stun_duration") + 0.1
+        if ability:GetAbilityName() == "spectre_4" then
+            Timers:CreateTimer(duration,function ()
+                if not target:IsAlive() then
+                    local cdRem = ability:GetCooldownTimeRemaining()
+                    ability:EndCooldown()
+                    ability:StartCooldown(cdRem * cdReduce)
+                end
+            end)
         end
     end
 end

@@ -20,7 +20,7 @@
 	"QuestKillGolem"						"Kill Gelom:"
 	"QuestKillBeast"						"Kill 2 Hell Beast:"
 	"QuestKillKobold"						"Kill 3 Kobold Lord:"
-	"QuestKillDragon"						"Kill 15 Dragon:"
+	"QuestKillDragon"						"Kill Trial Creep:"
 	"poseidon"								"Poseidon"
 	"nec"									"Hades"
 	"zeus"									"Zeus"

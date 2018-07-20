@@ -1,0 +1,218 @@
+{
+	"Timers": {
+		"prefix": "Timers",
+		"body": [
+			"Timers:CreateTimer(${1},function ()",
+			"\t$0",
+			"end)"
+		],
+		"description": "CreateTimer"
+	},
+	"CastAbility": {
+		"prefix": "CastAbility",
+		"body": [
+			"CastAbility(${caster},${orderType},${ability},${target},${position})"
+		],
+		"description": "向单位发布施法指令"
+	},
+	"CauseDamage": {
+		"prefix": "CauseDamage",
+		"body": [
+			"CauseDamage(${attacker},${victim},${damage},${damageType},${ability})"
+		],
+		"description": "CauseDamage"
+	},
+	"AddDamageFilterAttacker": {
+		"prefix": "AddDamageFilterAttacker",
+		"body": [
+			"AddDamageFilterAttacker(${caster},${name},function (damage,victim)",
+			"\t$0",
+			"end)"
+		],
+		"description": "添加伤害过滤器"
+	},
+	"AddDamageFilterVictim": {
+		"prefix": "AddDamageFilterVictim",
+		"body": [
+			"AddDamageFilterVictim(${caster},${name},function (damage,attacker)",
+			"\t$0",
+			"end)"
+		],
+		"description": "添加伤害过滤器"
+	},
+	"AddModifierStackCount": {
+		"prefix": "AddModifierStackCount",
+		"body": [
+			"AddModifierStackCount(${caster},${target},${ability},${modiferName},${count},${duration},${independent})"
+		],
+		"description": "AddModifierStackCount"
+	},
+	"CreateParticle": {
+		"prefix": "CreateParticle",
+		"body": [
+			"CreateParticle(${particleName},${particleAttach},${owningEntity},${duration})"
+		],
+		"description": "Optional parameters: duration,immediately"
+	},
+	"CreateTrackingProjectile": {
+		"prefix": "CreateTrackingProjectile",
+		"body": [
+			"CreateTrackingProjectile(${caster},${target},${ability},${particleName},${speed})"
+		],
+		"description": "Optional parameters: dodgeable,vision,visionRadius"
+	},
+	"CreateLinearProjectile": {
+		"prefix": "CreateLinearProjectile",
+		"body": [
+			"CreateLinearProjectile(${caster},${ability},${particleName},${spawnOrigin},${radius},${distance},${direction},${speed},${deleteOnHit})"
+		],
+		"description": "Create a linear projectile, return particle id"
+	},
+	"GetUnitsInRadius": {
+		"prefix": "GetUnitsInRadius",
+		"body": [
+			"GetUnitsInRadius(${caster},${ability},${point},${radius})"
+		],
+		"description": "Get Units In Radius, return unit group"
+	},
+	"GetUnitsInLine": {
+		"prefix": "GetUnitsInLine",
+		"body": [
+			"GetUnitsInLine(${caster},${ability},${start_point},${end_point},${width})"
+		],
+		"description": "Find Units In Sector, return unit group"
+	},
+	"GiveItem": {
+		"prefix": "GiveItem",
+		"body": [
+			"GiveItem(${caster},${itemName})"
+		],
+		"description": "Optional parameters: itemOwner, return item or false"
+	},
+	"HasExclusive": {
+		"prefix": "HasExclusive",
+		"body": [
+			"HasExclusive(${caster})"
+		],
+		"description": "是否拥有专属，返回true或false"
+	},
+	"GetUnitsInSector": {
+		"prefix": "GetUnitsInSector",
+		"body": [
+			"GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
+		],
+		"description": "Find Units In Sector, return unit group"
+	},
+	"IsModifierType": {
+		"prefix": "IsModifierType",
+		"body": [
+			"IsModifierType(${caster},${buffName},${type})"
+		],
+		"description": "判断buff类型"
+	},
+	"SetCamera": {
+		"prefix": "SetCamera",
+		"body": [
+			"SetCamera(${playerID},${arg})"
+		],
+		"description": "Set camera on unit or position"
+	},
+	"DropItem": {
+		"prefix": "DropItem",
+		"body": [
+			"DropItem(${item},${hero})"
+		],
+		"description": "Drop item on unit position, return item"
+	},
+	"RemoveDamageFilterAttacker": {
+		"prefix": "RemoveDamageFilterAttacker",
+		"body": [
+			"RemoveDamageFilterAttacker(${caster},${name})"
+		],
+		"description": "删除伤害过滤器"
+	},
+	"RemoveDamageFilterVictim": {
+		"prefix": "RemoveDamageFilterVictim",
+		"body": [
+			"RemoveDamageFilterVictim(${caster},${name})"
+		],
+		"description": "删除伤害过滤器"
+	},
+	"RollDrops": {
+		"prefix": "RollDrops",
+		"body": [
+			"RollDrops(${unit})"
+		],
+		"description": "Drop item on unit position, return item"
+	},
+	"SetModelScale": {
+		"prefix": "SetModelScale",
+		"body": [
+			"SetModelScale(${caster},${scale},${smooth},${duration})"
+		],
+		"description": "设置模型大小"
+	},
+	"SetModifierType": {
+		"prefix": "SetModifierType",
+		"body": [
+			"SetModifierType(${caster},${buffName},${type})"
+		],
+		"description": "设置buff的类型"
+	},
+	"CreateSound": {
+		"prefix": "CreateSound",
+		"body": [
+			"CreateSound(${soundName},${caster})"
+		],
+		"description": "Optional parameters: location,duration,delay"
+	},
+	"Heal": {
+		"prefix": "Heal",
+		"body": [
+			"DropItem(${caster},${heal},${mana},${show})"
+		],
+		"description": "Heal health and mana"
+	},
+	"PropertySystem": {
+		"prefix": "PropertySystem",
+		"body": [
+			"PropertySystem(${caster},${property},${count},${duration})"
+		],
+		"description": "Optional parameters: duration"
+	},
+	"SetRegionLimit": {
+		"prefix": "SetRegionLimit",
+		"body": [
+			"SetRegionLimit(${caster},${regionEntity})"
+		],
+		"description": "Set Region Limit"
+	},
+	"SetUnitPosition": {
+		"prefix": "SetUnitPosition",
+		"body": [
+			"SetUnitPosition(${caster},${position})"
+		],
+		"description": "Set Unit Position"
+	},
+	"Jump": {
+		"prefix": "Jump",
+		"body": [
+			"Jump(${caster},${target_location},${speed},${height},${findPath},${callback})"
+		],
+		"description": "Jump"
+	},
+	"SetUnitDamagePercent": {
+		"prefix": "SetUnitDamagePercent",
+		"body": [
+			"SetUnitDamagePercent(${caster},${percent},${duration})"
+		],
+		"description": "Set Unit Damage Percent"
+	},
+	"GetRotationPoint": {
+		"prefix": "GetRotationPoint",
+		"body": [
+			"GetRotationPoint(${originPoint},${radius},${angle})"
+		],
+		"description": "GetRotationPoint"
+	}
+}

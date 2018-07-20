@@ -8,7 +8,7 @@ function CourageMoment( keys )
 	local targetFlag = ability:GetAbilityTargetFlags()
 	local cooldown = ability:GetSpecialValueFor("cooldown")
 	local chance = ability:GetSpecialValueFor("chance") + (100 - caster:GetHealthPercent()) * 0.4
-	if HasExclusive(caster) then
+	if HasExclusive(caster,4) then
 		cooldown = 2
 	end
 	local unitCount = #FindUnitsInRadius(teamNumber, caster_location, caster, 400, targetTeam, targetType, targetFlag, 0, false)
@@ -97,7 +97,7 @@ function QueenCurseEffect( keys )
 	if caster:HasModifier("modifier_war_god") then
 		radius = radius * 2
 	end
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		duration = 6
 	end
 	local time = 0
@@ -146,7 +146,9 @@ function WarGodStr( keys )
 	local caster = keys.caster
 	local str = caster:GetBaseStrength() * keys.ability:GetSpecialValueFor("str_percent")
 	PropertySystem(caster,DOTA_ATTRIBUTE_STRENGTH,str,5)
-	caster:Purge(false, true, false, true, false)
+	if HasExclusive(caster,1) then
+		ClearBuff(caster,"debuff")
+	end
 end
 function WarGodKill( keys )
 	local caster = keys.caster
@@ -172,9 +174,6 @@ function WarAuraActivity( keys )
 	ability:ApplyDataDrivenModifier(caster,caster,"modifier_war_arua_caster",nil)
 	caster:SetModifierStackCount("modifier_war_arua_caster",caster,unitCount)
 	local hp_percent = 0.8
-	if HasExclusive(caster) then
-		hp_percent = 0.6
-	end
     local damagetaken = caster:GetHealth() * hp_percent
 	caster:SetHealth(caster:GetHealth() - damagetaken)
 	local ability_2 = caster:FindAbilityByName("war_honor")
@@ -189,7 +188,7 @@ function WarHonor( keys )
 	if caster:HasModifier("modifier_war_god") then
 		return
 	end
-	if HasExclusive(caster) then
+	if HasExclusive(caster,3) then
 		hp_percent = 0.3
 	end
 	if ability.damage then

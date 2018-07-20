@@ -29,7 +29,7 @@ function ThunderStrikeCoolDown( t )
 	local ability = t.ability
 	local stackcount = caster:GetModifierStackCount("modifier_thunder_strike",caster)
     local buffpoint = 2
-    if HasExclusive(caster) then
+    if HasExclusive(caster,1) then
 		buffpoint = 3
 	end
 	if stackcount > 0 then
@@ -106,7 +106,7 @@ function CreateHealDevice( t )
     local Duration = ability:GetSpecialValueFor("duration")
     local str = caster:GetStrength()
     local unitName = "heal_device"
-    if HasExclusive(caster) then
+    if HasExclusive(caster,3) then
         unitName = "heal_device_move"
     end
     PrecacheUnitByNameAsync(unitName,function()
@@ -119,7 +119,7 @@ function CreateHealDevice( t )
         nature:SetPhysicalArmorBaseValue(str)
         nature:AddNewModifier(nature, nil, "modifier_kill", {duration=Duration})
         ability:ApplyDataDrivenModifier(caster, nature, "modifier_device_heal", nil)
-        if HasExclusive(caster) then
+        if HasExclusive(caster,3) then
             Timers:CreateTimer(function ()
                 if nature:IsAlive() then
                     local unitGroup = GetUnitsInRadius(nature,ability,nature:GetAbsOrigin(),600)
@@ -144,14 +144,6 @@ function OnHealOut( t )
     local caster = t.caster
     caster.healRefresh = 0
 end
-function HealMove( t )
-    local caster = t.caster
-    local target = t.target
-    local ability = t.ability
-    if HasExclusive(caster) then
-        target:RemoveModifierByName("modifier_heal_device_move")
-    end
-end
 function ThunderPowerDamage( caster,target,ability )
     local scale = caster:GetAbilityByIndex(0):GetSpecialValueFor("scale") + caster:GetAbilityByIndex(3):GetSpecialValueFor("damage_scale")
     local damage = caster:GetStrength() * scale
@@ -160,8 +152,10 @@ function ThunderPowerDamage( caster,target,ability )
     ParticleManager:SetParticleControl(particle, 0, target_location + Vector(0, 0, 5000))
 	ParticleManager:SetParticleControl(particle, 1, target_location)
     ParticleManager:SetParticleControl(particle, 3, target_location)
-    if HasExclusive(caster) then
+    if HasExclusive(caster,1) then
         damage = damage * 2
+    end
+    if HasExclusive(caster,2) then
         target = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),300)
     end
     CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL, ability )
@@ -203,7 +197,7 @@ function ArcLightning(t)
     local count = 1
     local unit_start = device
     local unit_end = target
-    if HasExclusive(caster) then
+    if HasExclusive(caster,4) then
 		count = 3
 	end
     Timers:CreateTimer(function()

@@ -11,12 +11,13 @@ function PracticeTeleport( trigger )
 				function()
 					PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
 				end)
+				caster:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
 				SetUnitPosition(trigger.activator, point)
-				targetCaller = Entities:FindByName(nil,"practice_"..tostring(i))
+				--[[targetCaller = Entities:FindByName(nil,"practice_"..tostring(i))
 				PracticeStart( {activator=caster,caller=targetCaller} )
 				Timers:CreateTimer(4,function ()
 					targetCaller.used = targetCaller.used - 1
-				end)
+				end)]]
 				PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
 				--caster.onthink = true
 				break

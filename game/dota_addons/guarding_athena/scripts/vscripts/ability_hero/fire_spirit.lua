@@ -14,7 +14,7 @@ function OnCreated( t )
 	elseif abilityIndex == 4 then
 		caster.ultimate = ability:GetSpecialValueFor("damage")
 		caster.bonusbuff = ability:GetSpecialValueFor("attack")
-		if HasExclusive(caster) then
+		if HasExclusive(caster,1) then
 			caster.hasitem = 0.5
 		else
 			caster.hasitem = 1
@@ -80,23 +80,54 @@ end
 function OnIntervalThink( t )
 	local caster = t.caster
 	local ability = t.ability
-	local expend_health = caster:GetMaxHealth() * ability:GetSpecialValueFor("health_regen") * 0.1
-	local attack = math.floor(expend_health * ability:GetSpecialValueFor("attack") * 10)
-	ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_4_buff",nil)
-	caster:SetModifierStackCount("modifier_fire_spirit_4_buff",caster,attack)
-	if caster:GetHealth() > expend_health * 10 then
-		if not caster:IsMagicImmune() then
-			caster:SetHealth(caster:GetHealth() - expend_health * caster.hasitem)
+	local abilityIndex = ability:GetAbilityIndex()
+	if abilityIndex == 0 then
+		if HasExclusive(caster,3) then
+			local target = t.target
+			local ability_0 = caster:FindAbilityByName("fire_spirit_0")
+			local damage = target.firemark * caster:GetAgility()
+			CauseDamage(caster,target,damage,DAMAGE_TYPE_PHYSICAL)
+			if caster.bonusdamage then
+				CauseDamage(caster,target,damage * caster.bonusdamage,DAMAGE_TYPE_MAGICAL,ability)
+				ApplyModifier( caster,target,ability_0 )
+			end
 		end
-	else
-		local t_order = 
-        {
-            UnitIndex = caster:entindex(),
-            OrderType = DOTA_UNIT_ORDER_CAST_TOGGLE,
-            AbilityIndex = ability:entindex(),
-            Queue = 0
-        }
-        caster:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0)
+	elseif abilityIndex == 3 then
+		if HasExclusive(caster,4) then
+			local loc = caster:GetAbsOrigin()
+			local ability_0 = caster:FindAbilityByName("fire_spirit_0")
+			local ability_1 = caster:FindAbilityByName("fire_spirit_1")
+			local damage = 2 * caster:GetAgility() * ability_1:GetSpecialValueFor("damage") + ability_1:GetSpecialValueFor("base_damage")
+			local radius = ability:GetSpecialValueFor("radius")
+			local unitGroup = GetUnitsInRadius(caster,ability,loc,radius)
+			for k,unit in pairs(unitGroup) do
+				local p1 = CreateParticle("particles/units/heroes/hero_ember_spirit/ember_spirit_sleightoffist_trail.vpcf",PATTACH_ABSORIGIN,caster,2)
+				ParticleManager:SetParticleControl( p1, 0, caster:GetAbsOrigin())
+				ParticleManager:SetParticleControl( p1, 1, unit:GetAbsOrigin())
+				caster:PerformAttack(unit,true,true,true,false,false,false,true)
+				OnDealDamage({caster = caster,target = unit,ability = ability_0})
+				DealDamage( caster,unit,damage,false )
+			end
+		end
+	elseif abilityIndex == 4 then
+		local expend_health = caster:GetMaxHealth() * ability:GetSpecialValueFor("health_regen") * 0.1
+		local attack = math.floor(expend_health * ability:GetSpecialValueFor("attack") * 10)
+		ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_4_buff",nil)
+		caster:SetModifierStackCount("modifier_fire_spirit_4_buff",caster,attack)
+		if caster:GetHealth() > expend_health * 10 then
+			if not caster:IsMagicImmune() then
+				caster:SetHealth(caster:GetHealth() - expend_health * caster.hasitem)
+			end
+		else
+			local t_order = 
+			{
+				UnitIndex = caster:entindex(),
+				OrderType = DOTA_UNIT_ORDER_CAST_TOGGLE,
+				AbilityIndex = ability:entindex(),
+				Queue = 0
+			}
+			caster:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0)
+		end
 	end
 end
 function OnChannelFinish( t )
@@ -290,7 +321,7 @@ function CastAbility1( t )
 	local duration = #finalGroup * 0.1
 	caster:AddNewModifier(nil, nil, "modifier_phased", {duration=duration})
 	ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_1",{duration=duration})
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_1_2",{duration=duration})
 	end
 	--caster:AddNoDraw()

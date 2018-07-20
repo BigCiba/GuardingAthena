@@ -3,7 +3,7 @@ function FracturedSoul( keys )
 	local target = keys.unit
 	local ability = keys.ability
 	local cooldown = 1
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		cooldown = 0.5
 	end
 	if caster:HasModifier("modifier_fractured_soul_buff") then
@@ -31,7 +31,7 @@ function OnAttackLanded( t )
 	local caster = t.caster
 	local target = t.target
 	local ability = t.ability
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		FracturedSoul({caster=caster,unit=target,ability=ability})
 	end
 end
@@ -166,7 +166,7 @@ function OnToggleOn( t )
 	local caster= t.caster
 	local ability = t.ability
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_infernal_fire_magic", nil)
-	if not HasExclusive(caster) then
+	if not HasExclusive(caster,1) then
 		caster:RemoveModifierByName("modifier_infernal_fire_physics")
 		caster:RemoveModifierByName("modifier_infernal_fire_physics_buff")
 	end
@@ -356,4 +356,24 @@ function SoulRequiemDamage( keys )
 			return 0.1
 		end
 	end)]]--
+end
+function OnExclusiveCreated( t )
+	local caster = t.caster
+    local ability = caster:FindAbilityByName("destory_hit")
+    if ability then
+        new_ability = caster:AddAbility("destory_hit_up")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+        caster:RemoveAbility("destory_hit")
+    end
+end
+function OnExclusiveDestory( t )
+	local caster = t.caster
+    local ability = caster:FindAbilityByName("destory_hit_up")
+    if ability then
+        new_ability = caster:AddAbility("destory_hit")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
+        caster:RemoveAbility("destory_hit_up")
+    end
 end

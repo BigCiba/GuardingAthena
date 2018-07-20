@@ -1,11 +1,11 @@
 function OnCreated( t )
     local caster = t.caster
-    caster.DamageFilterAttacker = function (damage,victim)
+    AddDamageFilterAttacker(caster,"monkey_king",function (damage,victim)
         local damageDeepen = (100 - victim:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_deep") * 0.01
         damage = damage * (1 + damageDeepen)
         return damage
-    end
-    caster.DamageFilterVictim = function (damage,attacker)
+    end)
+    AddDamageFilterVictim(caster,"monkey_king",function (damage,attacker)
         local damageReduce = (100 - caster:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_reduce") * 0.01
         if caster:HasModifier("modifier_indestructible_absorb") then
             damageReduce = 1
@@ -21,12 +21,37 @@ function OnCreated( t )
         end
         damage = damage * (1 - damageReduce)
         return damage
-    end
+    end)
+end
+function OnExclusiveCreated( t )
+    local caster = t.caster
+    local ability = t.ability
+    local chance = ability:GetSpecialValueFor("chance")
+    local critical = ability:GetSpecialValueFor("critical")
+    AddDamageFilterAttacker(caster,"exclusive",function (damage,victim)
+        if RollPercentage(chance) and HasExclusive(caster,3) then
+            -- 无视护甲
+            local armor = victim:GetPhysicalArmorValue()
+            local damagePure = damage
+            if armor > 0 then
+                local reduce = (armor * 0.05)/(1 + armor * 0.05)
+                damagePure = damagePure / (1 - reduce) * critical
+            end
+            CauseDamage(caster,victim,damagePure,DAMAGE_TYPE_PURE,ability)
+            return 0
+        end
+        return damage
+    end)
+end
+function OnExclusiveDestory( t )
+    local caster = t.caster
+    RemoveDamageFilterAttacker(caster,"exclusive")
 end
 function StickWind( t )
     local caster = t.caster
     local ability = t.ability
     local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster) + ability:GetSpecialValueFor("base_damage")
+    local damagePerTime = damage / 30
     local strikeDamage = ability:GetSpecialValueFor("strike_damage") * caster:GetAgility()
     local damageType = ability:GetAbilityDamageType()
     local caster_location = caster:GetAbsOrigin()
@@ -42,8 +67,9 @@ function StickWind( t )
 	local direction = (target_point - caster_location):Normalized()
     local duration = distance/speed
     local damageAdd = distance/speed
-    if caster:HasModifier("modifier_monkey_king_bar") then
+    if HasExclusive(caster,2) then
         damageAdd = 1
+        damagePerTime = 1 / (distance / 40)
     end
     speed = speed / 30
     CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
@@ -65,7 +91,7 @@ function StickWind( t )
                 v:AddNewModifier(nil, nil, "modifier_phased", {duration = 0.02})
                 SetUnitPosition(v, v:GetAbsOrigin() + direction * speed, false)
             end
-            CauseDamage(caster,unitGroup,damage * 0.033,damageType,ability)
+            CauseDamage(caster,unitGroup,damagePerTime,damageType,ability)
             --print(damage)
 			return 0.01
         else
@@ -123,7 +149,7 @@ function Jingubang( t )
         end
     end)
     local count = 0
-    if caster:HasModifier("modifier_monkey_king_bar") then
+    if HasExclusive(caster,4) then
         crushDamage = crushDamage * 0.2
     end
     Timers:CreateTimer(1,function ()
@@ -137,10 +163,11 @@ function Jingubang( t )
                 local unitGroup = GetUnitsInRadius(caster,ability,cast_location + randomLocation,crushRadius)
                 for k,v in pairs(unitGroup) do
                     ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_crush_debuff", nil)
+                    SetModifierType(v,"modifier_jingubang_crush_debuff","unpurgable")
                     CauseDamage(caster,v,crushDamage,damageType,ability)
                 end
             end)
-            if caster:HasModifier("modifier_monkey_king_bar") then
+            if HasExclusive(caster,4) then
                 count = count + 1
                 return 1
             end 
@@ -203,7 +230,7 @@ function IndestructibleRemove( t )
     local caster = t.caster
     local ability = t.ability
     caster.IndestructibleAbsorb = 0
-    if caster:HasModifier("modifier_monkey_king_bar") then
+    if HasExclusive(caster,1) then
         local unitGroup = GetUnitsInRadius(caster,t.ability,caster:GetAbsOrigin(),600)
         CauseDamage(caster,unitGroup,caster.indestructible_armor,ability:GetAbilityDamageType(),ability)
         CreateParticle("particles/heroes/monkey_king/shield_broke.vpcf",PATTACH_ABSORIGIN,caster,2)

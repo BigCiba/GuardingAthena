@@ -180,6 +180,7 @@ function GuardingAthena:InitGameMode()
 	CustomGameEventManager:RegisterListener( "vip_particle", OnVipParticle )
 	CustomGameEventManager:RegisterListener( "UI_BuyItem", UI_BuyItem )
 	CustomGameEventManager:RegisterListener( "UI_BuyReward", UI_BuyReward )
+	CustomGameEventManager:RegisterListener( "Trial", CreateTrial )
 	
 	--玩家可买物品最大数目，不限制
 	SendToServerConsole("dota_max_physical_items_purchase_limit 9999")

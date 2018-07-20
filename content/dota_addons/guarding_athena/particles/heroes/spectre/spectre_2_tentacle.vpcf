@@ -128,7 +128,6 @@
 		},
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 0.5
 		},
 	]
 	m_controlPointConfigurations = 

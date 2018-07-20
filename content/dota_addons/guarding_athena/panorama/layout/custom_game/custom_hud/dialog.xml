@@ -1,0 +1,24 @@
+<root>
+    <styles>
+        <include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/generic.css" />
+        <include src="file://{resources}/styles/custom_game/custom_hud/dialog.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_hud/dialog.js" />
+    </scripts>
+
+    <Panel class="full" hittest="false">
+        <Panel id="Dialog" class="full" hittest="false">
+            <Panel class="DialogPanel flow-down align-center align-bottom width-3 height-2">
+                <Label class="text-center align-center font-normal font-bold color-white text-shadow-blue" text="小八戒"/>
+                <Panel class="margin-1 HorizonLine"/>
+                <Panel class="padding-1 ItemPanel flow-right align-center">
+                    <DOTAShopItem class="margin-1" onactivate="OnClick()">
+                        <DOTAItemImage itemname="item_exclusive_trial" />
+                    </DOTAShopItem>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

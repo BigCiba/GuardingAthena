@@ -412,6 +412,8 @@ end
 function ArcaneAttack( keys )
     local caster = keys.caster
     local target = keys.target
+    local ability = keys.ability
+    local deepen = ability:GetSpecialValueFor("bonus_damage")
     if target:HasModifier("modifier_arcane_attack_debuff") then
         local charges = target:GetModifierStackCount("modifier_arcane_attack_debuff", caster)
         target:SetModifierStackCount("modifier_arcane_attack_debuff", caster, charges + 1)
@@ -454,7 +456,7 @@ function OriginalCrash( keys )
     for i,unit in pairs(targets) do
         local target_lv = unit:GetLevel()
         local target_stackcount = unit:GetModifierStackCount("modifier_arcane_attack_debuff", caster)
-        local base_damage = ability:GetLevelSpecialValueFor("base_damage", (ability:GetLevel() -1))
+        local base_damage = ability:GetSpecialValueFor("base_damage")
         local damage = base_damage * (target_lv * 0.1 + 1) * (target_stackcount * 0.1 + 1)
         CauseDamage(caster, unit, damage, DAMAGE_TYPE_MAGICAL)
     end

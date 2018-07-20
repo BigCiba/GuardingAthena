@@ -124,7 +124,7 @@ function SpaceBarrier( t )
     if caster.gift then
         particleName = "particles/heroes/chronos_magic/space_barrier_gold.vpcf"
     end
-    if HasExclusive(caster) then
+    if HasExclusive(caster,3) then
         delay = 0
         interval = 0.25
         times = 20
@@ -183,7 +183,7 @@ function Fluctuation( t )
     local damageDeep = 1.0
     local count = 50
     local duration = 12.5
-    if HasExclusive(caster) then
+    if HasExclusive(caster,4) then
         count = 80
         duration = 13.5
     end
@@ -208,4 +208,57 @@ function Fluctuation( t )
             return interval
         end
     end)
+end
+function OnAttackLanded( t )
+    local caster = t.caster
+    if HasExclusive(caster,1) then
+        local target = t.target
+        local damage = caster:GetIntellect() * 5
+        local target_location = target:GetAbsOrigin()
+        local ability = caster:GetAbilityByIndex(0)
+        local damageType = ability:GetAbilityDamageType()
+        local attackPoint = GetRandomPoint(target_location,10,350)
+        local unitGroup = GetUnitsInRadius(caster,ability,attackPoint,200)
+        CauseDamage(caster,unitGroup,damage,damageType,ability)
+        local centerGroup = GetUnitsInRadius(caster,ability,attackPoint,50)
+        for k, v in pairs( centerGroup ) do
+            CauseDamage(caster,v,v:GetBaseMaxHealth() * 0.05,damageType,ability)
+        end
+        local particleName = "particles/heroes/chronos_magic/space_phase.vpcf"
+        if caster.gift then
+            particleName = "particles/heroes/chronos_magic/space_gold_phase.vpcf"
+        end
+        local fxIndex = CreateParticle(particleName,PATTACH_CUSTOMORIGIN,caster,2)
+        ParticleManager:SetParticleControl( fxIndex, 0, attackPoint )
+        CreateSound("Hero_SkywrathMage.MysticFlare.Target",t.caster)
+    end
+end
+function UpgradeTeleport( t )
+    local caster = t.caster
+    local ability = t.ability
+    ability.exclusive_timer = Timers:CreateTimer(function ()
+        if HasExclusive(caster,2) then
+            local ability = caster:FindAbilityByName("teleport_phase")
+            if ability then
+                new_ability = caster:AddAbility("teleport_phase_up")
+                new_ability:SetLevel(ability:GetLevel())
+                caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+                caster:RemoveAbility("teleport_phase")
+            end
+        else
+            return 0.5
+        end
+    end)
+end
+function DowngradeTeleport( t )
+    local caster = t.caster
+    local ability = t.ability
+    Timers:RemoveTimer(ability.exclusive_timer)
+    local ability = caster:FindAbilityByName("teleport_phase_up")
+    if ability then
+        new_ability = caster:AddAbility("teleport_phase")
+        new_ability:SetLevel(ability:GetLevel())
+        caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
+        caster:RemoveAbility("teleport_phase_up")
+    end
 end

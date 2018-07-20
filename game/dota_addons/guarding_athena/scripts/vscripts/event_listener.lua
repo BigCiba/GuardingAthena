@@ -164,3 +164,17 @@ function OnGoldGift( index, keys )
 	table.insert(GOLD_USED_TABLE,gold_index)]]--
 	player.gold_gift = true
 end
+function CreateTrial( index,keys )
+	local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
+	local loc = Entities:FindByName( nil, "trial_point" ):GetAbsOrigin()
+	local name = "trial_creep"
+	PrecacheUnitByNameAsync(name,function()
+		local nature = CreateUnitByName(name, loc, true, nil, nil, DOTA_TEAM_BADGUYS )
+		nature:SetBaseMaxHealth(hero:GetMaxHealth() * 10)
+		nature:SetMaxHealth(hero:GetMaxHealth() * 10)
+		nature:SetHealth(hero:GetMaxHealth() * 10)
+		nature:SetBaseDamageMin(hero:GetBaseDamageMin() * 10)
+		nature:SetBaseDamageMax(hero:GetBaseDamageMax() * 10)
+		nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue() * 10)
+	end)
+end

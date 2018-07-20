@@ -56,7 +56,7 @@ end
 function DarkFire( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
@@ -117,7 +117,7 @@ end
 function DarkFireUp( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
@@ -188,13 +188,13 @@ end
 function FireButterfly( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
-	local radius = 300
+	local radius = ability:GetSpecialValueFor("radius")
 	local point = keys.target_points[1]
-	local damage = ability:GetSpecialValueFor("intellect") * caster:GetIntellect()
+	local damage = ability:GetSpecialValueFor("intellect") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
 	local teamNumber = caster:GetTeamNumber()
 	local targetTeam = ability:GetAbilityTargetTeam()
 	local targetType = ability:GetAbilityTargetType()
@@ -216,6 +216,10 @@ function FireButterfly( keys )
 	for k, v in pairs( unitGroup ) do
         CauseDamage(caster, v, damage, damageType, ability)
         ability:ApplyDataDrivenModifier(caster,v,"modifier_light_array_debuff",nil)
+		-- 专属
+		if HasExclusive(caster,3) then
+			ability:ApplyDataDrivenModifier(caster, v, "modifier_light_array_movespeed", nil)
+		end
         local ability_3 = caster:GetAbilityByIndex(3)
         if ability_3:GetLevel() >=1 then
 	    	if v:HasModifier("modifier_ignite_debuff") then
@@ -235,13 +239,13 @@ function FireButterfly( keys )
 				end
 			end)
 		end
-    end
+	end
     local times = 0
 	Timers:CreateTimer(function()
 		if times < 30 then
 			local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
 			for k, v in pairs( unitGroup ) do
-		        CauseDamage(caster, v, damage * 0.1 * 0.25, damageType, ability)
+		        CauseDamage(caster, v, damage * 0.1 * 0.5, damageType, ability)
 		        if times == 9 or times == 19 or times == 29 then
 		        	local ability_3 = caster:GetAbilityByIndex(3)
 		        	if ability_3:GetLevel() >=1 then
@@ -272,7 +276,7 @@ end
 function Ignite( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		ignite_duration = 10
 	end
 	local target = keys.target
@@ -323,7 +327,7 @@ end
 function MeteorStorm( keys )
 	local caster = keys.caster
 	local ignite_duration = 5
-	if HasExclusive(caster) then
+	if HasExclusive(caster,2) then
 		ignite_duration = 10
 	end
 	local ability = keys.ability
@@ -391,4 +395,48 @@ function MeteorStorm( keys )
 		    return 0.25
 		end
     end)
+end
+function OnExclusiveCreated( t )
+	local caster = t.caster
+	local ability = t.ability
+	ability.exclusive_timer = Timers:CreateTimer(function ()
+		if HasExclusive(caster,1) then
+			local ability_1 = caster:FindAbilityByName("dark_fire")
+			if ability_1 then
+				local new_ability = caster:AddAbility("dark_fire_up")
+				new_ability:SetLevel(ability_1:GetLevel())
+				caster:SwapAbilities(ability_1:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+				caster:RemoveAbility("dark_fire")
+			end
+		end
+		if HasExclusive(caster,4) then
+			local ability_4 = caster:FindAbilityByName("meteor_storm")
+			if ability_4 then
+				local new_ability = caster:AddAbility("meteor_storm_up")
+				new_ability:SetLevel(ability_4:GetLevel())
+				caster:SwapAbilities(ability_4:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+				caster:RemoveAbility("meteor_storm")
+			end
+		end
+		return 0.5
+	end)
+end
+function OnExclusiveDestory( t )
+	local caster = t.caster
+	local ability = t.ability
+	Timers:RemoveTimer(ability.exclusive_timer)
+    local ability_1 = caster:FindAbilityByName("dark_fire_up")
+    local ability_4 = caster:FindAbilityByName("meteor_storm_up")
+    if ability_1 then
+        local new_ability = caster:AddAbility("dark_fire")
+        new_ability:SetLevel(ability_1:GetLevel())
+        caster:SwapAbilities(new_ability:GetAbilityName(), ability_1:GetAbilityName(), true, false)
+        caster:RemoveAbility("dark_fire_up")
+    end
+    if ability_4 then
+        local new_ability = caster:AddAbility("meteor_storm")
+        new_ability:SetLevel(ability_4:GetLevel())
+        caster:SwapAbilities(ability_4:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+        caster:RemoveAbility("meteor_storm_up")
+    end
 end

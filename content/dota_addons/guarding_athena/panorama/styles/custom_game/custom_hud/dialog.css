@@ -1,0 +1,16 @@
+.DialogPanel
+{
+    margin-bottom: 15%;
+    transform: translatey( -50px );
+    transition-property: transform, opacity, position;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s,0.4s,0.2s;
+}
+.ItemPanel
+{
+    
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #87CEEB44 ), to( #87CEEB33 ) );
+    border-radius: 4px;
+    border: 1px solid #87CEEBff;
+    box-shadow: skyblue 0px 0px 4px 0px;
+}

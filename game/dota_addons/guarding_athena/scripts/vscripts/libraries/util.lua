@@ -1,5 +1,8 @@
 --[[
+	AddDamageFilterAttacker(caster,name,callback)
+	AddDamageFilterVictim(caster,name,callback)
 	AddModifierStackCount(caster,target,ability,modiferName,count,duration,independent)
+	CastAbility(caster,orderType,ability,target,position)
 	CauseDamage(attacker,victim,damage,damageType,ability,~criticalChance,~criticalDamage)
 	ClearBuff(caster,buffType,count)
 	CreateSound(soundName,caster,~location,~duration,~delay)
@@ -14,18 +17,23 @@
 	GetUnitsInLine(caster,ability,start_point,end_point,width)
 	GetUnitsInSector(cacheUnit,ability,position,forwardVector,angle,radius)
 	GetRandomPoint(originPoint, minRadius, maxRadius)
+	GetRebornCount(caster)
 	GetRotationPoint(originPoint, radius, angle)
 	GiveItem(caster,itemName,itemOwner)
-	HasExclusive(caster)
+	HasExclusive(caster,lv)
 	Heal(caster,heal,mana,show)
 	IsFullSolt(caster,bagType,tip)
+	IsModifierType(caster,buffName,type)
 	ItemTypeCheck(caster,item)
 	Jump(caster,target_location,speed,height,findPath,callback)
 	KnockBack(caster,direction,distance,duration)
 	PropertySystem(caster,property,count,duration)
 	PrintTable(table)
+	RemoveDamageFilterAttacker(caster,name)
+	RemoveDamageFilterVictim(caster,name)
 	RollDrops(unit)
 	SetModelScale(caster,scale,smooth,duration)
+	SetModifierType(caster,buff,type)
 	SetUnitPosition(caster,position,setPos)
 	SetUnitDamagePercent(caster,percent,duration)
 	SetUnitMagicDamagePercent(caster,percent,duration)
@@ -36,6 +44,22 @@
 	SetBaseResistance(caster,resistance,duration)
 	string.split
 ]]
+function CastAbility( ... )
+	local caster,orderType,ability,target,position = ...
+	if target then target = target:entindex() end
+	if ability:IsCooldownReady() and not ability:IsChanneling() then
+		local t_order = 
+		{
+			UnitIndex = caster:entindex(),
+			OrderType = orderType,
+			TargetIndex = target,
+			AbilityIndex = ability:entindex(),
+			Position = position,
+			Queue = 0
+		}
+		caster:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0.1)
+	end
+end
 -- 造成伤害
 -- 填写ability会判定为技能伤害
 -- 暴击率以百分比计算
@@ -127,6 +151,18 @@ function PropertySystem( ... )
 			end
 		end)
 	end
+end
+--给单位添加伤害过滤器
+function AddDamageFilterAttacker( ... )
+	local caster,name,callback = ...
+	if not caster.DamageFilterAttacker then caster.DamageFilterAttacker = {} end
+	caster.DamageFilterAttacker[name] = callback
+end
+--给单位添加伤害过滤器
+function AddDamageFilterVictim( ... )
+	local caster,name,callback = ...
+	if not caster.DamageFilterVictim then caster.DamageFilterVictim = {} end
+	caster.DamageFilterVictim[name] = callback
 end
 -- 增加modifier叠加数量
 function AddModifierStackCount( ... )
@@ -331,6 +367,16 @@ function ForWithInterval( count,interval,callback )
 		return interval 
 	end)
 end
+--给攻击单位删除伤害过滤器
+function RemoveDamageFilterAttacker( ... )
+	local caster,name = ...
+	caster.DamageFilterAttacker[name] = nil
+end
+--给受伤单位删除伤害过滤器
+function RemoveDamageFilterVictim( ... )
+	local caster,name = ...
+	caster.DamageFilterVictim[name] = nil
+end
 -- 随机掉落物品
 function RollDrops(unit)
     local DropInfo = GameRules.DropTable[unit:GetUnitName()]
@@ -408,6 +454,11 @@ function GetRandomPoint( ... )
     attackPoint = Vector( originPoint.x - dx, originPoint.y + dy, originPoint.z )
     return attackPoint
 end
+-- 获取单位转生次数
+function GetRebornCount( ... )
+	local caster = ...
+	return caster.reborn_time
+end
 -- 获取旋转后的点
 function GetRotationPoint( ... )
 	local originPoint, radius, angle = ...
@@ -435,10 +486,10 @@ function ClearBuff( ... )
 		for i=1,count do
 			local buffName = caster:GetModifierNameByIndex(i-1)
 			local buff = caster:FindModifierByName(buffName)
-			if buff then
+			if buff and IsModifierType(caster,buffName,"unpurgable") == false then
 				local owner = buff:GetCaster()
 				if owner then
-					if owner:GetTeamNumber() == DOTA_TEAM_BADGUYS or owner:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+					if owner:GetTeamNumber() ~= caster:GetTeamNumber() then
 						caster:RemoveModifierByName(buffName)
 					end
 				else
@@ -448,6 +499,22 @@ function ClearBuff( ... )
 			--[[if buff:IsDebuff() and buff:IsPurgable() then
 			end]]
 			--print(buff:GetName())
+		end
+	end
+	if buffType == "stun" then
+		for i=1,count do
+			local buffName = caster:GetModifierNameByIndex(i-1)
+			local buff = caster:FindModifierByName(buffName)
+			if buff and IsModifierType(caster,buffName,"stun") then
+				local owner = buff:GetCaster()
+				if owner then
+					if owner:GetTeamNumber() ~= caster:GetTeamNumber() then
+						caster:RemoveModifierByName(buffName)
+					end
+				else
+					caster:RemoveModifierByName(buffName)
+				end
+			end
 		end
 	end
 end
@@ -509,6 +576,16 @@ function SetModelScale( ... )
 			caster:SetModelScale(caster:GetModelScale() - scaleDifference)
 		end
 	end
+end
+-- 设置buff类型
+--[[ type = ["stun"	"晕眩"
+			"unpurgable"	"不可净化"]
+]]
+function SetModifierType( ... )
+	local caster,buffName,type = ...
+	local buff = caster:FindModifierByName(buffName)
+	if not buff.type then buff.type = {} end
+	buff.type[type] = true
 end
 -- 设置单位位置
 function SetUnitPosition( ... )
@@ -631,6 +708,17 @@ function IsFullSolt( ... )
     	return false
     end
 end
+-- 判断buff类型
+function IsModifierType( ... )
+	local caster,buffName,type = ...
+	local buff = caster:FindModifierByName(buffName)
+	if not buff.type then buff.type = {} end
+	if buff.type[type] then 
+		return true 
+	else
+		return false
+	end
+end
 -- 同类装备检查
 function ItemTypeCheck( ... )
 	local caster,item = ...
@@ -703,9 +791,13 @@ function Jump( ... )
 	end)
 end
 -- 拥有专属
-function HasExclusive( caster )
+function HasExclusive( ... )
+	local caster,lv = ...
+	if not lv then lv = 0 end
 	local exclusiveName = "modifier_"..caster:GetUnitName()
-	if caster:HasModifier(exclusiveName) then return true end
+	if caster:HasModifier(exclusiveName) and GetRebornCount(caster) >= lv then 
+		return true 
+	end
 	return false
 end
 -- 简易击退

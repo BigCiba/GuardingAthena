@@ -21,7 +21,7 @@ function OnCreated( t )
 	elseif abilityIndex == 4 then
 		ability.absorb = 0
 		local interval = 0.2
-		if HasExclusive(caster) then
+		if HasExclusive(caster,4) then
 			interval = 0.1
 		end
 		--[[if caster.gift then
@@ -189,7 +189,7 @@ function OnIntervalThink( t )
 	local ability = t.ability
 	local abilityIndex = ability:GetAbilityIndex()
 	if abilityIndex == 0 then
-		if HasExclusive(caster) and ability.absorb_count < 3 then
+		if HasExclusive(caster,1) and ability.absorb_count < 3 then
 			ability.absorb_count = ability.absorb_count + 1
 			if ability.particle_orb then
 				ParticleManager:DestroyParticle(ability.particle_orb,false)
@@ -272,7 +272,7 @@ function Cooldown( t )
 				local current_stackcount = caster:GetModifierStackCount("modifier_revelater_cooldown",caster)
 				if current_stackcount < 3 then
 					caster:SetModifierStackCount("modifier_revelater_cooldown",caster,current_stackcount + 1)
-					if HasExclusive(caster) then
+					if HasExclusive(caster,2) then
 						return 4
 					else
 						return 6
@@ -460,7 +460,7 @@ function CastAbility3( t )
 			return 0.1
 		end
 	end)
-	if HasExclusive(caster) then
+	if HasExclusive(caster,3) then
 		Timers:CreateTimer(0.5,function ()
 			if caster.dodge_damage == nil then
 				caster.dodge_damage = 0

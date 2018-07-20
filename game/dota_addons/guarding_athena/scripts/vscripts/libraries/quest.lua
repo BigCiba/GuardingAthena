@@ -53,6 +53,11 @@ function QuestTriggerNpc( t )
 	if questCount == questFinish then
 		Quest:ShowDialog(caster, npc, "", NOQUEST)
 	end
+	CustomUI:DynamicHud_Create(caster:GetPlayerID(),"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)
+end
+function OnDestory( t )
+	local caster = t.target
+	CustomUI:DynamicHud_Destroy(caster:GetPlayerID(), "Dialog")
 end
 -- 前置条件检测
 -- 等级,任务,其他

@@ -14,7 +14,7 @@ function AutoCast( t )
     local stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
     ability.timers = Timers:CreateTimer(function ()
         stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
-        if HasExclusive(caster) then soulCount = 100 end
+        if HasExclusive(caster,1) then soulCount = 100 end
         if ability:GetAutoCastState() and ability:IsCooldownReady() and ability:IsActivated() then
             if stackcount >= soulCount then
                 ability:StartCooldown(10.1)
@@ -29,9 +29,13 @@ function DemonHunter( keys )
 	local ability = keys.ability
     local soulCount = 50
     local add = 1
-	if HasExclusive(caster) then
+	if HasExclusive(caster,1) then
         soulCount = 100
+    end
+    if HasExclusive(caster,2) then
         add = 2
+    end
+    if HasExclusive(caster,4) then
         if caster:HasModifier("modifier_metamorphosis") then
             if caster.soul_stack == nil then
                 caster.soul_stack = 0
@@ -48,7 +52,7 @@ function DemonHunter( keys )
     end
     if caster:HasModifier("modifier_demon_hunter_spell") then
         soulCount = soulCount + 50
-        if HasExclusive(caster) then
+        if HasExclusive(caster,1) then
             soulCount = soulCount + 50
         end
     end
@@ -150,7 +154,7 @@ function OnAttackLanded( t )
     local length = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D()
     local distance = (800 - length) * 200 / 800
     local duration = 0.3
-    if caster:HasModifier("modifier_metamorphosis") then
+    if caster:HasModifier("modifier_metamorphosis") and HasExclusive(caster,3) then
         KnockBack(target,direction,distance,duration)
     end
 end
@@ -320,7 +324,7 @@ function ExorcismStart( event )
     local spirits = ability:GetLevelSpecialValueFor( "spirits", ability:GetLevel() - 1 )
     local delay_between_spirits = ability:GetLevelSpecialValueFor( "delay_between_spirits", ability:GetLevel() - 1 )
     local unit_name = "ghost"
-    if HasExclusive(caster) then
+    if HasExclusive(caster,4) then
         CreateParticle( "particles/skills/dh_demonhunter.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster,40 )
         caster:GetAbilityByIndex(0):ApplyDataDrivenModifier(caster,caster,"modifier_demon_hunter_spell",{duration = 40})
         caster:GetAbilityByIndex(0):SetActivated(false)

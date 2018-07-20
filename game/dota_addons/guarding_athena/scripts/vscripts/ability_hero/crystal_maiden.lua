@@ -7,7 +7,7 @@ end
 function FrostSigilCast( t )
     local caster = t.caster
     local ability = t.event_ability
-    if HasExclusive(caster) then
+    if HasExclusive(caster,3) then
         if RollPercentage(15) then
             Timers:CreateTimer(0.03,function ()
                 ability:EndCooldown()
@@ -244,7 +244,7 @@ function ChillingTouch( t )
             if (caster:GetAbsOrigin() - caster_location):Length2D() < 600 then
                 ability:ApplyDataDrivenModifier(caster, caster, "modifier_chilling_touch", {duration=interval})
             end
-            if HasExclusive(caster) then
+            if HasExclusive(caster,2) then
                 local unitGroup = FindUnitsInRadius( caster:GetTeamNumber(), caster_location, caster, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false )
                 for k,v in pairs(unitGroup) do
                     if caster ~= v then
@@ -257,4 +257,36 @@ function ChillingTouch( t )
         end
         caster:RemoveModifierByName("modifier_chilling_touch")
     end)
+end
+function OnAttackLanded( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local rate = ability:GetSpecialValueFor("chance")
+    if RollPercentage(rate) and HasExclusive(caster,1) then
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_npc_dota_hero_crystal_maiden_debuff", nil)
+    end
+end
+function OnAbilityExecuted( t )
+    local caster = t.caster
+    if caster.ice_shield < 9 and HasExclusive(caster,4) then
+        caster.ice_shield = caster.ice_shield + 1
+    end
+end
+function OnCreated( t )
+    local caster = t.caster
+    if not caster.ice_shield then 
+        caster.ice_shield = 0
+    end
+    AddDamageFilterVictim(caster,"exclusive",function (damage,attacker)
+        if caster.ice_shield > 0 and HasExclusive(caster,4) then
+            damage = 0
+            caster.ice_shield = caster.ice_shield -1
+        end
+        return damage
+    end)
+end
+function OnDestory( t )
+    local caster = t.caster
+    RemoveDamageFilterVictim(caster,"exclusive")
 end

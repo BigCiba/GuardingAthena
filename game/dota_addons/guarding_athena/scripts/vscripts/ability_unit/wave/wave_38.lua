@@ -202,7 +202,7 @@ function OnTargetCastAbility( t )
 	local ability = t.ability
 	local stackcount = caster:GetModifierStackCount("modifier_electrostatic_field_buff", caster)
 	local duration = stackcount * 0.03
-	ability:ApplyDataDrivenModifier(caster, target, "modifier_electrostatic_field_slience", {Duration=duration})
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_electrostatic_field_slience", {duration=duration})
 	local ability_arc = caster:FindAbilityByName("lightning_attack")
 	OnLightCast({caster=caster,target=target,ability=ability_arc,particle="particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"})
 	ability_arc:ApplyDataDrivenModifier(caster, target, "modifier_lightning_attack_buff", nil)

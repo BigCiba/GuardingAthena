@@ -24,7 +24,9 @@ function GuardingAthena:OnEntityKilled( event )
 		-- 设定区域限制解除
 		killedUnit.limitRegion = nil
 		if killedUnit.iapetos then
-			GuardingAthena.iapetos:RemoveSelf()
+			if GuardingAthena.iapetos then
+				GuardingAthena.iapetos:RemoveSelf()
+			end
 			GuardingAthena.iapetos = nil
 			killedUnit.iapetos = nil
 		end
@@ -511,12 +513,12 @@ function GuardingAthena:OnPlayerChat(keys)
 	if text == "-givezs" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local heroName = hero:GetUnitName()
-		hero:AddItem(CreateItem("item_"..heroName.."1", hero, hero))
+		hero:AddItem(CreateItem("item_"..heroName, hero, hero))
 	end
 	if text == "givezs" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local heroName = hero:GetUnitName()
-		hero:AddItem(CreateItem("item_"..heroName.."1", hero, hero))
+		hero:AddItem(CreateItem("item_"..heroName, hero, hero))
 	end
 	--设置波数
 	if string.sub(text,0,6) == "waveto" then
@@ -630,6 +632,20 @@ function GuardingAthena:OnPlayerChat(keys)
 			end
 		end)
 	end
+	if text == "trial" then
+		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		local name = "trial_creep"
+		PrecacheUnitByNameAsync(name,function()
+			local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS )
+			nature:SetBaseMaxHealth(hero:GetMaxHealth() * 10)
+			nature:SetMaxHealth(hero:GetMaxHealth() * 10)
+			nature:SetHealth(hero:GetMaxHealth() * 10)
+			nature:SetBaseDamageMin(hero:GetBaseDamageMin() * 10)
+			nature:SetBaseDamageMax(hero:GetBaseDamageMax() * 10)
+			nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue() * 10)
+		end)
+	end
 	if text == "testpay" then
 		local ent = Entities:FindByName( nil, "athena" )
 		ent:FireOutput("OnUser2", ent, ent, ent, 0)
@@ -654,7 +670,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		--HeroState:SendFinallyData()
 		--CustomUI:DynamicHud_Create(-1,"HeroSelectionBackground","file://{resources}/layout/custom_game/pick_hero.xml",nil)
 		self.testmode = true
-		CustomUI:DynamicHud_Create(playerid,"MysteryShop","file://{resources}/layout/custom_game/custom_hud/mystery_shop.xml",nil)
+		CustomUI:DynamicHud_Create(playerid,"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)
 	end
 	--取消测试
 	if text == "untest" then

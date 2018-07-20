@@ -1,3 +1,15 @@
+function OnAttack( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local ability_1 = caster:GetAbilityByIndex(1)
+    local chance = ability:GetSpecialValueFor("chance")
+    local points = {}
+    points[1] = target:GetAbsOrigin()
+    if RollPercentage(chance) and HasExclusive(caster,4) then
+        DoubleMultipleShoot( {caster = caster, ability = ability_1, target_points = points} )
+    end
+end
 function ChaseMoonAndStar( t )
 	local caster = t.caster
 	local target = t.target
@@ -33,30 +45,53 @@ function ChaseMoonAndStarDamage( t )
 	local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = caster:GetAverageTrueAttackDamage(caster)
-    if HasExclusive(caster) then
-        damage = damage + caster:GetAgility() * 3
+    local rate = ability:GetSpecialValueFor("rate") * 0.5
+    local damage = caster:GetAgility() * ability:GetSpecialValueFor("damage")
+    local armor = math.ceil(caster:GetAgility() * ability:GetSpecialValueFor("armor"))
+    local duration = ability:GetSpecialValueFor("duration")
+    if HasExclusive(caster,1) then
+        damage = damage * 2
     end
     local damageType = ability:GetAbilityDamageType()
     local modiferName = "modifier_star_buff"
     CauseDamage( caster, target, damage, damageType, ability )
-    AddModifierStackCount( target, target, ability, modiferName, 1)
+    AddModifierStackCount(caster,target,ability,modiferName,armor,duration,true)
     -- 纪念碑
     if target:GetUnitName() == "hero_statue_1" or target:GetUnitName() == "hero_statue_2" then
-    	Anneal({attacker=caster})
+    	Anneal({caster=target, attacker=caster})
     end
+    -- 连续触发
+    if RollPercentage(rate) then
+        ContinueTrigger( t )
+    end
+    -- 专属
+    local ability_1 = caster:GetAbilityByIndex(1)
+    local chance = ability:GetSpecialValueFor("chance") * 0.5
+    local points = {}
+    points[1] = target:GetAbsOrigin()
+    if RollPercentage(chance) then
+        DoubleMultipleShoot( {caster = caster, ability = ability_1, target_points = points} )
+    end
+end
+function ContinueTrigger( t )
+    local caster = t.caster
+	local target = t.target
+	local ability = t.ability
+    local speed = 1500
+	local particleName = "particles/skills/moonstar_gold.vpcf"
+    CreateTrackingProjectile( caster, target, ability, particleName, speed)
 end
 function MultipleShoot( t )
     local caster = t.caster
     local ability = t.ability
-    local particleName = t.particle
+    local particleName = "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf"
     if caster.gift then
 		particleName = "particles/skills/multiple_shoot_gold.vpcf"
 	end
     local point = t.target_points[1]
-    local radius = t.radius
-    local distance = t.distance
-    local speed = t.speed
+    local radius = ability:GetSpecialValueFor("radius")
+    local distance = ability:GetSpecialValueFor("range")
+    local speed = ability:GetSpecialValueFor("speed")
     local casterOrigin = caster:GetAbsOrigin()
     ability.castPosition = casterOrigin
     local lengthx = point.x - casterOrigin.x
@@ -108,10 +143,11 @@ function DoubleMultipleShoot( t )
 		particleName = "particles/skills/multiple_shoot_gold.vpcf"
 	end]]
     local point = t.target_points[1]
-    local radius = t.radius
-    local distance = t.distance
-    local speed = t.speed
+    local radius = ability:GetSpecialValueFor("radius")
+    local distance = ability:GetSpecialValueFor("range")
+    local speed = ability:GetSpecialValueFor("speed")
     local casterOrigin = caster:GetAbsOrigin()
+    ability.castPosition = casterOrigin
     local lengthx = point.x - casterOrigin.x
     local lengthy = point.y - casterOrigin.y
     local midAngle = 0
@@ -158,7 +194,7 @@ function ArrowStromStart( t )
     ParticleManager:SetParticleControl( fxIndex, 6, attackPoint_2 )
     EmitSoundOn("Hero_DrowRanger.Attack",t.caster)
     Timers:CreateTimer(0.5,function()
-        if HasExclusive(caster) then 
+        if HasExclusive(caster,3) then 
             ability:ApplyDataDrivenModifier(caster, caster, "modifier_arrow_strom", {duration=8})
         else
             ability:ApplyDataDrivenModifier(caster, caster, "modifier_arrow_strom", {duration=4})
@@ -195,7 +231,7 @@ function ArrowStrom( t )
     local dy = castDistance * math.sin( angle )
     local dx = castDistance * math.cos( angle )
     local attackPoint = Vector( 0, 0, 0 )
-    if HasExclusive(caster) then
+    if HasExclusive(caster,2) then
         trackUnits = GetUnitsInRadius( caster, ability, caster:GetAbsOrigin(), 1200 )
         if #trackUnits > 0 then
             for k, v in pairs( trackUnits ) do

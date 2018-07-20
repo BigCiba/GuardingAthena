@@ -41,7 +41,10 @@ function SpaceCut( keys )
 	local teamNumber = caster:GetTeamNumber()
 	local targetTeam = ability:GetAbilityTargetTeam()
 	local targetType = ability:GetAbilityTargetType()
-	local damageType = ability:GetAbilityDamageType()
+    local damageType = ability:GetAbilityDamageType()
+    if HasExclusive(caster) then
+        damageType = DAMAGE_TYPE_PURE
+    end
 	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility() + ability:GetSpecialValueFor("base_damage")
 	local unitGroup = FindUnitsInLine( teamNumber, caster_location, point, nil, 100, targetTeam, targetType, FIND_CLOSEST)
 	for k, v in pairs( unitGroup ) do
@@ -239,6 +242,12 @@ function BladeDanceDamage( keys )
     	return
     end]]--
     AddModifierStackCount( caster, caster, ability, "modifier_blade_dance_attack_speed", 1, duration, true)
+    -- 专属
+    if HasExclusive(caster) then
+        local stack = caster:GetModifierStackCount("modifier_blade_dance_attack_speed", caster)
+        SetUnitDamagePercent(caster,stack * 0.5,duration)
+        SetUnitIncomingDamageReduce(caster,stack * 0.25,duration)
+    end
     --[[if caster:HasModifier("modifier_blade_dance_attack_speed") then
     	ability:ApplyDataDrivenModifier(caster, caster, "modifier_blade_dance_attack_speed", nil)
     	local stackcount = caster:GetModifierStackCount("modifier_blade_dance_attack_speed", nil) + 1
@@ -293,4 +302,14 @@ function jianrenfengbao( keys )
             end
         end)  	
     end)	
+end
+function OnAttackLanded( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local armor = target:GetPhysicalArmorBaseValue()
+    target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() - armor)
+    Timers:CreateTimer(0.5,function (  )
+        target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + armor)
+    end)
 end
