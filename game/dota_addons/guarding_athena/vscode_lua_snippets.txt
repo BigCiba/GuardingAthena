@@ -22,6 +22,13 @@
 		],
 		"description": "CauseDamage"
 	},
+	"ClearBuff": {
+		"prefix": "ClearBuff",
+		"body": [
+			"ClearBuff(${caster},${buffType},${count})"
+		],
+		"description": "清除身上的buff"
+	},
 	"AddDamageFilterAttacker": {
 		"prefix": "AddDamageFilterAttacker",
 		"body": [
@@ -207,6 +214,34 @@
 			"SetUnitDamagePercent(${caster},${percent},${duration})"
 		],
 		"description": "Set Unit Damage Percent"
+	},
+	"SetUnitMagicDamagePercent": {
+		"prefix": "SetUnitMagicDamagePercent",
+		"body": [
+			"SetUnitMagicDamagePercent(${caster},${percent},${duration})"
+		],
+		"description": "设置单位魔法输出"
+	},
+	"SetUnitIncomingDamageDeepen": {
+		"prefix": "SetUnitIncomingDamageDeepen",
+		"body": [
+			"SetUnitIncomingDamageDeepen(${caster},${percent},${duration})"
+		],
+		"description": "设置单位伤害加深"
+	},
+	"SetUnitIncomingDamageReduce": {
+		"prefix": "SetUnitIncomingDamageReduce",
+		"body": [
+			"SetUnitIncomingDamageReduce(${caster},${percent},${duration})"
+		],
+		"description": "设置单位伤害减免"
+	},
+	"PrintTable": {
+		"prefix": "PrintTable",
+		"body": [
+			"PrintTable(${t})"
+		],
+		"description": "打印表"
 	},
 	"GetRotationPoint": {
 		"prefix": "GetRotationPoint",

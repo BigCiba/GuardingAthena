@@ -230,3 +230,23 @@ function Notifications:BottomToTeam(team, table)
     CustomGameEventManager:Send_ServerToTeam(team, "bottom_notification", {text="No TEXT provided.", duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
   end
 end
+
+function Notifications:LeftBottom(player, table)
+  if type(player) == "number" then
+    player = PlayerResource:GetPlayer(player)
+  end
+
+  if table.text ~= nil then
+    CustomGameEventManager:Send_ServerToPlayer(player, "left_bottom_notification", {text=table.text, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+  elseif table.hero ~= nil then
+    CustomGameEventManager:Send_ServerToPlayer(player, "left_bottom_notification", {hero=table.hero, imagestyle=table.imagestyle, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+  elseif table.image ~= nil then
+    CustomGameEventManager:Send_ServerToPlayer(player, "left_bottom_notification", {image=table.image, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+  elseif table.ability ~= nil then
+    CustomGameEventManager:Send_ServerToPlayer(player, "left_bottom_notification", {ability=table.ability, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+  elseif table.item ~= nil then
+    CustomGameEventManager:Send_ServerToPlayer(player, "left_bottom_notification", {item=table.item, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+  else
+    CustomGameEventManager:Send_ServerToPlayer(player, "left_bottom_notification", {text="No TEXT provided.", duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+  end
+end

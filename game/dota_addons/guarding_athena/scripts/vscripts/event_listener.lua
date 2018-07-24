@@ -90,12 +90,14 @@ function OnHpClick( index,keys )
     if PlayerResource:GetGold(keys.PlayerID) > goldcost and GuardingAthena.athena_hp_lv < 100 then
 		PlayerResource:SpendGold( keys.PlayerID, goldcost, 0 )
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
-		hero:SetBaseStrength(hero:GetBaseStrength() + RandomInt(1, 5))
+		local property = RandomInt(10, 50 + GuardingAthena.athena_hp_lv) / 10
+		hero:SetBaseStrength(hero:GetBaseStrength() + property)
 		hero:CalculateStatBonus()
 		GuardingAthena.athena_hp_lv = GuardingAthena.athena_hp_lv + 1
-		GuardingAthena.entAthena:SetBaseMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth() + 1000)
-		GuardingAthena.entAthena:SetMaxHealth(GuardingAthena.entAthena:GetMaxHealth() + 1000)
-		GuardingAthena.entAthena:Heal(1000, nil) 
+		GuardingAthena.entAthena:SetBaseMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth() + 1000 + 100 * GuardingAthena.athena_hp_lv )
+		GuardingAthena.entAthena:SetMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth())
+		GuardingAthena.entAthena:Heal(1000 + 100 * GuardingAthena.athena_hp_lv, nil) 
+		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点力量", style={color="red"}, duration=2, class="LeftMessage", continue = false})
 		return true
 	else
 		return false
@@ -106,10 +108,12 @@ function OnRegenClick( index,keys )
     if PlayerResource:GetGold(keys.PlayerID) > goldcost and GuardingAthena.athena_regen_lv < 100 then
 		PlayerResource:SpendGold( keys.PlayerID, goldcost, 0 )
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
-	    hero:SetBaseIntellect(hero:GetBaseIntellect() + RandomInt(1, 5))
+		local property = RandomInt(10, 50 + GuardingAthena.athena_regen_lv) / 10
+	    hero:SetBaseIntellect(hero:GetBaseIntellect() + property)
 	    hero:CalculateStatBonus()
 	    GuardingAthena.athena_regen_lv = GuardingAthena.athena_regen_lv + 1
-		GuardingAthena.entAthena:SetBaseHealthRegen(GuardingAthena.entAthena:GetBaseHealthRegen() + 10)
+		GuardingAthena.entAthena:SetBaseHealthRegen(GuardingAthena.entAthena:GetBaseHealthRegen() + 10 + GuardingAthena.athena_regen_lv )
+		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点智力", style={color="red"}, duration=2, class="LeftMessage", continue = false})
 		return true
 	else
 		return false
@@ -120,10 +124,12 @@ function OnArmorClick( index,keys )
     if PlayerResource:GetGold(keys.PlayerID) > goldcost and GuardingAthena.athena_armor_lv < 100 then
 		PlayerResource:SpendGold( keys.PlayerID, goldcost, 0 )
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
-		hero:SetBaseAgility(hero:GetBaseAgility() + RandomInt(1, 5)) 
+		local property = RandomInt(10, 50 + GuardingAthena.athena_armor_lv) / 10
+		hero:SetBaseAgility(hero:GetBaseAgility() + property) 
 	    hero:CalculateStatBonus()
 	    GuardingAthena.athena_armor_lv = GuardingAthena.athena_armor_lv + 1
-		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1)
+		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1 + 0.1 * GuardingAthena.athena_armor_lv )
+		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点敏捷", style={color="red"}, duration=2, class="LeftMessage", continue = false})
 		return true
 	else
 		return false
@@ -166,15 +172,34 @@ function OnGoldGift( index, keys )
 end
 function CreateTrial( index,keys )
 	local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
-	local loc = Entities:FindByName( nil, "trial_point" ):GetAbsOrigin()
-	local name = "trial_creep"
-	PrecacheUnitByNameAsync(name,function()
-		local nature = CreateUnitByName(name, loc, true, nil, nil, DOTA_TEAM_BADGUYS )
-		nature:SetBaseMaxHealth(hero:GetMaxHealth() * 10)
-		nature:SetMaxHealth(hero:GetMaxHealth() * 10)
-		nature:SetHealth(hero:GetMaxHealth() * 10)
-		nature:SetBaseDamageMin(hero:GetBaseDamageMin() * 10)
-		nature:SetBaseDamageMax(hero:GetBaseDamageMax() * 10)
-		nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue() * 10)
-	end)
+	if hero.trial == nil then
+		local loc = Entities:FindByName( nil, "trial_point" ):GetAbsOrigin()
+		local lv = hero:GetLevel()
+		local num = 5 + 0.1 * lv
+		local name = "trial_creep"
+		PrecacheUnitByNameAsync(name,function()
+			local nature = CreateUnitByName(name, loc, true, nil, nil, DOTA_TEAM_BADGUYS )
+			nature:SetBaseMaxHealth(hero:GetMaxHealth() * num)
+			nature:SetMaxHealth(hero:GetMaxHealth() * num)
+			nature:SetHealth(hero:GetMaxHealth() * num)
+			nature:SetBaseDamageMin(hero:GetBaseDamageMin() * num)
+			nature:SetBaseDamageMax(hero:GetBaseDamageMax() * num)
+			nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue() * num)
+			hero.trial = nature
+			SetCamera(keys.PlayerID,nature)
+			nature.trial_wall = CreateParticle("guarding_athena/particles/units/trial/trial_wall.vpcf",PATTACH_ABSORIGIN,nature)
+			ParticleManager:SetParticleControl(nature.trial_wall, 1, Vector(700,0,0))
+			ParticleManager:SetParticleControl(nature.trial_wall, 2, Vector(1,1,0))
+			AddDamageFilterVictim(nature,"trial",function (damage,attacker)
+				if attacker ~= hero then
+					damage = 0
+				end
+				local length = (hero:GetAbsOrigin() - loc):Length2D()
+				if length > 700 then
+					damage = 0
+				end
+				return damage
+			end)
+		end)
+	end
 end

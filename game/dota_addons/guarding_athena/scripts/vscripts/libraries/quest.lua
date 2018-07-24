@@ -24,6 +24,9 @@ function QuestTriggerNpc( t )
 		-- 判断npc名字得到任务
 		if questInfo.triggerName == npc:GetUnitName() then
 			questCount = questCount + 1
+			if questInfo.dialog then
+				CustomUI:DynamicHud_Create(caster:GetPlayerID(),"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)					
+			end
 			-- 是否已接受或完成任务
 			if caster[questName] == nil then
 				-- 判断前置条件
@@ -53,7 +56,6 @@ function QuestTriggerNpc( t )
 	if questCount == questFinish then
 		Quest:ShowDialog(caster, npc, "", NOQUEST)
 	end
-	CustomUI:DynamicHud_Create(caster:GetPlayerID(),"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)
 end
 function OnDestory( t )
 	local caster = t.target

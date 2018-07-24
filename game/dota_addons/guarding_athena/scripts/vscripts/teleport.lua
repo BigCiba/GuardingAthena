@@ -1,6 +1,7 @@
 function PracticeTeleport( trigger )
 	local caster = trigger.activator
 	local caller = trigger.caller:GetName()
+	print(caster:GetUnitName())
 	if (caster:GetAbsOrigin() - trigger.caller:GetAbsOrigin()):Length2D() < 150 then
 		for i=1,4 do
 			if caller == "practice_teleport_"..tostring(i) then
@@ -64,7 +65,7 @@ function HeroReborn( trigger )
 		if GuardingAthena.iapetos == nil then
 			local ent = Entities:FindByName(nil,"boss_lapetos_reborn")
 	 		local point = ent:GetAbsOrigin()
-	 		SetUnitPosition(caster, point, true)
+	 		SetUnitPosition(caster, point)
 	 		caster:Stop()
 			SetRegionLimit(caster,Entities:FindByName(nil,"reborn_room"))
 			SetCamera(playerid,caster)

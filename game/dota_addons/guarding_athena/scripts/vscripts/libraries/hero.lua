@@ -20,6 +20,7 @@ function HeroState:InitHero(hero)
     hero.int_gain = 0                   --智力成长
     hero.total_gold = 0                 --获取金钱总量
     hero.boss_damage = 0                --对Boss造成伤害总量
+    hero.dps = 0                        --每秒伤害
     hero.wave_def = 0                   --防守数量
     hero.practice_kill = 0              --练习数量
     hero.exp_rate = 1                   --经验获取率
@@ -43,15 +44,15 @@ function HeroState:InitHero(hero)
     end)
 end
 function HeroState:InitUnit(unit)
-    unit.bonus_magic_damage = 0         --额外百分比魔法伤害
-    unit.bonus_physical_damage = 0      --额外无视护甲物理伤害
-    unit.percent_bonus_damage = 0       --额外百分比所有伤害
-    unit.const_reduce_damage = 0        --定值伤害减少
-    unit.percent_reduce_damage = 0      --百分比伤害减少
-    unit.percent_increase_damage = 0    --百分比伤害增加
-    unit.str_gain = 0
-    unit.agi_gain = 0
-    unit.int_gain = 0
+    unit.bonus_magic_damage = unit.bonus_magic_damage or 0         --额外百分比魔法伤害
+    unit.bonus_physical_damage = unit.bonus_physical_damage or 0      --额外无视护甲物理伤害
+    unit.percent_bonus_damage = unit.percent_bonus_damage or 0       --额外百分比所有伤害
+    unit.const_reduce_damage = unit.const_reduce_damage or 0        --定值伤害减少
+    unit.percent_reduce_damage = unit.percent_reduce_damage or 0      --百分比伤害减少
+    unit.percent_increase_damage = unit.percent_increase_damage or 0    --百分比伤害增加
+    unit.str_gain = unit.str_gain or 0
+    unit.agi_gain = unit.agi_gain or 0
+    unit.int_gain = unit.int_gain or 0
     unit.total_gold = 0
     unit.boss_damage = 0
     unit.wave_def = 0

@@ -6,6 +6,10 @@ function BottomNotification(msg) {
   AddNotification(msg, $('#BottomNotifications'));
 }
 
+function LeftBottomNotification(msg) {
+  AddNotification(msg, $('#LeftBottomNotifications'));
+}
+
 function TopRemoveNotification(msg){
   RemoveNotification(msg, $('#TopNotifications'));
 }
@@ -113,6 +117,7 @@ function AddNotification(msg, panel) {
 (function () {
   GameEvents.Subscribe( "top_notification", TopNotification );
   GameEvents.Subscribe( "bottom_notification", BottomNotification );
+  GameEvents.Subscribe( "left_bottom_notification", LeftBottomNotification );
   GameEvents.Subscribe( "top_remove_notification", TopRemoveNotification );
   GameEvents.Subscribe( "bottom_remove_notification", BottomRemoveNotification );
 })();

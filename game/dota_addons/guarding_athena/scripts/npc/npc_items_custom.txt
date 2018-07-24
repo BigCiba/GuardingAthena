@@ -12800,7 +12800,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -22391,7 +22391,7 @@
 	"item_npc_dota_hero_spectre"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_diffusal_blade"
+		"AbilityTextureName"	"item_npc_dota_hero_spectre"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"

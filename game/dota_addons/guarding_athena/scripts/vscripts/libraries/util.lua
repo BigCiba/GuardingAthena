@@ -609,7 +609,7 @@ function SetUnitPosition( ... )
 	if setPos then
 		caster:SetAbsOrigin(position)
 	else
-		FindClearSpaceForUnit(caster, position, false)
+		FindClearSpaceForUnit(caster, position, true)
 	end
 end
 -- 设置单位百分比伤害输出

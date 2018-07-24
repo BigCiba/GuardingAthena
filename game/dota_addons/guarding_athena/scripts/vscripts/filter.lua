@@ -30,35 +30,7 @@ function GuardingAthena:ExecuteOrderFilter( args )
 		--[[for k, v in pairs( args ) do
 			print( k, v )
 		end]]--
-
-		-- 魔免无敌
-        local athenaItemTable = {
-            id = {1673,1674},
-            cost = {6000,30000},
-            modifier = {"modifier_athena_heal_3","modifier_athena_heal_2"},
-            count = {"athena_momian","athena_wudi"}
-        }
-        for i=1,2 do
-            if args.entindex_ability == athenaItemTable.id[i] then
-                if self[athenaItemTable.count[i]] <= 0 and PlayerResource:GetGold(playerid) >= athenaItemTable.cost[i] then
-                    local athena = self.entAthena
-                    local ability = athena:FindAbilityByName("athena_heal")
-                    ability:ApplyDataDrivenModifier(athena, athena, athenaItemTable.modifier[i], nil)
-                    self[athenaItemTable.count[i]] = 300
-                    PlayerResource:SpendGold( playerid, athenaItemTable.cost[i], 0 )
-                    Timers:CreateTimer(function ()
-                        if self[athenaItemTable.count[i]] > 0 then
-                             self[athenaItemTable.count[i]] = self[athenaItemTable.count[i]] - 1
-                            return 1 
-                        end
-                    end)
-                    return false
-                else
-                    Notifications:Bottom(playerid, {text="#time_remaining".. self[athenaItemTable.count[i]], style={color="red"}, duration=1, continue = false})
-                    return false
-                end
-            end
-        end
+ 
 
 		-- 属性书
         local tombTable = {
@@ -141,7 +113,9 @@ function GuardingAthena:DamageFilter( args )
 			initdamage = args.damage / (1 - reduce)
 		end
 		-- 重新计算护甲
-		--args.damage = initdamage * 1000 / (1000 + 4 * armor)
+		if armor > 0 and caster:IsHero() then
+			args.damage = initdamage * 1000 / (1000 + 10 * armor)
+		end
         -- 物理伤害穿透额外无视护甲伤害
 		if caster.bonus_physical_damage and caster.bonus_physical_damage > 0 then
 			--local armor = victim:GetPhysicalArmorValue()
@@ -178,8 +152,12 @@ function GuardingAthena:DamageFilter( args )
         args.damage = args.damage * (1 + victim.percent_increase_damage * 0.01)
     end
     -- 减少百分比伤害
-    if victim.percent_reduce_damage and victim.percent_reduce_damage > 0 then
-        args.damage = args.damage * (1 - victim.percent_reduce_damage * 0.01)
+	if victim.percent_reduce_damage and victim.percent_reduce_damage > 0 then
+		local reduce = victim.percent_reduce_damage
+		if reduce > 99 then
+			reduce = 99
+		end
+        args.damage = args.damage * (1 - reduce * 0.01)
     end
 	-- 技能伤害处理
 	if args.entindex_inflictor_const then

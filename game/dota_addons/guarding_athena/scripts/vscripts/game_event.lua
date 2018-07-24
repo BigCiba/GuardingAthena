@@ -73,7 +73,16 @@ function GuardingAthena:OnEntityKilled( event )
 	end
 	if killedUnit:IsCreature() then
         RollDrops(killedUnit)
-    end
+	end
+	if killerUnit.trial then
+		if killerUnit.trial == killedUnit then
+			killerUnit.trial = nil
+			ParticleManager:DestroyParticle(killedUnit.trial_wall, false)
+		end
+	end
+	if killedUnit.trial then
+		killerUnit:ForceKill(false)
+	end
     if killedUnit and string.find(killedUnit:GetUnitName(), "guai") then
 		-- 排除复活单位与非测试单位
 		if killedUnit.corpse or killedUnit.wave == nil then

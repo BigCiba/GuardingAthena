@@ -4,7 +4,7 @@ function ManaBreak( t )
     local ability = t.ability
     local manaCost = target:GetMaxMana() * ability:GetSpecialValueFor("mana") * 0.01
     local damage = manaCost
-    damage = damage * (200 - target:GetManaPercent()) * 0.01
     target:SpendMana(manaCost, nil)
+    damage = damage * (200 - target:GetManaPercent()) * 0.02
     CauseDamage(caster,target,damage,DAMAGE_TYPE_MAGICAL,ability)
 end

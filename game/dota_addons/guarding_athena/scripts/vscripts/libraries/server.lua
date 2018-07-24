@@ -39,7 +39,7 @@ function Server:GetScore(playerID)
     req:Send(function(res)
         if res.Body then
             player.Score = JSON:decode(res.Body)
-            PrintTable(JSON:decode(res.Body))
+            --PrintTable(JSON:decode(res.Body))
         end
     end)
 end

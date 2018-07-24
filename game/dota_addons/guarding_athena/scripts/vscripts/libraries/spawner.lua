@@ -66,7 +66,8 @@ function Spawner:Setting()
 		maxHealthRandomFactor = self.difficulty * 0.2 + 1.2,					--最大生命系数
 		maxMeleeDamageFactor = 1,												--最大近战攻击系数
 		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
-		waveFactor = 1 + 0.01 * self.difficulty									--波数系数
+		waveFactor = 1 + 0.01 * self.difficulty,								--波数系数
+		eliteFactor = 1 + 0.02 * self.difficulty								--精英怪系数
 	}
 	self.damageRecorder = {}													--每波施加伤害记录器
 	self.victimRecorder = {}													--每波承受伤害记录器
@@ -148,6 +149,16 @@ function Spawner:DoSpawn()
 			end)
 		end
 	end
+	if self.captainName then
+		for k, v in pairs( self.spawnerLocation ) do
+			PrecacheUnitByNameAsync(self.captainName,function()
+		    	local unit = CreateUnitByName(self.captainName, self.spawnerLocation[k], true, nil, nil, DOTA_TEAM_BADGUYS ) 
+		    	self:UnitProperty(unit,self.unitFactor)
+		    	table.insert(self.unitRemaining, unit)
+		    	unit.wave = self.gameRound
+			end)
+		end
+	end
 	if self.bossName then
 		Timers:CreateTimer(self.bossSpawnDelay,function ()
 			PrecacheUnitByNameAsync(self.bossName,function()
@@ -172,7 +183,7 @@ function Spawner:UpData()
 	self.spawnCount = self.spawnList["wave_"..self.gameRound].unitCount
 	self.spawnSound = self.spawnList["wave_"..self.gameRound].spawnSound or false
 	self.unitName = self.spawnList["wave_"..self.gameRound].unitName
-	self.captainName = self.spawnList["wave_"..self.gameRound].captainName or ""
+	self.captainName = self.spawnList["wave_"..self.gameRound].captainName or false
 	self.bossName = self.spawnList["wave_"..self.gameRound].bossName or false
 	self.bossSpawnDelay = self.spawnList["wave_"..self.gameRound].spawnDelay or 0
 	self.bossSpawnSound = self.spawnList["wave_"..self.gameRound].bossSpawnSound or ""
@@ -202,21 +213,22 @@ function Spawner:UnitProperty( unit,factor )
 	unit:SetHealth(unit:GetBaseMaxHealth())
 	unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
 	-- 精英怪
-	if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
+	--if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
+	if self.difficulty >= 3 and unit:GetUnitName() == "guai_"..self.gameRound then
 		if RollPercentage(self.difficulty * 2) then
-			unit:SetModelScale(unit:GetModelScale() + 0.5)
-			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty * 0.5)
-			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
-			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty  * 0.5)
-			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty  * 0.5)
-			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty  * 0.5)
-			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty  * 0.5)
+			--[[unit:SetModelScale(unit:GetModelScale() + 0.5)
+			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty * factor.eliteFactor ^ self.gameRound)
+			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
+			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
+			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
+			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
+			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
 			unit:SetMaxHealth(unit:GetBaseMaxHealth())
 			unit:SetHealth(unit:GetBaseMaxHealth())
-			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty * 0.5)
+			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty * eliteFactor ^ self.gameRound)]]
 			unit:AddAbility("elite")
-			unit.percent_bonus_damage = unit.percent_bonus_damage + self.difficulty * 20
-			unit.percent_reduce_damage = unit.percent_reduce_damage + self.difficulty * 10
+			--unit.percent_bonus_damage = unit.percent_bonus_damage + self.difficulty * 20
+			--unit.percent_reduce_damage = unit.percent_reduce_damage + self.difficulty * 10
 		end
 	end
 	for i=1,16 do
@@ -267,6 +279,7 @@ function Spawner:QuestPanel(...)
 	local currentWave = self.gameRound
 	local count = 0
 	local maxCount = self.spawnCount * 4
+	if self.captainName then maxCount = maxCount + 4 end
 	if wave then
 		count = maxCount - table.getn(self.unitRemaining)
 		key = "monster_kill"
