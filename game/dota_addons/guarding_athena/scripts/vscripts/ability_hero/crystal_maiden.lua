@@ -286,7 +286,7 @@ function OnCreated( t )
         return damage
     end)
 end
-function OnDestory( t )
+function OnDestroy( t )
     local caster = t.caster
     RemoveDamageFilterVictim(caster,"exclusive")
 end

@@ -57,7 +57,7 @@ function QuestTriggerNpc( t )
 		Quest:ShowDialog(caster, npc, "", NOQUEST)
 	end
 end
-function OnDestory( t )
+function OnDestroy( t )
 	local caster = t.target
 	CustomUI:DynamicHud_Destroy(caster:GetPlayerID(), "Dialog")
 end

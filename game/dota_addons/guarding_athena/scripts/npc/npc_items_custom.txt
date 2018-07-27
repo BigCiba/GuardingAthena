@@ -15119,7 +15119,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
-						"Function"	"OnDestory"
+						"Function"	"OnDestroy"
 					}
 				}
 			}
@@ -15773,7 +15773,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
-						"Function"	"OnDestory"
+						"Function"	"OnDestroy"
 					}
 				}
 				"OnAttackLanded"

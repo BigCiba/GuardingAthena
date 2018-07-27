@@ -78,14 +78,14 @@
 	"GetUnitsInRadius": {
 		"prefix": "GetUnitsInRadius",
 		"body": [
-			"GetUnitsInRadius(${caster},${ability},${point},${radius})"
+			"local unitGroup = GetUnitsInRadius(${caster},${ability},${point},${radius})"
 		],
 		"description": "Get Units In Radius, return unit group"
 	},
 	"GetUnitsInLine": {
 		"prefix": "GetUnitsInLine",
 		"body": [
-			"GetUnitsInLine(${caster},${ability},${start_point},${end_point},${width})"
+			"local unitGroup = GetUnitsInLine(${caster},${ability},${start_point},${end_point},${width})"
 		],
 		"description": "Find Units In Sector, return unit group"
 	},
@@ -106,7 +106,7 @@
 	"GetUnitsInSector": {
 		"prefix": "GetUnitsInSector",
 		"body": [
-			"GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
+			"local unitGroup = GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
 		],
 		"description": "Find Units In Sector, return unit group"
 	},

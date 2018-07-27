@@ -153,9 +153,10 @@ function Spawner:DoSpawn()
 		for k, v in pairs( self.spawnerLocation ) do
 			PrecacheUnitByNameAsync(self.captainName,function()
 		    	local unit = CreateUnitByName(self.captainName, self.spawnerLocation[k], true, nil, nil, DOTA_TEAM_BADGUYS ) 
-		    	self:UnitProperty(unit,self.unitFactor)
+				self:UnitProperty(unit,self.unitFactor)
 		    	table.insert(self.unitRemaining, unit)
 		    	unit.wave = self.gameRound
+				AI:CreateAI(unit)
 			end)
 		end
 	end
