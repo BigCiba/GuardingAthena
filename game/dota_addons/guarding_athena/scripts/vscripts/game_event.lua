@@ -639,6 +639,8 @@ function GuardingAthena:OnPlayerChat(keys)
 			if name == "testunit" then
 				self.testunit = nature
 			end
+			Spawner:UnitProperty(nature,Spawner.unitFactor)
+			AI:CreateAI(nature)
 		end)
 	end
 	if text == "trial" then

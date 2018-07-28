@@ -5146,7 +5146,7 @@
 		// 侦测范围
 		"AttackAcquisitionRange"	"600"
 		// 攻击范围
-		"AttackRange"	"100"
+		"AttackRange"	"225"
 		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
 		// "ProjectileSpeed"			"900"							// 投射速率
 		// 奖励
@@ -6616,7 +6616,7 @@
 		// 侦测范围
 		"AttackAcquisitionRange"	"600"
 		// 攻击范围
-		"AttackRange"	"100"
+		"AttackRange"	"225"
 		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
 		// "ProjectileSpeed"			"900"							// 投射速率
 		// 奖励
@@ -6666,9 +6666,9 @@
 		// 夜晚视野
 		"VisionNighttimeRange"	"800"
 		"Ability1"	"captain"
-		"Ability2"	"tidehunter_gush"
-		"Ability3"	"tidehunter_anchor_smash"
-		"Ability4"	"tidehunter_kraken_shell"
+		"Ability2"	"gush"
+		"Ability3"	"tidehunter_kraken_shell"
+		"Ability4"	"anchor_smash"
 		"Ability5"	"tidehunter_ravage"
 		"Ability6"	""
 		"Ability7"	""
@@ -6995,7 +6995,7 @@
 	"captain_guai_17"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/lycan/ultimate/ambry_true_form/ambry_true_form.vmdl"
+		"Model"	"models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl"
 		// 音效文件
 		"SoundSet"	"Creep_Bad_Melee"
 		// 模型大小
@@ -7027,7 +7027,7 @@
 		// 侦测范围
 		"AttackAcquisitionRange"	"600"
 		// 攻击范围
-		"AttackRange"	"100"
+		"AttackRange"	"225"
 		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
 		// "ProjectileSpeed"			"900"							// 投射速率
 		// 奖励
@@ -7340,11 +7340,23 @@
 			{
 				"Wearable1"
 				{
-					"ItemDef"	"4265"
+					"ItemDef"	"8351"
 				}
 				"Wearable2"
 				{
-					"ItemDef"	"4211"
+					"ItemDef"	"8348"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"8350"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"8349"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"8353"
 				}
 			}
 		}
@@ -7370,7 +7382,7 @@
 		// 侦测范围
 		"AttackAcquisitionRange"	"600"
 		// 攻击范围
-		"AttackRange"	"100"
+		"AttackRange"	"225"
 		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
 		// "ProjectileSpeed"			"900"							// 投射速率
 		// 奖励
@@ -7422,8 +7434,8 @@
 		"Ability1"	"captain"
 		"Ability2"	"storm_bolt"
 		"Ability3"	"warcry"
-		"Ability4"	"gods_strength"
-		"Ability5"	""
+		"Ability4"	"great_cleave"
+		"Ability5"	"gods_strength"
 		"Ability6"	""
 		"Ability7"	""
 		"Ability8"	""

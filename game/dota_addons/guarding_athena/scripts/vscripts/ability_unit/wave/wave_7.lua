@@ -7,7 +7,7 @@ function OnFatalBonds( t )
     local duration = ability:GetSpecialValueFor("duration")
     local radius = ability:GetSpecialValueFor("radius")
     ability.unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
-    for k,unit in pairs(unitGroup) do
+    for k,unit in pairs(ability.unitGroup) do
         ability:ApplyDataDrivenModifier(caster, unit, "modifier_fatal_bonds_debuff", nil)
     end
     ability:ApplyDataDrivenModifier(caster, caster, "modifier_fatal_bonds_debuff", nil)
@@ -29,9 +29,12 @@ function OnTakeDamage( t )
         for k,unit in pairs(ability.unitGroup) do
             if unit ~= target then
                 CauseDamage(caster,unit,damage,damageType,ability)
+                local p = CreateParticle("particles/units/heroes/hero_warlock/warlock_fatal_bonds_pulse.vpcf",PATTACH_ABSORIGIN,caster,duration)
+                ParticleManager:SetParticleControlEnt(p, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+                ParticleManager:SetParticleControlEnt(p, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
             end
         end
-        ability:StartCooldown(0.01)
+        ability:StartCooldown(0.05)
         ability.damage_tag = true
     end
 end
@@ -39,9 +42,10 @@ function OnShadowWord( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local regen = target:GetHealthRegen()
-    local duration = ability:GetSpecialValueFor("duration")
-    AddModifierStackCount(caster,target,ability,"modifier_shadow_word_debuff",regen,duration)
+    local regen = math.floor(target:GetHealthRegen())
+    local damage = ability:GetSpecialValueFor("damage") + regen
+    local damageType = ability:GetAbilityDamageType()
+    CauseDamage(caster,target,damage,damageType,ability)
 end
 function OnUpheaval( t )
     local caster = t.caster
@@ -50,6 +54,9 @@ function OnUpheaval( t )
     local duration = ability:GetSpecialValueFor("duration")
     local radius = ability:GetSpecialValueFor("radius")
     local runTime = 0
+    local p = CreateParticle("particles/units/heroes/hero_warlock/warlock_upheaval.vpcf",PATTACH_ABSORIGIN,caster,duration)
+    ParticleManager:SetParticleControl(p, 0, point)
+    ParticleManager:SetParticleControl(p, 1, Vector(900,1,1))
     Timers:CreateTimer(function ()
         if runTime < duration then
             local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
@@ -71,7 +78,7 @@ function OnRainOfChaos( t )
     local travelSpeed = 300
     local landTime = 1.3
 
-    local caster_point = kcaster:GetAbsOrigin()
+    local caster_point = caster:GetAbsOrigin()
     local target_point = t.target_points[1]
     
     local caster_point_temp = Vector(caster_point.x, caster_point.y, 0)

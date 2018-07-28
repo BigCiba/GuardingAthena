@@ -286,7 +286,7 @@ function ExorcismPhysics( event )
 					if not unit.current_target:IsAttackImmune() then
 						local damage_table = {}
 
-						local spirit_damage = RandomInt(min_damage,max_damage)
+						local spirit_damage = RandomInt(min_damage,max_damage) * RandomFloat(1,Spawner.unitFactor.maxDamageRandomFactor) * Spawner.unitFactor.difficultyFactor * Spawner.unitFactor.maxMeleeDamageFactor * Spawner.unitFactor.waveFactor ^ Spawner.gameRound
 						damage_table.victim = unit.current_target
 						damage_table.attacker = caster					
 						damage_table.damage_type = abilityDamageType
@@ -422,11 +422,11 @@ function ExorcismDeath( event )
 	end
 end
 function AutoSlience( t )
-    local caster = t.caster
+    --[[local caster = t.caster
     local target = t.target
     local ability = t.ability
     local position = target:GetAbsOrigin()
     if ability:IsCooldownReady() and target:IsRealHero() then
         CastAbility(caster,DOTA_UNIT_ORDER_CAST_POSITION,ability,nil,position)
-    end
+    end]]
 end

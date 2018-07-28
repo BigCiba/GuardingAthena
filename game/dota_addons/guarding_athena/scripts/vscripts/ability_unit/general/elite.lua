@@ -2,10 +2,11 @@ function OnTakeDamage( t )
     local caster = t.caster
     local damage = t.DamageTaken
     SetUnitIncomingDamageReduce(caster,0)
+    SetUnitDamagePercent(caster,0)
     local reduce = caster.percent_reduce_damage
     local increace = caster.percent_bonus_damage
-    if reduce > 90 then
-        reduce = 90
+    if reduce > 80 then
+        reduce = 80
     end
     -- 计算减少后的伤害
     damage = damage * (1 - (reduce * 0.01))
@@ -21,9 +22,9 @@ function OnTakeDamage( t )
     if reduce + damageReduce > 80 then
         damageReduce = 80 - reduce
     end
-    -- 最大增伤不超过80%
-    if increace + damagePercent > 100 then
-        damagePercent = 100 - increace
+    -- 最大增伤不超过50%
+    if increace + damagePercent > 50 then
+        damagePercent = 50 - increace
     end
     if percent > 0 then
         SetUnitDamagePercent(caster, damagePercent, 10)

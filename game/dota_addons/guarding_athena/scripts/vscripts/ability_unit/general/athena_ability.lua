@@ -38,7 +38,7 @@ function AthenaGuard( t )
         local unitGroup = GetUnitsInRadius( caster, ability, caster:GetAbsOrigin(), 99999 )
         for k,v in pairs(unitGroup) do
             ability:ApplyDataDrivenModifier(caster, v, "modifier_athena_guard_buff", {duration=duration})
-            SetUnitIncomingDamageReduce(v,90 + GuardingAthena.athena_armor_lv * 0.5,duration)
+            SetUnitIncomingDamageReduce(v,10 + GuardingAthena.athena_armor_lv * 0.5,duration)
             v:AddNewModifier(caster,ability,"athena_guard",{duration=duration})
             EmitSoundOn("Hero_Lich.FrostArmor", v)
             local particle = CreateParticle("particles/units/heroes/hero_lich/lich_frost_armor.vpcf",PATTACH_OVERHEAD_FOLLOW,v,duration)

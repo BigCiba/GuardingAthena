@@ -16,9 +16,9 @@ function movespeed:GetAttributes()
 end
 
 function movespeed:GetModifierMoveSpeed_Max( params )
-    return MAX_MS
+    return 1600
 end
 
 function movespeed:GetModifierMoveSpeed_Limit( params )
-    return MAX_MS
+    return 1600
 end

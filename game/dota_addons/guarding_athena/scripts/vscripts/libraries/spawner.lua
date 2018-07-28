@@ -67,7 +67,7 @@ function Spawner:Setting()
 		maxMeleeDamageFactor = 1,												--最大近战攻击系数
 		difficultyFactor = 1.5 ^ self.difficulty,								--难度系数
 		waveFactor = 1 + 0.01 * self.difficulty,								--波数系数
-		eliteFactor = 1 + 0.02 * self.difficulty								--精英怪系数
+		eliteFactor = 1 + 0.01 * self.difficulty								--精英怪系数
 	}
 	self.damageRecorder = {}													--每波施加伤害记录器
 	self.victimRecorder = {}													--每波承受伤害记录器
