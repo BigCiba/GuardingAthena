@@ -25,3 +25,17 @@ function LifeSteal( t )
     CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL )
     Heal( caster, heal, 0, true )
 end
+function OnManaPurge( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    target:SpendMana(target:GetMana(), ability)
+end
+function OnDeathArrow( t )
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local damage = ability:GetSpecialValueFor("damage") * target:GetMaxHealth() * 0.01
+    local damageType = ability:GetAbilityDamageType()
+    CauseDamage(caster,target,damage,damageType,ability)
+end

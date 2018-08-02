@@ -5275,6 +5275,49 @@
 		}
 	}
 
+	"ultrasonic"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"queenofpain_sonic_wave"
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"20"
+		"AbilityCastRange"	"600"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_34.lua"
+				"Function"	"Ultrasonic"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_QueenOfPain.SonicWave"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"40000 80000 120000 160000 200000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_percent"	"20"
+			}
+		}
+	}
+
 	"solar_barren_aura"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -5505,6 +5548,68 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"2 3 4 5 6"
+			}
+		}
+	}
+
+	"sm"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"meepo_earthbind"
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"20"
+		"AbilityCastRange"	"900"
+		"precache"
+		{
+			"particle"	"particles/units/solar_lock.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"AttachEffect"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/units/solar_lock.vpcf"
+				"EffectAttachType"	"attach_hitloc"
+			}
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_sm_debuff"
+				"Duration"	"%duration"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"Hero_ShadowDemon.Soul_Catcher.Cast"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_sm_debuff"
+			{
+				"ThinkInterval"	"1"
+				"Passive"	"0"
+				"IsHidden"	"0"
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"	{}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
 			}
 		}
 	}
@@ -10017,7 +10122,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"magicdef"	"5 10 15 20 25 30 35 40"
+				"magicdef"	"10 12 14 16 18 20 22 24"
 			}
 			"07"
 			{
@@ -16945,22 +17050,23 @@
 				}
 				"Action"
 				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"%AbilityDamage"
-					}
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_storm_bolt_datadriven"
 						"Target"	"TARGET"
 					}
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+						"Function"	"KvDamage"
+						"damage"	"%AbilityDamage"
+					}
 				}
 			}
 			"Blink"
 			{
-				"Target"	"POINT"
+				"Target"	"TARGET"
 			}
 		}
 		"Modifiers"
@@ -17043,12 +17149,6 @@
 				"Target"	"TARGET"
 				"ModifierName"	"modifier_gush_debuff"
 			}
-			"Damage"
-			{
-				"Target"	"TARGET"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"%damage"
-			}
 			"FireSound"
 			{
 				"Target"	"CASTER"
@@ -17068,6 +17168,13 @@
 				}
 				"EffectName"	"particles/units/heroes/hero_tidehunter/tidehunter_gush.vpcf"
 				"EffectAttachType"	"follow_customorigin"
+			}
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"%damage"
 			}
 		}
 		"Modifiers"
@@ -17157,18 +17264,6 @@
 				"Duration"	"%reduction_duration"
 				"ModifierName"	"modifier_anchor_smash_debuff"
 			}
-			"Damage"
-			{
-				"Target"
-				{
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-				}
-				"Type"	"DAMAGE_TYPE_PHYSICAL"
-				"Damage"	"%damage"
-			}
 			"FireEffect"
 			{
 				"Target"	"CASTER"
@@ -17179,6 +17274,19 @@
 			{
 				"Target"	"CASTER"
 				"EffectName"	"Hero_Tidehunter.AnchorSmash"
+			}
+			"RunScript"
+			{
+				"Target"
+				{
+					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+				}
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"%damage"
 			}
 		}
 		"Modifiers"
@@ -17266,6 +17374,542 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"great_cleave_damage"	"20 35 50 65 80"
+			}
+		}
+	}
+
+	"shock_wave"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"earthshaker_echo_slam"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastPoint"	"2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"0.5"
+		"AbilityCooldown"	"8"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_23.lua"
+				"Function"	"OnShockWave"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_EarthShaker.EchoSlam"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"0"
+			"Knockback"
+			{
+				"Target"	"TARGET"
+				"Center"	"CASTER"
+				"Duration"	"1"
+				"Distance"	"150"
+				"Height"	"150"
+				"ShouldStun"	"1"
+			}
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"%damage"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_23.lua"
+				"Function"	"OnBounce"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_shock_wave_debuff"
+			{
+				"Duration"	"1"
+				"IsDebuff"	"1"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10000 20000 30000 40000 50000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"600"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1200"
+			}
+		}
+	}
+
+	"earthshake"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"earthshaker_aftershock_egset"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"8"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_23.lua"
+				"Function"	"OnEarthShake"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_ElderTitan.EarthSplitter.Cast"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_ElderTitan.EarthSplitter.Projectile"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"80"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"delay"	"4"
+			}
+		}
+	}
+
+	"enchant_totem"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"earthshaker_enchant_totem"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0.69 0.69 0.69 0.69"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"5.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"50"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"0"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_EarthShaker.Totem"
+			}
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_enchant_totem"
+				"Duration"	"%duration"
+			}
+			"Stun"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Radius"	"300"
+				}
+				"Duration"	"1"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"0"
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"%shock_wave_damage"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_enchant_totem"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%totem_damage_percentage"
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_enchant_totem"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_23.lua"
+						"Function"	"OnEnchantTotem"
+					}
+					"FireSound"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"Hero_EarthShaker.Totem.Attack"
+					}
+				}
+			}
+			"modifier_enchant_totem_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Duration"	"%stun_duration"
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"totem_damage_percentage"	"2000 3000 4000 5000 6000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shock_wave_damage"	"10000 20000 30000 40000 50000"
+			}
+		}
+		"AbilityDuration"	"14.0 14.0 14.0 14.0"
+		// Damage.
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"	"0 0 0 0"
+	}
+
+	"mana_purge"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"nyx_assassin_mana_burn"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"16"
+		"AbilityManaCost"	"100"
+		"AbilityCastRange"	"900"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Function"	"OnManaPurge"
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_30.lua"
+			}
+		}
+	}
+
+	"death_arrow"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"necronomicon_archer_mana_burn"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"Modifiers"
+		{
+			"modifier_death_arrow"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_30.lua"
+						"Function"	"OnDeathArrow"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+		}
+	}
+
+	// Rewrite of the Queen of Pain Scream of Pain ability
+	// Author: Pizzalol
+	// Date: 19.12.2014.
+	"scream_of_pain"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"queenofpain_scream_of_pain"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"7.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"110"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+			"particle"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
+			"particle"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain.vpcf"
+			"particle"	"particles/units/heroes/hero_bane/bane_nightmare.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_QueenOfPain.ScreamOfPain"
+				"Target"	"CASTER"
+			}
+			"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"	"CASTER"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				"Action"
+				{
+					"TrackingProjectile"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain.vpcf"
+						"Dodgeable"	"0"
+						"ProvidesVision"	"0"
+						"MoveSpeed"	"%projectile_speed"
+						"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_HITLOCATION"
+					}
+				}
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"%damage"
+			}
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_scream_of_pain_debuff"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_scream_of_pain_debuff"
+			{
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+				"Duration"	"%shock_duration"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_37.lua"
+						"Function"	"RoshanShock"
+					}
+				}
+				"ThinkInterval"	"0.5"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare.vpcf"
+						"EffectAttachType"	"follow_overhead"
+					}
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"projectile_speed"	"900"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20000 40000 60000 80000 100000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shock_duration"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+		}
+	}
+
+	"queen_split"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"queenofpain_sanguine_blink"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"40"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_34.lua"
+				"Function"	"QueenSplit"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"30"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+		}
+	}
+
+	"shadow_strike"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"queenofpain_sanguine_shadow_strike"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"Modifiers"
+		{
+			"modifier_shadow_strike"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"Properties"	{}
+				"OnAttackLanded"
+				{
+					"Stun"
+					{
+						"Target"	"TARGET"
+						"Duration"	"%duration"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"0.2"
 			}
 		}
 	}

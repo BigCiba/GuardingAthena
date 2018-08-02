@@ -16,6 +16,14 @@ athena_sound = {
     "crystalmaiden_cm_underattack_01"
 }
 athena_sound_underattack = "crystalmaiden_cm_underattack_01"
+function KvDamage( t )
+    local caster = t.caster
+    local target = t.target_entities or t.target
+    local ability = t.ability
+    local damage = t.damage
+    local damageType = ability:GetAbilityDamageType()
+    CauseDamage(caster,target,damage,damageType,ability)
+end
 function AthenaHeal( caster,ability )
 	local hp = ability:GetSpecialValueFor("health") + GuardingAthena.athena_regen_lv * 40
 	local mp = ability:GetSpecialValueFor("mana") + GuardingAthena.athena_regen_lv * 8

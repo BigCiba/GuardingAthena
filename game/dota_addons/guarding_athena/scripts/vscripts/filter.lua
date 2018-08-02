@@ -65,6 +65,7 @@ function GuardingAthena:DamageFilter( args )
 			return
 		end
 	end--]]
+	
 	if args.entindex_attacker_const then
 		caster = EntIndexToHScript(args.entindex_attacker_const)
 	else
@@ -85,6 +86,7 @@ function GuardingAthena:DamageFilter( args )
 			args.damage = args.damage / (1 + caster:GetIntellect() * x)
 		end]]
 	end
+
 	-- 特殊处理
 	if caster.DamageFilterAttacker then
 		for name,filter in pairs(caster.DamageFilterAttacker) do

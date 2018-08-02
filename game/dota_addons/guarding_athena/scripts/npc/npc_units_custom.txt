@@ -6687,7 +6687,27 @@
 			{
 				"Wearable1"
 				{
-					"ItemDef"	"36"
+					"ItemDef"	"9636"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"9635"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"9634"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"9633"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"9632"
+				}
+				"Wearable6"
+				{
+					"ItemDef"	"9631"
 				}
 			}
 		}
@@ -7089,6 +7109,9 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"Creature"
+		{
+		}
 	}
 
 	"guai_18"
@@ -7894,6 +7917,128 @@
 		"Ability16"	""
 	}
 
+	"captain_guai_23"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/heroes/earthshaker/earthshaker.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"1"
+		// 单位等级
+		"Level"	"1"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"20"
+		// 魔抗
+		"MagicalResistance"	"21"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为远战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"4678"
+		// 最高攻击伤害
+		"AttackDamageMax"	"4878"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.2"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"100"
+		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
+		// "ProjectileSpeed"			"900"							// 投射速率
+		// 奖励
+		// ----------------------------------------------------------------
+		// 经验奖励
+		"BountyXP"	"370"
+		// 最低金钱奖励
+		"BountyGoldMin"	"83"
+		// 最高金钱奖励
+		"BountyGoldMax"	"83"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 血条相对高度
+		"HealthBarOffset"	"-1"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"325"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"182000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"5"
+		// 基础魔法值
+		"StatusMana"	"2300"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"0"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		"Creature"
+		{
+			// 饰品设置
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"6314"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"6313"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"6315"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"6308"
+				}
+			}
+		}
+		"Ability1"	"captain"
+		"Ability2"	"shock_wave"
+		"Ability3"	"enchant_totem"
+		"Ability4"	"earthshake"
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
 	"guai_24"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -8654,6 +8799,107 @@
 		"Ability16"	""
 	}
 
+	"captain_guai_30"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"1"
+		// 单位等级
+		"Level"	"1"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"44"
+		// 魔抗
+		"MagicalResistance"	"28"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为远战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"11091"
+		// 最高攻击伤害
+		"AttackDamageMax"	"11300"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.2"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"700"
+		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
+		// "ProjectileSpeed"			"900"							// 投射速率
+		// 奖励
+		// ----------------------------------------------------------------
+		// 经验奖励
+		"BountyXP"	"700"
+		// 最低金钱奖励
+		"BountyGoldMin"	"104"
+		// 最高金钱奖励
+		"BountyGoldMax"	"104"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 血条相对高度
+		"HealthBarOffset"	"-1"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"325"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"538000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"5"
+		// 基础魔法值
+		"StatusMana"	"3000"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"0"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		"Ability1"	"captain"
+		"Ability2"	"mana_purge"
+		"Ability3"	"death_arrow"
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"ProjectileModel"	"particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf"
+		"ProjectileSpeed"	"1000"
+	}
+
 	"guai_31"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -9138,6 +9384,254 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+	}
+
+	"captain_guai_34"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/heroes/queenofpain/queenofpain.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"0.8"
+		// 单位等级
+		"Level"	"1"
+		"Ability1"	"captain"
+		"IsAncient"	"1"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"68"
+		// 魔抗
+		"MagicalResistance"	"32"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为远战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"12000"
+		// 最高攻击伤害
+		"AttackDamageMax"	"12000"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.2"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"700"
+		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
+		// "ProjectileSpeed"			"900"							// 投射速率
+		// 奖励
+		// ----------------------------------------------------------------
+		// 经验奖励
+		"BountyXP"	"1100"
+		// 最低金钱奖励
+		"BountyGoldMin"	"130"
+		// 最高金钱奖励
+		"BountyGoldMax"	"130"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 血条相对高度
+		"HealthBarOffset"	"-1"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"325"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"925000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"5"
+		// 基础魔法值
+		"StatusMana"	"3400"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"0"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		"Ability2"	"scream_of_pain"
+		"Ability3"	"ultrasonic"
+		"Ability4"	"queen_split"
+		"Ability5"	"shadow_strike"
+		"Ability6"	"sm"
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"5590"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"6839"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"5157"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"8231"
+				}
+			}
+		}
+		"ProjectileModel"	"particles/units/heroes/hero_queenofpain/queen_base_attack.vpcf"
+		"ProjectileSpeed"	"1200"
+	}
+
+	"captain_guai_34_split"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/heroes/queenofpain/queenofpain.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"0.8"
+		// 单位等级
+		"Level"	"1"
+		"Ability1"	""
+		"IsAncient"	"1"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"68"
+		// 魔抗
+		"MagicalResistance"	"32"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为远战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"12000"
+		// 最高攻击伤害
+		"AttackDamageMax"	"12000"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.2"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"700"
+		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
+		// "ProjectileSpeed"			"900"							// 投射速率
+		// 奖励
+		// ----------------------------------------------------------------
+		// 经验奖励
+		"BountyXP"	"1100"
+		// 最低金钱奖励
+		"BountyGoldMin"	"130"
+		// 最高金钱奖励
+		"BountyGoldMax"	"130"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 血条相对高度
+		"HealthBarOffset"	"-1"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"325"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"925000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"5"
+		// 基础魔法值
+		"StatusMana"	"3400"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"0"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"5590"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"6839"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"5157"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"8231"
+				}
+			}
+		}
+		"ProjectileModel"	"particles/units/heroes/hero_queenofpain/queen_base_attack.vpcf"
+		"ProjectileSpeed"	"1200"
 	}
 
 	"guai_35"

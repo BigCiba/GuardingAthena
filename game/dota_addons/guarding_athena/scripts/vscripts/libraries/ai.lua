@@ -52,16 +52,17 @@ function AI:SetAutoCast( caster )
                 if ability:IsCooldownReady() then
                     -- 有影响范围的技能
                     local radius = ability:GetSpecialValueFor("radius") or 0
-                    print(radius)
                     if radius > 0 then
                         local point = caster:GetAbsOrigin()
                         local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
                         if #unitGroup > 0 then
                             castState = true
+                            ClearBuff(caster,"debuff")
                             CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
                         end
                     else
                         castState = true
+                        ClearBuff(caster,"debuff")
                         CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
                     end
                 end
@@ -78,6 +79,7 @@ function AI:SetAutoCast( caster )
                     if #unitGroup > 0 then
                         for k,unit in pairs(unitGroup) do
                             castState = true
+                            ClearBuff(caster,"debuff")
                             CastAbility(caster,DOTA_UNIT_ORDER_CAST_TARGET,ability,unit,nil)
                         end
                     end
@@ -95,6 +97,7 @@ function AI:SetAutoCast( caster )
                     if #unitGroup > 0 then
                         for k,unit in pairs(unitGroup) do
                             castState = true
+                            ClearBuff(caster,"debuff")
                             CastAbility(caster,DOTA_UNIT_ORDER_CAST_POSITION,ability,nil,unit:GetAbsOrigin())
                         end
                     end

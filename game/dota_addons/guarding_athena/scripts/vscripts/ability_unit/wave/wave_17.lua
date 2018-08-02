@@ -11,26 +11,29 @@ function OnCreated( t )
     Timers:CreateTimer(function ()
         -- 死亡后停止计时器
         if caster:IsAlive() then
-            local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),alertRange)
+            local casterLoc = caster:GetAbsOrigin()
+            local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,alertRange)
             if #unitGroup > 0 then
-                -- 选择最近的单位
+                -- 是否跳跃中
                 if not caster:HasModifier("modifier_hunt_jump") then
+                    -- 选择最近的单位
                     local closestUnit = unitGroup[1]
                     for k,unit in pairs(unitGroup) do
                         if unit ~= closestUnit then
-                            local length = (caster:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D()
-                            if length < (caster:GetAbsOrigin() - closestUnit:GetAbsOrigin()):Length2D() then
+                            local length = (casterLoc - unit:GetAbsOrigin()):Length2D()
+                            if length < (casterLoc - closestUnit:GetAbsOrigin()):Length2D() then
                                 closestUnit = unit
                             end
                         end
                     end
                     if ability:IsCooldownReady() then
                         local targetLoc = closestUnit:GetAbsOrigin()
-                        local forward = (targetLoc - caster:GetAbsOrigin()):Normalized()
+                        local forward = (targetLoc - casterLoc):Normalized()
                         caster:SetForwardVector(forward)
                         ability:ApplyDataDrivenModifier(caster, target, "modifier_hunt_jump", {duration = 1})
                         caster:StartGesture(ACT_DOTA_ATTACK)
-                        Jump(caster,targetLoc,1800,150,true,function()
+                        Jump(caster,targetLoc,1800,200,true,function()
+                            -- 目标离跳跃地点不超过一定距离
                             local length = (targetLoc - closestUnit:GetAbsOrigin()):Length2D()
                             if length < 175 then
                                 caster:PerformAttack(closestUnit,true,true,true,false,false,false,true)
@@ -41,7 +44,15 @@ function OnCreated( t )
                             end
                         end)
                     else
+                        -- 选择下一个路径点
                         local point = GetRandomPoint(closestUnit:GetAbsOrigin(), minDistance, maxDistance)
+                        local distance_1 = (closestUnit:GetAbsOrigin() - point):Length2D()
+                        local distance_2 = (casterLoc - point):Length2D()
+                        while distance_2 > distance_1 do
+                            point = GetRandomPoint(closestUnit:GetAbsOrigin(), minDistance, maxDistance)
+                            distance_1 = (closestUnit:GetAbsOrigin() - point):Length2D()
+                            distance_2 = (casterLoc - point):Length2D()
+                        end 
                         caster:MoveToPosition(point)
                     end
                 end
