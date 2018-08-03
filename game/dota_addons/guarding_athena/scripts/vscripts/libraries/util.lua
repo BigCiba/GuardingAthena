@@ -32,6 +32,7 @@
 	RemoveDamageFilterAttacker(caster,name)
 	RemoveDamageFilterVictim(caster,name)
 	RollDrops(unit)
+	SetMaxHealth(caster,value)
 	SetModelScale(caster,scale,smooth,duration)
 	SetModifierType(caster,buff,type)
 	SetUnitPosition(caster,position,setPos)
@@ -543,6 +544,13 @@ function SetBaseResistance( ... )
 			caster:SetBaseMagicalResistanceValue(temp)
 		end)
 	end
+end
+-- 设置生命上限
+function SetMaxHealth( ... )
+	local caster,value = ...
+	caster:SetBaseMaxHealth(value)
+	caster:SetMaxHealth(value)
+	caster:SetHealth(value)
 end
 -- 设置单位模型
 function SetModelScale( ... )

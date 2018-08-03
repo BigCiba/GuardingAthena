@@ -7109,9 +7109,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"Creature"
-		{
-		}
+		"Creature"	{}
 	}
 
 	"guai_18"
@@ -9393,7 +9391,7 @@
 		// 音效文件
 		"SoundSet"	"Creep_Bad_Melee"
 		// 模型大小
-		"ModelScale"	"0.8"
+		"ModelScale"	"1"
 		// 单位等级
 		"Level"	"1"
 		"Ability1"	"captain"
@@ -9517,7 +9515,7 @@
 		// 音效文件
 		"SoundSet"	"Creep_Bad_Melee"
 		// 模型大小
-		"ModelScale"	"0.8"
+		"ModelScale"	"1"
 		// 单位等级
 		"Level"	"1"
 		"Ability1"	""

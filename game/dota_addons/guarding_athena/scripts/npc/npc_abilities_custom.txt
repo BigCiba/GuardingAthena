@@ -5288,6 +5288,7 @@
 		"AbilityCastRange"	"600"
 		"precache"
 		{
+			"particle"	"particles/units/heroes/hero_queenofpain/queen_sonic_wave.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
 		}
 		"OnSpellStart"
@@ -5608,8 +5609,8 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"3"
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"1.5"
 			}
 		}
 	}
@@ -17837,8 +17838,8 @@
 			}
 			"03"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"shock_duration"	"3"
+				"var_type"	"FIELD_FLOAT"
+				"shock_duration"	"1.5"
 			}
 			"04"
 			{
@@ -17896,10 +17897,106 @@
 				"Properties"	{}
 				"OnAttackLanded"
 				{
-					"Stun"
+					"ApplyModifier"
 					{
 						"Target"	"TARGET"
-						"Duration"	"%duration"
+						"ModifierName"	"modifier_shadow_strike_stun"
+					}
+				}
+			}
+			"modifier_shadow_strike_stun"
+			{
+				"IsDebuff"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Duration"	"%stun_duration"
+			}
+			"modifier_shadow_strike_debuff"
+			{
+				"Duration"	"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-1000"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1000"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"0.2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"0.8"
+			}
+		}
+	}
+
+	"doppleganger"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"naga_siren_mirror_image"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"Modifiers"
+		{
+			"modifier_doppleganger"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_33.lua"
+						"Function"	"OnCreated"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cooldown"	"4.0 3.5 3.0 2.5 2.0"
+			}
+		}
+	}
+
+	"sea_erode"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"naga_siren_rip_tide"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"Modifiers"
+		{
+			"modifier_sea_erode"
+			{
+				"Passive"	"1"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"Target"
+						{
+							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+						}
+						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+						"Function"	"KvDamage"
 					}
 				}
 			}
@@ -17909,7 +18006,12 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"0.2"
+				"damage"	"20000 40000 60000 80000 100000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"450"
 			}
 		}
 	}
