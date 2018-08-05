@@ -3192,9 +3192,9 @@
 		"Level"	"30"
 		"CanBeDominated"	"0"
 		// Ability 1
-		"Ability1"	"boss_invisible"
-		"Ability2"	"boss_burrowstrike"
-		"Ability3"	"boss_epicenter"
+		"Ability1"	"boss"
+		"Ability2"	"boss_invisible"
+		"Ability3"	"boss_burrowstrike"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_ancient"
@@ -3327,7 +3327,7 @@
 				}
 			}
 		}
-		"Ability4"	""
+		"Ability4"	"boss_epicenter"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
@@ -3354,9 +3354,9 @@
 		"Level"	"30"
 		"CanBeDominated"	"0"
 		// Ability 1
-		"Ability1"	"boss_soulbody"
-		"Ability2"	"boss_soulconnect"
-		"Ability3"	"boss_soulclash"
+		"Ability1"	"boss"
+		"Ability2"	"boss_soulbody"
+		"Ability3"	"boss_soulconnect"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_ancient"
@@ -3461,7 +3461,7 @@
 				}
 			}
 		}
-		"Ability4"	""
+		"Ability4"	"boss_soulclash"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
@@ -3488,9 +3488,9 @@
 		"Level"	"30"
 		"CanBeDominated"	"0"
 		// Ability 1
-		"Ability1"	"boss_fire_stun"
-		"Ability2"	"boss_fire_land"
-		"Ability3"	"boss_fire_reborn"
+		"Ability1"	"boss"
+		"Ability2"	"boss_fire_stun"
+		"Ability3"	"boss_fire_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_ancient"
@@ -3568,7 +3568,7 @@
 		"VisionDaytimeRange"	"950"
 		// 夜晚视野
 		"VisionNighttimeRange"	"800"
-		"Ability4"	""
+		"Ability4"	"boss_fire_reborn"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
@@ -3594,9 +3594,9 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_absorb"
-		"Ability2"	"boss_green_protect"
-		"Ability3"	"boss_overgrowth"
+		"Ability1"	"boss"
+		"Ability2"	"boss_absorb"
+		"Ability3"	"boss_green_protect"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_ancient"
@@ -3735,7 +3735,7 @@
 				}
 			}
 		}
-		"Ability4"	""
+		"Ability4"	"boss_overgrowth"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
@@ -3761,8 +3761,8 @@
 		// 单位等级
 		"Level"	"1"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_untouchable"
-		"Ability2"	"hit_back"
+		"Ability1"	"boss"
+		"Ability2"	"boss_untouchable"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_ancient"
@@ -3876,7 +3876,7 @@
 				}
 			}
 		}
-		"Ability3"	""
+		"Ability3"	"hit_back"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -3903,8 +3903,8 @@
 		// 单位等级
 		"Level"	"1"
 		"CanBeDominated"	"0"
-		"Ability1"	"arcane_attack"
-		"Ability2"	"original_crash"
+		"Ability1"	"boss"
+		"Ability2"	"arcane_attack"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_ancient"
@@ -4014,8 +4014,8 @@
 				}
 			}
 		}
-		"Ability3"	"boss_clear"
-		"Ability4"	""
+		"Ability3"	"original_crash"
+		"Ability4"	"boss_clear"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
@@ -4042,8 +4042,8 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_chaos_land"
-		"Ability2"	"boss_chaos_fall"
+		"Ability1"	"boss"
+		"Ability2"	"boss_chaos_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -4130,7 +4130,7 @@
 				}
 			}
 		}
-		"Ability3"	""
+		"Ability3"	"boss_chaos_fall"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -4157,8 +4157,8 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_chaos_land"
-		"Ability2"	"boss_chaos_fall"
+		"Ability1"	"boss"
+		"Ability2"	"boss_chaos_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -4235,7 +4235,7 @@
 		"VisionDaytimeRange"	"950"
 		// 夜晚视野
 		"VisionNighttimeRange"	"800"
-		"Ability3"	""
+		"Ability3"	"boss_chaos_fall"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -4262,8 +4262,8 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_chaos_land"
-		"Ability2"	"boss_chaos_fall"
+		"Ability1"	"boss"
+		"Ability2"	"boss_chaos_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -4350,7 +4350,7 @@
 				}
 			}
 		}
-		"Ability3"	""
+		"Ability3"	"boss_chaos_fall"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -4377,8 +4377,8 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_chaos_land"
-		"Ability2"	"boss_chaos_fall"
+		"Ability1"	"boss"
+		"Ability2"	"boss_chaos_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -4465,7 +4465,7 @@
 				}
 			}
 		}
-		"Ability3"	""
+		"Ability3"	"boss_chaos_fall"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -4492,8 +4492,8 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_chaos_land"
-		"Ability2"	"boss_chaos_fall"
+		"Ability1"	"boss"
+		"Ability2"	"boss_chaos_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -4580,7 +4580,7 @@
 				}
 			}
 		}
-		"Ability3"	""
+		"Ability3"	"boss_chaos_fall"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -4607,8 +4607,8 @@
 		// 单位等级
 		"Level"	"30"
 		"CanBeDominated"	"0"
-		"Ability1"	"boss_chaos_land"
-		"Ability2"	"boss_chaos_fall"
+		"Ability1"	"boss"
+		"Ability2"	"boss_chaos_land"
 		"IsAncient"	"1"
 		"IsNeutralUnitType"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -4695,7 +4695,7 @@
 				}
 			}
 		}
-		"Ability3"	""
+		"Ability3"	"boss_chaos_fall"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -5434,7 +5434,7 @@
 		// 单位等级
 		"Level"	"1"
 		"Ability1"	"lightning_chain"
-		"Ability2"	"hex"
+		"Ability2"	""
 		"IsAncient"	"1"
 		// 护甲
 		// ----------------------------------------------------------------
@@ -5583,7 +5583,7 @@
 		// 单位等级
 		"Level"	"1"
 		"Ability1"	"captain"
-		"Ability2"	"fatal_bonds"
+		"Ability2"	"hex"
 		"IsAncient"	"1"
 		// 护甲
 		// ----------------------------------------------------------------
@@ -6362,6 +6362,7 @@
 					"ItemDef"	"9257"
 				}
 			}
+			"DisableResistance"	"50"
 		}
 		"OffensiveAbilities"
 		{
@@ -7380,6 +7381,7 @@
 					"ItemDef"	"8353"
 				}
 			}
+			"DisableResistance"	"90"
 		}
 		// 护甲
 		// ----------------------------------------------------------------
@@ -8018,6 +8020,7 @@
 					"ItemDef"	"6308"
 				}
 			}
+			"DisableResistance"	"50"
 		}
 		"Ability1"	"captain"
 		"Ability2"	"shock_wave"
@@ -8881,7 +8884,7 @@
 		"Ability1"	"captain"
 		"Ability2"	"mana_purge"
 		"Ability3"	"death_arrow"
-		"Ability4"	""
+		"Ability4"	"fatal_bonds"
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""
@@ -8896,6 +8899,10 @@
 		"Ability16"	""
 		"ProjectileModel"	"particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf"
 		"ProjectileSpeed"	"1000"
+		"Creature"
+		{
+			"DisableResistance"	"50"
+		}
 	}
 
 	"guai_31"
@@ -9169,7 +9176,7 @@
 		"Level"	"1"
 		"Ability1"	"xiaolan"
 		"Ability2"	"jianjia"
-		"Ability3"	"chenmo"
+		"Ability3"	""
 		"IsAncient"	"1"
 		// 护甲
 		// ----------------------------------------------------------------
@@ -9266,6 +9273,261 @@
 				"Wearable5"
 				{
 					"ItemDef"	"6427"
+				}
+			}
+		}
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	"captain_guai_33"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/heroes/siren/siren.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"1"
+		// 单位等级
+		"Level"	"1"
+		"Ability1"	"captain"
+		"Ability2"	"doppleganger"
+		"Ability3"	"sea_erode"
+		"IsAncient"	"1"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"62"
+		// 魔抗
+		"MagicalResistance"	"31"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为远战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"5700"
+		// 最高攻击伤害
+		"AttackDamageMax"	"5700"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.2"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"100"
+		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
+		// "ProjectileSpeed"			"900"							// 投射速率
+		// 奖励
+		// ----------------------------------------------------------------
+		// 经验奖励
+		"BountyXP"	"1000"
+		// 最低金钱奖励
+		"BountyGoldMin"	"120"
+		// 最高金钱奖励
+		"BountyGoldMax"	"120"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 血条相对高度
+		"HealthBarOffset"	"-1"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"325"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"700000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"5"
+		// 基础魔法值
+		"StatusMana"	"3300"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"0"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		"Creature"
+		{
+			// 饰品设置
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"9489"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"9488"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"8604"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"8701"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"9637"
+				}
+			}
+			"DisableResistance"	"50"
+		}
+		"Ability4"	"jianjia"
+		"Ability5"	"chenmo"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	"captain_guai_33_illusion"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/heroes/siren/siren.vmdl"
+		// 音效文件
+		"SoundSet"	"Creep_Bad_Melee"
+		// 模型大小
+		"ModelScale"	"1"
+		// 单位等级
+		"Level"	"1"
+		"Ability1"	"captain"
+		"Ability2"	"sea_erode"
+		"Ability3"	"jianjia"
+		"IsAncient"	"1"
+		// 护甲
+		// ----------------------------------------------------------------
+		// 物理护甲
+		"ArmorPhysical"	"62"
+		// 魔抗
+		"MagicalResistance"	"31"
+		// Attack
+		// ----------------------------------------------------------------
+		// 攻击方式，此为远战攻击
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		// 最低攻击伤害
+		"AttackDamageMin"	"5700"
+		// 最高攻击伤害
+		"AttackDamageMax"	"5700"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// 攻击间隔，与攻击速度是两个概念
+		"AttackRate"	"1.2"
+		// 攻击前摇
+		"AttackAnimationPoint"	"0.5"
+		// 侦测范围
+		"AttackAcquisitionRange"	"600"
+		// 攻击范围
+		"AttackRange"	"100"
+		// "ProjectileModel"			"ranged_badguy" 				// 投射物，可在粒子特效中找到
+		// "ProjectileSpeed"			"900"							// 投射速率
+		// 奖励
+		// ----------------------------------------------------------------
+		// 经验奖励
+		"BountyXP"	"1000"
+		// 最低金钱奖励
+		"BountyGoldMin"	"120"
+		// 最高金钱奖励
+		"BountyGoldMax"	"120"
+		// 碰撞
+		// ----------------------------------------------------------------
+		// 碰撞类型
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+		// 选择圈大小
+		"RingRadius"	"45"
+		// 血条相对高度
+		"HealthBarOffset"	"-1"
+		// 移动
+		// ----------------------------------------------------------------
+		// 移动类型
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// 移动速度
+		"MovementSpeed"	"325"
+		// 转身速度
+		"MovementTurnRate"	"0.5"
+		// 生命值和魔法值
+		// ----------------------------------------------------------------
+		// 基础生命值
+		"StatusHealth"	"700000"
+		// 基础生命回复速度
+		"StatusHealthRegen"	"5"
+		// 基础魔法值
+		"StatusMana"	"3300"
+		// 基础魔法回复速度
+		"StatusManaRegen"	"0"
+		// 攻击类型，基础
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		// 护甲类型，无
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		// 默认即可
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// 视野
+		// ----------------------------------------------------------------
+		// 白天视野
+		"VisionDaytimeRange"	"950"
+		// 夜晚视野
+		"VisionNighttimeRange"	"800"
+		"Creature"
+		{
+			// 饰品设置
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"9489"
+				}
+				"Wearable2"
+				{
+					"ItemDef"	"9488"
+				}
+				"Wearable3"
+				{
+					"ItemDef"	"8604"
+				}
+				"Wearable4"
+				{
+					"ItemDef"	"8701"
+				}
+				"Wearable5"
+				{
+					"ItemDef"	"9637"
 				}
 			}
 		}
@@ -9503,6 +9765,7 @@
 					"ItemDef"	"8231"
 				}
 			}
+			"DisableResistance"	"50"
 		}
 		"ProjectileModel"	"particles/units/heroes/hero_queenofpain/queen_base_attack.vpcf"
 		"ProjectileSpeed"	"1200"
@@ -10190,7 +10453,7 @@
 		}
 		"Ability4"	"boss_clear"
 		"Ability5"	"boss_blink"
-		"Ability6"	""
+		"Ability6"	"boss"
 		"Ability7"	""
 		"Ability8"	""
 		"Ability9"	""
@@ -10317,7 +10580,7 @@
 		"Ability4"	"death"
 		"Ability5"	"boss_clear"
 		"Ability6"	"boss_blink"
-		"Ability7"	""
+		"Ability7"	"boss"
 		"Ability8"	""
 		"Ability9"	""
 		"Ability10"	""
@@ -10441,7 +10704,7 @@
 			}
 		}
 		"Ability4"	"boss_blink"
-		"Ability5"	""
+		"Ability5"	"boss"
 		"Ability6"	""
 		"Ability7"	""
 		"Ability8"	""
@@ -10564,7 +10827,7 @@
 		"Ability4"	"thunder_cloud"
 		"Ability5"	"boss_clear"
 		"Ability6"	"boss_blink"
-		"Ability7"	""
+		"Ability7"	"boss"
 		"Ability8"	""
 		"Ability9"	""
 		"Ability10"	""

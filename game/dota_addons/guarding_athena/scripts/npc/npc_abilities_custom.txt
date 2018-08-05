@@ -733,6 +733,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"	"1"
 		"MaxLevel"	"5"
@@ -1898,7 +1899,7 @@
 	"jianjia"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"naga_siren_rip_tide"
+		"AbilityTextureName"	"tidehunter_gush"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1947,24 +1948,46 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"naga_siren_song_of_the_siren"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"5"
+		"AbilityCooldown"	"16"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+			"particle"	"particles/units/heroes/hero_siren/naga_siren_siren_song_cast.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+				}
+				"ModifierName"	"modifier_siren_silence"
+				"Duration"	"%duration"
+			}
+			"FireEffect"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"particles/units/heroes/hero_siren/naga_siren_siren_song_cast.vpcf"
+				"EffectAttachType"	"attach_origin"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_NagaSiren.SongOfTheSiren"
+			}
 		}
 		"Modifiers"
 		{
-			"modifier_chenmo"
-			{
-				"Passive"	"1"
-				"Aura"	"modifier_siren_silence"
-				"Aura_Radius"	"2000"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
-			}
 			"modifier_siren_silence"
 			{
 				"IsDebuff"	"1"
@@ -1984,6 +2007,16 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"speed"	"-300 -500 -700 -900 -1100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"1800"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4 5 6 7 8"
 			}
 		}
 	}
@@ -2893,7 +2926,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"20000 40000 60000 80000 100000"
+				"damage"	"50000 100000 150000 200000 250000"
 			}
 			"02"
 			{
@@ -4500,7 +4533,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"500 1000 1500 2000 2500"
+				"damage"	"600 1200 1800 2400 3000"
 			}
 		}
 	}
@@ -4706,7 +4739,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"1.0 1.1 1.2 1.3 1.4"
+				"duration"	"1.2 1.4 1.6 1.8 2.0"
 			}
 			"03"
 			{
@@ -7266,7 +7299,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"2000 4000 6000 8000 10000"
+				"damage"	"8000 16000 24000 32000 64000"
 			}
 		}
 	}
@@ -7335,7 +7368,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack"	"50 100 150 200 250"
+				"attack"	"150 300 450 600 1200"
 			}
 		}
 	}
@@ -7436,7 +7469,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"3000 6000 9000 12000 24000"
+				"damage"	"9000 18000 27000 36000 72000"
 			}
 		}
 	}
@@ -7515,7 +7548,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heal"	"300 600 900 1200"
+				"heal"	"300 600 900 1800"
 			}
 			"02"
 			{
@@ -7734,7 +7767,7 @@
 							{
 								"Target"	"TARGET"
 								"Type"	"DAMAGE_TYPE_MAGICAL"
-								"Damage"	"8000"
+								"Damage"	"%damage"
 							}
 						}
 					}
@@ -7789,6 +7822,14 @@
 				}
 			}
 		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20000"
+			}
+		}
 	}
 
 	"boss_chaos_fall"
@@ -7840,37 +7881,24 @@
 				"Target"	"CASTER"
 				"EffectName"	"Hero_Invoker.ChaosMeteor.Impact"
 			}
-			"DelayedAction"
+		}
+		"Modifiers"
+		{
+			"modifier_boss_chaos_fall_debuff"
 			{
-				"Delay"	"1.5"
-				"Action"
+				"IsDebuff"	"1"
+				"States"
 				{
-					"Damage"
-					{
-						"Target"
-						{
-							"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
-							"Center"	"TARGET"
-							"Radius"	"600"
-						}
-						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"20000"
-					}
-					"Stun"
-					{
-						"Duration"	"1"
-						"Target"
-						{
-							"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
-							"Center"	"TARGET"
-							"Radius"	"600"
-						}
-					}
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"160000"
 			}
 		}
 	}
@@ -7985,7 +8013,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCastAnimation"	"ACT_DOTA_SPAWN"
 		"AbilityCooldown"	"8"
@@ -8110,7 +8138,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.1"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
@@ -8183,7 +8211,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
 		"AbilityCastRange"	"125"
@@ -8351,7 +8379,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"8"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
 		"AbilityCastRange"	"1000"
@@ -8423,7 +8451,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCooldown"	"6"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
@@ -8513,7 +8541,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"24"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
 		"precache"
@@ -9070,7 +9098,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"8"
@@ -9160,7 +9188,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"60"
@@ -9268,7 +9296,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"Modifiers"
 		{
 			"modifier_weightlifting"
@@ -9326,7 +9354,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"4"
+		"LevelsBetweenUpgrades"	"3"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
@@ -9417,8 +9445,8 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"8"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"8"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
 		"AbilityCooldown"	"60"
 		"precache"
 		{
@@ -9524,8 +9552,8 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"4"
-		"AbilityCooldown"	"6"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCooldown"	"10"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_spectre/spectre_death.vpcf"
@@ -9666,7 +9694,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"16"
 		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"precache"
@@ -9864,7 +9892,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_MK_STRIKE"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
@@ -10227,7 +10255,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		// Time
@@ -10330,7 +10358,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.15"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
@@ -10508,7 +10536,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AnimationPlaybackRate"	"0.3"
@@ -10606,7 +10634,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		// Time
@@ -10702,7 +10730,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		// Time
@@ -10809,7 +10837,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"12"
 		"AbilityManaCost"	"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
 		"precache"
@@ -11214,7 +11242,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
@@ -11305,7 +11333,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.0"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
@@ -11393,7 +11421,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.0"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
@@ -11464,7 +11492,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.0"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
@@ -11758,7 +11786,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK_EVENT"
 		"AbilityCooldown"	"8"
@@ -11857,7 +11885,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"Precache"
@@ -11962,7 +11990,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"Modifiers"
 		{
 			"modifier_blade_dance"
@@ -12033,7 +12061,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"precache"
 		{
 			"particle"	"particles/skills/ignite_hand.vpcf"
@@ -12404,7 +12432,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCooldown"	"6"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
@@ -12458,7 +12486,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_4"
 		"AbilityCooldown"	"45"
 		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
@@ -12527,7 +12555,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"precache"
 		{
 			"particle"	"particles/econ/items/antimage/antimage_weapon_basher_ti5/am_manaburn_basher_ti_5.vpcf"
@@ -13100,7 +13128,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_RAZE_3"
 		"AbilityCooldown"	"45"
@@ -13183,7 +13211,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"0"
@@ -13290,7 +13318,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_RAZE_2"
 		"AbilityCooldown"	"8"
@@ -13352,7 +13380,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_RAZE_2"
 		"AbilityCooldown"	"8"
@@ -13414,7 +13442,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"2"
 		"precache"
 		{
@@ -13534,7 +13562,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"30"
 		"precache"
 		{
@@ -13766,7 +13794,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"30"
 		"precache"
 		{
@@ -13882,7 +13910,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"6"
@@ -14036,7 +14064,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"8"
@@ -14159,7 +14187,7 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"8"
@@ -14266,7 +14294,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"18"
@@ -14352,7 +14380,7 @@
 		"HotKeyOverride"	"R"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastPoint"	"0"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"30"
@@ -14857,7 +14885,7 @@
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCooldown"	"8"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
@@ -14941,7 +14969,7 @@
 		"HotKeyOverride"	"D"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"0"
-		"LevelsBetweenUpgrades"	"2"
+		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastAnimation"	"mk_attack_01_near"
 		"AbilityCooldown"	"20"
 		"AbilityManaCost"	"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
@@ -15620,6 +15648,39 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-50"
 				}
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit/general/elite.lua"
+						"Function"	"OnCreated"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attackspeed"	"20 40 60 80 100"
+			}
+		}
+	}
+
+	"boss"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"life_stealer_rage_immortal_gold"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_boss"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"	{}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"OnTakeDamage"
 				{
 					"RunScript"
@@ -15627,14 +15688,6 @@
 						"ScriptFile"	"scripts/vscripts/ability_unit/general/elite.lua"
 						"Function"	"OnTakeDamage"
 						"DamageTaken"	"%attack_damage"
-					}
-				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_unit/general/elite.lua"
-						"Function"	"OnCreated"
 					}
 				}
 			}
@@ -15868,8 +15921,8 @@
 		"HotKeyOverride"	"W"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"4"
-		"AbilityCooldown"	"6"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCooldown"	"8"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
@@ -16391,7 +16444,7 @@
 		{
 			"modifier_shadow_word_debuff"
 			{
-				"OnIntervalThink"
+				"OnCreated"
 				{
 					"RunScript"
 					{
@@ -16401,10 +16454,7 @@
 				}
 				"ThinkInterval"	"%tick_interval"
 				"IsDebuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"-1"
-				}
+				"Properties"	{}
 				"IsHidden"	"0"
 				"EffectName"	"particles/units/heroes/hero_warlock/warlock_shadow_word_debuff.vpcf"
 				"EffectAttachType"	"follow_origin"
@@ -16416,8 +16466,8 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"11.0"
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"11"
 			}
 			"02"
 			{
@@ -16548,15 +16598,10 @@
 			}
 			"02"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"slow_rate"	"7 14 21 28"
-			}
-			"03"
-			{
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"6"
 			}
-			"04"
+			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"max_slow"	"-84"
@@ -16577,7 +16622,6 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"	"2"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		// Time
@@ -16620,7 +16664,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"3"
+				"duration"	"2"
 			}
 			"02"
 			{
@@ -16630,7 +16674,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"1000 2000 3000 4000 5000"
+				"damage"	"800 1600 2400 3200 4000"
 			}
 		}
 		// Stats
@@ -16707,7 +16751,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"critical"	"1000 2000 3000 4000 5000"
+				"critical"	"250 300 350 400 800"
 			}
 			"02"
 			{
@@ -16881,7 +16925,7 @@
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"14.0"
+		"AbilityCooldown"	"14"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"25"
@@ -16983,7 +17027,7 @@
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"13.0"
+		"AbilityCooldown"	"6"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"140"
@@ -17232,7 +17276,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"	"1"
 		"AbilityCastPoint"	"0.5"
@@ -17626,7 +17670,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"totem_damage_percentage"	"2000 3000 4000 5000 6000"
+				"totem_damage_percentage"	"1000 2000 3000 4000 5000"
 			}
 			"02"
 			{
@@ -17912,6 +17956,14 @@
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Duration"	"%stun_duration"
+				"OnDestroy"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_shadow_strike_debuff"
+					}
+				}
 			}
 			"modifier_shadow_strike_debuff"
 			{
@@ -17921,6 +17973,7 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-1000"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1000"
 				}
+				"IsDebuff"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -17945,6 +17998,13 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"6"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_phantom_lancer/phantom_lancer_doppleganger_illlmove.vpcf"
+			"particle"	"particles/econ/items/naga/naga_ti8_immortal_tail/naga_ti8_immortal_riptide.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		}
 		"Modifiers"
 		{
 			"modifier_doppleganger"
@@ -17958,6 +18018,21 @@
 						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_33.lua"
 						"Function"	"OnCreated"
 					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_NagaSiren.MirrorImage"
+					}
+				}
+			}
+			"modifier_doppleganger_buff"
+			{
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SOFT_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -17966,7 +18041,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"cooldown"	"4.0 3.5 3.0 2.5 2.0"
+				"cooldown"	"5.0 4.5 4.0 3.5 3.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20000 40000 60000 80000 100000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_radius"	"400"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"illusion_radius"	"900"
 			}
 		}
 	}
@@ -17978,7 +18068,11 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		}
 		"Modifiers"
 		{
 			"modifier_sea_erode"
@@ -17988,15 +18082,13 @@
 				{
 					"RunScript"
 					{
-						"Target"
-						{
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Center"	"CASTER"
-							"Radius"	"%radius"
-						}
-						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
-						"Function"	"KvDamage"
+						"ScriptFile"	"scripts/vscripts/ability_unit/wave/wave_33.lua"
+						"Function"	"SeaErode"
+					}
+					"FireSound"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"Hero_NagaSiren.Riptide.Cast"
 					}
 				}
 			}

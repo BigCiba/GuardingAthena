@@ -77,26 +77,22 @@
                         <DOTAHeroMovie id="npc_dota_hero_windrunner" class="HeroCard" heroname="npc_dota_hero_windrunner"/>
                         <DOTAHeroMovie id="npc_dota_hero_phantom_assassin" class="HeroCard" heroname="npc_dota_hero_phantom_assassin"/>
                         <DOTAHeroMovie id="npc_dota_hero_rubick" class="HeroCard" heroname="npc_dota_hero_rubick"/>
+                        <DOTAHeroMovie id="npc_dota_hero_juggernaut" class="HeroCard" heroname="npc_dota_hero_juggernaut"/>
                     </Panel>
                     <Panel class="HeroListRow">
                     <!--英雄头像列表-->
                         <!--蓝色文字面板类，用来显示文字：选择英雄-->
-                        <DOTAHeroMovie id="npc_dota_hero_juggernaut" class="HeroCard" heroname="npc_dota_hero_juggernaut"/>
                         <DOTAHeroMovie id="npc_dota_hero_antimage" class="HeroCard" heroname="npc_dota_hero_antimage"/>
                         <DOTAHeroMovie id="npc_dota_hero_lina" class="HeroCard" heroname="npc_dota_hero_lina"/>
                         <DOTAHeroMovie id="npc_dota_hero_legion_commander" class="HeroCard" heroname="npc_dota_hero_legion_commander"/>
-                    </Panel>
-                    <Panel class="HeroListRow">
-                    <!--英雄头像列表-->
-                        <!--蓝色文字面板类，用来显示文字：选择英雄-->
                         <DOTAHeroMovie id="npc_dota_hero_ember_spirit" class="HeroCard" heroname="npc_dota_hero_ember_spirit"/>
                         <DOTAHeroMovie id="npc_dota_hero_crystal_maiden" class="HeroCard" heroname="npc_dota_hero_crystal_maiden"/>
-                        <DOTAHeroMovie id="npc_dota_hero_nevermore" class="HeroCard" heroname="npc_dota_hero_nevermore"/>
-                        <DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin"/>
                     </Panel>
                     <Panel class="HeroListRow">
                     <!--英雄头像列表-->
                         <!--蓝色文字面板类，用来显示文字：选择英雄-->
+                        <DOTAHeroMovie id="npc_dota_hero_nevermore" class="HeroCard" heroname="npc_dota_hero_nevermore"/>
+                        <DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin"/>
                         <DOTAHeroMovie id="npc_dota_hero_monkey_king" class="HeroCard" heroname="npc_dota_hero_monkey_king"/>
                         <DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre"/>
                     </Panel>

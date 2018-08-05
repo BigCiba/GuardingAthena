@@ -145,7 +145,7 @@ function CourierTeleport( keys )
     local target = caster.currentHero
     local caster_location = caster:GetAbsOrigin()
     local point = keys.target_points[1]
-    SetUnitPosition(target, point)
+    Teleport(target, point)
     local p1 = CreateParticle( "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_recall_poof.vpcf", PATTACH_ABSORIGIN_FOLLOW, target )
 end
 function CourierSuicide( keys )
@@ -377,37 +377,45 @@ function StopSound( keys )
 
     StopSoundEvent(sound, target)
 end
-function invoker_chaos_meteor_datadriven_on_spell(keys)
-    local caster_point = keys.caster:GetAbsOrigin()
-    local target_point = keys.target:GetAbsOrigin()
+function invoker_chaos_meteor_datadriven_on_spell(t)
+    local caster = t.caster
+    local ability = t.ability
+    local damage = ability:GetSpecialValueFor("damage")
+    local caster_point = caster:GetAbsOrigin()
+    local target_point = t.target:GetAbsOrigin()
     
     local caster_point_temp = Vector(caster_point.x, caster_point.y, 0)
     local target_point_temp = Vector(target_point.x, target_point.y, 0)
     
     local point_difference_normalized = (target_point_temp - caster_point_temp):Normalized()
-    local velocity_per_second = point_difference_normalized * keys.TravelSpeed
-    keys.caster:EmitSound("Hero_Invoker.ChaosMeteor.Loop")         
+    local velocity_per_second = point_difference_normalized * t.TravelSpeed
+    caster:EmitSound("Hero_Invoker.ChaosMeteor.Loop")         
     --Create a particle effect consisting of the meteor falling from the sky and landing at the target point.
-    local meteor_fly_original_point = (target_point - (velocity_per_second * keys.LandTime)) + Vector (0, 0, 1000)  --Start the meteor in the air in a place where it'll be moving the same speed when flying and when rolling.
-    local chaos_meteor_fly_particle_effect = CreateParticle("particles/units/heroes/hero_invoker/invoker_chaos_meteor_fly.vpcf", PATTACH_ABSORIGIN, keys.caster)
+    local meteor_fly_original_point = (target_point - (velocity_per_second * t.LandTime)) + Vector (0, 0, 1000)  --Start the meteor in the air in a place where it'll be moving the same speed when flying and when rolling.
+    local chaos_meteor_fly_particle_effect = CreateParticle("particles/units/heroes/hero_invoker/invoker_chaos_meteor_fly.vpcf", PATTACH_ABSORIGIN, caster)
     ParticleManager:SetParticleControl(chaos_meteor_fly_particle_effect, 0, meteor_fly_original_point)
     ParticleManager:SetParticleControl(chaos_meteor_fly_particle_effect, 1, target_point)
     ParticleManager:SetParticleControl(chaos_meteor_fly_particle_effect, 2, Vector(1.3, 0, 0))
     Timers:CreateTimer(1.3,function ()
-        local chaoland = CreateParticle("particles/units/heroes/hero_warlock/warlock_rain_of_chaos_start.vpcf", PATTACH_ABSORIGIN, keys.caster)
+        local chaoland = CreateParticle("particles/units/heroes/hero_warlock/warlock_rain_of_chaos_start.vpcf", PATTACH_ABSORIGIN, caster)
         ParticleManager:SetParticleControl(chaoland, 0, target_point)
         ParticleManager:SetParticleControl(chaoland, 1, target_point)
         ParticleManager:SetParticleControl(chaoland, 2, target_point)
-        keys.caster:EmitSound("Hero_Warlock.RainOfChaos_buildup")
-        keys.caster:StopSound("Hero_Invoker.ChaosMeteor.Loop")
+        caster:EmitSound("Hero_Warlock.RainOfChaos_buildup")
+        caster:StopSound("Hero_Invoker.ChaosMeteor.Loop")
     end)
     Timers:CreateTimer(1.5,function ()
-        local chaoland_1 = CreateParticle("particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf", PATTACH_ABSORIGIN, keys.caster)
+        local chaoland_1 = CreateParticle("particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf", PATTACH_ABSORIGIN, caster)
         ParticleManager:SetParticleControl(chaoland_1, 0, target_point)
         ParticleManager:SetParticleControl(chaoland_1, 1, target_point)
         ParticleManager:SetParticleControl(chaoland_1, 2, target_point)
         ParticleManager:SetParticleControl(chaoland_1, 5, target_point)
-        keys.caster:EmitSound("Hero_Warlock.RainOfChaos")
+        caster:EmitSound("Hero_Warlock.RainOfChaos")
+        local unitGroup = GetUnitsInRadius(caster,ability,target_point,600)
+        CauseDamage(caster,unitGroup,damage,DAMAGE_TYPE_MAGICAL,ability)
+        for k,v in pairs(unitGroup) do
+            ability:ApplyDataDrivenModifier(caster, v, "modifier_boss_chaos_fall_debuff", {duration = 1})
+        end
     end)
 end
 function HitBack( keys )

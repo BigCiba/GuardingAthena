@@ -1,0 +1,64 @@
+"itembuilds"
+{
+        "author"                "Valve"
+        "hero"                "npc_dota_hero_spectre"
+        "Title"                "Recommended items for Spectre"
+        
+        "Items"
+        {                
+                "#DOTA_Item_Build_Starting_Items" //出门装备
+                {
+                        "item"                "item_salve1"
+                        "item"                "item_clarity1"
+                        "item"                "item_jian_1"
+                        "item"                "item_gong_1"
+                        "item"                "item_fazhang_1"
+                        "item"                "item_jia_1"
+                        "item"                "item_xie_1"
+                        "item"                "item_shipin_1"
+                        "item"                "item_shipin_2"
+                        "item"                "item_shipin_3"
+                        "item"                "item_shipin_4"
+                        "item"                "item_shipin_5"
+                }
+                
+                "#DOTA_Item_Build_Early_Game" //前期装备
+                {        
+
+                        "item"                "item_jian_5"
+                        "item"                "item_gong_5"
+                        "item"                "item_fazhang_5"
+                        "item"                "item_jia_5"
+                        "item"                "item_xie_5"
+                        "item"                "item_ring_3_6"
+                        "item"                "item_shipin_6"
+                        "item"                "item_shipin_7"
+                        "item"                "item_chui_1"
+                        "item"                "item_shu_1"
+                        "item"                "item_dun_1"
+                        "item"                "item_fu_1"
+                        "item"                "item_ring_secret"
+
+                }
+                
+                "#DOTA_Item_Build_Core_Items" //核心装备
+                {
+
+                        "item"                "item_jian_9"
+                        "item"                "item_gong_9"
+                        "item"                "item_fazhang_9"
+                        "item"                "item_chui_5"
+                        "item"                "item_shu_5"
+                        "item"                "item_dun_5"
+                        "item"                "item_fu_5"
+                        "item"                "item_refresher1"
+                        "item"                "item_npc_dota_hero_spectre"
+                        "item"                "item_ring_world"
+                        "item"                "battlefury_ring"
+                }
+                
+                "#DOTA_Item_Build_Luxury" //可选装备
+                {
+                }
+        }
+}

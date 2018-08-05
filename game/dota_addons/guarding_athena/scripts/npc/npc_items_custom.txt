@@ -9544,7 +9544,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"%cleave_percent"
+						"CleavePercent"	"700"
 						"CleaveRadius"	"680"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -11217,6 +11217,11 @@
 			"modifier_item_shu_buff"
 			{
 				"TextureName"	"item_shu_5"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+				}
+				"States"	{}
 			}
 		}
 		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -12515,7 +12520,7 @@
 		"ItemResult"	"item_ring_world_broken"
 		"ItemRequirements"
 		{
-			"01"	"item_ring_broken;item_shipin_6;item_zhangu;item_core_original"
+			"01"	"item_ring_broken;item_core_original"
 		}
 	}
 
@@ -12537,7 +12542,7 @@
 		"ItemResult"	"item_ring_world"
 		"ItemRequirements"
 		{
-			"01"	"item_ring_secret;item_shipin_6;item_zhangu;item_core_original"
+			"01"	"item_ring_secret;item_core_original"
 		}
 	}
 
@@ -12887,29 +12892,6 @@
 		}
 	}
 
-	"item_recipe_npc_dota_hero_windrunner1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1044"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_windrunner1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_windrunner;item_original_agi_15"
-		}
-	}
-
 	"item_npc_dota_hero_phantom_assassin"
 	{
 		// General
@@ -13026,29 +13008,6 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_all_stats"	"400"
 			}
-		}
-	}
-
-	"item_recipe_npc_dota_hero_phantom_assassin1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1047"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_phantom_assassin1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_phantom_assassin;item_original_agi_15"
 		}
 	}
 
@@ -13182,52 +13141,6 @@
 			}
 		}
 		"AbilityDuration"	"10.0"
-	}
-
-	"item_recipe_npc_dota_hero_omniknight1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1050"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_omniknight1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_omniknight;item_original_str_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_monkey_king1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1657"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_monkey_king1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_monkey_king;item_original_agi_15"
-		}
 	}
 
 	"item_recipe_npc_dota_hero_spectre1"
@@ -13952,29 +13865,6 @@
 		}
 	}
 
-	"item_recipe_npc_dota_hero_rubick1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1110"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_rubick1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_rubick;item_original_int_15"
-		}
-	}
-
 	"item_npc_dota_hero_juggernaut1"
 	{
 		// General
@@ -14176,30 +14066,6 @@
 				"critical_chance"	"10"
 			}
 		}
-	}
-
-	"item_recipe_npc_dota_hero_juggernaut1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1129"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_juggernaut1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_juggernaut;item_original_agi_15"
-		}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	}
 
 	"item_npc_dota_hero_juggernaut"
@@ -15186,167 +15052,6 @@
 				"var_type"	"FIELD_INTEGER"
 				"refresh"	"15"
 			}
-		}
-	}
-
-	"item_recipe_npc_dota_hero_antimage1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1132"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_antimage1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_antimage;item_original_agi_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_nevermore1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1679"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_nevermore1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_nevermore;item_original_str_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_lina1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1685"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_lina1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_lina;item_original_int_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_legion_commander1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1689"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_legion_commander1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_legion_commander;item_original_str_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_ember_spirit1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1692"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_ember_spirit1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_ember_spirit;item_original_agi_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_templar_assassin1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1697"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_templar_assassin1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_templar_assassin;item_original_agi_15"
-		}
-	}
-
-	"item_recipe_npc_dota_hero_crystal_maiden1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1708"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_crystal_maiden1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_crystal_maiden;item_original_int_15"
 		}
 	}
 
@@ -22006,6 +21711,16 @@
 				"var_type"	"FIELD_INTEGER"
 				"shield"	"30"
 			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_bonus"	"20000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor"	"400"
+			}
 		}
 	}
 
@@ -22051,6 +21766,7 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%attribute"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%attribute"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%health_bonus"
 				}
 				"OnCreated"
 				{
@@ -22160,6 +21876,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"damage_reduce"	"25"
 			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_bonus"	"60000"
+			}
 		}
 	}
 
@@ -22209,6 +21930,7 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%attribute"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%attribute"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%attribute"
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana_bonus"
 				}
 				"OnCreated"
 				{
@@ -22273,6 +21995,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"trigger_percent"	"10"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana_bonus"	"60000"
 			}
 		}
 	}
@@ -22363,7 +22090,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack_increase"	"20"
+				"attack_increase"	"44"
 			}
 			"07"
 			{

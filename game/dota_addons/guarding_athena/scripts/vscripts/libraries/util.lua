@@ -44,6 +44,7 @@
 	SetRegionLimit(caster,regionEntity)
 	SetBaseResistance(caster,resistance,duration)
 	string.split
+	Teleport(caster,position)
 ]]
 function CastAbility( ... )
 	local caster,orderType,ability,target,position = ...
@@ -617,7 +618,7 @@ function SetUnitPosition( ... )
 	if setPos then
 		caster:SetAbsOrigin(position)
 	else
-		FindClearSpaceForUnit(caster, position, true)
+		FindClearSpaceForUnit(caster, position, false)
 	end
 end
 -- 设置单位百分比伤害输出
@@ -936,4 +937,25 @@ function DeepCopy( obj )
         return setmetatable(NewTable, getmetatable(obj))--赋值元表  
     end  
     return Func(obj) --若表中有表，则把内嵌的表也复制了  
-end  
+end 
+-- 传送专用
+function Teleport( ... )
+	local caster,position = ...
+	if position.z<-1000 then
+		position.z = 0
+	end
+	if caster.limitRegion then
+		local limitRegion = caster.limitRegion
+		if position.x > limitRegion.right then
+			position.x = limitRegion.right
+		elseif position.x < limitRegion.left then
+			position.x = limitRegion.left
+		end
+		if position.y > limitRegion.Top then
+			position.y = limitRegion.Top
+		elseif position.y < limitRegion.bottom then
+			position.y = limitRegion.bottom
+		end
+	end
+	FindClearSpaceForUnit(caster, position, true)
+end

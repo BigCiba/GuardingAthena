@@ -52,7 +52,7 @@
                         "item"                "item_dun_5"
                         "item"                "item_fu_5"
                         "item"                "item_refresher1"
-                        "item"                "item_npc_dota_hero_legion_commander1"
+                        "item"                "item_npc_dota_hero_legion_commander"
                         "item"                "item_ring_world"
                         "item"                "battlefury_ring"
                 }

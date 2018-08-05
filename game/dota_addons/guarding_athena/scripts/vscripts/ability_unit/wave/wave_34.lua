@@ -82,18 +82,27 @@ function QueenSplit( t )
             if ability.illusion_1:IsAlive() then
                 ability.illusion_1:AddNoDraw()
                 ability.illusion_1:ForceKill(false)
-                Heal(caster,caster:GetMaxHealth() * 0.5,false)
-                caster:GetAbilityByIndex(4):SetActivated(true)
-                SetUnitDamagePercent(caster,10)
+                if caster:IsNull() == false then
+                    if caster:IsAlive() then
+                        Heal(caster,caster:GetMaxHealth() * 0.5,false)
+                        caster:GetAbilityByIndex(4):SetActivated(true)
+                        SetUnitDamagePercent(caster,10)
+                    end
+                end
             end
         end
         if ability.illusion_2:IsNull() == false then
             if ability.illusion_2:IsAlive() then
                 ability.illusion_2:AddNoDraw()
                 ability.illusion_2:ForceKill(false)
-                Heal(caster,caster:GetMaxHealth() * 0.5,false)
-                caster:GetAbilityByIndex(5):SetActivated(true)
-                SetUnitDamagePercent(caster,10)
+                if caster:IsNull() == false then
+                    if caster:IsAlive() then
+                        Heal(caster,caster:GetMaxHealth() * 0.5,false)
+                        caster:GetAbilityByIndex(5):SetActivated(true)
+                        SetUnitDamagePercent(caster,10)
+                    end
+                end
+                
             end
         end
     end)

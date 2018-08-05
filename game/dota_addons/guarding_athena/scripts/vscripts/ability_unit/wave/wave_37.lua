@@ -25,7 +25,7 @@ end
 function RoshanShock( t )
     local caster = t.caster
     local target = t.target
-    target:MoveToPosition(target:GetAbsOrigin() + Vector(RandomInt(-900, 900),RandomInt(-900, 900),0))
+    target:MoveToPosition(target:GetAbsOrigin() + Vector(RandomInt(-500, 500),RandomInt(-500, 500),0))
 end
 function RoshanSlamAI( t )
     local caster = t.caster

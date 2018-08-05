@@ -681,7 +681,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		--HeroState:SendFinallyData()
 		--CustomUI:DynamicHud_Create(-1,"HeroSelectionBackground","file://{resources}/layout/custom_game/pick_hero.xml",nil)
 		self.testmode = true
-		CustomUI:DynamicHud_Create(playerid,"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)
+		--CustomUI:DynamicHud_Create(playerid,"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)
 	end
 	--取消测试
 	if text == "untest" then

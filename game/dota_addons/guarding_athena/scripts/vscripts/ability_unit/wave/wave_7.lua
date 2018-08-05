@@ -44,8 +44,16 @@ function OnShadowWord( t )
     local ability = t.ability
     local regen = math.floor(target:GetHealthRegen())
     local damage = ability:GetSpecialValueFor("damage") + regen
+    local duration = ability:GetSpecialValueFor("duration")
     local damageType = ability:GetAbilityDamageType()
-    CauseDamage(caster,target,damage,damageType,ability)
+    local runTime = 0
+    Timers:CreateTimer(function ()
+        if runTime < duration then
+            CauseDamage(caster,target,damage,damageType,ability)
+            runTime = runTime + 1
+            return 1
+        end
+    end)
 end
 function OnUpheaval( t )
     local caster = t.caster
