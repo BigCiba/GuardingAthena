@@ -17,6 +17,7 @@ function OnSpellStart( t )
         if caster:HasModifier("modifier_shield_block_buff") then
             CauseDamage(caster,attacker,damage,DAMAGE_TYPE_MAGICAL,ability)
             ability:ApplyDataDrivenModifier(caster, attacker, "modifier_shield_block_debuff", nil)
+            ability:ApplyDataDrivenModifier(caster, caster, "modifier_shield_block_attackspeed", nil)
             return 0
         end
         return damage

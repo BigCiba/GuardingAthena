@@ -21545,7 +21545,7 @@
 	"item_aura_1"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1644"
 		"ItemCost"	"4"
@@ -21565,7 +21565,7 @@
 	"item_aura_2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1646"
 		"ItemCost"	"16"
@@ -21575,7 +21575,7 @@
 	"item_aura_3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1650"
 		"ItemCost"	"16"
@@ -21585,7 +21585,7 @@
 	"item_aura_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1651"
 		"ItemCost"	"16"
@@ -21595,7 +21595,7 @@
 	"item_aura_5"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1652"
 		"ItemCost"	"16"
@@ -21605,7 +21605,7 @@
 	"item_aura_6"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1653"
 		"ItemCost"	"16"
@@ -21615,7 +21615,7 @@
 	"item_aura_0"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_present"
+		"AbilityTextureName"	"item_exclusive"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1645"
 		"ItemCost"	"0"
