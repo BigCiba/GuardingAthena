@@ -504,7 +504,7 @@ function AngryWater( keys )
             ParticleManager:SetParticleControl(particle, 0, randomPoint)
             local targets = FindUnitsInRadius(teamNumber, randomPoint, caster, radius, targetTeam, targetType, targetFlag, 0, false)
             for i,v in ipairs(targets) do
-                CauseDamage(caster, v, 1000, DAMAGE_TYPE_MAGICAL)
+                CauseDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL)
                 ability:ApplyDataDrivenModifier(caster, v , "modifier_angry_water_debuff", nil)
             end
         end)

@@ -18,7 +18,9 @@ function AthenaHeal( t )
         Timers:CreateTimer(function()
             if time < duration then
                 for k,v in pairs(unitGroup) do
-                    Heal(v,hp,mp,false)
+                    if not v:IsNull() then
+                        Heal(v,hp,mp,false)
+                    end
                 end
                 time = time + 1
                 return 1

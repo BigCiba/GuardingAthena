@@ -31,6 +31,33 @@ function OnTakeDamage( t )
         SetUnitIncomingDamageReduce(caster, damageReduce, 10)
     end 
 end
+function OnBossTakeDamage( t )
+    local caster = t.caster
+    local damage = t.DamageTaken
+    SetUnitIncomingDamageReduce(caster,0)
+    SetUnitDamagePercent(caster,0)
+    local reduce = caster.percent_reduce_damage
+    local increace = caster.percent_bonus_damage
+    if reduce > 50 then
+        reduce = 50
+    end
+    -- 计算减少后的伤害
+    damage = damage * (1 - (reduce * 0.01))
+    -- 最大伤害不超过生命值
+    if damage > caster:GetMaxHealth() then
+        damage = caster:GetMaxHealth()
+    end
+    -- 伤害所占百分比
+    local percent = damage / caster:GetMaxHealth() * 100
+    local damageReduce = percent
+    -- 最大减伤不超过80%
+    if reduce + damageReduce > 50 then
+        damageReduce = 50 - reduce
+    end
+    if percent > 0 then
+        SetUnitIncomingDamageReduce(caster, damageReduce, 10)
+    end 
+end
 function OnCreated( t )
     local unit = t.caster
     unit:SetModelScale(unit:GetModelScale() + 0.5)

@@ -18,8 +18,10 @@ function OnProjectileHit( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
+    local damage = ability:GetSpecialValueFor("damage")
     local healAmount = ability:GetSpecialValueFor("regen") * caster:GetMaxHealth() * 0.01
     Heal(caster,healAmount,0,true)
+    CauseDamage(caster,target,damage,DAMAGE_TYPE_MAGICAL,ability)
 end
 function OnIntervalThink( t )
     local caster = t.caster

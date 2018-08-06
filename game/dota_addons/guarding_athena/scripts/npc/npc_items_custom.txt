@@ -13143,29 +13143,6 @@
 		"AbilityDuration"	"10.0"
 	}
 
-	"item_recipe_npc_dota_hero_spectre1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1727"
-		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
-		"ItemPurchasable"	"0"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_npc_dota_hero_spectre1"
-		"ItemRequirements"
-		{
-			"01"	"item_npc_dota_hero_spectre;item_original_str_15"
-		}
-	}
-
 	"item_blood_mask_broken"
 	{
 		"BaseClass"	"item_datadriven"
@@ -14467,7 +14444,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -22124,6 +22101,8 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"ID"	"1725"
+		"ItemPurchasable"	"0"
+		"ItemRequirements"	{}
 		"Modifiers"
 		{
 			"modifier_npc_dota_hero_spectre"

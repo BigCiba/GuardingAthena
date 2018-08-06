@@ -9,13 +9,16 @@ function CourageMoment( keys )
 	local cooldown = ability:GetSpecialValueFor("cooldown")
 	local chance = ability:GetSpecialValueFor("chance") + (100 - caster:GetHealthPercent()) * 0.4
 	if HasExclusive(caster,4) then
-		cooldown = 2
+		cooldown = cooldown * 0.5
 	end
 	local unitCount = #FindUnitsInRadius(teamNumber, caster_location, caster, 400, targetTeam, targetType, targetFlag, 0, false)
 	chance = chance + unitCount
 	if RollPercentage(chance) and ability:IsCooldownReady() then
 		if caster:HasModifier("modifier_queen_curse") then
 			cooldown = 0.5
+			if HasExclusive(caster,4) then
+				cooldown = cooldown * 0.5
+			end
 		end
 		ability:StartCooldown(cooldown)
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_courage_moment_buff",nil)

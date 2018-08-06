@@ -81,7 +81,9 @@ function GuardingAthena:OnEntityKilled( event )
 		end
 	end
 	if killedUnit.trial then
-		killerUnit:ForceKill(false)
+		killedUnit.trial:ForceKill(false)
+		ParticleManager:DestroyParticle(killedUnit.trial.trial_wall, false)
+		killedUnit.trial = nil
 	end
     if killedUnit and string.find(killedUnit:GetUnitName(), "guai") then
 		-- 排除复活单位与非测试单位
@@ -370,6 +372,9 @@ function GuardingAthena:OnPlayerPickHero(keys)
 				end
 				if player.ServerInfo.ta == "1" then
 					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_templar_assassin"} )
+				end
+				if player.ServerInfo.spe == "1" then
+					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_spectre"} )
 				end
 				if player.ServerInfo.gold == "1" then
 					player.gold_gift = true
