@@ -25,25 +25,30 @@ function Attributes:Init()
     self.DEFAULT_ATKSPD_PER_AGI = 1
     self.DEFAULT_MOVSPD_PER_AGI = 0.05
 
-    self.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR
+    --[[self.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR
     self.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT
     self.armor_adjustment = self.ARMOR_PER_AGI
     self.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT
-    self.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI
+    self.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI]]
 
     self.applier = CreateItem("item_stat_modifier", nil, nil)
 end
 
 function Attributes:CalculateAdjustment(hero)
     local attribute = hero:GetPrimaryAttribute()
+    hero.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR
+    hero.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT
+    hero.armor_adjustment = self.ARMOR_PER_AGI
+    hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT
+    hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI
     if attribute == DOTA_ATTRIBUTE_STRENGTH then
-        self.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR * 1.25
+        hero.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR * 1.25
     elseif attribute == DOTA_ATTRIBUTE_AGILITY then
-        self.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI * 1.25
-        self.armor_adjustment = self.ARMOR_PER_AGI * 1.25
+        hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI * 1.25
+        hero.armor_adjustment = self.ARMOR_PER_AGI * 1.25
     elseif attribute == DOTA_ATTRIBUTE_INTELLECT then
-        self.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT * 1.25
-        self.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT * 1.25
+        hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT * 1.25
+        hero.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT * 1.25
     end
 end
 
@@ -141,7 +146,7 @@ function Attributes:ModifyBonuses(hero)
                 self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_health_bonus", {})
             end
 
-            local health_stacks = math.abs(strength * self.hp_adjustment)
+            local health_stacks = math.abs(strength * hero.hp_adjustment)
             hero:SetModifierStackCount("modifier_health_bonus", self.applier, health_stacks)
 
         end
@@ -153,7 +158,7 @@ function Attributes:ModifyBonuses(hero)
             if not hero:HasModifier("modifier_movespeed_bonus_percentage") then
                 self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_movespeed_bonus_percentage", {})
             end
-            local movespeed_stacks = math.abs(self.movespd_adjustment * agility)
+            local movespeed_stacks = math.abs(hero.movespd_adjustment * agility)
             hero:SetModifierStackCount("modifier_movespeed_bonus_percentage", self.applier, movespeed_stacks)
         end
 
@@ -165,7 +170,7 @@ function Attributes:ModifyBonuses(hero)
                 Attributes.applier:ApplyDataDrivenModifier(hero, hero, "modifier_mana_bonus", {})
             end
 
-            local mana_stacks = math.abs(intellect * self.mana_adjustment)
+            local mana_stacks = math.abs(intellect * hero.mana_adjustment)
             hero:SetModifierStackCount("modifier_mana_bonus", self.applier, mana_stacks)
            --[[print("MANA STACKS A:")
             print(mana_stacks)
@@ -194,7 +199,7 @@ function Attributes:ModifyBonuses(hero)
                 self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_spell_damage_constant", {})
             end
 
-            local spellpower_stacks = intellect * self.spellpower_adjustment * 100
+            local spellpower_stacks = intellect * hero.spellpower_adjustment * 100
             hero:SetModifierStackCount("modifier_spell_damage_constant", self.applier, spellpower_stacks)
 
             

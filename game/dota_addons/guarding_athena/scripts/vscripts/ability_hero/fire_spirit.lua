@@ -111,7 +111,7 @@ function OnIntervalThink( t )
 		end
 	elseif abilityIndex == 4 then
 		local expend_health = caster:GetMaxHealth() * ability:GetSpecialValueFor("health_regen") * 0.1
-		local attack = math.floor(expend_health * ability:GetSpecialValueFor("attack") * 10)
+		local attack = math.floor(expend_health * ability:GetSpecialValueFor("attack"))
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_fire_spirit_4_buff",nil)
 		caster:SetModifierStackCount("modifier_fire_spirit_4_buff",caster,attack)
 		if caster:GetHealth() > expend_health * 10 then
@@ -286,7 +286,7 @@ function CastAbility1( t )
 	local ability = t.ability
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin()
-	local damage = 2 * caster:GetAgility() * ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("base_damage")
+	local damage = 2 * caster:GetAverageTrueAttackDamage(caster) * ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("base_damage")
 	local center = Vector((caster_location.x + target_location.x) * 0.5, (caster_location.y + target_location.y) * 0.5,caster_location.z)
 	local radius = 600
 	-- unit filter

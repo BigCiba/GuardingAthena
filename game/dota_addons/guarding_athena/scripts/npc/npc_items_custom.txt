@@ -12798,6 +12798,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"property"	"15"
 			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"10"
+			}
 		}
 	}
 
@@ -12846,7 +12851,7 @@
 		"ID"	"1043"
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"Modifiers"
@@ -12974,7 +12979,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
 		"ItemAliases"	"skull basher"
@@ -13096,7 +13101,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
 		"ItemRequirements"	{}
@@ -13750,7 +13755,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
 		"ItemAliases"	"skull basher"
@@ -13854,7 +13859,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -13968,7 +13973,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14255,7 +14260,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14348,7 +14353,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14576,7 +14581,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14672,7 +14677,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14752,7 +14757,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14832,7 +14837,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14912,7 +14917,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
-		"ItemPurchasable"	"1"
+		"ItemPurchasable"	"0"
 		"ItemShopTags"	"magic_resist"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -15091,6 +15096,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"2.5"
 			}
 		}
 	}

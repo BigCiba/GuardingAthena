@@ -5,9 +5,9 @@ function OnCreated( t )
     local cd = ability:GetSpecialValueFor("cooldown")
     AddDamageFilterVictim(caster,"doppleganger",function (damage,attacker)
         if ability:IsCooldownReady() then
+            ability:StartCooldown(cd)
             damage = 0
             OnDoppleganger(caster,ability)
-            ability:StartCooldown(cd)
         end
         return damage
     end)
@@ -18,7 +18,7 @@ function OnDoppleganger( caster,ability )
     local damageType = ability:GetAbilityDamageType()
     local radius = ability:GetSpecialValueFor("damage_radius")
     local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
-    CauseDamage(caster,unitGroup,damage,damageType,ability)
+    --CauseDamage(caster,unitGroup,damage,damageType,ability)
     CreateSound("Hero_NagaSiren.MirrorImage",caster)
     local illusionRadius = ability:GetSpecialValueFor("illusion_radius")
     unitGroup = GetUnitsInRadius(caster,ability,casterLoc,illusionRadius)

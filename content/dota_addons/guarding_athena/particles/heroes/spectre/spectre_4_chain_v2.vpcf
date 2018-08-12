@@ -4,7 +4,7 @@
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 21
 	m_flConstantRadius = 8.0
-	m_flConstantLifespan = 0.0
+	m_flConstantLifespan = 2.5
 	m_Renderers = 
 	[
 		{
@@ -96,7 +96,7 @@
 		},
 		{
 			_class = "C_INIT_RemapParticleCountToScalar"
-			m_nFieldOutput = 7
+			m_nFieldOutput = "7"
 			m_nInputMax = 1
 			m_flOutputMin = 0.5
 			m_flOutputMax = 0.0
@@ -121,6 +121,7 @@
 			_class = "C_INIT_RandomLifeTime"
 			m_fLifetimeMin = 2.0
 			m_fLifetimeMax = 2.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_CreateSequentialPath"

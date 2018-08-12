@@ -359,13 +359,19 @@ function SoulRequiemDamage( keys )
 end
 function OnExclusiveCreated( t )
 	local caster = t.caster
-    local ability = caster:FindAbilityByName("destory_hit")
-    if ability then
-        new_ability = caster:AddAbility("destory_hit_up")
-        new_ability:SetLevel(ability:GetLevel())
-        caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
-        caster:RemoveAbility("destory_hit")
-    end
+	caster.destory_hit_up_timer = Timers:CreateTimer(function ()
+		if HasExclusive(caster,3) then
+			local ability = caster:FindAbilityByName("destory_hit")
+			if ability then
+				new_ability = caster:AddAbility("destory_hit_up")
+				new_ability:SetLevel(ability:GetLevel())
+				caster:SwapAbilities(ability:GetAbilityName(), new_ability:GetAbilityName(), false, true)
+				caster:RemoveAbility("destory_hit")
+			end
+		else
+			return 1
+		end
+	end)
 end
 function OnExclusiveDestory( t )
 	local caster = t.caster
@@ -375,5 +381,6 @@ function OnExclusiveDestory( t )
         new_ability:SetLevel(ability:GetLevel())
         caster:SwapAbilities(new_ability:GetAbilityName(), ability:GetAbilityName(), true, false)
         caster:RemoveAbility("destory_hit_up")
-    end
+	end
+	Timers:RemoveTimer(caster.destory_hit_up_timer)
 end

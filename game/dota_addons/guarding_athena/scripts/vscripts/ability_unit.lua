@@ -330,10 +330,12 @@ function SoulHurt( keys )
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin() 
     local distance = (caster_location - target_location):Length2D()
-    if ability:IsCooldownReady() then
-        if distance <= 400 then
-            CauseDamage(caster,target,damage,damageType)
-            ability:StartCooldown(0.2)
+    if not caster.bounceTag then
+        if ability:IsCooldownReady() then
+            if distance <= 400 then
+                ability:StartCooldown(0.2)
+                CauseDamage(caster,target,damage,damageType)
+            end
         end
     end
 end

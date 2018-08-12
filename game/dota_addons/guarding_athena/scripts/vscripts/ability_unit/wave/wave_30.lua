@@ -21,9 +21,9 @@ function LifeSteal( t )
     local target = t.target
     local ability = t.ability
     local damage = ability:GetSpecialValueFor("percent") * target:GetMaxHealth() * 0.01
-    local heal = ability:GetSpecialValueFor("percent") * caster:GetMaxHealth() * 0.01
+    --local heal = ability:GetSpecialValueFor("percent") * caster:GetMaxHealth() * 0.01
     CauseDamage( caster, target, damage, DAMAGE_TYPE_MAGICAL )
-    Heal( caster, heal, 0, true )
+    Heal( caster, damage, 0, true )
 end
 function OnManaPurge( t )
     local caster = t.caster

@@ -1,5 +1,6 @@
 LinkLuaModifier("health_extra","modifiers/generic/health_extra.lua",LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("armor","modifiers/generic/armor.lua",LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_spectre_health","modifiers/hero/modifier_spectre_health.lua",LUA_MODIFIER_MOTION_NONE)
 --LinkLuaModifier("resistance","modifiers/generic/resistance.lua",LUA_MODIFIER_MOTION_NONE)
 function OnCreated( t )
     local caster = t.caster
@@ -10,6 +11,14 @@ function OnCreated( t )
         ability.canTrigger = true
         ability.damageRecorder = 0
         ability.stackLevel = 0
+        ability.health = 0
+        caster.bounceTag = false
+        AddDamageFilterVictim(caster,"spectre_3",function (damage,attacker)
+            local lossHealthPercent = 100 - caster:GetHealthPercent()
+            local reduce = (ability:GetSpecialValueFor("max_reduce") / 100) * lossHealthPercent * 0.01
+            damage = damage * (1 - reduce)
+            return damage
+        end)
     end
 end
 function OnDeath( t )
@@ -179,15 +188,19 @@ function OnTakeDamage( t )
         local regen = ability:GetSpecialValueFor("regen")
         local str = ability:GetSpecialValueFor("str")
         local heal = ability:GetSpecialValueFor("healamount")
+        local health = math.ceil(caster:GetMaxHealth() * 0.01)
         local healAmount = caster:GetStrength() * 0.01 * heal * (100 - caster:GetHealthPercent())
         local percent = t.DamageTaken / caster:GetMaxHealth()
         if percent < damage_limit then percent = damage_limit end
-        Heal(caster,healAmount,0,false)
+        --Heal(caster,healAmount,0,false)
         ability.damageRecorder = ability.damageRecorder + t.DamageTaken
         if ability.damageRecorder > caster:GetMaxHealth() then
             ability.damageRecorder = ability.damageRecorder - caster:GetMaxHealth()
             ability.stackLevel = ability.stackLevel + 1
             PropertySystem(caster,0,str)
+            ability.health = ability.health + health
+            caster:RemoveModifierByName("modifier_spectre_health")
+            caster:AddNewModifier(caster, ability, "modifier_spectre_health", {health=ability.health})
             caster:SetBaseHealthRegen(caster:GetBaseHealthRegen() + regen)
         end
         local radius = ability:GetSpecialValueFor("radius")
@@ -197,7 +210,9 @@ function OnTakeDamage( t )
         local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
         if ability.canTrigger then
             ability.canTrigger = false
+            caster.bounceTag = true
             CauseDamage(caster,unitGroup,damage,damageType,ability)
+            caster.bounceTag = false
         end
         ability.canTrigger = true
         if ability.timer then
@@ -219,7 +234,14 @@ end
 function OnSpellStart( t )
     local caster = t.caster
     local ability = t.ability
-    if ability:GetAbilityIndex() == 1 then
+    if ability:GetAbilityIndex() == 0 then
+        local unitGroup = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 2000, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+        for k,v in pairs(unitGroup) do
+            if v:GetUnitName() == "spectre" then
+                v:ForceKill(false)
+            end
+        end
+    elseif ability:GetAbilityIndex() == 1 then
         local perDamage = ability:GetSpecialValueFor("per_damage") * caster:GetStrength()
         local damageType = ability:GetAbilityDamageType()
         local duration = ability:GetSpecialValueFor("duration")
@@ -291,6 +313,8 @@ function OnSpellStart( t )
         ability.no_damage_filter = true
         CauseDamage(caster,caster,healthCost,DAMAGE_TYPE_PURE,ability)
         ability.no_damage_filter = nil
+        -- damage max
+        ability.damageRecorder = ability.damageRecorder + ability:GetSpecialValueFor("damage_add") * 6
         CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,0.5)
         -- shock
         local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
@@ -317,11 +341,13 @@ function OnSpellStart( t )
         local damageCount = ability:GetSpecialValueFor("damage_count")
         local soulLoss = ability:GetSpecialValueFor("soul_loss")
         local maxDamageBonus = ability:GetSpecialValueFor("max_bonus_damage")
+        local damageDeepen = ability:GetSpecialValueFor("damage_deepen")
         local duration = ability:GetSpecialValueFor("duration")
         local stunDuration = ability:GetSpecialValueFor("stun_duration")
+        local damageTimePoint = ability:GetSpecialValueFor("damage_time_point")
         local armor = target:GetPhysicalArmorValue()
         local resistance = target:GetMagicalArmorValue() * 100
-        local targetHealthPercent = target:GetHealthPercent()
+        --local targetHealthPercent = target:GetHealthPercent()
         -- buff
         ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_4_stun", {duration=stunDuration})
         ability:ApplyDataDrivenModifier(caster, target, "modifier_spectre_4_debuff", {duration=duration})
@@ -335,11 +361,14 @@ function OnSpellStart( t )
         end
         --target:AddNewModifier(caster, ability, "resistance", {resistance=-resistance,duration=stunDuration})
         SetBaseResistance(target,0,stunDuration + 0.1)
-        SetUnitMagicDamagePercent(target,-soulLoss,duration)
+        SetUnitDamagePercent(target,-soulLoss,duration)
+        --SetUnitMagicDamagePercent(target,-soulLoss,duration)
         target:AddNewModifier(caster, ability, "health_extra", {health=-target:GetMaxHealth() * soulLoss * 0.01,duration=duration})
+        -- damage deepen
+        SetUnitIncomingDamageDeepen(target,damageDeepen,stunDuration)
         -- damage
-        Timers:CreateTimer(stunDuration,function ()
-            local loseHealthPercent = targetHealthPercent - target:GetHealthPercent()
+        Timers:CreateTimer(damageTimePoint,function ()
+            local loseHealthPercent = 100 - target:GetHealthPercent()
             unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),radius)
             local bonusDamage = 0
             if loseHealthPercent > 0 then
@@ -356,7 +385,7 @@ function OnSpellStart( t )
             ParticleManager:SetParticleControl(p, 1, target:GetAbsOrigin())
         end)
         -- particle
-        local pLock = CreateParticle("particles/heroes/spectre/spectre_4_lock.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,caster,4)
+        local pLock = CreateParticle("particles/heroes/spectre/spectre_4_lock.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,caster,stunDuration)
         ParticleManager:SetParticleControlEnt(pLock, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
         local pGound = CreateParticle("particles/heroes/spectre/spectre_4_somke.vpcf",PATTACH_ABSORIGIN,caster,4)
         ParticleManager:SetParticleControl(pGound, 0, target:GetAbsOrigin())
