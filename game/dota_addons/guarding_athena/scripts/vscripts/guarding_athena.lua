@@ -324,8 +324,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 			    GameRules:SetGoldPerTick(0)
 			    GameMode:SetFixedRespawnTime(25)
 			end
-			--初始化刷怪
-			Spawner:Init()
+			
 			updateScore(function ()
 			end)
 			
@@ -349,9 +348,6 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 		if self.testmode then
 			return
 		end
-		-- 开始刷怪
-		Spawner:AutoSpawn()
-		Spawner:NatureStart()
 		-- 定时清除地上物品
 		Timers:CreateTimer(function()
 			local items = Entities:FindAllByClassname("dota_item_drop") 

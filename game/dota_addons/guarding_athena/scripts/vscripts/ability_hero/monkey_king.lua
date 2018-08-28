@@ -26,8 +26,11 @@ end
 function OnExclusiveCreated( t )
     local caster = t.caster
     local ability = t.ability
+    local energy = ability:GetSpecialValueFor("energy")
+    local interval = ability:GetSpecialValueFor("interval")
+    ability.no_damage_filter = true
     local chance = ability:GetSpecialValueFor("chance")
-    local critical = ability:GetSpecialValueFor("critical")
+    local critical = ability:GetSpecialValueFor("critical") * 100
     AddDamageFilterAttacker(caster,"exclusive",function (damage,victim)
         if RollPercentage(chance) and HasExclusive(caster,3) then
             -- 无视护甲
@@ -35,17 +38,30 @@ function OnExclusiveCreated( t )
             local damagePure = damage
             if armor > 0 then
                 local reduce = (armor * 0.05)/(1 + armor * 0.05)
-                damagePure = damagePure / (1 - reduce) * critical
+                damagePure = damagePure / (1 - reduce)
             end
-            CauseDamage(caster,victim,damagePure,DAMAGE_TYPE_PURE,ability)
+            CauseDamage(caster,victim,damagePure,DAMAGE_TYPE_PURE,ability,100,critical)
             return 0
         end
         return damage
     end)
+    local ability_1 = caster:FindAbilityByName("stick_wind")
+    ability_1.exclusive_timer = Timers:CreateTimer(function ()
+		if HasExclusive(caster,1) then
+			if caster:GetModifierStackCount("modifier_stick_wind_buff", caster) < energy then
+				ability_1:ApplyDataDrivenModifier(caster, caster, "modifier_stick_wind_buff", nil)
+				AddModifierStackCount(caster,caster,ability_1,"modifier_stick_wind_buff",1)
+			end
+		end
+		return interval
+	end)
 end
 function OnExclusiveDestory( t )
     local caster = t.caster
     RemoveDamageFilterAttacker(caster,"exclusive")
+    local ability = caster:FindAbilityByName("stick_wind")
+	Timers:RemoveTimer(ability.exclusive_timer)
+	caster:RemoveModifierByName("modifier_stick_wind_buff")
 end
 function StickWind( t )
     local caster = t.caster
@@ -69,7 +85,7 @@ function StickWind( t )
     local damageAdd = distance/speed
     if HasExclusive(caster,2) then
         damageAdd = 1
-        damagePerTime = 1 / (distance / 40)
+        damagePerTime = damage / (distance / 40)
     end
     speed = speed / 30
     CreateParticle("particles/heroes/monkey_king/stick_wind.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,duration)
@@ -109,7 +125,17 @@ function StickWind( t )
                 Jump(v,target_location,150,150,false,nil)
             end
 		end
-	end)
+    end)
+    -- 刷新技能
+    if caster:HasModifier("modifier_stick_wind_buff") then
+        local stack = caster:GetModifierStackCount("modifier_stick_wind_buff", caster)
+        if stack > 1 then
+            caster:SetModifierStackCount("modifier_stick_wind_buff", caster, caster:GetModifierStackCount("modifier_stick_wind_buff", caster) - 1)
+        else
+            caster:RemoveModifierByName("modifier_stick_wind_buff")
+        end
+        ability:EndCooldown()
+    end
 end
 function Jingubang( t )
     local caster = t.caster
@@ -230,11 +256,11 @@ function IndestructibleRemove( t )
     local caster = t.caster
     local ability = t.ability
     caster.IndestructibleAbsorb = 0
-    if HasExclusive(caster,1) then
+    --if HasExclusive(caster,1) then
         local unitGroup = GetUnitsInRadius(caster,t.ability,caster:GetAbsOrigin(),600)
         CauseDamage(caster,unitGroup,caster.indestructible_armor,ability:GetAbilityDamageType(),ability)
         CreateParticle("particles/heroes/monkey_king/shield_broke.vpcf",PATTACH_ABSORIGIN,caster,2)
-    end
+    --end
     ParticleManager:DestroyParticle(ability.shield_particle, true)
 end
 function EndlessOffensive( t )
@@ -252,7 +278,8 @@ function EndlessOffensive( t )
                     unit:SetBaseStrength(caster:GetBaseStrength())
                     unit:SetBaseAgility(caster:GetBaseAgility())
                     unit:SetBaseIntellect(caster:GetBaseIntellect())
-                    for abilitySlot=0,15 do
+                    unit.reborn_time = GetRebornCount(caster)
+                    for abilitySlot=0,10 do
                         local illusionAbility = caster:GetAbilityByIndex(abilitySlot)
                         if illusionAbility ~= nil then 
                             local abilityLevel = illusionAbility:GetLevel()

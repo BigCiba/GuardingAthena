@@ -17,6 +17,8 @@ if Spawner == nil then
   	--print ( '[Spawner] creating Spawner' )
   	Spawner = {}
   	Spawner.__index = Spawner
+	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(Spawner, 'OnGameRulesStateChange'), self)
+	ListenToGameEvent('entity_killed', Dynamic_Wrap(Spawner, 'OnUnitKilled'), self)
 end
 -- 初始化
 function Spawner:Init()
@@ -25,7 +27,19 @@ function Spawner:Init()
 	self:Setting()
 	self:AttackOnTarget()
 	self:QuestCountDown()
-	ListenToGameEvent('entity_killed', Dynamic_Wrap(Spawner, 'OnUnitKilled'), self)
+end
+-- 开始刷怪
+function Spawner:OnGameRulesStateChange()
+	local gameState = GameRules:State_Get()
+	if gameState == DOTA_GAMERULES_STATE_PRE_GAME then
+		--初始化刷怪
+		Spawner:Init()
+	end
+	if gameState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		-- 开始刷怪
+		Spawner:AutoSpawn()
+		Spawner:NatureStart()
+	end
 end
 -- 读取kv数据
 function Spawner:ReadKeyValue()
@@ -217,19 +231,7 @@ function Spawner:UnitProperty( unit,factor )
 	--if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
 	if self.difficulty >= 3 and unit:GetUnitName() == "guai_"..self.gameRound then
 		if RollPercentage(self.difficulty * 2) then
-			--[[unit:SetModelScale(unit:GetModelScale() + 0.5)
-			unit:SetDeathXP(unit:GetDeathXP() * self.difficulty * factor.eliteFactor ^ self.gameRound)
-			unit:SetMinimumGoldBounty(unit:GetGoldBounty() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
-			unit:SetMaximumGoldBounty(unit:GetGoldBounty() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
-			unit:SetBaseDamageMin(unit:GetBaseDamageMin() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
-			unit:SetBaseDamageMax(unit:GetBaseDamageMax() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
-			unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * self.difficulty  * factor.eliteFactor ^ self.gameRound)
-			unit:SetMaxHealth(unit:GetBaseMaxHealth())
-			unit:SetHealth(unit:GetBaseMaxHealth())
-			unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * self.difficulty * eliteFactor ^ self.gameRound)]]
 			unit:AddAbility("elite")
-			--unit.percent_bonus_damage = unit.percent_bonus_damage + self.difficulty * 20
-			--unit.percent_reduce_damage = unit.percent_reduce_damage + self.difficulty * 10
 		end
 	end
 	for i=1,16 do
@@ -263,15 +265,13 @@ function Spawner:QuestCountDown()
 	Timers:CreateTimer(function()
 		CustomGameEventManager:Send_ServerToAllClients("time_remaining", {wave=self.gameRound+1})
 		if self.gameRound < self.maxWave then
-			if self.pauseQuestTime then
-				local duration = self.pauseQuestTime
-				self.pauseQuestTime = false
-				return self.spawnInterval + duration
-			else
-				return self.spawnInterval
-			end
+			return self.spawnInterval
 		end
 	end)
+end
+-- 直接进入下一波
+function Spawner:CallNextWave()
+	Timers:ResetDelayTime(self.spawnerTimer,0)
 end
 -- 怪物剩余
 function Spawner:QuestPanel(...)
@@ -404,6 +404,7 @@ function Spawner:OnUnitKilled( t )
 	for i, unit in pairs( self.unitRemaining ) do
 		if caster == unit then
 			local point = unit.wave
+			-- 守家积分
 			if self.spawnCount < 20 then point = 4 * point end
 			attacker.wave_def = attacker.wave_def + 1
 			attacker.def_point = attacker.def_point + point

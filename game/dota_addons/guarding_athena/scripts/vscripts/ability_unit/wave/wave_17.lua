@@ -48,7 +48,7 @@ function OnCreated( t )
                         local point = GetRandomPoint(closestUnit:GetAbsOrigin(), minDistance, maxDistance)
                         local distance_1 = (closestUnit:GetAbsOrigin() - point):Length2D()
                         local distance_2 = (casterLoc - point):Length2D()
-                        while distance_2 > distance_1 do
+                        while distance_2 > distance_1  do
                             point = GetRandomPoint(closestUnit:GetAbsOrigin(), minDistance, maxDistance)
                             distance_1 = (closestUnit:GetAbsOrigin() - point):Length2D()
                             distance_2 = (casterLoc - point):Length2D()

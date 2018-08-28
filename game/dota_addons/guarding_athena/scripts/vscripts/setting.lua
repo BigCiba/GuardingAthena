@@ -44,18 +44,22 @@ for i=1,100 do
 	XP_PER_LEVEL_TABLE[i] = exp 
 	exp = exp + 200 + i * 200
 end
+exp = exp + 1000000
 for i=101,200 do 
 	XP_PER_LEVEL_TABLE[i] = exp 
 	exp = exp + 200 + (i-100) * 300
 end
+exp = exp + 1000000
 for i=201,300 do 
 	XP_PER_LEVEL_TABLE[i] = exp 
 	exp = exp + 200 + (i-200) * 400
 end
+exp = exp + 1000000
 for i=301,400 do 
 	XP_PER_LEVEL_TABLE[i] = exp 
 	exp = exp + 200 + (i-300) * 500
 end
+exp = exp + 1000000
 for i=401,500 do 
 	XP_PER_LEVEL_TABLE[i] = exp 
 	exp = exp + 200 + (i-400) * 600

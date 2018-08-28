@@ -8427,18 +8427,22 @@
 					}
 				}
 			}
+			"modifier_fire_spirit_1_3"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"damage"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+				"base_damage"	"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
 			}
 		}
 	}
@@ -8732,7 +8736,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"attack"	"10 20 30 40 50 60 70 80"
+				"attack"	"5 10 15 20 25 30 35 40"
 			}
 			"03"
 			{
@@ -8891,9 +8895,7 @@
 		"MaxLevel"	"8"
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
-		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_6"
-		"AnimationPlaybackRate"	"1.4"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"100"
@@ -8903,7 +8905,7 @@
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"	"0"
-		"AbilityChannelTime"	"1.8"
+		"AbilityChannelTime"	"1.67"
 		"precache"
 		{
 			"particle"	"particles/skills/void_blink.vpcf"
@@ -9461,6 +9463,8 @@
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCooldown"	"60"
+		"AbilityManaCost"	"300"
+		"AbilityCastRange"	"1200"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
@@ -9577,6 +9581,7 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"10"
+		"AbilityManaCost"	"60"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_spectre/spectre_death.vpcf"
@@ -9729,6 +9734,7 @@
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
 			"particle"	"particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_overhead.vpcf"
 		}
 		"OnSpellStart"
@@ -9778,6 +9784,11 @@
 						"ScriptFile"	"scripts/vscripts/ability_hero/monkey_king.lua"
 						"Function"	"IndestructibleRemove"
 					}
+					"FireSound"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"Hero_Abaddon.AphoticShield.Destroy"
+					}
 				}
 			}
 			"modifier_indestructible_absorb"
@@ -9808,12 +9819,17 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
+				"bonus_armor"	"25 50 75 100 125 150 175 200 225 250 275 300 325 350 375 400 425 450 475 500"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
 			}
 		}
 	}
@@ -9967,6 +9983,10 @@
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
+			"modifier_stick_wind_buff"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			}
 		}
 		"AbilitySpecial"
@@ -10565,23 +10585,23 @@
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
-		"AbilityCastPoint"	"0.5"
+		"AbilityCastPoint"	"0.25"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-		"AnimationPlaybackRate"	"0.3"
+		"AnimationPlaybackRate"	"1.5"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"16"
+		"AbilityCooldown"	"12"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"	"2000"
-		"AbilityChannelTime"	"3"
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -10589,12 +10609,12 @@
 			{
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-				"Function"	"DarkFire"
+				"Function"	"OnSpellStart"
 			}
 			"FireSound"
 			{
 				"Target"	"CASTER"
-				"EffectName"	"Hero_Phoenix.SunRay.Cast"
+				"EffectName"	"Ability.LagunaBladeImpact"
 			}
 		}
 		"OnAbilityPhaseStart"
@@ -10602,7 +10622,7 @@
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-				"Function"	"DarkFireStart"
+				"Function"	"OnAbilityPhaseStart"
 			}
 			"FireSound"
 			{
@@ -10616,10 +10636,31 @@
 			{
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss"
 				}
 				"IsDebuff"	"1"
-				"Duration"	"1"
+				"Duration"	"%miss_duration"
+				"States"	{}
+			}
+			"modifier_dark_fire_stun"
+			{
+				"Duration"	"%stun_duration"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"OnDestroy"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_dark_fire_debuff"
+					}
+				}
+				"IsDebuff"	"1"
 			}
 		}
 		// Special
@@ -10629,7 +10670,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+				"damage"	"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
 			}
 			"02"
 			{
@@ -10639,12 +10680,37 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"intellect"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"intellect"	"3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"move_speed"	"-10 -20 -30 -40 -50 -60 -70 -80 -90 -100 -110 -120 -130 -140 -150 -160 -170 -180 -190 -200"
+				"distance"	"2000"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"width"	"200"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"miss"	"100"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"miss_duration"	"3.5"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_count"	"6"
 			}
 		}
 	}
@@ -10663,7 +10729,7 @@
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
-		"AbilityCastPoint"	"0.5"
+		"AbilityCastPoint"	"0"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
@@ -10759,8 +10825,9 @@
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
-		"AbilityCastPoint"	"0.5"
+		"AbilityCastPoint"	"0.25"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1.5"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"6"
@@ -10769,10 +10836,11 @@
 		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"	"900"
+		"AbilityCastRange"	"1300"
 		"AOERadius"	"300"
 		"precache"
 		{
+			"particle"	"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
@@ -10783,7 +10851,7 @@
 			{
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-				"Function"	"FireButterfly"
+				"Function"	"OnSpellStart"
 			}
 			"FireSound"
 			{
@@ -10796,7 +10864,7 @@
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-				"Function"	"DarkFireStart"
+				"Function"	"OnAbilityPhaseStart"
 			}
 			"FireSound"
 			{
@@ -10806,26 +10874,35 @@
 		}
 		"Modifiers"
 		{
-			"modifier_light_array_debuff"
+			"modifier_light_array_stun"
 			{
 				"Properties"	{}
 				"IsDebuff"	"1"
-				"Duration"	"1"
+				"Duration"	"%stun_duration"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
+				"OnDestroy"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_light_array_debuff"
+					}
+				}
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
 			}
-			"modifier_light_array_movespeed"
+			"modifier_light_array_debuff"
 			{
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-80"
 				}
 				"IsDebuff"	"1"
-				"Duration"	"3"
+				"Duration"	"%duration"
 			}
 		}
 		// Special
@@ -10835,7 +10912,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"1.5"
+				"stun_duration"	"1.5"
 			}
 			"02"
 			{
@@ -10851,6 +10928,26 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"base_damage"	"80 160 240 320 400 480 560 640 720 800 880 960 1040 1120 1200 1280 1360 1440 1520 1600"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"interval"	"1"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"80"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_count"	"3"
 			}
 		}
 	}
@@ -11085,7 +11182,7 @@
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-				"Function"	"MeteorStorm"
+				"Function"	"OnSpellStart"
 			}
 			"AttachEffect"
 			{
@@ -11107,10 +11204,11 @@
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				"Duration"	"%duration"
+				"Duration"	"%stun_duration"
 				"IsDebuff"	"1"
 				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
 			}
 		}
 		"AbilitySpecial"
@@ -11133,7 +11231,37 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3"
+				"stun_duration"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"delay"	"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"wave_count"	"12"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"count_per_wave"	"2"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"interval"	"0.25"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_count"	"2"
 			}
 		}
 	}
@@ -11171,7 +11299,7 @@
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-				"Function"	"MeteorStorm"
+				"Function"	"OnSpellStart"
 			}
 			"AttachEffect"
 			{
@@ -11219,7 +11347,37 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3"
+				"stun_duration"	"1.25 1.5 1.75 2 2.25 2.5 2.75 3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"delay"	"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"wave_count"	"15"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"count_per_wave"	"2"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"interval"	"0.2"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_count"	"2"
 			}
 		}
 	}
@@ -12094,6 +12252,7 @@
 		{
 			"particle"	"particles/skills/ignite_hand.vpcf"
 			"particle"	"particles/skills/ignite_hand.vpcf"
+			"particle"	"particles/skills/ignite_fire_odl.vpcf"
 		}
 		"Modifiers"
 		{
@@ -12105,7 +12264,8 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"Ignite"
+						"Function"	"OnAttackLanded"
+						"DamageTaken"	"%attack_damage"
 					}
 				}
 				"AllowIllusionDuplicate"	"0"
@@ -12138,34 +12298,19 @@
 			{
 				"Properties"	{}
 				"IsHidden"	"0"
-				"Duration"	"5"
 				"AllowIllusionDuplicate"	"0"
 				"OnIntervalThink"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"IgniteDamage"
+						"Function"	"OnIntervalThink"
 					}
 				}
-				"ThinkInterval"	"0.1"
+				"ThinkInterval"	"%interval"
 				"IsDebuff"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"IgniteFire"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"IgniteRemove"
-					}
-				}
+				"EffectName"	"particles/skills/ignite_fire_odl.vpcf"
+				"EffectAttachType"	"attach_hitloc"
 			}
 		}
 		// Special
@@ -12186,6 +12331,16 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_count"	"1"
 			}
 		}
 	}
@@ -13078,7 +13233,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"Ashes"
+						"Function"	"OnAbilityExecuted"
 					}
 				}
 				"IsHidden"	"1"
@@ -13088,22 +13243,14 @@
 				"Properties"	{}
 				"IsDebuff"	"0"
 				"IsBuff"	"0"
-				"Duration"	"10"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"AshesDamage"
-					}
-				}
-				"ThinkInterval"	"0.1"
+				"Duration"	"%duration"
+				"ThinkInterval"	"%interval"
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"AshesEffect"
+						"Function"	"OnCreated"
 					}
 				}
 				"OnDestroy"
@@ -13111,9 +13258,50 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
-						"Function"	"AshesEffectRemove"
+						"Function"	"OnDestroy"
 					}
 				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/lilith.lua"
+						"Function"	"OnIntervalThink"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce"	"0.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"350"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_count"	"1"
 			}
 		}
 	}
@@ -14281,7 +14469,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"base_damage"	"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+				"base_damage"	"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
 			}
 			"03"
 			{
@@ -14363,34 +14551,39 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"6"
+				"base_damage"	"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"single_radius"	"150"
+				"duration"	"6"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"400"
+				"single_radius"	"180"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"movespeed"	"-25"
+				"radius"	"400"
 			}
 			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"-25"
+			}
+			"07"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"interval"	"0.4"
 			}
-			"07"
+			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_rate"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
-			"08"
+			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"slow_duration"	"3"
@@ -14823,12 +15016,29 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"frost_sigil"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"1"
+		"AbilityCooldown"	"15"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_tusk/tusk_frozen_sigil.vpcf"
+			"particle"	"particles/econ/items/winter_wyvern/winter_wyvern_ti7/wyvern_cold_embrace_ti7buff.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_frost_sigil_buff"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
+				"Function"	"OnSpellStart"
+			}
 		}
 		"Modifiers"
 		{
@@ -14852,6 +15062,30 @@
 						"ScriptFile"	"scripts/vscripts/ability_hero/crystal_maiden.lua"
 					}
 				}
+			}
+			"modifier_frost_sigil_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+				}
+				"States"
+				{
+					"MODIFIER_STATE_FROZEN"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SOFT_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Duration"	"%duration"
+				"EffectName"	"particles/econ/items/winter_wyvern/winter_wyvern_ti7/wyvern_cold_embrace_ti7buff.vpcf"
+				"EffectAttachType"	"attach_origin"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
 			}
 		}
 	}
@@ -15155,7 +15389,7 @@
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cleave_damage"	"24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100"
+				"cleave_damage"	"44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120"
 			}
 			"08"
 			{
@@ -15846,7 +16080,8 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"1"
-		"AbilityCooldown"	"1"
+		"AbilityCooldown"	"3"
+		"AbilityManaCost"	"100"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -15978,6 +16213,7 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
 		"AbilityCooldown"	"8"
+		"AbilityManaCost"	"120"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
@@ -17983,6 +18219,11 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCooldown"	"40"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
+			"particle"	"particles/units/heroes/hero_queenofpain/queen_blink_end.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -18035,7 +18276,8 @@
 				"IsDebuff"	"1"
 				"States"
 				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Duration"	"%stun_duration"
 				"OnDestroy"
@@ -18052,8 +18294,8 @@
 				"Duration"	"%duration"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-1000"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1000"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-10000"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10000"
 				}
 				"IsDebuff"	"1"
 			}

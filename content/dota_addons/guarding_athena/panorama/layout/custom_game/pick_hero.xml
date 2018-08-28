@@ -54,7 +54,7 @@
             </Panel>
             <Panel id="HeroConfirm">
                 <Button id="HeroConfirmButton" onmouseover="OnHeroConfirmOver()" onmouseout="OnHeroConfirmOut()" onactivate="OnHeroConfirmClick()">
-                    <Label text="选择英雄" class="DifficultyLabel"/>
+                    <Label text="#SelectHero" class="DifficultyLabel"/>
                 </Button>
                 <Label id="TimerText"/>
             </Panel>

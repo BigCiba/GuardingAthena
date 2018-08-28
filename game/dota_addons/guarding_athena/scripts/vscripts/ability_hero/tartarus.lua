@@ -247,7 +247,7 @@ function SoulRequiem( keys )
 	local vector = (point - caster_location):Normalized() * 1200
 	local num = -1
 	local abilityName = "destory_hit"
-	if HasExclusive(caster) then
+	if HasExclusive(caster,3) then
 		abilityName = "destory_hit_up"
 	end
 	local damage = caster:FindAbilityByName(abilityName):GetSpecialValueFor("damage")
@@ -289,7 +289,7 @@ function SoulRequiem( keys )
 		angle = angle + 15
 		point = GetRotationPoint(caster_location, 1200, angle)
 		vector = (point - caster_location):Normalized() * 1200
-		if num == -1 and HasExclusive(caster) then
+		if num == -1 and HasExclusive(caster,4) then
 			local skill = caster:FindAbilityByName(abilityName)
 			local vector_2 = (point - caster_location):Normalized()
 			local point = caster_location + vector_2 * 300

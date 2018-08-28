@@ -94,7 +94,7 @@ function OnHpClick( index,keys )
 		hero:SetBaseStrength(hero:GetBaseStrength() + property)
 		hero:CalculateStatBonus()
 		GuardingAthena.athena_hp_lv = GuardingAthena.athena_hp_lv + 1
-		GuardingAthena.entAthena:SetBaseMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth() + 1000 + 100 * GuardingAthena.athena_hp_lv )
+		GuardingAthena.entAthena:SetBaseMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth() + 1000 + math.ceil(100 * 1.04 ^ GuardingAthena.athena_hp_lv) )
 		GuardingAthena.entAthena:SetMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth())
 		GuardingAthena.entAthena:Heal(1000 + 100 * GuardingAthena.athena_hp_lv, nil) 
 		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点力量", style={color="red"}, duration=2, class="LeftMessage", continue = false})
@@ -112,7 +112,7 @@ function OnRegenClick( index,keys )
 	    hero:SetBaseIntellect(hero:GetBaseIntellect() + property)
 	    hero:CalculateStatBonus()
 	    GuardingAthena.athena_regen_lv = GuardingAthena.athena_regen_lv + 1
-		GuardingAthena.entAthena:SetBaseHealthRegen(GuardingAthena.entAthena:GetBaseHealthRegen() + 10 + GuardingAthena.athena_regen_lv )
+		GuardingAthena.entAthena:SetBaseHealthRegen(GuardingAthena.entAthena:GetBaseHealthRegen() + 10 + math.ceil(1.04 ^ GuardingAthena.athena_regen_lv) )
 		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点智力", style={color="red"}, duration=2, class="LeftMessage", continue = false})
 		return true
 	else
@@ -128,7 +128,7 @@ function OnArmorClick( index,keys )
 		hero:SetBaseAgility(hero:GetBaseAgility() + property) 
 	    hero:CalculateStatBonus()
 	    GuardingAthena.athena_armor_lv = GuardingAthena.athena_armor_lv + 1
-		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1 + 0.1 * GuardingAthena.athena_armor_lv )
+		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1 + 1.04 ^ GuardingAthena.athena_armor_lv )
 		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点敏捷", style={color="red"}, duration=2, class="LeftMessage", continue = false})
 		return true
 	else

@@ -1,414 +1,230 @@
-function Ashes( keys )
-	local caster = keys.caster
-	if keys.event_ability:IsItem() then
+function OnAbilityPhaseStart( t )
+	local caster = t.caster
+	local casterLoc = caster:GetAbsOrigin()
+	local p = CreateParticle( "particles/skills/dark_fire_circle.vpcf", PATTACH_ABSORIGIN, caster, 2 )
+	ParticleManager:SetParticleControl( p, 0, casterLoc )
+	ParticleManager:SetParticleControl( p, 1, casterLoc )
+end
+function OnAbilityExecuted( t )
+	local caster = t.caster
+	local ability = t.ability
+	local usedAbility = t.event_ability
+	local exclusive = caster.exclusive
+	-- 排除物品与切换技能
+	if usedAbility:IsItem() or usedAbility:IsToggle() then
         return
-    end
-	if keys.event_ability:IsToggle() then
-        return
-    end
-	local intellect = caster:GetIntellect()
-	local ability = caster:GetAbilityByIndex(0)
-	if caster:HasModifier("modifier_ashes_buff") then
-		ability:ApplyDataDrivenModifier(caster,caster,"modifier_ashes_buff",nil)
-		local stackcount = caster:GetModifierStackCount("modifier_ashes_buff",caster)
-		caster:SetModifierStackCount("modifier_ashes_buff",caster,stackcount + 1)
-	else
-		ability:ApplyDataDrivenModifier(caster,caster,"modifier_ashes_buff",nil)
-		caster:SetModifierStackCount("modifier_ashes_buff",caster,1)
 	end
-	caster.const_reduce_damage = caster.const_reduce_damage + intellect
-	Timers:CreateTimer(10,function()
-		local stackcount = caster:GetModifierStackCount("modifier_ashes_buff",caster)
-		if stackcount > 1 then
-			caster:SetModifierStackCount("modifier_ashes_buff",caster,stackcount - 1)
-		end
-		caster.const_reduce_damage = caster.const_reduce_damage - intellect
+	local duration = ability:GetSpecialValueFor("duration")
+	local abilityLv = usedAbility:GetLevel()
+	local reduce = ability:GetSpecialValueFor("reduce") * caster:GetIntellect()
+	AddModifierStackCount(caster,caster,ability,"modifier_ashes_buff",abilityLv,duration,true)
+	caster.const_reduce_damage = caster.const_reduce_damage + reduce * abilityLv
+	Timers:CreateTimer(duration,function()
+		caster.const_reduce_damage = caster.const_reduce_damage - reduce * abilityLv
 	end)
+	if HasExclusive(caster,3) then
+		local damageIncrease = exclusive:GetSpecialValueFor("damage_increase")
+		SetUnitDamagePercent(caster,abilityLv * damageIncrease,duration)
+	end
 end
-function AshesDamage( keys )
-	local caster = keys.caster
-	local ability = keys.ability
+-- 弃用
+function OnDealDamage( t )
+	local caster = t.caster
+	local target = t.unit
+	local ability = t.ability
+	local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() * caster:GetModifierStackCount("modifier_ashes_buff",nil)
 	local damageType = ability:GetAbilityDamageType()
-	local caster_location = caster:GetAbsOrigin()
-	local radius = 300
-	local damage = 0.2 * caster:GetIntellect() * caster:GetModifierStackCount("modifier_ashes_buff",nil)
-	local unitGroup = GetUnitsInRadius(caster,ability,caster_location,radius)
-	for k, v in pairs( unitGroup ) do
-        CauseDamage(caster, v, damage, damageType, ability)
-    end
+	local igniteCount = ability:GetSpecialValueFor("damage") * caster:GetModifierStackCount("modifier_ashes_buff",nil)
+	if ability.can_trigger == nil then ability.can_trigger = true end
+	if ability.can_trigger then
+		ability.can_trigger = false
+		CauseDamage(caster,target,damage,damageType,ability)
+		ApplyIgnite(caster,target,igniteCount)
+		ability.can_trigger = true
+	end
 end
-function AshesEffect( keys )
-	local caster = keys.caster
-	local ability = keys.ability
+function OnIntervalThink( t )
+	local caster = t.caster
+	local ability = t.ability
+	local abilityIndex = ability:GetAbilityIndex()
+	local damageType = ability:GetAbilityDamageType()
+	local igniteCount = ability:GetSpecialValueFor("ignite_count")
+	if abilityIndex == 0 then
+		local casterLoc = caster:GetAbsOrigin()
+		local radius = ability:GetSpecialValueFor("radius")
+		local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() * caster:GetModifierStackCount("modifier_ashes_buff",nil)
+		local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
+		for k, v in pairs( unitGroup ) do
+			CauseDamage(caster, v, damage, damageType, ability)
+			ApplyIgnite(caster,v, igniteCount)
+		end
+	elseif abilityIndex == 3 then
+		local target = t.target
+		if target:IsNull() then
+			return
+		end
+		local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() * target:GetModifierStackCount("modifier_ignite_debuff",nil)
+		CauseDamage(caster, target, damage, damageType, ability)
+	end
+end
+function OnCreated( t )
+	local caster = t.caster
+	local ability = t.ability
 	local p1 = CreateParticle( "particles/skills/ashes_body.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
-	--ParticleManager:SetParticleControlEnt( p1, 0, caster, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", caster:GetOrigin(), false )
 	ParticleManager:SetParticleControlEnt( p1, 1, caster, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", caster:GetOrigin(), false )
 	ParticleManager:SetParticleControl( p1, 0, caster:GetOrigin() )
 	ability.effect = p1
-	--ParticleManager:SetParticleControl( p1, 2, Vector(300,300,300) )
-	--ParticleManager:SetParticleControl( p1, 3, Vector(300,0,0) )
 end
-function AshesEffectRemove( keys )
-	local caster = keys.caster
-	local ability = keys.ability
+function OnDestroy( t )
+	local caster = t.caster
+	local ability = t.ability
 	ParticleManager:DestroyParticle(ability.effect,false)
 end
-function DarkFire( keys )
-	local caster = keys.caster
-	local ignite_duration = 5
-	if HasExclusive(caster,2) then
-		ignite_duration = 10
-	end
-	local ability = keys.ability
-	local caster_location = caster:GetAbsOrigin()
-	local point = keys.target_points[1]
-	local target_point = caster_location + (point - caster_location):Normalized() * 2000
-	local damage = ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("intellect") * caster:GetIntellect()
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
-	local damageType = ability:GetAbilityDamageType()
-	local p1 = CreateParticle( "particles/skills/dark_fire.vpcf", PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( p1, 0, caster_location + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 1, target_point + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 2, target_point + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 3, target_point + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 9, caster_location + Vector(0,0,100) )
-	Timers:CreateTimer(4,function()
-		ParticleManager:DestroyParticle(p1,false)
-	end)
-	local times = 0
-	Timers:CreateTimer(function()
-		if times < 30 and caster:IsChanneling() then
-			local unitGroup = FindUnitsInLine( teamNumber, caster_location, target_point, nil, 200, targetTeam, targetType, FIND_CLOSEST)
-			for k, v in pairs( unitGroup ) do
-		        CauseDamage(caster, v, damage * 0.1, damageType,ability)
-		        ability:ApplyDataDrivenModifier(caster,v,"modifier_dark_fire_debuff",nil)
-		        if times == 9 or times == 19 or times == 29 then
-		        	local ability_3 = caster:GetAbilityByIndex(3)
-		        	if ability_3:GetLevel() >=1 then
-			        	if v:HasModifier("modifier_ignite_debuff") then
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount + 1)
-						else
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,1)
-						end
-						Timers:CreateTimer(ignite_duration,function()
-							if v:IsNull() == false then
-								local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-								if stackcount > 1 then
-									v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount - 1)
-								end
-							end
-						end)
-					end
-				end
-		    end
-			times = times + 1
-			return 0.1
-		else
-			ParticleManager:DestroyParticle(p1,false)
+function OnSpellStart( t )
+	local caster= t.caster
+	local ability = t.ability
+	local abilityIndex = ability:GetAbilityIndex()
+	local exclusive = caster.exclusive
+	if abilityIndex == 1 then
+		local distance = ability:GetSpecialValueFor("distance")
+		local width = ability:GetSpecialValueFor("width")
+		local casterLoc = caster:GetAbsOrigin()
+		local targetLoc = t.target_points[1]
+		local targetLoc = casterLoc + (targetLoc - casterLoc):Normalized() * distance
+		local damage = ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("intellect") * caster:GetIntellect()
+		local igniteCount = ability:GetSpecialValueFor("ignite_count")
+		local damageType = ability:GetAbilityDamageType()
+		local unitGroup = GetUnitsInLine(caster,ability,casterLoc,targetLoc,width)
+		for k,v in pairs(unitGroup) do
+			CauseDamage(caster, v, damage, damageType, ability)
+			ability:ApplyDataDrivenModifier(caster, v, "modifier_dark_fire_stun", nil)
+			ApplyIgnite(caster,v,igniteCount)
 		end
-	end)
-end
-function DarkFireUp( keys )
-	local caster = keys.caster
-	local ignite_duration = 5
-	if HasExclusive(caster,2) then
-		ignite_duration = 10
-	end
-	local ability = keys.ability
-	local caster_location = caster:GetAbsOrigin()
-	local point = keys.target_points[1]
-	local target_point = caster_location + (point - caster_location):Normalized() * 2000
-	local damage = ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("intellect") * caster:GetIntellect()
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
-	local damageType = ability:GetAbilityDamageType()
-	local p1 = CreateParticle( "particles/skills/dark_fire.vpcf", PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( p1, 0, caster_location + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 1, target_point + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 2, target_point + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 3, target_point + Vector(0,0,100) )
-	ParticleManager:SetParticleControl( p1, 9, caster_location + Vector(0,0,100) )
-	Timers:CreateTimer(4,function()
-		ParticleManager:DestroyParticle(p1,false)
-	end)
-	local times = 0
-	Timers:CreateTimer(function()
-		if times < 30 then
-			local unitGroup = FindUnitsInLine( teamNumber, caster_location, target_point, nil, 200, targetTeam, targetType, FIND_CLOSEST)
-			for k, v in pairs( unitGroup ) do
-		        CauseDamage(caster, v, damage * 0.1, damageType, ability)
-		        ability:ApplyDataDrivenModifier(caster,v,"modifier_dark_fire_debuff",nil)
-		        if times == 9 or times == 19 or times == 29 then
-		        	local ability_3 = caster:GetAbilityByIndex(3)
-		        	if ability_3:GetLevel() >=1 then
-			        	if v:HasModifier("modifier_ignite_debuff") then
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount + 1)
-						else
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,1)
-						end
-						Timers:CreateTimer(ignite_duration,function()
-							if v:IsNull() == false then
-								local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-								if stackcount > 1 then
-									v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount - 1)
-								end
-							end
-						end)
+		local p = CreateParticle("particles/heroes/lina/dark_fire.vpcf",PATTACH_ABSORIGIN,caster,3)
+		ParticleManager:SetParticleControl( p, 0, casterLoc + Vector(0,0,64))
+		ParticleManager:SetParticleControl( p, 1, targetLoc + Vector(0,0,64))
+		-- 专属一
+		if HasExclusive(caster,1) then
+			local duration = exclusive:GetSpecialValueFor("duration")
+			local interval = exclusive:GetSpecialValueFor("interval")
+			local damagePercent = exclusive:GetSpecialValueFor("damage_percent") * 0.01
+			local p = CreateParticle("particles/heroes/lina/dark_fire_gound.vpcf",PATTACH_ABSORIGIN,caster,3)
+			ParticleManager:SetParticleControl( p, 0, casterLoc)
+			ParticleManager:SetParticleControl( p, 1, targetLoc)
+			local time = 0
+			Timers:CreateTimer(interval,function ()
+				if time < duration then
+					local unitGroup = GetUnitsInLine(caster,ability,casterLoc,targetLoc,width)
+					CauseDamage(caster,unitGroup,damage * damagePercent,damageType,ability)
+					for k,v in pairs(unitGroup) do
+						ApplyIgnite(caster,v,math.ceil(igniteCount * damagePercent))
 					end
-				end
-		    end
-			times = times + 1
-			return 0.1
-		else
-			ParticleManager:DestroyParticle(p1,false)
-		end
-	end)
-end
-function DarkFireStart( keys )
-	local caster = keys.caster
-	local caster_location = caster:GetAbsOrigin()
-	local p1 = CreateParticle( "particles/skills/dark_fire_circle.vpcf", PATTACH_ABSORIGIN, caster )
-	ParticleManager:SetParticleControl( p1, 0, caster_location )
-	ParticleManager:SetParticleControl( p1, 1, caster_location )
-	Timers:CreateTimer(4,function()
-		ParticleManager:DestroyParticle(p1,false)
-	end)
-end
-function FireButterfly( keys )
-	local caster = keys.caster
-	local ignite_duration = 5
-	if HasExclusive(caster,2) then
-		ignite_duration = 10
-	end
-	local ability = keys.ability
-	local radius = ability:GetSpecialValueFor("radius")
-	local point = keys.target_points[1]
-	local damage = ability:GetSpecialValueFor("intellect") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
-	local damageType = ability:GetAbilityDamageType()
-	local p1 = CreateParticle( "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf", PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( p1, 0, point )
-	ParticleManager:SetParticleControl( p1, 1, Vector(300,300,300) )
-	ParticleManager:SetParticleControl( p1, 3, point )
-	Timers:CreateTimer(4,function()
-		ParticleManager:DestroyParticle(p1,false)
-	end)
-	local p2 = CreateParticle( "particles/skills/fire_butterfly_gound.vpcf", PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( p2, 0, point )
-	Timers:CreateTimer(4,function()
-		ParticleManager:DestroyParticle(p2,false)
-	end)
-	local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
-	for k, v in pairs( unitGroup ) do
-        CauseDamage(caster, v, damage, damageType, ability)
-        ability:ApplyDataDrivenModifier(caster,v,"modifier_light_array_debuff",nil)
-		-- 专属
-		if HasExclusive(caster,3) then
-			ability:ApplyDataDrivenModifier(caster, v, "modifier_light_array_movespeed", nil)
-		end
-        local ability_3 = caster:GetAbilityByIndex(3)
-        if ability_3:GetLevel() >=1 then
-	    	if v:HasModifier("modifier_ignite_debuff") then
-				ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-				local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-				v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount + 1)
-			else
-				ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-				v:SetModifierStackCount("modifier_ignite_debuff",caster,1)
-			end
-			Timers:CreateTimer(ignite_duration,function()
-				if v:IsNull() == false then
-					local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-					if stackcount > 3 then
-						v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount - 1)
-					end
+					time = time + interval
+					return interval
 				end
 			end)
 		end
-	end
-    local times = 0
-	Timers:CreateTimer(function()
-		if times < 30 then
-			local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
-			for k, v in pairs( unitGroup ) do
-		        CauseDamage(caster, v, damage * 0.1 * 0.5, damageType, ability)
-		        if times == 9 or times == 19 or times == 29 then
-		        	local ability_3 = caster:GetAbilityByIndex(3)
-		        	if ability_3:GetLevel() >=1 then
-			        	if v:HasModifier("modifier_ignite_debuff") then
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount + 1)
-						else
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,1)
-						end
-						Timers:CreateTimer(10,function()
-							if v:IsNull() == false then
-								local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-								if stackcount > 1 then
-									v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount - 1)
-								end
-							end
-						end)
-					end
+	elseif abilityIndex == 2 then
+		local radius = ability:GetSpecialValueFor("radius")
+		local interval = ability:GetSpecialValueFor("interval")
+		local targetLoc = t.target_points[1]
+		local duration = ability:GetSpecialValueFor("duration")
+		local damage = ability:GetSpecialValueFor("intellect") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
+		local damageType = ability:GetAbilityDamageType()
+		local igniteCount = ability:GetSpecialValueFor("ignite_count")
+		local p1 = CreateParticle( "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf", PATTACH_CUSTOMORIGIN, caster, 4 )
+		ParticleManager:SetParticleControl( p1, 0, targetLoc )
+		ParticleManager:SetParticleControl( p1, 1, Vector(300,1,1) )
+		local p2 = CreateParticle( "particles/skills/fire_butterfly_gound.vpcf", PATTACH_CUSTOMORIGIN, caster, 4 )
+		ParticleManager:SetParticleControl( p2, 0, targetLoc )
+		local unitGroup = GetUnitsInRadius(caster,ability,targetLoc,radius)
+		for k, v in pairs( unitGroup ) do
+			CauseDamage(caster, v, damage, damageType, ability)
+			ability:ApplyDataDrivenModifier(caster,v,"modifier_light_array_stun",nil)
+			ApplyIgnite(caster,v,igniteCount)
+		end
+		local times = 0
+		Timers:CreateTimer(interval,function()
+			if times < duration then
+				local unitGroup = GetUnitsInRadius(caster,ability,targetLoc,radius)
+				for k, v in pairs( unitGroup ) do
+					CauseDamage(caster, v, damage * 0.5, damageType, ability)
+					ApplyIgnite(caster,v,math.ceil(igniteCount * 0.5))
 				end
-		    end
-			times = times + 1
-			return 0.1
-		end
-	end)
-end
-function Ignite( keys )
-	local caster = keys.caster
-	local ignite_duration = 5
-	if HasExclusive(caster,2) then
-		ignite_duration = 10
-	end
-	local target = keys.target
-	local ability = keys.ability
-	if target:HasModifier("modifier_ignite_debuff") then
-		ability:ApplyDataDrivenModifier(caster,target,"modifier_ignite_debuff",{duration=ignite_duration})
-		local stackcount = target:GetModifierStackCount("modifier_ignite_debuff",nil)
-		target:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount + 1)
-	else
-		ability:ApplyDataDrivenModifier(caster,target,"modifier_ignite_debuff",{duration=ignite_duration})
-		target:SetModifierStackCount("modifier_ignite_debuff",caster,1)
-	end
-	Timers:CreateTimer(ignite_duration,function()
-		if target:IsNull() == false then
-			local stackcount = target:GetModifierStackCount("modifier_ignite_debuff",nil)
-			if stackcount > 1 then
-				target:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount - 1)
+				times = times + interval
+				return interval
 			end
-		end
-	end)
-end
-function IgniteDamage( keys )
-	local caster = keys.caster
-	local target = keys.target
-	if target:IsNull() then
-		return
-	end
-	local ability = keys.ability
-	local damageType = ability:GetAbilityDamageType()
-	local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() * target:GetModifierStackCount("modifier_ignite_debuff",nil) * 0.1
-    CauseDamage(caster, target, damage, damageType, ability)
-end
-function IgniteFire( keys )
-	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
-	local p1 = CreateParticle( "particles/skills/ignite_fire_odl.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
-	--ParticleManager:SetParticleControlEnt( p1, 0, caster, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", caster:GetOrigin(), false )
-	ParticleManager:SetParticleControlEnt( p1, 0, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", caster:GetOrigin(), false )
-	target.IgniteFire = p1
-end
-function IgniteRemove( keys )
-	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
-	ParticleManager:DestroyParticle(target.IgniteFire,false)
-end
-function MeteorStorm( keys )
-	local caster = keys.caster
-	local ignite_duration = 5
-	if HasExclusive(caster,2) then
-		ignite_duration = 10
-	end
-	local ability = keys.ability
-	local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect()
-	local radius = ability:GetSpecialValueFor("radius")
-	local max_radius = ability:GetSpecialValueFor("max_radius")
-	local damageType = ability:GetAbilityDamageType()
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
-	local caster_location = caster:GetAbsOrigin()
-	local p1 = CreateParticle( "particles/skills/meteor_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( p1, 0, caster_location )
-	Timers:CreateTimer(4,function()
-		ParticleManager:DestroyParticle(p1,false)
-	end)
-	local time = 0
-	local randompoint
-    Timers:CreateTimer(1,function (  )
-    	CreateSound("Hero_Invoker.ChaosMeteor.Loop",caster,1.3)
-    	CreateSound("Ability.LightStrikeArray",caster,nil,1.3)
-    	if time <= 12 then
-    		for i=1,2 do
-		    	randompoint = GetRandomPoint(caster_location,0,max_radius)
-		    	local particle = CreateParticle( "particles/skills/meteor_fly.vpcf", PATTACH_ABSORIGIN, caster )
-		    	ParticleManager:SetParticleControl(particle, 0, randompoint + Vector (300, 300, 1000))
-			    ParticleManager:SetParticleControl(particle, 1, randompoint)
-			    ParticleManager:SetParticleControl(particle, 2, Vector(1.3, 0, 0))
-			    Timers:CreateTimer(4,function()
-					ParticleManager:DestroyParticle(particle,false)
-				end)
-				local point_save = randompoint
-				Timers:CreateTimer(1.3,function (  )
-					local particle = CreateParticle( "particles/skills/rain_of_chaos_landding_immortal1.vpcf", PATTACH_ABSORIGIN, caster )
-			    	ParticleManager:SetParticleControl(particle, 0, point_save)
-			    	Timers:CreateTimer(4,function()
-						ParticleManager:DestroyParticle(particle,false)
-					end)
-			    	local unitGroup = FindUnitsInRadius(teamNumber, point_save, caster, radius, targetTeam, targetType, targetFlag, 0, false)
-			    	for k, v in pairs( unitGroup ) do
-				        CauseDamage(caster, v, damage, damageType, ability)
-			    		ability:ApplyDataDrivenModifier(caster,v,"modifier_meteor_storm_debuff",nil)
-			    		local ability_3 = caster:GetAbilityByIndex(3)
-			        	if v:HasModifier("modifier_ignite_debuff") then
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount + 3)
-						else
-							ability_3:ApplyDataDrivenModifier(caster,v,"modifier_ignite_debuff",{duration=ignite_duration})
-							v:SetModifierStackCount("modifier_ignite_debuff",caster,3)
+		end)
+	elseif abilityIndex == 4 then
+		local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect()
+		local igniteCount = ability:GetSpecialValueFor("ignite_count")
+		local interval = ability:GetSpecialValueFor("interval")
+		local waveCount = ability:GetSpecialValueFor("wave_count")
+		local countPerWave = ability:GetSpecialValueFor("count_per_wave")
+		local radius = ability:GetSpecialValueFor("radius")
+		local delay = ability:GetSpecialValueFor("delay")
+		local maxRadius = ability:GetSpecialValueFor("max_radius")
+		local damageType = ability:GetAbilityDamageType()
+		local casterLoc = caster:GetAbsOrigin()
+		local p1 = CreateParticle( "particles/skills/meteor_circle.vpcf", PATTACH_CUSTOMORIGIN, caster, 4 )
+		ParticleManager:SetParticleControl( p1, 0, casterLoc )
+		local time = 0
+		local randomPoint
+		Timers:CreateTimer(delay,function ()
+			-- 陨石
+			CreateSound("Hero_Invoker.ChaosMeteor.Loop",caster,1.3)
+			--CreateSound("Ability.LightStrikeArray",caster,nil,1.3)
+			if time <= waveCount then
+				for i=1,countPerWave do
+					randomPoint = GetRandomPoint(casterLoc,0,maxRadius)
+					local unit = GetRandomUnit(caster,ability,casterLoc,maxRadius)
+					if unit then
+						randomPoint = GetRandomPoint(unit:GetAbsOrigin(),0,radius)
+					end
+					local particle = CreateParticle( "particles/skills/meteor_fly.vpcf", PATTACH_ABSORIGIN, caster, 4 )
+					ParticleManager:SetParticleControl(particle, 0, randomPoint + Vector (300, 300, 1000))
+					ParticleManager:SetParticleControl(particle, 1, randomPoint)
+					ParticleManager:SetParticleControl(particle, 2, Vector(1.3, 0, 0))
+					local pointSave = randomPoint
+					Timers:CreateTimer(1.3,function (  )
+						local particle = CreateParticle( "particles/skills/rain_of_chaos_landding_immortal1.vpcf", PATTACH_ABSORIGIN, caster, 4 )
+						ParticleManager:SetParticleControl(particle, 0, pointSave)
+						local unitGroup = GetUnitsInRadius(caster,ability,pointSave,radius)
+						for k, v in pairs( unitGroup ) do
+							CauseDamage(caster, v, damage, damageType, ability)
+							ability:ApplyDataDrivenModifier(caster,v,"modifier_meteor_storm_debuff",nil)
+							ApplyIgnite(caster,v,igniteCount)
 						end
-						Timers:CreateTimer(ignite_duration,function()
-							if v:IsNull() == false then
-								local stackcount = v:GetModifierStackCount("modifier_ignite_debuff",nil)
-								if stackcount > 3 then
-									v:SetModifierStackCount("modifier_ignite_debuff",caster,stackcount - 3)
-								end
-							end
-						end)
-				    end
-	    		end)
-    		end
-		    time = time + 1
-		    return 0.25
+					end)
+				end
+				time = time + 1
+				return interval
+			end
+		end)
+	end
+end
+function OnAttackLanded( t )
+	local caster = t.caster
+	local igniteCount = t.ability:GetSpecialValueFor("ignite_count") 
+	ApplyIgnite(caster,t.target,igniteCount)
+end
+function ApplyIgnite( ... )
+	local caster,target,count = ...
+	local ability = caster:GetAbilityByIndex(3)
+	local exclusive = caster.exclusive
+	if ability:GetLevel() >= 1 then
+		local duration = ability:GetSpecialValueFor("duration")
+		if HasExclusive(caster,2) then 
+			duration = exclusive:GetSpecialValueFor("ignite_duration") 
 		end
-    end)
+		AddModifierStackCount(caster,target,ability,"modifier_ignite_debuff",count,duration,true)
+		SetModifierType(target,"modifier_ignite_debuff","unpurgable")
+	end
 end
 function OnExclusiveCreated( t )
 	local caster = t.caster
 	local ability = t.ability
 	ability.exclusive_timer = Timers:CreateTimer(function ()
-		if HasExclusive(caster,1) then
-			local ability_1 = caster:FindAbilityByName("dark_fire")
-			if ability_1 then
-				local new_ability = caster:AddAbility("dark_fire_up")
-				new_ability:SetLevel(ability_1:GetLevel())
-				caster:SwapAbilities(ability_1:GetAbilityName(), new_ability:GetAbilityName(), false, true)
-				caster:RemoveAbility("dark_fire")
-			end
-		end
 		if HasExclusive(caster,4) then
 			local ability_4 = caster:FindAbilityByName("meteor_storm")
 			if ability_4 then
@@ -425,14 +241,7 @@ function OnExclusiveDestory( t )
 	local caster = t.caster
 	local ability = t.ability
 	Timers:RemoveTimer(ability.exclusive_timer)
-    local ability_1 = caster:FindAbilityByName("dark_fire_up")
     local ability_4 = caster:FindAbilityByName("meteor_storm_up")
-    if ability_1 then
-        local new_ability = caster:AddAbility("dark_fire")
-        new_ability:SetLevel(ability_1:GetLevel())
-        caster:SwapAbilities(new_ability:GetAbilityName(), ability_1:GetAbilityName(), true, false)
-        caster:RemoveAbility("dark_fire_up")
-    end
     if ability_4 then
         local new_ability = caster:AddAbility("meteor_storm")
         new_ability:SetLevel(ability_4:GetLevel())

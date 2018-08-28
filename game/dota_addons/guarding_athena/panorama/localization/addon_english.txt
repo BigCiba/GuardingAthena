@@ -48,6 +48,7 @@
 	"DemonButton"							"NightMare"
 	"TeamButton"							"Team"
 	"NoSelect"								"NoSelect"
+	"SelectHero"							"Select Hero"
 	"EasyDifficulty"						"Easy"
 	"NormalDifficulty"						"Normal"
 	"HardDifficulty"						"Hard"

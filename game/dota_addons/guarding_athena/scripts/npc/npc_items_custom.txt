@@ -1679,7 +1679,7 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fazhang_1"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -1688,10 +1688,11 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"0"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1503"
 		"ItemQuality"	"component"
@@ -1707,6 +1708,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_1"
@@ -1714,10 +1734,6 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
-				}
 				"AllowIllusionDuplicate"	"1"
 				"OnCreated"
 				{
@@ -1737,6 +1753,10 @@
 						"BonusDamage"	"%bonus_damage"
 					}
 				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -1744,12 +1764,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"4"
+				"bonus_damage"	"5"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"5"
+				"damage"	"8"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana"	"300"
 			}
 		}
 	}
@@ -1759,7 +1789,7 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fazhang_2"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -1768,10 +1798,11 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"0"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1504"
 		"ItemQuality"	"component"
@@ -1787,6 +1818,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_2"
@@ -1794,10 +1844,6 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
-				}
 				"AllowIllusionDuplicate"	"1"
 				"OnCreated"
 				{
@@ -1817,6 +1863,10 @@
 						"BonusDamage"	"%bonus_damage"
 					}
 				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -1824,12 +1874,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"8"
+				"bonus_damage"	"10"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"10"
+				"damage"	"16"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana"	"600"
 			}
 		}
 	}
@@ -1839,7 +1899,7 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fazhang_3"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -1848,10 +1908,11 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"0"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1505"
 		"ItemQuality"	"component"
@@ -1867,6 +1928,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_3"
@@ -1874,10 +1954,6 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
-				}
 				"AllowIllusionDuplicate"	"1"
 				"OnCreated"
 				{
@@ -1897,6 +1973,10 @@
 						"BonusDamage"	"%bonus_damage"
 					}
 				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -1904,12 +1984,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"16"
+				"bonus_damage"	"15"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"15"
+				"damage"	"32"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana"	"900"
 			}
 		}
 	}
@@ -1919,7 +2009,7 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fazhang_4"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -1928,10 +2018,11 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"0"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1506"
 		"ItemQuality"	"component"
@@ -1947,6 +2038,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_4"
@@ -1954,10 +2064,6 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
-				}
 				"AllowIllusionDuplicate"	"1"
 				"OnCreated"
 				{
@@ -1977,6 +2083,10 @@
 						"BonusDamage"	"%bonus_damage"
 					}
 				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -1984,12 +2094,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"32"
+				"bonus_damage"	"20"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"20"
+				"damage"	"64"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana"	"1200"
 			}
 		}
 	}
@@ -1999,7 +2119,7 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fazhang_5"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -2008,10 +2128,11 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"0"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1507"
 		"ItemQuality"	"rare"
@@ -2027,6 +2148,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_5"
@@ -2034,10 +2174,6 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
-				}
 				"AllowIllusionDuplicate"	"1"
 				"OnCreated"
 				{
@@ -2057,6 +2193,10 @@
 						"BonusDamage"	"%bonus_damage"
 					}
 				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana"
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -2064,12 +2204,22 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"64"
+				"bonus_damage"	"25"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"25"
+				"damage"	"128"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana"	"1500"
 			}
 		}
 	}
@@ -4599,17 +4749,20 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"fazhang_6"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1548"
 		"ItemQuality"	"component"
@@ -4625,6 +4778,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_6"
@@ -4640,7 +4812,6 @@
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
 					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_move_speed"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
 				}
 				"OnCreated"
 				{
@@ -4812,37 +4983,42 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"96"
+				"bonus_health"	"4800"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"4800"
+				"bonus_mana"	"3000"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"2400"
+				"bonus_armor"	"120"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_resistance"	"25"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"25"
+				"damage_block"	"240"
 			}
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"240"
+				"bonus_move_speed"	"125"
 			}
 			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_move_speed"	"125"
+				"damage"	"192"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
 			}
 		}
 	}
@@ -4852,17 +5028,20 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"fazhang_7"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1553"
 		"ItemQuality"	"component"
@@ -4878,6 +5057,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_7"
@@ -4896,7 +5094,6 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
 				}
 				"OnCreated"
 				{
@@ -5068,42 +5265,47 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"128"
+				"bonus_stats"	"100"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"100"
+				"bonus_health"	"4800"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"4800"
+				"bonus_mana"	"6000"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"2400"
+				"bonus_armor"	"120"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_resistance"	"25"
 			}
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"25"
+				"damage_block"	"240"
 			}
 			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"240"
+				"bonus_move_speed"	"125"
 			}
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_move_speed"	"125"
+				"damage"	"256"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
 			}
 		}
 	}
@@ -5113,17 +5315,20 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"fazhang_8"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1554"
 		"ItemQuality"	"component"
@@ -5139,6 +5344,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_8"
@@ -5157,7 +5381,6 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
 				}
 				"OnCreated"
 				{
@@ -5329,42 +5552,47 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"192"
+				"bonus_stats"	"200"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"200"
+				"bonus_health"	"4800"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"4800"
+				"bonus_mana"	"9000"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"2400"
+				"bonus_armor"	"120"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_resistance"	"25"
 			}
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"25"
+				"damage_block"	"240"
 			}
 			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"240"
+				"bonus_move_speed"	"125"
 			}
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_move_speed"	"125"
+				"damage"	"384"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
 			}
 		}
 	}
@@ -5374,17 +5602,20 @@
 		// Common
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"fazhang_9"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"0"
 		"AbilityCastRangeBuffer"	"0"
+		"AOERadius"	"%radius"
 		// Item
 		"ID"	"1555"
 		"ItemQuality"	"component"
@@ -5400,6 +5631,25 @@
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_hero_pick.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/fazhang.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Lion.Pick"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_fazhang_9"
@@ -5418,7 +5668,6 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
 				}
 				"OnCreated"
 				{
@@ -5596,42 +5845,47 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_intellect"	"256"
+				"bonus_stats"	"300"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"300"
+				"bonus_health"	"4800"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"4800"
+				"bonus_mana"	"12000"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"2400"
+				"bonus_armor"	"120"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_resistance"	"25"
 			}
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"25"
+				"damage_block"	"240"
 			}
 			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"240"
+				"bonus_move_speed"	"125"
 			}
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_move_speed"	"125"
+				"damage"	"512"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
 			}
 		}
 	}
@@ -14218,12 +14472,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"chance"	"10"
+				"chance"	"25"
 			}
 			"03"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"critical"	"1.5"
+				"var_type"	"FIELD_INTEGER"
+				"critical"	"50"
 			}
 			"04"
 			{
@@ -14238,7 +14492,12 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
+				"interval"	"5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"energy"	"1"
 			}
 		}
 	}
@@ -15232,6 +15491,31 @@
 				"var_type"	"FIELD_INTEGER"
 				"property"	"15"
 			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_percent"	"50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ignite_duration"	"10"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_increase"	"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"1"
+			}
 		}
 	}
 
@@ -15324,6 +15608,11 @@
 						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
 						"Function"	"OnCreated"
 					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/fire_spirit.lua"
+						"Function"	"OnExclusiveCreated"
+					}
 				}
 				"OnDestroy"
 				{
@@ -15331,6 +15620,11 @@
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
 						"Function"	"OnDestroy"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/fire_spirit.lua"
+						"Function"	"OnExclusiveDestroy"
 					}
 				}
 			}
@@ -21658,7 +21952,6 @@
 			{
 				"States"
 				{
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Duration"	"%duration"

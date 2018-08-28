@@ -623,7 +623,8 @@ function GuardingAthena:OnPlayerChat(keys)
 		--hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
 		hero:AddItem(CreateItem("item_dun_5", hero, hero))
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
-		hero:AddItem(CreateItem("item_npc_dota_hero_omniknight1", hero, hero))
+		hero:AddItem(CreateItem("item_"..hero:GetUnitName(), hero, hero))
+		hero.reborn_time = 4
 	end
 	if string.sub(text,0,9) == "autospawn" then
 		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()

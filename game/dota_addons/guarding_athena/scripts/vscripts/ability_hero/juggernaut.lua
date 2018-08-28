@@ -13,7 +13,7 @@ function minjiejingtong( keys )
 	Timers:CreateTimer(5,function (  )
 		caster:SetBaseAttackTime(caster:GetBaseAttackTime() + stackcount)
     end)
-    if HasExclusive(caster) then
+    if HasExclusive(caster,1) then
         local illusions = caster.mirror_image_illusions
         if illusions then
             for k,v in pairs(illusions) do
@@ -42,7 +42,7 @@ function SpaceCut( keys )
 	local targetTeam = ability:GetAbilityTargetTeam()
 	local targetType = ability:GetAbilityTargetType()
     local damageType = ability:GetAbilityDamageType()
-    if HasExclusive(caster) then
+    if HasExclusive(caster,2) then
         damageType = DAMAGE_TYPE_PURE
     end
 	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility() + ability:GetSpecialValueFor("base_damage")
@@ -243,7 +243,7 @@ function BladeDanceDamage( keys )
     end]]--
     AddModifierStackCount( caster, caster, ability, "modifier_blade_dance_attack_speed", 1, duration, true)
     -- 专属
-    if HasExclusive(caster) then
+    if HasExclusive(caster,4) then
         local stack = caster:GetModifierStackCount("modifier_blade_dance_attack_speed", caster)
         SetUnitDamagePercent(caster,stack * 0.5,duration)
         SetUnitIncomingDamageReduce(caster,stack * 0.25,duration)
@@ -308,8 +308,10 @@ function OnAttackLanded( t )
     local target = t.target
     local ability = t.ability
     local armor = target:GetPhysicalArmorBaseValue()
-    target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() - armor)
-    Timers:CreateTimer(0.5,function (  )
-        target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + armor)
-    end)
+    if HasExclusive(caster,3) then
+        target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() - armor)
+        Timers:CreateTimer(0.5,function (  )
+            target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + armor)
+        end)
+    end
 end

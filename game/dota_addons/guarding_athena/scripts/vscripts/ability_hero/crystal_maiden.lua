@@ -15,6 +15,14 @@ function FrostSigilCast( t )
         end
     end
 end
+function OnSpellStart( t )
+    local caster = t.caster
+    local ability = t.ability
+    local abilityIndex = ability:GetAbilityIndex()
+    if abilityIndex == 0 then
+        FrostSigil( caster,t.target:GetAbsOrigin() )
+    end
+end
 function FrostSigil( caster,position )
     local particle = CreateParticle("particles/heroes/crystal_maiden/frost_sigil_gound_b.vpcf",PATTACH_ABSORIGIN,caster,10)
     ParticleManager:SetParticleControl( particle, 0, position )
@@ -175,7 +183,7 @@ function Snowstorm( t )
     local ability = t.ability
     local damageType = ability:GetAbilityDamageType()
     local target_location = t.target_points[1]
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect()
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
     local slowDuration = ability:GetSpecialValueFor("slow_duration")
     local singleRadius = ability:GetSpecialValueFor("single_radius") + (10 * caster.FrostSigil)
     local radius = ability:GetSpecialValueFor("radius")

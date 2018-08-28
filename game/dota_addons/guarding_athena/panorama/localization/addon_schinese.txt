@@ -48,6 +48,7 @@
 	"DemonButton"							"噩梦"
 	"TeamButton"							"团队"
 	"NoSelect"								"未选择"
+	"SelectHero"							"选择英雄"
 	"EasyDifficulty"						"难度：简单"
 	"NormalDifficulty"						"难度：普通"
 	"HardDifficulty"						"难度：困难"

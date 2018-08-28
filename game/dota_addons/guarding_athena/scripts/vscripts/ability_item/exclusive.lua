@@ -4,6 +4,7 @@ function OnCreated( t )
     local ability = t.ability
     caster:AddNewModifier(caster, ability, "exclusive", nil)
     SetModifierType(caster,"exclusive","unpurgable")
+    caster.exclusive = ability
 end
 function OnDestroy( t )
     local caster = t.caster

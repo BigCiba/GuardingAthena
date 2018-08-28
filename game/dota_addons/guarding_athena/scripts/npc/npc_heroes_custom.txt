@@ -386,7 +386,7 @@
 		"Ability22"	"tt6"
 		"Ability23"	"tt7"
 		"Ability24"	"tt8"
-		"AttackRange"	"600"
+		"AttackRange"	"700"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"ProjectileModel"	"particles/skills/ignite_attack.vpcf"
 		"ProjectileSpeed"	"900"

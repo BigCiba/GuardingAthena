@@ -7016,7 +7016,7 @@
 	"captain_guai_17"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/lycan/ultimate/blood_moon_hunter_shapeshift_form/blood_moon_hunter_shapeshift_form.vmdl"
+		"Model"	"models/items/lycan/ultimate/thegreatcalamityti4/thegreatcalamityti4.vmdl"
 		// 音效文件
 		"SoundSet"	"Creep_Bad_Melee"
 		// 模型大小

@@ -13,10 +13,12 @@
 	DeepCopy(table)
 	DropItem(item,hero)
 	ForWithInterval(count,interval,callback)
+	GetExclusive(caster)
 	GetUnitsInRadius(caster,ability,point,radius)
 	GetUnitsInLine(caster,ability,start_point,end_point,width)
 	GetUnitsInSector(cacheUnit,ability,position,forwardVector,angle,radius)
 	GetRandomPoint(originPoint, minRadius, maxRadius)
+	GetRandomUnit(caster, ability, originPoint, radius)
 	GetRebornCount(caster)
 	GetRotationPoint(originPoint, radius, angle)
 	GiveItem(caster,itemName,itemOwner)
@@ -276,6 +278,12 @@ function CreateLinearProjectile( ... )
 	    } )
 	return projID
 end
+-- 获取专属装备
+function GetExclusive( ... )
+	local caster = ...
+	local exclusive = caster.exclusive or false
+	return exclusive
+end
 -- 寻找圆形范围单位
 function GetUnitsInRadius( ... )
 	local caster,ability,point,radius = ...
@@ -456,10 +464,20 @@ function GetRandomPoint( ... )
     attackPoint = Vector( originPoint.x - dx, originPoint.y + dy, originPoint.z )
     return attackPoint
 end
+function GetRandomUnit( ... )
+	local caster,ability,originPoint,radius = ...
+	local unitGroup = GetUnitsInRadius(caster,ability,originPoint,radius)
+	if #unitGroup > 0 then
+		local index = RandomInt(1, #unitGroup)
+		return unitGroup[index]
+	else
+		return false
+	end
+end
 -- 获取单位转生次数
 function GetRebornCount( ... )
 	local caster = ...
-	return caster.reborn_time
+	return caster.reborn_time or 0
 end
 -- 获取旋转后的点
 function GetRotationPoint( ... )
@@ -593,8 +611,10 @@ end
 function SetModifierType( ... )
 	local caster,buffName,type = ...
 	local buff = caster:FindModifierByName(buffName)
-	if not buff.type then buff.type = {} end
-	buff.type[type] = true
+	if buff then
+		if not buff.type then buff.type = {} end
+		buff.type[type] = true
+	end
 end
 -- 设置单位位置
 function SetUnitPosition( ... )

@@ -380,7 +380,8 @@ function GuardingAthena:ModifyExperienceFilter( keys )
 	local hero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 	local reborntimes = hero.reborn_time or 0
 	if hero:GetLevel() >= (reborntimes + 1) * 100 then
-		return false
+		keys.experience = 0
+		return true
 	end
 	if keys.reason_const == 2 then
 		if hero.reborn_time then

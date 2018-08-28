@@ -14,11 +14,6 @@ function OnCreated( t )
 	elseif abilityIndex == 4 then
 		caster.ultimate = ability:GetSpecialValueFor("damage")
 		caster.bonusbuff = ability:GetSpecialValueFor("attack")
-		if HasExclusive(caster,1) then
-			caster.hasitem = 0.5
-		else
-			caster.hasitem = 1
-		end
 		ability.effect = PlayEffect( caster,4 )
 		--print(caster.ultimate)
 	end
@@ -116,7 +111,7 @@ function OnIntervalThink( t )
 		caster:SetModifierStackCount("modifier_fire_spirit_4_buff",caster,attack)
 		if caster:GetHealth() > expend_health * 10 then
 			if not caster:IsMagicImmune() then
-				caster:SetHealth(caster:GetHealth() - expend_health * caster.hasitem)
+				caster:SetHealth(caster:GetHealth() - expend_health)
 			end
 		else
 			local t_order = 
@@ -183,6 +178,7 @@ function DealDamage( caster,unitGroup,damage,group )
 	if group then
 		for k,v in pairs(unitGroup) do
 			local stackcount = v.firemark or 0
+			if stackcount > 200 then stackcount = 200 end
 			damage = damage * (1 + stackcount * 0.01) * ultimate
 			CauseDamage(caster,v,damage,DAMAGE_TYPE_PHYSICAL,ability)
 			if caster.bonusdamage then
@@ -192,6 +188,7 @@ function DealDamage( caster,unitGroup,damage,group )
 		end
 	else
 		local stackcount = unitGroup.firemark or 0
+		if stackcount > 200 then stackcount = 200 end
 		damage = damage * (1 + stackcount * 0.01) * ultimate
 		CauseDamage(caster,unitGroup,damage,DAMAGE_TYPE_PHYSICAL)
 		if caster.bonusdamage then
@@ -286,7 +283,7 @@ function CastAbility1( t )
 	local ability = t.ability
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin()
-	local damage = 2 * caster:GetAverageTrueAttackDamage(caster) * ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("base_damage")
+	local damage = caster:GetAverageTrueAttackDamage(caster) * ability:GetSpecialValueFor("damage") + ability:GetSpecialValueFor("base_damage")
 	local center = Vector((caster_location.x + target_location.x) * 0.5, (caster_location.y + target_location.y) * 0.5,caster_location.z)
 	local radius = 600
 	-- unit filter
@@ -361,6 +358,16 @@ function CastAbility1( t )
 			OnDealDamage({caster = caster,target = target,ability = ability_0})
 			caster:PerformAttack( target, true, true, true, false, false, false, true )
 			DealDamage( caster,target,damage,false )
+			-- 刷新技能
+			if caster:HasModifier("modifier_fire_spirit_1_3") then
+				local stack = caster:GetModifierStackCount("modifier_fire_spirit_1_3", caster)
+				if stack > 1 then
+					caster:SetModifierStackCount("modifier_fire_spirit_1_3", caster, caster:GetModifierStackCount("modifier_fire_spirit_1_3", caster) - 1)
+				else
+					caster:RemoveModifierByName("modifier_fire_spirit_1_3")
+				end
+				ability:EndCooldown()
+			end
 		end
 	end)
 end
@@ -399,4 +406,23 @@ function CastAbility2( t )
 		ability.power = ability.power + 0.2
 		return 0.1
 	end)
+end
+function OnExclusiveCreated( t )
+	local caster = t.caster
+	local ability = caster:FindAbilityByName("fire_spirit_1")
+	ability.exclusive_timer = Timers:CreateTimer(function ()
+		if HasExclusive(caster,1) then
+			if caster:GetModifierStackCount("modifier_fire_spirit_1_3", caster) < 2 then
+				ability:ApplyDataDrivenModifier(caster, caster, "modifier_fire_spirit_1_3", nil)
+				AddModifierStackCount(caster,caster,ability,"modifier_fire_spirit_1_3",1)
+			end
+		end
+		return 8
+	end)
+end
+function OnExclusiveDestroy( t )
+	local caster = t.caster
+	local ability = caster:FindAbilityByName("fire_spirit_1")
+	Timers:RemoveTimer(ability.exclusive_timer)
+	caster:RemoveModifierByName("modifier_fire_spirit_1_3")
 end

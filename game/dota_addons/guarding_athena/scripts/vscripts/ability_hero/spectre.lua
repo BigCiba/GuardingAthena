@@ -5,7 +5,9 @@ LinkLuaModifier("modifier_spectre_health","modifiers/hero/modifier_spectre_healt
 function OnCreated( t )
     local caster = t.caster
     local ability = t.ability
-    if ability:GetAbilityIndex() == 2 then
+    if ability:GetAbilityIndex() == 0 then
+        ability.cooldown_reduce = false
+    elseif ability:GetAbilityIndex() == 2 then
         ability.damageRecorder = 0
     elseif ability:GetAbilityIndex() == 3 then
         ability.canTrigger = true
