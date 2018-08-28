@@ -75,17 +75,24 @@
 		],
 		"description": "Create a linear projectile, return particle id"
 	},
+	"GetExclusive": {
+		"prefix": "GetExclusive",
+		"body": [
+			"GetExclusive(${caster})"
+		],
+		"description": "获取专属装备"
+	},
 	"GetUnitsInRadius": {
 		"prefix": "GetUnitsInRadius",
 		"body": [
-			"local unitGroup = GetUnitsInRadius(${caster},${ability},${point},${radius})"
+			"GetUnitsInRadius(${caster},${ability},${point},${radius})"
 		],
 		"description": "Get Units In Radius, return unit group"
 	},
 	"GetUnitsInLine": {
 		"prefix": "GetUnitsInLine",
 		"body": [
-			"local unitGroup = GetUnitsInLine(${caster},${ability},${start_point},${end_point},${width})"
+			"GetUnitsInLine(${caster},${ability},${start_point},${end_point},${width})"
 		],
 		"description": "Find Units In Sector, return unit group"
 	},
@@ -106,7 +113,7 @@
 	"GetUnitsInSector": {
 		"prefix": "GetUnitsInSector",
 		"body": [
-			"local unitGroup = GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
+			"GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
 		],
 		"description": "Find Units In Sector, return unit group"
 	},
@@ -123,6 +130,13 @@
 			"SetCamera(${playerID},${arg})"
 		],
 		"description": "Set camera on unit or position"
+	},
+	"SetParticleControl": {
+		"prefix": "SetParticleControl",
+		"body": [
+			"ParticleManager:SetParticleControl( ${p}, ${cp}, ${vector})"
+		],
+		"description": "设置控制点"
 	},
 	"DropItem": {
 		"prefix": "DropItem",
@@ -176,7 +190,7 @@
 	"Heal": {
 		"prefix": "Heal",
 		"body": [
-			"DropItem(${caster},${heal},${mana},${show})"
+			"Heal(${caster},${heal},${mana},${show})"
 		],
 		"description": "Heal health and mana"
 	},
@@ -242,6 +256,20 @@
 			"PrintTable(${t})"
 		],
 		"description": "打印表"
+	},
+	"GetRandomPoint": {
+		"prefix": "GetRandomPoint",
+		"body": [
+			"GetRandomPoint(${originPoint},${minRadius},${maxRadius})"
+		],
+		"description": "GetRandomPoint"
+	},
+	"GetRandomUnit": {
+		"prefix": "GetRandomUnit",
+		"body": [
+			"GetRandomUnit(${caster},${ability},${originPoint},${radius})"
+		],
+		"description": "GetRandomUnit"
 	},
 	"GetRotationPoint": {
 		"prefix": "GetRotationPoint",
