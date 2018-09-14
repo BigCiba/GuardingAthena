@@ -1006,16 +1006,14 @@ function Reborn_1( keys )
         caster.currentHero.can_reborn = true
     end
 end
-function Gem( keys )
-    local caster = keys.caster
+function Gem( t )
+    local caster = t.caster
     --caster:AddNewModifier(nil, nil, "modifier_truesight", {duration=1})
-    local ability = keys.ability
-    local targetTeam = ability:GetAbilityTargetTeam()
-    local targetType = ability:GetAbilityTargetType()
-    local targetFlag = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
-    local unitGroup = FindUnitsInRadius( caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 1100,targetTeam, targetType, targetFlag, 0, false )
+    local ability = t.ability
+    local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),1100)
     for k, v in pairs( unitGroup ) do
-        v:AddNewModifier(nil, nil, "modifier_truesight", {duration=1})
+        ability:ApplyDataDrivenModifier(caster, v, "modifier_item_gem_truesight", {duration=1})
+        --v:AddNewModifier(nil, nil, "modifier_truesight", {duration=1})
     end
 end
 function JianJiaCreate( t )

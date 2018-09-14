@@ -14,7 +14,7 @@
                 <Panel id="GoldIcon" />
             </Button>
             <Button id="TeleportButton" onactivate="OnTeleportClick()" onmouseover="DOTAShowTextTooltip(#hg)" onmouseout="DOTAHideTextTooltip()">
-                <Label id="TeleportLabel" class="ShopButtonValueLabel" text="回程" />
+                <Label id="TeleportLabel" class="ShopButtonValueLabel" text="#hg_button" />
                 <Panel id="GlyphIcon" />
             </Button>
         </Panel>

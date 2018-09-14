@@ -8,43 +8,28 @@
 	-左上任务标题
 	-练功房积分
 	-召唤沙王
-
 	使用：
 	-在游戏开始前Spawner:Init()
 	-在第一次开始刷怪的时间使用Spawner:AutoSpawn()
 ]]
 if Spawner == nil then
-  	--print ( '[Spawner] creating Spawner' )
-  	Spawner = {}
-  	Spawner.__index = Spawner
-	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(Spawner, 'OnGameRulesStateChange'), self)
-	ListenToGameEvent('entity_killed', Dynamic_Wrap(Spawner, 'OnUnitKilled'), self)
+	--print ( '[Spawner] creating Spawner' )
+	Spawner = {}
+	Spawner.__index = Spawner
 end
 -- 初始化
 function Spawner:Init()
-	--print ( '[Spawner] Spawner Init' )
-	self:ReadKeyValue()
-	self:Setting()
-	self:AttackOnTarget()
-	self:QuestCountDown()
-end
--- 开始刷怪
-function Spawner:OnGameRulesStateChange()
-	local gameState = GameRules:State_Get()
-	if gameState == DOTA_GAMERULES_STATE_PRE_GAME then
-		--初始化刷怪
-		Spawner:Init()
-	end
-	if gameState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		-- 开始刷怪
-		Spawner:AutoSpawn()
-		Spawner:NatureStart()
-	end
+  --print ( '[Spawner] Spawner Init' )
+  self:ReadKeyValue()
+  self:Setting()
+  self:AttackOnTarget()
+  self:QuestCountDown()
+  ListenToGameEvent('entity_killed', Dynamic_Wrap(Spawner, 'OnUnitKilled'), self)
 end
 -- 读取kv数据
 function Spawner:ReadKeyValue()
-	--print ( '[Spawner] Spawner ReadKeyValue' )
-	self.kvTable = LoadKeyValues("scripts/kv/spawn_info.kv")
+  --print ( '[Spawner] Spawner ReadKeyValue' )
+  self.kvTable = LoadKeyValues("scripts/kv/spawn_info.kv")
 end
 -- 设定数据
 function Spawner:Setting()

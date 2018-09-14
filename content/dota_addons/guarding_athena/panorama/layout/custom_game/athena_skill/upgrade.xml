@@ -10,13 +10,13 @@
     <Panel class="UpgradePanel" hittest="false">
         <Panel id="UpgradeBG">
             <Button id="HpButton" class="UpgradeButton" onactivate="HpButton()" ondblclick="HpButtonDoubleClick()" onmouseover="DOTAShowTextTooltip(#hp_tip)" onmouseout="OnHpMouseOut()">
-                <Label class="ShopButtonValueLabel" text="生命" />
+                <Label class="ShopButtonValueLabel" text="#hp_button" />
             </Button>
             <Button id="ArmorButton" class="UpgradeButton" onactivate="ArmorButton()" ondblclick="ArmorButtonDoubleClick()" onmouseover="DOTAShowTextTooltip(#armor_tip)" onmouseout="OnArmorMouseOut()">
-                <Label class="ShopButtonValueLabel" text="护甲" />
+                <Label class="ShopButtonValueLabel" text="#armor_button" />
             </Button>
             <Button id="RegenButton" class="UpgradeButton" onactivate="RegenButton()" ondblclick="RegenButtonDoubleClick()" onmouseover="DOTAShowTextTooltip(#regen_tip)" onmouseout="OnRegenMouseOut()">
-                <Label class="ShopButtonValueLabel" text="回复" />
+                <Label class="ShopButtonValueLabel" text="#regen_button" />
             </Button>
         </Panel>
     </Panel>

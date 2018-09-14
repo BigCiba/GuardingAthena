@@ -28,7 +28,7 @@ function ChronosMagic( t )
     local caster_location = caster:GetAbsOrigin()
     local target_location = t.target_points[1]
     local damageType = t.ability:GetAbilityDamageType()
-    local pull_damage = ability:GetSpecialValueFor("pull_damage")
+    local pull_damage = ability:GetSpecialValueFor("pull_damage") * caster:GetIntellect() * 0.01 + 20 * ability:GetSpecialValueFor("pull_damage")
     local pull_bonus = ability:GetSpecialValueFor("pull_bonus")
     local open_damage = ability:GetSpecialValueFor("open_damage") * caster:GetIntellect()
     local duration = ability:GetSpecialValueFor("duration")
@@ -77,7 +77,7 @@ function TransferMatrix( t )
 	local ability = t.ability
     local target_location = t.target_points[1]
     local caster_location = caster:GetAbsOrigin()
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect()
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
     local damageType = ability:GetAbilityDamageType()
     local delay = ability:GetSpecialValueFor("delay")
     local radius = ability:GetSpecialValueFor("radius")
@@ -114,7 +114,7 @@ function SpaceBarrier( t )
 	local ability = t.ability
 	local target_location = t.target_points[1]
     local caster_location = caster:GetAbsOrigin()
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect()
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
     local damageType = ability:GetAbilityDamageType()
     local delay = ability:GetSpecialValueFor("delay")
     local radius = ability:GetSpecialValueFor("radius")
@@ -171,7 +171,7 @@ function Fluctuation( t )
 	local ability = t.ability
     local target_location = t.target_points[1]
     local caster_location = caster:GetAbsOrigin()
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect()
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetIntellect() + ability:GetSpecialValueFor("base_damage")
     local damageType = ability:GetAbilityDamageType()
     local radius = ability:GetSpecialValueFor("radius")
     local particleName = "particles/heroes/chronos_magic/fluctuation.vpcf"

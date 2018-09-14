@@ -312,9 +312,10 @@ function OnSpellStart( t )
         local heal = ability:GetSpecialValueFor("heal")
         local damage = ability:GetSpecialValueFor("damage_active") * healthCost
         local damageType = ability:GetAbilityDamageType()
-        ability.no_damage_filter = true
+        RemoveHealth(caster,healthCost)
+        --[[ability.no_damage_filter = true
         CauseDamage(caster,caster,healthCost,DAMAGE_TYPE_PURE,ability)
-        ability.no_damage_filter = nil
+        ability.no_damage_filter = nil]]
         -- damage max
         ability.damageRecorder = ability.damageRecorder + ability:GetSpecialValueFor("damage_add") * 6
         CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,0.5)

@@ -10,7 +10,8 @@ function OnCreated( t )
     caster.mystletainn_timer = Timers:CreateTimer(function ()
         local absorbHealth = absorbPercent * caster:GetMaxHealth()
         if caster:IsAlive() and caster:GetHealth() > absorbHealth then
-            CauseDamage(caster,caster,absorbHealth,DAMAGE_TYPE_PURE,ability)
+            --CauseDamage(caster,caster,absorbHealth,DAMAGE_TYPE_PURE,ability)
+            RemoveHealth(caster,absorbHealth)
             caster.mystletainn_attack = caster.mystletainn_attack + attackAdd
             caster:SetBaseDamageMax(caster.mystletainn_attack)
             caster:SetBaseDamageMin(caster.mystletainn_attack)

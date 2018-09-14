@@ -33,6 +33,7 @@
 	PrintTable(table)
 	RemoveDamageFilterAttacker(caster,name)
 	RemoveDamageFilterVictim(caster,name)
+	RemoveHealth(caster,health)
 	RollDrops(unit)
 	SetMaxHealth(caster,value)
 	SetModelScale(caster,scale,smooth,duration)
@@ -386,6 +387,16 @@ end
 function RemoveDamageFilterVictim( ... )
 	local caster,name = ...
 	caster.DamageFilterVictim[name] = nil
+end
+-- 生命移除
+function RemoveHealth( ... )
+	local caster,health = ...
+	local currentHealth = caster:GetHealth()
+	if currentHealth > health then
+		caster:SetHealth(currentHealth - health)
+	else
+		caster:SetHealth(1)
+	end
 end
 -- 随机掉落物品
 function RollDrops(unit)

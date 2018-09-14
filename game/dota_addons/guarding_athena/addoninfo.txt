@@ -13,7 +13,7 @@
 	{
 		"01"
 		{
-			"Key"		"J"
+			"Key"		"B"
 			"Command"		"HG"
 			"Name"		"Execute Ability 1"
 		}

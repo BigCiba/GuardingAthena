@@ -1,0 +1,114 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/hero_select.css" />
+        <include src="file://{resources}/styles/custom_game/generic.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/hero_select.js" />
+        <include src="file://{resources}/scripts/custom_game/md5.js" />
+    </scripts>
+
+    <Panel class="full" hittest="false">
+        <Panel id="HeroSelectionBackground" hittest="false">
+            <!--<DOTAScenePanel hittest="false" id="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>-->
+        
+            <DOTAScenePanel hittest="false" id="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
+            <Panel class="ExitGameOverlay" hittest="false"/>
+            <Panel id="LeftSide">
+            <!--左侧界面-->
+                <Label id="PlayersLabel" text="#PlayerHeader" class="BlueLabel"/>
+                <Panel class="HorizonLine" tabindex="auto" />
+                <!--玩家列表文本-->
+                <Panel id="PlayersContent" class="TeamPanel"/>
+                <!--玩家内容-->
+            </Panel>
+            <Panel id="LeftDownSide">
+            <!--左下界面-->
+                <Label id="HardSelectLabel" text="#HardSelect" class="BlueLabel"/>
+                <Panel class="HorizonLine" tabindex="auto" />
+                <Panel id="HardSelectPlane">
+                    <Button id="EasyButton" class="NoColor">
+                        <Label text="#EasyButton" class="DifficultyLabel"/>
+                    </Button>
+                    <Button id="NormalButton" class="NoColor">
+                        <Label text="#NormalButton" class="DifficultyLabel"/>
+                    </Button>
+                    <Button id="HardButton" class="NoColor">
+                        <Label text="#HardButton" class="DifficultyLabel"/>
+                    </Button>
+                    <Button id="DemonButton" class="NoColor">
+                        <Label text="#DemonButton" class="DifficultyLabel"/>
+                    </Button>
+                    <Button id="TeamButton" class="NoColor">
+                        <Label text="#TeamButton" class="DifficultyLabel"/>
+                    </Button>
+                    <Image id="DifficultyTip" src="file://{images}/custom_game/help.png" onmouseover="DOTAShowTextTooltip(#difficulty_tip)" onmouseout="DOTAHideTextTooltip()"/> 
+                </Panel>
+            </Panel>
+            <Panel id="HeroesScene">
+                <!--中间英雄界面-->
+                 <Label id="HeroName" class="YellowLabel"></Label>
+                 <DOTAScenePanel id="InspectHeroModelEffect" class="SceneLoaded" hittest="false" map="scenes/inspect_hero_model_effect" camera="camera_1" />
+                 <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>
+                <!--英雄名字-->
+            </Panel>
+            <Panel id="HeroConfirm">
+                <Button id="HeroConfirmButton" onmouseover="OnHeroConfirmOver()" onmouseout="OnHeroConfirmOut()" onactivate="OnHeroConfirmClick()">
+                    <Label text="#SelectHero" class="DifficultyLabel"/>
+                </Button>
+                <Label id="TimerText"/>
+            </Panel>
+            <Panel id="HeroAbilities">
+                <!--英雄技能-->
+            </Panel>
+            <Panel id="HeroSelectionTopGradient" hittest="false"/>
+            <!--英雄选择顶部渐变-->
+            <Panel id="RightSide">
+            <!--右侧界面-->
+                <Label class="BlueLabel" text="#HeroListHeader"></Label>
+                <Panel class="HorizonLine" tabindex="auto" />
+                <Panel id="HeroListCol">
+                <!--英雄头像列表-->
+                    <!--蓝色文字面板类，用来显示文字：选择英雄-->
+                    <Panel class="HeroListRow">
+                    <!--英雄头像列表-->
+                        <!--蓝色文字面板类，用来显示文字：选择英雄-->
+                        <DOTAHeroMovie id="npc_dota_hero_omniknight" class="HeroCard" heroname="npc_dota_hero_omniknight"/>
+                        <DOTAHeroMovie id="npc_dota_hero_windrunner" class="HeroCard" heroname="npc_dota_hero_windrunner"/>
+                        <DOTAHeroMovie id="npc_dota_hero_phantom_assassin" class="HeroCard" heroname="npc_dota_hero_phantom_assassin"/>
+                        <DOTAHeroMovie id="npc_dota_hero_rubick" class="HeroCard" heroname="npc_dota_hero_rubick"/>
+                        <DOTAHeroMovie id="npc_dota_hero_juggernaut" class="HeroCard" heroname="npc_dota_hero_juggernaut"/>
+                    </Panel>
+                    <Panel class="HeroListRow">
+                    <!--英雄头像列表-->
+                        <!--蓝色文字面板类，用来显示文字：选择英雄-->
+                        <DOTAHeroMovie id="npc_dota_hero_antimage" class="HeroCard" heroname="npc_dota_hero_antimage"/>
+                        <DOTAHeroMovie id="npc_dota_hero_lina" class="HeroCard" heroname="npc_dota_hero_lina"/>
+                        <DOTAHeroMovie id="npc_dota_hero_legion_commander" class="HeroCard" heroname="npc_dota_hero_legion_commander"/>
+                        <DOTAHeroMovie id="npc_dota_hero_ember_spirit" class="HeroCard" heroname="npc_dota_hero_ember_spirit"/>
+                        <DOTAHeroMovie id="npc_dota_hero_crystal_maiden" class="HeroCard" heroname="npc_dota_hero_crystal_maiden"/>
+                    </Panel>
+                    <Panel class="HeroListRow">
+                    <!--英雄头像列表-->
+                        <!--蓝色文字面板类，用来显示文字：选择英雄-->
+                        <DOTAHeroMovie id="npc_dota_hero_nevermore" class="HeroCard" heroname="npc_dota_hero_nevermore"/>
+                        <DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin"/>
+                        <DOTAHeroMovie id="npc_dota_hero_monkey_king" class="HeroCard" heroname="npc_dota_hero_monkey_king"/>
+                        <DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre"/>
+                    </Panel>
+                </Panel>
+                <Panel class="BottomHorizonLine" tabindex="auto" />
+                <Panel id="PassWordPanel">
+                    <Label text="#PasswordInput" class="PassWordTitle"></Label>
+                    <Label text="#PasswordTip1" class="PassWordTip"></Label>
+                    <TextEntry id="password" class="TextEntry" maxchars="100" placeholder="#PasswordTip3" oninputsubmit="OnSubmitted()" />
+                    <Label text="#PasswordTip2" class="PassWordTip"></Label>
+                    <Button id="PassWordButton">
+                        <!--<Label html="true" text="&lt;a href=&quot;http://www.17wanba.cc/thread-5170-1-1.html&quot;&gt;点击领取&lt;a&gt;" class="HtmlText"/>-->
+                    </Button>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

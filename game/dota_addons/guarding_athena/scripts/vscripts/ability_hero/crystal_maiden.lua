@@ -206,8 +206,13 @@ function Snowstorm( t )
             end
             for i=1,bonus do
                 local point = GetRandomPoint( target_location, 0, radius )
-                local particle = CreateParticle( "particles/heroes/crystal_maiden/snowstorm.vpcf", PATTACH_ABSORIGIN, caster )
-                ParticleManager:SetParticleControl( particle, 0, point )
+                local rate = 110 - caster.FrostSigil * 12
+                if rate > 100 then rate = 100 end
+                if rate < 8 then rate = 8 end
+                if RollPercentage(rate) then
+                    local particle = CreateParticle( "particles/heroes/crystal_maiden/snowstorm.vpcf", PATTACH_ABSORIGIN, caster )
+                    ParticleManager:SetParticleControl( particle, 0, point )
+                end
                 EmitSoundOnLocationForAllies(target_location, "Hero_Morphling.attack", caster)
                 --ParticleManager:SetParticleControl( particle, 1, point+Vector(0,0,600) )
                 Timers:CreateTimer(0.5,function ()
