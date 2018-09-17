@@ -15050,7 +15050,7 @@
 		"HotKeyOverride"	"Q"
 		"MaxLevel"	"1"
 		"AbilityCooldown"	"15"
-		"AbilityCastRange"	"600"
+		"AbilityCastRange"	"1200"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_tusk/tusk_frozen_sigil.vpcf"

@@ -1008,12 +1008,10 @@ function Reborn_1( keys )
 end
 function Gem( t )
     local caster = t.caster
-    --caster:AddNewModifier(nil, nil, "modifier_truesight", {duration=1})
     local ability = t.ability
     local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),1100)
     for k, v in pairs( unitGroup ) do
-        ability:ApplyDataDrivenModifier(caster, v, "modifier_item_gem_truesight", {duration=1})
-        --v:AddNewModifier(nil, nil, "modifier_truesight", {duration=1})
+        v:AddNewModifier(caster, ability, "modifier_truesight", {duration=1})
     end
 end
 function JianJiaCreate( t )

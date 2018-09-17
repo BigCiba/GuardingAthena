@@ -15,7 +15,7 @@ function Anneal( keys )
 		CreateParticle("particles/items_fx/aegis_respawn.vpcf",PATTACH_ABSORIGIN,caster,5)
 		caster:SetHealth(caster:GetMaxHealth())
 		return 0
-    end
+	end
 end
 function SingleHero( keys )
 	local caster = keys.caster

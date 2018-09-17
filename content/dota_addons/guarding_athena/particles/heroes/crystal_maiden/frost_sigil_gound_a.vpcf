@@ -1,8 +1,8 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf10:version{b5ef673d-0450-4fb0-a91b-bacae6864827} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 32
+	m_nMaxParticles = 8
 	m_flConstantLifespan = 2.0
 	m_Renderers = 
 	[
@@ -25,7 +25,7 @@
 		},
 		{
 			_class = "C_OP_OscillateScalar"
-			m_nField = 16
+			m_nField = "16"
 			m_RateMin = 0.2
 			m_RateMax = 1.0
 			m_FrequencyMin = 0.1
@@ -37,15 +37,17 @@
 			_class = "C_OP_MovementPlaceOnGround"
 			m_flOffset = 10.0
 			m_bIncludeWater = true
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.75
 		},
 		{
 			_class = "C_OP_DistanceToCP"
 			m_flInputMin = 800.0
 			m_flInputMax = 1000.0
-			m_nFieldOutput = 16
+			m_nFieldOutput = "16"
 			m_flOutputMin = 1.0
 			m_flOutputMax = 0.0
 		},
@@ -53,15 +55,19 @@
 			_class = "C_OP_RampScalarLinearSimple"
 			m_flEndTime = 9999999.0
 			m_Rate = -1.0
-			m_nField = 7
+			m_nField = "7"
 			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, -1.0 ]
 		},
 	]
 	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_CreateSequentialPath"
-			m_flNumToAssign = 20.0
+			m_flNumToAssign = 8.0
 			m_PathParams = 
 			{
 				m_nEndControlPointNumber = 3
@@ -78,26 +84,34 @@
 			m_flRadiusMax = 300.0
 		},
 		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ -50.0, -50.0, 0.0 ]
-			m_OffsetMax = [ 50.0, 50.0, 0.0 ]
-		},
-		{
 			_class = "C_INIT_RandomColor"
 			m_ColorMax = [ 152, 186, 255, 255 ]
 			m_ColorMin = [ 186, 208, 255, 255 ]
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 8.0
-			m_fLifetimeMax = 8.0
-		},
-		{
-			_class = "C_INIT_RandomYawFlip"
+			m_fLifetimeMin = 6.0
+			m_fLifetimeMax = 6.0
 		},
 		{
 			_class = "C_INIT_RandomSequence"
 			m_nSequenceMax = 2
+		},
+		{
+			_class = "C_INIT_Orient2DRelToCP"
+			m_flRotOffset = 180.0
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ -50.0, -50.0, 25.0 ]
+			m_OffsetMax = [ 50.0, 50.0, 25.0 ]
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
 		},
 		{
 			_class = "C_INIT_DistanceToCPInit"
@@ -113,18 +127,10 @@
 			m_bScaleInitialRange = true
 			m_flOutputMax = 0.0
 			m_flOutputMin = 1.0
-			m_nFieldOutput = 7
+			m_nFieldOutput = "7"
 			m_flInputMax = 2000.0
 			m_flInputMin = 800.0
 			m_bDisableOperator = true
-		},
-		{
-			_class = "C_INIT_Orient2DRelToCP"
-			m_flRotOffset = 180.0
-			m_bDisableOperator = true
-		},
-		{
-			_class = "C_INIT_RandomRotation"
 		},
 	]
 	m_Emitters = 
@@ -133,6 +139,30 @@
 			_class = "C_OP_ContinuousEmitter"
 			m_flEmitRate = 8.0
 			m_flEmissionDuration = 3.0
+		},
+	]
+	m_nBehaviorVersion = 6
+	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
 		},
 	]
 }

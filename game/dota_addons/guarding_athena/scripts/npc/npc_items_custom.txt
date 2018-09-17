@@ -13885,59 +13885,56 @@
 		}
 	}
 
-	// "item_gem"
-	// {
-	// General
-	// -------------------------------------------------------------------------------------------------------------
-	// "BaseClass"	"item_datadriven"
-	// "AbilityTextureName"	"item_gem"
-	// "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	// "AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	// "AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	// "FightRecapLevel"	"1"
-	// "AbilityCastPoint"	"0.0"
-	// "AbilityCooldown"	"10"
-	// "AbilityManaCost"	"0"
-	// Stats
-	// -------------------------------------------------------------------------------------------------------------
-	// "AbilityCastRange"	"0"
-	// Valve's version of this item uses the ID "1".
-	// "ID"	"1686"
-	// "ItemQuality"	"component"
-	// "Model"	"models/props_gameplay/red_box.vmdl"
-	// "Effect"	"particles/generic_gameplay/dropped_item.vpcf"
-	// Item Info
-	// -------------------------------------------------------------------------------------------------------------
-	// "ItemCost"	"900"
-	// "ItemDroppable"	"1"
-	// "ItemSellable"	"1"
-	// "ItemShareability"	"ITEM_FULLY_SHAREABLE"
-	// 是否可购买
-	// "ItemPurchasable"	"1"
-	// "ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-	// "ItemKillable"	"0"
-	// "ItemRequirements"	{}
-	// "Modifiers"
-	// {
-	// "modifier_item_gem"
-	// {
-	// "IsDebuff"	"0"
-	// "States"	{}
-	// "Passive"	"0"
-	// "IsHidden"	"1"
-	// "Properties"	{}
-	// "OnIntervalThink"
-	// {
-	// "RunScript"
-	// {
-	// "ScriptFile"	"scripts/vscripts/ability_item.lua"
-	// "Function"	"Gem"
-	// }
-	// }
-	// "ThinkInterval"	"1"
-	// }
-	// }
-	// }
+	"item_gem"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_gem"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0."
+		// Valve's version of this item uses the ID "1".
+		"ID"	"1686"
+		"ItemQuality"	"component"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"900"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		// 是否可购买
+		"ItemPurchasable"	"1"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemKillable"	"0"
+		"ItemStockTime"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_gem"
+			{
+				"IsDebuff"	"0"
+				"States"	{}
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"	{}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"Gem"
+					}
+				}
+				"ThinkInterval"	"1"
+			}
+		}
+	}
+
 	"item_npc_dota_hero_rubick"
 	{
 		// General
