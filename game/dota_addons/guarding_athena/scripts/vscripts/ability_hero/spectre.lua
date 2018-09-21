@@ -193,8 +193,11 @@ function OnTakeDamage( t )
         local health = math.ceil(caster:GetMaxHealth() * 0.01)
         local healAmount = caster:GetStrength() * 0.01 * heal * (100 - caster:GetHealthPercent())
         local percent = t.DamageTaken / caster:GetMaxHealth()
+        -- damge percent no less than limitation and no more than 1
         if percent < damage_limit then percent = damage_limit end
-        --Heal(caster,healAmount,0,false)
+        if percent > 1 then percent = 1 end
+        -- Heal(caster,healAmount,0,false)
+        -- damage record
         ability.damageRecorder = ability.damageRecorder + t.DamageTaken
         if ability.damageRecorder > caster:GetMaxHealth() then
             ability.damageRecorder = ability.damageRecorder - caster:GetMaxHealth()
@@ -205,10 +208,13 @@ function OnTakeDamage( t )
             caster:AddNewModifier(caster, ability, "modifier_spectre_health", {health=ability.health})
             caster:SetBaseHealthRegen(caster:GetBaseHealthRegen() + regen)
         end
+        -- damage
         local radius = ability:GetSpecialValueFor("radius")
+        local maxRadius = ability:GetSpecialValueFor("max_radius")
         local damage = math.ceil(percent * caster:GetStrength() * ability:GetSpecialValueFor("damage") * 100)
         local damageType = ability:GetAbilityDamageType()
         radius = radius + 300 * percent
+        if radius > maxRadius then radius = maxRadius end
         local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
         if ability.canTrigger then
             ability.canTrigger = false

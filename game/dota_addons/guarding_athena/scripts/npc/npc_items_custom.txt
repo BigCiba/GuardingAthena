@@ -9807,6 +9807,12 @@
 						"Target"	"TARGET"
 						"EffectName"	"DOTA_Item.BattleFury"
 					}
+					"ApplyModifier"
+					{
+						"Target"	"TARGET"
+						"ModifierName"	"modifier_item_fu_debuff"
+						"Duration"	"3"
+					}
 				}
 				"IsHidden"	"0"
 				"OnDestroy"
@@ -9818,6 +9824,14 @@
 					}
 				}
 				"TextureName"	"item_fu_5"
+			}
+			"modifier_item_fu_debuff"
+			{
+				"IsDebuff"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_SOFT_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
 		}
 		"AbilitySpecial"

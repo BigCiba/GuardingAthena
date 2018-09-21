@@ -230,16 +230,22 @@ end
 function Spawner:AttackOnTarget()
 	Timers:CreateTimer(function()
 		for k, v in pairs( self.unitRemaining ) do
-			if not v:IsNull() and v then
-				v:MoveToPositionAggressive(self.wayPoint)
+			if v then
+				if not v:IsNull() then
+					v:MoveToPositionAggressive(self.wayPoint)
+				end
 			end
 		end
 		if self.bossCurrent then
-			self.bossCurrent:MoveToPositionAggressive(self.wayPoint)
+			if not self.bossCurrent:IsNull() then
+				self.bossCurrent:MoveToPositionAggressive(self.wayPoint)
+			end
 		end
 		for k, v in pairs( self.specialRushUnitRemaining ) do
-			if not v:IsNull() and v then
-				v:MoveToPositionAggressive(self.wayPoint)
+			if v then
+				if not v:IsNull() then
+					v:MoveToPositionAggressive(self.wayPoint)
+				end
 			end
 		end
 		return self.attackOrderInterval
