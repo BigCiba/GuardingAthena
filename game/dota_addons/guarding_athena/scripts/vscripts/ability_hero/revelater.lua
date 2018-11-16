@@ -265,6 +265,9 @@ function Cooldown( t )
 	if stackcount > 0 then
 		ability:EndCooldown()
 		caster:SetModifierStackCount("modifier_revelater_cooldown",caster,stackcount - 1)
+	else
+		ability:EndCooldown()
+		ability:StartCooldown(4)
 	end
 	if ability.timer == nil then
 		ability.timer = Timers:CreateTimer(6,function ()
