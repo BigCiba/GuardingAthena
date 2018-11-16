@@ -1,34 +1,4 @@
 {
-	"Timers": {
-		"prefix": "Timers",
-		"body": [
-			"Timers:CreateTimer(${1},function ()",
-			"\t$0",
-			"end)"
-		],
-		"description": "CreateTimer"
-	},
-	"CastAbility": {
-		"prefix": "CastAbility",
-		"body": [
-			"CastAbility(${caster},${orderType},${ability},${target},${position})"
-		],
-		"description": "向单位发布施法指令"
-	},
-	"CauseDamage": {
-		"prefix": "CauseDamage",
-		"body": [
-			"CauseDamage(${attacker},${victim},${damage},${damageType},${ability})"
-		],
-		"description": "CauseDamage"
-	},
-	"ClearBuff": {
-		"prefix": "ClearBuff",
-		"body": [
-			"ClearBuff(${caster},${buffType},${count})"
-		],
-		"description": "清除身上的buff"
-	},
 	"AddDamageFilterAttacker": {
 		"prefix": "AddDamageFilterAttacker",
 		"body": [
@@ -52,7 +22,28 @@
 		"body": [
 			"AddModifierStackCount(${caster},${target},${ability},${modiferName},${count},${duration},${independent})"
 		],
-		"description": "AddModifierStackCount"
+		"description": "增加modifier叠加数量"
+	},
+	"CauseDamage": {
+		"prefix": "CauseDamage",
+		"body": [
+			"CauseDamage(${caster},${target},${damage},${damageType},${ability})"
+		],
+		"description": "造成伤害"
+	},
+	"ClearBuff": {
+		"prefix": "ClearBuff",
+		"body": [
+			"ClearBuff(${caster},${buffType},${count})"
+		],
+		"description": "清除buff"
+	},
+	"CreateSound": {
+		"prefix": "CreateSound",
+		"body": [
+			"CreateSound(${soundName},${caster})"
+		],
+		"description": "Optional parameters: location,duration,delay"
 	},
 	"CreateParticle": {
 		"prefix": "CreateParticle",
@@ -61,6 +52,13 @@
 		],
 		"description": "Optional parameters: duration,immediately"
 	},
+	"CreateLinearProjectile": {
+		"prefix": "CreateLinearProjectile",
+		"body": [
+			"CreateLinearProjectile(${caster},${ability},${particleName},${spawnOrigin},${radius},${distance},${direction},${speed},${deleteOnHit})"
+		],
+		"description": "Create a linear projectile, return particle id"
+	},
 	"CreateTrackingProjectile": {
 		"prefix": "CreateTrackingProjectile",
 		"body": [
@@ -68,12 +66,37 @@
 		],
 		"description": "Optional parameters: dodgeable,vision,visionRadius"
 	},
-	"CreateLinearProjectile": {
-		"prefix": "CreateLinearProjectile",
+	"CreateNumberEffect": {
+		"prefix": "CreateNumberEffect",
 		"body": [
-			"CreateLinearProjectile(${caster},${ability},${particleName},${spawnOrigin},${radius},${distance},${direction},${speed},${deleteOnHit})"
+			"-- MSG_BLOCK,MSG_ORIT,MSG_DAMAGE,MSG_EVADE,MSG_GOLD,MSG_HEAL,MSG_MANA_ADD,MSG_MANA_LOSS,MSG_MISS,MSG_POISION,MSG_SPELL,MSG_XP",
+			"-- red,orange,yellow,green,blue,indigo,purple",
+			"CreateNumberEffect(${entity},${number},${duration},${msg_type},${color},${icon_type})"
 		],
-		"description": "Create a linear projectile, return particle id"
+		"description": "创建一个数字特效"
+	},
+	"DeepCopy": {
+		"prefix": "DeepCopy",
+		"body": [
+			"DeepCopy(${table})"
+		],
+		"description": "复制一个表"
+	},
+	"DropItem": {
+		"prefix": "DropItem",
+		"body": [
+			"DropItem(${item},${hero})"
+		],
+		"description": "Drop item on unit position, return item"
+	},
+	"ForWithInterval": {
+		"prefix": "ForWithInterval",
+		"body": [
+			"ForWithInterval(${count},${interval},function ()",
+			"\t$0",
+			"end)"
+		],
+		"description": "带延迟for循环"
 	},
 	"GetExclusive": {
 		"prefix": "GetExclusive",
@@ -96,6 +119,34 @@
 		],
 		"description": "Find Units In Sector, return unit group"
 	},
+	"GetUnitsInSector": {
+		"prefix": "GetUnitsInSector",
+		"body": [
+			"GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
+		],
+		"description": "Find Units In Sector, return unit group"
+	},
+	"GetRandomPoint": {
+		"prefix": "GetRandomPoint",
+		"body": [
+			"GetRandomPoint(${originPoint},${minRadius},${maxRadius})"
+		],
+		"description": "获取指定点范围内随机点"
+	},
+	"GetRandomUnit": {
+		"prefix": "GetRandomUnit",
+		"body": [
+			"GetRandomUnit(${caster},${ability},${originPoint},${radius})"
+		],
+		"description": "GetRandomUnit"
+	},
+	"GetRotationPoint": {
+		"prefix": "GetRotationPoint",
+		"body": [
+			"GetRotationPoint(${originPoint},${radius},${angle})"
+		],
+		"description": "GetRotationPoint"
+	},
 	"GiveItem": {
 		"prefix": "GiveItem",
 		"body": [
@@ -108,14 +159,21 @@
 		"body": [
 			"HasExclusive(${caster})"
 		],
-		"description": "是否拥有专属，返回true或false"
+		"description": "是否拥有专属，返回Boolean"
 	},
-	"GetUnitsInSector": {
-		"prefix": "GetUnitsInSector",
+	"Heal": {
+		"prefix": "Heal",
 		"body": [
-			"GetUnitsInSector(${cacheUnit},${ability},${position},${forwardVector},${angle},${radius})"
+			"Heal(${caster},${heal},${mana},${show})"
 		],
-		"description": "Find Units In Sector, return unit group"
+		"description": "Heal health and mana"
+	},
+	"IsFullSolt": {
+		"prefix": "IsFullSolt",
+		"body": [
+			"IsFullSolt(${caster},${heal},${mana},${show})"
+		],
+		"description": "是否满格"
 	},
 	"IsModifierType": {
 		"prefix": "IsModifierType",
@@ -124,26 +182,47 @@
 		],
 		"description": "判断buff类型"
 	},
-	"SetCamera": {
-		"prefix": "SetCamera",
+	"ItemTypeCheck": {
+		"prefix": "ItemTypeCheck",
 		"body": [
-			"SetCamera(${playerID},${arg})"
+			"ItemTypeCheck(${caster},${item})"
 		],
-		"description": "Set camera on unit or position"
+		"description": "重复装备类型检查"
 	},
-	"SetParticleControl": {
-		"prefix": "SetParticleControl",
+	"Jump": {
+		"prefix": "Jump",
 		"body": [
-			"ParticleManager:SetParticleControl( ${p}, ${cp}, ${vector})"
+			"Jump(${caster},${target_location},${speed},${height},${findPath},${callback})"
 		],
-		"description": "设置控制点"
+		"description": "Jump"
 	},
-	"DropItem": {
-		"prefix": "DropItem",
+	"KnockBack": {
+		"prefix": "KnockBack",
 		"body": [
-			"DropItem(${item},${hero})"
+			"KnockBack(${caster},${direction},${distance},${duration})"
 		],
-		"description": "Drop item on unit position, return item"
+		"description": "Jump"
+	},
+	"OnAttackLanded": {
+		"prefix": "OnAttackLanded",
+		"body": [
+			"OnAttackLanded"
+		],
+		"description": "OnAttackLanded"
+	},
+	"PropertySystem": {
+		"prefix": "PropertySystem",
+		"body": [
+			"PropertySystem(${caster},${property},${count},${duration})"
+		],
+		"description": "Optional parameters: duration"
+	},
+	"PrintTable": {
+		"prefix": "PrintTable",
+		"body": [
+			"PrintTable(${t})"
+		],
+		"description": "Optional parameters: duration"
 	},
 	"RemoveDamageFilterAttacker": {
 		"prefix": "RemoveDamageFilterAttacker",
@@ -158,6 +237,13 @@
 			"RemoveDamageFilterVictim(${caster},${name})"
 		],
 		"description": "删除伤害过滤器"
+	},
+	"RemoveHealth": {
+		"prefix": "RemoveHealth",
+		"body": [
+			"RemoveHealth(${caster},${health})"
+		],
+		"description": "生命移除"
 	},
 	"RollDrops": {
 		"prefix": "RollDrops",
@@ -180,33 +266,12 @@
 		],
 		"description": "设置buff的类型"
 	},
-	"CreateSound": {
-		"prefix": "CreateSound",
+	"SetParticleControl": {
+		"prefix": "SetParticleControl",
 		"body": [
-			"CreateSound(${soundName},${caster})"
+			"ParticleManager:SetParticleControl( ${p}, ${cp}, ${vector})"
 		],
-		"description": "Optional parameters: location,duration,delay"
-	},
-	"Heal": {
-		"prefix": "Heal",
-		"body": [
-			"Heal(${caster},${heal},${mana},${show})"
-		],
-		"description": "Heal health and mana"
-	},
-	"PropertySystem": {
-		"prefix": "PropertySystem",
-		"body": [
-			"PropertySystem(${caster},${property},${count},${duration})"
-		],
-		"description": "Optional parameters: duration"
-	},
-	"SetRegionLimit": {
-		"prefix": "SetRegionLimit",
-		"body": [
-			"SetRegionLimit(${caster},${regionEntity})"
-		],
-		"description": "Set Region Limit"
+		"description": "设置控制点"
 	},
 	"SetUnitPosition": {
 		"prefix": "SetUnitPosition",
@@ -215,67 +280,62 @@
 		],
 		"description": "Set Unit Position"
 	},
-	"Jump": {
-		"prefix": "Jump",
-		"body": [
-			"Jump(${caster},${target_location},${speed},${height},${findPath},${callback})"
-		],
-		"description": "Jump"
-	},
 	"SetUnitDamagePercent": {
 		"prefix": "SetUnitDamagePercent",
 		"body": [
 			"SetUnitDamagePercent(${caster},${percent},${duration})"
 		],
-		"description": "Set Unit Damage Percent"
+		"description": "设置单位伤害输出百分比"
 	},
 	"SetUnitMagicDamagePercent": {
 		"prefix": "SetUnitMagicDamagePercent",
 		"body": [
 			"SetUnitMagicDamagePercent(${caster},${percent},${duration})"
 		],
-		"description": "设置单位魔法输出"
+		"description": "设置单位魔法伤害输出百分比"
 	},
 	"SetUnitIncomingDamageDeepen": {
 		"prefix": "SetUnitIncomingDamageDeepen",
 		"body": [
 			"SetUnitIncomingDamageDeepen(${caster},${percent},${duration})"
 		],
-		"description": "设置单位伤害加深"
+		"description": "设置单位接受伤害加深百分比"
 	},
 	"SetUnitIncomingDamageReduce": {
 		"prefix": "SetUnitIncomingDamageReduce",
 		"body": [
 			"SetUnitIncomingDamageReduce(${caster},${percent},${duration})"
 		],
-		"description": "设置单位伤害减免"
+		"description": "设置单位接受伤害减少百分比"
 	},
-	"PrintTable": {
-		"prefix": "PrintTable",
+	"SetCamera": {
+		"prefix": "SetCamera",
 		"body": [
-			"PrintTable(${t})"
+			"SetCamera(${playerID},${arg})"
 		],
-		"description": "打印表"
+		"description": "Set camera on unit or position"
 	},
-	"GetRandomPoint": {
-		"prefix": "GetRandomPoint",
+	"SetRegionLimit": {
+		"prefix": "SetRegionLimit",
 		"body": [
-			"GetRandomPoint(${originPoint},${minRadius},${maxRadius})"
+			"SetRegionLimit(${caster},${regionEntity})"
 		],
-		"description": "GetRandomPoint"
+		"description": "Set Region Limit"
 	},
-	"GetRandomUnit": {
-		"prefix": "GetRandomUnit",
+	"SetBaseResistance": {
+		"prefix": "SetBaseResistance",
 		"body": [
-			"GetRandomUnit(${caster},${ability},${originPoint},${radius})"
+			"SetBaseResistance(${caster},${resistance},${duration})"
 		],
-		"description": "GetRandomUnit"
+		"description": "设置单位魔抗"
 	},
-	"GetRotationPoint": {
-		"prefix": "GetRotationPoint",
+	"Timers": {
+		"prefix": "Timers",
 		"body": [
-			"GetRotationPoint(${originPoint},${radius},${angle})"
+			"Timers:CreateTimer(${1},function ()",
+			"\t$0",
+			"end)"
 		],
-		"description": "GetRotationPoint"
+		"description": "CreateTimer"
 	}
 }
