@@ -111,6 +111,14 @@
 					"MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING"	"-1"
 				}
 			}
+			"modifier_armor_bonus"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-1"
+				}
+				"IsHidden"	"1"
+			}
 		}
 	}
 
