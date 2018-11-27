@@ -3,8 +3,8 @@ var hour = 0
 var minute = 0
 var second = 30
 var gameStart = false
-var showGameTime = "visible"
-var showDotaTime = "collapse"
+var showGameTime = "collapse"
+var showDotaTime = "visible"
 function OnClick(){
 	if(showDotaTime=="collapse")
 	{
@@ -25,7 +25,7 @@ function UpdataTime(){
 	var dotaTime = Math.round(Game.GetDOTATime(false,false));
 	var secondShow = dotaTime % 60;
 	var minuteShow = Math.floor(dotaTime / 60);
-	hour = (Math.floor(dotaTime / 20)+6)%24;
+	hour = (Math.floor(dotaTime / 25)+6)%24;
 	var day = true;
 	var night = false;
 	var a = Math.floor((minuteShow) / 4)%2;

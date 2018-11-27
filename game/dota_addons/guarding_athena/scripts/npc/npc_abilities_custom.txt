@@ -226,7 +226,9 @@
 					}
 				}
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
-				"ThinkInterval"	"0.01"
+				"ThinkInterval"	"0.1"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
 			}
 			"modifier_athena_guard_armor_fix_aura"
 			{
