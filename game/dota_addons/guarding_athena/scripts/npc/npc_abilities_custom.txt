@@ -211,6 +211,32 @@
 					}
 				}
 			}
+			"modifier_athena_guard_armor_fix"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-1"
+				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+						"Function"	"AthenaArmorFix"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"ThinkInterval"	"0.01"
+			}
+			"modifier_athena_guard_armor_fix_aura"
+			{
+				"Aura"	"modifier_athena_guard_armor_fix"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_CUSTOM"
+				"Aura_Radius"	"999999"
+				"Passive"	"1"
+				"IsDebuff"	"1"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -11882,6 +11908,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%critical"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
 				}
 			}
 		}
@@ -11896,6 +11923,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"critical"	"400"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attackspeed"	"100"
 			}
 		}
 		"AbilityDuration"	"6"
@@ -12260,9 +12292,14 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"15"
+				"base_damage"	"40 80 120 160 200 240 280 320 360 400 440 480 520 560 600 640 680 720 760 800"
 			}
 			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"15"
+			}
+			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"4 4.4 4.8 5.2 5.6 6 6.4 6.8 7.2 7.6 8 8.4 8.8 9.2 9.6 10 10.4 10.8 11.2 11.6"

@@ -54,6 +54,15 @@ function AthenaGuard()
 		ParticleManager:SetParticleControlEnt(particle, 2, v, PATTACH_ABSORIGIN_FOLLOW, "attach_origin", v:GetAbsOrigin(), true)
     end
 end
+function AthenaArmorFix( t )
+    local spawnedUnit = t.target
+    local fixStack = spawnedUnit:GetModifierStackCount("modifier_athena_guard_armor_fix", spawnedUnit)
+    local armor = spawnedUnit:GetPhysicalArmorValue() + fixStack
+    local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
+    local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
+    fixStack = armor - fixArmor
+    spawnedUnit:SetModifierStackCount("modifier_athena_guard_armor_fix", spawnedUnit, fixStack)
+end
 LinkLuaModifier("athena_guard","modifiers/unit/athena_guard.lua",LUA_MODIFIER_MOTION_NONE)
 function AthenaOnAttacked( keys )
 	local caster = keys.caster

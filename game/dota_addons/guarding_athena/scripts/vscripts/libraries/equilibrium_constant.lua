@@ -124,14 +124,14 @@ function equilibrium_constant:DeclareFunctions()
         MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
         MODIFIER_PROPERTY_MANA_BONUS,
         MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
-        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
         MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,]]
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
         MODIFIER_PROPERTY_MOVESPEED_MAX,
-        MODIFIER_PROPERTY_MOVESPEED_LIMIT,
+        MODIFIER_PROPERTY_MOVESPEED_LIMIT,]]
+        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
     }
     return funcs
 end
@@ -203,23 +203,6 @@ function equilibrium_constant:GetModifierAttackSpeedBonus_Constant( params )
     end
 end
 
-function equilibrium_constant:GetModifierPhysicalArmorBonus( params )
-    if IsServer() then
-        local owner = self:GetParent()
-        local str = owner:GetStrength()
-        local agi = owner:GetAgility()
-        local ArmorBonus
-        local heroType = owner:GetPrimaryAttribute()
-        if heroType == DOTA_ATTRIBUTE_STRENGTH then
-            ArmorBonus = DIFF_STR.ARMOR_PER_AGI_DIFF * agi + STR_HERO.ARMOR_PER_STR * str
-        elseif heroType == DOTA_ATTRIBUTE_AGILITY then
-            ArmorBonus = DIFF_AGI.ARMOR_PER_AGI_DIFF * agi + AGI_HERO.ARMOR_PER_STR * str
-        elseif heroType == DOTA_ATTRIBUTE_INTELLECT then
-            ArmorBonus = DIFF_INT.ARMOR_PER_AGI_DIFF * agi + INT_HERO.ARMOR_PER_STR * str   
-        end
-        return ArmorBonus
-    end
-end
 
 function equilibrium_constant:GetModifierMagicalResistanceBonus( params )
     local ResistBonus = 0
@@ -270,7 +253,7 @@ end]]
         
         local u = false
         local str, agi, int = parent:GetStrength(), parent:GetAgility(), parent:GetIntellect()
-
+        
         if str ~= parent.vAttributeForClient_equilibrium_constant.str then
             u = true; parent.vAttributeForClient_equilibrium_constant.str = str
         end
@@ -280,9 +263,9 @@ end]]
         if int ~= parent.vAttributeForClient_equilibrium_constant.int then
             u = true; parent.vAttributeForClient_equilibrium_constant.int = int
         end
-
+        
         CustomNetTables:SetTableValue("courier_attributes","courier_attributes" .. self:GetParent():GetEntityIndex(),parent.vAttributeForClient_equilibrium_constant)
-
+        
         return 0
     end
 end]]
@@ -329,7 +312,24 @@ function equilibrium_constant:GetModifierConstantHealthRegen( params )
         return HealthRegenBonus
     end
 end]]
-
+function equilibrium_constant:GetModifierPhysicalArmorBonus( params )
+    if IsServer() then
+        local owner = self:GetParent()
+        local fixStack = owner.armor_mark
+        --[[local armor = owner:GetPhysicalArmorValue() + fixStack
+        local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
+        local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
+        fixStack = armor - fixArmor
+        owner.armor_mark = fixStack]]
+        return 0
+    end
+end
+function equilibrium_constant:OnCreated( )
+    if IsServer() then
+        local owner = self:GetParent()
+        owner.armor_mark = 0
+    end
+end
 function equilibrium_constant:IsHidden()
     return true
 end
@@ -340,13 +340,13 @@ end
 
 
 
-function equilibrium_constant:GetModifierMoveSpeed_Max( params )
+--[[function equilibrium_constant:GetModifierMoveSpeed_Max( params )
     return MAX_MS
 end
 
 function equilibrium_constant:GetModifierMoveSpeed_Limit( params )
     return MAX_MS
-end
+end]]
 
 function equilibrium_constant:x_Start()
     ListenToGameEvent( "npc_spawned", Dynamic_Wrap( equilibrium_constant, "x_OnNPCSpawned" ), self )

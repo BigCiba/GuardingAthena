@@ -26,7 +26,7 @@ require("libraries/hero")
 require("libraries/json")
 require("libraries/attribute")
 require("libraries/ai")
-require("libraries/equilibrium_constant")
+--require("libraries/equilibrium_constant")
 --require("modifiers/ring/ring_0_6")
 --require("modifiers/ring/ring_1_2")
 

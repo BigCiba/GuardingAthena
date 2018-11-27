@@ -232,7 +232,7 @@ function BladeDanceDamage( keys )
 	local targetType = ability:GetAbilityTargetType()
 	local targetFlag = ability:GetAbilityTargetFlags()
 	local damageType = ability:GetAbilityDamageType()
-	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility()
+	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility() + ability:GetSpecialValueFor("base_damage")
     local duration = ability:GetSpecialValueFor("duration")
 	local unitGroup = FindUnitsInRadius(teamNumber, caster_location, caster, 300, targetTeam, targetType, targetFlag, 0, false)
 	for k, v in pairs( unitGroup ) do

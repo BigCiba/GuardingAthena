@@ -245,13 +245,22 @@ function GuardingAthena:ItemAddedFilter( keys )
 			2-6     黑夜      减少1秒技能冷却           宝石+黑夜       每击杀一个单位减少1秒的技能冷却，内置冷却2秒
 		]]
 		local timeTable = {
-			am0 = 0,
-			am2 = 0.08299,
-			am6 = 0.25099,
-			am8 = 0.33419,
-			am12 = 0.50059,
-			pm18 = 0.75019,
-			pm24 = 0.99979
+			--[[
+				old
+				am0 = 0,
+				am2 = 0.08299,
+				am6 = 0.25099,
+				am8 = 0.33419,
+				am12 = 0.50059,
+				pm18 = 0.75019,
+				pm24 = 0.99979]]
+			am0 = 0.25,
+			am2 = 0.33299,
+			am6 = 0.50099,
+			am8 = 0.58419,
+			am12 = 0.75059,
+			pm18 = 0.00019,
+			pm24 = 0.24979
 		}
 		local ringTable = {
 			ringName = {"item_ring_1","item_ring_2","item_ring_3","item_ring_4","item_ring_5","item_ring_6"},

@@ -7771,6 +7771,276 @@
 		}
 	}
 
+	"item_shipin_8"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_talisman_of_evasion"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"AbilityCastRangeBuffer"	"0"
+		// Item
+		"ID"	"1657"
+		"ItemQuality"	"component"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"3000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_shipin_8"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%bonus_miss"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"20"
+			}
+		}
+	}
+
+	"item_shipin_9"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_cloak"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"AbilityCastRangeBuffer"	"0"
+		// Item
+		"ID"	"1679"
+		"ItemQuality"	"component"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"2500"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_shipin_9"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"15"
+			}
+		}
+	}
+
+	"item_shipin_10"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_stout_shield"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"AbilityCastRangeBuffer"	"0"
+		// Item
+		"ID"	"1685"
+		"ItemQuality"	"component"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"300"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_shipin_10"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"5"
+			}
+		}
+	}
+
+	"item_shipin_11"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_wind_lace"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"AbilityCastRangeBuffer"	"0"
+		// Item
+		"ID"	"1689"
+		"ItemQuality"	"component"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"3500"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_shipin_11"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movespeed"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"10"
+			}
+		}
+	}
+
+	"item_shipin_12"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_helm_of_iron_will"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"AbilityCastRangeBuffer"	"0"
+		// Item
+		"ID"	"1692"
+		"ItemQuality"	"component"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"5000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_shipin_12"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"12"
+			}
+		}
+	}
+
 	"item_shipin_6"
 	{
 		// Common
@@ -10040,6 +10310,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_chui_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10126,6 +10399,11 @@
 								"ScriptFile"	"scripts/vscripts/ability_item.lua"
 								"Function"	"ItemCooldown"
 							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_item.lua"
+								"Function"	"chui"
+							}
 						}
 						"Chance"	"%stun_chance"
 					}
@@ -10185,6 +10463,16 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
 		}
 	}
 
@@ -10194,6 +10482,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_chui_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10280,6 +10571,11 @@
 								"ScriptFile"	"scripts/vscripts/ability_item.lua"
 								"Function"	"ItemCooldown"
 							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_item.lua"
+								"Function"	"chui"
+							}
 						}
 						"Chance"	"%stun_chance"
 					}
@@ -10339,6 +10635,16 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20"
+			}
 		}
 	}
 
@@ -10348,6 +10654,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_chui_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10434,6 +10743,11 @@
 								"ScriptFile"	"scripts/vscripts/ability_item.lua"
 								"Function"	"ItemCooldown"
 							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_item.lua"
+								"Function"	"chui"
+							}
 						}
 						"Chance"	"%stun_chance"
 					}
@@ -10493,6 +10807,16 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30"
+			}
 		}
 	}
 
@@ -10502,6 +10826,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_chui_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10588,6 +10915,11 @@
 								"ScriptFile"	"scripts/vscripts/ability_item.lua"
 								"Function"	"ItemCooldown"
 							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_item.lua"
+								"Function"	"chui"
+							}
 						}
 						"Chance"	"%stun_chance"
 					}
@@ -10647,6 +10979,16 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"40"
+			}
 		}
 	}
 
@@ -10656,6 +10998,9 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_chui_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"60"
@@ -10748,6 +11093,11 @@
 								"ScriptFile"	"scripts/vscripts/ability_item.lua"
 								"Function"	"ItemCooldown"
 							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_item.lua"
+								"Function"	"chui"
+							}
 						}
 						"Chance"	"%stun_chance"
 					}
@@ -10789,6 +11139,11 @@
 								"Target"	"TARGET"
 								"ModifierName"	"modifier_item_chui_debuff"
 								"Duration"	"3"
+							}
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/ability_item.lua"
+								"Function"	"chui"
 							}
 						}
 						"Chance"	"%stun_chance"
@@ -10858,6 +11213,16 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"50"
 			}
 		}
 	}

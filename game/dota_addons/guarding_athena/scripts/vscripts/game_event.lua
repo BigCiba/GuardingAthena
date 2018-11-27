@@ -581,6 +581,9 @@ function GuardingAthena:OnPlayerChat(keys)
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero.practice_point = 90000
 	end 
+	if text == "time" then
+		print(GameRules:GetTimeOfDay())
+	end
 	if text == "-allring" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero:AddNewModifier(hero, nil, "ring_0_1", nil)

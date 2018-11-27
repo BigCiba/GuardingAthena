@@ -261,6 +261,20 @@ function RemovePhysicalDamage(keys)
         caster.bonus_physical_damage = 0
     end
 end
+function chui( t )
+    local caster = t.caster
+    local ability = t.ability
+    local radius = ability:GetSpecialValueFor("radius")
+    local damage = caster:GetPrimaryStatValue() * ability:GetSpecialValueFor("damage")
+    local damageType = ability:GetAbilityDamageType()
+    local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
+    for k,v in pairs(unitGroup) do
+        CauseDamage(caster,v,damage,damageType,ability)
+        local p = CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf",PATTACH_CUSTOMORIGIN,caster,1)
+        ParticleManager:SetParticleControlEnt(p, 0, caster, PATTACH_CUSTOMORIGIN_FOLLOW, "attach_origin", caster:GetAbsOrigin(), true)
+        ParticleManager:SetParticleControlEnt(p, 1, v, PATTACH_CUSTOMORIGIN_FOLLOW, "attach_origin", v:GetAbsOrigin(), true)
+    end
+end
 function jiancd4( keys )
     local caster = keys.caster
     local primaryAttribute = caster:GetPrimaryAttribute()
