@@ -76,6 +76,16 @@ function Attributes:ModifyBonuses(hero)
         -- Base Armor Bonus
         --local armor = agility * self.ARMOR_PER_AGI
         --hero:SetPhysicalArmorBaseValue(armor)
+        if not hero:HasModifier("modifier_armor_bonus") then
+            self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_armor_bonus", {})
+        end
+        local fixStack = hero:GetModifierStackCount("modifier_armor_bonus", hero)
+        local armor = hero:GetPhysicalArmorValue() + fixStack
+        local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
+        local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
+        fixStack = armor - fixArmor
+        hero:SetModifierStackCount("modifier_armor_bonus", hero, fixStack)
+        --hero:SetPhysicalArmorBaseValue(-fixarmor - armor)
         -- Base Magic Resistance
         local itemRes = 0
         for i=1,6 do
