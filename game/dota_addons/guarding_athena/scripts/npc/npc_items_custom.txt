@@ -8041,6 +8041,60 @@
 		}
 	}
 
+	"item_dragonhawk_cloak"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_headdress"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"AbilityCastRangeBuffer"	"0"
+		// Item
+		"ID"	"1697"
+		"ItemQuality"	"component"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"5000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_dragonhawk_cloak"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"12"
+			}
+		}
+	}
+
 	"item_shipin_6"
 	{
 		// Common
