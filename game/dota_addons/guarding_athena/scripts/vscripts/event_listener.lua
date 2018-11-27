@@ -187,7 +187,7 @@ function CreateTrial( index,keys )
 			nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue() * num)
 			hero.trial = nature
 			SetCamera(keys.PlayerID,nature)
-			nature.trial_wall = CreateParticle("guarding_athena/particles/units/trial/trial_wall.vpcf",PATTACH_ABSORIGIN,nature)
+			nature.trial_wall = CreateParticle("particles/units/trial/trial_wall.vpcf",PATTACH_ABSORIGIN,nature)
 			ParticleManager:SetParticleControl(nature.trial_wall, 1, Vector(700,0,0))
 			ParticleManager:SetParticleControl(nature.trial_wall, 2, Vector(1,1,0))
 			AddDamageFilterVictim(nature,"trial",function (damage,attacker)

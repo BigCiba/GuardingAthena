@@ -4560,7 +4560,16 @@
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"20"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"20"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
 				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"resistance"	"30"
 			}
 		}
 	}
