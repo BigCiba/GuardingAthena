@@ -163,9 +163,9 @@ function GuardingAthena:DamageFilter( args )
     end
 	-- 技能伤害处理
 	if args.entindex_inflictor_const then
-		if caster.double_ability_damage then
-			if RollPercentage(caster.double_ability_damage) then
-				args.damage = args.damage * 2
+		if caster.ability_critical_chance then
+			if RollPercentage(caster.ability_critical_chance) then
+				args.damage = args.damage * (1 + caster.ability_critical_damage * 0.01)
 				CreateNumberEffect(victim,args.damage,1,MSG_ORIT ,{0,153,255},4)
 			end
 		end
@@ -206,12 +206,15 @@ function GuardingAthena:ItemAddedFilter( keys )
 	if currentItemName == "item_chaos_plate" then
 		if RollPercentage(5) then
 			currentUnit:AddItem(CreateItem("item_world_editor", currentUnit, currentUnit))
+			currentItem:RemoveSelf()
 			return false
 		elseif RollPercentage(5) then
 			currentUnit:AddItem(CreateItem("item_longinus_spear", currentUnit, currentUnit))
+			currentItem:RemoveSelf()
 			return false
 		elseif RollPercentage(5) then
 			currentUnit:AddItem(CreateItem("item_mystletainn", currentUnit, currentUnit))
+			currentItem:RemoveSelf()
 			return false
 		end
 	end
@@ -226,14 +229,22 @@ function GuardingAthena:ItemAddedFilter( keys )
 			playerID = currentUnit.currentHero:GetPlayerID()
 		end
 		PlayerResource:ModifyGold(playerID,5000, true, 0)
+		currentItem:RemoveSelf()
 		return false
 	-- 专属装备
 	elseif currentItemName == "item_zhuanshu" then
-	-- 戒指
 		local currentUnitName = currentUnit:GetUnitName()
 		local newItemName = "item_"..currentUnitName
 		local item = CreateItem(newItemName, currentUnit, currentUnit)
 		currentUnit:AddItem(item)
+		for i=0,14 do
+			local slotItem = currentUnit:GetItemInSlot(i)
+			if slotItem == item then
+				currentUnit:SwapItems(i,15)
+				item:ApplyDataDrivenModifier(currentUnit, currentUnit, "modifier_"..currentUnitName, {})
+			end
+		end
+		currentItem:RemoveSelf()
 		return false
 	elseif currentItemName == "item_ring_shop" then
 		--[[
@@ -264,7 +275,7 @@ function GuardingAthena:ItemAddedFilter( keys )
 			return false
 		end]]--
 		local time = GameRules:GetTimeOfDay()
-		if currentUnit.ringCount < 200 then
+		if currentUnit.ringCount < 2 then
 			for i=1,6 do
 				if time > ringTable.timeStart[i] and time < ringTable.timeOver[i] then
 					local item = CreateItem(ringTable.ringName[i], currentUnit, currentUnit)
@@ -272,10 +283,12 @@ function GuardingAthena:ItemAddedFilter( keys )
 				end
 			end
 			currentUnit.ringCount = currentUnit.ringCount + 1
+			currentItem:RemoveSelf()
 			return false
 		else
 			currentUnit.def_point = currentUnit.def_point + 1200
 			Notifications:Bottom(currentUnit:GetPlayerID(), {text="#ring_limit", style={color="red"}, duration=1, continue = false})
+			currentItem:RemoveSelf()
 			return false
 		end
 		return false

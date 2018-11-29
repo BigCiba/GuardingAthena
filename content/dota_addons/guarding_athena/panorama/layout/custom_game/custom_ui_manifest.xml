@@ -28,6 +28,7 @@
 		//customRootUI.FindChildTraverse("MagicResistance").style.visibility = "collapse";
 		//customRootUI.FindChildTraverse("right_flare").style.visibility = "collapse";
 		customRootUI.FindChildTraverse("quickstats").style.visibility = "collapse";
+		customRootUI.FindChildTraverse("tpCharges").style.visibility = "collapse";
 
 	</script>
 		

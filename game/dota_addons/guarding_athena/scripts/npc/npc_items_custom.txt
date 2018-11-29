@@ -10,6 +10,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_branches"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemRequirements"	{}
 		"Modifiers"
 		{
 			"modifier_health_bonus"
@@ -7829,7 +7830,7 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_cloak"
+		"AbilityTextureName"	"item_hood_of_defiance"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
@@ -7844,7 +7845,7 @@
 		"ID"	"1679"
 		"ItemQuality"	"component"
 		"ItemCastOnPickup"	"0"
-		"ItemCost"	"2500"
+		"ItemCost"	"4000"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -7874,7 +7875,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"15"
+				"bonus_resistance"	"25"
 			}
 		}
 	}
@@ -8045,20 +8046,11 @@
 	{
 		// Common
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_headdress"
+		"AbilityTextureName"	"item_dragonhawk_cloak"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
 		// Item
 		"ID"	"1697"
-		"ItemQuality"	"component"
+		"ItemQuality"	"common"
 		"ItemCastOnPickup"	"0"
 		"ItemCost"	"5000"
 		"ItemDroppable"	"1"
@@ -8076,13 +8068,25 @@
 		{
 			"modifier_item_dragonhawk_cloak"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
 				}
+				"Aura"	"modifier_item_dragonhawk_cloak_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+			"modifier_item_dragonhawk_cloak_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movespeed"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%bonus_miss"
+				}
+				"IsDebuff"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -8090,7 +8094,238 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"12"
+				"bonus_miss"	"25"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"-15"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+		}
+	}
+
+	"item_dragonhawk_cloak_2"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_dragonhawk_cloak_2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Item
+		"ID"	"1727"
+		"ItemQuality"	"rare"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"5000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_dragonhawk_cloak"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Aura"	"modifier_item_dragonhawk_cloak_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+			"modifier_item_dragonhawk_cloak_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movespeed"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%bonus_miss"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"35"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"-25"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+		}
+	}
+
+	"item_dragonhawk_cloak_3"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_dragonhawk_cloak_3"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Item
+		"ID"	"1729"
+		"ItemQuality"	"epic"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"5000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_dragonhawk_cloak"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Aura"	"modifier_item_dragonhawk_cloak_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+			"modifier_item_dragonhawk_cloak_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movespeed"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%bonus_miss"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"45"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"35"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"-35"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"700"
+			}
+		}
+	}
+
+	"item_dragonhawk_cloak_4"
+	{
+		// Common
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_dragonhawk_cloak_4"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Item
+		"ID"	"1730"
+		"ItemQuality"	"artifact"
+		"ItemCastOnPickup"	"0"
+		"ItemCost"	"5000"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"	"1"
+		"ItemAlertable"	"0"
+		"ItemStackable"	"0"
+		"SecretShop"	"1"
+		"ItemShopTags"	"mana_pool;health_pool"
+		"ItemAliases"	"point booster"
+		"ItemRecipe"	"0"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_dragonhawk_cloak"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Aura"	"modifier_item_dragonhawk_cloak_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+			"modifier_item_dragonhawk_cloak_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movespeed"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%bonus_miss"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"60"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"40"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"-50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"900"
 			}
 		}
 	}
@@ -8272,6 +8507,190 @@
 		"ItemRequirements"
 		{
 			"01"	"item_shipin_1;item_shipin_2;item_shipin_3;item_shipin_4;item_shipin_5"
+		}
+	}
+
+	"item_recipe_dragonhawk_cloak"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1708"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_dragonhawk_cloak"
+		"ItemRequirements"
+		{
+			"01"	"item_shipin_8;item_shipin_9;item_shipin_11"
+		}
+	}
+
+	"item_recipe_sun_emblem"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1736"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_sun_emblem"
+		"ItemRequirements"
+		{
+			"01"	"item_shipin_3;item_shipin_4;item_shipin_9;item_shipin_12"
+		}
+	}
+
+	"item_recipe_sun_emblem_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1740"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"6000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_sun_emblem_2"
+		"ItemRequirements"
+		{
+			"01"	"item_sun_emblem_1"
+		}
+	}
+
+	"item_recipe_sun_emblem_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1741"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"12000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_sun_emblem_3"
+		"ItemRequirements"
+		{
+			"01"	"item_sun_emblem_2"
+		}
+	}
+
+	"item_recipe_sun_emblem_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1742"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"24000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_sun_emblem_4"
+		"ItemRequirements"
+		{
+			"01"	"item_sun_emblem_3"
+		}
+	}
+
+	"item_recipe_dragonhawk_cloak_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1731"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"6000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_dragonhawk_cloak_2"
+		"ItemRequirements"
+		{
+			"01"	"item_dragonhawk_cloak"
+		}
+	}
+
+	"item_recipe_dragonhawk_cloak_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1732"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"12000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_dragonhawk_cloak_3"
+		"ItemRequirements"
+		{
+			"01"	"item_dragonhawk_cloak_2"
+		}
+	}
+
+	"item_recipe_dragonhawk_cloak_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1733"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"24000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_dragonhawk_cloak_4"
+		"ItemRequirements"
+		{
+			"01"	"item_dragonhawk_cloak_3"
 		}
 	}
 
@@ -13475,9 +13894,9 @@
 		"ItemCastOnPickup"	"0"
 		"ItemCost"	"0"
 		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
-		"ItemKillable"	"1"
+		"ItemKillable"	"0"
 		"ItemAlertable"	"0"
 		"ItemStackable"	"0"
 		"ItemRecipe"	"0"
@@ -13643,6 +14062,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -13758,6 +14178,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -14397,6 +14818,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -14792,6 +15214,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemRequirements"	{}
@@ -14888,6 +15311,7 @@
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemRequirements"	{}
@@ -15777,6 +16201,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -15845,6 +16270,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -15910,6 +16336,8 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -16000,6 +16428,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -16055,6 +16484,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -16120,6 +16550,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -16190,6 +16621,7 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemShopTags"	"damage;str;hard_to_tag"
@@ -22871,7 +23303,10 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"ID"	"1725"
+		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
+		"ItemKillable"	"0"
+		"ItemPermanent"	"1"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -22961,5 +23396,553 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1728"
+	}
+
+	"item_yata_mirror"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_yata_mirror"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"15"
+		"ID"	"1734"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+			"particle"	"particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_prison_top_orb.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_item_yata_mirror_active"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_ObsidianDestroyer.EssenceAura"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_yata_mirror"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_attribute"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_attribute"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_attribute"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_ITEM_UNIQUE"	"%bonus_resistance"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/yata_mirror.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/yata_mirror.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+			"modifier_item_yata_mirror_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+				}
+				"States"	{}
+				"IsHidden"	"1"
+			}
+			"modifier_item_yata_mirror_active"
+			{
+				"Properties"	{}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/yata_mirror.lua"
+						"Function"	"Active"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/yata_mirror.lua"
+						"Function"	"Remove"
+					}
+				}
+				"EffectName"	"particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_prison_top_orb.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"IsHidden"	"1"
+				"Duration"	"%duration"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attribute"	"800"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"interval"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_critical_chance"	"25"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_critical_damage"	"50"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"150"
+			}
+		}
+	}
+
+	"item_sun_emblem"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sun_emblem"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"16"
+		"ID"	"1735"
+		"ItemRequirements"	{}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_item_sun_emblem_debuff"
+			}
+			"RunScript"
+			{
+				"Function"	"OnSpellStart"
+				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_sun_emblem"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Passive"	"1"
+			}
+			"modifier_item_sun_emblem_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_armor"	"-25"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_resistance"	"-10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"25"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"10"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"80"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_regen"	"20"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
+			}
+		}
+	}
+
+	"item_sun_emblem_2"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sun_emblem_2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"16"
+		"ID"	"1737"
+		"ItemRequirements"	{}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_item_sun_emblem_debuff"
+			}
+			"RunScript"
+			{
+				"Function"	"OnSpellStart"
+				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_sun_emblem"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Passive"	"1"
+			}
+			"modifier_item_sun_emblem_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_armor"	"-50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_resistance"	"-15"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"15"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"120"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_regen"	"40"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"15"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+		}
+	}
+
+	"item_sun_emblem_3"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sun_emblem_3"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"16"
+		"ID"	"1738"
+		"ItemRequirements"	{}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_item_sun_emblem_debuff"
+			}
+			"RunScript"
+			{
+				"Function"	"OnSpellStart"
+				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_sun_emblem"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Passive"	"1"
+			}
+			"modifier_item_sun_emblem_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_armor"	"-75"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_resistance"	"-20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"75"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"160"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_regen"	"60"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"7"
+			}
+		}
+	}
+
+	"item_sun_emblem_4"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sun_emblem_4"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"16"
+		"ID"	"1739"
+		"ItemRequirements"	{}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_item_sun_emblem_debuff"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+				"Function"	"OnSpellStart"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_sun_emblem"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+				}
+				"Passive"	"1"
+			}
+			"modifier_item_sun_emblem_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_armor"	"-125"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_resistance"	"-25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"125"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"25"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"240"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp_regen"	"100"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"25"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"8"
+			}
+		}
+	}
+
+	"item_pipe"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_pipe"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"ID"	"1743"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"miss"	"40"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"60"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen_percent"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_min"	"300"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_max"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+		}
 	}
 }
