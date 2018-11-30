@@ -8848,6 +8848,75 @@
 		}
 	}
 
+	"item_recipe_poor_man_shield"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1753"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_poor_man_shield"
+		"ItemRequirements"
+		{
+			"01"	"item_shipin_10;item_shipin_10"
+		}
+	}
+
+	"item_recipe_buckler"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1755"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_buckler"
+		"ItemRequirements"
+		{
+			"01"	"item_poor_man_shield;item_shipin_8"
+		}
+	}
+
+	"item_recipe_anguard"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1757"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_anguard"
+		"ItemRequirements"
+		{
+			"01"	"item_buckler;item_shipin_1;item_shipin_12"
+		}
+	}
+
 	"item_recipe_sun_emblem"
 	{
 		// General
@@ -24828,6 +24897,131 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack"	"60"
+			}
+		}
+	}
+
+	"item_poor_man_shield"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_poor_mans_shield"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1752"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_poor_man_shield"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"5"
+			}
+		}
+	}
+
+	"item_buckler"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_buckler"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"ID"	"1754"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_buckler"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%bonus_miss"
+				}
+				"Passive"	"1"
+				"IsHidden"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"30"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"15"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"25"
+			}
+		}
+	}
+
+	"item_anguard"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_vanguard"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1756"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_anguard"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%bonus_miss"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"60"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"35"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
 			}
 		}
 	}

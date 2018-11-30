@@ -184,7 +184,7 @@ function CreateTrial( index,keys )
 			nature:SetHealth(hero:GetMaxHealth() * num)
 			nature:SetBaseDamageMin(hero:GetBaseDamageMin() * num)
 			nature:SetBaseDamageMax(hero:GetBaseDamageMax() * num)
-			nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue() * num)
+			nature:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue())
 			hero.trial = nature
 			SetCamera(keys.PlayerID,nature)
 			nature.trial_wall = CreateParticle("particles/units/trial/trial_wall.vpcf",PATTACH_ABSORIGIN,nature)
