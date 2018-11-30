@@ -59,7 +59,7 @@ function OnBossTakeDamage( t )
     end 
 end
 function OnCreated( t )
-    local unit = t.caster
+     local unit = t.caster
     unit:SetModelScale(unit:GetModelScale() + 0.5)
     unit:SetDeathXP(unit:GetDeathXP() * Spawner.difficulty * Spawner.unitFactor.eliteFactor ^ Spawner.gameRound)
     unit:SetMinimumGoldBounty(unit:GetGoldBounty() * (Spawner.difficulty / 2 + 0.5)  * Spawner.unitFactor.eliteFactor ^ Spawner.gameRound)
@@ -69,5 +69,5 @@ function OnCreated( t )
     unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * (Spawner.difficulty / 2 + 0.5)  * Spawner.unitFactor.eliteFactor ^ Spawner.gameRound)
     unit:SetMaxHealth(unit:GetBaseMaxHealth())
     unit:SetHealth(unit:GetBaseMaxHealth())
-    unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * Spawner.difficulty * Spawner.unitFactor.eliteFactor ^ Spawner.gameRound)
+    --unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * Spawner.difficulty * Spawner.unitFactor.eliteFactor ^ Spawner.gameRound)
 end

@@ -232,10 +232,6 @@
 			}
 			"modifier_athena_guard_armor_fix_aura"
 			{
-				"Aura"	"modifier_athena_guard_armor_fix"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_CUSTOM"
-				"Aura_Radius"	"999999"
 				"Passive"	"1"
 				"IsDebuff"	"1"
 			}
@@ -1967,7 +1963,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"armor"	"-300 -400 -500 -600 -1000"
+				"armor"	"-40 -80 -120 -160 -200"
 			}
 		}
 	}
@@ -9856,7 +9852,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"25 50 75 100 125 150 175 200 225 250 275 300 325 350 375 400 425 450 475 500"
+				"bonus_armor"	"10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 105"
 			}
 			"03"
 			{
@@ -10311,7 +10307,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"armor"	"0.15"
+				"armor"	"1"
 			}
 			"03"
 			{

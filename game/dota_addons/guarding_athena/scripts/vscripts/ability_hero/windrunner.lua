@@ -47,7 +47,7 @@ function ChaseMoonAndStarDamage( t )
     local ability = t.ability
     local rate = ability:GetSpecialValueFor("rate") * 0.5
     local damage = caster:GetAgility() * ability:GetSpecialValueFor("damage")
-    local armor = math.ceil(caster:GetAgility() * ability:GetSpecialValueFor("armor"))
+    local armor = ability:GetSpecialValueFor("armor")
     local duration = ability:GetSpecialValueFor("duration")
     if HasExclusive(caster,1) then
         damage = damage * 2

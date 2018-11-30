@@ -10,7 +10,7 @@ function Attributes:Init()
     self.HP_REGEN_PER_STR     = 0.06
     self.MANA_PER_INT         = 12
     self.MANA_REGEN_PER_INT   = 0.04
-    self.ARMOR_PER_AGI        = 0.14
+    self.ARMOR_PER_AGI        = 0
     self.ATKSPD_PER_AGI       = 0.05
     self.MAX_MS               = 750
     self.SP_INT			   = 0
@@ -66,6 +66,7 @@ function Attributes:ModifyBonuses(hero)
             hero.strength = 0
             hero.agility = 0
             hero.intellect = 0
+            hero.base_armor = hero:GetPhysicalArmorBaseValue() - hero:GetAgility() * self.DEFAULT_ARMOR_PER_AGI
         end
 
         -- Get player attribute values
@@ -74,17 +75,19 @@ function Attributes:ModifyBonuses(hero)
         local intellect = hero:GetIntellect()
         
         -- Base Armor Bonus
-        --local armor = agility * self.ARMOR_PER_AGI
-        --hero:SetPhysicalArmorBaseValue(armor)
-        if not hero:HasModifier("modifier_armor_bonus") then
+        local armor = agility * self.DEFAULT_ARMOR_PER_AGI
+        hero:SetPhysicalArmorBaseValue(hero.base_armor - armor)
+        --[[if not hero:HasModifier("modifier_armor_bonus") then
             self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_armor_bonus", {})
         end
-        local fixStack = hero:GetModifierStackCount("modifier_armor_bonus", hero)
-        local armor = hero:GetPhysicalArmorValue() + fixStack
-        local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
-        local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
-        fixStack = armor - fixArmor
-        hero:SetModifierStackCount("modifier_armor_bonus", hero, fixStack)
+        if hero:GetPhysicalArmorValue() > 0 then
+            local fixStack = hero:GetModifierStackCount("modifier_armor_bonus", hero)
+            local armor = hero:GetPhysicalArmorValue() + fixStack
+            local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
+            local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
+            fixStack = armor - fixArmor
+            hero:SetModifierStackCount("modifier_armor_bonus", hero, fixStack)
+        end]]
         --hero:SetPhysicalArmorBaseValue(-fixarmor - armor)
         -- Base Magic Resistance
         local itemRes = 0

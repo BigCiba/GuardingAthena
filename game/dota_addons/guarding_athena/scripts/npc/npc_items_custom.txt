@@ -1248,13 +1248,43 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
+				"OnAttack"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianCreated"
 					}
 				}
 				"OnDestroy"
@@ -1262,10 +1292,10 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianRemove"
 					}
 				}
+				"Duration"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -1278,7 +1308,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"5"
+				"bash_damage"	"200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -1327,13 +1362,43 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
+				"OnAttack"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianCreated"
 					}
 				}
 				"OnDestroy"
@@ -1341,10 +1406,10 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianRemove"
 					}
 				}
+				"Duration"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -1357,7 +1422,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"10"
+				"bash_damage"	"300"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -1406,13 +1476,43 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
+				"OnAttack"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianCreated"
 					}
 				}
 				"OnDestroy"
@@ -1420,10 +1520,10 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianRemove"
 					}
 				}
+				"Duration"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -1436,7 +1536,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"15"
+				"bash_damage"	"400"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -1485,13 +1590,43 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
+				"OnAttack"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianCreated"
 					}
 				}
 				"OnDestroy"
@@ -1499,10 +1634,10 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianRemove"
 					}
 				}
+				"Duration"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -1515,7 +1650,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"20"
+				"bash_damage"	"500"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -1563,13 +1703,43 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
+				"OnAttack"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianCreated"
 					}
 				}
 				"OnDestroy"
@@ -1577,10 +1747,10 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"Function"	"JianRemove"
 					}
 				}
+				"Duration"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -1593,7 +1763,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"25"
+				"bash_damage"	"600"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -3101,7 +3276,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"20"
+				"bonus_armor"	"15"
 			}
 			"03"
 			{
@@ -3159,7 +3334,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"40"
+				"bonus_armor"	"20"
 			}
 			"03"
 			{
@@ -3217,7 +3392,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"80"
+				"bonus_armor"	"30"
 			}
 			"03"
 			{
@@ -3742,22 +3917,27 @@
 					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_move_speed"
 				}
-				"OnCreated"
+				"OnAttack"
 				{
-					"RunScript"
+					"Random"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
 					}
 				}
 				"AllowIllusionDuplicate"	"1"
@@ -3907,6 +4087,31 @@
 				}
 				"TextureName"	"item_jian_9"
 			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianRemove"
+					}
+				}
+				"Duration"	"1"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -3918,7 +4123,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"35"
+				"bash_damage"	"800"
 			}
 			"03"
 			{
@@ -3933,7 +4138,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"40"
 			}
 			"06"
 			{
@@ -3949,6 +4154,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_move_speed"	"125"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -4004,22 +4214,27 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 				}
-				"OnCreated"
+				"OnAttack"
 				{
-					"RunScript"
+					"Random"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
 					}
 				}
 				"AllowIllusionDuplicate"	"1"
@@ -4169,6 +4384,31 @@
 				}
 				"TextureName"	"item_jian_9"
 			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianRemove"
+					}
+				}
+				"Duration"	"1"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -4180,7 +4420,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"50"
+				"bash_damage"	"1000"
 			}
 			"03"
 			{
@@ -4200,7 +4440,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"50"
 			}
 			"07"
 			{
@@ -4216,6 +4456,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_move_speed"	"125"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -4271,22 +4516,27 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 				}
-				"OnCreated"
+				"OnAttack"
 				{
-					"RunScript"
+					"Random"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
 					}
 				}
 				"AllowIllusionDuplicate"	"1"
@@ -4436,6 +4686,31 @@
 				}
 				"TextureName"	"item_jian_9"
 			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianRemove"
+					}
+				}
+				"Duration"	"1"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -4447,7 +4722,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"65"
+				"bash_damage"	"1200"
 			}
 			"03"
 			{
@@ -4467,7 +4742,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"60"
 			}
 			"07"
 			{
@@ -4483,6 +4758,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_move_speed"	"125"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -4538,22 +4818,27 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 				}
-				"OnCreated"
+				"OnAttack"
 				{
-					"RunScript"
+					"Random"
 					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddPhysicalDamage"
-						"BonusDamage"	"%bash_damage"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemovePhysicalDamage"
-						"BonusDamage"	"%bash_damage"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
+						"Chance"	"%critical_chance"
+						"OnFailure"
+						{
+							"RemoveModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_jian_critical"
+							}
+						}
 					}
 				}
 				"AllowIllusionDuplicate"	"1"
@@ -4702,6 +4987,31 @@
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"500"
 				}
 			}
+			"modifier_item_jian_critical"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bash_damage"
+				}
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item.lua"
+						"Function"	"JianRemove"
+					}
+				}
+				"Duration"	"1"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -4713,7 +5023,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bash_damage"	"80"
+				"bash_damage"	"1600"
 			}
 			"03"
 			{
@@ -4733,7 +5043,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"70"
 			}
 			"07"
 			{
@@ -4749,6 +5059,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_move_speed"	"125"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"25"
 			}
 		}
 	}
@@ -5002,7 +5317,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"40"
 			}
 			"05"
 			{
@@ -5289,7 +5604,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"50"
 			}
 			"06"
 			{
@@ -5576,7 +5891,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"60"
 			}
 			"06"
 			{
@@ -5869,7 +6184,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"70"
 			}
 			"06"
 			{
@@ -6155,7 +6470,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"40"
 			}
 			"06"
 			{
@@ -6439,7 +6754,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"50"
 			}
 			"07"
 			{
@@ -6723,7 +7038,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"60"
 			}
 			"07"
 			{
@@ -7013,7 +7328,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"70"
 			}
 			"07"
 			{
@@ -8556,6 +8871,89 @@
 		}
 	}
 
+	"item_recipe_prestige_pipe"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1744"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_prestige_pipe"
+		"ItemRequirements"
+		{
+			"01"	"item_shipin_1;item_shipin_3;item_shipin_8;item_shipin_13"
+		}
+	}
+
+	"item_recipe_prestige_pipe_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1746"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_prestige_pipe_2"
+		"ItemRequirements"
+		{
+			"01"	"item_prestige_pipe;item_prestige_pipe"
+		}
+	}
+
+	"item_recipe_prestige_pipe_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1747"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_prestige_pipe_3"
+		"ItemRequirements"
+		{
+			"01"	"item_prestige_pipe_2;item_prestige_pipe_2"
+		}
+	}
+
+	"item_recipe_prestige_pipe_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1748"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_prestige_pipe_4"
+		"ItemRequirements"
+		{
+			"01"	"item_prestige_pipe_3;item_prestige_pipe_3"
+		}
+	}
+
 	"item_recipe_sun_emblem_2"
 	{
 		// General
@@ -8565,9 +8963,6 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1740"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"6000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8575,7 +8970,7 @@
 		"ItemResult"	"item_sun_emblem_2"
 		"ItemRequirements"
 		{
-			"01"	"item_sun_emblem_1"
+			"01"	"item_sun_emblem;item_sun_emblem"
 		}
 	}
 
@@ -8588,9 +8983,6 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1741"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"12000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8598,7 +8990,7 @@
 		"ItemResult"	"item_sun_emblem_3"
 		"ItemRequirements"
 		{
-			"01"	"item_sun_emblem_2"
+			"01"	"item_sun_emblem_2;item_sun_emblem_2"
 		}
 	}
 
@@ -8611,9 +9003,6 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1742"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"24000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8621,7 +9010,7 @@
 		"ItemResult"	"item_sun_emblem_4"
 		"ItemRequirements"
 		{
-			"01"	"item_sun_emblem_3"
+			"01"	"item_sun_emblem_3;item_sun_emblem_3"
 		}
 	}
 
@@ -8634,9 +9023,6 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1731"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"6000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8644,7 +9030,7 @@
 		"ItemResult"	"item_dragonhawk_cloak_2"
 		"ItemRequirements"
 		{
-			"01"	"item_dragonhawk_cloak"
+			"01"	"item_dragonhawk_cloak;item_dragonhawk_cloak"
 		}
 	}
 
@@ -8657,9 +9043,6 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1732"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"12000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8667,7 +9050,7 @@
 		"ItemResult"	"item_dragonhawk_cloak_3"
 		"ItemRequirements"
 		{
-			"01"	"item_dragonhawk_cloak_2"
+			"01"	"item_dragonhawk_cloak_2;item_dragonhawk_cloak_2"
 		}
 	}
 
@@ -8680,9 +9063,6 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1733"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"24000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8690,7 +9070,7 @@
 		"ItemResult"	"item_dragonhawk_cloak_4"
 		"ItemRequirements"
 		{
-			"01"	"item_dragonhawk_cloak_3"
+			"01"	"item_dragonhawk_cloak_3;item_dragonhawk_cloak_3"
 		}
 	}
 
@@ -9176,7 +9556,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"30"
+				"bonus_armor"	"15"
 			}
 			"03"
 			{
@@ -9282,7 +9662,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"60"
+				"bonus_armor"	"30"
 			}
 			"03"
 			{
@@ -9388,7 +9768,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"120"
+				"bonus_armor"	"45"
 			}
 			"03"
 			{
@@ -9494,7 +9874,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"240"
+				"bonus_armor"	"60"
 			}
 			"03"
 			{
@@ -9622,7 +10002,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"500"
+				"bonus_armor"	"75"
 			}
 			"03"
 			{
@@ -22898,7 +23278,7 @@
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"armor"	"400"
+				"armor"	"40"
 			}
 		}
 	}
@@ -23540,7 +23920,13 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
 		"ID"	"1735"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -23552,6 +23938,11 @@
 			{
 				"Function"	"OnSpellStart"
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
 			}
 		}
 		"Modifiers"
@@ -23571,10 +23962,13 @@
 			{
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%reduce_armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%reduce_resistance"
 				}
 				"IsDebuff"	"1"
+				"EffectName"	"particles/items2_fx/medallion_of_courage.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -23582,7 +23976,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"reduce_armor"	"-25"
+				"reduce_armor"	"-15"
 			}
 			"02"
 			{
@@ -23592,7 +23986,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"25"
+				"bonus_armor"	"10"
 			}
 			"04"
 			{
@@ -23632,7 +24026,13 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
 		"ID"	"1737"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -23644,6 +24044,11 @@
 			{
 				"Function"	"OnSpellStart"
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
 			}
 		}
 		"Modifiers"
@@ -23663,10 +24068,13 @@
 			{
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%reduce_armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%reduce_resistance"
 				}
 				"IsDebuff"	"1"
+				"EffectName"	"particles/items2_fx/medallion_of_courage.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -23674,7 +24082,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"reduce_armor"	"-50"
+				"reduce_armor"	"-30"
 			}
 			"02"
 			{
@@ -23684,7 +24092,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"50"
+				"bonus_armor"	"20"
 			}
 			"04"
 			{
@@ -23724,7 +24132,13 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
 		"ID"	"1738"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -23736,6 +24150,11 @@
 			{
 				"Function"	"OnSpellStart"
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
 			}
 		}
 		"Modifiers"
@@ -23755,10 +24174,13 @@
 			{
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%reduce_armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%reduce_resistance"
 				}
 				"IsDebuff"	"1"
+				"EffectName"	"particles/items2_fx/medallion_of_courage.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -23766,7 +24188,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"reduce_armor"	"-75"
+				"reduce_armor"	"-45"
 			}
 			"02"
 			{
@@ -23776,7 +24198,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"75"
+				"bonus_armor"	"30"
 			}
 			"04"
 			{
@@ -23816,7 +24238,13 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
 		"ID"	"1739"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -23828,6 +24256,11 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
 				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
 			}
 		}
 		"Modifiers"
@@ -23847,10 +24280,13 @@
 			{
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%reduce_armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%reduce_resistance"
 				}
 				"IsDebuff"	"1"
+				"EffectName"	"particles/items2_fx/medallion_of_courage.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -23858,7 +24294,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"reduce_armor"	"-125"
+				"reduce_armor"	"-60"
 			}
 			"02"
 			{
@@ -23868,7 +24304,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"125"
+				"bonus_armor"	"40"
 			}
 			"04"
 			{
@@ -23898,14 +24334,68 @@
 		}
 	}
 
-	"item_pipe"
+	"item_prestige_pipe"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_pipe"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"ID"	"1743"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/pipe.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Riki.Smoke_Screen"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_pipe"
+			{
+				"Passive"	"1"
+				"Aura"	"modifier_item_pipe_buff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+			}
+			"modifier_item_pipe_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%hp_regen_percent"
+				}
+			}
+			"modifier_item_pipe_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss"
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -23942,6 +24432,402 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"6"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"20"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"2000"
+			}
+		}
+	}
+
+	"item_prestige_pipe_2"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_pipe_2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"ID"	"1749"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/pipe.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Riki.Smoke_Screen"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_pipe"
+			{
+				"Passive"	"1"
+				"Aura"	"modifier_item_pipe_buff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+			}
+			"modifier_item_pipe_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%hp_regen_percent"
+				}
+			}
+			"modifier_item_pipe_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"miss"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"100"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen_percent"	"4"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_min"	"300"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_max"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"30"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
+			}
+		}
+	}
+
+	"item_prestige_pipe_3"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_pipe_3"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"ID"	"1750"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/pipe.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Riki.Smoke_Screen"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_pipe"
+			{
+				"Passive"	"1"
+				"Aura"	"modifier_item_pipe_buff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+			}
+			"modifier_item_pipe_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%hp_regen_percent"
+				}
+			}
+			"modifier_item_pipe_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"miss"	"60"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"140"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen_percent"	"6"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_min"	"300"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_max"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"40"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"4000"
+			}
+		}
+	}
+
+	"item_prestige_pipe_4"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_pipe_4"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"ID"	"1751"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/pipe.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Riki.Smoke_Screen"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_pipe"
+			{
+				"Passive"	"1"
+				"Aura"	"modifier_item_pipe_buff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+			}
+			"modifier_item_pipe_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"%hp_regen_percent"
+				}
+			}
+			"modifier_item_pipe_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"miss"	"70"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"40"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen"	"180"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_regen_percent"	"8"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_min"	"300"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_max"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"50"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"5000"
+			}
+		}
+	}
+
+	"item_shipin_13"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_blades_of_attack"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1745"
+		"ItemCost"	"1200"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_shipin_13"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_attack"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack"	"60"
 			}
 		}
 	}

@@ -37,7 +37,7 @@ function OnExclusiveCreated( t )
             local armor = victim:GetPhysicalArmorValue()
             local damagePure = damage
             if armor > 0 then
-                local reduce = (armor * 0.05)/(1 + armor * 0.05)
+                local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
                 damagePure = damagePure / (1 - reduce)
             end
             CauseDamage(caster,victim,damagePure,DAMAGE_TYPE_PURE,ability,100,critical)
@@ -302,7 +302,7 @@ function EndlessOffensive( t )
                     unit:RemoveModifierByName("modifier_endless_offensive_debuff")
                     unit:MoveToTargetToAttack(target)
                     unit:RemoveNoDraw()
-                    local particle = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN, unit)
+                    local particle = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
                     Timers:CreateTimer(3,function ()
                         unit.use = false
                         for itemSlot=0,5 do

@@ -44,66 +44,68 @@ function AI:SetAbilityType( ability )
 end
 function AI:SetAutoCast( caster )
     Timers:CreateTimer(function ()
-        -- 是否施放技能
-        local castState = false
-        -- 无目标技能
-        if castState == false then
-            for k,ability in pairs(caster.noTargetType) do
-                if ability:IsCooldownReady() then
-                    -- 有影响范围的技能
-                    local radius = ability:GetSpecialValueFor("radius") or 0
-                    if radius > 0 then
-                        local point = caster:GetAbsOrigin()
-                        local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
-                        if #unitGroup > 0 then
+        if not caster:IsNull() then
+            -- 是否施放技能
+            local castState = false
+            -- 无目标技能
+            if castState == false then
+                for k,ability in pairs(caster.noTargetType) do
+                    if ability:IsCooldownReady() then
+                        -- 有影响范围的技能
+                        local radius = ability:GetSpecialValueFor("radius") or 0
+                        if radius > 0 then
+                            local point = caster:GetAbsOrigin()
+                            local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
+                            if #unitGroup > 0 then
+                                castState = true
+                                ClearBuff(caster,"debuff")
+                                CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
+                            end
+                        else
                             castState = true
                             ClearBuff(caster,"debuff")
                             CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
                         end
-                    else
-                        castState = true
-                        ClearBuff(caster,"debuff")
-                        CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
                     end
                 end
             end
-        end
-        -- 单位技能
-        if castState == false then
-            for k,ability in pairs(caster.unitType) do
-                if ability:IsCooldownReady() then
-                    -- 施法距离
-                    local casterLoc = caster:GetAbsOrigin()
-                    local radius = ability:GetCastRange()
-                    local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
-                    if #unitGroup > 0 then
-                        for k,unit in pairs(unitGroup) do
-                            castState = true
-                            ClearBuff(caster,"debuff")
-                            CastAbility(caster,DOTA_UNIT_ORDER_CAST_TARGET,ability,unit,nil)
+            -- 单位技能
+            if castState == false then
+                for k,ability in pairs(caster.unitType) do
+                    if ability:IsCooldownReady() then
+                        -- 施法距离
+                        local casterLoc = caster:GetAbsOrigin()
+                        local radius = ability:GetCastRange()
+                        local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
+                        if #unitGroup > 0 then
+                            for k,unit in pairs(unitGroup) do
+                                castState = true
+                                ClearBuff(caster,"debuff")
+                                CastAbility(caster,DOTA_UNIT_ORDER_CAST_TARGET,ability,unit,nil)
+                            end
                         end
                     end
                 end
             end
-        end
-        -- 点技能
-        if castState == false then
-            for k,ability in pairs(caster.pointType) do
-                if ability:IsCooldownReady() then
-                    -- 施法距离
-                    local casterLoc = caster:GetAbsOrigin()
-                    local radius = ability:GetCastRange()
-                    local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
-                    if #unitGroup > 0 then
-                        for k,unit in pairs(unitGroup) do
-                            castState = true
-                            ClearBuff(caster,"debuff")
-                            CastAbility(caster,DOTA_UNIT_ORDER_CAST_POSITION,ability,nil,unit:GetAbsOrigin())
+            -- 点技能
+            if castState == false then
+                for k,ability in pairs(caster.pointType) do
+                    if ability:IsCooldownReady() then
+                        -- 施法距离
+                        local casterLoc = caster:GetAbsOrigin()
+                        local radius = ability:GetCastRange()
+                        local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
+                        if #unitGroup > 0 then
+                            for k,unit in pairs(unitGroup) do
+                                castState = true
+                                ClearBuff(caster,"debuff")
+                                CastAbility(caster,DOTA_UNIT_ORDER_CAST_POSITION,ability,nil,unit:GetAbsOrigin())
+                            end
                         end
                     end
                 end
             end
+            return 1
         end
-        return 1
     end)
 end

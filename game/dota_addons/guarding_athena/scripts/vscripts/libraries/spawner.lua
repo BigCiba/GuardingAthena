@@ -52,7 +52,7 @@ function Spawner:Setting()
 		Entities:FindByName(nil,"special_rush_4"):GetAbsOrigin(),
 	}
 	self.playerCount = PlayerResource:GetPlayerCount()							--玩家数量
-	self.attackOrderInterval = 2												--自动发布攻击命令间隔
+	self.attackOrderInterval = 5												--自动发布攻击命令间隔
 	self.unitRemaining = {}														--进攻怪剩余表
 	self.bossCurrent = false													--当前Boss
 	self.spawnerTimer = nil														--刷怪计时器
@@ -206,12 +206,15 @@ function Spawner:UnitProperty( unit,factor )
 	unit:SetDeathXP(unit:GetDeathXP() * 1.6)
 	unit:SetMinimumGoldBounty(unit:GetGoldBounty() * 1.6)
 	unit:SetMaximumGoldBounty(unit:GetGoldBounty() * 1.6)
-	unit:SetBaseDamageMin(unit:GetBaseDamageMin() * unitDamageFactor)
-	unit:SetBaseDamageMax(unit:GetBaseDamageMax() * unitDamageFactor)
+	--unit:SetBaseDamageMin(unit:GetBaseDamageMin() * unitDamageFactor)
+	--unit:SetBaseDamageMax(unit:GetBaseDamageMax() * unitDamageFactor)
+	unit:SetBaseDamageMin(unit:GetBaseDamageMin() * (1 + 0.2 * self.difficulty))
+	unit:SetBaseDamageMax(unit:GetBaseDamageMax() * (1 + 0.2 * self.difficulty))
 	unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * unitHealthFactor)
 	unit:SetMaxHealth(unit:GetBaseMaxHealth())
 	unit:SetHealth(unit:GetBaseMaxHealth())
-	unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
+    unit:SetBaseMagicalResistanceValue(unit:GetBaseMagicalResistanceValue() * 2)
+	--unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
 	-- 精英怪
 	--if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
 	if self.difficulty >= 3 and unit:GetUnitName() == "guai_"..self.gameRound then

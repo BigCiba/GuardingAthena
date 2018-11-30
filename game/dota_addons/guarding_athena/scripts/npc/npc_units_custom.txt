@@ -708,7 +708,7 @@
 		// 护甲
 		// ----------------------------------------------------------------
 		// 物理护甲
-		"ArmorPhysical"	"1000"
+		"ArmorPhysical"	"200"
 		// 魔抗
 		"MagicalResistance"	"100"
 		// Attack
@@ -805,7 +805,7 @@
 		// 护甲
 		// ----------------------------------------------------------------
 		// 物理护甲
-		"ArmorPhysical"	"1000"
+		"ArmorPhysical"	"200"
 		// 魔抗
 		"MagicalResistance"	"100"
 		// Attack
@@ -1326,7 +1326,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"2000"
+		"ArmorPhysical"	"200"
 		"MagicalResistance"	"0"
 	}
 
@@ -1387,7 +1387,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"2000"
+		"ArmorPhysical"	"200"
 		"MagicalResistance"	"0"
 	}
 
@@ -3205,7 +3205,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"50"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"80.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -3367,7 +3367,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"50"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"80.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -3501,7 +3501,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"60"
 		// 魔抗
-		"MagicalResistance"	"60"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"90.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -3607,7 +3607,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"40"
 		// 魔抗
-		"MagicalResistance"	"40"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -3915,7 +3915,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"50"
 		// 魔抗
-		"MagicalResistance"	"40"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -4053,7 +4053,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"100"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -4168,7 +4168,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -4273,7 +4273,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -4388,7 +4388,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -4503,7 +4503,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -4618,7 +4618,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"150"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"DisableResistance"	"100.0"
 		// Attack
 		// ----------------------------------------------------------------
@@ -7128,7 +7128,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"22"
 		// 魔抗
-		"MagicalResistance"	"76"
+		"MagicalResistance"	"36"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击
@@ -10486,15 +10486,15 @@
 		// 物理护甲
 		"ArmorPhysical"	"100"
 		// 魔抗
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"25"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// 最低攻击伤害
-		"AttackDamageMin"	"20000"
+		"AttackDamageMin"	"10000"
 		// 最高攻击伤害
-		"AttackDamageMax"	"20000"
+		"AttackDamageMax"	"10000"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// 攻击间隔，与攻击速度是两个概念
 		"AttackRate"	"1.2"
@@ -10612,15 +10612,15 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"60"
+		"MagicalResistance"	"38"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// 最低攻击伤害
-		"AttackDamageMin"	"150000"
+		"AttackDamageMin"	"15000"
 		// 最高攻击伤害
-		"AttackDamageMax"	"250000"
+		"AttackDamageMax"	"25000"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// 攻击间隔，与攻击速度是两个概念
 		"AttackRate"	"1.2"
@@ -10737,15 +10737,15 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"60"
+		"MagicalResistance"	"38"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// 最低攻击伤害
-		"AttackDamageMin"	"600000"
+		"AttackDamageMin"	"60000"
 		// 最高攻击伤害
-		"AttackDamageMax"	"800000"
+		"AttackDamageMax"	"80000"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// 攻击间隔，与攻击速度是两个概念
 		"AttackRate"	"1.2"
@@ -11038,7 +11038,7 @@
 		"ModelScale"	"1.1"
 		"ProjectileSpeed"	"1200"
 		"ProjectileModel"	"particles/units/heroes/hero_dazzle/dazzle_base_attack.vpcf"
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"ArmorPhysical"	"8"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	}
@@ -11113,7 +11113,7 @@
 		"ModelScale"	"1.1"
 		"ProjectileSpeed"	"1200"
 		"ProjectileModel"	"particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
-		"MagicalResistance"	"75"
+		"MagicalResistance"	"38"
 		"ArmorPhysical"	"3"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	}
@@ -11694,7 +11694,7 @@
 		"BountyGoldMax"	"100"
 		"ModelScale"	"1"
 		"ArmorPhysical"	"50"
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	}
 
@@ -11767,7 +11767,7 @@
 		"BountyGoldMax"	"100"
 		"ModelScale"	"1.4"
 		"ArmorPhysical"	"100"
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	}
 
@@ -11836,7 +11836,7 @@
 		"BountyGoldMax"	"100"
 		"ModelScale"	"1.4"
 		"ArmorPhysical"	"50"
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"ProjectileSpeed"	"900"
 		"ProjectileModel"	"particles/units/heroes/hero_shadow_demon/shadow_demon_base_attack.vpcf"
@@ -11927,7 +11927,7 @@
 		"AttackRate"	"1.3"
 		"AttackRange"	"175"
 		"ArmorPhysical"	"70"
-		"MagicalResistance"	"50"
+		"MagicalResistance"	"38"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"380"
 		"StatusHealth"	"9400"

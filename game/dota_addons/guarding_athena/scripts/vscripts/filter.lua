@@ -111,23 +111,12 @@ function GuardingAthena:DamageFilter( args )
 		local armor = victim:GetPhysicalArmorValue()
 		local initdamage = args.damage
 		if armor > 0 then
-			local reduce = (armor * 0.05)/(1 + armor * 0.05)
+			local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
 			initdamage = args.damage / (1 - reduce)
 		end
-		-- 重新计算护甲
-		if armor > 0 and caster:IsHero() then
-			args.damage = initdamage * 1000 / (1000 + 10 * armor)
-		end
         -- 物理伤害穿透额外无视护甲伤害
-		if caster.bonus_physical_damage and caster.bonus_physical_damage > 0 then
-			--local armor = victim:GetPhysicalArmorValue()
-			if armor > 0 then
-				--local reduce = (armor * 0.05)/(1 + armor * 0.05)
-				--local initdamage = args.damage / (1 - reduce)
-				args.damage = args.damage + initdamage * caster.bonus_physical_damage * 0.01
-			else
-				args.damage = args.damage + args.damage * caster.bonus_physical_damage * 0.01
-			end
+		if caster.bonus_physical_damage then
+			args.damage = initdamage
 		end
 	end
 	-- 纯粹伤害
@@ -214,6 +203,10 @@ function GuardingAthena:ItemAddedFilter( keys )
 			return false
 		elseif RollPercentage(5) then
 			currentUnit:AddItem(CreateItem("item_mystletainn", currentUnit, currentUnit))
+			currentItem:RemoveSelf()
+			return false
+		elseif RollPercentage(5) then
+			currentUnit:AddItem(CreateItem("item_yata_mirror", currentUnit, currentUnit))
 			currentItem:RemoveSelf()
 			return false
 		end

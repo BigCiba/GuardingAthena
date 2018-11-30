@@ -261,6 +261,14 @@ function RemovePhysicalDamage(keys)
         caster.bonus_physical_damage = 0
     end
 end
+function JianCreated( t )
+    local caster = t.caster
+    caster.bonus_physical_damage = true
+end
+function JianRemove( t )
+    local caster = t.caster
+    caster.bonus_physical_damage = false
+end
 function chui( t )
     local caster = t.caster
     local ability = t.ability
@@ -1032,11 +1040,11 @@ function JianJiaCreate( t )
     local caster = t.caster
     local target = t.target
     local reduce = t.reduce
-    local armor = target:GetPhysicalArmorBaseValue()
-    target.reduceArmor = math.floor(armor * reduce)
-    target:SetPhysicalArmorBaseValue(armor - target.reduceArmor)
+    --local armor = target:GetPhysicalArmorBaseValue()
+    --target.reduceArmor = math.floor(armor * reduce)
+    --target:SetPhysicalArmorBaseValue(armor - target.reduceArmor)
 end
 function JianJiaRemove( t )
     local target = t.target
-    target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + target.reduceArmor)
+    --target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + target.reduceArmor)
 end
