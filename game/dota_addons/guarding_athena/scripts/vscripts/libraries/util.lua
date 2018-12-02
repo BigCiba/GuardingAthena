@@ -88,6 +88,12 @@ function CauseDamage( ... )
 				CreateNumberEffect(victim,damage,1,MSG_ORIT ,"red",4)
 			end
 		end
+		-- 修正伤害
+		if attacker:GetTeam() ~= DOTA_TEAM_GOODGUYS then
+			local res = victim:GetBaseMagicalResistanceValue() or 0
+			damage = damage * (1 - res)
+		end
+
 		local damageTable = {victim = victim,attacker = attacker,damage = damage,damage_type = damageType,ability = ability}
 		ApplyDamage(damageTable)
 	else
@@ -98,6 +104,11 @@ function CauseDamage( ... )
 						local currentDamage = damage * criticalDamage * 0.01
 						CreateNumberEffect(v,currentDamage,1,MSG_ORIT ,"red",4)
 					end
+				end
+				-- 修正伤害
+				if attacker:GetTeam() ~= DOTA_TEAM_GOODGUYS then
+					local res = v:GetBaseMagicalResistanceValue() or 0
+					damage = damage * (1 - res)
 				end
 				local damageTable = {victim = v,attacker = attacker,damage = damage,damage_type = damageType,ability = ability}
 				ApplyDamage(damageTable)

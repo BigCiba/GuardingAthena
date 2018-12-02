@@ -8871,7 +8871,7 @@
 		}
 	}
 
-	"item_recipe_buckler"
+	"item_recipe_buckler_shield"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -8887,14 +8887,14 @@
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_buckler"
+		"ItemResult"	"item_buckler_shield"
 		"ItemRequirements"
 		{
 			"01"	"item_poor_man_shield;item_shipin_8"
 		}
 	}
 
-	"item_recipe_anguard"
+	"item_recipe_vanguard_shield"
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -8903,17 +8903,83 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1757"
 		"Model"	"models/props_gameplay/recipe.mdl"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
-		"ItemResult"	"item_anguard"
+		"ItemResult"	"item_vanguard_shield"
 		"ItemRequirements"
 		{
-			"01"	"item_buckler;item_shipin_1;item_shipin_12"
+			"01"	"item_shipin_1;item_shipin_12;item_buckler_shield"
+		}
+	}
+
+	"item_recipe_vanguard_shield_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1761"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"8000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_vanguard_shield_2"
+		"ItemRequirements"
+		{
+			"01"	"item_vanguard_shield"
+		}
+	}
+
+	"item_recipe_vanguard_shield_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1762"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"16000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_vanguard_shield_3"
+		"ItemRequirements"
+		{
+			"01"	"item_vanguard_shield_2"
+		}
+	}
+
+	"item_recipe_vanguard_shield_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe"
+		// Valve's version of this item uses the ID "153".
+		"ID"	"1763"
+		"Model"	"models/props_gameplay/recipe.mdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"24000"
+		"ItemSellable"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_vanguard_shield_4"
+		"ItemRequirements"
+		{
+			"01"	"item_vanguard_shield_3"
 		}
 	}
 
@@ -8972,6 +9038,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1746"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"8000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8979,7 +9046,7 @@
 		"ItemResult"	"item_prestige_pipe_2"
 		"ItemRequirements"
 		{
-			"01"	"item_prestige_pipe;item_prestige_pipe"
+			"01"	"item_prestige_pipe"
 		}
 	}
 
@@ -8992,6 +9059,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1747"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"12000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8999,7 +9067,7 @@
 		"ItemResult"	"item_prestige_pipe_3"
 		"ItemRequirements"
 		{
-			"01"	"item_prestige_pipe_2;item_prestige_pipe_2"
+			"01"	"item_prestige_pipe_2"
 		}
 	}
 
@@ -9012,6 +9080,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1748"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"16000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9019,7 +9088,7 @@
 		"ItemResult"	"item_prestige_pipe_4"
 		"ItemRequirements"
 		{
-			"01"	"item_prestige_pipe_3;item_prestige_pipe_3"
+			"01"	"item_prestige_pipe_3"
 		}
 	}
 
@@ -9032,6 +9101,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1740"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"6000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9039,7 +9109,7 @@
 		"ItemResult"	"item_sun_emblem_2"
 		"ItemRequirements"
 		{
-			"01"	"item_sun_emblem;item_sun_emblem"
+			"01"	"item_sun_emblem"
 		}
 	}
 
@@ -9052,6 +9122,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1741"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"10000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9059,7 +9130,7 @@
 		"ItemResult"	"item_sun_emblem_3"
 		"ItemRequirements"
 		{
-			"01"	"item_sun_emblem_2;item_sun_emblem_2"
+			"01"	"item_sun_emblem_2"
 		}
 	}
 
@@ -9072,6 +9143,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1742"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"14000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9079,7 +9151,7 @@
 		"ItemResult"	"item_sun_emblem_4"
 		"ItemRequirements"
 		{
-			"01"	"item_sun_emblem_3;item_sun_emblem_3"
+			"01"	"item_sun_emblem_3"
 		}
 	}
 
@@ -9092,6 +9164,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1731"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"4000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9099,7 +9172,7 @@
 		"ItemResult"	"item_dragonhawk_cloak_2"
 		"ItemRequirements"
 		{
-			"01"	"item_dragonhawk_cloak;item_dragonhawk_cloak"
+			"01"	"item_dragonhawk_cloak"
 		}
 	}
 
@@ -9112,6 +9185,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1732"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"8000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9119,7 +9193,7 @@
 		"ItemResult"	"item_dragonhawk_cloak_3"
 		"ItemRequirements"
 		{
-			"01"	"item_dragonhawk_cloak_2;item_dragonhawk_cloak_2"
+			"01"	"item_dragonhawk_cloak_2"
 		}
 	}
 
@@ -9132,6 +9206,7 @@
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1733"
 		"Model"	"models/props_gameplay/recipe.mdl"
+		"ItemCost"	"12000"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -9139,7 +9214,7 @@
 		"ItemResult"	"item_dragonhawk_cloak_4"
 		"ItemRequirements"
 		{
-			"01"	"item_dragonhawk_cloak_3;item_dragonhawk_cloak_3"
+			"01"	"item_dragonhawk_cloak_3"
 		}
 	}
 
@@ -14356,7 +14431,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -14523,7 +14598,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -14644,7 +14719,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -15279,7 +15354,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -15673,7 +15748,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -15770,7 +15845,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -16662,7 +16737,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -16731,7 +16806,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -16798,7 +16873,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -16889,7 +16964,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -16945,7 +17020,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -17011,7 +17086,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -17082,7 +17157,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"	{}
 				"OnCreated"
 				{
@@ -23805,6 +23880,7 @@
 						"Function"	"OnAbilityExecuted"
 					}
 				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			}
 		}
 		"AbilitySpecial"
@@ -23983,35 +24059,32 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sun_emblem"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
+		"AOERadius"	"%radius"
 		"ID"	"1735"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
 		}
 		"OnSpellStart"
 		{
-			"ApplyModifier"
+			"FireSound"
 			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_item_sun_emblem_debuff"
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Invoker.SunStrike.Ignite"
 			}
 			"RunScript"
 			{
-				"Function"	"OnSpellStart"
+				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
-			}
-			"FireSound"
-			{
-				"Target"	"TARGET"
-				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
+				"Function"	"OnSpellStart"
 			}
 		}
 		"Modifiers"
@@ -24026,6 +24099,7 @@
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
 				}
 				"Passive"	"1"
+				"IsHidden"	"1"
 			}
 			"modifier_item_sun_emblem_debuff"
 			{
@@ -24082,6 +24156,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"5"
 			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"375"
+			}
 		}
 	}
 
@@ -24089,11 +24168,12 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sun_emblem_2"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
+		"AOERadius"	"%radius"
 		"ID"	"1737"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24104,15 +24184,11 @@
 		}
 		"OnSpellStart"
 		{
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_item_sun_emblem_debuff"
-			}
 			"RunScript"
 			{
 				"Function"	"OnSpellStart"
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+				"Target"	"POINT"
 			}
 			"FireSound"
 			{
@@ -24132,6 +24208,7 @@
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
 				}
 				"Passive"	"1"
+				"IsHidden"	"1"
 			}
 			"modifier_item_sun_emblem_debuff"
 			{
@@ -24188,6 +24265,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"6"
 			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"375"
+			}
 		}
 	}
 
@@ -24195,11 +24277,12 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sun_emblem_3"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
+		"AOERadius"	"%radius"
 		"ID"	"1738"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24210,15 +24293,11 @@
 		}
 		"OnSpellStart"
 		{
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_item_sun_emblem_debuff"
-			}
 			"RunScript"
 			{
 				"Function"	"OnSpellStart"
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
+				"Target"	"POINT"
 			}
 			"FireSound"
 			{
@@ -24238,6 +24317,7 @@
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
 				}
 				"Passive"	"1"
+				"IsHidden"	"1"
 			}
 			"modifier_item_sun_emblem_debuff"
 			{
@@ -24294,6 +24374,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"7"
 			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"375"
+			}
 		}
 	}
 
@@ -24301,11 +24386,12 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sun_emblem_4"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"	"16"
+		"AOERadius"	"%radius"
 		"ID"	"1739"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24316,15 +24402,11 @@
 		}
 		"OnSpellStart"
 		{
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_item_sun_emblem_debuff"
-			}
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_item/sun_emblem.lua"
 				"Function"	"OnSpellStart"
+				"Target"	"POINT"
 			}
 			"FireSound"
 			{
@@ -24344,6 +24426,7 @@
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
 				}
 				"Passive"	"1"
+				"IsHidden"	"1"
 			}
 			"modifier_item_sun_emblem_debuff"
 			{
@@ -24400,6 +24483,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"8"
 			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"375"
+			}
 		}
 	}
 
@@ -24411,6 +24499,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"20"
+		"AbilityCastRange"	"1200"
 		"ID"	"1743"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24528,6 +24618,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"20"
+		"AbilityCastRange"	"1200"
 		"ID"	"1749"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24645,6 +24737,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"20"
+		"AbilityCastRange"	"1200"
 		"ID"	"1750"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24762,6 +24856,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"20"
+		"AbilityCastRange"	"1200"
 		"ID"	"1751"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRequirements"	{}
@@ -24936,11 +25032,11 @@
 		}
 	}
 
-	"item_buckler"
+	"item_buckler_shield"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_buckler"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1754"
@@ -24979,10 +25075,10 @@
 		}
 	}
 
-	"item_anguard"
+	"item_vanguard_shield"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_vanguard"
+		"AbilityTextureName"	"item_vanguard_shield"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1756"
 		"ItemRequirements"	{}
@@ -25011,7 +25107,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"35"
+				"bonus_armor"	"30"
 			}
 			"03"
 			{
@@ -25022,6 +25118,147 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_health"	"3000"
+			}
+		}
+	}
+
+	"item_vanguard_shield_2"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_vanguard_shield_2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1758"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_anguard"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%bonus_miss"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"120"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"35"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"35"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"6000"
+			}
+		}
+	}
+
+	"item_vanguard_shield_3"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_vanguard_shield_3"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1759"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_anguard"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%bonus_miss"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"240"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"40"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"40"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"9000"
+			}
+		}
+	}
+
+	"item_vanguard_shield_4"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_vanguard_shield_4"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"	"1760"
+		"ItemRequirements"	{}
+		"Modifiers"
+		{
+			"modifier_item_anguard"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%bonus_miss"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%bonus_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_block"	"480"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_armor"	"45"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_miss"	"45"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"12000"
 			}
 		}
 	}

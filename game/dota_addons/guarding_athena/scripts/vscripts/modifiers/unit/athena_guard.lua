@@ -9,7 +9,7 @@ function athena_guard:DeclareFunctions()
 end
 function athena_guard:GetModifierPhysicalArmorBonus()
     if IsServer() then
-        local armor = 10 + GuardingAthena.athena_armor_lv
+        local armor = 10 + GuardingAthena.athena_armor_lv * 0.25
         return armor
     end
 end

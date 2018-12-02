@@ -1963,7 +1963,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"armor"	"-40 -80 -120 -160 -200"
+				"armor"	"-30 -60 -90 -120 -150"
 			}
 		}
 	}
@@ -4474,12 +4474,6 @@
 		}
 		"OnSpellStart"
 		{
-			"Damage"
-			{
-				"Target"	"TARGET"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"5000"
-			}
 			"Stun"
 			{
 				"Duration"	"0.1"
@@ -4495,6 +4489,12 @@
 			{
 				"EffectName"	"n_creep_Ursa.Clap"
 				"Target"	"TARGET"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"5000"
 			}
 		}
 		"Modifiers"
@@ -6933,12 +6933,6 @@
 		}
 		"OnSpellStart"
 		{
-			"Damage"
-			{
-				"Target"	"TARGET"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"10000"
-			}
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_absorb"
@@ -6959,6 +6953,12 @@
 			{
 				"EffectName"	"Hero_Treant.LivingArmor.Cast"
 				"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"10000"
 			}
 		}
 		"Modifiers"
@@ -7064,19 +7064,6 @@
 		}
 		"OnSpellStart"
 		{
-			"Damage"
-			{
-				"Target"
-				{
-					"Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
-					"Center"	"CASTER"
-					"Radius"	"600"
-				}
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"2000"
-			}
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_overgrowth"
@@ -7118,6 +7105,19 @@
 				"EffectName"	"Hero_Treant.Overgrowth.Cast"
 				"Target"	"CASTER"
 			}
+			"RunScript"
+			{
+				"Target"
+				{
+					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Center"	"CASTER"
+					"Radius"	"600"
+				}
+				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+				"Function"	"KvDamage"
+				"damage"	"5000"
+			}
 		}
 		"Modifiers"
 		{
@@ -7137,11 +7137,11 @@
 				"ThinkInterval"	"1"
 				"OnIntervalThink"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Target"	"TARGET"
-						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"2000"
+						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
+						"Function"	"KvDamage"
+						"damage"	"5000"
 					}
 				}
 				"States"
@@ -17816,6 +17816,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastPoint"	"2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AnimationPlaybackRate"	"0.5"

@@ -65,7 +65,6 @@ function GuardingAthena:DamageFilter( args )
 			return
 		end
 	end--]]
-	
 	if args.entindex_attacker_const then
 		caster = EntIndexToHScript(args.entindex_attacker_const)
 	else

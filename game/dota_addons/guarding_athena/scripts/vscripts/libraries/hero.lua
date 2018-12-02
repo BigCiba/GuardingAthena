@@ -45,7 +45,6 @@ function HeroState:InitHero(hero)
 end
 function HeroState:InitUnit(unit)
     unit.bonus_magic_damage = unit.bonus_magic_damage or 0         --额外百分比魔法伤害
-    unit.bonus_physical_damage = unit.bonus_physical_damage or 0      --额外无视护甲物理伤害
     unit.percent_bonus_damage = unit.percent_bonus_damage or 0       --额外百分比所有伤害
     unit.const_reduce_damage = unit.const_reduce_damage or 0        --定值伤害减少
     unit.percent_reduce_damage = unit.percent_reduce_damage or 0      --百分比伤害减少
@@ -65,7 +64,6 @@ function HeroState:InitUnit(unit)
 end
 function HeroState:InitIllusion(unit)
     unit.bonus_magic_damage = 0         --额外百分比魔法伤害
-    unit.bonus_physical_damage = 0      --额外无视护甲物理伤害
     unit.percent_bonus_damage = 0       --额外百分比所有伤害
     unit.const_reduce_damage = 0        --定值伤害减少
     unit.percent_reduce_damage = 0      --百分比伤害减少

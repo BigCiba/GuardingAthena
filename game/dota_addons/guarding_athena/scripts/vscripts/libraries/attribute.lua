@@ -1,7 +1,6 @@
 if not Attributes then
     Attributes = class({})
 end
-
 function Attributes:Init()
     self.itemTable = LoadKeyValues("scripts/npc/npc_items_custom.txt")
     self.abilityTable = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
@@ -41,8 +40,10 @@ function Attributes:CalculateAdjustment(hero)
     hero.armor_adjustment = self.ARMOR_PER_AGI
     hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT
     hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI
+    hero.resistance_adjustment = self.DEFAULT_RES_PER_STR
     if attribute == DOTA_ATTRIBUTE_STRENGTH then
         hero.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR * 1.25
+        hero.resistance_adjustment = self.DEFAULT_RES_PER_STR * 1.25
     elseif attribute == DOTA_ATTRIBUTE_AGILITY then
         hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI * 1.25
         hero.armor_adjustment = self.ARMOR_PER_AGI * 1.25
@@ -90,10 +91,11 @@ function Attributes:ModifyBonuses(hero)
         end]]
         --hero:SetPhysicalArmorBaseValue(-fixarmor - armor)
         -- Base Magic Resistance
+        local resistance = {}
         local itemRes = 0
         for i=1,6 do
             -- 获取物品
-            local item = hero.bag_item[i]
+            local item = hero:GetItemInSlot(i-1)
             if item then
                 if item:IsNull() then break end
                 local itemName = item:GetAbilityName()
@@ -101,18 +103,22 @@ function Attributes:ModifyBonuses(hero)
                 for k,v in pairs(self.itemTable) do
                     if k == itemName and v.Modifiers then
                         for k,v in pairs(v.Modifiers) do
+                            if hero:FindModifierByName(k) then
                                 -- 判断是否有魔抗属性
                                 if v.Properties then
                                     for k,v in pairs(v.Properties) do
                                         if k == "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" then
                                             if string.sub(v,0,1) == "%" then
-                                                itemRes = itemRes + item:GetSpecialValueFor(string.sub(v,2,string.len(v)))
+                                                itemRes = item:GetSpecialValueFor(string.sub(v,2,string.len(v)))
+                                                table.insert( resistance, itemRes * 0.01 )
                                             else
-                                                itemRes = itemRes + v
+                                                itemRes = v
+                                                table.insert( resistance, itemRes * 0.01 )
                                             end
                                         end
                                     end
                                 end
+                            end
                         end
                     end
                 end
@@ -137,9 +143,11 @@ function Attributes:ModifyBonuses(hero)
                                     for k,v in pairs(v.Properties) do
                                         if k == "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" then
                                             if string.sub(v,0,1) == "%" then
-                                                abilityRes = abilityRes + ability:GetSpecialValueFor(string.sub(v,2,string.len(v)))
+                                                abilityRes = ability:GetSpecialValueFor(string.sub(v,2,string.len(v)))
+                                                table.insert( resistance, abilityRes * 0.01 )
                                             else
-                                                abilityRes = abilityRes + v
+                                                abilityRes = v
+                                                table.insert( resistance, abilityRes * 0.01 )
                                             end
                                         end
                                     end
@@ -150,7 +158,15 @@ function Attributes:ModifyBonuses(hero)
                 end
             end
         end
-        hero:SetBaseMagicalResistanceValue((itemRes + abilityRes) * 0.01)
+        local res = 0
+        for i=1,#resistance do
+            if i == 1 then
+                res = resistance[i]
+            else
+                res = res + ((1 - res) * resistance[i])
+            end
+        end
+        hero:SetBaseMagicalResistanceValue(res)
         -- STR
         if strength ~= hero.strength then
             
@@ -162,6 +178,14 @@ function Attributes:ModifyBonuses(hero)
             local health_stacks = math.abs(strength * hero.hp_adjustment)
             hero:SetModifierStackCount("modifier_health_bonus", self.applier, health_stacks)
 
+            -- Magic Resistance
+            --[[if not hero:HasModifier("modifier_magical_resistance_bonus") then
+                self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_magical_resistance_bonus", {})
+            end
+            
+            local magic_stacks = math.floor(strength * hero.resistance_adjustment)
+            print(magic_stacks)
+            hero:SetModifierStackCount("modifier_magical_resistance_bonus", self.applier, magic_stacks)]]
         end
 
         -- AGI

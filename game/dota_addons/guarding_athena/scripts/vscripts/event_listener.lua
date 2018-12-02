@@ -128,7 +128,7 @@ function OnArmorClick( index,keys )
 		hero:SetBaseAgility(hero:GetBaseAgility() + property) 
 	    hero:CalculateStatBonus()
 	    GuardingAthena.athena_armor_lv = GuardingAthena.athena_armor_lv + 1
-		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1 + 1.04 ^ GuardingAthena.athena_armor_lv )
+		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1)
 		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点敏捷", style={color="red"}, duration=2, class="LeftMessage", continue = false})
 		return true
 	else
