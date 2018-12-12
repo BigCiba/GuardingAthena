@@ -301,6 +301,8 @@ function GuardingAthena:OnNPCSpawned(keys)
 	--DeepPrintTable(keys)
 	local spawnedUnit = EntIndexToHScript( keys.entindex )
 	if spawnedUnit:IsRealHero() then
+		-- 重置买活惩罚
+		--PlayerResource:ResetBuybackCostTime(spawnedUnit:GetPlayerID())
 		-- 单人buff
 		Timers:CreateTimer(0.1,function ()
 			if spawnedUnit:IsNull() then

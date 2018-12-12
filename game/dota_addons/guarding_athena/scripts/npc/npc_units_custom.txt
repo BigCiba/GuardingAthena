@@ -1513,7 +1513,7 @@
 		// 护甲
 		// ----------------------------------------------------------------
 		// 物理护甲
-		"ArmorPhysical"	"50"
+		"ArmorPhysical"	"100"
 		// 魔抗
 		"MagicalResistance"	"50"
 		// Attack
@@ -1564,7 +1564,7 @@
 		// 基础生命值
 		"StatusHealth"	"120000"
 		// 基础生命回复速度
-		"StatusHealthRegen"	"100"
+		"StatusHealthRegen"	"1000"
 		// 基础魔法值
 		"StatusMana"	"1000"
 		// 基础魔法回复速度
@@ -1590,10 +1590,48 @@
 			"MoveSpeedGain"	"1"
 			"BountyGain"	"3"
 			"XPGain"	"5"
+			"DefaultState"	"Invade"
+			"States"
+			{
+				"Invade"
+				{
+					"Name"	"Invade"
+					"Aggression"	"100.0"
+					"Support"	"80.0"
+				}
+			}
+			"OffensiveAbilities"
+			{
+				"Ability1"
+				{
+					"Name"	"boss_absorb"
+				}
+				"Ability2"
+				{
+					"Name"	"boss_green_protect"
+				}
+			}
+			"DefensiveAbilities"
+			{
+				"Ability1"
+				{
+					"Name"	"boss_absorb"
+				}
+				"Ability2"
+				{
+					"Name"	"boss_green_protect"
+					"UseAtHealthPercent"	"80"
+				}
+				"Ability3"
+				{
+					"Name"	"boss_overgrowth"
+					"UseAtHealthPercent"	"80"
+				}
+			}
 		}
-		"Ability1"	""
-		"Ability2"	""
-		"Ability3"	""
+		"Ability1"	"boss_absorb"
+		"Ability2"	"boss_green_protect"
+		"Ability3"	"boss_overgrowth"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -10486,7 +10524,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"100"
 		// 魔抗
-		"MagicalResistance"	"25"
+		"MagicalResistance"	"50"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击
@@ -10612,7 +10650,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"38"
+		"MagicalResistance"	"60"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击
@@ -10737,7 +10775,7 @@
 		// 物理护甲
 		"ArmorPhysical"	"200"
 		// 魔抗
-		"MagicalResistance"	"38"
+		"MagicalResistance"	"60"
 		// Attack
 		// ----------------------------------------------------------------
 		// 攻击方式，此为远战攻击

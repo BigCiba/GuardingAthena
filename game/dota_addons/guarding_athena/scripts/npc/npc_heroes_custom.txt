@@ -251,7 +251,7 @@
 		"Ability2"	"space_cut"
 		"Ability3"	"images"
 		"Ability4"	"blade_dance"
-		"Ability5"	"jianrenfengbao"
+		"Ability5"	"phantom_sword_dance"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
 		"Ability6"	""

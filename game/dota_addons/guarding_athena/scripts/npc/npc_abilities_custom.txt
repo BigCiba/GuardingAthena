@@ -832,20 +832,6 @@
 						"Chance"	"15"
 						"OnSuccess"
 						{
-							"AttachEffect"
-							{
-								"EffectName"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-								"EffectAttachType"	"follow_origin"
-								"Target"	"CASTER"
-								"Duration"	"6"
-								"ControlPoints"	{}
-								"ControlPointEntities"	{}
-							}
-							"FireSound"
-							{
-								"EffectName"	"Hero_LegionCommander.PressTheAttack"
-								"Target"	"TARGET"
-							}
 							"ApplyModifier"
 							{
 								"ModifierName"	"modifier_courage_buff"
@@ -858,12 +844,25 @@
 			}
 			"modifier_courage_buff"
 			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsHidden"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%heal"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+						"EffectAttachType"	"attach_origin"
+					}
+					"FireSound"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"Hero_LegionCommander.PressTheAttack"
+					}
 				}
 			}
 		}
@@ -6958,7 +6957,7 @@
 			{
 				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
 				"Function"	"KvDamage"
-				"damage"	"10000"
+				"damage"	"20000"
 			}
 		}
 		"Modifiers"
@@ -7116,7 +7115,7 @@
 				}
 				"ScriptFile"	"scripts/vscripts/ability_unit.lua"
 				"Function"	"KvDamage"
-				"damage"	"5000"
+				"damage"	"10000"
 			}
 		}
 		"Modifiers"
@@ -7141,7 +7140,7 @@
 					{
 						"ScriptFile"	"scripts/vscripts/ability_unit.lua"
 						"Function"	"KvDamage"
-						"damage"	"5000"
+						"damage"	"10000"
 					}
 				}
 				"States"
@@ -11905,7 +11904,7 @@
 				"IsBuff"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%critical"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%critical"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
 				}
 			}
@@ -12032,7 +12031,7 @@
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"juggernaut_blade_dance"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
@@ -12044,7 +12043,7 @@
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK_EVENT"
 		"AbilityCooldown"	"8"
 		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
-		"AbilityCastRange"	"900"
+		"AbilityCastRange"	"1200"
 		// Precache
 		// -------------------------------------------------------------------------------------------------------------
 		"precache"
@@ -12237,9 +12236,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"	"1"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"HotKeyOverride"	"E"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
@@ -12276,6 +12273,7 @@
 				}
 				"IsHidden"	"0"
 				"AllowIllusionDuplicate"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			}
 		}
 		// Special
@@ -12301,6 +12299,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"4 4.4 4.8 5.2 5.6 6 6.4 6.8 7.2 7.6 8 8.4 8.8 9.2 9.6 10 10.4 10.8 11.2 11.6"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
 			}
 		}
 		"AbilityDuration"	"6.0"
@@ -12524,23 +12527,22 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"HotKeyOverride"	"R"
 		"MaxLevel"	"8"
 		"RequiredLevel"	"8"
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastPoint"	"0"
-		"AbilityCastAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"120"
+		"AbilityCooldown"	"12"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"110"
 		// Casting
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"	"400"
-		"AOERadius"	"600"
+		"AbilityCastRange"	"600"
+		"AOERadius"	"%radius"
 		// Data driven
 		// -------------------------------------------------------------------------------------------------------------
 		"precache"
@@ -12557,27 +12559,36 @@
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
-				"ModifierName"	"modifier_jianrenfengbao"
+				"ModifierName"	"modifier_phantom_sword_dance"
 			}
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
 				"Function"	"PhantomSwordDance"
-				"Target"	"CASTER"
+				"Target"	"POINT"
 			}
 		}
 		"Modifiers"
 		{
-			"modifier_jianrenfengbao"
+			"modifier_phantom_sword_dance"
 			{
 				"Duration"	"%duration"
-				"OverrideAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_1"
+				"OverrideAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_4"
 				"States"
 				{
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				"Properties"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"	"1"
+				}
+				"StatusEffectName"	"particles/econ/items/juggernaut/jugg_arcana/status_effect_jugg_arcana_v2_omni.vpcf"
+				"StatusEffectPriority"	"10"
 			}
 		}
 		// Special
@@ -12587,17 +12598,17 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"6"
+				"duration"	"1.5 1.6 1.7 1.8 1.9 2 2.1 2.2"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"500"
+				"radius"	"600"
 			}
 			"03"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"24 48 72 96 120 144 168 192"
+				"var_type"	"FIELD_FLOAT"
+				"interval"	"0.05"
 			}
 		}
 		"AbilityDuration"	"9"
@@ -17638,7 +17649,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"armor_bonus"	"-100 -200 -300 -400 -500"
+				"armor_bonus"	"-25 -40 -55 -70 -85"
 			}
 			"04"
 			{

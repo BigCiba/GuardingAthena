@@ -14,6 +14,7 @@
 	DropItem(item,hero)
 	ForWithInterval(count,interval,callback)
 	GetExclusive(caster)
+	GetOriginalDamage(damage,target)
 	GetUnitsInRadius(caster,ability,point,radius)
 	GetUnitsInLine(caster,ability,start_point,end_point,width)
 	GetUnitsInSector(cacheUnit,ability,position,forwardVector,angle,radius)
@@ -183,7 +184,7 @@ end
 -- 增加modifier叠加数量
 function AddModifierStackCount( ... )
     local caster,target,ability,modiferName,count,duration,independent = ...
-    if not target:IsAlive() or target:IsMagicImmune() then
+    if not target:IsAlive() then
 		return
 	end
     local durationTable = {Duration=duration}
@@ -295,6 +296,14 @@ function GetExclusive( ... )
 	local caster = ...
 	local exclusive = caster.exclusive or false
 	return exclusive
+end
+-- 获取原始伤害
+function GetOriginalDamage( ... )
+	local damage,target = ...
+	local armor = target:GetPhysicalArmorValue()
+    local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
+	local initDamage = damage / (1 - reduce)
+	return initDamage
 end
 -- 寻找圆形范围单位
 function GetUnitsInRadius( ... )

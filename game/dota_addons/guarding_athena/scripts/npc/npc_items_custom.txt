@@ -4001,7 +4001,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-20"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-15"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -4298,7 +4298,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-40"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-30"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -4600,7 +4600,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-60"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-45"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -4902,7 +4902,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-80"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-60"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -6362,7 +6362,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-20"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-15"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -6641,7 +6641,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-40"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-30"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -6925,7 +6925,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-60"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-45"
 				}
 				"IsDebuff"	"1"
 				"OnCreated"
@@ -7211,7 +7211,7 @@
 				"Duration"	"10"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-80"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-60"
 				}
 				"IsDebuff"	"1"
 				"TextureName"	"item_gong_9"
@@ -10335,6 +10335,8 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fu_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10419,7 +10421,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"%cleave_percent"
+						"CleavePercent"	"0"
 						"CleaveRadius"	"%cleave_radius"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -10427,6 +10429,12 @@
 					{
 						"Target"	"TARGET"
 						"EffectName"	"DOTA_Item.BattleFury"
+					}
+					"RunScript"
+					{
+						"Function"	"Cleave"
+						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
+						"damage"	"%attack_damage"
 					}
 				}
 				"IsHidden"	"1"
@@ -10490,6 +10498,8 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fu_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10574,7 +10584,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"%cleave_percent"
+						"CleavePercent"	"0"
 						"CleaveRadius"	"%cleave_radius"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -10582,6 +10592,12 @@
 					{
 						"Target"	"TARGET"
 						"EffectName"	"DOTA_Item.BattleFury"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
+						"Function"	"Cleave"
+						"damage"	"%attack_damage"
 					}
 				}
 				"IsHidden"	"1"
@@ -10644,6 +10660,8 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fu_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10728,7 +10746,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"%cleave_percent"
+						"CleavePercent"	"0"
 						"CleaveRadius"	"%cleave_radius"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -10736,6 +10754,12 @@
 					{
 						"Target"	"TARGET"
 						"EffectName"	"DOTA_Item.BattleFury"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
+						"Function"	"Cleave"
+						"damage"	"%attack_damage"
 					}
 				}
 				"IsHidden"	"1"
@@ -10798,6 +10822,8 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_fu_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
 		"RequiredLevel"	"1"
@@ -10882,7 +10908,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"%cleave_percent"
+						"CleavePercent"	"0"
 						"CleaveRadius"	"%cleave_radius"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -10890,6 +10916,12 @@
 					{
 						"Target"	"TARGET"
 						"EffectName"	"DOTA_Item.BattleFury"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
+						"Function"	"Cleave"
+						"damage"	"%attack_damage"
 					}
 				}
 				"IsHidden"	"1"
@@ -11055,7 +11087,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"%cleave_percent"
+						"CleavePercent"	"0"
 						"CleaveRadius"	"%cleave_radius"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -11063,6 +11095,12 @@
 					{
 						"Target"	"TARGET"
 						"EffectName"	"DOTA_Item.BattleFury"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
+						"Function"	"Cleave"
+						"damage"	"%attack_damage"
 					}
 				}
 				"IsHidden"	"1"
@@ -11073,7 +11111,7 @@
 				{
 					"CleaveAttack"
 					{
-						"CleavePercent"	"700"
+						"CleavePercent"	"0"
 						"CleaveRadius"	"680"
 						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
 					}
@@ -11087,6 +11125,14 @@
 						"Target"	"TARGET"
 						"ModifierName"	"modifier_item_fu_debuff"
 						"Duration"	"3"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
+						"Function"	"Cleave"
+						"cleave_radius"	"680"
+						"cleave_percent"	"700"
+						"damage"	"%attack_damage"
 					}
 				}
 				"IsHidden"	"0"
@@ -24179,7 +24225,7 @@
 		"ItemRequirements"	{}
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
 		}
 		"OnSpellStart"
@@ -24192,8 +24238,8 @@
 			}
 			"FireSound"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Invoker.SunStrike.Ignite"
 			}
 		}
 		"Modifiers"
@@ -24288,7 +24334,7 @@
 		"ItemRequirements"	{}
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
 		}
 		"OnSpellStart"
@@ -24301,8 +24347,8 @@
 			}
 			"FireSound"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Invoker.SunStrike.Ignite"
 			}
 		}
 		"Modifiers"
@@ -24397,7 +24443,7 @@
 		"ItemRequirements"	{}
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 			"particle"	"particles/items2_fx/medallion_of_courage.vpcf"
 		}
 		"OnSpellStart"
@@ -24410,8 +24456,8 @@
 			}
 			"FireSound"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"DOTA_Item.MedallionOfCourage.Activate"
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Invoker.SunStrike.Ignite"
 			}
 		}
 		"Modifiers"

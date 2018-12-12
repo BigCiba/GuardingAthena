@@ -46,7 +46,7 @@ function SpaceCut( keys )
         damageType = DAMAGE_TYPE_PURE
     end
 	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility() + ability:GetSpecialValueFor("base_damage")
-	local unitGroup = FindUnitsInLine( teamNumber, caster_location, point, nil, 100, targetTeam, targetType, FIND_CLOSEST)
+	local unitGroup = FindUnitsInLine( teamNumber, caster_location, point, nil, 225, targetTeam, targetType, FIND_CLOSEST)
 	for k, v in pairs( unitGroup ) do
         CauseDamage(caster, v, damage, damageType, ability)
         local duration = damage / v:GetMaxHealth() * 10
@@ -71,7 +71,7 @@ function SpaceCut( keys )
                     local illusion_vector = v:GetForwardVector()
                     local point = target_point + vector * 100
                     SetUnitPosition(v, point)
-                    local unitGroup = FindUnitsInLine( teamNumber, illusion_location, point, nil, 100, targetTeam, targetType, FIND_CLOSEST)
+                    local unitGroup = FindUnitsInLine( teamNumber, illusion_location, point, nil, 225, targetTeam, targetType, FIND_CLOSEST)
                     for k, v in pairs( unitGroup ) do
                         CauseDamage(caster, v, damage, damageType, ability)
                     end
@@ -222,25 +222,20 @@ function BladeDance( keys )
 	local fxIndex = CreateParticle( "particles/skills/blade_dance.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
     ParticleManager:SetParticleControl( fxIndex, 2, Vector(RandomInt(0, 180),RandomInt(0, 180),RandomInt(0, 180)) )
 end
-function BladeDanceDamage( keys )
-	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
+function BladeDanceDamage( t )
+	local caster = t.caster
+	local target = t.target
+	local ability = t.ability
 	local caster_location = caster:GetAbsOrigin()
-	local teamNumber = caster:GetTeamNumber()
-	local targetTeam = ability:GetAbilityTargetTeam()
-	local targetType = ability:GetAbilityTargetType()
-	local targetFlag = ability:GetAbilityTargetFlags()
-	local damageType = ability:GetAbilityDamageType()
 	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility() + ability:GetSpecialValueFor("base_damage")
+	local damageType = ability:GetAbilityDamageType()
     local duration = ability:GetSpecialValueFor("duration")
-	local unitGroup = FindUnitsInRadius(teamNumber, caster_location, caster, 300, targetTeam, targetType, targetFlag, 0, false)
-	for k, v in pairs( unitGroup ) do
-        CauseDamage(caster, v, damage, damageType, ability)
+    local radius = ability:GetSpecialValueFor("radius")
+    if caster:HasModifier("modifier_phantom_sword_dance") then
+        return
     end
-    --[[if target:GetUnitName() == "hero_statue_1" or target:GetUnitName() == "hero_statue_2" then
-    	return
-    end]]--
+    local unitGroup = GetUnitsInRadius(caster,ability,caster_location,radius)
+    CauseDamage(caster, unitGroup, damage, damageType, ability)
     AddModifierStackCount( caster, caster, ability, "modifier_blade_dance_attack_speed", 1, duration, true)
     -- 专属
     if HasExclusive(caster,4) then
@@ -248,28 +243,51 @@ function BladeDanceDamage( keys )
         SetUnitDamagePercent(caster,stack * 0.5,duration)
         SetUnitIncomingDamageReduce(caster,stack * 0.25,duration)
     end
-    --[[if caster:HasModifier("modifier_blade_dance_attack_speed") then
-    	ability:ApplyDataDrivenModifier(caster, caster, "modifier_blade_dance_attack_speed", nil)
-    	local stackcount = caster:GetModifierStackCount("modifier_blade_dance_attack_speed", nil) + 1
-    	if stackcount < 100 then
-    		caster:SetModifierStackCount("modifier_blade_dance_attack_speed", caster, stackcount)
-    	end
-    else
-    	ability:ApplyDataDrivenModifier(caster, caster, "modifier_blade_dance_attack_speed", nil)
-    	caster:SetModifierStackCount("modifier_blade_dance_attack_speed", caster, 1)
-    end]]--
 end
 function PhantomSwordDance( t )
-    local ability = t.ability
 	local caster = t.caster
-    local target = t.target
+    local point = t.target_points[1]
+    local ability = t.ability
+    local interval = ability:GetSpecialValueFor("interval")
+    local duration = ability:GetSpecialValueFor("duration")
+    local radius = ability:GetSpecialValueFor("radius")
+    local ability3 = caster:GetAbilityByIndex(3)
+    local damage = ability3:GetSpecialValueFor("damage") * caster:GetAgility() + ability3:GetSpecialValueFor("base_damage")
+    local damageType = ability3:GetAbilityDamageType()
+    local ability3_duration = ability3:GetSpecialValueFor("duration")
     local count = 0
+    local p = CreateParticle("particles/heroes/juggernaut/phantom_sword_dance.vpcf",PATTACH_ABSORIGIN,caster,2)
+    ParticleManager:SetParticleControl( p, 0, caster:GetAbsOrigin())
+    ParticleManager:SetParticleControl( p, 2, point)
     Timers:CreateTimer(function()
-        if count < 500 then
-            local fxIndex = CreateParticle( "particles/heroes/juggernaut/phantom_sword_dance.vpcf", PATTACH_ABSORIGIN, caster )
-            ParticleManager:SetParticleControlForward( fxIndex, 0, Vector(RandomFloat(-1,1),RandomFloat(-1,1),RandomFloat(-1,1)) )
-            count = count + 1
-            return 0.01
+        if count < duration then
+            local angle = RandomInt(0, 360)
+            local startLoc = GetRotationPoint(point,RandomInt(300, 600),angle)
+            local endLoc = GetRotationPoint(point,RandomInt(300, 600),angle + RandomInt(120, 240))
+            local fxIndex = CreateParticle( "particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_slash_tgt_serrakura.vpcf", PATTACH_ABSORIGIN, caster, 1 )
+            ParticleManager:SetParticleControl( fxIndex, 0, startLoc)
+            ParticleManager:SetParticleControl( fxIndex, 1, endLoc + Vector(0,0,50))
+            local p = CreateParticle("particles/heroes/juggernaut/phantom_sword_dance_a.vpcf",PATTACH_ABSORIGIN,caster,2)
+            ParticleManager:SetParticleControl( p, 0, startLoc)
+            ParticleManager:SetParticleControl( p, 2, endLoc + Vector(0,0,50))
+            local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
+            CauseDamage(caster,unitGroup,damage,damageType,ability3)
+            AddModifierStackCount( caster, caster, ability3, "modifier_blade_dance_attack_speed", 1, ability3_duration, true)
+            SetUnitPosition(caster,endLoc)
+            for k,v in pairs(unitGroup) do
+                --CauseDamage(caster,unitGroup,damage,damageType,ability3)
+                caster:PerformAttack(v,true,true,true,false,false,false,true)
+            end
+            --if #unitGroup == 0 then
+                --CreateSound("Hero_Juggernaut.Attack",caster)
+            --end
+            count = count + interval
+            return interval
+        else
+            SetUnitPosition(caster,point)
+            --local p = CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_end.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,3)
+            --ParticleManager:SetParticleControlEnt( p, 2, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+            --ParticleManager:SetParticleControlEnt( p, 3, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
         end
     end)
 end
