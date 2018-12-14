@@ -5,6 +5,7 @@
 	CastAbility(caster,orderType,ability,target,position)
 	CauseDamage(attacker,victim,damage,damageType,ability,~criticalChance,~criticalDamage)
 	ClearBuff(caster,buffType,count)
+	Cleave(caster,target,damage,radius,percent)
 	CreateSound(soundName,caster,~location,~duration,~delay)
 	CreateParticle(particleName,particleAttach,owningEntity,~duration,~immediately)
 	CreateLinearProjectile(caster,ability,particleName,spawnOrigin,radius,distance,direction,speed,deleteOnHit)
@@ -351,9 +352,9 @@ function GetUnitsInSector( ... )
 	for k, v in pairs( unitGroup ) do
 		local unitPosition = v:GetAbsOrigin()
 		local unitVector = unitPosition - position
-		local nan = math.floor(unitVector:Dot(forwardVector) / math.sqrt((unitVector.x ^ 2 + unitVector.y ^ 2) * (forwardVector.x ^ 2 + forwardVector.y ^ 2)))
+		local NAN = math.floor(unitVector:Dot(forwardVector) / math.sqrt((unitVector.x ^ 2 + unitVector.y ^ 2) * (forwardVector.x ^ 2 + forwardVector.y ^ 2)))
 		--print("nan:"..nan)
-		if nan == 1 then
+		if NAN == 1 then
 			table.insert( returnGroup, v )
 			--print("nan")
 		else
@@ -568,6 +569,24 @@ function ClearBuff( ... )
 			end
 		end
 	end
+end
+function Cleave( ... )
+	local caster,target,damage,radius,percent = ...
+	local casterLoc = caster:GetAbsOrigin()
+	local targetLoc = target:GetAbsOrigin()
+	local direction = (targetLoc - casterLoc):Normalized()
+	local point = casterLoc + direction * radius
+	local teamNumber = caster:GetTeamNumber()
+	local targetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY
+	local targetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+	local targetFlag = DOTA_UNIT_TARGET_FLAG_NONE
+	local unitGroup = FindUnitsInRadius(teamNumber, point, caster, radius, targetTeam, targetType, targetFlag, 0, false)
+	damage = damage * percent * 0.01
+	for k,v in pairs(unitGroup) do
+        if v ~= target then
+            CauseDamage(caster,v,damage,DAMAGE_TYPE_PURE,nil)
+        end
+    end
 end
 -- 设置区域限制
 function SetRegionLimit( ... )

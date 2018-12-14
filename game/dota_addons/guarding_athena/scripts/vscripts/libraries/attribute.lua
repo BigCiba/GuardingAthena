@@ -37,7 +37,7 @@ function Attributes:CalculateAdjustment(hero)
     local attribute = hero:GetPrimaryAttribute()
     hero.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR
     hero.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT
-    hero.armor_adjustment = self.ARMOR_PER_AGI
+    hero.armor_adjustment = self.DEFAULT_ARMOR_PER_AGI
     hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT
     hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI
     hero.resistance_adjustment = self.DEFAULT_RES_PER_STR
@@ -46,7 +46,7 @@ function Attributes:CalculateAdjustment(hero)
         hero.resistance_adjustment = self.DEFAULT_RES_PER_STR * 1.25
     elseif attribute == DOTA_ATTRIBUTE_AGILITY then
         hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI * 1.25
-        hero.armor_adjustment = self.ARMOR_PER_AGI * 1.25
+        hero.armor_adjustment = self.DEFAULT_ARMOR_PER_AGI * 1.25
     elseif attribute == DOTA_ATTRIBUTE_INTELLECT then
         hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT * 1.25
         hero.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT * 1.25
@@ -76,7 +76,7 @@ function Attributes:ModifyBonuses(hero)
         local intellect = hero:GetIntellect()
         
         -- Base Armor Bonus
-        local armor = agility * self.DEFAULT_ARMOR_PER_AGI
+        local armor = agility * hero.armor_adjustment
         hero:SetPhysicalArmorBaseValue(hero.base_armor - armor)
         --[[if not hero:HasModifier("modifier_armor_bonus") then
             self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_armor_bonus", {})

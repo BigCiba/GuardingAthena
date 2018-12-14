@@ -302,7 +302,8 @@ function EndlessOffensive( t )
                     unit:RemoveModifierByName("modifier_endless_offensive_debuff")
                     unit:MoveToTargetToAttack(target)
                     unit:RemoveNoDraw()
-                    local particle = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+                    local particle = CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+                    ParticleManager:SetParticleControl(particle, 0, unit:GetAbsOrigin())
                     Timers:CreateTimer(3,function ()
                         unit.use = false
                         for itemSlot=0,5 do
@@ -328,7 +329,8 @@ function EndlessOffensiveCleave( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = t.DamageTaken * ability:GetSpecialValueFor("cleave_damage") * 0.01
+    local damage = t.DamageTaken
+    local cleavePercent = ability:GetSpecialValueFor("cleave_damage")
     local position = caster:GetAbsOrigin()
     local radius = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D()
     local nearRange = ability:GetSpecialValueFor("near_range")
@@ -338,20 +340,28 @@ function EndlessOffensiveCleave( t )
     if radius < nearRange then
         angle = ability:GetSpecialValueFor("near_angle")
         radius = nearRange
+        local unitGroup = GetUnitsInRadius(caster,ability,position,radius)
+        for k,v in pairs(unitGroup) do
+            if v ~= target then
+                CauseDamage(caster,v,damage * cleavePercent * 0.01,DAMAGE_TYPE_PURE,nil)
+            end
+        end
     elseif radius < midRange then
         angle = ability:GetSpecialValueFor("mid_angle")
         radius = midRange
+        Cleave(caster,target,damage,radius,cleavePercent)
     else
         angle = ability:GetSpecialValueFor("far_angle")
         radius = farRange
+        Cleave(caster,target,damage,radius,cleavePercent)
     end
     local forwardVector = (target:GetAbsOrigin() - position):Normalized()
-    local unitGroup = GetUnitsInSector( caster, ability, position, forwardVector, angle, radius )
+    --[[local unitGroup = GetUnitsInSector( caster, ability, position, forwardVector, angle, radius )
     for k,v in pairs(unitGroup) do
         if v ~= target then
             CauseDamage(caster,v,damage,DAMAGE_TYPE_PURE,ability)
         end
-    end
+    end]]
 end
 function IllusionAttack( t )
     --[[local caster = t.caster

@@ -5,14 +5,14 @@ function Cleave( t )
     local casterLoc = caster:GetAbsOrigin()
     local targetLoc = target:GetAbsOrigin()
     local cleaveRadius = t.cleave_radius or ability:GetSpecialValueFor("cleave_radius")
-    local cleavePercent = t.cleave_percent or ability:GetSpecialValueFor("cleave_percent")
+    local cleavePercent = t.cleave_percent or ability:GetSpecialValueFor("cleave_percent") * 0.01
     local direction = (targetLoc - casterLoc):Normalized()
     local point = casterLoc + direction * cleaveRadius
     local damage = t.damage
-    damage = GetOriginalDamage(damage,target)
     if damage == 0 then
         damage = caster:GetAverageTrueAttackDamage(caster)
     end
+    damage = damage * cleavePercent
     local unitGroup = GetUnitsInRadius(caster,ability,point,cleaveRadius)
     for k,v in pairs(unitGroup) do
         if v ~= target then
