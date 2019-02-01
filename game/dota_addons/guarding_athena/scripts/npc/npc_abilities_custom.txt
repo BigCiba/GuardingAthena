@@ -11546,6 +11546,95 @@
 		}
 	}
 
+	"arcane_supremacy_1"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/chronos_magic"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"	"13"
+		"AbilityManaCost"	"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
+		"AbilityCastRange"	"1400"
+		"AoERadius"	"400"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+			"particle"	"particles/skills/chronos_magic.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Dark_Seer.Vacuum"
+				"Target"	"CASTER"
+			}
+			"FireEffect"
+			{
+				"EffectName"	"particles/skills/chronos_magic.vpcf"
+				"EffectAttachType"	"follow_chest"
+				"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/chronos_magician.lua"
+				"Function"	"ChronosMagic"
+				"Target"	"POINT"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_arcane_supremacy_1"
+			{
+				"IsPurgable"	"0"
+				"OverrideAnimation"	"ACT_DOTA_FLAIL"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0.2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"pull_damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"pull_bonus"	"0.01"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"open_damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+		}
+	}
+
 	"teleport_phase"
 	{
 		// General
@@ -18515,5 +18604,15 @@
 				"radius"	"450"
 			}
 		}
+	}
+
+	"arcane_supremacy_0"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"obsidian_destroyer_astral_imprisonment"
+		"ScriptFile"	"ability_hero/arcane_supremacy/arcane_supremacy_0.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	}
 }

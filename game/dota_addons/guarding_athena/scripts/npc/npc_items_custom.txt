@@ -23130,6 +23130,7 @@
 		"AbilityCooldown"	"2"
 		"AbilityCastRange"	"900"
 		"ID"	"1698"
+		"ItemCost"	"5000"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -23165,6 +23166,58 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-750"
 					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"5"
 				}
+			}
+		}
+	}
+
+	"item_poison_water_gun"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"water_gun"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"2"
+		"AbilityCastRange"	"900"
+		"ID"	"1764"
+		"ItemCost"	"20000"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+				"MoveSpeed"	"1100"
+				"SourceAttachment"	"attach_hitloc"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_poison_water_gun"
+				"Duration"	"5"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_poison_water_gun"
+			{
+				"IsHidden"	"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"750"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"-5"
+				}
+				"IsDebuff"	"1"
 			}
 		}
 	}
@@ -23978,6 +24031,10 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCooldown"	"15"
 		"ID"	"1734"
+		"ItemCost"	"20000"
+		"ItemSellable"	"1"
+		"ItemPurchasable"	"0"
+		"ItemKillable"	"0"
 		"ItemRequirements"	{}
 		"precache"
 		{

@@ -42,14 +42,14 @@ function Attributes:CalculateAdjustment(hero)
     hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI
     hero.resistance_adjustment = self.DEFAULT_RES_PER_STR
     if attribute == DOTA_ATTRIBUTE_STRENGTH then
-        hero.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR * 1.25
-        hero.resistance_adjustment = self.DEFAULT_RES_PER_STR * 1.25
+        hero.hp_adjustment = self.HP_PER_STR - self.DEFAULT_HP_PER_STR * 1
+        hero.resistance_adjustment = self.DEFAULT_RES_PER_STR * 1
     elseif attribute == DOTA_ATTRIBUTE_AGILITY then
-        hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI * 1.25
-        hero.armor_adjustment = self.DEFAULT_ARMOR_PER_AGI * 1.25
+        hero.movespd_adjustment = self.DEFAULT_MOVSPD_PER_AGI * 1
+        hero.armor_adjustment = self.DEFAULT_ARMOR_PER_AGI * 1
     elseif attribute == DOTA_ATTRIBUTE_INTELLECT then
-        hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT * 1.25
-        hero.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT * 1.25
+        hero.spellpower_adjustment = self.DEFAULT_SPELLDMG_PER_INT * 1
+        hero.mana_adjustment = self.MANA_PER_INT - self.DEFAULT_MANA_PER_INT * 1
     end
 end
 
