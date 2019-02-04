@@ -87,7 +87,7 @@ end
 function HeroState:UpdateNetTable(hero)
     if hero then
         local lv = hero:GetLevel()
-        local score = getPlayerScore(hero:GetPlayerID())
+        local score = hero:GetPlayerOwner().Score
         local str = math.floor(hero:GetStrength())
         local agi = math.floor(hero:GetAgility())
         local int = math.floor(hero:GetIntellect())

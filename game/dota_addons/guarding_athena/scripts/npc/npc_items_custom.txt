@@ -25365,4 +25365,65 @@
 			}
 		}
 	}
+
+	"item_firecracker"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_firecrackers"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastRange"	"200"
+		"ID"	"1765"
+		"ItemCost"	"1000"
+		"ItemPermanent"	"0"
+		"ItemRequiresCharges"	"1"
+		"ItemInitialCharges"	"1"
+		"ItemStackable"	"1"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"particle"	"particles/econ/events/new_bloom/firecracker_explode.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_item/spring_festival.lua"
+				"Function"	"Firecracker"
+			}
+			"SpendCharge"	{}
+		}
+	}
+
+	"item_firecracker_big"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_firecrackers"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastRange"	"200"
+		"ID"	"1766"
+		"ItemCost"	"10000"
+		"ItemPermanent"	"0"
+		"ItemRequiresCharges"	"1"
+		"ItemInitialCharges"	"1"
+		"ItemStackable"	"1"
+		"ItemRequirements"	{}
+		"precache"
+		{
+			"particle"	"particles/themed_fx/cny_firecrackers_direend.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_item/spring_festival.lua"
+				"Function"	"FirecrackerBig"
+			}
+			"SpendCharge"	{}
+		}
+	}
 }

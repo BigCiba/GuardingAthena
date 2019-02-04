@@ -37,8 +37,9 @@ function Server:GetScore(playerID)
     local url = LINK_GETSCORE.."?steamid="..tostring(steamid)
     local req = CreateHTTPRequestScriptVM("GET",url)
     req:Send(function(res)
-        if res.Body then
-            player.Score = JSON:decode(res.Body)
+        if res.Body ~= "null" then
+            local ScoreInfo = JSON:decode(res.Body)
+            player.Score = ScoreInfo.score
             --PrintTable(JSON:decode(res.Body))
         end
     end)

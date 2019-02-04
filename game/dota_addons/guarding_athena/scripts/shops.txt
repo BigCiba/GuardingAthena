@@ -13,6 +13,8 @@
            "item"                 "item_clarity4"
            "item"                 "item_clarity1_pack"
            "item"                 "item_gem"
+           "item"                 "item_firecracker"
+           "item"                 "item_firecracker_big"
         }
 
         "attributes"  //属性物品

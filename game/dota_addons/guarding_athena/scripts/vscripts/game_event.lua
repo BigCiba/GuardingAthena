@@ -268,6 +268,7 @@ function GuardingAthena:OnConnectFull(keys)
 		--local hero = player:GetAssignedHero()
 		--hero.boss_point = player.ServerInfo.score
 	end)
+	Server:GetScore(playerID)
 
 	GameRules:GetGameModeEntity():SetHUDVisible(8, false)
 	GameRules:GetGameModeEntity():SetHUDVisible(9, false)

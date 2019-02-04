@@ -323,7 +323,8 @@ function OnSpellStart( t )
         CauseDamage(caster,caster,healthCost,DAMAGE_TYPE_PURE,ability)
         ability.no_damage_filter = nil]]
         -- damage max
-        ability.damageRecorder = ability.damageRecorder + ability:GetSpecialValueFor("damage_add") * 6
+        caster:GetAbilityByIndex(3).damageRecorder = caster:GetAbilityByIndex(3).damageRecorder + healthCost
+        CauseDamage(caster,caster,0,DAMAGE_TYPE_PURE,ability)
         CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,0.5)
         -- shock
         local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)
