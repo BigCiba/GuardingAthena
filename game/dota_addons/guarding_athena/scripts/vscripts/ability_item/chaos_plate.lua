@@ -4,7 +4,7 @@ function OnCreated( t )
     local interval = ability:GetSpecialValueFor("interval")
     local sheildPercent = ability:GetSpecialValueFor("shield") * 0.01
     ability.shield_health = 0
-    caster.ShieldFilter = function (damage,caster)
+    caster.ShieldFilter = function (damage,damageType,caster)
         if ability.shield_health > damage then
             ability.shield_health = ability.shield_health - damage
 			damage = 0

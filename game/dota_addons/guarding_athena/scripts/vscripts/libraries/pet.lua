@@ -11,7 +11,7 @@ Pet = class(
             move = 30;
             attack = 20;
             cast = 20;
-        }
+        };
         constructor = function (self, unitHandle, quality, lv)
             self.unitHandle = unitHandle or self.unitHandle
             self.quality = quality or self.quality

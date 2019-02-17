@@ -1,0 +1,41 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 2
+	m_flConstantRadius = 25.0
+	m_ConstantColor = [ 247, 183, 114, 255 ]
+	m_flMaxRecreationTime = -1.0
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_h.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_circle_i.vpcf"
+		},
+	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 8
+}

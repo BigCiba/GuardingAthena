@@ -1,0 +1,138 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 256
+	m_ConstantColor = [ 152, 251, 152, 255 ]
+	m_nConstantSequenceNumber = 8
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderTrails"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_flOverbrightFactor = 6.0
+			m_flAddSelfAmount = 2.0
+			m_bSaturateColorPreAlphaBlend = false
+			m_hTexture = resource:"materials/particle/sparks/sparks.vtex"
+			m_flLengthFadeInTime = 0.5
+			m_flMaxLength = 1000.0
+			m_flRadiusScale = 0.5
+			m_flFinalTextureScaleV = -1.0
+			m_flFinalTextureOffsetV = 1.0
+			m_vEndTrailTintFactor = [ 1.0, 0.5, 0.5, 0.5 ]
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.9
+			m_flEndScale = 0.0
+			m_flStartScale = 10.0
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 29, 104, 162, 255 ]
+			m_flFadeStartTime = 0.5
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 500.0 ]
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.3
+			m_fLifetimeMax = 0.35
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 60.0
+			m_flRadiusMax = 120.0
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMax = 32
+			m_nAlphaMin = 32
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMaxLength = 0.5
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 50.0
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMax = [ 0.0, 0.0, -2500.0 ]
+			m_vecOutputMin = [ 0.0, 0.0, -1250.0 ]
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 450.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 200.0 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+		},
+	]
+	m_Constraints = 
+	[
+		{
+			_class = "C_OP_BoxConstraint"
+			m_bDisableOperator = true
+			m_vecMin = [ -100.0, -100.0, -500.0 ]
+			m_vecMax = [ 100.0, 100.0, 450.0 ]
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_flDelay = 0.2
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_imprison_d0.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_imprison_d1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_imprison_d2.vpcf"
+		},
+		{
+			m_flDelay = 0.18
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_imprison_d3.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 6
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

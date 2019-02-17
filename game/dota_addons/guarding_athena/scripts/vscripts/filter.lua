@@ -103,6 +103,12 @@ function GuardingAthena:DamageFilter( args )
 		if caster.bonus_magic_damage and caster.bonus_magic_damage > 0 then
 			args.damage = args.damage * (1 + caster.bonus_magic_damage * 0.01)
 		end
+		if caster.ignore_resistance and caster.ignore_resistance > 0 then
+			local res = victim:GetBaseMagicalResistanceValue() * 100
+			local initDamage = res == 0 and args.damage or args.damage / (1 - res)
+			res = res > caster.ignore_resistance and res - caster.ignore_resistance or 0
+			args.damage = initDamage * (1 - res)
+		end
 	end
 	-- 物理伤害
 	if damageType == DAMAGE_TYPE_PHYSICAL then
@@ -131,7 +137,7 @@ function GuardingAthena:DamageFilter( args )
 	end
 	-- 护盾
 	if victim.ShieldFilter then
-		args.damage = victim.ShieldFilter(args.damage,victim)
+		args.damage = victim.ShieldFilter(args.damage,damageType,victim)
 	end
     -- 减少固定值伤害
     if victim.const_reduce_damage and victim.const_reduce_damage > 0 then

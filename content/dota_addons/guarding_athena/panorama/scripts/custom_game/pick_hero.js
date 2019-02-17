@@ -63,6 +63,7 @@ allHeroes[10] = "npc_dota_hero_templar_assassin"
 allHeroes[11] = "npc_dota_hero_nevermore"
 allHeroes[12] = "npc_dota_hero_monkey_king"
 allHeroes[13] = "npc_dota_hero_spectre"
+allHeroes[14] = "npc_dota_hero_oracle"
 var lockHeroes = []
 var unlockHeroes = []
 var lockImages = []

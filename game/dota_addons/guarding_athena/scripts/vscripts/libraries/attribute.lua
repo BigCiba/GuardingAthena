@@ -14,7 +14,7 @@ function Attributes:Init()
     self.MAX_MS               = 750
     self.SP_INT			   = 0
     -- Default Dota Values
-    self.DEFAULT_HP_PER_STR = 18
+    self.DEFAULT_HP_PER_STR = 20
     self.DEFAULT_HP_REGEN_PER_STR = 0.55
     self.DEFAULT_RES_PER_STR = 0.08
     self.DEFAULT_MANA_PER_INT = 12

@@ -190,10 +190,10 @@ function OnTakeDamage( t )
         local regen = ability:GetSpecialValueFor("regen")
         local str = ability:GetSpecialValueFor("str")
         local heal = ability:GetSpecialValueFor("healamount")
-        local health = math.ceil(caster:GetMaxHealth() * 0.01)
+        local health = math.ceil(caster:GetStrength() * 0.5)
         local healAmount = caster:GetStrength() * 0.01 * heal * (100 - caster:GetHealthPercent())
         local percent = t.DamageTaken / caster:GetMaxHealth()
-        -- damge percent no less than limitation and no more than 1
+        -- damge percent no less than limitation and no more than 100%
         if percent < damage_limit then percent = damage_limit end
         if percent > 1 then percent = 1 end
         -- Heal(caster,healAmount,0,false)
@@ -323,7 +323,10 @@ function OnSpellStart( t )
         CauseDamage(caster,caster,healthCost,DAMAGE_TYPE_PURE,ability)
         ability.no_damage_filter = nil]]
         -- damage max
-        caster:GetAbilityByIndex(3).damageRecorder = caster:GetAbilityByIndex(3).damageRecorder + healthCost
+        local ability_3 = caster:GetAbilityByIndex(3)
+        if ability_3:GetLevel() > 0 then
+            ability_3.damageRecorder = caster:GetAbilityByIndex(3).damageRecorder + healthCost
+        end
         CauseDamage(caster,caster,0,DAMAGE_TYPE_PURE,ability)
         CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,0.5)
         -- shock

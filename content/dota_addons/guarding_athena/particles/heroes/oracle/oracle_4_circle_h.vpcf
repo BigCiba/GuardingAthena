@@ -1,0 +1,126 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 8
+	m_flConstantRadius = 10.0
+	m_ConstantColor = [ 226, 28, 84, 20 ]
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			VisibilityInputs = 
+			{
+				m_flCameraBias = 20.0
+			}
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_flOverbrightFactor = 6.0
+			m_hTexture = resource:"materials/particle/electricity/electricity_20_b_white.vtex"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.05
+			m_Gravity = [ 0.0, 0.0, 250.0 ]
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 1.5
+			m_flStartScale = 0.5
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_flFadeStartTime = 0.5
+			m_ColorFade = [ 55, 36, 167, 255 ]
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.3
+			m_fLifetimeMin = 0.25
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 132, 191, 241, 255 ]
+			m_ColorMin = [ 161, 255, 240, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 200
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 50.0
+			m_flRadiusMin = 25.0
+		},
+		{
+			_class = "C_INIT_RingWave"
+			m_flInitialRadius = 100.0
+			m_flThickness = 50.0
+			m_flInitialSpeedMin = 15.0
+			m_flInitialSpeedMax = 50.0
+			m_bXYVelocityOnly = false
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 50.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 30.0 ]
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_NoiseEmitter"
+			m_flOutputMax = 25.0
+			m_flOutputMin = -25.0
+			m_flNoiseScale = 3.7
+			m_flEmissionDuration = 1.5
+		},
+	]
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 6
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

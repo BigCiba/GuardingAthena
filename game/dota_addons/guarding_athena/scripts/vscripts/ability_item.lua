@@ -178,6 +178,7 @@ function invoker_chaos_meteor_datadriven_on_spell_start(keys)
                 local unit = CreateUnitByName(chaos_demon[randomDemon], target_point, true, nil, nil, DOTA_TEAM_BADGUYS )
                 local forward = Vector(RandomFloat(-150,150),RandomFloat(-150,150),0):Normalized()
                 unit:SetForwardVector(forward)
+                AI:CreateAI( unit )
         end)
         local targets = keys.target_entities
         local damageType = DAMAGE_TYPE_PURE
@@ -200,7 +201,7 @@ function item_refresher1_on_spell_start(keys)
     for i=0, 5, 1 do
         local current_item = keys.caster:GetItemInSlot(i)
         if current_item ~= nil then
-            if current_item:GetName() ~= "item_refresher1" then  --Refresher Orb does not refresh itself.
+            if current_item:GetName() ~= "item_refresher1" or current_item:GetName() ~= "item_death_cloak" then  --Refresher Orb does not refresh itself.
                 current_item:EndCooldown()
             end
         end
@@ -210,7 +211,7 @@ function AddCooldownReduceRate(keys)
     local caster = keys.caster
     local reduceRate = keys.ReduceRate * 0.01 
     local reduceRateOld = caster.reduceRate or 0
-    reduceRateNew = reduceRateOld + reduceRate
+    local reduceRateNew = reduceRateOld + reduceRate
     caster.reduceRate = reduceRateNew
     --print("add"..caster.reduceRate)
 end
@@ -219,15 +220,34 @@ function RemoveCooldownReduceRate(keys)
     local caster = keys.caster
     local reduceRate = keys.ReduceRate * 0.01 
     local reduceRateOld = caster.reduceRate or 0
-    reduceRateNew = reduceRateOld - reduceRate
+    local reduceRateNew = reduceRateOld - reduceRate
     caster.reduceRate = reduceRateNew
     --print("remove"..caster.reduceRate)
+end
+function AddIgnoreResistance(keys)
+    local caster = keys.caster
+    local magicDamage = keys.IgnorePercent
+    local magicDamageOld = caster.ignore_resistance or 0
+    local magicDamageNew = magicDamageOld + magicDamage
+    caster.ignore_resistance = magicDamageNew
+end
+
+function RemoveIgnoreResistance(keys)
+    local caster = keys.caster
+    local magicDamage = keys.IgnorePercent
+    local magicDamageOld = caster.ignore_resistance or 0
+    local magicDamageNew = magicDamageOld - magicDamage
+    if magicDamageNew > 0 then
+        caster.ignore_resistance = magicDamageNew
+    else
+        caster.ignore_resistance = 0
+    end
 end
 function AddMagicDamage(keys)
     local caster = keys.caster
     local magicDamage = keys.BonusDamage
     local magicDamageOld = caster.bonus_magic_damage or 0
-    magicDamageNew = magicDamageOld + magicDamage
+    local magicDamageNew = magicDamageOld + magicDamage
     caster.bonus_magic_damage = magicDamageNew
 end
 
@@ -235,7 +255,7 @@ function RemoveMagicDamage(keys)
     local caster = keys.caster
     local magicDamage = keys.BonusDamage
     local magicDamageOld = caster.bonus_magic_damage or 0
-    magicDamageNew = magicDamageOld - magicDamage
+    local magicDamageNew = magicDamageOld - magicDamage
     if magicDamageNew > 0 then
         caster.bonus_magic_damage = magicDamageNew
     else
@@ -246,7 +266,7 @@ function AddPhysicalDamage(keys)
     local caster = keys.caster
     local physicalDamage = keys.BonusDamage
     local physicalDamageOld = caster.bonus_physical_damage or 0
-    physicalDamageNew = physicalDamageOld + physicalDamage
+    local physicalDamageNew = physicalDamageOld + physicalDamage
     caster.bonus_physical_damage = physicalDamageNew
 end
 
@@ -254,7 +274,7 @@ function RemovePhysicalDamage(keys)
     local caster = keys.caster
     local physicalDamage = keys.BonusDamage
     local physicalDamageOld = caster.bonus_physical_damage or 0
-    physicalDamageNew = physicalDamageOld - physicalDamage
+    local physicalDamageNew = physicalDamageOld - physicalDamage
     if physicalDamageNew > 0 then
         caster.bonus_physical_damage = physicalDamageNew
     else

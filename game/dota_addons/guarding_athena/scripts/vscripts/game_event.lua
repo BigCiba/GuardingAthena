@@ -12,6 +12,10 @@ function GuardingAthena:OnEntityKilled( event )
 			killerUnit = killerUnit.caster_hero
 		end
 	end
+	-- 灵魂单位判断
+	if killedUnit.soul_unit then
+		return
+	end
 	-- 买活设定
 	if killedUnit:IsRealHero() then
 		-- 设定买活金钱
@@ -118,15 +122,19 @@ function GuardingAthena:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "boss_sandking" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-	    for _,unit in ipairs(units) do
-			PropertySystem(unit,3,RandomInt(5, 10))
+		for _,unit in ipairs(units) do
+			if unit:IsRealHero() then
+				PropertySystem(unit,3,RandomInt(5, 10))
+			end
 	    end
 	end
 	if killedUnit:GetUnitName() == "boss_visage" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-	    for _,unit in ipairs(units) do
-	    	PropertySystem(unit,3,RandomInt(5, 10))
+		for _,unit in ipairs(units) do
+			if unit:IsRealHero() then
+				PropertySystem(unit,3,RandomInt(5, 10))
+			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
 	    	local point = Entities:FindByName( nil, "boss_visage_reborn" ):GetAbsOrigin()
@@ -139,8 +147,10 @@ function GuardingAthena:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "boss_treant" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( killedUnit:GetTeamNumber(), target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-	    for _,unit in ipairs(units) do
-	    	PropertySystem(unit,3,RandomInt(5, 10))
+		for _,unit in ipairs(units) do
+			if unit:IsRealHero() then
+				PropertySystem(unit,3,RandomInt(5, 10))
+			end
 	    end
 	    Timers:CreateTimer(120,function ()
 	    	local point = Entities:FindByName( nil, "boss_treant_reborn" ):GetAbsOrigin()
@@ -153,8 +163,10 @@ function GuardingAthena:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "boss_fire_demon" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-	    for _,unit in ipairs(units) do
-	    	PropertySystem(unit,3,RandomInt(5, 10))
+		for _,unit in ipairs(units) do
+			if unit:IsRealHero() then
+				PropertySystem(unit,3,RandomInt(5, 10))
+			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
 	    	local point = Entities:FindByName( nil, "boss_fire_demon_reborn" ):GetAbsOrigin()
@@ -167,8 +179,10 @@ function GuardingAthena:OnEntityKilled( event )
 	if killedUnit:GetUnitName() == "boss_clotho" then
 		local target_location = killedUnit:GetAbsOrigin()
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-	    for _,unit in ipairs(units) do
-	    	PropertySystem(unit,3,RandomInt(5, 10))
+		for _,unit in ipairs(units) do
+			if unit:IsRealHero() then
+				PropertySystem(unit,3,RandomInt(5, 10))
+			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
 	    	local point = Entities:FindByName( nil, "spawner_clotho" ):GetAbsOrigin()
@@ -355,11 +369,11 @@ end
 function GuardingAthena:OnPlayerPickHero(keys)
 	--print ('[GuardingAthena] OnPlayerPickHero')
 	--PrintTable(keys)
-	if keys.hero == "npc_dota_hero_wisp" then
+	local heroEntity = EntIndexToHScript(keys.heroindex)
+	if GuardingAthena.SelectedHeroName[heroEntity:GetPlayerID()] == nil then
 		--EntIndexToHScript(keys.heroindex):SetModelScale(0.01)
 		-- vip
 		local count = 0
-		local heroEntity = EntIndexToHScript(keys.heroindex)
 		local player = heroEntity:GetPlayerOwner()
 		local playerID = heroEntity:GetPlayerID()
 		Timers:CreateTimer(function ( )
@@ -407,89 +421,89 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end)]]
 		return
-	end
-	local heroEntity = EntIndexToHScript(keys.heroindex)
-	if keys.player == -1 then
-		return
-	end
-	
-	local player = heroEntity:GetPlayerOwner()
-	local playerID = heroEntity:GetPlayerID()
-	HeroState:InitHero(heroEntity)
-	Attributes:ModifyBonuses(heroEntity)
-	-- 记录当前英雄
-	HERO_TABLE[playerID + 1] = heroEntity
-	-- 垃圾v社
-	local tpScroll = heroEntity:GetItemInSlot(15)
-	if tpScroll then
-		if tpScroll:GetAbilityName() == "item_tpscroll" then
-			heroEntity:RemoveItem(tpScroll)
+	else
+		if keys.player == -1 then
+			return
 		end
-	end
-	-- 金色特效
-	if player.gold_gift then
-		heroEntity.gift = true
-		if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
-			CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
-		else
-			local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
-			--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
-		end
-	end
-	-- vip
-	--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
-	req:Send(function(result)
-		local vipTable = JSON:decode(result.Body)
-		--PrintTable(vipTable)
-		for k,v in pairs(vipTable) do
-			if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
-				CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+		
+		local player = heroEntity:GetPlayerOwner()
+		local playerID = heroEntity:GetPlayerID()
+		HeroState:InitHero(heroEntity)
+		Attributes:ModifyBonuses(heroEntity)
+		-- 记录当前英雄
+		HERO_TABLE[playerID + 1] = heroEntity
+		-- 垃圾v社
+		local tpScroll = heroEntity:GetItemInSlot(15)
+		if tpScroll then
+			if tpScroll:GetAbilityName() == "item_tpscroll" then
+				heroEntity:RemoveItem(tpScroll)
 			end
 		end
-	end)]]
-	local playerCount = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
-	if self.creatCourier < playerCount then
-		local heroEntity = EntIndexToHScript(keys.heroindex)
-		for i=16,23 do
-			local ability = heroEntity:GetAbilityByIndex(i)
-			if ability then
-				ability:SetLevel(1)
+		-- 金色特效
+		if player.gold_gift then
+			heroEntity.gift = true
+			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
+				CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+			else
+				local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+				--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
 			end
 		end
-		PrecacheUnitByNameAsync("ji",function()
-			local courier = CreateUnitByName("ji", heroEntity:GetAbsOrigin(), true, heroEntity:GetPlayerOwner(), heroEntity:GetPlayerOwner(), DOTA_TEAM_GOODGUYS )
-			courier.bag = {}
-			courier:SetOwner(heroEntity:GetPlayerOwner())
-			courier:SetControllableByPlayer(heroEntity:GetPlayerID(),true)
-			courier.owner = heroEntity:GetPlayerOwner()
-			courier.currentHero = heroEntity
-			heroEntity.courier = courier
-			self.creatCourier = self.creatCourier + 1
-			-- 药水礼包
-			if player.potion_gift then
-				if not IsFullSolt(courier,6,true) then
-					local clarity = CreateItem("item_clarity1", courier, courier)
-					local salve = CreateItem("item_salve1", courier, courier)
-					courier:AddItem(clarity)
-					courier:AddItem(salve)
-					clarity:SetCurrentCharges(30)
-					salve:SetCurrentCharges(30)
+		-- vip
+		--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
+		req:Send(function(result)
+			local vipTable = JSON:decode(result.Body)
+			--PrintTable(vipTable)
+			for k,v in pairs(vipTable) do
+				if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
+					CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+				end
+			end
+		end)]]
+		local playerCount = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
+		if self.creatCourier < playerCount then
+			local heroEntity = EntIndexToHScript(keys.heroindex)
+			for i=16,23 do
+				local ability = heroEntity:GetAbilityByIndex(i)
+				if ability then
+					ability:SetLevel(1)
+				end
+			end
+			PrecacheUnitByNameAsync("ji",function()
+				local courier = CreateUnitByName("ji", heroEntity:GetAbsOrigin(), true, heroEntity:GetPlayerOwner(), heroEntity:GetPlayerOwner(), DOTA_TEAM_GOODGUYS )
+				courier.bag = {}
+				courier:SetOwner(heroEntity:GetPlayerOwner())
+				courier:SetControllableByPlayer(heroEntity:GetPlayerID(),true)
+				courier.owner = heroEntity:GetPlayerOwner()
+				courier.currentHero = heroEntity
+				heroEntity.courier = courier
+				self.creatCourier = self.creatCourier + 1
+				-- 药水礼包
+				if player.potion_gift then
+					if not IsFullSolt(courier,6,true) then
+						local clarity = CreateItem("item_clarity1", courier, courier)
+						local salve = CreateItem("item_salve1", courier, courier)
+						courier:AddItem(clarity)
+						courier:AddItem(salve)
+						clarity:SetCurrentCharges(30)
+						salve:SetCurrentCharges(30)
+					end
+				end
+			end)
+		end
+		-- 设定通关积分
+		local count = 0
+		Timers:CreateTimer(function ()
+			if player.ServerInfo then
+				heroEntity.boss_point = player.ServerInfo.score
+			else
+				if count < 300 then
+					count = count + 1
+					return 1
 				end
 			end
 		end)
 	end
-	-- 设定通关积分
-	local count = 0
-	Timers:CreateTimer(function ()
-		if player.ServerInfo then
-			heroEntity.boss_point = player.ServerInfo.score
-		else
-			if count < 300 then
-				count = count + 1
-				return 1
-			end
-		end
-	end)
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)

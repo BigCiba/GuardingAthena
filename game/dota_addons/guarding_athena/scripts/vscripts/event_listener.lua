@@ -53,6 +53,10 @@ function HeroSelected( id,keys )
 	PrecacheUnitByNameAsync(keys.hero,function()
 		PlayerResource:ReplaceHeroWith(playerID,keys.hero,PlayerResource:GetGold(playerID),0)
 		heroEntity:RemoveSelf()
+		if keys.hero == "npc_dota_hero_wisp" then
+			local wisp = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+			wisp:FindAbilityByName("wisp_0"):ApplyDataDrivenModifier(wisp, wisp, "modifier_wisp_0", nil)
+		end
 	end)
 end
 function OnSelectDifficultyClick( id,keys )

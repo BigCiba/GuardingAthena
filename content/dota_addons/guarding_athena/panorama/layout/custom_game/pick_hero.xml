@@ -95,6 +95,7 @@
                         <DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin"/>
                         <DOTAHeroMovie id="npc_dota_hero_monkey_king" class="HeroCard" heroname="npc_dota_hero_monkey_king"/>
                         <DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre"/>
+                        <DOTAHeroMovie id="npc_dota_hero_oracle" class="HeroCard" heroname="npc_dota_hero_oracle"/>
                     </Panel>
                 </Panel>
                 <Panel class="BottomHorizonLine" tabindex="auto" />

@@ -1,0 +1,114 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 1
+	m_nInitialParticles = 1
+	m_flConstantRadius = 0.0
+	m_ConstantColor = [ 0, 0, 0, 255 ]
+	m_nConstantSequenceNumber = 1
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_flEndTime = 9999999.0
+			m_Rate = -0.8
+			m_nField = "7"
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_AlphaDecay"
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_OscillateScalarSimple"
+			m_Rate = 35.0
+			m_nField = "13"
+			m_nOpEndCapState = 0
+		},
+		{
+			_class = "C_OP_ClampScalar"
+			m_nOpEndCapState = 0
+			m_nFieldOutput = "13"
+			m_flOutputMin = 6.0
+			m_flOutputMax = 35.0
+		},
+		{
+			_class = "C_OP_OscillateVectorSimple"
+			m_nOpEndCapState = 0
+			m_Rate = [ 5.0, 0.0, 0.0 ]
+			m_Frequency = [ 1.3, 1.0, 1.0 ]
+		},
+		{
+			_class = "C_OP_ClampVector"
+			m_vecOutputMax = [ 8.0, 10000.0, 10000.0 ]
+			m_vecOutputMin = [ 4.0, -10000.0, -10000.0 ]
+			m_nOpEndCapState = 0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_nOpEndCapState = 1
+			m_nField = "13"
+			m_Rate = -25.0
+			m_flEndTime = 99999.0
+		},
+		{
+			_class = "C_OP_OscillateVectorSimple"
+			m_Frequency = [ 0.25, 1.0, 1.0 ]
+			m_Rate = [ -8.0, 0.0, 0.0 ]
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_flEndTime = 99999.0
+			m_Rate = -4.0
+			m_nField = "4"
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_RadiusDecay"
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_flEndTime = 999999.0
+			m_Rate = -8.0
+			m_nOpEndCapState = 1
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_StatusEffect"
+			m_flDetail2Scale = 2.0
+			m_flColorWarpIntensity = 1.0
+			m_flEnvMapIntensity = 3.0
+			m_flAmbientScale = 0.0
+			m_flRimLightScale = 0.75
+			m_flSpecularScale = 4.0
+			m_flDiffuseWarpBlendToFull = 1.0
+			m_flSpecularExponent = 20.0
+			m_flSpecularExponentBlendToFull = 0.6
+			m_flSpecularBlendToFull = 0.36
+			m_flReflectionsTintByBaseBlendToNone = 0.0
+			m_flMetalnessBlendToFull = 0.16
+			m_flSelfIllumBlendToFull = 0.25
+			m_specularColor = [ 0, 71, 71, 0 ]
+			m_rimLightColor = [ 0, 0, 0, null ]
+		},
+	]
+	m_nBehaviorVersion = 8
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderStatusEffect"
+			m_pTextureDiffuseWarp = resource:"materials/models/heroes/statuseffects/colorwarp_rupture.vtex"
+			m_pTextureColorWarp = resource:"materials/models/heroes/statuseffects/colorwarp_iron_surge.vtex"
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+		},
+	]
+}
