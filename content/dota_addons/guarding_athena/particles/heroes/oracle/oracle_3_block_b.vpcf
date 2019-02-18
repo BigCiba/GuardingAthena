@@ -1,0 +1,32 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 1
+	m_Operators = [  ]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_3_block_b0.vpcf"
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 4
+			m_vecCP1Pos = [ 0.0, 0.0, 95.0 ]
+		},
+		{
+			_class = "C_OP_SetControlPointRotation"
+			m_flRotRate = 360.0
+			m_nCP = 4
+		},
+		{
+			_class = "C_OP_SetControlPointRotation"
+			m_nCP = 4
+			m_flRotRate = 720.0
+			m_vecRotAxis = [ 0.0, 1.0, 0.0 ]
+		},
+	]
+}

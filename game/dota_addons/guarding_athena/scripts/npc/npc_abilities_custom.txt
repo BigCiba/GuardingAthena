@@ -19289,7 +19289,7 @@
 		"AbilityCastRange"	"1200"
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
+			"particle"	"particles/heroes/oracle/oracle_0.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -19337,7 +19337,7 @@
 						"Function"	"OnDeath"
 					}
 				}
-				"EffectName"	"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
+				"EffectName"	"particles/heroes/oracle/oracle_0.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"Duration"	"%duration"
 			}
@@ -19384,6 +19384,11 @@
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"	"25"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_oracle_3"
@@ -19397,6 +19402,36 @@
 						"Function"	"OnHeal"
 					}
 				}
+				"EffectName"	"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"18"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"block_duration"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"block_count"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"min_damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_damage"	"8 16 24 32 40 48 56 64 72 80 88 96 104 112 120 128 136 144 152 160"
 			}
 		}
 	}
