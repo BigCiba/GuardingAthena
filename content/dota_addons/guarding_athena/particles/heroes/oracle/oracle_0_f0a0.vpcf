@@ -3,7 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 32
-	m_ConstantColor = [ 144, 238, 144, 255 ]
+	m_ConstantColor = [ 0, 255, 255, 255 ]
 	m_Renderers = 
 	[
 		{
@@ -12,7 +12,7 @@
 			m_flOverbrightFactor = 2.0
 			m_flAddSelfAmount = 1.0
 			m_bSaturateColorPreAlphaBlend = false
-			m_hTexture = resource:"materials/particle/beam_crack_05.vtex"
+			m_hTexture = resource:"materials/particle/oracle/oracle_rope_scroll.vtex"
 			m_flRadiusScale = 0.5
 			m_flFinalTextureScaleU = -1.0
 			m_flFinalTextureOffsetU = 1.0

@@ -14,7 +14,7 @@
 			m_flOverbrightFactor = 2.0
 			m_flAddSelfAmount = 1.0
 			m_bSaturateColorPreAlphaBlend = false
-			m_hTexture = resource:"materials/particle/beam_blood_02.vtex"
+			m_hTexture = resource:"materials/particle/oracle/oracle_rope_scroll.vtex"
 			m_nScaleCP2 = 1
 			m_nScaleCP1 = 0
 			m_flRadiusScale = 0.5
