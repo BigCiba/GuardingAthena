@@ -70,14 +70,15 @@ function HeroReborn( trigger )
 	 		local point = ent:GetAbsOrigin()
 	 		Teleport(caster, point)
 	 		caster:Stop()
-			SetRegionLimit(caster,Entities:FindByName(nil,"reborn_room"))
 			SetCamera(playerid,caster)
-		    PrecacheUnitByNameAsync("boss_iapetos",function()
-		    	local unit = CreateUnitByName("boss_iapetos", point, true, nil, nil, DOTA_TEAM_BADGUYS ) 
+			PrecacheUnitByNameAsync("boss_iapetos",function()
+				local unit = CreateUnitByName("boss_iapetos", point, true, nil, nil, DOTA_TEAM_BADGUYS ) 
 				unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.2})
 				unit:CreatureLevelUp(reborn_times)
 				unit.caller = caster
+				GuardingAthena.iapetos = unit
 				caster.iapetos = unit
+				SetRegionLimit(caster,Entities:FindByName(nil,"reborn_room"))
 				SetRegionLimit(unit,Entities:FindByName(nil,"reborn_room"))
 				for i=1,16 do
 					if unit:GetAbilityByIndex(i-1) then
@@ -85,7 +86,6 @@ function HeroReborn( trigger )
 					    ability:SetLevel(unit:GetLevel())
 					end
 				end
-				GuardingAthena.iapetos = unit
 			end)
 		end
 	end

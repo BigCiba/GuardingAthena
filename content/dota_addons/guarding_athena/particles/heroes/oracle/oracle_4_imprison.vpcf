@@ -133,6 +133,9 @@
 		{
 			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_imprison_g.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/heroes/oracle/oracle_4_orbita.vpcf"
+		},
 	]
 	m_nBehaviorVersion = 5
 	m_nFirstMultipleOverride_BackwardCompat = 5

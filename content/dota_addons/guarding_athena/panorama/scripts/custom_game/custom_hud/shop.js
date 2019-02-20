@@ -107,7 +107,7 @@ function BuyItem (panel,cost,name,type,refreshTime) {
     var buyEnable = CustomNetTables.GetTableValue("shop", "can_buy");
     var canBuy = buyEnable[name];
     var gold = previewPlayer[type];
-    if( gold >= cost  && canBuy == true )
+    if( gold >= cost  && canBuy == true && Game.IsGamePaused() == false )
     {
         m_IsBuyEnable = true;
     }

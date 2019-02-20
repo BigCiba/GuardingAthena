@@ -13,21 +13,36 @@ function OnCreated(t)
     local abilityIndex = ability:GetAbilityIndex()
     if abilityIndex == 0 then
         local target = t.target
-        local bonusDamage = ability:GetSpecialValueFor("bonus_damage") + caster:GetModifierStackCount("modifier_oracle_0_stack", caster) * ability:GetSpecialValueFor("bonus_damage_add")
-        AddDamageFilterVictim(target,"oracle_0",function (damage,attacker)
-            if attacker == caster then
-                damage = damage * (1 + bonusDamage * 0.01)
-            end
-            return damage
-        end)
+        if target:GetTeam() == caster:GetTeam() then
+            AddDamageFilterVictim(target,"oracle_0",function (damage,attacker)
+                if damage >= target:GetHealth() then
+                    Heal(target,target:GetMaxHealth(),target:GetMaxMana(),true)
+                    CreateParticle("particles/items_fx/aegis_respawn.vpcf",PATTACH_ABSORIGIN,target,5)
+                    target:RemoveModifierByName("modifier_oracle_0_buff")
+                    return 0
+                end
+                return damage
+            end)
+        else
+            local bonusDamage = ability:GetSpecialValueFor("bonus_damage") + caster:GetModifierStackCount("modifier_oracle_0_stack", caster) * ability:GetSpecialValueFor("bonus_damage_add")
+            AddDamageFilterVictim(target,"oracle_0",function (damage,attacker)
+                if attacker == caster then
+                    damage = damage * (1 + bonusDamage * 0.01)
+                end
+                return damage
+            end)
+        end
     elseif abilityIndex == 1 then
         local percent = ability:GetSpecialValueFor("damage_reduce")
         SetUnitDamagePercent(t.target,percent)
     elseif abilityIndex == 2 then
-        caster.oracle_2_level = ability:GetLevel() - 1
-        local reduce_old = caster.reduceRate or 0
+        local duration = ability:GetSpecialValueFor("duration")
+        local reduce_old = caster.oracleReduce or 0
         caster.orecle_2_reduce_rate = ability:GetSpecialValueFor("cooldown") * 0.01
-        caster.reduceRate = reduce_old + caster.orecle_2_reduce_rate
+        caster.oracleReduce = reduce_old + caster.orecle_2_reduce_rate
+        if HasExclusive(caster,3) then
+            PropertySystem(caster,2,math.ceil(caster:GetBaseIntellect() * 0.15),duration)
+        end
     elseif abilityIndex == 3 then
         local block_count = ability:GetSpecialValueFor("block_count")
         local block_duration = ability:GetSpecialValueFor("block_duration")
@@ -67,7 +82,7 @@ function OnDestroy(t)
         local percent = ability:GetSpecialValueFor("damage_reduce")
         SetUnitDamagePercent(t.target,-percent)
     elseif abilityIndex == 2 then
-        caster.reduceRate = caster.reduceRate - caster.orecle_2_reduce_rate
+        caster.oracleReduce = caster.oracleReduce - caster.orecle_2_reduce_rate
     elseif abilityIndex == 3 then
         RemoveDamageFilterVictim(caster,"oracle_3")
     end
@@ -77,13 +92,28 @@ function OnSpellStart(t)
     local ability = t.ability
     local abilityIndex = ability:GetAbilityIndex()
     if abilityIndex == 0 then
-
+        local target = t.target
+        if target:GetTeam() == caster:GetTeam() then
+            if HasExclusive(caster,1) then
+                ability:ApplyDataDrivenModifier(caster, target, "modifier_oracle_0_buff", nil)
+            else
+                ability:EndCooldown()
+                caster:GiveMana(50)
+            end
+        else
+            ability:ApplyDataDrivenModifier(caster, target, "modifier_oracle_0_debuff", nil)
+        end
     elseif abilityIndex == 1 then
+        if t.cd == nil then
+            local reduce = caster.oracleReduce or 0
+            ability:EndCooldown()
+            ability:StartCooldown(ability:GetCooldown( ability:GetLevel() - 1 ) * (1 - reduce))
+        end
         local point = t.target_points[1]
         local level = ability:GetLevel() - 1
-        local increment_intellect_damage = ability:GetLevelSpecialValueFor("intellect_damage", level) - ability:GetLevelSpecialValueFor("intellect_damage", level - 1)
-        local increment_base_damage = ability:GetLevelSpecialValueFor("base_damage", level) - ability:GetLevelSpecialValueFor("base_damage", level - 1)
-        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster.oracle_2_level or 0
+        local increment_intellect_damage = ability:GetLevelSpecialValueFor("intellect_damage", 2) - ability:GetLevelSpecialValueFor("intellect_damage", 1)
+        local increment_base_damage = ability:GetLevelSpecialValueFor("base_damage", 2) - ability:GetLevelSpecialValueFor("base_damage", 1)
+        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster:FindAbilityByName("oracle_2"):GetSpecialValueFor("base_level") or 0
         local damage = (ability:GetSpecialValueFor("intellect_damage") + increment_intellect_damage * bonus_level) * caster:GetIntellect() + (ability:GetSpecialValueFor("base_damage") + increment_base_damage * bonus_level)
         local damageType = ability:GetAbilityDamageType()
         local duration = ability:GetSpecialValueFor("duration")
@@ -97,11 +127,13 @@ function OnSpellStart(t)
             AddModifierStackCount(caster,unit,ability,"modifier_oracle_1_debuff",1,duration,true)
             --ability:ApplyDataDrivenModifier(caster, unit, "modifier_oracle_1_debuff", nil)
         end
+    elseif abilityIndex == 2 then
+    elseif abilityIndex == 3 then
     elseif abilityIndex == 4 then
-        local point = t.target_points[1]local level = ability:GetLevel() - 1
+        local point = t.target_points[1]
         local level = ability:GetLevel() - 1
-        local increment_intellect_damage = ability:GetLevelSpecialValueFor("intellect_damage", level) - ability:GetLevelSpecialValueFor("intellect_damage", level - 1)
-        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster.oracle_2_level or 0
+        local increment_intellect_damage = ability:GetLevelSpecialValueFor("intellect_damage", 2) - ability:GetLevelSpecialValueFor("intellect_damage", 1)
+        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster:FindAbilityByName("oracle_2"):GetSpecialValueFor("util_level") or 0
         local damage = (ability:GetSpecialValueFor("intellect_damage") + increment_intellect_damage * bonus_level) * caster:GetIntellect()
         local damageType = ability:GetAbilityDamageType()
         local pullDuration = ability:GetSpecialValueFor("pull_duration")
@@ -163,8 +195,8 @@ function OnIntervalThink(t)
     elseif abilityIndex == 1 then
         local target = t.target
         local level = ability:GetLevel() - 1
-        local increment_intellect_damage = ability:GetLevelSpecialValueFor("damage_per_second", level) - ability:GetLevelSpecialValueFor("damage_per_second", level - 1)
-        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster.oracle_2_level or 0
+        local increment_intellect_damage = ability:GetLevelSpecialValueFor("damage_per_second", 2) - ability:GetLevelSpecialValueFor("damage_per_second", 1)
+        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster:FindAbilityByName("oracle_2"):GetSpecialValueFor("base_level") or 0
         local damage = (ability:GetSpecialValueFor("damage_per_second") + increment_intellect_damage * bonus_level) * caster:GetIntellect()
         if target == caster then
             local heal = damage * ability:GetSpecialValueFor("interval")
@@ -195,13 +227,32 @@ function OnProjectileHitUnit(t)
     elseif abilityIndex == 3 then
         local target = t.target
         local level = ability:GetLevel() - 1
-        local increment_intellect_damage = ability:GetLevelSpecialValueFor("damage", level) - ability:GetLevelSpecialValueFor("damage_per_second", level - 1)
-        local increment_base_damage = ability:GetLevelSpecialValueFor("base_damage", level) - ability:GetLevelSpecialValueFor("base_damage", level - 1)
-        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster.oracle_2_level or 0
+        local increment_intellect_damage = ability:GetLevelSpecialValueFor("damage", 2) - ability:GetLevelSpecialValueFor("damage_per_second", 1)
+        local increment_base_damage = ability:GetLevelSpecialValueFor("base_damage", 2) - ability:GetLevelSpecialValueFor("base_damage", 1)
+        local bonus_level = caster:HasModifier("modifier_oracle_2") and caster:FindAbilityByName("oracle_2"):GetSpecialValueFor("base_level") or 0
         local damage = (ability:GetSpecialValueFor("damage") + increment_intellect_damage * bonus_level) * caster:GetIntellect() + (ability:GetSpecialValueFor("base_damage") + increment_base_damage * bonus_level)
         local damageType = ability:GetAbilityDamageType()
         CauseDamage(caster,target,damage,damageType,ability)
+        if HasExclusive(caster,2) then
+            ability:ApplyDataDrivenModifier(caster, target, "modifier_oracle_3_root", nil)
+        end
     elseif abilityIndex == 4 then
         
     end
+end
+function OnExclusiveThink(t)
+    local caster = t.caster
+    local ability = t.ability
+    local target_points = {}
+    local unit = GetRandomUnit(caster,ability,caster:GetAbsOrigin(),1200)
+    if unit then
+        target_points[1] = unit:GetAbsOrigin()
+    else
+        target_points[1] = GetRandomPoint(caster:GetAbsOrigin(), 100, 800)
+    end
+    local abilityData = {caster=caster,ability=caster:FindAbilityByName("oracle_1"),target_points=target_points,cd=false}
+    OnSpellStart(abilityData)
+end
+function OnInit(t)
+    t.ability.cooldown_reduce = false
 end

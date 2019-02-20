@@ -940,7 +940,9 @@ function GuardingAthena:OnUsedAbility(event)
 		-- 减少百分比
         local reduction = hero.reduceRate or 0
 		-- 冰女光环
-        local frozenAura = hero.frozenAura or 0
+		local frozenAura = hero.frozenAura or 0
+		-- 神谕者
+		local oracleReduce = hero.oracleReduce or 0
 		if hero:HasModifier("ring_1_6") then
     		if RollPercentage(50) then
 	    		if reduction == 0 then
@@ -954,7 +956,7 @@ function GuardingAthena:OnUsedAbility(event)
         -- 获取技能的CD时间
         local cdDefault = ability:GetCooldown( ability:GetLevel() - 1 )
         -- 计算减少后的CD
-        local cdReduced = (cdDefault - reduction_const) * ( 1.0 - reduction) * (1.0 - frozenAura)
+        local cdReduced = (cdDefault - reduction_const) * ( 1.0 - reduction) * (1.0 - frozenAura) * (1.0 - oracleReduce)
         -- 获取剩余的CD时间
         local cdRemaining = ability:GetCooldownTimeRemaining()
 
@@ -962,7 +964,7 @@ function GuardingAthena:OnUsedAbility(event)
         if cdRemaining > cdReduced then
             -- 计算减少后的CD
             --cdRemaining = cdRemaining - reduction_const - (cdDefault - reduction_const) * (reduction + frozenAura)
-			cdRemaining = (cdRemaining - reduction_const) * ( 1.0 - reduction) * (1.0 - frozenAura)
+			cdRemaining = (cdRemaining - reduction_const) * ( 1.0 - reduction) * (1.0 - frozenAura) * (1.0 - oracleReduce)
             -- 移除技能的CD
             ability:EndCooldown()
             -- 重新开始CD，CD时间为减少后的CD时间

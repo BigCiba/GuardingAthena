@@ -413,11 +413,9 @@ end
 function RemoveHealth( ... )
 	local caster,health = ...
 	local currentHealth = caster:GetHealth()
-	if currentHealth > health then
-		caster:SetHealth(currentHealth - health)
-	else
-		caster:SetHealth(1)
-	end
+	local result = math.ceil(currentHealth - health)
+	result = result > 1 and result or 1
+	caster:SetHealth(result)
 end
 -- 随机掉落物品
 function RollDrops(unit)

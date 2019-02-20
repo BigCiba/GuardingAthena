@@ -63,7 +63,6 @@
 		},
 		{
 			_class = "C_OP_NormalLock"
-			m_nControlPointNumber = 3
 		},
 	]
 	m_Initializers = 
@@ -73,7 +72,6 @@
 			m_flParticlesPerOrbit = 16.0
 			m_bEvenDistribution = true
 			m_flInitialRadius = 85.0
-			m_nControlPointNumber = 4
 		},
 		{
 			_class = "C_INIT_RandomRadius"
