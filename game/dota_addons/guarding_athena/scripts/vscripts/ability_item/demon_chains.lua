@@ -1,7 +1,7 @@
 function OnCreated(t)
     local caster = t.caster
     local ability = t.ability
-    if ability.demon == nil then
+    if ability.demon == nil and caster:IsRealHero() then
         CreateDemon(caster,ability)
     end
 end
@@ -28,10 +28,12 @@ end
 function OnDestroy(t)
     local caster = t.caster
     local ability = t.ability
-    if not ability.demon:IsNull() then
-        UTIL_Remove(ability.demon)
+    if caster:IsRealHero() then
+        if not ability.demon:IsNull() then
+            UTIL_Remove(ability.demon)
+        end
+        ability.demon = nil
     end
-    ability.demon = nil
 end
 function OnSpellStart(t)
     local caster = t.caster

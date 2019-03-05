@@ -32,6 +32,12 @@ function OnDestroy(t)
         item.capture_unit_health = target:GetMaxHealth()
     end
 end
+function OnDeath(t)
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    UTIL_Remove(target)
+end
 function OnRelease(t)
     local caster = t.caster
     local point = t.target_points[1]

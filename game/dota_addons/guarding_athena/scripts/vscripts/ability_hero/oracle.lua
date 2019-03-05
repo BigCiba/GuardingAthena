@@ -3,6 +3,10 @@ function OnDeath(t)
     local target = t.target
     local ability = t.ability
     local lv = caster:GetLevel()
+    local reborntimes = caster.reborn_time or 0
+	if lv >= (reborntimes + 1) * 100 then
+		return
+	end
     local exp = math.ceil((XP_PER_LEVEL_TABLE[lv+1] - XP_PER_LEVEL_TABLE[lv]) * 0.3)
     AddModifierStackCount(caster,caster,ability,"modifier_oracle_0_stack",1)
     caster:AddExperience(exp, DOTA_ModifyXP_CreepKill, false, false)
@@ -173,7 +177,7 @@ function OnSpellStart(t)
                     unit:AddNoDraw()
                     AddDamageFilterVictim(unit,"oracle_4",function (damage,attacker)
                         if attacker == caster then
-                            return damage
+                            return damage * 2
                         end
                         return 0
                     end)
@@ -243,15 +247,17 @@ end
 function OnExclusiveThink(t)
     local caster = t.caster
     local ability = t.ability
-    local target_points = {}
-    local unit = GetRandomUnit(caster,ability,caster:GetAbsOrigin(),1200)
-    if unit then
-        target_points[1] = unit:GetAbsOrigin()
-    else
-        target_points[1] = GetRandomPoint(caster:GetAbsOrigin(), 100, 800)
+    if HasExclusive(caster,4) then
+        local target_points = {}
+        local unit = GetRandomUnit(caster,ability,caster:GetAbsOrigin(),1200)
+        if unit then
+            target_points[1] = unit:GetAbsOrigin()
+        else
+            target_points[1] = GetRandomPoint(caster:GetAbsOrigin(), 100, 800)
+        end
+        local abilityData = {caster=caster,ability=caster:FindAbilityByName("oracle_1"),target_points=target_points,cd=false}
+        OnSpellStart(abilityData)
     end
-    local abilityData = {caster=caster,ability=caster:FindAbilityByName("oracle_1"),target_points=target_points,cd=false}
-    OnSpellStart(abilityData)
 end
 function OnInit(t)
     t.ability.cooldown_reduce = false

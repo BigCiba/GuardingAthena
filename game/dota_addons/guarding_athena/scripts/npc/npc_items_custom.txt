@@ -2587,6 +2587,7 @@
 				}
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2691,6 +2692,7 @@
 				}
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2795,6 +2797,7 @@
 				}
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2899,6 +2902,7 @@
 				}
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -3003,6 +3007,7 @@
 				}
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -6292,7 +6297,7 @@
 			}
 			"modifier_fenlie_item_gong_6"
 			{
-				"Passive"	"0"
+				"Passive"	"1"
 				"Properties"	{}
 				"OnAttackLanded"
 				{
@@ -6571,7 +6576,7 @@
 			}
 			"modifier_fenlie_item_gong_7"
 			{
-				"Passive"	"0"
+				"Passive"	"1"
 				"Properties"	{}
 				"OnAttackLanded"
 				{
@@ -6855,7 +6860,7 @@
 			}
 			"modifier_fenlie_item_gong_8"
 			{
-				"Passive"	"0"
+				"Passive"	"1"
 				"Properties"	{}
 				"OnAttackLanded"
 				{
@@ -7139,7 +7144,7 @@
 			}
 			"modifier_fenlie_item_gong_9"
 			{
-				"Passive"	"0"
+				"Passive"	"1"
 				"Properties"	{}
 				"OnAttackLanded"
 				{
@@ -15423,7 +15428,8 @@
 		"ItemPurchasable"	"1"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"0"
-		"ItemStockTime"	"0"
+		"ItemStockTime"	"1"
+		"ItemStockInitial"	"10"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -25792,6 +25798,7 @@
 		"AbilityCastRange"	"200"
 		"ID"	"1765"
 		"ItemCost"	"1000"
+		"ItemPurchasable"	"0"
 		"ItemPermanent"	"0"
 		"ItemRequiresCharges"	"1"
 		"ItemInitialCharges"	"1"
@@ -25852,6 +25859,7 @@
 		"AbilityCastRange"	"200"
 		"ID"	"1766"
 		"ItemCost"	"5000"
+		"ItemPurchasable"	"0"
 		"ItemPermanent"	"0"
 		"ItemRequiresCharges"	"1"
 		"ItemInitialCharges"	"1"
@@ -25879,7 +25887,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityCooldown"	"20"
+		"AbilityCooldown"	"16"
 		"AbilityManaCost"	"150"
 		"AbilityCastRange"	"900"
 		"ID"	"1767"
@@ -26008,7 +26016,7 @@
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"max_soul"	"150"
+				"max_soul"	"120"
 			}
 			"08"
 			{
@@ -26025,7 +26033,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityCooldown"	"20"
+		"AbilityCooldown"	"16"
 		"AbilityManaCost"	"150"
 		"AbilityCastRange"	"900"
 		"ID"	"1769"
@@ -26114,6 +26122,14 @@
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item/spirit_vessel_capture.lua"
 						"Function"	"OnAttack"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_item/spirit_vessel_capture.lua"
+						"Function"	"OnDeath"
 					}
 				}
 			}
@@ -26259,6 +26275,7 @@
 						"Function"	"OnDestroy"
 					}
 				}
+				"AllowIllusionDuplicate"	"0"
 			}
 			"modifier_item_demon_chains_debuff"
 			{

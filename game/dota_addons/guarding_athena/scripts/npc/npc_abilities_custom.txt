@@ -16565,6 +16565,14 @@
 				}
 				"Passive"	"1"
 				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
+						"Function"	"OnCreated"
+					}
+				}
 			}
 			"modifier_spectre_0_illusion"
 			{
