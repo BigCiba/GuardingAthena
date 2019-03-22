@@ -51,6 +51,6 @@
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/shop.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/time.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/bubble.xml" />
-		<!--<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />-->
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />
 	</Panel>
 </root>

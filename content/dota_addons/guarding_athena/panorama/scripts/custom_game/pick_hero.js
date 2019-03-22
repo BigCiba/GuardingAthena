@@ -302,7 +302,9 @@ function TimeRemaining(){
             $.Schedule(0.1, TimeRemaining);
         }
         else {
-            GameEvents.SendCustomGameEventToServer("hero_selected", { "hero": SelectedHeroName });
+            var toggle_fly = $("#FlyToggleButton").checked;
+            var toggle_gold = $("#GoldToggleButton").checked;
+            GameEvents.SendCustomGameEventToServer("hero_selected", { "hero": SelectedHeroName, "toggle_fly": toggle_fly, "toggle_gold": toggle_gold });
             $("#HeroSelectionBackground").style.visibility = "collapse";
         }
     }

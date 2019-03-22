@@ -52,6 +52,10 @@
                  <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="0" rotateonhover="true" yawmin="-90" yawmax="90" particleonly="false" activity-modifier="PostGameIdle"/>
                 <!--英雄名字-->
             </Panel>
+            <Panel id="GoldToggle">
+                <ToggleButton id="FlyToggleButton" selected="true" text="#toglle_fly" />
+                <ToggleButton id="GoldToggleButton" selected="true" text="#toglle_gold" />
+            </Panel>
             <Panel id="HeroConfirm">
                 <Button id="HeroConfirmButton" onmouseover="OnHeroConfirmOver()" onmouseout="OnHeroConfirmOut()" onactivate="OnHeroConfirmClick()">
                     <Label text="#SelectHero" class="DifficultyLabel"/>

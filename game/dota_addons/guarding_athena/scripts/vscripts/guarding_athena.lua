@@ -36,6 +36,8 @@ function GuardingAthena:InitGameMode()
 	self.athena_wudi = 0
 	self.player_count = 0
 	self.SelectedHeroName = {}
+	self.ToggleFly = {}
+	self.ToggleGold = {}
 	self.SelectDifficulty = {}
 	self.DifficultySelected = false
 	self.Players = {}

@@ -2553,30 +2553,6 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_gong_fenlie"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"	"modifier_item_gong_fenlie"
-						"Target"	"CASTER"
-					}
-				}
-			}
-			"modifier_item_gong_fenlie"
-			{
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -2585,9 +2561,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2658,30 +2631,6 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_gong_fenlie"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"	"modifier_item_gong_fenlie"
-						"Target"	"CASTER"
-					}
-				}
-			}
-			"modifier_item_gong_fenlie"
-			{
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -2690,9 +2639,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2763,30 +2709,6 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_gong_fenlie"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"	"modifier_item_gong_fenlie"
-						"Target"	"CASTER"
-					}
-				}
-			}
-			"modifier_item_gong_fenlie"
-			{
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -2795,9 +2717,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2868,30 +2787,6 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_gong_fenlie"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"	"modifier_item_gong_fenlie"
-						"Target"	"CASTER"
-					}
-				}
-			}
-			"modifier_item_gong_fenlie"
-			{
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -2900,9 +2795,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -2973,30 +2865,6 @@
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_gong_fenlie"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"	"modifier_item_gong_fenlie"
-						"Target"	"CASTER"
-					}
-				}
-			}
-			"modifier_item_gong_fenlie"
-			{
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -3005,9 +2873,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -6278,27 +6143,6 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_move_speed"
 				}
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerRemove"
-					}
-				}
-			}
-			"modifier_fenlie_item_gong_6"
-			{
-				"Passive"	"1"
-				"Properties"	{}
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -6307,8 +6151,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
-				"AllowIllusionDuplicate"	"1"
 			}
 			"modifier_item_fumo_check"
 			{
@@ -6556,28 +6398,6 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerRemove"
-					}
-				}
-				"AllowIllusionDuplicate"	"1"
-			}
-			"modifier_fenlie_item_gong_7"
-			{
-				"Passive"	"1"
-				"Properties"	{}
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -6586,7 +6406,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
 				"AllowIllusionDuplicate"	"1"
 			}
 			"modifier_item_fumo_check"
@@ -6840,28 +6659,6 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerRemove"
-					}
-				}
-				"AllowIllusionDuplicate"	"1"
-			}
-			"modifier_fenlie_item_gong_8"
-			{
-				"Passive"	"1"
-				"Properties"	{}
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -6870,7 +6667,6 @@
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
 				"AllowIllusionDuplicate"	"1"
 			}
 			"modifier_item_fumo_check"
@@ -7129,32 +6925,9 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RangerRemove"
-					}
-				}
-				"AllowIllusionDuplicate"	"1"
-			}
-			"modifier_fenlie_item_gong_9"
-			{
-				"Passive"	"1"
-				"Properties"	{}
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
 						"Function"	"FenLie"
 					}
 				}
-				"IsHidden"	"1"
 				"AllowIllusionDuplicate"	"1"
 			}
 			"modifier_item_fumo_check"

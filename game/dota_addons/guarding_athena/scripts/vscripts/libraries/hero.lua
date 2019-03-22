@@ -85,43 +85,40 @@ function HeroState:InitIllusion(unit)
     unit.ringList = {}                  --记录最后获得的戒指
 end
 function HeroState:UpdateNetTable(hero)
-    if hero then
+    if hero and hero:GetPlayerOwner() then
         local lv = hero:GetLevel()
-        local playerID = hero:GetPlayerID()
-        if playerID then
-            local score = hero:GetPlayerOwner().Score or 0
-            local str = math.floor(hero:GetStrength())
-            local agi = math.floor(hero:GetAgility())
-            local int = math.floor(hero:GetIntellect())
-            --local baseStr = math.floor(hero:GetBaseStrength())
-            --local baseAgi = math.floor(hero:GetBaseAgility())
-            --local baseInt = math.floor(hero:GetBaseIntellect())
-            local defPoint = hero.def_point
-            local bossPoint = hero.boss_point
-            local praPoint = hero.practice_point
-            local waveDef = hero.wave_def
-            local totalGold = math.floor(hero.total_gold + self:GetTotalGoldPerTick())
-            local totalDamage = 0
-            for k,v in pairs(self.heroTable) do
-                totalDamage = totalDamage + v.boss_damage
-            end
-            local damagePercent = math.floor((hero.boss_damage / totalDamage) * 100)
-            if totalDamage == 0 then
-                damagePercent = 0
-            end
-            CustomNetTables:SetTableValue( "scoreboard", tostring(playerID), { lv=lv,
-                                                                                        score=score,
-                                                                                        str = str, 
-                                                                                        agi = agi, 
-                                                                                        int = int, 
-                                                                                        --baseStr = baseStr,
-                                                                                        --baseAgi = baseAgi, 
-                                                                                        --baseInt = baseInt,  
-                                                                                        wavedef = waveDef, 
-                                                                                        damagesave = damagePercent, 
-                                                                                        goldsave = totalGold })
-            CustomNetTables:SetTableValue( "shop", tostring(playerID), { def_point=defPoint, boss_point=bossPoint, practice_point=praPoint})
+        local score = hero:GetPlayerOwner().Score
+        local str = math.floor(hero:GetStrength())
+        local agi = math.floor(hero:GetAgility())
+        local int = math.floor(hero:GetIntellect())
+        --local baseStr = math.floor(hero:GetBaseStrength())
+        --local baseAgi = math.floor(hero:GetBaseAgility())
+        --local baseInt = math.floor(hero:GetBaseIntellect())
+        local defPoint = hero.def_point
+        local bossPoint = hero.boss_point
+        local praPoint = hero.practice_point
+        local waveDef = hero.wave_def
+        local totalGold = math.floor(hero.total_gold + self:GetTotalGoldPerTick())
+        local totalDamage = 0
+        for k,v in pairs(self.heroTable) do
+            totalDamage = totalDamage + v.boss_damage
         end
+        local damagePercent = math.floor((hero.boss_damage / totalDamage) * 100)
+        if totalDamage == 0 then
+            damagePercent = 0
+        end
+        CustomNetTables:SetTableValue( "scoreboard", tostring(hero:GetPlayerID()), { lv=lv,
+                                                                                     score=score,
+                                                                                     str = str, 
+                                                                                     agi = agi, 
+                                                                                     int = int, 
+                                                                                     --baseStr = baseStr,
+                                                                                     --baseAgi = baseAgi, 
+                                                                                     --baseInt = baseInt,  
+                                                                                     wavedef = waveDef, 
+                                                                                     damagesave = damagePercent, 
+                                                                                     goldsave = totalGold })
+        CustomNetTables:SetTableValue( "shop", tostring(hero:GetPlayerID()), { def_point=defPoint, boss_point=bossPoint, practice_point=praPoint})
     end
 end
 function HeroState:SendFinallyData()
@@ -192,7 +189,8 @@ function HeroState:CheckItemOnly(hero)
                 end
                 if itemType == nextItemType then
                     DropItem(nextItem, hero)
-                    Notifications:Bottom(hero:GetPlayerID(), {text="#eqiut_limit", style={color="red"}, duration=1, continue = false})
+                    ShowError(hero:GetPlayerOwner(),"eqiut_limit")
+                    --Notifications:Bottom(hero:GetPlayerID(), {text="#eqiut_limit", style={color="red"}, duration=1, continue = false})
                     break
                 end
             end

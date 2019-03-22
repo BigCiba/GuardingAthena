@@ -40,6 +40,8 @@
 	"PasswordTip2"							"新版购买接口，购买后无需输入自动激活"
 	"PasswordTip3"							"输入兑换码"
 	"PasswordTip4"							"点击领取"
+	"toglle_fly"							"是否开启翅膀特效"
+	"toglle_gold"							"是否开启技能特效"
 	"quit_game"								"结束游戏"
 	"HardSelect"							"难度选择"
 	"EasyButton"							"简单"

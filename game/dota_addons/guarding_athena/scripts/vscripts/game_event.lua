@@ -441,12 +441,16 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		end
 		-- 金色特效
 		if player.gold_gift then
-			heroEntity.gift = true
-			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
-				CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
-			else
-				local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
-				--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
+			if GuardingAthena.ToggleGold[playerID] == 1 then
+				heroEntity.gift = true
+			end
+			if GuardingAthena.ToggleFly[playerID] == 1 then
+				if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
+					CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+				else
+					local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+					--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
+				end
 			end
 		end
 		-- vip

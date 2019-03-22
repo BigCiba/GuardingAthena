@@ -285,7 +285,8 @@ function GuardingAthena:ItemAddedFilter( keys )
 			return false
 		else
 			currentUnit.def_point = currentUnit.def_point + 1200
-			Notifications:Bottom(currentUnit:GetPlayerID(), {text="#ring_limit", style={color="red"}, duration=1, continue = false})
+			ShowError(currentUnit:GetPlayerOwner(),"ring_limit")
+			--Notifications:Bottom(currentUnit:GetPlayerID(), {text="#ring_limit", style={color="red"}, duration=1, continue = false})
 			currentItem:RemoveSelf()
 			return false
 		end
@@ -357,7 +358,8 @@ function GuardingAthena:ItemAddedFilter( keys )
 				if GameRules:GetGameTime() - currentItem:GetPurchaseTime() < 10 then
 					if currentItem.currentUnitName ~= currentUnit.currentHero:GetUnitName() then
 						DropItem(currentItem, currentUnit)
-						Notifications:Bottom(currentUnit.currentHero:GetPlayerID(), {text="#courier_cant_pick", style={color="red"}, duration=2, continue = false})
+						ShowError(currentUnit:GetPlayerOwner(),"courier_cant_pick")
+						--Notifications:Bottom(currentUnit.currentHero:GetPlayerID(), {text="#courier_cant_pick", style={color="red"}, duration=2, continue = false})
 						return false
 					end
 				else
@@ -419,7 +421,7 @@ function GuardingAthena:ModifyGoldFilter( keys )
 			keys.gold = keys.gold + 5
 		end
 		if hero.gold_rate then
-			keys.gold = keys.gold * (1 + hero.gold_rate * 0.01)
+			keys.gold = keys.gold * hero.gold_rate
 		end
 	end
 	hero.total_gold = hero.total_gold + keys.gold

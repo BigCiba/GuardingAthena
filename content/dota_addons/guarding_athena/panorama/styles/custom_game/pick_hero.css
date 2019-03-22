@@ -83,6 +83,12 @@
     opacity: 0.7;
 
 }
+#GoldToggle
+{
+    flow-children: right;
+    align: center bottom;
+    margin-bottom: 350px;
+}
 #HeroesScene
 {
     align: center center;

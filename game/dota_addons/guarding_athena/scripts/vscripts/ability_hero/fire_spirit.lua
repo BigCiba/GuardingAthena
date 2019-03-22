@@ -162,8 +162,8 @@ function OnRemoveModifier( t )
 	local caster = t.caster
 	local target = t.target
 	local ability = t.ability
-	local caster_location = caster:GetAbsOrigin()
-	local unitGroup = GetUnitsInRadius(caster,ability,caster_location,200)
+	local target_location = target:GetAbsOrigin()
+	local unitGroup = GetUnitsInRadius(caster,ability,target_location,200)
 	local stackcount = target.firemark
 	target.firemark = 0
 	local damage = caster:GetAgility() * stackcount

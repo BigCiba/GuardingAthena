@@ -40,6 +40,8 @@
 	"PasswordTip2"							"If you have no password, please click the button below to receive"
 	"PasswordTip3"							"Input exchange code"
 	"PasswordTip4"							"Click Here"
+	"toglle_fly"							"Toggle Wing Particle"
+	"toglle_gold"							"Toggle Ability Particle"
 	"quit_game"								"Quit Game"
 	"HardSelect"							"Выберите сложность"
 	"EasyButton"							"Easy"

@@ -48,6 +48,7 @@
 	SetCamera(playerID,arg)
 	SetRegionLimit(caster,regionEntity)
 	SetBaseResistance(caster,resistance,duration)
+	ShowError(player,text)
 	string.split
 	Teleport(caster,position)
 ]]
@@ -749,6 +750,13 @@ function SetUnitIncomingDamageReduce( ... )
 		end)
 	end
 end
+-- 显示错误信息
+function ShowError(...)
+	local player,text = ...
+	CustomGameEventManager:Send_ServerToPlayer( player,"show_error", {text = text} )
+	--Notifications:Bottom(player:GetPlayerID(), {text="#"..text, style={color="red"}, duration=1, continue = false})
+	EmitSoundOnClient("General.Cancel", player)
+end
 -- 打印表
 function PrintTable( keys )
 	print("----------------------------------")
@@ -776,8 +784,9 @@ function IsFullSolt( ... )
 	    	if not unit:IsRealHero() then
 	    		unit = caster.currentHero
 	    	end
-	    	local playerid = unit:GetPlayerOwnerID()
-	    	Notifications:Bottom(playerid, {text="物品栏已满", style={color="red"}, duration=1, continue = false})
+			local playerid = unit:GetPlayerOwnerID()
+			ShowError(caster:GetPlayerOwner(),"物品栏已满")
+	    	--Notifications:Bottom(playerid, {text="物品栏已满", style={color="red"}, duration=1, continue = false})
 	    	EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", unit:GetPlayerOwner())
 	    end
     	return true
@@ -810,8 +819,9 @@ function ItemTypeCheck( ... )
         		bagItemType = bagItemInfo.itemType
         	end
         	if currentItemType == bagItemType then
-        		DropItem(item, caster)
-        		Notifications:Bottom(caster:GetPlayerID(), {text="你已经拥有一个同类装备", style={color="red"}, duration=2, continue = false})
+				DropItem(item, caster)
+				ShowError(caster:GetPlayerOwner(),"你已经拥有一个同类装备")
+        		--Notifications:Bottom(caster:GetPlayerID(), {text="你已经拥有一个同类装备", style={color="red"}, duration=2, continue = false})
         		return true
         	end
         end

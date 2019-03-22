@@ -4,17 +4,19 @@ function UI_BuyItem( index,data )
 	local cost = data.cost
 	local type = data.type
 	local cd = data.cooldown or 0
-	if GiveItem( hero, itemName ) then
-		hero[type] = hero[type] - cost
-		if cd > 0 then
-			local canBuyTable = CustomNetTables:GetTableValue("shop", "can_buy")
-			canBuyTable[itemName] = false
-			CustomNetTables:SetTableValue( "shop", "can_buy", canBuyTable )
-			Timers:CreateTimer(cd,function ()
-				canBuyTable = CustomNetTables:GetTableValue("shop", "can_buy")
-				canBuyTable[itemName] = true
+	if hero[type] > cost then
+		if GiveItem( hero, itemName ) then
+			hero[type] = hero[type] - cost
+			if cd > 0 then
+				local canBuyTable = CustomNetTables:GetTableValue("shop", "can_buy")
+				canBuyTable[itemName] = false
 				CustomNetTables:SetTableValue( "shop", "can_buy", canBuyTable )
-			end)
+				Timers:CreateTimer(cd,function ()
+					canBuyTable = CustomNetTables:GetTableValue("shop", "can_buy")
+					canBuyTable[itemName] = true
+					CustomNetTables:SetTableValue( "shop", "can_buy", canBuyTable )
+				end)
+			end
 		end
 	end
 end
@@ -49,6 +51,8 @@ end
 function HeroSelected( id,keys )
 	local playerID = keys.PlayerID
 	GuardingAthena.SelectedHeroName[playerID] = keys.hero
+	GuardingAthena.ToggleFly[playerID] = keys.toggle_fly
+	GuardingAthena.ToggleGold[playerID] = keys.toggle_gold
 	local heroEntity = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 	PrecacheUnitByNameAsync(keys.hero,function()
 		PlayerResource:ReplaceHeroWith(playerID,keys.hero,PlayerResource:GetGold(playerID),0)

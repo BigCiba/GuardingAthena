@@ -250,7 +250,7 @@ function ChillingTouch( t )
             for k,v in pairs(unitGroup) do
                 CauseDamage( caster, v, damage, damageType, ability )
                 ability:ApplyDataDrivenModifier(caster, v, "modifier_chilling_touch_debuff", nil)
-                if v:GetMoveSpeedModifier(v:GetBaseMoveSpeed()) < 150 then
+                if v:GetMoveSpeedModifier(v:GetBaseMoveSpeed(),false) < 150 then
                     ability:ApplyDataDrivenModifier(caster, v, "modifier_chilling_touch_freeze", {duration=interval})
                 end
             end
