@@ -68,7 +68,8 @@ function ClustersStarActive( t )
 		local fxIndex = CreateParticle("particles/heroes/warden/clusters_stars_active.vpcf",PATTACH_ABSORIGIN_FOLLOW,target,2)
 	end
 	local damageType = DAMAGE_TYPE_PHYSICAL
-	if RollPercentage(30) then
+	OnDealDamage(caster,target,att)
+	--[[if RollPercentage(30) then
 		att = att * critical * 0.01
 		CauseDamage(caster,target,att,damageType,ability,100,100)
 	else
@@ -76,7 +77,7 @@ function ClustersStarActive( t )
 	end
 	if att > health then
 		Heal(caster,health,0)
-	end
+	end]]
 end
 function ShadowmoonWheeldance( t )
 	local att = t.caster:GetAverageTrueAttackDamage(caster)
@@ -85,7 +86,7 @@ function ShadowmoonWheeldance( t )
 	local bonus_att = caster:GetAttackDamage() * 0.05
 	local targets = t.target_entities   --获取传递进来的单位组
 	local duration = ability:GetSpecialValueFor("duration")
-	local damage= att * t.DexTaken + ability:GetSpecialValueFor("base_damage")
+	local damage = att * t.DexTaken + ability:GetSpecialValueFor("base_damage")
 	local cooldamage = damage * 36
 	local damageType = ability:GetAbilityDamageType()
 	local void_level = ability:GetLevel()
@@ -97,8 +98,9 @@ function ShadowmoonWheeldance( t )
 	local fxIndex = CreateParticle(particleName,PATTACH_ABSORIGIN_FOLLOW,caster,0.5)
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_shadowmoon_wheeldance_kill", nil)
 	--利用Lua的循环迭代，循环遍历每一个单位组内的单位
+	local ability_3 = caster:FindAbilityByName("clusters_stars")
 	for i,unit in pairs(targets) do
-		if RollPercentage(30) then
+		--[[if RollPercentage(30) then
 			if HasExclusive(caster,3) then
 				CauseDamage(caster,unit,damage * 2,damageType,ability,100,scale)
 			else
@@ -106,12 +108,16 @@ function ShadowmoonWheeldance( t )
 			end
 		else
 			CauseDamage(caster,unit,damage,damageType,ability)
+		end]]
+		if HasExclusive(caster,2) then
+			ability_3:ApplyDataDrivenModifier(caster, unit, "modifier_clusters_stars_armor", nil)
 		end
+		OnDealDamage(caster,unit,damage)
 		ability:ApplyDataDrivenModifier(caster, unit, "modifier_shadowmoon_wheeldance_stun", nil)
 		ability:ApplyDataDrivenModifier(caster, unit, "modifier_shadowmoon_wheeldance", {duration=duration})
 		local particle = CreateParticle("particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_event_glitch.vpcf",PATTACH_ABSORIGIN,caster,2)
 		ParticleManager:SetParticleControl( particle, 0, unit:GetAbsOrigin() )
-		AbstrusemoonShadow({caster=caster,target=unit,ability=caster:GetAbilityByIndex(0)})
+		--AbstrusemoonShadow({caster=caster,target=unit,ability=caster:GetAbilityByIndex(0)})
 	end
 	if HasExclusive(caster,4) and caster:HasModifier("modifier_shadow_rift_garrotte") then
 		ability:EndCooldown()
@@ -157,7 +163,7 @@ function VoidBlink(t)
 		local damageType = t.ability:GetAbilityDamageType()
 		local void_level = caster:GetAbilityByIndex(3):GetLevel()
 		local scale = 100 + void_level * 25
-		if RollPercentage(30) then
+		--[[if RollPercentage(30) then
 			if HasExclusive(caster,3) then
 				CauseDamage(caster,v,damage * 2,damageType,ability,100,scale)
 			else
@@ -165,10 +171,12 @@ function VoidBlink(t)
 			end
 		else
 			CauseDamage(caster,v,damage,damageType,ability)
-		end
-		AbstrusemoonShadow({caster=caster,target=v,ability=caster:GetAbilityByIndex(0)})
+		end]]
+		OnDealDamage(caster,v,damage)
+		--AbstrusemoonShadow({caster=caster,target=v,ability=caster:GetAbilityByIndex(0)})
 	end
 	SetUnitPosition(caster, target_location)
+	caster:FindAbilityByName("shadowmoon_wheeldance"):EndCooldown()
 end
 function ClustersStars( t )
 	local caster = t.caster
@@ -225,7 +233,8 @@ function ShadowRiftGarrotte(t)
 				local damageType = t.ability:GetAbilityDamageType()
 				local void_level = caster:GetAbilityByIndex(3):GetLevel()
 				local scale = 100 + void_level * 25
-				if RollPercentage(30) then
+				OnDealDamage(caster,v,damage)
+				--[[if RollPercentage(30) then
 					if HasExclusive(caster,3) then
 						CauseDamage(caster,v,damage * 2,damageType,ability,100,scale)
 					else
@@ -233,8 +242,8 @@ function ShadowRiftGarrotte(t)
 					end
 				else
 					CauseDamage(caster,v,damage,damageType,ability)
-				end
-				AbstrusemoonShadow({caster=caster,target=v,ability=caster:GetAbilityByIndex(0)})
+				end]]
+				--AbstrusemoonShadow({caster=caster,target=v,ability=caster:GetAbilityByIndex(0)})
 			end
 			SetUnitPosition(caster, point)	
 			time = time + 1
@@ -250,4 +259,37 @@ function ShadowRiftGarrotte(t)
 	if HasExclusive(caster,4) then
 		caster:GetAbilityByIndex(1):EndCooldown()
 	end
+end
+
+
+
+
+----------
+function OnAttackLanded(t)
+	local caster = t.caster
+	local ability = t.ability
+	AddAttack(caster)
+end
+function AddAttack(caster)
+	local ability = caster:FindAbilityByName("abstrusemoon_shadow")
+	local duration = ability:GetSpecialValueFor("duration")
+	local count = HasExclusive(caster,1) and 2 or 1
+	AddModifierStackCount(caster,caster,ability,"modifier_abstrusemoon_shadow_buff",count,10,true)
+end
+function OnDealDamage(caster,target,damage)
+	AddAttack(caster)
+	local ability = caster:FindAbilityByName("abstrusemoon_shadow")
+	local critical_chance = ability:GetSpecialValueFor("critical_chance")
+	local critical_damage = ability:GetSpecialValueFor("critical_damage") * 0.01
+	critical_damage = HasExclusive(caster,3) and critical_damage * 2 or critical_damage
+	local life_steal = ability:GetSpecialValueFor("life_steal") * 0.01
+	if RollPercentage(critical_chance) then
+		damage = damage * critical_damage
+		Heal(caster,damage * life_steal,0,false)
+		CreateNumberEffect(target,damage,1,MSG_ORIT ,"red",4)
+		if HasExclusive(caster,3) then
+			target:AddNewModifier(caster, ability, "modifier_stun", {duration=0.1})
+		end
+	end
+	CauseDamage(caster,target,damage,DAMAGE_TYPE_PHYSICAL,ability)
 end

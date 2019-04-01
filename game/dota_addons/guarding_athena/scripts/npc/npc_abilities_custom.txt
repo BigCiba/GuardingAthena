@@ -8001,20 +8001,39 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/shadow_moon_warden_abstrusemoon_shadow"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"HotKeyOverride"	"D"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+		}
 		"Modifiers"
 		{
-			"modifier_abstrusemoon_shadow_kill"
+			"modifier_abstrusemoon_shadow"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"OnAttackLanded"
+				"OnAttackStart"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/ability_hero/shadowmoon_warden.lua"
-						"Function"	"AbstrusemoonShadow"
+						"Function"	"OnAttackLanded"
+					}
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_abstrusemoon_shadow_critical"
+								"OverrideAnimation"	"ACT_DOTA_ATTACK_EVENT"
+							}
+						}
+						"Chance"	"%critical_chance"
 					}
 				}
 			}
@@ -8024,7 +8043,43 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"1"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage_percent"
+				}
+			}
+			"modifier_abstrusemoon_shadow_critical"
+			{
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%critical_damage"
+				}
+				"OnAttackLanded"
+				{
+					"FireEffect"
+					{
+						"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"	"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"	"attach_hitloc"
+							"TARGET"	"attach_hitloc"
+						}
+					}
+					"FireSound"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
+					}
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_abstrusemoon_shadow_critical"
+					}
+					"Lifesteal"
+					{
+						"Target"	"CASTER"
+						"LifestealPercent"	"%life_steal"
+					}
 				}
 			}
 		}
@@ -8035,6 +8090,26 @@
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"10"
 			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage_percent"	"4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_chance"	"30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"critical_damage"	"400"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"life_steal"	"10"
+			}
 		}
 	}
 
@@ -8043,7 +8118,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/shadow_moon_warden_shadowmoon_wheeldance"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"HotKeyOverride"	"Q"
@@ -8167,7 +8242,7 @@
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/moonlight_projection"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
@@ -8240,7 +8315,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/shadow_moon_warden_clusters_stars"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
@@ -8277,6 +8352,12 @@
 				"Target"	"CASTER"
 				"EffectName"	"DOTA_Item.AbyssalBlade.Activate"
 			}
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_clusters_stars_armor"
+				"Duration"	"2"
+			}
 		}
 		"Modifiers"
 		{
@@ -8285,32 +8366,6 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
-				"OnAttackStart"
-				{
-					// 暴击
-					"Random"
-					{
-						"Chance"	"%critical_rate"
-						"PseudeoRandom"	"DOTA_PSEUDO_RANDOM_JUGG_CRIT"
-						"OnSuccess"
-						{
-							"ApplyModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_critical"
-								"OverrideAnimation"	"ACT_DOTA_ATTACK_EVENT"
-							}
-						}
-						"OnFailure"
-						{
-							"RemoveModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_critical"
-							}
-						}
-					}
-				}
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -8373,30 +8428,35 @@
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
+			"modifier_clusters_stars_armor"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%reduce_armor"
+				}
+				"IsHidden"	"1"
+				"Duration"	"2"
+			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"critical_rate"	"30"
+				"reduce_armor"	"-6 -12 -18 -24 -30 -36 -42 -48 -54 -60 -66 -72 -78 -84 -90 -96 -102 -108 -114 -120"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"critical_damage"	"125 150 175 200 225 250 275 300 325 350 375 400 425 450 475 500 525 550 575 600"
+				"series_rate"	"100"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"series_rate"	"100"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
 				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
-			"05"
+			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"2"

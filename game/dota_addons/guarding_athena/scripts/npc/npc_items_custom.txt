@@ -6920,7 +6920,7 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 				}
-				"OnCreated"
+				"OnAttackLanded"
 				{
 					"RunScript"
 					{

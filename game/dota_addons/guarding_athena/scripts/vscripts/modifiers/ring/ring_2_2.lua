@@ -14,13 +14,13 @@ function ring_2_2:OnCreated()
         if caster.gold_rate == nil then
             caster.gold_rate = 0
         end
-        caster.gold_rate = caster.gold_rate + 25
+        caster.gold_rate = caster.gold_rate + 0.25
     end
 end
 function ring_2_2:OnDestroy()
     if IsServer() then
         local caster = self:GetParent()
-        caster.gold_rate = caster.gold_rate - 25
+        caster.gold_rate = caster.gold_rate - 0.25
     end
 end
 function ring_2_2:GetModifierBonusStats_Strength( t )
