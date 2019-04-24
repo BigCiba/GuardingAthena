@@ -288,7 +288,7 @@ function OnDealDamage(caster,target,damage)
 		Heal(caster,damage * life_steal,0,false)
 		CreateNumberEffect(target,damage,1,MSG_ORIT ,"red",4)
 		if HasExclusive(caster,3) then
-			target:AddNewModifier(caster, ability, "modifier_stun", {duration=0.1})
+			target:AddNewModifier(caster, ability, "modifier_stunned", {duration=0.1})
 		end
 	end
 	CauseDamage(caster,target,damage,DAMAGE_TYPE_PHYSICAL,ability)

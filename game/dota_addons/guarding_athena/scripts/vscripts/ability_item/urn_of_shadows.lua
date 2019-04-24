@@ -5,7 +5,7 @@ function OnHit(t)
     local ability = t.ability
     local duration = ability:GetSpecialValueFor("duration")
     local damage = (ability:GetSpecialValueFor("damage_percent") + ability:GetSpecialValueFor("damage_per_soul") * ability:GetCurrentCharges()) * target:GetMaxHealth() * 0.01
-    local health = damage > caster:GetMaxHealth() * 10 and caster:GetMaxHealth() * 10 or damage
+    local health = damage > caster:GetMaxHealth() * 10 and caster:GetMaxHealth() * 10 or math.ceil(damage)
     caster:AddNewModifier(caster, ability, "modifier_urn_of_shadows_health", {duration=duration,health=health})
     ability:ApplyDataDrivenModifier(caster, target, "modifier_urn_of_shadows_debuff", nil)
     ability.no_damage_filter = true

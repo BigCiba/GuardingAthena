@@ -11180,56 +11180,14 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-			}
-			"modifier_item_chui_stun"
-			{
 				"OnAttackLanded"
 				{
-					"Random"
+					"RunScript"
 					{
-						"OnSuccess"
-						{
-							"Stun"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%stun_duration"
-							}
-							"RemoveModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_item_chui_stun"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"ItemCooldown"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"chui"
-							}
-						}
-						"Chance"	"%stun_chance"
+						"ScriptFile"	"scripts/vscripts/ability_item/chui.lua"
+						"Function"	"OnAttackLanded"
 					}
 				}
-				"IsHidden"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -11287,7 +11245,7 @@
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
+				"radius"	"300"
 			}
 			"12"
 			{
@@ -11352,56 +11310,14 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-			}
-			"modifier_item_chui_stun"
-			{
 				"OnAttackLanded"
 				{
-					"Random"
+					"RunScript"
 					{
-						"OnSuccess"
-						{
-							"Stun"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%stun_duration"
-							}
-							"RemoveModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_item_chui_stun"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"ItemCooldown"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"chui"
-							}
-						}
-						"Chance"	"%stun_chance"
+						"ScriptFile"	"scripts/vscripts/ability_item/chui.lua"
+						"Function"	"OnAttackLanded"
 					}
 				}
-				"IsHidden"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -11459,7 +11375,7 @@
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
+				"radius"	"350"
 			}
 			"12"
 			{
@@ -11524,56 +11440,14 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-			}
-			"modifier_item_chui_stun"
-			{
 				"OnAttackLanded"
 				{
-					"Random"
+					"RunScript"
 					{
-						"OnSuccess"
-						{
-							"Stun"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%stun_duration"
-							}
-							"RemoveModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_item_chui_stun"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"ItemCooldown"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"chui"
-							}
-						}
-						"Chance"	"%stun_chance"
+						"ScriptFile"	"scripts/vscripts/ability_item/chui.lua"
+						"Function"	"OnAttackLanded"
 					}
 				}
-				"IsHidden"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -11631,7 +11505,7 @@
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
+				"radius"	"400"
 			}
 			"12"
 			{
@@ -11696,56 +11570,14 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-			}
-			"modifier_item_chui_stun"
-			{
 				"OnAttackLanded"
 				{
-					"Random"
+					"RunScript"
 					{
-						"OnSuccess"
-						{
-							"Stun"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%stun_duration"
-							}
-							"RemoveModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_item_chui_stun"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"ItemCooldown"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"chui"
-							}
-						}
-						"Chance"	"%stun_chance"
+						"ScriptFile"	"scripts/vscripts/ability_item/chui.lua"
+						"Function"	"OnAttackLanded"
 					}
 				}
-				"IsHidden"	"1"
 			}
 		}
 		"AbilitySpecial"
@@ -11803,7 +11635,7 @@
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
+				"radius"	"450"
 			}
 			"12"
 			{
@@ -11874,102 +11706,18 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-			}
-			"modifier_item_chui_stun"
-			{
 				"OnAttackLanded"
 				{
-					"Random"
+					"RunScript"
 					{
-						"OnSuccess"
-						{
-							"Stun"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%stun_duration"
-							}
-							"RemoveModifier"
-							{
-								"Target"	"CASTER"
-								"ModifierName"	"modifier_item_chui_stun"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"ItemCooldown"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"chui"
-							}
-						}
-						"Chance"	"%stun_chance"
+						"ScriptFile"	"scripts/vscripts/ability_item/chui.lua"
+						"Function"	"OnAttackLanded"
 					}
 				}
-				"IsHidden"	"1"
 			}
 			"modifier_item_chui_buff"
 			{
 				"AllowIllusionDuplicate"	"1"
-				"OnCreated"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnDestroy"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_chui_stun"
-					}
-				}
-				"OnAttackLanded"
-				{
-					"Random"
-					{
-						"OnSuccess"
-						{
-							"Stun"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%stun_duration"
-							}
-							"ApplyModifier"
-							{
-								"Target"	"TARGET"
-								"ModifierName"	"modifier_item_chui_debuff"
-								"Duration"	"3"
-							}
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/ability_item.lua"
-								"Function"	"chui"
-							}
-						}
-						"Chance"	"%stun_chance"
-					}
-				}
 				"TextureName"	"item_chui_5"
 			}
 			"modifier_item_chui_debuff"
@@ -12038,7 +11786,7 @@
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
+				"radius"	"500"
 			}
 			"12"
 			{
@@ -15818,6 +15566,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"energy"	"1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"illusion_damage"	"60"
 			}
 		}
 	}

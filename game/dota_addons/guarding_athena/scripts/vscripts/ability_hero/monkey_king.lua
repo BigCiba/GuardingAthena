@@ -28,6 +28,7 @@ function OnExclusiveCreated( t )
     local ability = t.ability
     local energy = ability:GetSpecialValueFor("energy")
     local interval = ability:GetSpecialValueFor("interval")
+    local illusionDamage = ability:GetSpecialValueFor("illusion_damage") * 0.01
     ability.no_damage_filter = true
     local chance = ability:GetSpecialValueFor("chance")
     local critical = ability:GetSpecialValueFor("critical") * 100
@@ -54,7 +55,23 @@ function OnExclusiveCreated( t )
 			end
 		end
 		return interval
-	end)
+    end)
+    for i,unit in pairs(caster.illusion_table) do
+        AddDamageFilterAttacker(unit,"exclusive",function (damage,victim)
+            if RollPercentage(chance) and HasExclusive(unit,3) then
+                -- 无视护甲
+                local armor = victim:GetPhysicalArmorValue()
+                local damagePure = damage
+                if armor > 0 then
+                    local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
+                    damagePure = damagePure / (1 - reduce)
+                end
+                CauseDamage(unit,victim,damagePure * illusionDamage,DAMAGE_TYPE_PURE,ability,100,critical)
+                return 0
+            end
+            return damage
+        end)
+    end
 end
 function OnExclusiveDestory( t )
     local caster = t.caster

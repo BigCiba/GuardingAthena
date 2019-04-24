@@ -375,6 +375,9 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		-- vip
 		local count = 0
 		local player = heroEntity:GetPlayerOwner()
+		if player == nil then
+			return
+		end
 		local playerID = heroEntity:GetPlayerID()
 		Timers:CreateTimer(function ( )
 			if player.ServerInfo then
