@@ -58,7 +58,7 @@ function OnExclusiveCreated( t )
     end)
     for i,unit in pairs(caster.illusion_table) do
         AddDamageFilterAttacker(unit,"exclusive",function (damage,victim)
-            if RollPercentage(chance) and HasExclusive(unit,3) then
+            if RollPercentage(chance) then
                 -- 无视护甲
                 local armor = victim:GetPhysicalArmorValue()
                 local damagePure = damage
@@ -418,7 +418,7 @@ function EndlessOffensiveCreate( t )
         unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
         unit.caster_hero = caster
         HeroState:InitIllusion(unit)
-        unit:MakeIllusion()
+        --unit:MakeIllusion()
         unit:SetAbilityPoints(0)
         for itemSlot=0,5 do
             local itemOld = unit:GetItemInSlot(itemSlot)

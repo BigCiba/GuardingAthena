@@ -114,7 +114,7 @@ function GuardingAthena:DamageFilter( args )
 	if damageType == DAMAGE_TYPE_PHYSICAL then
 		-- 计算原始伤害
 		local armor = victim:GetPhysicalArmorValue()
-		local initdamage = args.damage
+		local initdamage = args.damage 
 		if armor > 0 then
 			local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
 			initdamage = args.damage / (1 - reduce)
@@ -390,6 +390,9 @@ end
 function GuardingAthena:ModifyExperienceFilter( keys )
 	--PrintTable(keys)
 	local playerID = keys.player_id_const
+	if playerID == -1 then
+		return false
+	end
 	local hero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 	local reborntimes = hero.reborn_time or 0
 	if hero:GetLevel() >= (reborntimes + 1) * 100 then
