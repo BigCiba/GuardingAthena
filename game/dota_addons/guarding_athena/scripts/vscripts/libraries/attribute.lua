@@ -81,9 +81,9 @@ function Attributes:ModifyBonuses(hero)
         --[[if not hero:HasModifier("modifier_armor_bonus") then
             self.applier:ApplyDataDrivenModifier(hero, hero, "modifier_armor_bonus", {})
         end
-        if hero:GetPhysicalArmorValue() > 0 then
+        if hero:GetPhysicalArmorValue(false) > 0 then
             local fixStack = hero:GetModifierStackCount("modifier_armor_bonus", hero)
-            local armor = hero:GetPhysicalArmorValue() + fixStack
+            local armor = hero:GetPhysicalArmorValue(false) + fixStack
             local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
             local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
             fixStack = armor - fixArmor

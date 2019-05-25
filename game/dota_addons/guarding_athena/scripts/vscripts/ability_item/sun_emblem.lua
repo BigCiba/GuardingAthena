@@ -6,6 +6,7 @@ function OnSpellStart( t )
     local damage = ability:GetSpecialValueFor("damage") * 0.01
     local damageType = ability:GetAbilityDamageType()
     local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
+    ability.no_damage_filter = true
     for k,v in pairs(unitGroup) do
         CauseDamage(caster,v,damage * v:GetHealth(),damageType,ability)
         ability:ApplyDataDrivenModifier(caster, v, "modifier_item_sun_emblem_debuff", nil)

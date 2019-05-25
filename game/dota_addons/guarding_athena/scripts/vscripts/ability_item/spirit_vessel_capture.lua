@@ -21,7 +21,7 @@ function OnDestroy(t)
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    if not target:IsAlive() then
+    if not target:IsAlive() and target:GetUnitName() ~= "hero_statue_1" and target:GetUnitName() ~= "hero_statue_2" then
         caster:TakeItem(ability)
         local item = CreateItem("item_spirit_vessel_release", caster, caster)
         caster:AddItem(item)

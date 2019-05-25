@@ -57,9 +57,9 @@ end
 function AthenaArmorFix( t )
     local caster = t.caster
     local spawnedUnit = t.target
-    if spawnedUnit:GetPhysicalArmorValue() > 0 then
+    if spawnedUnit:GetPhysicalArmorValue(false) > 0 then
         local fixStack = spawnedUnit:GetModifierStackCount("modifier_athena_guard_armor_fix", caster)
-        local armor = spawnedUnit:GetPhysicalArmorValue() + fixStack
+        local armor = spawnedUnit:GetPhysicalArmorValue(false) + fixStack
         local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
         if reduceOld > 0.9 then reduceOld = 0.9 end
         local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)

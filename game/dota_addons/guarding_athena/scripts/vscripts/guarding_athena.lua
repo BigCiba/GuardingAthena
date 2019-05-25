@@ -53,6 +53,11 @@ function GuardingAthena:InitGameMode()
 
 	if IsInToolsMode() then
 		HERO_SELECTION_TIME = 2
+		GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("collectgarbage"), function()
+			local m = collectgarbage('count')
+			print(string.format("[Lua Memory]  %.3f KB  %.3f MB", m, m/1024))
+			return 20
+		end, 0)
 	end
 
 	-- 初始化游戏参数

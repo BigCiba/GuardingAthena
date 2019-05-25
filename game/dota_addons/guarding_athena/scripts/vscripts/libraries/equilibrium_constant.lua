@@ -316,7 +316,7 @@ function equilibrium_constant:GetModifierPhysicalArmorBonus( params )
     if IsServer() then
         local owner = self:GetParent()
         local fixStack = owner.armor_mark
-        --[[local armor = owner:GetPhysicalArmorValue() + fixStack
+        --[[local armor = owner:GetPhysicalArmorValue(false) + fixStack
         local reduceOld = (armor * 0.05) / (1 + armor * 0.05)
         local fixArmor = (0.9 * reduceOld) / (0.052 - 0.048 * reduceOld)
         fixStack = armor - fixArmor

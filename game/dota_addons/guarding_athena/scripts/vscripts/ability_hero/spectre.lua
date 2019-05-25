@@ -358,7 +358,7 @@ function OnSpellStart( t )
         local duration = ability:GetSpecialValueFor("duration")
         local stunDuration = ability:GetSpecialValueFor("stun_duration")
         local damageTimePoint = ability:GetSpecialValueFor("damage_time_point")
-        local armor = target:GetPhysicalArmorValue()
+        local armor = target:GetPhysicalArmorValue(false)
         local resistance = target:GetMagicalArmorValue() * 100
         --local targetHealthPercent = target:GetHealthPercent()
         -- buff

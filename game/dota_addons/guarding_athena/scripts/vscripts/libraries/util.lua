@@ -302,7 +302,7 @@ end
 -- 获取原始伤害
 function GetOriginalDamage( ... )
 	local damage,target = ...
-	local armor = target:GetPhysicalArmorValue()
+	local armor = target:GetPhysicalArmorValue(false)
     local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
 	local initDamage = damage / (1 - reduce)
 	return initDamage
@@ -984,7 +984,8 @@ function CreateNumberEffect( ... )
     ParticleManager:SetParticleControlEnt(particle,0,entity,5,"attach_hitloc",entity:GetOrigin(),true)
     ParticleManager:SetParticleControl(particle,1,Vector(10,number,icon_type))
     ParticleManager:SetParticleControl(particle,2,Vector(duration,number_count,0))
-    ParticleManager:SetParticleControl(particle,3,color_vec)
+	ParticleManager:SetParticleControl(particle,3,color_vec)
+	ParticleManager:ReleaseParticleIndex(particle)
 end
 -- 拆分字符
 function string.split(input, delimiter)  

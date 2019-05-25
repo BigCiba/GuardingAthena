@@ -238,7 +238,7 @@ function GuardingAthena:OnEntityKilled( event )
 					unit:SetBaseDamageMax(unit:GetBaseDamageMax() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
 					unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
 					unit:Heal(unit:GetBaseMaxHealth() - unit:GetHealth(), nil)
-					unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
+					-- unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
 					for i=1,16 do
 						if unit:GetAbilityByIndex(i-1) then
 							local ability = unit:GetAbilityByIndex(i-1)
@@ -877,6 +877,20 @@ function GuardingAthena:OnPlayerChat(keys)
 	if text == "modelstatue" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero:SetOriginalModel("models/props_structures/tower_bad_sfm.vmdl")
+	end
+	if text == "numtest" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		-- MSG_BLOCK,MSG_ORIT,MSG_DAMAGE,MSG_EVADE,MSG_GOLD,MSG_HEAL,MSG_MANA_ADD,MSG_MANA_LOSS,MSG_MISS,MSG_POISION,MSG_SPELL,MSG_XP
+		-- red,orange,yellow,green,blue,indigo,purple
+		local time = GameRules:GetGameTime() + 200
+		Timers:CreateTimer(function ()
+			if GameRules:GetGameTime() < time then
+				for i = 1, 100 do
+					CreateNumberEffect(hero,RandomInt(100, 10000000),1,MSG_DAMAGE,"red",4)
+				end
+				return 0.1
+			end
+		end)
 	end
 end
 -- 监听玩家英雄升级

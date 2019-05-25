@@ -25900,4 +25900,14 @@
 			}
 		}
 	}
+
+	"item_scarlet_robe"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_crimson_robe"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"ID"	"1774"
+	}
 }

@@ -32,10 +32,10 @@ function OnExclusiveCreated( t )
     ability.no_damage_filter = true
     local chance = ability:GetSpecialValueFor("chance")
     local critical = ability:GetSpecialValueFor("critical") * 100
-    AddDamageFilterAttacker(caster,"exclusive",function (damage,victim)
-        if RollPercentage(chance) and HasExclusive(caster,3) then
+    AddDamageFilterAttacker(caster,"exclusive",function (damage,victim,damageType)
+        if RollPercentage(chance) and HasExclusive(caster,3) and damageType ~= DAMAGE_TYPE_PURE then
             -- 无视护甲
-            local armor = victim:GetPhysicalArmorValue()
+            local armor = victim:GetPhysicalArmorValue(false)
             local damagePure = damage
             if armor > 0 then
                 local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
@@ -60,7 +60,7 @@ function OnExclusiveCreated( t )
         AddDamageFilterAttacker(unit,"exclusive",function (damage,victim)
             if RollPercentage(chance) then
                 -- 无视护甲
-                local armor = victim:GetPhysicalArmorValue()
+                local armor = victim:GetPhysicalArmorValue(false)
                 local damagePure = damage
                 if armor > 0 then
                     local reduce = (armor * 0.052)/(0.9 + armor * 0.048)

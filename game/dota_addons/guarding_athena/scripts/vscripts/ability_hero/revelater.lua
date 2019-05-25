@@ -114,7 +114,7 @@ function OnAttackLanded( t )
 		caster:RemoveModifierByName("modifier_revelater_attack")
 	elseif abilityIndex == 3 then
 		local damage = t.DamageTaken
-		local armor = target:GetPhysicalArmorValue()
+		local armor = target:GetPhysicalArmorValue(false)
 		local reduce = (armor * 0.06)/(1 + armor * 0.06)
 		local initdamage = damage / (1 - reduce)
 		CauseDamage(caster, target, initdamage, DAMAGE_TYPE_MAGICAL,ability)

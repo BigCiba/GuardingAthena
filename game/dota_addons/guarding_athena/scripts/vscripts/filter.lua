@@ -89,12 +89,12 @@ function GuardingAthena:DamageFilter( args )
 	-- 特殊处理
 	if caster.DamageFilterAttacker then
 		for name,filter in pairs(caster.DamageFilterAttacker) do
-			args.damage = filter(args.damage,victim)
+			args.damage = filter(args.damage,victim,damageType)
 		end
 	end
 	if victim.DamageFilterVictim then
 		for name,filter in pairs(victim.DamageFilterVictim) do
-			args.damage = filter(args.damage,caster)
+			args.damage = filter(args.damage,caster,damageType)
 		end
 	end
 	-- 魔法伤害
@@ -113,7 +113,7 @@ function GuardingAthena:DamageFilter( args )
 	-- 物理伤害
 	if damageType == DAMAGE_TYPE_PHYSICAL then
 		-- 计算原始伤害
-		local armor = victim:GetPhysicalArmorValue()
+		local armor = victim:GetPhysicalArmorValue(false)
 		local initdamage = args.damage 
 		if armor > 0 then
 			local reduce = (armor * 0.052)/(0.9 + armor * 0.048)
