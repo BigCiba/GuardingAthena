@@ -66,9 +66,13 @@ end
 function OnFulan( t )
 	local caster = t.caster
     local target = t.target
-    local ability = t.ability
-    local damage = ability:GetSpecialValueFor("damage") * 0.1
-    CauseDamage(caster,target,damage,DAMAGE_TYPE_MAGICAL)
+	local ability = t.ability
+	if ability then
+		local damage = ability:GetSpecialValueFor("damage") * 0.1
+		CauseDamage(caster,target,damage,DAMAGE_TYPE_MAGICAL)
+	else
+		target:RemoveModifierByName("modifier_fulan_debuff")
+	end
 end
 -- zeus
 function OnLightCreated(t)

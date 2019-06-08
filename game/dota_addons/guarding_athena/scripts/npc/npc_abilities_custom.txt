@@ -1242,6 +1242,7 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduce"
 				}
+				"Duration"	"%duration"
 			}
 		}
 		"AbilitySpecial"
@@ -1274,7 +1275,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"5"
+				"duration"	"2"
 			}
 		}
 	}
@@ -8928,29 +8929,24 @@
 	"test_skill_1"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/shadow_rift_garrotte"
+		"AbilityTextureName"	"ember_spirit_sleight_of_fist"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"HotKeyOverride"	"R"
-		"MaxLevel"	"8"
-		"RequiredLevel"	"8"
-		"LevelsBetweenUpgrades"	"24"
+		"MaxLevel"	"3"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_SPAWN"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"100"
+		"AbilityCooldown"	"5"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"200 200 300 400 500 600 700 800 900"
-		"precache"
-		{
-			"particle"	"particles/skills/void_blink.vpcf"
-			"particle"	"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_swarm_pnt.vpcf"
-		}
+		"AbilityManaCost"	"10"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -8966,12 +8962,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"range"	"900"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"1 2 3 4 5 6 7 8"
+				"damage"	"100 200 300"
 			}
 		}
 	}
@@ -15822,6 +15813,7 @@
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"OnAttackLanded"
 				{
@@ -15846,6 +15838,10 @@
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Properties"	{}
 			}
@@ -17875,6 +17871,7 @@
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%warcry_movespeed"
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%warcry_armor"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%warcry_attackspeed"
 				}
 			}
 		}
@@ -17885,7 +17882,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"warcry_armor"	"800 1600 1800 2400 4800"
+				"warcry_armor"	"30 60 90 120 150"
 			}
 			"02"
 			{
@@ -17896,6 +17893,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"radius"	"900"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"warcry_attackspeed"	"40 50 60 70 80"
 			}
 		}
 		"AbilityDuration"	"7.0"
@@ -19367,7 +19369,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"oracle_false_promise"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"HotKeyOverride"	"D"
@@ -19454,6 +19456,20 @@
 				"EffectAttachType"	"follow_origin"
 				"Duration"	"%duration"
 				"IsBuff"	"1"
+			}
+			"modifier_oracle_0"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+						"Function"	"AutoCast"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			}
 		}
 		"AbilitySpecial"

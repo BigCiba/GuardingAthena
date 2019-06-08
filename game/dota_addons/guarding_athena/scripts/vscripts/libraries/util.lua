@@ -384,7 +384,7 @@ function DropItem( item, hero )
     local spawnPoint = Vector( 0, 0, 0 )
     spawnPoint = hero:GetAbsOrigin()
     local drop = CreateItemOnPositionSync( spawnPoint, newItem )
-    newItem:LaunchLoot( false, 200, 0.75, spawnPoint + RandomVector( RandomFloat( 50, 150 ) ) )
+    --newItem:LaunchLoot( false, 200, 0.75, spawnPoint + RandomVector( RandomFloat( 50, 150 ) ) )
     --finally, remove the item
     hero:RemoveItem(item)
     return newItem
@@ -449,7 +449,7 @@ function RollDrops(unit)
                     local pos = unit:GetAbsOrigin()
                     local drop = CreateItemOnPositionSync( pos, item )
                     local pos_launch = pos+RandomVector(RandomFloat(0,50))
-                    item:LaunchLoot(false, 200, 0.75, pos_launch)
+                    --item:LaunchLoot(false, 200, 0.75, pos_launch)
                 end
             end
         end

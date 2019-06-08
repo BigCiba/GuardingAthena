@@ -25,6 +25,9 @@ function OnCreated( t )
 end
 function OnExclusiveCreated( t )
     local caster = t.caster
+    if caster:IsIllusion() then
+        return
+    end
     local ability = t.ability
     local energy = ability:GetSpecialValueFor("energy")
     local interval = ability:GetSpecialValueFor("interval")
@@ -75,6 +78,9 @@ function OnExclusiveCreated( t )
 end
 function OnExclusiveDestory( t )
     local caster = t.caster
+    if caster:IsIllusion() then
+        return
+    end
     RemoveDamageFilterAttacker(caster,"exclusive")
     local ability = caster:FindAbilityByName("stick_wind")
 	Timers:RemoveTimer(ability.exclusive_timer)
@@ -418,7 +424,7 @@ function EndlessOffensiveCreate( t )
         unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
         unit.caster_hero = caster
         HeroState:InitIllusion(unit)
-        --unit:MakeIllusion()
+        unit:MakeIllusion()
         unit:SetAbilityPoints(0)
         for itemSlot=0,5 do
             local itemOld = unit:GetItemInSlot(itemSlot)

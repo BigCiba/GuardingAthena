@@ -11,6 +11,18 @@ function OnDeath(t)
     AddModifierStackCount(caster,caster,ability,"modifier_oracle_0_stack",1)
     caster:AddExperience(exp, DOTA_ModifyXP_CreepKill, false, false)
 end
+function AutoCast( t )
+    local caster = t.caster
+    local ability = t.ability
+    ability.timers = Timers:CreateTimer(function ()
+        local unitGroup = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 1200, DOTA_UNIT_TARGET_TEAM_ENEMY,  DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false)
+        local target = unitGroup[RandomInt(1, #unitGroup)]
+        if ability:GetAutoCastState() and ability:IsCooldownReady() and target then
+            CastAbility(caster,DOTA_UNIT_ORDER_CAST_TARGET,ability,target)
+        end
+        return 0.5
+    end)
+end
 function OnCreated(t)
     local caster = t.caster
     local ability = t.ability

@@ -197,7 +197,7 @@ function GuardingAthena:ItemAddedFilter( keys )
 	local currentItemName = currentItem:GetAbilityName()
 	local currentUnit = EntIndexToHScript(keys.inventory_parent_entindex_const)
 	local itemOwner = EntIndexToHScript(keys.item_parent_entindex_const)
-	if currentItemName == "item_chaos_plate" then
+	if currentItemName == "item_chaos_plate" and not currentUnit:IsIllusion() then
 		if RollPercentage(5) then
 			currentUnit:AddItem(CreateItem("item_world_editor", currentUnit, currentUnit))
 			currentItem:RemoveSelf()
