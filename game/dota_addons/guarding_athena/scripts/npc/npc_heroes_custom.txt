@@ -248,7 +248,7 @@
 		"AbilityLayout"	"5"
 		// Ability 1
 		"Ability1"	"minjiejingtong"
-		"Ability2"	"space_cut"
+		"Ability2"	"juggernaut_1"
 		"Ability3"	"images"
 		"Ability4"	"blade_dance"
 		"Ability5"	"phantom_sword_dance"

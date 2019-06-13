@@ -227,7 +227,7 @@ function BladeDanceDamage( t )
 	local target = t.target
 	local ability = t.ability
 	local caster_location = caster:GetAbsOrigin()
-	local damage = ability:GetSpecialValueFor("damage") * caster:GetAgility() + ability:GetSpecialValueFor("base_damage")
+	local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster) + ability:GetSpecialValueFor("base_damage")
 	local damageType = ability:GetAbilityDamageType()
     local duration = ability:GetSpecialValueFor("duration")
     local radius = ability:GetSpecialValueFor("radius")
@@ -252,7 +252,8 @@ function PhantomSwordDance( t )
     local duration = ability:GetSpecialValueFor("duration")
     local radius = ability:GetSpecialValueFor("radius")
     local ability3 = caster:GetAbilityByIndex(3)
-    local damage = ability3:GetSpecialValueFor("damage") * caster:GetAgility() + ability3:GetSpecialValueFor("base_damage")
+    
+    local damage = ability3:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster) + ability3:GetSpecialValueFor("base_damage") + ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(caster)
     local damageType = ability3:GetAbilityDamageType()
     local ability3_duration = ability3:GetSpecialValueFor("duration")
     local count = 0
@@ -276,15 +277,17 @@ function PhantomSwordDance( t )
             SetUnitPosition(caster,endLoc)
             for k,v in pairs(unitGroup) do
                 --CauseDamage(caster,unitGroup,damage,damageType,ability3)
-                caster:PerformAttack(v,true,true,true,false,false,false,true)
+                --caster:PerformAttack(v,true,true,true,false,false,false,true)
             end
             --if #unitGroup == 0 then
-                --CreateSound("Hero_Juggernaut.Attack",caster)
+                caster:EmitSound("Hero_Juggernaut.Attack")
             --end
             count = count + interval
             return interval
         else
             SetUnitPosition(caster,point)
+            CreateSound("Hero_Juggernaut.ArcanaTrigger",caster)
+            ability:ApplyDataDrivenModifier(caster, caster, "modifier_phantom_sword_dance_2", nil)
             --local p = CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_end.vpcf",PATTACH_ABSORIGIN_FOLLOW,caster,3)
             --ParticleManager:SetParticleControlEnt( p, 2, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
             --ParticleManager:SetParticleControlEnt( p, 3, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
@@ -321,15 +324,17 @@ function jianrenfengbao( keys )
         end)  	
     end)	
 end
+LinkLuaModifier("modifier_ignore_armor","modifiers/generic/ignore_armor.lua",LUA_MODIFIER_MOTION_NONE)
 function OnAttackLanded( t )
     local caster = t.caster
     local target = t.target
     local ability = t.ability
     local armor = target:GetPhysicalArmorBaseValue()
     if HasExclusive(caster,3) then
-        target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() - armor)
+        target:AddNewModifier(caster, ability, "modifier_ignore_armor", {duration=1/30})
+        --[[target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() - armor)
         Timers:CreateTimer(0.5,function (  )
             target:SetPhysicalArmorBaseValue(target:GetPhysicalArmorBaseValue() + armor)
-        end)
+        end)]]
     end
 end

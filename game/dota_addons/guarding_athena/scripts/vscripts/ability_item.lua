@@ -281,13 +281,15 @@ function RemovePhysicalDamage(keys)
         caster.bonus_physical_damage = 0
     end
 end
+LinkLuaModifier("modifier_ignore_armor","modifiers/generic/ignore_armor.lua",LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_jian","modifiers/item/jian.lua",LUA_MODIFIER_MOTION_NONE)
 function JianCreated( t )
     local caster = t.caster
-    caster.bonus_physical_damage = true
+    caster.bonus_physical_damage = 1
 end
 function JianRemove( t )
     local caster = t.caster
-    caster.bonus_physical_damage = false
+    caster.bonus_physical_damage = 0
 end
 
 function jiancd4( keys )

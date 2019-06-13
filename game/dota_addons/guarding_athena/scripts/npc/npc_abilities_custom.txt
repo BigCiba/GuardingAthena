@@ -12019,12 +12019,12 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"blink_range"	"1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000"
+				"blink_range"	"2050 2100 2150 2200 2250 2300 2350 2400 2450 2500 2550 2600 2650 2700 2750 2800 2850 2900 2950 3000"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+				"damage"	"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"03"
 			{
@@ -12532,6 +12532,72 @@
 		}
 	}
 
+	"juggernaut_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"juggernaut_blade_fury"
+		"ScriptFile"	"ability_hero/juggernaut/juggernaut_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_OVERRIDE_ABILITY_1"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/econ/items/juggernaut/bladekeeper_critical_strike/_dc_juggernaut_crit_blur.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 10.5 11"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"blade_fury_radius"	"600"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attackspeed"	"100"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"80"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"blade_fury_damage_tick"	"0.2"
+			}
+		}
+	}
+
 	// 剑圣暴击
 	"images"
 	{
@@ -12688,7 +12754,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"0.25 0.5 0.75 1.0 1.25 1.5 1.75 2 2.25 2.5 2.75 3.0 3.25 3.5 3.75 4.0 4.25 4.5 4.75 5.0"
+				"damage"	"0.5 0.7 0.9 1.1 1.3 1.5 1.7 1.9 2.1 2.3 2.5 2.7 2.9 3.1 3.3 3.5 3.7 3.9 4.1 4.3"
 			}
 			"02"
 			{
@@ -12940,7 +13006,7 @@
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"12"
+		"AbilityCooldown"	"16"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"110"
@@ -12953,6 +13019,7 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+			"particle"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_trigger.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -12995,6 +13062,22 @@
 				"StatusEffectName"	"particles/econ/items/juggernaut/jugg_arcana/status_effect_jugg_arcana_v2_omni.vpcf"
 				"StatusEffectPriority"	"10"
 			}
+			"modifier_phantom_sword_dance_2"
+			{
+				"Duration"	"%buff_duration"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"	"1"
+				}
+				"EffectName"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_trigger.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 		}
 		// Special
 		// -------------------------------------------------------------------------------------------------------------
@@ -13014,6 +13097,16 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"interval"	"0.05"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"1.2 2.4 3.6 4.8 6 7.2 8.4 9.6"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"buff_duration"	"4"
 			}
 		}
 		"AbilityDuration"	"9"

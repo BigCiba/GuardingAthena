@@ -6413,7 +6413,7 @@
 		"Ability1"	"captain"
 		"Ability2"	"life_absorb"
 		"Ability3"	"slience"
-		"Ability4"	"death_exorcism"
+		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
 		"Ability7"	""

@@ -1,5 +1,8 @@
+LinkLuaModifier("modifier_ignore_armor","modifiers/generic/ignore_armor.lua",LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_monkey_king_exclusive","modifiers/hero/monkey_king_exclusive.lua",LUA_MODIFIER_MOTION_NONE)
 function OnCreated( t )
     local caster = t.caster
+    
     AddDamageFilterAttacker(caster,"monkey_king",function (damage,victim)
         local damageDeepen = (100 - victim:GetHealthPercent()) * t.ability:GetSpecialValueFor("damage_deep") * 0.01
         damage = damage * (1 + damageDeepen)
@@ -35,7 +38,8 @@ function OnExclusiveCreated( t )
     ability.no_damage_filter = true
     local chance = ability:GetSpecialValueFor("chance")
     local critical = ability:GetSpecialValueFor("critical") * 100
-    AddDamageFilterAttacker(caster,"exclusive",function (damage,victim,damageType)
+    caster:AddNewModifier(caster, t.ability, "modifier_monkey_king_exclusive", nil)
+    --[[AddDamageFilterAttacker(caster,"exclusive",function (damage,victim,damageType)
         if RollPercentage(chance) and HasExclusive(caster,3) and damageType ~= DAMAGE_TYPE_PURE then
             -- 无视护甲
             local armor = victim:GetPhysicalArmorValue(false)
@@ -48,7 +52,7 @@ function OnExclusiveCreated( t )
             return 0
         end
         return damage
-    end)
+    end)]]
     local ability_1 = caster:FindAbilityByName("stick_wind")
     ability_1.exclusive_timer = Timers:CreateTimer(function ()
 		if HasExclusive(caster,1) then
@@ -60,7 +64,8 @@ function OnExclusiveCreated( t )
 		return interval
     end)
     for i,unit in pairs(caster.illusion_table) do
-        AddDamageFilterAttacker(unit,"exclusive",function (damage,victim)
+        unit:AddNewModifier(caster, t.ability, "modifier_monkey_king_exclusive", nil)
+        --[[AddDamageFilterAttacker(unit,"exclusive",function (damage,victim)
             if RollPercentage(chance) then
                 -- 无视护甲
                 local armor = victim:GetPhysicalArmorValue(false)
@@ -73,7 +78,7 @@ function OnExclusiveCreated( t )
                 return 0
             end
             return damage
-        end)
+        end)]]
     end
 end
 function OnExclusiveDestory( t )
@@ -213,7 +218,7 @@ function Jingubang( t )
                 for k,v in pairs(unitGroup) do
                     ability:ApplyDataDrivenModifier(caster, v, "modifier_jingubang_crush_debuff", nil)
                     SetModifierType(v,"modifier_jingubang_crush_debuff","unpurgable")
-                    CauseDamage(caster,v,crushDamage,damageType,ability)
+                    CauseDamage(caster,v,crushDamage,DAMAGE_TYPE_PURE,ability)
                 end
             end)
             if HasExclusive(caster,4) then

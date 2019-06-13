@@ -15457,12 +15457,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"critical_chance"	"10"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"0.5"
+				"critical_chance"	"35"
 			}
 		}
 	}

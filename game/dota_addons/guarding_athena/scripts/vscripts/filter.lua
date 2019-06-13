@@ -120,7 +120,7 @@ function GuardingAthena:DamageFilter( args )
 			initdamage = args.damage / (1 - reduce)
 		end
         -- 物理伤害穿透额外无视护甲伤害
-		if caster.bonus_physical_damage then
+		if caster.bonus_physical_damage and caster.bonus_physical_damage > 0 then
 			args.damage = initdamage
 		end
 	end
