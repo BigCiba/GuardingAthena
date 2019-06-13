@@ -12568,7 +12568,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 10.5 11"
+				"damage"	"0.25"
 			}
 			"03"
 			{
@@ -12595,10 +12595,14 @@
 				"var_type"	"FIELD_FLOAT"
 				"blade_fury_damage_tick"	"0.2"
 			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"illusion_damage_percent"	"30"
+			}
 		}
 	}
 
-	// 剑圣暴击
 	"images"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12623,6 +12627,14 @@
 				"ModifierName"	"modifier_images"
 				"Target"	"CASTER"
 				"Duration"	"0.3"
+			}
+		}
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
+				"Function"	"OnUpgrade"
 			}
 		}
 		"Modifiers"
@@ -12754,12 +12766,12 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"0.5 0.7 0.9 1.1 1.3 1.5 1.7 1.9 2.1 2.3 2.5 2.7 2.9 3.1 3.3 3.5 3.7 3.9 4.1 4.3"
+				"damage"	"0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"base_damage"	"40 80 120 160 200 240 280 320 360 400 440 480 520 560 600 640 680 720 760 800"
+				"base_damage"	"80 160 240 320 400 480 560 640 720 800 880 960 1040 1120 1200 1280 1360 1440 1520 1600"
 			}
 			"03"
 			{
@@ -13101,7 +13113,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"1.2 2.4 3.6 4.8 6 7.2 8.4 9.6"
+				"damage"	"3.6 7.2 10.8 14.4 18 21.6 25.2 28.8"
 			}
 			"05"
 			{

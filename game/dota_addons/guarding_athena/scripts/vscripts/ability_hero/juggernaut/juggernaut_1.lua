@@ -66,6 +66,7 @@ function modifier_juggernaut_1_buff:OnCreated(params)
     self.damage = self:GetAbility():GetSpecialValueFor("damage")
     self.attackspeed = self:GetAbility():GetSpecialValueFor("attackspeed")
     self.movespeed = self:GetAbility():GetSpecialValueFor("movespeed")
+    self.illusion_damage_percent = self:GetAbility():GetSpecialValueFor("illusion_damage_percent")
     if IsServer() then
         self.HasExclusive = HasExclusive( self:GetParent(),2 )
         self.damage_type = self:GetAbility():GetAbilityDamageType()
@@ -92,6 +93,7 @@ function modifier_juggernaut_1_buff:OnRefresh(params)
     self.damage = self:GetAbility():GetSpecialValueFor("damage")
     self.attackspeed = self:GetAbility():GetSpecialValueFor("attackspeed")
     self.movespeed = self:GetAbility():GetSpecialValueFor("movespeed")
+    self.illusion_damage_percent = self:GetAbility():GetSpecialValueFor("illusion_damage_percent")
 end
 function modifier_juggernaut_1_buff:OnIntervalThink()
     if IsServer() then
@@ -108,8 +110,10 @@ function modifier_juggernaut_1_buff:OnIntervalThink()
 
             if self:GetCaster() == self:GetParent() then
                 EmitSoundOnLocationWithCaster(target:GetAbsOrigin(), "Hero_Juggernaut.BladeFury.Impact", caster)
+                CauseDamage(self:GetCaster(),target,damage,self.damage_type,ability)
+            else
+                CauseDamage(self:GetCaster(),target,damage * self.illusion_damage_percent * 0.01,self.damage_type,ability)
             end
-            CauseDamage(self:GetCaster(),target,damage,self.damage_type,ability)
         end
     end
 end
