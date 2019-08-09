@@ -126,10 +126,10 @@ function GuardingAthena:DamageFilter( args )
 	end
 	-- 纯粹伤害
 	if damageType == DAMAGE_TYPE_PURE then
-		if caster:GetTeam() ~= DOTA_TEAM_GOODGUYS then
+		--[[if caster:GetTeam() ~= DOTA_TEAM_GOODGUYS then
 			local res = victim:GetBaseMagicalResistanceValue()
 			args.damage = args.damage * (1 - res)
-		end
+		end]]
 	end
     -- 百分比增加/减少伤害输出
     if caster.percent_bonus_damage and caster.percent_bonus_damage ~= 0 then

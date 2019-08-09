@@ -432,7 +432,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		local player = heroEntity:GetPlayerOwner()
 		local playerID = heroEntity:GetPlayerID()
 		HeroState:InitHero(heroEntity)
-		Attributes:ModifyBonuses(heroEntity)
+		--Attributes:ModifyBonuses(heroEntity)
 		-- 记录当前英雄
 		HERO_TABLE[playerID + 1] = heroEntity
 		-- 垃圾v社
