@@ -1,3 +1,6 @@
+LinkLuaModifier("hero_attribute_strength", "modifiers/generic/hero_attribute_strength.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("hero_attribute_agility", "modifiers/generic/hero_attribute_agility.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("hero_attribute_intellect", "modifiers/generic/hero_attribute_intellect.lua", LUA_MODIFIER_MOTION_NONE)
 if HeroState == nil then
     --HeroState = class({})
     HeroState = {}
@@ -36,6 +39,14 @@ function HeroState:InitHero(hero)
 
     hero.courier = nil                  --信使
     hero.bag_item = {}                  --背包物品
+    -- 三属性英雄基础属性
+    if hero:GetPrimaryAttribute() == DOTA_ATTRIBUTE_STRENGTH then
+        hero:AddNewModifier(hero, nil, "hero_attribute_strength", nil)
+    elseif hero:GetPrimaryAttribute() == DOTA_ATTRIBUTE_AGILITY then
+        hero:AddNewModifier(hero, nil, "hero_attribute_agility", nil)
+    elseif hero:GetPrimaryAttribute() == DOTA_ATTRIBUTE_INTELLECT then
+        hero:AddNewModifier(hero, nil, "hero_attribute_intellect", nil)
+    end
     table.insert(self.heroTable,hero)
     Timers:CreateTimer(function ()
         self:UpdateNetTable(hero)

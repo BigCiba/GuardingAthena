@@ -123,10 +123,11 @@ function MirrorImage( event )
     local casterAngles = caster:GetAngles()
 
     -- 激活一刀千花叶
+    caster:FindAbilityByName("space_cut"):SetHidden(false)
     caster:SwapAbilities("space_cut", "images", true, false)
     caster:FindAbilityByName("space_cut"):SetLevel(ability:GetLevel())
     Timers:CreateTimer(ability:GetCooldownTimeRemaining(),function ()
-        caster:SwapAbilities("space_cut", "images", false, true)
+        caster:SwapAbilities("images", "space_cut", true, false)
         caster:FindAbilityByName("images"):SetLevel(caster:FindAbilityByName("space_cut"):GetLevel())
         --caster:RemoveAbility("space_cut")
     end)
@@ -134,7 +135,6 @@ function MirrorImage( event )
     -- Stop any actions of the caster otherwise its obvious which unit is real
     caster:Stop()
 
-    -- Initialize the illusion table to keep track of the units created by the spell
     if not caster.mirror_image_illusions then
         caster.mirror_image_illusions = {}
     end
@@ -148,6 +148,18 @@ function MirrorImage( event )
 
     -- Start a clean illusion table
     caster.mirror_image_illusions = {}
+
+    local illusions = CreateIllusions( caster, caster, {duration = duration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage}, images_count, 100, true, true )
+
+    for _, illusion in pairs(illusions) do
+        illusion.caster_hero = caster
+        HeroState:InitIllusion(illusion)
+        table.insert(caster.mirror_image_illusions, illusion)
+    end
+
+    --[[
+    -- Initialize the illusion table to keep track of the units created by the spell
+
 
     -- Setup a table of potential spawn positions
     local vRandomSpawnPos = {
@@ -229,7 +241,7 @@ function MirrorImage( event )
         end
 
 
-    end
+    end]]
 end
 function BladeDance( keys )
 	local caster = keys.caster
