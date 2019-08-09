@@ -27,10 +27,10 @@ function hero_attribute_strength:GetModifierConstantHealthRegen(t)
         return self:GetStackCount()
     end
 end
-function hero_attribute_agility:GetModifierIgnoreMovespeedLimit()
+function hero_attribute_strength:GetModifierIgnoreMovespeedLimit()
     return 1
 end
-function hero_attribute_agility:GetModifierMoveSpeed_Limit()
+function hero_attribute_strength:GetModifierMoveSpeed_Limit()
     return 650
 end
 function hero_attribute_strength:IsHidden() 
