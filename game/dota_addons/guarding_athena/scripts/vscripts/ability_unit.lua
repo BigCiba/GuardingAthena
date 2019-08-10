@@ -21,7 +21,7 @@ function KvDamage( t )
     local target = t.target_entities or t.target
     local ability = t.ability
     local damage = t.damage
-    local damageType = ability:GetAbilityDamageType() or DAMAGE_TYPE_PURE
+    local damageType = ability:GetAbilityDamageType()
     CauseDamage(caster,target,damage,damageType,ability)
 end
 function AthenaHeal( caster,ability )
