@@ -65,6 +65,16 @@ for i=401,500 do
 	exp = exp + 200 + (i-400) * 600
 end
 
+-- 刷新排除物品
+REFRESH_EXCLUDE_ABILITIES = {
+}
+-- 刷新排除物品
+REFRESH_EXCLUDE_ITEMS = {
+	["item_refresher1"] = 1, 	-- 倒转阴阳
+	["item_death_cloak"] = 1, 		-- 死神披风
+	["item_longinus_spear"] = 1, 		-- 朗基努斯之枪
+}
+
 ENABLE_FIRST_BLOOD = false              -- 是否启用第一滴血
 HIDE_KILL_BANNERS = true                -- 是否隐藏击杀标语
 LOSE_GOLD_ON_DEATH = false              -- 英雄死亡时是否掉落金钱

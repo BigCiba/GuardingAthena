@@ -24112,6 +24112,8 @@
 		"AOERadius"	"%radius"
 		"ID"	"1735"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"1"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24207,6 +24209,7 @@
 				"radius"	"375"
 			}
 		}
+		"AbilitySharedCooldown"	"sun_emblem"
 	}
 
 	"item_sun_emblem_2"
@@ -24221,6 +24224,8 @@
 		"AOERadius"	"%radius"
 		"ID"	"1737"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"2"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24316,6 +24321,7 @@
 				"radius"	"375"
 			}
 		}
+		"AbilitySharedCooldown"	"sun_emblem"
 	}
 
 	"item_sun_emblem_3"
@@ -24330,6 +24336,8 @@
 		"AOERadius"	"%radius"
 		"ID"	"1738"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"3"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24425,6 +24433,7 @@
 				"radius"	"375"
 			}
 		}
+		"AbilitySharedCooldown"	"sun_emblem"
 	}
 
 	"item_sun_emblem_4"
@@ -24439,6 +24448,8 @@
 		"AOERadius"	"%radius"
 		"ID"	"1739"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"4"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24534,6 +24545,7 @@
 				"radius"	"375"
 			}
 		}
+		"AbilitySharedCooldown"	"sun_emblem"
 	}
 
 	"item_prestige_pipe"
@@ -24548,6 +24560,8 @@
 		"AbilityCastRange"	"1200"
 		"ID"	"1743"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"1"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24653,6 +24667,7 @@
 				"bonus_health"	"2000"
 			}
 		}
+		"AbilitySharedCooldown"	"prestige_pipe"
 	}
 
 	"item_prestige_pipe_2"
@@ -24667,6 +24682,8 @@
 		"AbilityCastRange"	"1200"
 		"ID"	"1749"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"2"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24772,6 +24789,7 @@
 				"bonus_health"	"3000"
 			}
 		}
+		"AbilitySharedCooldown"	"prestige_pipe"
 	}
 
 	"item_prestige_pipe_3"
@@ -24786,6 +24804,8 @@
 		"AbilityCastRange"	"1200"
 		"ID"	"1750"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"3"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -24891,6 +24911,7 @@
 				"bonus_health"	"4000"
 			}
 		}
+		"AbilitySharedCooldown"	"prestige_pipe"
 	}
 
 	"item_prestige_pipe_4"
@@ -24905,6 +24926,8 @@
 		"AbilityCastRange"	"1200"
 		"ID"	"1751"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"MaxUpgradeLevel"	"4"
+		"ItemBaseLevel"	"4"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -25010,6 +25033,7 @@
 				"bonus_health"	"5000"
 			}
 		}
+		"AbilitySharedCooldown"	"prestige_pipe"
 	}
 
 	"item_shipin_13"

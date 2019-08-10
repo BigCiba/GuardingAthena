@@ -14,6 +14,7 @@
 	DeepCopy(table)
 	DropItem(item,hero)
 	ForWithInterval(count,interval,callback)
+	FindValueByKey(t,key)
 	GetExclusive(caster)
 	GetOriginalDamage(damage,target)
 	GetUnitsInRadius(caster,ability,point,radius)
@@ -399,6 +400,14 @@ function ForWithInterval( count,interval,callback )
 		end
 		return interval 
 	end)
+end
+function FindValueByKey(t,k)
+	for key, value in pairs(t) do
+		if key == k then
+			return value
+		end
+	end
+	return false
 end
 --给攻击单位删除伤害过滤器
 function RemoveDamageFilterAttacker( ... )
@@ -1037,4 +1046,25 @@ function Teleport( ... )
 		end
 	end
 	FindClearSpaceForUnit(caster, position, true)
+end
+--------------------------
+--- CDOTA_BaseNPC
+--------------------------
+if IsServer() then
+	function CDOTA_BaseNPC:RefreshAbilities()
+		for i = 1, self:GetAbilityCount() do
+			local ability = self:GetAbilityByIndex(i - 1)
+			if ability ~= nil and FindValueByKey(REFRESH_EXCLUDE_ABILITIES,ability:GetAbilityName()) == false then
+				ability:EndCooldown()
+			end
+		end
+	end
+	function CDOTA_BaseNPC:RefreshItems()
+		for i = 1, 16 do
+			local item = self:GetItemInSlot(i - 1)
+			if item ~= nil and FindValueByKey(REFRESH_EXCLUDE_ITEMS,item:GetAbilityName()) == false then
+				item:EndCooldown()
+			end
+		end
+	end
 end
