@@ -10248,6 +10248,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magicdef"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"100"
 				}
 			}
 		}
@@ -19839,6 +19840,162 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_intellect"	"5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100"
+			}
+		}
+	}
+
+	"thunder_barrier"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"arc_warden_flux"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"HotKeyOverride"	"R"
+		"MaxLevel"	"8"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
+		"AbilityCastPoint"	"0"
+		"AbilityManaCost"	"60 120 180 240 300 360 420 480"
+		"precache"
+		{
+			"particle"	"particles/heroes/omni_knight/thunder_barrier.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
+		}
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_thunder_barrier"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_thunder_barrier"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_thunder_barrier"
+			{
+				"IsBuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attackspeed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%bonus_movespeed"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%bonus_amp_percent"
+				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/mechanic.lua"
+						"Function"	"OnIntervalThink"
+					}
+					"SpendMana"
+					{
+						"Mana"	"%mana_cost"
+					}
+				}
+				"ThinkInterval"	"%palsy_interval"
+				"EffectName"	"particles/heroes/omni_knight/thunder_barrier.vpcf"
+				"EffectAttachType"	"follow_chest"
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"Hero_Terrorblade.Reflection"
+					}
+				}
+			}
+			"modifier_thunder_barrier_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%palsy_attackspeed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%palsy_movespeed"
+				}
+				"Duration"	"%palsy_duration"
+				"EffectName"	"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attackspeed"	"60 70 80 90 100 110 120 130"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"45 60 75 90 105 120 135 150"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"10 12 14 16 18 20 22 24"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_amp_percent"	"100 125 150 175 200 225 250 275"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana_cost"	"10 20 30 40 50 60 70 80"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_attackspeed"	"-80 -100 -120 -140 -160 -180 -200 -220"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_movespeed"	"-120 -135 -150 -165 -180 -195 -210 -225"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"palsy_duration"	"0.5"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_interval"	"1"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_radius"	"600"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"storm_damage"	"5 10 15 20 25 30 35 40"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"storm_jump_count"	"4"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"storm_chance"	"17"
 			}
 		}
 	}

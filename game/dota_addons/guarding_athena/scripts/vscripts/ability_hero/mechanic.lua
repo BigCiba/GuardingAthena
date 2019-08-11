@@ -222,3 +222,34 @@ function ArcLightning(t)
         end
     end)
 end
+function OnIntervalThink( t )
+    local caster = t.caster
+    local ability = t.ability
+    local point = caster:GetAbsOrigin()
+    local palsy_radius = ability:GetSpecialValueFor("palsy_radius")
+    local unitGroup = GetUnitsInRadius(caster,ability,point,palsy_radius)
+    for _, unit in pairs(unitGroup) do
+        ability:ApplyDataDrivenModifier(caster, unit, "modifier_thunder_barrier_debuff", nil)
+        ThunderStorm( caster,unit,ability )
+    end
+end
+function ThunderStorm( caster,unit,ability )
+    local storm_chance = ability:GetSpecialValueFor("storm_chance")
+    local storm_jump_count = ability:GetSpecialValueFor("storm_jump_count")
+    local storm_damage = ability:GetSpecialValueFor("storm_damage") * caster:GetStrength()
+    local damageType = ability:GetAbilityDamageType()
+    if RollPercentage(storm_chance) then
+        ForWithInterval(storm_jump_count, 0.3, function()
+            if unit then
+                local particle = CreateParticle("particles/units/heroes/hero_leshrac/leshrac_lightning_bolt.vpcf",PATTACH_ABSORIGIN,caster,1)
+                ParticleManager:SetParticleControl(particle, 0, unit:GetAbsOrigin() + Vector(0,0,900))
+                ParticleManager:SetParticleControl(particle, 1, unit:GetAbsOrigin())
+                CauseDamage(caster,unit,storm_damage,damageType,ability)
+                if unit:IsStunned() then
+                    ThunderPowerDamage( caster,unit,ability )
+                end
+                unit = GetNextUnit(caster,unit,ability,400)
+            end
+        end)
+    end
+end

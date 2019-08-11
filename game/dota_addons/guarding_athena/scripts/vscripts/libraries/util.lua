@@ -24,6 +24,7 @@
 	GetRandomUnit(caster, ability, originPoint, radius)
 	GetRebornCount(caster)
 	GetRotationPoint(originPoint, radius, angle)
+	GetNextUnit(caster,ability,radius)
 	GiveItem(caster,itemName,itemOwner)
 	HasExclusive(caster,lv)
 	Heal(caster,heal,mana,show)
@@ -527,6 +528,18 @@ function GetRotationPoint( ... )
 	local y = math.sin(radAngle) * radius + originPoint.y
 	local position = Vector(x, y, originPoint.z)
 	return position
+end
+-- 获取下个目标
+function GetNextUnit( ... )
+	local caster, target, ability, radius = ...
+	local teamNumber = caster:GetTeamNumber()
+	local point = target:GetAbsOrigin()
+	local teamNumber = caster:GetTeamNumber()
+	local targetTeam = ability:GetAbilityTargetTeam()
+	local targetType = ability:GetAbilityTargetType()
+	local targetFlag = ability:GetAbilityTargetFlags()
+	local unitGroup = FindUnitsInRadius(teamNumber, point, caster, radius, targetTeam, targetType, targetFlag, FIND_CLOSEST, false)
+	return unitGroup[1] == nil and nil or unitGroup[1]
 end
 -- 清除buff
 function ClearBuff( ... )

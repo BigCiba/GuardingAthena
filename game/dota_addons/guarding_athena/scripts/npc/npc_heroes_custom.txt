@@ -30,7 +30,7 @@
 		"Ability2"	"thunder_strike"
 		"Ability3"	"heal_device"
 		"Ability4"	"weightlifting"
-		"Ability5"	"void_barrier"
+		"Ability5"	"thunder_barrier"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
 		"Ability6"	""

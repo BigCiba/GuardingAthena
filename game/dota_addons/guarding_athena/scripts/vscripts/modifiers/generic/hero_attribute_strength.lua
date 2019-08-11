@@ -9,8 +9,9 @@ function hero_attribute_strength:DeclareFunctions()
     return funcs
 end
 function hero_attribute_strength:OnCreated( t )
-    self.iCount = self:GetParent():GetBaseStrength() * 0.2
     if IsServer() then
+        self.iCount = self:GetParent():GetBaseStrength() * 0.2
+        self:SetStackCount(self.iCount)
     end
 end
 function hero_attribute_strength:GetAttributes( t )
