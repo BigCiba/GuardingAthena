@@ -428,6 +428,14 @@ function RemoveHealth( ... )
 	result = result > 1 and result or 1
 	caster:SetHealth(result)
 end
+-- 以逆时针方向旋转
+function Rotation2D(vVector, radian)
+	local fLength2D = vVector:Length2D()
+	local vUnitVector2D = vVector / fLength2D
+	local fCos = math.cos(radian)
+	local fSin = math.sin(radian)
+	return Vector(vUnitVector2D.x*fCos-vUnitVector2D.y*fSin, vUnitVector2D.x*fSin+vUnitVector2D.y*fCos, vUnitVector2D.z)*fLength2D
+end
 -- 随机掉落物品
 function RollDrops(unit)
     local DropInfo = GameRules.DropTable[unit:GetUnitName()]

@@ -9,8 +9,8 @@ function hero_attribute_intellect:DeclareFunctions()
     return funcs
 end
 function hero_attribute_intellect:OnCreated( t )
-    self.iCount = self:GetParent():GetBaseIntellect() * 0.2
     if IsServer() then
+        self.iCount = self:GetParent():GetBaseIntellect() * 0.2
     end
 end
 function hero_attribute_intellect:GetAttributes( t )
@@ -20,8 +20,8 @@ function hero_attribute_intellect:GetAttributes( t )
 end
 function hero_attribute_intellect:GetModifierConstantManaRegen(t)
     if IsServer() then
-        self:SetStackCount(iCount)
-        return iCount
+        self:SetStackCount(self.iCount)
+        return self.iCount
     end
     if IsClient() then
         return self:GetStackCount()

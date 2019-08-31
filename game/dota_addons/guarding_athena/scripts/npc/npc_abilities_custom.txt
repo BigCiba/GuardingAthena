@@ -3031,7 +3031,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"-200 -400 -600 -800 -1000"
+				"attackspeed"	"-100 -150 -200 -250 -300"
 			}
 			"03"
 			{
@@ -11192,6 +11192,310 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage_reduce"	"30"
+			}
+		}
+	}
+
+	"drow_ranger_1_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"legion_commander_overwhelming_odds"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"8"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"1200"
+		"AOERadius"	"300"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+			"particle"	"particles/heroes/oracle/oracle_1_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+				"Function"	"OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Oracle.PurifyingFlames.Damage"
+			}
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_oracle_1_buff"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_oracle_1_debuff"
+			{
+				"Properties"	{}
+				"IsDebuff"	"1"
+				"EffectName"	"particles/heroes/oracle/oracle_1_buff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+						"Function"	"OnIntervalThink"
+					}
+				}
+				"ThinkInterval"	"%interval"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+						"Function"	"OnCreated"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+						"Function"	"OnDestroy"
+					}
+				}
+			}
+			"modifier_oracle_1_buff"
+			{
+				"Properties"	{}
+				"IsDebuff"	"0"
+				"Duration"	"%duration"
+				"EffectName"	"particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+						"Function"	"OnIntervalThink"
+					}
+				}
+				"ThinkInterval"	"%interval"
+				"IsBuff"	"1"
+			}
+			"modifier_oracle_1"
+			{
+				"Passive"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/oracle.lua"
+						"Function"	"OnInit"
+					}
+				}
+				"IsDebuff"	"0"
+				"IsHidden"	"1"
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agility_damage"	"1.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed_reduce"	"30"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_duration"	"1.5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"collision_radius"	"50"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"splash_radius"	"150"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"arrows_per_sec"	"24"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1000"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"15"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cooldown"	"3"
+			}
+		}
+	}
+
+	"drow_ranger_1_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"clinkz_strafe"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"8"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"1200"
+		"AOERadius"	"300"
+		"Modifiers"
+		{
+			"modifier_drow_ranger_1_2"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agility_damage"	"1.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed_reduce"	"30"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_duration"	"1.5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"collision_radius"	"50"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"splash_radius"	"150"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"arrows_per_sec"	"24"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1000"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"15"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cooldown"	"3"
 			}
 		}
 	}
@@ -19604,6 +19908,118 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_damage_add"	"1"
+			}
+		}
+	}
+
+	"drow_ranger_0_1"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"drow_ranger_frost_arrows"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"D"
+		"MaxLevel"	"1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+				"Function"	"OnToggle"
+			}
+		}
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+				"Function"	"Init"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_drow_ranger_0_1"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"delay"	"0.5"
+			}
+		}
+	}
+
+	"drow_ranger_0_2"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"clinkz_searing_arrows"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_0_2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"HotKeyOverride"	"D"
+		"MaxLevel"	"1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+				"Function"	"OnToggle"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_draw_ranger_0_2"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"	{}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"5"
 			}
 		}
 	}

@@ -119,6 +119,63 @@
 		"ProjectileSpeed"	"900"
 	}
 
+	"npc_dota_hero_drow_ranger_override"
+	{
+		// Hero to override
+		"override_hero"	"npc_dota_hero_drow_ranger"
+		// 主属性
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		// 基础力量
+		"AttributeBaseStrength"	"17"
+		// 力量成长
+		"AttributeStrengthGain"	"2.4"
+		// 基础敏捷
+		"AttributeBaseAgility"	"22"
+		// 敏捷成长
+		"AttributeAgilityGain"	"3.0"
+		// 基础智力
+		"AttributeBaseIntelligence"	"15"
+		// 智力成长
+		"AttributeIntelligenceGain"	"2.1"
+		"AttackRate"	"1.65"
+		"AttackRange"	"550"
+		"AbilityLayout"	"5"
+		// Ability 1
+		"Ability1"	"drow_ranger_0_1"
+		"Ability2"	"drow_ranger_1_1"
+		"Ability3"	"gust"
+		"Ability4"	"alacrity"
+		"Ability5"	"arrow_strom"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1800"
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	"tt1"
+		"Ability18"	"tt2"
+		"Ability19"	"tt3"
+		"Ability20"	"tt4"
+		"Ability21"	"tt5"
+		"Ability22"	"tt6"
+		"Ability23"	"tt7"
+		"Ability24"	"tt8"
+		"AttackDamageMin"	"22"
+		"AttackDamageMax"	"34"
+		"MovementSpeed"	"295"
+		"ArmorPhysical"	"0.38"
+		"MagicalResistance"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileSpeed"	"900"
+	}
+
 	"npc_dota_hero_shadow_moon_warden"
 	{
 		// Hero to override

@@ -11,8 +11,8 @@ function hero_attribute_agility:DeclareFunctions()
     return funcs
 end
 function hero_attribute_agility:OnCreated( t )
-    self.iCount = self:GetParent():GetBaseAgility()
     if IsServer() then
+        self.iCount = self:GetParent():GetBaseAgility()
     end
 end
 function hero_attribute_agility:GetAttributes( t )
