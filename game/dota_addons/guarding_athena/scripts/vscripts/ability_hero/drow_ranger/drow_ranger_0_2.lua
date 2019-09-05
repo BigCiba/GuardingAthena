@@ -40,14 +40,12 @@ function modifier_drow_ranger_0_2_buff:AllowIllusionDuplicate()
 end
 function modifier_drow_ranger_0_2_buff:OnCreated(params)
     if IsServer() then
-        self.bonus_damage = self:GetAbility():GetSpecialValueFor("damage") * self:GetParent():GetAgility()
-        self:SetStackCount(self.bonus_damage)
+        self.bonus_damage = self:GetAbility():GetSpecialValueFor("damage")
 	end
 end
 function modifier_drow_ranger_0_2_buff:OnRefresh(params)
     if IsServer() then
-        self.bonus_damage = self:GetAbility():GetSpecialValueFor("damage") * self:GetParent():GetAgility()
-        self:SetStackCount(self.bonus_damage)
+        self.bonus_damage = self:GetAbility():GetSpecialValueFor("damage")
 	end
 end
 function modifier_drow_ranger_0_2_buff:OnDestroy()
@@ -61,8 +59,14 @@ function modifier_drow_ranger_0_2_buff:DeclareFunctions()
 	}
 end
 function modifier_drow_ranger_0_2_buff:GetModifierPreAttack_BonusDamage()
+	if IsServer() then
+		local damage = self:GetAbility():IsHidden() and 0 or self.bonus_damage * self:GetParent():GetAgility()
+		self:SetStackCount(damage)
+	end
 	return self:GetStackCount()
 end
 function modifier_drow_ranger_0_2_buff:GetModifierProjectileName()
-	return "particles/econ/items/clinkz/clinkz_maraxiform/clinkz_maraxiform_searing_arrow_deso.vpcf"
+	if self:GetStackCount() > 0 then
+		return "particles/econ/items/clinkz/clinkz_maraxiform/clinkz_maraxiform_searing_arrow_deso.vpcf"
+	end
 end
