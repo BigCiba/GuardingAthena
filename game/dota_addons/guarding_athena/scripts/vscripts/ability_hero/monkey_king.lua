@@ -26,6 +26,14 @@ function OnCreated( t )
         return damage
     end)
 end
+function PiercingEye(t)
+    local caster = t.caster
+    local target = t.target
+    local ability = t.ability
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetAverageTrueAttackDamage(target) * (caster.reborn_time + 1)
+    local damageType = ability:GetAbilityDamageType()
+    CauseDamage(caster, target, damage, damageType, ability)
+end
 function OnExclusiveCreated( t )
     local caster = t.caster
     if caster:IsIllusion() then
@@ -171,10 +179,10 @@ function Jingubang( t )
     local caster_location = caster:GetAbsOrigin()
     local cast_location = t.target_points[1]
     local damageType = ability:GetAbilityDamageType()
-    local thumpDamage = ability:GetSpecialValueFor("thump_damage") * caster:GetAgility()
+    local thumpDamage = ability:GetSpecialValueFor("thump_damage") * caster:GetAverageTrueAttackDamage(caster)
     local thumpRadius = ability:GetSpecialValueFor("thump_radius")
     local thumpDuration = ability:GetSpecialValueFor("thump_duration")
-    local crushDamage = ability:GetSpecialValueFor("crush_damage") * caster:GetAgility()
+    local crushDamage = ability:GetSpecialValueFor("crush_damage") * caster:GetAverageTrueAttackDamage(caster)
     local crushRadius = ability:GetSpecialValueFor("crush_radius")
     local crushDuration = ability:GetSpecialValueFor("crush_duration")
     local angle = 0
@@ -306,6 +314,8 @@ function EndlessOffensive( t )
                     unit:SetBaseStrength(caster:GetBaseStrength())
                     unit:SetBaseAgility(caster:GetBaseAgility())
                     unit:SetBaseIntellect(caster:GetBaseIntellect())
+                    unit:SetBaseDamageMax(caster:GetAverageTrueAttackDamage(target))
+                    unit:SetBaseDamageMin(caster:GetAverageTrueAttackDamage(target))
                     unit.reborn_time = GetRebornCount(caster)
                     for abilitySlot=0,10 do
                         local illusionAbility = caster:GetAbilityByIndex(abilitySlot)

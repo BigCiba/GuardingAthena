@@ -130,8 +130,6 @@
 		"ID"	"1001"
 		"ItemQuality"	"consumable"
 		"ItemCastOnPickup"	"0"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"322"
 		"ItemDroppable"	"0"
 		"ItemSellable"	"0"
@@ -156,6 +154,8 @@
 				"States"	{}
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"UIPickupSound"	"Item.PickUpRingShop"
 	}
 
@@ -167,8 +167,6 @@
 		"ID"	"1680"
 		"ItemQuality"	"consumable"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/rune_arcane.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"322"
 		"ItemDroppable"	"0"
 		"ItemSellable"	"0"
@@ -190,6 +188,8 @@
 				"Function"	"OriginalPick"
 			}
 		}
+		"Model"	"models/props_gameplay/rune_arcane.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"UIPickupSound"	"Item.PickUpRingShop"
 	}
 
@@ -201,8 +201,6 @@
 		"ID"	"1681"
 		"ItemQuality"	"consumable"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/rune_arcane.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"322"
 		"ItemDroppable"	"0"
 		"ItemSellable"	"0"
@@ -224,6 +222,8 @@
 				"Function"	"OriginalPick"
 			}
 		}
+		"Model"	"models/props_gameplay/rune_arcane.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"UIPickupSound"	"Item.PickUpRingShop"
 	}
 
@@ -235,8 +235,6 @@
 		"ID"	"1682"
 		"ItemQuality"	"consumable"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/rune_arcane.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"322"
 		"ItemDroppable"	"0"
 		"ItemSellable"	"0"
@@ -258,6 +256,8 @@
 				"Function"	"OriginalPick"
 			}
 		}
+		"Model"	"models/props_gameplay/rune_arcane.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"UIPickupSound"	"Item.PickUpRingShop"
 	}
 
@@ -271,7 +271,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1002"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
 		// 价格
 		"ItemCost"	"10000"
 		"ItemPurchasable"	"1"
@@ -286,6 +285,7 @@
 				"bonus_str"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
 	}
 
 	"item_str_book_pack"
@@ -298,7 +298,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1709"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
 		// 价格
 		"ItemCost"	"95000"
 		"ItemPurchasable"	"1"
@@ -313,6 +312,7 @@
 				"bonus_str"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
 	}
 
 	"item_agi_book"
@@ -325,7 +325,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1003"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
 		// 价格
 		"ItemCost"	"10000"
 		"ItemPurchasable"	"1"
@@ -340,6 +339,7 @@
 				"bonus_agi"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
 	}
 
 	"item_agi_book_pack"
@@ -352,7 +352,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1710"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
 		// 价格
 		"ItemCost"	"95000"
 		"ItemPurchasable"	"1"
@@ -367,6 +366,7 @@
 				"bonus_agi"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
 	}
 
 	"item_int_book"
@@ -379,7 +379,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1004"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
 		// 价格
 		"ItemCost"	"10000"
 		"ItemPurchasable"	"1"
@@ -394,6 +393,7 @@
 				"bonus_int"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
 	}
 
 	"item_int_book_pack"
@@ -406,7 +406,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1711"
 		"ItemCastOnPickup"	"1"
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
 		// 价格
 		"ItemCost"	"95000"
 		"ItemPurchasable"	"1"
@@ -421,6 +420,7 @@
 				"bonus_int"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/gold_bag.vmdl"
 	}
 
 	"item_clarity1"
@@ -438,7 +438,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1005"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"50"
@@ -506,6 +505,7 @@
 				"mana_per_tick"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 	}
 
 	"item_clarity2"
@@ -523,7 +523,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1006"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"150"
@@ -590,6 +589,7 @@
 				"mana_per_tick"	"30"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 	}
 
 	"item_clarity3"
@@ -607,7 +607,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1007"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"300"
@@ -674,6 +673,7 @@
 				"mana_per_tick"	"80"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 	}
 
 	"item_clarity4"
@@ -691,7 +691,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1008"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"800"
@@ -759,6 +758,7 @@
 				"mana_per_tick"	"200"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 	}
 
 	"item_salve1"
@@ -776,7 +776,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1009"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_red.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"50"
@@ -844,6 +843,7 @@
 				"hp_per_tick"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_red.vmdl"
 	}
 
 	"item_salve1_pack"
@@ -861,7 +861,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1693"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_red.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -896,6 +895,7 @@
 				"hp_per_tick"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_red.vmdl"
 	}
 
 	"item_clarity1_pack"
@@ -913,7 +913,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1694"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_red.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -948,6 +947,7 @@
 				"hp_per_tick"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_red.vmdl"
 	}
 
 	"item_salve2"
@@ -965,7 +965,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1010"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_red.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"150"
@@ -1032,6 +1031,7 @@
 				"hp_per_tick"	"150"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_red.vmdl"
 	}
 
 	"item_salve3"
@@ -1049,7 +1049,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1011"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_red.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"300"
@@ -1116,6 +1115,7 @@
 				"hp_per_tick"	"300"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_red.vmdl"
 	}
 
 	"item_salve4"
@@ -1133,7 +1133,6 @@
 		"AbilityCastRange"	"100"
 		"ID"	"1012"
 		"ItemQuality"	"consumable"
-		"Model"	"models/props_gameplay/salve_red.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"800"
@@ -1201,6 +1200,7 @@
 				"hp_per_tick"	"600"
 			}
 		}
+		"Model"	"models/props_gameplay/salve_red.vmdl"
 	}
 
 	"item_jian_1"
@@ -1781,7 +1781,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1036"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"3000"
@@ -1794,6 +1793,7 @@
 		{
 			"01"	"item_jian_1"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jian_3"
@@ -1804,7 +1804,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1037"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"6000"
@@ -1817,6 +1816,7 @@
 		{
 			"01"	"item_jian_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jian_4"
@@ -1827,7 +1827,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1038"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"12000"
@@ -1840,6 +1839,7 @@
 		{
 			"01"	"item_jian_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jian_5"
@@ -1847,7 +1847,6 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_recipe"
 		"ID"	"1502"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"24000"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemRecipe"	"1"
@@ -1856,6 +1855,7 @@
 		{
 			"01"	"item_jian_4"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_fazhang_1"
@@ -2416,7 +2416,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1512"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"3000"
@@ -2429,6 +2428,7 @@
 		{
 			"01"	"item_fazhang_1"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_3"
@@ -2439,7 +2439,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1513"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"6000"
@@ -2452,6 +2451,7 @@
 		{
 			"01"	"item_fazhang_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_4"
@@ -2462,7 +2462,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1514"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"12000"
@@ -2475,6 +2474,7 @@
 		{
 			"01"	"item_fazhang_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_5"
@@ -2485,7 +2485,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1515"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"24000"
@@ -2498,6 +2497,7 @@
 		{
 			"01"	"item_fazhang_4"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_gong_1"
@@ -2898,7 +2898,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1540"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"3000"
@@ -2911,6 +2910,7 @@
 		{
 			"01"	"item_gong_1"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_3"
@@ -2921,7 +2921,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1541"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"6000"
@@ -2934,6 +2933,7 @@
 		{
 			"01"	"item_gong_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_4"
@@ -2944,7 +2944,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1542"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"12000"
@@ -2957,6 +2956,7 @@
 		{
 			"01"	"item_gong_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_5"
@@ -2967,7 +2967,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1543"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"24000"
@@ -2980,6 +2979,7 @@
 		{
 			"01"	"item_gong_4"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_jia_1"
@@ -2992,8 +2992,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1526"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1000"
@@ -3038,6 +3036,8 @@
 				"damage_block"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_jia_2"
@@ -3050,8 +3050,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1527"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -3096,6 +3094,8 @@
 				"damage_block"	"20"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_jia_3"
@@ -3108,8 +3108,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1528"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -3154,6 +3152,8 @@
 				"damage_block"	"40"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_jia_4"
@@ -3166,8 +3166,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1529"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -3212,6 +3210,8 @@
 				"damage_block"	"80"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_jia_5"
@@ -3224,8 +3224,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1530"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -3270,6 +3268,8 @@
 				"damage_block"	"160"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_recipe_jia_2"
@@ -3280,7 +3280,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1531"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -3292,6 +3291,7 @@
 		{
 			"01"	"item_jia_1"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jia_3"
@@ -3302,7 +3302,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1532"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"4000"
@@ -3314,6 +3313,7 @@
 		{
 			"01"	"item_jia_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jia_4"
@@ -3324,7 +3324,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1533"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"8000"
@@ -3336,6 +3335,7 @@
 		{
 			"01"	"item_jia_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jia_5"
@@ -3346,7 +3346,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1534"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"16000"
@@ -3358,6 +3357,7 @@
 		{
 			"01"	"item_jia_4"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_xie_1"
@@ -3370,8 +3370,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1517"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1000"
@@ -3416,6 +3414,8 @@
 				"bonus_mana"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_xie_2"
@@ -3428,8 +3428,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1518"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"4000"
@@ -3475,6 +3473,8 @@
 				"bonus_mana"	"200"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_xie_3"
@@ -3487,8 +3487,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1519"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"6000"
@@ -3533,6 +3531,8 @@
 				"bonus_mana"	"400"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_xie_4"
@@ -3545,8 +3545,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1520"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"8000"
@@ -3591,6 +3589,8 @@
 				"bonus_mana"	"800"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_xie_5"
@@ -3603,8 +3603,6 @@
 		// Valve's version of this item uses the ID "29".
 		"ID"	"1521"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"10000"
@@ -3649,6 +3647,8 @@
 				"bonus_mana"	"1600"
 			}
 		}
+		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_recipe_xie_2"
@@ -3659,7 +3659,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1522"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2000"
@@ -3671,6 +3670,7 @@
 		{
 			"01"	"item_xie_1"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_xie_3"
@@ -3681,7 +3681,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1523"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"4000"
@@ -3693,6 +3692,7 @@
 		{
 			"01"	"item_xie_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_xie_4"
@@ -3703,7 +3703,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1524"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"8000"
@@ -3715,6 +3714,7 @@
 		{
 			"01"	"item_xie_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_xie_5"
@@ -3725,7 +3725,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1525"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"16000"
@@ -3737,6 +3736,7 @@
 		{
 			"01"	"item_xie_4"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_jian_6"
@@ -7167,7 +7167,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1546"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7179,6 +7178,7 @@
 		{
 			"01"	"item_jian_5;item_jia_5;item_xie_5;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jian_7"
@@ -7189,7 +7189,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1559"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7201,6 +7200,7 @@
 		{
 			"01"	"item_jian_6;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jian_8"
@@ -7211,7 +7211,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1560"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7223,6 +7222,7 @@
 		{
 			"01"	"item_jian_7;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_jian_9"
@@ -7233,7 +7233,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1561"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7245,6 +7244,7 @@
 		{
 			"01"	"item_jian_8;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_6"
@@ -7255,7 +7255,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1549"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7267,6 +7266,7 @@
 		{
 			"01"	"item_fazhang_5;item_jia_5;item_xie_5;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_7"
@@ -7277,7 +7277,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1562"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7289,6 +7288,7 @@
 		{
 			"01"	"item_fazhang_6;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_8"
@@ -7299,7 +7299,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1563"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7311,6 +7310,7 @@
 		{
 			"01"	"item_fazhang_7;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fazhang_9"
@@ -7321,7 +7321,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1564"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7333,6 +7332,7 @@
 		{
 			"01"	"item_fazhang_8;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_6"
@@ -7343,7 +7343,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1550"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7355,6 +7354,7 @@
 		{
 			"01"	"item_gong_5;item_jia_5;item_xie_5;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_7"
@@ -7365,7 +7365,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1565"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7377,6 +7376,7 @@
 		{
 			"01"	"item_gong_6;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_8"
@@ -7387,7 +7387,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1566"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7399,6 +7398,7 @@
 		{
 			"01"	"item_gong_7;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_gong_9"
@@ -7409,7 +7409,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1567"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -7421,6 +7420,7 @@
 		{
 			"01"	"item_gong_8;item_butianshi"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_fumo_xixue"
@@ -8587,7 +8587,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1035"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -8601,6 +8600,7 @@
 		{
 			"01"	"item_shipin_1;item_shipin_2;item_shipin_3;item_shipin_4;item_shipin_5"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dragonhawk_cloak"
@@ -8611,7 +8611,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1708"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -8624,6 +8623,7 @@
 		{
 			"01"	"item_shipin_8;item_shipin_9;item_shipin_11"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_poor_man_shield"
@@ -8634,7 +8634,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1753"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -8647,6 +8646,7 @@
 		{
 			"01"	"item_shipin_10;item_shipin_10"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_buckler_shield"
@@ -8657,7 +8657,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1755"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -8670,6 +8669,7 @@
 		{
 			"01"	"item_poor_man_shield;item_shipin_8"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_vanguard_shield"
@@ -8680,7 +8680,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1757"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemSellable"	"0"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
@@ -8690,6 +8689,7 @@
 		{
 			"01"	"item_shipin_1;item_shipin_12;item_buckler_shield"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_vanguard_shield_2"
@@ -8700,7 +8700,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1761"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"8000"
@@ -8713,6 +8712,7 @@
 		{
 			"01"	"item_vanguard_shield"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_vanguard_shield_3"
@@ -8723,7 +8723,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1762"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"16000"
@@ -8736,6 +8735,7 @@
 		{
 			"01"	"item_vanguard_shield_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_vanguard_shield_4"
@@ -8746,7 +8746,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1763"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"24000"
@@ -8759,6 +8758,7 @@
 		{
 			"01"	"item_vanguard_shield_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_sun_emblem"
@@ -8769,7 +8769,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1736"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -8782,6 +8781,7 @@
 		{
 			"01"	"item_shipin_3;item_shipin_4;item_shipin_9;item_shipin_12"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_prestige_pipe"
@@ -8792,7 +8792,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1744"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -8805,6 +8804,7 @@
 		{
 			"01"	"item_shipin_1;item_shipin_3;item_shipin_8;item_shipin_13"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_prestige_pipe_2"
@@ -8815,7 +8815,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1746"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"8000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8826,6 +8825,7 @@
 		{
 			"01"	"item_prestige_pipe"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_prestige_pipe_3"
@@ -8836,7 +8836,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1747"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"12000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8847,6 +8846,7 @@
 		{
 			"01"	"item_prestige_pipe_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_prestige_pipe_4"
@@ -8857,7 +8857,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1748"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"16000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8868,6 +8867,7 @@
 		{
 			"01"	"item_prestige_pipe_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_sun_emblem_2"
@@ -8878,7 +8878,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1740"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"6000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8889,6 +8888,7 @@
 		{
 			"01"	"item_sun_emblem"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_sun_emblem_3"
@@ -8899,7 +8899,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1741"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"10000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8910,6 +8909,7 @@
 		{
 			"01"	"item_sun_emblem_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_sun_emblem_4"
@@ -8920,7 +8920,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1742"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"14000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8931,6 +8930,7 @@
 		{
 			"01"	"item_sun_emblem_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dragonhawk_cloak_2"
@@ -8941,7 +8941,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1731"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"4000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8952,6 +8951,7 @@
 		{
 			"01"	"item_dragonhawk_cloak"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dragonhawk_cloak_3"
@@ -8962,7 +8962,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1732"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"8000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8973,6 +8972,7 @@
 		{
 			"01"	"item_dragonhawk_cloak_2"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dragonhawk_cloak_4"
@@ -8983,7 +8983,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1733"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		"ItemCost"	"12000"
 		"ItemSellable"	"0"
 		// Recipe
@@ -8994,6 +8993,7 @@
 		{
 			"01"	"item_dragonhawk_cloak_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_shipin_7"
@@ -9004,7 +9004,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1624"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -9018,6 +9017,7 @@
 		{
 			"01"	"item_shipin_6;item_shipin_6"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_zhanqi"
@@ -9396,7 +9396,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1579"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -9410,6 +9409,7 @@
 		{
 			"01"	"item_zhanqi;item_xiongpi;item_hexin"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_dun_1"
@@ -10005,7 +10005,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1585"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -10017,6 +10016,7 @@
 		{
 			"01"	"item_shipin_7;item_baoshi_1;item_craft_dun"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dun_2"
@@ -10027,7 +10027,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1586"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -10039,6 +10038,7 @@
 		{
 			"01"	"item_dun_1;item_baoshi_2;item_craft_dun"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dun_3"
@@ -10049,7 +10049,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1587"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -10061,6 +10060,7 @@
 		{
 			"01"	"item_dun_2;item_baoshi_3;item_craft_dun"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dun_4"
@@ -10071,7 +10071,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1588"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -10083,6 +10082,7 @@
 		{
 			"01"	"item_dun_3;item_baoshi_4;item_craft_dun"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_dun_5"
@@ -10093,7 +10093,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1594"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -10105,6 +10104,7 @@
 		{
 			"01"	"item_dun_4;item_baoshi_5;item_craft_dun"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_fu_1"
@@ -11023,7 +11023,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1596"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11035,6 +11034,7 @@
 		{
 			"01"	"item_shipin_7;item_baoshi_1;item_craft_fu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fu_2"
@@ -11045,7 +11045,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1597"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11057,6 +11056,7 @@
 		{
 			"01"	"item_fu_1;item_baoshi_2;item_craft_fu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fu_3"
@@ -11067,7 +11067,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1598"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11079,6 +11078,7 @@
 		{
 			"01"	"item_fu_2;item_baoshi_3;item_craft_fu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fu_4"
@@ -11089,7 +11089,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1604"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11101,6 +11100,7 @@
 		{
 			"01"	"item_fu_3;item_baoshi_4;item_craft_fu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fu_5"
@@ -11111,7 +11111,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1605"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11123,6 +11122,7 @@
 		{
 			"01"	"item_fu_4;item_baoshi_5;item_craft_fu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_chui_1"
@@ -11836,7 +11836,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1607"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11848,6 +11847,7 @@
 		{
 			"01"	"item_shipin_7;item_baoshi_1;item_craft_chui"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_chui_2"
@@ -11858,7 +11858,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1608"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11870,6 +11869,7 @@
 		{
 			"01"	"item_chui_1;item_baoshi_2;item_craft_chui"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_chui_3"
@@ -11880,7 +11880,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1614"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11892,6 +11891,7 @@
 		{
 			"01"	"item_chui_2;item_baoshi_3;item_craft_chui"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_chui_4"
@@ -11902,7 +11902,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1615"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11914,6 +11913,7 @@
 		{
 			"01"	"item_chui_3;item_baoshi_4;item_craft_chui"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_chui_5"
@@ -11924,7 +11924,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1616"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -11936,6 +11935,7 @@
 		{
 			"01"	"item_chui_4;item_baoshi_5;item_craft_chui"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_shu_1"
@@ -12517,7 +12517,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1618"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -12529,6 +12528,7 @@
 		{
 			"01"	"item_shipin_7;item_baoshi_1;item_craft_shu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_shu_2"
@@ -12539,7 +12539,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1625"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -12551,6 +12550,7 @@
 		{
 			"01"	"item_shu_1;item_baoshi_2;item_craft_shu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_shu_3"
@@ -12561,7 +12561,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1626"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -12573,6 +12572,7 @@
 		{
 			"01"	"item_shu_2;item_baoshi_3;item_craft_shu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_shu_4"
@@ -12583,7 +12583,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1627"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -12595,6 +12594,7 @@
 		{
 			"01"	"item_shu_3;item_baoshi_4;item_craft_shu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_shu_5"
@@ -12605,7 +12605,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1628"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -12617,6 +12616,7 @@
 		{
 			"01"	"item_shu_4;item_baoshi_5;item_craft_shu"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_baoshi_1"
@@ -13436,10 +13436,10 @@
 		"ItemKillable"	"1"
 		"ItemAlertable"	"0"
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"ItemStockTime"	"0"
 	}
 
 	"item_ring_world_broken"
@@ -13687,7 +13687,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1719"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -13713,6 +13712,7 @@
 			"14"	"item_ring_4;item_ring_6;item_ronghe"
 			"15"	"item_ring_5;item_ring_6;item_ronghe"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_ring_broken"
@@ -13723,7 +13723,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1648"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -13740,6 +13739,7 @@
 			"05"	"item_ring_5;item_ring_5;item_ronghe"
 			"06"	"item_ring_6;item_ring_6;item_ronghe"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_ring_world_broken"
@@ -13750,7 +13750,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1656"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -13762,6 +13761,7 @@
 		{
 			"01"	"item_ring_broken;item_core_original"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_ring_world"
@@ -13772,7 +13772,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1724"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -13784,6 +13783,7 @@
 		{
 			"01"	"item_ring_secret;item_core_original"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_ring_shop"
@@ -13815,9 +13815,9 @@
 		"SecretShop"	"1"
 		"ItemShopTags"	"mana_pool;health_pool"
 		"ItemAliases"	"point booster"
-		"ItemStockTime"	"0"
 		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
+		"ItemStockTime"	"0"
 	}
 
 	"item_refresher1"
@@ -13835,8 +13835,6 @@
 		// Valve's version of this item uses the ID "110".
 		"ID"	"1033"
 		"ItemQuality"	"rare"
-		"Model"	"models/props_gameplay/refresher_shard.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_refresher_shard.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"20000"
@@ -13898,6 +13896,8 @@
 				"bonus_mana_regen_percentage"	"200"
 			}
 		}
+		"Model"	"models/props_gameplay/refresher_shard.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_refresher_shard.vpcf"
 	}
 
 	"item_soul_eye"
@@ -13913,8 +13913,6 @@
 		// Valve's version of this item uses the ID "110".
 		"ID"	"1702"
 		"ItemQuality"	"rare"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"20000"
@@ -14019,6 +14017,8 @@
 				"radius"	"600"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_windrunner"
@@ -14142,8 +14142,6 @@
 		"AbilityCooldown"	"0"
 		// Valve's version of this item uses the ID "2".
 		"ID"	"1043"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemPurchasable"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -14188,6 +14186,8 @@
 				"chance"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_phantom_assassin"
@@ -14206,8 +14206,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1045"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -14253,6 +14251,8 @@
 				"property"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_phantom_assassin1"
@@ -14268,8 +14268,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1046"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -14308,6 +14306,8 @@
 				"bonus_all_stats"	"400"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_omniknight"
@@ -14322,8 +14322,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1048"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -14379,6 +14377,8 @@
 				"duration"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"AbilityDuration"	"10.0"
 	}
 
@@ -14391,8 +14391,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1049"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -14440,6 +14438,8 @@
 				"bonus_all_stats"	"400"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"AbilityDuration"	"10.0"
 	}
 
@@ -14451,8 +14451,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1051"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemPurchasable"	"0"
 		"precache"
 		{
@@ -14489,6 +14487,8 @@
 				"lifesteal"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_blood_mask"
@@ -14499,8 +14499,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1052"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemPurchasable"	"0"
 		"ItemRequirements"	{}
 		"precache"
@@ -14611,6 +14609,8 @@
 				"movespeed_stack"	"20"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_noitem"
@@ -14621,11 +14621,11 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1721"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"99999"
 		"ItemPurchasable"	"0"
 		"ItemRequirements"	{}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_yunshizhaohuan"
@@ -14636,7 +14636,6 @@
 		"AbilityTextureName"	"item_chaos_demon"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"FightRecapLevel"	"2"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_CHAOS_METEOR"
@@ -14648,9 +14647,6 @@
 		// Valve's version of this item uses the ID "33".
 		"ID"	"1103"
 		"ItemQuality"	"epic"
-		// "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"Model"	"models/props_gameplay/cheese.mdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"80"
@@ -14699,6 +14695,10 @@
 				"EffectName"	"Hero_Invoker.ChaosMeteor.Impact"
 			}
 		}
+		"FightRecapLevel"	"2"
+		// "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"Model"	"models/props_gameplay/cheese.mdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
 		// Mainly about damage
@@ -14718,8 +14718,6 @@
 		"AbilityManaCost"	"100"
 		"ID"	"1104"
 		"ItemQuality"	"artifact"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/items/battlefury_ring_absorb.vpcf"
 		"ItemCost"	"322"
 		// 是否可丢弃
 		"ItemDroppable"	"0"
@@ -14839,6 +14837,8 @@
 				"suicide"	"50"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/items/battlefury_ring_absorb.vpcf"
 	}
 
 	"item_blink1"
@@ -14848,7 +14848,6 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_blink1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"FightRecapLevel"	"1"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"0"
@@ -14858,8 +14857,6 @@
 		// Valve's version of this item uses the ID "1".
 		"ID"	"1105"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"22250"
@@ -14921,6 +14918,9 @@
 				"bonus_damage"	"2000"
 			}
 		}
+		"FightRecapLevel"	"1"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_gem"
@@ -14932,13 +14932,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"FightRecapLevel"	"1"
 		"AbilityCastPoint"	"0."
 		// Valve's version of this item uses the ID "1".
 		"ID"	"1686"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"900"
@@ -14949,8 +14946,6 @@
 		"ItemPurchasable"	"1"
 		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"0"
-		"ItemStockTime"	"1"
-		"ItemStockInitial"	"10"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -14972,6 +14967,11 @@
 				"ThinkInterval"	"1"
 			}
 		}
+		"FightRecapLevel"	"1"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+		"ItemStockTime"	"1"
+		"ItemStockInitial"	"10"
 	}
 
 	"item_npc_dota_hero_rubick"
@@ -14990,8 +14990,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1108"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -15055,6 +15053,8 @@
 				"property"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_rubick1"
@@ -15070,8 +15070,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1109"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -15165,6 +15163,8 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_juggernaut1"
@@ -15176,7 +15176,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"	"1128"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -15276,6 +15275,7 @@
 				"critical_chance"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_monkey_king1"
@@ -15290,7 +15290,6 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"ID"	"1655"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -15368,6 +15367,7 @@
 				"critical_chance"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_juggernaut"
@@ -15386,8 +15386,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1130"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -15460,6 +15458,8 @@
 				"critical_chance"	"35"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_monkey_king"
@@ -15478,8 +15478,6 @@
 		// Valve's version of this item uses the ID "143".
 		"ID"	"1654"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"1"
@@ -15568,6 +15566,8 @@
 				"illusion_damage"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_antimage1"
@@ -15584,7 +15584,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1131"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -15661,6 +15660,7 @@
 				"duration"	"2.5"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_nevermore1"
@@ -15677,7 +15677,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1677"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -15757,6 +15756,7 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_spectre1"
@@ -15773,7 +15773,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1726"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -15889,6 +15888,7 @@
 				"cd_reduce"	"50"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_lina1"
@@ -15905,7 +15905,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1684"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -15985,6 +15984,7 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_legion_commander1"
@@ -16001,7 +16001,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1688"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16065,6 +16064,7 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_ember_spirit1"
@@ -16081,7 +16081,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1691"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16145,6 +16144,7 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_templar_assassin1"
@@ -16161,7 +16161,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1696"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16225,6 +16224,7 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_crystal_maiden1"
@@ -16241,7 +16241,6 @@
 		"AbilityCastRange"	"900"
 		"ID"	"1707"
 		"ItemQuality"	"component"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"550"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16362,6 +16361,7 @@
 				"refresh"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_npc_dota_hero_antimage"
@@ -16375,8 +16375,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1133"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16431,6 +16429,8 @@
 				"duration"	"2.5"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_nevermore"
@@ -16444,8 +16444,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1678"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16497,6 +16495,8 @@
 				"property"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_lina"
@@ -16510,8 +16510,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1683"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"0"
@@ -16589,6 +16587,8 @@
 				"interval"	"1"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_legion_commander"
@@ -16602,8 +16602,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1687"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16645,6 +16643,8 @@
 				"property"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_ember_spirit"
@@ -16658,8 +16658,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1690"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16711,6 +16709,8 @@
 				"property"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_templar_assassin"
@@ -16724,8 +16724,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1695"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16782,6 +16780,8 @@
 				"reduce_interval"	"0.1"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_crystal_maiden"
@@ -16795,8 +16795,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1706"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16891,6 +16889,8 @@
 				"refresh_chance"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_npc_dota_hero_oracle"
@@ -16904,8 +16904,6 @@
 		"AbilityCooldown"	"0.0"
 		"ID"	"1773"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 		"ItemCost"	"1"
 		"ItemSellable"	"0"
 		"ItemPurchasable"	"0"
@@ -16981,6 +16979,8 @@
 				"interval"	"1"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
 	"item_original_str_1"
@@ -16992,7 +16992,6 @@
 		"ID"	"1134"
 		"ItemQuality"	"epic"
 		"ItemCastOnPickup"	"0"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"500"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17010,7 +17009,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -17092,6 +17090,8 @@
 				"mp_regen"	"5"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_str_2"
@@ -17102,7 +17102,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1135"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17200,6 +17199,7 @@
 				"mp_regen"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_3"
@@ -17210,7 +17210,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1136"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17309,6 +17308,7 @@
 				"mp_regen"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_4"
@@ -17319,7 +17319,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1137"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17418,6 +17417,7 @@
 				"mp_regen"	"20"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_5"
@@ -17428,7 +17428,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1138"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1200"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17446,7 +17445,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -17528,6 +17526,8 @@
 				"mp_regen"	"25"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_str_6"
@@ -17538,7 +17538,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1139"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17636,6 +17635,7 @@
 				"mp_regen"	"30"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_7"
@@ -17646,7 +17646,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1140"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17745,6 +17744,7 @@
 				"mp_regen"	"35"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_8"
@@ -17755,7 +17755,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1141"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17854,6 +17853,7 @@
 				"mp_regen"	"40"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_9"
@@ -17864,7 +17864,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1142"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17963,6 +17962,7 @@
 				"mp_regen"	"45"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_10"
@@ -17973,7 +17973,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1143"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2400"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -17991,7 +17990,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -18073,6 +18071,8 @@
 				"mp_regen"	"50"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_str_11"
@@ -18083,7 +18083,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1144"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18181,6 +18180,7 @@
 				"mp_regen"	"55"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_12"
@@ -18191,7 +18191,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1145"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18290,6 +18289,7 @@
 				"mp_regen"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_13"
@@ -18300,7 +18300,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1146"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18398,6 +18397,7 @@
 				"mp_regen"	"65"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_14"
@@ -18408,7 +18408,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1147"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18506,6 +18505,7 @@
 				"mp_regen"	"70"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_str_15"
@@ -18516,7 +18516,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1148"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"4800"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18534,7 +18533,6 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -18595,6 +18593,8 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_agi_1"
@@ -18606,7 +18606,6 @@
 		"ID"	"1149"
 		"ItemQuality"	"epic"
 		"ItemCastOnPickup"	"0"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"500"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18624,7 +18623,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -18706,6 +18704,8 @@
 				"mp_regen"	"5"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_agi_2"
@@ -18716,7 +18716,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1150"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18814,6 +18813,7 @@
 				"mp_regen"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_3"
@@ -18824,7 +18824,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1151"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -18922,6 +18921,7 @@
 				"mp_regen"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_4"
@@ -18932,7 +18932,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1152"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19030,6 +19029,7 @@
 				"mp_regen"	"20"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_5"
@@ -19040,7 +19040,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1153"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1200"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19058,7 +19057,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -19140,6 +19138,8 @@
 				"mp_regen"	"25"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_agi_6"
@@ -19150,7 +19150,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1154"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19249,6 +19248,7 @@
 				"mp_regen"	"30"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_7"
@@ -19259,7 +19259,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1155"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19357,6 +19356,7 @@
 				"mp_regen"	"35"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_8"
@@ -19367,7 +19367,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1156"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19465,6 +19464,7 @@
 				"mp_regen"	"40"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_9"
@@ -19475,7 +19475,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1157"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19574,6 +19573,7 @@
 				"mp_regen"	"45"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_10"
@@ -19584,7 +19584,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1158"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2400"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19602,7 +19601,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -19684,6 +19682,8 @@
 				"mp_regen"	"50"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_agi_11"
@@ -19694,7 +19694,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1159"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19793,6 +19792,7 @@
 				"mp_regen"	"55"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_12"
@@ -19803,7 +19803,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1160"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -19901,6 +19900,7 @@
 				"mp_regen"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_13"
@@ -19911,7 +19911,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1161"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20009,6 +20008,7 @@
 				"mp_regen"	"65"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_14"
@@ -20019,7 +20019,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1162"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20118,6 +20117,7 @@
 				"mp_regen"	"70"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_agi_15"
@@ -20128,7 +20128,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1164"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"4800"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20146,7 +20145,6 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -20207,6 +20205,8 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_int_1"
@@ -20218,7 +20218,6 @@
 		"ID"	"1163"
 		"ItemQuality"	"epic"
 		"ItemCastOnPickup"	"0"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"500"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20236,7 +20235,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -20318,6 +20316,8 @@
 				"mp_regen"	"5"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_int_2"
@@ -20328,7 +20328,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1165"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20427,6 +20426,7 @@
 				"mp_regen"	"10"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_3"
@@ -20437,7 +20437,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1166"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20535,6 +20534,7 @@
 				"mp_regen"	"15"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_4"
@@ -20545,7 +20545,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1167"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20644,6 +20643,7 @@
 				"mp_regen"	"20"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_5"
@@ -20654,7 +20654,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1168"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1200"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20672,7 +20671,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -20754,6 +20752,8 @@
 				"mp_regen"	"25"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_int_6"
@@ -20764,7 +20764,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1169"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20863,6 +20862,7 @@
 				"mp_regen"	"30"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_7"
@@ -20873,7 +20873,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1170"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -20971,6 +20970,7 @@
 				"mp_regen"	"35"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_8"
@@ -20981,7 +20981,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1171"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21079,6 +21078,7 @@
 				"mp_regen"	"40"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_9"
@@ -21089,7 +21089,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1172"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"4000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21188,6 +21187,7 @@
 				"mp_regen"	"45"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_10"
@@ -21198,7 +21198,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1173"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2400"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21216,7 +21215,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"1"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -21298,6 +21296,8 @@
 				"mp_regen"	"50"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_original_int_11"
@@ -21308,7 +21308,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1174"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21407,6 +21406,7 @@
 				"mp_regen"	"55"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_12"
@@ -21417,7 +21417,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1175"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21515,6 +21514,7 @@
 				"mp_regen"	"60"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_13"
@@ -21525,7 +21525,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1176"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21623,6 +21622,7 @@
 				"mp_regen"	"65"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_14"
@@ -21633,7 +21633,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1177"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21732,6 +21731,7 @@
 				"mp_regen"	"70"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"item_original_int_15"
@@ -21742,7 +21742,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1178"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"4800"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21760,7 +21759,6 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -21821,6 +21819,8 @@
 				"mp_regen"	"100"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_core_original"
@@ -21831,7 +21831,6 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"ID"	"1179"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"10000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21849,7 +21848,6 @@
 		"ItemInitialCharges"	"0"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -21910,6 +21908,8 @@
 				"mp_regen"	"500"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_recipe_core_original"
@@ -21920,7 +21920,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1180"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -21933,6 +21932,7 @@
 		{
 			"01"	"item_original_str_15;item_original_agi_15;item_original_int_15"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_blood_fruit"
@@ -21942,7 +21942,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1181"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"3000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -21960,7 +21959,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -21973,6 +21971,8 @@
 			}
 			"SpendCharge"	{}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_exp_fruit"
@@ -21982,7 +21982,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1675"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"1000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -22000,7 +21999,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -22013,6 +22011,8 @@
 			}
 			"SpendCharge"	{}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_gold_fruit"
@@ -22022,7 +22022,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1676"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -22040,7 +22039,6 @@
 		"ItemInitialCharges"	"1"
 		// 是否可叠加
 		"ItemStackable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		// 是否可拆分
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -22053,6 +22051,8 @@
 			}
 			"SpendCharge"	{}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"ItemStockTime"	"0"
 	}
 
 	"item_reborn_1"
@@ -22062,7 +22062,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"ID"	"1672"
 		"ItemQuality"	"epic"
-		"Model"	"models/props_gameplay/recipe.vmdl"
 		"ItemCost"	"2000"
 		// 是否可丢弃
 		"ItemDroppable"	"1"
@@ -22092,6 +22091,7 @@
 			}
 			"SpendCharge"	{}
 		}
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	"item_ogre_1"
@@ -22362,7 +22362,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1668"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -22375,6 +22374,7 @@
 		{
 			"01"	"item_ogre_1;item_ogre_2;item_ogre_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_tree_4"
@@ -22385,7 +22385,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1699"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -22398,6 +22397,7 @@
 		{
 			"01"	"item_tree_1;item_tree_2;item_tree_3;item_tree_3;item_tree_3"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_soul_dead_god"
@@ -22408,7 +22408,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1716"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -22421,6 +22420,7 @@
 		{
 			"01"	"item_refresher1;item_soul_eye;item_soul_cloak"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_fire_mask"
@@ -22431,7 +22431,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1717"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"0"
@@ -22444,6 +22443,7 @@
 		{
 			"01"	"fire_glove;fire_head;fire_heart"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_urn_of_shadow"
@@ -22454,7 +22454,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1768"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"2400"
@@ -22466,6 +22465,7 @@
 		{
 			"01"	"item_shipin_3;item_shipin_4;item_shipin_5"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_recipe_demon_chains"
@@ -22476,7 +22476,6 @@
 		"AbilityTextureName"	"item_recipe"
 		// Valve's version of this item uses the ID "153".
 		"ID"	"1772"
-		"Model"	"models/props_gameplay/recipe.mdl"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
@@ -22485,6 +22484,7 @@
 		{
 			"01"	"item_sun_emblem_4;item_spirit_vessel_capture;item_zhangu;item_demon_heart"
 		}
+		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
 	"item_tree_1"
@@ -22726,9 +22726,6 @@
 		"ItemCost"	"80"
 		"ItemPurchasable"	"0"
 		"ItemStackable"	"0"
-		"ItemStockMax"	"1"
-		"ItemStockTime"	"300"
-		"ItemStockInitial"	"1"
 		"ItemRequirements"	{}
 		"AbilitySpecial"
 		{
@@ -22743,6 +22740,9 @@
 				"cooldown"	"300"
 			}
 		}
+		"ItemStockMax"	"1"
+		"ItemStockTime"	"300"
+		"ItemStockInitial"	"1"
 	}
 
 	"item_athena_guard"
@@ -22757,9 +22757,6 @@
 		"ItemCost"	"10"
 		"ItemPurchasable"	"0"
 		"ItemStackable"	"0"
-		"ItemStockMax"	"1"
-		"ItemStockTime"	"180"
-		"ItemStockInitial"	"1"
 		"ItemRequirements"	{}
 		"AbilitySpecial"
 		{
@@ -22789,6 +22786,9 @@
 				"cooldown"	"180"
 			}
 		}
+		"ItemStockMax"	"1"
+		"ItemStockTime"	"180"
+		"ItemStockInitial"	"1"
 	}
 
 	"item_athena_heal"
@@ -22803,9 +22803,6 @@
 		"ItemCost"	"10"
 		"ItemPurchasable"	"0"
 		"ItemStackable"	"0"
-		"ItemStockMax"	"1"
-		"ItemStockTime"	"120"
-		"ItemStockInitial"	"1"
 		"ItemRequirements"	{}
 		"AbilitySpecial"
 		{
@@ -22830,6 +22827,9 @@
 				"cooldown"	"120"
 			}
 		}
+		"ItemStockMax"	"1"
+		"ItemStockTime"	"120"
+		"ItemStockInitial"	"1"
 	}
 
 	"item_athena_wudi"
@@ -22843,9 +22843,6 @@
 		"ItemCastOnPickup"	"0"
 		"ItemCost"	"160"
 		"ItemPurchasable"	"0"
-		"ItemStockMax"	"1"
-		"ItemStockTime"	"300"
-		"ItemStockInitial"	"1"
 		"ItemRequirements"	{}
 		"AbilitySpecial"
 		{
@@ -22860,6 +22857,9 @@
 				"cooldown"	"300"
 			}
 		}
+		"ItemStockMax"	"1"
+		"ItemStockTime"	"300"
+		"ItemStockInitial"	"1"
 	}
 
 	"item_water_gun"
@@ -22972,7 +22972,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ID"	"1703"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemPurchasable"	"0"
 		"ItemRequirements"	{}
 		"Modifiers"
@@ -23027,6 +23026,7 @@
 				"shield"	"30"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"fire_glove"
@@ -23099,7 +23099,6 @@
 		"AbilityCooldown"	"195.0"
 		"AbilityManaCost"	"375"
 		"ID"	"1704"
-		"Model"	"models/props_gameplay/red_box.vmdl"
 		"ItemPurchasable"	"0"
 		"ItemRequirements"	{}
 		"precache"
@@ -23222,6 +23221,7 @@
 				"duration"	"4"
 			}
 		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
 	"key_dadi"
@@ -23380,7 +23380,6 @@
 		"ItemSellable"	"1"
 		"ItemPurchasable"	"0"
 		"ItemKillable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -23466,6 +23465,7 @@
 				"armor"	"40"
 			}
 		}
+		"ItemStockTime"	"0"
 	}
 
 	"item_world_editor"
@@ -23482,7 +23482,6 @@
 		"ItemSellable"	"1"
 		"ItemPurchasable"	"0"
 		"ItemKillable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -23626,6 +23625,7 @@
 				"health_bonus"	"60000"
 			}
 		}
+		"ItemStockTime"	"0"
 	}
 
 	"item_longinus_spear"
@@ -23643,7 +23643,6 @@
 		"ItemSellable"	"1"
 		"ItemPurchasable"	"0"
 		"ItemKillable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		"precache"
 		{
@@ -23746,6 +23745,7 @@
 				"mana_bonus"	"60000"
 			}
 		}
+		"ItemStockTime"	"0"
 	}
 
 	"item_mystletainn"
@@ -23761,7 +23761,6 @@
 		"ItemSellable"	"1"
 		"ItemPurchasable"	"0"
 		"ItemKillable"	"0"
-		"ItemStockTime"	"0"
 		"ItemRequirements"	{}
 		"Modifiers"
 		{
@@ -23857,6 +23856,7 @@
 				"damage_deepen"	"100"
 			}
 		}
+		"ItemStockTime"	"0"
 	}
 
 	"item_npc_dota_hero_spectre"
