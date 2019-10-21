@@ -4,11 +4,11 @@ function OnDeath(t)
     local ability = t.ability
     local lv = caster:GetLevel()
     local reborntimes = caster.reborn_time or 0
+    AddModifierStackCount(caster,caster,ability,"modifier_oracle_0_stack",1)
 	if lv >= (reborntimes + 1) * 100 then
 		return
 	end
     local exp = math.ceil((XP_PER_LEVEL_TABLE[lv+1] - XP_PER_LEVEL_TABLE[lv]) * 0.3)
-    AddModifierStackCount(caster,caster,ability,"modifier_oracle_0_stack",1)
     caster:AddExperience(exp, DOTA_ModifyXP_CreepKill, false, false)
 end
 function AutoCast( t )

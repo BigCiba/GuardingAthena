@@ -60,9 +60,18 @@ function HeroReborn( trigger )
 			ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
 			ParticleManager:SetParticleControl(particle, 2, caster:GetAbsOrigin())
 			caster:EmitSound("Hero_FacelessVoid.TimeWalk")
-			print(XP_PER_LEVEL_TABLE[caster.reborn_time * 100 + 1])
-			print(caster:GetCurrentXP())
 			caster:AddExperience(XP_PER_LEVEL_TABLE[caster.reborn_time * 100 + 1] - caster:GetCurrentXP(), 1, false, false)
+			if caster:GetUnitName() == "npc_dota_hero_monkey_king" then
+				caster:SetSkin(reborn_times + 1)
+				local model = caster:FirstMoveChild()
+				while model ~= nil do
+					if model:GetClassname() ~= "" and model:GetClassname() == "dota_item_wearable" and model:GetModelName() == "models/items/monkey_king/monkey_king_arcana_head/mesh/monkey_king_arcana.vmdl" then
+						model:SetSkin(reborn_times)
+						break
+					end
+					model = model:NextMovePeer()
+				end
+			end
 		end
 	elseif level ~= 1 + (reborn_times * 100) and reborn_times <= 3 and caster.kill_iapetos == false  then
 		if GuardingAthena.iapetos == nil then
