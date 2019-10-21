@@ -144,7 +144,7 @@
 		"Ability1"	"drow_ranger_0_1"
 		"Ability2"	"drow_ranger_1_1"
 		"Ability3"	"gust"
-		"Ability4"	"alacrity"
+		"Ability4"	"drow_ranger_3_1"
 		"Ability5"	"arrow_strom"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"

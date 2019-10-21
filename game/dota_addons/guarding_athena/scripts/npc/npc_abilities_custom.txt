@@ -11201,7 +11201,7 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_lua"
-		"AbilityTextureName"	"legion_commander_overwhelming_odds"
+		"AbilityTextureName"	"drow_ranger_1_1"
 		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -11325,13 +11325,13 @@
 			}
 			"02"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"agility_damage"	"1.5"
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
 			}
 			"03"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"base_damage"	"50"
+				"var_type"	"FIELD_FLOAT"
+				"agility_damage"	"1.5"
 			}
 			"04"
 			{
@@ -11496,6 +11496,182 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"cooldown"	"3"
+			}
+		}
+	}
+
+	"drow_ranger_3_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"pangolier_heartpiercer"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AOERadius"	"300"
+		"Modifiers"
+		{
+			"modifier_drow_ranger_3_2"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+			}
+			"modifier_drow_ranger_3_2_debuff"	{}
+			"modifier_drow_ranger_3_2_agility"	{}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_agility_damage"	"0.25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agility_damage"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"require_count"	"30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agility_percent"	"20"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agility_percent_lv"	"1"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"debuff_duration"	"3"
+			}
+		}
+	}
+
+	"drow_ranger_3_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"drow_ranger_marksmanship"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AOERadius"	"300"
+		"Modifiers"
+		{
+			"modifier_drow_ranger_3_1"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+						"Function"	"OnAttackLanded"
+					}
+				}
+			}
+			"modifier_drow_ranger_3_1_movespeed"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed_reduce"
+				}
+				"Duration"	"%reduce_duration"
+			}
+			"modifier_drow_ranger_3_1_freeze"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FROZEN"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsDebuff"	"1"
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/ability_hero/drow_ranger.lua"
+						"Function"	"OnCurseDamage"
+					}
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agility_damage"	"1.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed_reduce"	"-20"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_duration"	"3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"require_count"	"4"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"curse_duration"	"2"
 			}
 		}
 	}
@@ -15786,6 +15962,7 @@
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FROZEN"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"IsDebuff"	"1"
 			}

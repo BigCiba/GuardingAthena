@@ -10,6 +10,18 @@ function drow_ranger_1_1:OnSpellStart()
 	local vPosition = self:GetCursorPosition()
 	self:OnTrigger(vPosition)
 end
+function drow_ranger_1_1:ColdArrow(hTarget)
+    local hCaster = self:GetCaster()
+    local hAbility = hCaster:FindAbilityByName("drow_ranger_3_1")
+    local duration = hAbility:GetSpecialValueFor("duration")
+    local curse_duration = hAbility:GetSpecialValueFor("curse_duration")
+    local require_count = hAbility:GetSpecialValueFor("require_count")
+    AddModifierStackCount(hCaster,hTarget,hAbility,"modifier_drow_ranger_3_1_movespeed",1,duration)
+    if hTarget:GetModifierStackCount("modifier_drow_ranger_3_1_movespeed", hCaster) >= require_count then
+        hTarget:RemoveModifierByName("modifier_drow_ranger_3_1_movespeed")
+        hAbility:ApplyDataDrivenModifier(hCaster, hTarget, "modifier_drow_ranger_3_1_freeze", {duration = curse_duration})
+    end
+end
 function drow_ranger_1_1:OnTrigger(vPosition)
 	local duration = self:GetSpecialValueFor("duration")
 
@@ -41,6 +53,7 @@ function drow_ranger_1_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData
 		local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), hTarget:GetAbsOrigin(), nil, splash_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC+DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
 		for n, hUnit in pairs(tTargets) do
 			CauseDamage(hCaster,hUnit,damage,self:GetAbilityDamageType(),self)
+			self:ColdArrow(hUnit)
 			hUnit:AddNewModifier(hCaster, self, "modifier_drow_ranger_1_1_debuff", {duration=duration})
 		end
 		return false

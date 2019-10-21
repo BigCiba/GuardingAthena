@@ -24,6 +24,7 @@
 	GetRandomUnit(caster, ability, originPoint, radius)
 	GetRebornCount(caster)
 	GetRotationPoint(originPoint, radius, angle)
+	GetSpecialValue(value)
 	GetNextUnit(caster,ability,radius)
 	GiveItem(caster,itemName,itemOwner)
 	HasExclusive(caster,lv)
@@ -536,6 +537,9 @@ function GetRotationPoint( ... )
 	local y = math.sin(radAngle) * radius + originPoint.y
 	local position = Vector(x, y, originPoint.z)
 	return position
+end
+function CDOTABaseAbility:GetSpecialValue( szName )
+	return self:GetSpecialValueFor(szName) * self:GetLevel()
 end
 -- 获取下个目标
 function GetNextUnit( ... )
