@@ -80,7 +80,7 @@ end
 function HotArrow( t )
     local hCaster = t.caster
     local hTarget = t.target
-    local hAbility = hCaster:FindAbilityByName("drow_ranger_3_1")
+    local hAbility = hCaster:FindAbilityByName("drow_ranger_3_2")
     local duration = hAbility:GetSpecialValueFor("duration")
     local debuff_duration = hAbility:GetSpecialValueFor("debuff_duration")
     local require_count = hAbility:GetSpecialValueFor("require_count")
@@ -98,8 +98,15 @@ function HotArrow( t )
 end
 function OnCurseDamage( t )
     local hCaster = t.caster
-    local hTarget = t.target
+    local hTarget = t.unit
     local hAbility = t.ability
+    if hAbility.use == nil then
+        hAbility.use = true
+    end
     local damage = hAbility:GetSpecialValue("base_damage") + hAbility:GetSpecialValue("agility_damage") * hCaster:GetAgility()
-    CauseDamage(hCaster,hTarget,damage,hAbility:GetAbilityDamageType(),hAbility)
+    if hAbility.use then
+        hAbility.use = false
+        CauseDamage(hCaster,hTarget,damage,hAbility:GetAbilityDamageType(),hAbility)
+        hAbility.use = true
+    end
 end
