@@ -101,7 +101,7 @@ function modifier_drow_ranger_1_1:DeclareFunctions()
 	}
 end
 function modifier_drow_ranger_1_1:OnAttackLanded(params)
-    if params.attacker == self:GetParent() and self:GetAbility():IsCooldownReady() and RollPercentage(self.chance) then
+    if params.attacker == self:GetParent() and self:GetAbility():IsCooldownReady() and not self:GetAbility():IsHidden() and RollPercentage(self.chance) then
 		self:GetAbility():OnTrigger(params.target:GetAbsOrigin())
 		self:GetAbility():StartCooldown(self.cooldown)
     end
