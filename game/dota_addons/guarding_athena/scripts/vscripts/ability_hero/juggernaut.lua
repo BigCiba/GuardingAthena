@@ -106,7 +106,7 @@ function SpaceCutIllusion( keys )
 end
 function OnUpgrade( t )
     if t.ability:GetLevel() == 1 then
-        t.caster:AddAbility("space_cut"):SetHidden(true)
+        -- t.caster:AddAbility("space_cut"):SetHidden(true)
     end
 end
 function MirrorImage( event )
@@ -123,12 +123,14 @@ function MirrorImage( event )
     local casterAngles = caster:GetAngles()
 
     -- 激活一刀千花叶
-    caster:FindAbilityByName("space_cut"):SetHidden(false)
+	-- caster:FindAbilityByName("space_cut"):SetHidden(false)
+	caster:AddAbility("space_cut"):SetLevel(ability:GetLevel())
     caster:SwapAbilities("space_cut", "images", true, false)
-    caster:FindAbilityByName("space_cut"):SetLevel(ability:GetLevel())
+    -- caster:FindAbilityByName("space_cut"):SetLevel(ability:GetLevel())
     Timers:CreateTimer(ability:GetCooldownTimeRemaining(),function ()
-        caster:SwapAbilities("images", "space_cut", true, false)
-        caster:FindAbilityByName("images"):SetLevel(caster:FindAbilityByName("space_cut"):GetLevel())
+		caster:SwapAbilities("images", "space_cut", true, false)
+		caster:RemoveAbility("space_cut")
+        -- caster:FindAbilityByName("images"):SetLevel(caster:FindAbilityByName("space_cut"):GetLevel())
         --caster:RemoveAbility("space_cut")
     end)
 
