@@ -908,29 +908,23 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 	if hero.int_gain then
 		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain)
 	end
-	-- 修正技能点17 19 21 22 23 24
+	-- 修正技能点17 19 21-24 26-~不给技能点
+	-- 1-8技能给技能点，之后每3级给一个技能点11,14,17,20,23,26,29,32,...
 	if level <= 188 then
 		local mod = math.fmod(level,3)
 		if level > 8 then
-			if mod == 2 then
-				if level >= 17 and level < 25 then
+			if mod == 2 then -- 给技能点的等级11,14,17,20,23,26,29,32,...
+				if level == 17 or level == 23 or level > 25 then
 					hero:SetAbilityPoints(hero:GetAbilityPoints() + 1)
 				end
-			else
-				if level < 17 or level > 24 then
-					hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
-				end
-				if level == 18 then
-					hero:SetAbilityPoints(hero:GetAbilityPoints() - 2)
-				end
-				if level == 20 then
+			else -- 不给技能点的等级 9 10 12 13 15 16 18 19 21 22 24 25
+				if level == 9 or level == 10 or level == 12 or level == 13 or level == 15 or level == 16 or level == 18 or level == 25 then
 					hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
 				end
 			end
 		end
-	else
-		hero:SetAbilityPoints(hero:GetAbilityPoints() - 1)
 	end
+	print(level,math.fmod(level,3),hero:GetAbilityPoints())
 end
 -- 监听使用技能
 function GuardingAthena:OnUsedAbility(event)
