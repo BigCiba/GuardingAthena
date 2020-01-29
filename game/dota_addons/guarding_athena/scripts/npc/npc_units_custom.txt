@@ -7191,7 +7191,6 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"Creature"	{}
 	}
 
 	"guai_18"
@@ -11219,10 +11218,6 @@
 		"Ability15"	""
 		"Ability16"	""
 		"Model"	"models/items/courier/weta_automaton/weta_automaton.vmdl"
-		"Creature"
-		{
-			"AttachWearables"	{}
-		}
 		"StatusHealth"	"240000"
 		"StatusMana"	"1000"
 		"AttackDamageMin"	"7000"
@@ -11273,7 +11268,6 @@
 		"Model"	"models/items/courier/weta_automaton/weta_automaton_flying.vmdl"
 		"Creature"
 		{
-			"AttachWearables"	{}
 			"HPGain"	"24000"
 			"DamageGain"	"700"
 			"ArmorGain"	"2.4"
@@ -11326,10 +11320,6 @@
 		"Ability15"	""
 		"Ability16"	""
 		"Model"	"models/heroes/enigma/eidelon.vmdl"
-		"Creature"
-		{
-			"AttachWearables"	{}
-		}
 		"StatusHealth"	"240000"
 		"StatusMana"	"1000"
 		"AttackDamageMin"	"4000"
@@ -11378,10 +11368,6 @@
 		"Ability15"	""
 		"Ability16"	""
 		"Model"	"models/heroes/enigma/eidelon.vmdl"
-		"Creature"
-		{
-			"AttachWearables"	{}
-		}
 		"StatusHealth"	"120000"
 		"StatusMana"	"1000"
 		"AttackDamageMin"	"2000"
@@ -11430,10 +11416,6 @@
 		"Ability15"	""
 		"Ability16"	""
 		"Model"	"models/heroes/enigma/enigma.vmdl"
-		"Creature"
-		{
-			"AttachWearables"	{}
-		}
 		"StatusHealth"	"360000"
 		"StatusMana"	"1000"
 		"AttackDamageMin"	"8000"
@@ -11482,10 +11464,6 @@
 		"Ability15"	""
 		"Ability16"	""
 		"Model"	"models/items/enigma/eidolon/geodesic/geodesic.vmdl"
-		"Creature"
-		{
-			"AttachWearables"	{}
-		}
 		"StatusHealth"	"500000"
 		"StatusMana"	"1000"
 		"AttackDamageMin"	"10000"
@@ -11534,10 +11512,6 @@
 		"Ability15"	""
 		"Ability16"	""
 		"Model"	"models/items/enigma/eidolon/geodesic/geodesic.vmdl"
-		"Creature"
-		{
-			"AttachWearables"	{}
-		}
 		"StatusHealth"	"10000000"
 		"StatusMana"	"1000"
 		"AttackDamageMin"	"20000"
@@ -11945,7 +11919,6 @@
 		"Model"	"models/heroes/invoker/forge_spirit.vmdl"
 		"Creature"
 		{
-			"AttachWearables"	{}
 			"HPGain"	"50000"
 			"DamageGain"	"2000"
 			"ArmorGain"	"3"
