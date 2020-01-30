@@ -26,7 +26,7 @@
 		"AttackRate"	"1.7"
 		"AbilityLayout"	"5"
 		// Ability 1
-		"Ability1"	"thunder_power"
+		"Ability1"	"omniknight_0"
 		"Ability2"	"thunder_strike"
 		"Ability3"	"heal_device"
 		"Ability4"	"weightlifting"

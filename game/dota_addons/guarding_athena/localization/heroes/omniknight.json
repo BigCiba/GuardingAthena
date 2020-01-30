@@ -1,0 +1,29 @@
+{
+	"heroname": "机械师",
+	"abilities": {
+		"thunder_power": {
+			"Name": "雷霆动力",
+			"Description": "使用以雷霆为动力的武器，能够发动雷霆之力毁灭敌人，有一定几率击晕目标，如果目标已经处于晕眩状态，则对其造成天罚。",
+			"Lore": "",
+			"Note0": "该技能冷却时间不受减少冷却效果影响",
+			"AbilitySpecial" :{
+				"duration": "晕眩时间",
+				"rate": "%击晕几率",
+				"scale": "天罚伤害"
+			},
+			"Modifiers" :{
+				"modifier_thunder_strike": {
+					"name": "能量点数",
+					"Description": ""
+				}
+			}
+		}
+	},
+	"Scepter": {
+		"item_npc_dota_hero_omniknight" :{
+			"name": "能量齿轮",
+			"Description": "<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：雷霆一击</h1>额外提供一点能量点\n<h1>二转：雷霆动力</h1>使天罚伤害变为300范围伤害\n<h1>三转：悬浮装置</h1>使得治疗装置能够移动并且每秒对范围内的随机三个敌方单位施放闪电链\n<h1>四转：闪电链</h1>使闪电链弹射三次\n作为一个机械师，没有什么比齿轮更有用的了",
+			"Lore": "这破齿轮"
+		}
+	}
+}

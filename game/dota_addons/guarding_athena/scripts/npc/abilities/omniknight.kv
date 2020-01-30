@@ -1,0 +1,39 @@
+"omniknight"
+{
+	"omniknight_0"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/omniknight/omniknight_0"
+		"AbilityTextureName"		"custom/thunder_power"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"2"
+		"HotKeyOverride"			"D"
+		"precache"
+		{
+			"particle"	"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf"
+			"particle"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"2"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"10"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"str_factor"		"10"
+			}
+		}
+	}
+}

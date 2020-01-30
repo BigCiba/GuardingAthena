@@ -710,6 +710,12 @@ function GuardingAthena:OnPlayerChat(keys)
 	if text == "pause" then
 		Spawner:PauseSpawn(30)
 	end
+	if text == "talent" then
+		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+		hero:AddAbility("special_bonus_unique_omniknight_custom_1"):SetLevel(2)
+		hero:SwapAbilities("tt1", "special_bonus_unique_omniknight_custom_1", false, true)
+		hero:RemoveAbility("tt1")
+	end
 	if text == "testmode" then
 		--GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
 		--local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
