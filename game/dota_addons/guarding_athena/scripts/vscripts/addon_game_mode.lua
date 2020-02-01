@@ -191,3 +191,34 @@ function Activate()
 	print ( '[GuardingAthena] Creating game mode' )
 	GuardingAthena:InitGameMode()
 end
+function Reload()
+	local state = GameRules:State_Get()
+	if state > DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
+
+		GameRules:Playtesting_UpdateAddOnKeyValues()
+		FireGameEvent("client_reload_game_keyvalues", {})
+
+		local tUnits = Entities:FindAllByClassname("npc_dota_creature")
+		for n, hUnit in pairs(tUnits) do
+			if IsValid(hUnit) and hUnit:IsAlive() then
+				for i = 0, hUnit:GetAbilityCount()-1, 1 do
+					local hAbility = hUnit:GetAbilityByIndex(i)
+					if IsValid(hAbility) and hAbility:GetLevel() > 0 then
+						if hAbility:GetIntrinsicModifierName() ~= nil and hAbility:GetIntrinsicModifierName() ~= "" then
+							hUnit:RemoveModifierByName(hAbility:GetIntrinsicModifierName())
+							hUnit:AddNewModifier(hUnit, hAbility, hAbility:GetIntrinsicModifierName(), nil)
+						end
+					end
+				end
+			end
+		end
+
+		print("Reload Scripts")
+
+		-- GuardingAthena:InitGameMode()
+	end
+end
+
+if Activated == true then
+	Reload()
+end

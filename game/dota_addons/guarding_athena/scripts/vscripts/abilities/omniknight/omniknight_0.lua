@@ -6,6 +6,9 @@ end
 function omniknight_0:GetIntrinsicModifierName()
 	return "modifier_omniknight_0"
 end
+function omniknight_0:GetSecondaryCharges()
+	return 4
+end
 -- 天罚
 function omniknight_0:ThunderPower(hTarget)
 	local hCaster = self:GetCaster()

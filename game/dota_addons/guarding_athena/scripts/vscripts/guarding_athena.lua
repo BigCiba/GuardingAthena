@@ -20,6 +20,7 @@ gamestates =
 
 function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
+	_G.Activated = true
 
 	-- 初始化游戏参数
 	self.entAthena = Entities:FindByName( nil, "athena" )				--寻找基地
