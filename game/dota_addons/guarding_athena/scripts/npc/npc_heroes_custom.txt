@@ -27,10 +27,10 @@
 		"AbilityLayout"	"5"
 		// Ability 1
 		"Ability1"	"omniknight_0"
-		"Ability2"	"thunder_strike"
-		"Ability3"	"heal_device"
-		"Ability4"	"weightlifting"
-		"Ability5"	"thunder_barrier"
+		"Ability2"	"omniknight_1"
+		"Ability3"	"omniknight_2"
+		"Ability4"	"omniknight_3"
+		"Ability5"	"omniknight_4"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
 		"Ability6"	""

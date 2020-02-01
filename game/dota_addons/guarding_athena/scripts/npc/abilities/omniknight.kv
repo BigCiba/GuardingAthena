@@ -22,7 +22,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"duration"			"2"
+				"stun_duration"			"2"
 			}
 			"02"
 			{
@@ -33,6 +33,253 @@
 			{
 				"var_type"			"FIELD_INTEGER"
 				"str_factor"		"10"
+			}
+		}
+	}
+	"omniknight_1"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/omniknight/omniknight_1"
+		"AbilityTextureName"	"custom/thunder_strike"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"5"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"8"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"0.0"
+		"AbilityCharges"				"3"
+		"AbilityChargeRestoreTime"		"8.0"
+		"AbilityManaCost"	"120 200 280 360 440"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50 250 450 650 850"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str_factor"	"2 10 18 26 34"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"400"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"AbilityCharges"	""
+			}
+		}
+	}
+	"omniknight_2"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/omniknight/omniknight_2"
+		"AbilityTextureName"		"custom/heal_device"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"			"W"
+		"MaxLevel"					"5"
+		"RequiredLevel"				"1"
+		"LevelsBetweenUpgrades"		"8"
+		"AbilityCastPoint"			"0.3"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"			"60"
+		"AbilityManaCost"			"0"
+		"AbilityCastRange"			"600"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+			"particle"	"particles/skills/heal_device.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_regen"			"10 40 70 100 130"
+			}		
+			"02"		
+			{		
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"4 16 28 40 52"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"health_regen_regen"	"1 2 3 4 5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"60 65 70 75 80"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"40"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"600"
+			}
+		}
+	}
+	"omniknight_3"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/omniknight/omniknight_3"
+		"AbilityTextureName"		"custom/weightlifting"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"			"E"
+		"MaxLevel"					"5"
+		"RequiredLevel"				"1"
+		"LevelsBetweenUpgrades"		"8"
+		"AbilityCharges"				"0"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attackspeed"	"40 80 120 160 200"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_str"			"40 80 120 160 200"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_chance"		"4 8 12 16 20"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_str_factor"	"4 8 12 16 20"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"attack_count"		"10"
+			}
+		}
+	}
+	"omniknight_4"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/omniknight/omniknight_4"
+		"AbilityTextureName"	"arc_warden_flux"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"HotKeyOverride"	"R"
+		"MaxLevel"	"5"
+		"RequiredLevel"	"8"
+		"LevelsBetweenUpgrades"	"24"
+		"AbilityCastPoint"	"0"
+		"AbilityManaCost"	"60 120 180 240 300"
+		"precache"
+		{
+			"particle"	"particles/heroes/omni_knight/thunder_barrier.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attackspeed"	"60 70 80 90 100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_movespeed"	"45 60 75 90 105"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_resistance"	"10 12 14 16 18"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_amp_percent"	"100 125 150 175 200"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana_cost"	"10 20 30 40 50"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_attackspeed"	"-80 -100 -120 -140 -160"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_movespeed"	"-120 -135 -150 -165 -180"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"palsy_duration"	"0.5"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_interval"	"1"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"palsy_radius"	"600"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"storm_str_damage"	"5 10 15 20 25"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"storm_jump_count"	"4"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"storm_chance"	"17"
+			}
+			"14"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"storm_interval"	"0.3"
 			}
 		}
 	}

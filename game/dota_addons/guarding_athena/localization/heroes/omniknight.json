@@ -1,27 +1,74 @@
 {
-	"heroname": "机械师",
-	"abilities": {
-		"thunder_power": {
+	"Heroname": "机械师",
+	"Abilities": {
+		"omniknight_0": {
 			"Name": "雷霆动力",
-			"Description": "使用以雷霆为动力的武器，能够发动雷霆之力毁灭敌人，有一定几率击晕目标，如果目标已经处于晕眩状态，则对其造成天罚。",
+			"Description": "使用以雷霆为动力的武器，能够发动雷霆之力毁灭敌人，有一定几率击晕目标，如果目标已经处于晕眩状态，则对其造成天罚。每次发动雷霆之力都会提升1点力量。",
 			"Lore": "",
 			"Note0": "该技能冷却时间不受减少冷却效果影响",
-			"AbilitySpecial" :{
-				"duration": "晕眩时间",
-				"rate": "%击晕几率",
-				"scale": "天罚伤害"
+			"AbilitySpecial": {
+				"stun_duration": "晕眩时间",
+				"chance": "%击晕几率",
+				"str_factor": "天罚力量伤害"
 			},
-			"Modifiers" :{
-				"modifier_thunder_strike": {
-					"name": "能量点数",
-					"Description": ""
+			"Modifiers": {
+				"modifier_omniknight_0": {
+					"Name": "雷霆动力",
+					"Description": "已获得%dMODIFIER_PROPERTY_STATS_STRENGTH_BONUS%点额外力量。"
+				}
+			}
+		},
+		"omniknight_1": {
+			"Name": "雷霆一击",
+			"Description": "瞬间集中雷电下击，造成大范围的伤害与晕眩。",
+			"AbilitySpecial": {
+				"base_damage": "基础伤害",
+				"str_factor": "力量伤害系数",
+				"radius": "影响范围",
+				"stun_duration": "晕眩时间",
+				"AbilityCharges": ""
+			},
+			"Modifiers": {}
+		},
+		"omniknight_2": {
+			"Name": "治疗装置",
+			"Description": "迅速组装一个治疗装置，回复周围友军的生命和魔法。治疗装置的生命与护甲取决于机械师的力量值。同时使得释放雷霆一击时有几率减少50%%充能时间，触发雷霆动力时有几率不进入冷却状态。",
+			"AbilitySpecial": {
+				"health_regen": "生命回复",
+				"mana_regen": "魔法回复",
+				"health_regen_regen": "%百分比生命回复",
+				"chance": "%刷新几率",
+				"duration": "持续时间",
+				"radius": "影响范围"
+			},
+			"Modifiers": {
+				"modifier_omniknight_2_aura": {
+					"Name": "治疗装置",
+					"Description": "提高了生命与魔法回复。"
+				}
+			}
+		},
+		"omniknight_3": {
+			"Name": "举重",
+			"Description": "熟练的使用重型武器，被动提升力量与攻速，使得每%%attack_count次攻击提升一点力量，提升雷霆动力被动击晕几率与天罚伤害系数。",
+			"AbilitySpecial": {
+				"bonus_attackspeed": "额外攻速",
+				"bonus_str": "额外力量",
+				"bonus_chance": "%额外击晕几率",
+				"bonus_str_factor": "额外天罚力量伤害系数",
+				"attack_count": ""
+			},
+			"Modifiers": {
+				"modifier_omniknight_3": {
+					"Name": "举重",
+					"Description": "已提升%dMODIFIER_PROPERTY_TOOLTIP%点力量。"
 				}
 			}
 		}
 	},
 	"Scepter": {
-		"item_npc_dota_hero_omniknight" :{
-			"name": "能量齿轮",
+		"item_npc_dota_hero_omniknight": {
+			"Name": "能量齿轮",
 			"Description": "<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：雷霆一击</h1>额外提供一点能量点\n<h1>二转：雷霆动力</h1>使天罚伤害变为300范围伤害\n<h1>三转：悬浮装置</h1>使得治疗装置能够移动并且每秒对范围内的随机三个敌方单位施放闪电链\n<h1>四转：闪电链</h1>使闪电链弹射三次\n作为一个机械师，没有什么比齿轮更有用的了",
 			"Lore": "这破齿轮"
 		}
