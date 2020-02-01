@@ -6,28 +6,6 @@ end
 function omniknight_3:GetIntrinsicModifierName()
 	return "modifier_omniknight_3"
 end
--- 天罚
-function omniknight_3:ThunderPower(hTarget)
-	local hCaster = self:GetCaster()
-	local damage = self:GetSpecialValueFor("str_factor") * hCaster:GetStrength()
-	if hTarget:IsStunned() then
-		local tDamageTable = {
-			ability = self,
-			victim = hTarget,
-			attacker = self:GetCaster(),
-			damage = damage,
-			damage_type = self:GetAbilityDamageType(),
-		}
-		ApplyDamage(tDamageTable)
-		-- particle
-		local particle = ParticleManager:CreateParticle("particles/heroes/mechanic/thunder_punish.vpcf", PATTACH_CUSTOMORIGIN, hTarget)
-		ParticleManager:SetParticleControl(particle, 0, hTarget:GetAbsOrigin() + Vector(0, 0, 5000))
-		ParticleManager:SetParticleControl(particle, 1, hTarget:GetAbsOrigin())
-		ParticleManager:SetParticleControl(particle, 3, hTarget:GetAbsOrigin())
-		-- sound
-		hTarget:EmitSound("Hero_Zuus.LightningBolt")
-	end
-end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_omniknight_3 == nil then

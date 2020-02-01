@@ -436,7 +436,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		-- 记录当前英雄
 		HERO_TABLE[playerID + 1] = heroEntity
 		-- 垃圾v社
-		local tpScroll = heroEntity:GetItemInSlot(16)
+		local tpScroll = heroEntity:GetItemInSlot(15)
 		if tpScroll then
 			if tpScroll:GetAbilityName() == "item_tpscroll" then
 				heroEntity:RemoveItem(tpScroll)

@@ -1,5 +1,5 @@
 {
-	"Heroname": "机械师",
+	"Heroname": "",
 	"Abilities": {
 		"omniknight_0": {
 			"Name": "雷霆动力",
@@ -62,6 +62,36 @@
 				"modifier_omniknight_3": {
 					"Name": "举重",
 					"Description": "已提升%dMODIFIER_PROPERTY_TOOLTIP%点力量。"
+				}
+			}
+		},
+		"omniknight_4": {
+			"Name": "风暴屏障",
+			"Description": "在周身制造极限的高压，增加雷霆动力的输出频率。提升自身的战斗能力并每秒对周围的敌方单位造成麻痹效果，麻痹时有一定几率触发闪电风暴在敌人之间跳跃。",
+			"AbilitySpecial": {
+				"palsy_radius": "麻痹影响范围",
+				"storm_str_damage": "闪电风暴力量伤害：",
+				"storm_jump_count": "闪电风暴跳跃次数：",
+				"storm_chance": "%闪电风暴触发几率：",
+				"storm_interval": "",
+				"bonus_attackspeed": "额外攻速：",
+				"bonus_movespeed": "额外移速：",
+				"bonus_resistance": "额外魔抗：",
+				"bonus_amp_percent": "%技能增强：",
+				"mana_cost": "每秒魔法消耗：",
+				"palsy_attackspeed": "麻痹攻速减少：",
+				"palsy_movespeed": "麻痹移速减少：",
+				"palsy_duration": "麻痹持续时间：",
+				"palsy_interval": "麻痹触发间隔："
+			},
+			"Modifiers": {
+				"modifier_omniknight_4": {
+					"Name": "风暴屏障",
+					"Description": "增加雷霆动力的输出频率"
+				},
+				"modifier_omniknight_4_debuff": {
+					"Name": "麻痹",
+					"Description": "减少攻速与移速。"
 				}
 			}
 		}

@@ -16,6 +16,7 @@ end
 -- 触发任务
 -- npc,物品,区域,时间,随机
 function QuestTriggerNpc( t )
+	PrintTable(t)
 	local npc = t.caster
 	local caster = t.target
 	local questCount = 0

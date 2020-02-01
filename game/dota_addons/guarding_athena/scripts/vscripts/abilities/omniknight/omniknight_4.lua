@@ -93,7 +93,7 @@ function modifier_omniknight_4:OnIntervalThink()
 			hUnit:AddNewModifier(hCaster, hAbility, "modifier_omniknight_4_debuff", {duration = self.palsy_duration * hUnit:GetStatusResistanceFactor()})
 		end
 		if hCaster:GetMana() < self.mana_cost then
-			hAbility:OnToggle()
+			hAbility:ToggleAbility()
 		end
 	end
 end

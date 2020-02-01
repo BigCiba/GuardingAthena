@@ -235,13 +235,13 @@ function GuardingAthena:ItemAddedFilter( keys )
 		local newItemName = "item_"..currentUnitName
 		local item = CreateItem(newItemName, currentUnit, currentUnit)
 		currentUnit:AddItem(item)
-		for i=0,15 do
-			local slotItem = currentUnit:GetItemInSlot(i)
-			if slotItem == item then
-				currentUnit:SwapItems(i,16)
-				item:ApplyDataDrivenModifier(currentUnit, currentUnit, "modifier_"..currentUnitName, {})
-			end
-		end
+		-- for i=0,15 do
+		-- 	local slotItem = currentUnit:GetItemInSlot(i)
+		-- 	if slotItem == item then
+		-- 		currentUnit:SwapItems(i,15)
+		-- 		item:ApplyDataDrivenModifier(currentUnit, currentUnit, "modifier_"..currentUnitName, {})
+		-- 	end
+		-- end
 		currentItem:RemoveSelf()
 		return false
 	elseif currentItemName == "item_ring_shop" then
