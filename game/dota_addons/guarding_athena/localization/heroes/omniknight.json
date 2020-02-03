@@ -1,5 +1,5 @@
 {
-	"Heroname": "",
+	"Heroname": "机械师",
 	"Abilities": {
 		"omniknight_0": {
 			"Name": "雷霆动力",
@@ -13,8 +13,8 @@
 			},
 			"Modifiers": {
 				"modifier_omniknight_0": {
-					"Name": "雷霆动力",
-					"Description": "已获得%dMODIFIER_PROPERTY_STATS_STRENGTH_BONUS%点额外力量。"
+					"Name": "",
+					"Description": ""
 				}
 			}
 		},
@@ -43,8 +43,8 @@
 			},
 			"Modifiers": {
 				"modifier_omniknight_2_aura": {
-					"Name": "治疗装置",
-					"Description": "提高了生命与魔法回复。"
+					"Name": "",
+					"Description": ""
 				}
 			}
 		},
@@ -60,8 +60,8 @@
 			},
 			"Modifiers": {
 				"modifier_omniknight_3": {
-					"Name": "举重",
-					"Description": "已提升%dMODIFIER_PROPERTY_TOOLTIP%点力量。"
+					"Name": "213",
+					"Description": ""
 				}
 			}
 		},
@@ -86,12 +86,12 @@
 			},
 			"Modifiers": {
 				"modifier_omniknight_4": {
-					"Name": "风暴屏障",
-					"Description": "增加雷霆动力的输出频率"
+					"Name": "",
+					"Description": ""
 				},
 				"modifier_omniknight_4_debuff": {
-					"Name": "麻痹",
-					"Description": "减少攻速与移速。"
+					"Name": "",
+					"Description": ""
 				}
 			}
 		}
@@ -99,7 +99,7 @@
 	"Scepter": {
 		"item_npc_dota_hero_omniknight": {
 			"Name": "能量齿轮",
-			"Description": "<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：雷霆一击</h1>额外提供一点能量点\n<h1>二转：雷霆动力</h1>使天罚伤害变为300范围伤害\n<h1>三转：悬浮装置</h1>使得治疗装置能够移动并且每秒对范围内的随机三个敌方单位施放闪电链\n<h1>四转：闪电链</h1>使闪电链弹射三次\n作为一个机械师，没有什么比齿轮更有用的了",
+			"Description": "<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%<h1>一转：雷霆一击</h1>额外提供一点能量点\n<h1>二转：雷霆动力</h1>使天罚伤害变为300范围伤害\n<h1>三转：悬浮装置</h1>使得治疗装置能够移动并且每秒对范围内的随机三个敌方单位施放闪电链\n<h1>四转：闪电链</h1>使闪电链弹射三次\n作为一个机械师，没有什么比齿轮更有用的了",
 			"Lore": "这破齿轮"
 		}
 	}
