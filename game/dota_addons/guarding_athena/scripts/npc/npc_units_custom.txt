@@ -1,4 +1,6 @@
 #base "kv/npc_enemy.kv"
+#base "kv/npc_special_enemy.kv"
+#base "kv/npc_nature.kv"
 
 "DOTAUnits"
 {
