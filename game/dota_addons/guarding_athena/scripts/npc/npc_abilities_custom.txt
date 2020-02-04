@@ -5542,7 +5542,27 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"10000 20000 30000 40000 50000"
+				"HPGain"	"50000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"DamageGain"	"2000"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ArmorGain"	"3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"MagicResistGain"	"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"MoveSpeedGain"	"2"
 			}
 		}
 	}

@@ -183,7 +183,12 @@ function SolarFire( keys )
     if caster:GetLevel() < 100 and caster:IsAlive() then
         local hp_percent = caster:GetHealthPercent() * 0.01 + 0.01
         --print(hp_percent)
-        caster:CreatureLevelUp(1)
+		caster:SetHPGain(ability:GetSpecialValueFor("HPGain"))
+		caster:SetDamageGain(ability:GetSpecialValueFor("DamageGain"))
+		caster:SetArmorGain(ability:GetSpecialValueFor("ArmorGain"))
+		caster:SetMagicResistanceGain(ability:GetSpecialValueFor("MagicResistGain"))
+		caster:SetMoveSpeedGain(ability:GetSpecialValueFor("MoveSpeedGain"))
+		caster:CreatureLevelUp(1)
         caster:SetModelScale(caster:GetModelScale() + 0.03)
         caster:SetHealth(caster:GetMaxHealth() * hp_percent)
     end
