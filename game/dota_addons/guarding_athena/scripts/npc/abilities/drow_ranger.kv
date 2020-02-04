@@ -38,7 +38,7 @@
 		"BaseClass"					"ability_lua"
 		"ScriptFile"				"abilities/drow_ranger/drow_ranger_0_2"
 		"AbilityTextureName"		"drow_ranger_0_2"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilitySpecial"
 		{
 			"01"
@@ -54,7 +54,7 @@
 		// -------------------------------------------------------------------------------------------------------------
 		"BaseClass"	"ability_lua"
 		"AbilityTextureName"	"drow_ranger_1_1"
-		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"ScriptFile"	"abilities/drow_ranger/drow_ranger_1_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -146,10 +146,10 @@
 	{
 		// General
 		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"abilities/drow_ranger/drow_ranger_1_2"
 		"AbilityTextureName"	"drow_ranger_1_2"
-		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"

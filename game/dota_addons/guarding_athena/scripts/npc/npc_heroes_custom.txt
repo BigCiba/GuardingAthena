@@ -148,8 +148,8 @@
 		"Ability5"	"arrow_strom"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1800"
-		"Ability6"	""
-		"Ability7"	""
+		"Ability6"	"drow_ranger_0_2"
+		"Ability7"	"drow_ranger_1_2"
 		"Ability8"	""
 		"Ability9"	""
 		"Ability10"	""
