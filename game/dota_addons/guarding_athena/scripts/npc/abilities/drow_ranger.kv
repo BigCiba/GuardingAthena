@@ -1,0 +1,179 @@
+"drow_ranger"
+{
+	"drow_ranger_0_1"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/drow_ranger/drow_ranger_0_1"
+		"AbilityTextureName"		"drow_ranger_frost_arrows"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agi_damage"	"5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"delay"		"0.5"
+			}
+		}
+	}
+	"drow_ranger_0_2"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/drow_ranger/drow_ranger_0_2"
+		"AbilityTextureName"		"drow_ranger_0_2"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"agi_factor"		"5"
+			}
+		}
+	}
+	"drow_ranger_1_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"drow_ranger_1_1"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCooldown"	"8"
+		"AbilityManaCost"	"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
+		"AbilityCastRange"	"1200"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+			"particle"	"particles/heroes/oracle/oracle_1_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agility_damage"	"1.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed_reduce"	"30"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_duration"	"1.5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"collision_radius"	"50"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"splash_radius"	"150"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"900"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"arrows_per_sec"	"24"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1000"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"15"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cooldown"	"3"
+			}
+		}
+	}
+
+	"drow_ranger_1_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"drow_ranger_1_2"
+		"ScriptFile"	"ability_hero/drow_ranger/drow_ranger_1_1"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HotKeyOverride"	"Q"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"8"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"1200"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+		}
+	}
+}
