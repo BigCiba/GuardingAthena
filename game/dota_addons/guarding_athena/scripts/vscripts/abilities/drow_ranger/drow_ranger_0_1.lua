@@ -7,8 +7,10 @@ function drow_ranger_0_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	hCaster:SwapAbilities("drow_ranger_0_1", "drow_ranger_0_2", false, true)
 	hCaster:SwapAbilities("drow_ranger_1_1", "drow_ranger_1_2", false, true)
+	hCaster:SwapAbilities("drow_ranger_3_1", "drow_ranger_3_2", false, true)
 	hCaster:FindAbilityByName("drow_ranger_0_2"):SetLevel(1)
 	hCaster:FindAbilityByName("drow_ranger_1_2"):SetLevel(hCaster:FindAbilityByName("drow_ranger_1_1"):GetLevel())
+	hCaster:FindAbilityByName("drow_ranger_3_2"):SetLevel(hCaster:FindAbilityByName("drow_ranger_3_1"):GetLevel())
 end
 function drow_ranger_0_1:GetIntrinsicModifierName()
 	return "modifier_drow_ranger_0_1"
@@ -41,6 +43,7 @@ function modifier_drow_ranger_0_1:OnCreated(params)
 	self.radius = self:GetAbility():GetSpecialValueFor("radius")
 	self.delay = self:GetAbility():GetSpecialValueFor("delay")
 	self.chance = self:GetAbility():GetSpecialValueFor("chance")
+	self.agi_damage_increase = self:GetAbility():GetSpecialValueFor("agi_damage_increase")
 	if IsServer() then
 	end
 end
@@ -49,6 +52,7 @@ function modifier_drow_ranger_0_1:OnRefresh(params)
 	self.radius = self:GetAbility():GetSpecialValueFor("radius")
 	self.delay = self:GetAbility():GetSpecialValueFor("delay")
 	self.chance = self:GetAbility():GetSpecialValueFor("chance")
+	self.agi_damage_increase = self:GetAbility():GetSpecialValueFor("agi_damage_increase")
 	if IsServer() then
 	end
 end
@@ -68,6 +72,7 @@ function modifier_drow_ranger_0_1:OnAttackLanded(params)
 			local hTarget = params.target
 			local hAbility = self:GetAbility()
 			if RollPercentage(self.chance) then
+				self:IncrementStackCount()
 				local tTargets = FindUnitsInRadius(hParent:GetTeamNumber(), hTarget:GetAbsOrigin(), hParent, self.radius, hAbility:GetAbilityTargetTeam(), hAbility:GetAbilityTargetType(),  hAbility:GetAbilityTargetFlags(), FIND_ANY_ORDER, true)
 				for _, hUnit in pairs(tTargets) do
 					local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf", PATTACH_ABSORIGIN, hParent)
@@ -77,7 +82,7 @@ function modifier_drow_ranger_0_1:OnAttackLanded(params)
 					local tDamageTable = {
 						ability = hAbility,
 						attacker = hParent,
-						damage = self.agi_damage * hParent:GetAgility(),
+						damage = (self.agi_damage + (self:GetStackCount() * self.agi_damage_increase)) * hParent:GetAgility(),
 						damage_type = hAbility:GetAbilityDamageType(),
 					}
 					for _, hUnit in pairs(tTargets) do

@@ -7,15 +7,20 @@ function drow_ranger_1_2:OnSpellStart()
 	self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_drow_ranger_1_2", {duration = 4})
 end
 function drow_ranger_1_2:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
+	local hAbility = self:GetCaster():FindAbilityByName("drow_ranger_3_2")
+	local attack_factor = self:GetSpecialValueFor("attack_factor") * self:GetLevel()
 	if IsValid(hTarget) then
 		local tDamageTable = {
 			ability = self,
 			attacker = self:GetCaster(),
 			victim = hTarget,
-			damage = self:GetCaster():GetAverageTrueAttackDamage(hTarget),
+			damage = self:GetCaster():GetAverageTrueAttackDamage(hTarget) * attack_factor,
 			damage_type = self:GetAbilityDamageType(),
 		}
 		ApplyDamage(tDamageTable)
+		if hAbility:GetLevel() > 0 then
+			hAbility:Trigger(hTarget)
+		end
 	end
 end
 ---------------------------------------------------------------------
@@ -42,6 +47,8 @@ function modifier_drow_ranger_1_2:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_1_2:OnCreated(params)
+	self.count = self:GetAbility():GetSpecialValueFor("count")
+	self.interval = self:GetAbility():GetSpecialValueFor("interval")
 	if IsServer() then
 	end
 end
@@ -55,25 +62,25 @@ function modifier_drow_ranger_1_2:OnDestroy()
 end
 function modifier_drow_ranger_1_2:DeclareFunctions()
 	return {
-		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		MODIFIER_EVENT_ON_ATTACK,
 	}
 end
-function modifier_drow_ranger_1_2:OnAttackLanded(params)
+function modifier_drow_ranger_1_2:OnAttack(params)
 	if IsServer() then
 		if self:GetParent() == params.attacker and not self:GetAbility():IsHidden() then
 			local hAbility = self:GetAbility()
-			ForWithInterval(4,0.3,function (  )
+			ForWithInterval(self.count, self.interval, function ()
 				local info = {
 					Target = params.target,
 					-- Source = params.attacker,
 					Ability = hAbility,
-					EffectName = "particles/econ/items/clinkz/clinkz_maraxiform/clinkz_maraxiform_searing_arrow_deso.vpcf",
+					EffectName = "particles/heroes/drow_ranger/drow_ranger_0_2.vpcf",
 					bDodgeable = false,
 					bProvidesVision = false,
-					iMoveSpeed = 900,
+					iMoveSpeed = params.attacker:GetProjectileSpeed(),
 					iVisionRadius = 0,
 					iVisionTeamNumber = params.attacker:GetTeamNumber(),
-					vSourceLoc= params.attacker:GetAbsOrigin() + Vector(RandomInt(-200, 200),RandomInt(0, 200),0),
+					vSourceLoc= params.attacker:GetAbsOrigin() + Vector(RandomInt(-200, 200),RandomInt(-200, 200),RandomInt(0, 120)),
 				}
 				if params.target:IsAlive() then
 					ProjectileManager:CreateTrackingProjectile( info )

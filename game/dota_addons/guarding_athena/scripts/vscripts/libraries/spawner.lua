@@ -217,7 +217,7 @@ function Spawner:UnitProperty( unit,factor )
 	--unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * unitArmorFactor)
 	-- 精英怪
 	--if self.difficulty >= 3 and self.gameRound > 3 and unit:GetUnitName() == "guai_"..self.gameRound then
-	if self.difficulty >= 3 and unit:GetUnitName() == "guai_"..self.gameRound then
+	if self.difficulty >= 3 and unit:GetUnitName() == "wave_"..self.gameRound then
 		if RollPercentage(self.difficulty * 2) then
 			unit:AddAbility("elite")
 		end

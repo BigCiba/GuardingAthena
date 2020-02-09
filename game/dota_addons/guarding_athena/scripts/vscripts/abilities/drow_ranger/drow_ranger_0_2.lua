@@ -7,7 +7,9 @@ function drow_ranger_0_2:OnSpellStart()
 	local hCaster = self:GetCaster()
     hCaster:SwapAbilities("drow_ranger_0_2", "drow_ranger_0_1", false, true)
     hCaster:SwapAbilities("drow_ranger_1_2", "drow_ranger_1_1", false, true)
+    hCaster:SwapAbilities("drow_ranger_3_2", "drow_ranger_3_1", false, true)
 	hCaster:FindAbilityByName("drow_ranger_1_1"):SetLevel(hCaster:FindAbilityByName("drow_ranger_1_2"):GetLevel())
+	hCaster:FindAbilityByName("drow_ranger_3_1"):SetLevel(hCaster:FindAbilityByName("drow_ranger_3_2"):GetLevel())
 end
 function drow_ranger_0_2:GetIntrinsicModifierName()
 	return "modifier_drow_ranger_0_2"
@@ -37,11 +39,13 @@ function modifier_drow_ranger_0_2:AllowIllusionDuplicate()
 end
 function modifier_drow_ranger_0_2:OnCreated(params)
 	self.agi_factor = self:GetAbility():GetSpecialValueFor("agi_factor")
+	self.bonus_attack_range = self:GetAbility():GetSpecialValueFor("bonus_attack_range")
 	if IsServer() then
 	end
 end
 function modifier_drow_ranger_0_2:OnRefresh(params)
 	self.agi_factor = self:GetAbility():GetSpecialValueFor("agi_factor")
+	self.bonus_attack_range = self:GetAbility():GetSpecialValueFor("bonus_attack_range")
 	if IsServer() then
 	end
 end
@@ -53,6 +57,7 @@ function modifier_drow_ranger_0_2:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_PROPERTY_PROJECTILE_NAME,
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
 	}
 end
 function modifier_drow_ranger_0_2:GetModifierPreAttack_BonusDamage()
@@ -64,6 +69,11 @@ function modifier_drow_ranger_0_2:GetModifierPreAttack_BonusDamage()
 end
 function modifier_drow_ranger_0_2:GetModifierProjectileName()
 	if self:GetStackCount() > 0 then
-		return "particles/econ/items/clinkz/clinkz_maraxiform/clinkz_maraxiform_searing_arrow_deso.vpcf"
+		return "particles/heroes/drow_ranger/drow_ranger_0_2.vpcf"
+	end
+end
+function modifier_drow_ranger_0_2:GetModifierAttackRangeBonus()
+	if self:GetStackCount() > 0 then
+		return self.bonus_attack_range
 	end
 end

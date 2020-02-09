@@ -9,12 +9,16 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"precache"
+		{
+			"particle"	"particles/heroes/drow_ranger/drow_ranger_0_1.vpcf"
+		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"chance"	"15"
+				"chance"	"25"
 			}
 			"02"
 			{
@@ -31,6 +35,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"delay"		"0.5"
 			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agi_damage_increase"		"0.01"
+			}
 		}
 	}
 	"drow_ranger_0_2"
@@ -39,12 +48,21 @@
 		"ScriptFile"				"abilities/drow_ranger/drow_ranger_0_2"
 		"AbilityTextureName"		"drow_ranger_0_2"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"precache"
+		{
+			"particle"	"particles/heroes/drow_ranger/drow_ranger_0_2.vpcf"
+		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
 				"agi_factor"		"5"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attack_range"		"550"
 			}
 		}
 	}
@@ -109,11 +127,6 @@
 				"var_type"	"FIELD_INTEGER"
 				"collision_radius"	"50"
 			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"splash_radius"	"150"
-			}
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
@@ -122,7 +135,7 @@
 			"10"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"arrows_per_sec"	"24"
+				"arrows_per_sec"	"16"
 			}
 			"11"
 			{
@@ -149,30 +162,143 @@
 		"BaseClass"	"ability_lua"
 		"ScriptFile"	"abilities/drow_ranger/drow_ranger_1_2"
 		"AbilityTextureName"	"drow_ranger_1_2"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"HotKeyOverride"	"Q"
 		"MaxLevel"	"20"
 		"RequiredLevel"	"1"
 		"LevelsBetweenUpgrades"	"3"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"8"
-		// Cost
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"	"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"	"1200"
+		"AbilityCooldown"	"12"
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"count"		"4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_factor"	"0.25"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"interval"	"0.3"
+			}
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
 				"duration"	"4"
+			}
+		}
+	}
+	"drow_ranger_3_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"abilities/drow_ranger/drow_ranger_3_1"
+		"AbilityTextureName"	"drow_ranger_marksmanship"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agi_damage"	"1.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed_reduce"	"-10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_duration"	"3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"require_count"	"8"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"curse_duration"	"2"
+			}
+		}
+	}
+	"drow_ranger_3_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"drow_ranger_3_2"
+		"ScriptFile"	"abilities/drow_ranger/drow_ranger_3_2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"20"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"3"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agi_damage"	"0.1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"extra_agi_damage"	"4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"require_count"	"30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agi_percent"	"40"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"debuff_duration"	"3"
 			}
 		}
 	}

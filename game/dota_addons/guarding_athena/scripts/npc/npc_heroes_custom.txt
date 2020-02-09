@@ -138,7 +138,7 @@
 		// 智力成长
 		"AttributeIntelligenceGain"	"2.1"
 		"AttackRate"	"1.65"
-		"AttackRange"	"550"
+		"AttackRange"	"650"
 		"AbilityLayout"	"5"
 		// Ability 1
 		"Ability1"	"drow_ranger_0_1"
@@ -151,7 +151,7 @@
 		"Ability6"	"drow_ranger_0_2"
 		"Ability7"	"drow_ranger_1_2"
 		"Ability8"	""
-		"Ability9"	""
+		"Ability9"	"drow_ranger_3_2"
 		"Ability10"	""
 		"Ability11"	""
 		"Ability12"	""
@@ -173,6 +173,7 @@
 		"ArmorPhysical"	"0.38"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"	"particles/heroes/drow_ranger/drow_ranger_0_1.vpcf"
 		"ProjectileSpeed"	"900"
 	}
 

@@ -6,55 +6,45 @@ LinkLuaModifier("modifier_drow_ranger_1_1_debuff", "abilities/drow_ranger/drow_r
 if drow_ranger_1_1 == nil then
 	drow_ranger_1_1 = class({})
 end
-function drow_ranger_1_1:OnSpellStart()
-	local vPosition = self:GetCursorPosition()
-	self:OnTrigger(vPosition)
-end
-function drow_ranger_1_1:ColdArrow(hTarget)
+function drow_ranger_1_1:OnSpellStart(vPosition)
 	local hCaster = self:GetCaster()
-	local hAbility = hCaster:FindAbilityByName("drow_ranger_3_1")
-	local duration = hAbility:GetSpecialValueFor("duration")
-	local curse_duration = hAbility:GetSpecialValueFor("curse_duration")
-	local require_count = hAbility:GetSpecialValueFor("require_count")
-	AddModifierStackCount(hCaster,hTarget,hAbility,"modifier_drow_ranger_3_1_movespeed",1,duration)
-	if hTarget:GetModifierStackCount("modifier_drow_ranger_3_1_movespeed", hCaster) >= require_count then
-		hTarget:RemoveModifierByName("modifier_drow_ranger_3_1_movespeed")
-		hAbility:ApplyDataDrivenModifier(hCaster, hTarget, "modifier_drow_ranger_3_1_freeze", {duration = curse_duration})
-	end
-end
-function drow_ranger_1_1:OnTrigger(vPosition)
+	local vPosition = vPosition or self:GetCursorPosition()
 	local duration = self:GetSpecialValueFor("duration")
-
-	local hCaster = self:GetCaster()
-	local vCasterPosition = hCaster:GetAbsOrigin()
-
-	local vDirection = vPosition - vCasterPosition
+	local vDirection = vPosition - hCaster:GetAbsOrigin()
 	vDirection.z = 0
 	vDirection = vDirection:Normalized()
-
 	if vDirection == Vector(0, 0, 0) then
 		vDirection = hCaster:GetForwardVector()
 	end
-
 	CreateModifierThinker(hCaster, self, "modifier_drow_ranger_1_1_thinker", {
 		duration = duration,
 		direction_x = vDirection.x,
 		direction_y = vDirection.y,
 		direction_z = vDirection.z,
 	}, vPosition, hCaster:GetTeamNumber(), false)
-
 end
 function drow_ranger_1_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	if hTarget ~= nil then
 		local hCaster = self:GetCaster()
 		local duration = self:GetSpecialValueFor("reduce_duration")
 		local damage = self:GetSpecialValueFor("base_damage") * self:GetLevel() + self:GetSpecialValueFor("agility_damage") * hCaster:GetAgility() * self:GetLevel()
-		local splash_radius = self:GetSpecialValueFor("damsplash_radiusage")
-		local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), hTarget:GetAbsOrigin(), nil, splash_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC+DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
-		for n, hUnit in pairs(tTargets) do
-			CauseDamage(hCaster,hUnit,damage,self:GetAbilityDamageType(),self)
-			self:ColdArrow(hUnit)
-			hUnit:AddNewModifier(hCaster, self, "modifier_drow_ranger_1_1_debuff", {duration=duration})
+		if hTarget:HasModifier("modifier_drow_ranger_3_1_freeze") then
+			damage = damage + hCaster:FindAbilityByName("drow_ranger_3_1"):GetBonusDamage()
+		end
+		-- local reduce_duration = hCaster:FindAbilityByName("drow_ranger_3_1"):GetSpecialValueFor("reduce_duration")
+		hTarget:AddNewModifier(hCaster, self, "modifier_drow_ranger_1_1_debuff", {duration = duration})
+		-- hTarget:AddNewModifier(hCaster, hCaster:FindAbilityByName("drow_ranger_3_1"), "modifier_drow_ranger_3_1_slow", {duration = reduce_duration})
+		local tDamageTable = {
+			ability = self,
+			attacker = hCaster,
+			victim = hTarget,
+			damage = damage,
+			damage_type = self:GetAbilityDamageType(),
+		}
+		ApplyDamage(tDamageTable)
+		local hAbility = self:GetCaster():FindAbilityByName("drow_ranger_3_1")
+		if hAbility:GetLevel() > 0 then
+			hAbility:Trigger(hTarget)
 		end
 		return false
 	end
@@ -102,7 +92,7 @@ function modifier_drow_ranger_1_1:DeclareFunctions()
 end
 function modifier_drow_ranger_1_1:OnAttackLanded(params)
 	if params.attacker == self:GetParent() and self:GetAbility():IsCooldownReady() and not self:GetAbility():IsHidden() and RollPercentage(self.chance) then
-		self:GetAbility():OnTrigger(params.target:GetAbsOrigin())
+		self:GetAbility():OnSpellStart(params.target:GetAbsOrigin())
 		self:GetAbility():StartCooldown(self.cooldown)
 	end
 end
@@ -137,12 +127,11 @@ function modifier_drow_ranger_1_1_thinker:OnCreated(params)
 	self.damage = self:GetAbility():GetSpecialValueFor("damage")
 	if IsServer() then
 		self.vDirection = Vector(params.direction_x, params.direction_y, params.direction_z)
-		self:StartIntervalThink(1/self.arrows_per_sec)
+		self:StartIntervalThink(1 / self.arrows_per_sec)
 	end
 end
 function modifier_drow_ranger_1_1_thinker:OnDestroy()
 	if IsServer() then
-		self:GetParent():StopSound(self.sSoundName)
 		self:GetParent():RemoveSelf()
 	end
 end
@@ -158,9 +147,9 @@ function modifier_drow_ranger_1_1_thinker:OnIntervalThink()
 		local tInfo = {
 			Ability = hAbility,
 			Source = hCaster,
-			EffectName = "particles/heroes/drow_ranger/arrow.vpcf",
+			EffectName = "particles/heroes/drow_ranger/drow_ranger_1_1.vpcf",
 			vSpawnOrigin = vStartPosition,
-			vVelocity = self.vDirection*self.speed,
+			vVelocity = self.vDirection * self.speed,
 			fDistance = self.distance,
 			fStartRadius = self.collision_radius,
 			fEndRadius = self.collision_radius,
@@ -191,7 +180,7 @@ function modifier_drow_ranger_1_1_debuff:IsDebuff()
 	return true
 end
 function modifier_drow_ranger_1_1_debuff:IsPurgable()
-	return false
+	return true
 end
 function modifier_drow_ranger_1_1_debuff:IsPurgeException()
 	return false
