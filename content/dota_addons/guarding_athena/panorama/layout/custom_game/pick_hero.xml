@@ -104,7 +104,7 @@
 					<Panel class="HeroListRow">
 					<!--英雄头像列表-->
 						<!--蓝色文字面板类，用来显示文字：选择英雄-->
-						<DOTAHeroMovie id="npc_dota_hero_drow_ranger" class="HeroCard" heroname="npc_dota_hero_drow_ranger"/>
+						<!-- <DOTAHeroMovie id="npc_dota_hero_drow_ranger" class="HeroCard" heroname="npc_dota_hero_drow_ranger"/> -->
 					</Panel>
 				</Panel>
 				<Panel class="BottomHorizonLine" tabindex="auto" />

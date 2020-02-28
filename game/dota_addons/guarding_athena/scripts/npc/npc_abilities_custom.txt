@@ -1,5 +1,5 @@
-#base "abilities/omniknight.kv"
-#base "abilities/drow_ranger.kv"
+#base "abilities/heroes/omniknight.kv"
+#base "abilities/heroes/drow_ranger.kv"
 
 "DOTAAbilities"
 {

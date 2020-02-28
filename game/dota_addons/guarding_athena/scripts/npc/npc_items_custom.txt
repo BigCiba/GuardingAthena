@@ -1,5 +1,4 @@
-// Dota2 Editor
-// Get latest version: https://github.com/zombieJ/nw-dota2editor
+#base "abilities/items/deputy.kv"
 
 "DOTAAbilities"
 {
@@ -9412,559 +9411,6 @@
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
-	"item_dun_1"
-	{
-		// Common
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_dun_1"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
-		// Item
-		"ID"	"1572"
-		"ItemQuality"	"epic"
-		"ItemCastOnPickup"	"0"
-		"ItemCost"	"8000"
-		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemKillable"	"1"
-		"ItemAlertable"	"0"
-		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_dun_1"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%damage_block"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"15"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"10"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"40"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"5000"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"1500"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_dun_2"
-	{
-		// Common
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_dun_2"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
-		// Item
-		"ID"	"1580"
-		"ItemQuality"	"epic"
-		"ItemCastOnPickup"	"0"
-		"ItemCost"	"8000"
-		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemKillable"	"1"
-		"ItemAlertable"	"0"
-		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_dun_2"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%damage_block"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"10"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"30"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"15"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"80"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"8000"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"1500"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_dun_3"
-	{
-		// Common
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_dun_3"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
-		// Item
-		"ID"	"1581"
-		"ItemQuality"	"epic"
-		"ItemCastOnPickup"	"0"
-		"ItemCost"	"8000"
-		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemKillable"	"1"
-		"ItemAlertable"	"0"
-		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_dun_3"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%damage_block"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"15"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"45"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"20"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"160"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"12000"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"1500"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_dun_4"
-	{
-		// Common
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_dun_4"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
-		// Item
-		"ID"	"1582"
-		"ItemQuality"	"epic"
-		"ItemCastOnPickup"	"0"
-		"ItemCost"	"8000"
-		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemKillable"	"1"
-		"ItemAlertable"	"0"
-		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_dun_4"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%damage_block"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"20"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"60"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"25"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"320"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"17000"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"1500"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_dun_5"
-	{
-		// Common
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_dun_5"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"60"
-		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
-		// Item
-		"ID"	"1583"
-		"ItemQuality"	"epic"
-		"ItemCastOnPickup"	"0"
-		"ItemCost"	"8000"
-		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemKillable"	"1"
-		"ItemAlertable"	"0"
-		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"10"
-				"ModifierName"	"modifier_item_dun_buff"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_dun_5"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_resistance"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%damage_block"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-			"modifier_item_dun_buff"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"	"1"
-				}
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_block"	"25"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"75"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_resistance"	"30"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"500"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"25000"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"1500"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"08"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"15"
-			}
-			"09"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-		"ActiveDescriptionLine"	"1"
-	}
-
 	"item_craft_dun"
 	{
 		// Common
@@ -10110,114 +9556,33 @@
 	"item_fu_1"
 	{
 		// Common
-		"BaseClass"	"item_datadriven"
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_fu"
 		"AbilityTextureName"	"item_fu_1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
 		// Item
 		"ID"	"1589"
 		"ItemQuality"	"epic"
-		"ItemCastOnPickup"	"0"
 		"ItemCost"	"8000"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"1"
 		"ItemAlertable"	"0"
-		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
 		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
 			"particle"	"particles/items_fx/battlefury_cleave.vpcf"
+			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
 			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-		}
-		"Modifiers"
-		{
-			"modifier_item_fu_1"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_item_fu_cleave"
-						"Target"	"CASTER"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"MeleeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_fu_cleave"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"OnFuDestory"
-					}
-				}
-			}
-			"modifier_item_fu_cleave"
-			{
-				"OnAttackLanded"
-				{
-					"CleaveAttack"
-					{
-						"CleavePercent"	"0"
-						"CleaveRadius"	"%cleave_radius"
-						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
-					}
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"DOTA_Item.BattleFury"
-					}
-					"RunScript"
-					{
-						"Function"	"Cleave"
-						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
-						"damage"	"%attack_damage"
-					}
-				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-			}
 		}
 		"AbilitySpecial"
 		{
@@ -10234,7 +9599,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cleave_radius"	"180"
+				"cleave_radius"	"200"
 			}
 			"04"
 			{
@@ -10266,27 +9631,32 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_chance"	"15"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_percent"	"25"
+			}
 		}
-		"InvalidHeroes"	"npc_dota_hero_rubick"
 	}
 
 	"item_fu_2"
 	{
 		// Common
-		"BaseClass"	"item_datadriven"
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_fu"
 		"AbilityTextureName"	"item_fu_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
 		// Item
 		"ID"	"1590"
 		"ItemQuality"	"epic"
@@ -10296,91 +9666,15 @@
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"1"
 		"ItemAlertable"	"0"
 		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
 			"particle"	"particles/items_fx/battlefury_cleave.vpcf"
+			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
 			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-		}
-		"Modifiers"
-		{
-			"modifier_item_fu_2"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_item_fu_cleave"
-						"Target"	"CASTER"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"MeleeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_fu_cleave"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"OnFuDestory"
-					}
-				}
-			}
-			"modifier_item_fu_cleave"
-			{
-				"OnAttackLanded"
-				{
-					"CleaveAttack"
-					{
-						"CleavePercent"	"0"
-						"CleaveRadius"	"%cleave_radius"
-						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
-					}
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"DOTA_Item.BattleFury"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
-						"Function"	"Cleave"
-						"damage"	"%attack_damage"
-					}
-				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-			}
 		}
 		"AbilitySpecial"
 		{
@@ -10397,7 +9691,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cleave_radius"	"220"
+				"cleave_radius"	"280"
 			}
 			"04"
 			{
@@ -10429,26 +9723,32 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_chance"	"15"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_percent"	"30"
+			}
 		}
 	}
 
 	"item_fu_3"
 	{
 		// Common
-		"BaseClass"	"item_datadriven"
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_fu"
 		"AbilityTextureName"	"item_fu_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
 		// Item
 		"ID"	"1591"
 		"ItemQuality"	"epic"
@@ -10458,91 +9758,14 @@
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"1"
 		"ItemAlertable"	"0"
 		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
 			"particle"	"particles/items_fx/battlefury_cleave.vpcf"
+			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
 			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-		}
-		"Modifiers"
-		{
-			"modifier_item_fu_3"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_item_fu_cleave"
-						"Target"	"CASTER"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"MeleeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_fu_cleave"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"OnFuDestory"
-					}
-				}
-			}
-			"modifier_item_fu_cleave"
-			{
-				"OnAttackLanded"
-				{
-					"CleaveAttack"
-					{
-						"CleavePercent"	"0"
-						"CleaveRadius"	"%cleave_radius"
-						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
-					}
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"DOTA_Item.BattleFury"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
-						"Function"	"Cleave"
-						"damage"	"%attack_damage"
-					}
-				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-			}
 		}
 		"AbilitySpecial"
 		{
@@ -10559,7 +9782,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cleave_radius"	"260"
+				"cleave_radius"	"340"
 			}
 			"04"
 			{
@@ -10591,26 +9814,32 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_chance"	"15"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_percent"	"35"
+			}
 		}
 	}
 
 	"item_fu_4"
 	{
 		// Common
-		"BaseClass"	"item_datadriven"
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_fu"
 		"AbilityTextureName"	"item_fu_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
 		// Item
 		"ID"	"1592"
 		"ItemQuality"	"epic"
@@ -10620,91 +9849,15 @@
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"1"
 		"ItemAlertable"	"0"
 		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
 			"particle"	"particles/items_fx/battlefury_cleave.vpcf"
+			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
 			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-		}
-		"Modifiers"
-		{
-			"modifier_item_fu_4"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_item_fu_cleave"
-						"Target"	"CASTER"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"MeleeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_fu_cleave"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"OnFuDestory"
-					}
-				}
-			}
-			"modifier_item_fu_cleave"
-			{
-				"OnAttackLanded"
-				{
-					"CleaveAttack"
-					{
-						"CleavePercent"	"0"
-						"CleaveRadius"	"%cleave_radius"
-						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
-					}
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"DOTA_Item.BattleFury"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
-						"Function"	"Cleave"
-						"damage"	"%attack_damage"
-					}
-				}
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-			}
 		}
 		"AbilitySpecial"
 		{
@@ -10721,7 +9874,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cleave_radius"	"300"
+				"cleave_radius"	"420"
 			}
 			"04"
 			{
@@ -10753,27 +9906,33 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_chance"	"15"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_percent"	"40"
+			}
 		}
 	}
 
 	"item_fu_5"
 	{
 		// Common
-		"BaseClass"	"item_datadriven"
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_fu"
 		"AbilityTextureName"	"item_fu_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"60"
 		"AbilityManaCost"	"0"
-		"AbilityCastRange"	"0"
-		"AbilityCastRangeBuffer"	"0"
 		// Item
 		"ID"	"1593"
 		"ItemQuality"	"epic"
@@ -10783,155 +9942,15 @@
 		"ItemSellable"	"1"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 		"ItemPurchasable"	"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemKillable"	"1"
 		"ItemAlertable"	"0"
 		"ItemStackable"	"0"
-		"ItemShopTags"	"damage;unique"
-		"ItemAliases"	"desolator"
-		"ItemRecipe"	"0"
-		"ItemRequirements"	{}
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"precache"
 		{
 			"particle"	"particles/items_fx/battlefury_cleave.vpcf"
+			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
 			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-			"particle"	"particles/items_fx/battlefury_cleave.vpcf"
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_item_fu_buff"
-				"Duration"	"10"
-			}
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_item_fu_cleave"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_fu_5"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"AllowIllusionDuplicate"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-				}
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_item_fu_cleave"
-						"Target"	"CASTER"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"MeleeCheck"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_fu_cleave"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"OnFuDestory"
-					}
-				}
-			}
-			"modifier_item_fu_cleave"
-			{
-				"OnAttackLanded"
-				{
-					"CleaveAttack"
-					{
-						"CleavePercent"	"0"
-						"CleaveRadius"	"%cleave_radius"
-						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
-					}
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"DOTA_Item.BattleFury"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
-						"Function"	"Cleave"
-						"damage"	"%attack_damage"
-					}
-				}
-				"IsHidden"	"1"
-			}
-			"modifier_item_fu_buff"
-			{
-				"OnAttackLanded"
-				{
-					"CleaveAttack"
-					{
-						"CleavePercent"	"0"
-						"CleaveRadius"	"680"
-						"CleaveEffect"	"particles/items_fx/battlefury_cleave.vpcf"
-					}
-					"FireSound"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"DOTA_Item.BattleFury"
-					}
-					"ApplyModifier"
-					{
-						"Target"	"TARGET"
-						"ModifierName"	"modifier_item_fu_debuff"
-						"Duration"	"3"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/fu.lua"
-						"Function"	"Cleave"
-						"cleave_radius"	"680"
-						"cleave_percent"	"700"
-						"damage"	"%attack_damage"
-					}
-				}
-				"IsHidden"	"0"
-				"OnDestroy"
-				{
-					"ApplyModifier"
-					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_item_fu_cleave"
-					}
-				}
-				"TextureName"	"item_fu_5"
-			}
-			"modifier_item_fu_debuff"
-			{
-				"IsDebuff"	"1"
-				"States"
-				{
-					"MODIFIER_STATE_SOFT_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
 		}
 		"AbilitySpecial"
 		{
@@ -10948,7 +9967,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cleave_radius"	"340"
+				"cleave_radius"	"500"
 			}
 			"04"
 			{
@@ -10980,6 +9999,16 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_attack_speed"	"150"
 			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_chance"	"15"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"waist_cut_percent"	"50"
+			}
 		}
 	}
 
@@ -10990,9 +10019,6 @@
 		"AbilityTextureName"	"item_craft_fu"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"	"4"
-		"RequiredLevel"	"1"
-		"LevelsBetweenUpgrades"	"2"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
@@ -11936,545 +10962,6 @@
 			"01"	"item_chui_4;item_baoshi_5;item_craft_chui"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
-	}
-
-	"item_shu_1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_shu_1"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		// Valve's version of this item uses the ID "145".
-		"ID"	"1609"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4350"
-		"ItemSellable"	"0"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_shu_1"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-			"modifier_item_shu_1_cooldown"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemoveCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-			}
-		}
-		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown_reduce"	"10"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"40"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"3000"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"2000"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"20"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_shu_2"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_shu_2"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		// Valve's version of this item uses the ID "145".
-		"ID"	"1610"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4350"
-		"ItemSellable"	"0"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_shu_2"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-			"modifier_item_shu_2_cooldown"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemoveCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-			}
-		}
-		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown_reduce"	"15"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"80"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"3000"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"3000"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"30"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_shu_3"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_shu_3"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		// Valve's version of this item uses the ID "145".
-		"ID"	"1611"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4350"
-		"ItemSellable"	"0"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_shu_3"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-			"modifier_item_shu_3_cooldown"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemoveCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-			}
-		}
-		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown_reduce"	"20"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"160"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"3000"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"4500"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"45"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_shu_4"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_shu_4"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		// Valve's version of this item uses the ID "145".
-		"ID"	"1612"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4350"
-		"ItemSellable"	"0"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_item_shu_4"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-			"modifier_item_shu_4_cooldown"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemoveCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-			}
-		}
-		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown_reduce"	"25"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"320"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"3000"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"6500"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"65"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
-	}
-
-	"item_shu_5"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_shu_5"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCooldown"	"60"
-		// Valve's version of this item uses the ID "145".
-		"ID"	"1613"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4350"
-		"ItemSellable"	"0"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemPurchasable"	"1"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_item.lua"
-				"Function"	"jiancd4"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_item_shu_buff"
-				"Duration"	"10"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_shu_5"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_stats"
-				}
-			}
-			"modifier_item_shu_5_cooldown"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"AddCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item.lua"
-						"Function"	"RemoveCooldownReduceRate"
-						"ReduceRate"	"%cooldown_reduce"
-					}
-				}
-			}
-			"modifier_item_shu_buff"
-			{
-				"TextureName"	"item_shu_5"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
-				}
-				"States"	{}
-			}
-		}
-		// "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_NEVER"
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown_reduce"	"30"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_stats"	"500"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"3000"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana"	"9000"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health_regen"	"60"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_mana_regen"	"90"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_attack_speed"	"150"
-			}
-		}
 	}
 
 	"item_craft_shu"
