@@ -38,8 +38,8 @@ end
 function item_fu_5:GetIntrinsicModifierName()
 	return "modifier_fu"
 end
--- Modifier
 ---------------------------------------------------------------------
+-- Modifier
 if modifier_fu == nil then
 	modifier_fu = class({})
 end
@@ -86,6 +86,8 @@ function modifier_fu:OnRefresh(params)
 	self.bonus_mana = self:GetAbility():GetSpecialValueFor("bonus_mana")
 	self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
 	self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
+	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
+	self.waist_cut_chance = self:GetAbility():GetSpecialValueFor("waist_cut_chance")
 	self.waist_cut_percent = self:GetAbility():GetSpecialValueFor("waist_cut_percent")
 	if IsServer() then
 	end

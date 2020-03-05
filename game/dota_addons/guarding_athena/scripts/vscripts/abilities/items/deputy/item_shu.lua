@@ -38,8 +38,8 @@ end
 function item_shu_5:GetIntrinsicModifierName()
 	return "modifier_shu"
 end
--- Modifier
 ---------------------------------------------------------------------
+-- Modifier
 if modifier_shu == nil then
 	modifier_shu = class({})
 end

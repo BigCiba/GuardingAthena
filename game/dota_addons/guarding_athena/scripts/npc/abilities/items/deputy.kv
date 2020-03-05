@@ -938,6 +938,7 @@
 		"ScriptFile"				"abilities/items/deputy/item_shu"
 		"AbilityTextureName"		"item_shu_5"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"			"60"
 		// Item
 		"ID"						"1613"
 		"ItemQuality"				"epic"
@@ -986,6 +987,434 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"10"
+			}
+		}
+	}
+	////////////////////////////////////////////////////////////
+	// 锤
+	////////////////////////////////////////////////////////////
+	"item_chui_1"
+	{
+		// Common
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_chui"
+		"AbilityTextureName"		"item_chui_1"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		// Item
+		"ID"						"1599"
+		"ItemQuality"				"epic"
+		"ItemShareability"			"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"		"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"400"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_chance"	"15"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"0.6"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_cooldown"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_stats"	"40"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana"	"1500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health_regen"	"60"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana_regen"	"15"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+		}
+	}
+
+	"item_chui_2"
+	{
+		// Common
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_chui"
+		"AbilityTextureName"		"item_chui_2"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		// Item
+		"ID"						"1600"
+		"ItemQuality"				"epic"
+		"ItemShareability"			"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"		"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"800"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_chance"	"20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"0.8"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_cooldown"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_stats"	"80"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana"	"1500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health_regen"	"60"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana_regen"	"15"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"350"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"20"
+			}
+		}
+	}
+
+	"item_chui_3"
+	{
+		// Common
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_chui"
+		"AbilityTextureName"		"item_chui_3"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		// Item
+		"ID"						"1601"
+		"ItemQuality"				"epic"
+		"ItemShareability"			"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"		"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"1200"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_chance"	"25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_cooldown"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_stats"	"160"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana"	"1500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health_regen"	"60"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana_regen"	"15"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"400"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30"
+			}
+		}
+	}
+
+	"item_chui_4"
+	{
+		// Common
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_chui"
+		"AbilityTextureName"		"item_chui_4"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		// Item
+		"ID"						"1602"
+		"ItemQuality"				"epic"
+		"ItemShareability"			"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"		"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"1600"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_chance"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_cooldown"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_stats"	"320"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana"	"1500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health_regen"	"60"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana_regen"	"15"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"450"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"40"
+			}
+		}
+	}
+
+	"item_chui_5"
+	{
+		// Common
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/deputy/item_chui"
+		"AbilityTextureName"		"item_chui_5"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"60"
+		// Item
+		"ID"						"1603"
+		"ItemQuality"				"epic"
+		"ItemShareability"			"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"		"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning_head.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"2000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_chance"	"35"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_cooldown"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_stats"	"500"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health"	"3000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana"	"1500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health_regen"	"60"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana_regen"	"15"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_speed"	"150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"50"
 			}
 		}
 	}

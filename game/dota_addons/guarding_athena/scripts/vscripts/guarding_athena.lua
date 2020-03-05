@@ -172,6 +172,7 @@ function GuardingAthena:InitGameMode()
 	ListenToGameEvent('player_chat', Dynamic_Wrap(GuardingAthena, 'OnPlayerChat'), self)
 	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(GuardingAthena, 'OnPlayerLevelUp'), self)
 	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(GuardingAthena, 'OnUsedAbility'), self )
+	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(GuardingAthena, 'OnItemPurchased'), self )
 
 	--自定义控制台命令
 	Convars:RegisterCommand( "-testmode", function(...) return self:TestMode( ... ) end, "Test Mode.", FCVAR_CHEAT )
@@ -400,6 +401,21 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 			end
 			return 1
 		end)
+	end
+end
+function GuardingAthena:OnItemPurchased(t)
+	--[[
+		game_event_name	dota_item_purchased
+		itemname	item_salve1
+		game_event_listener	1736441865
+		PlayerID	0
+		itemcost	50
+		splitscreenplayer	-1
+	]]
+	local iSaveGold = self.player_gold_save[t.PlayerID + 1]
+	if iSaveGold > t.itemcost then
+		PlayerResource:ModifyGold( t.PlayerID, t.itemcost, true, 0)
+		self.player_gold_save[t.PlayerID + 1] = iSaveGold - t.itemcost
 	end
 end
 --自定义控制台命令

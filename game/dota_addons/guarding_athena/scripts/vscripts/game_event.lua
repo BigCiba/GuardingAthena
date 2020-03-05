@@ -125,6 +125,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 40))
 			end
 	    end
 	end
@@ -134,6 +135,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 30))
 			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
@@ -150,6 +152,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 20))
 			end
 	    end
 	    Timers:CreateTimer(120,function ()
@@ -166,6 +169,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 50))
 			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
@@ -181,7 +185,8 @@ function GuardingAthena:OnEntityKilled( event )
 		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
-				PropertySystem(unit,3,RandomInt(5, 10))
+				PropertySystem(unit,3,RandomInt(5, 10) * killedUnit:GetLevel())
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 10) * killedUnit:GetLevel())
 			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
@@ -901,8 +906,7 @@ function GuardingAthena:OnPlayerChat(keys)
 end
 -- 监听玩家英雄升级
 function GuardingAthena:OnPlayerLevelUp(keys)
-	local player = EntIndexToHScript(keys.player)
-	local hero = player:GetAssignedHero()
+	local hero = EntIndexToHScript(keys.hero_entindex)
 	local level = keys.level
 	-- 额外属性成长
 	if hero.str_gain then

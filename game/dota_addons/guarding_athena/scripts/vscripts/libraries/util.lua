@@ -1092,4 +1092,14 @@ if IsServer() then
 			end
 		end
 	end
+	function CreateDamageTable( hAttacker, hVictim, hAbility, flDamage, iDamageType, iDamageFlags )
+		return {
+			attacker = hAttacker,
+			victim = hVictim,
+			ability = hAbility,
+			damage = flDamage,
+			damage_type = iDamageType,
+			damage_flags = iDamageFlags,
+		}
+	end
 end

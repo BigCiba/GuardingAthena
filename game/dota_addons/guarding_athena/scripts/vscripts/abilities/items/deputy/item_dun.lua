@@ -38,8 +38,8 @@ end
 function item_dun_5:GetIntrinsicModifierName()
 	return "modifier_dun"
 end
--- Modifier
 ---------------------------------------------------------------------
+-- Modifier
 if modifier_dun == nil then
 	modifier_dun = class({})
 end

@@ -27,30 +27,38 @@ function GuardingAthena:ExecuteOrderFilter( args )
 	end]]
 	-- 购买物品
 	if args.order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
-		--[[for k, v in pairs( args ) do
-			print( k, v )
-		end]]--
+		-- for k, v in pairs( args ) do
+		-- 	print( k, v )
+		-- end
  
 
 		-- 属性书
-        local tombTable = {
-            id = {1002,1003,1004,1709,1710,1711},
-            cost = {10000,10000,10000,95000,95000,95000},
-            stat = {0,1,2,0,1,2},
-            count = {10,10,10,100,100,100}
-        }
-        for i=1,6 do
-            if args.entindex_ability == tombTable.id[i] then
-                if PlayerResource:GetGold(playerid) >= tombTable.cost[i] then
-                    PlayerResource:SpendGold( playerid, tombTable.cost[i], 0 )
-                    local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-                    PropertySystem( hero, tombTable.stat[i], tombTable.count[i])
-                    EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
-                    CreateParticle("particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,hero,1)
-                end
-                return false
-            end
-        end
+		local tombTable = {
+			id = {1002,1003,1004,1709,1710,1711,1775,1776,1777},
+			cost = {10000,10000,10000,95000,95000,95000,900000,900000,900000},
+			stat = {0,1,2,0,1,2,0,1,2},
+			count = {10,10,10,100,100,100,1000,1000,1000}
+		}
+		for i=1,9 do
+			if args.entindex_ability == tombTable.id[i] then
+				local iSaveGold = self.player_gold_save[playerid + 1]
+				print(iSaveGold,tombTable.cost[i])
+				if iSaveGold > tombTable.cost[i] then
+					self.player_gold_save[playerid + 1] = iSaveGold - tombTable.cost[i]
+					local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+					PropertySystem( hero, tombTable.stat[i], tombTable.count[i])
+					EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
+					CreateParticle("particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,hero,1)
+				elseif PlayerResource:GetGold(playerid) >= tombTable.cost[i] then
+					PlayerResource:SpendGold( playerid, tombTable.cost[i], 0 )
+					local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
+					PropertySystem( hero, tombTable.stat[i], tombTable.count[i])
+					EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
+					CreateParticle("particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW,hero,1)
+				end
+				return false
+			end
+		end
 	end
 	return true
 end
@@ -197,25 +205,26 @@ function GuardingAthena:ItemAddedFilter( keys )
 	local currentItemName = currentItem:GetAbilityName()
 	local currentUnit = EntIndexToHScript(keys.inventory_parent_entindex_const)
 	local itemOwner = EntIndexToHScript(keys.item_parent_entindex_const)
-	if currentItemName == "item_chaos_plate" and not currentUnit:IsIllusion() then
-		if RollPercentage(5) then
-			currentUnit:AddItem(CreateItem("item_world_editor", currentUnit, currentUnit))
-			currentItem:RemoveSelf()
-			return false
-		elseif RollPercentage(5) then
-			currentUnit:AddItem(CreateItem("item_longinus_spear", currentUnit, currentUnit))
-			currentItem:RemoveSelf()
-			return false
-		elseif RollPercentage(5) then
-			currentUnit:AddItem(CreateItem("item_mystletainn", currentUnit, currentUnit))
-			currentItem:RemoveSelf()
-			return false
-		elseif RollPercentage(5) then
-			currentUnit:AddItem(CreateItem("item_yata_mirror", currentUnit, currentUnit))
-			currentItem:RemoveSelf()
-			return false
-		end
-	end
+	-- 混沌盘彩蛋
+	-- if currentItemName == "item_chaos_plate" and not currentUnit:IsIllusion() then
+	-- 	if RollPercentage(5) then
+	-- 		currentUnit:AddItem(CreateItem("item_world_editor", currentUnit, currentUnit))
+	-- 		currentItem:RemoveSelf()
+	-- 		return false
+	-- 	elseif RollPercentage(5) then
+	-- 		currentUnit:AddItem(CreateItem("item_longinus_spear", currentUnit, currentUnit))
+	-- 		currentItem:RemoveSelf()
+	-- 		return false
+	-- 	elseif RollPercentage(5) then
+	-- 		currentUnit:AddItem(CreateItem("item_mystletainn", currentUnit, currentUnit))
+	-- 		currentItem:RemoveSelf()
+	-- 		return false
+	-- 	elseif RollPercentage(5) then
+	-- 		currentUnit:AddItem(CreateItem("item_yata_mirror", currentUnit, currentUnit))
+	-- 		currentItem:RemoveSelf()
+	-- 		return false
+	-- 	end
+	-- end
 	-- 原核与金袋
 	if string.sub(currentItemName,0,14) == "item_original_" then
 		return true
