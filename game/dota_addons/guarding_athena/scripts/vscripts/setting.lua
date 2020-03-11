@@ -1,3 +1,9 @@
+if Settings == nil then
+	Settings = {}
+end
+local public = Settings
+sGameVersion = "v1.33"
+
 ENABLE_HERO_RESPAWN = true              -- 是否允许英雄重生
 UNIVERSAL_SHOP_MODE = true              -- 是否在一个商店出售所有商店的物品
 ALLOW_SAME_HERO_SELECTION = true        -- 是否允许相同英雄
@@ -36,6 +42,11 @@ DISABLE_GOLD_SOUNDS = true              -- 是否取消玩家获得金钱时的�
 USE_CUSTOM_HERO_LEVELS = true           -- 使用自定义英雄等级
 MAX_LEVEL = 500                         -- 英雄最大等级
 USE_CUSTOM_XP_VALUES = true             -- 是否使用自定义经验表
+
+MODIFIER_EVENT_ON_ABILITY_LEARNED = MODIFIER_FUNCTION_LAST + 1 -- OnAbilityLearned
+
+CUSTOM_MODIFIER_EVENT_FUNCTIONS = {}
+CUSTOM_MODIFIER_EVENT_FUNCTIONS[MODIFIER_EVENT_ON_ABILITY_LEARNED] = "OnAbilityLearned"
 
 -- 定义经验表
 XP_PER_LEVEL_TABLE = {}

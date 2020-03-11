@@ -22,7 +22,8 @@ function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 
-	LinkLuaModifier("modifier_reborn", "modifiers/generic/modifier_reborn.lua", LUA_MODIFIER_MOTION_NONE)
+	
+	_G.ATTACK_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0,0,0), DOTA_TEAM_NOTEAM, false)
 
 	-- 初始化游戏参数
 	self.entAthena = Entities:FindByName( nil, "athena" )				--寻找基地

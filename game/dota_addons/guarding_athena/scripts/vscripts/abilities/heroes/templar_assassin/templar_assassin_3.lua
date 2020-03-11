@@ -34,6 +34,7 @@ function modifier_templar_assassin_3:OnCreated(params)
 	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range") * self:GetAbility():GetLevel()
 	if IsServer() then
 	end
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function modifier_templar_assassin_3:OnRefresh(params)
 	self.base_damage = self:GetAbilitySpecialValueFor("base_damage") * self:GetAbility():GetLevel()
@@ -43,6 +44,9 @@ function modifier_templar_assassin_3:OnRefresh(params)
 	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range") * self:GetAbility():GetLevel()
 	if IsServer() then
 	end
+end
+function modifier_templar_assassin_3:OnDestroy()
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ABILITY_FULLY_CAST, self, self:GetParent())
 end
 function modifier_templar_assassin_3:DeclareFunctions()
 	return {

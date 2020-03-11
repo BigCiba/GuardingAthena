@@ -49,6 +49,7 @@ end
 function modifier_templar_assassin_0:OnCreated(params)
 	self:InitModifier()
 	if not IsServer() then return end
+	AddModifierEvents(MODIFIER_EVENT_ON_ABILITY_FULLY_CAST, self, self:GetParent())
 end
 function modifier_templar_assassin_0:OnRefresh(params)
 	self:InitModifier()
@@ -58,6 +59,7 @@ function modifier_templar_assassin_0:OnDestroy()
 		ParticleManager:DestroyParticle(self.iParticleID, false)
 		ParticleManager:ReleaseParticleIndex(self.iParticleID)
 	end
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ABILITY_FULLY_CAST, self, self:GetParent())
 end
 function modifier_templar_assassin_0:OnIntervalThink()
 	self:IncrementStackCount()
@@ -66,7 +68,7 @@ function modifier_templar_assassin_0:OnIntervalThink()
 end
 function modifier_templar_assassin_0:DeclareFunctions()
 	return {
-		MODIFIER_EVENT_ON_ABILITY_FULLY_CAST
+		-- MODIFIER_EVENT_ON_ABILITY_FULLY_CAST
 	}
 end
 function modifier_templar_assassin_0:OnAbilityFullyCast(params)
