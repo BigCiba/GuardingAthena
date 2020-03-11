@@ -31,12 +31,12 @@ function modifier_chaos_plate:AllowIllusionDuplicate()
 	return false
 end
 function modifier_chaos_plate:OnCreated(params)
-	self.attribute = self:GetAbility():GetSpecialValueFor("attribute")
-	self.duration = self:GetAbility():GetSpecialValueFor("duration")
-	self.damage_reduce = self:GetAbility():GetSpecialValueFor("damage_reduce")
-	self.shield = self:GetAbility():GetSpecialValueFor("shield")
-	self.health_bonus = self:GetAbility():GetSpecialValueFor("health_bonus")
-	self.interval = self:GetAbility():GetSpecialValueFor("interval")
+	self.attribute = self:GetAbilitySpecialValueFor("attribute")
+	self.duration = self:GetAbilitySpecialValueFor("duration")
+	self.damage_reduce = self:GetAbilitySpecialValueFor("damage_reduce")
+	self.shield = self:GetAbilitySpecialValueFor("shield")
+	self.health_bonus = self:GetAbilitySpecialValueFor("health_bonus")
+	self.interval = self:GetAbilitySpecialValueFor("interval")
 	if IsServer() then
 		self:StartIntervalThink(self.interval)
 		self:OnIntervalThink()
@@ -112,7 +112,7 @@ function modifier_chaos_plate_shield:AllowIllusionDuplicate()
 	return false
 end
 function modifier_chaos_plate_shield:OnCreated(params)
-	self.shield = self:GetAbility():GetSpecialValueFor("shield")
+	self.shield = self:GetAbilitySpecialValueFor("shield")
 	local hParent = self:GetParent()
 	if IsServer() then
 		self.flShieldHealth = hParent:GetMaxHealth() * self.shield * 0.01
@@ -123,7 +123,7 @@ function modifier_chaos_plate_shield:OnCreated(params)
 	end
 end
 function modifier_chaos_plate_shield:OnRefresh(params)
-	self.shield = self:GetAbility():GetSpecialValueFor("shield")
+	self.shield = self:GetAbilitySpecialValueFor("shield")
 	if IsServer() then
 		self.flShieldHealth = self:GetParent():GetMaxHealth() * self.shield * 0.01
 	end

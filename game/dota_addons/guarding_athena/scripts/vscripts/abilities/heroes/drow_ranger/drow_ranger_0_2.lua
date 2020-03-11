@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_drow_ranger_0_2", "abilities/drow_ranger/drow_ranger_0_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_0_2", "abilities/heroes/drow_ranger/drow_ranger_0_2.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if drow_ranger_0_2 == nil then
 	drow_ranger_0_2 = class({})
@@ -38,14 +38,14 @@ function modifier_drow_ranger_0_2:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_0_2:OnCreated(params)
-	self.agi_factor = self:GetAbility():GetSpecialValueFor("agi_factor")
-	self.bonus_attack_range = self:GetAbility():GetSpecialValueFor("bonus_attack_range")
+	self.agi_factor = self:GetAbilitySpecialValueFor("agi_factor")
+	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range")
 	if IsServer() then
 	end
 end
 function modifier_drow_ranger_0_2:OnRefresh(params)
-	self.agi_factor = self:GetAbility():GetSpecialValueFor("agi_factor")
-	self.bonus_attack_range = self:GetAbility():GetSpecialValueFor("bonus_attack_range")
+	self.agi_factor = self:GetAbilitySpecialValueFor("agi_factor")
+	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range")
 	if IsServer() then
 	end
 end

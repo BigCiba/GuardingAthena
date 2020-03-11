@@ -1,5 +1,5 @@
-LinkLuaModifier("modifier_omniknight_2", "abilities/omniknight/omniknight_2.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_omniknight_2_aura", "abilities/omniknight/omniknight_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_2", "abilities/heroes/omniknight/omniknight_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_2_aura", "abilities/heroes/omniknight/omniknight_2.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if omniknight_2 == nil then
 	omniknight_2 = class({})
@@ -68,7 +68,7 @@ function modifier_omniknight_2:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 function modifier_omniknight_2:OnCreated(t)
-	self.radius = self:GetAbility():GetSpecialValueFor("radius")
+	self.radius = self:GetAbilitySpecialValueFor("radius")
 end
 function modifier_omniknight_2:CheckState()
 	return {
@@ -99,16 +99,16 @@ function modifier_omniknight_2_aura:AllowIllusionDuplicate()
 	return false
 end
 function modifier_omniknight_2_aura:OnCreated(t)
-	self.health_regen = self:GetAbility():GetSpecialValueFor("health_regen")
-	self.mana_regen = self:GetAbility():GetSpecialValueFor("mana_regen")
-	self.health_regen_regen = self:GetAbility():GetSpecialValueFor("health_regen_regen")
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
+	self.health_regen = self:GetAbilitySpecialValueFor("health_regen")
+	self.mana_regen = self:GetAbilitySpecialValueFor("mana_regen")
+	self.health_regen_regen = self:GetAbilitySpecialValueFor("health_regen_regen")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
 end
 function modifier_omniknight_2_aura:OnRefresh(t)
-	self.health_regen = self:GetAbility():GetSpecialValueFor("health_regen")
-	self.mana_regen = self:GetAbility():GetSpecialValueFor("mana_regen")
-	self.health_regen_regen = self:GetAbility():GetSpecialValueFor("health_regen_regen")
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
+	self.health_regen = self:GetAbilitySpecialValueFor("health_regen")
+	self.mana_regen = self:GetAbilitySpecialValueFor("mana_regen")
+	self.health_regen_regen = self:GetAbilitySpecialValueFor("health_regen_regen")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
 end
 function modifier_omniknight_2_aura:OnDestroy()
 end

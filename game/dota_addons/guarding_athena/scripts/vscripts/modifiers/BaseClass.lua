@@ -25,6 +25,60 @@ function ModifierBasic:AllowIllusionDuplicate()
 	return false
 end
 ---------------------------------------------------------------------
+ModifierDebuff = class({})
+
+if ModifierDebuff == nil then
+	ModifierDebuff = class({})
+end
+function ModifierDebuff:IsHidden()
+	return false
+end
+function ModifierDebuff:IsDebuff()
+	return true
+end
+function ModifierDebuff:IsPurgable()
+	return true
+end
+function ModifierDebuff:IsPurgeException()
+	return true
+end
+function ModifierDebuff:IsStunDebuff()
+	return false
+end
+function ModifierDebuff:IsHexDebuff()
+	return false
+end
+function ModifierDebuff:AllowIllusionDuplicate()
+	return false
+end
+---------------------------------------------------------------------
+ModifierPositiveBuff = class({})
+
+if ModifierPositiveBuff == nil then
+	ModifierPositiveBuff = class({})
+end
+function ModifierPositiveBuff:IsHidden()
+	return false
+end
+function ModifierPositiveBuff:IsDebuff()
+	return false
+end
+function ModifierPositiveBuff:IsPurgable()
+	return true
+end
+function ModifierPositiveBuff:IsPurgeException()
+	return true
+end
+function ModifierPositiveBuff:IsStunDebuff()
+	return false
+end
+function ModifierPositiveBuff:IsHexDebuff()
+	return false
+end
+function ModifierPositiveBuff:AllowIllusionDuplicate()
+	return false
+end
+---------------------------------------------------------------------
 ModifierHidden = class({})
 
 if ModifierHidden == nil then

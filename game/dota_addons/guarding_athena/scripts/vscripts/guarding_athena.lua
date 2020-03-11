@@ -22,6 +22,8 @@ function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 
+	LinkLuaModifier("modifier_reborn", "modifiers/generic/modifier_reborn.lua", LUA_MODIFIER_MOTION_NONE)
+
 	-- 初始化游戏参数
 	self.entAthena = Entities:FindByName( nil, "athena" )				--寻找基地
 	self.athena_hp_lv = 0

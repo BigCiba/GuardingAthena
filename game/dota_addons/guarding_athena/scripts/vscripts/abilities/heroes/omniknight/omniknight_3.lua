@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_omniknight_3", "abilities/omniknight/omniknight_3.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_3", "abilities/heroes/omniknight/omniknight_3.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if omniknight_3 == nil then
 	omniknight_3 = class({})
@@ -30,17 +30,17 @@ function modifier_omniknight_3:AllowIllusionDuplicate()
 	return false
 end
 function modifier_omniknight_3:OnCreated(params)
-	self.bonus_attackspeed = self:GetAbility():GetSpecialValueFor("bonus_attackspeed")
-	self.bonus_str = self:GetAbility():GetSpecialValueFor("bonus_str")
-	self.attack_count = self:GetAbility():GetSpecialValueFor("attack_count")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
+	self.bonus_str = self:GetAbilitySpecialValueFor("bonus_str")
+	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
 	self.tooltip = 0
 	if IsServer() then
 	end
 end
 function modifier_omniknight_3:OnRefresh(params)
-	self.bonus_attackspeed = self:GetAbility():GetSpecialValueFor("bonus_attackspeed")
-	self.bonus_str = self:GetAbility():GetSpecialValueFor("bonus_str")
-	self.attack_count = self:GetAbility():GetSpecialValueFor("attack_count")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
+	self.bonus_str = self:GetAbilitySpecialValueFor("bonus_str")
+	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
 	if IsServer() then
 	end
 end

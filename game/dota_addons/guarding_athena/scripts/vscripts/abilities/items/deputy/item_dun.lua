@@ -62,29 +62,29 @@ function modifier_dun:AllowIllusionDuplicate()
 	return false
 end
 function modifier_dun:OnCreated(params)
-	self.bonus_stats = self:GetAbility():GetSpecialValueFor("bonus_stats")
-	self.bonus_health = self:GetAbility():GetSpecialValueFor("bonus_health")
-	self.bonus_mana = self:GetAbility():GetSpecialValueFor("bonus_mana")
-	self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
-	self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
-	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
-	self.damage_block = self:GetAbility():GetSpecialValueFor("damage_block")
-	self.bonus_armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
-	self.bonus_resistance = self:GetAbility():GetSpecialValueFor("bonus_resistance")
+	self.bonus_stats = self:GetAbilitySpecialValueFor("bonus_stats")
+	self.bonus_health = self:GetAbilitySpecialValueFor("bonus_health")
+	self.bonus_mana = self:GetAbilitySpecialValueFor("bonus_mana")
+	self.bonus_health_regen = self:GetAbilitySpecialValueFor("bonus_health_regen")
+	self.bonus_mana_regen = self:GetAbilitySpecialValueFor("bonus_mana_regen")
+	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
+	self.damage_block = self:GetAbilitySpecialValueFor("damage_block")
+	self.bonus_armor = self:GetAbilitySpecialValueFor("bonus_armor")
+	self.bonus_resistance = self:GetAbilitySpecialValueFor("bonus_resistance")
 	if IsServer() then
 		self.records = {}
 	end
 end
 function modifier_dun:OnRefresh(params)
-	self.bonus_stats = self:GetAbility():GetSpecialValueFor("bonus_stats")
-	self.bonus_health = self:GetAbility():GetSpecialValueFor("bonus_health")
-	self.bonus_mana = self:GetAbility():GetSpecialValueFor("bonus_mana")
-	self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
-	self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
-	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
-	self.damage_block = self:GetAbility():GetSpecialValueFor("damage_block")
-	self.bonus_armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
-	self.bonus_resistance = self:GetAbility():GetSpecialValueFor("bonus_resistance")
+	self.bonus_stats = self:GetAbilitySpecialValueFor("bonus_stats")
+	self.bonus_health = self:GetAbilitySpecialValueFor("bonus_health")
+	self.bonus_mana = self:GetAbilitySpecialValueFor("bonus_mana")
+	self.bonus_health_regen = self:GetAbilitySpecialValueFor("bonus_health_regen")
+	self.bonus_mana_regen = self:GetAbilitySpecialValueFor("bonus_mana_regen")
+	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
+	self.damage_block = self:GetAbilitySpecialValueFor("damage_block")
+	self.bonus_armor = self:GetAbilitySpecialValueFor("bonus_armor")
+	self.bonus_resistance = self:GetAbilitySpecialValueFor("bonus_resistance")
 	if IsServer() then
 	end
 end

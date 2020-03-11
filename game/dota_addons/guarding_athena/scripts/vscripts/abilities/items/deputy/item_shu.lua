@@ -62,25 +62,25 @@ function modifier_shu:AllowIllusionDuplicate()
 	return false
 end
 function modifier_shu:OnCreated(params)
-	self.bonus_stats = self:GetAbility():GetSpecialValueFor("bonus_stats")
-	self.bonus_health = self:GetAbility():GetSpecialValueFor("bonus_health")
-	self.bonus_mana = self:GetAbility():GetSpecialValueFor("bonus_mana")
-	self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
-	self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
-	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
-	self.cooldown_reduce = self:GetAbility():GetSpecialValueFor("cooldown_reduce")
+	self.bonus_stats = self:GetAbilitySpecialValueFor("bonus_stats")
+	self.bonus_health = self:GetAbilitySpecialValueFor("bonus_health")
+	self.bonus_mana = self:GetAbilitySpecialValueFor("bonus_mana")
+	self.bonus_health_regen = self:GetAbilitySpecialValueFor("bonus_health_regen")
+	self.bonus_mana_regen = self:GetAbilitySpecialValueFor("bonus_mana_regen")
+	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
+	self.cooldown_reduce = self:GetAbilitySpecialValueFor("cooldown_reduce")
 	if IsServer() then
 		self.records = {}
 	end
 end
 function modifier_shu:OnRefresh(params)
-	self.bonus_stats = self:GetAbility():GetSpecialValueFor("bonus_stats")
-	self.bonus_health = self:GetAbility():GetSpecialValueFor("bonus_health")
-	self.bonus_mana = self:GetAbility():GetSpecialValueFor("bonus_mana")
-	self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
-	self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
-	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
-	self.cooldown_reduce = self:GetAbility():GetSpecialValueFor("cooldown_reduce")
+	self.bonus_stats = self:GetAbilitySpecialValueFor("bonus_stats")
+	self.bonus_health = self:GetAbilitySpecialValueFor("bonus_health")
+	self.bonus_mana = self:GetAbilitySpecialValueFor("bonus_mana")
+	self.bonus_health_regen = self:GetAbilitySpecialValueFor("bonus_health_regen")
+	self.bonus_mana_regen = self:GetAbilitySpecialValueFor("bonus_mana_regen")
+	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
+	self.cooldown_reduce = self:GetAbilitySpecialValueFor("cooldown_reduce")
 	if IsServer() then
 	end
 end

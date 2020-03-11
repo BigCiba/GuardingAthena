@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_drow_ranger_1_2", "abilities/drow_ranger/drow_ranger_1_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_1_2", "abilities/heroes/drow_ranger/drow_ranger_1_2.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if drow_ranger_1_2 == nil then
 	drow_ranger_1_2 = class({})
@@ -47,8 +47,8 @@ function modifier_drow_ranger_1_2:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_1_2:OnCreated(params)
-	self.count = self:GetAbility():GetSpecialValueFor("count")
-	self.interval = self:GetAbility():GetSpecialValueFor("interval")
+	self.count = self:GetAbilitySpecialValueFor("count")
+	self.interval = self:GetAbilitySpecialValueFor("interval")
 	if IsServer() then
 	end
 end

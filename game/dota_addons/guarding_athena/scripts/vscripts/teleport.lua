@@ -56,6 +56,7 @@ function HeroReborn( trigger )
 			caster.reborn_time = reborn_times + 1
 			caster.reborn = true
 			caster.kill_iapetos = false
+			caster:AddNewModifier(caster, nil, "modifier_reborn", nil)
 			local particle = CreateParticle("particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_ground.vpcf", PATTACH_ABSORIGIN, caster)
 			ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
 			ParticleManager:SetParticleControl(particle, 2, caster:GetAbsOrigin())

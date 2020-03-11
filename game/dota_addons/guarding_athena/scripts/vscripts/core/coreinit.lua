@@ -1,6 +1,10 @@
+
+require("abilities/common")
+require("utils")
+require("modifiers/BaseClass")
+require("abilities/BaseClass")
 if not IsClient() then return end
 
-require("modifiers/BaseClass")
 
 if Activated == nil then
 	_G.Activated = false

@@ -8,8 +8,8 @@ function fumo_armor_debuff:DeclareFunctions()
 end
 function fumo_armor_debuff:GetModifierPhysicalArmorBonus( t )
     --[[if IsServer() then
-        local armor_constant = self:GetAbility():GetSpecialValueFor("armor_loss_constant")
-        local armor_percent = self:GetAbility():GetSpecialValueFor("armor_loss_percent")
+        local armor_constant = self:GetAbilitySpecialValueFor("armor_loss_constant")
+        local armor_percent = self:GetAbilitySpecialValueFor("armor_loss_percent")
         local total_armor_loss = armor_constant + armor_percent * self:GetParent():GetPhysicalArmorBaseValue()
         print(total_armor_loss)
         return -total_armor_loss

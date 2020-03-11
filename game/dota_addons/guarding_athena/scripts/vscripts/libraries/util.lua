@@ -1072,34 +1072,13 @@ function Teleport( ... )
 	end
 	FindClearSpaceForUnit(caster, position, true)
 end
---------------------------
---- CDOTA_BaseNPC
---------------------------
-if IsServer() then
-	function CDOTA_BaseNPC:RefreshAbilities()
-		for i = 1, self:GetAbilityCount() do
-			local ability = self:GetAbilityByIndex(i - 1)
-			if ability ~= nil and FindValueByKey(REFRESH_EXCLUDE_ABILITIES,ability:GetAbilityName()) == false then
-				ability:EndCooldown()
-			end
-		end
-	end
-	function CDOTA_BaseNPC:RefreshItems()
-		for i = 1, 16 do
-			local item = self:GetItemInSlot(i - 1)
-			if item ~= nil and FindValueByKey(REFRESH_EXCLUDE_ITEMS,item:GetAbilityName()) == false then
-				item:EndCooldown()
-			end
-		end
-	end
-	function CreateDamageTable( hAttacker, hVictim, hAbility, flDamage, iDamageType, iDamageFlags )
-		return {
-			attacker = hAttacker,
-			victim = hVictim,
-			ability = hAbility,
-			damage = flDamage,
-			damage_type = iDamageType,
-			damage_flags = iDamageFlags,
-		}
-	end
+function CreateDamageTable( hAttacker, hVictim, hAbility, flDamage, iDamageType, iDamageFlags )
+	return {
+		attacker = hAttacker,
+		victim = hVictim,
+		ability = hAbility,
+		damage = flDamage,
+		damage_type = iDamageType,
+		damage_flags = iDamageFlags,
+	}
 end

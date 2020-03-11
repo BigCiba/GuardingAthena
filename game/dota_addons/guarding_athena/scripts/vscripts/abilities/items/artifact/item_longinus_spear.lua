@@ -20,12 +20,12 @@ if modifier_longinus_spear == nil then
 	modifier_longinus_spear = class({}, nil, ModifierHidden)
 end
 function modifier_longinus_spear:OnCreated(params)
-	self.attribute = self:GetAbility():GetSpecialValueFor("attribute")
-	self.block_percent = self:GetAbility():GetSpecialValueFor("block_percent")
-	self.bonus_mana_regen_pct = self:GetAbility():GetSpecialValueFor("bonus_mana_regen_pct")
-	self.mana_bonus = self:GetAbility():GetSpecialValueFor("mana_bonus")
-	self.trigger_percent = self:GetAbility():GetSpecialValueFor("trigger_percent")
-	self.magic_damage_increase = self:GetAbility():GetSpecialValueFor("magic_damage_increase")
+	self.attribute = self:GetAbilitySpecialValueFor("attribute")
+	self.block_percent = self:GetAbilitySpecialValueFor("block_percent")
+	self.bonus_mana_regen_pct = self:GetAbilitySpecialValueFor("bonus_mana_regen_pct")
+	self.mana_bonus = self:GetAbilitySpecialValueFor("mana_bonus")
+	self.trigger_percent = self:GetAbilitySpecialValueFor("trigger_percent")
+	self.magic_damage_increase = self:GetAbilitySpecialValueFor("magic_damage_increase")
 	if IsServer() then
 		self:OnIntervalThink()
 	else
@@ -106,14 +106,12 @@ function modifier_longinus_spear_thinker:OnDestroy()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local hParent = self:GetParent()
-		local damage_percent = self:GetAbility():GetSpecialValueFor("damage_percent")
-		local stun_duration = self:GetAbility():GetSpecialValueFor("stun_duration")
-		local radius = self:GetAbility():GetSpecialValueFor("radius")
+		local damage_percent = self:GetAbilitySpecialValueFor("damage_percent")
+		local stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
+		local radius = self:GetAbilitySpecialValueFor("radius")
 		local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), hParent:GetAbsOrigin(), hCaster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-		local tDamageInfo = CreateDamageTable(hCaster, nil, self:GetAbility(), hParent:GetMaxHealth() * damage_percent * 0.01, DAMAGE_TYPE_PURE, DOTA_DAMAGE_FLAG_HPLOSS + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION )
 		for _,hUnit in pairs(tTargets) do
-			tDamageInfo.victim = hUnit
-			ApplyDamage(tDamageInfo)
+			hCaster:DealDamage(tTargets, self:GetAbility(), hParent:GetMaxHealth() * damage_percent * 0.01, DAMAGE_TYPE_PURE, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS + DOTA_DAMAGE_FLAG_HPLOSS)
 			hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_stunned", {duration = stun_duration})
 		end
 		EmitSoundOnLocationWithCaster(hParent:GetAbsOrigin(), "Hero_ElderTitan.EchoStomp", hCaster)

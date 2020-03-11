@@ -1,6 +1,7 @@
 #base "abilities/items/deputy.kv"
 #base "abilities/items/recipe.kv"
 #base "abilities/items/artifact.kv"
+#base "abilities/items/scepter.kv"
 
 "DOTAAbilities"
 {
@@ -13717,78 +13718,6 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"property"	"15"
-			}
-		}
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
-	}
-
-	"item_npc_dota_hero_templar_assassin"
-	{
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_zhuanshuta"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityCooldown"	"0.0"
-		"ID"	"1695"
-		"ItemQuality"	"epic"
-		"ItemCost"	"1"
-		"ItemSellable"	"0"
-		"ItemPurchasable"	"0"
-		"ItemIsNeutralDrop"				"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemShopTags"	"damage;str;hard_to_tag"
-		"ItemAliases"	"skull basher"
-		"ItemRequirements"	{}
-		"Modifiers"
-		{
-			"modifier_npc_dota_hero_templar_assassin"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"Properties"	{}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
-						"Function"	"OnCreated"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
-						"Function"	"OnDestroy"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"property"	"15"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"interval"	"4"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"reduce"	"2"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"reduce_interval"	"0.1"
 			}
 		}
 		"Model"	"models/props_gameplay/red_box.vmdl"

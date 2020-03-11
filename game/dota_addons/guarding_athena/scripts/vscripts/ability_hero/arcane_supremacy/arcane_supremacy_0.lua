@@ -34,15 +34,15 @@ function modifier_arcane_supremacy_0:AllowIllusionDuplicate()
 	return false
 end
 function modifier_arcane_supremacy_0:OnCreated(params)
-    self.crit = self:GetAbility():GetSpecialValueFor("blade_dance_crit_mult")
-	self.chance = self:GetAbility():GetSpecialValueFor("blade_dance_crit_chance")
+    self.crit = self:GetAbilitySpecialValueFor("blade_dance_crit_mult")
+	self.chance = self:GetAbilitySpecialValueFor("blade_dance_crit_chance")
 	self.critProc = false
 	if IsServer() then
 	end
 end
 function modifier_arcane_supremacy_0:OnRefresh(params)
-    self.crit = self:GetAbility():GetSpecialValueFor("blade_dance_crit_mult")
-	self.chance = self:GetAbility():GetSpecialValueFor("blade_dance_crit_chance")
+    self.crit = self:GetAbilitySpecialValueFor("blade_dance_crit_mult")
+	self.chance = self:GetAbilitySpecialValueFor("blade_dance_crit_chance")
 	if IsServer() then
 	end
 end

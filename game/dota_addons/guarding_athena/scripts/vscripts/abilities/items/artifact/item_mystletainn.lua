@@ -31,15 +31,15 @@ function modifier_mystletainn:AllowIllusionDuplicate()
 	return false
 end
 function modifier_mystletainn:OnCreated(params)
-	self.attribute = self:GetAbility():GetSpecialValueFor("attribute")
-	self.duration = self:GetAbility():GetSpecialValueFor("duration")
-	self.attack = self:GetAbility():GetSpecialValueFor("attack")
-	self.critical = self:GetAbility():GetSpecialValueFor("critical")
-	self.absorb = self:GetAbility():GetSpecialValueFor("absorb")
-	self.interval = self:GetAbility():GetSpecialValueFor("interval")
-	self.critical_rate = self:GetAbility():GetSpecialValueFor("critical_rate")
-	self.attack_increase = self:GetAbility():GetSpecialValueFor("attack_increase")
-	self.attack_rate = self:GetAbility():GetSpecialValueFor("attack_rate")
+	self.attribute = self:GetAbilitySpecialValueFor("attribute")
+	self.duration = self:GetAbilitySpecialValueFor("duration")
+	self.attack = self:GetAbilitySpecialValueFor("attack")
+	self.critical = self:GetAbilitySpecialValueFor("critical")
+	self.absorb = self:GetAbilitySpecialValueFor("absorb")
+	self.interval = self:GetAbilitySpecialValueFor("interval")
+	self.critical_rate = self:GetAbilitySpecialValueFor("critical_rate")
+	self.attack_increase = self:GetAbilitySpecialValueFor("attack_increase")
+	self.attack_rate = self:GetAbilitySpecialValueFor("attack_rate")
 	if IsServer() then
 		local hParent = self:GetParent()
 		hParent:SetBaseAttackTime(hParent:GetBaseAttackTime() - self.attack_rate)
@@ -121,7 +121,7 @@ function modifier_mystletainn_debuff:AllowIllusionDuplicate()
 	return false
 end
 function modifier_mystletainn_debuff:OnCreated(params)
-	self.damage_deepen = self:GetAbility():GetSpecialValueFor("damage_deepen")
+	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
 end
 function modifier_mystletainn_debuff:DeclareFunctions()
 	return {

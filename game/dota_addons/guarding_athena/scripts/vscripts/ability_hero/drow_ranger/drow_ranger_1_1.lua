@@ -86,8 +86,8 @@ function modifier_drow_ranger_1_1:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_1_1:OnCreated(params)
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
-	self.cooldown = self:GetAbility():GetSpecialValueFor("cooldown")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.cooldown = self:GetAbilitySpecialValueFor("cooldown")
 	if IsServer() then
 	end
 end
@@ -129,12 +129,12 @@ function modifier_drow_ranger_1_1_thinker:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_1_1_thinker:OnCreated(params)
-	self.radius = self:GetAbility():GetSpecialValueFor("radius")
-	self.collision_radius = self:GetAbility():GetSpecialValueFor("collision_radius")
-	self.speed = self:GetAbility():GetSpecialValueFor("speed")
-	self.distance = self:GetAbility():GetSpecialValueFor("distance")
-	self.arrows_per_sec = self:GetAbility():GetSpecialValueFor("arrows_per_sec")
-	self.damage = self:GetAbility():GetSpecialValueFor("damage")
+	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.collision_radius = self:GetAbilitySpecialValueFor("collision_radius")
+	self.speed = self:GetAbilitySpecialValueFor("speed")
+	self.distance = self:GetAbilitySpecialValueFor("distance")
+	self.arrows_per_sec = self:GetAbilitySpecialValueFor("arrows_per_sec")
+	self.damage = self:GetAbilitySpecialValueFor("damage")
 	if IsServer() then
 		self.vDirection = Vector(params.direction_x, params.direction_y, params.direction_z)
 		self:StartIntervalThink(1/self.arrows_per_sec)
@@ -203,7 +203,7 @@ function modifier_drow_ranger_1_1_debuff:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_1_1_debuff:OnCreated(params)
-	self.movespeed_reduce = self:GetAbility():GetSpecialValueFor("movespeed_reduce")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 	if IsServer() then
 	end
 end

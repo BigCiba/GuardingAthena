@@ -1,6 +1,6 @@
-LinkLuaModifier("modifier_drow_ranger_3_1", "abilities/drow_ranger/drow_ranger_3_1.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_drow_ranger_3_1_slow", "abilities/drow_ranger/drow_ranger_3_1.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_drow_ranger_3_1_freeze", "abilities/drow_ranger/drow_ranger_3_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_3_1", "abilities/heroes/drow_ranger/drow_ranger_3_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_3_1_slow", "abilities/heroes/drow_ranger/drow_ranger_3_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_3_1_freeze", "abilities/heroes/drow_ranger/drow_ranger_3_1.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if drow_ranger_3_1 == nil then
 	drow_ranger_3_1 = class({})
@@ -38,20 +38,20 @@ function modifier_drow_ranger_3_1:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_3_1:OnCreated(params)
-	self.base_damage = self:GetAbility():GetSpecialValueFor("base_damage")
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
-	self.movespeed_reduce = self:GetAbility():GetSpecialValueFor("movespeed_reduce")
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.curse_duration = self:GetAbility():GetSpecialValueFor("curse_duration")
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 	end
 end
 function modifier_drow_ranger_3_1:OnRefresh(params)
-	self.base_damage = self:GetAbility():GetSpecialValueFor("base_damage")
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
-	self.movespeed_reduce = self:GetAbility():GetSpecialValueFor("movespeed_reduce")
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.curse_duration = self:GetAbility():GetSpecialValueFor("curse_duration")
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 	end
 end
@@ -97,17 +97,17 @@ function modifier_drow_ranger_3_1_slow:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_3_1_slow:OnCreated(params)
-	self.movespeed_reduce = self:GetAbility():GetSpecialValueFor("movespeed_reduce")
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.curse_duration = self:GetAbility():GetSpecialValueFor("curse_duration")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 		self:SetStackCount(1)
 	end
 end
 function modifier_drow_ranger_3_1_slow:OnRefresh(params)
-	self.movespeed_reduce = self:GetAbility():GetSpecialValueFor("movespeed_reduce")
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.curse_duration = self:GetAbility():GetSpecialValueFor("curse_duration")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 		self:IncrementStackCount()
 	end
@@ -157,10 +157,10 @@ function modifier_drow_ranger_3_1_freeze:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 function modifier_drow_ranger_3_1_freeze:OnCreated(params)
-	self.base_damage = self:GetAbility():GetSpecialValueFor("base_damage")
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.curse_duration = self:GetAbility():GetSpecialValueFor("curse_duration")
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 	end
 end

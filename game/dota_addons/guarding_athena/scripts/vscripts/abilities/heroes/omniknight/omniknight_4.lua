@@ -1,5 +1,5 @@
-LinkLuaModifier("modifier_omniknight_4", "abilities/omniknight/omniknight_4.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_omniknight_4_debuff", "abilities/omniknight/omniknight_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_4", "abilities/heroes/omniknight/omniknight_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_4_debuff", "abilities/heroes/omniknight/omniknight_4.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if omniknight_4 == nil then
 	omniknight_4 = class({})
@@ -70,14 +70,14 @@ function modifier_omniknight_4:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 function modifier_omniknight_4:OnCreated(params)
-	self.bonus_attackspeed = self:GetAbility():GetSpecialValueFor("bonus_attackspeed")
-	self.bonus_movespeed = self:GetAbility():GetSpecialValueFor("bonus_movespeed")
-	self.bonus_resistance = self:GetAbility():GetSpecialValueFor("bonus_resistance")
-	self.bonus_amp_percent = self:GetAbility():GetSpecialValueFor("bonus_amp_percent")
-	self.mana_cost = self:GetAbility():GetSpecialValueFor("mana_cost")
-	self.palsy_duration = self:GetAbility():GetSpecialValueFor("palsy_duration")
-	self.palsy_radius = self:GetAbility():GetSpecialValueFor("palsy_radius")
-	self.palsy_interval = self:GetAbility():GetSpecialValueFor("palsy_interval")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
+	self.bonus_movespeed = self:GetAbilitySpecialValueFor("bonus_movespeed")
+	self.bonus_resistance = self:GetAbilitySpecialValueFor("bonus_resistance")
+	self.bonus_amp_percent = self:GetAbilitySpecialValueFor("bonus_amp_percent")
+	self.mana_cost = self:GetAbilitySpecialValueFor("mana_cost")
+	self.palsy_duration = self:GetAbilitySpecialValueFor("palsy_duration")
+	self.palsy_radius = self:GetAbilitySpecialValueFor("palsy_radius")
+	self.palsy_interval = self:GetAbilitySpecialValueFor("palsy_interval")
 	if IsServer() then
 		self:StartIntervalThink(self.palsy_interval)
 	end
@@ -146,9 +146,9 @@ function modifier_omniknight_4_debuff:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 function modifier_omniknight_4_debuff:OnCreated(params)
-	self.palsy_attackspeed = self:GetAbility():GetSpecialValueFor("palsy_attackspeed")
-	self.palsy_movespeed = self:GetAbility():GetSpecialValueFor("palsy_movespeed")
-	self.storm_chance = self:GetAbility():GetSpecialValueFor("storm_chance")
+	self.palsy_attackspeed = self:GetAbilitySpecialValueFor("palsy_attackspeed")
+	self.palsy_movespeed = self:GetAbilitySpecialValueFor("palsy_movespeed")
+	self.storm_chance = self:GetAbilitySpecialValueFor("storm_chance")
 	if IsServer() then
 		if RollPercentage(self.storm_chance) then
 			self:GetAbility():ThunderStorm(self:GetParent())

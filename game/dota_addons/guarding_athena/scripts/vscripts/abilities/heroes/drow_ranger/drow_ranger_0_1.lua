@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_drow_ranger_0_1", "abilities/drow_ranger/drow_ranger_0_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_0_1", "abilities/heroes/drow_ranger/drow_ranger_0_1.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if drow_ranger_0_1 == nil then
 	drow_ranger_0_1 = class({})
@@ -39,20 +39,20 @@ function modifier_drow_ranger_0_1:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_0_1:OnCreated(params)
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
-	self.radius = self:GetAbility():GetSpecialValueFor("radius")
-	self.delay = self:GetAbility():GetSpecialValueFor("delay")
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
-	self.agi_damage_increase = self:GetAbility():GetSpecialValueFor("agi_damage_increase")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
+	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.delay = self:GetAbilitySpecialValueFor("delay")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.agi_damage_increase = self:GetAbilitySpecialValueFor("agi_damage_increase")
 	if IsServer() then
 	end
 end
 function modifier_drow_ranger_0_1:OnRefresh(params)
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
-	self.radius = self:GetAbility():GetSpecialValueFor("radius")
-	self.delay = self:GetAbility():GetSpecialValueFor("delay")
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
-	self.agi_damage_increase = self:GetAbility():GetSpecialValueFor("agi_damage_increase")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
+	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.delay = self:GetAbilitySpecialValueFor("delay")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.agi_damage_increase = self:GetAbilitySpecialValueFor("agi_damage_increase")
 	if IsServer() then
 	end
 end

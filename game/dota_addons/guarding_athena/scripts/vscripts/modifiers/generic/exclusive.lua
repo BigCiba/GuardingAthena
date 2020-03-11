@@ -12,7 +12,7 @@ function exclusive:DeclareFunctions()
 end
 function exclusive:OnCreated( t )
     if IsServer() then
-        self.property = self:GetAbility():GetSpecialValueFor("property") * 0.01
+        self.property = self:GetAbilitySpecialValueFor("property") * 0.01
     end
 end
 function exclusive:GetAttributes( t )

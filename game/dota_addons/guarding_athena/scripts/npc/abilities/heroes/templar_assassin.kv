@@ -1,0 +1,342 @@
+"templar_assassin"
+{
+	"templar_assassin_0"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/heroes/templar_assassin/templar_assassin_0"
+		"AbilityTextureName"		"revelater_0"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityCooldown"			"0"
+		"AbilityCharges"			"3"
+		"AbilityChargeRestoreTime"	"6"
+
+		"HasScepterUpgrade"			"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"charge_restore_time"			"6"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"max_charges"		"3"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"cost_pct_per_stack"			"3"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"scepter_damage"			"10"
+				"RequiresScepter"			"1"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"scepter_radius"			"300"
+				"RequiresScepter"			"1"
+			}
+		}
+	}
+
+	"templar_assassin_1"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/heroes/templar_assassin/templar_assassin_1"
+		"AbilityTextureName"		"revelater_1"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"					"20"
+		"RequiredLevel"				"0"
+		"LevelsBetweenUpgrades"		"3"
+		"AbilityCastPoint"			"0.1"
+		"AbilityCastAnimation"		"ACT_DOTA_ATTACK"
+		"AbilityCooldown"			"8"
+		"AbilityManaCost"			"40"
+		"AbilityCastRange"			"800"
+		"precache"
+		{
+			"particle"	"particles/heroes/revelater/revelater_cash.vpcf"
+			"particle"	"particles/econ/items/templar_assassin/templar_assassin_focal/templar_meld_focal_overhead.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"base_damage"	"250"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage"		"3"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"health_pct"	"30"
+			}
+			"04"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"angle"			"90"
+			}
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"distance"		"600"
+			}
+			"06"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"5"
+			}
+			"07"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"speed"			"2000"
+			}
+			"08"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_pct"		"50"
+			}
+		}
+	}
+
+	"templar_assassin_2"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/heroes/templar_assassin/templar_assassin_2"
+		"AbilityTextureName"		"custom/revelater_2"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"					"20"
+		"RequiredLevel"				"0"
+		"LevelsBetweenUpgrades"		"3"
+		"AbilityCastPoint"			"0.1"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"			"0"
+		"AbilityCharges"			"3"
+		"AbilityChargeRestoreTime"	"6"
+		"AbilityManaCost"			"20"
+		"AbilityCastRange"			"1600"
+
+		"HasScepterUpgrade"			"1"
+		"precache"
+		{
+			"particle"	"particles/heroes/revelater/revelater_motion.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"		"1600"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"800"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"50"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"3"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"200"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_refresh_chance"	"30"
+				"RequiresScepter"			"1"
+			}
+		}
+	}
+	"templar_assassin_3"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/heroes/templar_assassin/templar_assassin_3"
+		"AbilityTextureName"		"revelater_3"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"					"20"
+		"RequiredLevel"				"0"
+		"LevelsBetweenUpgrades"		"3"
+		"AbilityCastAnimation"		"ACT_DOTA_ATTACK"
+		"AbilityCooldown"			"8"
+		"AbilityManaCost"			"60"
+
+		"HasScepterUpgrade"			"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
+			"particle"	"particles/heroes/revelater/revelater_motion.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"resistance"	"5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"150"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_tick"	"0.25"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"active_radius"	"300"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"active_duration"	"1"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"delay"		"0.5"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_attack_range"	"20"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_stun_duration"	"2"
+				"RequiresScepter"			"1"
+			}
+		}
+	}
+	"templar_assassin_4"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"abilities/heroes/templar_assassin/templar_assassin_4"
+		"AbilityTextureName"		"revelater_4"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"					"8"
+		"RequiredLevel"				"8"
+		"LevelsBetweenUpgrades"		"24"
+		"AbilityCooldown"			"30"
+		"AbilityManaCost"			"200"
+		
+		"HasScepterUpgrade"			"1"
+		"precache"
+		{
+			"particle"	"particles/heroes/revelater/revelater_trail_ultimate.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"400"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_tick"	"0.2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana_cost_pct"	"2"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"turn_rate"	"80"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"100"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0.1"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_chance"	"15"
+				"RequiresScepter"			"1"
+			}
+		}
+	}
+}

@@ -392,6 +392,12 @@ if IsClient() then
 	function C_DOTA_BaseNPC:IsWave()
 		return self.b_wave_tage
 	end
+	function C_DOTA_BaseNPC:GetRebornTimes()
+		return self:HasModifier("modifier_reborn") and self:FindModifierByName("modifier_reborn"):GetStackCount() or 0
+	end
+	function C_DOTA_BaseNPC:GetScepterLevel()
+		return (self:HasModifier("modifier_reborn") and self:HasScepter()) and self:GetRebornTimes() or 0
+	end
 end
 
 if IsServer() then
@@ -507,6 +513,28 @@ if IsServer() then
 	end
 	function CDOTA_BaseNPC:IsWave()
 		return self.b_wave_tage
+	end
+	function CDOTA_BaseNPC:RefreshAbilities()
+		for i = 1, self:GetAbilityCount() do
+			local ability = self:GetAbilityByIndex(i - 1)
+			if ability ~= nil and FindValueByKey(REFRESH_EXCLUDE_ABILITIES,ability:GetAbilityName()) == false then
+				ability:EndCooldown()
+			end
+		end
+	end
+	function CDOTA_BaseNPC:RefreshItems()
+		for i = 1, 16 do
+			local item = self:GetItemInSlot(i - 1)
+			if item ~= nil and FindValueByKey(REFRESH_EXCLUDE_ITEMS,item:GetAbilityName()) == false then
+				item:EndCooldown()
+			end
+		end
+	end
+	function CDOTA_BaseNPC:GetRebornTimes()
+		return self:HasModifier("modifier_reborn") and self:FindModifierByName("modifier_reborn"):GetStackCount() or 0
+	end
+	function CDOTA_BaseNPC:GetScepterLevel()
+		return (self:HasModifier("modifier_reborn") and self:HasScepter()) and self:GetRebornTimes() or 0
 	end
 end
 

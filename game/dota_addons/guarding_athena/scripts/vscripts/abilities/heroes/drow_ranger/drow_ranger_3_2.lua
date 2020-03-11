@@ -1,6 +1,6 @@
-LinkLuaModifier("modifier_drow_ranger_3_2", "abilities/drow_ranger/drow_ranger_3_2.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_drow_ranger_3_2_stack", "abilities/drow_ranger/drow_ranger_3_2.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_drow_ranger_3_2_buff", "abilities/drow_ranger/drow_ranger_3_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_3_2", "abilities/heroes/drow_ranger/drow_ranger_3_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_3_2_stack", "abilities/heroes/drow_ranger/drow_ranger_3_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_drow_ranger_3_2_buff", "abilities/heroes/drow_ranger/drow_ranger_3_2.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if drow_ranger_3_2 == nil then
 	drow_ranger_3_2 = class({})
@@ -35,14 +35,14 @@ function modifier_drow_ranger_3_2:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_3_2:OnCreated(params)
-	self.base_damage = self:GetAbility():GetSpecialValueFor("base_damage")
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
 	if IsServer() then
 	end
 end
 function modifier_drow_ranger_3_2:OnRefresh(params)
-	self.base_damage = self:GetAbility():GetSpecialValueFor("base_damage")
-	self.agi_damage = self:GetAbility():GetSpecialValueFor("agi_damage")
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.agi_damage = self:GetAbilitySpecialValueFor("agi_damage")
 	if IsServer() then
 	end
 end
@@ -94,17 +94,17 @@ function modifier_drow_ranger_3_2_stack:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_3_2_stack:OnCreated(params)
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.extra_agi_damage = self:GetAbility():GetSpecialValueFor("extra_agi_damage")
-	self.duration = self:GetAbility():GetSpecialValueFor("duration")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.extra_agi_damage = self:GetAbilitySpecialValueFor("extra_agi_damage")
+	self.duration = self:GetAbilitySpecialValueFor("duration")
 	if IsServer() then
 		self:SetStackCount(1)
 	end
 end
 function modifier_drow_ranger_3_2_stack:OnRefresh(params)
-	self.require_count = self:GetAbility():GetSpecialValueFor("require_count")
-	self.extra_agi_damage = self:GetAbility():GetSpecialValueFor("extra_agi_damage")
-	self.duration = self:GetAbility():GetSpecialValueFor("duration")
+	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.extra_agi_damage = self:GetAbilitySpecialValueFor("extra_agi_damage")
+	self.duration = self:GetAbilitySpecialValueFor("duration")
 	if IsServer() then
 		self:IncrementStackCount()
 	end
@@ -148,7 +148,7 @@ function modifier_drow_ranger_3_2_buff:AllowIllusionDuplicate()
 	return false
 end
 function modifier_drow_ranger_3_2_buff:OnCreated(params)
-	self.agi_percent = self:GetAbility():GetSpecialValueFor("agi_percent")
+	self.agi_percent = self:GetAbilitySpecialValueFor("agi_percent")
 	if IsServer() then
 	end
 end

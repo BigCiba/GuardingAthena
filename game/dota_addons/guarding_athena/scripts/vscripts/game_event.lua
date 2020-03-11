@@ -659,6 +659,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
 		hero:AddItem(CreateItem("item_"..hero:GetUnitName(), hero, hero))
 		hero.reborn_time = 4
+		hero:AddNewModifier(hero, nil, "modifier_reborn", nil):SetStackCount(4)
 	end
 	if string.sub(text,0,9) == "autospawn" then
 		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()

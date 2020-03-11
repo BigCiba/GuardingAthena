@@ -184,7 +184,7 @@ else
 end
 if IsClient() then
 	if DeepPrintTable ~= nil then
-		DeepPrintTable(package)
+		-- DeepPrintTable(package)
 	end
 end
 

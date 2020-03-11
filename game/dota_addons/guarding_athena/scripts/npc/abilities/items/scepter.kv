@@ -1,0 +1,56 @@
+"scepter"
+{
+	// 天启者
+	"item_npc_dota_hero_templar_assassin"
+	{
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/scepter/scepter"
+		"AbilityTextureName"		"item_zhuanshuta"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"0.0"
+		"ID"						"1695"
+		"ItemQuality"				"epic"
+		"ItemCost"					"1"
+		"ItemSellable"				"0"
+		"ItemPurchasable"			"0"
+		"ItemIsNeutralDrop"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_refresh_chance"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_stun_duration"	"2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_chance"	"15"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_radius"	"300"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_damage"	"10"
+			}
+		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+	}
+}

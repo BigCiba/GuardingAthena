@@ -17,7 +17,7 @@ function modifier_hex:GetModifierModelChange()
 end
 
 function modifier_hex:GetModifierMoveSpeedOverride()
-	return self:GetAbility():GetSpecialValueFor("movespeed")
+	return self:GetAbilitySpecialValueFor("movespeed")
 end
 
 function modifier_hex:CheckState()

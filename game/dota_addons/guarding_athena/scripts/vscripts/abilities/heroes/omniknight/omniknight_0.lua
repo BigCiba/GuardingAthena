@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_omniknight_0", "abilities/omniknight/omniknight_0.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_0", "abilities/heroes/omniknight/omniknight_0.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if omniknight_0 == nil then
 	omniknight_0 = class({})
@@ -60,8 +60,8 @@ function modifier_omniknight_0:GetEffectAttachType()
 	return DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
 end
 function modifier_omniknight_0:OnCreated(params)
-	self.stun_duration = self:GetAbility():GetSpecialValueFor("stun_duration")
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
+	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
 	if IsServer() then
 		local iParticleID = ParticleManager:CreateParticle("particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControlEnt(iParticleID, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_attack1", self:GetParent():GetAbsOrigin(), true)
@@ -69,8 +69,8 @@ function modifier_omniknight_0:OnCreated(params)
 	end
 end
 function modifier_omniknight_0:OnRefresh(params)
-	self.stun_duration = self:GetAbility():GetSpecialValueFor("stun_duration")
-	self.chance = self:GetAbility():GetSpecialValueFor("chance")
+	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
+	self.chance = self:GetAbilitySpecialValueFor("chance")
 	if IsServer() then
 	end
 end

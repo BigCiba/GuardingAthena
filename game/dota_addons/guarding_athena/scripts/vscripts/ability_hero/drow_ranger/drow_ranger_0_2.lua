@@ -42,12 +42,12 @@ function modifier_drow_ranger_0_2_buff:AllowIllusionDuplicate()
 end
 function modifier_drow_ranger_0_2_buff:OnCreated(params)
     if IsServer() then
-        self.bonus_damage = self:GetAbility():GetSpecialValueFor("damage")
+        self.bonus_damage = self:GetAbilitySpecialValueFor("damage")
 	end
 end
 function modifier_drow_ranger_0_2_buff:OnRefresh(params)
     if IsServer() then
-        self.bonus_damage = self:GetAbility():GetSpecialValueFor("damage")
+        self.bonus_damage = self:GetAbilitySpecialValueFor("damage")
 	end
 end
 function modifier_drow_ranger_0_2_buff:OnDestroy()
