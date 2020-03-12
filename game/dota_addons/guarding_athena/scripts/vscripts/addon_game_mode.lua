@@ -9,7 +9,7 @@ require("ability_hero")
 require("ability_unit")
 require("ability_item")
 require("ability_hero/hippolyta")
-require('setting')
+-- require('setting')
 require('filter')
 require('game_event')
 require('scoreManager')
@@ -187,7 +187,46 @@ end
 
 function Activate()
 	print ( '[GuardingAthena] Creating game mode' )
-	GuardingAthena:InitGameMode()
+	Initialize(false)
+	-- GuardingAthena:InitGameMode()
+end
+function Require(requireList, bReload)
+	for k, v in pairs(requireList) do
+		local t = require(v)
+		if t ~= nil and type(t) == "table" then
+			_G[k] = t
+			if t.init ~= nil then
+				t:init(bReload)
+			end
+		end
+	end
+end
+function Initialize(bReload)
+	_G.CustomUIEventListenerIDs = {}
+	_G.GameEventListenerIDs = {}
+	_G.TimerEventListenerIDs = {}
+	_G.Activated = true
+
+	-- Require({
+	-- 	Request = "libraries/pet",
+
+	-- 	"libraries/util",
+	-- 	"libraries/md5",
+
+	-- 	"class/weight_pool",
+	-- }, bReload)
+
+	Require({
+		Settings = "settings",
+		-- Filters = "filters",
+		GuardingAthena = "guarding_athena",
+	}, bReload)
+
+	Require({
+		Mechanics = "mechanics/main",
+	}, bReload)
+
+	-- Service:init(bReload)
 end
 function Reload()
 	local state = GameRules:State_Get()

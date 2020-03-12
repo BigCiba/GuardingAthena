@@ -1,3 +1,8 @@
+if GuardingAthena == nil then
+	GuardingAthena = {}
+end
+local public = GuardingAthena
+
 TIME_BOSS_REBORN = 60
 GOLD_USED_TABLE ={}
 SF_USED_TABLE ={}
@@ -17,8 +22,8 @@ gamestates =
 	[8] = "DOTA_GAMERULES_STATE_POST_GAME",
 	[9] = "DOTA_GAMERULES_STATE_DISCONNECT"
 }
-
-function GuardingAthena:InitGameMode()
+function public:init(bReload)
+-- function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 
