@@ -88,8 +88,8 @@ function HeroReborn( trigger )
 				unit.caller = caster
 				GuardingAthena.iapetos = unit
 				caster.iapetos = unit
-				SetRegionLimit(caster,Entities:FindByName(nil,"reborn_room"))
-				SetRegionLimit(unit,Entities:FindByName(nil,"reborn_room"))
+				-- SetRegionLimit(caster,Entities:FindByName(nil,"reborn_room"))
+				-- SetRegionLimit(unit,Entities:FindByName(nil,"reborn_room"))
 				for i=1,16 do
 					if unit:GetAbilityByIndex(i-1) then
 						local ability = unit:GetAbilityByIndex(i-1)

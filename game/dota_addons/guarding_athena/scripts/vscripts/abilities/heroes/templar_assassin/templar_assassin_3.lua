@@ -46,11 +46,11 @@ function modifier_templar_assassin_3:OnRefresh(params)
 	end
 end
 function modifier_templar_assassin_3:OnDestroy()
-	RemoveModifierEvents(MODIFIER_EVENT_ON_ABILITY_FULLY_CAST, self, self:GetParent())
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function modifier_templar_assassin_3:DeclareFunctions()
 	return {
-		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		-- MODIFIER_EVENT_ON_ATTACK_LANDED,
 		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS
 	}
 end
