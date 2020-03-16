@@ -8,17 +8,10 @@ function omniknight_1:OnSpellStart()
 	local vLocation = hCaster:GetAbsOrigin()
 	local radius = self:GetSpecialValueFor("radius")
 	local stun_duration = self:GetSpecialValueFor("stun_duration")
-	local damage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("str_factor")
-	local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), vLocation, hCaster, radius, self:GetAbilityTargetTeam(), self:GetAbilityTargetType(), self:GetAbilityTargetFlags(), FIND_CLOSEST, false)
-	local tDamageTable = {
-		ability = self,
-		attacker = hCaster,
-		damage = damage,
-		damage_type = self:GetAbilityDamageType(),
-	}
+	local damage = self:GetSpecialValueWithLevel("base_damage") + self:GetSpecialValueWithLevel("str_factor")
+	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vLocation,radius, hAbility)
 	for _, hUnit in pairs(tTargets) do
-		tDamageTable.victim = hUnit
-		ApplyDamage(tDamageTable)
+		hCaster:DealDamage(hUnit, hAbility, damage)
 		hAbility:ThunderPower(hUnit)
 		hUnit:AddNewModifier(hCaster, self, "modifier_stunned", {duration = stun_duration * hUnit:GetStatusResistanceFactor()})
 	end

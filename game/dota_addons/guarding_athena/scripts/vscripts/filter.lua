@@ -238,6 +238,17 @@ function GuardingAthena:ItemAddedFilter( keys )
 		PlayerResource:ModifyGold(playerID,5000, true, 0)
 		currentItem:RemoveSelf()
 		return false
+	elseif currentItemName == "item_str_book" or currentItemName == "item_agi_book" or currentItemName == "item_int_book" then
+		local hHero = currentUnit.currentHero == nil and currentUnit or currentUnit.currentHero
+		if currentItemName == "item_str_book" then
+			PropertySystem( hHero, 0, 10)
+		elseif currentItemName == "item_agi_book" then
+			PropertySystem( hHero, 1, 10)
+		elseif currentItemName == "item_int_book" then
+			PropertySystem( hHero, 2, 10)
+		end
+		currentItem:RemoveSelf()
+		return false
 	-- 专属装备
 	elseif currentItemName == "item_zhuanshu" then
 		local currentUnitName = currentUnit:GetUnitName()

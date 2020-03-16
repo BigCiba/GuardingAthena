@@ -99,15 +99,15 @@ function modifier_omniknight_2_aura:AllowIllusionDuplicate()
 	return false
 end
 function modifier_omniknight_2_aura:OnCreated(t)
-	self.health_regen = self:GetAbilitySpecialValueFor("health_regen")
-	self.mana_regen = self:GetAbilitySpecialValueFor("mana_regen")
-	self.health_regen_regen = self:GetAbilitySpecialValueFor("health_regen_regen")
+	self.health_regen = self:GetAbilitySpecialValueWithLevel("health_regen")
+	self.mana_regen = self:GetAbilitySpecialValueWithLevel("mana_regen")
+	self.health_regen_pct = self:GetAbilitySpecialValueWithLevel("health_regen_pct")
 	self.chance = self:GetAbilitySpecialValueFor("chance")
 end
 function modifier_omniknight_2_aura:OnRefresh(t)
-	self.health_regen = self:GetAbilitySpecialValueFor("health_regen")
-	self.mana_regen = self:GetAbilitySpecialValueFor("mana_regen")
-	self.health_regen_regen = self:GetAbilitySpecialValueFor("health_regen_regen")
+	self.health_regen = self:GetAbilitySpecialValueWithLevel("health_regen")
+	self.mana_regen = self:GetAbilitySpecialValueWithLevel("mana_regen")
+	self.health_regen_pct = self:GetAbilitySpecialValueWithLevel("health_regen_pct")
 	self.chance = self:GetAbilitySpecialValueFor("chance")
 end
 function modifier_omniknight_2_aura:OnDestroy()
@@ -123,7 +123,7 @@ function modifier_omniknight_2_aura:GetModifierConstantHealthRegen()
 	return self.health_regen
 end
 function modifier_omniknight_2_aura:GetModifierHealthRegenPercentage()
-	return self.health_regen_regen
+	return self.health_regen_pct
 end
 function modifier_omniknight_2_aura:GetModifierConstantManaRegen()
 	return self.mana_regen

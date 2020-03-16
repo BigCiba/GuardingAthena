@@ -188,7 +188,7 @@ end
 function Activate()
 	print ( '[GuardingAthena] Creating game mode' )
 	Initialize(false)
-	-- GuardingAthena:InitGameMode()
+	GuardingAthena:InitGameMode()
 end
 function Require(requireList, bReload)
 	for k, v in pairs(requireList) do
@@ -217,9 +217,9 @@ function Initialize(bReload)
 	-- }, bReload)
 
 	Require({
-		Settings = "settings",
+		Settings = "setting",
 		-- Filters = "filters",
-		GuardingAthena = "guarding_athena",
+		-- GuardingAthena = "guarding_athena",
 	}, bReload)
 
 	Require({

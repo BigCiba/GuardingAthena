@@ -22,8 +22,8 @@ gamestates =
 	[8] = "DOTA_GAMERULES_STATE_POST_GAME",
 	[9] = "DOTA_GAMERULES_STATE_DISCONNECT"
 }
-function public:init(bReload)
--- function GuardingAthena:InitGameMode()
+-- function public:init(bReload)
+function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 

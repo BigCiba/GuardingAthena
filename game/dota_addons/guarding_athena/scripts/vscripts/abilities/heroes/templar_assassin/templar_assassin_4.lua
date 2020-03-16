@@ -77,7 +77,9 @@ function modifier_templar_assassin_4_debuff:OnCreated(params)
 		if self:GetCaster():GetScepterLevel() >= 4 then
 			if RollPercentage(self.scepter_chance) then
 				self:GetParent():SetForwardVector((self:GetParent():GetAbsOrigin() - self:GetCaster():GetAbsOrigin()):Normalized())
-				self:GetParent():Stop()
+				self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_stunned", {duration = self:GetDuration()})
+				self:SetDuration(self:GetDuration() * 2, true)
+				-- self:GetParent():Stop()
 			end
 		end
 	end

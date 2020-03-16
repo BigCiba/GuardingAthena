@@ -9,7 +9,6 @@ function Load(table, key)
 	return table.abilitydata[key]
 end
 
-
 -- CDOTA_Buff
 function CDOTA_Buff:GetAbilitySpecialValueFor(szName)
 	if not IsValid(self:GetAbility()) then
@@ -29,6 +28,13 @@ function CDOTA_Buff:GetAbilityLevel()
 		return 0
 	end
 	return hAbility:GetLevel()
+end
+function CDOTA_Buff:GetAbilitySpecialValueWithLevel(szName)
+	local hAbility = self:GetAbility()
+	if not IsValid(hAbility) then
+		return 0
+	end
+	return hAbility:GetSpecialValueWithLevel(szName)
 end
 
 function AddModifierEvents(iModifierEvent, hModifier, hSource, hTarget)
@@ -116,6 +122,9 @@ function FireCustomModifiersEvents(iModifierFunction, params)
 end
 
 if IsClient() then
+	function C_DOTABaseAbility:GetSpecialValueWithLevel(szName)
+		return self:GetSpecialValueFor(szName) * self:GetLevel()
+	end
 	function C_DOTA_BaseNPC:GetCastRangeBonus()
 		local tHero = CustomNetTables:GetTableValue("heroes", tostring(self:entindex()))
 		if tHero == nil then
@@ -291,6 +300,19 @@ if IsClient() then
 end
 
 if IsServer() then
+	function CDOTABaseAbility:GetSpecialValueWithLevel(szName)
+		return self:GetSpecialValueFor(szName) * self:GetLevel()
+	end
+	function CDOTABaseAbility:ReduceCooldown(flTime)
+		local flRemainingTime = self:GetCooldownTimeRemaining()
+		self:EndCooldown()
+		self:StartCooldown(flRemainingTime - flTime)
+	end
+	function CDOTABaseAbility:ReduceCooldownPercent(flPercent)
+		local flRemainingTime = self:GetCooldownTimeRemaining()
+		self:EndCooldown()
+		self:StartCooldown(flRemainingTime * (1 - flPercent * 0.01))
+	end
 	function CDOTA_BaseNPC:GetAbilityNameSpecialValueFor(sAbilityName, sKey)
 		local hAbility = self:FindAbilityByName(sAbilityName)
 		if IsValid(hAbility) then

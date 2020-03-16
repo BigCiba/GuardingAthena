@@ -10,7 +10,7 @@ end
 function omniknight_0:ThunderPower(hTarget)
 	local hCaster = self:GetCaster()
 	local hAbility = hCaster:FindAbilityByName("omniknight_3")
-	local bonus_str_factor = IsValid(ability) and hAbility:GetSpecialValueFor("bonus_str_factor") or 0
+	local bonus_str_factor = IsValid(ability) and hAbility:GetSpecialValueWithLevel("bonus_str_factor") or 0
 	local damage = (self:GetSpecialValueFor("str_factor") + bonus_str_factor) * hCaster:GetStrength()
 	if hTarget:IsStunned() then
 		local tDamageTable = {
@@ -91,7 +91,7 @@ function modifier_omniknight_0:OnAttackLanded(params)
 		local hAbility = self:GetAbility()
 		hAbility:ThunderPower(hTarget)
 		local hAbility3 = hParent:FindAbilityByName("omniknight_3")
-		local bonus_chance = IsValid(hAbility3) and hAbility3:GetSpecialValueFor("bonus_chance") or 0
+		local bonus_chance = IsValid(hAbility3) and hAbility3:GetSpecialValueWithLevel("bonus_chance") or 0
 		if hAbility:IsCooldownReady() and RollPercentage(self.chance + bonus_chance) then
 			hAbility:StartCooldown(hAbility:GetCooldown(hAbility:GetLevel()))
 			self:IncrementStackCount()

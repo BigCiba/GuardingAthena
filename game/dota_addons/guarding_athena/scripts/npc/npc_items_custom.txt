@@ -586,7 +586,7 @@
 				"mana_per_tick"	"15"
 			}
 		}
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
+		"Model"	"models/props_gameplay/clarity.vmdl"
 	}
 
 	"item_clarity2"
@@ -670,7 +670,7 @@
 				"mana_per_tick"	"30"
 			}
 		}
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
+		"Model"	"models/props_gameplay/clarity.vmdl"
 	}
 
 	"item_clarity3"
@@ -754,7 +754,7 @@
 				"mana_per_tick"	"80"
 			}
 		}
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
+		"Model"	"models/props_gameplay/clarity.vmdl"
 	}
 
 	"item_clarity4"
@@ -839,7 +839,7 @@
 				"mana_per_tick"	"200"
 			}
 		}
-		"Model"	"models/props_gameplay/salve_blue.vmdl"
+		"Model"	"models/props_gameplay/clarity.vmdl"
 	}
 
 	"item_salve1"

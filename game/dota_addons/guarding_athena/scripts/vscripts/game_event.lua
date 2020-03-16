@@ -437,8 +437,10 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		local player = heroEntity:GetPlayerOwner()
 		local playerID = heroEntity:GetPlayerID()
 		HeroState:InitHero(heroEntity)
+		heroEntity.pet = NewPet("pet_0"..RandomInt(1,5), heroEntity)
 		--Attributes:ModifyBonuses(heroEntity)
 		-- 记录当前英雄
+		print(heroEntity:GetAbsOrigin())
 		HERO_TABLE[playerID + 1] = heroEntity
 		-- 垃圾v社
 		local tpScroll = heroEntity:GetItemInSlot(15)
