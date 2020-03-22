@@ -9,7 +9,8 @@ function omniknight_2:OnSpellStart()
 	local vLocation = self:GetCursorPosition()
 	local duration = self:GetSpecialValueFor("duration")
 	local flStrength = hCaster:GetStrength()
-	local hUnit = CreateUnitByName("heal_device", vLocation, true, hCaster, hCaster, hCaster:GetTeamNumber())
+	local sUnitName = hCaster:GetScepterLevel() >= 3 and "heal_device_move" or "heal_device"
+	local hUnit = CreateUnitByName(sUnitName, vLocation, true, hCaster, hCaster, hCaster:GetTeamNumber())
 	hUnit:SetControllableByPlayer(hCaster:GetPlayerOwnerID(), true)
 	hUnit:SetBaseMaxHealth(flStrength * 100)
 	hUnit:SetMaxHealth(flStrength * 100)
@@ -20,28 +21,25 @@ function omniknight_2:OnSpellStart()
 	-- sound
 	hUnit:EmitSound("Hero_Tinker.GridEffect")
 end
+function omniknight_2:ArcLightning(hSource, hTarget, iJumpCount)
+	local hCaster = self:GetCaster()
+	local hAbility = hCaster:FindAbilityByName("omniknight_0")
+	local radius = self:GetSpecialValueFor("radius")
+	local scepter_damage = self:GetSpecialValueFor("scepter_damage") * hCaster:GetStrength()
+	hCaster:DealDamage(hTarget, self, scepter_damage, DAMAGE_TYPE_MAGICAL)
+	hAbility:ThunderPower(hTarget)
+	-- particle
+	local particle = ParticleManager:CreateParticle("particles/heroes/mechanic/arc_lightning.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, hCaster)
+	ParticleManager:SetParticleControlEnt(particle, 0, hSource, PATTACH_POINT_FOLLOW, "attach_hitloc", hSource:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(particle, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetAbsOrigin(), true)
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_omniknight_2 == nil then
-	modifier_omniknight_2 = class({})
+	modifier_omniknight_2 = class({}, nil, ModifierBasic)
 end
 function modifier_omniknight_2:IsHidden()
 	return true
-end
-function modifier_omniknight_2:IsDebuff()
-	return false
-end
-function modifier_omniknight_2:IsPurgable()
-	return false
-end
-function modifier_omniknight_2:IsPurgeException()
-	return false
-end
-function modifier_omniknight_2:IsStunDebuff()
-	return false
-end
-function modifier_omniknight_2:AllowIllusionDuplicate()
-	return false
 end
 function modifier_omniknight_2:IsAura()
 	return true
@@ -69,6 +67,27 @@ function modifier_omniknight_2:GetEffectAttachType()
 end
 function modifier_omniknight_2:OnCreated(t)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.scepter_interval = self:GetAbilitySpecialValueFor("scepter_interval")
+	self.scepter_count = self:GetAbilitySpecialValueFor("scepter_count")
+	self.scepter_jump = self:GetAbilitySpecialValueFor("scepter_jump")
+	if IsServer() then
+		if self:GetParent():GetOwner():GetScepterLevel() >= 3 then
+			self:StartIntervalThink(self.scepter_interval)
+		end
+	end
+end
+function modifier_omniknight_2:OnIntervalThink()
+	local hParent = self:GetParent()
+	local scepter_count = self.scepter_count
+	local tTargets = FindUnitsInRadius(hParent:GetTeamNumber(), hParent:GetAbsOrigin(), nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+	for _, hUnit in pairs(tTargets) do
+		if scepter_count > 0 then
+			self:GetAbility():ArcLightning(hParent, hUnit, self.scepter_jump)
+			scepter_count = scepter_count - 1
+		else
+			break
+		end
+	end
 end
 function modifier_omniknight_2:CheckState()
 	return {
@@ -78,25 +97,7 @@ function modifier_omniknight_2:CheckState()
 end
 ---------------------------------------------------------------------
 if modifier_omniknight_2_aura == nil then
-	modifier_omniknight_2_aura = class({})
-end
-function modifier_omniknight_2_aura:IsHidden()
-	return false
-end
-function modifier_omniknight_2_aura:IsDebuff()
-	return false
-end
-function modifier_omniknight_2_aura:IsPurgable()
-	return false
-end
-function modifier_omniknight_2_aura:IsPurgeException()
-	return false
-end
-function modifier_omniknight_2_aura:IsStunDebuff()
-	return false
-end
-function modifier_omniknight_2_aura:AllowIllusionDuplicate()
-	return false
+	modifier_omniknight_2_aura = class({}, nil, ModifierBasic)
 end
 function modifier_omniknight_2_aura:OnCreated(t)
 	self.health_regen = self:GetAbilitySpecialValueWithLevel("health_regen")
@@ -111,6 +112,15 @@ function modifier_omniknight_2_aura:OnRefresh(t)
 	self.chance = self:GetAbilitySpecialValueFor("chance")
 end
 function modifier_omniknight_2_aura:OnDestroy()
+end
+function modifier_omniknight_2_aura:Roll()
+	if RollPercentage(self.chance) then
+		local iParticleID = ParticleManager:CreateParticle("particles/heroes/mechanic/heal_refresh.vpcf", PATTACH_ABSORIGIN, self:GetParent() )
+		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin() + Vector(0,0,100) )
+		self:GetParent():EmitSound("Hero_Tinker.RearmStart")
+		return true
+	end
+	return false
 end
 function modifier_omniknight_2_aura:DeclareFunctions()
 	return {

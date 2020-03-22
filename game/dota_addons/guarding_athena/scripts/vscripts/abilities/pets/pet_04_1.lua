@@ -26,7 +26,9 @@ end
 function modifier_pet_04_1:OnIntervalThink()
 	local hParent = self:GetParent()
 	hParent:GetOwner():AddNewModifier(hParent, self:GetAbility(), "modifier_pet_04_1_buff", {duration = self.duration})
-
+	if hParent:GetOwner():HasModifier("modifier_omniknight_1") then
+		hParent:GetOwner():FindModifierByName("modifier_omniknight_1"):AddStackCount()
+	end
 end
 ---------------------------------------------------------------------
 if modifier_pet_04_1_buff == nil then

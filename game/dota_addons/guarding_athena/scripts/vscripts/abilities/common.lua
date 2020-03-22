@@ -860,5 +860,44 @@ if IsServer() then
 		return FindUnitsInRadius(hCaster:GetTeamNumber(), vPosition, nil, flRadius, hAbility:GetAbilityTargetTeam(), hAbility:GetAbilityTargetType(), hAbility:GetAbilityTargetFlags(), iOrder, false)
 	end
 	
-	-- 对单位组造成动作
+	-- 发布指令
+	--[[
+		DOTA_UNIT_ORDER_NONE
+		DOTA_UNIT_ORDER_MOVE_TO_POSITION
+		DOTA_UNIT_ORDER_MOVE_TO_TARGET
+		DOTA_UNIT_ORDER_ATTACK_MOVE
+		DOTA_UNIT_ORDER_ATTACK_TARGET
+		DOTA_UNIT_ORDER_CAST_POSITION
+		DOTA_UNIT_ORDER_CAST_TARGET
+		DOTA_UNIT_ORDER_CAST_TARGET_TREE
+		DOTA_UNIT_ORDER_CAST_NO_TARGET
+		DOTA_UNIT_ORDER_CAST_TOGGLE
+		DOTA_UNIT_ORDER_HOLD_POSITION
+		DOTA_UNIT_ORDER_TRAIN_ABILITY
+		DOTA_UNIT_ORDER_DROP_ITEM
+		DOTA_UNIT_ORDER_GIVE_ITEM
+		DOTA_UNIT_ORDER_PICKUP_ITEM
+		DOTA_UNIT_ORDER_PICKUP_RUNE
+		DOTA_UNIT_ORDER_PURCHASE_ITEM
+		DOTA_UNIT_ORDER_SELL_ITEM
+		DOTA_UNIT_ORDER_DISASSEMBLE_ITEM
+		DOTA_UNIT_ORDER_MOVE_ITEM
+		DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
+		DOTA_UNIT_ORDER_STOP
+		DOTA_UNIT_ORDER_TAUNT
+		DOTA_UNIT_ORDER_BUYBACK
+		DOTA_UNIT_ORDER_GLYPH
+		DOTA_UNIT_ORDER_EJECT_ITEM_FROM_STASH
+		DOTA_UNIT_ORDER_CAST_RUNE
+	]]
+	function ExecuteOrder(hUnit, iOrder, hTarget, hAbility, vPosition)
+		ExecuteOrderFromTable({
+			UnitIndex = hUnit:entindex(),
+			OrderType = iOrder,
+			TargetIndex = IsValid(hTarget) and hTarget:entindex() or nil,
+			AbilityIndex = IsValid(hAbility) and hAbility:entindex() or nil,
+			Position = vPosition,
+			Queue = 0
+		})
+	end
 end

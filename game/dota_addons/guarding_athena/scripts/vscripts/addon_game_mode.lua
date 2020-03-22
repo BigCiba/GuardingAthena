@@ -30,6 +30,8 @@ require("libraries/ai")
 --require("modifiers/ring/ring_0_6")
 --require("modifiers/ring/ring_1_2")
 
+_G.tPrecacheList = require("precache")
+
 function Precache( context )
 	--[[
 		Precache things we know we'll use.  Possible file types include (but not limited to):
@@ -37,6 +39,11 @@ function Precache( context )
 			PrecacheResource( "particle", "*.vpcf", context )
 			PrecacheResource( "particle_folder", "particles/folder", context )
 	]]
+	for sPrecacheMode, tList in pairs(tPrecacheList) do
+		for _, sResource in pairs(tList) do
+			PrecacheResource(sPrecacheMode, sResource, context)
+		end
+	end
 	PrecacheResource( "model", "models/heroes/juggernaut/juggernaut.vmdl", context )
 	PrecacheResource( "model", "models/props_structures/tower_bad_sfm.vmdl", context )
 	PrecacheResource( "model", "models/props_gameplay/gold_bag.vmdl", context )

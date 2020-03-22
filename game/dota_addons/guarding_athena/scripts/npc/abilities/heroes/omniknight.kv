@@ -10,12 +10,6 @@
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityCooldown"			"2"
-		"precache"
-		{
-			"particle"	"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf"
-			"particle"	"particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
-			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
-		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -33,6 +27,12 @@
 				"var_type"			"FIELD_INTEGER"
 				"str_factor"		"10"
 			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"scepter_radius"			"300"
+				"RequiresScepter"			"1"
+			}
 		}
 	}
 	"omniknight_1"
@@ -49,14 +49,10 @@
 		"LevelsBetweenUpgrades"		"3"
 		"AbilityCastPoint"			"0.3"
 		"AbilityCastAnimation"		"ACT_DOTA_ATTACK"
-		"AbilityCooldown"			"0.0"
-		"AbilityCharges"			"3"
-		"AbilityChargeRestoreTime"	"8.0"
+		"AbilityCooldown"			"0"
+		// "AbilityCharges"			"3"
+		// "AbilityChargeRestoreTime"	"8.0"
 		"AbilityManaCost"			"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
-		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -82,7 +78,18 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"AbilityCharges"	""
+				"max_charges"	"3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"charge_restore_time"	"8"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"scepter_charges"			"4"
+				"RequiresScepter"			"1"
 			}
 		}
 	}
@@ -93,8 +100,7 @@
 		"AbilityTextureName"		"custom/heal_device"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"MaxLevel"					"20"
 		"RequiredLevel"				"1"
 		"LevelsBetweenUpgrades"		"3"
@@ -103,12 +109,6 @@
 		"AbilityCooldown"			"60"
 		"AbilityManaCost"			"0"
 		"AbilityCastRange"			"600"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_items.vsndevts"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
-			"particle"	"particles/skills/heal_device.vpcf"
-		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -140,6 +140,30 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"600"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"scepter_interval"			"1"
+				"RequiresScepter"			"1"
+			}
+			"08"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"scepter_count"			"3"
+				"RequiresScepter"			"1"
+			}
+			"09"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"scepter_damage"			"10"
+				"RequiresScepter"			"1"
+			}
+			"10"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"scepter_jump"			"9"
+				"RequiresScepter"			"1"
 			}
 		}
 	}
@@ -200,12 +224,6 @@
 		"LevelsBetweenUpgrades"	"24"
 		"AbilityCastPoint"	"0"
 		"AbilityManaCost"	"60 120 180 240 300"
-		"precache"
-		{
-			"particle"	"particles/heroes/omni_knight/thunder_barrier.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"	"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
-		}
 		"AbilitySpecial"
 		{
 			"01"

@@ -1,6 +1,12 @@
 LinkLuaModifier("modifier_scepter", "abilities/items/scepter/scepter.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- Abilities
+if item_npc_dota_hero_omniknight == nil then
+	item_npc_dota_hero_omniknight = class({})
+end
+function item_npc_dota_hero_omniknight:GetIntrinsicModifierName()
+	return "modifier_scepter"
+end
 if item_npc_dota_hero_templar_assassin == nil then
 	item_npc_dota_hero_templar_assassin = class({})
 end

@@ -47,8 +47,9 @@ function Pet:constructor(sName, hOwner)
 	self.iQuality = 1
 	self.iXP = 0
 
-	local hUnit = CreateUnitByName(sName, hOwner:GetAbsOrigin(), false, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
-	hUnit:AddNewModifier(hOwner, nil, "modifier_pet", nil)
+	local hUnit = CreateUnitByName(sName, hOwner:GetAbsOrigin(), true, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
+	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
+	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
 	hUnit:GetAbilityByIndex(0):SetLevel(1)
 	-- ambient
 	local sAmbientParticle = KeyValues.PetsKv[sName].AmbientParticle

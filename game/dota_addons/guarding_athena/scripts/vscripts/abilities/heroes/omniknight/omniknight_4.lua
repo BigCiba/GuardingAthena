@@ -149,9 +149,17 @@ function modifier_omniknight_4_debuff:OnCreated(params)
 	self.palsy_attackspeed = self:GetAbilitySpecialValueWithLevel("palsy_attackspeed")
 	self.palsy_movespeed = self:GetAbilitySpecialValueWithLevel("palsy_movespeed")
 	self.storm_chance = self:GetAbilitySpecialValueFor("storm_chance")
+	self.scepter_damage = self:GetAbilitySpecialValueFor("scepter_damage")
 	if IsServer() then
+		local hCaster = self:GetCaster()
+		local hParent = self:GetParent()
 		if RollPercentage(self.storm_chance) then
 			self:GetAbility():ThunderStorm(self:GetParent())
+		end
+		if hCaster:GetScepterLevel() >= 4 then
+			local hAbility = hCaster:FindAbilityByName("omniknight_0")
+			hCaster:DealDamage(hParent, self:GetAbility(), hCaster:GetStrength() * self.scepter_damage)
+			hAbility:ThunderPower(hParent)
 		end
 	end
 end

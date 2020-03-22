@@ -1,0 +1,889 @@
+"abilities"
+{
+	"omniknight_0"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stun_duration"					"2"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"10"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"str_factor"					"10"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_radius"				"300"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_0"
+		"AbilityTextureName"					"custom/thunder_power"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCooldown"						"2"
+		"HasScepterUpgrade"						"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE| DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"omniknight_1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"str_factor"					"2"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"400"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stun_duration"					"2"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_charges"					"3"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"charge_restore_time"			"8"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_charges"				"4"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_1"
+		"AbilityTextureName"					"custom/thunder_strike"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"omniknight_2"
+	{
+		"AbilitySpecial"
+		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_damage"				"10"
+			}
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_jump"					"3"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_regen"					"10"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"mana_regen"					"4"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"health_regen_pct"				"0.5"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"60"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"40"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_interval"				"1"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_count"					"3"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_2"
+		"AbilityTextureName"					"custom/heal_device"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"						"600"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"60"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"0"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	}
+	"omniknight_3"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attackspeed"				"15"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_str"						"10"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_chance"					"1"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_str_factor"				"1"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_count"					"8"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_3"
+		"AbilityTextureName"					"custom/weightlifting"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"8"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"omniknight_4"
+	{
+		"AbilitySpecial"
+		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"mana_cost"						"10 20 30 40 50 60 70 80"
+			}
+			"11"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"palsy_attackspeed"				"-40"
+			}
+			"12"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"palsy_movespeed"				"-50"
+			}
+			"13"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"palsy_duration"				"0.5"
+			}
+			"14"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"palsy_interval"				"1"
+			}
+			"15"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_damage"				"10"
+			}
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"palsy_radius"					"600"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"storm_str_damage"				"5"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"storm_jump_count"				"4"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"storm_chance"					"17"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"storm_interval"				"0.3"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attackspeed"				"60 70 80 90 100 110 120 130"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movespeed"				"45 60 75 90 105 120 135 150"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_resistance"				"10 12 14 16 18 20 22 24"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_amp_percent"				"100 125 150 175 200 225 250 275"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_4"
+		"AbilityTextureName"					"arc_warden_flux"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCastPoint"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"60 120 180 240 300"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"templar_assassin_0"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"charge_restore_time"			"6"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_charges"					"3"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cost_pct_per_stack"			"3"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_damage"				"10"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_radius"				"300"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_0"
+		"AbilityTextureName"					"revelater_0"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCharges"						"3"
+		"AbilityChargeRestoreTime"				"6"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	}
+	"templar_assassin_1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"250"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"3"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_pct"					"30"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"angle"							"90"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"600"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"5"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"2000"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_pct"						"50"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_1"
+		"AbilityTextureName"					"revelater_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCastRange"						"800"
+		"AbilityCastPoint"						"0.1"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"40"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"templar_assassin_2"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"100"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"1600"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"800"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"50"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"3"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"200"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_refresh_chance"		"30"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_2"
+		"AbilityTextureName"					"custom/revelater_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"						"1600"
+		"AbilityCastPoint"						"0.1"
+		"AbilityCharges"						"3"
+		"AbilityChargeRestoreTime"				"6"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"20"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"templar_assassin_3"
+	{
+		"AbilitySpecial"
+		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"active_duration"				"1"
+			}
+			"11"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"delay"							"0.5"
+			}
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_range"			"20"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_stun_duration"			"2"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"1"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"resistance"					"5"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"6"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"150"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage_tick"					"0.25"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"active_radius"					"300"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_3"
+		"AbilityTextureName"					"revelater_3"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCooldown"						"8"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"60"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"templar_assassin_4"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"400"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage_tick"					"0.2"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"mana_cost_pct"					"2"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"turn_rate"						"80"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"100"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"0.1"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_chance"				"15"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_4"
+		"AbilityTextureName"					"revelater_4"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCooldown"						"30"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"200"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"drow_ranger_0_1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"25"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"agi_damage"					"5"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"300"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"delay"							"0.5"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"agi_damage_increase"			"0.01"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_0_1"
+		"AbilityTextureName"					"drow_ranger_frost_arrows"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"drow_ranger_0_2"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"agi_factor"					"5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_range"			"550"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_0_2"
+		"AbilityTextureName"					"drow_ranger_0_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	}
+	"drow_ranger_1_1"
+	{
+		"AbilitySpecial"
+		{
+			"10"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"reduce_duration"				"1.5"
+			}
+			"11"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"collision_radius"				"50"
+			}
+			"12"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"900"
+			}
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"arrows_per_sec"				"16"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"1000"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"15"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cooldown"						"3"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"4"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"agility_damage"				"1.5"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"500"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed_reduce"				"30"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_1_1"
+		"AbilityTextureName"					"drow_ranger_1_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastRange"						"1200"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"drow_ranger_1_2"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"4"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"count"							"4"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"attack_factor"					"0.25"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.3"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_1_2"
+		"AbilityTextureName"					"drow_ranger_1_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCooldown"						"12"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+	"drow_ranger_3_1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"agi_damage"					"1.5"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed_reduce"				"-10"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"reduce_duration"				"3"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"require_count"					"8"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"curse_duration"				"2"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_3_1"
+		"AbilityTextureName"					"drow_ranger_marksmanship"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
+	}
+	"drow_ranger_3_2"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"agi_damage"					"0.1"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"extra_agi_damage"				"4"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"require_count"					"30"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"agi_percent"					"40"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"4"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"debuff_duration"				"3"
+			}
+		}
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_3_2"
+		"AbilityTextureName"					"drow_ranger_3_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+	}
+}

@@ -134,8 +134,8 @@
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"MinimapIcon"							"minimap_creep"
 		"MinimapIconSize"						"200"
-		"IsNeutralUnitType"						"1"
-		"UseNeutralCreepBehavior"				"1"
+		"IsNeutralUnitType"						"0"
+		"UseNeutralCreepBehavior"				"0"
 		"Ability1"								"boss_beat"
 	}
 	"ancient_golem"
@@ -210,10 +210,10 @@
 	"boss_ogre"
 	{
 		"BaseClass"								"npc_dota_creature"
-		"Model"									"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
-		"ModelScale"							"1.4"
+		"Model"									"models/creeps/ogre_1/boss_ogre.vmdl"
+		"ModelScale"							"2.1"
 		"Level"									"20"
-		"HealthBarOffset"						"400"
+		"HealthBarOffset"						"360"
 		"BountyXP"								"8000"
 		"BountyGoldMin"							"1200"
 		"BountyGoldMax"							"1200"
@@ -226,12 +226,12 @@
 		"StatusMana"							"5000"
 		"StatusManaRegen"						"50"
 		"AttackCapabilities"					"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"						"3200"
-		"AttackDamageMax"						"4500"
-		"AttackRate"							"1.4"
-		"AttackAnimationPoint"					"0.5"
-		"AttackAcquisitionRange"				"200"
-		"AttackRange"							"100"
+		"AttackDamageMin"						"6400"
+		"AttackDamageMax"						"9000"
+		"AttackRate"							"2.8"
+		"AttackAnimationPoint"					"0.3"
+		"AttackAcquisitionRange"				"300"
+		"AttackRange"							"256"
 		"ArmorPhysical"							"40"
 		"MagicalResistance"						"0"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
@@ -239,23 +239,10 @@
 		"MinimapIcon"							"minimap_ancient"
 		"MinimapIconSize"						"800"
 		"IsAncient"								"1"
-		"IsNeutralUnitType"						"1"
-		"UseNeutralCreepBehavior"				"1"
-		"Ability1"								"boss_jump_strike"
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"Wearable1"
-				{
-					"ItemDef"					"4624"
-				}
-				"Wearable2"
-				{
-					"ItemDef"					"6314"
-				}
-			}
-		}
+		"IsNeutralUnitType"						"0"
+		"UseNeutralCreepBehavior"				"0"
+		"Ability1"								"ogre_strike"
+		"Ability2"								"ogre_jump_strike"
 	}
 	"dog"
 	{

@@ -303,7 +303,8 @@ function Spawner:DoNatureSpawn(k)
 		local random_point = Vector( point.x + RandomFloat(-150,150), point.y + RandomFloat(-150,150), point.z )
 		if RollPercentage(self.natureBossSpawnRate[k]) then
 			PrecacheUnitByNameAsync(self.natureBossName[k],function()
-				local nature = CreateUnitByName(self.natureBossName[k], random_point, true, nil, nil, DOTA_TEAM_BADGUYS ) 
+				local nature = CreateUnitByName(self.natureBossName[k], random_point, true, nil, nil, DOTA_TEAM_BADGUYS )
+				nature:AddNewModifier(nature, nil, "modifier_nature", nil)
 				self:UnitProperty(nature,self.natureFactor)
 				nature.campIndex = k
 				table.insert(self.natureRemaining[k], nature)

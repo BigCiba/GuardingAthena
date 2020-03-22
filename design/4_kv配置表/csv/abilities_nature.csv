@@ -1,0 +1,40 @@
+﻿技能名,备注,基类,脚本,技能图标,技能类型,最大等级,需求等级,升级间隔,施法动作,施法距离,施法前摇,能量点,能量点恢复时间,冷却时间,魔法消耗,持续施法时间,技能行为,技能目标队伍,技能目标类型,技能目标标记,伤害类型,无视魔免,键值,键值,键值,键值,键值,键值,键值,键值,键值,键值,键值,键值,键值,键值,键值
+Name,,BaseClass,ScriptFile,AbilityTextureName,AbilityType,MaxLevel,RequiredLevel,LevelsBetweenUpgrades,AbilityCastAnimation,AbilityCastRange,AbilityCastPoint,AbilityCharges,AbilityChargeRestoreTime,AbilityCooldown,AbilityManaCost,AbilityChannelTime,AbilityBehavior,AbilityUnitTargetTeam,AbilityUnitTargetType,AbilityUnitTargetFlags,AbilityUnitDamageType,SpellImmunityType,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial
+ogre_strike,敲晕！,ability_lua,abilities/nature/ogre_strike,brewmaster_thunder_clap,DOTA_ABILITY_TYPE_BASIC,,,,ACT_DOTA_CAST_ABILITY_1,583,1.7,,,12,80,,DOTA_ABILITY_BEHAVIOR_POINT,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_PHYSICAL,SPELL_IMMUNITY_ENEMIES_YES,stun_duration,radius,damage
+,,,,,,,,,,,,,,,,,,,,,,,2,400,12000
+ogre_jump_strike,坐死你,ability_lua,abilities/nature/ogre_jump_strike,brewmaster_thunder_clap,DOTA_ABILITY_TYPE_BASIC,,,,ACT_DOTA_CAST_ABILITY_2,,2.1,,,8,80,,DOTA_ABILITY_BEHAVIOR_NO_TARGET,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_PHYSICAL,SPELL_IMMUNITY_ENEMIES_YES,stun_duration,radius,damage
+,,,,,,,,,,,,,,,,,,,,,,,2,400,12000
+boss_beat,清醒拍打,ability_lua,abilities/nature/boss_beat,polar_furbolg_ursa_warrior_thunder_clap,DOTA_ABILITY_TYPE_BASIC,,,,ACT_DOTA_CAST_ABILITY_1,250,0.5,,,4,60,,DOTA_ABILITY_BEHAVIOR_UNIT_TARGET,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_PHYSICAL,SPELL_IMMUNITY_ENEMIES_YES,stun_duration,damage
+,,,,,,,,,,,,,,,,,,,,,,,0.1,5000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

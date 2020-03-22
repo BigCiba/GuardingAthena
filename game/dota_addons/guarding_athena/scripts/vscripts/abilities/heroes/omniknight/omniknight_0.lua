@@ -10,17 +10,15 @@ end
 function omniknight_0:ThunderPower(hTarget)
 	local hCaster = self:GetCaster()
 	local hAbility = hCaster:FindAbilityByName("omniknight_3")
-	local bonus_str_factor = IsValid(ability) and hAbility:GetSpecialValueWithLevel("bonus_str_factor") or 0
+	local bonus_str_factor = IsValid(hAbility) and hAbility:GetSpecialValueWithLevel("bonus_str_factor") or 0
 	local damage = (self:GetSpecialValueFor("str_factor") + bonus_str_factor) * hCaster:GetStrength()
+	local scepter_radius = self:GetSpecialValueFor("scepter_radius")
 	if hTarget:IsStunned() then
-		local tDamageTable = {
-			ability = self,
-			victim = hTarget,
-			attacker = self:GetCaster(),
-			damage = damage,
-			damage_type = self:GetAbilityDamageType(),
-		}
-		ApplyDamage(tDamageTable)
+		local hVictim = hTarget
+		if hCaster:GetScepterLevel() >= 2 then
+			hVictim = FindUnitsInRadiusWithAbility(hCaster, hTarget:GetAbsOrigin(), scepter_radius, self)
+		end
+		hCaster:DealDamage(hVictim, self, damage)
 		-- particle
 		local particle = ParticleManager:CreateParticle("particles/heroes/mechanic/thunder_punish.vpcf", PATTACH_CUSTOMORIGIN, hTarget)
 		ParticleManager:SetParticleControl(particle, 0, hTarget:GetAbsOrigin() + Vector(0, 0, 5000))
@@ -93,7 +91,13 @@ function modifier_omniknight_0:OnAttackLanded(params)
 		local hAbility3 = hParent:FindAbilityByName("omniknight_3")
 		local bonus_chance = IsValid(hAbility3) and hAbility3:GetSpecialValueWithLevel("bonus_chance") or 0
 		if hAbility:IsCooldownReady() and RollPercentage(self.chance + bonus_chance) then
-			hAbility:StartCooldown(hAbility:GetCooldown(hAbility:GetLevel()))
+			local flCooldown = hAbility:GetCooldown(hAbility:GetLevel())
+			if self:GetParent():HasModifier("modifier_omniknight_2_aura") then
+				if self:GetParent():FindModifierByName("modifier_omniknight_2_aura"):Roll() then
+					flCooldown = 0
+				end
+			end
+			hAbility:StartCooldown(flCooldown)
 			self:IncrementStackCount()
 			hTarget:AddNewModifier(hParent, hAbility, "modifier_stunned", {duration = self.stun_duration * hTarget:GetStatusResistanceFactor()})
 		end

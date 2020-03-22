@@ -1,6 +1,5 @@
-#base "abilities/heroes/omniknight.kv"
-#base "abilities/heroes/drow_ranger.kv"
-#base "abilities/heroes/templar_assassin.kv"
+#base "abilities/heroes.kv"
+#base "abilities/abilities_nature.kv"
 #base "abilities/pets/pets.kv"
 
 "DOTAAbilities"
@@ -4456,7 +4455,7 @@
 	// =================================================================================================================
 	// 熊怪
 	// =================================================================================================================
-	"boss_beat"
+	"boss_beat_old"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"polar_furbolg_ursa_warrior_thunder_clap"
