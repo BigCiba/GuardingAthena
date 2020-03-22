@@ -125,7 +125,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
-				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 40))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 20))
 			end
 	    end
 	end
@@ -135,7 +135,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
-				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 30))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 15))
 			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
@@ -152,7 +152,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
-				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 20))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 10))
 			end
 	    end
 	    Timers:CreateTimer(120,function ()
@@ -169,7 +169,7 @@ function GuardingAthena:OnEntityKilled( event )
 		for _,unit in ipairs(units) do
 			if unit:IsRealHero() then
 				PropertySystem(unit,3,RandomInt(5, 10))
-				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 50))
+				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 25))
 			end
 	    end
 	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
@@ -438,7 +438,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		local playerID = heroEntity:GetPlayerID()
 		HeroState:InitHero(heroEntity)
 		heroEntity:GameTimer(1, function()
-			heroEntity.pet = NewPet("pet_04", heroEntity)
+			heroEntity.pet = NewPet("pet_0"..RandomInt(1, 5), heroEntity)
 		end)
 		--Attributes:ModifyBonuses(heroEntity)
 		-- 记录当前英雄

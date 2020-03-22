@@ -3281,5 +3281,34 @@
 		"DOTA_Tooltip_modifier_reborn_Description"				"已转生%dMODIFIER_PROPERTY_TOOLTIP%次。"
 
 		"DOTA_AbilityTooltip_ScepterUpgrade_Header" 			"专属装备升级效果"
+
+		"DOTA_Tooltip_ability_pet_01_1"							"我是一只小小小小鸟"
+		"DOTA_Tooltip_ability_pet_01_1_Description"				"每隔一段时间就会为主人暂时提升攻击速度与移动速度。"
+		"DOTA_Tooltip_ability_pet_01_1_interval"				"触发间隔："
+		"DOTA_Tooltip_ability_pet_01_1_duration"				"持续时间："
+		"DOTA_Tooltip_ability_pet_01_1_attackspeed"				"攻速提升："
+		"DOTA_Tooltip_ability_pet_01_1_movespeed"				"%移速提升："
+		"DOTA_Tooltip_ability_pet_02_1"							"小鸡下蛋"
+		"DOTA_Tooltip_ability_pet_02_1_Description"				"每隔一段时间就会生下一个不知道是啥的东西。"
+		"DOTA_Tooltip_ability_pet_02_1_interval"				"下蛋间隔："
+		"DOTA_Tooltip_ability_pet_03_1"							"僵"
+		"DOTA_Tooltip_ability_pet_03_1_Description"				"每隔一段时间为主人施加薄葬，使其受到致死伤害时不会死亡。"
+		"DOTA_Tooltip_ability_pet_03_1_interval"				"持续时间："
+		"DOTA_Tooltip_ability_pet_04_1"							"充电宝"
+		"DOTA_Tooltip_ability_pet_04_1_Description"				"每隔一段时间为主人恢复生命与魔法。"
+		"DOTA_Tooltip_ability_pet_04_1_Lore"					"据说是机械师制造出来给自己的锤子充电的"
+		"DOTA_Tooltip_ability_pet_04_1_interval"				"触发间隔："
+		"DOTA_Tooltip_ability_pet_04_1_duration"				"持续时间："
+		"DOTA_Tooltip_ability_pet_05_1"							"地狱火"
+		"DOTA_Tooltip_ability_pet_05_1_Description"				"每隔一段时间对目标吐出一口地狱火，造成基于主人主属性一定倍数的伤害。"
+		"DOTA_Tooltip_ability_pet_05_1_interval"				"触发间隔："
+		"DOTA_Tooltip_ability_pet_05_1_damage"					"主属性伤害系数："
+
+		"pet_01"					"小鸟"
+		"pet_02"					"小鸡"
+		"pet_03"					"飞僵小宝"
+		"pet_04"					"充电宝"
+		"pet_05"					"地狱双头犬"
+
 	}
 }

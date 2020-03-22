@@ -15,6 +15,9 @@ end
 if modifier_pet_08_1 == nil then
 	modifier_pet_08_1 = class({}, nil, ModifierBasic)
 end
+function modifier_pet_08_1:IsHidden()
+	return true
+end
 function modifier_pet_08_1:OnCreated(params)
 	if IsServer() then
 		self.interval = self:GetAbilitySpecialValueFor("interval")

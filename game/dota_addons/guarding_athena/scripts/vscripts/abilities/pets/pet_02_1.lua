@@ -15,6 +15,9 @@ end
 if modifier_pet_02_1 == nil then
 	modifier_pet_02_1 = class({}, nil, ModifierBasic)
 end
+function modifier_pet_02_1:IsHidden()
+	return true
+end
 function modifier_pet_02_1:OnCreated(params)
 	self.tItems = {
 		"item_bag_of_gold",
@@ -26,10 +29,6 @@ function modifier_pet_02_1:OnCreated(params)
 		"item_original_int_pickup",
 		"item_clarity4",
 		"item_salve4",
-		"item_clarity4",
-		"item_clarity4",
-		"item_clarity4",
-		"item_clarity4",
 	}
 	if IsServer() then
 		self:StartIntervalThink(self:GetAbilitySpecialValueFor("interval"))

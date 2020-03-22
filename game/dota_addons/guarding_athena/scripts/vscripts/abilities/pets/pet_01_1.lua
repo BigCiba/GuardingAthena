@@ -16,6 +16,9 @@ end
 if modifier_pet_01_1 == nil then
 	modifier_pet_01_1 = class({}, nil, ModifierBasic)
 end
+function modifier_pet_01_1:IsHidden()
+	return true
+end
 function modifier_pet_01_1:OnCreated(params)
 	if IsServer() then
 		self.duration = self:GetAbilitySpecialValueFor("duration")
