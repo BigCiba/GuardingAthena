@@ -82,7 +82,7 @@ function modifier_drow_ranger_1_2:OnAttack(params)
 					iVisionTeamNumber = params.attacker:GetTeamNumber(),
 					vSourceLoc= params.attacker:GetAbsOrigin() + Vector(RandomInt(-200, 200),RandomInt(-200, 200),RandomInt(0, 120)),
 				}
-				if params.target:IsAlive() then
+				if params.target and params.target:IsAlive() then
 					ProjectileManager:CreateTrackingProjectile( info )
 				end
 			end)

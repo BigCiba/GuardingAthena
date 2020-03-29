@@ -1,0 +1,153 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf26:version{26288658-411e-4f14-b698-2e1e5d00dec6} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 48
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_flStartFadeSize = 0.675
+			m_flEndFadeSize = 0.75
+			m_flMaxSize = 0.85
+			m_bBlendFramesSeq0 = false
+			m_hTexture = resource:"materials/particle/yellowflare2.vtex"
+			m_flAnimationRate = 0.6
+			m_bSaturateColorPreAlphaBlend = false
+			m_flAddSelfAmount = 1.0
+			m_flOverbrightFactor = 4.0
+			m_bAdditive = true
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 50.0 ]
+			m_fDrag = 0.05
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_flEndTime_max = 0.2
+			m_flEndTime_min = 0.2
+			m_flStartTime_max = 0.1
+			m_flStartTime_min = 0.1
+			m_nControlPointNumber = 3
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_flFadeStartTime = 0.1
+			m_ColorFade = [ 35, 55, 81, 255 ]
+		},
+		{
+			_class = "C_OP_SpinUpdate"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndTime = 0.15
+			m_flStartScale = 0.0
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartTime = 0.75
+			m_flEndScale = 0.0
+		},
+		{
+			_class = "C_OP_VectorNoise"
+			m_nFieldOutput = "0"
+			m_vecOutputMin = [ -10.0, -10.0, -10.0 ]
+			m_vecOutputMax = [ 10.0, 10.0, 10.0 ]
+			m_fl4NoiseScale = 0.67
+			m_bAdditive = true
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 1.0
+			m_fLifetimeMax = 3.0
+			m_fLifetimeRandExponent = 2.0
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 20.0
+			m_flRadiusMax = 40.0
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_bLocalCoords = true
+			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
+			m_fRadiusMin = 150.0
+			m_fRadiusMax = 200.0
+			m_fSpeedMax = 200.0
+			m_LocalCoordinateSystemSpeedMin = [ 0.0, 0.0, 150.0 ]
+			m_LocalCoordinateSystemSpeedMax = [ 0.0, 0.0, 220.0 ]
+			m_nControlPointNumber = 3
+			m_vecDistanceBiasAbs = [ 1.0, 0.0, 0.0 ]
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMax = 16.0
+			m_flDegreesMin = -16.0
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 2
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 45, 71, 205, 255 ]
+			m_ColorMax = [ 54, 178, 213, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomRotationSpeed"
+			m_flDegreesMin = 120.0
+			m_flDegreesMax = 210.0
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_bLocalCoords = true
+			m_nControlPointNumber = 3
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 75.0
+			}
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_nBehaviorVersion = 10
+	m_nFirstMultipleOverride_BackwardCompat = 7
+}

@@ -12,7 +12,6 @@ function pet_05_1:IsHiddenWhenStolen()
 end
 function pet_05_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	if hTarget ~= nil then
-		print(hTarget)
 		local hCaster = self:GetCaster()
 		local damage = self:GetSpecialValueFor("damage")
 		hCaster:GetOwner():DealDamage(hTarget, self, damage * hCaster:GetOwner():GetPrimaryStatValue(), DAMAGE_TYPE_MAGICAL)

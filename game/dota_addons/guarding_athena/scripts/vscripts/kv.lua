@@ -6,6 +6,7 @@ if IsServer() then
 	KeyValues.PetsKv = LoadKeyValues("scripts/npc/kv/npc_pet.kv")
 	KeyValues.UnitsKv = LoadKeyValues("scripts/npc/npc_units_custom.txt")
 	KeyValues.AbilitiesKv = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+	KeyValues.ItemsKv = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 	-- KeyValues.ItemsKv = TableReplace(TableOverride(LoadKeyValues("scripts/npc/items.txt"), LoadKeyValues("scripts/npc/npc_items_custom.txt")), LoadKeyValues("scripts/npc/npc_abilities_override.txt"))
 
 	-- require("generate_json")

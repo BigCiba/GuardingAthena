@@ -24,9 +24,9 @@ function modifier_pet_02_1:OnCreated(params)
 		"item_str_book",
 		"item_agi_book",
 		"item_int_book",
-		"item_original_str_pickup",
-		"item_original_agi_pickup",
-		"item_original_int_pickup",
+		"item_essence_small",
+		"item_essence_medium",
+		"item_essence_big",
 		"item_clarity4",
 		"item_salve4",
 	}
@@ -37,10 +37,13 @@ function modifier_pet_02_1:OnCreated(params)
 end
 function modifier_pet_02_1:OnIntervalThink()
 	local hParent = self:GetParent()
-	local item = CreateItem(RandomValue(self.tItems), nil, nil)
+	local sItemName = RandomValue(self.tItems)
+	local item = CreateItem(sItemName, nil, nil)
 	item:SetPurchaseTime(GameRules:GetGameTime() - 10)
 	local pos = hParent:GetAbsOrigin()
 	local drop = CreateItemOnPositionSync( pos, item )
 	local pos_launch = pos + RandomVector(RandomFloat(0,50))
+	local bAutoUse =  KeyValues.ItemsKv[sItemName].ItemCastOnPickup == 1 and true or false
+	item:LaunchLoot(bAutoUse, 200, 0.75, pos_launch)
 	hParent:EmitSound("Hero_SkywrathMage.ChickenTaunt")
 end

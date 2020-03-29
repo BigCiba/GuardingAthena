@@ -300,6 +300,12 @@ if IsClient() then
 end
 
 if IsServer() then
+	function CDOTA_Item:IncrementCharges()
+		return self:SetCurrentCharges(self:GetCurrentCharges() + 1)
+	end
+	function CDOTABaseAbility:GetIntrinsicModifier()
+		return self:GetCaster():FindModifierByName(self:GetIntrinsicModifierName())
+	end
 	function CDOTABaseAbility:GetSpecialValueWithLevel(szName)
 		return self:GetSpecialValueFor(szName) * self:GetLevel()
 	end

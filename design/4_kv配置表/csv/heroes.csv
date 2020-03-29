@@ -28,13 +28,13 @@ drow_ranger_1_1,,ability_lua,abilities/heroes/drow_ranger/drow_ranger_1_1,drow_r
 ,,,,,,,,,,,,,,,,,,,,,,,,16,1000,15,3,4,50,1.5,500,30,1.5,50,900
 drow_ranger_1_2,,ability_lua,abilities/heroes/drow_ranger/drow_ranger_1_2,drow_ranger_1_2,DOTA_ABILITY_TYPE_BASIC,20,1,3,,,,,,12,,,,DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,duration,count,attack_factor,interval
 ,,,,,,,,,,,,,,,,,,,,,,,,4,4,0.25,0.3
+drow_ranger_2_1,,ability_lua,abilities/heroes/drow_ranger/drow_ranger_2_1,drow_ranger_marksmanship,DOTA_ABILITY_TYPE_BASIC,20,1,3,ACT_DOTA_CAST_ABILITY_2,1200,0.3,,,10,,60,,DOTA_ABILITY_BEHAVIOR_POINT,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,base_damage,agi_damage,duration
+,,,,,,,,,,,,,,,,,,,,,,,,50,2,3
+drow_ranger_2_2,,ability_lua,abilities/heroes/drow_ranger/drow_ranger_2_2,drow_ranger_3_2,DOTA_ABILITY_TYPE_BASIC,20,1,3,ACT_DOTA_CAST_ABILITY_2,1200,0.3,,,10,,60,,DOTA_ABILITY_BEHAVIOR_POINT,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,base_damage,agi_damage,duration
+,,,,,,,,,,,,,,,,,,,,,,,,50,2,3
 drow_ranger_3_1,,ability_lua,abilities/heroes/drow_ranger/drow_ranger_3_1,drow_ranger_marksmanship,DOTA_ABILITY_TYPE_BASIC,20,1,3,,,,,,,,,,DOTA_ABILITY_BEHAVIOR_PASSIVE,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_PURE,,base_damage,agi_damage,movespeed_reduce,reduce_duration,require_count,curse_duration
 ,,,,,,,,,,,,,,,,,,,,,,,,50,1.5,-10,3,8,2
 drow_ranger_3_2,,ability_lua,abilities/heroes/drow_ranger/drow_ranger_3_2,drow_ranger_3_2,DOTA_ABILITY_TYPE_BASIC,20,1,3,,,,,,,,,,DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,base_damage,agi_damage,extra_agi_damage,require_count,agi_percent,duration,debuff_duration
 ,,,,,,,,,,,,,,,,,,,,,,,,50,0.1,4,30,40,4,3
-
-
-
-
 
 

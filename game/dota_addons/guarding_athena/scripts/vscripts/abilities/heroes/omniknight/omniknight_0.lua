@@ -7,7 +7,7 @@ function omniknight_0:GetIntrinsicModifierName()
 	return "modifier_omniknight_0"
 end
 -- 天罚
-function omniknight_0:ThunderPower(hTarget)
+function omniknight_0:ThunderPower(hTarget, bEmitSound)
 	local hCaster = self:GetCaster()
 	local hAbility = hCaster:FindAbilityByName("omniknight_3")
 	local bonus_str_factor = IsValid(hAbility) and hAbility:GetSpecialValueWithLevel("bonus_str_factor") or 0
@@ -25,7 +25,9 @@ function omniknight_0:ThunderPower(hTarget)
 		ParticleManager:SetParticleControl(particle, 1, hTarget:GetAbsOrigin())
 		ParticleManager:SetParticleControl(particle, 3, hTarget:GetAbsOrigin())
 		-- sound
-		hTarget:EmitSound("Hero_Zuus.LightningBolt")
+		if bEmitSound == true then
+			hTarget:EmitSound("Hero_Zuus.LightningBolt")
+		end
 	end
 end
 ---------------------------------------------------------------------
@@ -87,7 +89,7 @@ function modifier_omniknight_0:OnAttackLanded(params)
 		local hParent = self:GetParent()
 		local hTarget = params.target
 		local hAbility = self:GetAbility()
-		hAbility:ThunderPower(hTarget)
+		hAbility:ThunderPower(hTarget, true)
 		local hAbility3 = hParent:FindAbilityByName("omniknight_3")
 		local bonus_chance = IsValid(hAbility3) and hAbility3:GetSpecialValueWithLevel("bonus_chance") or 0
 		if hAbility:IsCooldownReady() and RollPercentage(self.chance + bonus_chance) then

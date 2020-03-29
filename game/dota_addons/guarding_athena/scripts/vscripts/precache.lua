@@ -29,5 +29,10 @@ return {
 		"particles/econ/items/pets/pet_generic/pet_flee.vpcf",
 	},
 	model = {
+		"models/props_gameplay/rune_haste01.vmdl",
+		"models/props_gameplay/rune_regeneration01.vmdl",
+		"models/props_gameplay/rune_arcane.vmdl",
+		"models/props_gameplay/aegis.vmdl",
+		"models/props_gameplay/morokai_orb_dummy.vmdl",
 	},
 }
