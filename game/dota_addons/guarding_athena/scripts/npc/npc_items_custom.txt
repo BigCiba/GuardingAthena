@@ -2,6 +2,7 @@
 #base "abilities/items/recipe.kv"
 #base "abilities/items/artifact.kv"
 #base "abilities/items/scepter.kv"
+#base "abilities/item_drops.kv"
 #base "abilities/essence.kv"
 
 "DOTAAbilities"
@@ -124,42 +125,6 @@
 				"IsHidden"	"1"
 			}
 		}
-	}
-
-	"item_bag_of_gold"
-	{
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_winter_mushroom"
-		"ID"	"1001"
-		"ItemQuality"	"consumable"
-		"ItemCastOnPickup"	"0"
-		"ItemCost"	"322"
-		"ItemDroppable"	"0"
-		"ItemSellable"	"0"
-		"ItemShareability"	"ITEM_NOT_SHAREABLE"
-		"ItemPurchasable"	"0"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
-		"ItemKillable"	"0"
-		"ItemPermanent"	"0"
-		"ItemInitialCharges"	"0"
-		"ItemStackable"	"0"
-		"SideShop"	"0"
-		"SecretShop"	"0"
-		"ItemRequirements"	{}
-		"precache"
-		{
-			"particle"	"particles/generic_gameplay/dropped_item.vpcf"
-		}
-		"Modifiers"
-		{
-			"modifier_item_bag_of_gold"
-			{
-				"States"	{}
-			}
-		}
-		"Model"	"models/props_gameplay/gold_bag.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
-		"UIPickupSound"	"Item.PickUpRingShop"
 	}
 
 	"item_str_book"

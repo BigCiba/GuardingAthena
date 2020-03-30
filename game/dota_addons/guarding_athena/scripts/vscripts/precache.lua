@@ -27,6 +27,7 @@ return {
 		"particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf",
 		"particles/econ/items/pets/pet_frondillo/pet_flee_frondillo.vpcf",
 		"particles/econ/items/pets/pet_generic/pet_flee.vpcf",
+		"particles/generic_gameplay/dropped_item.vpcf",
 	},
 	model = {
 		"models/props_gameplay/rune_haste01.vmdl",

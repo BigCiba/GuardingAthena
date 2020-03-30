@@ -228,16 +228,6 @@ function GuardingAthena:ItemAddedFilter( keys )
 	-- 原核与金袋
 	if string.sub(currentItemName,0,14) == "item_original_" then
 		return true
-	elseif currentItemName == "item_bag_of_gold" then
-		local playerID
-		if currentUnit:IsRealHero() then
-			playerID = currentUnit:GetPlayerID()
-		else
-			playerID = currentUnit.currentHero:GetPlayerID()
-		end
-		PlayerResource:ModifyGold(playerID,5000, true, 0)
-		currentItem:RemoveSelf()
-		return false
 	elseif currentItemName == "item_str_book" or currentItemName == "item_agi_book" or currentItemName == "item_int_book" then
 		local hHero = currentUnit.currentHero == nil and currentUnit or currentUnit.currentHero
 		if currentItemName == "item_str_book" then

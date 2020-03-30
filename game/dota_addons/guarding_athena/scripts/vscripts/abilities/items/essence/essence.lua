@@ -16,7 +16,8 @@ function item_essence_small:OnSpellStart()
 		local hItem = CreateItem("item_essence_str_1", hCaster, hCaster)
 		hCaster:AddItem(hItem)
 	end
-	self:SpendCharge()
+	-- self:SpendCharge()
+	self:Destroy()
 end
 if item_essence_medium == nil then item_essence_medium = class({}) end
 function item_essence_medium:OnSpellStart()
@@ -34,7 +35,8 @@ function item_essence_medium:OnSpellStart()
 		local hItem = CreateItem("item_essence_str_1", hCaster, hCaster)
 		hCaster:AddItem(hItem)
 	end
-	self:SpendCharge()
+	-- self:SpendCharge()
+	self:Destroy()
 end
 if item_essence_big == nil then item_essence_big = class({}) end
 function item_essence_big:OnSpellStart()
@@ -52,7 +54,8 @@ function item_essence_big:OnSpellStart()
 		local hItem = CreateItem("item_essence_str_1", hCaster, hCaster)
 		hCaster:AddItem(hItem)
 	end
-	self:SpendCharge()
+	-- self:SpendCharge()
+	self:Destroy()
 end
 -- 力量精华
 if item_essence_str_1 == nil then item_essence_str_1 = class({}, nil ,item_essence) end
