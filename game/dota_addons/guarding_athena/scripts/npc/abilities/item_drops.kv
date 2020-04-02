@@ -15,7 +15,7 @@
 		"Model"									"models/props_gameplay/gold_bag.vmdl"
 		"Effect"								"particles/generic_gameplay/dropped_item.vpcf"
 		"UIPickupSound"							"ui.comp_coins_tick"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET| DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"ID"									"1001"
 		"ItemCost"								"99999"
 		"ItemSellable"							"0"
@@ -25,5 +25,699 @@
 		"ItemCastOnPickup"						"1"
 		"ItemInitialCharges"					"1"
 		"AbilityCastRange"						"100"
+	}
+	"item_ogre_1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack"					"300"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"6000"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"2"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_ogre_1"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_ogre_1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"ID"									"1664"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityCastRange"						"200"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"						"0.6"
+		"AbilityCooldown"						"16"
+		"AbilityManaCost"						"200"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_ogre_2"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health"					"4000"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_ogre_2"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_ogre_2"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"									"1665"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_ogre_3"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_str"						"40"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_ogre_3"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_ogre_3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"									"1666"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_ogre_4"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_str"						"60"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health"					"6000"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack"					"400"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"12000"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"2"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_ogre_4"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_ogre_4"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"ID"									"1667"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityCastRange"						"200"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"16"
+		"AbilityManaCost"						"200"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_treant_1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_block"					"-40"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_hp_regen"				"4"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"35"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_treant_1"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_faerie_fire"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1669"
+		"ItemCost"								"2000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"0"
+		"ItemInitialCharges"					"1"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemRequiresCharges"					"1"
+	}
+	"item_treant_2"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"40"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_treant_2"
+		"Model"									"models/props_gameplay/tango.vmdl"
+		"Effect"								"particles/generic_gameplay/dropped_tango.vpcf"
+		"AbilityTextureName"					"item_tango"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"ID"									"1670"
+		"ItemCost"								"2000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"0"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"200"
+		"AbilityCooldown"						"60"
+		"AbilityManaCost"						"200"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemRequiresCharges"					"1"
+	}
+	"item_treant_3"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"40"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_treant_3"
+		"Model"									"models/props_gameplay/branch.vmdl"
+		"AbilityTextureName"					"item_branches"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"ID"									"1671"
+		"ItemCost"								"10000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemStackable"							"0"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_treant_4"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"armor"							"20"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"regen"							"2"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_block"					"-40"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_hp_regen"				"4"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"35"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_treant_4"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_tree_4"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1700"
+		"ItemCost"								"10000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemStackable"							"0"
+		"AbilityCooldown"						"30"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_refresher1"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen"			"2"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_mana_regen_percentage"	"200"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_refresher1"
+		"Model"									"models/props_gameplay/refresher_shard.vmdl"
+		"Effect"								"particles/generic_gameplay/dropped_refresher_shard.vpcf"
+		"AbilityTextureName"					"item_refresher_shard"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ID"									"1033"
+		"ItemCost"								"20000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemStackable"							"0"
+		"AbilityCooldown"						"195"
+		"AbilityManaCost"						"375"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"							"rare"
+	}
+	"item_soul_eye"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_magic_damage"			"15"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"ignore_resistance"				"20"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"reduce_resistance"				"-25"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"increase_damage"				"15"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"12"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_soul_eye"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"Effect"								"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"					"item_soul_eye"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"ID"									"1702"
+		"ItemCost"								"20000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemStackable"							"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"						"19"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"							"rare"
+	}
+	"item_soul_cloak"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_resistance"				"30"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_percent"	"3"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"5"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shield"						"30"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_soul_cloak"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_soul_cloak"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"									"1703"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_death_cloak"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_magic_damage"			"20"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"ignore_resistance"				"25"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_resistance"				"30"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_percent"	"3"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"5"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shield"						"30"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_increase"				"44"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"4"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_death_cloak"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_death_cloak"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1704"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCooldown"						"195"
+		"AbilityManaCost"						"375"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_fire_glove"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"40"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_fire_glove"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_heart"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"									"1705"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_fire_head"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"41"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_fire_head"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_blood_mask_broken"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"									"1500"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_demon_heart"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health"					"3000"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_demon_heart"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"item_aegis"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"									"1501"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_blood_fruit"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"40"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_blood_fruit"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"blood_fruit"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1181"
+		"ItemCost"								"3000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"0"
+		"ItemCastOnPickup"						"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"							"epic"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+	}
+	"item_exp_fruit"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"41"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_exp_fruit"
+		"Model"									"models/props_gameplay/mango.vmdl"
+		"AbilityTextureName"					"item_enchanted_mango"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1675"
+		"ItemCost"								"1000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"0"
+		"ItemCastOnPickup"						"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"							"epic"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+	}
+	"item_gold_fruit"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"42"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_gold_fruit"
+		"Model"									"models/props_gameplay/cheese.vmdl"
+		"AbilityTextureName"					"item_cheese"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1676"
+		"ItemCost"								"2000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"0"
+		"ItemCastOnPickup"						"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"							"epic"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+	}
+	"item_water_gun"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"43"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_water_gun"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"water_gun"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"ID"									"1698"
+		"ItemCost"								"5000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityCastRange"						"900"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityCooldown"						"2"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_poison_water_gun"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"44"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_poison_water_gun"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"					"water_gun"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"ID"									"1764"
+		"ItemCost"								"20000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"0"
+		"AbilityCastRange"						"900"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityCooldown"						"2"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+	}
+	"item_battlefury_ring"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_all_stats"				"600"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_damage"					"25"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"aura_radius"					"600"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"aura_damage"					"1"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"aura_interval"					"3"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"skill_radius"					"600"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"skill_damage"					"100"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"suicide"						"50"
+			}
+		}
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_battlefury_ring"
+		"Model"									"models/props_gameplay/red_box.vmdl"
+		"Effect"								"particles/items/battlefury_ring_absorb.vpcf"
+		"AbilityTextureName"					"item_battlefury_ring"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ID"									"1104"
+		"ItemCost"								"322"
+		"ItemSellable"							"0"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"1"
+		"ItemStackable"							"0"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
+		"AbilityCooldown"						"60"
+		"AbilityManaCost"						"100"
+		"ItemDroppable"							"0"
+		"ItemQuality"							"artifact"
+		"ItemKillable"							"0"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
 	}
 }

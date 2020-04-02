@@ -7,8 +7,8 @@ return {
 		"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts",
 		"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts",
 		"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts",
-		"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts",
 		"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts",
+		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts",
 	},
 	particle = {
 		"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf",
@@ -28,6 +28,7 @@ return {
 		"particles/econ/items/pets/pet_frondillo/pet_flee_frondillo.vpcf",
 		"particles/econ/items/pets/pet_generic/pet_flee.vpcf",
 		"particles/generic_gameplay/dropped_item.vpcf",
+		"particles/skills/green_protect.vpcf",
 	},
 	model = {
 		"models/props_gameplay/rune_haste01.vmdl",
