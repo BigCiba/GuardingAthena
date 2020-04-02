@@ -468,8 +468,7 @@ function RollDrops(unit)
                     local pos = unit:GetAbsOrigin()
                     local drop = CreateItemOnPositionSync( pos, item )
 					local pos_launch = pos+RandomVector(RandomFloat(0,50))
-					local bAutoUse = string.find(item_name, "item_essence_") and true or false
-					if bAutoUse then
+					if item:IsCastOnPickup() then
 						if item_name == "item_essence_small" then
 							drop:SetModelScale( 0.8 )
 						elseif item_name == "item_essence_medium" then
@@ -478,7 +477,7 @@ function RollDrops(unit)
 							drop:SetModelScale( 1.6 )
 						end
 					end
-                    item:LaunchLoot(bAutoUse, 200, 0.75, pos_launch)
+                    item:LaunchLoot(item:IsCastOnPickup(), 200, 0.75, pos_launch)
                 end
             end
         end

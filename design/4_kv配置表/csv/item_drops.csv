@@ -1,0 +1,4 @@
+﻿技能名,备注,基类,脚本,模型,特效,拾取音效,技能图标,技能行为,物品ID,最大等级,基础等级,价格,是否出售,能否购买,永久的,可叠加,拾取使用,初始数量,施法距离,键值,键值,键值,键值,键值,键值,键值,键值
+Name,,BaseClass,ScriptFile,Model,Effect,UIPickupSound,AbilityTextureName,AbilityBehavior,ID,MaxUpgradeLevel,ItemBaseLevel,ItemCost,ItemSellable,ItemPurchasable,ItemPermanent,ItemStackable,ItemCastOnPickup,ItemInitialCharges,AbilityCastRange,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial
+item_bag_of_coin,金袋,item_lua,abilities/items/drops/item_bag_of_coin,models/props_gameplay/gold_bag.vmdl,particles/generic_gameplay/dropped_item.vpcf,ui.comp_coins_tick,,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1001,,,99999,0,0,0,1,1,1,100,gold
+,,,,,,,,,,,,,,,,,,,,5000

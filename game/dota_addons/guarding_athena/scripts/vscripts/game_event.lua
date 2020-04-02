@@ -486,7 +486,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 				end
 			end
 			PrecacheUnitByNameAsync("ji",function()
-				local courier = CreateUnitByName("ji", heroEntity:GetAbsOrigin(), true, heroEntity:GetPlayerOwner(), heroEntity:GetPlayerOwner(), DOTA_TEAM_GOODGUYS )
+				local courier = CreateUnitByName("ji", heroEntity:GetAbsOrigin(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS )
 				courier.bag = {}
 				courier:SetOwner(heroEntity:GetPlayerOwner())
 				courier:SetControllableByPlayer(heroEntity:GetPlayerID(),true)

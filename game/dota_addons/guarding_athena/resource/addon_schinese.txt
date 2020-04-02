@@ -433,8 +433,8 @@
 		// =====================================================================================================================
 		// 物品
 		// =====================================================================================================================
-		"DOTA_Tooltip_Ability_item_bag_of_gold"	"金袋"
-		"DOTA_Tooltip_Ability_item_bag_of_gold_Description"	"一个金袋<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>100金<br></br><font color='#ffffff'>-----------------------------------------------</font>"
+		"DOTA_Tooltip_Ability_item_bag_of_coin"	"金袋"
+		"DOTA_Tooltip_Ability_item_bag_of_coin_Description"	"一个金袋<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>100金<br></br><font color='#ffffff'>-----------------------------------------------</font>"
 		// =====================================================================================================================
 		"DOTA_Tooltip_Ability_item_clarity1"	"小净化药水"
 		"DOTA_Tooltip_Ability_item_clarity1_Description"	"<h1>主动：净化</h1>在%buff_duration%秒内回复%total_mana%点魔法"

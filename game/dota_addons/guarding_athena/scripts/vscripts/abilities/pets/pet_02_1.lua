@@ -20,7 +20,7 @@ function modifier_pet_02_1:IsHidden()
 end
 function modifier_pet_02_1:OnCreated(params)
 	self.tItems = {
-		"item_bag_of_gold",
+		"item_bag_of_coin",
 		"item_str_book",
 		"item_agi_book",
 		"item_int_book",
@@ -43,7 +43,6 @@ function modifier_pet_02_1:OnIntervalThink()
 	local pos = hParent:GetAbsOrigin()
 	local drop = CreateItemOnPositionSync( pos, item )
 	local pos_launch = pos + RandomVector(RandomFloat(0,50))
-	local bAutoUse =  KeyValues.ItemsKv[sItemName].ItemCastOnPickup == 1 and true or false
-	item:LaunchLoot(bAutoUse, 200, 0.75, pos_launch)
+	item:LaunchLoot(item:IsCastOnPickup(), 200, 0.75, pos_launch)
 	hParent:EmitSound("Hero_SkywrathMage.ChickenTaunt")
 end
