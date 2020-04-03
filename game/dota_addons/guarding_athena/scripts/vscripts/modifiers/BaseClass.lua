@@ -25,6 +25,36 @@ function ModifierBasic:AllowIllusionDuplicate()
 	return false
 end
 ---------------------------------------------------------------------
+ModifierItemBasic = class({})
+
+if ModifierItemBasic == nil then
+	ModifierItemBasic = class({})
+end
+function ModifierItemBasic:IsHidden()
+	return true
+end
+function ModifierItemBasic:IsDebuff()
+	return false
+end
+function ModifierItemBasic:IsPurgable()
+	return false
+end
+function ModifierItemBasic:IsPurgeException()
+	return false
+end
+function ModifierItemBasic:IsStunDebuff()
+	return false
+end
+function ModifierItemBasic:IsHexDebuff()
+	return false
+end
+function ModifierItemBasic:AllowIllusionDuplicate()
+	return false
+end
+function ModifierItemBasic:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE
+end
+---------------------------------------------------------------------
 ModifierDebuff = class({})
 
 if ModifierDebuff == nil then

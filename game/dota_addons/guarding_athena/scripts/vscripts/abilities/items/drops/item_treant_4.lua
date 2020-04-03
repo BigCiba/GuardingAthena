@@ -15,7 +15,7 @@ end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_item_treant_4 == nil then
-	modifier_item_treant_4 = class({}, nil, ModifierBasic)
+	modifier_item_treant_4 = class({}, nil, ModifierItemBasic)
 end
 function modifier_item_treant_4:IsHidden()
 	return true
@@ -38,7 +38,7 @@ function modifier_item_treant_4:GetModifierHealthRegenPercentage(t)
 end
 ---------------------------------------------------------------------
 if modifier_item_treant_4_buff == nil then
-	modifier_item_treant_4_buff = class({}, nil, ModifierBasic)
+	modifier_item_treant_4_buff = class({}, nil, ModifierPositiveBuff)
 end
 function modifier_item_treant_4_buff:OnCreated(params)
 	self.damage_block = self:GetAbilitySpecialValueFor("damage_block")

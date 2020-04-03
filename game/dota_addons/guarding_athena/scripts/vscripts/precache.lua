@@ -29,6 +29,8 @@ return {
 		"particles/econ/items/pets/pet_generic/pet_flee.vpcf",
 		"particles/generic_gameplay/dropped_item.vpcf",
 		"particles/skills/green_protect.vpcf",
+		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf",
+		"particles/items2_fx/refresher.vpcf",
 	},
 	model = {
 		"models/props_gameplay/rune_haste01.vmdl",

@@ -38,12 +38,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"6000"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"2"
+				"radius"						"400"
 			}
 		}
 		"BaseClass"								"item_lua"
@@ -55,6 +50,8 @@
 		"ItemSellable"							"1"
 		"ItemPurchasable"						"0"
 		"AbilityCastRange"						"200"
+		"AbilityDamage"							"6000"
+		"AbilityDuration"						"2"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
@@ -122,16 +119,6 @@
 				"var_type"						"FIELD_INTEGER"
 				"bonus_attack"					"400"
 			}
-			"04"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"12000"
-			}
-			"05"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"2"
-			}
 		}
 		"BaseClass"								"item_lua"
 		"ScriptFile"							"abilities/items/drops/item_ogre_4"
@@ -142,6 +129,8 @@
 		"ItemSellable"							"1"
 		"ItemPurchasable"						"0"
 		"AbilityCastRange"						"200"
+		"AbilityDamage"							"12000"
+		"AbilityDuration"						"2"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
@@ -279,23 +268,23 @@
 		"AbilityCooldown"						"30"
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
 	}
-	"item_refresher1"
+	"item_visage_1"
 	{
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_health_regen"			"2"
+				"bonus_health_regen_pct"		"2"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_mana_regen_percentage"	"200"
+				"bonus_mana_regen_pct"			"2"
 			}
 		}
 		"BaseClass"								"item_lua"
-		"ScriptFile"							"abilities/items/drops/item_refresher1"
+		"ScriptFile"							"abilities/items/drops/item_visage_1"
 		"Model"									"models/props_gameplay/refresher_shard.vmdl"
 		"Effect"								"particles/generic_gameplay/dropped_refresher_shard.vpcf"
 		"AbilityTextureName"					"item_refresher_shard"
@@ -310,7 +299,7 @@
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
 		"ItemQuality"							"rare"
 	}
-	"item_soul_eye"
+	"item_visage_2"
 	{
 		"AbilitySpecial"
 		{
@@ -346,7 +335,7 @@
 			}
 		}
 		"BaseClass"								"item_lua"
-		"ScriptFile"							"abilities/items/drops/item_soul_eye"
+		"ScriptFile"							"abilities/items/drops/item_visage_2"
 		"Model"									"models/props_gameplay/red_box.vmdl"
 		"Effect"								"particles/generic_gameplay/dropped_item.vpcf"
 		"AbilityTextureName"					"item_soul_eye"
@@ -362,7 +351,7 @@
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
 		"ItemQuality"							"rare"
 	}
-	"item_soul_cloak"
+	"item_visage_3"
 	{
 		"AbilitySpecial"
 		{
@@ -388,7 +377,7 @@
 			}
 		}
 		"BaseClass"								"item_lua"
-		"ScriptFile"							"abilities/items/drops/item_soul_cloak"
+		"ScriptFile"							"abilities/items/drops/item_visage_3"
 		"Model"									"models/props_gameplay/red_box.vmdl"
 		"AbilityTextureName"					"item_soul_cloak"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -398,7 +387,7 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
 	}
-	"item_death_cloak"
+	"item_visage_4"
 	{
 		"AbilitySpecial"
 		{
@@ -444,7 +433,7 @@
 			}
 		}
 		"BaseClass"								"item_lua"
-		"ScriptFile"							"abilities/items/drops/item_death_cloak"
+		"ScriptFile"							"abilities/items/drops/item_visage_4"
 		"Model"									"models/props_gameplay/red_box.vmdl"
 		"AbilityTextureName"					"item_death_cloak"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"

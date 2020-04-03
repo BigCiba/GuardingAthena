@@ -11,7 +11,7 @@ end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_item_treant_1 == nil then
-	modifier_item_treant_1 = class({}, nil, ModifierBasic)
+	modifier_item_treant_1 = class({}, nil, ModifierPositiveBuff)
 end
 function modifier_item_treant_1:OnCreated(params)
 	self.damage_block = self:GetAbilitySpecialValueFor("damage_block")
