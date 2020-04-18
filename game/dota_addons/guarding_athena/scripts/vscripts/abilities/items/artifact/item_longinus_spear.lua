@@ -1,5 +1,5 @@
-LinkLuaModifier("modifier_longinus_spear", "abilities/items/artifact/item_longinus_spear.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_longinus_spear_thinker", "abilities/items/artifact/item_longinus_spear.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_item_longinus_spear", "abilities/items/artifact/item_longinus_spear.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_item_longinus_spear_thinker", "abilities/items/artifact/item_longinus_spear.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if item_longinus_spear == nil then
 	item_longinus_spear = class({})
@@ -7,19 +7,19 @@ end
 function item_longinus_spear:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
-	hTarget:AddNewModifier(hCaster, self, "modifier_longinus_spear_thinker", {duration = 0.3})
+	hTarget:AddNewModifier(hCaster, self, "modifier_item_longinus_spear_thinker", {duration = 0.3})
 	-- sound
 	hCaster:EmitSound("Ability.StarfallImpact")
 end
 function item_longinus_spear:GetIntrinsicModifierName()
-	return "modifier_longinus_spear"
+	return "modifier_item_longinus_spear"
 end
 ---------------------------------------------------------------------
 -- Modifier
-if modifier_longinus_spear == nil then
-	modifier_longinus_spear = class({}, nil, ModifierHidden)
+if modifier_item_longinus_spear == nil then
+	modifier_item_longinus_spear = class({}, nil, ModifierItemBasic)
 end
-function modifier_longinus_spear:OnCreated(params)
+function modifier_item_longinus_spear:OnCreated(params)
 	self.attribute = self:GetAbilitySpecialValueFor("attribute")
 	self.block_percent = self:GetAbilitySpecialValueFor("block_percent")
 	self.bonus_mana_regen_pct = self:GetAbilitySpecialValueFor("bonus_mana_regen_pct")
@@ -34,12 +34,12 @@ function modifier_longinus_spear:OnCreated(params)
 		self:AddParticle(p, false, false, -1, false, false)
 	end
 end
-function modifier_longinus_spear:OnDestroy()
+function modifier_item_longinus_spear:OnDestroy()
 	if IsServer() then
-		self:GetParent():RemoveModifierByName("modifier_longinus_spear_shield")
+		self:GetParent():RemoveModifierByName("modifier_item_longinus_spear_shield")
 	end
 end
-function modifier_longinus_spear:DeclareFunctions()
+function modifier_item_longinus_spear:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MANA_BONUS,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
@@ -50,25 +50,25 @@ function modifier_longinus_spear:DeclareFunctions()
 		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE,
 	}
 end
-function modifier_longinus_spear:GetModifierManaBonus()
+function modifier_item_longinus_spear:GetModifierManaBonus()
 	return self.mana_bonus
 end
-function modifier_longinus_spear:GetModifierBonusStats_Strength()
+function modifier_item_longinus_spear:GetModifierBonusStats_Strength()
 	return self.attribute
 end
-function modifier_longinus_spear:GetModifierBonusStats_Agility()
+function modifier_item_longinus_spear:GetModifierBonusStats_Agility()
 	return self.attribute
 end
-function modifier_longinus_spear:GetModifierBonusStats_Intellect()
+function modifier_item_longinus_spear:GetModifierBonusStats_Intellect()
 	return self.attribute
 end
-function modifier_longinus_spear:GetModifierTotalPercentageManaRegen()
+function modifier_item_longinus_spear:GetModifierTotalPercentageManaRegen()
 	return self.bonus_mana_regen_pct
 end
-function modifier_longinus_spear:GetModifierTotal_ConstantBlock()
+function modifier_item_longinus_spear:GetModifierTotal_ConstantBlock()
 	return self:GetParent():GetMaxMana() * self.block_percent * 0.01
 end
-function modifier_longinus_spear:GetModifierTotal_ConstantBlock(params)
+function modifier_item_longinus_spear:GetModifierTotal_ConstantBlock(params)
 	if IsServer() then
 		local hParent = self:GetParent()
 		local flBlock = hParent:GetMaxMana() * self.block_percent * 0.01
@@ -87,14 +87,14 @@ function modifier_longinus_spear:GetModifierTotal_ConstantBlock(params)
 		return flShield
 	end
 end
-function modifier_longinus_spear:GetModifierSpellAmplify_Percentage()
+function modifier_item_longinus_spear:GetModifierSpellAmplify_Percentage()
 	return self.magic_damage_increase
 end
 ---------------------------------------------------------------------
-if modifier_longinus_spear_thinker == nil then
-	modifier_longinus_spear_thinker = class({}, nil, ModifierHidden)
+if modifier_item_longinus_spear_thinker == nil then
+	modifier_item_longinus_spear_thinker = class({}, nil, ModifierHidden)
 end
-function modifier_longinus_spear_thinker:OnCreated(params)
+function modifier_item_longinus_spear_thinker:OnCreated(params)
 	if IsClient() then
 		local p = ParticleManager:CreateParticle("particles/items/longinus_spear/longinus_spear_active.vpcf",PATTACH_ABSORIGIN,self:GetParent())
 		ParticleManager:SetParticleControl(p, 0, self:GetParent():GetAbsOrigin())
@@ -102,7 +102,7 @@ function modifier_longinus_spear_thinker:OnCreated(params)
 		ParticleManager:ReleaseParticleIndex(p)
 	end
 end
-function modifier_longinus_spear_thinker:OnDestroy()
+function modifier_item_longinus_spear_thinker:OnDestroy()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local hParent = self:GetParent()

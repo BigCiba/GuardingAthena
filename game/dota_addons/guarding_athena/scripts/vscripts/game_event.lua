@@ -315,31 +315,49 @@ function GuardingAthena:OnConnectFull(keys)
 		end
 	end
 end
--- 监听npc出生，包括英雄
+-- 监听npc出生（复活也算），包括英雄
 function GuardingAthena:OnNPCSpawned(keys)
 	--print("[GuardingAthena] NPC Spawned")
 	--DeepPrintTable(keys)
-	local spawnedUnit = EntIndexToHScript( keys.entindex )
-	if spawnedUnit:IsRealHero() then
-		-- 重置买活惩罚
-		--PlayerResource:ResetBuybackCostTime(spawnedUnit:GetPlayerID())
-		-- 单人buff
+	local hUnit = EntIndexToHScript( keys.entindex )
+	-- 删除宠物
+	if hUnit:GetUnitName() == "npc_dota_companion" then
+		UTIL_Remove(hUnit)
+		return
+	end
+	if not hUnit.bIsNotFirstSpawn then
+		hUnit.bIsNotFirstSpawn = true
+		FireGameEvent("custom_npc_first_spawned", {entindex=hUnit:entindex()})
+	end
+	
+	if hUnit:IsRealHero() then
 		Timers:CreateTimer(0.1,function ()
-			if spawnedUnit:IsNull() then
+			if hUnit:IsNull() then
 				return
 			else
-		    	spawnedUnit:SetBuybackCooldownTime(0)
-		    	spawnedUnit:RemoveModifierByName("modifier_buyback_gold_penalty")
-		    end
-	    end)
+				hUnit:SetBuybackCooldownTime(0)
+				hUnit:RemoveModifierByName("modifier_buyback_gold_penalty")
+			end
+		end)
+	end
+end
+
+function GuardingAthena:OnNPCFirstSpawned(events)
+	local spawnedUnit = EntIndexToHScript(events.entindex)
+	if not IsValid(spawnedUnit) then return end
+
+	if spawnedUnit:GetUnitName() == "npc_dota_thinker" then
+		return
+	end
+	-- 注册修正伤害
+	spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_fix_damage", nil)
+
+	if spawnedUnit:IsRealHero() then
+		-- 单人buff
 		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
 		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false and self.is_cheat== false then
 			spawnedUnit:AddAbility("singlehero")
 			spawnedUnit:FindAbilityByName("singlehero"):SetLevel(1)
-		end
-		-- 初始化经验获得率
-		if spawnedUnit.GetExpRate == nil then
-			spawnedUnit.GetExpRate = 0
 		end
 		-- 初始化转生击杀
 		if spawnedUnit.kill_iapetos == nil then
@@ -441,9 +459,6 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			heroEntity.pet = NewPet("pet_0"..RandomInt(1, 5), heroEntity)
 		end)
 		--Attributes:ModifyBonuses(heroEntity)
-		-- 记录当前英雄
-		print(heroEntity:GetAbsOrigin())
-		HERO_TABLE[playerID + 1] = heroEntity
 		-- 垃圾v社
 		local tpScroll = heroEntity:GetItemInSlot(15)
 		if tpScroll then
@@ -939,7 +954,7 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 			end
 		end
 	end
-	print(level,math.fmod(level,3),hero:GetAbilityPoints())
+	-- print(level,math.fmod(level,3),hero:GetAbilityPoints())
 end
 -- 监听使用技能
 function GuardingAthena:OnUsedAbility(event)

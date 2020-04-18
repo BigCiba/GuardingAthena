@@ -1,36 +1,18 @@
-LinkLuaModifier("modifier_chaos_plate", "abilities/items/artifact/item_chaos_plate.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_chaos_plate_shield", "abilities/items/artifact/item_chaos_plate.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_item_chaos_plate", "abilities/items/artifact/item_chaos_plate.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_item_chaos_plate_shield", "abilities/items/artifact/item_chaos_plate.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if item_chaos_plate == nil then
 	item_chaos_plate = class({})
 end
 function item_chaos_plate:GetIntrinsicModifierName()
-	return "modifier_chaos_plate"
+	return "modifier_item_chaos_plate"
 end
 ---------------------------------------------------------------------
 -- Modifier
-if modifier_chaos_plate == nil then
-	modifier_chaos_plate = class({})
+if modifier_item_chaos_plate == nil then
+	modifier_item_chaos_plate = class({}, nil, ModifierItemBasic)
 end
-function modifier_chaos_plate:IsHidden()
-	return true
-end
-function modifier_chaos_plate:IsDebuff()
-	return false
-end
-function modifier_chaos_plate:IsPurgable()
-	return false
-end
-function modifier_chaos_plate:IsPurgeException()
-	return false
-end
-function modifier_chaos_plate:IsStunDebuff()
-	return false
-end
-function modifier_chaos_plate:AllowIllusionDuplicate()
-	return false
-end
-function modifier_chaos_plate:OnCreated(params)
+function modifier_item_chaos_plate:OnCreated(params)
 	self.attribute = self:GetAbilitySpecialValueFor("attribute")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.damage_reduce = self:GetAbilitySpecialValueFor("damage_reduce")
@@ -42,18 +24,18 @@ function modifier_chaos_plate:OnCreated(params)
 		self:OnIntervalThink()
 	end
 end
-function modifier_chaos_plate:OnDestroy()
+function modifier_item_chaos_plate:OnDestroy()
 	if IsServer() then
-		self:GetParent():RemoveModifierByName("modifier_chaos_plate_shield")
+		self:GetParent():RemoveModifierByName("modifier_item_chaos_plate_shield")
 	end
 end
-function modifier_chaos_plate:OnIntervalThink()
+function modifier_item_chaos_plate:OnIntervalThink()
 	if IsServer() then
 		self:GetParent():Purge(false, true, false, true, true)
-		self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_chaos_plate_shield", nil)
+		self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_item_chaos_plate_shield", nil)
 	end
 end
-function modifier_chaos_plate:DeclareFunctions()
+function modifier_item_chaos_plate:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_HEALTH_BONUS,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
@@ -63,22 +45,22 @@ function modifier_chaos_plate:DeclareFunctions()
 		MODIFIER_PROPERTY_REINCARNATION,
 	}
 end
-function modifier_chaos_plate:GetModifierHealthBonus()
+function modifier_item_chaos_plate:GetModifierHealthBonus()
 	return self.health_bonus
 end
-function modifier_chaos_plate:GetModifierBonusStats_Strength()
+function modifier_item_chaos_plate:GetModifierBonusStats_Strength()
 	return self.attribute
 end
-function modifier_chaos_plate:GetModifierBonusStats_Agility()
+function modifier_item_chaos_plate:GetModifierBonusStats_Agility()
 	return self.attribute
 end
-function modifier_chaos_plate:GetModifierBonusStats_Intellect()
+function modifier_item_chaos_plate:GetModifierBonusStats_Intellect()
 	return self.attribute
 end
-function modifier_chaos_plate:GetModifierIncomingDamage_Percentage()
+function modifier_item_chaos_plate:GetModifierIncomingDamage_Percentage()
 	return self.damage_reduce
 end
-function modifier_chaos_plate:ReincarnateTime()
+function modifier_item_chaos_plate:ReincarnateTime()
 	if IsServer() then
 		if self:GetAbility():IsCooldownReady() then
 			self:GetAbility():UseResources(true, true, true)
@@ -90,28 +72,10 @@ function modifier_chaos_plate:ReincarnateTime()
 	end
 end
 ---------------------------------------------------------------------
-if modifier_chaos_plate_shield == nil then
-	modifier_chaos_plate_shield = class({})
+if modifier_item_chaos_plate_shield == nil then
+	modifier_item_chaos_plate_shield = class({}, nil, ModifierPositiveBuff)
 end
-function modifier_chaos_plate_shield:IsHidden()
-	return false
-end
-function modifier_chaos_plate_shield:IsDebuff()
-	return false
-end
-function modifier_chaos_plate_shield:IsPurgable()
-	return false
-end
-function modifier_chaos_plate_shield:IsPurgeException()
-	return false
-end
-function modifier_chaos_plate_shield:IsStunDebuff()
-	return false
-end
-function modifier_chaos_plate_shield:AllowIllusionDuplicate()
-	return false
-end
-function modifier_chaos_plate_shield:OnCreated(params)
+function modifier_item_chaos_plate_shield:OnCreated(params)
 	self.shield = self:GetAbilitySpecialValueFor("shield")
 	local hParent = self:GetParent()
 	if IsServer() then
@@ -122,18 +86,18 @@ function modifier_chaos_plate_shield:OnCreated(params)
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
-function modifier_chaos_plate_shield:OnRefresh(params)
+function modifier_item_chaos_plate_shield:OnRefresh(params)
 	self.shield = self:GetAbilitySpecialValueFor("shield")
 	if IsServer() then
 		self.flShieldHealth = self:GetParent():GetMaxHealth() * self.shield * 0.01
 	end
 end
-function modifier_chaos_plate_shield:DeclareFunctions()
+function modifier_item_chaos_plate_shield:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK,
 	}
 end
-function modifier_chaos_plate_shield:GetModifierTotal_ConstantBlock(params)
+function modifier_item_chaos_plate_shield:GetModifierTotal_ConstantBlock(params)
 	if IsServer() then
 		local flBlock = self.flShieldHealth
 		self.flShieldHealth = self.flShieldHealth - params.damage

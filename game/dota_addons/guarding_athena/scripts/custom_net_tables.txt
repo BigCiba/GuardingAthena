@@ -4,7 +4,6 @@
 	[
 		"scoreboard",
 		"end_screen",
-		"ability_table",
 		"player_hero",
 		"difficulty",
 		"shop",

@@ -439,7 +439,7 @@ function Rotation2D(vVector, radian)
 end
 -- 随机掉落物品
 function RollDrops(unit)
-    local DropInfo = GameRules.DropTable[unit:GetUnitName()]
+    local DropInfo = KeyValues.DropsKv[unit:GetUnitName()]
     if DropInfo then
         --print("Rolling Drops for "..unit:GetUnitName())
         for k,ItemTable in pairs(DropInfo) do

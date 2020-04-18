@@ -12,10 +12,20 @@ function modifier_pet_base:OnCreated(params)
 		self:StartIntervalThink(0.1)
 	end
 end
+function modifier_pet_base:OnDestroy()
+	if IsServer() then
+		self:GetParent():GetPet():RemoveSelf()
+	end
+end
 function modifier_pet_base:OnIntervalThink()
 	if IsServer() then
 		local hOwner = self:GetCaster()
 		local hPet = self:GetParent()
+		if not IsValid(hOwner) then
+			self:StartIntervalThink(-1)
+			self:Destroy()
+			return
+		end
 		local flDistance = (hOwner:GetAbsOrigin() - hPet:GetAbsOrigin()):Length2D()
 		self:SetStackCount(flDistance)
 		if flDistance > 2000 then

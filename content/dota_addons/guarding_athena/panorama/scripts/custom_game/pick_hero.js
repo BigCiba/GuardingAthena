@@ -64,7 +64,7 @@ allHeroes[11] = "npc_dota_hero_nevermore"
 allHeroes[12] = "npc_dota_hero_monkey_king"
 allHeroes[13] = "npc_dota_hero_spectre"
 allHeroes[14] = "npc_dota_hero_oracle"
-allHeroes[15] = "npc_dota_hero_drow_ranger"
+// allHeroes[15] = "npc_dota_hero_drow_ranger"
 var lockHeroes = []
 var unlockHeroes = []
 var lockImages = []
@@ -132,11 +132,17 @@ function OnButtonActive(buttonname) {
 }
 function ShowHeroAbilities(heroName) {
     DeleteChildrenWithClass($("#HeroAbilities"), "AbilityLabel");
-    for (var i = 0;i<5;i++){
+    let HeroInfo = {}
+    for (const key in GameUI.HeroesKv) {
+        const element = GameUI.HeroesKv[key];
+        if (element.override_hero == heroName) {
+            HeroInfo = element
+        }
+    }
+    for (var i = 1;i<=5;i++){
         var ability = $.CreatePanel('DOTAAbilityImage', $("#HeroAbilities"), '');
         ability.AddClass("AbilityLabel");
-        var abilityTable = CustomNetTables.GetTableValue("ability_table",heroName);
-        var abilityName = abilityTable[i+1];
+        var abilityName = HeroInfo["Ability" + i];
         ability.abilityname = abilityName;
         SetAbilityButtonTooltipEvents(ability,abilityName);
     }

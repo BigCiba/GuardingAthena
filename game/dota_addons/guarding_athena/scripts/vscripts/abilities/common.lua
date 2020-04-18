@@ -37,6 +37,244 @@ function CDOTA_Buff:GetAbilitySpecialValueWithLevel(szName)
 	return hAbility:GetSpecialValueWithLevel(szName)
 end
 
+-- 技能暴击
+function SetSpellCriticalStrike(unit, chance, damage, key)
+	if unit.spellCriticalStrikes == nil then
+		unit.spellCriticalStrikes = {}
+	end
+
+	key = key or DoUniqueString("SpellCriticalStrike")
+	if chance == nil or chance <= 0 then
+		unit.spellCriticalStrikes[key] = nil
+	else
+		unit.spellCriticalStrikes[key] = {
+			spell_crit_chance = chance,
+			spell_crit_damage = damage
+		}
+	end
+
+	return key
+end
+function GetSpellCriticalStrike(unit)
+	if unit.spellCriticalStrikes == nil then
+		unit.spellCriticalStrikes = {}
+	end
+
+	local crit_damage = 0
+
+	for key, data in pairs(unit.spellCriticalStrikes) do
+		if PRD(unit, data.spell_crit_chance, key) then
+			crit_damage = math.max(crit_damage, data.spell_crit_damage)
+		end
+	end
+
+	return crit_damage
+end
+
+-- 技能暴击额外百分比
+function SetSpellCriticalStrikeDamage(unit, value, key)
+	if unit.spellCriticalStrikeDamage == nil then
+		unit.spellCriticalStrikeDamage = {}
+	end
+
+	key = key or DoUniqueString("SpellCriticalStrikeDamage")
+	unit.spellCriticalStrikeDamage[key] = value
+
+	return key
+end
+function GetSpellCriticalStrikeDamage(unit)
+	if unit.spellCriticalStrikeDamage == nil then
+		unit.spellCriticalStrikeDamage = {}
+	end
+
+	local value = 0
+	for key, v in pairs(unit.spellCriticalStrikeDamage) do
+		value = value + v
+	end
+	return value
+end
+
+-- 暴击额外百分比
+function SetCriticalStrikeDamage(unit, value, key)
+	if unit.criticalStrikeDamage == nil then
+		unit.criticalStrikeDamage = {}
+	end
+
+	key = key or DoUniqueString("CriticalStrikeDamage")
+	unit.criticalStrikeDamage[key] = value
+
+	return key
+end
+function GetCriticalStrikeDamage(unit)
+	if unit.criticalStrikeDamage == nil then
+		unit.criticalStrikeDamage = {}
+	end
+
+	local value = 0
+	for key, v in pairs(unit.criticalStrikeDamage) do
+		value = value + v
+	end
+	return value
+end
+
+-- 无视魔抗
+function SetIgnoreMagicResistanceValue(unit, value, key)
+	if unit.ignoreMagicResistanceValues == nil then
+		unit.ignoreMagicResistanceValues = {}
+	end
+	
+	key = key or DoUniqueString("IgnoreMagicResistanceValue")
+	unit.ignoreMagicResistanceValues[key] = value
+
+	return key
+end
+function GetIgnoreMagicResistanceValue(unit)
+	if unit.ignoreMagicResistanceValues == nil then
+		unit.ignoreMagicResistanceValues = {}
+	end
+
+	local value = 0
+	for key, v in pairs(unit.ignoreMagicResistanceValues) do
+		value = 1 - (1 - value) * (1 - v)
+	end
+	return value
+end
+-- 某种类型伤害增加（DAMAGE_TYPE_NONE为所有类型伤害增加）
+function SetOutgoingDamagePercent(unit, damage_type, percent, key)
+	if unit.outgoingDamagePercents == nil then
+		unit.outgoingDamagePercents = {}
+	end
+	if unit.outgoingDamagePercents[damage_type] == nil then
+		unit.outgoingDamagePercents[damage_type] = {}
+	end
+
+	key = key or DoUniqueString("OutgoingDamagePercent")
+	unit.outgoingDamagePercents[damage_type][key] = percent
+
+	if IsServer() then
+		local fNewValue = Round(GetOutgoingDamagePercent(unit, DAMAGE_TYPE_PHYSICAL) - 100, 0.00001)
+		local hModifier = unit:FindModifierByName("modifier_physical_damage_percent")
+		if IsValid(hModifier) then
+			if Round(hModifier:GetDuration(), 0.00001) ~= fNewValue then
+				hModifier:Destroy()
+				hModifier = unit:AddNewModifier(unit, nil, "modifier_physical_damage_percent", {duration = fNewValue})
+			end
+		else
+			hModifier = unit:AddNewModifier(unit, nil, "modifier_physical_damage_percent", {duration = fNewValue})
+		end
+
+		local fNewValue = Round(GetOutgoingDamagePercent(unit, DAMAGE_TYPE_MAGICAL) - 100, 0.00001)
+		local hModifier = unit:FindModifierByName("modifier_magical_damage_percent")
+		if IsValid(hModifier) then
+			if Round(hModifier:GetDuration(), 0.00001) ~= fNewValue then
+				hModifier:Destroy()
+				hModifier = unit:AddNewModifier(unit, nil, "modifier_magical_damage_percent", {duration = fNewValue})
+			end
+		else
+			hModifier = unit:AddNewModifier(unit, nil, "modifier_magical_damage_percent", {duration = fNewValue})
+		end
+
+		local fNewValue = Round(GetOutgoingDamagePercent(unit, DAMAGE_TYPE_PURE) - 100, 0.00001)
+		local hModifier = unit:FindModifierByName("modifier_pure_damage_percent")
+		if IsValid(hModifier) then
+			if Round(hModifier:GetDuration(), 0.00001) ~= fNewValue then
+				hModifier:Destroy()
+				hModifier = unit:AddNewModifier(unit, nil, "modifier_pure_damage_percent", {duration = fNewValue})
+			end
+		else
+			hModifier = unit:AddNewModifier(unit, nil, "modifier_pure_damage_percent", {duration = fNewValue})
+		end
+	end
+
+	return key
+end
+function GetOutgoingDamagePercent(unit, damage_type)
+	if unit.outgoingDamagePercents == nil then
+		unit.outgoingDamagePercents = {}
+	end
+	if unit.outgoingDamagePercents[damage_type] == nil then
+		unit.outgoingDamagePercents[damage_type] = {}
+	end
+
+	local value = 100
+	for key, v in pairs(unit.outgoingDamagePercents[damage_type]) do
+		value = value + v
+	end
+	return value
+end
+
+-- 增加受到的伤害
+function SetIncomingDamage(hUnit, damage_type, value, key)
+	if hUnit.incomingDamagePercents == nil then
+		hUnit.incomingDamagePercents = {}
+	end
+	if hUnit.incomingDamagePercents[damage_type] == nil then
+		hUnit.incomingDamagePercents[damage_type] = {}
+	end
+
+	key = key or DoUniqueString("IncomingDamagePercent")
+	hUnit.incomingDamagePercents[damage_type][key] = value
+	return key
+end
+function GetIncomingDamagePercent(hUnit, damage_type)
+	if hUnit.incomingDamagePercents == nil then
+		hUnit.incomingDamagePercents = {}
+	end
+	if hUnit.incomingDamagePercents[damage_type] == nil then
+		hUnit.incomingDamagePercents[damage_type] = {}
+	end
+
+	local value = 100
+	for key, v in pairs(hUnit.incomingDamagePercents[damage_type]) do
+		value = value + v
+	end
+	return value
+end
+
+-- 状态抗性
+function SetStatusResistance(hUnit, fValue, key)
+	if hUnit.statusResistances == nil then
+		hUnit.statusResistances = {}
+	end
+
+	key = key or DoUniqueString("StatusResistance")
+	hUnit.statusResistances[key] = fValue
+
+	if IsServer() then
+		local fNewValue = Round(GetStatusResistance(hUnit), 0.00001)
+		local iSign = fNewValue < 0 and 1 or 0
+		local hModifier = hUnit:FindModifierByName("modifier_status_resistance")
+		if IsValid(hModifier) then
+			if Round(hModifier:GetDuration(), 0.00001) ~= math.abs(fNewValue) or hModifier:GetStackCount() ~= iSign then
+				hModifier:Destroy()
+				hModifier = hUnit:AddNewModifier(hUnit, nil, "modifier_status_resistance", {duration = math.abs(fNewValue)})
+				if IsValid(hModifier) then
+					hModifier:SetStackCount(iSign)
+				end
+			end
+		else
+			hModifier = hUnit:AddNewModifier(hUnit, nil, "modifier_status_resistance", {duration = math.abs(fNewValue)})
+			if IsValid(hModifier) then
+				hModifier:SetStackCount(iSign)
+			end
+		end
+	end
+
+	return key
+end
+function GetStatusResistance(hUnit)
+	if hUnit.statusResistances == nil then
+		hUnit.statusResistances = {}
+	end
+
+	local fValue = 0
+	for key, v in pairs(hUnit.statusResistances) do
+		fValue = 1 - (1 - fValue) * math.max(1 - v, 0)
+	end
+
+	return fValue
+end
+
 function AddModifierEvents(iModifierEvent, hModifier, hSource, hTarget)
 	if IsValid(hTarget) or IsValid(hSource) then
 		if IsValid(hSource) then
@@ -122,6 +360,13 @@ function FireCustomModifiersEvents(iModifierFunction, params)
 end
 
 if IsClient() then
+	_G.DAMAGE_TYPE_ALL = 7
+	_G.DAMAGE_TYPE_HP_REMOVAL = 8
+	_G.DAMAGE_TYPE_MAGICAL = 2
+	_G.DAMAGE_TYPE_NONE = 0
+	_G.DAMAGE_TYPE_PHYSICAL = 1
+	_G.DAMAGE_TYPE_PURE = 4
+
 	function C_DOTABaseAbility:GetSpecialValueWithLevel(szName)
 		return self:GetSpecialValueFor(szName) * self:GetLevel()
 	end

@@ -1,0 +1,113 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf26:version{26288658-411e-4f14-b698-2e1e5d00dec6} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_h.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_i.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_o.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_n.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_s.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_m.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_q.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_k.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_j.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_r.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_p.vpcf"
+			m_flDelay = 0.8
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/battlefury_ring/battlefury_ring_eclipse_d.vpcf"
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 500.0, 500.0, 1.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 500.0, 500.0, 500.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_nMaxParticles = 0
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_StopAfterCPDuration"
+			m_flDuration = 2.0
+			m_bDestroyImmediately = true
+			m_bDisableOperator = true
+		},
+	]
+	m_nBehaviorVersion = 4
+}

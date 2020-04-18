@@ -3,6 +3,9 @@ LinkLuaModifier("modifier_item_ogre_4", "abilities/items/drops/item_ogre_4.lua",
 if item_ogre_4 == nil then
 	item_ogre_4 = class({})
 end
+function item_ogre_4:GetAOERadius()
+	return self:GetSpecialValueFor("radius")
+end
 function item_ogre_4:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()

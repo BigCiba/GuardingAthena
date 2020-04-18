@@ -1,4 +1,8 @@
 <root>
+	<scripts>
+		<include src="file://{resources}/scripts/kv/HeroesKv.js" />
+		<include src="file://{resources}/scripts/init.js" />
+	</scripts>
 	<script>
 		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );
 		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND, false );
@@ -33,6 +37,7 @@
 	</script>
 		
 	<Panel>
+		<!-- <CustomUIElement type="HeroSelection"		layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" /> -->
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" /> 
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/overthrow_item_notification.xml" />
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/pick_hero.xml" />
@@ -51,6 +56,7 @@
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/shop.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/time.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/bubble.xml" />
+		<!-- <CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" /> -->
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />
 	</Panel>
 </root>

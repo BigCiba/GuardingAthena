@@ -471,6 +471,16 @@ if IsServer() then
 		return -1
 	end
 
+	function CDOTA_BaseNPC:ModifyPrimaryAttribute(fChanged)
+		if self:GetPrimaryAttribute() == DOTA_ATTRIBUTE_STRENGTH then
+			self:ModifyStrength(fChanged)
+		elseif self:GetPrimaryAttribute() == DOTA_ATTRIBUTE_AGILITY then
+			self:ModifyAgility(fChanged)
+		elseif self:GetPrimaryAttribute() == DOTA_ATTRIBUTE_INTELLECT then
+			self:ModifyIntellect(fChanged)
+		end
+	end
+	
 	function CDOTA_BaseNPC:ModifyMaxHealth(fChanged)
 		local fHealthPercent = self:GetHealth()/self:GetMaxHealth()
 		self.fBaseHealth = (self.fBaseHealth or self:GetMaxHealth()) + fChanged

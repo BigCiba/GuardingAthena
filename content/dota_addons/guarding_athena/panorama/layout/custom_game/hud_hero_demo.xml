@@ -1,0 +1,123 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+		<include src="file://{resources}/styles/custom_game/hud_hero_demo.css" />
+	</styles>
+	<scripts>
+		<!-- <include src="file://{resources}/scripts/custom_game/common.js" /> -->
+		<include src="file://{resources}/scripts/custom_game/hud_hero_demo.js" />
+	</scripts>
+
+	<snippets>
+		<snippet name="UpdateAbility">
+			<Panel class="UpdateAbility">
+				<Button id="AblityButton" class="AblityButton" onactivate="OnAbility()">
+					<DOTAAbilityImage id="AbilityImage" />
+					<Panel id="AbilityBevel" />
+				</Button>
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<Panel class="CustomHudRoot" hittest="false">
+		<Panel id="SelectHeroContainer">
+			<DOTAUIHeroPicker id="HeroPicker" />
+			<Button id="CancelButton" class="CloseButton" onactivate="ToggleHeroPicker()" />
+		</Panel>
+		<Panel id="UpdateAbilityContainer">
+		</Panel>
+		<Panel id="UpdateAbilityHeroContainer">
+			<DOTAUIHeroPicker id="HeroPicker" />
+			<!-- <Button id="CancelButton" class="CloseButton" onactivate="ToggleHeroPicker()" /> -->
+		</Panel>
+		<Panel class="ControlPanel LeftRightFlow">
+			<Panel class="ControlPanelContainer">
+				<Panel id="Maximized">
+					<Panel id="MinimizeButton">
+						<Label text="#DemoOptions_MinimizeButton" />
+					</Panel>
+
+					<Panel class="Category">
+						<Label text="#Hero_ButtonCategory"/>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( RefreshButtonPressed )">
+								<Label text="#Refresh_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<ToggleButton id="FreeSpellsButton" class="DemoButton" onactivate="FireCustomGameEvent_Str( FreeSpellsButtonPressed )">
+								<Label text="#FreeSpells_Button"/>
+							</ToggleButton>
+						</Panel>
+						<Panel class="Row">
+							<ToggleButton class="DemoButton" onactivate="FireCustomGameEvent_Str( InvulnerabilityButtonPressed )">
+								<Label text="#Invulnerability_Button"/>
+							</ToggleButton>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( LevelUpButtonPressed )">
+								<Label text="#LevelUp_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( MaxLevelButtonPressed )">
+								<Label text="#MaxLevel_Button"/>
+							</Button>
+						</Panel>
+					</Panel>
+
+					<Panel class="Category">
+						<Label text="#Spawn_ButtonCategory"/>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="ToggleHeroPicker()">
+								<Label text="#SelectHero_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( SpawnAllyButtonPressed )">
+								<Label text="#Ally_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( LevelUpAllyButtonPressed )">
+								<Label text="#LevelUpAlly_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( AllyMaxLevelButtonPressed )">
+								<Label text="#AllyMaxLevel_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( SwitchHeroButtonPressed )">
+								<Label text="#SwitchHero_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( DummyTargetButtonPressed )">
+								<Label text="#DummyTarget_Button"/>
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( RemoveSpawnedUnitsButtonPressed )">
+								<Label text="#RemoveSpawns_Button"/>
+							</Button>
+						</Panel>
+					</Panel>
+					<Panel class="Category">
+						<Label text="#Other_ButtonCategory"/>
+						<Panel class="Row">
+							<Button class="DemoButton" onactivate="FireCustomGameEvent_Str( ReloadScriptButtonPressed )">
+								<Label text="#ReloadScript_Button"/>
+							</Button>
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Button id="ControlPanelSlideThumb" onactivate="$.GetContextPanel().ToggleClass('Minimized')">
+				<Panel class="RightArrowButtonIcon"/>
+			</Button>
+			<Panel />
+		</Panel>
+	</Panel>
+</root>

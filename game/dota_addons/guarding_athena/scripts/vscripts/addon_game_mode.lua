@@ -1,3 +1,40 @@
+-- _G.Service = require("service/init")
+_G.json = require("game/dkjson")
+
+_G.old_debug_traceback = old_debug_traceback or debug.traceback
+if IsInToolsMode() then
+	debug.traceback = function(...)
+		local a = old_debug_traceback(...)
+		-- print("[debug error]:", a)
+		return a
+	end
+
+	local src = debug.getinfo(1).source
+	if src:sub(2):find("(.*dota 2 beta[\\/]game[\\/]dota_addons[\\/])([^\\/]+)[\\/]") then
+		_G.GameDir, _G.AddonName = string.match(src:sub(2), "(.*dota 2 beta[\\/]game[\\/]dota_addons[\\/])([^\\/]+)[\\/]")
+		_G.ContentDir = GameDir:gsub("\\game\\dota_addons\\", "\\content\\dota_addons\\")
+	end
+else
+	_G.tError = {}
+	debug.traceback = function(error, ...)
+		local a = old_debug_traceback(error, ...)
+		local sMsg = tostring(error)
+		print("[debug error]:", a)
+		if not tError[sMsg] then
+			tError[sMsg] = pcall(function()
+				Service:HTTPRequest("POST", ACTION_DEBUG_ERROR_MSG, {debug_msg=a}, function(iStatusCode, sBody)
+					if iStatusCode ~= 200 then
+						tError[sMsg] = nil
+					end
+				end, 30)
+			end)
+		end
+		return a
+	end
+end
+
+require("kv")
+
 if GuardingAthena == nil then
 	_G.GuardingAthena = class({})
 end
@@ -10,7 +47,7 @@ require("ability_unit")
 require("ability_item")
 require("ability_hero/hippolyta")
 -- require('setting')
-require('filter')
+-- require('filter')
 require('game_event')
 require('scoreManager')
 require('event_listener')
@@ -225,7 +262,7 @@ function Initialize(bReload)
 
 	Require({
 		Settings = "setting",
-		-- Filters = "filters",
+		Filters = "filters",
 		-- GuardingAthena = "guarding_athena",
 	}, bReload)
 
@@ -238,6 +275,7 @@ end
 function Reload()
 	local state = GameRules:State_Get()
 	if state > DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
+		_ClearEventListenerIDs()
 
 		GameRules:Playtesting_UpdateAddOnKeyValues()
 		FireGameEvent("client_reload_game_keyvalues", {})
@@ -259,7 +297,46 @@ function Reload()
 
 		print("Reload Scripts")
 
-		-- GuardingAthena:InitGameMode()
+		Initialize(true)
+	end
+end
+
+function CustomUIEvent(eventName, func, context)
+	table.insert(CustomUIEventListenerIDs, CustomGameEventManager:RegisterListener(eventName, function(...)
+		if context ~= nil then
+			return func(context, ...)
+		end
+		return func(...)
+	end))
+end
+_G.CustomUIEvent = CustomUIEvent
+
+function GameEvent(eventName, func, context)
+	table.insert(GameEventListenerIDs, ListenToGameEvent(eventName, func, context))
+end
+_G.GameEvent = GameEvent
+
+function GameTimerEvent(startInterval, func, context)
+	local hGameMode = GameRules:GetGameModeEntity()
+	table.insert(TimerEventListenerIDs, hGameMode:GameTimer(startInterval, function()
+		if context ~= nil then
+			return func(context)
+		end
+		return func()
+	end))
+end
+_G.GameTimerEvent = GameTimerEvent
+
+function _ClearEventListenerIDs()
+	for i = #CustomUIEventListenerIDs, 1, -1 do
+		CustomGameEventManager:UnregisterListener(CustomUIEventListenerIDs[i])
+	end
+	for i = #GameEventListenerIDs, 1, -1 do
+		StopListeningToGameEvent(GameEventListenerIDs[i])
+	end
+	local hGameMode = GameRules:GetGameModeEntity()
+	for i = #TimerEventListenerIDs, 1, -1 do
+		hGameMode:SetContextThink(TimerEventListenerIDs[i], nil, -1)
 	end
 end
 

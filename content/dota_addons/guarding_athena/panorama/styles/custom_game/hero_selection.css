@@ -1,0 +1,1409 @@
+@keyframes 'RequestAnimation' {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	100% {
+		transform: rotateZ(180deg);
+	}
+}
+.WindowsBlockBg {
+	background-color: #0F1D1A;
+	opacity: 0.7;
+	border-radius: 5px;
+}
+.heroSelectionRoot {
+	width: 100%;
+	height: 100%;
+	/* background-image: url("file://{images}/custom_game/hero_selection/bg.png"); */
+	background-color: #3B4553;
+}
+#LeftContent {
+	horizontal-align: left;
+	width: 25%;
+	height: 100%;
+	/* background-color: #222A35; */
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+	box-shadow: #161b22 -10px -10px 20px 20px;
+}
+#DifficlutyContent {
+	flow-children: down;
+	horizontal-align: left;
+	vertical-align: bottom;
+	width: 100%;
+	height: 45%;
+}
+#DifficlutyContent RadioButton {
+	width: 100%;
+}
+#DifficlutyContent RadioButton > .RadioBox {
+	visibility: collapse;
+}
+.DifficultyIcon {
+	width: 64px;
+	height: 64px;
+}
+.DifficultyPanel{
+	width: 80%;
+	height: 64px;
+	horizontal-align: center;
+	margin-bottom: 20px;
+	/* border-radius: 5px; */
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.DifficultyPanel:hover{
+	brightness: 2.0;
+}
+.DifficultyPanel:active{
+	brightness: 1.5;
+	sound: "ui_generic_button_click";
+}
+.DifficultyPanel Label {
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 30px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	font-weight: bold;
+	text-shadow: 2px 2px 3px 3 #000000;
+	/* color: white; */
+	/* color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ff5757 ), to( #c43030 ) ); */
+}
+.Easy {
+	border-bottom: 1px solid #00000060;
+	border-right: 1px solid #00000060;
+	border-top: 1px solid #ffffff06;
+	border-left: 1px solid #ffffff06;
+	wash-color: #aee2ff33;
+	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	/* background-color: #DEEBF7; */
+}
+.Easy:selected{
+	wash-color: #aee2ff;
+	color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ff5757 ), to( #c43030 ) );
+}
+.Normal {
+	border-bottom: 1px solid #ffffff06;
+	border-right: 1px solid #ffffff06;
+	border-top: 1px solid #33333360;
+	border-left: 1px solid #33333360;
+	wash-color: #d5ff9a33;
+	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	/* background-color: #BDD7EE; */
+}
+.Normal:selected{
+	wash-color: #d5ff9a;
+}
+.Hard {
+	
+	border-bottom: 1px solid #ffffff06;
+	border-right: 1px solid #ffffff06;
+	border-top: 1px solid #33333360;
+	border-left: 1px solid #33333360;
+	wash-color: #ffcf4d33;
+	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	/* background-color: #9DC3E6; */
+}
+.Hard:selected{
+	wash-color: #ffcf4d;
+}
+.Nightmare {
+	border-bottom: 1px solid #ffffff06;
+	border-right: 1px solid #ffffff06;
+	border-top: 1px solid #33333360;
+	border-left: 1px solid #33333360;
+	wash-color: #b29aff33;
+	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	/* background-color: #2E75B6; */
+}
+.Nightmare:selected{
+	wash-color: #b29aff;
+}
+.Hell {
+	border-bottom: 1px solid #ffffff06;
+	border-right: 1px solid #ffffff06;
+	border-top: 1px solid #33333360;
+	border-left: 1px solid #33333360;
+	wash-color: #ff9a9a33;
+	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	/* background-color: #1F4E79; */
+}
+.Hell:selected{
+	wash-color: #ff9a9a;
+}
+.Easy:selected Label{	
+	color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #70dfff ), to( #7bb7ff ) );
+}
+.Normal:selected Label{	
+	color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #c2ff57 ), to( #79e900 ) );
+}
+.Hard:selected Label{	
+	color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ffef8a ), to( #ffbb0f ) );
+}
+.Nightmare:selected Label{	
+	color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #8f57ff ), to( #612fc4 ) );
+}
+.Hell:selected Label{	
+	color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ff5757 ), to( #c43030 ) );
+}
+#RightContent { 
+	horizontal-align: Right;
+	width: 75%;
+	height: 100%;
+}
+#TimerContent{
+	horizontal-align: center;
+	vertical-align: top;
+	background-color: #222A35;
+	width: 200px;
+	height: 100px;
+	/* box-shadow: #222A35 -10px -10px 20px 20px; */
+	clip: radial( 50% 100%, -27deg, 54deg );
+}
+#TimerContent Label{
+	horizontal-align: center;
+	vertical-align: center;
+	margin-bottom: 30px;
+	font-size: 48px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+}
+.HeroListAndSetting{
+	width: 65%;
+	height: 100%;
+	padding-left: 7%;
+	padding-right: 7%;
+	padding-bottom: 3%;
+	/* flow-children: down; */
+}
+#HeroListPanel{
+	/* margin-top: 10%; */
+	/* margin: 5%; */
+	width: 100%;
+	height: 55%;
+	margin-bottom: 30%;
+	/* box-shadow: fill #191e25 2px 2px 6px 0px; */
+	vertical-align: bottom;
+	flow-children: right-wrap;
+	box-shadow: #00000055 -2px -2px 1px 4px;
+	background-color: dotaPlusBgGradient;
+	border-top: 2px solid dotaPlusGold;
+}
+.HeroCard
+{
+	margin-left: 2%;
+	margin-top: 20px;
+	saturation: 0.3;
+	width:96px;
+	/* 3:4 */
+	height:128px;
+	border-radius: 4px;
+	/* border: 1px solid #87CEEBff; */
+	box-shadow: fill #191e25 6px 6px 18px 0px;
+}
+#HeroSettingPanel{
+	/* margin: 5%; */
+	/* margin-bottom: 2.5%; */
+	/* margin-left: 2.5%; */
+	width: 100%;
+	height: 25%;
+	/* background-color: #222A35; */
+	/* box-shadow: fill #191e25 2px 2px 6px 0px; */
+	vertical-align: bottom;
+	
+	box-shadow: #00000055 -2px -2px 1px 4px;
+	background-color: dotaPlusBgGradient;
+	border-top: 2px solid dotaPlusGold;
+}
+.HeroSelectionBackgroundScene
+{
+	blur: gaussian( 2, 2, 1 );
+	width: 50%;
+	height: 51%;
+	pre-transform-scale2d: 2;
+	vertical-align: middle;
+	horizontal-align: center;
+	background-color: #3B4553;
+	transform: none;
+	transition-property: transform, blur, opacity;
+	transition-duration: 0.45s;
+	transition-delay: 0.0s;
+	transition-timing-function: ease-in;
+}
+
+#HeroInfoContent{
+	horizontal-align: right;
+	height: 100%;
+	width: 35%;
+	z-index: 10;
+}
+#HeroDataPanel{
+	width: 560px;
+	height: 100%;
+	margin-top: 100px;
+	/* vertical-align: bottom; */
+	horizontal-align: right;
+	flow-children: down;
+}
+#HeroNamePanel{
+	width: 100%;
+	/* height: 200px; */
+	margin-bottom: 10px;
+	horizontal-align: right;
+	flow-children: right;
+}
+#PrimaryAttributeImage{
+	width: 48px;
+	height: 48px;
+}
+#HeroNamePanel Label{
+	font-size: 48px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	margin-left: 10px;
+}
+#HeroAbilityPanel{
+	flow-children: right;
+	margin-bottom: 20px;
+}
+.HeroAbility{
+	width: 64px;
+	height: 64px;
+	border-radius: 10px;
+	margin-right: 3%;
+	box-shadow: fill #222A35 6px 6px 8px 0px;
+}
+#HeroSelectPanel{
+	width: 80%;
+	height: 50px;
+	/* horizontal-align: center; */
+	/* border-radius: 5px; */
+	background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+	border-top: 1px solid #ffffff22;
+	border-bottom: 1px solid #00000088;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+}
+#HeroSelectPanel:hover{
+	brightness: 2.0;
+}
+#HeroSelectPanel:active{
+	brightness: 1.5;
+	sound: "HeroPicker.Selected";
+}
+#HeroSelectPanel Label{
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 30px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+}
+.HeroScene
+{
+	/*opacity-mask: url("s2r://panorama/images/masks/hud_hero_inspect_psd.vtex");*/
+	opacity-mask: url("s2r://panorama/images/masks/softedge_box_png.vtex");
+    width: 70%; 
+	height: 100%;
+	x:15%;
+	y:5%;
+	vertical-align: bottom;
+	horizontal-align: Right;
+}
+#Waiting {
+	horizontal-align: center;
+	vertical-align: center;
+	flow-children: down;
+}
+.ServerChecked #Waiting {
+	opacity: 0;
+}
+#WaitingSpinner {
+	horizontal-align: center;
+	width: 128px;
+	height: 128px;
+	background-image: url("s2r://panorama/images/status_icons/loadingthrobber_round_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain;
+	animation-name: SpinnerRotate;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+@keyframes 'SpinnerRotate' {
+	0% {
+		transform: rotateZ(360deg);
+	}
+	50% {
+		transform: rotateZ(180deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+#WaitingText {
+	horizontal-align: center;
+	margin-top: 10px;
+	font-size: 32px;
+	color: #ffffff;
+}
+#SelectionPanel {
+	align: right center;
+	width: 600px;
+	height: 100%;
+	background-color: rgba(24, 28, 29, 0.502);
+	box-shadow: #000000 -10px -10px 20px 20px;
+	flow-children: down;
+	opacity: 0;
+}
+.ServerChecked #SelectionPanel {
+	opacity: 1;
+}
+#GameModeSelectionTimer {
+	horizontal-align: center;
+	vertical-align: top;
+	width: 278px;
+	height: 118px;
+	background-image: url("file://{images}/custom_game/hero_selection/timer_bg.png");
+	background-size: contain;
+	background-position: 50%;
+	background-repeat: no-repeat;
+}
+#GameModeSelectionTime {
+	horizontal-align: center;
+	vertical-align: top;
+	width: 150px;
+	height: 75px;
+	font-size: 80px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 0px 0px 2px 2 #000000;
+}
+#CountingModeSelectionPanel {
+	horizontal-align: center;
+	width: 493px;
+	border-radius: 2px;
+	flow-children: down;
+}
+#CountingModeSelectionPanelUpper {
+	width: 100%;
+	height: 32px;
+	margin-bottom: -16px;
+	flow-children: right;
+}
+#CountingModeSelectionTitle {
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 32px;
+	text-align: center;
+	color: #cbe3e5;
+	text-shadow: 2px 2px 2px 2 #000000;
+}
+#CountingModeSelectionPanelCenter {
+	width: 100%;
+	height: 221px;
+	flow-children: right;
+}
+#CountingModeSelectionPanelMain {
+	vertical-align: bottom;
+	width: fill-parent-flow(1);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+	flow-children: down;
+}
+#CountingModeSelectionDescription {
+	horizontal-align: center;
+	width: 380px;
+	height: 75px;
+	font-size: 22px;
+	color: #e8e8e8;
+}
+#CountingModeSelectionButtons {
+	width: 100%;
+	flow-children: right;
+}
+.CountingModeSelectionButton {
+	width: 210px;
+	height: 74px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.CountingModeSelectionButton:disabled {
+	brightness: 0.5;
+	saturation: 0;
+}
+.CountingModeSelectionButton:not(:disabled):hover {
+	brightness: 2;
+}
+.CountingModeSelectionButton:not(:disabled):active {
+	brightness: 1.5;
+}
+.CountingModeSelectionButton > Label {
+	align: center center;
+	color: #ffffff;
+	font-size: 28px;
+	text-shadow: 2px 2px 2px 2 #000000;
+}
+.CountingModeSelectionButton_Active {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+.Active .CountingModeSelectionButton_Active {
+	opacity: 1;
+}
+#CountingModeSelectionButton_Personal {
+	align: right center;
+	margin-right: -12px;
+	background-image: url("file://{images}/custom_game/hero_selection/button_1.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#CountingModeSelectionButton_Personal .CountingModeSelectionButton_Active {
+	background-image: url("file://{images}/custom_game/hero_selection/button_1_active.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#CountingModeSelectionButton_PersonalCount {
+	align: right center;
+	margin-right: -24px;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	background-color: #2b4345;
+	box-shadow: #000000 -2px -2px 4px 4px;
+	opacity: 0;
+	z-index: 1;
+}
+#CountingModeSelectionButton_PersonalCount.Possible {
+	margin-right: -35px;
+	width: 45px;
+	height: 45px;
+}
+.ShowPersonalCount #CountingModeSelectionButton_PersonalCount {
+	opacity: 1;
+}
+#CountingModeSelectionButton_PersonalCount > Label {
+	align: center center;
+	color: #ffffff;
+	font-size: 50px;
+	text-overflow: shrink;
+	text-align: center;
+}
+#CountingModeSelectionButton_Team {
+	align: left center;
+	margin-left: -12px;
+	background-image: url("file://{images}/custom_game/hero_selection/button_2.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#CountingModeSelectionButton_Team .CountingModeSelectionButton_Active {
+	background-image: url("file://{images}/custom_game/hero_selection/button_2_active.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#NianInfo {
+	align: left center;
+	margin-left: 32px;
+	width: 48px;
+	height: 48px;
+	background-image: url("file://{images}/custom_game/nian_icon.png");
+	background-size: 100%;
+	z-index: 1;
+}
+#NianInfoLabel {
+	margin-top: -28px;
+	font-size: 16px;
+	color: #ff5132;
+	z-index: 1;
+}
+#CountingModeSelectionButton_TeamCount {
+	align: left center;
+	margin-left: -24px;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	background-color: #2b4345;
+	box-shadow: #000000 -2px -2px 4px 4px;
+	opacity: 0;
+	z-index: 1;
+}
+#CountingModeSelectionButton_TeamCount.Possible {
+	margin-left: -35px;
+	width: 45px;
+	height: 45px;
+}
+.ShowTeamCount #CountingModeSelectionButton_TeamCount {
+	opacity: 1;
+}
+#CountingModeSelectionButton_TeamCount > Label {
+	align: center center;
+	color: #ffffff;
+	font-size: 50px;
+	text-overflow: shrink;
+	text-align: center;
+}
+#CountingModeSelectionPanelLower {
+	margin-top: -2px;
+}
+.HorizontalDivision {
+	vertical-align: center;
+	width: fill-parent-flow(1);
+	height: 4px;
+	border-radius: 2px;
+	background-color: #ffffff;
+}
+.VerticalDivision {
+	width: 4px;
+	height: fill-parent-flow(1);
+	border-radius: 2px;
+	background-color: #ffffff;
+}
+#FriendEgg {
+	margin-top: 5px;
+	horizontal-align: center;
+	height: 30px;
+	flow-children: right;
+}
+#FriendEggIcon {
+	vertical-align: center;
+	width: 23px;
+	height: 30px;
+	background-image: url("file://{images}/custom_game/hero_selection/friendegg.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#FriendEggLabel {
+	vertical-align: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #ffffff;
+	text-shadow: 2px 2px 2px 2 #000000;
+}
+#FriendEggInfo {
+	vertical-align: center;
+	width: 30px;
+	height: 30px;
+	background-image: url("file://{images}/status_icons/information_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#DifficultySelectionPanel {
+	horizontal-align: center;
+	width: 516px;
+	flow-children: down;
+}
+#DifficultySelectionButtons {
+	width: 100%;
+	height: 117px;
+	flow-children: right;
+}
+.DifficultySelectionButton {
+	width: 171px;
+	height: 95px;
+	margin-right: -87px;
+	overflow: noclip;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.DifficultySelectionButton > Label {
+	color: #ffffff;
+	font-size: 22px;
+}
+.DifficultySelectionButton_BG {
+	horizontal-align: center;
+	width: 130px;
+	height: 130px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.DifficultySelectionButton_BG:hover {
+	brightness: 2;
+}
+.DifficultySelectionButton_BG:active {
+	brightness: 1.5;
+}
+.DifficultySelectionButton_Active {
+	width: 100%;
+	height: 100%;
+	background-image: url("file://{images}/custom_game/hero_selection/button_triangle_active.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+.Active .DifficultySelectionButton_Active {
+	opacity: 1;
+}
+.TopButton {
+	vertical-align: top;
+}
+.TopButton .DifficultySelectionButton_BG {
+	vertical-align: top;
+	transform: translateX(41px) translateY(41px) rotateZ(-135deg);
+}
+.TopButton > Label {
+	align: center top;
+	margin-top: 12px;
+}
+.BottomButton {
+	vertical-align: bottom;
+}
+.BottomButton .DifficultySelectionButton_BG {
+	vertical-align: bottom;
+	transform: translateX(13px) translateY(13px) rotateZ(45deg);
+}
+.BottomButton > Label {
+	align: center bottom;
+	margin-bottom: 12px;
+}
+#DifficultySelectionButton_Easy .DifficultySelectionButton_BG {
+	background-image: url("file://{images}/custom_game/hero_selection/button_triangle_1.png");
+}
+#DifficultySelectionButton_Normal .DifficultySelectionButton_BG {
+	background-image: url("file://{images}/custom_game/hero_selection/button_triangle_2.png");
+}
+#DifficultySelectionButton_Hard .DifficultySelectionButton_BG {
+	background-image: url("file://{images}/custom_game/hero_selection/button_triangle_3.png");
+}
+#DifficultySelectionButton_Expert .DifficultySelectionButton_BG {
+	background-image: url("file://{images}/custom_game/hero_selection/button_triangle_4.png");
+}
+#DifficultySelectionButton_Crazy .DifficultySelectionButton_BG {
+	background-image: url("file://{images}/custom_game/hero_selection/button_triangle_5.png");
+}
+.TopButton .DifficultySelectionButton_Count {
+	margin-top: 15px;
+}
+.BottomButton .DifficultySelectionButton_Count {
+	margin-bottom: 15px;
+}
+.DifficultySelectionButton_Count {
+	align: center center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	background-color: rgba(255, 255, 255, 0.051);
+	box-shadow: rgba(0, 0, 0, 0.502) -1px -1px 2px 2px;
+	opacity: 0;
+	z-index: 1;
+}
+.Possible .DifficultySelectionButton_Count {
+	width: 40px;
+	height: 40px;
+}
+.ShowCount .DifficultySelectionButton_Count {
+	opacity: 1;
+}
+.DifficultySelectionButton_Count > Label {
+	align: center center;
+	color: #ffffff;
+	font-size: 50px;
+	text-overflow: shrink;
+	text-align: center;
+}
+.TopButton .DifficultySelectionButton_Lock {
+	margin-top: 15px;
+}
+.BottomButton .DifficultySelectionButton_Lock {
+	margin-bottom: 15px;
+}
+.DifficultySelectionButton_Lock {
+	align: center center;
+	width: 30px;
+	height: 30px;
+	background-image: url("file://{images}/status_icons/challenge_locked_psd.vtex");
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+.DifficultySelectionButton:disabled .DifficultySelectionButton_Lock {
+	opacity: 1;
+}
+#DifficultySelectionButton_Abyss {
+	margin-top: 5px;
+	horizontal-align: center;
+	overflow: noclip;
+}
+#DifficultySelectionButton_Abyss_BG {
+	width: 309px;
+	height: 48px;
+	background-image: url("file://{images}/custom_game/hero_selection/button_trapezoid_1.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+#DifficultySelectionButton_Abyss:not(.Active) #DifficultySelectionButton_Abyss_BG:hover {
+	brightness: 2;
+}
+#DifficultySelectionButton_Abyss:not(.Active) #DifficultySelectionButton_Abyss_BG:active {
+	brightness: 1.5;
+}
+#DifficultySelectionButton_Abyss_Active {
+	width: 100%;
+	height: 100%;
+	background-image: url("file://{images}/custom_game/hero_selection/button_trapezoid_active.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+.Active #DifficultySelectionButton_Abyss_Active {
+	opacity: 1;
+}
+#DifficultySelectionButton_Abyss_Info {
+	horizontal-align: center;
+	height: 100%;
+	flow-children: right;
+}
+#DifficultySelectionButton_Abyss_Info > Label {
+	color: #ffffff;
+	font-size: 22px;
+}
+#DifficultySelectionButton_Abyss_Info Label {
+	vertical-align: center;
+	text-align: center;
+}
+#DifficultySelectionButton_Abyss .DifficultySelectionButton_Count {
+	margin-left: 15px;
+}
+#DifficultySelectionButton_Abyss.Possible .DifficultySelectionButton_Count {
+	margin-left: 5px;
+}
+#DifficultySelectionButton_Abyss:disabled .DifficultySelectionButton_Lock {
+	opacity: 1;
+}
+#DifficultySelectionInfo {
+	align: center top;
+	margin-top: 36px;
+	flow-children: right;
+}
+.DifficultyDetail {
+	margin-left: 30px;
+	margin-right: 30px;
+	flow-children: right;
+}
+.DifficultyDetail Label {
+	padding-top: 36px;
+	color: #ffffff;
+	background-position: 50% 0%;
+	background-size: 60px 36px;
+	background-repeat: no-repeat;
+}
+#DifficultyRank Label {
+	background-image: url("file://{images}/custom_game/hero_selection/worldrank_icon.png");
+}
+#DifficultyEndless Label {
+	background-image: url("file://{images}/custom_game/hero_selection/endless_icon.png");
+}
+.DifficultyCheckBox {
+	align: left center;
+	width: 30px;
+	height: 30px;
+	wash-color: #ffcc00;
+	background-image: url("file://{images}/control_icons/check_png.vtex");
+	background-size: 100%;
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+}
+.no_check .DifficultyCheckBox {
+	wash-color: #ff0000;
+	background-image: url("file://{images}/control_icons/purgatory_png.vtex");
+}
+#CourierSelectionPanel {
+	horizontal-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	width: 493px;
+	height: fill-parent-flow(1);
+	border-radius: 2px;
+	flow-children: down;
+}
+#CourierSelectionPanelUpper {
+	width: 100%;
+	height: 32px;
+	margin-bottom: -16px;
+	flow-children: right;
+}
+#CourierSelectionTitle {
+	margin-left: 50px;
+	margin-right: 50px;
+	font-size: 32px;
+	text-align: center;
+	text-shadow: 2px 2px 2px 2 #000000;
+}
+#CourierSelectionPanelCenter {
+	width: 100%;
+	height: fill-parent-flow(1);
+	flow-children: right;
+}
+#CourierSelectionPanelMain {
+	vertical-align: top;
+	width: fill-parent-flow(1);
+	height: 100%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	overflow: squish scroll;
+	flow-children: down;
+}
+.CourierButton {
+	width: 100%;
+	height: 80px;
+	padding: 10px;
+	margin-right: 10px;
+	flow-children: right;
+}
+.CourierButton > .RadioBox {
+	visibility: collapse;
+}
+.CourierButton:selected {
+	padding: 8px;
+	border: 2px solid #30a79e;
+	border-radius: 2px;
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(rgba(29, 128, 156, 0.063)), to(rgba(173, 255, 244, 0.063)));
+}
+#CourierStatus {
+	width: 60px;
+	height: 60px;
+}
+.CourierButton:selected #CourierStatus {
+	background-image: url("file://{images}/custom_game/hero_selection/courier_equiped_icon.png");
+	background-size: 30px 40px;
+	background-position: 50%;
+	background-repeat: no-repeat;
+}
+#CourierImage {
+	width: 93px;
+	height: 60px;
+	border: 1px solid #cac7c8;
+	border-radius: 1px;
+}
+.CourierRarity_R #CourierImage {
+	border: 1px solid #bbe3ff;
+}
+.CourierRarity_SR #CourierImage {
+	border: 1px solid #d3bcff;
+	box-shadow: #d3bcff 0px 0px 4px 1px;
+}
+.CourierRarity_SSR #CourierImage {
+	border: 1px solid #e1c989;
+	box-shadow: #e1c989 0px 0px 8px 1px;
+}
+#CourierName {
+	margin-left: 18px;
+	width: fill-parent-flow(1);
+	vertical-align: center;
+	color: #cac7c8;
+	text-shadow: 0px 0px 3px 3.7 #333333;
+	font-size: 22px;
+}
+.CourierRarity_R #CourierName {
+	color: #bbe3ff;
+	text-shadow: 0px 0px 3px 3.7 #2c4b5c;
+}
+.CourierRarity_SR #CourierName {
+	color: #d3bcff;
+	text-shadow: 0px 0px 3px 3.7 #4b2c50;
+}
+.CourierRarity_SSR #CourierName {
+	color: #e1c989;
+	text-shadow: 0px 0px 3px 3.7 #743804;
+}
+#CourierAbility {
+	width: 60px;
+	height: 60px;
+	border-radius: 3px;
+	transition-property: opacity;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+	opacity: 0.5;
+}
+#CourierAbility:hover {
+	opacity: 1;
+}
+#CourierSelectionPanelLower {
+	margin-top: -2px;
+}
+#PlayersInfo {
+	width: 100%;
+	height: 100%;
+	padding-top: 110px;
+	padding-left: 110px;
+	padding-right: 710px;
+	padding-bottom: 110px;
+	overflow: noclip;
+	opacity: 0;
+}
+.AspectRatio4x3 #PlayersInfo {
+	padding-top: 110px;
+	padding-left: 40px;
+	padding-right: 630px;
+	padding-bottom: 170px;
+}
+.AspectRatio16x10 #PlayersInfo {
+	padding-top: 110px;
+	padding-left: 60px;
+	padding-right: 660px;
+	padding-bottom: 110px;
+}
+.ServerChecked #PlayersInfo {
+	opacity: 1;
+}
+#PlayerInfo_0 {
+	align: left top;
+}
+#PlayerInfo_1 {
+	align: right top;
+}
+#PlayerInfo_2 {
+	align: left bottom;
+}
+#PlayerInfo_3 {
+	align: right bottom;
+}
+.PlayerInfo {
+	overflow: noclip;
+}
+.IsInvalid.PlayerInfo {
+	width: 431px;
+	height: 302px;
+	background-image: url("file://{images}/custom_game/hero_selection/invalid_player_bg.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0.25;
+}
+.AspectRatio4x3 .IsInvalid.PlayerInfo {
+	width: 344.8px;
+	height: 241.6px;
+}
+.IsInvalid #PlayerSelectionInfo,
+.IsInvalid #PlayerName,
+.IsInvalid #PlayerAvatar {
+	visibility: collapse;
+}
+#PlayerSelectionInfo {
+	width: 436px;
+	height: 314px;
+	border: 2px solid rgba(255, 255, 255, 0.25);
+	border-radius: 5px;
+}
+.AspectRatio4x3 #PlayerSelectionInfo {
+	width: 348.8px;
+	height: 251.2px;
+}
+#PlayerCourierInfo {
+	align: center top;
+	margin-top: 25px;
+	width: 347px;
+	height: 229px;
+	border: 2px solid #cac7c8;
+}
+#playerRankBg {
+	align: right top;
+	width: 76px;
+	height: 48px;
+	margin: 1px 16px 0px 0px;
+	background-image: url("file://{images}/custom_game/rank/rank_bg.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	z-index: 1;
+	overflow: noclip;
+}
+.IsInvalid #playerRankBg {
+	opacity: 0;
+}
+#PlayerRankMedal {
+	width: 99px;
+	height: 79px;
+	align: center top;
+	margin-top: -12px;
+	background-image: url("file://{images}/custom_game/rank/rank11.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.Rank0 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank0.png");
+}
+.Rank1 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank1.png");
+	background-position: 1px;
+}
+.Rank2 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank2.png");
+	background-position: 1px;
+}
+.Rank3 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank3.png");
+	background-position: 3px;
+}
+.Rank4 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank4.png");
+	background-position: 1px;
+}
+.Rank5 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank5.png");
+	background-position: 1px;
+}
+.Rank6 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank6.png");
+	background-position: 1px;
+}
+.Rank7 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank7.png");
+}
+.Rank8 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank8.png");
+}
+.Rank9 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank9.png");
+	background-position: 1px;
+}
+.Rank10 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank10.png");
+}
+.Rank11 #PlayerRankMedal {
+	background-image: url("file://{images}/custom_game/rank/rank11.png");
+}
+#PlayerRank {
+	align: center top;
+	color: #ffffff;
+	font-size: 18px;
+	text-align: center center;
+}
+.Rank0 #PlayerRank {
+	margin-top: 2px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank1 #PlayerRank {
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank2 #PlayerRank {
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank3 #PlayerRank {
+	margin-top: 6px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank4 #PlayerRank {
+	margin-top: 6px;
+	text-shadow: 0px 0px 4px 3 rgba(219, 81, 150, 0.226);
+}
+.Rank5 #PlayerRank {
+	margin-top: 8px;
+	text-shadow: 0px 0px 4px 3 rgba(214, 132, 7, 0.226);
+}
+.Rank6 #PlayerRank {
+	margin-top: 2px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank7 #PlayerRank {
+	margin-top: 2px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank8 #PlayerRank {
+	margin-top: 2px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank9 #PlayerRank {
+	margin-top: 2px;
+	margin-left: 1px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank10 #PlayerRank {
+	margin-top: 2px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.Rank11 #PlayerRank {
+	margin-top: 2px;
+	text-shadow: 0px 0px 4px 3 rgba(156, 137, 85, 0.226);
+}
+.AspectRatio4x3 #PlayerCourierInfo {
+	margin-top: 20px;
+	width: 277.6px;
+	height: 183.2px;
+}
+.CourierRarity_R #PlayerCourierInfo {
+	border: 2px solid #bbe3ff;
+}
+.CourierRarity_SR #PlayerCourierInfo {
+	border: 2px solid #d3bcff;
+	box-shadow: #d3bcff 0px 0px 8px 1px;
+}
+.AspectRatio4x3 .CourierRarity_SR #PlayerCourierInfo {
+	box-shadow: #d3bcff 0px 0px 6.4px 1px;
+}
+.CourierRarity_SSR #PlayerCourierInfo {
+	border: 2px solid #e1c989;
+	box-shadow: #e1c989 0px 0px 16px 0px;
+}
+.AspectRatio4x3 .CourierRarity_SSR #PlayerCourierInfo {
+	box-shadow: #e1c989 0px 0px 12.8px 0px;
+}
+#PlayerModeSelectionInfo {
+	align: center bottom;
+	flow-children: right;
+}
+#PlayerModeSelectionInfo Label {
+	align: center center;
+	color: #ffffff;
+	text-align: center;
+	text-overflow: shrink;
+}
+#PlayerCountingModeSelectionInfo {
+	align: right center;
+	width: 155px;
+	height: 52px;
+	margin-right: -20px;
+	padding-left: 10px;
+	padding-right: 30px;
+	background-image: url("file://{images}/custom_game/hero_selection/button_3.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.AspectRatio4x3 #PlayerCountingModeSelectionInfo {
+	width: 124px;
+	height: 41.6px;
+	margin-right: -16px;
+	padding-left: 8px;
+	padding-right: 24px;
+}
+#PlayerDifficultySelectionInfo {
+	align: left center;
+	width: 155px;
+	height: 52px;
+	margin-left: -20px;
+	padding-left: 30px;
+	padding-right: 10px;
+	background-image: url("file://{images}/custom_game/hero_selection/button_4.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.AspectRatio4x3 #PlayerDifficultySelectionInfo {
+	width: 124px;
+	height: 41.6px;
+	margin-right: -16px;
+	padding-left: 24px;
+	padding-right: 10px;
+}
+#PlayerName {
+	width: 100%;
+	height: 64px;
+	padding-left: 100px;
+	padding-right: 16px;
+	margin-top: 314px;
+	border: 2px solid rgba(255, 255, 255, 0.25);
+	border-radius: 5px;
+}
+.AspectRatio4x3 #PlayerName {
+	height: 51.2px;
+	padding-left: 80px;
+	padding-right: 12.8px;
+	margin-top: 251.2px;
+}
+#PlayerName Label {
+	vertical-align: center;
+	width: 100%;
+	text-align: center;
+	color: #e1e1e1;
+	font-size: 32px;
+	text-overflow: shrink;
+}
+#PlayerAvatar {
+	width: 98px;
+	height: 98px;
+	overflow: noclip;
+	margin-top: 281px;
+	margin-left: -24px;
+}
+#PlayerAvatarImage {
+	horizontal-align: center;
+	vertical-align: center;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	border-radius: 50%;
+	box-shadow: rgba(102, 202, 254, 0.561) -1px -1px 2px 2px;
+}
+#PlayerAvatarFxBorder {
+	align: center center;
+	width: 128.8px;
+	height: 128.8px;
+	visibility: collapse;
+}
+#PlayerAvatarBorder {
+	horizontal-align: center;
+	vertical-align: center;
+	width: 112px;
+	height: 112px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	overflow: noclip;
+}
+#PlayerAvatarBorderWidget1,
+#PlayerAvatarBorderWidget2,
+#PlayerAvatarBorderWidget3,
+#PlayerAvatarBorderWidget4,
+#PlayerAvatarBorderWidget5 {
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.Plus.border_default #PlayerAvatarImage {
+	box-shadow: rgba(255, 255, 225, 0.561) -10.5px -10.5px 21px 21px;
+}
+.Plus.border_default #PlayerAvatarBorder {
+	margin-left: -3.36px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_plus.png");
+}
+.border_1 #PlayerAvatarImage {
+	box-shadow: rgba(255, 225, 243, 0.561) -10.5px -10.5px 21px 21px;
+}
+.border_1 #PlayerAvatarBorder {
+	width: 123.2px;
+	height: 119.0112px;
+	margin-top: 3.36px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_1.png");
+}
+.border_2 #PlayerAvatarBorder {
+	width: 112px;
+	height: 148.176px;
+	margin-top: -4.48px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_2.png");
+}
+.border_3 #PlayerAvatarBorder {
+	width: 112px;
+	height: 148.176px;
+	margin-top: -4.48px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_3.png");
+}
+.border_4 #PlayerAvatarBorder {
+	width: 112px;
+	height: 148.176px;
+	margin-top: -4.48px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_4.png");
+}
+.border_5 #PlayerAvatarBorder {
+	width: 100.8px;
+	height: 110.376px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_5.png");
+}
+.border_6 #PlayerAvatarBorder {
+	width: 123.2px;
+	height: 121.296px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_6.png");
+}
+.border_6 #PlayerAvatarBorderWidget1 {
+	width: 41.44px;
+	height: 41.44px;
+	margin-top: 5.6px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_6_flower_1.png");
+	animation-name: FlowerRotate;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	z-index: 1;
+}
+.border_6 #PlayerAvatarBorderWidget2 {
+	width: 23.072px;
+	height: 23.072px;
+	margin-top: 33.6px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_6_flower_2.png");
+	animation-name: FlowerRotate;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: reverse;
+}
+.border_6 #PlayerAvatarBorderWidget3 {
+	width: 23.072px;
+	height: 23.072px;
+	margin-top: 11.2px;
+	margin-left: 28px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_6_flower_2.png");
+	animation-name: FlowerRotate;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: reverse;
+}
+.border_6 #PlayerAvatarBorderWidget4 {
+	width: 31.136px;
+	height: 31.136px;
+	margin-top: 11.2px;
+	margin-left: 70px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_6_flower_1.png");
+	animation-name: FlowerRotate;
+	animation-duration: 10s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: reverse;
+	z-index: 1;
+}
+.border_6 #PlayerAvatarFxBorder {
+	visibility: visible;
+}
+@keyframes 'FlowerRotate' {
+	0% {
+		transform: rotateZ(360deg);
+	}
+	50% {
+		transform: rotateZ(180deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
+}
+.border_7 #PlayerAvatarImage {
+	box-shadow: rgba(255, 255, 225, 0.561) -10.5px -10.5px 21px 21px;
+}
+.border_7 #PlayerAvatarBorder {
+	visibility: collapse;
+}
+.border_7 #PlayerAvatarFxBorder {
+	visibility: visible;
+}
+.border_8 #PlayerAvatarBorder {
+	width: 140px;
+	height: 140px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_8.png");
+}
+.border_8 #PlayerAvatarFxBorder {
+	visibility: visible;
+}
+.border_9 #PlayerAvatarBorder {
+	width: 112px;
+	height: 112px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_9.png");
+}
+.border_10 #PlayerAvatarBorder {
+	width: 140px;
+	height: 140px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_10.png");
+}
+.border_11 #PlayerAvatarBorder {
+	width: 131.264px;
+	height: 131.264px;
+	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_11.png");
+}
+.border_11 #PlayerAvatarFxBorder {
+	visibility: visible;
+}
+.AspectRatio4x3 #PlayerAvatar {
+	margin-top: 224.8px;
+	margin-left: -19.2px;
+}
+#PlayerAvatarFx {
+	width: 100%;
+	height: 100%;
+	align: center center;
+}

@@ -3,12 +3,6 @@ if GuardingAthena == nil then
 end
 local public = GuardingAthena
 
-TIME_BOSS_REBORN = 60
-GOLD_USED_TABLE ={}
-SF_USED_TABLE ={}
-HERO_TABLE = {}
-GameRules.QuestKill = {}
-GameRules.subQuestKill = {}
 gamestates =
 {
 	[0] = "DOTA_GAMERULES_STATE_INIT",
@@ -27,7 +21,6 @@ function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 
-	
 	_G.ATTACK_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0,0,0), DOTA_TEAM_NOTEAM, false)
 
 	-- 初始化游戏参数
@@ -71,104 +64,7 @@ function GuardingAthena:InitGameMode()
 
 	-- 初始化游戏参数
     self:ReadGameConfiguration()
-    -- 设置游戏系统规则
-    GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
-    GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
-	GameRules:SetHeroSelectionTime( HERO_SELECTION_TIME )
-	CustomNetTables:SetTableValue( "difficulty", "setting", {hero_selection_time = HERO_SELECTION_TIME} )
-    GameRules:SetPreGameTime( PRE_GAME_TIME )
-    GameRules:SetPostGameTime( POST_GAME_TIME )
-    GameRules:SetTreeRegrowTime( TREE_REGROW_TIME )
-    GameRules:SetUseCustomHeroXPValues( USE_CUSTOM_XP_VALUES )
-    GameRules:SetGoldPerTick(GOLD_PER_TICK)
-    GameRules:SetGoldTickTime(GOLD_TICK_TIME)
-    GameRules:SetUseBaseGoldBountyOnHeroes( USE_STANDARD_HERO_GOLD_BOUNTY )
-    GameRules:SetFirstBloodActive( ENABLE_FIRST_BLOOD )
-    GameRules:SetHideKillMessageHeaders( HIDE_KILL_BANNERS )
-    GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
-    GameRules:SetHeroMinimapIconScale( MINIMAP_ICON_SIZE )          
-    GameRules:SetCreepMinimapIconScale( MINIMAP_CREEP_ICON_SIZE )
-    GameRules:SetCustomGameEndDelay( GAME_END_DELAY )
-    GameRules:SetCustomVictoryMessageDuration( VICTORY_MESSAGE_DURATION )
-    GameRules:SetStartingGold( STARTING_GOLD )
-    for team,number in pairs(CUSTOM_TEAM_PLAYER_COUNT) do
-        GameRules:SetCustomGameTeamMaxPlayers(team, number)
-    end
-    if USE_CUSTOM_TEAM_COLORS then
-        for team,color in pairs(TEAM_COLORS) do
-          SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
-        end
-    end
-    if SKIP_TEAM_SETUP then
-        GameRules:SetCustomGameSetupAutoLaunchDelay( 0 )
-        GameRules:LockCustomGameSetupTeamAssignment( true )
-        GameRules:EnableCustomGameSetupAutoLaunch( true )
-    else
-        GameRules:SetCustomGameSetupAutoLaunchDelay( AUTO_LAUNCH_DELAY )
-        GameRules:LockCustomGameSetupTeamAssignment( LOCK_TEAM_SETUP )
-        GameRules:EnableCustomGameSetupAutoLaunch( ENABLE_AUTO_LAUNCH )
-    end
-  	GameRules.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
-  	GameRules.ItemInfoKV = LoadKeyValues("scripts/kv/item_info.kv")
-  	GameRules.VipTable = LoadKeyValues("scripts/kv/vip_list.kv")
-  	GameRules.sandking = true
-
-
-  	-- 设置游戏规则
-    GameMode = GameRules:GetGameModeEntity()        
-    if FORCE_PICKED_HERO ~= nil then
-      GameMode:SetCustomGameForceHero( FORCE_PICKED_HERO )
-    end
-    GameMode:SetRecommendedItemsDisabled( RECOMMENDED_BUILDS_DISABLED )
-    GameMode:SetTopBarTeamValuesOverride ( USE_CUSTOM_TOP_BAR_VALUES )
-    GameMode:SetTopBarTeamValuesVisible( TOP_BAR_VISIBLE )
-    GameMode:SetUseCustomHeroLevels ( USE_CUSTOM_HERO_LEVELS )
-    GameMode:SetTowerBackdoorProtectionEnabled( ENABLE_TOWER_BACKDOOR_PROTECTION )
-    GameMode:SetGoldSoundDisabled( DISABLE_GOLD_SOUNDS )
-    GameMode:SetRemoveIllusionsOnDeath( REMOVE_ILLUSIONS_ON_DEATH )
-    GameMode:SetAnnouncerDisabled( DISABLE_ANNOUNCER )
-    GameMode:SetAlwaysShowPlayerInventory( SHOW_ONLY_PLAYER_INVENTORY )
-    GameMode:SetLoseGoldOnDeath( LOSE_GOLD_ON_DEATH )
-    GameMode:SetCameraDistanceOverride( CAMERA_DISTANCE_OVERRIDE )
-    GameMode:SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
-    GameMode:SetFogOfWarDisabled( DISABLE_FOG_OF_WAR_ENTIRELY )
-    GameMode:SetUnseenFogOfWarEnabled( USE_UNSEEN_FOG_OF_WAR )
-    GameMode:SetCustomHeroMaxLevel ( MAX_LEVEL )
-    GameMode:SetFixedRespawnTime(FIXED_RESPAWN_TIME)
-    GameMode:SetFountainConstantManaRegen( FOUNTAIN_CONSTANT_MANA_REGEN )
-    GameMode:SetFountainPercentageHealthRegen( FOUNTAIN_PERCENTAGE_HEALTH_REGEN )
-    GameMode:SetFountainPercentageManaRegen( FOUNTAIN_PERCENTAGE_MANA_REGEN )
-    GameMode:SetBuybackEnabled( BUYBACK_ENABLED )
-    GameMode:SetCustomBuybackCooldownEnabled( CUSTOM_BUYBACK_COOLDOWN_ENABLED )
-    GameMode:SetCustomBuybackCostEnabled( CUSTOM_BUYBACK_COST_ENABLED )
-    GameMode:SetMaximumAttackSpeed( MAXIMUM_ATTACK_SPEED )
-    GameMode:SetMinimumAttackSpeed( MINIMUM_ATTACK_SPEED )
-    GameMode:SetStashPurchasingDisabled ( DISABLE_STASH_PURCHASING )
-    GameMode:SetBotThinkingEnabled( USE_STANDARD_DOTA_BOT_THINKING )
-    GameMode:SetDaynightCycleDisabled( DISABLE_DAY_NIGHT_CYCLE )
-    GameMode:SetKillingSpreeAnnouncerDisabled( DISABLE_KILLING_SPREE_ANNOUNCER )
-    GameMode:SetStickyItemDisabled( DISABLE_STICKY_ITEM )
-	GameMode:SetExecuteOrderFilter( Dynamic_Wrap( GuardingAthena, "ExecuteOrderFilter" ), self )
-	GameMode:SetDamageFilter( Dynamic_Wrap( GuardingAthena, "DamageFilter" ), self )
-	GameMode:SetItemAddedToInventoryFilter( Dynamic_Wrap( GuardingAthena, "ItemAddedFilter" ), self )
-	GameMode:SetModifyExperienceFilter( Dynamic_Wrap( GuardingAthena, "ModifyExperienceFilter" ), self )
-	GameMode:SetModifyGoldFilter( Dynamic_Wrap( GuardingAthena, "ModifyGoldFilter" ), self )
-	GameMode:SetThink("DetectCheatsThinker")
-	-- 设定平衡常数
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ARMOR,0)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED,0.05)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_DAMAGE,1)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT,0.00001)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE,3)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT,0)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA,12)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN,0.04)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT,0.002)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_DAMAGE,2)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP,20)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP_REGEN,0.06)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_MAGIC_RESISTANCE_PERCENT,0)
-	GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT,0)
+    
 	--GameMode:SetAbilityTuningValueFilter( Dynamic_Wrap( GuardingAthena, "AbilityTuningValueFilter" ), self )
 
 	--监听事件
@@ -181,6 +77,10 @@ function GuardingAthena:InitGameMode()
 	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(GuardingAthena, 'OnPlayerLevelUp'), self)
 	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(GuardingAthena, 'OnUsedAbility'), self )
 	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(GuardingAthena, 'OnItemPurchased'), self )
+	ListenToGameEvent('custom_npc_first_spawned', Dynamic_Wrap(GuardingAthena, 'OnNPCFirstSpawned'), self )
+
+
+	-- GameEvent("custom_npc_first_spawned", Dynamic_Wrap(self, "OnNPCFirstSpawned"), self)
 
 	--自定义控制台命令
 	Convars:RegisterCommand( "-testmode", function(...) return self:TestMode( ... ) end, "Test Mode.", FCVAR_CHEAT )
@@ -199,10 +99,6 @@ function GuardingAthena:InitGameMode()
 	CustomGameEventManager:RegisterListener( "UI_BuyItem", UI_BuyItem )
 	CustomGameEventManager:RegisterListener( "UI_BuyReward", UI_BuyReward )
 	CustomGameEventManager:RegisterListener( "Trial", CreateTrial )
-	
-	--玩家可买物品最大数目，不限制
-	SendToServerConsole("dota_max_physical_items_purchase_limit 9999")
-	--GameRules:GetGameModeEntity():SetThink( "OnThink", self, 30 ) 
 end
 --读取游戏配置
 function GuardingAthena:ReadGameConfiguration()
@@ -212,20 +108,6 @@ function GuardingAthena:ReadGameConfiguration()
 	Entities:FindByName( nil, "practice_3" ).onthink = false
 	Entities:FindByName( nil, "practice_4" ).onthink = false
 	self.creatCourier = 0
-	-- 技能表
-	local AbilityInfo = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
-	local AbilityTable = {}
-	for k,v in pairs(AbilityInfo) do
-		if type(v) ~= "number" then
-			AbilityTable[v.override_hero] = {}
-			for i=1,5 do
-				table.insert(AbilityTable[v.override_hero], v["Ability"..i])
-			end
-		end
-	end
-	for k,v in pairs(AbilityTable) do
-		CustomNetTables:SetTableValue( "ability_table", k, v )
-	end
 	-- 商店
 	local shopInfo = LoadKeyValues("scripts/kv/shop.kv")
 	local costInfo = LoadKeyValues("scripts/npc/npc_items_custom.txt")

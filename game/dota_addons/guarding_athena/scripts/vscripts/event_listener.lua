@@ -170,12 +170,6 @@ end
 function OnGoldGift( index, keys )
 	local gold_index = keys.index
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
-	--[[for i=1,#GOLD_USED_TABLE do
-		if GOLD_USED_TABLE[i] == gold_index then
-			return
-		end	
-	end
-	table.insert(GOLD_USED_TABLE,gold_index)]]--
 	player.gold_gift = true
 end
 function CreateTrial( index,keys )

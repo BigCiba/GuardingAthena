@@ -7,7 +7,11 @@
     percent_reduce_damage			减少百分比伤害
     dodge_damage					闪避所有伤害
 	]]
-function GuardingAthena:ExecuteOrderFilter( args )
+if Filters == nil then
+	Filters = {}
+end
+local public = Filters
+function public:ExecuteOrderFilter( args )
 	--PrintTable(args)
 	local playerid = args.issuer_player_id_const
     -- 攻击指令
@@ -41,10 +45,10 @@ function GuardingAthena:ExecuteOrderFilter( args )
 		}
 		for i=1,9 do
 			if args.entindex_ability == tombTable.id[i] then
-				local iSaveGold = self.player_gold_save[playerid + 1]
+				local iSaveGold = GuardingAthena.player_gold_save[playerid + 1]
 				print(iSaveGold,tombTable.cost[i])
 				if iSaveGold > tombTable.cost[i] then
-					self.player_gold_save[playerid + 1] = iSaveGold - tombTable.cost[i]
+					GuardingAthena.player_gold_save[playerid + 1] = iSaveGold - tombTable.cost[i]
 					local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 					PropertySystem( hero, tombTable.stat[i], tombTable.count[i])
 					EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
@@ -62,7 +66,7 @@ function GuardingAthena:ExecuteOrderFilter( args )
 	end
 	return true
 end
-function GuardingAthena:DamageFilter( args )
+function public:DamageFilter( args )
 	--PrintTable(args)
 	local damage = args.damage
 	local damageType = args.damagetype_const
@@ -196,7 +200,7 @@ function GuardingAthena:DamageFilter( args )
 	end
 	return true
 end
-function GuardingAthena:ItemAddedFilter( keys )
+function public:ItemAddedToInventoryFilter( keys )
 	--PrintTable(keys)
 	--print(EntIndexToHScript(keys.item_entindex_const):GetAbilityName())
 	--keys.item_parent_entindex_const = keys.inventory_parent_entindex_const
@@ -397,7 +401,7 @@ function GuardingAthena:ItemAddedFilter( keys )
 	end
 	return true
 end
-function GuardingAthena:ModifyExperienceFilter( keys )
+function public:ModifyExperienceFilter( keys )
 	--PrintTable(keys)
 	local playerID = keys.player_id_const
 	if playerID == -1 then
@@ -422,7 +426,7 @@ function GuardingAthena:ModifyExperienceFilter( keys )
 	end
 	return true
 end
-function GuardingAthena:ModifyGoldFilter( keys )
+function public:ModifyGoldFilter( keys )
 	--PrintTable(keys)
 	local playerID = keys.player_id_const
 	local hero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
@@ -440,8 +444,29 @@ function GuardingAthena:ModifyGoldFilter( keys )
 	hero.total_gold = hero.total_gold + keys.gold
 	local playerGold = PlayerResource:GetGold(playerID)
 	if playerGold >= 95000 then
-		self.player_gold_save[playerID + 1] = self.player_gold_save[playerID + 1] + keys.gold
+		GuardingAthena.player_gold_save[playerID + 1] = GuardingAthena.player_gold_save[playerID + 1] + keys.gold
 		PlayerResource:SpendGold( playerID, keys.gold, 0 )
 	end
 	return true
 end
+function public:TrackingProjectileFilter(params)
+	PrintTable(params)
+	return true
+end
+function public:init(bReload)
+	local GameMode = GameRules:GetGameModeEntity()
+
+	-- GameMode:SetAbilityTuningValueFilter(Dynamic_Wrap(public, "AbilityTuningValueFilter"), public)
+	-- GameMode:SetBountyRunePickupFilter(Dynamic_Wrap(public, "BountyRunePickupFilter"), public)
+	GameMode:SetDamageFilter(Dynamic_Wrap(public, "DamageFilter"), public)
+	GameMode:SetExecuteOrderFilter(Dynamic_Wrap(public, "ExecuteOrderFilter"), public)
+	-- GameMode:SetHealingFilter(Dynamic_Wrap(public, "HealingFilter"), public)
+	GameMode:SetItemAddedToInventoryFilter(Dynamic_Wrap(public, "ItemAddedToInventoryFilter"), public)
+	-- GameMode:SetModifierGainedFilter(Dynamic_Wrap(public, "ModifierGainedFilter"), public)
+	GameMode:SetModifyExperienceFilter(Dynamic_Wrap(public, "ModifyExperienceFilter"), public)
+	GameMode:SetModifyGoldFilter(Dynamic_Wrap(public, "ModifyGoldFilter"), public)
+	-- GameMode:SetRuneSpawnFilter(Dynamic_Wrap(public, "RuneSpawnFilter"), public)
+	-- GameMode:SetTrackingProjectileFilter(Dynamic_Wrap(public, "TrackingProjectileFilter"), public)
+end
+
+return public

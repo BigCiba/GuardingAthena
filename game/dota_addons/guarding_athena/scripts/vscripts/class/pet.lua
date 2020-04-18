@@ -65,7 +65,7 @@ end
 function Pet:RemoveSelf()
 	self.hUnit:ForceKill(false)
 	UTIL_Remove(self.hUnit)
-	Building.remove(self.iIndex)
+	Pet.remove(self.iIndex)
 
 	self.hUnit = nil
 	self.vLocation = nil

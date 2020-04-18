@@ -1,0 +1,107 @@
+// No spaces in event names, max length 32
+// All strings are case sensitive
+//
+// valid data key types are:
+//   string : a zero terminated string
+//   bool   : unsigned int, 1 bit
+//   byte   : unsigned int, 8 bit
+//   short  : signed int, 16 bit
+//   long   : signed int, 32 bit
+//   float  : float, 32 bit
+//   uint64 : unsigned int 64 bit
+//   local  : any data, but not networked to clients
+//
+// following key names are reserved:
+//   local      : if set to 1, event is not networked to clients
+//   unreliable : networked, but unreliable
+//   suppress   : never fire this event
+//   time	: firing server time
+//   eventid	: holds the event ID
+
+"CustomEvents"
+{
+	"custom_npc_first_spawned"
+	{
+		"entindex"					"short"
+		"local"						"1"
+	}
+	"custom_missing_count_change"
+	{
+		"PlayerID" 					"short"
+		"MissingCount" 				"long"
+		"local"						"1"
+	}
+	"custom_inventory_contents_changed"
+	{
+		"EntityIndex"				"short"
+		"local"						"1"
+	}
+	"custom_unit_ability_added"
+	{
+		"entityIndex"				"short"
+		"abilityIndex"				"short"
+		"local"						"1"
+	}
+	"custom_round_changed"
+	{
+		"round"						"short"
+		"endless"					"bool"
+		"local"						"1"
+	}
+	"custom_elite_spawned"
+	{
+		"iEntityIndex"				"short"
+		"iPlayerID"					"short"
+		"iRound"					"long"
+		"sModifierName"				"string"
+		"local"						"1"
+	}
+	"custom_update_player_building"
+	{
+	}
+	// UI Events
+	"custom_talent_tree_clicked"
+	{
+	}
+	"custom_mouse_over_talent_tree"
+	{
+	}
+	"custom_mouse_out_talent_tree"
+	{
+	}
+	"custom_talent_tree_unit_changed"
+	{
+		"iUnitEntIndex"				"short"
+	}
+	"custom_popup_clicked"
+	{
+		"popup_id"					"short"
+		"action"					"string"
+	}
+	"custom_popup_replace_task"
+	{
+		"task_id"					"string"
+	}
+	"custom_popup_cancel_replace_task"
+	{
+		"task_id"					"string"
+	}
+	"custom_red_packets_go_to_inventory"
+	{
+	}
+	"custom_toggle_show_other_player_particle"
+	{
+		"flag"						"bool"
+		"local"						"1"
+	}
+	"custom_update_fps"
+	{
+		"fps"						"short"
+		"local"						"1"
+	}
+	"custom_open_store_goods_detail"
+	{
+		"good_id"					"string"
+	}
+}
+

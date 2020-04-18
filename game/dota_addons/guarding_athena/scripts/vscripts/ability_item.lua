@@ -291,26 +291,6 @@ function jiancd4( keys )
     end
     PropertySystem(caster, caster:GetPrimaryAttribute(), attribute, 10)
 end
-function BloodFruit( keys )
-    local caster = keys.caster
-    local level = GuardingAthena.clotho_lv
-    caster.str_gain = caster.str_gain + 1
-    caster.agi_gain = caster.agi_gain + 1
-    caster.int_gain = caster.int_gain + 1
-    PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-end
-function ExpFruit( keys )
-    local caster = keys.caster
-    local level = GuardingAthena.clotho_lv
-    PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-    caster.exp_rate = caster.exp_rate + 0.1
-end
-function GoldFruit( keys )
-    local caster = keys.caster
-    local level = GuardingAthena.clotho_lv
-    PropertySystem(caster, caster:GetPrimaryAttribute(), RandomInt(level, level * 5))
-    caster.gold_rate = caster.gold_rate + 0.1
-end
 function FenLie( t )
     local caster = t.caster
     local target = t.target

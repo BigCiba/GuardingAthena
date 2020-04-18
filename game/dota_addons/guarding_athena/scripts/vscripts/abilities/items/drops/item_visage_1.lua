@@ -8,7 +8,7 @@ function item_visage_1:OnSpellStart()
 	hCaster:RefreshAbilities()
 	hCaster:RefreshItems()
 	-- particle
-	local iParticleID = ParticleManager:CreateParticle("particles/items2_fx/refresher.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
+	local iParticleID = ParticleManager:CreateParticle("particles/items2_fx/refresher.vpcf", PATTACH_CENTER_FOLLOW, hCaster)
 	-- sound
 	hCaster:EmitSound("DOTA_Item.Refresher.Activate")
 end

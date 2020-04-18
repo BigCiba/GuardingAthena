@@ -9,6 +9,7 @@ return {
 		"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts",
 		"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts",
 		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts",
+		"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts",
 	},
 	particle = {
 		"particles/econ/items/zeus/lightning_weapon_fx/zuus_lightning_bolt_immortal_lightning.vpcf",
@@ -31,6 +32,13 @@ return {
 		"particles/skills/green_protect.vpcf",
 		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf",
 		"particles/items2_fx/refresher.vpcf",
+		"particles/items2_fx/veil_of_discord_debuff.vpcf",
+		"particles/items/battlefury_ring/battlefury_ring_eclipse.vpcf",
+		"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf",
+		"particles/econ/courier/courier_flopjaw/courier_flopjaw_ambient_water.vpcf",
+		"particles/units/heroes/hero_viper/viper_base_attack.vpcf",
+		"particles/units/heroes/hero_viper/viper_nethertoxin_debuff.vpcf",
+		"particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_prison_top_orb.vpcf",
 	},
 	model = {
 		"models/props_gameplay/rune_haste01.vmdl",

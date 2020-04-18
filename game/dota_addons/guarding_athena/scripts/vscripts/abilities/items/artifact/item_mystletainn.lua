@@ -1,36 +1,18 @@
-LinkLuaModifier("modifier_mystletainn", "abilities/items/artifact/item_mystletainn.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_mystletainn_debuff", "abilities/items/artifact/item_mystletainn.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_item_mystletainn", "abilities/items/artifact/item_mystletainn.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_item_mystletainn_debuff", "abilities/items/artifact/item_mystletainn.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if item_mystletainn == nil then
 	item_mystletainn = class({})
 end
 function item_mystletainn:GetIntrinsicModifierName()
-	return "modifier_mystletainn"
+	return "modifier_item_mystletainn"
 end
 ---------------------------------------------------------------------
 -- Modifier
-if modifier_mystletainn == nil then
-	modifier_mystletainn = class({})
+if modifier_item_mystletainn == nil then
+	modifier_item_mystletainn = class({}, nil, ModifierItemBasic)
 end
-function modifier_mystletainn:IsHidden()
-	return true
-end
-function modifier_mystletainn:IsDebuff()
-	return false
-end
-function modifier_mystletainn:IsPurgable()
-	return false
-end
-function modifier_mystletainn:IsPurgeException()
-	return false
-end
-function modifier_mystletainn:IsStunDebuff()
-	return false
-end
-function modifier_mystletainn:AllowIllusionDuplicate()
-	return false
-end
-function modifier_mystletainn:OnCreated(params)
+function modifier_item_mystletainn:OnCreated(params)
 	self.attribute = self:GetAbilitySpecialValueFor("attribute")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.attack = self:GetAbilitySpecialValueFor("attack")
@@ -47,13 +29,13 @@ function modifier_mystletainn:OnCreated(params)
 		self:StartIntervalThink(self.interval)
 	end
 end
-function modifier_mystletainn:OnDestroy()
+function modifier_item_mystletainn:OnDestroy()
 	if IsServer() then
 		local hParent = self:GetParent()
 		hParent:SetBaseAttackTime(hParent:GetBaseAttackTime() + self.attack_rate)
 	end
 end
-function modifier_mystletainn:OnIntervalThink()
+function modifier_item_mystletainn:OnIntervalThink()
 	if IsServer() then
 		local hParent = self:GetParent()
 		local flDamage = self.absorb * hParent:GetMaxHealth()
@@ -66,7 +48,7 @@ function modifier_mystletainn:OnIntervalThink()
 		end
 	end
 end
-function modifier_mystletainn:DeclareFunctions()
+function modifier_item_mystletainn:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
 		MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
@@ -75,59 +57,41 @@ function modifier_mystletainn:DeclareFunctions()
 		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL,
 	}
 end
-function modifier_mystletainn:GetModifierPreAttack_BonusDamage()
+function modifier_item_mystletainn:GetModifierPreAttack_BonusDamage()
 	return self.attack
 end
-function modifier_mystletainn:GetModifierBonusStats_Strength()
+function modifier_item_mystletainn:GetModifierBonusStats_Strength()
 	return self.attribute
 end
-function modifier_mystletainn:GetModifierBonusStats_Agility()
+function modifier_item_mystletainn:GetModifierBonusStats_Agility()
 	return self.attribute
 end
-function modifier_mystletainn:GetModifierBonusStats_Intellect()
+function modifier_item_mystletainn:GetModifierBonusStats_Intellect()
 	return self.attribute
 end
-function modifier_mystletainn:GetModifierProcAttack_BonusDamage_Physical(params)
+function modifier_item_mystletainn:GetModifierProcAttack_BonusDamage_Physical(params)
 	if params.target == nil then return end
 	if params.target:GetClassname() == "dota_item_drop" then return end
 	if params.attacker == self:GetParent() and not params.attacker:IsIllusion() then
 		if RollPercentage(self.critical_rate) then
-			params.target:AddNewModifier(params.attacker, self:GetAbility(), "modifier_mystletainn_debuff", {duration = self.duration})
+			params.target:AddNewModifier(params.attacker, self:GetAbility(), "modifier_item_mystletainn_debuff", {duration = self.duration})
 			CreateNumberEffect(params.target, params.damage * self.critical, 1.5, MSG_ORIT, "orange", 4)
 			return params.damage * self.critical
 		end
 	end
 end
 ---------------------------------------------------------------------
-if modifier_mystletainn_debuff == nil then
-	modifier_mystletainn_debuff = class({})
+if modifier_item_mystletainn_debuff == nil then
+	modifier_item_mystletainn_debuff = class({}, nil, ModifierDebuff)
 end
-function modifier_mystletainn_debuff:IsHidden()
-	return false
-end
-function modifier_mystletainn_debuff:IsDebuff()
-	return true
-end
-function modifier_mystletainn_debuff:IsPurgable()
-	return true
-end
-function modifier_mystletainn_debuff:IsPurgeException()
-	return false
-end
-function modifier_mystletainn_debuff:IsStunDebuff()
-	return false
-end
-function modifier_mystletainn_debuff:AllowIllusionDuplicate()
-	return false
-end
-function modifier_mystletainn_debuff:OnCreated(params)
+function modifier_item_mystletainn_debuff:OnCreated(params)
 	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
 end
-function modifier_mystletainn_debuff:DeclareFunctions()
+function modifier_item_mystletainn_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE,
 	}
 end
-function modifier_mystletainn_debuff:GetModifierIncomingPhysicalDamage_Percentage()
+function modifier_item_mystletainn_debuff:GetModifierIncomingPhysicalDamage_Percentage()
 	return self.damage_deepen + 100
 end
