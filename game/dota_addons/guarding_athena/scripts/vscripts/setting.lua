@@ -67,6 +67,7 @@ ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT = 0		-- 每点力量提供状态抗
 -- 游戏机制
 -------------------------------------------------------
 TIME_BOSS_REBORN = 60			-- boss重生间隔
+HERO_SELECTION_TIME = 20
 -- 刷新排除技能
 REFRESH_EXCLUDE_ABILITIES = {
 }
