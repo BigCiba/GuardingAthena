@@ -14,7 +14,7 @@ item_treant_1,绿叶,item_lua,abilities/items/drops/item_treant_1,models/props_g
 ,,,,,,,,,,,,,,,,,,,,,,-40,4,35,,,,,,,,,,,,,,,,,,,,
 item_treant_2,树种,item_lua,abilities/items/drops/item_treant_2,models/props_gameplay/tango.vmdl,particles/generic_gameplay/dropped_tango.vpcf,,item_tango,DOTA_ABILITY_BEHAVIOR_POINT,1670,,,2000,1,0,0,0,,,200,,,duration,,,,,,,,,,,,,,60,200,ITEM_FULLY_SHAREABLE,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,,,,,,,,,,,,,
-item_treant_3,树枝,item_lua,abilities/items/drops/item_treant_3,models/props_gameplay/branch.vmdl,,,item_branches,DOTA_ABILITY_BEHAVIOR_POINT,1671,,,10000,1,0,,0,,,,,,duration,,,,,,,,,,,,,,10,,ITEM_FULLY_SHAREABLE,,,,,,
+item_treant_3,树枝,item_lua,abilities/items/drops/item_treant_3,models/props_gameplay/branch.vmdl,,,item_branches,DOTA_ABILITY_BEHAVIOR_POINT,1671,,,10000,1,0,,0,,,,,,duration,,,,,,,,,,,,,,1,,ITEM_FULLY_SHAREABLE,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,,,,,,,,,,,,,
 item_treant_4,巨树护甲,item_lua,abilities/items/drops/item_treant_4,models/props_gameplay/red_box.vmdl,,,item_tree_4,DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET,1700,,,10000,1,0,,0,,,,,,armor,regen,damage_block,bonus_hp_regen,duration,,,,,,,,,,30,,ITEM_FULLY_SHAREABLE,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,20,2,-40,4,35,,,,,,,,,,,,,,,,,,

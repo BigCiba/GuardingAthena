@@ -45,6 +45,7 @@ return {
 		"models/props_gameplay/rune_regeneration01.vmdl",
 		"models/props_gameplay/rune_arcane.vmdl",
 		"models/props_gameplay/aegis.vmdl",
+		"models/props_gameplay/morokai_orb.vmdl",
 		"models/props_gameplay/morokai_orb_dummy.vmdl",
 	},
 }
