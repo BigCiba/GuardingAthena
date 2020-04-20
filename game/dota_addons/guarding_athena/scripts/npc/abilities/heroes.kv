@@ -2,6 +2,16 @@
 {
 	"omniknight_0"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_0"
+		"AbilityTextureName"					"custom/thunder_power"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCooldown"						"2"
+		"HasScepterUpgrade"						"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE| DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -25,19 +35,25 @@
 				"scepter_radius"				"300"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/omniknight/omniknight_0"
-		"AbilityTextureName"					"custom/thunder_power"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityCooldown"						"2"
-		"HasScepterUpgrade"						"1"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE| DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"omniknight_1"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_1"
+		"AbilityTextureName"					"custom/thunder_strike"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -76,25 +92,25 @@
 				"scepter_charges"				"4"
 			}
 		}
+	}
+	"omniknight_2"
+	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/omniknight/omniknight_1"
-		"AbilityTextureName"					"custom/thunder_strike"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_2"
+		"AbilityTextureName"					"custom/heal_device"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"						"600"
 		"AbilityCastPoint"						"0.3"
-		"AbilityCooldown"						"0"
+		"AbilityCooldown"						"60"
 		"HasScepterUpgrade"						"1"
-		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityManaCost"						"0"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-	}
-	"omniknight_2"
-	{
 		"AbilitySpecial"
 		{
 			"10"
@@ -148,25 +164,18 @@
 				"scepter_count"					"3"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/omniknight/omniknight_2"
-		"AbilityTextureName"					"custom/heal_device"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"								"20"
-		"RequiredLevel"							"1"
-		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastRange"						"600"
-		"AbilityCastPoint"						"0.3"
-		"AbilityCooldown"						"60"
-		"HasScepterUpgrade"						"1"
-		"AbilityManaCost"						"0"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	}
 	"omniknight_3"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_3"
+		"AbilityTextureName"					"custom/weightlifting"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"8"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -195,18 +204,23 @@
 				"attack_count"					"8"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/omniknight/omniknight_3"
-		"AbilityTextureName"					"custom/weightlifting"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"								"20"
-		"RequiredLevel"							"1"
-		"LevelsBetweenUpgrades"					"8"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"omniknight_4"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/omniknight/omniknight_4"
+		"AbilityTextureName"					"arc_warden_flux"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCastPoint"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"60 120 180 240 300"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"10"
@@ -285,23 +299,18 @@
 				"bonus_amp_percent"				"100 125 150 175 200 225 250 275"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/omniknight/omniknight_4"
-		"AbilityTextureName"					"arc_warden_flux"
-		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
-		"MaxLevel"								"8"
-		"RequiredLevel"							"8"
-		"LevelsBetweenUpgrades"					"24"
-		"AbilityCastPoint"						"0"
-		"HasScepterUpgrade"						"1"
-		"AbilityManaCost"						"60 120 180 240 300"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"templar_assassin_0"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_0"
+		"AbilityTextureName"					"revelater_0"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCharges"						"3"
+		"AbilityChargeRestoreTime"				"6"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilitySpecial"
 		{
 			"01"
@@ -330,18 +339,25 @@
 				"scepter_radius"				"300"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_0"
-		"AbilityTextureName"					"revelater_0"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityCharges"						"3"
-		"AbilityChargeRestoreTime"				"6"
-		"AbilityCooldown"						"0"
-		"HasScepterUpgrade"						"1"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	}
 	"templar_assassin_1"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_1"
+		"AbilityTextureName"					"revelater_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCastRange"						"800"
+		"AbilityCastPoint"						"0.1"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"40"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -385,25 +401,28 @@
 				"bonus_pct"						"50"
 			}
 		}
+	}
+	"templar_assassin_2"
+	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_1"
-		"AbilityTextureName"					"revelater_1"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_2"
+		"AbilityTextureName"					"custom/revelater_2"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
-		"AbilityCastRange"						"800"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"						"1600"
 		"AbilityCastPoint"						"0.1"
-		"AbilityCooldown"						"8"
-		"AbilityManaCost"						"40"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityCharges"						"3"
+		"AbilityChargeRestoreTime"				"6"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"20"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-	}
-	"templar_assassin_2"
-	{
 		"AbilitySpecial"
 		{
 			"01"
@@ -447,28 +466,24 @@
 				"scepter_refresh_chance"		"30"
 			}
 		}
+	}
+	"templar_assassin_3"
+	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_2"
-		"AbilityTextureName"					"custom/revelater_2"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_3"
+		"AbilityTextureName"					"revelater_3"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastRange"						"1600"
-		"AbilityCastPoint"						"0.1"
-		"AbilityCharges"						"3"
-		"AbilityChargeRestoreTime"				"6"
-		"AbilityCooldown"						"0"
+		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
+		"AbilityCooldown"						"8"
 		"HasScepterUpgrade"						"1"
-		"AbilityManaCost"						"20"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityManaCost"						"60"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-	}
-	"templar_assassin_3"
-	{
 		"AbilitySpecial"
 		{
 			"10"
@@ -527,24 +542,23 @@
 				"active_radius"					"300"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_3"
-		"AbilityTextureName"					"revelater_3"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"								"20"
-		"RequiredLevel"							"1"
-		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
-		"AbilityCooldown"						"8"
-		"HasScepterUpgrade"						"1"
-		"AbilityManaCost"						"60"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"templar_assassin_4"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_4"
+		"AbilityTextureName"					"revelater_4"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCooldown"						"30"
+		"HasScepterUpgrade"						"1"
+		"AbilityManaCost"						"200"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -593,23 +607,17 @@
 				"scepter_chance"				"15"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_4"
-		"AbilityTextureName"					"revelater_4"
-		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
-		"MaxLevel"								"8"
-		"RequiredLevel"							"8"
-		"LevelsBetweenUpgrades"					"24"
-		"AbilityCooldown"						"30"
-		"HasScepterUpgrade"						"1"
-		"AbilityManaCost"						"200"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"drow_ranger_0_1"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_0_1"
+		"AbilityTextureName"					"drow_ranger_frost_arrows"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -638,17 +646,14 @@
 				"agi_damage_increase"			"0.01"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_0_1"
-		"AbilityTextureName"					"drow_ranger_frost_arrows"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"drow_ranger_0_2"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_0_2"
+		"AbilityTextureName"					"drow_ranger_0_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilitySpecial"
 		{
 			"01"
@@ -662,14 +667,24 @@
 				"bonus_attack_range"			"550"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_0_2"
-		"AbilityTextureName"					"drow_ranger_0_2"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	}
 	"drow_ranger_1_1"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_1_1"
+		"AbilityTextureName"					"drow_ranger_1_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastRange"						"1200"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"10"
@@ -733,24 +748,21 @@
 				"movespeed_reduce"				"30"
 			}
 		}
+	}
+	"drow_ranger_1_2"
+	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_1_1"
-		"AbilityTextureName"					"drow_ranger_1_1"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_1_2"
+		"AbilityTextureName"					"drow_ranger_1_2"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
-		"AbilityCastRange"						"1200"
-		"AbilityCooldown"						"8"
-		"AbilityManaCost"						"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityCooldown"						"12"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-	}
-	"drow_ranger_1_2"
-	{
 		"AbilitySpecial"
 		{
 			"01"
@@ -774,39 +786,9 @@
 				"interval"						"0.3"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_1_2"
-		"AbilityTextureName"					"drow_ranger_1_2"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"								"20"
-		"RequiredLevel"							"1"
-		"LevelsBetweenUpgrades"					"3"
-		"AbilityCooldown"						"12"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 	"drow_ranger_2_1"
 	{
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"base_damage"					"50"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"agi_damage"					"2"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"3"
-			}
-		}
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_2_1"
 		"AbilityTextureName"					"drow_ranger_marksmanship"
@@ -823,9 +805,6 @@
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-	}
-	"drow_ranger_2_2"
-	{
 		"AbilitySpecial"
 		{
 			"01"
@@ -844,6 +823,9 @@
 				"duration"						"3"
 			}
 		}
+	}
+	"drow_ranger_2_2"
+	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_2_2"
 		"AbilityTextureName"					"drow_ranger_3_2"
@@ -860,9 +842,38 @@
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"agi_damage"					"2"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"3"
+			}
+		}
 	}
 	"drow_ranger_3_1"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_3_1"
+		"AbilityTextureName"					"drow_ranger_marksmanship"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
 		"AbilitySpecial"
 		{
 			"01"
@@ -896,20 +907,20 @@
 				"curse_duration"				"2"
 			}
 		}
+	}
+	"drow_ranger_3_2"
+	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_3_1"
-		"AbilityTextureName"					"drow_ranger_marksmanship"
+		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_3_2"
+		"AbilityTextureName"					"drow_ranger_3_2"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
-	}
-	"drow_ranger_3_2"
-	{
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -948,16 +959,5 @@
 				"debuff_duration"				"3"
 			}
 		}
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/drow_ranger/drow_ranger_3_2"
-		"AbilityTextureName"					"drow_ranger_3_2"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"								"20"
-		"RequiredLevel"							"1"
-		"LevelsBetweenUpgrades"					"3"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 	}
 }

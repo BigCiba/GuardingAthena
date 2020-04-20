@@ -2,24 +2,6 @@
 {
 	"ogre_strike"
 	{
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"stun_duration"					"2"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"400"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"12000"
-			}
-		}
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/nature/ogre_strike"
 		"AbilityTextureName"					"brewmaster_thunder_clap"
@@ -34,9 +16,6 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
-	}
-	"ogre_jump_strike"
-	{
 		"AbilitySpecial"
 		{
 			"01"
@@ -55,6 +34,9 @@
 				"damage"						"12000"
 			}
 		}
+	}
+	"ogre_jump_strike"
+	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/nature/ogre_jump_strike"
 		"AbilityTextureName"					"brewmaster_thunder_clap"
@@ -68,22 +50,27 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
-	}
-	"boss_beat"
-	{
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"stun_duration"					"0.1"
+				"var_type"						"FIELD_INTEGER"
+				"stun_duration"					"2"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"5000"
+				"radius"						"400"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"12000"
 			}
 		}
+	}
+	"boss_beat"
+	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/nature/boss_beat"
 		"AbilityTextureName"					"polar_furbolg_ursa_warrior_thunder_clap"
@@ -98,5 +85,18 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"stun_duration"					"0.1"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"5000"
+			}
+		}
 	}
 }
