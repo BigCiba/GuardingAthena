@@ -120,7 +120,7 @@ function modifier_essence:IsHidden()
 	return true
 end
 function modifier_essence:GetAttributes()
-	return MODIFIER_ATTRIBUTE_PERMANENT
+	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_MULTIPLE
 end
 function modifier_essence:OnCreated(params)
 	self.str = self:GetAbilitySpecialValueFor("str")

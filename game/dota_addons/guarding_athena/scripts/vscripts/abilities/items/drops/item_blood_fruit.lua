@@ -9,4 +9,5 @@ function item_blood_fruit:OnSpellStart()
 	hCaster.agi_gain = hCaster.agi_gain + 1
 	hCaster.int_gain = hCaster.int_gain + 1
 	hCaster:ModifyPrimaryAttribute(RandomInt(iLevel, iLevel * 5))
+	self:Destroy()
 end

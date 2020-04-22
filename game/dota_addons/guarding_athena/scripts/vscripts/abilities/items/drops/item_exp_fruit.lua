@@ -7,4 +7,5 @@ function item_exp_fruit:OnSpellStart()
 	local iLevel = GuardingAthena.clotho_lv
 	hCaster.exp_rate = hCaster.exp_rate + 0.1
 	hCaster:ModifyPrimaryAttribute(RandomInt(iLevel, iLevel * 5))
+	self:Destroy()
 end
