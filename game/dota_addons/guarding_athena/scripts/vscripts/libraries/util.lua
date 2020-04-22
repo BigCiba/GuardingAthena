@@ -441,7 +441,7 @@ end
 function RollDrops(unit)
     local DropInfo = KeyValues.DropsKv[unit:GetUnitName()]
     if DropInfo then
-        --print("Rolling Drops for "..unit:GetUnitName())
+		--print("Rolling Drops for "..unit:GetUnitName())
         for k,ItemTable in pairs(DropInfo) do
             local item_name
             if ItemTable.ItemSets then
@@ -467,7 +467,7 @@ function RollDrops(unit)
                     item:SetPurchaseTime(GameRules:GetGameTime())
                     local pos = unit:GetAbsOrigin()
                     local drop = CreateItemOnPositionSync( pos, item )
-					local pos_launch = pos+RandomVector(RandomFloat(0,50))
+					local pos_launch = pos+RandomVector(RandomFloat(0,150))
 					if item:IsCastOnPickup() then
 						if item_name == "item_essence_small" then
 							drop:SetModelScale( 0.8 )

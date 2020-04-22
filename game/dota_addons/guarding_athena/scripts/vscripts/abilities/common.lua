@@ -549,7 +549,10 @@ if IsServer() then
 		return self:SetCurrentCharges(self:GetCurrentCharges() + 1)
 	end
 	function CDOTABaseAbility:GetIntrinsicModifier()
-		return self:GetCaster():FindModifierByName(self:GetIntrinsicModifierName())
+		if IsValid(self:GetCaster()) then
+			return self:GetCaster():FindModifierByName(self:GetIntrinsicModifierName())
+		end
+		return nil
 	end
 	function CDOTABaseAbility:GetSpecialValueWithLevel(szName)
 		return self:GetSpecialValueFor(szName) * self:GetLevel()

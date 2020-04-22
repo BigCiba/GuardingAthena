@@ -12,8 +12,12 @@ function item_essence:Upgrade()
 	local hItem = CreateItem(sBaseName..(iLevel + 1), hCaster, hCaster)
 	hCaster:TakeItem(self)
 	hCaster:AddItem(hItem)
-	hItem:SetCurrentCharges(self:GetCurrentCharges())
-	hItem:GetIntrinsicModifier():OnRefresh()
+	if hItem.Upgrade then
+		hItem:SetCurrentCharges(self:GetCurrentCharges())
+	end
+	if hItem:GetCaster() ~= nil then
+		hItem:GetIntrinsicModifier():OnRefresh()
+	end
 	hCaster:SwapItems(hItem:GetItemSlot(), iSlot)
 	UTIL_Remove(self)
 end
