@@ -75,7 +75,7 @@ function AI:SetAutoCast( caster )
                     if ability:IsCooldownReady() then
                         -- 施法距离
                         local casterLoc = caster:GetAbsOrigin()
-                        local radius = ability:GetCastRange()
+                        local radius = ability:GetCastRange(casterLoc, nil)
                         local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
                         if #unitGroup > 0 then
                             for k,unit in pairs(unitGroup) do
@@ -93,7 +93,7 @@ function AI:SetAutoCast( caster )
                     if ability:IsCooldownReady() then
                         -- 施法距离
                         local casterLoc = caster:GetAbsOrigin()
-                        local radius = ability:GetCastRange()
+                        local radius = ability:GetCastRange(casterLoc, nil)
                         local unitGroup = GetUnitsInRadius(caster,ability,casterLoc,radius)
                         if #unitGroup > 0 then
                             for k,unit in pairs(unitGroup) do

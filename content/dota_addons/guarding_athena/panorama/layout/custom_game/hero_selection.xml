@@ -37,26 +37,24 @@
 		<DOTAScenePanel hittest="false" class="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
 		<Panel id="LeftContent">
 			<Panel id="DifficlutyContent">
-				<RadioButton selected="true" group="difficluty">
+				<RadioButton class="DifficultyPanel Easy" group="difficluty">
 					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
-					<Panel class="DifficultyPanel Easy">
-						<Label text="简单" />
-					</Panel>
+					<Label text="简单" />
 				</RadioButton>
-				<RadioButton class="DifficultyPanel Normal" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
+				<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty">
+					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
 					<Label text="普通" />
 				</RadioButton>
 				<RadioButton class="DifficultyPanel Hard" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
+					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
 					<Label text="困难" />
 				</RadioButton>
 				<RadioButton class="DifficultyPanel Nightmare" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
+					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
 					<Label text="噩梦" />
 				</RadioButton>
 				<RadioButton class="DifficultyPanel Hell" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
+					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
 					<Label text="地狱" />
 				</RadioButton>
 			</Panel>
@@ -65,6 +63,7 @@
 			<Panel id="TimerContent">
 				<Label text="15" />
 			</Panel>
+			<DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/>
 			<Panel class="HeroListAndSetting">
 				<Panel id="HeroListPanel">
 					<DOTAHeroMovie id="npc_dota_hero_omniknight" class="HeroCard" heroname="npc_dota_hero_omniknight"/>
@@ -77,15 +76,35 @@
 					<DOTAHeroMovie id="npc_dota_hero_legion_commander" class="HeroCard" heroname="npc_dota_hero_legion_commander"/>
 					<DOTAHeroMovie id="npc_dota_hero_ember_spirit" class="HeroCard" heroname="npc_dota_hero_ember_spirit"/>
 					<DOTAHeroMovie id="npc_dota_hero_crystal_maiden" class="HeroCard" heroname="npc_dota_hero_crystal_maiden"/>
-					<DOTAHeroMovie id="npc_dota_hero_nevermore" class="HeroCard" heroname="npc_dota_hero_nevermore"/>
-					<DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin"/>
+					<DOTAHeroMovie id="npc_dota_hero_nevermore" class="HeroCard" heroname="npc_dota_hero_nevermore">
+						<Image src="file://{images}/custom_game/lock.png" />
+					</DOTAHeroMovie>
+					<DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin">
+						<Image src="file://{images}/custom_game/lock.png" />
+					</DOTAHeroMovie>
 					<DOTAHeroMovie id="npc_dota_hero_monkey_king" class="HeroCard" heroname="npc_dota_hero_monkey_king"/>
-					<DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre"/>
+					<DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre">
+						<Image src="file://{images}/custom_game/lock.png" />
+					</DOTAHeroMovie>
 					<DOTAHeroMovie id="npc_dota_hero_oracle" class="HeroCard" heroname="npc_dota_hero_oracle"/>
 					<DOTAHeroMovie id="npc_dota_hero_drow_ranger" class="HeroCard" heroname="npc_dota_hero_drow_ranger"/>
 				</Panel>
 				<Panel id="HeroSettingPanel">
-					
+					<Panel id="SettingPet" class="SettingPanel">
+						<Panel id="MenuArrowContainer" >
+							<Panel id="MenuArrow" />
+						</Panel>
+						<Image class="SettingIcon" src="file://{images}/econ/loading_screens/duskie.png" />
+						<Label text="宠物" />
+					</Panel>
+					<Panel id="SettingSkin" class="SettingPanel">
+						<Image class="SettingIcon" src="file://{images}/econ/items/rubick/arcana/magus_cypher.png" />
+						<Label text="款式" />
+					</Panel>
+					<Panel id="SettingParticle" class="SettingPanel">
+						<Image class="SettingIcon" src="file://{images}/econ/items/nevermore/shadowfiend_demon_eater.png" />
+						<Label text="特效" />
+					</Panel>
 				</Panel>
 			</Panel>
 			<Panel id="HeroInfoContent">
@@ -106,7 +125,6 @@
 					</Button>
 				</Panel>
 			</Panel>
-			<DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/>
 		</Panel>
 	</Panel>
 </root>

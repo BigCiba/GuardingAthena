@@ -3,7 +3,7 @@ if KeyValues == nil then
 end
 
 if IsServer() then
-	KeyValues.PetsKv = LoadKeyValues("scripts/npc/kv/npc_pet.kv")
+	KeyValues.PetsKv = LoadKeyValues("scripts/npc/units/npc_pet.kv")
 	KeyValues.UnitsKv = LoadKeyValues("scripts/npc/npc_units_custom.txt")
 	KeyValues.HeroesKv = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
 	KeyValues.AbilitiesKv = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")

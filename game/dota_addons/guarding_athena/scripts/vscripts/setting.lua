@@ -123,7 +123,7 @@ function public:init(bReload)
 
 	-- 设置游戏规则
 	GameMode = GameRules:GetGameModeEntity()		
-	GameMode:SetCustomGameForceHero( "npc_dota_hero_wisp" )				-- 强制所有玩家选择一个英雄(e.g. "npc_dota_hero_axe")
+	-- GameMode:SetCustomGameForceHero( "npc_dota_hero_wisp" )				-- 强制所有玩家选择一个英雄(e.g. "npc_dota_hero_axe")
 	GameMode:SetRecommendedItemsDisabled( false )						-- 是否禁止打开英雄的推荐物品界面
 	GameMode:SetTopBarTeamValuesOverride ( true )						-- 是否使用自定义的顶部计分数值
 	GameMode:SetTopBarTeamValuesVisible( true )							-- 是否显示顶部计分板

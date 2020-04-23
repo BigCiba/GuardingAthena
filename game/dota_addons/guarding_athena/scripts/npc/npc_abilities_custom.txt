@@ -1,5 +1,6 @@
 #base "abilities/ability_heroes.kv"
 #base "abilities/ability_nature.kv"
+#base "abilities/ability_enemy.kv"
 #base "abilities/pets/pets.kv"
 
 "DOTAAbilities"
@@ -934,59 +935,6 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"30"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"10"
 				}
-			}
-		}
-	}
-
-	"beast_beat"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"polar_furbolg_ursa_warrior_thunder_clap"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityCastPoint"	"0.5"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCooldown"	"8"
-		"AbilityManaCost"	"60"
-		"AbilityCastRange"	"250"
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"Damage"
-			{
-				"Target"	"TARGET"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"%damage"
-			}
-			"Stun"
-			{
-				"Duration"	"0.1"
-				"Target"	"TARGET"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-				"Target"	"TARGET"
-				"EffectAttachType"	"attach_origin"
-			}
-			"FireSound"
-			{
-				"EffectName"	"n_creep_Ursa.Clap"
-				"Target"	"TARGET"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"600 1200 1800 2400 3000"
 			}
 		}
 	}
