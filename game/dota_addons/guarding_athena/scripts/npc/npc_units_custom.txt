@@ -1,8 +1,8 @@
-#base "kv/npc_enemy.kv"
-#base "kv/npc_special_enemy.kv"
-#base "kv/npc_nature.kv"
-#base "kv/npc_quest.kv"
-#base "kv/npc_pet.kv"
+#base "unit/npc_enemy.kv"
+#base "unit/npc_special_enemy.kv"
+#base "unit/npc_nature.kv"
+#base "unit/npc_quest.kv"
+#base "unit/npc_pet.kv"
 
 "DOTAUnits"
 {
