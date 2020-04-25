@@ -19,17 +19,17 @@
 		<snippet name="PlayerCard">
 			<Panel class="PlayerContentBody">
 				<Panel class="PlayerHeader">
-					<DOTAAvatarImage id="AvatarImage" accountid="128320546"/>
+					<DOTAAvatarImage class="AvatarImage" accountid=""/>
 					<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
 					<Panel class="ProfileTextDetails">
-						<DOTAUserName class="UserName" steamid="local" />
+						<DOTAUserName class="UserName" accountid="" />
 					</Panel>
 				</Panel>
 				<Panel class="PlayerLevelContent">
-					<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_03.psd" />
-					<Image id="ItemImage" src="file://{images}/profile_badges/level_99.png" />
-					<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_03.psd">
-						<Label text="299" />
+					<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_01.psd" />
+					<Image id="ItemImage" src="file://{images}/profile_badges/level_01.png" />
+					<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_01.psd">
+						<Label text="{d:level}" />
 					</Image>
 				</Panel>
 			</Panel>
@@ -43,84 +43,10 @@
 	<Panel class="heroSelectionRoot" hittest="false">
 		<DOTAScenePanel hittest="false" class="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
 		<Panel id="LeftContent">
+			<!-- 玩家列表 -->
 			<Panel id="PlayerContent">
-				<Panel class="PlayerContentBody">
-					<Panel class="PlayerHeader">
-						<DOTAAvatarImage id="AvatarImage" accountid="128320546"/>
-						<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
-						<Panel class="ProfileTextDetails">
-							<DOTAUserName class="UserName" steamid="local" />
-						</Panel>
-					</Panel>
-					<!-- <Panel class="PlayerDifficulty">
-						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-					</Panel> -->
-					<Panel class="PlayerLevelContent">
-						<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_03.psd" />
-						<Image id="ItemImage" src="file://{images}/profile_badges/level_99.png" />
-						<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_03.psd">
-							<Label text="299" />
-						</Image>
-					</Panel>
-				</Panel>
-				<Panel class="PlayerContentBody">
-					<Panel class="PlayerHeader">
-						<DOTAAvatarImage id="AvatarImage" accountid="128320546"/>
-						<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
-						<Panel class="ProfileTextDetails">
-							<DOTAUserName class="UserName" steamid="local" />
-						</Panel>
-					</Panel>
-					<!-- <Panel class="PlayerDifficulty">
-						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-					</Panel> -->
-					<Panel class="PlayerLevelContent">
-						<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_02.psd" />
-						<Image id="ItemImage" src="file://{images}/profile_badges/level_99.png" />
-						<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_02.psd">
-							<Label text="299" />
-						</Image>
-					</Panel>
-				</Panel>
-				<Panel class="PlayerContentBody">
-					<Panel class="PlayerHeader">
-						<DOTAAvatarImage id="AvatarImage" accountid="128320546"/>
-						<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
-						<Panel class="ProfileTextDetails">
-							<DOTAUserName class="UserName" steamid="local" />
-						</Panel>
-					</Panel>
-					<!-- <Panel class="PlayerDifficulty">
-						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-					</Panel> -->
-					<Panel class="PlayerLevelContent">
-						<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_01.psd" />
-						<Image id="ItemImage" src="file://{images}/profile_badges/level_99.png" />
-						<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_01.psd">
-							<Label text="299" />
-						</Image>
-					</Panel>
-				</Panel>
-				<Panel class="PlayerContentBody">
-					<Panel class="PlayerHeader">
-						<DOTAAvatarImage id="AvatarImage" accountid="128320546"/>
-						<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
-						<Panel class="ProfileTextDetails">
-							<DOTAUserName class="UserName" steamid="local" />
-						</Panel>
-					</Panel>
-					<!-- <Panel class="PlayerDifficulty">
-						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-					</Panel> -->
-					<Panel class="PlayerLevelContent">
-						<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_03.psd" />
-						<Image id="ItemImage" src="file://{images}/profile_badges/level_99.png" />
-						<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_03.psd">
-							<Label text="299" />
-						</Image>
-					</Panel>
-				</Panel>
 			</Panel>
+			<!-- 难度选择 -->
 			<Panel id="DifficlutyContent">
 				<RadioButton class="DifficultyPanel Easy" group="difficluty">
 					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
@@ -145,11 +71,13 @@
 			</Panel>
 		</Panel>
 		<Panel id="RightContent">
+			<!-- 倒计时 -->
 			<Panel id="TimerContent">
 				<Label text="{d:time}" />
 			</Panel>
 			<DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/>
 			<Panel class="HeroListAndSetting">
+				<!-- 英雄列表 -->
 				<Panel id="HeroListPanel">
 				</Panel>
 				<Panel id="HeroSettingPanel">

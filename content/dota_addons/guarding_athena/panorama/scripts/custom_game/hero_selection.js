@@ -37,14 +37,14 @@ function Update() {
 	GameModeSelectionEndTime = Game.GetGameTime() + Game.GetStateTransitionTime();
 	Update();
 	// 加载英雄卡片
-	let elements = $("#HeroListPanel").FindChildrenWithClassTraverse("HeroCard");
-	for (var i = 0; i < elements.length; i++) {
-		elements[i].DeleteAsync(0);
+	let HeroList = $("#HeroListPanel").FindChildrenWithClassTraverse("HeroCard");
+	for (var i = 0; i < HeroList.length; i++) {
+		HeroList[i].DeleteAsync(0);
 	}
 	for (const key in GameUI.HeroesKv) {
 		const HeroKV = GameUI.HeroesKv[key];
 		let HeroName = HeroKV.override_hero;
-		let Panel = $("#HeroListPanel").FindChildTraverse("HeroName");
+		let Panel = $("#HeroListPanel").FindChildTraverse(HeroName);
 		if (Panel == undefined || Panel == null) {
 			let Panel = $.CreatePanelWithProperties("DOTAHeroMovie", $("#HeroListPanel"), HeroName, {heroname: HeroName});
 			Panel.BLoadLayoutSnippet("HeroCard");
@@ -54,8 +54,21 @@ function Update() {
 		}
 	}
 	// 加载玩家卡片
-	let elements = $("#HeroListPanel").FindChildrenWithClassTraverse("HeroCard");
-	for (var i = 0; i < elements.length; i++) {
-		elements[i].DeleteAsync(0);
+	let PlayerList = $("#PlayerContent").FindChildrenWithClassTraverse("PlayerContentBody");
+	for (var i = 0; i < PlayerList.length; i++) {
+		PlayerList[i].DeleteAsync(0);
+	}
+	let AllPlayerID = Game.GetAllPlayerIDs()
+	for (let index = 0; index < AllPlayerID.length; index++) {
+		const PlayerID = AllPlayerID[index];
+		const tPlayerInfo = Game.GetPlayerInfo(PlayerID);
+		$.Msg(tPlayerInfo);
+		let Panel = $("#PlayerContent").FindChildTraverse("Player" + PlayerID);
+		if (Panel == undefined || Panel == null) {
+			let Panel = $.CreatePanel("Panel", $("#PlayerContent"), "Player" + PlayerID);
+			Panel.BLoadLayoutSnippet("PlayerCard");
+			Panel.FindChildrenWithClassTraverse("AvatarImage").steamid = tPlayerInfo.player_steamid;
+			Panel.FindChildrenWithClassTraverse("UserName").steamid = tPlayerInfo.player_steamid;
+		}
 	}
 })();
