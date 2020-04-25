@@ -1,6 +1,9 @@
 "use strict";
 function Update() {
     $.Schedule(0, Update);
+    if (!Game.IsInToolsMode()) {
+        $.GetContextPanel().style.visibility = "collapse";
+    }
     // if (CustomNetTables.GetTableValue("common", "settings").is_cheat_mode == 0)
     //     $.GetContextPanel().style.visibility = "collapse";
     // var settings = CustomNetTables.GetTableValue("common", "hero_demo_settings") || {};
