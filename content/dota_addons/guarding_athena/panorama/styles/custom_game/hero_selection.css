@@ -107,7 +107,7 @@
 	transition-duration: 0.1s;
 	box-shadow: #000000aa 0px 0px 5px 0px;
 }
-.AvatarImage {
+#AvatarImage {
 	width: 56px;
 	height: 56px;
 	border: 2px solid transparent;
@@ -123,7 +123,7 @@
 	vertical-align: center;
 	margin-left: 10px;
 }
-.UserName Label{
+#UserName Label{
 	font-weight: thin;
 	font-size: 26px;
 	color: white;
@@ -317,7 +317,7 @@
 	margin-top: 20px; */
 	saturation: 0.3;
 	width: 15%;
-	margin: 0.81%;
+	margin: 0.70%;
 	/* 3:4 */
 	height: width-percentage( 133.3% );
 	border-radius: 4px;
@@ -325,6 +325,10 @@
 	box-shadow: fill #191e25 6px 6px 18px 0px;
 	transition-property: brightness, pre-transform-scale2d;
 	transition-duration: 0.1s;
+}
+.AspectRatio4x3 .HeroCard {
+	width: 15%;
+	margin: 0.68%;
 }
 .HeroCard:hover {
 	brightness: 1.4;
@@ -497,7 +501,7 @@
 	horizontal-align: right;
 	height: 100%;
 	width: 35%;
-	z-index: 10;
+	/* z-index: 10; */
 }
 #HeroDataPanel{
 	width: 560px;
@@ -529,11 +533,12 @@
 #HeroAbilityPanel{
 	flow-children: right;
 	margin-bottom: 20px;
+	height: 64px;
 }
 .HeroAbility{
 	width: 64px;
 	height: 64px;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-right: 3%;
 	box-shadow: fill #222A35 6px 6px 8px 0px;
 }
@@ -563,7 +568,7 @@
 	text-overflow: shrink;
 	text-shadow: 2px 2px 3px 3 #000000;
 }
-.HeroScene
+#HeroScenePanel
 {
 	/*opacity-mask: url("s2r://panorama/images/masks/hud_hero_inspect_psd.vtex");*/
 	opacity-mask: url("s2r://panorama/images/masks/softedge_box_png.vtex");
@@ -573,6 +578,18 @@
 	y:5%;
 	vertical-align: bottom;
 	horizontal-align: Right;
+	/* visibility: collapse; */
+	/* transition-property: position;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out; */
+}
+.HeroScene {
+	width: 100%;
+	height: 100%;
+}
+.Preview {
+	visibility: visible;
+	x: 15%;
 }
 #Waiting {
 	horizontal-align: center;

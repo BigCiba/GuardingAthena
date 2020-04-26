@@ -9,7 +9,7 @@
 	</styles>
 	<scripts>
 		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
-		<!-- <include src="file://{resources}/scripts/custom_game/common.js" /> -->
+		<include src="file://{resources}/scripts/custom_game/common.js" />
 
 		<!-- <include src="file://{resources}/layout/custom_game/elements/store_item_image/store_item_image.js" /> -->
 
@@ -19,10 +19,10 @@
 		<snippet name="PlayerCard">
 			<Panel class="PlayerContentBody">
 				<Panel class="PlayerHeader">
-					<DOTAAvatarImage class="AvatarImage" accountid=""/>
+					<DOTAAvatarImage id="AvatarImage" steamid=""/>
 					<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
 					<Panel class="ProfileTextDetails">
-						<DOTAUserName class="UserName" accountid="" />
+						<DOTAUserName id="UserName"/>
 					</Panel>
 				</Panel>
 				<Panel class="PlayerLevelContent">
@@ -75,7 +75,9 @@
 			<Panel id="TimerContent">
 				<Label text="{d:time}" />
 			</Panel>
-			<DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/>
+			<Panel id="HeroScenePanel">
+				<!-- <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/> -->
+			</Panel>
 			<Panel class="HeroListAndSetting">
 				<!-- 英雄列表 -->
 				<Panel id="HeroListPanel">
@@ -140,16 +142,13 @@
 			</Panel>
 			<Panel id="HeroInfoContent">
 				<Panel id="HeroDataPanel">
+					<!-- 英雄属性与名字 -->
 					<Panel id="HeroNamePanel">
 						<Image id="PrimaryAttributeImage" src="s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex" />
-						<Label text="机械师" />
+						<Label text="{s:heroname}" />
 					</Panel>
+					<!-- 技能面板 -->
 					<Panel id="HeroAbilityPanel">
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_0" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_1" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_2" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_3" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_4" />
 					</Panel>
 					<Button id="HeroSelectPanel">
 						<Label text="选择英雄" />

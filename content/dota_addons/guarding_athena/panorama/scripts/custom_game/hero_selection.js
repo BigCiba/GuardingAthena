@@ -12,6 +12,48 @@ function Update() {
 		$("#TimerContent").SetDialogVariableInt("time", Math.ceil(time));
 	}
 }
+function LoadPlayer(self) {
+	self.BLoadLayoutSnippet("PlayerCard");
+	self.SetPlayer = function(PlayerID) {
+		const tPlayerInfo = Game.GetPlayerInfo(PlayerID);
+		const iLevel = 169;
+		self.FindChildTraverse("AvatarImage").steamid = tPlayerInfo.player_steamid;
+		self.FindChildTraverse("UserName").steamid = tPlayerInfo.player_steamid;
+		self.FindChildTraverse("BackGroundImage").SetImage(GetBadgesBackground(iLevel));
+		self.FindChildTraverse("ItemImage").SetImage(GetBadgesLevel(iLevel));
+		self.FindChildTraverse("ProfileLevel").SetImage(GetBadgesBackgroundNumber(iLevel));
+		self.SetDialogVariableInt("level", iLevel);
+	};
+
+}
+function PreviewHero(HeroName) {
+	const HeroKV = GameUI.HeroesKv[HeroName];
+	// 预览英雄属性与名字
+	$("#HeroNamePanel").FindChildTraverse("PrimaryAttributeImage").SetImage(GetAttributeIcon(HeroKV.AttributePrimary));
+	$("#HeroNamePanel").SetDialogVariable("heroname", $.Localize(HeroName));
+	// 预览技能
+	$("#HeroAbilityPanel").RemoveAndDeleteChildren();
+	for (let index = 1; index <= 5; index++) {
+		const AbilityName = HeroKV["Ability" + index];
+		let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", $("#HeroAbilityPanel"), AbilityName, {abilityname: AbilityName});
+		AbilityPanel.AddClass("HeroAbility");
+		AbilityPanel.SetPanelEvent("onmouseover", function() {
+			$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
+		});
+		AbilityPanel.SetPanelEvent("onmouseout", function() {
+			$.DispatchEvent("DOTAHideAbilityTooltip");
+		});
+	}
+	
+	// 预览模型
+	let HeroSceneList = $("#RightContent").FindChildrenWithClassTraverse("HeroScene");
+	for (let index = 0; index < HeroSceneList.length; index++) {
+		const HeroScene = HeroSceneList[index];
+		HeroScene.DeleteAsync(0);
+	}
+	let HeroScenePanel = $.CreatePanelWithProperties("DOTAScenePanel", $("#HeroScenePanel"), HeroName, {unit: HeroName, light: "global_light", antialias: "true", drawbackground: "false", particleonly: "false", hittest: "false"});
+	HeroScenePanel.AddClass("HeroScene");
+}
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
 	let PreGame = HUD.FindChildTraverse("PreGame");
@@ -37,38 +79,26 @@ function Update() {
 	GameModeSelectionEndTime = Game.GetGameTime() + Game.GetStateTransitionTime();
 	Update();
 	// 加载英雄卡片
-	let HeroList = $("#HeroListPanel").FindChildrenWithClassTraverse("HeroCard");
-	for (var i = 0; i < HeroList.length; i++) {
-		HeroList[i].DeleteAsync(0);
-	}
 	for (const key in GameUI.HeroesKv) {
 		const HeroKV = GameUI.HeroesKv[key];
 		let HeroName = HeroKV.override_hero;
 		let Panel = $("#HeroListPanel").FindChildTraverse(HeroName);
-		if (Panel == undefined || Panel == null) {
-			let Panel = $.CreatePanelWithProperties("DOTAHeroMovie", $("#HeroListPanel"), HeroName, {heroname: HeroName});
-			Panel.BLoadLayoutSnippet("HeroCard");
-			if (HeroKV.UnitLabel == "lock" ) {
-				Panel.RemoveClass("Unlock");
-			}
+		Panel = ReloadPanelWithProperties(Panel, "DOTAHeroMovie", $("#HeroListPanel"), HeroName, {heroname: HeroName});
+		Panel.BLoadLayoutSnippet("HeroCard");
+		Panel.SetPanelEvent("onactivate", function() {
+			PreviewHero(HeroName);
+		});
+		if (HeroKV.UnitLabel == "lock" ) {
+			Panel.RemoveClass("Unlock")
 		}
 	}
 	// 加载玩家卡片
-	let PlayerList = $("#PlayerContent").FindChildrenWithClassTraverse("PlayerContentBody");
-	for (var i = 0; i < PlayerList.length; i++) {
-		PlayerList[i].DeleteAsync(0);
-	}
 	let AllPlayerID = Game.GetAllPlayerIDs()
 	for (let index = 0; index < AllPlayerID.length; index++) {
 		const PlayerID = AllPlayerID[index];
-		const tPlayerInfo = Game.GetPlayerInfo(PlayerID);
-		$.Msg(tPlayerInfo);
 		let Panel = $("#PlayerContent").FindChildTraverse("Player" + PlayerID);
-		if (Panel == undefined || Panel == null) {
-			let Panel = $.CreatePanel("Panel", $("#PlayerContent"), "Player" + PlayerID);
-			Panel.BLoadLayoutSnippet("PlayerCard");
-			Panel.FindChildrenWithClassTraverse("AvatarImage").steamid = tPlayerInfo.player_steamid;
-			Panel.FindChildrenWithClassTraverse("UserName").steamid = tPlayerInfo.player_steamid;
-		}
+		Panel = ReloadPanel(Panel, "Panel", $("#PlayerContent"), "Player" + PlayerID);
+		LoadPlayer(Panel);
+		Panel.SetPlayer(PlayerID);
 	}
 })();
