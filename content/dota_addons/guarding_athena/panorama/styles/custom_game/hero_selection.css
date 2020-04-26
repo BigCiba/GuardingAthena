@@ -396,11 +396,21 @@
 	wash-color: #777;
 }
 #ContextMenuBody {
-	transform: translateY(-22%);
-	vertical-align: bottom;
-	horizontal-align: center;
+	/* transform: translateY(-22%);
+	vertical-align: bottom; */
+	/* horizontal-align: center; */
 	min-width: 417px;
 	/* position: 0px 0px 0px; */
+	/* visibility: collapse; */
+}
+.ContextMenuBodyPet {
+	visibility: visible;
+}
+.ContextMenuBodySkin {
+	visibility: visible;
+}
+.ContextMenuBodyParticle {
+	visibility: visible;
 }
 #BottomArrow {
 	background-image: url("s2r://panorama/images/tooltips/black_tooltip_arrow_bottom_png.vtex");

@@ -35,3 +35,9 @@ function GetAttributeIcon(Attribute) {
 			break;
 	}
 }
+GameUI.GetHUDSeed = function () {
+	return 1080 / Game.GetScreenHeight();
+}
+GameUI.CorrectPositionValue = function (value) {
+	return GameUI.GetHUDSeed() * value;
+}

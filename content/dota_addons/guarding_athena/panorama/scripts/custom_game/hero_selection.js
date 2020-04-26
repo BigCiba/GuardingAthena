@@ -46,13 +46,39 @@ function PreviewHero(HeroName) {
 	}
 	
 	// 预览模型
-	let HeroSceneList = $("#RightContent").FindChildrenWithClassTraverse("HeroScene");
-	for (let index = 0; index < HeroSceneList.length; index++) {
-		const HeroScene = HeroSceneList[index];
-		HeroScene.DeleteAsync(0);
-	}
+	$("#HeroScenePanel").RemoveAndDeleteChildren();
 	let HeroScenePanel = $.CreatePanelWithProperties("DOTAScenePanel", $("#HeroScenePanel"), HeroName, {unit: HeroName, light: "global_light", antialias: "true", drawbackground: "false", particleonly: "false", hittest: "false"});
 	HeroScenePanel.AddClass("HeroScene");
+}
+function ShowContextMenu(Type) {
+	switch (Type) {
+		case "pet":
+			let SettingPet = $("#SettingPet");
+			let Posistion = SettingPet.GetPositionWithinWindow();
+			$.Msg(Posistion)
+			$.Msg(SettingPet)
+			$("#ContextMenuBody").SetPositionInPixels(GameUI.CorrectPositionValue(Posistion.x), Posistion.y - $("#SettingPet").contentheight, 0);
+			// $("#ContextMenuBody").AddClass("ContextMenuBodyPet")
+			break;
+		
+		case "skin":
+			let SettingSkin = $("#SettingSkin");
+			let Posistio = SettingSkin.GetPositionWithinWindow();
+			$.Msg(Posistio)
+			$("#ContextMenuBody").SetPositionInPixels(750, Posistio.y - $("#SettingSkin").contentheight, 0);
+			// $("#ContextMenuBody").AddClass("ContextMenuBodyPet")
+			break;
+			
+		case "particle":
+			let SettingParticle = $("#SettingParticle");
+			let Posisti = SettingParticle.GetPositionWithinWindow();
+			$.Msg(Posisti)
+			$("#ContextMenuBody").SetPositionInPixels(1000, Posisti.y - $("#SettingParticle").contentheight, 0);
+			// $("#ContextMenuBody").AddClass("ContextMenuBodyPet")
+			break;
+		default:
+			break;
+	}
 }
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();

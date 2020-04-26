@@ -4,6 +4,7 @@
 		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
 		<include src="s2r://panorama/styles/hud/dota_hud_pregame.vcss_c" />
 		<include src="file://{resources}/styles/custom_game/hero_selection.css" />
+		<include src="file://{resources}/styles/custom_game/generic.css" />
 
 		<!-- <include src="file://{resources}/layout/custom_game/elements/store_item_image/store_item_image.css" /> -->
 	</styles>
@@ -36,8 +37,15 @@
 		</snippet>
 		<snippet name="HeroCard">
 			<DOTAHeroMovie class="HeroCard Unlock" >
-				<Image src="file://{images}/custom_game/lock.png" />
+				<Image class="full" src="file://{images}/custom_game/lock.png" />
 			</DOTAHeroMovie>
+		</snippet>
+		<snippet name="EconItem">
+			<Panel class="EconItem">
+				<Image class="EconItemImage" scaling="stretch-to-cover-preserve-aspect"/>
+				<Panel id="Equipped"/>
+				<Panel id="BottomLayer" class="Rare"/>								
+			</Panel>
 		</snippet>
 	</snippets>
 	<Panel class="heroSelectionRoot" hittest="false">
@@ -75,69 +83,33 @@
 			<Panel id="TimerContent">
 				<Label text="{d:time}" />
 			</Panel>
-			<Panel id="HeroScenePanel">
-				<!-- <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/> -->
-			</Panel>
 			<Panel class="HeroListAndSetting">
 				<!-- 英雄列表 -->
 				<Panel id="HeroListPanel">
 				</Panel>
+				<!-- 设置界面 -->
 				<Panel id="HeroSettingPanel">
-					<Panel id="SettingPet" class="SettingPanel">
+					<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('pet')">
 						<Panel id="MenuArrowContainer" >
 							<Panel id="MenuArrow" />
 						</Panel>
 						<Image class="SettingIcon" src="file://{images}/econ/loading_screens/duskie.png" />
 						<Label text="宠物" />
 					</Panel>
-					<Panel id="SettingSkin" class="SettingPanel">
+					<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('skin')">
 						<Panel id="MenuArrowContainer" >
 							<Panel id="MenuArrow" />
 						</Panel>
 						<Image class="SettingIcon" src="file://{images}/econ/items/rubick/arcana/magus_cypher.png" />
 						<Label text="款式" />
 					</Panel>
-					<Panel id="SettingParticle" class="SettingPanel">
+					<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('particle')">
 						<Panel id="MenuArrowContainer" >
 							<Panel id="MenuArrow" />
 						</Panel>
 						<Image class="SettingIcon" src="file://{images}/econ/items/nevermore/shadowfiend_demon_eater.png" />
 						<Label text="特效" />
 					</Panel>
-				</Panel>
-				<Panel id="ContextMenuBody">
-					<Panel id="Contents" class="ContextMenuHeroItemSlotPicker">
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/items/juggernaut/jugg_ti8/jugg_ti8_sword1.png" scaling="stretch-to-cover-preserve-aspect"/>
-							<Panel id="Equipped"/>
-							<Panel id="BottomLayer" class="Rare"/>								
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-						<Panel class="EconItem">
-							<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-						</Panel>
-					</Panel>
-					<Panel id="BottomArrow"/>
 				</Panel>
 			</Panel>
 			<Panel id="HeroInfoContent">
@@ -155,6 +127,44 @@
 					</Button>
 				</Panel>
 			</Panel>
+			<Panel id="HeroScenePanel" hittest="false">
+				<!-- <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/> -->
+			</Panel>
+		</Panel>
+		
+		<Panel id="ContextMenuBody" >
+			<Panel id="Contents" class="ContextMenuHeroItemSlotPicker">
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/items/juggernaut/jugg_ti8/jugg_ti8_sword1.png" scaling="stretch-to-cover-preserve-aspect"/>
+					<Panel id="Equipped"/>
+					<Panel id="BottomLayer" class="Rare"/>								
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+				<Panel class="EconItem">
+					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
+				</Panel>
+			</Panel>
+			<Panel id="BottomArrow"/>
 		</Panel>
 	</Panel>
 </root>
