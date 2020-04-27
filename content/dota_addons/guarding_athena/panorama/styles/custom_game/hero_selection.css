@@ -401,16 +401,21 @@
 	/* horizontal-align: center; */
 	min-width: 417px;
 	/* position: 0px 0px 0px; */
-	/* visibility: collapse; */
+	
 }
-.ContextMenuBodyPet {
-	visibility: visible;
+.ContextMenuBody {
+	visibility: collapse;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
 }
-.ContextMenuBodySkin {
+.ContextMenuBodyShow {
 	visibility: visible;
-}
-.ContextMenuBodyParticle {
-	visibility: visible;
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
 }
 #BottomArrow {
 	background-image: url("s2r://panorama/images/tooltips/black_tooltip_arrow_bottom_png.vtex");
@@ -451,7 +456,7 @@
 	transition-timing-function: ease-in-out;
 	tooltip-position: right left;
 }
-.EconItemImage {
+#EconItemImage {
 	height: 100%;
 	width: 100%;
 	horizontal-align: center;
@@ -461,7 +466,7 @@
 	transition-duration: 0.28s;
 	transition-timing-function: ease-in-out;
 }
-.EconItemImage:hover {
+#EconItemImage:hover {
 	brightness: 1.4;
 	wash-color: white;
 }
@@ -479,10 +484,19 @@
 	vertical-align: bottom;
 	width: 100%;
 	height: 3px;
-	background-color: rarity_color_immortal;
+	/* background-color: rarity_color_immortal; */
 }
-#BottomLayer .Rare{
-	background-color: #ffbb0f;
+.Common{
+	background-color: #ffffff;
+}
+.Rare{
+	background-color: blue;
+}
+.Epic{
+	background-color: purple;
+}
+.Artifact{
+	background-color: orange;
 }
 .ContextMenuHeroItemSlotPicker {
 	background-color: gradient( linear, 0% 100%, 0% 0%, from( #222 ), to( #333 ) );

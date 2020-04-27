@@ -1,4 +1,11 @@
 let GameModeSelectionEndTime = -1;
+let TestPetList = [
+	{name: "pet_01", quality: "Common", src: "file://{images}/econ/items/courier/pangolier_squire/pangolier_squire.png"},
+	{name: "pet_02", quality: "Rare", src: "file://{images}/econ/loading_screens/basim.png"},
+	{name: "pet_03", quality: "Epic", src: "file://{images}/econ/items/courier/nilbog/nilbog.png"},
+	{name: "pet_04", quality: "Artifact", src: "file://{images}/econ/loading_screens/duskie.png"},
+];
+let EquipItem = "pet_01";
 
 function Update() {
 	if (Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME)) {
@@ -26,6 +33,22 @@ function LoadPlayer(self) {
 	};
 
 }
+function LoadPet(self) {
+	self.BLoadLayoutSnippet("EconItem");
+	self.SetPet = function(PetData) {
+		self.FindChildTraverse("EconItemImage").SetImage(PetData.src);
+		self.FindChildTraverse("Equipped").SetHasClass("hide", PetData.name != EquipItem);
+		self.FindChildTraverse("BottomLayer").AddClass(PetData.quality);
+		self.SetPanelEvent("onactivate", function() {
+			EquipItem = this.id;
+			let Contents = $("#Contents").FindChildrenWithClassTraverse("EconItem");
+			for (let index = 0; index < Contents.length; index++) {
+				const EchoItem = Contents[index];
+				EchoItem.FindChildTraverse("Equipped").SetHasClass("hide", EchoItem.id != EquipItem);
+			}
+		}.bind(self));
+	}
+}
 function PreviewHero(HeroName) {
 	const HeroKV = GameUI.HeroesKv[HeroName];
 	// 预览英雄属性与名字
@@ -51,34 +74,20 @@ function PreviewHero(HeroName) {
 	HeroScenePanel.AddClass("HeroScene");
 }
 function ShowContextMenu(Type) {
-	switch (Type) {
-		case "pet":
-			let SettingPet = $("#SettingPet");
-			let Posistion = SettingPet.GetPositionWithinWindow();
-			$.Msg(Posistion)
-			$.Msg(SettingPet)
-			$("#ContextMenuBody").SetPositionInPixels(GameUI.CorrectPositionValue(Posistion.x), Posistion.y - $("#SettingPet").contentheight, 0);
-			// $("#ContextMenuBody").AddClass("ContextMenuBodyPet")
-			break;
-		
-		case "skin":
-			let SettingSkin = $("#SettingSkin");
-			let Posistio = SettingSkin.GetPositionWithinWindow();
-			$.Msg(Posistio)
-			$("#ContextMenuBody").SetPositionInPixels(750, Posistio.y - $("#SettingSkin").contentheight, 0);
-			// $("#ContextMenuBody").AddClass("ContextMenuBodyPet")
-			break;
-			
-		case "particle":
-			let SettingParticle = $("#SettingParticle");
-			let Posisti = SettingParticle.GetPositionWithinWindow();
-			$.Msg(Posisti)
-			$("#ContextMenuBody").SetPositionInPixels(1000, Posisti.y - $("#SettingParticle").contentheight, 0);
-			// $("#ContextMenuBody").AddClass("ContextMenuBodyPet")
-			break;
-		default:
-			break;
+	let SettingPanel = $("#" + Type);
+	let ContextMenuBody = $("#ContextMenuBody");
+	let Posistion = GetPanelCenter(SettingPanel);
+	let Width = ContextMenuBody.actuallayoutwidth / 2;
+	let Height = ContextMenuBody.actuallayoutheight + SettingPanel.actuallayoutheight / 2;
+	for (let index = 0; index < TestPetList.length; index++) {
+		const PetData = TestPetList[index];
+		let Panel = $("#Contents").FindChildTraverse(PetData.name);
+		Panel = ReloadPanel(Panel, "Panel", $("#Contents"), PetData.name);
+		LoadPet(Panel);
+		Panel.SetPet(PetData);
 	}
+	ContextMenuBody.SetPositionInPixels(Posistion.x - Width, Posistion.y - Height, 0);
+	ContextMenuBody.ToggleClass("ContextMenuBodyShow");
 }
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
@@ -127,4 +136,6 @@ function ShowContextMenu(Type) {
 		LoadPlayer(Panel);
 		Panel.SetPlayer(PlayerID);
 	}
+	// 默认预览
+	PreviewHero(Object.keys(GameUI.HeroesKv)[0]);
 })();

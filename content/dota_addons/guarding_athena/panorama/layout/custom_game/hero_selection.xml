@@ -42,9 +42,9 @@
 		</snippet>
 		<snippet name="EconItem">
 			<Panel class="EconItem">
-				<Image class="EconItemImage" scaling="stretch-to-cover-preserve-aspect"/>
+				<Image id="EconItemImage" scaling="stretch-to-cover-preserve-aspect"/>
 				<Panel id="Equipped"/>
-				<Panel id="BottomLayer" class="Rare"/>								
+				<Panel id="BottomLayer"/>								
 			</Panel>
 		</snippet>
 	</snippets>
@@ -89,21 +89,21 @@
 				</Panel>
 				<!-- 设置界面 -->
 				<Panel id="HeroSettingPanel">
-					<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('pet')">
+					<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('SettingPet')">
 						<Panel id="MenuArrowContainer" >
 							<Panel id="MenuArrow" />
 						</Panel>
 						<Image class="SettingIcon" src="file://{images}/econ/loading_screens/duskie.png" />
 						<Label text="宠物" />
 					</Panel>
-					<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('skin')">
+					<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('SettingSkin')">
 						<Panel id="MenuArrowContainer" >
 							<Panel id="MenuArrow" />
 						</Panel>
 						<Image class="SettingIcon" src="file://{images}/econ/items/rubick/arcana/magus_cypher.png" />
 						<Label text="款式" />
 					</Panel>
-					<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('particle')">
+					<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('SettingParticle')">
 						<Panel id="MenuArrowContainer" >
 							<Panel id="MenuArrow" />
 						</Panel>
@@ -132,37 +132,8 @@
 			</Panel>
 		</Panel>
 		
-		<Panel id="ContextMenuBody" >
+		<Panel id="ContextMenuBody" class="ContextMenuBody">
 			<Panel id="Contents" class="ContextMenuHeroItemSlotPicker">
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/items/juggernaut/jugg_ti8/jugg_ti8_sword1.png" scaling="stretch-to-cover-preserve-aspect"/>
-					<Panel id="Equipped"/>
-					<Panel id="BottomLayer" class="Rare"/>								
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
-				<Panel class="EconItem">
-					<Image class="EconItemImage" src="file://{images}/econ/loading_screens/duskie.png" scaling="stretch-to-cover-preserve-aspect"/>
-				</Panel>
 			</Panel>
 			<Panel id="BottomArrow"/>
 		</Panel>

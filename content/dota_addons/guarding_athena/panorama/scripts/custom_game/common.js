@@ -35,6 +35,14 @@ function GetAttributeIcon(Attribute) {
 			break;
 	}
 }
+function GetPanelCenter(Panel) {
+	let Position = GetPanelPosition(Panel);
+	return {x: Position.x + Panel.actuallayoutwidth / 2, y: Position.y + Panel.actuallayoutheight / 2}
+}
+function GetPanelPosition(Panel) {
+	let Position = Panel.GetPositionWithinWindow();
+	return {x: GameUI.CorrectPositionValue(Position.x), y: GameUI.CorrectPositionValue(Position.y)};
+}
 GameUI.GetHUDSeed = function () {
 	return 1080 / Game.GetScreenHeight();
 }
