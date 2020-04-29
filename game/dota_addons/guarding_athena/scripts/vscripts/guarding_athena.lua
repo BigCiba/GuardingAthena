@@ -313,6 +313,10 @@ function GuardingAthena:TestMode( cmdName, goldToDrop )
 	--print("[GuardingAthena] Test Mode")
 end
 
+function GuardingAthena:GetPlayerLevel(iScore)
+	return math.floor( iScore / PLAYER_XP_PER_LEVEL )
+end
+
 function SetQuest( playerID,luatitle,luacount,questcount,questtype )
 	if questcount == 1 then
 		--CustomUI:DynamicHud_Create(playerID,"QuestPanel","file://{resources}/layout/custom_game/quest.xml",nil)

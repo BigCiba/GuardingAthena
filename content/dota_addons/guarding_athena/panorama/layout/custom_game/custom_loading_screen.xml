@@ -5,5 +5,16 @@
 	<Panel>
 		<!-- loading的图片 png,psd都是可以的 -->
 		<Image id="ix" class="imageSize" src="file://{images}/custom_game/loading.png"/>
+		<Panel id="Precache" onload="$('#Precache').DeleteAsync(-1)" hittest="false" >
+			<Image class="Hidden" src="file://{images}/custom_game/particle/wing_01.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/skin/phantom_assassin_01.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/skin/rubick_01.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/skin/windrunner_01.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_01.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_02.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_03.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_04.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_05.png" hittest="false" />
+		</Panel>
 	</Panel>
 </root>

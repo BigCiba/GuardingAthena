@@ -1,11 +1,26 @@
 let GameModeSelectionEndTime = -1;
-let TestPetList = [
-	{name: "pet_01", quality: "Common", src: "file://{images}/econ/items/courier/pangolier_squire/pangolier_squire.png"},
-	{name: "pet_02", quality: "Rare", src: "file://{images}/econ/loading_screens/basim.png"},
-	{name: "pet_03", quality: "Epic", src: "file://{images}/econ/items/courier/nilbog/nilbog.png"},
-	{name: "pet_04", quality: "Artifact", src: "file://{images}/econ/loading_screens/duskie.png"},
-];
-let EquipItem = "pet_01";
+let TestList = {
+	"pet":{
+		"pet_01": {quality: "Common"},
+		"pet_02": {quality: "Common"},
+		"pet_03": {quality: "Epic"},
+		"pet_04": {quality: "Rare"},
+		"pet_05": {quality: "Rare"},
+	},
+	"skin": {
+		"rubick_01": {quality: "Artifact"},
+		"windrunner_01": {quality: "Artifact"},
+		"phantom_assassin_01": {quality: "Artifact"},
+	},
+	"particle": {
+		"wing_01": {quality: "Artifact"},
+	}
+};
+let EquipItem = {
+	"pet": "default",
+	"skin": "default",
+	"particle": "default",
+};
 
 function Update() {
 	if (Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME)) {
@@ -33,18 +48,20 @@ function LoadPlayer(self) {
 	};
 
 }
-function LoadPet(self) {
+function LoadItem(self) {
 	self.BLoadLayoutSnippet("EconItem");
-	self.SetPet = function(PetData) {
-		self.FindChildTraverse("EconItemImage").SetImage(PetData.src);
-		self.FindChildTraverse("Equipped").SetHasClass("hide", PetData.name != EquipItem);
-		self.FindChildTraverse("BottomLayer").AddClass(PetData.quality);
+	self.SetItem = function(ItemData) {
+		let LocalData = TestList[ItemData.Type][ItemData.ItemName];
+		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
+		self.FindChildTraverse("Equipped").SetHasClass("hide", ItemData.Equip == "0");
+		self.FindChildTraverse("BottomLayer").AddClass(LocalData.quality);
+		self.Type = ItemData.Type;
 		self.SetPanelEvent("onactivate", function() {
-			EquipItem = this.id;
+			EquipItem[this.Type] = this.id;
 			let Contents = $("#Contents").FindChildrenWithClassTraverse("EconItem");
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
-				EchoItem.FindChildTraverse("Equipped").SetHasClass("hide", EchoItem.id != EquipItem);
+				EchoItem.FindChildTraverse("Equipped").SetHasClass("hide", EchoItem.id != EquipItem[this.Type]);
 			}
 		}.bind(self));
 	}
@@ -73,18 +90,21 @@ function PreviewHero(HeroName) {
 	let HeroScenePanel = $.CreatePanelWithProperties("DOTAScenePanel", $("#HeroScenePanel"), HeroName, {unit: HeroName, light: "global_light", antialias: "true", drawbackground: "false", particleonly: "false", hittest: "false"});
 	HeroScenePanel.AddClass("HeroScene");
 }
-function ShowContextMenu(Type) {
-	let SettingPanel = $("#" + Type);
+function ShowContextMenu(ID, Type) {
+	let LocalPlayerID = Players.GetLocalPlayer();
+	let SettingPanel = $("#" + ID);
 	let ContextMenuBody = $("#ContextMenuBody");
 	let Posistion = GetPanelCenter(SettingPanel);
 	let Width = ContextMenuBody.actuallayoutwidth / 2;
 	let Height = ContextMenuBody.actuallayoutheight + SettingPanel.actuallayoutheight / 2;
-	for (let index = 0; index < TestPetList.length; index++) {
-		const PetData = TestPetList[index];
-		let Panel = $("#Contents").FindChildTraverse(PetData.name);
-		Panel = ReloadPanel(Panel, "Panel", $("#Contents"), PetData.name);
-		LoadPet(Panel);
-		Panel.SetPet(PetData);
+	let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
+	const ItemList = Data[Type];
+	for (const key in ItemList) {
+		const ItemData = ItemList[key];
+		let Panel = $("#Contents").FindChildTraverse(ItemData.ItemName);
+		Panel = ReloadPanel(Panel, "Panel", $("#Contents"), ItemData.ItemName);
+		LoadItem(Panel);
+		Panel.SetItem(ItemData);
 	}
 	ContextMenuBody.SetPositionInPixels(Posistion.x - Width, Posistion.y - Height, 0);
 	ContextMenuBody.ToggleClass("ContextMenuBodyShow");

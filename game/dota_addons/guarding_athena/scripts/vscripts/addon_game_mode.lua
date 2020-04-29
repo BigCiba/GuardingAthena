@@ -1,4 +1,4 @@
--- _G.Service = require("service/init")
+_G.Service = require("service/init")
 _G.json = require("game/dkjson")
 
 _G.old_debug_traceback = old_debug_traceback or debug.traceback
@@ -270,7 +270,7 @@ function Initialize(bReload)
 		Mechanics = "mechanics/main",
 	}, bReload)
 
-	-- Service:init(bReload)
+	Service:init(bReload)
 end
 function Reload()
 	local state = GameRules:State_Get()
