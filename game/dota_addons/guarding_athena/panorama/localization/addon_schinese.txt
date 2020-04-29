@@ -142,5 +142,6 @@
 	"Other_ButtonCategory"			"其他"
 	"LaneCreeps_Button"				"取消刷兵"
 	"ReloadScript_Button"			"重载脚本"
+	"HeroSelection_Waiting"			"等待服务器响应"
 }
 

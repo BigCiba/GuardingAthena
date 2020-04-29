@@ -91,7 +91,7 @@ function public:init(bReload)
 
 	GameEvent("game_rules_state_change", Dynamic_Wrap(public, "OnGameRulesStateChange"), public)
 
-	-- CustomUIEvent("ChangeSkin", Dynamic_Wrap(public, "OnChangeSkin"), public)
+	CustomUIEvent("ToggleItemEquipState", Dynamic_Wrap(public, "OnToggleItemEquipState"), public)
 
 	if IsInToolsMode() then
 		-- CustomUIEvent("DebugRefreshData", Dynamic_Wrap(public, "DebugRefreshData"), public)
@@ -144,22 +144,53 @@ function public:RequestPlayerData(iPlayerID)
 		if response.StatusCode == 200 then
 			local hBody = json.decode(response.Body)
 			print("RequestPlayerData:")
-			DeepPrintTable(hBody)
+			-- DeepPrintTable(hBody)
 			if hBody ~= nil then
 				if self.tPlayerServiceData[iPlayerID] == nil then
 					self.tPlayerServiceData[iPlayerID] = {}
 				end
+				-- 是否有装备
+				local tEquipped = {}
 				for i, v in ipairs(hBody) do
 					if self.tPlayerServiceData[iPlayerID][v.Type] == nil then
 						self.tPlayerServiceData[iPlayerID][v.Type] = {}
+						tEquipped[v.Type] = false
 					end
-					table.insert(self.tPlayerServiceData[iPlayerID][v.Type], {
-						ItemName = v.ItemName,
-						Equip = v.Equip,
-						Expiration = v.Expiration,
-						Type = v.Type
-					})
+					-- 对皮肤进行英雄分类
+					if v.Type == "skin" then
+						local sHeroName = KeyValues.PlayerItemsKV[v.ItemName].Hero
+						if self.tPlayerServiceData[iPlayerID][v.Type][sHeroName] == nil then
+							self.tPlayerServiceData[iPlayerID][v.Type][sHeroName] = {}
+							tEquipped[sHeroName] = false
+						end
+						table.insert(self.tPlayerServiceData[iPlayerID][v.Type][sHeroName], {
+							ItemName = v.ItemName,
+							Equip = v.Equip,
+							Expiration = v.Expiration,
+							Type = v.Type
+						})
+						if tEquipped[sHeroName] == false and v.Equip == "1" then
+							tEquipped[sHeroName] = true
+						end
+					else
+						table.insert(self.tPlayerServiceData[iPlayerID][v.Type], {
+							ItemName = v.ItemName,
+							Equip = v.Equip,
+							Expiration = v.Expiration,
+							Type = v.Type
+						})
+						if tEquipped[v.Type] == false and v.Equip == "1" then
+							tEquipped[v.Type] = true
+						end
+					end
 				end
+				-- 添加默认物品
+				for sHeroName, tSkinList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
+					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], {ItemName = "default_no_item", Equip = tEquipped[sHeroName] and 0 or 1, Expiration = "9999-12-31", Type = "skin"})
+				end
+				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "default_no_item", Equip = tEquipped.pet and 0 or 1, Expiration = "9999-12-31", Type = "pet"})
+				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], {ItemName = "default_no_item", Equip = tEquipped.particle and 0 or 1, Expiration = "9999-12-31", Type = "particle"})
+				-- 分数等级
 				self.tPlayerServiceData[iPlayerID].Score = hBody[1].Score
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
 				
@@ -211,6 +242,32 @@ end
 --更新所有有关的NetTable
 function public:UpdateNetTables()
 	CustomNetTables:SetTableValue("service", "player_data", self.tPlayerServiceData)
+end
+
+function public:OnToggleItemEquipState(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	local sItemName = events.ItemName
+	local sHeroName = events.HeroName
+	local sType = events.Type
+	if sType == "skin" then
+		-- local sHeroName = sItemName == KeyValues.PlayerItemsKV[sItemName].Hero
+		for i, tItemData in pairs(self.tPlayerServiceData[iPlayerID][sType][sHeroName]) do
+			if tItemData.ItemName == sItemName then
+				tItemData.Equip = 1
+			else
+				tItemData.Equip = 0
+			end
+		end
+	else
+		for i, tItemData in ipairs(self.tPlayerServiceData[iPlayerID][sType]) do
+			if tItemData.ItemName == sItemName then
+				tItemData.Equip = 1
+			else
+				tItemData.Equip = 0
+			end
+		end
+	end
+	self:UpdateNetTables()
 end
 
 return public

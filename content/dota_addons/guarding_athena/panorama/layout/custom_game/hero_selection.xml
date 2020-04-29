@@ -50,92 +50,104 @@
 	</snippets>
 	<Panel class="heroSelectionRoot" hittest="false">
 		<DOTAScenePanel hittest="false" class="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
-		<Panel id="LeftContent">
-			<!-- 玩家列表 -->
-			<Panel id="PlayerContent">
-			</Panel>
-			<!-- 难度选择 -->
-			<Panel id="DifficlutyContent">
-				<RadioButton class="DifficultyPanel Easy" group="difficluty">
-					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
-					<Label text="简单" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty">
-					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-					<Label text="普通" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Hard" group="difficluty">
-					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
-					<Label text="困难" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Nightmare" group="difficluty">
-					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
-					<Label text="噩梦" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Hell" group="difficluty">
-					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
-					<Label text="地狱" />
-				</RadioButton>
-			</Panel>
+		<!-- 载入等待 -->
+		<Panel id="Waiting">
+			<Panel id="WaitingSpinner" hittest="false" />
+			<Label id="WaitingText" text="#HeroSelection_Waiting" hittest="false" />
 		</Panel>
-		<Panel id="RightContent">
-			<!-- 倒计时 -->
-			<Panel id="TimerContent">
-				<Label text="{d:time}" />
-			</Panel>
-			<Panel class="HeroListAndSetting">
-				<!-- 英雄列表 -->
-				<Panel id="HeroListPanel">
+		<Panel id="SelectPanel">
+			<Panel id="LeftContent">
+				<!-- 玩家列表 -->
+				<Panel id="PlayerContent">
 				</Panel>
-				<!-- 设置界面 -->
-				<Panel id="HeroSettingPanel">
-					<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('SettingPet','pet')">
-						<Panel id="MenuArrowContainer" >
-							<Panel id="MenuArrow" />
-						</Panel>
-						<Image class="SettingIcon" src="file://{images}/custom_game/pet/pet_01.png" />
-						<Label text="宠物" />
-					</Panel>
-					<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('SettingSkin','skin')">
-						<Panel id="MenuArrowContainer" >
-							<Panel id="MenuArrow" />
-						</Panel>
-						<Image class="SettingIcon" src="file://{images}/custom_game/skin/rubick_01.png" />
-						<Label text="款式" />
-					</Panel>
-					<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('SettingParticle','particle')">
-						<Panel id="MenuArrowContainer" >
-							<Panel id="MenuArrow" />
-						</Panel>
-						<Image class="SettingIcon" src="file://{images}/custom_game/skin/windrunner_01.png" />
-						<Label text="特效" />
-					</Panel>
+				<!-- 难度选择 -->
+				<Panel id="DifficlutyContent">
+					<RadioButton class="DifficultyPanel Easy" group="difficluty">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
+						<Label text="简单" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
+						<Label text="普通" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Hard" group="difficluty">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
+						<Label text="困难" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Nightmare" group="difficluty">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
+						<Label text="噩梦" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Hell" group="difficluty">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
+						<Label text="地狱" />
+					</RadioButton>
 				</Panel>
 			</Panel>
-			<Panel id="HeroInfoContent">
-				<Panel id="HeroDataPanel">
-					<!-- 英雄属性与名字 -->
-					<Panel id="HeroNamePanel">
-						<Image id="PrimaryAttributeImage" src="s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex" />
-						<Label text="{s:heroname}" />
+			<Panel id="RightContent">
+				<!-- 倒计时 -->
+				<Panel id="TimerContent">
+					<Label text="{d:time}" />
+				</Panel>
+				<Panel class="HeroListAndSetting">
+					<!-- 英雄列表 -->
+					<Panel id="HeroListPanel">
 					</Panel>
-					<!-- 技能面板 -->
-					<Panel id="HeroAbilityPanel">
+					<!-- 设置界面 -->
+					<Panel id="HeroSettingPanel">
+						<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('SettingPet','pet')">
+							<Panel id="MenuArrowContainer" >
+								<Panel id="MenuArrow" />
+							</Panel>
+							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
+							<Label text="宠物" />
+						</Panel>
+						<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('SettingSkin','skin')">
+							<Panel id="MenuArrowContainer" >
+								<Panel id="MenuArrow" />
+							</Panel>
+							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
+							<Label text="款式" />
+						</Panel>
+						<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('SettingParticle','particle')">
+							<Panel id="MenuArrowContainer" >
+								<Panel id="MenuArrow" />
+							</Panel>
+							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
+							<Label text="特效" />
+						</Panel>
 					</Panel>
-					<Button id="HeroSelectPanel">
-						<Label text="选择英雄" />
-					</Button>
+				</Panel>
+				<Panel id="HeroInfoContent">
+					<Panel id="HeroDataPanel">
+						<!-- 英雄属性与名字 -->
+						<Panel id="HeroNamePanel">
+							<Image id="PrimaryAttributeImage" src="s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex" />
+							<Label text="{s:heroname}" />
+						</Panel>
+						<!-- 技能面板 -->
+						<Panel id="HeroAbilityPanel">
+						</Panel>
+						<Button id="HeroSelectPanel">
+							<Label text="选择英雄" />
+						</Button>
+					</Panel>
+				</Panel>
+				<Panel id="HeroScenePanel" hittest="false">
+					<!-- <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/> -->
 				</Panel>
 			</Panel>
-			<Panel id="HeroScenePanel" hittest="false">
-				<!-- <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/> -->
+			
+			<Panel id="ContextMenuBody" class="ContextMenuBody">
+				<Panel id="Contents" class="ContextMenuHeroItemSlotPicker">
+					<Panel class="EconItem">
+						<Image id="EconItemImage" scaling="stretch-to-cover-preserve-aspect"/>
+						<Panel id="Equipped"/>
+						<Panel id="BottomLayer"/>								
+					</Panel>
+				</Panel>
+				<Panel id="BottomArrow"/>
 			</Panel>
-		</Panel>
-		
-		<Panel id="ContextMenuBody" class="ContextMenuBody">
-			<Panel id="Contents" class="ContextMenuHeroItemSlotPicker">
-			</Panel>
-			<Panel id="BottomArrow"/>
 		</Panel>
 	</Panel>
 </root>

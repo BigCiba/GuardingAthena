@@ -9,12 +9,14 @@ if IsServer() then
 	KeyValues.AbilitiesKv = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 	KeyValues.ItemsKv = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 	KeyValues.DropsKv = LoadKeyValues("scripts/kv/item_drops.kv")
+	KeyValues.PlayerItemsKV = LoadKeyValues("scripts/kv/player_items.kv")
 	-- KeyValues.ItemsKv = TableReplace(TableOverride(LoadKeyValues("scripts/npc/items.txt"), LoadKeyValues("scripts/npc/npc_items_custom.txt")), LoadKeyValues("scripts/npc/npc_abilities_override.txt"))
 
 	require("generate_json")
 
 	if IsInToolsMode() then
 		KvToJson("HeroesKv", KeyValues.HeroesKv)
+		KvToJson("PlayerItemsKV", KeyValues.PlayerItemsKV)
 		-- KvToJson("AbilitiesKv", KeyValues.AbilitiesKv)
 	-- 	KvToJson("AssetModifiersKv", KeyValues.AssetModifiersKv)
 	-- 	KvToJson("BannerGoodsKv", KeyValues.BannerGoodsKv)
