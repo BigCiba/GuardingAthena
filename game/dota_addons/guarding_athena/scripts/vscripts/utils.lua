@@ -29,6 +29,22 @@ function string.gsplit(str)
 	end
 end
 
+--获取表中最大值
+function table.max(t)
+	local key = nil
+	local value = nil
+	for k, v in pairs(t) do
+		if value == nil or value < v then
+			value = v
+			key = k
+		end
+	end
+	if value == nil then
+		return false
+	end
+	return key, value
+end
+
 function IsLeapYear(iYear)
 	return (iYear%4 == 0 and iYear%100 ~= 0) or (iYear%400 == 0)
 end
@@ -590,4 +606,8 @@ function HashtableCount()
 		n = n + 1
 	end
 	return n
+end
+function GetRespawnPosition()
+	local tEnt = Entities:FindAllByClassname("info_player_start_goodguys")
+	return tEnt[1]:GetAbsOrigin()
 end

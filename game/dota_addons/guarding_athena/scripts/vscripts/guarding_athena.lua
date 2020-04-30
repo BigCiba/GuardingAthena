@@ -178,102 +178,42 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 	if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 			self.tPlayerSelectionInfo[iPlayerID] = {
-				player_selected_hero = "",
+				player_selected_hero = TableFindKey(KeyValues.HeroesKv, RandomValue(KeyValues.HeroesKv)),
 				player_selected_difficulty = nil
 			}
 		end)
 	end
 	--策略阶段
 	if newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
-		local tVoteList = {0,1,3,2,0}
+		local tVoteList = {0,0,0,0,0}
 		-- 选择英雄
 		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 			local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 			if IsValid(hPlayer) then
-				hPlayer:SetSelectedHero(self.tPlayerSelectionInfo[iPlayerID].player_selected_hero or "npc_dota_hero_omniknight")
+				hPlayer:SetSelectedHero(self.tPlayerSelectionInfo[iPlayerID].player_selected_hero)
 				-- 计算难度
 				local iDifficulty = self.tPlayerSelectionInfo[iPlayerID].player_selected_difficulty
 				if iDifficulty then
 					tVoteList[tonumber(iDifficulty)] = tVoteList[tonumber(iDifficulty)] and tVoteList[tonumber(iDifficulty)] + 1 or 1
 				end
+				CustomNetTables:SetTableValue( "scoreboard", tostring(iPlayerID), { lv=1, str=0, agi=0, int=0, wavedef=0, damagesave=0, goldsave=0 } )
+				CustomNetTables:SetTableValue( "shop", tostring(iPlayerID), { def_point=0, boss_point=0, practice_point=0})
+				Service:RequestUpDataEquip(iPlayerID)
 			end
 		end)
-		local mn=nil;
-		for k, v in pairs(tVoteList) do
-			if(mn == nil) then
-				mn = v
-			end
-			if mn < v then
-				mn = v
-			end
-		end
-		PrintTable(tVoteList)
-		print(tVoteList[1])
+		local iDifficulty,_ = table.max(tVoteList)
+		CustomGameEventManager:Send_ServerToAllClients("difficulty", {difficulty=iDifficulty})
+		GameRules:SetCustomGameDifficulty(iDifficulty)
+		GameRules:SetGoldPerTick(DIFFICULTY_GOLD_TICK[iDifficulty])
+		GameRules:GetGameModeEntity():SetFixedRespawnTime(DIFFICULTY_RESPAWN_TIME[iDifficulty])
+		GameRules:SetStartingGold(DIFFICULTY_INIT_GOLD[iDifficulty])
+		Spawner:Init()
+		updateScore(function ()
+		end)
 	end
 
 	--游戏在准备阶段
 	if newState == DOTA_GAMERULES_STATE_PRE_GAME then
-		
-		--难度计算
-		Timers:CreateTimer(HERO_SELECTION_TIME, function()
-			self.GameStartTime = GameRules:GetGameTime()
-			-- 难度投票计算
-			local difficulty_count = {0,0,0,0,0}
-			for playerID,difficulty_select in pairs(self.SelectDifficulty) do
-				difficulty_count[difficulty_select] = difficulty_count[difficulty_select] + 1
-			end
-			local index = 1             -- maximum index
-		    local max = difficulty_count[index]          -- maximum value
-		    for i,value in ipairs(difficulty_count) do
-		       if value >= max then
-		           index = i
-		           max = value
-		       end
-		    end
-		    if max == 0 then
-		    	index = 2
-		    end
-			local select_difficulty = index
-			CustomGameEventManager:Send_ServerToAllClients("difficulty", {difficulty=select_difficulty})
-			GameRules:SetCustomGameDifficulty(select_difficulty)
-			if GameRules:GetDifficulty() == 1 then
-			    GameRules:SetGoldPerTick(9)
-			    GameMode:SetFixedRespawnTime(5)
-			    for i=1,PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS ) do
-			    	PlayerResource:ModifyGold(i - 1 ,300, true, 0)
-			    end
-			elseif GameRules:GetDifficulty() == 2 then
-			    GameRules:SetGoldPerTick(6)
-			    GameMode:SetFixedRespawnTime(10)
-			    for i=1,PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS ) do
-			    	PlayerResource:ModifyGold(i - 1 ,200, true, 0)
-			    end
-			elseif GameRules:GetDifficulty() == 3 then
-			    GameRules:SetGoldPerTick(3)	
-			    GameMode:SetFixedRespawnTime(15)
-			    for i=1,PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS ) do
-			    	PlayerResource:ModifyGold(i - 1 ,100, true, 0)
-			    end
-			elseif GameRules:GetDifficulty() == 4 then
-			    GameRules:SetGoldPerTick(0)
-			    GameMode:SetFixedRespawnTime(20)
-			elseif GameRules:GetDifficulty() == 5 then
-			    GameRules:SetGoldPerTick(0)
-			    GameMode:SetFixedRespawnTime(25)
-			end
-			--初始化刷怪
-			Spawner:Init()
-			updateScore(function ()
-			end)
-			
-		end)
-		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
-		self.player_count = Players
-		for i=1,Players do
-			local playerid = i - 1 
-			CustomNetTables:SetTableValue( "scoreboard", tostring(i-1), { lv=1, str=0, agi=0, int=0, wavedef=0, damagesave=0, goldsave=0 } )
-			CustomNetTables:SetTableValue( "shop", tostring(i-1), { def_point=0, boss_point=0, practice_point=0})
-		end
 	end
 
 	if newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
@@ -365,7 +305,6 @@ function public:DifficultySelectionEvent(eventSourceIndex, events)
 	local iDifficulty = events.Difficulty
 	local tPlayerInfo = self.tPlayerSelectionInfo[iPlayerID]
 	tPlayerInfo.player_selected_difficulty = iDifficulty
-	print(iDifficulty)
 end
 function public:EachPlayer(iTeamNumber, func)
 	if type(iTeamNumber) == "function" then

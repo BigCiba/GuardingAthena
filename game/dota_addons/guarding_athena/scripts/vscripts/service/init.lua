@@ -144,7 +144,7 @@ function public:RequestPlayerData(iPlayerID)
 		if response.StatusCode == 200 then
 			local hBody = json.decode(response.Body)
 			print("RequestPlayerData:")
-			-- DeepPrintTable(hBody)
+			DeepPrintTable(hBody)
 			if hBody ~= nil then
 				if self.tPlayerServiceData[iPlayerID] == nil then
 					self.tPlayerServiceData[iPlayerID] = {}
@@ -195,7 +195,7 @@ function public:RequestPlayerData(iPlayerID)
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
 				self.tPlayerServiceData[iPlayerID].Hero = ""
 				
-				DeepPrintTable(self.tPlayerServiceData[iPlayerID])
+				-- DeepPrintTable(self.tPlayerServiceData[iPlayerID])
 				-- for key, value in pairs(hBody) do
 				-- 	if  then
 						
@@ -205,6 +205,40 @@ function public:RequestPlayerData(iPlayerID)
 				self:UpdateNetTables()
 			end
 		end
+	end)
+end
+-- 更新玩家装备状态
+function public:RequestUpDataEquip(iPlayerID)
+	local Steamid = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	local Address = "http://bigciba.applinzi.com/dota2api/Inventory.php"
+	local handle = CreateHTTPRequestScriptVM("POST",Address)
+	handle:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=uft-8")
+	local ItemList = {}
+	-- DeepPrintTable(self.tPlayerServiceData[iPlayerID])
+	for sType, tItemList in pairs(self.tPlayerServiceData[iPlayerID]) do
+		if sType == "particle" or sType == "pet" then
+			for _, tItemData in ipairs(tItemList) do
+				if tItemData.ItemName ~= "default_no_item" then
+					table.insert(ItemList, {ItemName = tItemData.ItemName, Equip = tItemData.Equip})
+				end
+			end
+		end
+	end
+	for sHeroName, tItemList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
+		for _, tItemData in ipairs(tItemList) do
+			if tItemData.ItemName ~= "default_no_item" then
+				table.insert(ItemList, {ItemName = tItemData.ItemName, Equip = tItemData.Equip})
+			end
+		end
+	end
+	handle:SetHTTPRequestRawPostBody("application/json", json.encode({
+		action = "ToggleEquipState",
+		SteamID = Steamid,
+		ItemList = ItemList
+	}))
+	handle:SetHTTPRequestAbsoluteTimeoutMS(REQUEST_TIME_OUT * 1000)
+	handle:Send(function(response) 
+
 	end)
 end
 
@@ -238,6 +272,18 @@ end
 -- 是否和服务器通讯成功
 function public:IsChecked()
 	return self.bServerChecked
+end
+
+-- 获取某个类型的已装备物品
+function public:GetEquippedItem(iPlayerID, sType)
+	local tData = {}
+	local tPlayerServiceData = sType == "skin" and self.tPlayerServiceData[iPlayerID][sType][GuardingAthena.tPlayerSelectionInfo[iPlayerID].player_selected_hero] or self.tPlayerServiceData[iPlayerID][sType]
+	for _, tItemData in ipairs(tPlayerServiceData) do
+		if tonumber(tItemData.Equip) == 1 then
+			table.insert(tData, tItemData)
+		end
+	end
+	return tData
 end
 
 --更新所有有关的NetTable

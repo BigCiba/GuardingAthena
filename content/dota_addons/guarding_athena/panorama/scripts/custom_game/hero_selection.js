@@ -1,29 +1,4 @@
 let GameModeSelectionEndTime = -1;
-let TestList = {
-	"pet":{
-		"default_no_item": {quality: "Common"},
-		"pet_01": {quality: "Common"},
-		"pet_02": {quality: "Common"},
-		"pet_03": {quality: "Epic"},
-		"pet_04": {quality: "Rare"},
-		"pet_05": {quality: "Rare"},
-	},
-	"skin": {
-		"default_no_item": {quality: "Common"},
-		"rubick_01": {quality: "Artifact"},
-		"windrunner_01": {quality: "Artifact"},
-		"phantom_assassin_01": {quality: "Artifact"},
-	},
-	"particle": {
-		"default_no_item": {quality: "Common"},
-		"wing_01": {quality: "Artifact"},
-	}
-};
-let EquipItem = {
-	"pet": "default",
-	"skin": "default",
-	"particle": "default",
-};
 let PreviewHeroName = "";
 let HeroLock = false;
 // 默认物品
@@ -78,11 +53,10 @@ function LoadItem(self) {
 		self.Panel = Panel;
 		self.Image = "file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png";
 		self.SetPanelEvent("onactivate", function() {
-			EquipItem[this.Type] = this.id;
 			let Contents = $("#Contents").FindChildrenWithClassTraverse("EconItem");
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
-				EchoItem.FindChildTraverse("Equipped").SetHasClass("hide", EchoItem.id != EquipItem[this.Type]);
+				EchoItem.FindChildTraverse("Equipped").SetHasClass("hide", EchoItem.id != this.id);
 			}
 			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
 				ItemName: this.id,

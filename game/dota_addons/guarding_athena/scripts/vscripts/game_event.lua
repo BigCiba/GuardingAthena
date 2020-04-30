@@ -393,148 +393,77 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	--print ('[GuardingAthena] OnPlayerPickHero')
 	--PrintTable(keys)
 	local heroEntity = EntIndexToHScript(keys.heroindex)
-	if GuardingAthena.SelectedHeroName[heroEntity:GetPlayerID()] == nil then
-		--EntIndexToHScript(keys.heroindex):SetModelScale(0.01)
-		-- vip
-		local count = 0
-		local player = heroEntity:GetPlayerOwner()
-		if player == nil then
-			return
-		end
-		local playerID = heroEntity:GetPlayerID()
-		Timers:CreateTimer(function ( )
-			if player.ServerInfo then
-				if player.ServerInfo.vip == "1" then
-					player.gold_gift = true
-					player.potion_gift = true
-					CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
-					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
-				end
-				if player.ServerInfo.sf == "1" then
-					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_nevermore"} )
-				end
-				if player.ServerInfo.ta == "1" then
-					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_templar_assassin"} )
-				end
-				if player.ServerInfo.spe == "1" then
-					CustomGameEventManager:Send_ServerToPlayer( player, "unlock", {heroName="npc_dota_hero_spectre"} )
-				end
-				if player.ServerInfo.gold == "1" then
-					player.gold_gift = true
-				end
-				if player.ServerInfo.potion == "1" then
-					player.potion_gift = true
-				end
-			else
-				if count < 300 then
-					count = count + 1
-					return 1
-				end
-			end
-		end)
-		--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
-		req:Send(function(result)
-			local vipTable = JSON:decode(result.Body)
-			local heroEntity = EntIndexToHScript(keys.heroindex)
-			local player = heroEntity:GetPlayerOwner()
-			local playerID = heroEntity:GetPlayerID()
-			for k,v in pairs(vipTable) do
-				if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
-					player.gold_gift = true
-					player.potion_gift = true
-					CustomGameEventManager:Send_ServerToPlayer( player, "vip", {playerid=playerID} )
-				end
-			end
-		end)]]
+	if keys.player == -1 then
 		return
-	else
-		if keys.player == -1 then
-			return
+	end
+	
+	local player = heroEntity:GetPlayerOwner()
+	local playerID = heroEntity:GetPlayerID()
+	HeroState:InitHero(heroEntity)
+	-- 垃圾v社
+	local tpScroll = heroEntity:GetItemInSlot(15)
+	if tpScroll then
+		if tpScroll:GetAbilityName() == "item_tpscroll" then
+			heroEntity:RemoveItem(tpScroll)
 		end
-		
-		local player = heroEntity:GetPlayerOwner()
-		local playerID = heroEntity:GetPlayerID()
-		HeroState:InitHero(heroEntity)
-		heroEntity:GameTimer(1, function()
-			heroEntity.pet = NewPet("pet_0"..RandomInt(1, 5), heroEntity)
-		end)
-		--Attributes:ModifyBonuses(heroEntity)
-		-- 垃圾v社
-		local tpScroll = heroEntity:GetItemInSlot(15)
-		if tpScroll then
-			if tpScroll:GetAbilityName() == "item_tpscroll" then
-				heroEntity:RemoveItem(tpScroll)
-			end
+	end
+	local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS )
+	courier.bag = {}
+	courier:SetOwner(heroEntity:GetPlayerOwner())
+	courier:SetControllableByPlayer(heroEntity:GetPlayerID(),true)
+	courier.owner = heroEntity:GetPlayerOwner()
+	courier.currentHero = heroEntity
+	heroEntity.courier = courier
+	self.creatCourier = self.creatCourier + 1
+
+	-- DeepPrintTable(Service.tPlayerServiceData[playerID])
+	local tGamePlayData = Service:GetEquippedItem(playerID, "gameplay")
+	local tParticleData = Service:GetEquippedItem(playerID, "particle")
+	local tSkinData = Service:GetEquippedItem(playerID, "skin")
+	local tPetData = Service:GetEquippedItem(playerID, "pet")
+	-- 游戏内容相关
+	for i, tItemData in ipairs(tGamePlayData) do
+		if tItemData.ItemName == "potion" then	-- 药水礼包
+			local clarity = CreateItem("item_clarity1", courier, courier)
+			local salve = CreateItem("item_salve1", courier, courier)
+			courier:AddItem(clarity)
+			courier:AddItem(salve)
+			clarity:SetCurrentCharges(30)
+			salve:SetCurrentCharges(30)
 		end
-		-- 金色特效
-		if player.gold_gift then
-			if GuardingAthena.ToggleGold[playerID] == 1 then
-				heroEntity.gift = true
-			end
-			if GuardingAthena.ToggleFly[playerID] == 1 then
-				if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
-					CreateParticle( "particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
-				else
-					local particle = CreateParticle( "particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
-					--ParticleManager:SetParticleControlEnt(particle, 0, heroEntity, PATTACH_POINT_FOLLOW, "attach_hitloc", heroEntity:GetAbsOrigin(), true)
-				end
-			end
-		end
-		-- vip
-		--[[local req = CreateHTTPRequestScriptVM("GET", "http://q-w-q.com/haha2.php" )
-		req:Send(function(result)
-			local vipTable = JSON:decode(result.Body)
-			--PrintTable(vipTable)
-			for k,v in pairs(vipTable) do
-				if tonumber(v) == PlayerResource:GetSteamAccountID(playerID) then
-					CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
-				end
-			end
-		end)]]
-		local playerCount = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
-		if self.creatCourier < playerCount then
-			local heroEntity = EntIndexToHScript(keys.heroindex)
-			for i=16,23 do
-				local ability = heroEntity:GetAbilityByIndex(i)
-				if ability then
-					ability:SetLevel(1)
-				end
-			end
-			PrecacheUnitByNameAsync("ji",function()
-				local courier = CreateUnitByName("ji", heroEntity:GetAbsOrigin(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS )
-				courier.bag = {}
-				courier:SetOwner(heroEntity:GetPlayerOwner())
-				courier:SetControllableByPlayer(heroEntity:GetPlayerID(),true)
-				courier.owner = heroEntity:GetPlayerOwner()
-				courier.currentHero = heroEntity
-				heroEntity.courier = courier
-				self.creatCourier = self.creatCourier + 1
-				-- 药水礼包
-				if player.potion_gift then
-					if not IsFullSolt(courier,6,true) then
-						local clarity = CreateItem("item_clarity1", courier, courier)
-						local salve = CreateItem("item_salve1", courier, courier)
-						courier:AddItem(clarity)
-						courier:AddItem(salve)
-						clarity:SetCurrentCharges(30)
-						salve:SetCurrentCharges(30)
-					end
-				end
-			end)
-		end
-		-- 设定通关积分
-		local count = 0
-		Timers:CreateTimer(function ()
-			if player.ServerInfo then
-				heroEntity.boss_point = player.ServerInfo.score
+	end
+	-- 特效
+	for i, tItemData in ipairs(tParticleData) do
+		if tItemData.ItemName == "wing_01" then	-- 金色翅膀
+			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
+				local iParticleID = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
 			else
-				if count < 300 then
-					count = count + 1
-					return 1
-				end
+				local particle = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
 			end
+		end
+	end
+	-- 皮肤
+	for i, tItemData in ipairs(tSkinData) do
+		heroEntity.gift = true	--待完善
+	end
+	-- 宠物
+	for i, tItemData in ipairs(tPetData) do
+		heroEntity:GameTimer(1, function()
+			heroEntity.pet = NewPet(tItemData.ItemName, heroEntity)
 		end)
 	end
+	-- 设定通关积分
+	local count = 0
+	Timers:CreateTimer(function ()
+		if player.ServerInfo then
+			heroEntity.boss_point = player.ServerInfo.score
+		else
+			if count < 300 then
+				count = count + 1
+				return 1
+			end
+		end
+	end)
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)
