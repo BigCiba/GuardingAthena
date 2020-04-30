@@ -195,13 +195,6 @@ function public:RequestPlayerData(iPlayerID)
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
 				self.tPlayerServiceData[iPlayerID].Hero = ""
 				
-				-- DeepPrintTable(self.tPlayerServiceData[iPlayerID])
-				-- for key, value in pairs(hBody) do
-				-- 	if  then
-						
-				-- 	end
-				-- end
-				-- self.tPlayerServiceData[iPlayerID].star_num = tonumber(hBody.star_num)
 				self:UpdateNetTables()
 			end
 		end
