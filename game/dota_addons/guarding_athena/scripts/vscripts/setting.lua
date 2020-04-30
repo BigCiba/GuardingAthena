@@ -99,7 +99,10 @@ function public:init(bReload)
 	CustomNetTables:SetTableValue( "difficulty", "setting", {hero_selection_time = HERO_SELECTION_TIME} )
 	GameRules:SetHeroRespawnEnabled( true )								-- 是否允许英雄重生
 	GameRules:SetSameHeroSelectionEnabled( true )						-- 是否允许相同英雄
-	GameRules:SetHeroSelectionTime( 999999 )								-- 英雄选择时间
+	GameRules:SetHeroSelectionTime( 10 )								-- 英雄选择时间
+	GameRules:SetStrategyTime( 0 )										-- 英雄选择策略时间
+	GameRules:SetHeroSelectPenaltyTime( 0 )								-- 英雄选择惩罚时间
+	GameRules:SetShowcaseTime( 0 )										-- 英雄展示时间
 	GameRules:SetPreGameTime( 50 )										-- 游戏开始前的准备时间
 	GameRules:SetPostGameTime( 120 )									-- 游戏结束后自动退出的时间
 	GameRules:SetTreeRegrowTime( 60 )									-- 树木重生时间

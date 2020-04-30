@@ -62,23 +62,23 @@
 				</Panel>
 				<!-- 难度选择 -->
 				<Panel id="DifficlutyContent">
-					<RadioButton class="DifficultyPanel Easy" group="difficluty">
+					<RadioButton class="DifficultyPanel Easy" group="difficluty" onselect="SelectDifficulty(1)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
 						<Label text="简单" />
 					</RadioButton>
-					<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty">
+					<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty" onselect="SelectDifficulty(2)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
 						<Label text="普通" />
 					</RadioButton>
-					<RadioButton class="DifficultyPanel Hard" group="difficluty">
+					<RadioButton class="DifficultyPanel Hard" group="difficluty" onselect="SelectDifficulty(3)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
 						<Label text="困难" />
 					</RadioButton>
-					<RadioButton class="DifficultyPanel Nightmare" group="difficluty">
+					<RadioButton class="DifficultyPanel Nightmare" group="difficluty" onselect="SelectDifficulty(4)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
 						<Label text="噩梦" />
 					</RadioButton>
-					<RadioButton class="DifficultyPanel Hell" group="difficluty">
+					<RadioButton class="DifficultyPanel Hell" group="difficluty" onselect="SelectDifficulty(5)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
 						<Label text="地狱" />
 					</RadioButton>
@@ -128,7 +128,7 @@
 						<!-- 技能面板 -->
 						<Panel id="HeroAbilityPanel">
 						</Panel>
-						<Button id="HeroSelectPanel">
+						<Button id="HeroSelectPanel" onactivate="PickHero()">
 							<Label text="选择英雄" />
 						</Button>
 					</Panel>

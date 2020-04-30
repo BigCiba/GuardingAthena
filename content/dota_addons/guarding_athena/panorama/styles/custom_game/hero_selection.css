@@ -319,6 +319,9 @@
     border-right: 0px;
     border-radius: 20px;
 }
+.HeroLocked DOTAHeroMovie {
+	saturation: 0;
+}
 .HeroCard
 {
 	/* margin-left: 2%;
@@ -576,6 +579,9 @@
 	border-radius: 5px;
 	margin-right: 3%;
 	box-shadow: fill #222A35 6px 6px 8px 0px;
+}
+.HeroLocked #HeroSelectPanel {
+	saturation: 0;
 }
 #HeroSelectPanel{
 	width: 80%;

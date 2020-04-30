@@ -48,6 +48,7 @@ function GuardingAthena:InitGameMode()
 	self.timeStamp = nil
 	self.randomStr = nil
 	self.signature = nil
+	self.tPlayerSelectionInfo = {}
 
 	if not self.entAthena then
 		--print( "Athena entity not found!" )
@@ -99,6 +100,9 @@ function GuardingAthena:InitGameMode()
 	CustomGameEventManager:RegisterListener( "UI_BuyItem", UI_BuyItem )
 	CustomGameEventManager:RegisterListener( "UI_BuyReward", UI_BuyReward )
 	CustomGameEventManager:RegisterListener( "Trial", CreateTrial )
+
+	CustomUIEvent("hero_seletion", Dynamic_Wrap(public, "HeroSelectionEvent"), public)
+	CustomUIEvent("difficulty_seletion", Dynamic_Wrap(public, "DifficultySelectionEvent"), public)
 end
 --读取游戏配置
 function GuardingAthena:ReadGameConfiguration()
@@ -172,6 +176,39 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 	
 	--选择英雄阶段
 	if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+			self.tPlayerSelectionInfo[iPlayerID] = {
+				player_selected_hero = "",
+				player_selected_difficulty = nil
+			}
+		end)
+	end
+	--策略阶段
+	if newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
+		local tVoteList = {0,1,3,2,0}
+		-- 选择英雄
+		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+			local hPlayer = PlayerResource:GetPlayer(iPlayerID)
+			if IsValid(hPlayer) then
+				hPlayer:SetSelectedHero(self.tPlayerSelectionInfo[iPlayerID].player_selected_hero or "npc_dota_hero_omniknight")
+				-- 计算难度
+				local iDifficulty = self.tPlayerSelectionInfo[iPlayerID].player_selected_difficulty
+				if iDifficulty then
+					tVoteList[tonumber(iDifficulty)] = tVoteList[tonumber(iDifficulty)] and tVoteList[tonumber(iDifficulty)] + 1 or 1
+				end
+			end
+		end)
+		local mn=nil;
+		for k, v in pairs(tVoteList) do
+			if(mn == nil) then
+				mn = v
+			end
+			if mn < v then
+				mn = v
+			end
+		end
+		PrintTable(tVoteList)
+		print(tVoteList[1])
 	end
 
 	--游戏在准备阶段
@@ -315,6 +352,44 @@ end
 
 function GuardingAthena:GetPlayerLevel(iScore)
 	return math.floor( iScore / PLAYER_XP_PER_LEVEL )
+end
+
+function public:HeroSelectionEvent(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	local sHeroName = events.HeroName
+	local tPlayerInfo = self.tPlayerSelectionInfo[iPlayerID]
+	tPlayerInfo.player_selected_hero = sHeroName
+end
+function public:DifficultySelectionEvent(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	local iDifficulty = events.Difficulty
+	local tPlayerInfo = self.tPlayerSelectionInfo[iPlayerID]
+	tPlayerInfo.player_selected_difficulty = iDifficulty
+	print(iDifficulty)
+end
+function public:EachPlayer(iTeamNumber, func)
+	if type(iTeamNumber) == "function" then
+		func = iTeamNumber
+		for iTeamNumber = DOTA_TEAM_FIRST, DOTA_TEAM_CUSTOM_MAX, 1 do
+			for n = 1, PlayerResource:GetPlayerCountForTeam(iTeamNumber), 1 do
+				local playerID = PlayerResource:GetNthPlayerIDOnTeam(iTeamNumber, n)
+				if PlayerResource:IsValidPlayerID(playerID) then
+					if func(n, playerID) == true then
+						break
+					end
+				end
+			end
+		end
+	else
+		for n = 1, PlayerResource:GetPlayerCountForTeam(iTeamNumber), 1 do
+			local playerID = PlayerResource:GetNthPlayerIDOnTeam(iTeamNumber, n)
+			if PlayerResource:IsValidPlayerID(playerID) then
+				if func(n, playerID) == true then
+					break
+				end
+			end
+		end
+	end
 end
 
 function SetQuest( playerID,luatitle,luacount,questcount,questtype )

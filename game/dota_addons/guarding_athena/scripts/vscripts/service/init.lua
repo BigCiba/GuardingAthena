@@ -193,6 +193,7 @@ function public:RequestPlayerData(iPlayerID)
 				-- 分数等级
 				self.tPlayerServiceData[iPlayerID].Score = hBody[1].Score
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
+				self.tPlayerServiceData[iPlayerID].Hero = ""
 				
 				DeepPrintTable(self.tPlayerServiceData[iPlayerID])
 				-- for key, value in pairs(hBody) do

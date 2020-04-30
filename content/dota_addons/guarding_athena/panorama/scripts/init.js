@@ -1,4 +1,5 @@
 GameUI.HeroesKv = HeroesKv;
+GameUI.PlayerItemsKV = PlayerItemsKV;
 
 // function EmitSoundForPlayer(tData) {
 // 	Game.EmitSound(tData.soundname);

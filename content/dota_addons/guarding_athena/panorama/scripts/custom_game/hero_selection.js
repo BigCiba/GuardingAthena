@@ -25,6 +25,7 @@ let EquipItem = {
 	"particle": "default",
 };
 let PreviewHeroName = "";
+let HeroLock = false;
 // 默认物品
 let PlayerItemData = {
 	particle: {
@@ -69,10 +70,10 @@ function LoadPlayer(self) {
 function LoadItem(self) {
 	self.BLoadLayoutSnippet("EconItem");
 	self.SetItem = function(ItemData, Panel) {
-		let LocalData = TestList[ItemData.Type][ItemData.ItemName];
+		let Quality = ItemData.ItemName == "default_no_item" ? "Common":GameUI.PlayerItemsKV[ItemData.ItemName].Quality
 		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("Equipped").SetHasClass("hide", ItemData.Equip == "0");
-		self.FindChildTraverse("BottomLayer").AddClass(LocalData.quality);
+		self.FindChildTraverse("BottomLayer").AddClass(Quality);
 		self.Type = ItemData.Type;
 		self.Panel = Panel;
 		self.Image = "file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png";
@@ -94,6 +95,9 @@ function LoadItem(self) {
 	}
 }
 function PreviewHero(HeroName) {
+	if (HeroLock) {
+		return;
+	}
 	const HeroKV = GameUI.HeroesKv[HeroName];
 	// 预览英雄属性与名字
 	$("#HeroNamePanel").FindChildTraverse("PrimaryAttributeImage").SetImage(GetAttributeIcon(HeroKV.AttributePrimary));
@@ -132,6 +136,7 @@ function PreviewHero(HeroName) {
 		}
 	}
 	$("#ContextMenuBody").RemoveClass("ContextMenuBodyShow");
+	Game.EmitSound( GameUI.HeroesKv[PreviewHeroName].HeroSelectSoundEffect );
 }
 function ShowContextMenu(ID, Type) {
 	let LocalPlayerID = Players.GetLocalPlayer();
@@ -197,10 +202,25 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 				}
 				$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/default_no_item.png");
 			}
+			// 锁定英雄
+
 		}
 
 	}
 	$.GetContextPanel().SetHasClass("ServerChecked", true);
+}
+function PickHero() {
+	GameEvents.SendCustomGameEventToServer("hero_seletion", {
+		"HeroName": PreviewHeroName
+	});
+	Game.EmitSound( GameUI.HeroesKv[PreviewHeroName].PickSound );
+	$.GetContextPanel().SetHasClass("HeroLocked", true);
+	HeroLock = true;
+}
+function SelectDifficulty(Difficulty) {
+	GameEvents.SendCustomGameEventToServer("difficulty_seletion", {
+		"Difficulty": Difficulty
+	});
 }
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
