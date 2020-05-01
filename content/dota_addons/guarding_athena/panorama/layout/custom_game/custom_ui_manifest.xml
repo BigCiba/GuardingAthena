@@ -2,6 +2,7 @@
 	<scripts>
 		<include src="file://{resources}/scripts/kv/HeroesKv.js" />
 		<include src="file://{resources}/scripts/kv/PlayerItemsKV.js" />
+		<include src="file://{resources}/scripts/kv/AbilitiesKv.js" />
 		<include src="file://{resources}/scripts/init.js" />
 	</scripts>
 	<script>

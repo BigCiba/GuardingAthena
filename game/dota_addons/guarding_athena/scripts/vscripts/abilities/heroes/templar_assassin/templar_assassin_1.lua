@@ -3,9 +3,9 @@ LinkLuaModifier("modifier_templar_assassin_1_debuff", "abilities/heroes/templar_
 if templar_assassin_1 == nil then
 	templar_assassin_1 = class({})
 end
-function templar_assassin_1:GetManaCost(iLevel)
-	return self.BaseClass.GetManaCost(self, iLevel) + self:GetCaster():GetLevel() * 2
-end
+-- function templar_assassin_1:GetManaCost(iLevel)
+-- 	return self.BaseClass.GetManaCost(self, iLevel) + self:GetCaster():GetLevel() * 2
+-- end
 function templar_assassin_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
@@ -33,8 +33,8 @@ function templar_assassin_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraD
 	end
 	local hCaster = self:GetCaster()
 
-	local damage = self:GetSpecialValueFor("damage") * self:GetLevel()
-	local base_damage = self:GetSpecialValueFor("base_damage") * self:GetLevel()
+	local damage = self:GetSpecialValueFor("damage")
+	local base_damage = self:GetSpecialValueFor("base_damage")
 	local health_pct = self:GetSpecialValueFor("health_pct")
 	local angle = self:GetSpecialValueFor("angle")
 	local distance = self:GetSpecialValueFor("distance")

@@ -116,7 +116,7 @@ function ShowContextMenu(ID, Type) {
 	let LocalPlayerID = Players.GetLocalPlayer();
 	let SettingPanel = $("#" + ID);
 	let ContextMenuBody = $("#ContextMenuBody");
-	let Posistion = GetPanelCenter(SettingPanel.FindChildTraverse("MenuArrowContainer"));
+	let Posistion = GameUI.GetPanelCenter(SettingPanel.FindChildTraverse("MenuArrowContainer"));
 	$("#Contents").RemoveAndDeleteChildren();
 	let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
 	let ItemList = Data == null ? PlayerItemData[Type]:Data[Type];

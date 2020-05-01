@@ -17,7 +17,7 @@ if IsServer() then
 	if IsInToolsMode() then
 		KvToJson("HeroesKv", KeyValues.HeroesKv)
 		KvToJson("PlayerItemsKV", KeyValues.PlayerItemsKV)
-		-- KvToJson("AbilitiesKv", KeyValues.AbilitiesKv)
+		KvToJson("AbilitiesKv", KeyValues.AbilitiesKv)
 	-- 	KvToJson("AssetModifiersKv", KeyValues.AssetModifiersKv)
 	-- 	KvToJson("BannerGoodsKv", KeyValues.BannerGoodsKv)
 	-- 	KvToJson("BattlepassKv", KeyValues.BattlepassKv)

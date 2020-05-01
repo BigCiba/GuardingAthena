@@ -6,9 +6,9 @@ LinkLuaModifier("modifier_templar_assassin_2_motion", "abilities/heroes/templar_
 if templar_assassin_2 == nil then
 	templar_assassin_2 = class({})
 end
-function templar_assassin_2:GetManaCost(iLevel)
-	return self.BaseClass.GetManaCost(self, iLevel) + self:GetCaster():GetLevel()
-end
+-- function templar_assassin_2:GetManaCost(iLevel)
+-- 	return self.BaseClass.GetManaCost(self, iLevel) + self:GetCaster():GetLevel()
+-- end
 function templar_assassin_2:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
@@ -68,8 +68,8 @@ function modifier_templar_assassin_2_motion:OnCreated(params)
 	self.speed = self:GetAbilitySpecialValueFor("speed")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
-	self.base_damage = self:GetAbilitySpecialValueFor("base_damage") * self:GetAbility():GetLevel()
-	self.damage = self:GetAbilitySpecialValueFor("damage") * self:GetAbility():GetLevel()
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.damage = self:GetAbilitySpecialValueFor("damage")
 
 	if IsServer() then
 		if self:ApplyHorizontalMotionController() == false then
