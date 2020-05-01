@@ -14,11 +14,9 @@ function HideError() {
 }
 GameEvents.Subscribe( "show_error", ShowError );
 
-function Update() {
+function UpdateAbilityDetail() {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
 	let Tooltips = HUD.FindChildTraverse("Tooltips");
-	// let attribute = Tooltips.FindChildTraverse("AbilityExtraAttributes");
-	// $.Msg(Tooltips.FindChildTraverse("AbilityName"));
 	let AbilityList = HUD.FindChildTraverse("abilities");
 	for (let index = 0; index < AbilityList.GetChildCount(); index++) {
 		let Ability = AbilityList.FindChildTraverse("Ability" + index);
@@ -37,10 +35,10 @@ function Update() {
 					let Name = $.Localize(localization);
 					let HasPct = Name.search("%") != -1
 					let LevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1);
-					let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel + 1);
-					text += Name.replace("%","") + "<font color='white'>" + LevelValue + (HasPct ? "%":"") + "</font>";
+					let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
+					text += Name.replace("%","") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
 					if (Ability.BHasClass("show_level_up_tab") && NextLevelValue - LevelValue != 0) {
-						text += "<font color='#45DD3B'> + " + (NextLevelValue - LevelValue) + "</font>";
+						text += "<font color='#45DD3B'> +" +  String((NextLevelValue - LevelValue).toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
 					}
 					text += "<br></br>";
 				}
@@ -58,12 +56,10 @@ function Update() {
 			// }
 		}
 	}
-	$.Schedule(0, Update);
+	$.Schedule(0, UpdateAbilityDetail);
 	
 }
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
-	let PreGame = HUD.FindChildTraverse("PreGame");
-	let AbilityList = HUD.FindChildTraverse("abilities");
-	Update();
+	UpdateAbilityDetail();
 })();
