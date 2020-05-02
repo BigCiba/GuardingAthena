@@ -29,6 +29,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -37,6 +38,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_windrunner"
 	{
@@ -68,6 +70,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -76,6 +79,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_drow_ranger"
 	{
@@ -107,6 +111,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -115,6 +120,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_phantom_assassin"
 	{
@@ -146,6 +152,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -154,6 +161,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_rubick"
 	{
@@ -184,6 +192,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -192,6 +201,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_juggernaut"
 	{
@@ -222,6 +232,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -230,6 +241,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_antimage"
 	{
@@ -260,6 +272,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -268,6 +281,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_lina"
 	{
@@ -298,6 +312,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -306,6 +321,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_nevermore"
 	{
@@ -337,6 +353,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -345,6 +362,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_legion_commander"
 	{
@@ -354,10 +372,10 @@
 		"PickSound"								"legion_commander_legcom_spawn_01"
 		"AttributePrimary"						"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"					"22"
-		"AttributeStrengthGain"					"16"
-		"AttributeBaseAgility"					"20"
-		"AttributeAgilityGain"					"2.2"
-		"AttributeBaseIntelligence"				"1.6"
+		"AttributeStrengthGain"					"2.2"
+		"AttributeBaseAgility"					"16"
+		"AttributeAgilityGain"					"1.6"
+		"AttributeBaseIntelligence"				"20"
 		"AttributeIntelligenceGain"				"2"
 		"AttackRate"							"1.5"
 		"AttackDamageMin"						"35"
@@ -375,6 +393,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -383,6 +402,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_ember_spirit"
 	{
@@ -413,6 +433,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -421,6 +442,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_templar_assassin"
 	{
@@ -452,6 +474,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -460,6 +483,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_crystal_maiden"
 	{
@@ -490,6 +514,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -498,6 +523,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_monkey_king"
 	{
@@ -528,6 +554,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -536,6 +563,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_spectre"
 	{
@@ -567,6 +595,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -575,6 +604,7 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 	"npc_dota_hero_oracle"
 	{
@@ -584,10 +614,10 @@
 		"PickSound"								"oracle_orac_spawn_01"
 		"AttributePrimary"						"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"					"20"
-		"AttributeStrengthGain"					"13"
-		"AttributeBaseAgility"					"26"
-		"AttributeAgilityGain"					"2.3"
-		"AttributeBaseIntelligence"				"1.8"
+		"AttributeStrengthGain"					"2.3"
+		"AttributeBaseAgility"					"13"
+		"AttributeAgilityGain"					"1.8"
+		"AttributeBaseIntelligence"				"26"
 		"AttributeIntelligenceGain"				"2.6"
 		"AttackRate"							"1.3"
 		"AttackDamageMin"						"13"
@@ -605,6 +635,7 @@
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"
+		"AbilityTalentStart"					"10"
 		"Ability10"								"tt1"
 		"Ability11"								"tt2"
 		"Ability12"								"tt3"
@@ -613,5 +644,6 @@
 		"Ability15"								"tt6"
 		"Ability16"								"tt7"
 		"Ability17"								"tt8"
+		"Ability18"								"generic_hidden"
 	}
 }

@@ -10,5 +10,6 @@
         "playerInfo",
         "courier_attributes",
         "service",
+        "common",
     ]
 }

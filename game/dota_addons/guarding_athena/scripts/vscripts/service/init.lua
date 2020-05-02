@@ -86,6 +86,7 @@ ACTION_GET_GUIDER_REWARD = "get_guider_reward"				-- 获取带新人奖励
 function public:init(bReload)
 	if not bReload then
 		self.tPlayerServiceData = {}
+		self.tStoreItemData = {}
 		-- self.tPlayerAllItems = {}
 	end
 
@@ -125,6 +126,8 @@ function public:RefreshAllData()
 		end
 	end
 
+	self:RequestStoreItem()
+
 	self:UpdateNetTables()
 end
 
@@ -132,6 +135,19 @@ function public:DebugRefreshData()
 	self:RefreshAllData()
 end
 
+function public:RequestStoreItem()
+	self:HTTPRequest("POST", "GetStoreItem", {action="GetStoreItem"}, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			local hBody = json.decode(sBody)
+			print("RequestStoreItem:")
+			DeepPrintTable(hBody)
+			for i, v in ipairs(hBody) do
+				table.insert(self.tStoreItemData, v)
+			end
+			self:UpdateNetTables()
+		end
+	end, REQUEST_TIME_OUT)
+end
 -- 请求玩家数据
 function public:RequestPlayerData(iPlayerID)
 	local Steamid = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
@@ -190,9 +206,11 @@ function public:RequestPlayerData(iPlayerID)
 				end
 				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "default_no_item", Equip = tEquipped.pet and 0 or 1, Expiration = "9999-12-31", Type = "pet"})
 				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], {ItemName = "default_no_item", Equip = tEquipped.particle and 0 or 1, Expiration = "9999-12-31", Type = "particle"})
-				-- 分数等级
+				-- 分数等级金钱
 				self.tPlayerServiceData[iPlayerID].Score = hBody[1].Score
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
+				self.tPlayerServiceData[iPlayerID].Shard = GuardingAthena:GetPlayerLevel(hBody[1].Shard)
+				self.tPlayerServiceData[iPlayerID].Price = GuardingAthena:GetPlayerLevel(hBody[1].Price)
 				self.tPlayerServiceData[iPlayerID].Hero = ""
 				
 				self:UpdateNetTables()
@@ -282,6 +300,7 @@ end
 --更新所有有关的NetTable
 function public:UpdateNetTables()
 	CustomNetTables:SetTableValue("service", "player_data", self.tPlayerServiceData)
+	CustomNetTables:SetTableValue("service", "store_item", self.tStoreItemData)
 end
 
 function public:OnToggleItemEquipState(eventSourceIndex, events)

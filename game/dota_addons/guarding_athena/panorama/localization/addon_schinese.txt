@@ -143,5 +143,11 @@
 	"LaneCreeps_Button"				"取消刷兵"
 	"ReloadScript_Button"			"重载脚本"
 	"HeroSelection_Waiting"			"等待服务器响应"
+
+	"StoreItemType_pet"				"宠物"
+	"StoreItemType_particle"		"特效"
+	"StoreItemType_hero"			"英雄"
+	"StoreItemType_skin"			"皮肤"
+	"StoreItemType_gameplay"		"道具"
 }
 

@@ -49,13 +49,13 @@ function GuardingAthena:InitGameMode()
 	self.randomStr = nil
 	self.signature = nil
 	self.tPlayerSelectionInfo = {}
+	self.GameModeSelectionEndTime = -1
 
 	if not self.entAthena then
 		--print( "Athena entity not found!" )
 	end
 
 	if IsInToolsMode() then
-		HERO_SELECTION_TIME = 2
 		GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("collectgarbage"), function()
 			local m = collectgarbage('count')
 			print(string.format("[Lua Memory]  %.3f KB  %.3f MB", m, m/1024))
@@ -176,6 +176,9 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 	
 	--选择英雄阶段
 	if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+		self.GameModeSelectionEndTime = GameRules:GetGameTime() + HERO_SELECTION_TIME
+		print(GameRules:GetGameTime(),self.GameModeSelectionEndTime,HERO_SELECTION_TIME)
+		self:UpdateNetTables()
 		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 			self.tPlayerSelectionInfo[iPlayerID] = {
 				player_selected_hero = TableFindKey(KeyValues.HeroesKv, RandomValue(KeyValues.HeroesKv)),
@@ -269,6 +272,12 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 			return 1
 		end)
 	end
+end
+function GuardingAthena:UpdateNetTables()
+	local gameModeInfo = {
+		game_mode_selection_end_time = self.GameModeSelectionEndTime,
+	}
+	CustomNetTables:SetTableValue("common", "game_mode_info", gameModeInfo)
 end
 function GuardingAthena:OnItemPurchased(t)
 	--[[

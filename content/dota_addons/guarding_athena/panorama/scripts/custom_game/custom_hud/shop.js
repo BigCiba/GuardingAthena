@@ -183,12 +183,10 @@ function ShowShop()
 }
 (function () {
     GameUI.CustomUIConfig().shop = false;
-    $.Schedule(21, function(){
-        CreateShop();
-        SetFlyoutQuestVisible( false );
-        TimeRemaining();
-        Game.AddCommand( "SHOP", ShowShop, "", 0 );
-    });
+    CreateShop();
+    SetFlyoutQuestVisible( false );
+    TimeRemaining();
+    Game.AddCommand( "SHOP", ShowShop, "", 0 );
     //$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 })();
 //GameEvents.Subscribe( "create_quest", CreateQuest);

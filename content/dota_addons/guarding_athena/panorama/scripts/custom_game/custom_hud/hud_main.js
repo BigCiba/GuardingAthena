@@ -59,7 +59,56 @@ function UpdateAbilityDetail() {
 	$.Schedule(0, UpdateAbilityDetail);
 	
 }
+function LoadStoreItem(self) {
+	self.BLoadLayoutSnippet("StoreItem");
+	self.SetStoreItem = function(ItemData) {
+		let ItemName = ItemData.ItemName;
+		if (ItemData.Type == "hero") {
+			ItemName = "npc_dota_hero_" + ItemData.ItemName;
+			self.FindChildTraverse("HeroIcon").heroname = ItemName;
+		}
+		
+		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
+		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
+		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
+		self.FindChildTraverse("ShardCost").SetDialogVariable("shard_cost", ItemData.Shard);
+		self.FindChildTraverse("PriceCost").SetDialogVariable("price_cost", ItemData.Price);
+	};
+
+}
+function UpdateServiceNetTable(tableName, tableKeyName, table) {
+	let localPlayerID = Players.GetLocalPlayer();
+
+	if (tableKeyName == "store_item") {
+		for (let Index in table) {
+			let ItemData = table[Index];
+			let Panel = $("#ChatWheelMessages").FindChildTraverse(ItemData.ItemName);
+			Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), ItemData.ItemName);
+			LoadStoreItem(Panel);
+			Panel.SetStoreItem(ItemData);
+		}
+	}
+}
+function UpdateServiceNetTable(tableName, tableKeyName, table) {
+	let localPlayerID = Players.GetLocalPlayer();
+
+	if (tableKeyName == "player_data") {
+		for (let sPlayerID in table) {
+			let tData = table[sPlayerID];
+			$("#CurrentCurrencyAmount").SetDialogVariable("shard", tData.Shard);
+			$("#CurrentPriceAmount").SetDialogVariable("price", tData.Price);
+		}
+	}
+}
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
 	UpdateAbilityDetail();
+
+	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
+
+	UpdateServiceNetTable("service", "store_item", CustomNetTables.GetTableValue("service", "store_item"));
+
+	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
+
+	UpdateServiceNetTable("service", "player_data", CustomNetTables.GetTableValue("service", "player_data"));
 })();

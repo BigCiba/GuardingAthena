@@ -138,6 +138,13 @@ function ShowContextMenu(ID, Type) {
 	let Height = ContextMenuBody.actuallayoutheight + SettingPanel.FindChildTraverse("MenuArrowContainer").actuallayoutheight / 2;
 	ContextMenuBody.SetPositionInPixels(GameUI.CorrectPositionValue(Posistion.x - Width), GameUI.CorrectPositionValue(Posistion.y - Height), 0);
 }
+function UpdateCommonNetTable(tableName, tableKeyName, table) {
+	var localPlayerID = Players.GetLocalPlayer();
+
+	if (tableKeyName == "game_mode_info") {
+		GameModeSelectionEndTime = table.game_mode_selection_end_time;
+	}
+}
 function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	let localPlayerID = Players.GetLocalPlayer();
 
@@ -219,7 +226,7 @@ function SelectDifficulty(Difficulty) {
 		Chat.style.opacity = "0";
 
 	
-	GameModeSelectionEndTime = Game.GetGameTime() + Game.GetStateTransitionTime();
+	// GameModeSelectionEndTime = Game.GetGameTime() + Game.GetStateTransitionTime();
 	
 	Update();
 	// 加载英雄卡片
@@ -247,6 +254,10 @@ function SelectDifficulty(Difficulty) {
 	}
 	// 默认预览
 	PreviewHero(Object.keys(GameUI.HeroesKv)[0]);
+
+	CustomNetTables.SubscribeNetTableListener("common", UpdateCommonNetTable);
+
+	UpdateCommonNetTable("common", "game_mode_info", CustomNetTables.GetTableValue("common", "game_mode_info"));
 
 	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
 
