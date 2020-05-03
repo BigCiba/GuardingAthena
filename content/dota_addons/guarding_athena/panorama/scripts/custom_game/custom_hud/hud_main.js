@@ -66,8 +66,14 @@ function LoadStoreItem(self) {
 		if (ItemData.Type == "hero") {
 			ItemName = "npc_dota_hero_" + ItemData.ItemName;
 			self.FindChildTraverse("HeroIcon").heroname = ItemName;
+			self.AddClass("HeroItem");
 		}
-		
+		if (ItemData.Type == "pet") {
+			self.AddClass("Prefab_courier");
+		}
+		if (ItemData.Type == "particle") {
+			self.AddClass("Prefab_league");
+		}
 		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
@@ -79,6 +85,13 @@ function LoadStoreItem(self) {
 function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	let localPlayerID = Players.GetLocalPlayer();
 
+	if (tableKeyName == "player_data") {
+		for (let sPlayerID in table) {
+			let tData = table[sPlayerID];
+			$("#CurrentCurrencyAmount").SetDialogVariable("shard", tData.Shard);
+			$("#CurrentPriceAmount").SetDialogVariable("price", tData.Price);
+		}
+	}
 	if (tableKeyName == "store_item") {
 		for (let Index in table) {
 			let ItemData = table[Index];
@@ -86,17 +99,6 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 			Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), ItemData.ItemName);
 			LoadStoreItem(Panel);
 			Panel.SetStoreItem(ItemData);
-		}
-	}
-}
-function UpdateServiceNetTable(tableName, tableKeyName, table) {
-	let localPlayerID = Players.GetLocalPlayer();
-
-	if (tableKeyName == "player_data") {
-		for (let sPlayerID in table) {
-			let tData = table[sPlayerID];
-			$("#CurrentCurrencyAmount").SetDialogVariable("shard", tData.Shard);
-			$("#CurrentPriceAmount").SetDialogVariable("price", tData.Price);
 		}
 	}
 }

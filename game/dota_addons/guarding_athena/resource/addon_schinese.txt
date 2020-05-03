@@ -3322,6 +3322,7 @@
 		"windrunner_01"				"纯金风行者"
 		"phantom_assassin_01"		"纯金影月守望者"
 		"wing_01"					"纯金翅膀"
+		"potion"					"药水礼包"
 
 
 		"DOTA_Tooltip_ability_item_essence_str_1"				"力量精华"

@@ -85,7 +85,7 @@
 		</snippet>
 
 		<snippet name="StoreItem">
-			<Panel class="AthenaStoreItem HeroItem">
+			<Panel class="AthenaStoreItem">
 				<Panel id="ItemImageContainer">
 					<EconItemImage id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png"/>
 					<Panel id="AlreadyOwnedIcon" onmouseover="UIShowTextTooltip( '#DOTA_StoreItem_AlreadyOwned' )" onmouseout="UIHideTextTooltip()" />
@@ -97,7 +97,6 @@
 				<Panel id="ItemType">
 					<Panel id="UnitIcon">
 						<DOTAHeroImage id="HeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_crystal_maiden" scaling="stretch-to-fit-preserve-aspect" onmouseout="DOTAHideHeroStatsTooltip()"/>
-						<!-- <Image id="PetIcon" src="s2r://panorama/images/icon_courier_psd.vtex" scaling="stretch-to-fit-preserve-aspect"/> -->
 						<Panel id="ItemTypeIcon" onmouseout="UIHideTextTooltip()"/>
 					</Panel>
 					<Label id="ItemTypeLabel" text="{s:item_type}" />
