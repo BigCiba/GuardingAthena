@@ -85,7 +85,7 @@
 		</snippet>
 
 		<snippet name="StoreItem">
-			<Panel class="AthenaStoreItem">
+			<Panel class="AthenaStoreItem StoreItem">
 				<Panel id="ItemImageContainer">
 					<EconItemImage id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png"/>
 					<Panel id="AlreadyOwnedIcon" onmouseover="UIShowTextTooltip( '#DOTA_StoreItem_AlreadyOwned' )" onmouseout="UIHideTextTooltip()" />
@@ -104,16 +104,28 @@
 
 				<Panel class="FillHeight" />
 				<Panel class="PurchaseButtonList">
-					<Button id="ShardPurchaseButton" class="DotaPlusPurchaseButton" onactivate="OnButtonPressed()">
+					<Button id="ShardPurchaseButton" class="DotaPlusPurchaseButton">
 						<Panel id="Contents" class="ButtonCenter">
 							<Panel id="EventIcon" class="DotaPlusCurrencyIcon"/>
 							<Label id="ShardCost" text="{s:shard_cost}" />
 						</Panel>
 					</Button>
-					<Button id="PricePurchaseButton" class="DotaPlusPurchaseButton" onactivate="OnButtonPressed()">
+					<Button id="PricePurchaseButton" class="DotaPlusPurchaseButton">
 						<Panel id="Contents" class="ButtonCenter">
 							<Panel id="EventIcon" class="DotaPlusCurrencyIcon"/>
 							<Label id="PriceCost" text="{s:price_cost}" />
+						</Panel>
+					</Button>
+					<Button id="EquipButton" class="DotaPlusPurchaseButton" onactivate="UnEquip()">
+						<Panel id="Contents" class="ButtonCenter">
+							<!-- <Panel id="EventIcon" class="DotaPlusCurrencyIcon"/> -->
+							<Label id="EquipItem" text="装备" />
+						</Panel>
+					</Button>
+					<Button id="UnEquipButton" class="DotaPlusPurchaseButton" onactivate="Equip()">
+						<Panel id="Contents" class="ButtonCenter">
+							<!-- <Panel id="EventIcon" class="DotaPlusCurrencyIcon"/> -->
+							<Label id="EquipItem" text="卸下" />
 						</Panel>
 					</Button>
 				</Panel>
@@ -158,7 +170,7 @@
 
 					<Panel id="SearchCategories">
 
-						<RadioButton id="PlayerInventoryCategory" searchquery="heroid:any shards:true loot_list:dota_plus_exclusives" class="SearchCategory" group="plus_search_categories" onactivate="DOTAStorePlusUpdateSearch()">
+						<RadioButton id="PlayerInventoryCategory" searchquery="heroid:any shards:true loot_list:dota_plus_exclusives" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('inventory')">
 							<Panel class="SearchCategoryBackground" />
 							<Panel class="SearchCategoryArtOverlay" />
 							<Panel class="SearchCategoryText">
@@ -167,7 +179,16 @@
 							</Panel>
 						</RadioButton>
 
-						<RadioButton id="HeroCategory" searchquery="heroid:any shards:true loot_list:dota_plus_legacy_sets" class="SearchCategory" group="plus_search_categories" onactivate="DOTAStorePlusUpdateSearch()">
+						<RadioButton id="AllItemCategory" searchquery="heroid:any shards:true loot_list:dota_plus_exclusives" selected="true" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('all')">
+							<Panel class="SearchCategoryBackground" />
+							<Panel class="SearchCategoryArtOverlay" />
+							<Panel class="SearchCategoryText">
+								<Label class="SearchCategoryName" text="全部" />
+								<Label class="SearchCategoryDetails" text="所有可购买物品" />
+							</Panel>
+						</RadioButton>
+
+						<RadioButton id="HeroCategory" searchquery="heroid:any shards:true loot_list:dota_plus_legacy_sets" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('hero')">
 							<Panel class="SearchCategoryBackground" />
 							<Panel class="SearchCategoryArtOverlay" />
 							<Panel class="SearchCategoryText">
@@ -176,7 +197,7 @@
 							</Panel>
 						</RadioButton>
 
-						<RadioButton id="SkinCategory" class="SearchCategory" group="plus_search_categories" onactivate="DOTAStorePlusShowHeroRelics( 0 )">
+						<RadioButton id="SkinCategory" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('skin')">
 							<Panel class="SearchCategoryBackground" />
 							<Panel class="SearchCategoryArtOverlay" />
 							<Panel class="SearchCategoryText">
@@ -185,7 +206,7 @@
 							</Panel>
 						</RadioButton>
 
-						<RadioButton id="ParticleCategory" class="SearchCategory" group="plus_search_categories" onactivate="DOTAStorePlusShowChatWheel()">
+						<RadioButton id="ParticleCategory" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('particle')">
 							<Panel class="SearchCategoryBackground" />
 							<Panel class="SearchCategoryArtOverlay" />
 							<Panel class="SearchCategoryText">
@@ -194,7 +215,7 @@
 							</Panel>
 						</RadioButton>
 
-						<RadioButton id="PetCategory" searchquery="shards:true prefab:tool" class="SearchCategory" group="plus_search_categories" onactivate="DOTAStorePlusUpdateSearch()">
+						<RadioButton id="PetCategory" searchquery="shards:true prefab:tool" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('pet')">
 							<Panel class="SearchCategoryBackground" />
 							<Panel class="SearchCategoryArtOverlay" />
 							<Panel class="SearchCategoryText">
@@ -203,7 +224,7 @@
 							</Panel>
 						</RadioButton>
 
-						<RadioButton id="GamePlayCategory" searchquery="shards:true prefab:tool" class="SearchCategory" group="plus_search_categories" onactivate="DOTAStorePlusUpdateSearch()">
+						<RadioButton id="GamePlayCategory" searchquery="shards:true prefab:tool" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('gameplay')">
 							<Panel class="SearchCategoryBackground" />
 							<Panel class="SearchCategoryArtOverlay" />
 							<Panel class="SearchCategoryText">

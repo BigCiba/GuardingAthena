@@ -93,6 +93,7 @@ function public:init(bReload)
 	GameEvent("game_rules_state_change", Dynamic_Wrap(public, "OnGameRulesStateChange"), public)
 
 	CustomUIEvent("ToggleItemEquipState", Dynamic_Wrap(public, "OnToggleItemEquipState"), public)
+	CustomUIEvent("PurchaseItem", Dynamic_Wrap(public, "OnPurchaseItem"), public)
 
 	if IsInToolsMode() then
 		-- CustomUIEvent("DebugRefreshData", Dynamic_Wrap(public, "DebugRefreshData"), public)
@@ -136,7 +137,7 @@ function public:DebugRefreshData()
 end
 
 function public:RequestStoreItem()
-	self:HTTPRequest("POST", "GetStoreItem", {action="GetStoreItem"}, function(iStatusCode, sBody)
+	self:HTTPRequest("POST", "GetStoreItem", {}, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			local hBody = json.decode(sBody)
 			print("RequestStoreItem:")
@@ -327,6 +328,18 @@ function public:OnToggleItemEquipState(eventSourceIndex, events)
 		end
 	end
 	self:UpdateNetTables()
+end
+function public:OnPurchaseItem(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	local sItemName = events.ItemName
+	local Currency = events.Currency
+	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	self:HTTPRequest("POST", "PurchaseItem", {ItemName=sItemName,Currency=Currency,SteamID=SteamID}, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			print(sBody)
+			self:UpdateNetTables()
+		end
+	end, REQUEST_TIME_OUT)
 end
 
 return public

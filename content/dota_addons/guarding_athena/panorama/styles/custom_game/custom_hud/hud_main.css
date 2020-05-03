@@ -126,8 +126,8 @@
 {
 	flow-children: right;
     width: 980px;
-	height: 838px;
-    margin: 150px 600px 128px 10px;
+	height: 940px;
+    margin: 0px 600px 0px 10px;
     horizontal-align: center;
     vertical-align: middle;
 }
@@ -311,6 +311,7 @@
 }
 
 #PlayerInventoryCategory .SearchCategoryBackground { wash-color: #ffcf4d33; brightness: 1.8; } 
+#AllItemCategory .SearchCategoryBackground { wash-color: #aee2ff33; }
 #HeroCategory .SearchCategoryBackground { wash-color: #aee2ff33; }
 #SkinCategory .SearchCategoryBackground { wash-color: #d5ff9a33; }
 #PetCategory .SearchCategoryBackground { wash-color: #ff9a9a33; }
@@ -318,6 +319,7 @@
 #GamePlayCategory .SearchCategoryBackground { wash-color: #aee2ff33; }
 
 #PlayerInventoryCategory:selected .SearchCategoryBackground, #PlayerInventoryCategory:active .SearchCategoryBackground { wash-color: #ffcf4d; brightness: 1.8; } 
+#AllItemCategory:selected .SearchCategoryBackground, #AllItemCategory:active .SearchCategoryBackground { wash-color: #aee2ff; }
 #HeroCategory:selected .SearchCategoryBackground, #HeroCategory:active .SearchCategoryBackground { wash-color: #aee2ff; }
 #SkinCategory:selected .SearchCategoryBackground, #SkinCategory:active .SearchCategoryBackground { wash-color: #d5ff9a; }
 #PetCategory:selected .SearchCategoryBackground, #PetCategory:active .SearchCategoryBackground { wash-color: #ff9a9a; }
@@ -358,6 +360,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 }
 
 #PlayerInventoryCategory .SearchCategoryName { color:  gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ffef8a ), to( #ffbb0f ) ); }
+#AllItemCategory .SearchCategoryName { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #70dfff ), to( #7bb7ff ) ); }
 #HeroCategory .SearchCategoryName { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #70dfff ), to( #7bb7ff ) ); }
 #SkinCategory .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #c2ff57 ), to( #79e900 ) ); }
 #PetCategory .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ff5757 ), to( #c43030 ) ); }
@@ -412,8 +415,16 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 {
 	saturation: 1.0;
 }
-
 #PlayerInventoryCategory .SearchCategoryArtOverlay
+{
+	width: 260px;
+	height: 220px;
+	ui-scale: 46%;
+	margin-bottom: 10px;
+
+	background-image: url("s2r://panorama/images/dota_plus/shop_new_bloom_psd.vtex");
+}
+#AllItemCategory .SearchCategoryArtOverlay
 {
 	width: 260px;
 	height: 200px;
@@ -1329,6 +1340,17 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	flow-children: right;
 	margin: 8px;
 	/* padding: 4px 2px 2px 2px; */
+}
+.InventoryItem #ShardPurchaseButton,
+.InventoryItem #PricePurchaseButton,
+.StoreItem #EquipButton,
+.StoreItem #UnEquipButton,
+.NoShard #ShardPurchaseButton,
+.NoPrice #PricePurchaseButton,
+.Equipped #EquipButton,
+.UnEquipped #UnEquipButton
+{
+	visibility: collapse;
 }
 .DotaPlusPurchaseButton
 {

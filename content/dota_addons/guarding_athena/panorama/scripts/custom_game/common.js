@@ -35,6 +35,14 @@ function GetAttributeIcon(Attribute) {
 			break;
 	}
 }
+function GetPlayerShard(sPlayerID) {
+	let tData = CustomNetTables.GetTableValue("service", "player_data");
+	return tData[sPlayerID].Shard;
+}
+function GetPlayerPrice(iPlayerID) {
+	let tData = CustomNetTables.GetTableValue("service", "player_data");
+	return tData[sPlayerID].Price;
+}
 GameUI.GetPanelCenter = function (Panel) {
 	let Position = GameUI.GetPanelPosition(Panel);
 	return {x: Position.x + Panel.actuallayoutwidth / 2, y: Position.y + Panel.actuallayoutheight / 2};
