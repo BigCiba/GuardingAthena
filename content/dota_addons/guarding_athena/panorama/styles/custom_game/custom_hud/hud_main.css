@@ -311,15 +311,15 @@
 }
 
 #PlayerInventoryCategory .SearchCategoryBackground { wash-color: #ffcf4d33; brightness: 1.8; } 
-#AllItemCategory .SearchCategoryBackground { wash-color: #aee2ff33; }
+#AllItemCategory .SearchCategoryBackground { wash-color: #ffcf4d33; brightness: 1.8; }
 #HeroCategory .SearchCategoryBackground { wash-color: #aee2ff33; }
 #SkinCategory .SearchCategoryBackground { wash-color: #d5ff9a33; }
 #PetCategory .SearchCategoryBackground { wash-color: #ff9a9a33; }
 #ParticleCategory .SearchCategoryBackground { wash-color: #b29aff33; }
 #GamePlayCategory .SearchCategoryBackground { wash-color: #aee2ff33; }
 
-#PlayerInventoryCategory:selected .SearchCategoryBackground, #PlayerInventoryCategory:active .SearchCategoryBackground { wash-color: #ffcf4d; brightness: 1.8; } 
-#AllItemCategory:selected .SearchCategoryBackground, #AllItemCategory:active .SearchCategoryBackground { wash-color: #aee2ff; }
+#PlayerInventoryCategory:selected .SearchCategoryBackground, #PlayerInventoryCategory:active .SearchCategoryBackground { wash-color: #ff7300; brightness: 1.8; } 
+#AllItemCategory:selected .SearchCategoryBackground, #AllItemCategory:active .SearchCategoryBackground { wash-color: #ffcf4d; brightness: 1.8; }
 #HeroCategory:selected .SearchCategoryBackground, #HeroCategory:active .SearchCategoryBackground { wash-color: #aee2ff; }
 #SkinCategory:selected .SearchCategoryBackground, #SkinCategory:active .SearchCategoryBackground { wash-color: #d5ff9a; }
 #PetCategory:selected .SearchCategoryBackground, #PetCategory:active .SearchCategoryBackground { wash-color: #ff9a9a; }
@@ -359,8 +359,8 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
     visibility: visible;
 }
 
-#PlayerInventoryCategory .SearchCategoryName { color:  gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ffef8a ), to( #ffbb0f ) ); }
-#AllItemCategory .SearchCategoryName { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #70dfff ), to( #7bb7ff ) ); }
+#PlayerInventoryCategory .SearchCategoryName { color:  gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #fa994a ), to( #ff7300 ) ); }
+#AllItemCategory .SearchCategoryName { color:  gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ffef8a ), to( #ffbb0f ) ); }
 #HeroCategory .SearchCategoryName { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #70dfff ), to( #7bb7ff ) ); }
 #SkinCategory .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #c2ff57 ), to( #79e900 ) ); }
 #PetCategory .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ff5757 ), to( #c43030 ) ); }

@@ -149,5 +149,13 @@
 	"StoreItemType_hero"			"英雄"
 	"StoreItemType_skin"			"皮肤"
 	"StoreItemType_gameplay"		"道具"
+
+	"Category_inventory"			"我的物品"
+	"Category_all"					"全部"
+	"Category_pet"					"宠物"
+	"Category_particle"				"特效"
+	"Category_hero"					"英雄"
+	"Category_skin"					"皮肤"
+	"Category_gameplay"				"道具"
 }
 

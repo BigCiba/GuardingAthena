@@ -184,7 +184,7 @@ function public:RequestPlayerData(iPlayerID)
 							ItemName = v.ItemName,
 							Equip = v.Equip,
 							Expiration = v.Expiration,
-							Type = v.Type
+							Type = v.Type,
 						})
 						if tEquipped[sHeroName] == false and v.Equip == "1" then
 							tEquipped[sHeroName] = true
@@ -210,8 +210,8 @@ function public:RequestPlayerData(iPlayerID)
 				-- 分数等级金钱
 				self.tPlayerServiceData[iPlayerID].Score = hBody[1].Score
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
-				self.tPlayerServiceData[iPlayerID].Shard = GuardingAthena:GetPlayerLevel(hBody[1].Shard)
-				self.tPlayerServiceData[iPlayerID].Price = GuardingAthena:GetPlayerLevel(hBody[1].Price)
+				self.tPlayerServiceData[iPlayerID].Shard = hBody[1].Shard
+				self.tPlayerServiceData[iPlayerID].Price = hBody[1].Price
 				self.tPlayerServiceData[iPlayerID].Hero = ""
 				
 				self:UpdateNetTables()
@@ -310,7 +310,6 @@ function public:OnToggleItemEquipState(eventSourceIndex, events)
 	local sHeroName = events.HeroName
 	local sType = events.Type
 	if sType == "skin" then
-		-- local sHeroName = sItemName == KeyValues.PlayerItemsKV[sItemName].Hero
 		for i, tItemData in pairs(self.tPlayerServiceData[iPlayerID][sType][sHeroName]) do
 			if tItemData.ItemName == sItemName then
 				tItemData.Equip = 1
@@ -337,7 +336,7 @@ function public:OnPurchaseItem(eventSourceIndex, events)
 	self:HTTPRequest("POST", "PurchaseItem", {ItemName=sItemName,Currency=Currency,SteamID=SteamID}, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			print(sBody)
-			self:UpdateNetTables()
+			self:RequestPlayerData(iPlayerID)
 		end
 	end, REQUEST_TIME_OUT)
 end

@@ -61,6 +61,7 @@ function UpdateAbilityDetail() {
 }
 function CategoryFilter(sType) {
 	let Contents = $("#ChatWheelMessages").FindChildrenWithClassTraverse("AthenaStoreItem");
+	$("#ChatWheelText").text = $.Localize("Category_" + sType);
 	switch (sType) {
 		case "inventory":
 			for (let index = 0; index < Contents.length; index++) {
@@ -113,6 +114,7 @@ function LoadStoreItem(self) {
 		self.Type = ItemData.Type;
 		self.Shard = ItemData.Shard;
 		self.Price = ItemData.Price;
+		self.IteaName = ItemName;
 		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
@@ -137,6 +139,13 @@ function LoadStoreItem(self) {
 				});
 			}
 		}.bind(self));
+		self.FindChildTraverse("EquipButton").SetPanelEvent("onactivate", function() {
+			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
+				ItemName: this.id,
+				HeroName: this.IteaName,
+				Type: this.Type,
+			});
+		}.bind(self));
 		
 	};
 	self.GetShardCost = function () {
@@ -146,7 +155,6 @@ function LoadStoreItem(self) {
 		return self.Price
 	}
 	self.SetInventoryItem = function(ItemData) {
-		$.Msg(ItemData);
 		let ItemName = ItemData.ItemName;
 		if (ItemData.Type == "hero") {
 			ItemName = "npc_dota_hero_" + ItemData.ItemName;
@@ -192,7 +200,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 							}
 						}
 					}
-				} else {
+				} else if(typeof(tData[sType]) == "object") {
 					const ItemList = tData[sType];
 					for (const Index in ItemList) {
 						const ItemData = ItemList[Index];
@@ -230,4 +238,5 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
 
 	UpdateServiceNetTable("service", "player_data", CustomNetTables.GetTableValue("service", "player_data"));
+	CategoryFilter('all');
 })();

@@ -85,7 +85,7 @@
 		</snippet>
 
 		<snippet name="StoreItem">
-			<Panel class="AthenaStoreItem StoreItem">
+			<Panel class="AthenaStoreItem">
 				<Panel id="ItemImageContainer">
 					<EconItemImage id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png"/>
 					<Panel id="AlreadyOwnedIcon" onmouseover="UIShowTextTooltip( '#DOTA_StoreItem_AlreadyOwned' )" onmouseout="UIHideTextTooltip()" />
@@ -141,7 +141,7 @@
 				<Panel id="SearchAndCategoriesContainer">
 					<Panel id="CurrencyContainer">
 						<Panel class="SearchOptionsTitleCategories">
-							<Label text="#DOTA_PlusStore_MyShards" />
+							<Label text="我的钱包" />
 							<Panel class="FillWidth" />
 							<Button id="RewardLogButton" onactivate="DOTAPlusShowRewardLog()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" />
 						</Panel>
@@ -313,7 +313,7 @@
 
 				<Panel id="ChatWheelContainer" class="SearchModeContainer">
 					<Panel id="ChatWheelHeader">
-						<Label text="#DOTA_PlusStore_ChatWheel_Title" />
+						<Label id="ChatWheelText" text="全部" />
 						<Panel class="InfoIcon" onmouseover="UIShowTextTooltip( #DOTA_ChatWheelPurchase_Tooltip )" onmouseout="UIHideTextTooltip()" />
 						<Panel class="FillWidth" />
 						<!-- <TextButton id="CustomizeChatWheelButton" text="#dota_chatwheel_customize" onactivate="DOTAShowSettingsPopupChatWheelPage( '' )" /> -->
