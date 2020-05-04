@@ -112,17 +112,17 @@
 					</Button>
 					<Button id="PricePurchaseButton" class="DotaPlusPurchaseButton">
 						<Panel id="Contents" class="ButtonCenter">
-							<Panel id="EventIcon" class="DotaPlusCurrencyIcon"/>
+							<Panel id="EventIcon" class="DotaPlusPriceCurrencyIcon"/>
 							<Label id="PriceCost" text="{s:price_cost}" />
 						</Panel>
 					</Button>
-					<Button id="EquipButton" class="DotaPlusPurchaseButton" onactivate="UnEquip()">
+					<Button id="EquipButton" class="DotaPlusPurchaseButton" >
 						<Panel id="Contents" class="ButtonCenter">
 							<!-- <Panel id="EventIcon" class="DotaPlusCurrencyIcon"/> -->
 							<Label id="EquipItem" text="装备" />
 						</Panel>
 					</Button>
-					<Button id="UnEquipButton" class="DotaPlusPurchaseButton" onactivate="Equip()">
+					<Button id="UnEquipButton" class="DotaPlusPurchaseButton">
 						<Panel id="Contents" class="ButtonCenter">
 							<!-- <Panel id="EventIcon" class="DotaPlusCurrencyIcon"/> -->
 							<Label id="EquipItem" text="卸下" />
@@ -143,7 +143,8 @@
 						<Panel class="SearchOptionsTitleCategories">
 							<Label text="我的钱包" />
 							<Panel class="FillWidth" />
-							<Button id="RewardLogButton" onactivate="DOTAPlusShowRewardLog()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" />
+							<Button id="MoneyComeButton" onactivate="MoneyComeButton()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" />
+							<!-- <Button id="RewardLogButton" onactivate="DOTAPlusShowRewardLog()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" /> -->
 						</Panel>
 						<Panel id="CurrencyAmountContainer">
 							<Panel class="EventPointsValueIcon ShardSubscription"/>

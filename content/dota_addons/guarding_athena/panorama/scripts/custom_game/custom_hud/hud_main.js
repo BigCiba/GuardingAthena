@@ -139,13 +139,6 @@ function LoadStoreItem(self) {
 				});
 			}
 		}.bind(self));
-		self.FindChildTraverse("EquipButton").SetPanelEvent("onactivate", function() {
-			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
-				ItemName: this.id,
-				HeroName: this.IteaName,
-				Type: this.Type,
-			});
-		}.bind(self));
 		
 	};
 	self.GetShardCost = function () {
@@ -168,6 +161,7 @@ function LoadStoreItem(self) {
 			self.AddClass("Prefab_league");
 		}
 		self.Type = ItemData.Type;
+		self.ItemName = ItemData.ItemName;
 		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
@@ -176,9 +170,28 @@ function LoadStoreItem(self) {
 		self.SetHasClass("InventoryItem", true);
 		self.SetHasClass("Equipped", ItemData.Equip == "1");
 		self.SetHasClass("UnEquipped", ItemData.Equip == "0");
+		self.FindChildTraverse("EquipButton").SetPanelEvent("onactivate", function() {
+			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
+				ItemName: this.ItemName,
+				Type: this.Type,
+			});
+		}.bind(self));
+		self.FindChildTraverse("UnEquipButton").SetPanelEvent("onactivate", function() {
+			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
+				ItemName: this.ItemName,
+				Type: this.Type,
+			});
+		}.bind(self));
 		
 	};
 
+}
+function MoneyComeButton() {
+	$.DispatchEvent(
+		"UIShowCustomLayoutPopupParameters",
+		"qrcode",
+		"file://{resources}/layout/custom_game/popups/qrcode/qrcode.xml",
+		{});
 }
 function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	let localPlayerID = Players.GetLocalPlayer();

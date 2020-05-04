@@ -60,7 +60,6 @@ function LoadItem(self) {
 			}
 			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
 				ItemName: this.id,
-				HeroName: PreviewHeroName,
 				Type: this.Type,
 			});
 			// this.Panel.SetImage(this.Image);

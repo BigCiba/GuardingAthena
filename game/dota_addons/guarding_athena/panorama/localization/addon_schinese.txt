@@ -157,5 +157,8 @@
 	"Category_hero"					"英雄"
 	"Category_skin"					"皮肤"
 	"Category_gameplay"				"道具"
+
+	"DialogBox_Yes"					"确认"
+	"DialogBox_No"					"取消"
 }
 

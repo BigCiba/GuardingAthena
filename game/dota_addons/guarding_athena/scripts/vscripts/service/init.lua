@@ -94,6 +94,7 @@ function public:init(bReload)
 
 	CustomUIEvent("ToggleItemEquipState", Dynamic_Wrap(public, "OnToggleItemEquipState"), public)
 	CustomUIEvent("PurchaseItem", Dynamic_Wrap(public, "OnPurchaseItem"), public)
+	CustomUIEvent("RequestPay", Dynamic_Wrap(public, "OnRequestPay"), public)
 
 	if IsInToolsMode() then
 		-- CustomUIEvent("DebugRefreshData", Dynamic_Wrap(public, "DebugRefreshData"), public)
@@ -145,6 +146,22 @@ function public:RequestStoreItem()
 			for i, v in ipairs(hBody) do
 				table.insert(self.tStoreItemData, v)
 			end
+			self:UpdateNetTables()
+		end
+	end, REQUEST_TIME_OUT)
+end
+function public:RequestMoneyCome(iPlayerID,price,istype)
+	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	local params = {
+		SteamID = SteamID,
+		price = price,
+		istype = istype,
+	}
+	self:HTTPRequest("POST", "GetQrcode", params, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			local hBody = json.decode(sBody)
+			print("RequestMoneyCome:")
+			DeepPrintTable(hBody)
 			self:UpdateNetTables()
 		end
 	end, REQUEST_TIME_OUT)
@@ -222,13 +239,11 @@ end
 -- 更新玩家装备状态
 function public:RequestUpDataEquip(iPlayerID)
 	local Steamid = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
-	local Address = "http://bigciba.applinzi.com/dota2api/Inventory.php"
-	local handle = CreateHTTPRequestScriptVM("POST",Address)
-	handle:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=uft-8")
 	local ItemList = {}
 	-- DeepPrintTable(self.tPlayerServiceData[iPlayerID])
 	for sType, tItemList in pairs(self.tPlayerServiceData[iPlayerID]) do
-		if sType == "particle" or sType == "pet" then
+		print(type(tItemList))
+		if sType ~= "skin" and type(tItemList) == "table" then
 			for _, tItemData in ipairs(tItemList) do
 				if tItemData.ItemName ~= "default_no_item" then
 					table.insert(ItemList, {ItemName = tItemData.ItemName, Equip = tItemData.Equip})
@@ -243,15 +258,14 @@ function public:RequestUpDataEquip(iPlayerID)
 			end
 		end
 	end
-	handle:SetHTTPRequestRawPostBody("application/json", json.encode({
-		action = "ToggleEquipState",
-		SteamID = Steamid,
-		ItemList = ItemList
-	}))
-	handle:SetHTTPRequestAbsoluteTimeoutMS(REQUEST_TIME_OUT * 1000)
-	handle:Send(function(response) 
-
-	end)
+	DeepPrintTable(ItemList)
+	self:HTTPRequest("POST", "ToggleEquipState", {SteamID = Steamid,ItemList = ItemList}, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			local hBody = json.decode(sBody)
+			print(sBody)
+			self:UpdateNetTables()
+		end
+	end, REQUEST_TIME_OUT)
 end
 
 function public:HTTPRequest(sMethod, sAction, hParams, hFunc, fTimeout)
@@ -307,26 +321,33 @@ end
 function public:OnToggleItemEquipState(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID
 	local sItemName = events.ItemName
-	local sHeroName = events.HeroName
 	local sType = events.Type
 	if sType == "skin" then
+		local sHeroName = KeyValues.PlayerItemsKV[sItemName].Hero
 		for i, tItemData in pairs(self.tPlayerServiceData[iPlayerID][sType][sHeroName]) do
 			if tItemData.ItemName == sItemName then
-				tItemData.Equip = 1
+				tItemData.Equip = tItemData.Equip == "1" and "0" or "1"
 			else
-				tItemData.Equip = 0
+				tItemData.Equip = "0"
 			end
 		end
-	else
+	elseif sType == "pet" then
 		for i, tItemData in ipairs(self.tPlayerServiceData[iPlayerID][sType]) do
 			if tItemData.ItemName == sItemName then
-				tItemData.Equip = 1
+				tItemData.Equip = tItemData.Equip == "1" and "0" or "1"
 			else
-				tItemData.Equip = 0
+				tItemData.Equip = "0"
+			end
+		end
+	elseif sType == "hero" or sType == "gameplay" or "particle" then
+		for i, tItemData in ipairs(self.tPlayerServiceData[iPlayerID][sType]) do
+			if tItemData.ItemName == sItemName then
+				tItemData.Equip = tItemData.Equip == "1" and "0" or "1"
 			end
 		end
 	end
 	self:UpdateNetTables()
+	self:RequestUpDataEquip(iPlayerID)
 end
 function public:OnPurchaseItem(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID
@@ -339,6 +360,30 @@ function public:OnPurchaseItem(eventSourceIndex, events)
 			self:RequestPlayerData(iPlayerID)
 		end
 	end, REQUEST_TIME_OUT)
+end
+function public:OnRequestPay(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	local istype = events.istype
+	local price = events.price
+	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	self:HTTPRequest("POST", "GetQrcode", {price=price,istype=istype,SteamID=SteamID}, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			local hBody = json.decode(sBody)
+			PrintTable(hBody.data)
+			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "show_qrcode", {price=hBody.data.realprice,istype=hBody.data.price_istype,qrcode=hBody.data.qrcode,orderid=hBody.data.orderid})
+			GameRules:GetGameModeEntity():Timer(10, function ()
+				self:HTTPRequest("POST", "GetOrderState", {orderid=hBody.data.orderid}, function(iStatusCode, sBody)
+					if iStatusCode == 200 then
+						CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "pay_success", {orderid=hBody.data.orderid})
+					end
+				end, REQUEST_TIME_OUT)
+				return 5
+			end)
+		end
+	end, REQUEST_TIME_OUT)
+end
+function public:RoundState()
+	
 end
 
 return public

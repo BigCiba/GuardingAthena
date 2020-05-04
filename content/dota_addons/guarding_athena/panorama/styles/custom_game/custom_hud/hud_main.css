@@ -242,6 +242,31 @@
 {
 	brightness: 1.5;
 }
+#MoneyComeButton
+{
+	width: 22px;
+	height: 22px;
+	vertical-align: middle;
+
+	wash-color: dotaPlusGold;
+
+    background-image: url("s2r://panorama/images/hud/reborn/icon_combat_log_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	tooltip-position: top;
+	tooltip-body-position: 50% 50%;
+}
+
+#MoneyComeButton:hover
+{
+	brightness: 2.0;
+}
+
+#MoneyComeButton:active
+{
+	brightness: 1.5;
+}
 
 
 #SearchCategories
@@ -1402,8 +1427,22 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	width: 20px;
 	height: 20px;
 	transform: translateY( 1px );
+	margin-bottom: 6px;
 
 	background-image: dotaPlusCurrencySmallIcon;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.DotaPlusPurchaseButton .DotaPlusPriceCurrencyIcon
+{
+	width: 20px;
+	height: 20px;
+	transform: translateY( 1px );
+	margin-bottom: 6px;
+
+	background-image: url("file://{images}/dotaplus_logo_small.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;

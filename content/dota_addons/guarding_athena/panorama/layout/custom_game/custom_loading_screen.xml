@@ -35,6 +35,9 @@
 			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_16.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_17.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_18.png" hittest="false" />
+			<!-- 其他 -->
+			<Image class="Hidden" src="file://{images}/custom_game/alipay.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/wechatpay.png" hittest="false" />
 		</Panel>
 	</Panel>
 </root>
