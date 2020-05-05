@@ -43,6 +43,13 @@ function GetPlayerPrice(iPlayerID) {
 	let tData = CustomNetTables.GetTableValue("service", "player_data");
 	return tData[sPlayerID].Price;
 }
+function GetCourierItemDef(sCourierName) {
+	return GameUI.PetsKv[sCourierName].ItemDef;
+}
+
+function GetCourierItemStyle(sCourierName) {
+	return GameUI.PetsKv[sCourierName].ItemStyle || 0;
+}
 GameUI.GetPanelCenter = function (Panel) {
 	let Position = GameUI.GetPanelPosition(Panel);
 	return {x: Position.x + Panel.actuallayoutwidth / 2, y: Position.y + Panel.actuallayoutheight / 2};

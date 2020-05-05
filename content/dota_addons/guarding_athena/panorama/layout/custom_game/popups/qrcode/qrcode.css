@@ -125,6 +125,33 @@
 .ShowQrcode #PaymentQrcode {
 	visibility: visible;
 }
+.Complete .PaymentResultPanel,
+.Faild .PaymentResultPanel 
+{
+	horizontal-align: center;
+	vertical-align: center;
+	width: 100%;
+	height: 100%;
+	background-color: #444242ee;
+	background-blur: gaussian( 2.5 );
+}
+.PaymentResult {
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 42px;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	visibility: collapse;
+}
+.Complete #PaymentCompleteLabel{
+	color: #40ff2f;
+	visibility: visible;
+}
+.Faild #PaymentFaildLabel{
+	color: #f70f0f;
+	visibility: visible;
+}
 .AdjustPanel {
 	horizontal-align: center;
 	/* margin: 10px 0px; */

@@ -1,0 +1,24 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
+		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
+		<!-- <include src="file://{resources}/styles/custom_game/popup.css" /> -->
+		<include src="file://{resources}/layout/custom_game/popups/qrcode/qrcode.css" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
+		<!-- <include src="file://{resources}/layout/custom_game/popups/qrcode/qrcode.js" /> -->
+	</scripts>
+	<Panel class="PopupRoot littlePopupBG" oncancel="UIPopupButtonClicked()">
+		<Panel id="CommonPopupRoot" style="flow-children: down;" class="PopupContainer">
+			<Panel id="CommonPopupButton" class="PopupCloseButton" onactivate="UIPopupButtonClicked()"/>
+			<Label id="CommonPopupMsg" class="PopupMsg" text ="是否购买"/>
+			<Panel style="flow-children: right;horizontal-align: center; margin-bottom: 12px;">
+				<TextButton id="CommonPopupYes" class="PopUpButton" text="#DialogBox_Yes" onactivate="KillSelf()" />
+				<TextButton id="CommonPopupNo" class="PopUpButton" text="#DialogBox_No" onactivate="UIPopupButtonClicked()" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

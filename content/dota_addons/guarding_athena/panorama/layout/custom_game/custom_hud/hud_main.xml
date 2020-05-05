@@ -135,7 +135,14 @@
 	</snippets>
 
 	<Panel hittest="false" class="CustomHudRoot">
-		<Panel id="AthenaStorePage" class="DashboardPage PageVisible ShowChatWheel">
+		<!-- 左上角按钮 -->
+		<Panel id="LeftTopButtons">
+			<!-- 背包 -->
+			<Panel id="HudInventoryButton" class="LeftTopPanel">
+				<Button class="LeftTopButton" onmouseover="DOTAShowTextTooltip('商店')" onmouseout="DOTAHideTextTooltip()" onactivate="$('#AthenaStorePage').ToggleClass('PageVisible')" />
+			</Panel>
+		</Panel>
+		<Panel id="AthenaStorePage" class="DashboardPage ShowChatWheel">
 
 			<Panel id="MainContents" class="DotaPlusContainer">
 				<Panel id="SearchAndCategoriesContainer">
@@ -143,14 +150,14 @@
 						<Panel class="SearchOptionsTitleCategories">
 							<Label text="我的钱包" />
 							<Panel class="FillWidth" />
-							<Button id="MoneyComeButton" onactivate="MoneyComeButton()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" />
+							<Button id="MoneyComeButton" onactivate="MoneyComeButton()" onmouseover="UIShowTextTooltip( '充值' )" onmouseout="UIHideTextTooltip()" />
 							<!-- <Button id="RewardLogButton" onactivate="DOTAPlusShowRewardLog()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" /> -->
 						</Panel>
-						<Panel id="CurrencyAmountContainer">
+						<Panel id="CurrencyAmountContainer" onmouseover="UIShowTextTooltip( '碎片' )" onmouseout="UIHideTextTooltip()">
 							<Panel class="EventPointsValueIcon ShardSubscription"/>
 							<Label id="CurrentCurrencyAmount" text="{s:shard}" html="true" />
 						</Panel>
-						<Panel id="PriceAmountContainer">
+						<Panel id="PriceAmountContainer" onmouseover="UIShowTextTooltip( '勋章' )" onmouseout="UIHideTextTooltip()">
 							<Panel class="EventPointsValueIcon PriceSubscription"/>
 							<Label id="CurrentPriceAmount" text="{s:price}" html="true" />
 						</Panel>
@@ -168,7 +175,7 @@
 							</Panel>
 						</Panel>
 					</Panel>
-
+					<!-- 商品	分类 -->
 					<Panel id="SearchCategories">
 
 						<RadioButton id="PlayerInventoryCategory" searchquery="heroid:any shards:true loot_list:dota_plus_exclusives" class="SearchCategory" group="plus_search_categories" onactivate="CategoryFilter('inventory')">
@@ -315,8 +322,9 @@
 				<Panel id="ChatWheelContainer" class="SearchModeContainer">
 					<Panel id="ChatWheelHeader">
 						<Label id="ChatWheelText" text="全部" />
-						<Panel class="InfoIcon" onmouseover="UIShowTextTooltip( #DOTA_ChatWheelPurchase_Tooltip )" onmouseout="UIHideTextTooltip()" />
+						<!-- <Panel class="InfoIcon" onmouseover="UIShowTextTooltip( #DOTA_ChatWheelPurchase_Tooltip )" onmouseout="UIHideTextTooltip()" /> -->
 						<Panel class="FillWidth" />
+						<Panel id="ToggleStoreButton" onactivate="$('#AthenaStorePage').ToggleClass('PageVisible')"/>
 						<!-- <TextButton id="CustomizeChatWheelButton" text="#dota_chatwheel_customize" onactivate="DOTAShowSettingsPopupChatWheelPage( '' )" /> -->
 					</Panel>
 

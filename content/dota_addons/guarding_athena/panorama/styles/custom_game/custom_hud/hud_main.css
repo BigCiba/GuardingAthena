@@ -154,6 +154,8 @@
 	background-color: #0009;
 	padding: 8px 14px 10px 14px;
 	flow-children: right;
+	/* tooltip-position: bottom; */
+	/* tooltip-body-position: 0% 30px; */
 }
 
 #CurrencyAmountContainer .EventPointsValueIcon,
@@ -1283,6 +1285,30 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	margin-bottom: 4px;
 }
 
+#ToggleStoreButton {
+	width: 30px;
+	height: 30px;
+	/* margin-top: 10px;
+	margin-right: 10px; */
+	horizontal-align: right;
+	vertical-align: top;
+	background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	transition-property: wash-color;
+	transition-duration: 0.1s;
+}
+#ToggleStoreButton Label {
+	color: #ffffff;
+}
+#ToggleStoreButton:hover {
+	wash-color: #ffddddff;
+}
+#ToggleStoreButton:active {
+	wash-color: #ff8080ff;
+	background-size: 90% 90%;
+}
 #CustomizeChatWheelButton
 {
 	vertical-align: middle;
@@ -1769,4 +1795,39 @@ DOTAStorePlusPage.EventCavernCrawlActive .EventCavernCrawl
 	margin-right: 4px;
 	transform: translateY( 6px );
 	text-shadow: 1px 1px 2px 2 black;
+}
+
+#LeftTopButtons {
+	width: 550px;
+	align: left top;
+	margin-top: 6px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 145px;
+	background-color: gradient(linear, 0px 0px, 380px 165px, from(#000000aa), color-stop(0.6, #000000aa), to(#00000000));
+	overflow: noclip;
+	flow-children: right;
+}
+#HudInventoryButton .LeftTopButton {
+	background-image: url("s2r://panorama/images/dotaplus_logo_small_png.vtex");
+}
+.LeftTopPanel {
+	overflow: noclip;
+}
+.LeftTopButton {
+	height: 37px;
+	width: 32px;
+	margin-left: 16px;
+	tooltip-position: bottom;
+	/* opacity: 0.5; */
+	wash-color: #f3e8c2;
+	background-position: 50%;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	/* transition-property: opacity;
+	transition-duration: 0.2s; */
+}
+.LeftTopButton:hover {
+	/* opacity: 1; */
+	brightness: 1.5;
 }

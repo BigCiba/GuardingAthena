@@ -48,14 +48,19 @@ function Pet:constructor(sName, hOwner)
 	self.iXP = 0
 
 	local hUnit = CreateUnitByName(sName, GetRespawnPosition(), true, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
-	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
+	-- hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
 	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
-	hUnit:GetAbilityByIndex(0):SetLevel(1)
-	-- ambient
-	local sAmbientParticle = KeyValues.PetsKv[sName].AmbientParticle
-	if sAmbientParticle ~= nil then
-		ParticleManager:CreateParticle(sAmbientParticle, PATTACH_ABSORIGIN_FOLLOW, hUnit)
+	for i = 0, 4 do
+		local hAbility = hUnit:GetAbilityByIndex(i)
+		if IsValid(hAbility) then
+			hAbility:SetLevel(1)
+		end
 	end
+	-- ambient
+	-- local sAmbientParticle = KeyValues.PetsKv[sName].AmbientParticle
+	-- if sAmbientParticle ~= nil then
+	-- 	ParticleManager:CreateParticle(sAmbientParticle, PATTACH_ABSORIGIN_FOLLOW, hUnit)
+	-- end
 	self.hUnit = hUnit
 
 	hUnit.GetPet = function(hUnit)

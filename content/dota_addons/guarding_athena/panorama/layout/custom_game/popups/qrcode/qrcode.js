@@ -21,14 +21,25 @@ function OnShowQrcode(data) {
 	$("#PaymentQrcode").SetURL("https://pay.bearsoftware.net.cn/get_code_image_show_image?url=" + data.qrcode);
 	$("#RealPrice").SetDialogVariable("price", String(Number(data.price).toFixed(2)));
 	$("#OrderID").SetDialogVariable("orderid", data.orderid);
-	if (data.istype == "1") {
+	if (data.istype == 1) {
 		$("#PaymentIcon").AddClass("Alipay");
-	} else if (data.istype == "2") {
+	} else if (data.istype == 2) {
 		$("#PaymentIcon").AddClass("WeChatPay");
 	}
 }
-function OnPaySuccess(data) {
+function OnPaymentComplete(data) {
 	$.Msg(data);
+	$("#PaymentQrcode").AddClass("Complete");
+	$.Schedule(1, function () {
+		$.DispatchEvent("UIPopupButtonClicked",$.GetContextPanel());
+	});
+}
+function OnPaymentFaild() {
+	$("#PaymentQrcode").AddClass("Faild");
+	$.Schedule(1, function () {
+		$.DispatchEvent("UIPopupButtonClicked",$.GetContextPanel());
+	});
 }
 GameEvents.Subscribe("show_qrcode", OnShowQrcode);
-GameEvents.Subscribe("pay_success", OnPaySuccess);
+GameEvents.Subscribe("payment_complete", OnPaymentComplete);
+GameEvents.Subscribe("payment_faild", OnPaymentFaild);

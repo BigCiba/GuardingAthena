@@ -143,8 +143,8 @@ function public:RequestStoreItem()
 	self:HTTPRequest("POST", "GetStoreItem", {}, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			local hBody = json.decode(sBody)
-			print("RequestStoreItem:")
-			DeepPrintTable(hBody)
+			-- print("RequestStoreItem:")
+			-- DeepPrintTable(hBody)
 			for i, v in ipairs(hBody) do
 				table.insert(self.tStoreItemData, v)
 			end
@@ -183,7 +183,11 @@ function public:RequestPlayerData(iPlayerID)
 			DeepPrintTable(hBody)
 			if hBody ~= nil then
 				if self.tPlayerServiceData[iPlayerID] == nil then
-					self.tPlayerServiceData[iPlayerID] = {}
+					self.tPlayerServiceData[iPlayerID] = {
+						pet = {},
+						skin = {},
+						particle = {},
+					}
 				end
 				-- 是否有装备
 				local tEquipped = {}
@@ -306,9 +310,11 @@ end
 function public:GetEquippedItem(iPlayerID, sType)
 	local tData = {}
 	local tPlayerServiceData = sType == "skin" and self.tPlayerServiceData[iPlayerID][sType][GuardingAthena.tPlayerSelectionInfo[iPlayerID].player_selected_hero] or self.tPlayerServiceData[iPlayerID][sType]
-	for _, tItemData in ipairs(tPlayerServiceData) do
-		if tonumber(tItemData.Equip) == 1 then
-			table.insert(tData, tItemData)
+	if tPlayerServiceData then
+		for _, tItemData in ipairs(tPlayerServiceData) do
+			if tonumber(tItemData.Equip) == 1 then
+				table.insert(tData, tItemData)
+			end
 		end
 	end
 	return tData

@@ -26,16 +26,17 @@ function CheckRechargeComplete(iPlayerID, order_id)
 					return
 				end
 
-				local iStatusCode, sBody = public:HTTPRequestSync("POST", "GetOrderState", {order_id=order_id}, REQUEST_TIME_OUT)
+				local iStatusCode, sBody = public:HTTPRequestSync("POST", "GetOrderState", {orderid=order_id}, REQUEST_TIME_OUT)
 				print("iStatusCode : "..iStatusCode)
 				print("sBody : "..sBody)
 				if iStatusCode == 200 and sBody ~= "fail" then
 					local hBody = json.decode(sBody)
 					if hBody ~= nil then
 						RemoveOrder(order_id)
-						public.tPlayerServiceData[iPlayerID].ticket_num = new_ticket
+						public.tPlayerServiceData[iPlayerID].Shard = hBody.Shard
+						public.tPlayerServiceData[iPlayerID].Price = hBody.Price
 						public:UpdateNetTables()
-						CustomGameEventManager:Send_ServerToPlayer(player, "payment_complete", {amount= new_ticket-old_ticket})
+						CustomGameEventManager:Send_ServerToPlayer(player, "payment_complete", {Shard= hBody.Shard,Price=hBody.Price})
 						return
 					end
 				end
@@ -55,57 +56,19 @@ function public:OnRequestPay(eventSourceIndex, events)
 	local istype = events.istype
 	local price = events.price
 	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
-	local iStatusCode, sBody = self:HTTPRequestSync("POST", "GetQrcode", {price=price,istype=istype,SteamID=SteamID}, REQUEST_TIME_OUT)
-	print("iStatusCode : "..iStatusCode)
-	print("sBody : "..sBody)
-	if iStatusCode == 200 then
-	local hBody = json.decode(sBody)
-	if hBody ~= nil then
-		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "show_qrcode", {price=hBody.data.realprice,istype=hBody.data.price_istype,qrcode=hBody.data.qrcode,orderid=hBody.data.orderid})
-		AddOrder(hBody.data.orderid)
-		CheckRechargeComplete(iPlayerID, hBody.data.orderid)
-	end
-	self:HTTPRequest("POST", "GetQrcode", {price=price,istype=istype,SteamID=SteamID}, function(iStatusCode, sBody)
+	coroutine.wrap(function()
+		local iStatusCode, sBody = self:HTTPRequestSync("POST", "GetQrcode", {price=price,istype=istype,SteamID=SteamID}, REQUEST_TIME_OUT)
+		print("iStatusCode : "..iStatusCode)
+		print("sBody : "..sBody)
 		if iStatusCode == 200 then
 			local hBody = json.decode(sBody)
-			PrintTable(hBody.data)
-			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "show_qrcode", {price=hBody.data.realprice,istype=hBody.data.price_istype,qrcode=hBody.data.qrcode,orderid=hBody.data.orderid})
-			GameRules:GetGameModeEntity():Timer(10, function ()
-				self:HTTPRequest("POST", "GetOrderState", {orderid=hBody.data.orderid}, function(iStatusCode, sBody)
-					if iStatusCode == 200 then
-						CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "pay_success", {orderid=hBody.data.orderid})
-					end
-				end, REQUEST_TIME_OUT)
-				return 5
-			end)
-			AddOrder(hBody.data.orderid)
-			CheckRechargeComplete(iPlayerID, hBody.data.orderid)
+			if hBody ~= nil then
+				CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "show_qrcode", {price=hBody.data.realprice,istype=hBody.data.istype,qrcode=hBody.data.qrcode,orderid=hBody.data.orderid})
+				AddOrder(hBody.data.orderid)
+				CheckRechargeComplete(iPlayerID, hBody.data.orderid)
+			end
 		end
-	end, REQUEST_TIME_OUT)
-end
---请求充值的网页
-function public:RequestPay(hData)
-	local iPlayerID = hData.PlayerID
-	local type = hData.type or 1
-	local amount = tostring(hData.amount)
-	local steamid = tostring(PlayerResource:GetSteamID(iPlayerID))
-
-	local iStatusCode, sBody = self:HTTPRequestSync("POST", ACTION_REQUEST_QRCODE, {amount=amount,steamid=steamid,type=type}, REQUEST_TIME_OUT)
-	print("iStatusCode : "..iStatusCode)
-	print("sBody : "..sBody)
-	local url = ""
-	local order_id = -1
-	if iStatusCode == 200 then
-		local hBody = json.decode(sBody)
-		if hBody ~= nil and hBody.link ~= nil then
-			url = hBody.link
-			order_id = hBody.order_id
-			AddOrder(order_id)
-			CheckRechargeComplete(iPlayerID, order_id)
-		end
-	end
-
-	return {url=url, order_id=order_id, type=type}
+	end)()
 end
 
 function public:OnClosePaymentPage(eventSourceIndex, tEvents)

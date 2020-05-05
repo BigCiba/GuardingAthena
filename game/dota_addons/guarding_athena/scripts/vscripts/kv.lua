@@ -18,6 +18,7 @@ if IsServer() then
 		KvToJson("HeroesKv", KeyValues.HeroesKv)
 		KvToJson("PlayerItemsKV", KeyValues.PlayerItemsKV)
 		KvToJson("AbilitiesKv", KeyValues.AbilitiesKv)
+		KvToJson("PetsKv", KeyValues.PetsKv)
 	-- 	KvToJson("AssetModifiersKv", KeyValues.AssetModifiersKv)
 	-- 	KvToJson("BannerGoodsKv", KeyValues.BannerGoodsKv)
 	-- 	KvToJson("BattlepassKv", KeyValues.BattlepassKv)

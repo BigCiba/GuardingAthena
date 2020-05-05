@@ -99,6 +99,7 @@ function CategoryFilter(sType) {
 function LoadStoreItem(self) {
 	self.BLoadLayoutSnippet("StoreItem");
 	self.SetStoreItem = function(ItemData) {
+		$.Msg(ItemData);
 		let ItemName = ItemData.ItemName;
 		if (ItemData.Type == "hero") {
 			ItemName = "npc_dota_hero_" + ItemData.ItemName;
@@ -107,6 +108,18 @@ function LoadStoreItem(self) {
 		}
 		if (ItemData.Type == "pet") {
 			self.AddClass("Prefab_courier");
+			self.SetPanelEvent("onmouseover", function () {
+				$.DispatchEvent(
+					"UIShowCustomLayoutParametersTooltip",
+					self,
+					"courier_tooltip",
+					"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
+					"courier_name=" + ItemName + "&rotationspeed=2");
+			}.bind(self));
+		
+			self.SetPanelEvent("onmouseout", function () {
+				$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
+			}.bind(self));
 		}
 		if (ItemData.Type == "particle") {
 			self.AddClass("Prefab_league");
@@ -123,12 +136,17 @@ function LoadStoreItem(self) {
 		self.SetHasClass("StoreItem", true);
 		self.FindChildTraverse("ShardPurchaseButton").SetPanelEvent("onactivate", function() {
 			let Shard = GetPlayerShard(Players.GetLocalPlayer());
-			if (Shard > this.Shard) {
-				GameEvents.SendCustomGameEventToServer("PurchaseItem", {
-					ItemName: this.id,
-					Currency: "Shard"
-				});
-			}
+			// if (Shard > this.Shard) {
+			// 	GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+			// 		ItemName: this.id,
+			// 		Currency: "Shard"
+			// 	});
+			// }
+			$.DispatchEvent(
+				"UIShowCustomLayoutPopupParameters",
+				"qrcode",
+				"file://{resources}/layout/custom_game/popups/payment/payment.xml",
+				{Shard:Shard});
 		}.bind(self));
 		self.FindChildTraverse("PricePurchaseButton").SetPanelEvent("onactivate", function() {
 			let Shard = GetPlayerShard(Players.GetLocalPlayer());
@@ -156,6 +174,18 @@ function LoadStoreItem(self) {
 		}
 		if (ItemData.Type == "pet") {
 			self.AddClass("Prefab_courier");
+			self.SetPanelEvent("onmouseover", function () {
+				$.DispatchEvent(
+					"UIShowCustomLayoutParametersTooltip",
+					self,
+					"courier_tooltip",
+					"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
+					"courier_name=" + ItemName + "&rotationspeed=2");
+			}.bind(self));
+		
+			self.SetPanelEvent("onmouseout", function () {
+				$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
+			}.bind(self));
 		}
 		if (ItemData.Type == "particle") {
 			self.AddClass("Prefab_league");
@@ -206,8 +236,8 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 						for (const Index in ItemList) {
 							const ItemData = ItemList[Index];
 							if (ItemData.ItemName != "default_no_item") {
-								let Panel = $("#ChatWheelMessages").FindChildTraverse(ItemData.ItemName + localPlayerID);
-								Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), ItemData.ItemName + localPlayerID);
+								let Panel = $("#ChatWheelMessages").FindChildTraverse("Player" + localPlayerID + "_" + ItemData.ItemName);
+								Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), "Player" + localPlayerID + "_" + ItemData.ItemName);
 								LoadStoreItem(Panel);
 								Panel.SetInventoryItem(ItemData);
 							}
@@ -218,8 +248,8 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 					for (const Index in ItemList) {
 						const ItemData = ItemList[Index];
 						if (ItemData.ItemName != "default_no_item") {
-							let Panel = $("#ChatWheelMessages").FindChildTraverse(ItemData.ItemName + localPlayerID);
-							Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), ItemData.ItemName + localPlayerID);
+							let Panel = $("#ChatWheelMessages").FindChildTraverse("Player" + localPlayerID + "_" + ItemData.ItemName);
+							Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), "Player" + localPlayerID + "_" + ItemData.ItemName);
 							LoadStoreItem(Panel);
 							Panel.SetInventoryItem(ItemData);
 						}
