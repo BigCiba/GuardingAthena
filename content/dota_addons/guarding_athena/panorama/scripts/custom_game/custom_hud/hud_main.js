@@ -99,7 +99,6 @@ function CategoryFilter(sType) {
 function LoadStoreItem(self) {
 	self.BLoadLayoutSnippet("StoreItem");
 	self.SetStoreItem = function(ItemData) {
-		$.Msg(ItemData);
 		let ItemName = ItemData.ItemName;
 		if (ItemData.Type == "hero") {
 			ItemName = "npc_dota_hero_" + ItemData.ItemName;
@@ -133,6 +132,12 @@ function LoadStoreItem(self) {
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
 		self.FindChildTraverse("ShardCost").SetDialogVariable("shard_cost", ItemData.Shard);
 		self.FindChildTraverse("PriceCost").SetDialogVariable("price_cost", ItemData.Price);
+		if (ItemData.Shard == "-1") {
+			self.AddClass("NoShard");
+		}
+		if (ItemData.Price == "-1") {
+			self.AddClass("NoPrice");
+		}
 		self.SetHasClass("StoreItem", true);
 		self.FindChildTraverse("ShardPurchaseButton").SetPanelEvent("onactivate", function() {
 			let Shard = GetPlayerShard(Players.GetLocalPlayer());
@@ -263,10 +268,12 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	if (tableKeyName == "store_item") {
 		for (let Index in table) {
 			let ItemData = table[Index];
-			let Panel = $("#ChatWheelMessages").FindChildTraverse(ItemData.ItemName);
-			Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), ItemData.ItemName);
-			LoadStoreItem(Panel);
-			Panel.SetStoreItem(ItemData);
+			if (ItemData.Purchaseable == "1") {
+				let Panel = $("#ChatWheelMessages").FindChildTraverse(ItemData.ItemName);
+				Panel = ReloadPanel(Panel, "Panel", $("#ChatWheelMessages"), ItemData.ItemName);
+				LoadStoreItem(Panel);
+				Panel.SetStoreItem(ItemData);
+			}
 		}
 	}
 }
