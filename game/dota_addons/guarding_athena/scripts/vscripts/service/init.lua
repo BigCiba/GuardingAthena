@@ -3,6 +3,8 @@ if Service == nil then
 end
 local public = Service
 
+require("service/payment")
+
 --[[
 	一些需要用到的特殊函数
 ]]--
@@ -360,30 +362,6 @@ function public:OnPurchaseItem(eventSourceIndex, events)
 			self:RequestPlayerData(iPlayerID)
 		end
 	end, REQUEST_TIME_OUT)
-end
-function public:OnRequestPay(eventSourceIndex, events)
-	local iPlayerID = events.PlayerID
-	local istype = events.istype
-	local price = events.price
-	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
-	self:HTTPRequest("POST", "GetQrcode", {price=price,istype=istype,SteamID=SteamID}, function(iStatusCode, sBody)
-		if iStatusCode == 200 then
-			local hBody = json.decode(sBody)
-			PrintTable(hBody.data)
-			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "show_qrcode", {price=hBody.data.realprice,istype=hBody.data.price_istype,qrcode=hBody.data.qrcode,orderid=hBody.data.orderid})
-			GameRules:GetGameModeEntity():Timer(10, function ()
-				self:HTTPRequest("POST", "GetOrderState", {orderid=hBody.data.orderid}, function(iStatusCode, sBody)
-					if iStatusCode == 200 then
-						CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(iPlayerID), "pay_success", {orderid=hBody.data.orderid})
-					end
-				end, REQUEST_TIME_OUT)
-				return 5
-			end)
-		end
-	end, REQUEST_TIME_OUT)
-end
-function public:RoundState()
-	
 end
 
 return public
