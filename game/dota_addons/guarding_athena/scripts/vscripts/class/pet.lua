@@ -57,6 +57,7 @@ function Pet:constructor(sName, hOwner)
 		end
 	end
 	-- ambient
+	hUnit:AddNewModifier(hUnit, nil, KeyValues.PetsKv[sName].AmbientEffect, nil)
 	-- local sAmbientParticle = KeyValues.PetsKv[sName].AmbientParticle
 	-- if sAmbientParticle ~= nil then
 	-- 	ParticleManager:CreateParticle(sAmbientParticle, PATTACH_ABSORIGIN_FOLLOW, hUnit)

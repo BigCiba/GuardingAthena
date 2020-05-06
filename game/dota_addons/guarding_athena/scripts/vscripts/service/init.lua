@@ -190,8 +190,8 @@ function public:RequestPlayerData(iPlayerID)
 					}
 				end
 				-- 是否有装备
-				local tEquipped = {}
-				for i, v in ipairs(hBody) do
+				local tEquipped = {pet = false,skin = false,particle = false}
+				for i, v in ipairs(hBody.inventory) do
 					if self.tPlayerServiceData[iPlayerID][v.Type] == nil then
 						self.tPlayerServiceData[iPlayerID][v.Type] = {}
 						tEquipped[v.Type] = false
@@ -224,17 +224,18 @@ function public:RequestPlayerData(iPlayerID)
 						end
 					end
 				end
+				DeepPrintTable(tEquipped)
 				-- 添加默认物品
 				for sHeroName, tSkinList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
-					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], {ItemName = "default_no_item", Equip = tEquipped[sHeroName] and 0 or 1, Expiration = "9999-12-31", Type = "skin"})
+					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], {ItemName = "default_no_item", Equip = tEquipped[sHeroName] and "0" or "1", Expiration = "9999-12-31", Type = "skin"})
 				end
-				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "default_no_item", Equip = tEquipped.pet and 0 or 1, Expiration = "9999-12-31", Type = "pet"})
-				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], {ItemName = "default_no_item", Equip = tEquipped.particle and 0 or 1, Expiration = "9999-12-31", Type = "particle"})
+				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "default_no_item", Equip = tEquipped.pet and "0" or "1", Expiration = "9999-12-31", Type = "pet"})
+				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], {ItemName = "default_no_item", Equip = tEquipped.particle and "0" or "1", Expiration = "9999-12-31", Type = "particle"})
 				-- 分数等级金钱
-				self.tPlayerServiceData[iPlayerID].Score = hBody[1].Score
-				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody[1].Score)
-				self.tPlayerServiceData[iPlayerID].Shard = hBody[1].Shard
-				self.tPlayerServiceData[iPlayerID].Price = hBody[1].Price
+				self.tPlayerServiceData[iPlayerID].Score = hBody.player_data.Score
+				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody.player_data.Score)
+				self.tPlayerServiceData[iPlayerID].Shard = hBody.player_data.Shard
+				self.tPlayerServiceData[iPlayerID].Price = hBody.player_data.Price
 				self.tPlayerServiceData[iPlayerID].Hero = ""
 				
 				self:UpdateNetTables()
@@ -248,7 +249,6 @@ function public:RequestUpDataEquip(iPlayerID)
 	local ItemList = {}
 	-- DeepPrintTable(self.tPlayerServiceData[iPlayerID])
 	for sType, tItemList in pairs(self.tPlayerServiceData[iPlayerID]) do
-		print(type(tItemList))
 		if sType ~= "skin" and type(tItemList) == "table" then
 			for _, tItemData in ipairs(tItemList) do
 				if tItemData.ItemName ~= "default_no_item" then
@@ -264,7 +264,6 @@ function public:RequestUpDataEquip(iPlayerID)
 			end
 		end
 	end
-	DeepPrintTable(ItemList)
 	self:HTTPRequest("POST", "ToggleEquipState", {SteamID = Steamid,ItemList = ItemList}, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			local hBody = json.decode(sBody)
@@ -312,7 +311,7 @@ function public:GetEquippedItem(iPlayerID, sType)
 	local tPlayerServiceData = sType == "skin" and self.tPlayerServiceData[iPlayerID][sType][GuardingAthena.tPlayerSelectionInfo[iPlayerID].player_selected_hero] or self.tPlayerServiceData[iPlayerID][sType]
 	if tPlayerServiceData then
 		for _, tItemData in ipairs(tPlayerServiceData) do
-			if tonumber(tItemData.Equip) == 1 then
+			if tonumber(tItemData.Equip) == 1 and tItemData.ItemName ~= "default_no_item" then
 				table.insert(tData, tItemData)
 			end
 		end
@@ -359,6 +358,7 @@ function public:OnToggleItemEquipState(eventSourceIndex, events)
 end
 function public:OnPurchaseItem(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID
+	local player = PlayerResource:GetPlayer(iPlayerID)
 	local sItemName = events.ItemName
 	local Currency = events.Currency
 	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
@@ -366,6 +366,7 @@ function public:OnPurchaseItem(eventSourceIndex, events)
 		if iStatusCode == 200 then
 			print(sBody)
 			self:RequestPlayerData(iPlayerID)
+			CustomGameEventManager:Send_ServerToPlayer(player, "purchase_complete", {})
 		end
 	end, REQUEST_TIME_OUT)
 end

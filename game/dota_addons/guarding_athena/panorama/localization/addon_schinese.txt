@@ -160,5 +160,27 @@
 
 	"DialogBox_Yes"					"确认"
 	"DialogBox_No"					"取消"
+
+	"Equip"							"装备"
+	"UnEquip"						"卸下"
+	"Store"							"商店"
+	"Wallet"						"我的钱包"
+	"Recharge"						"充值"
+	"Shard_Description"				"碎片<br></br>通过完成游戏获得，根据难度获得不等的碎片。"
+	"Price_Description"				"勋章<br></br>通过充值获得，每1RMB=10勋章。"
+	"CategoryInventory"				"我的物品"
+	"CategoryInventory_Description"	"已购买物品"
+	"CategoryAll"					"全部"
+	"CategoryAll_Description"		"所有可购买物品"
+	"CategoryHero"					"英雄"
+	"CategoryHero_Description"		"解锁英雄"
+	"CategorySkin"					"皮肤"
+	"CategorySkin_Description"		"更改英雄特效"
+	"CategoryParticle"				"特效"
+	"CategoryParticle_Description"	"添加局内特效"
+	"CategoryPet"					"宠物"
+	"CategoryPet_Description"		"好伙伴"
+	"CategoryGamePlay"				"道具"
+	"CategoryGamePlay_Description"	"游戏内道具"
 }
 

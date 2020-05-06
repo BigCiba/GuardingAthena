@@ -8,22 +8,69 @@
 	box-shadow: #00000055 -2px -2px 1px 4px;
 	border-top: 2px solid dotaPlusGold;
 }
+.CommonPopupHeader {
+	width: 100%;
+	/* flow-children: right; */
+}
 #CommonPopupRoot {
 	flow-children: down;
 	min-width: 200px;
 	/* max-width: 400px; */
 }
 #CommonPopupMsg {
-	margin: 8px 8px 8px 12px;
+	/* horizontal-align: center; */
 }
 #CommonPopupYes {
 	width: 90px;
 	height: 36px;
+
+	/* background-image: url("s2r://panorama/images/red_large_off_png.vtex"); */
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	transition-property: brightness, saturation;
+	transition-duration: .3s;
+	overflow: noclip noclip;
+
+	border-top: 1px solid #ffffff05;
+	border-right: 1px solid #00000088;
+	border-left: 1px solid #ffffff05;
+	border-bottom: 1px solid #00000088;
+}
+#CommonPopupYes:hover {
+	/* background-image: url("s2r://panorama/images/red_large_off_png.vtex");
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat; */
+	/* brightness: 1.5; */
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d695 ) );
+	/* saturation: 1.4; */
 }
 #CommonPopupNo {
 	width: 90px;
 	height: 36px;
-	background-color: gradient(linear, 0% 0%, 0% 100%, from(#862d00), to(#5f1c00));
+	/* background-color: gradient(linear, 0% 0%, 0% 100%, from(#862d00), to(#5f1c00)); */
+	background-image: url("s2r://panorama/images/red_large_off_png.vtex");
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	transition-property: brightness, saturation;
+	transition-duration: .3s;
+	overflow: noclip noclip;
+
+	border-top: 1px solid #ffffff05;
+	border-right: 1px solid #00000088;
+	border-left: 1px solid #ffffff05;
+	border-bottom: 1px solid #00000088;
+}
+#CommonPopupNo:hover {
+	background-image: url("s2r://panorama/images/red_large_off_png.vtex");
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	brightness: 3.0;
+	saturation: 1.4;
 }
 #PopupTitle {
 	/* margin: 8px 8px 8px 12px; */
@@ -37,6 +84,7 @@
 	margin-right: 10px;
 	horizontal-align: right;
 	vertical-align: top;
+
 	background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
 	background-position: 50% 50%;
 	background-size: 100% 100%;
@@ -75,4 +123,44 @@
 	font-size: 22px;
 	text-align: center;
 	text-overflow: shrink;
+}
+.ButtonCenter
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+.DotaPlusCurrencyIcon
+{
+	width: 20px;
+	height: 20px;
+	transform: translateY( 1px );
+	margin-bottom: 6px;
+
+	background-image: dotaPlusCurrencySmallIcon;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.DotaPlusPriceCurrencyIcon
+{
+	width: 20px;
+	height: 20px;
+	transform: translateY( 1px );
+	margin-bottom: 6px;
+
+	background-image: url("file://{images}/dotaplus_logo_small.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#ItemImage {
+	margin: 10px;
+}
+#ShardCost
+{
+	margin-left: 2px;
+	margin-right: 4px;
+	color: dotaPlusLightGold;
+	font-size: 18px;
+	padding: 0px;
 }

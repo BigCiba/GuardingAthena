@@ -267,7 +267,7 @@
 .PaymentAdditionButton Image
 {
 	vertical-align: center;
-	width: 22px;
+	width: 19px;
 	height: 22px;
 	margin-bottom: 2px;
 	margin-right: 5px;
@@ -313,9 +313,9 @@
 }
 #ChargeAmountShow Image {
 	vertical-align: center;
-	width: 22px;
+	width: 19px;
 	height: 22px;
-	margin-left: 4px;
+	margin-left: 6px;
 }
 #RealPrice {
 	horizontal-align: center;

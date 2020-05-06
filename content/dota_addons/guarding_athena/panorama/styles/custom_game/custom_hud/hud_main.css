@@ -154,8 +154,6 @@
 	background-color: #0009;
 	padding: 8px 14px 10px 14px;
 	flow-children: right;
-	/* tooltip-position: bottom; */
-	/* tooltip-body-position: 0% 30px; */
 }
 
 #CurrencyAmountContainer .EventPointsValueIcon,
@@ -169,6 +167,7 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	tooltip-position: bottom;
 }
 .ShardSubscription{
 	background-image: dotaPlusCurrencySmallIcon;
@@ -246,13 +245,13 @@
 }
 #MoneyComeButton
 {
-	width: 22px;
-	height: 22px;
-	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+	vertical-align: top;
 
-	wash-color: dotaPlusGold;
+	/* wash-color: dotaPlusGold; */
 
-    background-image: url("s2r://panorama/images/hud/reborn/icon_combat_log_psd.vtex");
+    background-image: url("file://{images}/dotaplus_logo_small.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 
@@ -1830,4 +1829,7 @@ DOTAStorePlusPage.EventCavernCrawlActive .EventCavernCrawl
 .LeftTopButton:hover {
 	/* opacity: 1; */
 	brightness: 1.5;
+}
+.Hidden {
+	visibility: collapse;
 }

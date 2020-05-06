@@ -39,12 +39,20 @@ function GetPlayerShard(sPlayerID) {
 	let tData = CustomNetTables.GetTableValue("service", "player_data");
 	return tData[sPlayerID].Shard;
 }
-function GetPlayerPrice(iPlayerID) {
+function GetPlayerPrice(sPlayerID) {
 	let tData = CustomNetTables.GetTableValue("service", "player_data");
 	return tData[sPlayerID].Price;
 }
 function GetCourierItemDef(sCourierName) {
 	return GameUI.PetsKv[sCourierName].ItemDef;
+}
+
+function ReadAttributeData(data) {
+	var retStr = "";
+	for (var key in data) {
+		retStr += key + "=" + data[key] + "&";
+	}
+	return retStr;
 }
 
 function GetCourierItemStyle(sCourierName) {

@@ -5,18 +5,24 @@
 		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
 		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
 		<!-- <include src="file://{resources}/styles/custom_game/popup.css" /> -->
-		<include src="file://{resources}/layout/custom_game/popups/qrcode/qrcode.css" />
+		<include src="file://{resources}/layout/custom_game/popups/payment/payment.css" />
 	</styles>
 	<scripts>
 		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
-		<!-- <include src="file://{resources}/layout/custom_game/popups/qrcode/qrcode.js" /> -->
+		<include src="file://{resources}/scripts/custom_game/common.js" />
+		<include src="file://{resources}/layout/custom_game/popups/payment/payment.js" />
 	</scripts>
-	<Panel class="PopupRoot littlePopupBG" oncancel="UIPopupButtonClicked()">
+	<Panel class="PopupRoot littlePopupBG" oncancel="UIPopupButtonClicked()"  onload="SetupPaymentConfirm()">
 		<Panel id="CommonPopupRoot" style="flow-children: down;" class="PopupContainer">
 			<Panel id="CommonPopupButton" class="PopupCloseButton" onactivate="UIPopupButtonClicked()"/>
-			<Label id="CommonPopupMsg" class="PopupMsg" text ="是否购买"/>
+			<EconItemImage id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png"/>
+			<Panel id="Contents" class="ButtonCenter">
+				<Label text="花费：" />
+				<Panel id="EventIcon"/>
+				<Label id="ShardCost" text="{s:shard_cost}" />
+			</Panel>
 			<Panel style="flow-children: right;horizontal-align: center; margin-bottom: 12px;">
-				<TextButton id="CommonPopupYes" class="PopUpButton" text="#DialogBox_Yes" onactivate="KillSelf()" />
+				<TextButton id="CommonPopupYes" class="PopUpButton" text="#DialogBox_Yes" onactivate="Confirm()" />
 				<TextButton id="CommonPopupNo" class="PopUpButton" text="#DialogBox_No" onactivate="UIPopupButtonClicked()" />
 			</Panel>
 		</Panel>

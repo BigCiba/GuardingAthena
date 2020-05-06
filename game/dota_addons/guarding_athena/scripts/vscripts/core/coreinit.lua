@@ -2,6 +2,7 @@ require("abilities/common")
 require("utils")
 require("modifiers/BaseClass")
 require("abilities/BaseClass")
+require("modifiers/init")
 
 LinkLuaModifier("modifier_reborn", "modifiers/generic/modifier_reborn.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_fix_damage", "modifiers/modifier_fix_damage.lua", LUA_MODIFIER_MOTION_NONE)

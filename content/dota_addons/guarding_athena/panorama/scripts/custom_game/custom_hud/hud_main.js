@@ -1,3 +1,4 @@
+let SearchWord = "";
 // 显示错误提示
 function ShowError(data) {
 	$( "#ErrorMsg" ).text = $.Localize(data.text);
@@ -14,7 +15,7 @@ function HideError() {
 }
 GameEvents.Subscribe( "show_error", ShowError );
 
-function UpdateAbilityDetail() {
+function Update() {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
 	let Tooltips = HUD.FindChildTraverse("Tooltips");
 	let AbilityList = HUD.FindChildTraverse("abilities");
@@ -56,17 +57,40 @@ function UpdateAbilityDetail() {
 			// }
 		}
 	}
-	$.Schedule(0, UpdateAbilityDetail);
-	
+
+	let SearchText = $("#SearchTextEntry").text;
+	if (SearchText != SearchWord) {
+		SearchWord = SearchText;
+		if (SearchText == "") {
+			let Contents = $("#ChatWheelMessages").FindChildrenWithClassTraverse("AthenaStoreItem");
+			for (let index = 0; index < Contents.length; index++) {
+				const EchoItem = Contents[index];
+				EchoItem.style.visibility = "visible";
+			}
+		} else {
+			let Contents = $("#ChatWheelMessages").FindChildrenWithClassTraverse("AthenaStoreItem");
+			for (let index = 0; index < Contents.length; index++) {
+				const EchoItem = Contents[index];
+				if (EchoItem.FindChildTraverse("ItemName").text.search(SearchWord) == -1) {
+					EchoItem.style.visibility = "collapse";
+				} else {
+					EchoItem.style.visibility = "visible";
+				}
+			}
+		}
+		CategoryFilter($("#ChatWheelText").Type);
+	}
+	$.Schedule(0, Update);
 }
 function CategoryFilter(sType) {
 	let Contents = $("#ChatWheelMessages").FindChildrenWithClassTraverse("AthenaStoreItem");
 	$("#ChatWheelText").text = $.Localize("Category_" + sType);
+	$("#ChatWheelText").Type = sType;
 	switch (sType) {
 		case "inventory":
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
-				if (EchoItem.BHasClass("InventoryItem")) {
+				if (EchoItem.BHasClass("InventoryItem") && (EchoItem.FindChildTraverse("ItemName").text.search(SearchWord) != -1 || SearchWord == "")) {
 					EchoItem.style.visibility = "visible";
 					continue;
 				}
@@ -76,7 +100,7 @@ function CategoryFilter(sType) {
 		case "all":
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
-				if (EchoItem.BHasClass("StoreItem")) {
+				if (EchoItem.BHasClass("StoreItem") && (EchoItem.FindChildTraverse("ItemName").text.search(SearchWord) != -1 || SearchWord == "")) {
 					EchoItem.style.visibility = "visible";
 					continue;
 				}
@@ -87,7 +111,7 @@ function CategoryFilter(sType) {
 		default:
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
-				if (EchoItem.BHasClass("StoreItem") && EchoItem.Type == sType) {
+				if (EchoItem.BHasClass("StoreItem") && EchoItem.Type == sType && (EchoItem.FindChildTraverse("ItemName").text.search(SearchWord) != -1 || SearchWord == "")) {
 					EchoItem.style.visibility = "visible";
 					continue;
 				}
@@ -126,7 +150,7 @@ function LoadStoreItem(self) {
 		self.Type = ItemData.Type;
 		self.Shard = ItemData.Shard;
 		self.Price = ItemData.Price;
-		self.IteaName = ItemName;
+		self.ItemName = ItemName;
 		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
@@ -151,16 +175,31 @@ function LoadStoreItem(self) {
 				"UIShowCustomLayoutPopupParameters",
 				"qrcode",
 				"file://{resources}/layout/custom_game/popups/payment/payment.xml",
-				{Shard:Shard});
+				ReadAttributeData({
+					Shard: this.Shard,
+					CostType: "Shard",
+					ItemName: self.ItemName,
+					Image: "file://{images}/custom_game/"+self.Type+"/"+self.ItemName+".png"
+				}));
 		}.bind(self));
 		self.FindChildTraverse("PricePurchaseButton").SetPanelEvent("onactivate", function() {
-			let Shard = GetPlayerShard(Players.GetLocalPlayer());
-			if (Shard > this.Shard) {
-				GameEvents.SendCustomGameEventToServer("PurchaseItem", {
-					ItemName: this.id,
-					Currency: "Price"
-				});
-			}
+			let Price = GetPlayerPrice(Players.GetLocalPlayer());
+			// if (Shard > this.Shard) {
+			// 	GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+			// 		ItemName: this.id,
+			// 		Currency: "Price"
+			// 	});
+			// }
+			$.DispatchEvent(
+				"UIShowCustomLayoutPopupParameters",
+				"qrcode",
+				"file://{resources}/layout/custom_game/popups/payment/payment.xml",
+				ReadAttributeData({
+					Price: this.Price,
+					CostType: "Price",
+					ItemName: self.ItemName,
+					Image: "file://{images}/custom_game/"+self.Type+"/"+self.ItemName+".png"
+				}));
 		}.bind(self));
 		
 	};
@@ -279,7 +318,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 }
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
-	UpdateAbilityDetail();
+	Update();
 
 	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
 
