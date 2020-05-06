@@ -79,6 +79,7 @@
 		"ScriptFile"							"abilities/pets/pet_57_1"
 		"AbilityTextureName"					"lina_dragon_slave"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
@@ -166,6 +167,8 @@
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityDamage"							"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -174,11 +177,6 @@
 				"interval"						"0.25"
 			}
 			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"2"
-			}
-			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"400"
@@ -280,7 +278,7 @@
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/pets/pet_22_3"
-		"AbilityTextureName"					"big_thunder_lizard_frenzy"
+		"AbilityTextureName"					"modifier_cny_beast_aegis"
 		"AbilityCooldown"						"15"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -306,14 +304,122 @@
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/pets/pet_22_4_1"
-		"AbilityTextureName"					"big_thunder_lizard_frenzy"
-		"AbilityCooldown"						"15"
+		"AbilityTextureName"					"modifier_cny2015_combat"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"0.5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"300"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"150"
+			}
+		}
+	}
+	"pet_22_4_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_4_2"
+		"AbilityTextureName"					"modifier_cny2015_speed"
+		"AbilityCastPoint"						"1.74"
+		"AbilityCooldown"						"8"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityDuration"						"6"
+		"AbilityDuration"						"2"
+		"AbilityDamage"							"10"
 		"AbilitySpecial"
 		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"400"
+			}
+		}
+	}
+	"pet_22_4_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_4_2"
+		"AbilityTextureName"					"modifier_cny2015_support_aura"
+		"AbilityCastRange"						"1500"
+		"AbilityCastPoint"						"1.74"
+		"AbilityCooldown"						"16"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDamage"							"15"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"1500"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"1500"
+			}
+		}
+	}
+	"pet_22_4_4"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_4_1"
+		"AbilityTextureName"					"brewmaster_thunder_clap"
+		"AbilityCastRange"						"600"
+		"AbilityCastPoint"						"0.6"
+		"AbilityCooldown"						"8"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"2"
+		"AbilityDamage"							"10"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"0.6"
+			}
+		}
+	}
+	"pet_22_4_5"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_4_1"
+		"AbilityTextureName"					"modifier_cny_beast_aegis"
+		"AbilityCastPoint"						"1.8"
+		"AbilityCooldown"						"60"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"7"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_damage"					"30"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"min_damage"					"10"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
 		}
 	}
 }

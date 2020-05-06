@@ -67,6 +67,9 @@ function Pet:constructor(sName, hOwner)
 	hUnit.GetPet = function(hUnit)
 		return self
 	end
+	hUnit.GetMaster = function(hUnit)
+		return hOwner
+	end
 end
 function Pet:RemoveSelf()
 	self.hUnit:ForceKill(false)

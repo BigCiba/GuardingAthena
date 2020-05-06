@@ -1,24 +1,24 @@
-LinkLuaModifier("modifier_pet_02_1", "abilities/pets/pet_02_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_pet_1_1", "abilities/pets/pet_1_1.lua", LUA_MODIFIER_MOTION_NONE)
 
 --Abilities
-if pet_02_1 == nil then
-	pet_02_1 = class({})
+if pet_1_1 == nil then
+	pet_1_1 = class({})
 end
-function pet_02_1:GetIntrinsicModifierName()
-	return "modifier_pet_02_1"
+function pet_1_1:GetIntrinsicModifierName()
+	return "modifier_pet_1_1"
 end
-function pet_02_1:IsHiddenWhenStolen()
+function pet_1_1:IsHiddenWhenStolen()
 	return false
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_pet_02_1 == nil then
-	modifier_pet_02_1 = class({}, nil, ModifierBasic)
+if modifier_pet_1_1 == nil then
+	modifier_pet_1_1 = class({}, nil, ModifierBasic)
 end
-function modifier_pet_02_1:IsHidden()
+function modifier_pet_1_1:IsHidden()
 	return true
 end
-function modifier_pet_02_1:OnCreated(params)
+function modifier_pet_1_1:OnCreated(params)
 	self.tItems = {
 		"item_bag_of_coin",
 		"item_str_book",
@@ -35,7 +35,7 @@ function modifier_pet_02_1:OnCreated(params)
 		self:OnIntervalThink()
 	end
 end
-function modifier_pet_02_1:OnIntervalThink()
+function modifier_pet_1_1:OnIntervalThink()
 	local hParent = self:GetParent()
 	local sItemName = RandomValue(self.tItems)
 	local item = CreateItem(sItemName, nil, nil)

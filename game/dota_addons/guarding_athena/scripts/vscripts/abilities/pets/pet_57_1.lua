@@ -1,16 +1,16 @@
-LinkLuaModifier("modifier_pet_05_1", "abilities/pets/pet_05_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_pet_57_1", "abilities/pets/pet_57_1.lua", LUA_MODIFIER_MOTION_NONE)
 
 --Abilities
-if pet_05_1 == nil then
-	pet_05_1 = class({})
+if pet_57_1 == nil then
+	pet_57_1 = class({})
 end
-function pet_05_1:GetIntrinsicModifierName()
-	return "modifier_pet_05_1"
+function pet_57_1:GetIntrinsicModifierName()
+	return "modifier_pet_57_1"
 end
-function pet_05_1:IsHiddenWhenStolen()
+function pet_57_1:IsHiddenWhenStolen()
 	return false
 end
-function pet_05_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
+function pet_57_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	if hTarget ~= nil then
 		local hCaster = self:GetCaster()
 		local damage = self:GetSpecialValueFor("damage")
@@ -19,13 +19,13 @@ function pet_05_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_pet_05_1 == nil then
-	modifier_pet_05_1 = class({}, nil, ModifierBasic)
+if modifier_pet_57_1 == nil then
+	modifier_pet_57_1 = class({}, nil, ModifierBasic)
 end
-function modifier_pet_05_1:IsHidden()
+function modifier_pet_57_1:IsHidden()
 	return true
 end
-function modifier_pet_05_1:OnCreated(params)
+function modifier_pet_57_1:OnCreated(params)
 	if IsServer() then
 		self.interval = self:GetAbilitySpecialValueFor("interval")
 		self.speed = self:GetAbilitySpecialValueFor("speed")
@@ -35,7 +35,7 @@ function modifier_pet_05_1:OnCreated(params)
 		self:OnIntervalThink()
 	end
 end
-function modifier_pet_05_1:OnIntervalThink()
+function modifier_pet_57_1:OnIntervalThink()
 	local hParent = self:GetParent()
 	if self:GetStackCount() < 1 then
 		self:SetStackCount(1)
