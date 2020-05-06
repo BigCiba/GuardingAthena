@@ -1,173 +1,319 @@
-"pets"
+"KeyValue"
 {
-	// 小鸟
-	"pet_01_1"
+	"pet_1_1"
 	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_01_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_1_1"
+		"AbilityTextureName"					"shadow_shaman_voodoo"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilitySpecial"
+		{
+		}
+	}
+	"pet_4_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_4_1"
+		"AbilityTextureName"					"keeper_of_the_light_chakra_magic"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"interval"			"8"
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"6"
 			}
 			"02"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"3"
+				"var_type"						"FIELD_INTEGER"
+				"reduce"						"30"
+			}
+		}
+	}
+	"pet_37_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_37_1"
+		"AbilityTextureName"					"faceless_void_time_dilation"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"11"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"2.5"
 			}
 			"03"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"movespeed"			"60"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"attackspeed"		"200"
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
 			}
 		}
 	}
-	// 小鸡
-	"pet_02_1"
+	"pet_49_1"
 	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_02_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_49_1"
+		"AbilityTextureName"					"dazzle_shallow_grave"
+		"AbilityCooldown"						"90"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"interval"			"90"
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"5"
 			}
 		}
 	}
-	// 飞僵小宝
-	"pet_03_1"
+	"pet_57_1"
 	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_03_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityCooldown"			"90"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_57_1"
+		"AbilityTextureName"					"lina_dragon_slave"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"5"
-			}
-		}
-	}
-	// 充电宝
-	"pet_04_1"
-	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_04_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"interval"			"12"
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"15"
 			}
 			"02"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"2"
-			}
-		}
-	}
-	// 双头犬
-	"pet_05_1"
-	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_05_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"interval"			"15"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"			"10"
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"10"
 			}
 			"03"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"speed"				"900"
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"900"
 			}
 			"04"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"distance"			"1300"
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"1300"
 			}
 			"05"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"width"				"300"
+				"var_type"						"FIELD_INTEGER"
+				"width"							"300"
 			}
 		}
 	}
-	// 虚空霸王龙
-	"pet_07_1"
+	"pet_85_1"
 	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_07_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_85_1"
+		"AbilityTextureName"					"chen_divine_favor"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"interval"			"11"
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"12"
 			}
 			"02"
 			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"			"2.5"
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"2"
+			}
+		}
+	}
+	"pet_86_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_86_1"
+		"AbilityTextureName"					"beastmaster_hawk_invisibility"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"8"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"3"
 			}
 			"03"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"600"
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"60"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attackspeed"					"200"
 			}
 		}
 	}
-	// 魔典精灵
-	"pet_08_1"
+	"pet_15_1"
 	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"abilities/pets/pet_08_1"
-		"AbilityTextureName"		"dazzle_shallow_grave"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_15_1"
+		"AbilityTextureName"					"ember_spirit_flame_guard"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"interval"			"6"
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.25"
 			}
 			"02"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"reduce"			"30"
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2"
 			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"400"
+			}
+		}
+	}
+	"pet_15_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_15_2"
+		"AbilityTextureName"					"ember_spirit_searing_chains"
+		"AbilityCooldown"						"90"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"interval"						"90"
+			}
+		}
+	}
+	"pet_16_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_16_1"
+		"AbilityTextureName"					"ancient_apparition/ti8_immortal_back/ancient_apparition_ice_vortex_immortal"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"15"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attackspeed"					"30"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+		}
+	}
+	"pet_16_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_16_2"
+		"AbilityTextureName"					"wisp_relocate"
+		"AbilityCooldown"						"90"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilitySpecial"
+		{
+		}
+	}
+	"pet_22_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_1"
+		"AbilityTextureName"					"pet_22_1"
+		"AbilityCooldown"						"10"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"3"
+		"AbilityDamage"							"2"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"400"
+			}
+		}
+	}
+	"pet_22_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_2"
+		"AbilityTextureName"					"alchemist_goblins_greed"
+		"AbilityCooldown"						"60"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityDuration"						"2"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+		}
+	}
+	"pet_22_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_3"
+		"AbilityTextureName"					"big_thunder_lizard_frenzy"
+		"AbilityCooldown"						"15"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"3"
+		"AbilitySpecial"
+		{
+		}
+	}
+	"pet_22_4"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_4"
+		"AbilityTextureName"					"invoker/esl_ablityicons_relicsoftheilluminatedseer/invoker_forge_spirit"
+		"AbilityCooldown"						"300"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityDuration"						"45"
+		"AbilitySpecial"
+		{
+		}
+	}
+	"pet_22_4_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_22_4_1"
+		"AbilityTextureName"					"big_thunder_lizard_frenzy"
+		"AbilityCooldown"						"15"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"6"
+		"AbilitySpecial"
+		{
 		}
 	}
 }
