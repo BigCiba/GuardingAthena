@@ -1,7 +1,7 @@
 #base "abilities/ability_heroes.kv"
 #base "abilities/ability_nature.kv"
 #base "abilities/ability_enemy.kv"
-#base "abilities/pets/pets.kv"
+#base "abilities/ability_pet.kv"
 
 "DOTAAbilities"
 {

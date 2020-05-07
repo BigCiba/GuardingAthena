@@ -4,6 +4,9 @@ LinkLuaModifier( "modifier_pet_15_1_aura", "abilities/pets/pet_15_1.lua", LUA_MO
 if pet_15_1 == nil then
 	pet_15_1 = class({})
 end
+function pet_15_1:GetCastRange(vLocation, hTarget)
+	return self:GetSpecialValueFor("radius")
+end
 function pet_15_1:GetIntrinsicModifierName()
 	return "modifier_pet_15_1"
 end
