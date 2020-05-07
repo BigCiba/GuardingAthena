@@ -10,10 +10,10 @@ function Spawn( entityKeyValues )
 	end
 
 	tAbility = {
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_2" ), fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_3" ), fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_1" ), fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_4" ), fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_1" ), tCondition = {iTarget = 1}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_2" ), tCondition = {}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_3" ), tCondition = {iTarget = 10}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_4" ), tCondition = {iTarget = 1}, fAction = CastNoTarget},
 	}
 
 	thisEntity:GameTimer(0, Think)
@@ -26,5 +26,5 @@ function Think()
 	if hAbilityInfo then
 		hAbilityInfo.fAction(thisEntity, hAbilityInfo.hAbility)
 	end
-	return 0.5
+	return 1
 end

@@ -22,12 +22,13 @@ function modifier_pet_22_1:OnCreated(params)
 end
 function modifier_pet_22_1:OnIntervalThink()
 	if self.count > 0 then
+		self.count = self.count - 1
 		local hParent = self:GetParent()
-		local hMaster = hCaster:GetMaster()
+		local hMaster = hParent:GetMaster()
 		CreateModifierThinker(hMaster, self:GetAbility(), "modifier_pet_22_1_thinker", {duration = self:GetAbilityDuration() + self.delay}, hParent:GetAbsOrigin() + RandomVector(100), hMaster:GetTeamNumber(), false)
 	else
 		self:StartIntervalThink(-1)
-		self:Destory()
+		self:Destroy()
 		return
 	end
 end
@@ -40,7 +41,7 @@ function modifier_pet_22_1_thinker:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.interval = self:GetAbilitySpecialValueFor("interval")
 	if IsServer() then
-		local hMaster = self:GetCaster():GetMaster()
+		local hMaster = self:GetCaster()
 		self.flDamage = self:GetAbilityDamage() * hMaster:GetPrimaryStatValue() * self.interval
 		self:StartIntervalThink(self.delay)
 		self:GetParent():EmitSound("Custom.Firecrackers")
@@ -51,7 +52,7 @@ function modifier_pet_22_1_thinker:OnCreated(params)
 end
 function modifier_pet_22_1_thinker:OnIntervalThink()
 	local hParent = self:GetParent()
-	local hMaster = self:GetCaster():GetMaster()
+	local hMaster = self:GetCaster()
 	local tTargets = FindUnitsInRadiusWithAbility(hMaster, hParent:GetAbsOrigin(), self.radius, self:GetAbility())
 	hMaster:DealDamage(tTargets, self:GetAbility(), self.flDamage)
 	self:StartIntervalThink(self.interval)

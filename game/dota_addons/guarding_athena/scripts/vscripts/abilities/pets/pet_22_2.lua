@@ -21,7 +21,7 @@ end
 function modifier_pet_22_2:OnIntervalThink()
 	local item = CreateItem("item_bag_of_coin", nil, nil)
 	item:SetPurchaseTime(GameRules:GetGameTime() - 10)
-	local pos = hParent:GetAbsOrigin()
+	local pos = self:GetParent():GetAbsOrigin()
 	local drop = CreateItemOnPositionSync( pos, item )
 	local pos_launch = pos + RandomVector(RandomFloat(0,50))
 	item:LaunchLoot(item:IsCastOnPickup(), 200, 0.75, pos_launch)

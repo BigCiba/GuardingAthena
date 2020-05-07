@@ -18,7 +18,7 @@ function Confirm() {
 	if (CostType == "Shard") {
 		let ShardCost = $.GetContextPanel().GetAttributeInt("Shard", 0);
 		let Shard = GetPlayerShard(Players.GetLocalPlayer());
-		if (Shard > ShardCost) {
+		if (Shard >= ShardCost) {
 			GameEvents.SendCustomGameEventToServer("PurchaseItem", {
 				ItemName: ItemName,
 				Currency: "Shard"
@@ -27,7 +27,7 @@ function Confirm() {
 	} else {
 		let PriceCost = $.GetContextPanel().GetAttributeInt("Price", 0);
 		let Price = GetPlayerPrice(Players.GetLocalPlayer());
-		if (Price > PriceCost) {
+		if (Price >= PriceCost) {
 			GameEvents.SendCustomGameEventToServer("PurchaseItem", {
 				ItemName: ItemName,
 				Currency: "Price"
