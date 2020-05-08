@@ -2254,6 +2254,7 @@
 	}
 	"nian"
 	{
+		"vscripts"								"ai/ai_nian.lua"
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
@@ -2313,7 +2314,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"250"		// Speed
+		"MovementSpeed"				"550"		// Speed
 		"MovementTurnRate"			"0.5"		// Turning rate.
 
 		// Status

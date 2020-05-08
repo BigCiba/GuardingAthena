@@ -9,9 +9,10 @@ function pet_22_3:OnSpellStart()
 	for _, hUnit in pairs(tTargets) do
 		hUnit:AddNewModifier(hCaster, self, "modifier_pet_22_3", {duration = self:GetDuration() * hUnit:GetStatusResistanceFactor()})
 	end
-	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf", PATTACH_ABSORIGIN, hCaster)
-	ParticleManager:SetParticleControlEnt(iParticleID, 1, hCaster, PATTACH_POINT_FOLLOW, "attach_hitloc", hCaster:GetAbsOrigin(), true)
+	local iParticleID = ParticleManager:CreateParticle("particles/pets/pet_22_3.vpcf", PATTACH_ABSORIGIN, hCaster)
+	ParticleManager:SetParticleControl(iParticleID, 2, Vector(300,300,300))
 	ParticleManager:ReleaseParticleIndex(iParticleID)
+	hCaster:EmitSound("Icewrack_Pup.Ult.Howl")
 end
 ---------------------------------------------------------------------
 --Modifiers

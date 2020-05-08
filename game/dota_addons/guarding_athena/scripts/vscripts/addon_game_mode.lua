@@ -135,6 +135,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/items/monkey_king/monkey_king_arcana_head/mesh/monkey_king_arcana.vmdl", context )
 	PrecacheResource( "model", "models/items/juggernaut/arcana/juggernaut_arcana_mask.vmdl", context )
 	PrecacheResource( "model", "models/items/lanaya/raiment_of_the_violet_archives_shoulder/raiment_of_the_violet_archives_shoulder.vmdl", context )
+	PrecacheResource( "model", "models/creeps/nian/nian_creep.vmdl", context )
 	
 	--PrecacheResource( "model", "models/items/templar_assassin/psi_blades/psi_blades_immortal.vmdl", context )
 	PrecacheResource( "model", "models/heroes/furion/treant.vmdl", context )

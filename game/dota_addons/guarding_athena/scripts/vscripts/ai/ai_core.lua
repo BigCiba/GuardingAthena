@@ -60,25 +60,8 @@ end
 function GetRandomCastableAbility(hUnit, tAbility)
 	local tCastableAbility = {}
 	for i, v in ipairs(tAbility) do
-		if IsFullyCastable(hUnit, v.hAbility) then
-			local bCondition = true
-			for sCondition, iThreshold in pairs(v.tCondition) do
-				if sCondition == "iTarget" then
-					local tTargets = FindUnitsInRadiusWithAbility(hUnit, hUnit:GetAbsOrigin(), hUnit:GetAcquisitionRange(), v.hAbility)
-					if #tTargets < iThreshold then
-						bCondition = false
-						break
-					end
-				elseif sCondition == "iHealth" then
-					if hUnit:GetHealthPercent() > iThreshold then
-						bCondition = false
-						break
-					end
-				end
-			end
-			if bCondition then
-				table.insert(tCastableAbility, v)
-			end
+		if IsFullyCastable(hUnit, v.hAbility) and (type(v.fCondition) == "boolean" and v.fCondition or v.fCondition(v.hAbility, unpack(v.args))) then
+			table.insert(tCastableAbility, v)
 		end
 	end
 	if #tCastableAbility > 0 then

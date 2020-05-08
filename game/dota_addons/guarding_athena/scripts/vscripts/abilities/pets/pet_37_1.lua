@@ -51,6 +51,16 @@ end
 function modifier_pet_37_1_debuff:StatusEffectPriority()
 	return 10
 end
+function modifier_pet_37_1_debuff:OnCreated(params)
+	if IsServer() then
+		for i = 0, 10 do
+			local hAbility = self:GetParent():GetAbilityByIndex(i)
+			if IsValid(hAbility) and not hAbility:IsPassive() then
+				hAbility:StartCooldown(hAbility:GetCooldownTimeRemaining() + self:GetDuration())
+			end
+		end
+	end
+end
 function modifier_pet_37_1_debuff:CheckState()
 	return {
 		[MODIFIER_STATE_STUNNED] = true,

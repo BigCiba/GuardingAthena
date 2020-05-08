@@ -10,10 +10,10 @@ function Spawn( entityKeyValues )
 	end
 
 	tAbility = {
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_1" ), tCondition = {iTarget = 1}, fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_2" ), tCondition = {}, fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_3" ), tCondition = {iTarget = 10}, fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_22_4" ), tCondition = {iTarget = 1}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_1" ), fCondition = EnemyCount, args = {1}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_2" ), fCondition = true, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_3" ), fCondition = EnemyCount, args = {3}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_22_4" ), fCondition = EnemyCount, args = {1}, fAction = CastNoTarget},
 	}
 
 	thisEntity:GameTimer(0, Think)
@@ -27,4 +27,13 @@ function Think()
 		hAbilityInfo.fAction(thisEntity, hAbilityInfo.hAbility)
 	end
 	return 1
+end
+
+function EnemyCount(hAbility, iCount)
+	local flCastRange = hAbility:GetCastRange(thisEntity:GetAbsOrigin(), nil)
+	local tTargets = FindUnitsInRadiusWithAbility(thisEntity, thisEntity:GetAbsOrigin(), thisEntity:GetAcquisitionRange(), hAbility)
+	if #tTargets > iCount then
+		return true
+	end
+	return false
 end

@@ -48,7 +48,7 @@ function Pet:constructor(sName, hOwner)
 	self.iXP = 0
 
 	local hUnit = CreateUnitByName(sName, GetRespawnPosition(), true, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
-	-- hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
+	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
 	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
 	for i = 0, 4 do
 		local hAbility = hUnit:GetAbilityByIndex(i)

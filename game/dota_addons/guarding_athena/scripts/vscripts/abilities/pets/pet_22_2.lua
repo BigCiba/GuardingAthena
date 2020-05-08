@@ -16,13 +16,13 @@ function modifier_pet_22_2:OnCreated(params)
 	self.interval = self:GetAbilitySpecialValueFor("interval")
 	if IsServer() then
 		self:StartIntervalThink(self.interval)
+	else
+		local iParticleID = ParticleManager:CreateParticle("particles/pets/pet_22_2.vpcf", PATTACH_CUSTOMORIGIN, self:GetParent())
+		ParticleManager:SetParticleControlEnt(iParticleID, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_bag", self:GetParent():GetAbsOrigin(), false)
+		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
 function modifier_pet_22_2:OnIntervalThink()
-	local item = CreateItem("item_bag_of_coin", nil, nil)
-	item:SetPurchaseTime(GameRules:GetGameTime() - 10)
-	local pos = self:GetParent():GetAbsOrigin()
-	local drop = CreateItemOnPositionSync( pos, item )
-	local pos_launch = pos + RandomVector(RandomFloat(0,50))
-	item:LaunchLoot(item:IsCastOnPickup(), 200, 0.75, pos_launch)
+	SendOverheadEventMessage(self:GetParent():GetPlayerOwner(), OVERHEAD_ALERT_GOLD, self:GetParent():GetMaster(), RandomInt(10, 20), self:GetParent():GetPlayerOwner())
+	self:GetParent():EmitSound("ui.comp_coins_tick")
 end
