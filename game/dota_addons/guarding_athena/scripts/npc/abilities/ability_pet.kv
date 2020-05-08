@@ -23,18 +23,83 @@
 		"ScriptFile"							"abilities/pets/pet_4_1"
 		"AbilityTextureName"					"keeper_of_the_light_chakra_magic"
 		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"20"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityDuration"						"6"
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"interval"						"6"
+				"reduce"						"6 7 8 9 10"
+			}
+		}
+	}
+	"pet_4_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_4_2"
+		"AbilityTextureName"					"jakiro_ice_path"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"2"
+		"AbilityDamage"							"4"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"path_radius"					"125"
+			}
+		}
+	}
+	"pet_4_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/pets/pet_4_3"
+		"AbilityTextureName"					"crystal_maiden_freezing_field"
+		"MaxLevel"								"5"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"30"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"5"
+		"AbilityDamage"							"4 6 8 10 12"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"800"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"reduce"						"30"
+				"explosion_radius"				"300"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"explosion_interval"			"0.1"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"slow_duration"					"1"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed_slow"				"-30"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_slow"					"-60"
 			}
 		}
 	}
