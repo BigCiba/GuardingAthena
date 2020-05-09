@@ -73,13 +73,11 @@ function ShowQuest()
 }
 (function () {
     GameUI.CustomUIConfig().quest = false;
-    $.Schedule(21, function(){
-        //CreateQuest();
-        SetFlyoutQuestVisible( false );
-        TimeRemaining();
-        Game.AddCommand( "QUEST", ShowQuest, "", 0 );
-        //CustomNetTables.SubscribeNetTableListener( "quest",UpdataQuest );
-    });
+    //CreateQuest();
+    SetFlyoutQuestVisible( false );
+    TimeRemaining();
+    Game.AddCommand( "QUEST", ShowQuest, "", 0 );
+    //CustomNetTables.SubscribeNetTableListener( "quest",UpdataQuest );
     //$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 })();
 GameEvents.Subscribe( "create_quest", CreateQuest);

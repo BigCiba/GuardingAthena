@@ -14,9 +14,13 @@ if IsServer() then
 	DOTA_DAMAGE_FLAG_NO_SPELL_CRIT = DOTA_DAMAGE_FLAG_PROPERTY_FIRE * 2
 end
 -------------------------------------------------------
+-- 服务器相关
+-------------------------------------------------------
+PLAYER_XP_PER_LEVEL = 10			-- 玩家每级经验
+-------------------------------------------------------
 -- 英雄属性相关
 -------------------------------------------------------
-MAX_LEVEL = 500						 -- 英雄最大等级
+MAX_LEVEL = 500						-- 英雄最大等级
 
 -- 定义经验表
 XP_PER_LEVEL_TABLE = {}
@@ -46,8 +50,8 @@ for i=401,500 do
 	exp = exp + 200 + (i-400) * 600
 end
 
-MAXIMUM_ATTACK_SPEED = 800					-- 设置最大攻击速度
-MINIMUM_ATTACK_SPEED = 20						-- 设置最小攻击速度
+MAXIMUM_ATTACK_SPEED = 800								-- 设置最大攻击速度
+MINIMUM_ATTACK_SPEED = 20								-- 设置最小攻击速度
 ATTRIBUTE_AGILITY_ARMOR = 0								-- 每点敏捷提供护甲
 ATTRIBUTE_AGILITY_ATTACK_SPEED = 0.05					-- 每点敏捷提供攻速
 ATTRIBUTE_AGILITY_DAMAGE = 1							-- 每点敏捷提供攻击力
@@ -66,8 +70,29 @@ ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT = 0		-- 每点力量提供状态抗
 -------------------------------------------------------
 -- 游戏机制
 -------------------------------------------------------
+DIFFICULTY_RESPAWN_TIME = {		-- 重生时间
+	[1] = 5,
+	[2] = 6,
+	[3] = 7,
+	[4] = 8,
+	[5] = 10,
+}
+DIFFICULTY_GOLD_TICK = {		-- 每秒金钱
+	[1] = 9,
+	[2] = 6,
+	[3] = 3,
+	[4] = 0,
+	[5] = 0,
+}
+DIFFICULTY_INIT_GOLD = {		-- 初始金钱
+	[1] = 300,
+	[2] = 200,
+	[3] = 100,
+	[4] = 0,
+	[5] = 0,
+}
 TIME_BOSS_REBORN = 60			-- boss重生间隔
-HERO_SELECTION_TIME = 20
+HERO_SELECTION_TIME = IsInToolsMode() and 5 or 20
 -- 刷新排除技能
 REFRESH_EXCLUDE_ABILITIES = {
 }
@@ -95,8 +120,11 @@ function public:init(bReload)
 	CustomNetTables:SetTableValue( "difficulty", "setting", {hero_selection_time = HERO_SELECTION_TIME} )
 	GameRules:SetHeroRespawnEnabled( true )								-- 是否允许英雄重生
 	GameRules:SetSameHeroSelectionEnabled( true )						-- 是否允许相同英雄
-	GameRules:SetHeroSelectionTime( 999999 )								-- 英雄选择时间
-	GameRules:SetPreGameTime( 50 )										-- 游戏开始前的准备时间
+	GameRules:SetHeroSelectionTime( HERO_SELECTION_TIME )								-- 英雄选择时间
+	GameRules:SetStrategyTime( 0 )										-- 英雄选择策略时间
+	GameRules:SetHeroSelectPenaltyTime( 0 )								-- 英雄选择惩罚时间
+	GameRules:SetShowcaseTime( 0 )										-- 英雄展示时间
+	GameRules:SetPreGameTime( 30 )										-- 游戏开始前的准备时间
 	GameRules:SetPostGameTime( 120 )									-- 游戏结束后自动退出的时间
 	GameRules:SetTreeRegrowTime( 60 )									-- 树木重生时间
 	GameRules:SetUseCustomHeroXPValues( true )							-- 是否使用自定义经验表
@@ -123,7 +151,7 @@ function public:init(bReload)
 
 	-- 设置游戏规则
 	GameMode = GameRules:GetGameModeEntity()		
-	GameMode:SetCustomGameForceHero( "npc_dota_hero_wisp" )				-- 强制所有玩家选择一个英雄(e.g. "npc_dota_hero_axe")
+	-- GameMode:SetCustomGameForceHero( "npc_dota_hero_wisp" )				-- 强制所有玩家选择一个英雄(e.g. "npc_dota_hero_axe")
 	GameMode:SetRecommendedItemsDisabled( false )						-- 是否禁止打开英雄的推荐物品界面
 	GameMode:SetTopBarTeamValuesOverride ( true )						-- 是否使用自定义的顶部计分数值
 	GameMode:SetTopBarTeamValuesVisible( true )							-- 是否显示顶部计分板

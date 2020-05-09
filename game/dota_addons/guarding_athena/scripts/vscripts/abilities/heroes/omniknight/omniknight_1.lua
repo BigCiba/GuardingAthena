@@ -9,7 +9,7 @@ function omniknight_1:OnSpellStart()
 	local vLocation = hCaster:GetAbsOrigin()
 	local radius = self:GetSpecialValueFor("radius")
 	local stun_duration = self:GetSpecialValueFor("stun_duration")
-	local damage = self:GetSpecialValueWithLevel("base_damage") + self:GetSpecialValueWithLevel("str_factor") * hCaster:GetStrength()
+	local damage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("str_factor") * hCaster:GetStrength()
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vLocation,radius, hAbility)
 	for _, hUnit in pairs(tTargets) do
 		hCaster:DealDamage(hUnit, hAbility, damage)

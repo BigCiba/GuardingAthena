@@ -4,109 +4,150 @@
 		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
 		<include src="s2r://panorama/styles/hud/dota_hud_pregame.vcss_c" />
 		<include src="file://{resources}/styles/custom_game/hero_selection.css" />
+		<include src="file://{resources}/styles/custom_game/generic.css" />
 
 		<!-- <include src="file://{resources}/layout/custom_game/elements/store_item_image/store_item_image.css" /> -->
 	</styles>
 	<scripts>
 		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
-		<!-- <include src="file://{resources}/scripts/custom_game/common.js" /> -->
+		<include src="file://{resources}/scripts/custom_game/common.js" />
 
 		<!-- <include src="file://{resources}/layout/custom_game/elements/store_item_image/store_item_image.js" /> -->
 
 		<include src="file://{resources}/scripts/custom_game/hero_selection.js" />
 	</scripts>
 	<snippets>
-		<snippet name="CourierButton">
-			<RadioButton class="CourierButton" group="CourierSelection">
-				<Panel id="CourierStatus" />
-				<Panel id="CourierImage" />
-				<Label id="CourierName" text="{s:courier_name}" />
-				<DOTAAbilityImage id="CourierAbility" />
-			</RadioButton>
+		<snippet name="PlayerCard">
+			<Panel class="PlayerContentBody">
+				<Panel class="PlayerHeader">
+					<DOTAAvatarImage id="AvatarImage" steamid=""/>
+					<!-- <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_juggernaut" heroimagestyle="landscape" /> -->
+					<Panel class="ProfileTextDetails">
+						<DOTAUserName id="UserName"/>
+					</Panel>
+				</Panel>
+				<Panel class="PlayerLevelContent">
+					<Image id="BackGroundImage" src="file://{images}/profile_badges/bg_01.psd" />
+					<Image id="ItemImage" src="file://{images}/profile_badges/level_01.png" />
+					<Image id="ProfileLevel" src="file://{images}/profile_badges/bg_number_01.psd">
+						<Label text="{d:level}" />
+					</Image>
+				</Panel>
+			</Panel>
 		</snippet>
-		<snippet name="StoreItemImage">
-			<Panel class="StoreItemImage" >
-				<Label id="StoreItemAmount" text="{d:item_amount}"/>
-				<Image id="StoreItemImage" hittest="false" />
-				<Panel id="StoreItemCourierRarity" hittest="false" />
-				<DOTAAbilityImage id="StoreItemCourierAbility" />
+		<snippet name="HeroCard">
+			<DOTAHeroMovie class="HeroCard Unlock" >
+				<Image class="full" src="file://{images}/custom_game/lock.png" />
+			</DOTAHeroMovie>
+		</snippet>
+		<snippet name="EconItem">
+			<Panel class="EconItem">
+				<Image id="EconItemImage" scaling="stretch-to-cover-preserve-aspect"/>
+				<Panel id="Equipped"/>
+				<Panel id="BottomLayer"/>								
 			</Panel>
 		</snippet>
 	</snippets>
 	<Panel class="heroSelectionRoot" hittest="false">
 		<DOTAScenePanel hittest="false" class="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
-		<Panel id="LeftContent">
-			<Panel id="DifficlutyContent">
-				<RadioButton selected="true" group="difficluty">
-					<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
-					<Panel class="DifficultyPanel Easy">
-						<Label text="简单" />
-					</Panel>
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Normal" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-					<Label text="普通" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Hard" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
-					<Label text="困难" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Nightmare" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
-					<Label text="噩梦" />
-				</RadioButton>
-				<RadioButton class="DifficultyPanel Hell" group="difficluty">
-					<Image src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
-					<Label text="地狱" />
-				</RadioButton>
-			</Panel>
+		<!-- 载入等待 -->
+		<Panel id="Waiting">
+			<Panel id="WaitingSpinner" hittest="false" />
+			<Label id="WaitingText" text="#HeroSelection_Waiting" hittest="false" />
 		</Panel>
-		<Panel id="RightContent">
-			<Panel id="TimerContent">
-				<Label text="15" />
-			</Panel>
-			<Panel class="HeroListAndSetting">
-				<Panel id="HeroListPanel">
-					<DOTAHeroMovie id="npc_dota_hero_omniknight" class="HeroCard" heroname="npc_dota_hero_omniknight"/>
-					<DOTAHeroMovie id="npc_dota_hero_windrunner" class="HeroCard" heroname="npc_dota_hero_windrunner"/>
-					<DOTAHeroMovie id="npc_dota_hero_phantom_assassin" class="HeroCard" heroname="npc_dota_hero_phantom_assassin"/>
-					<DOTAHeroMovie id="npc_dota_hero_rubick" class="HeroCard" heroname="npc_dota_hero_rubick"/>
-					<DOTAHeroMovie id="npc_dota_hero_juggernaut" class="HeroCard" heroname="npc_dota_hero_juggernaut"/>
-					<DOTAHeroMovie id="npc_dota_hero_antimage" class="HeroCard" heroname="npc_dota_hero_antimage"/>
-					<DOTAHeroMovie id="npc_dota_hero_lina" class="HeroCard" heroname="npc_dota_hero_lina"/>
-					<DOTAHeroMovie id="npc_dota_hero_legion_commander" class="HeroCard" heroname="npc_dota_hero_legion_commander"/>
-					<DOTAHeroMovie id="npc_dota_hero_ember_spirit" class="HeroCard" heroname="npc_dota_hero_ember_spirit"/>
-					<DOTAHeroMovie id="npc_dota_hero_crystal_maiden" class="HeroCard" heroname="npc_dota_hero_crystal_maiden"/>
-					<DOTAHeroMovie id="npc_dota_hero_nevermore" class="HeroCard" heroname="npc_dota_hero_nevermore"/>
-					<DOTAHeroMovie id="npc_dota_hero_templar_assassin" class="HeroCard" heroname="npc_dota_hero_templar_assassin"/>
-					<DOTAHeroMovie id="npc_dota_hero_monkey_king" class="HeroCard" heroname="npc_dota_hero_monkey_king"/>
-					<DOTAHeroMovie id="npc_dota_hero_spectre" class="HeroCard" heroname="npc_dota_hero_spectre"/>
-					<DOTAHeroMovie id="npc_dota_hero_oracle" class="HeroCard" heroname="npc_dota_hero_oracle"/>
-					<DOTAHeroMovie id="npc_dota_hero_drow_ranger" class="HeroCard" heroname="npc_dota_hero_drow_ranger"/>
+		<Panel id="SelectPanel">
+			<Panel id="LeftContent">
+				<!-- 玩家列表 -->
+				<Panel id="PlayerContent">
 				</Panel>
-				<Panel id="HeroSettingPanel">
-					
+				<!-- 难度选择 -->
+				<Panel id="DifficlutyContent">
+					<RadioButton class="DifficultyPanel Easy" group="difficluty" onselect="SelectDifficulty(1)">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
+						<Label text="#GameMode_Easy" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty" onselect="SelectDifficulty(2)">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
+						<Label text="#GameMode_Common" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Hard" group="difficluty" onselect="SelectDifficulty(3)">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
+						<Label text="#GameMode_Hard" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Nightmare" group="difficluty" onselect="SelectDifficulty(4)">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
+						<Label text="#GameMode_Nightmare" />
+					</RadioButton>
+					<RadioButton class="DifficultyPanel Hell" group="difficluty" onselect="SelectDifficulty(5)">
+						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
+						<Label text="#GameMode_Hell" />
+					</RadioButton>
 				</Panel>
 			</Panel>
-			<Panel id="HeroInfoContent">
-				<Panel id="HeroDataPanel">
-					<Panel id="HeroNamePanel">
-						<Image id="PrimaryAttributeImage" src="s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex" />
-						<Label text="机械师" />
+			<Panel id="RightContent">
+				<!-- 倒计时 -->
+				<Panel id="TimerContent">
+					<Label text="{d:time}" />
+				</Panel>
+				<Panel class="HeroListAndSetting">
+					<!-- 英雄列表 -->
+					<Panel id="HeroListPanel">
 					</Panel>
-					<Panel id="HeroAbilityPanel">
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_0" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_1" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_2" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_3" />
-						<DOTAAbilityImage class="HeroAbility" abilityname="omniknight_4" />
+					<!-- 设置界面 -->
+					<Panel id="HeroSettingPanel">
+						<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('SettingPet','pet')">
+							<Panel id="MenuArrowContainer" >
+								<Panel id="MenuArrow" />
+							</Panel>
+							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
+							<Label text="#Category_pet" />
+						</Panel>
+						<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('SettingSkin','skin')">
+							<Panel id="MenuArrowContainer" >
+								<Panel id="MenuArrow" />
+							</Panel>
+							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
+							<Label text="#Category_skin" />
+						</Panel>
+						<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('SettingParticle','particle')">
+							<Panel id="MenuArrowContainer" >
+								<Panel id="MenuArrow" />
+							</Panel>
+							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
+							<Label text="#Category_particle" />
+						</Panel>
 					</Panel>
-					<Button id="HeroSelectPanel">
-						<Label text="选择英雄" />
-					</Button>
+				</Panel>
+				<Panel id="HeroInfoContent">
+					<Panel id="HeroDataPanel">
+						<!-- 英雄属性与名字 -->
+						<Panel id="HeroNamePanel">
+							<Image id="PrimaryAttributeImage" src="s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex" />
+							<Label text="{s:heroname}" />
+						</Panel>
+						<!-- 技能面板 -->
+						<Panel id="HeroAbilityPanel">
+						</Panel>
+						<Button id="HeroSelectPanel" onactivate="PickHero()">
+							<Label text="#SelectHero" />
+						</Button>
+					</Panel>
+				</Panel>
+				<Panel id="HeroScenePanel" hittest="false">
+					<!-- <DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/> -->
 				</Panel>
 			</Panel>
-			<DOTAScenePanel id="HeroScenePanel" class="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/>
+			
+			<Panel id="ContextMenuBody" class="ContextMenuBody">
+				<Panel id="Contents" class="ContextMenuHeroItemSlotPicker">
+					<Panel class="EconItem">
+						<Image id="EconItemImage" scaling="stretch-to-cover-preserve-aspect"/>
+						<Panel id="Equipped"/>
+						<Panel id="BottomLayer"/>								
+					</Panel>
+				</Panel>
+				<Panel id="BottomArrow"/>
+			</Panel>
 		</Panel>
 	</Panel>
 </root>

@@ -47,20 +47,33 @@ function Pet:constructor(sName, hOwner)
 	self.iQuality = 1
 	self.iXP = 0
 
-	local hUnit = CreateUnitByName(sName, hOwner:GetAbsOrigin(), true, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
-	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
-	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
-	hUnit:GetAbilityByIndex(0):SetLevel(1)
-	-- ambient
-	local sAmbientParticle = KeyValues.PetsKv[sName].AmbientParticle
-	if sAmbientParticle ~= nil then
-		ParticleManager:CreateParticle(sAmbientParticle, PATTACH_ABSORIGIN_FOLLOW, hUnit)
-	end
-	self.hUnit = hUnit
+	local hUnit = CreateUnitByName(sName, GetRespawnPosition(), true, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
 
+	hUnit.GetMaster = function(hUnit)
+		return hOwner
+	end
 	hUnit.GetPet = function(hUnit)
 		return self
 	end
+	hOwner.GetPet = function (hOwner)
+		return hUnit
+	end
+
+	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
+	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
+	for i = 0, 4 do
+		local hAbility = hUnit:GetAbilityByIndex(i)
+		if IsValid(hAbility) then
+			hAbility:SetLevel(1)
+		end
+	end
+	-- ambient
+	hUnit:AddNewModifier(hUnit, nil, KeyValues.PetsKv[sName].AmbientEffect, nil)
+	-- local sAmbientParticle = KeyValues.PetsKv[sName].AmbientParticle
+	-- if sAmbientParticle ~= nil then
+	-- 	ParticleManager:CreateParticle(sAmbientParticle, PATTACH_ABSORIGIN_FOLLOW, hUnit)
+	-- end
+	self.hUnit = hUnit
 end
 function Pet:RemoveSelf()
 	self.hUnit:ForceKill(false)

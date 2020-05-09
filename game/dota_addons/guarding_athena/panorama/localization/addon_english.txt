@@ -123,5 +123,6 @@
 	"score_button"	"Scoreboard ( ` )"
 	"quest_button"	"Quest ( K )"
 	"shop_button"	"Shop ( U )"
+	"HeroSelection_Waiting"	"Waiting for the server's response..."
 }
 

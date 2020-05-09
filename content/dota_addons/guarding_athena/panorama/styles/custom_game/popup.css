@@ -1,0 +1,389 @@
+@keyframes 'RequestAnimation' {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+.WindowsBlockBg {
+  background-color: #000000b2;
+  border-radius: 5px;
+}
+Label {
+  color: #f3e8c2;
+}
+VerticalScrollBar {
+  width: 14px;
+  margin-right: 6px;
+  border-radius: 6px;
+  border: 2px solid #000000;
+  background-color: #0c272986;
+  transition-property: none;
+  transition-duration: 0s;
+}
+VerticalScrollBar .ScrollThumb {
+  border: 0px solid #00000000;
+  border-radius: 4px;
+  background-color: #007e6f6e;
+}
+VerticalScrollBar:hover .ScrollThumb {
+  background-color: #007e6f6e;
+  brightness: 1.2;
+}
+TextEntry {
+  padding-top: 6px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 2px solid #69654d;
+  box-shadow: #000 -2px -2px 0px 4px;
+  background-color: #242317;
+  color: #f3e8c2;
+}
+TextEntry Label,
+TextEntry #PlaceholderText {
+  width: 100%;
+  height: 100%;
+  margin-top: 0px;
+  margin: 1px;
+  color: #f3e8c27f;
+}
+#ViewBG {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #181919b2;
+}
+#ViewBG #BGBorder1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 3px solid #000000;
+}
+#ViewBG #BGBorder2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 3px;
+  border: 5px solid #F3E8C2;
+}
+#ViewBG #BGBorder3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 7px;
+  border: 3px solid #000000;
+}
+#ViewBG #TitleBG {
+  height: 90px;
+  width: 100%;
+  margin: 8px;
+  background-color: #0f1d1ab2;
+}
+#ViewBG #TitleBG #TitleBorder1 {
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 3px solid #000000;
+}
+.CloseBtn {
+  width: 32px;
+  height: 32px;
+  margin-top: 16px;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  margin-top: 10px;
+  margin-right: 10px;
+  horizontal-align: right;
+  vertical-align: top;
+  background-image: url("file://{images}/custom_game/hud/close.png");
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition-property: wash-color;
+  transition-duration: 0.1s;
+}
+.CloseBtn Label {
+  color: #ffffff;
+}
+.CloseBtn:hover {
+  wash-color: #ffddddff;
+}
+.CloseBtn:active {
+  wash-color: #ff8080ff;
+  background-size: 90% 90%;
+}
+.CloseBtn Label {
+  color: #ffffff;
+}
+.CloseBtn:hover {
+  wash-color: #ffddddff;
+}
+.CloseBtn:active {
+  wash-color: #ff8080ff;
+  background-size: 90% 90%;
+}
+.TitleLabel {
+  max-width: 400px;
+  height: 60px;
+  color: #f3e8c2;
+  font-size: 50px;
+  font-weight: normal;
+  text-shadow: 0px 0px 0px 3 #007e70;
+  letter-spacing: 2px;
+  text-overflow: shrink;
+  font-family: defaultFont;
+}
+.ScrollBarContainer > #VerticalScrollBar {
+  border-radius: 5px;
+  background-color: #19241e80;
+}
+.ScrollBarContainer > #VerticalScrollBar > #ScrollThumb {
+  border-radius: 5px;
+  background-color: #57c7ba;
+  opacity: 0.3;
+}
+.ItemBorder {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.ItemBorder #BGBorder1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid #000000;
+}
+.ItemBorder #BGBorder2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 2px;
+  border: 2px solid #F3E8C2;
+}
+.ItemBorder #BGBorder3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 4px;
+  border: 2px solid #000000;
+}
+.WithItemBorder.StoreItemImage {
+  margin: 6px;
+}
+.SmallBg {
+  background-color: #181919b2;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.SmallBg #BGBorder1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid #000000;
+}
+.SmallBg #BGBorder2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 2px;
+  border: 2px solid #F3E8C2;
+}
+.SmallBg #BGBorder3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 4px;
+  border: 2px solid #000000;
+}
+#StorePanelTitle {
+  width: 100%;
+  horizontal-align: right;
+}
+.PopupRoot {
+  vertical-align: center;
+  horizontal-align: center;
+}
+.LeftPopupRoot {
+  vertical-align: center;
+  horizontal-align: left;
+}
+.BottomPopupRoot {
+  vertical-align: bottom;
+  horizontal-align: center;
+}
+.PopupContainer {
+  min-width: 15%;
+}
+.PopupContainer .PopupBG {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #181919F2;
+}
+.PopupContainer .PopupBG #BGBorder1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+.PopupContainer .PopupBG #BGBorder2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 2px;
+  border: 2px solid #F3E8C296;
+}
+.PopupContainer .PopupBG #BGBorder3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 4px;
+  border: 1px solid #000000;
+}
+.PopupContainer .PopupBG #TitleBG {
+  height: 50px;
+  width: 100%;
+  margin: 6px;
+  background-color: #0f1d1ab2;
+}
+.PopupContainer .PopupBG #TitleBG #TitleBorder1 {
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 2px solid #000000;
+  border-top: 0px solid #000;
+  border-left: 0px solid #000;
+  border-right: 0px solid #000;
+}
+.littlePopupBG {
+  /* border-radius: 5px; */
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+  box-shadow: #00000055 -2px -2px 1px 4px;
+  border-top: 2px solid dotaPlusGold;
+}
+.littlePopupBG #Border {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+.littlePopupBG #Border1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  margin: 1px;
+  border: 2px solid #f3e8c2;
+}
+.littlePopupBG #Border2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #000;
+  margin: 3px;
+}
+.PopupCloseButton {
+  width: 24px;
+  height: 24px;
+  margin-top: 10px;
+  margin-right: 10px;
+  horizontal-align: right;
+  vertical-align: top;
+  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition-property: wash-color;
+  transition-duration: 0.1s;
+}
+.PopupCloseButton Label {
+  color: #ffffff;
+}
+.PopupCloseButton:hover {
+  wash-color: #ffddddff;
+}
+.PopupCloseButton:active {
+  wash-color: #ff8080ff;
+  background-size: 90% 90%;
+}
+.CloseBtn {
+  width: 24px;
+  height: 24px;
+  margin-top: 10px;
+  margin-right: 10px;
+  horizontal-align: right;
+  vertical-align: top;
+  background-image: url("file://{images}/custom_game/hud/close.png");
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition-property: wash-color;
+  transition-duration: 0.1s;
+}
+.CloseBtn Label {
+  color: #ffffff;
+}
+.CloseBtn:hover {
+  wash-color: #ffddddff;
+}
+.CloseBtn:active {
+  wash-color: #ff8080ff;
+  background-size: 90% 90%;
+}
+.PopupCloseButton:hover {
+  brightness: 2;
+}
+.PopupCloseButton:active {
+  wash-color: #aa0000ee;
+  transform: translateZ(-3px);
+  brightness: 1.5;
+}
+.PopupMsg {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  horizontal-align: center;
+}
+.PopUpButton {
+  horizontal-align: center;
+  margin: 8px;
+  width: 120px;
+  height: 40px;
+  padding: 3px 8px 1px 3px;
+  background-image: url("file://{images}/custom_game/common/btn_green.png");
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.PopUpButton Label {
+  color: #ffffff;
+}
+.PopUpButton > Label {
+  horizontal-align: center;
+  vertical-align: center;
+  color: #FFFFFF;
+  font-size: 22px;
+  text-align: center;
+  text-overflow: shrink;
+}
+/* msg popup */
+#CommonPopupRoot {
+  flow-children: down;
+  min-width: 200px;
+  max-width: 400px;
+}
+#CommonPopupMsg {
+  margin: 8px 8px 8px 12px;
+}
+#CommonPopupYes {
+  width: 90px;
+  height: 36px;
+}
+#CommonPopupNo {
+  width: 90px;
+  height: 36px;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#862d00), to(#5f1c00));
+}

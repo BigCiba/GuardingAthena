@@ -3,19 +3,22 @@ if KeyValues == nil then
 end
 
 if IsServer() then
-	KeyValues.PetsKv = LoadKeyValues("scripts/npc/kv/npc_pet.kv")
+	KeyValues.PetsKv = LoadKeyValues("scripts/npc/units/npc_pet.kv")
 	KeyValues.UnitsKv = LoadKeyValues("scripts/npc/npc_units_custom.txt")
 	KeyValues.HeroesKv = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
 	KeyValues.AbilitiesKv = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 	KeyValues.ItemsKv = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 	KeyValues.DropsKv = LoadKeyValues("scripts/kv/item_drops.kv")
+	KeyValues.PlayerItemsKV = LoadKeyValues("scripts/kv/player_items.kv")
 	-- KeyValues.ItemsKv = TableReplace(TableOverride(LoadKeyValues("scripts/npc/items.txt"), LoadKeyValues("scripts/npc/npc_items_custom.txt")), LoadKeyValues("scripts/npc/npc_abilities_override.txt"))
 
 	require("generate_json")
 
 	if IsInToolsMode() then
 		KvToJson("HeroesKv", KeyValues.HeroesKv)
-		-- KvToJson("AbilitiesKv", KeyValues.AbilitiesKv)
+		KvToJson("PlayerItemsKV", KeyValues.PlayerItemsKV)
+		KvToJson("AbilitiesKv", KeyValues.AbilitiesKv)
+		KvToJson("PetsKv", KeyValues.PetsKv)
 	-- 	KvToJson("AssetModifiersKv", KeyValues.AssetModifiersKv)
 	-- 	KvToJson("BannerGoodsKv", KeyValues.BannerGoodsKv)
 	-- 	KvToJson("BattlepassKv", KeyValues.BattlepassKv)

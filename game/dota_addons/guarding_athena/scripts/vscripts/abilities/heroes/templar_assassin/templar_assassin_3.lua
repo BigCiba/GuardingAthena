@@ -5,9 +5,9 @@ LinkLuaModifier("modifier_templar_assassin_3_active", "abilities/heroes/templar_
 if templar_assassin_3 == nil then
 	templar_assassin_3 = class({})
 end
-function templar_assassin_3:GetManaCost(iLevel)
-	return self.BaseClass.GetManaCost(self, iLevel) + self:GetCaster():GetLevel() * 1.5
-end
+-- function templar_assassin_3:GetManaCost(iLevel)
+-- 	return self.BaseClass.GetManaCost(self, iLevel) + self:GetCaster():GetLevel() * 1.5
+-- end
 function templar_assassin_3:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local delay = self:GetSpecialValueFor("delay")
@@ -27,21 +27,21 @@ function modifier_templar_assassin_3:IsHidden()
 	return true
 end
 function modifier_templar_assassin_3:OnCreated(params)
-	self.base_damage = self:GetAbilitySpecialValueFor("base_damage") * self:GetAbility():GetLevel()
-	self.damage = self:GetAbilitySpecialValueFor("damage") * self:GetAbility():GetLevel()
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
-	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range") * self:GetAbility():GetLevel()
+	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range")
 	if IsServer() then
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function modifier_templar_assassin_3:OnRefresh(params)
-	self.base_damage = self:GetAbilitySpecialValueFor("base_damage") * self:GetAbility():GetLevel()
-	self.damage = self:GetAbilitySpecialValueFor("damage") * self:GetAbility():GetLevel()
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
-	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range") * self:GetAbility():GetLevel()
+	self.bonus_attack_range = self:GetAbilitySpecialValueFor("bonus_attack_range")
 	if IsServer() then
 	end
 end
@@ -77,7 +77,7 @@ if modifier_templar_assassin_3_debuff == nil then
 	modifier_templar_assassin_3_debuff = class({}, nil, ModifierDebuff)
 end
 function modifier_templar_assassin_3_debuff:OnCreated(params)
-	self.resistance = self:GetAbilitySpecialValueFor("resistance") * self:GetAbility():GetLevel()
+	self.resistance = self:GetAbilitySpecialValueFor("resistance")
 end
 function modifier_templar_assassin_3_debuff:OnRefresh(params)
 	self:OnCreated(params)
@@ -102,8 +102,8 @@ function modifier_templar_assassin_3_active:GetAttributes()
 end
 function modifier_templar_assassin_3_active:OnCreated(params)
 	self.delay = self:GetAbilitySpecialValueFor("delay")
-	self.base_damage = self:GetAbilitySpecialValueFor("base_damage") * self:GetAbility():GetLevel()
-	self.damage = self:GetAbilitySpecialValueFor("damage") * self:GetAbility():GetLevel()
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
+	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.damage_tick = self:GetAbilitySpecialValueFor("damage_tick")
 	self.active_radius = self:GetAbilitySpecialValueFor("active_radius")
 	self.active_duration = self:GetAbilitySpecialValueFor("active_duration")

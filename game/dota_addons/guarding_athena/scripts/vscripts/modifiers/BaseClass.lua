@@ -165,33 +165,33 @@ end
 
 ---------------------------------------------------------------------
 
-ParticleModifierThinker = class({})
+ModifierThinker = class({})
 
-if ParticleModifierThinker == nil then
-	ParticleModifierThinker = class({})
+if ModifierThinker == nil then
+	ModifierThinker = class({})
 end
-function ParticleModifierThinker:IsHidden()
+function ModifierThinker:IsHidden()
 	return true
 end
-function ParticleModifierThinker:IsDebuff()
+function ModifierThinker:IsDebuff()
 	return false
 end
-function ParticleModifierThinker:IsPurgable()
+function ModifierThinker:IsPurgable()
 	return false
 end
-function ParticleModifierThinker:IsPurgeException()
+function ModifierThinker:IsPurgeException()
 	return false
 end
-function ParticleModifierThinker:IsStunDebuff()
+function ModifierThinker:IsStunDebuff()
 	return false
 end
-function ParticleModifierThinker:AllowIllusionDuplicate()
+function ModifierThinker:AllowIllusionDuplicate()
 	return false
 end
-function ParticleModifierThinker:GetAttributes()
+function ModifierThinker:GetAttributes()
 	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
-function ParticleModifierThinker:OnDestroy()
+function ModifierThinker:OnDestroy()
 	if IsServer() then
 		if IsValid(self:GetParent()) then
 			UTIL_Remove(self:GetParent())
@@ -199,7 +199,7 @@ function ParticleModifierThinker:OnDestroy()
 		end
 	end
 end
-function ParticleModifierThinker:CheckState()
+function ModifierThinker:CheckState()
 	return {
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,

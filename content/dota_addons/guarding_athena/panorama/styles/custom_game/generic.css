@@ -424,3 +424,8 @@
     vertical-align: bottom;
     background-color: gradient( linear, 0% 0%, 100% 0%, from( #6f829c00 ), color-stop( 0.3, #87CEEB88 ), color-stop( 0.37, #87CEEBff ), color-stop( 0.63, #87CEEBff ), color-stop( 0.7, #87CEEB88 ), to( #6f829c00 ) );
 }
+.Horizontal-Line {
+	width: 100%;
+	height: 3px;
+	background-color: red;
+}

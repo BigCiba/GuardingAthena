@@ -1,6 +1,9 @@
 <root>
 	<scripts>
 		<include src="file://{resources}/scripts/kv/HeroesKv.js" />
+		<include src="file://{resources}/scripts/kv/PlayerItemsKV.js" />
+		<include src="file://{resources}/scripts/kv/AbilitiesKv.js" />
+		<include src="file://{resources}/scripts/kv/PetsKv.js" />
 		<include src="file://{resources}/scripts/init.js" />
 	</scripts>
 	<script>
@@ -37,10 +40,10 @@
 	</script>
 		
 	<Panel>
-		<!-- <CustomUIElement type="HeroSelection"		layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" /> -->
+		<CustomUIElement type="HeroSelection"		layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" /> 
 		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/overthrow_item_notification.xml" />
-		<CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/pick_hero.xml" />
+		<!-- <CustomUIElement type="Hud"					layoutfile="file://{resources}/layout/custom_game/pick_hero.xml" /> -->
 		<CustomUIElement type="GameSetup"			layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
 		<!--<CustomUIElement type="GameInfo" 			layoutfile="file://{resources}/layout/custom_game/game_info.xml" />-->
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/rush_info/difficulty.xml" />
@@ -56,7 +59,7 @@
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/shop.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/time.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/bubble.xml" />
-		<!-- <CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" /> -->
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />
 	</Panel>
 </root>

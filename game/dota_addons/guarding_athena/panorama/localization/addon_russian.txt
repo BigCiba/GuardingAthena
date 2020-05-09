@@ -122,5 +122,6 @@
 	"score_button"	"Scoreboard ( ` )"
 	"quest_button"	"Quest ( K )"
 	"shop_button"	"Shop ( U )"
+	"HeroSelection_Waiting""Ожидание ответа сервера..."
 }
 

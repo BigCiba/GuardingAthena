@@ -30,16 +30,16 @@ function modifier_omniknight_3:AllowIllusionDuplicate()
 	return false
 end
 function modifier_omniknight_3:OnCreated(params)
-	self.bonus_attackspeed = self:GetAbilitySpecialValueWithLevel("bonus_attackspeed")
-	self.bonus_str = self:GetAbilitySpecialValueWithLevel("bonus_str")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
+	self.bonus_str = self:GetAbilitySpecialValueFor("bonus_str")
 	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
 	self.tooltip = 0
 	if IsServer() then
 	end
 end
 function modifier_omniknight_3:OnRefresh(params)
-	self.bonus_attackspeed = self:GetAbilitySpecialValueWithLevel("bonus_attackspeed")
-	self.bonus_str = self:GetAbilitySpecialValueWithLevel("bonus_str")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
+	self.bonus_str = self:GetAbilitySpecialValueFor("bonus_str")
 	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
 	if IsServer() then
 	end

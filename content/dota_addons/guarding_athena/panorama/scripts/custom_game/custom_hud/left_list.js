@@ -35,14 +35,12 @@ function ShopActive(){
     }
 }
 function TimeRemaining(){
-    $("#ScoreboardButton").SetHasClass( "active", GameUI.CustomUIConfig().scoreboard );
-    $("#QuestButton").SetHasClass( "active", GameUI.CustomUIConfig().quest );
-    $("#ShopButton").SetHasClass( "active", GameUI.CustomUIConfig().shop );
+    $("#ScoreboardButton").SetHasClass( "active", GameUI.CustomUIConfig().scoreboard || false );
+    $("#QuestButton").SetHasClass( "active", GameUI.CustomUIConfig().quest || false );
+    $("#ShopButton").SetHasClass( "active", GameUI.CustomUIConfig().shop || false );
     $.Schedule(0.1, TimeRemaining);
 }
 (function () {
-    $.Schedule(21, function(){
-        $("#LeftListBG").style.visibility = "visible";
-        TimeRemaining();
-    });
+    $("#LeftListBG").style.visibility = "visible";
+    TimeRemaining();
 })();

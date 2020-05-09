@@ -72,10 +72,6 @@ function AutoCountdown(){
 	}
 }
 (function(){
-	$.Schedule(20, function(){
-        //SetVisible( false );
-        $("#TimePanel").style.visibility = "visible";
-        AutoCountdown();
-        //TimeRemaining();
-    });
+	$("#TimePanel").style.visibility = "visible";
+	AutoCountdown();
 })()

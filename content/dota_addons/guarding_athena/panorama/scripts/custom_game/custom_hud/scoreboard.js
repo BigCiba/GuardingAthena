@@ -125,10 +125,8 @@ function ShowScoreboard()
 }
 (function () {
     GameUI.CustomUIConfig().scoreboard = false;
-    $.Schedule(21, function(){
-        CreateScoreboard();
-        SetFlyoutScoreboardVisible( false );
-        Game.AddCommand( "SCORE", ShowScoreboard, "", 0 );
-    });
+    CreateScoreboard();
+    SetFlyoutScoreboardVisible( false );
+    Game.AddCommand( "SCORE", ShowScoreboard, "", 0 );
     //$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 })();

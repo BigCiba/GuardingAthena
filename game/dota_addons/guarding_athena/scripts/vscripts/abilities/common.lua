@@ -545,6 +545,18 @@ if IsClient() then
 end
 
 if IsServer() then
+	function CDOTA_Buff:GetAbilityDuration()
+		if not IsValid(self:GetAbility()) then
+			return 0
+		end
+		return self:GetAbility():GetDuration()
+	end
+	function CDOTA_Buff:GetAbilityDamage()
+		if not IsValid(self:GetAbility()) then
+			return 0
+		end
+		return self:GetAbility():GetAbilityDamage()
+	end
 	function CDOTA_Item:IncrementCharges()
 		return self:SetCurrentCharges(self:GetCurrentCharges() + 1)
 	end

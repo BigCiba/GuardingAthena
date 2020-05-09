@@ -46,7 +46,7 @@ function modifier_pet_base:OnIntervalThink()
 				(hPet:GetAbsOrigin() - tPosition[2]):Length2D(),
 			}
 			local vPosition = tDistance[1] < tDistance[2] and tPosition[1] or tPosition[2]
-			if not hPet:IsPositionInRange(vPosition, hPet:GetHullRadius()) then
+			if not hPet:IsPositionInRange(vPosition, hPet:GetHullRadius()) and hPet:GetCurrentActiveAbility() == nil then
 				ExecuteOrderFromTable({
 					UnitIndex = hPet:entindex(),
 					OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,

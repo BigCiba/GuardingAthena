@@ -509,8 +509,7 @@
 		"ItemSellable"							"1"
 		"ItemPurchasable"						"0"
 		"ItemPermanent"							"0"
-		"ItemStackable"							"0"
-		"ItemCastOnPickup"						"1"
+		"ItemStackable"							"1"
 		"ItemInitialCharges"					"1"
 		"AbilityCastRange"						"100"
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
@@ -537,8 +536,7 @@
 		"ItemSellable"							"1"
 		"ItemPurchasable"						"0"
 		"ItemPermanent"							"0"
-		"ItemStackable"							"0"
-		"ItemCastOnPickup"						"1"
+		"ItemStackable"							"1"
 		"ItemInitialCharges"					"1"
 		"AbilityCastRange"						"100"
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
@@ -565,8 +563,7 @@
 		"ItemSellable"							"1"
 		"ItemPurchasable"						"0"
 		"ItemPermanent"							"0"
-		"ItemStackable"							"0"
-		"ItemCastOnPickup"						"1"
+		"ItemStackable"							"1"
 		"ItemInitialCharges"					"1"
 		"AbilityCastRange"						"100"
 		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
@@ -672,52 +669,170 @@
 			"10"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"absorb_pct"					"2"
+				"suicide"						"50"
 			}
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_all_stats"				"600"
+				"skill_damage_increase"			"50"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_damage"					"25"
+				"absorb_pct"					"2"
 			}
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"aura_radius"					"600"
+				"bonus_all_stats"				"600"
 			}
 			"04"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"aura_damage"					"1"
+				"bonus_damage"					"25"
 			}
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"aura_interval"					"3"
+				"aura_radius"					"600"
 			}
 			"06"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"skill_radius"					"600"
+				"aura_damage"					"1"
 			}
 			"07"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"skill_damage"					"100"
+				"aura_interval"					"3"
 			}
 			"08"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"suicide"						"50"
+				"skill_radius"					"600"
 			}
 			"09"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"skill_damage_increase"			"50"
+				"skill_damage"					"100"
+			}
+		}
+	}
+	"item_fire_egg"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_fire_egg"
+		"Model"									"models/items/phoenix/ultimate/blazing_wing_blazing_egg/blazing_wing_blazing_egg.vmdl"
+		"Effect"								"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"					"philosophers_stone"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET| DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ID"									"1781"
+		"ItemCost"								"99999"
+		"ItemSellable"							"0"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemCastOnPickup"						"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"charges"						"90"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_attribute"					"6"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"min_attribute"					"2"
+			}
+		}
+	}
+	"item_ice_egg"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_ice_egg"
+		"Model"									"models/creeps/ice_boss/ice_boss_egg_dest.vmdl"
+		"Effect"								"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"					"ex_machina"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET| DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ID"									"1782"
+		"ItemCost"								"99999"
+		"ItemSellable"							"0"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemCastOnPickup"						"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"charges"						"90"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"max_attribute"					"1.3"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"min_attribute"					"1"
+			}
+		}
+	}
+	"item_gold_egg"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/drops/item_gold_egg"
+		"Model"									"models/creeps/ice_boss/ice_boss_egg_dest.vmdl"
+		"Effect"								"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"					"ex_machina"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET| DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"ID"									"1782"
+		"ItemCost"								"99999"
+		"ItemSellable"							"0"
+		"ItemPurchasable"						"0"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemCastOnPickup"						"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"10+X510"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"charges"						"90"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_attribute"					"6"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"min_attribute"					"2"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"max_gain"						"1.3"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"min_gain"						"1"
 			}
 		}
 	}

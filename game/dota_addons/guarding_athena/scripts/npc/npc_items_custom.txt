@@ -3,7 +3,7 @@
 #base "abilities/items/artifact.kv"
 #base "abilities/items/scepter.kv"
 #base "abilities/item_drops.kv"
-#base "abilities/essence.kv"
+#base "abilities/item_essence.kv"
 
 "DOTAAbilities"
 {

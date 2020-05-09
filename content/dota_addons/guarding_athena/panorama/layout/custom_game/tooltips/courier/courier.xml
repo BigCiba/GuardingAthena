@@ -1,0 +1,23 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
+		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
+
+		<include src="file://{resources}/layout/custom_game/tooltips/courier/courier.css" />
+	</styles>
+
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
+		<include src="file://{resources}/scripts/custom_game/common.js" />
+		<include src="file://{resources}/layout/custom_game/tooltips/courier/courier.js" />
+	</scripts>
+
+	<Panel class="courierRoot" ontooltiploaded="setupTooltip()" >
+		<Label class="ItemName" text="{s:courier_name}" />
+		<Panel id="Bubble">
+			<Panel id="Reflection" />
+		</Panel>
+	</Panel>
+</root>
