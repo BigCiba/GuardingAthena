@@ -23,6 +23,8 @@ function modifier_pet_22_2:OnCreated(params)
 	end
 end
 function modifier_pet_22_2:OnIntervalThink()
+	local hCaster = self:GetCaster()
+	local hMaster = hCaster:GetMaster()
 	local iGold = RandomInt(10, 20)
 	hMaster:ModifyGold(iGold, true, 0)
 	SendOverheadEventMessage(self:GetParent():GetPlayerOwner(), OVERHEAD_ALERT_GOLD, self:GetParent():GetMaster(), iGold, self:GetParent():GetPlayerOwner())

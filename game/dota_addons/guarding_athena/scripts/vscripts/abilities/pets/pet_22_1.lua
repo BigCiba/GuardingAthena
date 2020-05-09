@@ -41,7 +41,8 @@ function modifier_pet_22_1_thinker:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.interval = self:GetAbilitySpecialValueFor("interval")
 	if IsServer() then
-		local hMaster = self:GetCaster()
+		local hCaster = self:GetCaster()
+		local hMaster = hCaster:GetMaster()
 		self.flDamage = self:GetAbilityDamage() * hMaster:GetPrimaryStatValue() * self.interval
 		self:StartIntervalThink(self.delay)
 		self:GetParent():EmitSound("Custom.Firecrackers")
