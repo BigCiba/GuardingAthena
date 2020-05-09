@@ -57,6 +57,9 @@
 					<Label text="1RMB = 10" />
 					<Image src="file://{images}/dotaplus_logo_small.png" />
 				</Panel>
+				<Panel id="Notice">
+					<Label text="充值疑问加QQ:584665414" />
+				</Panel>
 				<Button id="Pay" onactivate="Pay()">
 					<Label text="立即充值" />
 				</Button>
