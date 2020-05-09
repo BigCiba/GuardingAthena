@@ -107,6 +107,7 @@ end
 function modifier_drow_ranger_1_debuff:OnCreated(params)
 	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 		self:SetStackCount(1)
 	end
@@ -114,6 +115,7 @@ end
 function modifier_drow_ranger_1_debuff:OnRefresh(params)
 	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 	self.require_count = self:GetAbilitySpecialValueFor("require_count")
+	self.curse_duration = self:GetAbilitySpecialValueFor("curse_duration")
 	if IsServer() then
 		self:IncrementStackCount()
 	end
