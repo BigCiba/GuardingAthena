@@ -102,6 +102,7 @@
 		"ArmorPhysical"							"0.38"
 		"MagicalResistance"						"0"
 		"ProjectileModel"						"particles/heroes/drow_ranger/drow_ranger_0_1.vpcf"
+		"UnitLabel"								"hide"
 		"Ability1"								"drow_ranger_0"
 		"Ability2"								"drow_ranger_1"
 		"Ability3"								"drow_ranger_2"

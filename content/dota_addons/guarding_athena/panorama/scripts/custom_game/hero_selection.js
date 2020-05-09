@@ -235,6 +235,9 @@ function SelectDifficulty(Difficulty) {
 	// 加载英雄卡片
 	for (const key in GameUI.HeroesKv) {
 		const HeroKV = GameUI.HeroesKv[key];
+		if (HeroKV.UnitLabel == "hide") {
+			continue;
+		}
 		let HeroName = HeroKV.override_hero;
 		let Panel = $("#HeroListPanel").FindChildTraverse(HeroName);
 		Panel = ReloadPanelWithProperties(Panel, "DOTAHeroMovie", $("#HeroListPanel"), HeroName, {heroname: HeroName});

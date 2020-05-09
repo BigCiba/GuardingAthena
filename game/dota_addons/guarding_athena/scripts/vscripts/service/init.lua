@@ -229,6 +229,10 @@ function public:RequestPlayerData(iPlayerID)
 				for sHeroName, tSkinList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
 					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], {ItemName = "default_no_item", Equip = tEquipped[sHeroName] and "0" or "1", Expiration = "9999-12-31", Type = "skin"})
 				end
+				if #self.tPlayerServiceData[iPlayerID]["pet"] == 0 then
+					table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "pet_1", Equip = "1", Expiration = "9999-12-31", Type = "pet"})
+					tEquipped.pet = true
+				end
 				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "default_no_item", Equip = tEquipped.pet and "0" or "1", Expiration = "9999-12-31", Type = "pet"})
 				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], {ItemName = "default_no_item", Equip = tEquipped.particle and "0" or "1", Expiration = "9999-12-31", Type = "particle"})
 				-- 分数等级金钱

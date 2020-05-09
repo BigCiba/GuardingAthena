@@ -3,7 +3,7 @@ if Settings == nil then
 end
 local public = Settings
 
-sGameVersion = "v1.33"
+sGameVersion = "v1.34"
 
 MODIFIER_EVENT_ON_ABILITY_LEARNED = MODIFIER_FUNCTION_LAST + 1 -- OnAbilityLearned
 
