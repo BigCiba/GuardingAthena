@@ -80,7 +80,7 @@ function GuardingAthena:InitGameMode()
 	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(GuardingAthena, 'OnItemPurchased'), self )
 	ListenToGameEvent('custom_npc_first_spawned', Dynamic_Wrap(GuardingAthena, 'OnNPCFirstSpawned'), self )
 
-
+	GameRules:GetGameModeEntity():SetThink("DetectCheatsThinker")
 	-- GameEvent("custom_npc_first_spawned", Dynamic_Wrap(self, "OnNPCFirstSpawned"), self)
 
 	--自定义控制台命令

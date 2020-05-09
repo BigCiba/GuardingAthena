@@ -55,6 +55,9 @@ function Pet:constructor(sName, hOwner)
 	hUnit.GetPet = function(hUnit)
 		return self
 	end
+	hOwner.GetPet = function (hOwner)
+		return hUnit
+	end
 
 	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
 	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)

@@ -66,10 +66,15 @@ function GuardingAthena:OnEntityKilled( event )
 	if self.final_boss then
 		if self.final_boss:GetHealth() <= 0 then
 			Timers:CreateTimer(10,function ()
-		    	GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
-				Server:UpdataScore()
+				GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 				if self.is_cheat == false then
-					--giveScore()
+					Server:UpdataScore()
+					GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+						local hPlayer = PlayerResource:GetPlayer(iPlayerID)
+						if IsValid(hPlayer) then
+							Service:GameReward(iPlayerID)
+						end
+					end)
 				end
 		    end)
 			HeroState:SendFinallyData()

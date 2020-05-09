@@ -382,5 +382,21 @@ function public:CheckHeroUnlock(iPlayerID, sHeroName)
 	end
 	return false
 end
-
+function public:GameReward(iPlayerID)
+	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	local params = {
+		SteamID = SteamID,
+		Score = GameRules:GetCustomGameDifficulty() * 2,
+		Shard = GameRules:GetCustomGameDifficulty() * 20,
+		PetData = {
+			PetName = PlayerResource:GetPlayer(iPlayerID):GetAssignedHero():GetPet():GetUnitName(),
+			Exp = GameRules:GetCustomGameDifficulty()
+		}
+	}
+	self:HTTPRequest("POST", "GameReward", params, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			local hBody = json.decode(sBody)
+		end
+	end, REQUEST_TIME_OUT)
+end
 return public
