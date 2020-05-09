@@ -170,6 +170,13 @@ function public:RequestMoneyCome(iPlayerID,price,istype)
 end
 -- 请求玩家数据
 function public:RequestPlayerData(iPlayerID)
+	if self.tPlayerServiceData[iPlayerID] == nil then
+		self.tPlayerServiceData[iPlayerID] = {
+			pet = {},
+			skin = {},
+			particle = {},
+		}
+	end
 	local Steamid = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
 	local Address = "http://bigciba.applinzi.com/dota2api/GetPlayerData.php"
 	local handle = CreateHTTPRequestScriptVM("POST",Address)
@@ -182,13 +189,6 @@ function public:RequestPlayerData(iPlayerID)
 			print("RequestPlayerData:")
 			DeepPrintTable(hBody)
 			if hBody ~= nil then
-				if self.tPlayerServiceData[iPlayerID] == nil then
-					self.tPlayerServiceData[iPlayerID] = {
-						pet = {},
-						skin = {},
-						particle = {},
-					}
-				end
 				-- 是否有装备
 				local tEquipped = {pet = false,skin = false,particle = false}
 				for i, v in ipairs(hBody.inventory) do
