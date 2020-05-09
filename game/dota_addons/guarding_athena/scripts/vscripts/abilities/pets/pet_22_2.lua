@@ -23,6 +23,8 @@ function modifier_pet_22_2:OnCreated(params)
 	end
 end
 function modifier_pet_22_2:OnIntervalThink()
-	SendOverheadEventMessage(self:GetParent():GetPlayerOwner(), OVERHEAD_ALERT_GOLD, self:GetParent():GetMaster(), RandomInt(10, 20), self:GetParent():GetPlayerOwner())
+	local iGold = RandomInt(10, 20)
+	hMaster:ModifyGold(iGold, true, 0)
+	SendOverheadEventMessage(self:GetParent():GetPlayerOwner(), OVERHEAD_ALERT_GOLD, self:GetParent():GetMaster(), iGold, self:GetParent():GetPlayerOwner())
 	self:GetParent():EmitSound("ui.comp_coins_tick")
 end

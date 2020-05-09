@@ -90,6 +90,8 @@ function modifier_templar_assassin_2_motion:OnCreated(params)
 end
 function modifier_templar_assassin_2_motion:OnDestroy(params)
 	if IsServer() then
+		self:GetParent():RemoveHorizontalMotionController(self)
+		self:GetParent():RemoveVerticalMotionController(self)
 		local hCaster = self:GetCaster()
 		local hParent = self:GetParent()
 		hParent:InterruptMotionControllers(true)
@@ -111,7 +113,7 @@ function modifier_templar_assassin_2_motion:OnDestroy(params)
 	end
 end
 function modifier_templar_assassin_2_motion:OnHorizontalMotionInterrupted()
-	
+	self:Destroy()
 end
 function modifier_templar_assassin_2_motion:UpdateHorizontalMotion(me, dt)
 	local hAbility = self:GetAbility()

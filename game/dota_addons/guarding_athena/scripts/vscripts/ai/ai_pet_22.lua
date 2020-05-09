@@ -32,7 +32,7 @@ end
 function EnemyCount(hAbility, iCount)
 	local flCastRange = hAbility:GetCastRange(thisEntity:GetAbsOrigin(), nil)
 	local tTargets = FindUnitsInRadiusWithAbility(thisEntity, thisEntity:GetAbsOrigin(), thisEntity:GetAcquisitionRange(), hAbility)
-	if #tTargets > iCount then
+	if #tTargets >= iCount then
 		return true
 	end
 	return false

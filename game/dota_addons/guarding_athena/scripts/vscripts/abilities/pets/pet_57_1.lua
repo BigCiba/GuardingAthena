@@ -14,7 +14,7 @@ function pet_57_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	if hTarget ~= nil then
 		local hCaster = self:GetCaster()
 		local damage = self:GetSpecialValueFor("damage")
-		hCaster:GetOwner():DealDamage(hTarget, self, damage * hCaster:GetOwner():GetPrimaryStatValue(), DAMAGE_TYPE_MAGICAL)
+		hCaster:DealDamage(hTarget, self, damage * hCaster:GetMaster():GetPrimaryStatValue(), DAMAGE_TYPE_MAGICAL)
 	end
 end
 ---------------------------------------------------------------------

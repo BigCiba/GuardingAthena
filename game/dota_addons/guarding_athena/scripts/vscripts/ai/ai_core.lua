@@ -12,10 +12,21 @@ function ClosestEnemyInRange( entity, range )
 	return IsValid(tTargets[1]) and tTargets[1] or nil
 end
 function WeakestEnemyInRange( entity, range )
-	local tTargets = FindUnitsInRadius(hUnit:GetTeamNumber(), hUnit:GetAbsOrigin(), nil, flRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+	local tTargets = FindUnitsInRadius(entity:GetTeamNumber(), entity:GetAbsOrigin(), nil, range, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 	if #tTargets > 0 then
 		table.sort(tTargets, function(a, b)
 			return a:GetHealth() < b:GetHealth()
+		end)
+		return tTargets[1]
+	else
+		return nil
+	end
+end
+function StrongestEnemyInRange( entity, range )
+	local tTargets = FindUnitsInRadius(entity:GetTeamNumber(), entity:GetAbsOrigin(), nil, range, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+	if #tTargets > 0 then
+		table.sort(tTargets, function(a, b)
+			return a:GetHealth() > b:GetHealth()
 		end)
 		return tTargets[1]
 	else

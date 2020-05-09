@@ -10,8 +10,8 @@ function Spawn( entityKeyValues )
 	end
 
 	tAbility = {
-		{hAbility = thisEntity:FindAbilityByName( "pet_4_1" ), fCondition = true, fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "pet_4_3" ), fCondition = EnemyCount, args = {3}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_24_1" ), fCondition = EnemyCount, args = {1}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "pet_24_2" ), fCondition = EnemyCount, args = {1}, fAction = CastNoTarget},
 	}
 
 	thisEntity:GameTimer(0, Think)
@@ -29,7 +29,7 @@ end
 
 function EnemyCount(hAbility, iCount)
 	local flCastRange = hAbility:GetCastRange(thisEntity:GetAbsOrigin(), nil)
-	local tTargets = FindUnitsInRadiusWithAbility(thisEntity, thisEntity:GetAbsOrigin(), thisEntity:GetAcquisitionRange(), hAbility)
+	local tTargets = FindUnitsInRadiusWithAbility(thisEntity, thisEntity:GetAbsOrigin(), hAbility:GetSpecialValueFor("radius"), hAbility)
 	if #tTargets >= iCount then
 		return true
 	end

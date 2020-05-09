@@ -54,5 +54,5 @@ function modifier_pet_15_1_aura:OnCreated(params)
 	end
 end
 function modifier_pet_15_1_aura:OnIntervalThink()
-	self.hMaster:DealDamage(self:GetParent(), self:GetAbility(), self.damage)
+	self:GetCaster():DealDamage(self:GetParent(), self:GetAbility(), self.damage)
 end

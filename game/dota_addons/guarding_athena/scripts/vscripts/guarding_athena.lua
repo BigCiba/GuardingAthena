@@ -177,11 +177,17 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 	--选择英雄阶段
 	if newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		self.GameModeSelectionEndTime = GameRules:GetGameTime() + HERO_SELECTION_TIME
-		print(GameRules:GetGameTime(),self.GameModeSelectionEndTime,HERO_SELECTION_TIME)
 		self:UpdateNetTables()
+		local tRandomHero = {}
+		for sHeroName, v in pairs(KeyValues.HeroesKv) do
+			if v.UnitLabel ~= "lock" then
+				table.insert(tRandomHero, sHeroName)
+			end
+		end
 		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 			self.tPlayerSelectionInfo[iPlayerID] = {
-				player_selected_hero = TableFindKey(KeyValues.HeroesKv, RandomValue(KeyValues.HeroesKv)),
+				-- player_selected_hero = TableFindKey(KeyValues.HeroesKv, RandomValue(KeyValues.HeroesKv)),
+				player_selected_hero = tRandomHero[RandomInt(1, #tRandomHero)],
 				player_selected_difficulty = nil
 			}
 		end)
@@ -307,7 +313,10 @@ function public:HeroSelectionEvent(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID
 	local sHeroName = events.HeroName
 	local tPlayerInfo = self.tPlayerSelectionInfo[iPlayerID]
-	tPlayerInfo.player_selected_hero = sHeroName
+	local bUnlock = Service:CheckHeroUnlock(iPlayerID, sHeroName)
+	if bUnlock then
+		tPlayerInfo.player_selected_hero = sHeroName
+	end
 end
 function public:DifficultySelectionEvent(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID

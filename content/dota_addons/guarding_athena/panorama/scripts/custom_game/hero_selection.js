@@ -71,6 +71,7 @@ function PreviewHero(HeroName) {
 	if (HeroLock) {
 		return;
 	}
+	$("#HeroInfoContent").SetHasClass("HeroLocked", $("#HeroListPanel").FindChildTraverse(HeroName).BHasClass("Unlock") == false)
 	const HeroKV = GameUI.HeroesKv[HeroName];
 	// 预览英雄属性与名字
 	$("#HeroNamePanel").FindChildTraverse("PrimaryAttributeImage").SetImage(GetAttributeIcon(HeroKV.AttributePrimary));
@@ -190,6 +191,9 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	$.GetContextPanel().SetHasClass("ServerChecked", true);
 }
 function PickHero() {
+	if ($("#HeroInfoContent").BHasClass("HeroLocked") == true){
+		return;
+	}
 	GameEvents.SendCustomGameEventToServer("hero_seletion", {
 		"HeroName": PreviewHeroName
 	});
@@ -234,13 +238,14 @@ function SelectDifficulty(Difficulty) {
 		let HeroName = HeroKV.override_hero;
 		let Panel = $("#HeroListPanel").FindChildTraverse(HeroName);
 		Panel = ReloadPanelWithProperties(Panel, "DOTAHeroMovie", $("#HeroListPanel"), HeroName, {heroname: HeroName});
-		Panel.BLoadLayoutSnippet("HeroCard");
-		Panel.SetPanelEvent("onactivate", function() {
-			PreviewHero(HeroName);
-		});
+		Panel.BLoadLayoutSnippet("HeroCard")
+		// 上锁
 		if (HeroKV.UnitLabel == "lock" ) {
 			Panel.RemoveClass("Unlock")
 		}
+		Panel.SetPanelEvent("onactivate", function() {
+			PreviewHero(HeroName);
+		});
 	}
 	// 加载玩家卡片
 	let AllPlayerID = Game.GetAllPlayerIDs()

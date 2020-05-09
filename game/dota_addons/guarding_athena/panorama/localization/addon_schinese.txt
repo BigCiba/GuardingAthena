@@ -182,5 +182,11 @@
 	"CategoryPet_Description"		"好伙伴"
 	"CategoryGamePlay"				"道具"
 	"CategoryGamePlay_Description"	"游戏内道具"
+
+	"GameMode_Easy"					"简单"
+	"GameMode_Common"				"普通"
+	"GameMode_Hard"					"困难"
+	"GameMode_Nightmare"			"噩梦"
+	"GameMode_Hell"					"地狱"
 }
 

@@ -48,6 +48,14 @@ function Pet:constructor(sName, hOwner)
 	self.iXP = 0
 
 	local hUnit = CreateUnitByName(sName, GetRespawnPosition(), true, self.hOwner, self.hOwner, self.hOwner:GetTeamNumber())
+
+	hUnit.GetMaster = function(hUnit)
+		return hOwner
+	end
+	hUnit.GetPet = function(hUnit)
+		return self
+	end
+
 	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
 	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
 	for i = 0, 4 do
@@ -63,13 +71,6 @@ function Pet:constructor(sName, hOwner)
 	-- 	ParticleManager:CreateParticle(sAmbientParticle, PATTACH_ABSORIGIN_FOLLOW, hUnit)
 	-- end
 	self.hUnit = hUnit
-
-	hUnit.GetPet = function(hUnit)
-		return self
-	end
-	hUnit.GetMaster = function(hUnit)
-		return hOwner
-	end
 end
 function Pet:RemoveSelf()
 	self.hUnit:ForceKill(false)

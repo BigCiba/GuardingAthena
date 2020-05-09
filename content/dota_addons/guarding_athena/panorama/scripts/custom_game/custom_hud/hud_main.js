@@ -28,6 +28,33 @@ function Update() {
 			let Attribute = Tooltips.FindChildTraverse("AbilityExtraAttributes");
 			let text = "";
 			Attribute.text = "";
+			
+			// 技能伤害
+			let AbilityDamage = Abilities.GetAbilityDamage( AbilityIndex );
+			if (AbilityDamage != null && AbilityDamage != "") {
+				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilitydamage";
+				let Name = $.Localize(localization);
+				if (Name.search("DOTA_Tooltip_ability_") != -1) {
+					Name = $.Localize("DOTA_Tooltip_ability_common_abilitydamage");
+				}
+				let HasPct = Name.search("%") != -1
+				text += Name.replace("%","") + "<font color='white'>" + String(AbilityDamage.toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
+				text += "<br></br>";
+			}
+
+			// 技能伤害
+			let AbilityDuration = Abilities.GetDuration( AbilityIndex );
+			if (AbilityDuration != null && AbilityDuration != "") {
+				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilityduration";
+				let Name = $.Localize(localization);
+				if (Name.search("DOTA_Tooltip_ability_") != -1) {
+					Name = $.Localize("DOTA_Tooltip_ability_common_abilityduration");
+				}
+				let HasPct = Name.search("%") != -1
+				text += Name.replace("%","") + "<font color='white'>" + String(AbilityDuration.toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
+				text += "<br></br>";
+			}
+
 			let AbilitySpecial = GameUI.AbilitiesKv[AbilityName].AbilitySpecial;
 			for (const key in AbilitySpecial) {
 				const SpecialName = Object.keys(AbilitySpecial[key])[1];
@@ -150,7 +177,7 @@ function LoadStoreItem(self) {
 		self.Type = ItemData.Type;
 		self.Shard = ItemData.Shard;
 		self.Price = ItemData.Price;
-		self.ItemName = ItemName;
+		self.ItemName = ItemData.ItemName;
 		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));

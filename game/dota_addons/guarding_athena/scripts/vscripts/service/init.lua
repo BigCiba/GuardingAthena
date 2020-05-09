@@ -370,5 +370,17 @@ function public:OnPurchaseItem(eventSourceIndex, events)
 		end
 	end, REQUEST_TIME_OUT)
 end
+function public:CheckHeroUnlock(iPlayerID, sHeroName)
+	if KeyValues.HeroesKv[sHeroName].UnitLabel == nil or KeyValues.HeroesKv[sHeroName].UnitLabel ~= "lock" then
+		return true
+	end
+	local tPlayerHeroData = self.tPlayerServiceData[iPlayerID]["hero"]
+	for _, tItemData in ipairs(tPlayerHeroData) do
+		if sHeroName == "npc_dota_hero_"..tItemData.ItemName then
+			return true
+		end
+	end
+	return false
+end
 
 return public

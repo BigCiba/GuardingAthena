@@ -1,5 +1,6 @@
 LinkLuaModifier( "modifier_pet_4_2", "abilities/pets/pet_4_2.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_pet_4_2_debuff", "abilities/pets/pet_4_2.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_pet_4_2_freeze", "abilities/pets/pet_4_2.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if pet_4_2 == nil then
 	pet_4_2 = class({})
@@ -104,6 +105,22 @@ function modifier_pet_4_2_debuff:IsDebuff()
 end
 function modifier_pet_4_2_debuff:OnCreated(params)
 	if IsServer() then
-		self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_stunned", {duration = self:GetAbilityDuration() * self:GetParent():GetStatusResistanceFactor()})
+		self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_pet_4_2_freeze", {duration = self:GetAbilityDuration() * self:GetParent():GetStatusResistanceFactor()})
 	end
+end
+---------------------------------------------------------------------
+if modifier_pet_4_2_freeze == nil then
+	modifier_pet_4_2_freeze = class({}, nil, ModifierDebuff)
+end
+function modifier_pet_4_2_freeze:OnCreated(params)
+	if IsClient() then
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_jakiro/jakiro_icepath_debuff.vpcf", PATTACH_ABSORIGIN, self:GetParent())
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+	end
+end
+function modifier_pet_4_2_freeze:CheckState()
+	return {
+		[MODIFIER_STATE_STUNNED] = true,
+		[MODIFIER_STATE_FROZEN] = true,
+	}
 end

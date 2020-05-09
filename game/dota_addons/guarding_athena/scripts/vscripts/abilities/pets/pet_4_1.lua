@@ -4,40 +4,44 @@ LinkLuaModifier("modifier_pet_4_1", "abilities/pets/pet_4_1.lua", LUA_MODIFIER_M
 if pet_4_1 == nil then
 	pet_4_1 = class({})
 end
-function pet_4_1:GetIntrinsicModifierName()
-	return "modifier_pet_4_1"
-end
-function pet_4_1:IsHiddenWhenStolen()
-	return false
+function pet_4_1:OnSpellStart()
+	local hCaster = self:GetCaster()
+	local hTarget = hCaster:GetMaster()
+	local duration = self:GetDuration()
+	local cooldown_reduction = self:GetSpecialValueFor("cooldown_reduction")
+	local mana_restore = math.ceil(self:GetSpecialValueFor("mana_restore") * hTarget:GetMaxMana() * 0.01)
+	
+	hTarget:GiveMana(mana_restore)
+	SendOverheadEventMessage(hTarget:GetPlayerOwner(), OVERHEAD_ALERT_MANA_ADD, hTarget, mana_restore, hTarget:GetPlayerOwner())
+
+	hTarget:AddNewModifier(hCaster, self, "modifier_pet_4_1", {duration = duration})
+
+	EmitSoundOnLocationWithCaster(hTarget:GetAbsOrigin(), "Hero_KeeperOfTheLight.ChakraMagic.Target", hCaster)
 end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_pet_4_1 == nil then
-	modifier_pet_4_1 = class({}, nil, ModifierBasic)
-end
-function modifier_pet_4_1:IsHidden()
-	return true
+	modifier_pet_4_1 = class({}, nil, ModifierPositiveBuff)
 end
 function modifier_pet_4_1:OnCreated(params)
 	if IsServer() then
-		self.interval = self:GetAbilitySpecialValueFor("interval")
-		self.reduce = self:GetAbilitySpecialValueFor("reduce")
-		self:StartIntervalThink(self.interval)
+		self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	end
+	AddModifierEvents(MODIFIER_EVENT_ON_ABILITY_FULLY_CAST, self, self:GetParent())
 end
-function modifier_pet_4_1:OnIntervalThink()
-	local hParent = self:GetParent()
-	local hOwner = hParent:GetOwner()
-	local tAbility = {}
-	for i = 0, 4 do
-		local hAbility = hOwner:GetAbilityByIndex(i)
-		if IsValid(hAbility) and hAbility:GetCooldownTimeRemaining() > 0 then
-			table.insert(tAbility, hAbility)
+function modifier_pet_4_1:OnDestroy()
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ABILITY_FULLY_CAST, self, self:GetParent())
+end
+function modifier_pet_4_1:OnAbilityFullyCast(params)
+	if IsServer() then
+		if params.unit == self:GetParent() then
+			local hAbility = params.ability
+			if IsValid(hAbility) and not hAbility:IsItem() and not hAbility:IsToggle() then
+				local flCooldown = math.max(hAbility:GetCooldown(hAbility:GetLevel() - 1) - self.cooldown_reduction, 0)
+				hAbility:EndCooldown()
+				hAbility:StartCooldown(flCooldown)
+				self:Destroy()
+			end
 		end
 	end
-	if #tAbility > 0 then
-		RandomValue(tAbility):ReduceCooldownPercent(self.reduce)
-	end
-	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_spellshield_reflect.vpcf", PATTACH_CUSTOMORIGIN, hParent)
-	ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin() + Vector(0,0,100))
 end

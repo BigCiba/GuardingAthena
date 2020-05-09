@@ -64,23 +64,23 @@
 				<Panel id="DifficlutyContent">
 					<RadioButton class="DifficultyPanel Easy" group="difficluty" onselect="SelectDifficulty(1)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
-						<Label text="简单" />
+						<Label text="#GameMode_Easy" />
 					</RadioButton>
 					<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty" onselect="SelectDifficulty(2)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
-						<Label text="普通" />
+						<Label text="#GameMode_Common" />
 					</RadioButton>
 					<RadioButton class="DifficultyPanel Hard" group="difficluty" onselect="SelectDifficulty(3)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_2_png.vtex" />
-						<Label text="困难" />
+						<Label text="#GameMode_Hard" />
 					</RadioButton>
 					<RadioButton class="DifficultyPanel Nightmare" group="difficluty" onselect="SelectDifficulty(4)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_3_png.vtex" />
-						<Label text="噩梦" />
+						<Label text="#GameMode_Nightmare" />
 					</RadioButton>
 					<RadioButton class="DifficultyPanel Hell" group="difficluty" onselect="SelectDifficulty(5)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_4_png.vtex" />
-						<Label text="地狱" />
+						<Label text="#GameMode_Hell" />
 					</RadioButton>
 				</Panel>
 			</Panel>
@@ -100,21 +100,21 @@
 								<Panel id="MenuArrow" />
 							</Panel>
 							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
-							<Label text="宠物" />
+							<Label text="#Category_pet" />
 						</Panel>
 						<Panel id="SettingSkin" class="SettingPanel" onactivate="ShowContextMenu('SettingSkin','skin')">
 							<Panel id="MenuArrowContainer" >
 								<Panel id="MenuArrow" />
 							</Panel>
 							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
-							<Label text="款式" />
+							<Label text="#Category_skin" />
 						</Panel>
 						<Panel id="SettingParticle" class="SettingPanel" onactivate="ShowContextMenu('SettingParticle','particle')">
 							<Panel id="MenuArrowContainer" >
 								<Panel id="MenuArrow" />
 							</Panel>
 							<Image class="SettingIcon" src="file://{images}/econ/default_no_item.png"  scaling="stretch-to-cover-preserve-aspect"/>
-							<Label text="特效" />
+							<Label text="#Category_particle" />
 						</Panel>
 					</Panel>
 				</Panel>
@@ -129,7 +129,7 @@
 						<Panel id="HeroAbilityPanel">
 						</Panel>
 						<Button id="HeroSelectPanel" onactivate="PickHero()">
-							<Label text="选择英雄" />
+							<Label text="#SelectHero" />
 						</Button>
 					</Panel>
 				</Panel>

@@ -56,8 +56,8 @@ function modifier_pet_4_3:OnIntervalThink()
 		local distance = RandomFloat(self.explosion_min_dist, self.explosion_max_dist)
 		local vPosition = GetGroundPosition(hParent:GetAbsOrigin() + Rotation2D(Vector(1,0,0), radian)*distance, hParent)
 
-		local tTargets = FindUnitsInRadiusWithAbility(hParent, vPosition, self.explosion_radius, hParent)
-		hParent:DealDamage(tTargets, hParent, self.flDamage)
+		local tTargets = FindUnitsInRadiusWithAbility(hParent, vPosition, self.explosion_radius, hAbility)
+		hParent:DealDamage(tTargets, hAbility, self.flDamage)
 
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_explosion.vpcf", PATTACH_WORLDORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
@@ -65,7 +65,7 @@ function modifier_pet_4_3:OnIntervalThink()
 
 		EmitSoundOnLocationWithCaster(vPosition, "hero_Crystal.freezingField.explosion", hParent)
 
-		local tTargets = FindUnitsInRadiusWithAbility(hParent, vPosition, self.radius, hParent)
+		local tTargets = FindUnitsInRadiusWithAbility(hParent, vPosition, self.radius, hAbility)
 		for _, hUnit in pairs(tTargets) do
 			hUnit:AddNewModifier(hParent, hAbility, "modifier_pet_4_3_slow", {duration = self.slow_duration * hUnit:GetStatusResistanceFactor()})
 		end
