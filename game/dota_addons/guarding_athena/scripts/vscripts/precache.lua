@@ -258,5 +258,6 @@ return {
 		"models/props_gameplay/aegis.vmdl",
 		"models/props_gameplay/morokai_orb.vmdl",
 		"models/props_gameplay/morokai_orb_dummy.vmdl",
+		"models/items/courier/onibi_lvl_21/onibi_lvl_21_flying.vmdl",
 	},
 }

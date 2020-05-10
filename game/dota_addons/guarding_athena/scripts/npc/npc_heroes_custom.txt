@@ -264,6 +264,7 @@
 		"MovementSpeed"							"310"
 		"ArmorPhysical"							"0.62"
 		"MagicalResistance"						"0"
+		"ProjectileSpeed"						"900"
 		"Ability1"								"demon_hunter"
 		"Ability2"								"soulblade"
 		"Ability3"								"soulring"

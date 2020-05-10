@@ -210,7 +210,10 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 				Service:RequestUpDataEquip(iPlayerID)
 			end
 		end)
-		local iDifficulty,_ = table.max(tVoteList)
+		local iDifficulty, iVote = table.max(tVoteList)
+		if iVote == 0 then
+			iDifficulty = 2
+		end
 		CustomGameEventManager:Send_ServerToAllClients("difficulty", {difficulty=iDifficulty})
 		GameRules:SetCustomGameDifficulty(iDifficulty)
 		GameRules:SetGoldPerTick(DIFFICULTY_GOLD_TICK[iDifficulty])

@@ -66,7 +66,7 @@
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_0_png.vtex" />
 						<Label text="#GameMode_Easy" />
 					</RadioButton>
-					<RadioButton class="DifficultyPanel Normal" selected="true" group="difficluty" onselect="SelectDifficulty(2)">
+					<RadioButton class="DifficultyPanel Normal" group="difficluty" onselect="SelectDifficulty(2)">
 						<Image class="DifficultyIcon" src="s2r://panorama/images/hero_badges/hero_badge_rank_1_png.vtex" />
 						<Label text="#GameMode_Common" />
 					</RadioButton>

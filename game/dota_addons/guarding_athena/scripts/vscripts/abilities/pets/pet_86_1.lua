@@ -14,21 +14,18 @@ end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_pet_86_1 == nil then
-	modifier_pet_86_1 = class({}, nil, ModifierBasic)
-end
-function modifier_pet_86_1:IsHidden()
-	return true
+	modifier_pet_86_1 = class({}, nil, ModifierHidden)
 end
 function modifier_pet_86_1:OnCreated(params)
 	if IsServer() then
-		self.duration = self:GetAbilitySpecialValueFor("duration")
-		self:StartIntervalThink(self:GetAbilitySpecialValueFor("interval"))
-		self:OnIntervalThink()
+		self:StartIntervalThink(0)
 	end
 end
 function modifier_pet_86_1:OnIntervalThink()
-	local hParent = self:GetParent()
-	hParent:GetOwner():AddNewModifier(hParent, self:GetAbility(), "modifier_pet_86_1_buff", {duration = self.duration})
+	if self:GetCaster().GetMaster ~= nil and not self:GetCaster():GetMaster():HasModifier("modifier_pet_86_1_buff") then
+		self:GetCaster():GetMaster():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_pet_86_1_buff", nil)
+		self:StartIntervalThink(-1)
+	end
 end
 ---------------------------------------------------------------------
 if modifier_pet_86_1_buff == nil then

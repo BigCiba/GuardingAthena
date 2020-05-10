@@ -1,4 +1,4 @@
--- DamageFilter
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      -- DamageFilter
 --[[
 	bonus_magic_damage				百分比增加魔法伤害
 	bonus_physical_damage			物理伤害穿透额外无视护甲伤害
@@ -17,7 +17,7 @@ function public:ExecuteOrderFilter( args )
     -- 攻击指令
 	if args.order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
 		local target = EntIndexToHScript( args.entindex_target )
-		if target == self.entAthena then
+		if target == GuardingAthena.entAthena then
 			return false
 		end
 	end
@@ -313,12 +313,12 @@ function public:ItemAddedToInventoryFilter( keys )
 			end
 		end
 	elseif currentItemName == "item_athena_momian" then
-		local athena = self.entAthena
+		local athena = GuardingAthena.entAthena
 		local ability = athena:FindAbilityByName("athena_heal")
 		ability:ApplyDataDrivenModifier(athena, athena, "modifier_athena_heal_3", nil)
 		return false
 	elseif currentItemName == "item_athena_wudi" then
-		local athena = self.entAthena
+		local athena = GuardingAthena.entAthena
 		local ability = athena:FindAbilityByName("athena_heal")
 		ability:ApplyDataDrivenModifier(athena, athena, "modifier_athena_heal_2", nil)
 		return false
