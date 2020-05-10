@@ -42,7 +42,7 @@ function modifier_pet_24_1:OnIntervalThink()
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_centaur/centaur_warstomp.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 	ParticleManager:SetParticleControl(iParticleID, 1, Vector(self.radius,self.radius,self.radius))
-	hParent:EmitSound("n_creep_Thunderlizard_Big.Stomp")
+	hParent:EmitSound("Hero_Zuus.Taunt.Jump")
 end
 function modifier_pet_24_1:DeclareFunctions()
 	return {

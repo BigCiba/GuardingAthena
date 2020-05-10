@@ -3335,6 +3335,8 @@
 		"DOTA_Tooltip_ability_pet_22_2_Description"				"哎呀的福袋每隔一段时间就会倒出大量金币。"
 		"DOTA_Tooltip_ability_pet_22_3"							"嗷呜"
 		"DOTA_Tooltip_ability_pet_22_3_Description"				"哎呀嗷呜一声吓退周围的敌人。"
+		"DOTA_Tooltip_ability_pet_22_3_abilitydamage"			"英雄主属性伤害系数："
+		"DOTA_Tooltip_ability_pet_22_3_armor"					"护甲减少："
 		"DOTA_Tooltip_ability_pet_22_3_radius"					"影响范围："
 		"DOTA_Tooltip_ability_pet_22_4"							"夕"
 		"DOTA_Tooltip_ability_pet_22_4_Description"				"哎呀变身成名为夕的怪物到处捣乱。"

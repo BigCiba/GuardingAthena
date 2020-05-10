@@ -24,6 +24,6 @@ function pet_24_2:OnSpellStart()
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_centaur/centaur_warstomp.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vLocation)
 	ParticleManager:SetParticleControl(iParticleID, 1, Vector(radius,radius,radius))
-	hCaster:EmitSound("n_creep_Thunderlizard_Big.Stomp")
+	hCaster:EmitSound("Hero_Zuus.Taunt.Jump")
 	self:GetCaster():ForcePlayActivityOnce(ACT_DOTA_SPAWN)
 end

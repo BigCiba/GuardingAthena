@@ -32,7 +32,7 @@ function LoadPlayer(self) {
 		const tPlayerInfo = Game.GetPlayerInfo(PlayerID);
 		let LocalPlayerID = Players.GetLocalPlayer();
 		let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
-		const iLevel = Data == null ? 1:Data.Level;
+		const iLevel = Data.Level == null ? 1:Data.Level;
 		self.FindChildTraverse("AvatarImage").steamid = tPlayerInfo.player_steamid;
 		self.FindChildTraverse("UserName").steamid = tPlayerInfo.player_steamid;
 		self.FindChildTraverse("BackGroundImage").SetImage(GetBadgesBackground(iLevel));

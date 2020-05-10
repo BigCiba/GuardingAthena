@@ -92,6 +92,7 @@ function modifier_pet_24_3_jump:OnCreated(params)
 	if IsServer() then
 		if self:ApplyHorizontalMotionController() then 
 			-- self:GetParent():EmitSound("Ability.Leap")
+			self:GetParent():EmitSound("Hero_Zuus.Taunt.Jump")
 			
 			
 			self.radius = self:GetAbilitySpecialValueFor("radius")
@@ -130,7 +131,7 @@ function modifier_pet_24_3_jump:OnDestroy()
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_centaur/centaur_warstomp.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		ParticleManager:SetParticleControl(iParticleID, 1, Vector(self.radius,self.radius,self.radius))
-		hParent:EmitSound("n_creep_Thunderlizard_Big.Stomp")
+		-- hParent:EmitSound("Hero_Zuus.Taunt.Jump")
 	end
 end
 function modifier_pet_24_3_jump:UpdateHorizontalMotion(me, dt)

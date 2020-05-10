@@ -87,7 +87,10 @@
 		<snippet name="StoreItem">
 			<Panel class="AthenaStoreItem">
 				<Panel id="ItemImageContainer">
-					<EconItemImage id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png"/>
+					<EconItemImage id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png">
+						<Panel id="SkillPreview">
+						</Panel>
+					</EconItemImage>
 					<Panel id="AlreadyOwnedIcon" onmouseover="UIShowTextTooltip( '#DOTA_StoreItem_AlreadyOwned' )" onmouseout="UIHideTextTooltip()" />
 				</Panel>
 				<Label id="ItemName" text="{s:item_name}"/>

@@ -208,6 +208,7 @@ function public:RequestPlayerData(iPlayerID)
 							Equip = v.Equip,
 							Expiration = v.Expiration,
 							Type = v.Type,
+							Experience = v.Experience
 						})
 						if tEquipped[sHeroName] == false and v.Equip == "1" then
 							tEquipped[sHeroName] = true
@@ -217,7 +218,8 @@ function public:RequestPlayerData(iPlayerID)
 							ItemName = v.ItemName,
 							Equip = v.Equip,
 							Expiration = v.Expiration,
-							Type = v.Type
+							Type = v.Type,
+							Experience = v.Experience
 						})
 						if tEquipped[v.Type] == false and v.Equip == "1" then
 							tEquipped[v.Type] = true
@@ -402,5 +404,14 @@ function public:GameReward(iPlayerID)
 			local hBody = json.decode(sBody)
 		end
 	end, REQUEST_TIME_OUT)
+end
+function public:GetPetExperience(iPlayerID, sItemName)
+	local PetList = self.tPlayerServiceData[iPlayerID]["pet"]
+	for i, PetData in ipairs(PetList) do
+		if PetData.ItemName == sItemName then
+			return tonumber(PetData.Experience)
+		end
+	end
+	return 0
 end
 return public

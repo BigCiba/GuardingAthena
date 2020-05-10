@@ -612,6 +612,9 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	height: fill-parent-flow( 1.0 );
 }
 
+.AthenaStoreItem:hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( black ), to( #B7894610 ) );
+}
 .AthenaStoreItem
 {
 	background-color: black;
@@ -1832,4 +1835,30 @@ DOTAStorePlusPage.EventCavernCrawlActive .EventCavernCrawl
 }
 .Hidden {
 	visibility: collapse;
+}
+#SkillPreview {
+	flow-children: right;
+	width:100%;
+	vertical-align: bottom;
+	padding: 5px;
+}
+#SkillPreview DOTAAbilityImage {
+	vertical-align: bottom;
+	horizontal-align: center;
+	max-width: 50px;
+	width: fill-parent-flow( 1.0 );
+	height: width-percentage( 100% );
+	margin: 5px;
+	border-radius: 5px;
+	opacity: 0;
+
+	transition-property: pre-transform-scale2d, opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+}
+#SkillPreview DOTAAbilityImage:hover {
+	pre-transform-scale2d: 1.3;
+}
+#ItemImageContainer:hover DOTAAbilityImage {
+	opacity: 1;
 }

@@ -158,6 +158,20 @@ function LoadStoreItem(self) {
 		}
 		if (ItemData.Type == "pet") {
 			self.AddClass("Prefab_courier");
+			// 预览技能
+			const PetKV = GameUI.PetsKv[ItemName];
+			for (let index = 1; index <= 5; index++) {
+				const AbilityName = PetKV["Ability" + index];
+				if (AbilityName != undefined || AbilityName != null) {
+					let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", self.FindChildTraverse("SkillPreview"), AbilityName, {abilityname: AbilityName});
+					AbilityPanel.SetPanelEvent("onmouseover", function() {
+						$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
+					});
+					AbilityPanel.SetPanelEvent("onmouseout", function() {
+						$.DispatchEvent("DOTAHideAbilityTooltip");
+					});
+				}
+			}
 			self.SetPanelEvent("onmouseover", function () {
 				$.DispatchEvent(
 					"UIShowCustomLayoutParametersTooltip",

@@ -59,12 +59,20 @@ function Pet:constructor(sName, hOwner)
 		return hUnit
 	end
 
+	local iExp = Service:GetPetExperience(hOwner:GetPlayerOwnerID(), sName)
+	local iLevel = 1
+	for i, v in ipairs(PET_XP_TABLE) do
+		if iExp >= v then
+			iLevel = i
+		end
+	end
+	hUnit:CreatureLevelUp(iLevel - 1)
 	hUnit:SetControllableByPlayer(self.hOwner:GetPlayerOwnerID(), true)
 	hUnit:AddNewModifier(hOwner, nil, "modifier_pet_base", nil)
 	for i = 0, 4 do
 		local hAbility = hUnit:GetAbilityByIndex(i)
 		if IsValid(hAbility) then
-			hAbility:SetLevel(1)
+			hAbility:SetLevel(iLevel)
 		end
 	end
 	-- ambient
