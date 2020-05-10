@@ -1100,27 +1100,33 @@
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"-54"
+				"var_type"						"FIELD_FLOAT"
+				"percent"						"1 1.5 2 2.5 3 "
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"attackspeed"					"-1000"
+				"regen_reduce"					"60 70 80 90 100"
 			}
 			"03"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"percent"						"1 2 3 4 5"
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.25"
 			}
 			"04"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"duration"						"3 4 5 6 7"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"1200"
 			}
 		}
 	}
@@ -1177,25 +1183,31 @@
 		"ScriptFile"							"abilities/enemy/soulsteal"
 		"AbilityTextureName"					"necrolyte_death_pulse"
 		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"						"1500"
+		"AbilityCastPoint"						"0.1"
+		"AbilityCooldown"						"3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityDamage"							"20000 40000 60000 80000 100000"
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"20000 40000 60000 80000 100000"
+				"radius"						"1500"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"regen"							"1"
+				"regen"							"3"
 			}
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"radius"						"1500"
+				"speed"							"400"
 			}
 		}
 	}
@@ -1205,21 +1217,20 @@
 		"ScriptFile"							"abilities/enemy/death_change"
 		"AbilityTextureName"					"necrolyte_sadist"
 		"MaxLevel"								"5"
-		"AbilityCooldown"						"%cooldown"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"						"1200"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"10 9 8 7 6"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"4"
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"4000 8000 12000 16000 200000"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cooldown"						"80 70 60 50 40"
+				"stun_duration"					"3"
 			}
 		}
 	}
@@ -1229,15 +1240,25 @@
 		"ScriptFile"							"abilities/enemy/death"
 		"AbilityTextureName"					"necrolyte_reapers_scythe"
 		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastRange"						"1200"
+		"AbilityCastPoint"						"0.55"
+		"AbilityCooldown"						"10 9 8 7 6"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"percent"						"30 35 40 45 50"
+				"var_type"						"FIELD_FLOAT"
+				"damage_per_health"				"1 1.2 1.4 1.6 1.8"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"stun_duration"					"1.5"
 			}
 		}
 	}
