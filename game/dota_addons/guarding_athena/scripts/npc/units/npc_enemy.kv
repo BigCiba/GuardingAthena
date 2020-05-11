@@ -1087,8 +1087,8 @@
 	{
 		"Name"									"干！"
 		"BaseClass"								"npc_dota_creature"
-		"Model"									"models/heroes/furion/furion.vmdl"
-		"ModelScale"							"0.8"
+		"Model"									"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
+		"ModelScale"							"1"
 		"Level"									"28"
 		"HealthBarOffset"						"-1"
 		"BountyXP"								"600"
@@ -1102,22 +1102,19 @@
 		"StatusHealthRegen"						"5"
 		"StatusMana"							"2800"
 		"StatusManaRegen"						"0"
-		"AttackCapabilities"					"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackCapabilities"					"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"						"9263"
 		"AttackDamageMax"						"9263"
 		"AttackRate"							"1.7"
 		"BaseAttackSpeed"						"150"
 		"AttackAnimationPoint"					"0.4"
 		"AttackAcquisitionRange"				"600"
-		"AttackRange"							"600"
-		"ProjectileModel"						"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
-		"ProjectileSpeed"						"900"
+		"AttackRange"							"125"
 		"ArmorPhysical"							"36"
 		"MagicalResistance"						"26"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"fur_dance"
 		"Creature"
 		{
 			"AttachWearables"
@@ -1220,9 +1217,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"siling_attack"
-		"Ability2"								"siling_speed"
-		"Ability3"								"siling_death"
 	}
 	"wave_31"
 	{
@@ -1258,9 +1252,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"xixue"
-		"Ability2"								"chouxue"
-		"Ability3"								"tb_critical"
 	}
 	"wave_32"
 	{
@@ -1296,8 +1287,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"holy_attack"
-		"Ability2"								"holy_armor"
 		"Creature"
 		{
 			"AttachWearables"
@@ -1365,8 +1354,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"xiaolan"
-		"Ability2"								"jianjia"
 		"Creature"
 		{
 			"AttachWearables"
@@ -1397,6 +1384,7 @@
 	"wave_34"
 	{
 		"Name"									"女玩"
+		"vscripts"								"ai/enemy/ai_wave_34.lua"
 		"BaseClass"								"npc_dota_creature"
 		"Model"									"models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl"
 		"ModelScale"							"0.8"
@@ -1989,6 +1977,71 @@
 				"4"
 				{
 					"ItemDef"					"6315"
+				}
+			}
+		}
+	}
+	"elite_28"
+	{
+		"Name"									"干！"
+		"BaseClass"								"npc_dota_creature"
+		"Model"									"models/heroes/furion/furion.vmdl"
+		"ModelScale"							"1"
+		"Level"									"28"
+		"HealthBarOffset"						"300"
+		"BountyXP"								"6000"
+		"BountyGoldMin"							"980"
+		"BountyGoldMax"							"980"
+		"BoundsHullName"						"DOTA_HULL_SIZE_REGULAR"
+		"MovementCapabilities"					"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"							"325"
+		"MovementTurnRate"						"0.5"
+		"StatusHealth"							"428000"
+		"StatusHealthRegen"						"5"
+		"StatusMana"							"6600"
+		"StatusManaRegen"						"0"
+		"AttackCapabilities"					"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"						"9263"
+		"AttackDamageMax"						"9263"
+		"AttackRate"							"1.7"
+		"BaseAttackSpeed"						"150"
+		"AttackAnimationPoint"					"0.4"
+		"AttackAcquisitionRange"				"600"
+		"AttackRange"							"600"
+		"ProjectileModel"						"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
+		"ProjectileSpeed"						"900"
+		"ArmorPhysical"							"36"
+		"MagicalResistance"						"26"
+		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"ConsideredHero"						"1"
+		"IsAncient"								"1"
+		"Ability1"								"captain"
+		"Ability2"								"elite_28_1"
+		"Ability3"								"elite_28_2"
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"1"
+				{
+					"ItemDef"					"5797"
+				}
+				"2"
+				{
+					"ItemDef"					"5798"
+				}
+				"3"
+				{
+					"ItemDef"					"5799"
+				}
+				"4"
+				{
+					"ItemDef"					"5800"
+				}
+				"5"
+				{
+					"ItemDef"					"5802"
 				}
 			}
 		}

@@ -28,3 +28,16 @@ function modifier_boss_clear:DeclareFunctions()
 	return {
 	}
 end
+---------------------------------------------------------------------
+if modifier_boss_clear_buff == nil then
+	modifier_boss_clear_buff = class({}, nil, ModifierBasic)
+end
+function modifier_boss_clear_buff:OnCreated(params)
+	if IsServer() then
+		self:StartIntervalThink(0)
+		self:OnIntervalThink()
+	end
+end
+function modifier_boss_clear_buff:OnIntervalThink()
+	self:GetParent():Purge(false, true, false, true, true)
+end

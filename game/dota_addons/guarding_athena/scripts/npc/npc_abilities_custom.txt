@@ -16166,40 +16166,6 @@
 		}
 	}
 
-	"boss"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"life_stealer_rage_immortal_gold"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"Modifiers"
-		{
-			"modifier_boss"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"	{}
-				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_unit/general/elite.lua"
-						"Function"	"OnBossTakeDamage"
-						"DamageTaken"	"%attack_damage"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"20 40 60 80 100"
-			}
-		}
-	}
-
 	"captain"
 	{
 		"BaseClass"	"ability_datadriven"
