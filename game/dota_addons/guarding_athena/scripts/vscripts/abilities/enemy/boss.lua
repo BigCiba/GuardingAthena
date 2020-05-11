@@ -34,9 +34,13 @@ function modifier_boss:OnTakeDamage(params)
 	if hCaster == self:GetParent() then
 		local hAbility = self:GetAbility()
 		if hCaster:GetHealth() == self.threshold then
-			self.threshold = math.max(self.threshold - self.flHealth, 0)
+			hCaster:AddNewModifier(hCaster, hAbility, "modifier_boss_buff", {duration = self:GetAbilityDuration()})
+			self:StartIntervalThink(0)
 		end
 	end
+end
+function modifier_boss:OnIntervalThink()
+	self.threshold = math.max(self.threshold - self.flHealth, 0)
 end
 function modifier_boss:DeclareFunctions()
 	return {

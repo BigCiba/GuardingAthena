@@ -10,8 +10,8 @@ function Spawn( entityKeyValues )
 	end
 
 	tAbility = {
-		{hAbility = thisEntity:FindAbilityByName( "soulsteal" ), fCondition = EnemyCount, args = {1}, fAction = CastNoTarget},
-		{hAbility = thisEntity:FindAbilityByName( "death_change" ), fCondition = EnemyCount, args = {1}, fAction = CastTarget},
+		{hAbility = thisEntity:FindAbilityByName( "hades_1" ), fCondition = EnemyCount, args = {1}, fAction = CastNoTarget},
+		{hAbility = thisEntity:FindAbilityByName( "hades_3" ), fCondition = EnemyCount, args = {1}, fAction = CastTarget},
 		{hAbility = thisEntity:FindAbilityByName( "hades_4" ), fCondition = EnemyCount, args = {1}, fAction = CastTarget},
 	}
 

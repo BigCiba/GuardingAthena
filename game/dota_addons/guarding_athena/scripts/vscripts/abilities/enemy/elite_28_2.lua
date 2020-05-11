@@ -15,8 +15,10 @@ function elite_28_2:OnSpellStart()
 			hUnit:AddNewModifier(hCaster, self, "modifier_elite_28_2", {duration = delay, vPosition = vPosition})
 		end
 	end
-	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_teleport_end.vpcf", PATTACH_ABSORIGIN, nil)
+	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_teleport_end.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
+	ParticleManager:SetParticleControl(iParticleID, 1, vPosition)
+	ParticleManager:SetParticleControl(iParticleID, 2, Vector(delay,0,0))
 	ParticleManager:ReleaseParticleIndex(iParticleID)
 end
 ---------------------------------------------------------------------

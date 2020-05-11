@@ -2796,7 +2796,8 @@
 		"DOTA_Tooltip_ability_item_chaos_plate_health_bonus"	"生命值："
 		"DOTA_Tooltip_ability_item_chaos_plate_armor"	"护甲："
 		"DOTA_Tooltip_ability_boss"	"Boss"
-		"DOTA_Tooltip_ability_boss_Description"	"受到伤害后会在短时间内增加伤害减免比例。"
+		"DOTA_Tooltip_ability_boss_Description"	"单次伤害不会超过最大生命值的%damage_limit%%%，且每受到%damage_limit%%%的伤害就会获得一次减伤效果，减伤效果随时间递减。"
+		"DOTA_Tooltip_ability_boss_damage_reduce"	"%伤害减少："
 		"DOTA_Tooltip_ability_soulsteal_damage"	"damage:"
 		"DOTA_Tooltip_ability_soulsteal_regen"	"%regen:"
 		"DOTA_Tooltip_ability_death_percent"	"触发百分比："
@@ -4007,5 +4008,10 @@
 		"DOTA_Tooltip_ability_item_visage_4_Description"		"<h1>主动：倒转阴阳</h1>刷新你的所有技能，并在%duration%秒内提升%damage_increase%%%伤害输出。\n<h1>被动：透视</h1>魔法伤害将无视目标%ignore_resistance%%%的魔法抗性。\n<h1>被动：魔法护盾</h1>每%interval%秒生成一个相当于最大生命值%shield_percent%%%的魔法护盾用来吸收魔法伤害。"
 		"DOTA_Tooltip_ability_item_visage_4_bonus_resistance"	"%+魔法抗性"
 		"DOTA_Tooltip_ability_item_visage_4_bonus_health_pct"	"%+生命值"
+
+		"DOTA_Tooltip_Ability_elite_28_1"					"不如跳舞"
+		"DOTA_Tooltip_Ability_elite_28_1_Description"		"跳舞嘲讽敌人并回复大量生命值。"
+		"DOTA_Tooltip_Ability_elite_28_2"					"传送"
+		"DOTA_Tooltip_Ability_elite_28_2_Description"		"将周围的小弟传送至雅典娜周围。"
 	}
 }

@@ -14,11 +14,22 @@ if modifier_elite_28_1 == nil then
 end
 function modifier_elite_28_1:OnCreated(params)
 	self.regen = self:GetAbilitySpecialValueFor("regen")
-	self.sActivities = RollPercentage(50) and "happy_dance" or "rain_gesture"
 	if IsServer() then
+		self.sActivities = "happy_dance"
+		self:SetDuration(3.6, true)
+		if RollPercentage(50) then
+			self.sActivities = "rain_gesture"
+			self:SetDuration(4.8, true)
+		end
+		self:GetParent():StartGesture(ACT_DOTA_TAUNT)
 	else
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_tnt_rain.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
+	end
+end
+function modifier_elite_28_1:OnDestroy()
+	if IsServer() then
+		self:GetParent():FadeGesture(ACT_DOTA_TAUNT)
 	end
 end
 function modifier_elite_28_1:DeclareFunctions()
@@ -39,6 +50,7 @@ function modifier_elite_28_1:GetActivityTranslationModifiers()
 end
 function modifier_elite_28_1:CheckState()
 	return {
-		[MODIFIER_STATE_MAGIC_IMMUNE] = true
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+		[MODIFIER_STATE_DISARMED] = true
 	}
 end

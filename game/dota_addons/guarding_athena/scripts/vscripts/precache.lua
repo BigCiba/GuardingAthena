@@ -249,6 +249,7 @@ return {
 		"particles/units/heroes/heroes_underlord/abbysal_underlord_darkrift_ambient.vpcf",
 		"particles/units/wave_37/roshan_shock.vpcf",
 		"particles/units/wave_38/undying_rot.vpcf",
+		"particles/units/heroes/hero_furion/furion_teleport_end.vpcf",
 
 	},
 	model = {
