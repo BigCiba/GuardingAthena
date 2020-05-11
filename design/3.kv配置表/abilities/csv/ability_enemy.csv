@@ -92,7 +92,7 @@ soulsteal,,ability_lua,abilities/enemy/soulsteal,necrolyte_death_pulse,,5,ACT_DO
 ,,,,,,,,,,,,,,,,,,,,,1500,3,400,,,,,,
 death_change,,ability_lua,abilities/enemy/death_change,necrolyte_sadist,,5,ACT_DOTA_CAST_ABILITY_1,1200,0.3,10 9 8 7 6,,,DOTA_ABILITY_BEHAVIOR_UNIT_TARGET,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,,,4,,stun_duration,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,3,,,,,,,,
-death,,ability_lua,abilities/enemy/death,necrolyte_reapers_scythe,,5,ACT_DOTA_CAST_ABILITY_4,1200,0.55,10 9 8 7 6,,,DOTA_ABILITY_BEHAVIOR_UNIT_TARGET,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,,,damage_per_health,stun_duration,,,,,,,
+hades_4,,ability_lua,abilities/enemy/hades_4,necrolyte_reapers_scythe,,5,ACT_DOTA_CAST_ABILITY_4,1200,0.55,10 9 8 7 6,,,DOTA_ABILITY_BEHAVIOR_UNIT_TARGET,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,,,damage_per_health,stun_duration,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,1 1.2 1.4 1.6 1.8,1.5,,,,,,,
 angry_water,水怒,ability_lua,abilities/enemy/angry_water,kunkka_torrent,,5,,,0.3,15,200,,DOTA_ABILITY_BEHAVIOR_NO_TARGET,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,DAMAGE_TYPE_MAGICAL,,4 5 6 7 8,4000 8000 12000 16000 32000,bonus_armor,bonus_move_speed,delay,stun_duration,torrent_interval,torrent_max_distance,slow_duration,radius,
 ,,,,,,,,,,,,,,,,,,,,,30 60 90 120 150,50 60 70 80 90,1.6,1.6,0.2,1100,3,225,
