@@ -12,7 +12,7 @@ end
 function poison_sting:OnProjectileHit(hTarget, vLocation)
 	if IsValid(hTarget) then
 		local hCaster = self:GetCaster()
-		hTarget:AddNewModifier(hCaster, self, "modifier_poison_sting", {duration = self:GetDuration()})
+		hTarget:AddNewModifier(hCaster, self, "modifier_poison_sting", {duration = self:GetSpecialValueFor("duration")})
 	end
 end
 ---------------------------------------------------------------------
