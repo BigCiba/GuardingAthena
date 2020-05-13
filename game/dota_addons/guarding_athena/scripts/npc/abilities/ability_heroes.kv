@@ -172,7 +172,7 @@
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
-		"LevelsBetweenUpgrades"					"8"
+		"LevelsBetweenUpgrades"					"3"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
@@ -180,27 +180,32 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_attackspeed"				"15 30 45 60 75 90 105 120 135 150 165 180 195 210 225 240 255 270 285 300"
+				"bonus_attackspeed"				"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_str"						"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
+				"bonus_str"						"40 80 120 160 200 240 280 320 360 400 440 480 520 560 600 640 680 720 760 800"
 			}
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_chance"					"1"
+				"bonus_str_pct"					"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"04"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_str_factor"				"1"
+				"bonus_chance"					"1"
 			}
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"attack_count"					"8"
+				"bonus_str_factor"				"1"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_count"					"8 8 8 7 7 7 6 6 6 5 5 5 4 4 4 3 3 3 2 2"
 			}
 		}
 	}
@@ -245,7 +250,7 @@
 			"14"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"storm_str_damage"				"5"
+				"storm_str_damage"				"10 20 30 40 50 60 70 80"
 			}
 			"15"
 			{
@@ -255,7 +260,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"storm_chance"					"17"
+				"storm_chance"					"30"
 			}
 			"02"
 			{
@@ -1198,6 +1203,310 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"agi_damage"					"120 240 360 480 600 720 840 960"
+			}
+		}
+	}
+	"spectre_0"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/spectre/spectre_0"
+		"AbilityTextureName"					"spectre_0"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCooldown"						"3"
+		"AbilityManaCost"						"100"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"unit_limit"					"6"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_count"					"3"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"60"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health"						"10"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+		}
+	}
+	"spectre_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/spectre/spectre_1"
+		"AbilityTextureName"					"spectre_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCooldown"						"3"
+		"AbilityManaCost"						"100"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"3000"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"2000"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"200"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"per_damage"					"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"-60"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"10"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"root_duration"					"1.5 1.7 1.9 2.1 2.3 2.5 2.7 2.9 3.1 3.3 3.5 3.7 3.9 4.1 4.3 4.5 4.7 4.9 5.1 5.3"
+			}
+		}
+	}
+	"spectre_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/spectre/spectre_2"
+		"AbilityTextureName"					"spectre_desolate"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCooldown"						"10"
+		"AbilityManaCost"						"60"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_limit"					"8 16 24 32 40 48 56 64 72 80 88 96 104 112 120 128 136 144 152 160"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_cost"					"1"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_active"					"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"heal"							"0.3 0.6 0.9 1.2 1.5 1.8 2.1 2.4 2.7 3 3.3 3.6 3.9 4.2 4.5 4.8 5.1 5.4 5.7 6"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"450"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shock_duration"				"3"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_add"					"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+		}
+	}
+	"spectre_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/spectre/spectre_3"
+		"AbilityTextureName"					"spectre_3"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_reduce"					"42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80"
+			}
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"350"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"regen"							"12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"str"							"0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage_limit"					"0.1"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_radius"					"1200"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"healamount"					"1"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"trigge_percent"				"1"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health"						"1"
+			}
+		}
+	}
+	"spectre_4"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/spectre/spectre_4"
+		"AbilityTextureName"					"spectre_4"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"25"
+		"AbilityCastRange"						"1200"
+		"AbilityCooldown"						"60"
+		"AbilityManaCost"						"300"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"30 60 90 120 150 180 210 240"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"soul_loss"						"30"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_count"					"4"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_bonus_damage"				"30"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"30"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"stun_duration"					"2.5"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"450"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_deepen"					"50"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage_time_point"				"1.4"
 			}
 		}
 	}

@@ -573,6 +573,7 @@
 		"AttackDamageMin"	"10"
 		"AttackDamageMax"	"10"
 		"AttackRate"	"1.4"
+		"BaseAttackSpeed"						"50"
 		"AttackRange"	"125"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"

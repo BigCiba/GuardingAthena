@@ -119,7 +119,7 @@ function modifier_item_world_editor_buff:GetAttributes( t )
 	end
 end
 function modifier_item_world_editor_buff:GetModifierExtraHealthPercentage(t)
-	return self.health
+	return (self.health - 1) * 100
 end
 function modifier_item_world_editor_buff:GetModifierHealthRegenPercentage(t)
 	return self.regen
