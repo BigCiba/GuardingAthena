@@ -61,6 +61,12 @@ function GuardingAthena:OnEntityKilled( event )
 				GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
 			end)
 			HeroState:SendFinallyData()
+			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
+				if IsValid(hPlayer) then
+					Service:GameReward(iPlayerID, false)
+				end
+			end)
 		end
 	end
 	if self.final_boss then
@@ -72,7 +78,7 @@ function GuardingAthena:OnEntityKilled( event )
 					GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 						local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 						if IsValid(hPlayer) then
-							Service:GameReward(iPlayerID)
+							Service:GameReward(iPlayerID, true)
 						end
 					end)
 				end

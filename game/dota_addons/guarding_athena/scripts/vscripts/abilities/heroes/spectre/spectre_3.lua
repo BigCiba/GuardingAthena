@@ -74,10 +74,14 @@ function modifier_spectre_3:OnTakeDamage(params)
 end
 function modifier_spectre_3:DeclareFunctions()
 	return {
+		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
 		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
 	}
+end
+function modifier_spectre_3:GetModifierExtraHealthBonus()
+	return self:GetStackCount() * self:GetParent():GetStrength() * 0.3
 end
 function modifier_spectre_3:GetModifierExtraHealthPercentage()
 	return self:GetStackCount() * self.health
