@@ -11465,62 +11465,6 @@
 		}
 	}
 
-	"minjiejingtong"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/minjiejingtong"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"HotKeyOverride"	"D"
-		"MaxLevel"	"1"
-		"AbilityCooldown"	"10"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/juggernaut.lua"
-				"Function"	"minjiejingtong"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_minjiejingtong"
-				"Duration"	"5"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_minjiejingtong"
-			{
-				"IsHidden"	"0"
-				"IsBuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%critical"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"4"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"critical"	"400"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attackspeed"	"100"
-			}
-		}
-		"AbilityDuration"	"6"
-	}
-
 	"fire_spirit_0"
 	{
 		"BaseClass"	"ability_datadriven"
