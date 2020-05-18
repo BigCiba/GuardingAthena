@@ -17,6 +17,9 @@ function modifier_reborn:OnRefresh(params)
 		self:IncrementStackCount()
 	end
 end
+function modifier_reborn:AllowIllusionDuplicate()
+	return true
+end
 function modifier_reborn:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_TOOLTIP

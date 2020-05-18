@@ -8,6 +8,8 @@ end
 function spectre_2:OnSpellStart()
 	local hCaster = self:GetCaster()
 	hCaster:AddNewModifier(hCaster, self, "modifier_spectre_2_buff", {duration = 0.5})
+	-- 使下次攻击达到浮动上限
+	hCaster:GetIntrinsicModifier():SetStackCount(self:GetSpecialValueFor("damage_limit"))
 	hCaster:EmitSound("Hero_Bane.BrainSap.Target")
 end
 function spectre_2:GetIntrinsicModifierName()
@@ -58,7 +60,11 @@ function modifier_spectre_2:OnAttackLanded(params)
 			self:OnTakeDamage({unit = hParent, damage = flHealthCost})
 			-- 造成攻击伤害
 			local flStrength = hParent:IsRealHero() and hParent:GetStrength() or hParent:GetOwner():GetStrength()
-			local flDamage = RandomInt(1, (self.damage + self:GetStackCount()) * flStrength)
+			local iMaxFactor = self.damage + self:GetStackCount()
+			local iScepterLevel = hParent:GetScepterLevel()
+			-- 二转：最小伤害提升为最大伤害的一半
+			local flMinDamage = hParent:GetScepterLevel() >= 2 and iMaxFactor * self:GetSpecialValueFor("scepter_min_damage_pct") * 0.01 * flStrength or 1
+			local flDamage = RandomInt(flMinDamage, iMaxFactor * flStrength)
 			hParent:DealDamage(hTarget, self:GetAbility(), flDamage)
 			if hParent:IsRealHero() then
 				CreateNumberEffect(hTarget, flDamage, 1, MSG_ORIT, {199,21,133}, 6)
@@ -84,7 +90,7 @@ function modifier_spectre_2:OnTakeDamage(params)
 		local hParent = self:GetParent()
 		if params.unit == hParent then
 			if self:GetStackCount() < self.damage_limit then
-				self:SetStackCount(self:GetStackCount() + self.damage_add)
+				self:SetStackCount(math.min(self:GetStackCount() + self.damage_add, self.damage_limit))
 			end
 		end
 	end

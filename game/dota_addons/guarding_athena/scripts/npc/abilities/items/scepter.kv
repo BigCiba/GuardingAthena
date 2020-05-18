@@ -107,4 +107,53 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
+	
+	// 墨丘利
+	"item_npc_dota_hero_specter"
+	{
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/scepter/scepter"
+		"AbilityTextureName"		"item_npc_dota_hero_spectre"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"0.0"
+		"ID"						"1725"
+		"ItemQuality"				"epic"
+		"ItemCost"					"1"
+		"ItemSellable"				"0"
+		"ItemPurchasable"			"0"
+		"ItemIsNeutralDrop"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_illusion_damage"	"100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_min_damage_pct"	"50"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_damage_limit"	"15"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_cooldown"	"50"
+			}
+		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+	}
 }

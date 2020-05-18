@@ -77,6 +77,7 @@ if modifier_spectre_0_show == nil then
 end
 function modifier_spectre_0_show:OnCreated(params)
 	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
+	self.damage = self:GetCaster():GetScepterLevel() >= 1 and self:GetAbilitySpecialValueFor("scepter_illusion_damage") or self:GetAbilitySpecialValueFor("damage")
 	if IsServer() then
 	else
 		local iParticleID = ParticleManager:CreateParticle("particles/heroes/spectre/spectre_2_illusion.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
@@ -121,4 +122,12 @@ function modifier_spectre_0_show:OnAttackLanded(params)
 			end
 		end
 	end
+end
+function modifier_spectre_0_show:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE
+	}
+end
+function modifier_spectre_0_show:GetModifierTotalDamageOutgoing_Percentage()
+	return self.damage - 100
 end

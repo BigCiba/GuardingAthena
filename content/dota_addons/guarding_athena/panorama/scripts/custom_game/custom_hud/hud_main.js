@@ -88,7 +88,7 @@ function Update() {
 				let ScepterLevel = String(GameUI.AbilitiesKv[AbilityName].ScepterLevel).split(",");
 				for (let i = 0; i < ScepterLevel.length; i++) {
 					const Level = ScepterLevel[i];
-					if (Entities.GetLevel( Unit ) > Level * 100) {
+					if (GetHeroesRebornCount(Unit) >= Level) {
 						let Description = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_scepter_description_" + Level);
 						for (const key in AbilitySpecial) {
 							const SpecialName = Object.keys(AbilitySpecial[key])[1];

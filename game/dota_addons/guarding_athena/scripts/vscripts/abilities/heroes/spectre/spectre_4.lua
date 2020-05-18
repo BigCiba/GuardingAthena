@@ -80,6 +80,10 @@ function modifier_spectre_4_lock:OnIntervalThink()
 		for i = 1, self.damage_count do
 			hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
 		end
+		if hCaster:GetScepterLevel() >= 4 and not hParent:IsAlive() then
+			self:GetAbility():EndCooldown()
+			self:GetAbility():StartCooldown(self:GetCooldown(self:GetAbility():GetLevel() -1) * (1 - self:GetAbilitySpecialValueFor("scepter_cooldown") * 0.01))
+		end
 	else
 		-- 地面特效
 		local iParticleID = ParticleManager:CreateParticle("particles/heroes/spectre/spectre_4_explode.vpcf", PATTACH_CUSTOMORIGIN, nil)

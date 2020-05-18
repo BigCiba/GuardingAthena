@@ -21,6 +21,7 @@ function modifier_spectre_3:OnCreated(params)
 	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.max_radius = self:GetAbilitySpecialValueFor("max_radius")
+	self.scepter_damage_limit = self:GetAbilitySpecialValueFor("scepter_damage_limit")
 	if IsServer() then
 		self.flDamageRecorder = 0
 	end
@@ -35,6 +36,7 @@ function modifier_spectre_3:OnRefresh(params)
 	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.max_radius = self:GetAbilitySpecialValueFor("max_radius")
+	self.scepter_damage_limit = self:GetAbilitySpecialValueFor("scepter_damage_limit")
 	if IsServer() then
 	end
 end
@@ -70,7 +72,8 @@ function modifier_spectre_3:DeclareFunctions()
 		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
-		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK
 	}
 end
 function modifier_spectre_3:GetModifierExtraHealthBonus()
@@ -89,6 +92,12 @@ function modifier_spectre_3:GetModifierConstantHealthRegen()
 end
 function modifier_spectre_3:GetModifierIncomingDamage_Percentage()
 	return RemapVal(self:GetParent():GetHealthPercent(), 0, 100, -self.max_reduce, 0)
+end
+function modifier_spectre_3:GetModifierTotal_ConstantBlock(params)
+	if self:GetParent():GetScepterLevel() >= 3 then
+		local flDamageLimit = self.scepter_damage_limit * self:GetParent():GetMaxHealth() * 0.01
+		return math.max(params.damage - flDamageLimit, 0)
+	end
 end
 ---------------------------------------------------------------------
 if modifier_spectre_3_particle == nil then
