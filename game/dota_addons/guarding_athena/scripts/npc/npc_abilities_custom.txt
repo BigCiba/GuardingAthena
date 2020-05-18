@@ -15841,52 +15841,6 @@
 		}
 	}
 
-	"spectre_1_0"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"spectre_reality"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/ability_hero/spectre.lua"
-				"Function"	"OnSpellStart"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_spectre_1_debuff"
-			{
-				"IsDebuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
-				}
-			}
-			"modifier_spectre_1_debuff"
-			{
-				"IsDebuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"movespeed"	"-60"
-			}
-		}
-	}
-
 	// Rewrite of Death Prophet Silence
 	// Author: Noya
 	// Date: January 26, 2016

@@ -40,8 +40,8 @@ function modifier_spectre_4_lock:OnCreated(params)
 	self.max_bonus_damage = self:GetAbilitySpecialValueFor("max_bonus_damage")
 	self.damage_count = self:GetAbilitySpecialValueFor("damage_count")
 	self.damage_time_point = self:GetAbilitySpecialValueFor("damage_time_point")
-	self:StartIntervalThink(self.damage_time_point)
 	if IsServer() then
+		self:StartIntervalThink(self.damage_time_point)
 	else
 		local hParent = self:GetParent()
 		-- 锁链
@@ -74,22 +74,24 @@ function modifier_spectre_4_lock:OnIntervalThink()
 	if IsServer() then
 		local flLosePct = math.min((100 - hParent:GetHealthPercent()), self.max_bonus_damage)
 		local flBonusDamage = flLosePct * hParent:GetMaxHealth() * 0.01
-		local flDamage = self.damage * hParent:GetStrength() + flBonusDamage / self.damage_count
-		local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, self:GetAbility())
+		local flDamage = self.damage * hCaster:GetStrength() + flBonusDamage / self.damage_count
+		local tTargets = FindUnitsInRadiusWithAbility(hCaster, hParent:GetAbsOrigin(), self.radius, self:GetAbility())
 		for i = 1, self.damage_count do
 			hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
 		end
-	else
+	-- else
 		-- 地面特效
 		local iParticleID = ParticleManager:CreateParticle("particles/heroes/spectre/spectre_4_explode.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		ParticleManager:SetParticleControl(iParticleID, 1, Vector(600,600,600))
-		self:AddParticle(iParticleID, false, false -1, false, false)
+		ParticleManager:ReleaseParticleIndex(iParticleID)
+		-- self:AddParticle(iParticleID, false, false, -1, false, false)
 		-- 命中特效
 		local iParticleID = ParticleManager:CreateParticle("particles/heroes/spectre/spectre_4_impact_f.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		ParticleManager:SetParticleControl(iParticleID, 1, hParent:GetAbsOrigin())
-		self:AddParticle(iParticleID, false, false -1, false, false)
+		ParticleManager:ReleaseParticleIndex(iParticleID)
+		-- self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 	self:StartIntervalThink(-1)
 end
@@ -107,10 +109,10 @@ function modifier_spectre_4_lock:CheckState()
 	}
 end
 function modifier_spectre_4_lock:GetModifierPhysicalArmorBase_Percentage()
-	return -100
+	return 0
 end
 function modifier_spectre_4_lock:GetModifierMagicalResistanceBaseReduction()
-	return 100
+	return -100
 end
 function modifier_spectre_4_lock:GetModifierIncomingDamage_Percentage()
 	return self.damage_deepen

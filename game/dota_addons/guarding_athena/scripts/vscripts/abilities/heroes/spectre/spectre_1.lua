@@ -12,6 +12,7 @@ function spectre_1:OnSpellStart()
 	local distance = self:GetSpecialValueFor("distance")
 	local speed = self:GetSpecialValueFor("speed")
 	local radius = self:GetSpecialValueFor("radius")
+	local duration = self:GetSpecialValueFor("duration")
 	local vDir = (vPosition - hCaster:GetAbsOrigin()):Normalized()
 	local hThinker = CreateModifierThinker(hCaster, self, "modifier_spectre_1_thinker", {vStart = hCaster:GetAbsOrigin()}, hCaster:GetAbsOrigin(), hCaster:GetTeamNumber(), false)
 	local tProjectileInfo = {
@@ -33,10 +34,11 @@ function spectre_1:OnSpellStart()
 	local iParticleID = ProjectileManager:CreateLinearProjectile(tProjectileInfo)
 	-- sound
 	hCaster:EmitSound("Hero_Spectre.DaggerCast")
-	local hAbility = hCaster:AddAbility("spectre_1_0")
+	local hAbility = hCaster:FindAbilityByName("spectre_1_0")
 	hAbility:SetLevel(1)
 	hAbility.iParticleID = iParticleID
 	hAbility.hThinker = hThinker
+	hAbility.flDuration = duration
 	hCaster:SwapAbilities("spectre_1", "spectre_1_0", false, true)
 end
 function spectre_1:OnProjectileThink_ExtraData(vLocation, ExtraData)
@@ -53,6 +55,7 @@ function spectre_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 		-- sound
 		EmitSoundOnLocationWithCaster(vLocation, "Hero_Spectre.DaggerImpact", hCaster)
 	else
+		local hThinker = EntIndexToHScript(ExtraData.iEntIndex)
 		hCaster:SwapAbilities("spectre_1", "spectre_1_0", true, false)
 		hThinker:FindModifierByName("modifier_spectre_1_thinker"):SetDuration(self:GetSpecialValueFor("duration"), false)
 	end
@@ -63,8 +66,10 @@ if spectre_1_0 == nil then
 end
 function spectre_1_0:OnSpellStart()
 	local hCaster = self:GetCaster()
+	hCaster:SwapAbilities("spectre_1", "spectre_1_0", true, false)
 	FindClearSpaceForUnit(hCaster, self.hThinker:GetAbsOrigin(), true)
 	ProjectileManager:DestroyLinearProjectile(self.iParticleID)
+	self.hThinker:FindModifierByName("modifier_spectre_1_thinker"):SetDuration(self.flDuration, false)
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -89,20 +94,21 @@ if modifier_spectre_1_thinker == nil then
 end
 function modifier_spectre_1_thinker:OnCreated(params)
 	if IsServer() then
-		self.vStart = StringToVector(params.vStart)
+		self.vStart = self:GetParent():GetAbsOrigin()
 		self.radius = self:GetAbilitySpecialValueFor("radius")
 		self.flInterval = 0.1
-		self.flDamage = self:GetAbilitySpecialValueFor("per_damage") * self.flInterval
+		self.flDamage = self:GetAbilitySpecialValueFor("per_damage") * self.flInterval * self:GetCaster():GetStrength()
 		self:StartIntervalThink(self.flInterval)
 	end
 end
 function modifier_spectre_1_thinker:OnIntervalThink()
 	local hParent = self:GetParent()
+	local hCaster = self:GetCaster()
 	local vPosition = hParent:GetAbsOrigin()
-	local tTargets = FindUnitsInLine(hParent:GetTeamNumber(), self.vStart, vPosition, nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE)
+	local tTargets = FindUnitsInLine(hCaster:GetTeamNumber(), self.vStart, vPosition, nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE)
 	for _, hUnit in pairs(tTargets) do
-		hParent:DealDamage(hUnit, self:GetAbility(), self.flDamage)
-		hUnit:AddNewModifier(hParent, self:GetAbility(), "modifier_spectre_1_debuff", nil)
+		hCaster:DealDamage(hUnit, self:GetAbility(), self.flDamage)
+		hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_spectre_1_debuff", nil)
 	end
 end
 ---------------------------------------------------------------------

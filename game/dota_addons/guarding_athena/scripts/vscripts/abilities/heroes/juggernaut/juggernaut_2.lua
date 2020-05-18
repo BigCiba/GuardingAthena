@@ -30,4 +30,3 @@ function modifier_juggernaut_2:DeclareFunctions()
 	return {
 	}
 end
--- g3183 2车12a

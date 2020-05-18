@@ -81,7 +81,9 @@ function modifier_spectre_3:DeclareFunctions()
 	}
 end
 function modifier_spectre_3:GetModifierExtraHealthBonus()
-	return self:GetStackCount() * self:GetParent():GetStrength() * 0.3
+	if self:GetParent():IsRealHero() then
+		return self:GetStackCount() * self:GetParent():GetStrength() * 0.3
+	end
 end
 function modifier_spectre_3:GetModifierExtraHealthPercentage()
 	return self:GetStackCount() * self.health
