@@ -70,6 +70,9 @@ function spectre_1_0:OnSpellStart()
 	FindClearSpaceForUnit(hCaster, self.hThinker:GetAbsOrigin(), true)
 	ProjectileManager:DestroyLinearProjectile(self.iParticleID)
 	self.hThinker:FindModifierByName("modifier_spectre_1_thinker"):SetDuration(self.flDuration, false)
+	local iParticleID = ParticleManager:CreateParticle("particles/heroes/spectre/spectre_2_illusion.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
+	ParticleManager:ReleaseParticleIndex(iParticleID)
+	hCaster:EmitSound("Hero_Spectre.Reality")
 end
 ---------------------------------------------------------------------
 --Modifiers

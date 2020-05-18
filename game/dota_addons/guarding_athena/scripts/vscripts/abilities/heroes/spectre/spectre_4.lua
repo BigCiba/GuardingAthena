@@ -31,7 +31,7 @@ function modifier_spectre_4_lock:IsPurgeException()
 	return false
 end
 function modifier_spectre_4_lock:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE
+	return MODIFIER_ATTRIBUTE_MULTIPLE + MODIFIER_ATTRIBUTE_PERMANENT
 end
 function modifier_spectre_4_lock:OnCreated(params)
 	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
@@ -40,8 +40,9 @@ function modifier_spectre_4_lock:OnCreated(params)
 	self.max_bonus_damage = self:GetAbilitySpecialValueFor("max_bonus_damage")
 	self.damage_count = self:GetAbilitySpecialValueFor("damage_count")
 	self.damage_time_point = self:GetAbilitySpecialValueFor("damage_time_point")
+	self.MagicArmor = self:GetParent():GetBaseMagicalResistanceValue()
+	self:StartIntervalThink(self.damage_time_point)
 	if IsServer() then
-		self:StartIntervalThink(self.damage_time_point)
 	else
 		local hParent = self:GetParent()
 		-- 锁链
@@ -79,7 +80,7 @@ function modifier_spectre_4_lock:OnIntervalThink()
 		for i = 1, self.damage_count do
 			hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
 		end
-	-- else
+	else
 		-- 地面特效
 		local iParticleID = ParticleManager:CreateParticle("particles/heroes/spectre/spectre_4_explode.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
@@ -98,7 +99,7 @@ end
 function modifier_spectre_4_lock:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE,
-		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION,
+		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION,
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
 	}
 end
@@ -111,8 +112,8 @@ end
 function modifier_spectre_4_lock:GetModifierPhysicalArmorBase_Percentage()
 	return 0
 end
-function modifier_spectre_4_lock:GetModifierMagicalResistanceBaseReduction()
-	return -100
+function modifier_spectre_4_lock:GetModifierMagicalResistanceDirectModification()
+	return -self.MagicArmor
 end
 function modifier_spectre_4_lock:GetModifierIncomingDamage_Percentage()
 	return self.damage_deepen
@@ -132,11 +133,11 @@ function modifier_spectre_4_debuff:OnCreated(params)
 end
 function modifier_spectre_4_debuff:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
+		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE
 	}
 end
-function modifier_spectre_4_debuff:GetModifierDamageOutgoing_Percentage()
+function modifier_spectre_4_debuff:GetModifierTotalDamageOutgoing_Percentage()
 	return -self.soul_loss
 end
 function modifier_spectre_4_debuff:GetModifierExtraHealthPercentage()

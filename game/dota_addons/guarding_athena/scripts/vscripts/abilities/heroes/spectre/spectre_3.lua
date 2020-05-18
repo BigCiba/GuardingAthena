@@ -43,14 +43,6 @@ function modifier_spectre_3:OnDestroy()
 	end
 	RemoveModifierEvents(MODIFIER_EVENT_ON_TAKEDAMAGE, self, nil, self:GetParent())
 end
-function modifier_spectre_3:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
-	}
-end
-function modifier_spectre_3:GetModifierIncomingDamage_Percentage()
-	return RemapVal(self:GetParent():GetHealthPercent(), 0, 100, -self.max_reduce, 0)
-end
 function modifier_spectre_3:OnTakeDamage(params)
 	if IsServer() then
 		local hParent = self:GetParent()
@@ -77,7 +69,8 @@ function modifier_spectre_3:DeclareFunctions()
 		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
 		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
-		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
 	}
 end
 function modifier_spectre_3:GetModifierExtraHealthBonus()
@@ -93,6 +86,9 @@ function modifier_spectre_3:GetModifierBonusStats_Strength()
 end
 function modifier_spectre_3:GetModifierConstantHealthRegen()
 	return self:GetStackCount() * self.regen
+end
+function modifier_spectre_3:GetModifierIncomingDamage_Percentage()
+	return RemapVal(self:GetParent():GetHealthPercent(), 0, 100, -self.max_reduce, 0)
 end
 ---------------------------------------------------------------------
 if modifier_spectre_3_particle == nil then

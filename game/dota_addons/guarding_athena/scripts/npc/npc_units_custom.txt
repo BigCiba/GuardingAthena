@@ -572,6 +572,7 @@
 		"StatusStartingMana"	"1000"
 		"AttackDamageMin"	"10"
 		"AttackDamageMax"	"10"
+		"AttackAnimationPoint"		"0.300000"
 		"AttackRate"	"1.4"
 		"BaseAttackSpeed"						"50"
 		"AttackRange"	"125"

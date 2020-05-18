@@ -115,7 +115,8 @@ function modifier_spectre_0_show:OnAttackLanded(params)
 		if params.attacker == self:GetParent() then
 			if self.attack_count > 0 then
 				self.attack_count = self.attack_count - 1
-			else
+			end
+			if self.attack_count <= 0 then
 				self:Destroy()
 			end
 		end
