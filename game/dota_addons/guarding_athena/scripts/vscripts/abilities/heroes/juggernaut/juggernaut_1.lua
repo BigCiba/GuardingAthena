@@ -72,7 +72,7 @@ function modifier_juggernaut_1_buff:OnIntervalThink()
 	if IsServer() then
 		local hCaster = self:GetParent()
 		local hAbility = self:GetAbility()
-		local damage = (self.base_damage + self.damage * hCaster:GetAverageTrueAttackDamage(hCaster)) * self.blade_fury_damage_tick * self:GetAbility():GetLevel()
+		local damage = (self.base_damage + self.damage * hCaster:GetAverageTrueAttackDamage(hCaster)) * self.blade_fury_damage_tick
 		local radius = self.blade_fury_radius
 
 		local targets = FindUnitsInRadius(hCaster:GetTeamNumber(), hCaster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC, 0, 0, false)

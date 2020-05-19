@@ -9,7 +9,7 @@ function spectre_2:OnSpellStart()
 	local hCaster = self:GetCaster()
 	hCaster:AddNewModifier(hCaster, self, "modifier_spectre_2_buff", {duration = 0.5})
 	-- 使下次攻击达到浮动上限
-	hCaster:GetIntrinsicModifier():SetStackCount(self:GetSpecialValueFor("damage_limit"))
+	self:GetIntrinsicModifier():SetStackCount(self:GetSpecialValueFor("damage_limit"))
 	hCaster:EmitSound("Hero_Bane.BrainSap.Target")
 end
 function spectre_2:GetIntrinsicModifierName()
@@ -63,7 +63,7 @@ function modifier_spectre_2:OnAttackLanded(params)
 			local iMaxFactor = self.damage + self:GetStackCount()
 			local iScepterLevel = hParent:GetScepterLevel()
 			-- 二转：最小伤害提升为最大伤害的一半
-			local flMinDamage = hParent:GetScepterLevel() >= 2 and iMaxFactor * self:GetSpecialValueFor("scepter_min_damage_pct") * 0.01 * flStrength or 1
+			local flMinDamage = hParent:GetScepterLevel() >= 2 and iMaxFactor * self:GetAbilitySpecialValueFor("scepter_min_damage_pct") * 0.01 * flStrength or 1
 			local flDamage = RandomInt(flMinDamage, iMaxFactor * flStrength)
 			hParent:DealDamage(hTarget, self:GetAbility(), flDamage)
 			if hParent:IsRealHero() then

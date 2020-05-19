@@ -60,26 +60,28 @@ function modifier_juggernaut_3:GetModifierAttackSpeedBonus_Constant()
 	return self.bonus_attack_speed * self:GetStackCount()
 end
 function modifier_juggernaut_3:OnAttackStart(params)
-	if params.attacker == self:GetParent() and IsClient() then
+	if params.attacker == self:GetParent() then
 		local iParticleID = ParticleManager:CreateParticle( "particles/skills/blade_dance.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		ParticleManager:SetParticleControl(iParticleID, 2, Vector(RandomInt(0, 180),RandomInt(0, 180),RandomInt(0, 180)))
 		ParticleManager:ReleaseParticleIndex(iParticleID)
 	end
 end
 function modifier_juggernaut_3:OnAttackLanded(params)
-	if params.attacker == self:GetParent() then
-		local hParent = self:GetParent()
-		local hAbility = self:GetAbility()
-		local flDamage = self.base_damage + self.dammage * hParent:GetAgility()
-		local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, hAbility)
-		hParent:DealDamage(tTargets, hAbility, flDamage)
-		-- 叠加攻速
-		if self:GetStackCount() == 0 then
-			self:StartIntervalThink(0)
+	if IsServer() then
+		if params.attacker == self:GetParent() then
+			local hParent = self:GetParent()
+			local hAbility = self:GetAbility()
+			local flDamage = self.base_damage + self.damage * hParent:GetAverageTrueAttackDamage(params.unit)
+			local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, hAbility)
+			hParent:DealDamage(tTargets, hAbility, flDamage)
+			-- 叠加攻速
+			if self:GetStackCount() == 0 then
+				self:StartIntervalThink(0)
+			end
+			self:IncrementStackCount()
+			table.insert(self.tData, {
+				flDieTime = GameRules:GetGameTime() + self.duration
+			})
 		end
-		self:IncrementStackCount()
-		table.insert(self.tData, {
-			flDieTime = GameRules:GetGameTime() + self.duration
-		})
 	end
 end

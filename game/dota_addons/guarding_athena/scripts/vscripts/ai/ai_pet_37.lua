@@ -19,7 +19,7 @@ end
 function Think()
 	if not thisEntity:IsAlive() then return -1 end
 
-	local hAbilityInfo = GetRandomCastableAbility(thisEntity, tAbility)
+	local hAbilityInfo = GetRandomCastableAbility(thisEntity, tAbility, true)
 	if hAbilityInfo then
 		hAbilityInfo.fAction(thisEntity, hAbilityInfo.hAbility)
 	end
