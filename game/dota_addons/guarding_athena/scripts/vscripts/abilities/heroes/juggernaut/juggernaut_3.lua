@@ -9,7 +9,7 @@ end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_juggernaut_3 == nil then
-	modifier_juggernaut_3 = class({}, nil, ModifierHidden)
+	modifier_juggernaut_3 = class({}, nil, ModifierBasic)
 end
 function modifier_juggernaut_3:OnCreated(params)
 	self.damage = self:GetAbilitySpecialValueFor("damage")
@@ -17,6 +17,9 @@ function modifier_juggernaut_3:OnCreated(params)
 	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.scepter_damage_pct = self:GetAbilitySpecialValueFor("scepter_damage_pct")
+	self.scepter_reduce_pct = self:GetAbilitySpecialValueFor("scepter_reduce_pct")
+	self.scepter_ignore_armor_chance = self:GetAbilitySpecialValueFor("scepter_ignore_armor_chance")
 	if IsServer() then
 		self.tData = {}
 	end
@@ -29,6 +32,9 @@ function modifier_juggernaut_3:OnRefresh(params)
 	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.scepter_damage_pct = self:GetAbilitySpecialValueFor("scepter_damage_pct")
+	self.scepter_reduce_pct = self:GetAbilitySpecialValueFor("scepter_reduce_pct")
+	self.scepter_ignore_armor_chance = self:GetAbilitySpecialValueFor("scepter_ignore_armor_chance")
 	if IsServer() then
 	end
 end
@@ -53,7 +59,10 @@ function modifier_juggernaut_3:OnIntervalThink()
 end
 function modifier_juggernaut_3:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE,
+		MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR
 	}
 end
 function modifier_juggernaut_3:GetModifierAttackSpeedBonus_Constant()
@@ -76,12 +85,27 @@ function modifier_juggernaut_3:OnAttackLanded(params)
 			hParent:DealDamage(tTargets, hAbility, flDamage)
 			-- 叠加攻速
 			if self:GetStackCount() == 0 then
-				self:StartIntervalThink(0)
+				-- self:StartIntervalThink(0)
 			end
 			self:IncrementStackCount()
 			table.insert(self.tData, {
 				flDieTime = GameRules:GetGameTime() + self.duration
 			})
 		end
+	end
+end
+function modifier_juggernaut_3:GetModifierIncomingDamage_Percentage()
+	if self:GetParent():GetScepterLevel() >= 4 then
+		return -self.scepter_reduce_pct * self:GetStackCount()
+	end
+end
+function modifier_juggernaut_3:GetModifierTotalDamageOutgoing_Percentage()
+	if self:GetParent():GetScepterLevel() >= 4 then
+		return self.scepter_damage_pct * self:GetStackCount()
+	end
+end
+function modifier_juggernaut_3:GetModifierIgnorePhysicalArmor()
+	if self:GetParent():GetScepterLevel() >= 3 and RollPercentage(self.scepter_ignore_armor_chance) then
+		return 1
 	end
 end

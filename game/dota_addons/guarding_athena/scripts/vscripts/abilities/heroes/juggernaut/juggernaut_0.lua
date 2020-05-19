@@ -6,6 +6,16 @@ end
 function juggernaut_0:OnSpellStart()
 	local hCaster = self:GetCaster()
 	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_0", {duration = self:GetSpecialValueFor("duration")})
+	if hCaster:GetScepterLevel() >= 1 then
+		local illusions = hCaster.mirror_image_illusions
+		if illusions then
+			for _, hUnit in pairs(illusions) do
+				if not hUnit:IsNull() then 
+					hUnit:AddNewModifier(hCaster, self, "modifier_juggernaut_0", {duration = self:GetSpecialValueFor("duration")})
+				end
+			end
+		end
+	end
 end
 ---------------------------------------------------------------------
 --Modifiers

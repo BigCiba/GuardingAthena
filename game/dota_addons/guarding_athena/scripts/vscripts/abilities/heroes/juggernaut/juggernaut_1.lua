@@ -1,4 +1,5 @@
 LinkLuaModifier( "modifier_juggernaut_1", "abilities/heroes/juggernaut/juggernaut_1.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_juggernaut_1_buff", "abilities/heroes/juggernaut/juggernaut_1.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if juggernaut_1 == nil then
 	juggernaut_1 = class({})
@@ -23,7 +24,9 @@ function juggernaut_1:OnSpellStart()
 	end
 	if #illusions > 0 then
 		for k, v in pairs( illusions ) do
-			v:AddNewModifier(hCaster, self, "modifier_juggernaut_1_buff", {duration = duration})
+			if IsValid(v) then
+				v:AddNewModifier(hCaster, self, "modifier_juggernaut_1_buff", {duration = duration})
+			end
 		end
 	end
 end
@@ -41,7 +44,7 @@ function modifier_juggernaut_1_buff:OnCreated(params)
 	self.movespeed = self:GetAbilitySpecialValueFor("movespeed")
 	self.illusion_damage_percent = self:GetAbilitySpecialValueFor("illusion_damage_percent")
 	if IsServer() then
-		self.HasExclusive = HasExclusive( self:GetParent(),2 )
+		self.HasExclusive = self:GetParent():GetScepterLevel() >= 2
 		self.damage_type = self:GetAbility():GetAbilityDamageType()
 
 		local hCaster = self:GetParent()

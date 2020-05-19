@@ -19,6 +19,12 @@ end
 function item_npc_dota_hero_spectre:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+if item_npc_dota_hero_juggernaut == nil then
+	item_npc_dota_hero_juggernaut = class({})
+end
+function item_npc_dota_hero_juggernaut:GetIntrinsicModifierName()
+	return "modifier_scepter"
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_scepter == nil then
