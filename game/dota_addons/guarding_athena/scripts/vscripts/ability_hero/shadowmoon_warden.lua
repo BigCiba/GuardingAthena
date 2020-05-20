@@ -69,6 +69,7 @@ function ClustersStarActive( t )
 	end
 	local damageType = DAMAGE_TYPE_PHYSICAL
 	OnDealDamage(caster,target,att)
+	FindClearSpaceForUnit(caster, target:GetAbsOrigin(), true)
 	--[[if RollPercentage(30) then
 		att = att * critical * 0.01
 		CauseDamage(caster,target,att,damageType,ability,100,100)
