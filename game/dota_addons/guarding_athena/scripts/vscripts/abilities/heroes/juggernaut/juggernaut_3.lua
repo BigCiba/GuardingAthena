@@ -1,4 +1,5 @@
 LinkLuaModifier( "modifier_juggernaut_3", "abilities/heroes/juggernaut/juggernaut_3.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_juggernaut_3_ignore_armor", "abilities/heroes/juggernaut/juggernaut_3.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if juggernaut_3 == nil then
 	juggernaut_3 = class({})
@@ -10,6 +11,9 @@ end
 --Modifiers
 if modifier_juggernaut_3 == nil then
 	modifier_juggernaut_3 = class({}, nil, ModifierBasic)
+end
+function modifier_juggernaut_3:IsHidden()
+	return self:GetStackCount() == 0 and true or false
 end
 function modifier_juggernaut_3:OnCreated(params)
 	self.damage = self:GetAbilitySpecialValueFor("damage")
@@ -47,7 +51,7 @@ end
 function modifier_juggernaut_3:OnIntervalThink()
 	local flTime = GameRules:GetGameTime()
 	for i = #self.tData, 1, -1 do
-		if self.tData[i].flDieTime >= flTime then
+		if flTime >= self.tData[i].flDieTime then
 			table.remove(self.tData, i)
 			self:DecrementStackCount()
 		end
@@ -62,7 +66,6 @@ function modifier_juggernaut_3:DeclareFunctions()
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
 		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE,
-		MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR
 	}
 end
 function modifier_juggernaut_3:GetModifierAttackSpeedBonus_Constant()
@@ -83,9 +86,12 @@ function modifier_juggernaut_3:OnAttackLanded(params)
 			local flDamage = self.base_damage + self.damage * hParent:GetAverageTrueAttackDamage(params.unit)
 			local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, hAbility)
 			hParent:DealDamage(tTargets, hAbility, flDamage)
+			if hParent:GetScepterLevel() >= 3 and RollPercentage(self.scepter_ignore_armor_chance) then
+				params.target:AddNewModifier(hParent, hAbility, "modifier_juggernaut_3_ignore_armor", {duration = FrameTime()})
+			end
 			-- 叠加攻速
 			if self:GetStackCount() == 0 then
-				-- self:StartIntervalThink(0)
+				self:StartIntervalThink(0)
 			end
 			self:IncrementStackCount()
 			table.insert(self.tData, {
@@ -104,8 +110,26 @@ function modifier_juggernaut_3:GetModifierTotalDamageOutgoing_Percentage()
 		return self.scepter_damage_pct * self:GetStackCount()
 	end
 end
-function modifier_juggernaut_3:GetModifierIgnorePhysicalArmor()
-	if self:GetParent():GetScepterLevel() >= 3 and RollPercentage(self.scepter_ignore_armor_chance) then
-		return 1
+---------------------------------------------------------------------
+if modifier_juggernaut_3_ignore_armor == nil then
+	modifier_juggernaut_3_ignore_armor = class({}, nil, ModifierHidden)
+end
+function modifier_juggernaut_3_ignore_armor:OnCreated(params)
+	AddModifierEvents(MODIFIER_EVENT_ON_TAKEDAMAGE, self, nil, self:GetParent())
+end
+function modifier_juggernaut_3_ignore_armor:OnDestroy()
+	RemoveModifierEvents(MODIFIER_EVENT_ON_TAKEDAMAGE, self, nil, self:GetParent())
+end
+function modifier_juggernaut_3_ignore_armor:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR,
+	}
+end
+function modifier_juggernaut_3_ignore_armor:GetModifierIgnorePhysicalArmor()
+	return 1
+end
+function modifier_juggernaut_3_ignore_armor:OnTakeDamage(params)
+	if params.unit == self:GetParent() and params.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK then
+		self:Destroy()
 	end
 end

@@ -25,7 +25,12 @@ function modifier_pet_22_1:OnIntervalThink()
 		self.count = self.count - 1
 		local hParent = self:GetParent()
 		local hMaster = hParent:GetMaster()
-		CreateModifierThinker(hParent, self:GetAbility(), "modifier_pet_22_1_thinker", {duration = self:GetAbilityDuration() + self.delay}, hParent:GetAbsOrigin() + RandomVector(100), hMaster:GetTeamNumber(), false)
+		local hTargets = FindUnitsInRadiusWithAbility(hMaster, hParent:GetAbsOrigin(), 400, self:GetAbility())
+		local vPosition = hParent:GetAbsOrigin() + RandomVector(100)
+		if IsValid(hTargets[1]) then
+			vPosition = hTargets[1]:GetAbsOrigin()
+		end
+		CreateModifierThinker(hParent, self:GetAbility(), "modifier_pet_22_1_thinker", {duration = self:GetAbilityDuration() + self.delay}, vPosition, hMaster:GetTeamNumber(), false)
 	else
 		self:StartIntervalThink(-1)
 		self:Destroy()
