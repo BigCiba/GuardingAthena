@@ -15,7 +15,7 @@ function OnSpellStart( t )
     ability:ApplyDataDrivenModifier(caster, caster, "modifier_shield_block_buff", nil)
     AddDamageFilterVictim(caster,"shield_block",function (damage,attacker)
         if caster:HasModifier("modifier_shield_block_buff") then
-            CauseDamage(caster,attacker,damage,DAMAGE_TYPE_MAGICAL,ability)
+			caster:DealDamage(attacker, ability, flDamage, DAMAGE_TYPE_MAGICAL, DOTA_DAMAGE_FLAG_REFLECTION + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
             ability:ApplyDataDrivenModifier(caster, attacker, "modifier_shield_block_debuff", nil)
             ability:ApplyDataDrivenModifier(caster, caster, "modifier_shield_block_attackspeed", nil)
             return 0
