@@ -63,7 +63,7 @@ function modifier_spectre_2:OnAttackLanded(params)
 			local iMaxFactor = self.damage + self:GetStackCount()
 			local iScepterLevel = hParent:GetScepterLevel()
 			-- 二转：最小伤害提升为最大伤害的一半
-			local flMinDamage = hParent:GetScepterLevel() >= 2 and iMaxFactor * self:GetSpecialValueFor("scepter_min_damage_pct") * 0.01 * flStrength or 1
+			local flMinDamage = hParent:GetScepterLevel() >= 2 and iMaxFactor * self:GetSpecialValueFor("scepter_min_damage_pct111111111111") * 0.01 * flStrength or 1
 			local flDamage = RandomInt(flMinDamage, iMaxFactor * flStrength)
 			hParent:DealDamage(hTarget, self:GetAbility(), flDamage)
 			if hParent:IsRealHero() then
