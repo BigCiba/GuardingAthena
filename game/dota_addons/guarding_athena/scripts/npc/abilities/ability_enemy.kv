@@ -2221,8 +2221,75 @@
 	}
 	"captain"
 	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/captain"
+		"AbilityTextureName"					"blue_dragonspawn_overseer_devotion_aura"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityDuration"						"5"
 		"AbilitySpecial"
 		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_limit"					"60"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_reduce"					"70 75 80 85 90"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_chance"					"25"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_mult"						"200 300 400 500 600"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_regen_pct"				"1"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"-50"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attackspeed"					"20 40 60 80 100"
+			}
+		}
+	}
+	"elite"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/elite"
+		"AbilityTextureName"					"life_stealer_rage_immortal"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_regen_pct"				"1"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"-50"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attackspeed"					"20 40 60 80 100"
+			}
 		}
 	}
 }

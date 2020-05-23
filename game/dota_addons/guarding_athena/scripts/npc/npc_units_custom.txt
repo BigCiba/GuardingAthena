@@ -2267,7 +2267,7 @@
 		"ModelScale" 				"1"
 		"Level"						"1"
 		"IsAncient"					"1"
-		"ConsideredHero"			"1"
+		"ConsideredHero"			"0"
 		// "RunAIWhenControllableByPlayer" "1"
 	
 		

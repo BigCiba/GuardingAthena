@@ -152,6 +152,9 @@ howl,,ability_lua,abilities/enemy/howl,lycan_howl,,5,,,,12,,,DOTA_ABILITY_BEHAVI
 ,,,,,,,,,,,,,,,,,,,,,0.5,,,,,,,,
 slience,,ability_lua,abilities/enemy/slience,death_prophet_silence,,5,,900,0.5 0.5 0.5 0.5,12,0,,DOTA_ABILITY_BEHAVIOR_POINT,DOTA_UNIT_TARGET_TEAM_ENEMY,DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC,,,SPELL_IMMUNITY_ENEMIES_NO,3.0 4.0 5.0 6.0,,radius,duration,,,,,,,%radius
 ,,,,,,,,,,,,,,,,,,,,,425,2.0 2.5 3.0 3.5 4.0,,,,,,,
-boss,首领,ability_lua,abilities/enemy/boss,monkey_king_wukongs_command_ti9,,5,,,,,,,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,,,,5,,damage_limit,damage_reduce,,,,,,,
+boss,Boss,ability_lua,abilities/enemy/boss,monkey_king_wukongs_command_ti9,,5,,,,,,,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,,,,5,,damage_limit,damage_reduce,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,30,70 75 80 85 90,,,,,,,
-captain,精英,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+captain,首领,ability_lua,abilities/enemy/captain,blue_dragonspawn_overseer_devotion_aura,,5,,,,,,,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,,,,5,,damage_limit,damage_reduce,crit_chance,crit_mult,health_regen_pct,movespeed,attackspeed,,
+,,,,,,,,,,,,,,,,,,,,,60,70 75 80 85 90,25,200 300 400 500 600,1,-50,20 40 60 80 100,,
+elite,精英怪,ability_lua,abilities/enemy/elite,life_stealer_rage_immortal,,5,,,,,,,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,,,,,,health_regen_pct,movespeed,attackspeed,,,,,,
+,,,,,,,,,,,,,,,,,,,,,1,-50,20 40 60 80 100,,,,,,
