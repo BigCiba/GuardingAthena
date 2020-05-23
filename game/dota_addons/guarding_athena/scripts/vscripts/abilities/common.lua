@@ -1118,6 +1118,10 @@ if IsServer() then
 		return tUnits
 	end
 
+	-- 用技能kv寻找直线单位
+	function FindUnitsInLineWithAbility(hCaster, vStart, vEnd, flWidth, hAbility)
+		return FindUnitsInLine(hCaster:GetTeamNumber(), vStart, vEnd, nil, flWidth, hAbility:GetAbilityTargetTeam(), hAbility:GetAbilityTargetType(), hAbility:GetAbilityTargetFlags())
+	end
 	-- 用技能kv寻找单位
 	function FindUnitsInRadiusWithAbility(hCaster, vPosition, flRadius, hAbility, iOrder)
 		if iOrder == nil then

@@ -72,17 +72,19 @@ end
 function modifier_spectre_4_lock:OnIntervalThink()
 	local hCaster = self:GetCaster()
 	local hParent = self:GetParent()
+	local hAbility = self:GetAbility()
 	if IsServer() then
 		local flLosePct = math.min((100 - hParent:GetHealthPercent()), self.max_bonus_damage)
 		local flBonusDamage = flLosePct * hParent:GetMaxHealth() * 0.01
 		local flDamage = self.damage * hCaster:GetStrength() + flBonusDamage / self.damage_count
-		local tTargets = FindUnitsInRadiusWithAbility(hCaster, hParent:GetAbsOrigin(), self.radius, self:GetAbility())
+		local tTargets = FindUnitsInRadiusWithAbility(hCaster, hParent:GetAbsOrigin(), self.radius, hAbility)
 		for i = 1, self.damage_count do
-			hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
+			hCaster:DealDamage(tTargets, hAbility, flDamage)
 		end
 		if hCaster:GetScepterLevel() >= 4 and not hParent:IsAlive() then
-			self:GetAbility():EndCooldown()
-			self:GetAbility():StartCooldown(self:GetCooldown(self:GetAbility():GetLevel() -1) * (1 - self:GetAbilitySpecialValueFor("scepter_cooldown") * 0.01))
+			local flCooldown = hAbility:GetCooldownTimeRemaining() * (1 - self:GetAbilitySpecialValueFor("scepter_cooldown") * 0.01)
+			hAbility:EndCooldown()
+			hAbility:StartCooldown(flCooldown)
 		end
 	else
 		-- 地面特效

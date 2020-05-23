@@ -73,7 +73,7 @@ function modifier_omniknight_3:OnStackCountChanged(iStackCount)
 	end
 end
 function modifier_omniknight_3:GetModifierBonusStats_Strength()
-	return self.bonus_str + self:GetParent():GetBaseStrength() * self.bonus_str_pct
+	return self.bonus_str + self:GetParent():GetBaseStrength() * self.bonus_str_pct * 0.01
 end
 function modifier_omniknight_3:GetModifierAttackSpeedBonus_Constant()
 	return self.bonus_attackspeed

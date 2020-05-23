@@ -6,6 +6,7 @@
 		"ScriptFile"							"abilities/heroes/omniknight/omniknight_0"
 		"AbilityTextureName"					"custom/thunder_power"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES_STRONG"
 		"MaxLevel"								"1"
 		"AbilityCooldown"						"2"
 		"HasScepterUpgrade"						"1"
@@ -44,6 +45,7 @@
 		"ScriptFile"							"abilities/heroes/omniknight/omniknight_1"
 		"AbilityTextureName"					"custom/thunder_strike"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES_STRONG"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
@@ -174,6 +176,7 @@
 		"ScriptFile"							"abilities/heroes/omniknight/omniknight_3"
 		"AbilityTextureName"					"custom/weightlifting"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES_STRONG"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
@@ -209,7 +212,7 @@
 			"06"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"attack_count"					"8 8 8 7 7 7 6 6 6 5 5 5 4 4 4 3 3 3 2 2"
+				"attack_count"					"8"
 			}
 		}
 	}
@@ -219,6 +222,7 @@
 		"ScriptFile"							"abilities/heroes/omniknight/omniknight_4"
 		"AbilityTextureName"					"arc_warden_flux"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"
 		"LevelsBetweenUpgrades"					"24"
@@ -285,12 +289,12 @@
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"palsy_attackspeed"				"-1440"
+				"palsy_attackspeed"				"-80 -100 -120 -140 -160 -180 -200 -220"
 			}
 			"06"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"palsy_movespeed"				"-1800"
+				"palsy_movespeed"				"-120 -135 -150 -165 -180 -195 -210 -225"
 			}
 			"07"
 			{
@@ -315,11 +319,14 @@
 		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_0"
 		"AbilityTextureName"					"revelater_0"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
+		"PurgeType"								"PurgeTypeStrong"
 		"MaxLevel"								"1"
 		"AbilityCharges"						"3"
 		"AbilityChargeRestoreTime"				"6"
 		"AbilityCooldown"						"0"
 		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilitySpecial"
 		{
@@ -356,6 +363,7 @@
 		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_1"
 		"AbilityTextureName"					"revelater_1"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
@@ -418,6 +426,7 @@
 		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_2"
 		"AbilityTextureName"					"custom/revelater_2"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
@@ -428,6 +437,7 @@
 		"AbilityChargeRestoreTime"				"6"
 		"AbilityCooldown"						"0"
 		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"3"
 		"AbilityManaCost"						"20 40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -483,12 +493,14 @@
 		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_3"
 		"AbilityTextureName"					"revelater_3"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCastAnimation"					"ACT_DOTA_ATTACK"
 		"AbilityCooldown"						"8"
 		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
 		"AbilityManaCost"						"60 120 180 240 300 360 420 480 540 600 660 720 780 840 900 960 1020 1080 1140 1200"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -559,11 +571,13 @@
 		"ScriptFile"							"abilities/heroes/templar_assassin/templar_assassin_4"
 		"AbilityTextureName"					"revelater_4"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"
 		"LevelsBetweenUpgrades"					"24"
 		"AbilityCooldown"						"30"
 		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"4"
 		"AbilityManaCost"						"200 400 600 800 1000 1200 1400 1600"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1221,6 +1235,8 @@
 		"MaxLevel"								"1"
 		"AbilityCooldown"						"3"
 		"IgnoreCooldownReduction"				"1"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
 		"AbilityManaCost"						"100"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1271,6 +1287,7 @@
 		"ScriptFile"							"abilities/heroes/spectre/spectre_1"
 		"AbilityTextureName"					"spectre_1"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
@@ -1336,11 +1353,14 @@
 		"ScriptFile"							"abilities/heroes/spectre/spectre_2"
 		"AbilityTextureName"					"spectre_desolate"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"						"10"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2"
 		"AbilityManaCost"						"60"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1409,6 +1429,8 @@
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"3"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -1478,12 +1500,15 @@
 		"ScriptFile"							"abilities/heroes/spectre/spectre_4"
 		"AbilityTextureName"					"spectre_4"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"
 		"LevelsBetweenUpgrades"					"24"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastRange"						"1200"
 		"AbilityCooldown"						"60"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"4"
 		"AbilityManaCost"						"300"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1560,8 +1585,11 @@
 		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_0"
 		"AbilityTextureName"					"custom/minjiejingtong"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"1"
 		"AbilityCooldown"						"10"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityDuration"						"6"
 		"AbilitySpecial"
@@ -1589,11 +1617,15 @@
 		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_1"
 		"AbilityTextureName"					"juggernaut_blade_fury"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
+		"PurgeType"								"PurgeTypeWeak"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCastAnimation"					"ACT_DOTA_OVERRIDE_ABILITY_1"
 		"AbilityCooldown"						"12"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2"
 		"AbilityManaCost"						"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1604,12 +1636,12 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"base_damage"					"100"
+				"base_damage"					"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"damage"						"0.25"
+				"damage"						"0.25 0.5 0.75 1 1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5"
 			}
 			"03"
 			{
@@ -1649,12 +1681,13 @@
 		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_2"
 		"AbilityTextureName"					"custom/images"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"PurgeType"								"PurgeTypeWeak"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCooldown"						"30"
 		"AbilityManaCost"						"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityDuration"						"10"
 		"AbilitySpecial"
@@ -1671,13 +1704,18 @@
 			}
 			"03"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"input_damage"					"-1025"
+				"var_type"						"FIELD_FLOAT"
+				"input_damage"					"-27.5 -30 -32.5 -35 -37.5 -40 -42.5 -45 -47.5 -50 -52.5 -55 -57.5 -60 -62.5 -65 -67.5 -70 -72.5 -75"
 			}
 			"04"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"images_count"					"1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4 5 5 5 5"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"invuln_duration"				"0.3"
 			}
 		}
 	}
@@ -1687,9 +1725,12 @@
 		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_3"
 		"AbilityTextureName"					"juggernaut_omni_slash"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"3|4"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -1722,6 +1763,21 @@
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"300"
 			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_damage_pct"			"1"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"scepter_reduce_pct"			"0.5"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_ignore_armor_chance"	"35"
+			}
 		}
 	}
 	"juggernaut_4"
@@ -1730,6 +1786,7 @@
 		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_4"
 		"AbilityTextureName"					"juggernaut_omni_slash_arcana"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"
 		"LevelsBetweenUpgrades"					"24"
@@ -1741,6 +1798,7 @@
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_NO_INVIS"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
 		"AbilityDuration"						"9"
 		"AbilitySpecial"
@@ -1777,13 +1835,14 @@
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_2_1"
 		"AbilityTextureName"					"juggernaut_blade_dance"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES_STRONG"
 		"MaxLevel"								"20"
 		"AbilityCastAnimation"					"ACT_DOTA_ATTACK_EVENT"
 		"AbilityCastRange"						"1200"
 		"AbilityCastPoint"						"0.3"
 		"AbilityCooldown"						"8"
 		"AbilityManaCost"						"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
@@ -1803,6 +1862,11 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"duration"						"1"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"width"							"225"
 			}
 		}
 	}

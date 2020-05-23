@@ -54,9 +54,12 @@ end
 function MoveOrder( hUnit, vPosition )
 	ExecuteOrder(hUnit, DOTA_UNIT_ORDER_MOVE_TO_POSITION, nil, nil, vPosition)
 end
-function IsFullyCastable(hUnit, hAbility)
+function IsFullyCastable(hUnit, hAbility, bAutoCast)
 	local bCastable = true
 	if not hAbility:IsFullyCastable() or hUnit:IsChanneling() then
+		bCastable = false
+	end
+	if bAutoCast and hAbility:GetAutoCastState() == false then
 		bCastable = false
 	end
 	return bCastable
@@ -68,10 +71,10 @@ function CreateAIAbilityInfo(hAbility, tCondition, fAction)
 		fAction = fAction
 	}
 end
-function GetRandomCastableAbility(hUnit, tAbility)
+function GetRandomCastableAbility(hUnit, tAbility, bAutoCast)
 	local tCastableAbility = {}
 	for i, v in ipairs(tAbility) do
-		if IsFullyCastable(hUnit, v.hAbility) and (type(v.fCondition) == "boolean" and v.fCondition or v.fCondition(v.hAbility, unpack(v.args))) then
+		if IsFullyCastable(hUnit, v.hAbility, bAutoCast) and (type(v.fCondition) == "boolean" and v.fCondition or v.fCondition(v.hAbility, unpack(v.args))) then
 			table.insert(tCastableAbility, v)
 		end
 	end

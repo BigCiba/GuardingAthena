@@ -1,4 +1,5 @@
 LinkLuaModifier( "modifier_juggernaut_3", "abilities/heroes/juggernaut/juggernaut_3.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_juggernaut_3_ignore_armor", "abilities/heroes/juggernaut/juggernaut_3.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if juggernaut_3 == nil then
 	juggernaut_3 = class({})
@@ -9,7 +10,10 @@ end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_juggernaut_3 == nil then
-	modifier_juggernaut_3 = class({}, nil, ModifierHidden)
+	modifier_juggernaut_3 = class({}, nil, ModifierBasic)
+end
+function modifier_juggernaut_3:IsHidden()
+	return self:GetStackCount() == 0 and true or false
 end
 function modifier_juggernaut_3:OnCreated(params)
 	self.damage = self:GetAbilitySpecialValueFor("damage")
@@ -17,6 +21,9 @@ function modifier_juggernaut_3:OnCreated(params)
 	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.scepter_damage_pct = self:GetAbilitySpecialValueFor("scepter_damage_pct")
+	self.scepter_reduce_pct = self:GetAbilitySpecialValueFor("scepter_reduce_pct")
+	self.scepter_ignore_armor_chance = self:GetAbilitySpecialValueFor("scepter_ignore_armor_chance")
 	if IsServer() then
 		self.tData = {}
 	end
@@ -29,6 +36,9 @@ function modifier_juggernaut_3:OnRefresh(params)
 	self.bonus_attack_speed = self:GetAbilitySpecialValueFor("bonus_attack_speed")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.scepter_damage_pct = self:GetAbilitySpecialValueFor("scepter_damage_pct")
+	self.scepter_reduce_pct = self:GetAbilitySpecialValueFor("scepter_reduce_pct")
+	self.scepter_ignore_armor_chance = self:GetAbilitySpecialValueFor("scepter_ignore_armor_chance")
 	if IsServer() then
 	end
 end
@@ -41,7 +51,7 @@ end
 function modifier_juggernaut_3:OnIntervalThink()
 	local flTime = GameRules:GetGameTime()
 	for i = #self.tData, 1, -1 do
-		if self.tData[i].flDieTime >= flTime then
+		if flTime >= self.tData[i].flDieTime then
 			table.remove(self.tData, i)
 			self:DecrementStackCount()
 		end
@@ -53,33 +63,73 @@ function modifier_juggernaut_3:OnIntervalThink()
 end
 function modifier_juggernaut_3:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE,
 	}
 end
 function modifier_juggernaut_3:GetModifierAttackSpeedBonus_Constant()
 	return self.bonus_attack_speed * self:GetStackCount()
 end
 function modifier_juggernaut_3:OnAttackStart(params)
-	if params.attacker == self:GetParent() and IsClient() then
+	if params.attacker == self:GetParent() then
 		local iParticleID = ParticleManager:CreateParticle( "particles/skills/blade_dance.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		ParticleManager:SetParticleControl(iParticleID, 2, Vector(RandomInt(0, 180),RandomInt(0, 180),RandomInt(0, 180)))
 		ParticleManager:ReleaseParticleIndex(iParticleID)
 	end
 end
 function modifier_juggernaut_3:OnAttackLanded(params)
-	if params.attacker == self:GetParent() then
-		local hParent = self:GetParent()
-		local hAbility = self:GetAbility()
-		local flDamage = self.base_damage + self.dammage * hParent:GetAgility()
-		local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, hAbility)
-		hParent:DealDamage(tTargets, hAbility, flDamage)
-		-- 叠加攻速
-		if self:GetStackCount() == 0 then
-			self:StartIntervalThink(0)
+	if IsServer() then
+		if params.attacker == self:GetParent() then
+			local hParent = self:GetParent()
+			local hAbility = self:GetAbility()
+			local flDamage = self.base_damage + self.damage * hParent:GetAverageTrueAttackDamage(params.unit)
+			local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, hAbility)
+			hParent:DealDamage(tTargets, hAbility, flDamage)
+			if hParent:GetScepterLevel() >= 3 and RollPercentage(self.scepter_ignore_armor_chance) then
+				params.target:AddNewModifier(hParent, hAbility, "modifier_juggernaut_3_ignore_armor", {duration = FrameTime()})
+			end
+			-- 叠加攻速
+			if self:GetStackCount() == 0 then
+				self:StartIntervalThink(0)
+			end
+			self:IncrementStackCount()
+			table.insert(self.tData, {
+				flDieTime = GameRules:GetGameTime() + self.duration
+			})
 		end
-		self:IncrementStackCount()
-		table.insert(self.tData, {
-			flDieTime = GameRules:GetGameTime() + self.duration
-		})
+	end
+end
+function modifier_juggernaut_3:GetModifierIncomingDamage_Percentage()
+	if self:GetParent():GetScepterLevel() >= 4 then
+		return -self.scepter_reduce_pct * self:GetStackCount()
+	end
+end
+function modifier_juggernaut_3:GetModifierTotalDamageOutgoing_Percentage()
+	if self:GetParent():GetScepterLevel() >= 4 then
+		return self.scepter_damage_pct * self:GetStackCount()
+	end
+end
+---------------------------------------------------------------------
+if modifier_juggernaut_3_ignore_armor == nil then
+	modifier_juggernaut_3_ignore_armor = class({}, nil, ModifierHidden)
+end
+function modifier_juggernaut_3_ignore_armor:OnCreated(params)
+	AddModifierEvents(MODIFIER_EVENT_ON_TAKEDAMAGE, self, nil, self:GetParent())
+end
+function modifier_juggernaut_3_ignore_armor:OnDestroy()
+	RemoveModifierEvents(MODIFIER_EVENT_ON_TAKEDAMAGE, self, nil, self:GetParent())
+end
+function modifier_juggernaut_3_ignore_armor:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR,
+	}
+end
+function modifier_juggernaut_3_ignore_armor:GetModifierIgnorePhysicalArmor()
+	return 1
+end
+function modifier_juggernaut_3_ignore_armor:OnTakeDamage(params)
+	if params.unit == self:GetParent() and params.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK then
+		self:Destroy()
 	end
 end
