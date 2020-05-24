@@ -4,7 +4,7 @@
 		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
 		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
 		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
-		<include src="s2r://panorama/styles/hud/dota_hud_xp.vcss_c" />
+		<!-- <include src="s2r://panorama/styles/hud/dota_hud_xp.vcss_c" /> -->
 
 		<include src="file://{resources}/styles/custom_game/overhead.css" />
 	</styles>
@@ -29,7 +29,6 @@
 						</Panel>
 					</Panel>
 					<Panel id="LevelInfo">
-						<Panel id="LevelBackground" />
 						<Label id="LevelLabel" />
 					</Panel>
 				</Panel>

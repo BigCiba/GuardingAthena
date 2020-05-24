@@ -73,6 +73,7 @@ function modifier_juggernaut_4:CheckState()
 		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_NOT_ON_MINIMAP] = true,
+		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true,
 	}
 end
 function modifier_juggernaut_4:GetAbsoluteNoDamageMagical()

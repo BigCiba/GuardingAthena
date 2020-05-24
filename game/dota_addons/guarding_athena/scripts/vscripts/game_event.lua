@@ -418,6 +418,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			heroEntity:RemoveItem(tpScroll)
 		end
 	end
+	heroEntity:AddNewModifier(heroEntity, nil, "modifier_no_health_bar", nil)
 	local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS )
 	courier.bag = {}
 	courier:SetOwner(heroEntity:GetPlayerOwner())

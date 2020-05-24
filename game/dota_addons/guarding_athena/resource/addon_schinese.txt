@@ -2590,7 +2590,7 @@
 		"DOTA_Tooltip_ability_elite"	"精英"
 		"DOTA_Tooltip_ability_demon_hunter_Note0"	"该技能冷却时间不受减少冷却效果影响"
 		"DOTA_Tooltip_ability_item_world_editor"	"锻世之锤"
-		"DOTA_Tooltip_ability_item_world_editor_Description"	"<h1>主动：世界锻造者</h1>开启后获得世界锻造者力量加持，减少90%%的伤害且每秒回复10%%的生命，抵挡低于10%%的伤害，持续30秒\n<h1>被动：重塑</h1>使周围%radius%范围内的单位输出降低%damage_reduce%%%\n<h1>被动：开天辟地</h1>所有伤害输出提升%damage_deepen%%%\n混沌初开时随宇宙诞生的远古神器"
+		"DOTA_Tooltip_ability_item_world_editor_Description"	"<h1>主动：世界锻造者</h1>开启后获得世界锻造者力量加持，获得10倍生命值且每秒回复10%%的生命，抵挡低于10%%的伤害，持续30秒\n<h1>被动：重塑</h1>使周围%radius%范围内的单位输出降低%damage_reduce%%%\n<h1>被动：开天辟地</h1>所有伤害输出提升%damage_deepen%%%\n混沌初开时随宇宙诞生的远古神器"
 		"DOTA_Tooltip_ability_item_longinus_spear"	"朗基努斯之枪"
 		"DOTA_Tooltip_ability_item_longinus_spear_Description"	"<h1>主动：弑神之枪</h1>召唤隆基努斯之枪对目标造成一次最大生命%damage_percent%%%的生命移除伤害，周围%radius%范围的单位会受到同样的伤害。且受到%stun_duration%的晕眩\n<h1>被动：绝对恐惧领域</h1>直接抵消少于%block_percent%%%最大魔法值的伤害且当魔法值大于%trigger_percent%%%时受伤时优先消耗魔法值\n<h1>被动：圣武</h1>技能增强提升%magic_damage_increase%%%\n混沌初开时随宇宙诞生的远古神器"
 		"DOTA_Tooltip_ability_item_longinus_spear_Note0"	"晕眩效果无视抗性"

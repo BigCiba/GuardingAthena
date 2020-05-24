@@ -27,6 +27,7 @@ function Update() {
 		if (DOTAAbilityTooltip.BHasClass("IsItem") == true) {
 			let ItemName = DOTAAbilityTooltip.FindChildTraverse("ItemImage").itemname;
 			let Unit = Players.GetLocalPlayerPortraitUnit();
+			// 专属装备
 			if (ItemName == "item_" + Entities.GetUnitName( Unit )) {
 				for (let i = 2; i <= 9; i++) {
 					let Child = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(i);
@@ -42,6 +43,7 @@ function Update() {
 					}
 				}
 			}
+			// 创世之戒
 		} else {
 			for (let index = 0; index < AbilityList.GetChildCount(); index++) {
 				let Ability = AbilityList.FindChildTraverse("Ability" + index);

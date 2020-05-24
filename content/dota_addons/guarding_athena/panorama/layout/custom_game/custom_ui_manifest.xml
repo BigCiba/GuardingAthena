@@ -61,5 +61,6 @@
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/bubble.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />
+		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/overhead.xml" />
 	</Panel>
 </root>
