@@ -44,17 +44,36 @@ function Update() {
 				}
 			}
 			// 创世之戒
-			// if (ItemName == "item_ring_secret" || ItemName == "item_ring_world" || ItemName == "item_ring_world_broken") {
-			// 	for (let i = 2; i < 6; i++) {
-			// 		let Child = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(i);
-			// 		if (Child.BHasClass("Header") == true && Child.text.search($.Localize("Custom_Tooltip_ability_Active")) == -1) {
-			// 			Child.text = "晨光";
-			// 		} else {
-			// 			Child.text = "";
-			// 		}
-			// 		Child.SetHasClass("Active", true);
-			// 	}
-			// }
+			if (ItemName == "item_ring_secret" || ItemName == "item_ring_world" || ItemName == "item_ring_broken" || ItemName == "item_ring_world_broken") {
+				let PlayerData = CustomNetTables.GetTableValue("player_data", "player_datas")[Players.GetLocalPlayer()];
+				let RingsData = PlayerData.rings;
+				// 融合buff
+				let iFirstIndex = Math.min(PlayerData.rings["1"].iRingIndex, PlayerData.rings["2"].iRingIndex);
+				let iSecondIndex = Math.max(PlayerData.rings["1"].iRingIndex, PlayerData.rings["2"].iRingIndex);
+				let Header = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(2);
+				Header.text = $.Localize("DOTA_Tooltip_ring_" + iFirstIndex + "_" + iSecondIndex);
+				let Description = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(3);
+				Description.text = $.Localize("DOTA_Tooltip_ring_" + iFirstIndex + "_" + iSecondIndex + "_Description");
+				let HasModifier = Entities.HasModifier(Unit, "ring_" + iFirstIndex + "_" + iSecondIndex);
+				Header.SetHasClass("Active", HasModifier);
+				Description.SetHasClass("Active", HasModifier);
+				Header.text += HasModifier ? $.Localize("Custom_Tooltip_ability_Active"):$.Localize("Custom_Tooltip_ability_NotActive");
+				for (const index in RingsData) {
+					const RingData = RingsData[index];
+					let Header = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(Number(index) * 2 + 2);
+					Header.text = $.Localize("DOTA_Tooltip_ring_0_" + RingData.iRingIndex);
+					let Description = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(Number(index) * 2 + 3);
+					Description.text = $.Localize("DOTA_Tooltip_ring_0_" + RingData.iRingIndex + "_Description");
+					let HasModifier = Entities.HasModifier(Unit, RingData.sModifierName);
+					Header.SetHasClass("Active", HasModifier);
+					Description.SetHasClass("Active", HasModifier);
+					Header.text += HasModifier ? $.Localize("Custom_Tooltip_ability_Active"):$.Localize("Custom_Tooltip_ability_NotActive");
+					// 破碎创世之戒
+					if (ItemName == "item_ring_broken" || ItemName == "item_ring_world_broken") {
+						break;
+					}
+				}
+			}
 		} else {
 			for (let index = 0; index < AbilityList.GetChildCount(); index++) {
 				let Ability = AbilityList.FindChildTraverse("Ability" + index);

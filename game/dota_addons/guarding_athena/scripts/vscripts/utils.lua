@@ -611,3 +611,9 @@ function GetRespawnPosition()
 	local tEnt = Entities:FindAllByClassname("info_player_start_goodguys")
 	return tEnt[1]:GetAbsOrigin()
 end
+function GetDayTime()
+	local flTime = GameRules:GetTimeOfDay()
+	local iHour, iMin = math.modf(flTime/ (1 / 24))
+	iMin = iMin * 60
+	return iHour, iMin
+end

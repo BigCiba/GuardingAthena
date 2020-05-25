@@ -1,0 +1,25 @@
+﻿技能名,备注,基类,脚本,,,技能图标,技能行为,物品ID,最大等级,基础等级,价格,是否出售,能否购买,可摧毁,永久的,可叠加,拾取使用,初始数量,施法距离,冷却时间,持续时间,键值,键值,键值,键值,键值,键值,键值,键值
+Name,,BaseClass,ScriptFile,Model,Effect,AbilityTextureName,AbilityBehavior,ID,MaxUpgradeLevel,ItemBaseLevel,ItemCost,ItemSellable,ItemPurchasable,ItemKillable,ItemPermanent,ItemStackable,ItemCastOnPickup,ItemInitialCharges,AbilityCastRange,AbilityCooldown,AbilityDuration,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial
+item_ring_shop,未知的戒指,item_datadriven,,models/props_gameplay/neutral_box.vmdl,,item_ring_shop,DOTA_ABILITY_BEHAVIOR_PASSIVE,1783,,,1200,0,0,0,1,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+item_ring_1,晨辉之戒,item_lua,abilities/items/ring/item_ring,models/props_gameplay/neutral_box.vmdl,,item_ring_1,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1784,,,2500,0,0,0,1,,,,,30,20,time_start,time_end,bonus_stats,health_regen_percent,,,,
+,,,,,,,,,,,,,,,,,,,,,,6,8,60,6,,,,
+item_ring_2,宝石之戒,item_lua,abilities/items/ring/item_ring,models/props_gameplay/neutral_box.vmdl,,item_ring_2,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1785,,,2500,0,0,0,1,,,,,30,20,time_start,time_end,bonus_stats,gold_gain_percent,,,,
+,,,,,,,,,,,,,,,,,,,,,,8,12,20,25,,,,
+item_ring_3,恶魔之戒,item_lua,abilities/items/ring/item_ring,models/props_gameplay/neutral_box.vmdl,,item_ring_3,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1786,,,2500,0,0,0,1,,,,,30,20,time_start,time_end,bonus_stats,property_percent,,,,
+,,,,,,,,,,,,,,,,,,,,,,12,18,40,10,,,,
+item_ring_4,石化妖目童,item_lua,abilities/items/ring/item_ring,models/props_gameplay/neutral_box.vmdl,,item_ring_4,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1787,,,2500,0,0,0,1,,,,,30,20,time_start,time_end,bonus_stats,damage_reduce_percent,,,,
+,,,,,,,,,,,,,,,,,,,,,,18,24,60,10,,,,
+item_ring_5,诡丝重目童,item_lua,abilities/items/ring/item_ring,models/props_gameplay/neutral_box.vmdl,,item_ring_5,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1788,,,2500,0,0,0,1,,,,,30,20,time_start,time_end,bonus_stats,bonus_damage,damage_percent,,,
+,,,,,,,,,,,,,,,,,,,,,,0,2,80,50,10,,,
+item_ring_6,黑夜之戒,item_lua,abilities/items/ring/item_ring,models/props_gameplay/neutral_box.vmdl,,item_ring_6,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1789,,,2500,0,0,0,1,,,,,30,20,time_start,time_end,bonus_stats,cooldown_reduce,,,,
+,,,,,,,,,,,,,,,,,,,,,,2,6,40,1,,,,
+item_ring_secret,隐秘之戒,item_lua,abilities/items/ring/item_ring_secret,models/props_gameplay/neutral_box.vmdl,,item_ring_secret,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1790,,,2500,0,0,0,1,,,,,30,20,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+item_ring_broken,破碎的隐秘之戒,item_lua,abilities/items/ring/item_ring_secret,models/props_gameplay/neutral_box.vmdl,,item_ring_broken,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1791,,,2500,0,0,0,1,,,,,30,20,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+item_ring_world,创世之戒,item_lua,abilities/items/ring/item_ring_world,models/props_gameplay/neutral_box.vmdl,,item_ring_world,DOTA_ABILITY_BEHAVIOR_PASSIVE,1792,,,2500,0,0,0,1,,,,,,,bonus_stats,bonus_health,bonus_mana,bonus_hp_regen,bonus_mp_regen,bonus_armor,bonus_attack,bonus_attack_speed
+,,,,,,,,,,,,,,,,,,,,,,1200,18500,11800,1540,510,20,25,150
+item_ring_world_broken,破碎的创世之戒,item_lua,abilities/items/ring/item_ring_world,models/props_gameplay/neutral_box.vmdl,,item_ring_world,DOTA_ABILITY_BEHAVIOR_PASSIVE,1793,,,2500,0,0,0,1,,,,,,,bonus_stats,bonus_health,bonus_mana,bonus_hp_regen,bonus_mp_regen,bonus_armor,bonus_attack,bonus_attack_speed
+,,,,,,,,,,,,,,,,,,,,,,1120,18500,11800,1540,510,20,25,150
+item_ronghe,融合,item_datadriven,,models/props_gameplay/neutral_box.vmdl,,item_ronghe,DOTA_ABILITY_BEHAVIOR_PASSIVE,1794,,,2400,1,0,0,1,,,,,,,,,,,,,,
