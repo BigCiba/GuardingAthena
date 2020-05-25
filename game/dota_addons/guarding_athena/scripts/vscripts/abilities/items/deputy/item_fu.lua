@@ -110,7 +110,7 @@ function modifier_fu:DeclareFunctions()
 		MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
 		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS,
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
-		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE
+		-- MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE
 	}
 end
 function modifier_fu:OnAttackRecord(params)
@@ -142,9 +142,11 @@ function modifier_fu:OnAttackLanded(params)
 		local flBonusDamage = 0
 		for i,record in ipairs(self.records) do
 			if record == params.record then
-				local waist_cut_percent = params.target:IsConsideredHero() and 0.1 or self.waist_cut_percent
+				local waist_cut_percent = params.target:IsAncient() and self.waist_cut_percent * 0.1 or self.waist_cut_percent
 				flBonusDamage = params.target:GetHealth() * waist_cut_percent * 0.01
 				sCleaveParticle = "particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
+				-- 造成纯粹伤害
+				params.attacker:DealDamage(params.target, self:GetAbility(), flBonusDamage, DAMAGE_TYPE_PURE)
 				break
 			end
 		end
@@ -161,7 +163,7 @@ function modifier_fu:GetModifierProcAttack_BonusDamage_Pure(params)
 	if params.attacker == self:GetParent() and not params.attacker:IsRangedAttacker() and not params.attacker:IsIllusion() then
 		for i,record in ipairs(self.records) do
 			if record == params.record then
-				local waist_cut_percent = params.target:IsConsideredHero() and 0.1 or self.waist_cut_percent
+				local waist_cut_percent = params.target:IsConsideredHero() and self.waist_cut_percent * 0.1 or self.waist_cut_percent
 				return params.target:GetHealth() * waist_cut_percent * 0.01
 			end
 		end

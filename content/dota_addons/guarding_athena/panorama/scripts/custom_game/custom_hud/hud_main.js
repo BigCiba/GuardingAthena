@@ -44,6 +44,17 @@ function Update() {
 				}
 			}
 			// 创世之戒
+			// if (ItemName == "item_ring_secret" || ItemName == "item_ring_world" || ItemName == "item_ring_world_broken") {
+			// 	for (let i = 2; i < 6; i++) {
+			// 		let Child = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(i);
+			// 		if (Child.BHasClass("Header") == true && Child.text.search($.Localize("Custom_Tooltip_ability_Active")) == -1) {
+			// 			Child.text = "晨光";
+			// 		} else {
+			// 			Child.text = "";
+			// 		}
+			// 		Child.SetHasClass("Active", true);
+			// 	}
+			// }
 		} else {
 			for (let index = 0; index < AbilityList.GetChildCount(); index++) {
 				let Ability = AbilityList.FindChildTraverse("Ability" + index);

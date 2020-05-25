@@ -19,6 +19,9 @@ function QuestTriggerNpc( t )
 	PrintTable(t)
 	local npc = t.caster
 	local caster = t.target
+	if not caster:IsRealHero() then
+		return
+	end
 	local questCount = 0
 	local questFinish = 0
 	for questName,questInfo in pairs(Quest.questInfo) do
