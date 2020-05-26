@@ -220,7 +220,7 @@ function GuardingAthena:OnEntityKilled( event )
 		GuardingAthena.iapetos = nil
 		local caller = killedUnit.caller
 		local hRelay = Entities:FindByName( nil, "gate_demon_relay" )
-		hRelay:Trigger()
+		hRelay:Trigger(hRelay,caller)
 		-- 转生许可
 		caller.kill_iapetos = true
 		caller.limitRegion = nil

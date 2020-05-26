@@ -376,6 +376,9 @@ function Spawner:OnUnitKilled( t )
 			attacker = attacker.caster_hero
 		end
 	end
+	if attacker.GetMaster then
+		attacker = attacker:GetMaster()
+	end
 	if not attacker:IsRealHero() then
 		HeroState:InitUnit(attacker)
 	end

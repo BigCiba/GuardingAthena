@@ -5,16 +5,16 @@ function firstToUpper(str)
 end
 
 function KvToJson(sKvName, tTable)
-	local filePath = ContentDir..AddonName.."\\panorama\\scripts\\kv\\"..sKvName..".js"
-	local file = io.open(filePath, 'w')
+	-- local filePath = ContentDir..AddonName.."\\panorama\\scripts\\kv\\"..sKvName..".js"
+	-- local file = io.open(filePath, 'w')
 
-	local str = json.encode(tTable)
+	-- local str = json.encode(tTable)
 
-	str = string.gsub(str, "'", "\\'")
+	-- str = string.gsub(str, "'", "\\'")
 
-	file:write("const "..sKvName.."_json".." = \'"..str.."\';")
-	file:write("\n")
-	file:write("const "..sKvName.." = JSON.parse("..sKvName.."_json);")
+	-- file:write("const "..sKvName.."_json".." = \'"..str.."\';")
+	-- file:write("\n")
+	-- file:write("const "..sKvName.." = JSON.parse("..sKvName.."_json);")
 
-	file.close()
+	-- file.close()
 end
