@@ -47,8 +47,20 @@ end
 function modifier_juggernaut_0:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE
+		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
+		MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL,
+		MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE,
+		MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE
 	}
+end
+function modifier_juggernaut_0:GetModifierOverrideAbilitySpecial()
+	return 1
+end
+function modifier_juggernaut_0:GetModifierOverrideAbilitySpecialValue()
+	return 1000
+end
+function modifier_juggernaut_0:GetModifierChangeAbilityValue()
+	return 1000
 end
 function modifier_juggernaut_0:GetModifierAttackSpeedBonus_Constant()
 	return self.attackspeed
