@@ -300,9 +300,6 @@ function GuardingAthena:OnConnectFull(keys)
 	end)
 	Server:GetScore(playerID)
 
-	PrintTable(Service:GetEquippedItem(playerID, "other"))
-	CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
-
 	GameRules:GetGameModeEntity():SetHUDVisible(8, false)
 	GameRules:GetGameModeEntity():SetHUDVisible(9, false)
 	local gamestat = GameRules:State_Get()
@@ -479,6 +476,11 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end
 	end)
+	
+
+	if Service:IsVipPlayer(playerID) then
+		CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+	end
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)

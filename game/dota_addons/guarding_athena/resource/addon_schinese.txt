@@ -3493,6 +3493,8 @@
 		"wing_01"					"纯金翅膀"
 		"potion"					"药水礼包"
 
+		"vip"						"超级会员"
+
 
 		"DOTA_Tooltip_ability_item_essence_str_1"				"力量精华"
 		"DOTA_Tooltip_ability_item_essence_str_1_Description"	"<h1>主动：精华跃迁</h1>将主要属性在力量，敏捷以及智力三者间切换。\n<h1>被动：聚合</h1>每击杀1个单位提升1点能量，也可吸收精华来提升能量，每获得%require_count%点能量会提升精华等级。\n一个蕴含远古留下来的三种原始能量之一的球体，可以通过吸收生物死后的能量或未知的精髓来修复它"

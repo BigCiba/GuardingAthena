@@ -311,6 +311,18 @@ function public:IsChecked()
 	return self.bServerChecked
 end
 
+-- 是否有vip
+function public:IsVipPlayer(iPlayerID)
+	local tItemList = self.tPlayerServiceData[iPlayerID]["other"]
+	if tItemList then
+		for _, tItemData in ipairs(tItemList) do
+			if tonumber(tItemData.Equip) == 1 and tItemData.ItemName == "vip" then
+				return true
+			end
+		end
+	end
+	return false
+end
 -- 获取某个类型的已装备物品
 function public:GetEquippedItem(iPlayerID, sType)
 	local tData = {}
