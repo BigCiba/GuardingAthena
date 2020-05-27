@@ -431,7 +431,7 @@ function public:GetPetExperience(iPlayerID, sItemName)
 	local PetList = self.tPlayerServiceData[iPlayerID]["pet"]
 	for i, PetData in ipairs(PetList) do
 		if PetData.ItemName == sItemName then
-			return tonumber(PetData.Experience)
+			return tonumber(PetData.Experience) or 0
 		end
 	end
 	return 0

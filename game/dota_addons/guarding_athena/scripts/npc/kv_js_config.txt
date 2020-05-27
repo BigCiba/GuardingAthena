@@ -1,0 +1,7 @@
+"KVJSConfig"
+{
+	"HeroesKv"			"npc/npc_heroes_custom.txt"
+	"PlayerItemsKV"		"kv/player_items.kv"
+	"AbilitiesKv"		"npc/npc_abilities_custom.txt"
+	"PetsKv"			"scripts/npc/units/npc_pet.kv"
+}
