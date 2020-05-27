@@ -15,3 +15,6 @@
 "dragon_3"	"远古暗黑魔龙"
 "boss_treant"	"远古树妖"
 "boss_clotho"	"克洛托"
+"boss_iapetos"	"伊阿珀托斯"
+"boss_fire_demon"	"地狱火焰恶魔"
+"boss_visage"	"死灵龙"

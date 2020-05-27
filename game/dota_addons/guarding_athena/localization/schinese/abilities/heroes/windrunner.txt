@@ -1,0 +1,29 @@
+"npc_dota_hero_windrunner"	"风行者"
+"DOTA_Tooltip_ability_chase_moon_and_star"	"追星逐月[天赋]"
+"DOTA_Tooltip_ability_chase_moon_and_star_Description"	"每次攻击或施法都有一定几率触发额外效果。攻击时将触发额外射出一支魔法伤害的箭矢，附带减少目标护甲持续%duration%秒。额外的箭矢有一半的几率触发效果。<br></br>-----------------------------------------------<br></br>伤害：敏捷 * %damage%<br></br>护甲减少：1<br></br>-----------------------------------------------"
+"DOTA_Tooltip_ability_chase_moon_and_star_rate"	"触发几率："
+"DOTA_Tooltip_ability_chase_moon_and_star_Lore"	"狂风暴雨"
+
+"DOTA_Tooltip_ability_multiple_shoot"	"多重射击"
+"DOTA_Tooltip_ability_multiple_shoot_Description"	"一次射出5支箭矢，对前方扇形区域造成伤害，伤害与距离成正比，触发天赋时将额外施放一次魔法伤害的多重射击<br></br>-----------------------------------------------<br></br>伤害：攻击力 * 技能等级<br></br>基础伤害：30 * 技能等级<br></br>最大距离：1200<br></br>-----------------------------------------------"
+"DOTA_Tooltip_ability_multiple_shoot_Lore"	"弓箭手间以同时射出的箭矢数量来判断实力"
+
+"DOTA_Tooltip_ability_gust"	"狂风"
+"DOTA_Tooltip_ability_gust_Description"	"运用风的力量对敌人造成伤害与晕眩并使其攻击无法命中，触发天赋时将在持续时间内减少目标护甲<br></br>-----------------------------------------------<br></br>伤害：2 * 敏捷 * 技能等级<br></br>基础伤害：100 * 技能等级<br></br>丢失几率：29 + 技能等级<br></br>晕眩时间：1<br></br>持续时间：1.8 + 0.2 * 技能等级<br></br>护甲减少：2 * 技能等级<br></br>最大距离：900<br></br>-----------------------------------------------"
+"DOTA_Tooltip_ability_gust_Lore"	"运用风的力量也是弓箭手的必修课"
+"DOTA_Tooltip_modifier_gust"	"狂风"
+"DOTA_Tooltip_modifier_gust_Description"	"该单位降低了命中率"
+
+"DOTA_Tooltip_ability_alacrity"	"灵动迅捷"
+"DOTA_Tooltip_ability_alacrity_Description"	"风的加持被动提升移动速度与闪避，主动使用时获得100%%的闪避与相位状态并减速周围的单位，但是冷却时会失去所有效果<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>移动速度提升：%movespeed%<br></br>闪避几率：10 + 2 * 技能等级<br></br>持续时间：4<br></br>减速：%reduce_movespeed%<br></br><font color='#ffffff'>-----------------------------------------------</font>"
+"DOTA_Tooltip_ability_alacrity_Lore"	"每个弓箭手都怕被近身"
+"DOTA_Tooltip_modifier_alacrity"	"灵动迅捷"
+"DOTA_Tooltip_modifier_alacrity_Description"	"暂时获得100%%的闪避"
+
+"DOTA_Tooltip_ability_arrow_strom"	"箭矢风暴"
+"DOTA_Tooltip_ability_arrow_strom_Description"	"将箭矢射向天空，加持风之狂暴后对大范围的敌人进行毁灭性打击，触发天赋时将额外附加一次魔法伤害<br></br>-----------------------------------------------<br></br>伤害：5 * 攻击力 * 技能等级<br></br>每次伤害范围：200<br></br>持续时间：4<br></br>影响范围：1200<br></br>-----------------------------------------------"
+"DOTA_Tooltip_ability_arrow_strom_Lore"	"箭雨"
+
+"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner"	"射日"
+"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：伤害强化</h1>追星逐月额外箭矢伤害加倍\n<h1>二转：鹰眼</h1>使得箭矢风暴具有跟踪效果\n<h1>三转：箭矢风暴</h1>增加箭矢风暴4秒持续时间\n<h1>四转：多重射击</h1>普通攻击有10%%的几率触发多重射击，天赋额外箭矢有一半几率触发\n这把神弓并非奥林匹斯山的神器，而是一位无名的异界旅者留下的武器"
+"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Lore"	"别手贱点他！"
