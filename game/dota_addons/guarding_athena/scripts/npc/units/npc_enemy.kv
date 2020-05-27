@@ -1087,8 +1087,8 @@
 	{
 		"Name"									"干！"
 		"BaseClass"								"npc_dota_creature"
-		"Model"									"models/heroes/furion/furion.vmdl"
-		"ModelScale"							"0.8"
+		"Model"									"models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
+		"ModelScale"							"1"
 		"Level"									"28"
 		"HealthBarOffset"						"-1"
 		"BountyXP"								"600"
@@ -1102,48 +1102,19 @@
 		"StatusHealthRegen"						"5"
 		"StatusMana"							"2800"
 		"StatusManaRegen"						"0"
-		"AttackCapabilities"					"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackCapabilities"					"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"						"9263"
 		"AttackDamageMax"						"9263"
 		"AttackRate"							"1.7"
 		"BaseAttackSpeed"						"150"
 		"AttackAnimationPoint"					"0.4"
 		"AttackAcquisitionRange"				"600"
-		"AttackRange"							"600"
-		"ProjectileModel"						"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
-		"ProjectileSpeed"						"900"
+		"AttackRange"							"125"
 		"ArmorPhysical"							"36"
 		"MagicalResistance"						"26"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"fur_dance"
-		"Creature"
-		{
-			"AttachWearables"
-			{
-				"1"
-				{
-					"ItemDef"					"5797"
-				}
-				"2"
-				{
-					"ItemDef"					"5798"
-				}
-				"3"
-				{
-					"ItemDef"					"5799"
-				}
-				"4"
-				{
-					"ItemDef"					"5800"
-				}
-				"5"
-				{
-					"ItemDef"					"5802"
-				}
-			}
-		}
 	}
 	"wave_29"
 	{
@@ -1220,9 +1191,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"siling_attack"
-		"Ability2"								"siling_speed"
-		"Ability3"								"siling_death"
 	}
 	"wave_31"
 	{
@@ -1258,9 +1226,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"xixue"
-		"Ability2"								"chouxue"
-		"Ability3"								"tb_critical"
 	}
 	"wave_32"
 	{
@@ -1296,8 +1261,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"holy_attack"
-		"Ability2"								"holy_armor"
 		"Creature"
 		{
 			"AttachWearables"
@@ -1365,8 +1328,6 @@
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"IsAncient"								"0"
-		"Ability1"								"xiaolan"
-		"Ability2"								"jianjia"
 		"Creature"
 		{
 			"AttachWearables"
@@ -1397,6 +1358,7 @@
 	"wave_34"
 	{
 		"Name"									"女玩"
+		"vscripts"								"ai/enemy/ai_wave_34.lua"
 		"BaseClass"								"npc_dota_creature"
 		"Model"									"models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl"
 		"ModelScale"							"0.8"
@@ -1624,7 +1586,7 @@
 		"MagicalResistance"						"5"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"beast_beat"
@@ -1662,7 +1624,7 @@
 		"MagicalResistance"						"7"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"hex"
@@ -1737,7 +1699,7 @@
 		"MagicalResistance"						"10"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"life_absorb"
@@ -1792,7 +1754,7 @@
 		"MagicalResistance"						"12"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"gush"
@@ -1861,7 +1823,7 @@
 		"MagicalResistance"						"15"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"howl"
@@ -1899,7 +1861,7 @@
 		"MagicalResistance"						"17"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"storm_bolt"
@@ -1964,7 +1926,7 @@
 		"MagicalResistance"						"21"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"shock_wave"
@@ -1989,6 +1951,72 @@
 				"4"
 				{
 					"ItemDef"					"6315"
+				}
+			}
+		}
+	}
+	"elite_28"
+	{
+		"Name"									"干！"
+		"vscripts"								"ai/enemy/ai_elite_28.lua"
+		"BaseClass"								"npc_dota_creature"
+		"Model"									"models/heroes/furion/furion.vmdl"
+		"ModelScale"							"1"
+		"Level"									"28"
+		"HealthBarOffset"						"300"
+		"BountyXP"								"6000"
+		"BountyGoldMin"							"980"
+		"BountyGoldMax"							"980"
+		"BoundsHullName"						"DOTA_HULL_SIZE_REGULAR"
+		"MovementCapabilities"					"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"							"325"
+		"MovementTurnRate"						"0.5"
+		"StatusHealth"							"428000"
+		"StatusHealthRegen"						"5"
+		"StatusMana"							"6600"
+		"StatusManaRegen"						"0"
+		"AttackCapabilities"					"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"						"9263"
+		"AttackDamageMax"						"9263"
+		"AttackRate"							"1.7"
+		"BaseAttackSpeed"						"150"
+		"AttackAnimationPoint"					"0.4"
+		"AttackAcquisitionRange"				"600"
+		"AttackRange"							"600"
+		"ProjectileModel"						"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
+		"ProjectileSpeed"						"900"
+		"ArmorPhysical"							"36"
+		"MagicalResistance"						"26"
+		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"ConsideredHero"						"0"
+		"IsAncient"								"1"
+		"Ability1"								"captain"
+		"Ability2"								"elite_28_1"
+		"Ability3"								"elite_28_2"
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"1"
+				{
+					"ItemDef"					"5797"
+				}
+				"2"
+				{
+					"ItemDef"					"5798"
+				}
+				"3"
+				{
+					"ItemDef"					"5799"
+				}
+				"4"
+				{
+					"ItemDef"					"5800"
+				}
+				"5"
+				{
+					"ItemDef"					"5802"
 				}
 			}
 		}
@@ -2026,7 +2054,7 @@
 		"MagicalResistance"						"28"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"mana_purge"
@@ -2064,7 +2092,7 @@
 		"MagicalResistance"						"31"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"doppleganger"
@@ -2129,7 +2157,7 @@
 		"MagicalResistance"						"31"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"sea_erode"
@@ -2194,7 +2222,7 @@
 		"MagicalResistance"						"32"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"captain"
 		"Ability2"								"scream_of_pain"
@@ -2258,7 +2286,7 @@
 		"MagicalResistance"						"32"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Creature"
 		{
@@ -2315,7 +2343,7 @@
 		"MagicalResistance"						"30"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"angry_water"
 		"Ability2"								"water_blade"
@@ -2392,12 +2420,12 @@
 		"MagicalResistance"						"50"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
-		"Ability1"								"soulsteal"
-		"Ability2"								"heartstop"
-		"Ability3"								"death_change"
-		"Ability4"								"death"
+		"Ability1"								"hades_1"
+		"Ability2"								"hades_2"
+		"Ability3"								"hades_3"
+		"Ability4"								"hades_4"
 		"Ability5"								"boss_clear"
 		"Ability6"								"boss_blink"
 		"Ability7"								"boss"
@@ -2457,7 +2485,7 @@
 		"MagicalResistance"						"60"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"lightning_attack"
 		"Ability2"								"lightning_crash"
@@ -2520,7 +2548,7 @@
 		"MagicalResistance"						"60"
 		"CombatClassAttack"						"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"						"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"ConsideredHero"						"1"
+		"ConsideredHero"						"0"
 		"IsAncient"								"1"
 		"Ability1"								"lightning_attack"
 		"Ability2"								"lightning_crash"

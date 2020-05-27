@@ -30,6 +30,7 @@
 						<Label id="PaymentFaildLabel" class="PaymentResult" text="二维码过期" />
 					</Panel>
 				</DOTAHTMLPanel>
+				<Label id="ShowBrowser" text="二维码无法显示？点击这里" />
 				<Label id="OrderID" text="订单：{s:orderid}" />
 				<Panel id="PaymentAddition">
 					<Button id="Addition_0" class="PaymentAdditionButton" onactivate="UpdateTicketsAmount(10)">

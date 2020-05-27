@@ -61,6 +61,12 @@ function GuardingAthena:OnEntityKilled( event )
 				GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
 			end)
 			HeroState:SendFinallyData()
+			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
+				if IsValid(hPlayer) then
+					Service:GameReward(iPlayerID, false)
+				end
+			end)
 		end
 	end
 	if self.final_boss then
@@ -72,7 +78,7 @@ function GuardingAthena:OnEntityKilled( event )
 					GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 						local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 						if IsValid(hPlayer) then
-							Service:GameReward(iPlayerID)
+							Service:GameReward(iPlayerID, true)
 						end
 					end)
 				end
@@ -214,7 +220,7 @@ function GuardingAthena:OnEntityKilled( event )
 		GuardingAthena.iapetos = nil
 		local caller = killedUnit.caller
 		local hRelay = Entities:FindByName( nil, "gate_demon_relay" )
-		hRelay:Trigger()
+		hRelay:Trigger(hRelay,caller)
 		-- 转生许可
 		caller.kill_iapetos = true
 		caller.limitRegion = nil
@@ -412,6 +418,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			heroEntity:RemoveItem(tpScroll)
 		end
 	end
+	heroEntity:AddNewModifier(heroEntity, nil, "modifier_no_health_bar", nil)
 	local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS )
 	courier.bag = {}
 	courier:SetOwner(heroEntity:GetPlayerOwner())
@@ -469,6 +476,11 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end
 	end)
+	
+
+	if Service:IsVipPlayer(playerID) then
+		CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
+	end
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)

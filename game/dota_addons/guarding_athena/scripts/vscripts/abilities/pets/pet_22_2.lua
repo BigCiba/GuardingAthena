@@ -25,7 +25,7 @@ end
 function modifier_pet_22_2:OnIntervalThink()
 	local hCaster = self:GetCaster()
 	local hMaster = hCaster:GetMaster()
-	local iGold = RandomInt(10, 20)
+	local iGold = RandomInt(20, 80) * (Spawner.gameRound or 1)
 	hMaster:ModifyGold(iGold, true, 0)
 	SendOverheadEventMessage(self:GetParent():GetPlayerOwner(), OVERHEAD_ALERT_GOLD, self:GetParent():GetMaster(), iGold, self:GetParent():GetPlayerOwner())
 	self:GetParent():EmitSound("ui.comp_coins_tick")

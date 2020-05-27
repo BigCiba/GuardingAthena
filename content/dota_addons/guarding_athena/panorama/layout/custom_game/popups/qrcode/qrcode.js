@@ -21,6 +21,9 @@ function OnShowQrcode(data) {
 	$("#PaymentQrcode").SetURL("https://pay.bearsoftware.net.cn/get_code_image_show_image?url=" + data.qrcode);
 	$("#RealPrice").SetDialogVariable("price", String(Number(data.price).toFixed(2)));
 	$("#OrderID").SetDialogVariable("orderid", data.orderid);
+	$("#ShowBrowser").SetPanelEvent("onactivate", function() {
+		$.DispatchEvent("ExternalBrowserGoToURL", "https://pay.bearsoftware.net.cn/get_code_image_show_image?url=" + data.qrcode);
+	});
 	if (data.istype == 1) {
 		$("#PaymentIcon").AddClass("Alipay");
 	} else if (data.istype == 2) {

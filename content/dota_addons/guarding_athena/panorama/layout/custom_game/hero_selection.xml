@@ -49,7 +49,8 @@
 		</snippet>
 	</snippets>
 	<Panel class="heroSelectionRoot" hittest="false">
-		<DOTAScenePanel hittest="false" class="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/>
+		<!-- <DOTAScenePanel hittest="false" class="HeroSelectionBackgroundScene" map="backgrounds/dashboard_test.vmap" camera="shot_cameraC"/> -->
+		<MoviePanel id="BackgroundImage" class="HeroSelectionBackgroundScene" src="file://{resources}/videos/ti10_aegis_frontpage.webm" repeat="true" autoplay="onload"  />
 		<!-- 载入等待 -->
 		<Panel id="Waiting">
 			<Panel id="WaitingSpinner" hittest="false" />

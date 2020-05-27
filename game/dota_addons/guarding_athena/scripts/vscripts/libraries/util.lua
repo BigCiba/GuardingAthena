@@ -277,7 +277,7 @@ function CreateTrackingProjectile( ... )
 end
 -- 创建跟踪投射物
 function CreateLinearProjectile( ... )
-	local caster,ability,particleName,spawnOrigin,radius,distance,direction,speed,deleteOnHit = ...
+	local caster,ability,particleName,spawnOrigin,radius,distance,direction,speed,deleteOnHit,ExtraData = ...
 	local projID = ProjectileManager:CreateLinearProjectile( {
 	        Ability             = ability,
 	        EffectName          = particleName,
@@ -292,7 +292,8 @@ function CreateLinearProjectile( ... )
 	        fExpireTime         = GameRules:GetGameTime() + distance / speed,
 	        bDeleteOnHit        = deleteOnHit,
 	        vVelocity           = direction * speed,
-	        bProvidesVision     = false,
+			bProvidesVision     = false,
+			ExtraData 			= ExtraData
 	    } )
 	return projID
 end

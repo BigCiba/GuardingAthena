@@ -1,0 +1,42 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
+		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
+		<!-- <include src="s2r://panorama/styles/hud/dota_hud_xp.vcss_c" /> -->
+
+		<include src="file://{resources}/styles/custom_game/overhead.css" />
+	</styles>
+
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
+		<include src="file://{resources}/scripts/custom_game/common.js" />
+
+		<include src="file://{resources}/scripts/custom_game/overhead.js" />
+	</scripts>
+	<snippets>
+		<snippet name="Overhead">
+			<Panel class="Overhead" hittest="false" >
+				<Panel id="StatusBar">
+					<DOTAHeroImage id="HeroImage" heroimagestyle="icon" />
+					<Panel id="Bar">
+						<Panel id="HealthBar">
+							<ProgressBar id="HealthProgress" />
+						</Panel>
+						<Panel id="ManaBar">
+							<ProgressBar id="ManaProgress" />
+						</Panel>
+					</Panel>
+					<Panel id="LevelInfo">
+						<Label id="LevelLabel" />
+					</Panel>
+				</Panel>
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="overheadRoot" hittest="false" hittestchildren="false">
+		<Panel id="OverheadContainer" hittest="false">
+		</Panel>
+	</Panel>
+</root>

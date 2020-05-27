@@ -32,6 +32,7 @@ end
 function modifier_omniknight_3:OnCreated(params)
 	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
 	self.bonus_str = self:GetAbilitySpecialValueFor("bonus_str")
+	self.bonus_str_pct = self:GetAbilitySpecialValueFor("bonus_str_pct")
 	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
 	self.tooltip = 0
 	if IsServer() then
@@ -40,6 +41,7 @@ end
 function modifier_omniknight_3:OnRefresh(params)
 	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
 	self.bonus_str = self:GetAbilitySpecialValueFor("bonus_str")
+	self.bonus_str_pct = self:GetAbilitySpecialValueFor("bonus_str_pct")
 	self.attack_count = self:GetAbilitySpecialValueFor("attack_count")
 	if IsServer() then
 	end
@@ -71,7 +73,7 @@ function modifier_omniknight_3:OnStackCountChanged(iStackCount)
 	end
 end
 function modifier_omniknight_3:GetModifierBonusStats_Strength()
-	return self.bonus_str
+	return self.bonus_str + self:GetParent():GetBaseStrength() * self.bonus_str_pct * 0.01
 end
 function modifier_omniknight_3:GetModifierAttackSpeedBonus_Constant()
 	return self.bonus_attackspeed

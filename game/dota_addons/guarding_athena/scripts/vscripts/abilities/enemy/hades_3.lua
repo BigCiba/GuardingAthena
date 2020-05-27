@@ -1,20 +1,20 @@
-LinkLuaModifier( "modifier_death_change", "abilities/enemy/death_change.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_death_change_stun", "abilities/enemy/death_change.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_hades_3", "abilities/enemy/hades_3.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_hades_3_stun", "abilities/enemy/hades_3.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-if death_change == nil then
-	death_change = class({})
+if hades_3 == nil then
+	hades_3 = class({})
 end
-function death_change:OnSpellStart()
+function hades_3:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
-	hTarget:AddNewModifier(hCaster, self, "modifier_death_change", {duration = self:GetDuration()})
+	hTarget:AddNewModifier(hCaster, self, "modifier_hades_3", {duration = self:GetDuration()})
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_death_change == nil then
-	modifier_death_change = class({})
+if modifier_hades_3 == nil then
+	modifier_hades_3 = class({})
 end
-function modifier_death_change:OnCreated(params)
+function modifier_hades_3:OnCreated(params)
 	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
 	if IsServer() then
 	else
@@ -35,50 +35,50 @@ function modifier_death_change:OnCreated(params)
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_DEATH, self, nil, self:GetCaster())
 end
-function modifier_death_change:OnRefresh(params)
+function modifier_hades_3:OnRefresh(params)
 	if IsServer() then
 	end
 end
-function modifier_death_change:OnDestroy()
+function modifier_hades_3:OnDestroy()
 	if IsServer() then
 	end
 	RemoveModifierEvents(MODIFIER_EVENT_ON_DEATH, self, nil, self:GetCaster())
 end
-function modifier_death_change:OnDeath(params)
+function modifier_hades_3:OnDeath(params)
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		if params.unit == hCaster then
 			local hParent = self:GetParent()
 			local hAbility = self:GetAbility()
 			if not hParent:IsMagicImmune() and not hParent:IsInvulnerable() then
-				hParent:AddNewModifier(hCaster, hAbility, "modifier_death_change_stun", {duration = self.stun_duration})
+				hParent:AddNewModifier(hCaster, hAbility, "modifier_hades_3_stun", {duration = self.stun_duration})
 			end
 			hCaster:RespawnUnit()
-			hCaster:AddNewModifier(hCaster, hAbility, "modifier_death_change_stun", {duration = self.stun_duration})
+			hCaster:AddNewModifier(hCaster, hAbility, "modifier_hades_3_stun", {duration = self.stun_duration})
 			hCaster:EmitSound("Hero_Abaddon.BorrowedTime")
 		end
 	end
 end
-function modifier_death_change:CheckState()
+function modifier_hades_3:CheckState()
 	return {
 		[MODIFIER_STATE_ROOTED] = true,
 	}
 end
 ---------------------------------------------------------------------
-if modifier_death_change_stun == nil then
-	modifier_death_change_stun = class({}, nil, ModifierBasic)
+if modifier_hades_3_stun == nil then
+	modifier_hades_3_stun = class({}, nil, ModifierBasic)
 end
-function modifier_death_change_stun:IsDebuff()
+function modifier_hades_3_stun:IsDebuff()
 	return not self:GetParent():IsFriendly(self:GetCaster())
 end
-function modifier_death_change_stun:OnCreated(params)
+function modifier_hades_3_stun:OnCreated(params)
 	if IsServer() then
 	else
-		local iParticleID = ParticleManager:CreateParticle("particles/units/wave_26/death_change.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+		local iParticleID = ParticleManager:CreateParticle("particles/units/wave_26/hades_3.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
-function modifier_death_change_stun:OnDestroy()
+function modifier_hades_3_stun:OnDestroy()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local hParent = self:GetParent()
@@ -91,7 +91,7 @@ function modifier_death_change_stun:OnDestroy()
 		end
 	end
 end
-function modifier_death_change_stun:CheckState()
+function modifier_hades_3_stun:CheckState()
 	return {
 		[MODIFIER_STATE_STUNNED] = true,
 	}

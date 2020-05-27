@@ -73,6 +73,10 @@ function Pet:constructor(sName, hOwner)
 		local hAbility = hUnit:GetAbilityByIndex(i)
 		if IsValid(hAbility) then
 			hAbility:SetLevel(iLevel)
+			if not hAbility:IsPassive() then
+				hAbility:ToggleAutoCast()
+			end
+			
 		end
 	end
 	-- ambient

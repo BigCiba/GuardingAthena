@@ -1,5 +1,5 @@
 LinkLuaModifier("modifier_essence", "abilities/items/essence/essence.lua", LUA_MODIFIER_MOTION_NONE)
-
+-- 精髓
 if item_essence == nil then
 	item_essence = class({})
 end
@@ -51,4 +51,18 @@ function item_essence:OnSpellStart()
 end
 function item_essence:GetIntrinsicModifierName()
 	return "modifier_essence"
+end
+-- 戒指
+LinkLuaModifier( "modifier_ring", "abilities/items/ring/item_ring.lua", LUA_MODIFIER_MOTION_NONE )
+--Abilities
+if item_ring == nil then
+	item_ring = class({})
+end
+function item_ring:OnSpellStart()
+	local hCaster = self:GetCaster()
+	local sModifierName = "ring_0_"..string.sub(self:GetAbilityName(),11)
+	hCaster:AddNewModifier(hCaster, self, sModifierName, {duration = self:GetDuration()})
+end
+function item_ring:GetIntrinsicModifierName()
+	return "modifier_ring"
 end

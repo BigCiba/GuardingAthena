@@ -16,6 +16,7 @@
 			<Image class="Hidden" src="file://{images}/custom_game/hero/spectre.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/hero/templar_assassin.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/gameplay/potion.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/other/vip.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/pet/default_no_item.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_1.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/pet/pet_2.png" hittest="false" />

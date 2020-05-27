@@ -24,7 +24,8 @@ end
 function modifier_pet_22_3:OnCreated(params)
 	self.distance = self:GetAbilitySpecialValueFor("distance")
 	self.armor = self:GetAbilitySpecialValueFor("armor")
-	self.movespeed = self.distance / self:GetDuration()
+	self.fear_duration = self:GetAbilitySpecialValueFor("fear_duration")
+	self.movespeed = self.distance / self.fear_duration
 
 	if IsServer() then
 		local vPosition = self:GetParent():GetAbsOrigin() + RandomVector(self.distance)
@@ -38,14 +39,16 @@ function modifier_pet_22_3:DeclareFunctions()
 	}
 end
 function modifier_pet_22_3:GetModifierMoveSpeed_Absolute()
-	return self.movespeed
+	if self:GetElapsedTime() < self.fear_duration then
+		return self.movespeed
+	end
 end
 function modifier_pet_22_3:GetModifierPhysicalArmorBonus()
 	return self.armor
 end
 function modifier_pet_22_3:CheckState()
 	return {
-		[MODIFIER_STATE_FEARED] = true,
-		[MODIFIER_STATE_DISARMED] = true
+		[MODIFIER_STATE_FEARED] = (self:GetElapsedTime() < self.fear_duration) and true or false,
+		[MODIFIER_STATE_DISARMED] = (self:GetElapsedTime() < self.fear_duration) and true or false
 	}
 end

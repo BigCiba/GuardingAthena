@@ -310,6 +310,7 @@ function public:ItemAddedToInventoryFilter( keys )
 			local id = tonumber(string.sub(currentItemName,11,12))
 			if type(id) == "number" then
 				table.insert(currentUnit.ringList,id)
+				PlayerData:AddRing(currentUnit:GetPlayerOwnerID(), currentItem)
 			end
 		end
 	elseif currentItemName == "item_athena_momian" then

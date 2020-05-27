@@ -11,5 +11,6 @@
         "courier_attributes",
         "service",
         "common",
+        "player_data",
     ]
 }

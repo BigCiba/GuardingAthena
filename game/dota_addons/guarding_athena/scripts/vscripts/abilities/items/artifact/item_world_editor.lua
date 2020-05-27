@@ -96,6 +96,7 @@ end
 function modifier_item_world_editor_buff:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE,
+		-- MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
 		MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE,
 		MODIFIER_PROPERTY_MODEL_SCALE,
 		MODIFIER_PROPERTY_AVOID_DAMAGE,
@@ -112,14 +113,19 @@ function modifier_item_world_editor_buff:OnCreated(params)
 	self.health = self:GetAbilitySpecialValueFor("health")
 	self.regen = self:GetAbilitySpecialValueFor("regen")
 	self.model_scale = 150
+	if IsServer() then
+	end
 end
 function modifier_item_world_editor_buff:GetAttributes( t )
 	if IsServer() then
 		return MODIFIER_ATTRIBUTE_PERMANENT
 	end
 end
+function modifier_item_world_editor_buff:GetModifierIncomingDamage_Percentage()
+	return -90
+end
 function modifier_item_world_editor_buff:GetModifierExtraHealthPercentage(t)
-	return self.health
+	return (self.health - 1) * 100
 end
 function modifier_item_world_editor_buff:GetModifierHealthRegenPercentage(t)
 	return self.regen

@@ -149,6 +149,7 @@
 	"StoreItemType_hero"			"英雄"
 	"StoreItemType_skin"			"皮肤"
 	"StoreItemType_gameplay"		"道具"
+	"StoreItemType_other"			"其他"
 
 	"Category_inventory"			"我的物品"
 	"Category_all"					"全部"

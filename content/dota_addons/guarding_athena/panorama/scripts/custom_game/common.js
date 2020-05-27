@@ -58,6 +58,24 @@ function ReadAttributeData(data) {
 function GetCourierItemStyle(sCourierName) {
 	return GameUI.PetsKv[sCourierName].ItemStyle || 0;
 }
+function GetHeroesRebornCount(iEntity) {
+	for (let index = 0; index < Entities.GetNumBuffs(iEntity); index++) {
+		const buff = Entities.GetBuff( iEntity, index );
+		if (Buffs.GetName( iEntity, buff ) == "modifier_reborn") {
+			return Buffs.GetStackCount(iEntity, buff)
+		}
+	}
+	return 0
+}
+Entities.HasModifier = function (iEntIndex, sModifierName) {
+	for (let index = 0; index < Entities.GetNumBuffs(iEntIndex); index++) {
+		const buff = Entities.GetBuff( iEntIndex, index );
+		if (Buffs.GetName( iEntIndex, buff ) == sModifierName) {
+			return true;
+		}
+	}
+	return false;
+}
 GameUI.GetPanelCenter = function (Panel) {
 	let Position = GameUI.GetPanelPosition(Panel);
 	return {x: Position.x + Panel.actuallayoutwidth / 2, y: Position.y + Panel.actuallayoutheight / 2};

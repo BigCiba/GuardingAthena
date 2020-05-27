@@ -6,6 +6,7 @@ local public = Mechanics
 local mechanics = {
 	-- require("mechanics/pet"),
 	require("mechanics/hero_demo"),
+	require("mechanics/player_data"),
 }
 
 local classes = {

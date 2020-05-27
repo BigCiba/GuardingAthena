@@ -9,6 +9,7 @@ LinkLuaModifier("modifier_fix_damage", "modifiers/modifier_fix_damage.lua", LUA_
 LinkLuaModifier("modifier_events", "modifiers/modifier_events.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_pet_base", "modifiers/generic/modifier_pet_base.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_nature", "modifiers/generic/modifier_nature.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_no_health_bar", "modifiers/generic/modifier_no_health_bar.lua", LUA_MODIFIER_MOTION_NONE)
 
 if not IsClient() then return end
 

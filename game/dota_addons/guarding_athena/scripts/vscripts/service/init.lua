@@ -311,6 +311,18 @@ function public:IsChecked()
 	return self.bServerChecked
 end
 
+-- 是否有vip
+function public:IsVipPlayer(iPlayerID)
+	local tItemList = self.tPlayerServiceData[iPlayerID]["other"]
+	if tItemList then
+		for _, tItemData in ipairs(tItemList) do
+			if tonumber(tItemData.Equip) == 1 and tItemData.ItemName == "vip" then
+				return true
+			end
+		end
+	end
+	return false
+end
 -- 获取某个类型的已装备物品
 function public:GetEquippedItem(iPlayerID, sType)
 	local tData = {}
@@ -388,15 +400,18 @@ function public:CheckHeroUnlock(iPlayerID, sHeroName)
 	end
 	return false
 end
-function public:GameReward(iPlayerID)
+function public:GameReward(iPlayerID, bWin)
 	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	local Score = bWin and SCORE_REWARD[GameRules:GetCustomGameDifficulty()] or 0
+	local Shard = bWin and SHARD_REWARD[GameRules:GetCustomGameDifficulty()] or self:GetLoseShardReward()
+	local PetXP = bWin and PETXP_REWARD[GameRules:GetCustomGameDifficulty()] or 0
 	local params = {
 		SteamID = SteamID,
-		Score = GameRules:GetCustomGameDifficulty() * 2,
-		Shard = GameRules:GetCustomGameDifficulty() * 20,
+		Score = Score,
+		Shard = Shard,
 		PetData = {
 			PetName = PlayerResource:GetPlayer(iPlayerID):GetAssignedHero():GetPet():GetUnitName(),
-			Exp = GameRules:GetCustomGameDifficulty()
+			Exp = PetXP
 		}
 	}
 	self:HTTPRequest("POST", "GameReward", params, function(iStatusCode, sBody)
@@ -405,11 +420,18 @@ function public:GameReward(iPlayerID)
 		end
 	end, REQUEST_TIME_OUT)
 end
+function public:GetLoseShardReward()
+	if GameRules:GetCustomGameDifficulty() < 4 then
+		return 0
+	else
+		return Spawner.gameRound * (GameRules:GetCustomGameDifficulty() - 2)
+	end
+end
 function public:GetPetExperience(iPlayerID, sItemName)
 	local PetList = self.tPlayerServiceData[iPlayerID]["pet"]
 	for i, PetData in ipairs(PetList) do
 		if PetData.ItemName == sItemName then
-			return tonumber(PetData.Experience)
+			return tonumber(PetData.Experience) or 0
 		end
 	end
 	return 0

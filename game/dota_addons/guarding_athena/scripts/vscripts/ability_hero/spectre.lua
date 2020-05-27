@@ -318,16 +318,17 @@ function OnSpellStart( t )
         local heal = ability:GetSpecialValueFor("heal")
         local damage = ability:GetSpecialValueFor("damage_active") * healthCost
         local damageType = ability:GetAbilityDamageType()
-        RemoveHealth(caster,healthCost)
+        caster:ModifyHealth(caster:GetHealth() - healthCost, ability, false, 0)
+        -- RemoveHealth(caster,healthCost)
         --[[ability.no_damage_filter = true
         CauseDamage(caster,caster,healthCost,DAMAGE_TYPE_PURE,ability)
         ability.no_damage_filter = nil]]
         -- damage max
-        local ability_3 = caster:GetAbilityByIndex(3)
-        if ability_3:GetLevel() > 0 then
-            ability_3.damageRecorder = caster:GetAbilityByIndex(3).damageRecorder + healthCost
-        end
-        CauseDamage(caster,caster,0,DAMAGE_TYPE_PURE,ability)
+        -- local ability_3 = caster:GetAbilityByIndex(3)
+        -- if ability_3:GetLevel() > 0 then
+        --     ability_3.damageRecorder = caster:GetAbilityByIndex(3).damageRecorder + healthCost
+        -- end
+        -- CauseDamage(caster,caster,0,DAMAGE_TYPE_PURE,ability)
         CreateParticle("particles/heroes/spectre/spectre_2_tentacle.vpcf",PATTACH_ABSORIGIN,caster,0.5)
         -- shock
         local unitGroup = GetUnitsInRadius(caster,ability,caster:GetAbsOrigin(),radius)

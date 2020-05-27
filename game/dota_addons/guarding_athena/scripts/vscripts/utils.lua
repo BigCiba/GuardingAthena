@@ -409,7 +409,7 @@ if IsClient() then
 		return self.b_wave_tage
 	end
 	function C_DOTA_BaseNPC:GetRebornTimes()
-		return self:HasModifier("modifier_reborn") and self:FindModifierByName("modifier_reborn"):GetStackCount() or 0
+		return self:HasModifier("modifier_reborn") and self:GetModifierStackCount("modifier_reborn", self) or 0
 	end
 	function C_DOTA_BaseNPC:GetScepterLevel()
 		return (self:HasModifier("modifier_reborn") and self:HasScepter()) and self:GetRebornTimes() or 0
@@ -610,4 +610,10 @@ end
 function GetRespawnPosition()
 	local tEnt = Entities:FindAllByClassname("info_player_start_goodguys")
 	return tEnt[1]:GetAbsOrigin()
+end
+function GetDayTime()
+	local flTime = GameRules:GetTimeOfDay()
+	local iHour, iMin = math.modf(flTime/ (1 / 24))
+	iMin = iMin * 60
+	return iHour, iMin
 end

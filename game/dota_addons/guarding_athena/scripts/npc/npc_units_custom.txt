@@ -572,7 +572,9 @@
 		"StatusStartingMana"	"1000"
 		"AttackDamageMin"	"10"
 		"AttackDamageMax"	"10"
+		"AttackAnimationPoint"		"0.300000"
 		"AttackRate"	"1.4"
+		"BaseAttackSpeed"						"50"
 		"AttackRange"	"125"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
@@ -2265,7 +2267,7 @@
 		"ModelScale" 				"1"
 		"Level"						"1"
 		"IsAncient"					"1"
-		"ConsideredHero"			"1"
+		"ConsideredHero"			"0"
 		// "RunAIWhenControllableByPlayer" "1"
 	
 		

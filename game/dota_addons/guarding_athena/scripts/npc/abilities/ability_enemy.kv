@@ -492,15 +492,16 @@
 			}
 		}
 	}
-	"fur_dance"
+	"elite_28_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/fur_dance"
+		"ScriptFile"							"abilities/enemy/elite_28_1"
 		"AbilityTextureName"					"furion_wrath_of_nature"
 		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_TAUNT"
 		"AbilityCooldown"						"20"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityDuration"						"7.2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -508,10 +509,31 @@
 				"var_type"						"FIELD_INTEGER"
 				"regen"							"20 40 60 80 100"
 			}
-			"02"
+		}
+	}
+	"elite_28_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/elite_28_2"
+		"AbilityTextureName"					"furion_teleportation"
+		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"10"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySpecial"
+		{
+			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"duration"						"5 6 7 8 9"
+				"count"							"8"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"delay"							"2.5"
 			}
 		}
 	}
@@ -718,22 +740,31 @@
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/poison_sting"
 		"AbilityTextureName"					"venomancer_poison_sting"
-		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastRange"						"900"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"10"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityDamage"							"20000 40000 60000 80000 100000"
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"20000 40000 60000 80000 100000"
+				"duration"						"6"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"duration"						"6 6 6 6 6"
+				"movespeed"						"-500"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"600"
 			}
 		}
 	}
@@ -1091,10 +1122,10 @@
 			}
 		}
 	}
-	"heartstop"
+	"hades_2"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/heartstop"
+		"ScriptFile"							"abilities/enemy/hades_2"
 		"AbilityTextureName"					"necrolyte_heartstopper_aura"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -1177,10 +1208,10 @@
 			}
 		}
 	}
-	"soulsteal"
+	"hades_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/soulsteal"
+		"ScriptFile"							"abilities/enemy/hades_1"
 		"AbilityTextureName"					"necrolyte_death_pulse"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
@@ -1211,10 +1242,10 @@
 			}
 		}
 	}
-	"death_change"
+	"hades_3"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/death_change"
+		"ScriptFile"							"abilities/enemy/hades_3"
 		"AbilityTextureName"					"necrolyte_sadist"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
@@ -1234,10 +1265,10 @@
 			}
 		}
 	}
-	"death"
+	"hades_4"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/death"
+		"ScriptFile"							"abilities/enemy/hades_4"
 		"AbilityTextureName"					"necrolyte_reapers_scythe"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
@@ -2163,6 +2194,101 @@
 			{
 				"var_type"						"FIELD_FLOAT"
 				"duration"						"2.0 2.5 3.0 3.5 4.0"
+			}
+		}
+	}
+	"boss"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/boss"
+		"AbilityTextureName"					"monkey_king_wukongs_command_ti9"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityDuration"						"5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_limit"					"30"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_reduce"					"70 75 80 85 90"
+			}
+		}
+	}
+	"captain"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/captain"
+		"AbilityTextureName"					"blue_dragonspawn_overseer_devotion_aura"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityDuration"						"5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_limit"					"60"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_reduce"					"70 75 80 85 90"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_chance"					"25"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_mult"						"200 300 400 500 600"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_regen_pct"				"1"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"-50"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attackspeed"					"20 40 60 80 100"
+			}
+		}
+	}
+	"elite"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/elite"
+		"AbilityTextureName"					"life_stealer_rage_immortal"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_regen_pct"				"1"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"-50"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attackspeed"					"20 40 60 80 100"
 			}
 		}
 	}

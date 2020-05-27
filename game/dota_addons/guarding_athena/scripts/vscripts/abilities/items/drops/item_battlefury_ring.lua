@@ -124,7 +124,7 @@ function modifier_item_battlefury_ring_attack:OnCreated(params)
 		self:StartIntervalThink(0)
 	end
 end
-function modifier_item_battlefury_ring_attack  :OnRefresh(params)
+function modifier_item_battlefury_ring_attack:OnRefresh(params)
 	if IsServer() then
 		table.insert(self.tDatas, {
 			iCount = params.bonus_attack,
@@ -137,8 +137,8 @@ function modifier_item_battlefury_ring_attack:OnIntervalThink()
 	local fGameTime = GameRules:GetGameTime()
 	for i = #self.tDatas, 1, -1 do
 		if fGameTime >= self.tDatas[i].flDieTime then
-			table.remove(self.tDatas, i)
 			self:SetStackCount(self:GetStackCount() - self.tDatas[i].iCount)
+			table.remove(self.tDatas, i)
 		end
 	end
 end

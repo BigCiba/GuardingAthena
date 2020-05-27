@@ -3,3 +3,4 @@ backup/
 *.exe
 *.bin
 *.vsnd_c
+~$*.*
