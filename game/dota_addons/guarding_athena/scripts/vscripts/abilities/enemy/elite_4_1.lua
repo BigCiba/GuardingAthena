@@ -1,8 +1,8 @@
 --Abilities
-if beast_beat == nil then
-	beast_beat = class({})
+if elite_4_1 == nil then
+	elite_4_1 = class({})
 end
-function beast_beat:OnSpellStart()
+function elite_4_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
 	local flDamage = self:GetAbilityDamage()

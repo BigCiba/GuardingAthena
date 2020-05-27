@@ -1,9 +1,31 @@
 "KeyValue"
 {
-	"water_shield"
+	"elite_4_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/water_shield"
+		"ScriptFile"							"abilities/enemy/elite_4_1"
+		"AbilityTextureName"					"polar_furbolg_ursa_warrior_thunder_clap"
+		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"						"300"
+		"AbilityCastPoint"						"0.5"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"60"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityDuration"						"0.5"
+		"AbilityDamage"							"600 1200 1800 2400 3000"
+		"AbilitySpecial"
+		{
+		}
+	}
+	"wave_5_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/wave_5_1"
 		"AbilityTextureName"					"morphling_morph_replicate"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
@@ -30,10 +52,10 @@
 			}
 		}
 	}
-	"water_damage"
+	"wave_5_2"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/water_damage"
+		"ScriptFile"							"abilities/enemy/wave_5_2"
 		"AbilityTextureName"					"water_damage"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
@@ -55,32 +77,10 @@
 			}
 		}
 	}
-	"beast_beat"
+	"wave_7_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/beast_beat"
-		"AbilityTextureName"					"polar_furbolg_ursa_warrior_thunder_clap"
-		"MaxLevel"								"5"
-		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCastRange"						"300"
-		"AbilityCastPoint"						"0.5"
-		"AbilityCooldown"						"8"
-		"AbilityManaCost"						"60"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityDuration"						"0.5"
-		"AbilityDamage"							"600 1200 1800 2400 3000"
-		"AbilitySpecial"
-		{
-		}
-	}
-	"lightning_chain"
-	{
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/lightning_chain"
+		"ScriptFile"							"abilities/enemy/wave_7_1"
 		"AbilityTextureName"					"wisp_tether"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
@@ -97,10 +97,10 @@
 		{
 		}
 	}
-	"hex"
+	"elite_7_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/hex"
+		"ScriptFile"							"abilities/enemy/elite_7_1"
 		"AbilityTextureName"					"shadow_shaman_voodoo"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
@@ -123,10 +123,10 @@
 			}
 		}
 	}
-	"shadow_word"
+	"elite_7_2"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/shadow_word"
+		"ScriptFile"							"abilities/enemy/elite_7_2"
 		"AbilityTextureName"					"warlock_shadow_word"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
@@ -156,38 +156,10 @@
 			}
 		}
 	}
-	"fatal_bonds"
+	"elite_7_3"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/fatal_bonds"
-		"AbilityTextureName"					"warlock_fatal_bonds"
-		"MaxLevel"								"5"
-		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCastRange"						"600"
-		"AbilityCooldown"						"24"
-		"AbilityManaCost"						"100"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"900"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"12"
-			}
-		}
-	}
-	"upheaval"
-	{
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/upheaval"
+		"ScriptFile"							"abilities/enemy/elite_7_3"
 		"AbilityTextureName"					"warlock_upheaval"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
@@ -214,10 +186,10 @@
 			}
 		}
 	}
-	"rain_of_chaos"
+	"elite_7_4"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/rain_of_chaos"
+		"ScriptFile"							"abilities/enemy/elite_7_4"
 		"AbilityTextureName"					"invoker_chaos_meteor"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"								"5"
@@ -537,15 +509,16 @@
 			}
 		}
 	}
-	"siling_attack"
+	"wave_30_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/siling_attack"
+		"ScriptFile"							"abilities/enemy/wave_30_1"
 		"AbilityTextureName"					"necronomicon_warrior_mana_burn"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
 		"AbilitySpecial"
 		{
 			"01"
@@ -555,10 +528,10 @@
 			}
 		}
 	}
-	"siling_speed"
+	"wave_30_2"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/siling_speed"
+		"ScriptFile"							"abilities/enemy/wave_30_2"
 		"AbilityTextureName"					"necronomicon_warrior_sight"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -574,13 +547,58 @@
 				"var_type"						"FIELD_INTEGER"
 				"movespeed"						"5 10 15 20 25"
 			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"trigger_pct"					"5"
+			}
 		}
 	}
-	"siling_death"
+	"wave_30_3"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/siling_death"
+		"ScriptFile"							"abilities/enemy/wave_30_3"
 		"AbilityTextureName"					"necronomicon_warrior_last_will"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityDamage"							"15000 30000 45000 60000 75000"
+		"AbilitySpecial"
+		{
+		}
+	}
+	"elite_30_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/elite_30_1"
+		"AbilityTextureName"					"nyx_assassin_mana_burn"
+		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"						"700"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"12 11 10 9 6"
+		"AbilityManaCost"						"0"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_pct"					"20 40 60 80 100"
+			}
+		}
+	}
+	"elite_30_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/elite_30_2"
+		"AbilityTextureName"					"necronomicon_archer_mana_burn"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -591,7 +609,30 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"15000 30000 45000 60000 75000"
+				"health_reduce"					"1000 2000 3000 4000 5000"
+			}
+		}
+	}
+	"elite_30_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/elite_30_3"
+		"AbilityTextureName"					"necronomicon_archer_aoe"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"900"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack"					"15 20 25 30 35"
 			}
 		}
 	}
@@ -793,36 +834,6 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"duration"						"60 60 60 60 60"
-			}
-		}
-	}
-	"mana_burn"
-	{
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/mana_burn"
-		"AbilityTextureName"					"nyx_assassin_mana_burn"
-		"MaxLevel"								"5"
-		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCastRange"						"700"
-		"AbilityCastPoint"						"0.3"
-		"AbilityCooldown"						"16 15 14 13 12"
-		"AbilityManaCost"						"0"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"mana"							"2 3 4 5 6"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cooldown"						"16 15 14 13 12"
 			}
 		}
 	}
@@ -1122,45 +1133,6 @@
 			}
 		}
 	}
-	"hades_2"
-	{
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/hades_2"
-		"AbilityTextureName"					"necrolyte_heartstopper_aura"
-		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"percent"						"1 1.5 2 2.5 3 "
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"regen_reduce"					"60 70 80 90 100"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"interval"						"0.25"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"3 4 5 6 7"
-			}
-			"05"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"1200"
-			}
-		}
-	}
 	"boss_clear"
 	{
 		"BaseClass"								"ability_lua"
@@ -1239,6 +1211,45 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"speed"							"400"
+			}
+		}
+	}
+	"hades_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/hades_2"
+		"AbilityTextureName"					"necrolyte_heartstopper_aura"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"percent"						"1 1.5 2 2.5 3 "
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"regen_reduce"					"60 70 80 90 100"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.25"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"3 4 5 6 7"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"1200"
 			}
 		}
 	}
@@ -1876,25 +1887,6 @@
 		{
 		}
 	}
-	"death_arrow"
-	{
-		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/death_arrow"
-		"AbilityTextureName"					"necronomicon_archer_mana_burn"
-		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"10"
-			}
-		}
-	}
 	"storm_bolt"
 	{
 		"BaseClass"								"ability_lua"
@@ -1912,7 +1904,6 @@
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityDamage"							"6000 12000 18000 24000 48000"
-		"AOERadius"								"%bolt_aoe"
 		"AbilitySpecial"
 		{
 			"01"
@@ -2182,7 +2173,6 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityDuration"						"3.0 4.0 5.0 6.0"
-		"AOERadius"								"%radius"
 		"AbilitySpecial"
 		{
 			"01"

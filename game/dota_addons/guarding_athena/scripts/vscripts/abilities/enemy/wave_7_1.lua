@@ -1,8 +1,8 @@
 --Abilities
-if lightning_chain == nil then
-	lightning_chain = class({})
+if wave_7_1 == nil then
+	wave_7_1 = class({})
 end
-function lightning_chain:OnSpellStart()
+function wave_7_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
 	local flDamage = self:GetAbilityDamage()

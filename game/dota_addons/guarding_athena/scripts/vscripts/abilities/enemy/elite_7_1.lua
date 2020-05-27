@@ -1,9 +1,9 @@
-LinkLuaModifier( "modifier_hex", "abilities/enemy/hex.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_elite_7_1", "abilities/enemy/elite_7_1.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-if hex == nil then
-	hex = class({})
+if elite_7_1 == nil then
+	elite_7_1 = class({})
 end
-function hex:OnSpellStart()
+function elite_7_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local fDuration = self:GetDuration()
 
@@ -11,25 +11,25 @@ function hex:OnSpellStart()
 	if hTarget:TriggerSpellAbsorb(self) then
 		return
 	end
-	hTarget:AddNewModifier(hCaster, self, "modifier_hex", {duration = fDuration * hTarget:GetStatusResistanceFactor()})
+	hTarget:AddNewModifier(hCaster, self, "modifier_elite_7_1", {duration = fDuration * hTarget:GetStatusResistanceFactor()})
 
 	hCaster:EmitSound("Hero_Lion.Voodoo")
 end
 ---------------------------------------------------------------------
 -- Modifiers
-if modifier_hex == nil then
-	modifier_hex = class({}, nil, ModifierDebuff)
+if modifier_elite_7_1 == nil then
+	modifier_elite_7_1 = class({}, nil, ModifierDebuff)
 end
-function modifier_hex:IsPurgable()
+function modifier_elite_7_1:IsPurgable()
 	return false
 end
-function modifier_hex:IsPurgeException()
+function modifier_elite_7_1:IsPurgeException()
 	return true
 end
-function modifier_hex:IsHexDebuff()
+function modifier_elite_7_1:Iselite_7_1Debuff()
 	return true
 end
-function modifier_hex:OnCreated(params)
+function modifier_elite_7_1:OnCreated(params)
 	self.fMoveSpeed = self:GetAbilitySpecialValueFor("movespeed")
 
 	if not IsServer() then return end
@@ -42,44 +42,44 @@ function modifier_hex:OnCreated(params)
 
 	self:PlayEffects(true)
 end
-function modifier_hex:OnRefresh(params)
+function modifier_elite_7_1:OnRefresh(params)
 	self.fMoveSpeed = self:GetAbilitySpecialValueFor("movespeed")
 
 	if not IsServer() then return end
 	self:GetParent():StartGesture(ACT_DOTA_SPAWN)
 	self:PlayEffects(true)
 end
-function modifier_hex:OnDestroy(params)
+function modifier_elite_7_1:OnDestroy(params)
 	if not IsServer() then return end
 
 	self:GetParent():FadeGesture(ACT_DOTA_SPAWN)
 	self:PlayEffects(false)
 end
-function modifier_hex:DeclareFunctions()
+function modifier_elite_7_1:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE,
 		MODIFIER_PROPERTY_MODEL_CHANGE,
 	}
 end
-function modifier_hex:GetModifierMoveSpeedOverride()
+function modifier_elite_7_1:GetModifierMoveSpeedOverride()
 	return self.fMoveSpeed
 end
-function modifier_hex:GetModifierModelChange()
+function modifier_elite_7_1:GetModifierModelChange()
 	return "models/props_gameplay/frog.vmdl"
 end
-function modifier_hex:CheckState()
+function modifier_elite_7_1:CheckState()
 	return {
-		[MODIFIER_STATE_HEXED] = true,
+		[MODIFIER_STATE_elite_7_1ED] = true,
 		[MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_SILENCED] = true,
 		[MODIFIER_STATE_MUTED] = true,
 	}
 end
-function modifier_hex:PlayEffects(bStart)
+function modifier_elite_7_1:PlayEffects(bStart)
 	local iParticle = ParticleManager:CreateParticle(ParticleManager:GetParticleReplacement("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf", self:GetCaster()), PATTACH_ABSORIGIN, self:GetParent())
 	ParticleManager:ReleaseParticleIndex(iParticle)
 
 	if bStart then
-		EmitSoundOnLocationWithCaster(self:GetParent():GetAbsOrigin(), "Hero_Lion.Hex.Target", self:GetCaster())
+		EmitSoundOnLocationWithCaster(self:GetParent():GetAbsOrigin(), "Hero_Lion.elite_7_1.Target", self:GetCaster())
 	end
 end

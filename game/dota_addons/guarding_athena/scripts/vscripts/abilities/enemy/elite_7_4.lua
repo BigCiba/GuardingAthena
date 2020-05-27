@@ -1,19 +1,19 @@
-LinkLuaModifier( "modifier_rain_of_chaos", "abilities/enemy/rain_of_chaos.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_elite_7_4", "abilities/enemy/elite_7_4.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-if rain_of_chaos == nil then
-	rain_of_chaos = class({})
+if elite_7_4 == nil then
+	elite_7_4 = class({})
 end
-function rain_of_chaos:OnSpellStart()
+function elite_7_4:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
-	CreateModifierThinker(hCaster, self, "modifier_rain_of_chaos", {duration = self:GetSpecialValueFor("delay")}, vPosition, hCaster:GetTeamNumber(), false)
+	CreateModifierThinker(hCaster, self, "modifier_elite_7_4", {duration = self:GetSpecialValueFor("delay")}, vPosition, hCaster:GetTeamNumber(), false)
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_rain_of_chaos == nil then
-	modifier_rain_of_chaos = class({}, nil, ModifierThinker)
+if modifier_elite_7_4 == nil then
+	modifier_elite_7_4 = class({}, nil, ModifierThinker)
 end
-function modifier_rain_of_chaos:OnCreated(params)
+function modifier_elite_7_4:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	if IsServer() then
 		self:GetParent():EmitSound("Hero_Invoker.ChaosMeteor.Loop")
@@ -25,12 +25,12 @@ function modifier_rain_of_chaos:OnCreated(params)
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
-function modifier_rain_of_chaos:OnRefresh(params)
+function modifier_elite_7_4:OnRefresh(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	if IsServer() then
 	end
 end
-function modifier_rain_of_chaos:OnDestroy()
+function modifier_elite_7_4:OnDestroy()
 	if IsServer() then
 		self:GetParent():StopSound("Hero_Invoker.ChaosMeteor.Loop")
 		EmitSoundOnLocationWithCaster(self:GetParent():GetAbsOrigin(), "Hero_Warlock.RainOfChaos_buildup", self:GetCaster())
@@ -46,7 +46,7 @@ function modifier_rain_of_chaos:OnDestroy()
 		end
 	end
 end
-function modifier_rain_of_chaos:DeclareFunctions()
+function modifier_elite_7_4:DeclareFunctions()
 	return {
 	}
 end
