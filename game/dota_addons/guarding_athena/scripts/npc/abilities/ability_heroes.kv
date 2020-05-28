@@ -289,12 +289,12 @@
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"palsy_attackspeed"				"-80 -100 -120 -140 -160 -180 -200 -220"
+				"palsy_attackspeed"				"-1200"
 			}
 			"06"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"palsy_movespeed"				"-120 -135 -150 -165 -180 -195 -210 -225"
+				"palsy_movespeed"				"-1380"
 			}
 			"07"
 			{
@@ -1704,8 +1704,8 @@
 			}
 			"03"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"input_damage"					"-27.5 -30 -32.5 -35 -37.5 -40 -42.5 -45 -47.5 -50 -52.5 -55 -57.5 -60 -62.5 -65 -67.5 -70 -72.5 -75"
+				"var_type"						"FIELD_INTEGER"
+				"input_damage"					"-1025"
 			}
 			"04"
 			{
@@ -1867,6 +1867,236 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"width"							"225"
+			}
+		}
+	}
+	"nevermore_0"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/nevermore/nevermore_0"
+		"AbilityTextureName"					"fractured_soul"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"1"
+		"AbilityCooldown"						"1"
+		"IgnoreCooldownReduction"				"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"250"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"5"
+			}
+		}
+	}
+	"nevermore_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/nevermore/nevermore_1"
+		"AbilityTextureName"					"destory_hit"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_RAZE_2"
+		"AbilityCastPoint"						"0.55"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shadowraze_radius"				"300"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shadowraze_count"				"3"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shadowraze_range"				"300 600 900"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"reduce_damage"					"30"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stack_reduce_damage"			"10"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"8"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"combo_duration"				"3"
+			}
+		}
+	}
+	"nevermore_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/nevermore/nevermore_2"
+		"AbilityTextureName"					"hell_field"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_RAZE_3"
+		"AbilityCastPoint"						"0.55"
+		"AbilityCooldown"						"45"
+		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_regen_pct"				"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_deepen"					"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"16"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"900"
+			}
+		}
+	}
+	"nevermore_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/nevermore/nevermore_3"
+		"AbilityTextureName"					"infernal_fire"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_per_str"				"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"mana_cost"						"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"active_factor"					"2"
+			}
+		}
+	}
+	"nevermore_4"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/nevermore/nevermore_4"
+		"AbilityTextureName"					"soul_requiem"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_6"
+		"AbilityCastPoint"						"1.67"
+		"AbilityCooldown"						"100"
+		"AbilityManaCost"						"200 300 400 500 600 700 800 900"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"6 12 18 24 30 36"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"soul_count"					"24"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"1200"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"fear_duration"					"3.6"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"line_width_start"				"125"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"line_width_end"				"350"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"line_speed"					"700"
 			}
 		}
 	}
