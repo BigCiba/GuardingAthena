@@ -9,11 +9,11 @@ function nevermore_1:GetCastAnimation()
 	local hModifier = hCaster:FindModifierByName("modifier_nevermore_1")
 	local iStackCount = IsValid(hModifier) and hModifier:GetStackCount() + 1 or 1
 	if iStackCount == 1 then
-		return ACT_DOTA_RAZE_1
+		return ACT_DOTA_RAZE_3
 	elseif iStackCount == 2 then
 		return ACT_DOTA_RAZE_2
 	elseif iStackCount == 3 then
-		return ACT_DOTA_RAZE_3
+		return ACT_DOTA_RAZE_1
 	end
 end
 -- function nevermore_1:OnAbilityPhaseStart()
@@ -49,16 +49,16 @@ function nevermore_1:GetPosition()
 	local tPosition = {}
 	if iStackCount == 1 then
 		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[1])
-		table.insert(tPosition, hCaster:GetAbsOrigin() + Rotation2D(vForward, math.rad(60)) * tDistance[1])
-		table.insert(tPosition, hCaster:GetAbsOrigin() + Rotation2D(vForward, math.rad(-60)) * tDistance[1])
+		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[2])
+		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[3])
 	elseif iStackCount == 2 then
 		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[1])
 		table.insert(tPosition, hCaster:GetAbsOrigin() + Rotation2D(vForward, math.rad(20)) * tDistance[2])
 		table.insert(tPosition, hCaster:GetAbsOrigin() + Rotation2D(vForward, math.rad(-20)) * tDistance[2])
 	else
 		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[1])
-		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[2])
-		table.insert(tPosition, hCaster:GetAbsOrigin() + vForward * tDistance[3])
+		table.insert(tPosition, hCaster:GetAbsOrigin() + Rotation2D(vForward, math.rad(60)) * tDistance[1])
+		table.insert(tPosition, hCaster:GetAbsOrigin() + Rotation2D(vForward, math.rad(-60)) * tDistance[1])
 	end
 	return tPosition
 end

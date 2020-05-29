@@ -127,3 +127,8 @@ end
 function modifier_nevermore_2_debuff:GetModifierIncomingDamage_Percentage()
 	return self.damage_deepen
 end
+function modifier_nevermore_2_debuff:CheckState()
+	return {
+		[MODIFIER_STATE_SILENCED] = true
+	}
+end
