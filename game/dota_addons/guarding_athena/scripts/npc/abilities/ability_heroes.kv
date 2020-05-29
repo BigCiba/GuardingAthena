@@ -1879,6 +1879,8 @@
 		"MaxLevel"								"1"
 		"AbilityCooldown"						"1"
 		"IgnoreCooldownReduction"				"1"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -1895,6 +1897,11 @@
 				"var_type"						"FIELD_INTEGER"
 				"damage"						"5"
 			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"scepter_cooldown"				"0.5"
+			}
 		}
 	}
 	"nevermore_1"
@@ -1909,6 +1916,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_RAZE_2"
 		"AbilityCastPoint"						"0.55"
 		"AbilityCooldown"						"8"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2"
 		"AbilityManaCost"						"40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1916,6 +1925,16 @@
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"combo_duration"				"3"
+			}
+			"11"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_bonus_damage"			"50"
+			}
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
@@ -1944,7 +1963,7 @@
 			"06"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"reduce_damage"					"30"
+				"reduce_damage"					"20"
 			}
 			"07"
 			{
@@ -1954,12 +1973,12 @@
 			"08"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"duration"						"8"
+				"max_reduce_damage"				"80"
 			}
 			"09"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"combo_duration"				"3"
+				"duration"						"8"
 			}
 		}
 	}
@@ -1975,6 +1994,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_RAZE_3"
 		"AbilityCastPoint"						"0.55"
 		"AbilityCooldown"						"45"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"3"
 		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2011,6 +2032,11 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"900"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"scepter_interval"				"0.5"
 			}
 		}
 	}
@@ -2056,6 +2082,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_6"
 		"AbilityCastPoint"						"1.67"
 		"AbilityCooldown"						"100"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"4"
 		"AbilityManaCost"						"200 300 400 500 600 700 800 900"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"

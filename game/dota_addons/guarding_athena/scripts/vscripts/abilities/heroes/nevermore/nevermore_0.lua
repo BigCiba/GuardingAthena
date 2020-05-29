@@ -3,6 +3,12 @@ LinkLuaModifier( "modifier_nevermore_0", "abilities/heroes/nevermore/nevermore_0
 if nevermore_0 == nil then
 	nevermore_0 = class({})
 end
+function nevermore_0:GetCooldown(iLevel)
+	if self:GetCaster():GetScepterLevel() >= 1 then
+		return self:GetSpecialValueFor("scepter_cooldown")
+	end
+	return self.BaseClass.GetCooldown(self, iLevel)
+end
 function nevermore_0:GetIntrinsicModifierName()
 	return "modifier_nevermore_0"
 end
@@ -17,7 +23,7 @@ function modifier_nevermore_0:OnCreated(params)
 	if IsServer() then
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_DEATH, self, self:GetParent())
-	-- AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function modifier_nevermore_0:OnRefresh(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
@@ -29,7 +35,7 @@ function modifier_nevermore_0:OnDestroy()
 	if IsServer() then
 	end
 	RemoveModifierEvents(MODIFIER_EVENT_ON_DEATH, self, self:GetParent())
-	-- RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function modifier_nevermore_0:DeclareFunctions()
 	return {
@@ -40,9 +46,17 @@ function modifier_nevermore_0:Action(vPosition)
 	local hParent = self:GetParent()
 	local hAbility = self:GetAbility()
 	local flDamage = self.damage * hParent:GetStrength()
+	-- cooldown
+	-- self:GetAbility():UseResources(false, false, true)
+	hAbility:StartCooldown(hAbility:GetCooldown(0))
+	-- 增加力量
+	if self:GetStackCount() < hParent:GetBaseStrength() then
+		self:IncrementStackCount()
+	end
+	-- damage
 	local tTargets = FindUnitsInRadiusWithAbility(hParent, vPosition, self.radius, hAbility)
-	self:GetAbility():UseResources(false, false, true)
 	hParent:DealDamage(tTargets, hAbility, flDamage)
+	-- particle
 	local iParticleID = ParticleManager:CreateParticle("particles/heroes/tartarus/fractured_soul.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
 	self:AddParticle(iParticleID, false, false, -1, false, false)
@@ -53,15 +67,12 @@ function modifier_nevermore_0:OnDeath(params)
 		if not IsValid(params.unit) then return end
 		if params.attacker == self:GetParent() and self:GetAbility():IsCooldownReady() then
 			self:Action(params.unit:GetAbsOrigin())
-			if self:GetStackCount() < self:GetParent():GetBaseStrength() then
-				self:IncrementStackCount()
-			end
 		end
 	end
 end
 function modifier_nevermore_0:OnAttackLanded(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
-	if params.attacker == self:GetParent() and self:GetAbility():IsFullyCastable() then
+	if params.attacker == self:GetParent() and self:GetAbility():IsCooldownReady() and self:GetParent():GetScepterLevel() >= 1 then
 		self:Action(params.target:GetAbsOrigin())
 	end
 end

@@ -67,9 +67,15 @@ function nevermore_1:Shadowraze(vPosition)
 	local flRadius = self:GetSpecialValueFor("shadowraze_radius")
 	local flDamage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("damage") * hCaster:GetStrength()
 	local flDuration = self:GetSpecialValueFor("duration")
+	local flScepterBonusDamage = self:GetSpecialValueFor("scepter_bonus_damage")
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, flRadius, self)
 	for _, hUnit in pairs(tTargets) do
-		hCaster:DealDamage(hUnit, self, flDamage)
+		local flBonusDamagePct = 0
+		if hCaster:GetScepterLevel() >= 2 then
+			local hModifier = hUnit:FindModifierByName("modifier_nevermore_1_debuff")
+			flBonusDamagePct = IsValid(hModifier) and hModifier:GetStackCount() * flScepterBonusDamage * 0.01 or 0
+		end
+		hCaster:DealDamage(hUnit, self, flDamage * (1 + flBonusDamagePct))
 		hUnit:AddNewModifier(hCaster, self, "modifier_nevermore_1_debuff", {duration = flDuration})
 	end
 	
@@ -110,6 +116,7 @@ end
 function modifier_nevermore_1_debuff:OnCreated(params)
 	self.reduce_damage = self:GetAbilitySpecialValueFor("reduce_damage")
 	self.stack_reduce_damage = self:GetAbilitySpecialValueFor("stack_reduce_damage")
+	self.max_reduce_damage = self:GetAbilitySpecialValueFor("max_reduce_damage")
 	if IsServer() then
 		
 	end
@@ -117,6 +124,7 @@ end
 function modifier_nevermore_1_debuff:OnRefresh(params)
 	self.reduce_damage = self:GetAbilitySpecialValueFor("reduce_damage")
 	self.stack_reduce_damage = self:GetAbilitySpecialValueFor("stack_reduce_damage")
+	self.max_reduce_damage = self:GetAbilitySpecialValueFor("max_reduce_damage")
 	if IsServer() then
 		self:IncrementStackCount()
 	end
@@ -131,5 +139,5 @@ function modifier_nevermore_1_debuff:DeclareFunctions()
 	}
 end
 function modifier_nevermore_1_debuff:GetModifierTotalDamageOutgoing_Percentage()
-	return -self.reduce_damage - self.stack_reduce_damage * self:GetStackCount()
+	return math.min(-self.reduce_damage - self.stack_reduce_damage * self:GetStackCount(), -self.max_reduce_damage)
 end

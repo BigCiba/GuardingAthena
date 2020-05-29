@@ -1,28 +1,39 @@
 LinkLuaModifier("modifier_scepter", "abilities/items/scepter/scepter.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- Abilities
+-- 全能
 if item_npc_dota_hero_omniknight == nil then
 	item_npc_dota_hero_omniknight = class({})
 end
 function item_npc_dota_hero_omniknight:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+-- 圣堂
 if item_npc_dota_hero_templar_assassin == nil then
 	item_npc_dota_hero_templar_assassin = class({})
 end
 function item_npc_dota_hero_templar_assassin:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+-- 幽鬼
 if item_npc_dota_hero_spectre == nil then
 	item_npc_dota_hero_spectre = class({})
 end
 function item_npc_dota_hero_spectre:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+-- 剑圣
 if item_npc_dota_hero_juggernaut == nil then
 	item_npc_dota_hero_juggernaut = class({})
 end
 function item_npc_dota_hero_juggernaut:GetIntrinsicModifierName()
+	return "modifier_scepter"
+end
+-- 影魔
+if item_npc_dota_hero_nevermore == nil then
+	item_npc_dota_hero_nevermore = class({})
+end
+function item_npc_dota_hero_nevermore:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
 ---------------------------------------------------------------------

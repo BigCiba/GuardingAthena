@@ -75,6 +75,21 @@ function modifier_nevermore_2_aura:GetModifierAura()
 end
 function modifier_nevermore_2_aura:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.scepter_interval = self:GetAbilitySpecialValueFor("scepter_interval")
+	if IsServer() then
+		if self:GetCaster():GetScepterLevel() >= 3 then
+			self:StartIntervalThink(self.scepter_interval)
+			self.hAbility = self:GetCaster():FindAbilityByName("nevermore_1")
+			self.shadowraze_radius = self.hAbility:GetSpecialValueFor("shadowraze_radius")
+		end
+	end
+end
+function modifier_nevermore_2_aura:OnIntervalThink()
+	local iDistance = RandomInt(self.shadowraze_radius, self.radius - self.shadowraze_radius)
+	local vStart = RandomVector(iDistance)
+	for i = 1, 3 do
+		self.hAbility:Shadowraze(self:GetParent():GetAbsOrigin() + Rotation2D(vStart, math.rad(120 * i)))
+	end
 end
 ---------------------------------------------------------------------
 if modifier_nevermore_2 == nil then
