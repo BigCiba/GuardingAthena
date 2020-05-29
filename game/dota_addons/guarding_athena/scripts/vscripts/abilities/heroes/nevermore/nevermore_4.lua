@@ -44,7 +44,7 @@ function nevermore_4:RequiemLine(vStart, vDir)
 	local iRequiemLineWidthStart = self:GetSpecialValueFor("line_width_start")
 	local iRequiemLineWidthEnd = self:GetSpecialValueFor("line_width_end")
 	local iRequiemLineSpeed = self:GetSpecialValueFor("line_speed")
-	local flDamage = self:GetSpecialValueFor("damage") * hCaster:GetStrength()
+	local flDamage = self:GetSpecialValueFor("damage") * hCaster:GetStrength() + self:GetSpecialValueFor("base_damage")
 	local flDuration = self:GetSpecialValueFor("fear_duration")
 	local fMaxDisTime = iRequiemRadius/iRequiemLineSpeed
 	local vVelocity = vDir * iRequiemLineSpeed
@@ -96,7 +96,8 @@ function modifier_nevermore_4:OnCreated(params)
 		self.vDir = (self:GetParent():GetAbsOrigin() - self:GetCaster():GetAbsOrigin()):Normalized()
 		self.vVelocity = self.vDir * self:GetParent():GetBaseMoveSpeed()
 		
-		self:StartIntervalThink(0)
+		self:StartIntervalThink(1)
+		self:OnIntervalThink()
 	end
 end
 function modifier_nevermore_4:OnRefresh(params)
@@ -105,17 +106,13 @@ function modifier_nevermore_4:OnRefresh(params)
 end
 function modifier_nevermore_4:OnIntervalThink()
 	if IsServer() then
-		self:GetParent():MoveToPosition(self:GetParent():GetAbsOrigin() + self.vVelocity * FrameTime())
+		ExecuteOrder(self:GetParent(), DOTA_UNIT_ORDER_MOVE_TO_POSITION, nil, nil, self:GetParent():GetAbsOrigin() + self.vVelocity)
+		-- self:GetParent():MoveToPosition(self:GetParent():GetAbsOrigin() + self.vVelocity * FrameTime())
 	end
-end
-function modifier_nevermore_4:DeclareFunctions()
-	return {
-	}
 end
 function modifier_nevermore_4:CheckState()
 	return {
 		[MODIFIER_STATE_FEARED] = true,
 		[MODIFIER_STATE_DISARMED] = true,
-		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 	}
 end

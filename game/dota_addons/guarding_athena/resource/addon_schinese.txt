@@ -449,6 +449,9 @@
 		"DOTA_Tooltip_ability_nevermore_4_soul_count"	"魔能数量："
 		"DOTA_Tooltip_ability_nevermore_4_distance"	"最远距离："
 		"DOTA_Tooltip_ability_nevermore_4_fear_duration"	"恐惧时间："
+		"DOTA_Tooltip_modifier_nevermore_4"	"恐惧"
+		"DOTA_Tooltip_modifier_nevermore_4_Description"	"该单位正在四处逃窜。"
+		
 		"DOTA_Tooltip_ability_item_npc_dota_hero_nevermore"	"撒旦之邪力"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_nevermore_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：支配死灵</h1>使得开启后保持攻击力\n<h1>二转：破碎的灵魂</h1>使普通攻击也能触发效果并减少0.5秒的冷却\n<h1>三转：九重黑幕</h1>升级三重黑幕至九重黑幕\n<h1>四转：黑幕灭世</h1>使得魂之挽歌额外召唤大范围黑幕冲击并且延长黑幕持续时间\n撒旦的地狱之力，大大加强了灵魂控制能力"
 		
