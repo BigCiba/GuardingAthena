@@ -14881,7 +14881,7 @@
 							"FireSound"
 							{
 								"Target"	"TARGET"
-								"EffectName"	"Hero_Chen.HolyPersuasionCast"
+								"EffectName"	"c"
 							}
 							"AttachEffect"
 							{

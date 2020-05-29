@@ -637,10 +637,10 @@
 			}
 		}
 	}
-	"xixue"
+	"wave_31_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/xixue"
+		"ScriptFile"							"abilities/enemy/wave_31_1"
 		"AbilityTextureName"					"terrorblade_metamorphosis_alt1"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -657,6 +657,16 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"attackspeed"					"100 200 300 400 800"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_chance"					"20 25 30 35 50"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_mult"						"700 800 900 1000 1200"
 			}
 		}
 	}
@@ -683,10 +693,10 @@
 			}
 		}
 	}
-	"chouxue"
+	"wave_31_2"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/chouxue"
+		"ScriptFile"							"abilities/enemy/wave_31_2"
 		"AbilityTextureName"					"terrorblade_sunder_alt1"
 		"MaxLevel"								"5"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
@@ -694,8 +704,9 @@
 		"AbilityCastPoint"						"0.5"
 		"AbilityCooldown"						"40"
 		"AbilityManaCost"						"1000"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"AbilitySpecial"
 		{
@@ -2281,6 +2292,44 @@
 				"var_type"						"FIELD_INTEGER"
 				"attackspeed"					"20 40 60 80 100"
 			}
+		}
+	}
+	"wave_32_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/wave_32_1"
+		"AbilityTextureName"					"chen_test_of_faith"
+		"MaxLevel"								"5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PURE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"15"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"5000 10000 15000 20000 25000"
+			}
+		}
+	}
+	"wave_32_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/enemy/wave_32_2"
+		"AbilityTextureName"					"chen_penitence"
+		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"						"0.25"
+		"AbilityCooldown"						"20 19 18 17 16"
+		"AbilityManaCost"						"200"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityDuration"						"4 5 6 7 8"
+		"AbilitySpecial"
+		{
 		}
 	}
 }
