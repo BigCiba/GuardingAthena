@@ -40,7 +40,8 @@ function modifier_nevermore_3:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL,
-		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL
+		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_PROJECTILE_NAME
 	}
 end
 function modifier_nevermore_3:OnAttack(params)
@@ -70,5 +71,10 @@ end
 function modifier_nevermore_3:GetModifierProcAttack_BonusDamage_Magical(params)
 	if self:GetStackCount() == 1 then
 		return params.damage
+	end
+end
+function modifier_nevermore_3:GetModifierProjectileName(params)
+	if self:GetStackCount() == 1 then
+		return "particles/econ/world/towers/ti10_dire_tower/ti10_dire_tower_attack.vpcf"
 	end
 end

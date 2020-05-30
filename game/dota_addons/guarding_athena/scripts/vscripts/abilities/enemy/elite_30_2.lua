@@ -43,7 +43,10 @@ function modifier_elite_30_2_debuff:OnCreated(params)
 	end
 end
 function modifier_elite_30_2_debuff:OnRefresh(params)
-	self.OnCreated(params)
+	if IsServer() then
+		self:IncrementStackCount()
+		self:GetParent():CalculateStatBonus()
+	end
 end
 function modifier_elite_30_2_debuff:DeclareFunctions()
 	return {
@@ -51,5 +54,5 @@ function modifier_elite_30_2_debuff:DeclareFunctions()
 	}
 end
 function modifier_elite_30_2_debuff:GetModifierExtraHealthBonus()
-	return -self.health_reduce
+	return -self.health_reduce * self:GetStackCount()
 end

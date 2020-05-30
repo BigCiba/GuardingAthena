@@ -89,7 +89,7 @@ function nevermore_4:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	local hCaster = self:GetCaster()
 	if IsValid(hTarget) then
 		hCaster:DealDamage(hTarget, self, ExtraData.flDamage)
-		hTarget:AddNewModifier(hCaster, self, "modifier_nevermore_4", {duration = ExtraData.flDuration})
+		hTarget:AddNewModifier(hCaster, self, "modifier_nevermore_4", {duration = ExtraData.flDuration, bScepter = ExtraData.bScepter})
 		hTarget:EmitSound("Hero_Nevermore.RequiemOfSouls.Damage")
 	elseif hTarget == nil and hCaster:GetScepterLevel() >= 4 and ExtraData.bScepter == 0 then
 		local vStart = GetGroundPosition(Vector(ExtraData.vStartX, ExtraData.vStartY, 0), hCaster)
@@ -106,18 +106,21 @@ function modifier_nevermore_4:OnCreated(params)
 	if IsServer() then
 		self.vDir = (self:GetParent():GetAbsOrigin() - self:GetCaster():GetAbsOrigin()):Normalized()
 		self.vVelocity = self.vDir * self:GetParent():GetBaseMoveSpeed()
+		self.bScepter = 0
 		
-		self:StartIntervalThink(1)
+		self:StartIntervalThink(0.5)
 		self:OnIntervalThink()
 	end
 end
 function modifier_nevermore_4:OnRefresh(params)
 	if IsServer() then
+		self.bScepter = params.bScepter
 	end
 end
 function modifier_nevermore_4:OnIntervalThink()
 	if IsServer() then
-		ExecuteOrder(self:GetParent(), DOTA_UNIT_ORDER_MOVE_TO_POSITION, nil, nil, self:GetParent():GetAbsOrigin() + self.vVelocity)
+		local vVelocity = self.bScepter == 1 and -1 * self.vVelocity or self.vVelocity
+		ExecuteOrder(self:GetParent(), DOTA_UNIT_ORDER_MOVE_TO_POSITION, nil, nil, self:GetParent():GetAbsOrigin() + vVelocity)
 		-- self:GetParent():MoveToPosition(self:GetParent():GetAbsOrigin() + self.vVelocity * FrameTime())
 	end
 end
@@ -153,6 +156,22 @@ function modifier_nevermore_4_aura:OnCreated(params)
 	self.distance = self:GetAbilitySpecialValueFor("distance")
 	if IsServer() then
 	end
+end
+function modifier_nevermore_4_aura:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE
+	}
+end
+function modifier_nevermore_4_aura:GetAbsoluteNoDamagePhysical(params)
+	return 1
+end
+function modifier_nevermore_4_aura:GetAbsoluteNoDamageMagical(params)
+	return 1
+end
+function modifier_nevermore_4_aura:GetAbsoluteNoDamagePure(params)
+	return 1
 end
 ---------------------------------------------------------------------
 if modifier_nevermore_4_debuff == nil then

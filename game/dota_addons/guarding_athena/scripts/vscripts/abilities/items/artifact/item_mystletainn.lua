@@ -38,11 +38,12 @@ end
 function modifier_item_mystletainn:OnIntervalThink()
 	if IsServer() then
 		local hParent = self:GetParent()
-		local flDamage = self.absorb * hParent:GetMaxHealth()
+		local flDamage = self.absorb * hParent:GetMaxHealth() * 0.01
 		if hParent:GetHealth() > flDamage then
 			-- local tDamageInfo = CreateDamageTable(hParent, hParent, self:GetAbility(), flDamage, DAMAGE_TYPE_PURE, DOTA_DAMAGE_FLAG_HPLOSS + DOTA_DAMAGE_FLAG_NON_LETHAL + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION)
 			-- ApplyDamage(tDamageInfo)
-			RemoveHealth(hParent, flDamage)
+			-- RemoveHealth(hParent, flDamage)
+			hParent:ModifyHealth(hParent:GetHealth() - flDamage, self:GetAbility(), false, 0)
 			hParent:SetBaseDamageMax(hParent:GetBaseDamageMax() + self.attack_increase)
 			hParent:SetBaseDamageMin(hParent:GetBaseDamageMin() + self.attack_increase)
 		end

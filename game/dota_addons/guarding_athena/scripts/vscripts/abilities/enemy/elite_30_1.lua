@@ -5,7 +5,8 @@ end
 function elite_30_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
-	local flMana = hTarget:GetMana()
+	local mana_burn = self:GetSpecialValueFor("mana_burn")
+	local flMana = hTarget:GetMana() * mana_burn * 0.01
 	hTarget:SpendMana(flMana, self)
 	hCaster:DealDamage(hTarget, self, flMana * self:GetSpecialValueFor("damage_pct") * 0.01)
 	SendOverheadEventMessage(hCaster:GetPlayerOwner(), OVERHEAD_ALERT_MANA_LOSS, hTarget, flMana, hCaster:GetPlayerOwner())

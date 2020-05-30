@@ -17,6 +17,7 @@ GameEvents.Subscribe( "show_error", ShowError );
 
 function Update() {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
+	let Unit = Players.GetLocalPlayerPortraitUnit();
 	let Tooltips = HUD.FindChildTraverse("Tooltips");
 	let AbilityList = HUD.FindChildTraverse("abilities");
 	let DOTAAbilityTooltip = Tooltips.FindChildTraverse("DOTAAbilityTooltip");
@@ -26,7 +27,6 @@ function Update() {
 		AbilityScepterDescriptionContainer.style.visibility = "collapse"
 		if (DOTAAbilityTooltip.BHasClass("IsItem") == true) {
 			let ItemName = DOTAAbilityTooltip.FindChildTraverse("ItemImage").itemname;
-			let Unit = Players.GetLocalPlayerPortraitUnit();
 			// 专属装备
 			if (ItemName == "item_" + Entities.GetUnitName( Unit )) {
 				for (let i = 2; i <= 9; i++) {
@@ -221,6 +221,10 @@ function Update() {
 			}
 		}
 	}
+	// 魔法值
+	// let ManaContainer = HUD.FindChildTraverse("ManaContainer");
+	// ManaContainer.FindChildTraverse("ManaLabel").text = String(Entities.GetMana(Unit)) + " / " + String(Entities.GetMaxMana(Unit));
+
 	$.Schedule(0, Update);
 }
 function CategoryFilter(sType) {

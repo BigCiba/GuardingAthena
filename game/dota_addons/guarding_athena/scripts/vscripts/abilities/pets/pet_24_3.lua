@@ -52,8 +52,8 @@ function modifier_pet_24_3_buff:OnOrder(params)
 	if params.unit == self:GetParent() then
 		if params.order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION
 		or params.order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET
-		or params.order_type == DOTA_UNIT_ORDER_ATTACK_MOVE
-		or params.order_type == DOTA_UNIT_ORDER_ATTACK_TARGET
+		-- or params.order_type == DOTA_UNIT_ORDER_ATTACK_MOVE
+		-- or params.order_type == DOTA_UNIT_ORDER_ATTACK_TARGET
 		then
 			local vLocation = params.target == nil and params.new_pos or params.target:GetAbsOrigin()
 			local flDistance = (vLocation - params.unit:GetAbsOrigin()):Length2D()

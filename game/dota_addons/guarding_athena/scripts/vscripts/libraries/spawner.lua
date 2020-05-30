@@ -228,6 +228,7 @@ function Spawner:UnitProperty( unit,factor )
 		    ability:SetLevel(self.difficulty)
 		end
 	end
+	unit:AddNewModifier(unit, nil, "modifier_wave", nil)
 end
 -- 循环进攻命令
 function Spawner:AttackOnTarget()

@@ -14,7 +14,7 @@ end
 if modifier_wave_32_2 == nil then
 	modifier_wave_32_2 = class({}, nil, ModifierPositiveBuff)
 end
-function OnCreated(params)
+function modifier_wave_32_2:OnCreated(params)
 	if IsClient() then
 		local iParticleID = ParticleManager:CreateParticle("particles/units/wave_32/holy_armor_a.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
