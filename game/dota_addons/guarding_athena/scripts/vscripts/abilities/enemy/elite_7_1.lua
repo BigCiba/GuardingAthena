@@ -69,7 +69,7 @@ function modifier_elite_7_1:GetModifierModelChange()
 end
 function modifier_elite_7_1:CheckState()
 	return {
-		[MODIFIER_STATE_elite_7_1ED] = true,
+		[MODIFIER_STATE_HEXED] = true,
 		[MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_SILENCED] = true,
 		[MODIFIER_STATE_MUTED] = true,

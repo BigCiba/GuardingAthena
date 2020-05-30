@@ -10,11 +10,15 @@ function nevermore_4:OnAbilityPhaseStart()
 	self.iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_nevermore/nevermore_wings.vpcf", PATTACH_POINT_FOLLOW, hCaster)
 	ParticleManager:SetParticleControl(self.iParticleID, 0, hCaster:GetAbsOrigin())
 	hCaster:EmitSound("Hero_Nevermore.RequiemOfSoulsCast")
+	self.hModifier = hCaster:AddNewModifier(hCaster, self, "modifier_nevermore_4_aura", {duration = self:GetCastPoint()})
 	return true
 end
 function nevermore_4:OnAbilityPhaseInterrupted()
 	ParticleManager:DestroyParticle(self.iParticleID, true)
 	self:GetCaster():StopSound("Hero_Nevermore.RequiemOfSoulsCast")
+	if IsValid(self.hModifier) then
+		self.hModifier:Destroy()
+	end
 	return true
 end
 function nevermore_4:OnSpellStart()
@@ -55,8 +59,8 @@ function nevermore_4:RequiemLine(vStart, vDir, bScepter)
 		EffectName = "",
 		vSpawnOrigin = vStart,
 		fDistance = iRequiemRadius,
-		fStartRadius = iRequiemLineWidthStart,
-		fEndRadius = iRequiemLineWidthEnd,
+		fStartRadius = bScepter and iRequiemLineWidthEnd or iRequiemLineWidthStart,
+		fEndRadius = bScepter and iRequiemLineWidthStart or iRequiemLineWidthEnd,
 		Source = hCaster,
 		bHasFrontalCone = false,
 		bReplaceExisting = false,
@@ -131,7 +135,7 @@ function modifier_nevermore_4_aura:IsAura()
 	return true
 end
 function modifier_nevermore_4_aura:GetAuraRadius()
-	return self.radius
+	return self.distance
 end
 function modifier_nevermore_4_aura:GetAuraSearchTeam()
 	return DOTA_UNIT_TARGET_TEAM_ENEMY
@@ -146,18 +150,18 @@ function modifier_nevermore_4_aura:GetModifierAura()
 	return "modifier_nevermore_4_debuff"
 end
 function modifier_nevermore_4_aura:OnCreated(params)
-	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.distance = self:GetAbilitySpecialValueFor("distance")
 	if IsServer() then
 	end
 end
 ---------------------------------------------------------------------
 if modifier_nevermore_4_debuff == nil then
-	modifier_nevermore_4_debuff = class({}, nil, ModifierBasic)
+	modifier_nevermore_4_debuff = class({})
 end
 function modifier_nevermore_4_debuff:OnCreated(params)
 	self.animation_rate = self:GetAbilitySpecialValueFor("animation_rate")
 	self.pull_speed = self:GetAbilitySpecialValueFor("pull_speed")
-	self.pull_radius = self:GetAbilitySpecialValueFor("pull_radius")
+	self.pull_radius = self:GetAbilitySpecialValueFor("distance")
 	self.tick_rate = self:GetAbilitySpecialValueFor("tick_rate")
 	self.pull_rotate_speed = self:GetAbilitySpecialValueFor("pull_rotate_speed")
 	if IsServer() then
@@ -181,13 +185,14 @@ end
 function modifier_nevermore_4_debuff:UpdateHorizontalMotion(me, dt)
 	if IsServer() then
 		local vLocation = me:GetAbsOrigin()
+		local iDistance = RemapVal((vLocation - self.vOrigin):Length2D(), 0, 1200, self.pull_speed, 360) * dt
 		-- 到达中心后不再移动
-		if (vLocation - self.vOrigin):Length2D() <= self.pull_speed * dt then
+		if (vLocation - self.vOrigin):Length2D() <= iDistance then
 			me:SetAbsOrigin(self.vOrigin)
 		else
 			local vDirection = (self.vOrigin - vLocation):Normalized()
 			vDirection.z = 0
-			local iDistance = self.pull_speed * dt
+			-- local iDistance = self.pull_speed * dt
 			local vPoint = vLocation + vDirection * iDistance
 			
 			local x = math.cos(self.pull_rotate_speed * dt) * (vPoint.x - self.vOrigin.x) - math.sin(self.pull_rotate_speed * dt) * (vPoint.y - self.vOrigin.y) + self.vOrigin.x
