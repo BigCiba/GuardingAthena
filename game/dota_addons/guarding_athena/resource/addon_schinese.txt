@@ -2351,6 +2351,9 @@
 		"DOTA_Tooltip_ability_item_essence_core_mp"				"+魔法值"
 		"DOTA_Tooltip_ability_item_essence_core_hp_regen"		"+生命回复"
 		"DOTA_Tooltip_ability_item_essence_core_mp_regen"		"+魔法回复"
+		"DOTA_Tooltip_ability_item_essence_small"				"小精华"
+		"DOTA_Tooltip_ability_item_essence_medium"				"中精华"
+		"DOTA_Tooltip_ability_item_essence_big"					"大精华"
 
 		"DOTA_Tooltip_ability_item_chui_1"	"巨石钉锤"
 		"DOTA_Tooltip_ability_item_chui_1_Description"	"<h1>被动：重击</h1>攻击有一定%stun_chance%%%的几率对目标周围单位释放闪电并造成晕眩\n<font color=\"#337ab7\">副手装备只能装备一件</font><br></br>一整块巨大石头打造的钉锤"

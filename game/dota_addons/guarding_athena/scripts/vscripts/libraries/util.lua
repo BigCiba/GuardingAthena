@@ -473,7 +473,7 @@ function RollDrops(unit)
 						if item_name == "item_essence_small" then
 							drop:SetModelScale( 0.8 )
 						elseif item_name == "item_essence_medium" then
-							drop:SetModelScale( 1.3 )
+							drop:SetModelScale( 1.2 )
 						elseif item_name == "item_essence_big" then
 							drop:SetModelScale( 1.6 )
 						end

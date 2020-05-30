@@ -459,3 +459,6 @@
 "DOTA_Tooltip_ability_item_essence_core_mp"				"+魔法值"
 "DOTA_Tooltip_ability_item_essence_core_hp_regen"		"+生命回复"
 "DOTA_Tooltip_ability_item_essence_core_mp_regen"		"+魔法回复"
+"DOTA_Tooltip_ability_item_essence_small"				"小精华"
+"DOTA_Tooltip_ability_item_essence_medium"				"中精华"
+"DOTA_Tooltip_ability_item_essence_big"					"大精华"
