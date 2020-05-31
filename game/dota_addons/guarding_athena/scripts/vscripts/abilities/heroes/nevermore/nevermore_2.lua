@@ -120,6 +120,7 @@ function modifier_nevermore_2_debuff:OnCreated(params)
 	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
 	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 	if IsServer() then
 		self:StartIntervalThink(1)
 	end
@@ -128,6 +129,7 @@ function modifier_nevermore_2_debuff:OnRefresh(params)
 	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
 	self.damage = self:GetAbilitySpecialValueFor("damage")
 	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 end
 function modifier_nevermore_2_debuff:OnIntervalThink()
 	local hCaster = self:GetCaster()
@@ -136,11 +138,15 @@ function modifier_nevermore_2_debuff:OnIntervalThink()
 end
 function modifier_nevermore_2_debuff:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
 	}
 end
 function modifier_nevermore_2_debuff:GetModifierIncomingDamage_Percentage()
 	return self.damage_deepen
+end
+function modifier_nevermore_2_debuff:GetModifierMoveSpeedBonus_Percentage()
+	return -self.movespeed_reduce
 end
 function modifier_nevermore_2_debuff:CheckState()
 	return {

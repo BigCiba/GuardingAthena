@@ -21,6 +21,7 @@ end
 function modifier_nevermore_3:OnCreated(params)
 	self.mana_cost = self:GetAbilitySpecialValueFor("mana_cost")
 	self.attack_per_str = self:GetAbilitySpecialValueFor("attack_per_str")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
 	if IsServer() then
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK, self, self:GetParent())
@@ -28,6 +29,7 @@ end
 function modifier_nevermore_3:OnRefresh(params)
 	self.mana_cost = self:GetAbilitySpecialValueFor("mana_cost")
 	self.attack_per_str = self:GetAbilitySpecialValueFor("attack_per_str")
+	self.bonus_attackspeed = self:GetAbilitySpecialValueFor("bonus_attackspeed")
 	if IsServer() then
 	end
 end
@@ -41,6 +43,7 @@ function modifier_nevermore_3:DeclareFunctions()
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL,
 		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_PROJECTILE_NAME
 	}
 end
@@ -71,6 +74,11 @@ end
 function modifier_nevermore_3:GetModifierProcAttack_BonusDamage_Magical(params)
 	if self:GetStackCount() == 1 then
 		return params.damage
+	end
+end
+function modifier_nevermore_3:GetModifierAttackSpeedBonus_Constant(params)
+	if self:GetStackCount() == 1 then
+		return self.bonus_attackspeed
 	end
 end
 function modifier_nevermore_3:GetModifierProjectileName(params)

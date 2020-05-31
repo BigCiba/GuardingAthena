@@ -28,7 +28,7 @@ function modifier_elite_33_1:DeclareFunctions()
 	}
 end
 function modifier_elite_33_1:GetModifierAvoidDamage(params)
-	if self:GetAbility():IsCooldownReady() and not self:GetParent():PassivesDisabled() then
+	if self:GetAbility():IsCooldownReady() and not self:GetParent():PassivesDisabled() and not self:GetParent():IsIllusion() then
 		self:GetAbility():UseResources(false, false, true)
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_elite_33_1_buff", {duration = self.delay, iEntIndex = params.attacker:entindex()})
 		return 1
@@ -66,16 +66,19 @@ function modifier_elite_33_1_buff:OnDestroy()
 		local hParent = self:GetParent()
 		local vStartVector = RandomVector(175)
 		FindClearSpaceForUnit(hParent, self.vPosition + vStartVector, true)
-		ParticleManager:ReleaseParticleIndex(iParticleID)
 		hParent:SetForwardVector((self.vPosition - hParent:GetAbsOrigin()):Normalized())
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_siren/naga_siren_mirror_image_h.vpcf", PATTACH_ABSORIGIN, hParent)
+		ParticleManager:ReleaseParticleIndex(iParticleID)
 		-- 幻象
-		local tIllusions = CreateIllusions( hParent, hParent, {duration = self:GetAbilityDuration(), outgoing_damage = self.outgoing_damage, incoming_damage = self.incoming_damage}, self.image_count, 100, true, true )
+		-- local tIllusions = CreateIllusions( hParent, hParent, {duration = 2, outgoing_damage = self.outgoing_damage, incoming_damage = self.incoming_damage}, self.image_count, 100, true, true )
 		for i = 1, self.image_count do
-			FindClearSpaceForUnit(tIllusions[i], self.vPosition + Rotation2D(vStartVector, math.rad(360 / self.image_count * i)), true)
-			tIllusions[i]:SetForwardVector((self.vPosition - tIllusions[i]:GetAbsOrigin()):Normalized())
-			tIllusions[i]:SetForceAttackTarget(self.hTarget)
-			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_siren/naga_siren_mirror_image_h.vpcf", PATTACH_ABSORIGIN, tIllusions[i])
+			local hIllusion = CreateUnitByName(hParent:GetUnitName(), self.vPosition + Rotation2D(vStartVector, math.rad(360 / self.image_count * i)), false, hParent, hParent, hParent:GetTeamNumber())
+			hIllusion:AddNewModifier(hIllusion, self:GetAbility(), "modifier_illusion", {duration = 2})
+			hIllusion:MakeIllusion()
+			-- FindClearSpaceForUnit(tIllusions[i], self.vPosition + Rotation2D(vStartVector, math.rad(360 / self.image_count * i)), true)
+			hIllusion:SetForwardVector((self.vPosition - hIllusion:GetAbsOrigin()):Normalized())
+			hIllusion:SetForceAttackTarget(self.hTarget)
+			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_siren/naga_siren_mirror_image_h.vpcf", PATTACH_ABSORIGIN, hIllusion)
 			ParticleManager:ReleaseParticleIndex(iParticleID)
 		end
 	end

@@ -24,6 +24,9 @@ function modifier_item_mystletainn:OnCreated(params)
 	self.attack_rate = self:GetAbilitySpecialValueFor("attack_rate")
 	if IsServer() then
 		local hParent = self:GetParent()
+		if self:GetAbility().iAttack == nil then
+			self:GetAbility().iAttack = 0
+		end
 		hParent:SetBaseAttackTime(hParent:GetBaseAttackTime() - self.attack_rate)
 
 		self:StartIntervalThink(self.interval)
@@ -43,9 +46,10 @@ function modifier_item_mystletainn:OnIntervalThink()
 			-- local tDamageInfo = CreateDamageTable(hParent, hParent, self:GetAbility(), flDamage, DAMAGE_TYPE_PURE, DOTA_DAMAGE_FLAG_HPLOSS + DOTA_DAMAGE_FLAG_NON_LETHAL + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION)
 			-- ApplyDamage(tDamageInfo)
 			-- RemoveHealth(hParent, flDamage)
+			self:GetAbility().iAttack = self:GetAbility().iAttack + 1
 			hParent:ModifyHealth(hParent:GetHealth() - flDamage, self:GetAbility(), false, 0)
-			hParent:SetBaseDamageMax(hParent:GetBaseDamageMax() + self.attack_increase)
-			hParent:SetBaseDamageMin(hParent:GetBaseDamageMin() + self.attack_increase)
+			hParent:SetBaseDamageMax(self:GetAbility().iAttack * self.attack_increase)
+			hParent:SetBaseDamageMin(self:GetAbility().iAttack * self.attack_increase)
 		end
 	end
 end

@@ -1,3 +1,4 @@
+LinkLuaModifier( "modifier_nevermore_4_passive", "abilities/heroes/nevermore/nevermore_4.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_nevermore_4", "abilities/heroes/nevermore/nevermore_4.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_nevermore_4_aura", "abilities/heroes/nevermore/nevermore_4.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_nevermore_4_debuff", "abilities/heroes/nevermore/nevermore_4.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
@@ -10,7 +11,7 @@ function nevermore_4:OnAbilityPhaseStart()
 	self.iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_nevermore/nevermore_wings.vpcf", PATTACH_POINT_FOLLOW, hCaster)
 	ParticleManager:SetParticleControl(self.iParticleID, 0, hCaster:GetAbsOrigin())
 	hCaster:EmitSound("Hero_Nevermore.RequiemOfSoulsCast")
-	self.hModifier = hCaster:AddNewModifier(hCaster, self, "modifier_nevermore_4_aura", {duration = self:GetCastPoint()})
+	self.hModifier = hCaster:AddNewModifier(hCaster, self, "modifier_nevermore_4_aura", {duration = self:GetCastPoint() + self:GetSpecialValueFor("fear_duration")})
 	return true
 end
 function nevermore_4:OnAbilityPhaseInterrupted()
@@ -21,9 +22,10 @@ function nevermore_4:OnAbilityPhaseInterrupted()
 	end
 	return true
 end
-function nevermore_4:OnSpellStart()
+function nevermore_4:OnSpellStart(bDeath)
 	local hCaster = self:GetCaster()
 	local soul_count = self:GetSpecialValueFor("soul_count")
+	soul_count = bDeath == nil and soul_count or soul_count * 0.5
 	local vStart = hCaster:GetAbsOrigin()
 	local vForward = hCaster:GetForwardVector()
 	local iRad = 360 / soul_count
@@ -97,8 +99,33 @@ function nevermore_4:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 		self:RequiemLine(vLocation + vDiff, (hCaster:GetAbsOrigin() - vLocation - vDiff):Normalized(), true)
 	end
 end
+function nevermore_4:GetIntrinsicModifierName()
+	return "modifier_nevermore_4_passive"
+end
 ---------------------------------------------------------------------
 --Modifiers
+if modifier_nevermore_4_passive == nil then
+	modifier_nevermore_4_passive = class({}, nil, ModifierHidden)
+end
+function modifier_nevermore_4_passive:OnCreated(params)
+	if IsServer() then
+	end
+	AddModifierEvents(MODIFIER_EVENT_ON_DEATH, self, nil, self:GetParent())
+end
+function modifier_nevermore_4_passive:OnDestroy()
+	if IsServer() then
+	end
+	RemoveModifierEvents(MODIFIER_EVENT_ON_DEATH, self, nil, self:GetParent())
+end
+function modifier_nevermore_4_passive:OnDeath(params)
+	if IsServer() then
+		if not IsValid(params.unit) then return end
+		if params.unit == self:GetParent() then
+			self:GetAbility():OnSpellStart(true)
+		end
+	end
+end
+---------------------------------------------------------------------
 if modifier_nevermore_4 == nil then
 	modifier_nevermore_4 = class({}, nil, ModifierDebuff)
 end
@@ -135,7 +162,11 @@ if modifier_nevermore_4_aura == nil then
 	modifier_nevermore_4_aura = class({}, nil, ModifierBasic)
 end
 function modifier_nevermore_4_aura:IsAura()
-	return true
+	if self:GetElapsedTime() > self:GetAbility():GetCastPoint() then
+		return false
+	else
+		return true
+	end
 end
 function modifier_nevermore_4_aura:GetAuraRadius()
 	return self.distance
@@ -161,7 +192,8 @@ function modifier_nevermore_4_aura:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
-		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS
 	}
 end
 function modifier_nevermore_4_aura:GetAbsoluteNoDamagePhysical(params)
@@ -172,6 +204,9 @@ function modifier_nevermore_4_aura:GetAbsoluteNoDamageMagical(params)
 end
 function modifier_nevermore_4_aura:GetAbsoluteNoDamagePure(params)
 	return 1
+end
+function modifier_nevermore_4_aura:GetModifierAttackRangeBonus(params)
+	return self.distance
 end
 ---------------------------------------------------------------------
 if modifier_nevermore_4_debuff == nil then

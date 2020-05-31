@@ -39,7 +39,8 @@ function modifier_nevermore_0:OnDestroy()
 end
 function modifier_nevermore_0:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS
+		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
+		MODIFIER_PROPERTY_REINCARNATION
 	}
 end
 function modifier_nevermore_0:Action(vPosition)
@@ -49,10 +50,7 @@ function modifier_nevermore_0:Action(vPosition)
 	-- cooldown
 	-- self:GetAbility():UseResources(false, false, true)
 	hAbility:StartCooldown(hAbility:GetCooldown(0))
-	-- 增加力量
-	if self:GetStackCount() < hParent:GetBaseStrength() then
-		self:IncrementStackCount()
-	end
+	
 	-- damage
 	local tTargets = FindUnitsInRadiusWithAbility(hParent, vPosition, self.radius, hAbility)
 	hParent:DealDamage(tTargets, hAbility, flDamage)
@@ -65,8 +63,14 @@ end
 function modifier_nevermore_0:OnDeath(params)
 	if IsServer() then
 		if not IsValid(params.unit) then return end
-		if params.attacker == self:GetParent() and self:GetAbility():IsCooldownReady() then
-			self:Action(params.unit:GetAbsOrigin())
+		if params.attacker == self:GetParent() then
+			if self:GetAbility():IsCooldownReady() then
+				self:Action(params.unit:GetAbsOrigin())
+			end
+			-- 增加力量
+			if self:GetStackCount() < params.attacker:GetBaseStrength() then
+				self:IncrementStackCount()
+			end
 		end
 	end
 end
@@ -78,4 +82,10 @@ function modifier_nevermore_0:OnAttackLanded(params)
 end
 function modifier_nevermore_0:GetModifierBonusStats_Strength()
 	return self:GetStackCount()
+end
+function modifier_nevermore_0:ReincarnateTime()
+	if self:GetStackCount() >= self:GetParent():GetBaseStrength() then
+		self:SetStackCount(math.floor(self:GetStackCount() * 0.5))
+		return 1
+	end
 end

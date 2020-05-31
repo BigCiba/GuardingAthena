@@ -295,7 +295,7 @@ function public:OnItemPurchased(event)
 	local hBuyer = PlayerResource:GetPlayer(event.PlayerID)
 	local hBuyerHero = hBuyer:GetAssignedHero()
 	if hBuyerHero ~= nil then
-		hBuyerHero:ModifyGold(event.itemcost, true, 0)
+		-- hBuyerHero:ModifyGold(event.itemcost, true, 0)
 	end
 end
 
@@ -317,7 +317,7 @@ function public:init(bReload)
 		SendToServerConsole("dota_hero_god_mode 0")
 		SendToServerConsole("dota_ability_debug 0")
 		-- SendToServerConsole("dota_creeps_no_spawning 0")
-		SendToServerConsole("dota_easybuy 1")
+		-- SendToServerConsole("dota_easybuy 1")
 
 		self.m_sHeroToSpawn = "npc_dota_hero_axe"
 
@@ -334,7 +334,7 @@ function public:init(bReload)
 
 	GameMode:SetFixedRespawnTime(4)
 	-- GameRules:SetPreGameTime(GAME_MODE_PREGAMETIME)
-	GameRules:SetStartingGold(99999)
+	-- GameRules:SetStartingGold(99999)
 	GameRules:SetUseUniversalShopMode(true)
 
 	GameEvent("dota_item_purchased", Dynamic_Wrap(public, "OnItemPurchased"), public)

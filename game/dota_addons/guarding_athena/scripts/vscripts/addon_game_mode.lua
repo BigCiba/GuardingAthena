@@ -282,6 +282,9 @@ function Reload()
 		FireGameEvent("client_reload_game_keyvalues", {})
 
 		local tUnits = Entities:FindAllByClassname("npc_dota_creature")
+		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+			table.insert(tUnits, PlayerResource:GetSelectedHeroEntity(iPlayerID))
+		end)
 		for n, hUnit in pairs(tUnits) do
 			if IsValid(hUnit) and hUnit:IsAlive() then
 				for i = 0, hUnit:GetAbilityCount()-1, 1 do

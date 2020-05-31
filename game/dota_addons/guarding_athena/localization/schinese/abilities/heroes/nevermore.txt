@@ -2,7 +2,7 @@
 "npc_dota_hero_nevermore"	"塔耳塔洛斯"
 
 "DOTA_Tooltip_ability_nevermore_0"	"破碎的灵魂"
-"DOTA_Tooltip_ability_nevermore_0_Description"	"每当杀死一个单位都会对目标周围%radius%范围的的单位造成伤害并额外提升1点力量，额外力量上限为基础力量值。"
+"DOTA_Tooltip_ability_nevermore_0_Description"	"每当杀死一个单位都会对目标周围%radius%范围的的单位造成伤害并额外提升1点力量，额外力量上限为基础力量值。当塔尔塔罗斯死亡时，如果额外力量达到上限则消耗一半的力量在1秒后复活。"
 "DOTA_Tooltip_ability_nevermore_0_Lore"	"地狱才是灵魂的归宿"
 "DOTA_Tooltip_ability_nevermore_0_scepter_description_1"	"使普通攻击也能触发效果并且冷却时间减少至%scepter_cooldown%"
 "DOTA_Tooltip_ability_nevermore_0_damage"	"力量伤害系数："
@@ -35,6 +35,7 @@
 "DOTA_Tooltip_ability_nevermore_2_health_regen_pct"	"%生命回复："
 "DOTA_Tooltip_ability_nevermore_2_damage_deepen"	"%伤害加深："
 "DOTA_Tooltip_ability_nevermore_2_duration"	"持续时间："
+"DOTA_Tooltip_ability_nevermore_2_movespeed_reduce"	"%移速降低："
 "DOTA_Tooltip_modifier_nevermore_2"	"地狱冥土"
 "DOTA_Tooltip_modifier_nevermore_2_Description"	"提升了%dMODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE%%%生命回复。"
 "DOTA_Tooltip_modifier_nevermore_2_debuff"	"地狱冥土"
@@ -45,9 +46,10 @@
 "DOTA_Tooltip_ability_nevermore_3_Lore"	"被收割的亡魂在魂渊内外盘旋，增加了塔耳塔洛斯的力量，也方便他扩大自己的灵魂收藏。"
 "DOTA_Tooltip_ability_nevermore_3_attack_per_str"	"每点力量额外攻击力："
 "DOTA_Tooltip_ability_nevermore_3_mana_cost"	"每次攻击魔法消耗："
+"DOTA_Tooltip_ability_nevermore_3_bonus_attackspeed"	"额外攻速："
 
 "DOTA_Tooltip_ability_nevermore_4"	"魂之挽歌"
-"DOTA_Tooltip_ability_nevermore_4_Description"	"塔尔塔罗斯聚集捕获的灵魂，以多道魔能的形式释放。引导时将牵引附近的单位并且免疫所有伤害。"
+"DOTA_Tooltip_ability_nevermore_4_Description"	"塔尔塔罗斯聚集捕获的灵魂，以多道魔能的形式释放。引导时将牵引附近的单位并且免疫所有伤害。死亡时会释放一半的魔能。"
 "DOTA_Tooltip_ability_nevermore_4_Lore"	"那些死者的灵魂被捕获后尽数释放，毁灭他们生前的盟友。"
 "DOTA_Tooltip_ability_nevermore_4_scepter_description_4"	"使得魂之挽歌会回归"
 "DOTA_Tooltip_ability_nevermore_4_damage"	"力量伤害系数："
