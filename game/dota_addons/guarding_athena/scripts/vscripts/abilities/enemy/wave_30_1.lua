@@ -24,7 +24,7 @@ function modifier_wave_30_1:DeclareFunctions()
 end
 function modifier_wave_30_1:GetModifierProcAttack_BonusDamage_Pure(params)
 	if params.target == nil then return end
-	if params.attacker == self:GetParent() then
+	if params.attacker == self:GetParent() and not params.attacker:PassivesDisabled() then
 		local flDamage = params.target:GetMaxHealth() * self.percent * 0.01
 		params.attacker:Heal(flDamage, self:GetAbility())
 		return flDamage

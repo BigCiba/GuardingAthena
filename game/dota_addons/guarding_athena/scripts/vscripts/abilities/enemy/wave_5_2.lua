@@ -28,7 +28,7 @@ function modifier_wave_5_2:OnDestroy()
 end
 function modifier_wave_5_2:OnAttackLanded(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
-	if params.attacker == self:GetParent() then
+	if params.attacker == self:GetParent() and not params.attacker:PassivesDisabled() then
 		params.target:AddNewModifier(params.attacker, self:GetAbility(), "modifier_wave_5_2_debuff", {duration = self:GetAbilityDuration()})
 	end
 end

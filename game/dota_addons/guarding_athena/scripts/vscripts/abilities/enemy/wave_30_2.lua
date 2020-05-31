@@ -26,8 +26,12 @@ function modifier_wave_30_2:DeclareFunctions()
 	}
 end
 function modifier_wave_30_2:GetModifierMoveSpeedBonus_Constant()
-	return math.floor((100 - self:GetParent():GetHealthPercent()) / self.trigger_pct) * self.movespeed
+	if not self:GetParent():PassivesDisabled()  then
+		return math.floor((100 - self:GetParent():GetHealthPercent()) / self.trigger_pct) * self.movespeed
+	end
 end
 function modifier_wave_30_2:GetModifierAttackSpeedBonus_Constant()
-	return math.floor((100 - self:GetParent():GetHealthPercent()) / self.trigger_pct) * self.attackspeed
+	if not self:GetParent():PassivesDisabled()  then
+		return math.floor((100 - self:GetParent():GetHealthPercent()) / self.trigger_pct) * self.attackspeed
+	end
 end

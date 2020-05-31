@@ -29,7 +29,7 @@ function modifier_wave_5_1:OnDestroy()
 end
 function modifier_wave_5_1:OnDeath(params)
 	if IsServer() then
-		if params.unit == self:GetParent() then
+		if params.unit == self:GetParent() and not params.unit:PassivesDisabled() then
 			local hParent = self:GetParent()
 			local hAbility = self:GetAbility()
 			local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), self.radius, hAbility)

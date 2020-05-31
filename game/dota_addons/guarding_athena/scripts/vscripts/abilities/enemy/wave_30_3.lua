@@ -23,7 +23,7 @@ function modifier_wave_30_3:OnDestroy()
 end
 function modifier_wave_30_3:OnDeath(params)
 	if IsServer() then
-		if params.unit == self:GetParent() and params.attacker ~= nil then
+		if params.unit == self:GetParent() and params.attacker ~= nil and not params.unit:PassivesDisabled() then
 			local hParent = self:GetParent()
 			local hAbility = self:GetAbility()
 			hParent:DealDamage(params.attacker, hAbility, hAbility:GetAbilityDamage())

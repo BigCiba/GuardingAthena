@@ -13,7 +13,7 @@ if modifier_elite_30_3 == nil then
 	modifier_elite_30_3 = class({}, nil, ModifierHidden)
 end
 function modifier_elite_30_3:IsAura()
-	return true
+	return self:GetParent():PassivesDisabled() and false or true
 end
 function modifier_elite_30_3:GetAuraRadius()
 	return self.radius

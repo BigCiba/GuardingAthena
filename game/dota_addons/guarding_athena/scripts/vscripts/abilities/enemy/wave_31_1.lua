@@ -46,7 +46,7 @@ function modifier_wave_31_1:GetModifierPreAttack_CriticalStrike()
 end
 function modifier_wave_31_1:OnAttackLanded(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
-	if params.attacker == self:GetParent() then
+	if params.attacker == self:GetParent() and not params.attacker:PassivesDisabled() then
 		params.attacker:Heal(params.damage * self.lifesteal * 0.01, self:GetAbility())
 		local iParticleID = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, params.attacker)
 		self:AddParticle(iParticleID, false, false, -1, false, false)
