@@ -31,7 +31,7 @@ function nevermore_4:OnSpellStart(bDeath)
 	local iRad = 360 / soul_count
 	for i = 1, soul_count do
 		local vDir = Rotation2D(vForward, math.rad(iRad * i))
-		self:RequiemLine(vStart, vDir)
+		self:RequiemLine(vStart, vDir, false, bDeath)
 	end
 	-- particle
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_a.vpcf", PATTACH_CUSTOMORIGIN, nil)
@@ -46,7 +46,7 @@ function nevermore_4:OnSpellStart(bDeath)
 	-- sound
 	hCaster:EmitSound("Hero_Nevermore.RequiemOfSouls")
 end
-function nevermore_4:RequiemLine(vStart, vDir, bScepter)
+function nevermore_4:RequiemLine(vStart, vDir, bScepter, bDeath)
 	local hCaster = self:GetCaster()
 	local iRequiemRadius = self:GetSpecialValueFor("distance")
 	local iRequiemLineWidthStart = self:GetSpecialValueFor("line_width_start")
@@ -76,6 +76,7 @@ function nevermore_4:RequiemLine(vStart, vDir, bScepter)
 			flDamage = flDamage,
 			flDuration = flDuration,
 			bScepter = bScepter or false,
+			bDeath = bDeath or false,
 			vStartX = vStart.x,
 			vStartY = vStart.y
 		}
@@ -93,10 +94,16 @@ function nevermore_4:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 		hCaster:DealDamage(hTarget, self, ExtraData.flDamage)
 		hTarget:AddNewModifier(hCaster, self, "modifier_nevermore_4", {duration = ExtraData.flDuration, bScepter = ExtraData.bScepter})
 		hTarget:EmitSound("Hero_Nevermore.RequiemOfSouls.Damage")
-	elseif hTarget == nil and hCaster:GetScepterLevel() >= 4 and ExtraData.bScepter == 0 then
-		local vStart = GetGroundPosition(Vector(ExtraData.vStartX, ExtraData.vStartY, 0), hCaster)
-		local vDiff = hCaster:GetAbsOrigin() - vStart
-		self:RequiemLine(vLocation + vDiff, (hCaster:GetAbsOrigin() - vLocation - vDiff):Normalized(), true)
+	elseif hTarget == nil and hCaster:GetScepterLevel() >= 2 then
+		if ExtraData.bScepter == 0 then
+			local vStart = GetGroundPosition(Vector(ExtraData.vStartX, ExtraData.vStartY, 0), hCaster)
+			local vDiff = hCaster:GetAbsOrigin() - vStart
+			self:RequiemLine(vLocation + vDiff, (hCaster:GetAbsOrigin() - vLocation - vDiff):Normalized(), true, ExtraData.bDeath)
+		else
+			if ExtraData.bDeath == true then
+				hCaster:FindModifierByName("modifier_nevermore_0"):AddStrength(hCaster:GetBaseStrength() * 0.25 / self:GetSpecialValueFor("soul_count"))
+			end
+		end
 	end
 end
 function nevermore_4:GetIntrinsicModifierName()

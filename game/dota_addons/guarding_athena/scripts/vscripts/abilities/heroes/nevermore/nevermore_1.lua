@@ -71,10 +71,10 @@ function nevermore_1:Shadowraze(vPosition)
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, flRadius, self)
 	for _, hUnit in pairs(tTargets) do
 		local flBonusDamagePct = 0
-		if hCaster:GetScepterLevel() >= 2 then
+		-- if hCaster:GetScepterLevel() >= 2 then
 			local hModifier = hUnit:FindModifierByName("modifier_nevermore_1_debuff")
 			flBonusDamagePct = IsValid(hModifier) and hModifier:GetStackCount() * flScepterBonusDamage * 0.01 or 0
-		end
+		-- end
 		hCaster:DealDamage(hUnit, self, flDamage * (1 + flBonusDamagePct))
 		hUnit:AddNewModifier(hCaster, self, "modifier_nevermore_1_debuff", {duration = flDuration})
 	end

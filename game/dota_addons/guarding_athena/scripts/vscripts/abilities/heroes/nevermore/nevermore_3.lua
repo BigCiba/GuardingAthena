@@ -42,7 +42,7 @@ function modifier_nevermore_3:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL,
-		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE,
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_PROJECTILE_NAME
 	}
@@ -67,11 +67,11 @@ function modifier_nevermore_3:GetModifierPreAttack_BonusDamage(params)
 	return flAttack
 end
 function modifier_nevermore_3:GetOverrideAttackMagical(params)
-	if self:GetStackCount() == 1 then
+	if self:GetStackCount() == 1 and self:GetParent():GetScepterLevel() < 4 then
 		return 1
 	end
 end
-function modifier_nevermore_3:GetModifierProcAttack_BonusDamage_Magical(params)
+function modifier_nevermore_3:GetModifierProcAttack_BonusDamage_Pure(params)
 	if self:GetStackCount() == 1 then
 		return params.damage
 	end

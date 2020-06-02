@@ -1,39 +1,39 @@
-LinkLuaModifier( "modifier_poison_sting", "abilities/enemy/poison_sting.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_wave_34_1", "abilities/enemy/wave_34_1.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-if poison_sting == nil then
-	poison_sting = class({})
+if wave_34_1 == nil then
+	wave_34_1 = class({})
 end
-function poison_sting:OnSpellStart()
+function wave_34_1:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
 	local speed = self:GetSpecialValueFor("speed")
 	CreateTrackingProjectile(hCaster, hTarget, self, "particles/units/heroes/hero_viper/viper_viper_strike.vpcf", speed)
 end
-function poison_sting:OnProjectileHit(hTarget, vLocation)
+function wave_34_1:OnProjectileHit(hTarget, vLocation)
 	if IsValid(hTarget) then
 		local hCaster = self:GetCaster()
-		hTarget:AddNewModifier(hCaster, self, "modifier_poison_sting", {duration = self:GetSpecialValueFor("duration")})
+		hTarget:AddNewModifier(hCaster, self, "modifier_wave_34_1", {duration = self:GetSpecialValueFor("duration")})
 	end
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_poison_sting == nil then
-	modifier_poison_sting = class({}, nil, ModifierDebuff)
+if modifier_wave_34_1 == nil then
+	modifier_wave_34_1 = class({}, nil, ModifierDebuff)
 end
-function modifier_poison_sting:OnCreated(params)
+function modifier_wave_34_1:OnCreated(params)
 	self.movespeed = self:GetAbilitySpecialValueFor("movespeed")
 	if IsServer() then
 		self.flDamage = self:GetAbilityDamage()
 		self:StartIntervalThink(1)
 	end
 end
-function modifier_poison_sting:OnIntervalThink()
+function modifier_wave_34_1:OnIntervalThink()
 	self:GetCaster():DealDamage(self:GetParent(), self:GetAbility(), self.flDamage)
 end
-function modifier_poison_sting:GetModifierMoveSpeedBonus_Percentage()
+function modifier_wave_34_1:GetModifierMoveSpeedBonus_Percentage()
 	return self.movespeed
 end
-function modifier_poison_sting:DeclareFunctions()
+function modifier_wave_34_1:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
 	}

@@ -1,8 +1,7 @@
-
 "npc_dota_hero_nevermore"	"塔耳塔洛斯"
 
 "DOTA_Tooltip_ability_nevermore_0"	"破碎的灵魂"
-"DOTA_Tooltip_ability_nevermore_0_Description"	"每当杀死一个单位都会对目标周围%radius%范围的的单位造成伤害并额外提升1点力量，额外力量上限为基础力量值。当塔尔塔罗斯死亡时，如果额外力量达到上限则消耗一半的力量在1秒后复活。"
+"DOTA_Tooltip_ability_nevermore_0_Description"	"每当杀死一个单位都会对目标周围%radius%范围的的单位造成伤害并额外提升1点力量，额外力量上限为基础力量值。当塔尔塔罗斯死亡时，如果额外力量达到上限的%trigger_pct%%%则消耗一半的力量在1秒后复活，且该技能会进入%respawn_cooldown%的冷却。"
 "DOTA_Tooltip_ability_nevermore_0_Lore"	"地狱才是灵魂的归宿"
 "DOTA_Tooltip_ability_nevermore_0_scepter_description_1"	"使普通攻击也能触发效果并且冷却时间减少至%scepter_cooldown%"
 "DOTA_Tooltip_ability_nevermore_0_damage"	"力量伤害系数："
@@ -10,9 +9,8 @@
 "DOTA_Tooltip_modifier_nevermore_0_Description"	"额外增加%dMODIFIER_PROPERTY_STATS_STRENGTH_BONUS%点力量。"
 
 "DOTA_Tooltip_ability_nevermore_1"	"三重黑幕"
-"DOTA_Tooltip_ability_nevermore_1_Description"	"在前方召唤%shadowraze_count%次黑幕冲击，造成巨大伤害。同时用黑幕笼罩敌人，黑幕使敌人减少伤害输出。使用后在%combo_duration%秒内可以再次使用该技能，最多连续使用2次。"
+"DOTA_Tooltip_ability_nevermore_1_Description"	"在前方召唤%shadowraze_count%次黑幕冲击，造成巨大伤害。同时用黑幕笼罩敌人，黑幕使敌人减少伤害输出。使用后在%combo_duration%秒内可以再次使用该技能，最多连续使用2次。每层黑幕提升%scepter_bonus_damage%%%伤害。"
 "DOTA_Tooltip_ability_nevermore_1_Lore"	"塔耳塔洛斯标志性的灵魂收割手段。"
-"DOTA_Tooltip_ability_nevermore_1_scepter_description_2"	"每次连中增加黑幕%scepter_bonus_damage%%%伤害"
 "DOTA_Tooltip_ability_nevermore_1_base_damage"	"基础伤害："
 "DOTA_Tooltip_ability_nevermore_1_damage"	"力量伤害系数："
 "DOTA_Tooltip_ability_nevermore_1_shadowraze_radius"	"冲击范围："
@@ -44,6 +42,7 @@
 "DOTA_Tooltip_ability_nevermore_3"	"支配死灵"
 "DOTA_Tooltip_ability_nevermore_3_Description"	"每点力量将被动提升一定的攻击力。开启技能后额外攻击力提升为原来的%active_factor%倍，并且攻击变为魔法伤害，但是每次攻击都会消耗额外的魔法。"
 "DOTA_Tooltip_ability_nevermore_3_Lore"	"被收割的亡魂在魂渊内外盘旋，增加了塔耳塔洛斯的力量，也方便他扩大自己的灵魂收藏。"
+"DOTA_Tooltip_ability_nevermore_1_scepter_description_4"	"开启后攻击变为物理魔法双重伤害"
 "DOTA_Tooltip_ability_nevermore_3_attack_per_str"	"每点力量额外攻击力："
 "DOTA_Tooltip_ability_nevermore_3_mana_cost"	"每次攻击魔法消耗："
 "DOTA_Tooltip_ability_nevermore_3_bonus_attackspeed"	"额外攻速："
@@ -51,7 +50,7 @@
 "DOTA_Tooltip_ability_nevermore_4"	"魂之挽歌"
 "DOTA_Tooltip_ability_nevermore_4_Description"	"塔尔塔罗斯聚集捕获的灵魂，以多道魔能的形式释放。引导时将牵引附近的单位并且免疫所有伤害。死亡时会释放一半的魔能。"
 "DOTA_Tooltip_ability_nevermore_4_Lore"	"那些死者的灵魂被捕获后尽数释放，毁灭他们生前的盟友。"
-"DOTA_Tooltip_ability_nevermore_4_scepter_description_4"	"使得魂之挽歌会回归"
+"DOTA_Tooltip_ability_nevermore_4_scepter_description_2"	"使得魂之挽歌会回归"
 "DOTA_Tooltip_ability_nevermore_4_damage"	"力量伤害系数："
 "DOTA_Tooltip_ability_nevermore_4_soul_count"	"魔能数量："
 "DOTA_Tooltip_ability_nevermore_4_distance"	"最远距离："
@@ -60,4 +59,4 @@
 "DOTA_Tooltip_modifier_nevermore_4_Description"	"该单位正在四处逃窜。"
 
 "DOTA_Tooltip_ability_item_npc_dota_hero_nevermore"	"撒旦之邪力"
-"DOTA_Tooltip_ability_item_npc_dota_hero_nevermore_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：破碎的灵魂</h1>使普通攻击也能触发效果并且冷却时间减少至%scepter_cooldown%\n<h1>二转：毁灭三连</h1>每次连中增加黑幕%scepter_bonus_damage%%%伤害\n<h1>三转：黑幕灭世</h1>地狱冥土期间每隔%scepter_interval%秒造成3次黑幕冲击\n<h1>四转：魂之挽歌</h1>使得魂之挽歌会回归\n撒旦的地狱之力，大大加强了灵魂控制能力"
+"DOTA_Tooltip_ability_item_npc_dota_hero_nevermore_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：破碎的灵魂</h1>使普通攻击也能触发效果并且冷却时间减少至%scepter_cooldown%\n<h1>二转：魂之挽歌</h1>使得魂之挽歌会回归\n<h1>三转：黑幕灭世</h1>地狱冥土期间每隔%scepter_interval%秒造成3次黑幕冲击\n<h1>四转：支配死灵</h1>开启后攻击变为物理魔法双重伤害\n撒旦的地狱之力，大大加强了灵魂控制能力"

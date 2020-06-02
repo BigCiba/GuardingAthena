@@ -20,6 +20,8 @@ end
 function modifier_nevermore_0:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.damage = self:GetAbilitySpecialValueFor("damage")
+	self.trigger_pct = self:GetAbilitySpecialValueFor("trigger_pct")
+	self.respawn_cooldown = self:GetAbilitySpecialValueFor("respawn_cooldown")
 	if IsServer() then
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_DEATH, self, self:GetParent())
@@ -28,6 +30,8 @@ end
 function modifier_nevermore_0:OnRefresh(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.damage = self:GetAbilitySpecialValueFor("damage")
+	self.trigger_pct = self:GetAbilitySpecialValueFor("trigger_pct")
+	self.respawn_cooldown = self:GetAbilitySpecialValueFor("respawn_cooldown")
 	if IsServer() then
 	end
 end
@@ -60,6 +64,12 @@ function modifier_nevermore_0:Action(vPosition)
 	self:AddParticle(iParticleID, false, false, -1, false, false)
 	EmitSoundOnLocationWithCaster(vPosition, "Hero_Nevermore.Shadowraze", hParent)
 end
+function modifier_nevermore_0:AddStrength(iStrength)
+	-- 增加力量
+	if self:GetStackCount() < self:GetParent():GetBaseStrength() then
+		self:SetStackCount(self:GetStackCount() + math.min(iStrength, self:GetParent():GetBaseStrength() - self:GetStackCount()))
+	end
+end
 function modifier_nevermore_0:OnDeath(params)
 	if IsServer() then
 		if not IsValid(params.unit) then return end
@@ -68,9 +78,7 @@ function modifier_nevermore_0:OnDeath(params)
 				self:Action(params.unit:GetAbsOrigin())
 			end
 			-- 增加力量
-			if self:GetStackCount() < params.attacker:GetBaseStrength() then
-				self:IncrementStackCount()
-			end
+			self:AddStrength(1)
 		end
 	end
 end
@@ -84,8 +92,9 @@ function modifier_nevermore_0:GetModifierBonusStats_Strength()
 	return self:GetStackCount()
 end
 function modifier_nevermore_0:ReincarnateTime()
-	if self:GetStackCount() >= self:GetParent():GetBaseStrength() then
+	if self:GetStackCount() >= self:GetParent():GetBaseStrength() * self.trigger_pct * 0.01 and self:GetAbility():GetCooldownTimeRemaining() < 1 then
 		self:SetStackCount(math.floor(self:GetStackCount() * 0.5))
+		self:GetAbility():StartCooldown(self.respawn_cooldown)
 		return 1
 	end
 end

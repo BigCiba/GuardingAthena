@@ -1,14 +1,17 @@
 "KeyValue"
 {
-	"force_rush"
+	"wave_9_1"
 	{
+		"Note"									"强攻"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/force_rush"
+		"ScriptFile"							"abilities/enemy/wave_9_1"
 		"AbilityTextureName"					"legion_commander_press_the_attack"
 		"MaxLevel"								"5"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastPoint"						"0.3"
+		"AbilityCooldown"						"12"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityDuration"						"6"
 		"AbilitySpecial"
 		{
 			"01"
@@ -23,10 +26,11 @@
 			}
 		}
 	}
-	"courage"
+	"wave_9_2"
 	{
+		"Note"									"勇气"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/courage"
+		"ScriptFile"							"abilities/enemy/wave_9_2"
 		"AbilityTextureName"					"legion_commander_moment_of_courage"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -38,6 +42,11 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"heal"							"1000 2000 3000 4000 8000"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"15 17 19 21 23"
 			}
 		}
 	}
@@ -245,10 +254,10 @@
 			}
 		}
 	}
-	"poison_sting"
+	"wave_34_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/poison_sting"
+		"ScriptFile"							"abilities/enemy/wave_34_1"
 		"AbilityTextureName"					"venomancer_poison_sting"
 		"MaxLevel"								"5"
 		"AbilityCastRange"						"900"
@@ -1121,10 +1130,11 @@
 		{
 		}
 	}
-	"scream_of_pain"
+	"elite_34_1"
 	{
+		"Note"									"痛苦尖叫"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/scream_of_pain"
+		"ScriptFile"							"abilities/enemy/elite_34_1"
 		"AbilityTextureName"					"queenofpain_scream_of_pain"
 		"MaxLevel"								"5"
 		"AbilityCooldown"						"7"
@@ -1134,6 +1144,7 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityDamage"							"40000 80000 120000 160000 200000"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1143,25 +1154,21 @@
 			}
 			"02"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"40000 80000 120000 160000 200000"
-			}
-			"03"
-			{
 				"var_type"						"FIELD_FLOAT"
 				"shock_duration"				"1.5"
 			}
-			"04"
+			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"600"
 			}
 		}
 	}
-	"queen_split"
+	"elite_34_2"
 	{
+		"Note"									"女王幻影"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/queen_split"
+		"ScriptFile"							"abilities/enemy/elite_34_2"
 		"AbilityTextureName"					"queenofpain_sanguine_blink"
 		"MaxLevel"								"5"
 		"AbilityCooldown"						"40"
@@ -1182,10 +1189,11 @@
 			}
 		}
 	}
-	"shadow_strike"
+	"elite_34_3"
 	{
+		"Note"									"痛苦匕首"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/shadow_strike"
+		"ScriptFile"							"abilities/enemy/elite_34_3"
 		"AbilityTextureName"					"queenofpain_sanguine_shadow_strike"
 		"MaxLevel"								"5"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
