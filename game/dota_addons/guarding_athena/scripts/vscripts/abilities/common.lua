@@ -579,6 +579,11 @@ if IsServer() then
 		self:EndCooldown()
 		self:StartCooldown(flRemainingTime * (1 - flPercent * 0.01))
 	end
+	-- 治疗
+	function CDOTABaseAbility:Heal(hCaster, flAmount)
+		hCaster:Heal(flAmount, self)
+		SendOverheadEventMessage(hCaster:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, hCaster, flAmount, hCaster:GetPlayerOwner())
+	end
 	function CDOTA_BaseNPC:GetAbilityNameSpecialValueFor(sAbilityName, sKey)
 		local hAbility = self:FindAbilityByName(sAbilityName)
 		if IsValid(hAbility) then

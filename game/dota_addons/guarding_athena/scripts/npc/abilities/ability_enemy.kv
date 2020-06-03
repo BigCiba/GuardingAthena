@@ -10,7 +10,9 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastPoint"						"0.3"
 		"AbilityCooldown"						"12"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET|DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityDuration"						"6"
 		"AbilitySpecial"
 		{
@@ -256,6 +258,7 @@
 	}
 	"wave_34_1"
 	{
+		"Note"									"女妖突袭"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/wave_34_1"
 		"AbilityTextureName"					"venomancer_poison_sting"
@@ -660,6 +663,7 @@
 	}
 	"hades_1"
 	{
+		"Note"									"死亡脉冲"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/hades_1"
 		"AbilityTextureName"					"necrolyte_death_pulse"
@@ -694,6 +698,7 @@
 	}
 	"hades_2"
 	{
+		"Note"									"竭心光环"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/hades_2"
 		"AbilityTextureName"					"necrolyte_heartstopper_aura"
@@ -733,6 +738,7 @@
 	}
 	"hades_3"
 	{
+		"Note"									"死亡契约"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/hades_3"
 		"AbilityTextureName"					"necrolyte_sadist"
@@ -756,6 +762,7 @@
 	}
 	"hades_4"
 	{
+		"Note"									"死神镰刀"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/hades_4"
 		"AbilityTextureName"					"necrolyte_reapers_scythe"
@@ -782,11 +789,11 @@
 			}
 		}
 	}
-	"angry_water"
+	"poseidon_1"
 	{
 		"Note"									"水怒"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/angry_water"
+		"ScriptFile"							"abilities/enemy/poseidon_1"
 		"AbilityTextureName"					"kunkka_torrent"
 		"MaxLevel"								"5"
 		"AbilityCastPoint"						"0.3"
@@ -842,10 +849,11 @@
 			}
 		}
 	}
-	"water_ravage"
+	"poseidon_3"
 	{
+		"Note"									"海怒"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/water_ravage"
+		"ScriptFile"							"abilities/enemy/poseidon_3"
 		"AbilityTextureName"					"tidehunter_ravage"
 		"MaxLevel"								"5"
 		"AbilityCastPoint"						"0.3"
@@ -875,10 +883,11 @@
 			}
 		}
 	}
-	"water_blade"
+	"poseidon_2"
 	{
+		"Note"									"潮汐使者"
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/enemy/water_blade"
+		"ScriptFile"							"abilities/enemy/poseidon_2"
 		"AbilityTextureName"					"kunkka_divine_anchor_tidebringer"
 		"MaxLevel"								"5"
 		"AbilityCooldown"						"4 3.5 3 2.5 2"
@@ -1137,6 +1146,7 @@
 		"ScriptFile"							"abilities/enemy/elite_34_1"
 		"AbilityTextureName"					"queenofpain_scream_of_pain"
 		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCooldown"						"7"
 		"AbilityManaCost"						"110"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -1171,6 +1181,7 @@
 		"ScriptFile"							"abilities/enemy/elite_34_2"
 		"AbilityTextureName"					"queenofpain_sanguine_blink"
 		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"						"40"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1187,6 +1198,11 @@
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"600"
 			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health_pct"					"50"
+			}
 		}
 	}
 	"elite_34_3"
@@ -1196,6 +1212,7 @@
 		"ScriptFile"							"abilities/enemy/elite_34_3"
 		"AbilityTextureName"					"queenofpain_sanguine_shadow_strike"
 		"MaxLevel"								"5"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -1992,6 +2009,7 @@
 	}
 	"elite_28_1"
 	{
+		"Note"									"不如跳舞"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/elite_28_1"
 		"AbilityTextureName"					"furion_wrath_of_nature"
@@ -2011,6 +2029,7 @@
 	}
 	"elite_28_2"
 	{
+		"Note"									"传送"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/elite_28_2"
 		"AbilityTextureName"					"furion_teleportation"
@@ -2037,6 +2056,7 @@
 	}
 	"wave_30_1"
 	{
+		"Note"									"生命窃取"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/wave_30_1"
 		"AbilityTextureName"					"necronomicon_warrior_mana_burn"
@@ -2056,6 +2076,7 @@
 	}
 	"wave_30_2"
 	{
+		"Note"									"死亡渴望"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/wave_30_2"
 		"AbilityTextureName"					"necronomicon_warrior_sight"
@@ -2082,6 +2103,7 @@
 	}
 	"wave_30_3"
 	{
+		"Note"									"遗愿"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/wave_30_3"
 		"AbilityTextureName"					"necronomicon_warrior_last_will"
@@ -2173,7 +2195,7 @@
 	}
 	"wave_31_1"
 	{
-		"Note"									"炮台"
+		"Note"									"大恶魔"
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/enemy/wave_31_1"
 		"AbilityTextureName"					"terrorblade_metamorphosis_alt1"

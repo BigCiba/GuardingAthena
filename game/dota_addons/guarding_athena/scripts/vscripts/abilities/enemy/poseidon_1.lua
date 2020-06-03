@@ -1,29 +1,29 @@
-LinkLuaModifier( "modifier_angry_water", "abilities/enemy/angry_water.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_angry_water_thinker", "abilities/enemy/angry_water.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_angry_water_motion", "abilities/enemy/angry_water.lua", LUA_MODIFIER_MOTION_VERTICAL )
-LinkLuaModifier( "modifier_angry_water_debuff", "abilities/enemy/angry_water.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_poseidon_1", "abilities/enemy/poseidon_1.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_poseidon_1_thinker", "abilities/enemy/poseidon_1.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_poseidon_1_motion", "abilities/enemy/poseidon_1.lua", LUA_MODIFIER_MOTION_VERTICAL )
+LinkLuaModifier( "modifier_poseidon_1_debuff", "abilities/enemy/poseidon_1.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-if angry_water == nil then
-	angry_water = class({})
+if poseidon_1 == nil then
+	poseidon_1 = class({})
 end
-function angry_water:Torrent(vPosition)
+function poseidon_1:Torrent(vPosition)
 	local hCaster = self:GetCaster()
 	local delay = self:GetSpecialValueFor("delay")
-	CreateModifierThinker(hCaster, self, "modifier_angry_water_thinker", {duration=delay}, vPosition, hCaster:GetTeamNumber(), false)
+	CreateModifierThinker(hCaster, self, "modifier_poseidon_1_thinker", {duration=delay}, vPosition, hCaster:GetTeamNumber(), false)
 end
-function angry_water:OnSpellStart()
+function poseidon_1:OnSpellStart()
 	local hCaster = self:GetCaster()
-	hCaster:AddNewModifier(hCaster, self, "modifier_angry_water", {duration = self:GetDuration()})
+	hCaster:AddNewModifier(hCaster, self, "modifier_poseidon_1", {duration = self:GetDuration()})
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_angry_water == nil then
-	modifier_angry_water = class({}, nil, ModifierBasic)
+if modifier_poseidon_1 == nil then
+	modifier_poseidon_1 = class({}, nil, ModifierBasic)
 end
-function modifier_angry_water:IsHidden()
+function modifier_poseidon_1:IsHidden()
 	return true
 end
-function modifier_angry_water:OnCreated(params)
+function modifier_poseidon_1:OnCreated(params)
 	self.torrent_interval = self:GetAbilitySpecialValueFor("torrent_interval")
 	self.torrent_max_distance = self:GetAbilitySpecialValueFor("torrent_max_distance")
 	if IsServer() then
@@ -42,7 +42,7 @@ function modifier_angry_water:OnCreated(params)
 		end
 	end
 end
-function modifier_angry_water:OnIntervalThink()
+function modifier_poseidon_1:OnIntervalThink()
 	local vOrigin = self:GetParent():GetAbsOrigin()
 	local vDirection = Rotation2D(Vector(1, 0, 0),  RandomFloat(self.tRadian.min, self.tRadian.max))
 	local vPosition = vOrigin + vDirection * RandomInt(0,self.torrent_max_distance)
@@ -50,10 +50,10 @@ function modifier_angry_water:OnIntervalThink()
 	self.tRadian.Next()
 end
 ---------------------------------------------------------------------
-if modifier_angry_water_thinker == nil then
-	modifier_angry_water_thinker = class({}, nil, ModifierThinker)
+if modifier_poseidon_1_thinker == nil then
+	modifier_poseidon_1_thinker = class({}, nil, ModifierThinker)
 end
-function modifier_angry_water_thinker:OnCreated(params)
+function modifier_poseidon_1_thinker:OnCreated(params)
 	local hCaster = self:GetCaster()
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
@@ -68,7 +68,7 @@ function modifier_angry_water_thinker:OnCreated(params)
 		EmitSoundOnLocationForAllies(position, "Ability.pre.Torrent", hCaster)
 	end
 end
-function modifier_angry_water_thinker:OnRemoved()
+function modifier_poseidon_1_thinker:OnRemoved()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local position = self:GetParent():GetAbsOrigin()
@@ -77,8 +77,8 @@ function modifier_angry_water_thinker:OnRemoved()
 
 		local targets = FindUnitsInRadius(hCaster:GetTeamNumber(), position, nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC, 0, FIND_CLOSEST, false)
 		for n, target in pairs(targets) do
-			target:AddNewModifier(hCaster, ability, "modifier_angry_water_debuff", {duration=(self.stun_duration + self.slow_duration) * target:GetStatusResistanceFactor()})
-			target:AddNewModifier(hCaster, ability, "modifier_angry_water_motion", {duration=self.stun_duration})
+			target:AddNewModifier(hCaster, ability, "modifier_poseidon_1_debuff", {duration=(self.stun_duration + self.slow_duration) * target:GetStatusResistanceFactor()})
+			target:AddNewModifier(hCaster, ability, "modifier_poseidon_1_motion", {duration=self.stun_duration})
 		end
 
 		local particleID = ParticleManager:CreateParticle(ParticleManager:GetParticleReplacement("particles/units/heroes/hero_kunkka/kunkka_spell_torrent_splash.vpcf", hCaster), PATTACH_WORLDORIGIN, nil)
@@ -90,7 +90,7 @@ function modifier_angry_water_thinker:OnRemoved()
 		self:GetParent():RemoveSelf()
 	end
 end
-function modifier_angry_water_thinker:CheckState()
+function modifier_poseidon_1_thinker:CheckState()
 	return {
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_INVULNERABLE] = true,
@@ -99,34 +99,34 @@ function modifier_angry_water_thinker:CheckState()
 	}
 end
 ---------------------------------------------------------------------
-if modifier_angry_water_motion == nil then
-	modifier_angry_water_motion = class({})
+if modifier_poseidon_1_motion == nil then
+	modifier_poseidon_1_motion = class({})
 end
-function modifier_angry_water_motion:IsHidden()
+function modifier_poseidon_1_motion:IsHidden()
 	return false
 end
-function modifier_angry_water_motion:IsDebuff()
+function modifier_poseidon_1_motion:IsDebuff()
 	return true
 end
-function modifier_angry_water_motion:IsPurgable()
+function modifier_poseidon_1_motion:IsPurgable()
 	return false
 end
-function modifier_angry_water_motion:IsPurgeException()
+function modifier_poseidon_1_motion:IsPurgeException()
 	return true
 end
-function modifier_angry_water_motion:IsStunDebuff()
+function modifier_poseidon_1_motion:IsStunDebuff()
 	return true
 end
-function modifier_angry_water_motion:AllowIllusionDuplicate()
+function modifier_poseidon_1_motion:AllowIllusionDuplicate()
 	return false
 end
-function modifier_angry_water_motion:GetEffectName()
+function modifier_poseidon_1_motion:GetEffectName()
 	return "particles/generic_gameplay/generic_stunned.vpcf"
 end
-function modifier_angry_water_motion:GetEffectAttachType()
+function modifier_poseidon_1_motion:GetEffectAttachType()
 	return PATTACH_OVERHEAD_FOLLOW
 end
-function modifier_angry_water_motion:OnCreated(params)
+function modifier_poseidon_1_motion:OnCreated(params)
 	if IsServer() then
 		self.torrent_damage = self:GetAbilityDamage()
 		self.damage_type = self:GetAbility():GetAbilityDamageType()
@@ -143,18 +143,18 @@ function modifier_angry_water_motion:OnCreated(params)
 		end
 	end
 end
-function modifier_angry_water_motion:OnRefresh(params)
+function modifier_poseidon_1_motion:OnRefresh(params)
 	self.torrent_damage = self:GetAbilityDamage()
 	if IsServer() then
 		self.damage_type = self:GetAbility():GetAbilityDamageType()
 	end
 end
-function modifier_angry_water_motion:OnDestroy()
+function modifier_poseidon_1_motion:OnDestroy()
 	if IsServer() then
 		self:GetParent():RemoveVerticalMotionController(self)
 	end
 end
-function modifier_angry_water_motion:OnIntervalThink()
+function modifier_poseidon_1_motion:OnIntervalThink()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local target = self:GetParent()
@@ -162,7 +162,7 @@ function modifier_angry_water_motion:OnIntervalThink()
 		hCaster:DealDamage(target, self:GetAbility(), damage_per_second * self.tick_interval)
 	end
 end
-function modifier_angry_water_motion:UpdateVerticalMotion(me, dt)
+function modifier_poseidon_1_motion:UpdateVerticalMotion(me, dt)
 	if IsServer() then
 		me:SetAbsOrigin(me:GetAbsOrigin()+(self.vAcceleration*self.fTime+self.vStartVerticalVelocity)*dt)
 		self.fTime = self.fTime + dt
@@ -172,45 +172,45 @@ function modifier_angry_water_motion:UpdateVerticalMotion(me, dt)
 		end
 	end
 end
-function modifier_angry_water_motion:OnVerticalMotionInterrupted()
+function modifier_poseidon_1_motion:OnVerticalMotionInterrupted()
 	if IsServer() then
 		self:GetParent():RemoveGesture(ACT_DOTA_FLAIL)
 	end
 end
-function modifier_angry_water_motion:CheckState()
+function modifier_poseidon_1_motion:CheckState()
 	return {
 		[MODIFIER_STATE_STUNNED] = true,
 	}
 end
-function modifier_angry_water_motion:DeclareFunctions()
+function modifier_poseidon_1_motion:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 	}
 end
-function modifier_angry_water_motion:GetOverrideAnimation(params)
+function modifier_poseidon_1_motion:GetOverrideAnimation(params)
 	return ACT_DOTA_DISABLED
 end
 ---------------------------------------------------------------------
-if modifier_angry_water_debuff == nil then
-	modifier_angry_water_debuff = class({}, nil, ModifierDebuff)
+if modifier_poseidon_1_debuff == nil then
+	modifier_poseidon_1_debuff = class({}, nil, ModifierDebuff)
 end
-function modifier_angry_water_debuff:OnCreated(params)
+function modifier_poseidon_1_debuff:OnCreated(params)
 	self.bonus_armor = self:GetAbilitySpecialValueFor("bonus_armor")
 	self.bonus_move_speed = self:GetAbilitySpecialValueFor("bonus_move_speed")
 end
-function modifier_angry_water_debuff:OnRefresh(params)
+function modifier_poseidon_1_debuff:OnRefresh(params)
 	self.bonus_armor = self:GetAbilitySpecialValueFor("bonus_armor")
 	self.bonus_move_speed = self:GetAbilitySpecialValueFor("bonus_move_speed")
 end
-function modifier_angry_water_debuff:DeclareFunctions()
+function modifier_poseidon_1_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
 	}
 end
-function modifier_angry_water_debuff:GetModifierMoveSpeedBonus_Percentage(params)
+function modifier_poseidon_1_debuff:GetModifierMoveSpeedBonus_Percentage(params)
 	return -self.bonus_move_speed
 end
-function modifier_angry_water_debuff:GetModifierPhysicalArmorBonus(params)
+function modifier_poseidon_1_debuff:GetModifierPhysicalArmorBonus(params)
 	return -self.bonus_armor
 end

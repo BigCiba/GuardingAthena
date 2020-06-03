@@ -1,14 +1,14 @@
-LinkLuaModifier("modifier_water_ravage_debuff", "abilities/enemy/water_ravage.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_water_ravage_motion", "abilities/enemy/water_ravage.lua", LUA_MODIFIER_MOTION_VERTICAL)
+LinkLuaModifier("modifier_poseidon_3_debuff", "abilities/enemy/poseidon_3.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_poseidon_3_motion", "abilities/enemy/poseidon_3.lua", LUA_MODIFIER_MOTION_VERTICAL)
 
 --Abilities
-if water_ravage == nil then
-	water_ravage = class({})
+if poseidon_3 == nil then
+	poseidon_3 = class({})
 end
-function water_ravage:GetCastRange(vLocation, hTarget)
+function poseidon_3:GetCastRange(vLocation, hTarget)
 	return self:GetSpecialValueFor("radius")
 end
-function water_ravage:Ravage(IsReturn)
+function poseidon_3:Ravage(IsReturn)
 	local caster = self:GetCaster()
 	local distance = 0
 	local duration = self:GetSpecialValueFor("duration")
@@ -46,9 +46,9 @@ function water_ravage:Ravage(IsReturn)
 			local particleID = ParticleManager:CreateParticle(ParticleManager:GetParticleReplacement("particles/units/heroes/hero_tidehunter/tidehunter_spell_ravage_hit.vpcf", caster), PATTACH_ABSORIGIN_FOLLOW, target)
 			ParticleManager:ReleaseParticleIndex(particleID)
 
-			target:AddNewModifier(caster, self, "modifier_water_ravage_debuff", {duration=duration*target:GetStatusResistanceFactor(caster)})
-			target:RemoveModifierByName("modifier_water_ravage_motion")
-			target:AddNewModifier(caster, self, "modifier_water_ravage_motion", {duration=duration*target:GetStatusResistanceFactor(caster)})
+			target:AddNewModifier(caster, self, "modifier_poseidon_3_debuff", {duration=duration*target:GetStatusResistanceFactor(caster)})
+			target:RemoveModifierByName("modifier_poseidon_3_motion")
+			target:AddNewModifier(caster, self, "modifier_poseidon_3_motion", {duration=duration*target:GetStatusResistanceFactor(caster)})
 
 			table.insert(record_targets, target)
 		end
@@ -62,9 +62,9 @@ function water_ravage:Ravage(IsReturn)
 					local particleID = ParticleManager:CreateParticle(ParticleManager:GetParticleReplacement("particles/units/heroes/hero_tidehunter/tidehunter_spell_ravage_hit.vpcf", caster), PATTACH_ABSORIGIN_FOLLOW, target)
 					ParticleManager:ReleaseParticleIndex(particleID)
 
-					target:AddNewModifier(caster, self, "modifier_water_ravage_debuff", {duration=duration*target:GetStatusResistanceFactor(caster)})
-					target:RemoveModifierByName("modifier_water_ravage_motion")
-					target:AddNewModifier(caster, self, "modifier_water_ravage_motion", {duration=duration*target:GetStatusResistanceFactor(caster)})
+					target:AddNewModifier(caster, self, "modifier_poseidon_3_debuff", {duration=duration*target:GetStatusResistanceFactor(caster)})
+					target:RemoveModifierByName("modifier_poseidon_3_motion")
+					target:AddNewModifier(caster, self, "modifier_poseidon_3_motion", {duration=duration*target:GetStatusResistanceFactor(caster)})
 
 					table.insert(record_targets, target)
 				end
@@ -85,83 +85,83 @@ function water_ravage:Ravage(IsReturn)
 		caster:EmitSound("Ability.Ravage")
 	end
 end
-function water_ravage:OnSpellStart()
+function poseidon_3:OnSpellStart()
 	self:Ravage()
 	self:GameTimer(1.3,function()
 		self:Ravage(true)
 	end)
 end
-function water_ravage:IsHiddenWhenStolen()
+function poseidon_3:IsHiddenWhenStolen()
 	return false
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_water_ravage_debuff == nil then
-	modifier_water_ravage_debuff = class({})
+if modifier_poseidon_3_debuff == nil then
+	modifier_poseidon_3_debuff = class({})
 end
-function modifier_water_ravage_debuff:IsHidden()
+function modifier_poseidon_3_debuff:IsHidden()
 	return false
 end
-function modifier_water_ravage_debuff:IsDebuff()
+function modifier_poseidon_3_debuff:IsDebuff()
 	return true
 end
-function modifier_water_ravage_debuff:IsPurgable()
+function modifier_poseidon_3_debuff:IsPurgable()
 	return false
 end
-function modifier_water_ravage_debuff:IsPurgeException()
+function modifier_poseidon_3_debuff:IsPurgeException()
 	return true
 end
-function modifier_water_ravage_debuff:IsStunDebuff()
+function modifier_poseidon_3_debuff:IsStunDebuff()
 	return true
 end
-function modifier_water_ravage_debuff:AllowIllusionDuplicate()
+function modifier_poseidon_3_debuff:AllowIllusionDuplicate()
 	return false
 end
-function modifier_water_ravage_debuff:GetAttributes()
+function modifier_poseidon_3_debuff:GetAttributes()
 	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
-function modifier_water_ravage_debuff:GetEffectName()
+function modifier_poseidon_3_debuff:GetEffectName()
 	return "particles/generic_gameplay/generic_stunned.vpcf"
 end
-function modifier_water_ravage_debuff:GetEffectAttachType()
+function modifier_poseidon_3_debuff:GetEffectAttachType()
 	return PATTACH_OVERHEAD_FOLLOW
 end
-function modifier_water_ravage_debuff:CheckState()
+function modifier_poseidon_3_debuff:CheckState()
 	return {
 		[MODIFIER_STATE_STUNNED] = true,
 	}
 end
-function modifier_water_ravage_debuff:DeclareFunctions()
+function modifier_poseidon_3_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION
 	}
 end
-function modifier_water_ravage_debuff:GetOverrideAnimation(params)
+function modifier_poseidon_3_debuff:GetOverrideAnimation(params)
 	return ACT_DOTA_DISABLED
 end
 ---------------------------------------------------------------------
-if modifier_water_ravage_motion == nil then
-	modifier_water_ravage_motion = class({})
+if modifier_poseidon_3_motion == nil then
+	modifier_poseidon_3_motion = class({})
 end
-function modifier_water_ravage_motion:IsHidden()
+function modifier_poseidon_3_motion:IsHidden()
 	return true
 end
-function modifier_water_ravage_motion:IsDebuff()
+function modifier_poseidon_3_motion:IsDebuff()
 	return true
 end
-function modifier_water_ravage_motion:IsPurgable()
+function modifier_poseidon_3_motion:IsPurgable()
 	return false
 end
-function modifier_water_ravage_motion:IsPurgeException()
+function modifier_poseidon_3_motion:IsPurgeException()
 	return true
 end
-function modifier_water_ravage_motion:IsStunDebuff()
+function modifier_poseidon_3_motion:IsStunDebuff()
 	return true
 end
-function modifier_water_ravage_motion:AllowIllusionDuplicate()
+function modifier_poseidon_3_motion:AllowIllusionDuplicate()
 	return false
 end
-function modifier_water_ravage_motion:OnCreated(params)
+function modifier_poseidon_3_motion:OnCreated(params)
 	if IsServer() then
 		self.fMotionDuration = 0.5
 		self.fHeight = 350
@@ -175,7 +175,7 @@ function modifier_water_ravage_motion:OnCreated(params)
 		end
 	end
 end
-function modifier_water_ravage_motion:OnDestroy()
+function modifier_poseidon_3_motion:OnDestroy()
 	if IsServer() then
 		if IsValid(self:GetCaster()) and IsValid(self:GetParent()) then
 			self:GetCaster():DealDamage(self:GetParent(), self:GetAbility(), self:GetAbility():GetAbilityDamage())
@@ -183,12 +183,12 @@ function modifier_water_ravage_motion:OnDestroy()
 		self:GetParent():RemoveVerticalMotionController(self)
 	end
 end
-function modifier_water_ravage_motion:OnVerticalMotionInterrupted()
+function modifier_poseidon_3_motion:OnVerticalMotionInterrupted()
 	if IsServer() then
 		self:Destroy()
 	end
 end
-function modifier_water_ravage_motion:UpdateVerticalMotion(me, dt)
+function modifier_poseidon_3_motion:UpdateVerticalMotion(me, dt)
 	if IsServer() then
 		me:SetAbsOrigin(me:GetAbsOrigin()+(self.vAcceleration*self.fTime+self.vStartVerticalVelocity)*dt)
 		self.fTime = self.fTime + dt
@@ -197,11 +197,11 @@ function modifier_water_ravage_motion:UpdateVerticalMotion(me, dt)
 		end
 	end
 end
-function modifier_water_ravage_motion:DeclareFunctions()
+function modifier_poseidon_3_motion:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION
 	}
 end
-function modifier_water_ravage_motion:GetOverrideAnimation(params)
+function modifier_poseidon_3_motion:GetOverrideAnimation(params)
 	return ACT_DOTA_FLAIL
 end

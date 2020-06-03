@@ -1,22 +1,22 @@
-LinkLuaModifier( "modifier_water_blade", "abilities/enemy/water_blade.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_water_blade_check", "abilities/enemy/water_blade.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_water_blade_animation", "abilities/enemy/water_blade.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_poseidon_2", "abilities/enemy/poseidon_2.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_poseidon_2_check", "abilities/enemy/poseidon_2.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_poseidon_2_animation", "abilities/enemy/poseidon_2.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-if water_blade == nil then
-	water_blade = class({})
+if poseidon_2 == nil then
+	poseidon_2 = class({})
 end
-function water_blade:GetCastRange(vLocation, hTarget)
+function poseidon_2:GetCastRange(vLocation, hTarget)
 	return self:GetSpecialValueFor("cleave_distance")
 end
-function water_blade:GetIntrinsicModifierName()
-	return "modifier_water_blade"
+function poseidon_2:GetIntrinsicModifierName()
+	return "modifier_poseidon_2"
 end
 ---------------------------------------------------------------------
 --Modifiers
-if modifier_water_blade == nil then
-	modifier_water_blade = class({}, nil, ModifierHidden)
+if modifier_poseidon_2 == nil then
+	modifier_poseidon_2 = class({}, nil, ModifierHidden)
 end
-function modifier_water_blade:OnCreated(params)
+function modifier_poseidon_2:OnCreated(params)
 	self.cleave_starting_width = self:GetAbilitySpecialValueFor("cleave_starting_width")
 	self.cleave_ending_width = self:GetAbilitySpecialValueFor("cleave_ending_width")
 	self.cleave_distance = self:GetAbilitySpecialValueFor("cleave_distance")
@@ -26,14 +26,14 @@ function modifier_water_blade:OnCreated(params)
 		self:StartIntervalThink(self:GetAbility():GetCooldownTimeRemaining())
 	end
 end
-function modifier_water_blade:OnRefresh(params)
+function modifier_poseidon_2:OnRefresh(params)
 	self.cleave_starting_width = self:GetAbilitySpecialValueFor("cleave_starting_width")
 	self.cleave_ending_width = self:GetAbilitySpecialValueFor("cleave_ending_width")
 	self.cleave_distance = self:GetAbilitySpecialValueFor("cleave_distance")
 	self.damage_bonus = self:GetAbilitySpecialValueFor("damage_bonus")
 	self.cleave_damage = self:GetAbilitySpecialValueFor("cleave_damage")
 end
-function modifier_water_blade:OnIntervalThink()
+function modifier_poseidon_2:OnIntervalThink()
 	if IsServer() then
 		local caster = self:GetParent()
 		self.particleID = ParticleManager:CreateParticle("particles/units/heroes/hero_kunkka/kunkka_weapon_tidebringer.vpcf", PATTACH_CUSTOMORIGIN, caster)
@@ -47,7 +47,7 @@ function modifier_water_blade:OnIntervalThink()
 		self:StartIntervalThink(-1)
 	end
 end
-function modifier_water_blade:DeclareFunctions()
+function modifier_poseidon_2:DeclareFunctions()
 	return {
 		MODIFIER_EVENT_ON_ATTACK_RECORD,
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
@@ -57,10 +57,10 @@ function modifier_water_blade:DeclareFunctions()
 		MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY,
 	}
 end
-function modifier_water_blade:OnAttackRecordDestroy(params)
+function modifier_poseidon_2:OnAttackRecordDestroy(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
 	if params.attacker == self:GetParent() and not params.attacker:IsIllusion() then
-		local modifiers = params.attacker:FindAllModifiersByName("modifier_water_blade_check")
+		local modifiers = params.attacker:FindAllModifiersByName("modifier_poseidon_2_check")
 		for n, modifier in pairs(modifiers) do
 			if params.record == modifier.attack_record then
 				modifier:Destroy()
@@ -68,21 +68,21 @@ function modifier_water_blade:OnAttackRecordDestroy(params)
 		end
 	end
 end
-function modifier_water_blade:OnAttackRecord(params)
+function modifier_poseidon_2:OnAttackRecord(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
 	if params.attacker == self:GetParent() and not params.attacker:AttackFilter(params.record, ATTACK_STATE_NOT_USECASTATTACKORB, ATTACK_STATE_NO_CLEAVE, ATTACK_STATE_NO_EXTENDATTACK) then
 		if self:GetAbility():IsCooldownReady() and self:GetAbility():IsOwnersManaEnough() then
-			params.attacker:AddNewModifier(params.attacker, self, "modifier_water_blade_animation", nil)
-			local modifier = params.attacker:AddNewModifier(params.attacker, self:GetAbility(), "modifier_water_blade_check", {})
+			params.attacker:AddNewModifier(params.attacker, self, "modifier_poseidon_2_animation", nil)
+			local modifier = params.attacker:AddNewModifier(params.attacker, self:GetAbility(), "modifier_poseidon_2_check", {})
 			modifier.attack_record = params.record
 		else
-			params.attacker:RemoveModifierByName("modifier_water_blade_animation")
+			params.attacker:RemoveModifierByName("modifier_poseidon_2_animation")
 		end
 	end
 end
-function modifier_water_blade:GetModifierPreAttack_BonusDamage(params)
+function modifier_poseidon_2:GetModifierPreAttack_BonusDamage(params)
 	if IsServer() and params.attacker ~= nil then
-		local modifiers = params.attacker:FindAllModifiersByName("modifier_water_blade_check")
+		local modifiers = params.attacker:FindAllModifiersByName("modifier_poseidon_2_check")
 		for n, modifier in pairs(modifiers) do
 			if params.record == modifier.attack_record then
 				return self.damage_bonus
@@ -90,10 +90,10 @@ function modifier_water_blade:GetModifierPreAttack_BonusDamage(params)
 		end
 	end
 end
-function modifier_water_blade:OnAttackLanded(params)
+function modifier_poseidon_2:OnAttackLanded(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
 	if params.attacker == self:GetParent() then
-		local modifiers = params.attacker:FindAllModifiersByName("modifier_water_blade_check")
+		local modifiers = params.attacker:FindAllModifiersByName("modifier_poseidon_2_check")
 		for n, modifier in pairs(modifiers) do
 			if params.record == modifier.attack_record then
 				local cleave_damage = self.cleave_damage
@@ -125,9 +125,9 @@ function modifier_water_blade:OnAttackLanded(params)
 		end
 	end
 end
-function modifier_water_blade:GetAttackSound(params)
+function modifier_poseidon_2:GetAttackSound(params)
 	if IsServer() and params.attacker ~= nil then
-		local modifiers = params.attacker:FindAllModifiersByName("modifier_water_blade_check")
+		local modifiers = params.attacker:FindAllModifiersByName("modifier_poseidon_2_check")
 		for n, modifier in pairs(modifiers) do
 			if params.record == modifier.attack_record then
 				return "Hero_Kunkka.Tidebringer.Attack"
@@ -136,63 +136,63 @@ function modifier_water_blade:GetAttackSound(params)
 	end
 end
 ---------------------------------------------------------------------
-if modifier_water_blade_check == nil then
-	modifier_water_blade_check = class({})
+if modifier_poseidon_2_check == nil then
+	modifier_poseidon_2_check = class({})
 end
-function modifier_water_blade_check:IsHidden()
+function modifier_poseidon_2_check:IsHidden()
 	return true
 end
-function modifier_water_blade_check:IsDebuff()
+function modifier_poseidon_2_check:IsDebuff()
 	return true
 end
-function modifier_water_blade_check:IsPurgable()
+function modifier_poseidon_2_check:IsPurgable()
 	return false
 end
-function modifier_water_blade_check:IsPurgeException()
+function modifier_poseidon_2_check:IsPurgeException()
 	return false
 end
-function modifier_water_blade_check:IsStunDebuff()
+function modifier_poseidon_2_check:IsStunDebuff()
 	return false
 end
-function modifier_water_blade_check:AllowIllusionDuplicate()
+function modifier_poseidon_2_check:AllowIllusionDuplicate()
 	return false
 end
-function modifier_water_blade_check:RemoveOnDeath()
+function modifier_poseidon_2_check:RemoveOnDeath()
 	return false
 end
-function modifier_water_blade_check:GetAttributes()
+function modifier_poseidon_2_check:GetAttributes()
 	return MODIFIER_ATTRIBUTE_MULTIPLE + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE + MODIFIER_ATTRIBUTE_PERMANENT
 end
 ---------------------------------------------------------------------
-if modifier_water_blade_animation == nil then
-	modifier_water_blade_animation = class({})
+if modifier_poseidon_2_animation == nil then
+	modifier_poseidon_2_animation = class({})
 end
-function modifier_water_blade_animation:IsHidden()
+function modifier_poseidon_2_animation:IsHidden()
 	return true
 end
-function modifier_water_blade_animation:IsDebuff()
+function modifier_poseidon_2_animation:IsDebuff()
 	return true
 end
-function modifier_water_blade_animation:IsPurgable()
+function modifier_poseidon_2_animation:IsPurgable()
 	return false
 end
-function modifier_water_blade_animation:IsPurgeException()
+function modifier_poseidon_2_animation:IsPurgeException()
 	return false
 end
-function modifier_water_blade_animation:IsStunDebuff()
+function modifier_poseidon_2_animation:IsStunDebuff()
 	return false
 end
-function modifier_water_blade_animation:AllowIllusionDuplicate()
+function modifier_poseidon_2_animation:AllowIllusionDuplicate()
 	return false
 end
-function modifier_water_blade_animation:RemoveOnDeath()
+function modifier_poseidon_2_animation:RemoveOnDeath()
 	return false
 end
-function modifier_water_blade_animation:DeclareFunctions()
+function modifier_poseidon_2_animation:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
 	}
 end
-function modifier_water_blade_animation:GetActivityTranslationModifiers(params)
+function modifier_poseidon_2_animation:GetActivityTranslationModifiers(params)
 	return "tidebringer"
 end
