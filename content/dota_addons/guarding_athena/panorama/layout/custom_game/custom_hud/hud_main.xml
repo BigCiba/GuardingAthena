@@ -153,6 +153,7 @@
 						<Panel class="SearchOptionsTitleCategories">
 							<Label text="#Wallet" />
 							<Panel class="FillWidth" />
+							<Button id="RefreshButton" onactivate="RefreshButton()" onmouseover="UIShowTextTooltip( '#Refresh' )" onmouseout="UIHideTextTooltip()" />
 							<Button id="MoneyComeButton" onactivate="MoneyComeButton()" onmouseover="UIShowTextTooltip( '#Recharge' )" onmouseout="UIHideTextTooltip()" />
 							<!-- <Button id="RewardLogButton" onactivate="DOTAPlusShowRewardLog()" onmouseover="UIShowTextTooltip( '#DOTA_Plus_RewardsLog' )" onmouseout="UIHideTextTooltip()" /> -->
 						</Panel>

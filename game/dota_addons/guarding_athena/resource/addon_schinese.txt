@@ -3530,6 +3530,7 @@
 		"UnEquip"						"卸下"
 		"Store"							"商店"
 		"Wallet"						"我的钱包"
+		"Refresh"						"刷新金钱"
 		"Recharge"						"充值"
 		"Shard_Description"				"碎片<br></br>通过完成游戏获得，根据难度获得不等的碎片。"
 		"Price_Description"				"勋章<br></br>通过充值获得，每1RMB=10勋章。"

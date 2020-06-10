@@ -243,6 +243,22 @@
 {
 	brightness: 1.5;
 }
+#RefreshButton
+{
+	width: 30px;
+	height: 30px;
+	vertical-align: top;
+	margin-right: 10px;
+
+	/* wash-color: dotaPlusGold; */
+
+    background-image: url("file://{images}/control_icons/refresh.psd");
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	tooltip-position: top;
+	tooltip-body-position: 50% 50%;
+}
 #MoneyComeButton
 {
 	width: 30px;
@@ -258,12 +274,12 @@
 	tooltip-position: top;
 	tooltip-body-position: 50% 50%;
 }
-
+#RefreshButton:hover,
 #MoneyComeButton:hover
 {
 	brightness: 2.0;
 }
-
+#RefreshButton:active,
 #MoneyComeButton:active
 {
 	brightness: 1.5;

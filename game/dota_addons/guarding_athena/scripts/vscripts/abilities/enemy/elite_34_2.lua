@@ -20,7 +20,11 @@ function elite_34_2:OnSpellStart()
 		hUnit:SetForwardVector(-vDirection)
 		hUnit:AddNewModifier(hCaster, self, "modifier_elite_34_2", {duration = duration})
 		hUnit:SetControllableByPlayer(hCaster:GetPlayerOwnerID(), true)
-		-- hUnit:AddAbility("pszAbilityName")
+		if i == 1 then
+			hUnit:AddAbility("elite_34_3")
+		else
+			hUnit:AddAbility("elite_34_4")
+		end
 	end
 	-- praticle
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_queenofpain/queen_blink_start.vpcf", PATTACH_ABSORIGIN, hCaster)
