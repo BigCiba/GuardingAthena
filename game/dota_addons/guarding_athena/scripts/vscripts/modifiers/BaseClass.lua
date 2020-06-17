@@ -209,3 +209,75 @@ function ModifierThinker:CheckState()
 		[MODIFIER_STATE_UNSELECTABLE] = true
 	}
 end
+---------------------------------------------------------------------
+VerticalMotionModifier = class({})
+
+if VerticalMotionModifier == nil then
+	VerticalMotionModifier = class({})
+end
+function VerticalMotionModifier:IsHidden()
+	return true
+end
+function VerticalMotionModifier:IsDebuff()
+	return false
+end
+function VerticalMotionModifier:IsPurgable()
+	return false
+end
+function VerticalMotionModifier:IsPurgeException()
+	return false
+end
+function VerticalMotionModifier:IsStunDebuff()
+	return false
+end
+function VerticalMotionModifier:AllowIllusionDuplicate()
+	return false
+end
+---------------------------------------------------------------------
+HorizontalMotionModifier = class({})
+
+if HorizontalMotionModifier == nil then
+	HorizontalMotionModifier = class({})
+end
+function HorizontalMotionModifier:IsHidden()
+	return true
+end
+function HorizontalMotionModifier:IsDebuff()
+	return false
+end
+function HorizontalMotionModifier:IsPurgable()
+	return false
+end
+function HorizontalMotionModifier:IsPurgeException()
+	return false
+end
+function HorizontalMotionModifier:IsStunDebuff()
+	return false
+end
+function HorizontalMotionModifier:AllowIllusionDuplicate()
+	return false
+end
+---------------------------------------------------------------------
+BothMotionModifier = class({})
+
+if BothMotionModifier == nil then
+	BothMotionModifier = class({})
+end
+function BothMotionModifier:IsHidden()
+	return true
+end
+function BothMotionModifier:IsDebuff()
+	return false
+end
+function BothMotionModifier:IsPurgable()
+	return false
+end
+function BothMotionModifier:IsPurgeException()
+	return false
+end
+function BothMotionModifier:IsStunDebuff()
+	return false
+end
+function BothMotionModifier:AllowIllusionDuplicate()
+	return false
+end

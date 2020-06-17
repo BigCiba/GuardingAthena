@@ -97,6 +97,7 @@ function public:init(bReload)
 	CustomUIEvent("ToggleItemEquipState", Dynamic_Wrap(public, "OnToggleItemEquipState"), public)
 	CustomUIEvent("PurchaseItem", Dynamic_Wrap(public, "OnPurchaseItem"), public)
 	CustomUIEvent("RequestPay", Dynamic_Wrap(public, "OnRequestPay"), public)
+	CustomUIEvent("RefreshPlayerData", Dynamic_Wrap(public, "OnRefreshPlayerData"), public)
 
 	if IsInToolsMode() then
 		-- CustomUIEvent("DebugRefreshData", Dynamic_Wrap(public, "DebugRefreshData"), public)
@@ -435,5 +436,10 @@ function public:GetPetExperience(iPlayerID, sItemName)
 		end
 	end
 	return 0
+end
+function public:OnRefreshPlayerData(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	local player = PlayerResource:GetPlayer(iPlayerID)
+	self:RequestPlayerData(iPlayerID)
 end
 return public

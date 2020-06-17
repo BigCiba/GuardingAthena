@@ -215,6 +215,11 @@ end
 function modifier_nevermore_4_aura:GetModifierAttackRangeBonus(params)
 	return self.distance
 end
+function modifier_nevermore_4_aura:CheckState()
+	return {
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true
+	}
+end
 ---------------------------------------------------------------------
 if modifier_nevermore_4_debuff == nil then
 	modifier_nevermore_4_debuff = class({})

@@ -426,6 +426,12 @@ function MoneyComeButton() {
 		"file://{resources}/layout/custom_game/popups/qrcode/qrcode.xml",
 		{});
 }
+function RefreshButton() {
+	GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+		ItemName: ItemName,
+		Currency: "Shard"
+	});
+}
 function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	let localPlayerID = Players.GetLocalPlayer();
 
