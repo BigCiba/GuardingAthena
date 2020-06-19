@@ -10,7 +10,7 @@
 		{
 			_class = "C_OP_RenderSprites"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_hTexture = resource:"materials/particle/dust/large_swirl_dust.vtex"
+			m_hTexture = resource:"materials/particle/smoke/steam/steam.vtex"
 			m_flAnimationRate = 0.5
 		},
 	]
@@ -32,7 +32,7 @@
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 143, 16, 46, 255 ]
+			m_ColorFade = [ 28, 147, 28, 255 ]
 			m_flFadeStartTime = 0.5
 		},
 		{
@@ -41,7 +41,7 @@
 			m_bAdditive = true
 			m_vecOutputMax = [ 2.0, 2.0, 2.0 ]
 			m_vecOutputMin = [ -2.0, -2.0, -2.0 ]
-			m_nFieldOutput = 0
+			m_nFieldOutput = "0"
 		},
 		{
 			_class = "C_OP_FadeInSimple"
@@ -112,11 +112,6 @@
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
 			m_nParticlesToEmit = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
@@ -131,7 +126,28 @@
 			m_fForceAmount = -50.0
 		},
 	]
-	m_PreEmissionOperators = [  ]
 	m_nBehaviorVersion = 5
 	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
 }

@@ -457,6 +457,8 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	-- 皮肤
 	for i, tItemData in ipairs(tSkinData) do
 		heroEntity.gift = true	--待完善
+		-- 新方法
+		heroEntity:AddNewModifier(heroEntity, self, "modifier_"..tItemData.ItemName, nil)
 	end
 	-- 宠物
 	for i, tItemData in ipairs(tPetData) do
