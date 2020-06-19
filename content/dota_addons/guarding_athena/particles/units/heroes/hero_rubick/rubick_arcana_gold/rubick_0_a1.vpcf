@@ -71,8 +71,8 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 144, 238, 144, 255 ]
-			m_ColorMax = [ 0, 255, 0, 255 ]
+			m_ColorMin = [ 255, 241, 124, 255 ]
+			m_ColorMax = [ 255, 204, 95, 255 ]
 		},
 		{
 			_class = "C_INIT_PositionWarp"

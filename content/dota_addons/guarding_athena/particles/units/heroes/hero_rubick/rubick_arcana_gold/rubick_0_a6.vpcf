@@ -32,7 +32,7 @@
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 28, 147, 28, 255 ]
+			m_ColorFade = [ 216, 187, 53, 255 ]
 			m_flFadeStartTime = 0.5
 		},
 		{

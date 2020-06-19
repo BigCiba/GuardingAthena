@@ -107,41 +107,41 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a4.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a4.vpcf"
 			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a0.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a7.vpcf"
 			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a7.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a0.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a3.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a1.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a2.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a9.vpcf"
 			m_bDisableChild = true
 		},
 		{
 			m_flDelay = 0.25
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a1.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a10.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a8.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a6.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a5.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a3.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a6.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a2.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_cube.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a5.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_ring.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_a8.vpcf"
 		},
 	]
 	m_PreEmissionOperators = 
