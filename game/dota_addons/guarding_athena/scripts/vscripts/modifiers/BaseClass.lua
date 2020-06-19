@@ -281,3 +281,36 @@ end
 function BothMotionModifier:AllowIllusionDuplicate()
 	return false
 end
+---------------------------------------------------------------------
+AssetModifier = class({})
+
+if AssetModifier == nil then
+	AssetModifier = class({})
+end
+function AssetModifier:IsHidden()
+	return true
+end
+function AssetModifier:IsDebuff()
+	return false
+end
+function AssetModifier:IsPurgable()
+	return false
+end
+function AssetModifier:IsPurgeException()
+	return false
+end
+function AssetModifier:IsStunDebuff()
+	return false
+end
+function AssetModifier:IsHexDebuff()
+	return false
+end
+function AssetModifier:AllowIllusionDuplicate()
+	return false
+end
+function AssetModifier:OnCreated(params)
+	local hParent = self:GetParent()
+	hParent.GetSkinName = function (hParent)
+		return string.sub( self:GetName(), 10, -1 )
+	end
+end
