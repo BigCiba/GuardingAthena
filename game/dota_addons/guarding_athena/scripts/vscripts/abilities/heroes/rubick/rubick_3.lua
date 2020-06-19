@@ -7,6 +7,15 @@ end
 function rubick_3:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
+function rubick_3:OnAbilityPhaseStart()
+	self:GetCaster():AddActivityModifier("chaos_knight_chaos_bolt")
+	self:GetCaster():ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_5)
+	return true
+end
+function rubick_3:OnAbilityPhaseInterrupted()
+	self:GetCaster():ClearActivityModifiers()
+	self:GetCaster():RemoveGesture(ACT_DOTA_CAST_ABILITY_5)
+end
 function rubick_3:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
@@ -47,6 +56,16 @@ function modifier_rubick_3_thinker:OnCreated(params)
 	if IsServer() then
 		self.flDamage = self.base_damage + self.damage * self:GetCaster():GetIntellect()
 		self:StartIntervalThink(self.delay)
+		-- 特效
+		local sParticleName = "particles/heroes/chronos_magic/space_barrier.vpcf"
+		if self:GetCaster().gift then
+			sParticleName = "particles/heroes/chronos_magic/space_barrier_gold.vpcf"
+		end
+		local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl( iParticleID, 0, self:GetParent():GetAbsOrigin() )
+		ParticleManager:SetParticleControl( iParticleID, 1, Vector(self.radius,self.radius,0) )
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+	else
 	end
 end
 function modifier_rubick_3_thinker:OnIntervalThink()
@@ -61,42 +80,21 @@ function modifier_rubick_3_thinker:OnIntervalThink()
 		hUnit:SetAbsOrigin(vPosition)
 	end
 	hCaster:SpaceRift(vPosition)
-	return self.interval
+	self:StartIntervalThink(self.interval)
 end
 ---------------------------------------------------------------------
 if modifier_rubick_3_debuff == nil then
-	modifier_rubick_3_debuff = class({}, nil, ModifierBasic)
-end
-function modifier_rubick_3_debuff:IsDebuff()
-	return true
+	modifier_rubick_3_debuff = class({}, nil, ModifierDebuff)
 end
 function modifier_rubick_3_debuff:OnCreated(params)
-	self.radius = self:GetAbilitySpecialValueFor("radius")
-
-end
-function modifier_rubick_3_debuff:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_MOVESPEED_LIMIT
-	}
+	if IsServer() then
+		
+	end
 end
 function modifier_rubick_3_debuff:CheckState()
 	return {
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
-		[MODIFIER_STATE_DISARMED] = true,
-		[MODIFIER_STATE_SILENCED] = true,
+		[MODIFIER_STATE_STUNNED] = true,
+		[MODIFIER_STATE_FROZEN] = true,
 	}
-end
-function modifier_rubick_3_debuff:GetModifierMoveSpeed_Limit()
-	if IsServer() then
-		local hCaster = self:GetCaster()
-		local hParent = self:GetParent()
-		local vDirection = hCaster:GetAbsOrigin() - hParent:GetAbsOrigin()
-		vDirection.z = 0
-		local flToPositionDistance = vDirection:Length2D()
-		local vForward = hParent:GetForwardVector()
-		local fCosValue = (vDirection.x * vForward.x + vDirection.y * vForward.y) / (vForward:Length2D() * flToPositionDistance)
-		if flToPositionDistance >= self.radius and fCosValue <= 0 then
-			return RemapValClamped(flToPositionDistance, 0, self.radius, 550, 0.00001)
-		end
-	end
 end

@@ -5,7 +5,6 @@ if rubick_0 == nil then
 end
 function rubick_0:SpaceRift(vPosition)
 	local hCaster = self:GetCaster()
-	local vCasterLoc = hCaster:GetAbsOrigin()
 	local flRadius = self:GetSpecialValueFor("radius")
 	local flCenterRadius = self:GetSpecialValueFor("center_radius")
 	local flCenterDamage = self:GetSpecialValueFor("center_damage") * 0.01
@@ -13,7 +12,7 @@ function rubick_0:SpaceRift(vPosition)
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, flRadius, self)
 	for _, hUnit in pairs(tTargets) do
 		local _flDamage = flDamage
-		if (hUnit:GetAbsOrigin() - vCasterLoc):Length2D() <= flCenterRadius then
+		if (hUnit:GetAbsOrigin() - vPosition):Length2D() <= flCenterRadius then
 			_flDamage = _flDamage + hUnit:GetMaxHealth() * flCenterDamage
 		end
 		hCaster:DealDamage(hUnit, self, _flDamage)
@@ -35,13 +34,18 @@ end
 if modifier_rubick_0 == nil then
 	modifier_rubick_0 = class({}, nil, ModifierHidden)
 end
+function modifier_rubick_0:GetAttributes()
+	return MODIFIER_ATTRIBUTE_PERMANENT
+end
 function modifier_rubick_0:OnCreated(params)
+	self.radius = self:GetAbilitySpecialValueFor("radius")
 	if IsServer() then
 		local hParent = self:GetParent()
 		hParent.SpaceRift = function (hParent, vPosition)
 			self:GetAbility():SpaceRift(vPosition)
 		end
 	end
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function modifier_rubick_0:OnRefresh(params)
 	if IsServer() then
@@ -51,5 +55,13 @@ function modifier_rubick_0:OnDestroy()
 	if IsServer() then
 		local hParent = self:GetParent()
 		hParent.SpaceRift = nil
+	end
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
+end
+function modifier_rubick_0:OnAttackLanded(params)
+	if IsServer() then
+		if params.attacker == self:GetParent() and self:GetParent():GetScepterLevel() >= 1 then
+			self:GetParent():SpaceRift(params.target:GetAbsOrigin() + RandomVector(RandomInt(0, self.radius)))
+		end
 	end
 end

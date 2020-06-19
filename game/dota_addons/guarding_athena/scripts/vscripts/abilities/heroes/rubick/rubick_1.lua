@@ -1,4 +1,4 @@
-LinkLuaModifier( "modifier_rubick_1", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_rubick_1", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
 LinkLuaModifier( "modifier_rubick_1_thinker", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if rubick_1 == nil then
@@ -26,9 +26,6 @@ function rubick_1:OnSpellStart()
 	-- sound
 	hCaster:EmitSound("Hero_Dark_Seer.Vacuum")
 end
-function rubick_1:GetIntrinsicModifierName()
-	return "modifier_rubick_1"
-end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_rubick_1 == nil then
@@ -38,6 +35,7 @@ function modifier_rubick_1:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT
 end
 function modifier_rubick_1:OnCreated(params)
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
 	self.pull_damage = self:GetAbilitySpecialValueFor("pull_damage")
 	self.pull_bonus = self:GetAbilitySpecialValueFor("pull_bonus")
 	if IsServer() then
@@ -45,7 +43,7 @@ function modifier_rubick_1:OnCreated(params)
 		self.vDir = (self:GetCaster():GetAbsOrigin() - self:GetParent():GetAbsOrigin()):Normalized()
 		self.vPosition = StringToVector(params.vPosition)
 		-- damage
-		local flDamage = self.pull_damage * hCaster:GetIntellect() * (1 + params.flUnitCount * self.pull_bonus * 0.01)
+		local flDamage = (self.base_damage + self.pull_damage * hCaster:GetIntellect()) * (1 + params.flUnitCount * self.pull_bonus * 0.01)
 		hCaster:DealDamage(self:GetParent(), self:GetAbility(), flDamage)
 		-- motion
 		if not self:ApplyHorizontalMotionController() then
@@ -56,9 +54,9 @@ function modifier_rubick_1:OnCreated(params)
 end
 function modifier_rubick_1:OnDestroy()
 	if IsServer() then
-		self:RemoveHorizontalMotionController(self)
-		-- 传送
 		local hParent = self:GetParent()
+		hParent:RemoveHorizontalMotionController(self)
+		-- 传送
 		FindClearSpaceForUnit(hParent, self.vPosition, true)
 	end
 end
@@ -71,11 +69,24 @@ function modifier_rubick_1:UpdateHorizontalMotion(me, dt)
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local flDistance = (me:GetAbsOrigin() - hCaster:GetAbsOrigin()):Length2D()
-		local flSpeed= flDistance / 20
+		local flSpeed = flDistance
 
 		local vPosition = me:GetAbsOrigin() + self.vDir * flSpeed * dt
 		me:SetAbsOrigin(vPosition)
 	end
+end
+function modifier_rubick_1:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_OVERRIDE_ANIMATION
+	}
+end
+function modifier_rubick_1:GetOverrideAnimation()
+	return ACT_DOTA_FLAIL
+end
+function modifier_rubick_1:CheckState()
+	return {
+		[MODIFIER_STATE_STUNNED] = true,
+	}
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -84,6 +95,7 @@ if modifier_rubick_1_thinker == nil then
 end
 function modifier_rubick_1_thinker:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
 	self.open_damage = self:GetAbilitySpecialValueFor("open_damage")
 	self.pull_bonus = self:GetAbilitySpecialValueFor("pull_bonus")
 	if IsServer() then
@@ -99,7 +111,7 @@ function modifier_rubick_1_thinker:OnDestroy()
 		-- 合并单位组
 		tTargets = TableOverride(tTargets, tPullTargets)
 		-- 造成伤害
-		local flDamage = self.open_damage * hCaster:GetIntellect() * (1 + #tTargets * self.pull_bonus * 0.01)
+		local flDamage = (self.base_damage + self.open_damage * hCaster:GetIntellect()) * (1 + #tTargets * self.pull_bonus * 0.01)
 		hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
 		-- 天赋
 		hCaster:SpaceRift(hParent:GetAbsOrigin() + RandomVector(RandomInt(0, self.radius)))
@@ -113,5 +125,7 @@ function modifier_rubick_1_thinker:OnDestroy()
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 		-- 清空哈希
 		RemoveHashtable(self.iHashIndex)
+		-- 播放投掷动作
+		hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_5)
 	end
 end

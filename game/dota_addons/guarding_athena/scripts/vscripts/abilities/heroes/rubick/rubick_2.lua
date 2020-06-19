@@ -18,8 +18,13 @@ function rubick_2:OnAbilityPhaseStart()
 	table.insert(self.tParticleID, iParticleID)
 	-- sound
 	hCaster:EmitSound("Hero_ObsidianDestroyer.AstralImprisonment.End")
+	-- 动作
+	hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_4)
+	return true
 end
 function rubick_2:OnAbilityPhaseInterrupted()
+	self:GetCaster():RemoveGesture(ACT_DOTA_CAST_ABILITY_4)
+
 	if self.tParticleID then
 		for i, iParticleID in ipairs(self.tParticleID) do
 			ParticleManager:DestroyParticle(iParticleID, false)
@@ -33,7 +38,10 @@ function rubick_2:OnSpellStart()
 	local vCasterLoc = hCaster:GetAbsOrigin()
 	local vPosition = self:GetCursorPosition()
 	local flRadius = self:GetSpecialValueFor("radius")
+	local flDelay = self:GetSpecialValueFor("delay")
 	local flDamage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("damage") * hCaster:GetIntellect()
+	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_root", {duration = flDelay})
+	
 	-- 伤害
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vCasterLoc, flRadius, self)
 	hCaster:DealDamage(tTargets, self, flDamage)

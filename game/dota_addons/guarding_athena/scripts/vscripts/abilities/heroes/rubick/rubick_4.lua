@@ -7,11 +7,20 @@ end
 function rubick_4:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
+function rubick_4:OnAbilityPhaseStart()
+	self:GetCaster():AddActivityModifier("phoenix_supernova")
+	self:GetCaster():ForcePlayActivityOnce(ACT_DOTA_INTRO)
+	return true
+end
+function rubick_4:OnAbilityPhaseInterrupted()
+	self:GetCaster():ClearActivityModifiers()
+	self:GetCaster():RemoveGesture(ACT_DOTA_INTRO)
+end
 function rubick_4:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
 	local flDuration = self:GetSpecialValueFor("duration")
-	CreateModifierThinker(hCaster, self, "modifier_rubick_4_thinker", {duration = flDuration}, vPosition, hCaster:GetTeamNumber(), false)
+	CreateModifierThinker(hCaster, self, "modifier_rubick_4_thinker", nil, vPosition, hCaster:GetTeamNumber(), false)
 	-- sound
 	EmitSoundOnLocationWithCaster(vPosition, "Hero_FacelessVoid.Chronosphere", hCaster)
 end
@@ -81,7 +90,7 @@ function modifier_rubick_4_thinker:OnIntervalThink()
 	self:IncrementStackCount()
 	-- 逐渐减少间隔
 	self.interval = self.interval * self.interval_reduction
-	return self.interval
+	self:StartIntervalThink(self.interval)
 end
 ---------------------------------------------------------------------
 if modifier_rubick_4_debuff == nil then
