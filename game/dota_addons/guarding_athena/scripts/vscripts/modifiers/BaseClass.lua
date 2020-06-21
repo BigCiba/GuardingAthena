@@ -308,9 +308,15 @@ end
 function AssetModifier:AllowIllusionDuplicate()
 	return false
 end
-function AssetModifier:OnCreated(params)
+function AssetModifier:GetAttributes()
+	return MODIFIER_ATTRIBUTE_PERMANENT
+end
+function AssetModifier:Init()
 	local hParent = self:GetParent()
 	hParent.GetSkinName = function (hParent)
 		return string.sub( self:GetName(), 10, -1 )
 	end
+end
+function AssetModifier:OnCreated(params)
+	self:Init()
 end

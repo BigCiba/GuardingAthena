@@ -2177,7 +2177,7 @@
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/rubick/rubick_0"
-		"AbilityTextureName"					"custom/space_rift"
+		"AbilityTextureName"					"rubick_0"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"1"
 		"HasScepterUpgrade"						"1"
@@ -2216,7 +2216,7 @@
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/rubick/rubick_1"
-		"AbilityTextureName"					"custom/chronos_magic"
+		"AbilityTextureName"					"rubick_1"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 		"MaxLevel"								"20"
@@ -2273,7 +2273,7 @@
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/rubick/rubick_2"
-		"AbilityTextureName"					"custom/teleport_phase"
+		"AbilityTextureName"					"rubick_2"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
@@ -2282,6 +2282,8 @@
 		"AbilityCastRange"						"3000"
 		"AbilityCharges"						"3"
 		"AbilityChargeRestoreTime"				"8"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2"
 		"AbilityManaCost"						"80 95 110 125 140 155 170 185 200 215 230 245 260 275 290 305 320 335 350 365"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2309,13 +2311,23 @@
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"300"
 			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_delay"					"0"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_factor"				"2"
+			}
 		}
 	}
 	"rubick_3"
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/rubick/rubick_3"
-		"AbilityTextureName"					"custom/space_barrier"
+		"AbilityTextureName"					"rubick_3"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 		"MaxLevel"								"20"
@@ -2324,6 +2336,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastRange"						"1400"
 		"AbilityCooldown"						"18"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"3"
 		"AbilityManaCost"						"160 190 220 250 280 310 340 370 400 430 460 490 520 550 580 610 640 670 700 730"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2361,13 +2375,23 @@
 				"var_type"						"FIELD_FLOAT"
 				"interval"						"0.5"
 			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_delay"					"0"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"scepter_interval"				"0.25"
+			}
 		}
 	}
 	"rubick_4"
 	{
 		"BaseClass"								"ability_lua"
 		"ScriptFile"							"abilities/heroes/rubick/rubick_4"
-		"AbilityTextureName"					"custom/fluctuation"
+		"AbilityTextureName"					"rubick_4"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
 		"MaxLevel"								"8"
@@ -2376,6 +2400,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_5"
 		"AbilityCastRange"						"1000"
 		"AbilityCooldown"						"40"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"4"
 		"AbilityManaCost"						"300 450 600 750 900 1050 1200 1350"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2385,6 +2411,11 @@
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySpecial"
 		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_count"					"80"
+			}
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"

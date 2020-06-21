@@ -14,6 +14,8 @@ LinkLuaModifier("modifier_no_health_bar", "modifiers/generic/modifier_no_health_
 
 if not IsClient() then return end
 
+require("mechanics/asset_modifiers")
+
 require("kv")
 
 

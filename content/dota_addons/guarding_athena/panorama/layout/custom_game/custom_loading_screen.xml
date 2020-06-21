@@ -11,6 +11,8 @@
 			<Image class="Hidden" src="file://{images}/custom_game/skin/default_no_item.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/skin/phantom_assassin_01.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/skin/rubick_01.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/skin/rubick_02.png" hittest="false" />
+			<Image class="Hidden" src="file://{images}/custom_game/skin/rubick_03.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/skin/windrunner_01.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/hero/nevermore.png" hittest="false" />
 			<Image class="Hidden" src="file://{images}/custom_game/hero/spectre.png" hittest="false" />

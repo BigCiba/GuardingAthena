@@ -1,6 +1,8 @@
 ﻿主键,名字,类型,品质,所属英雄
 ItemName,Name,Type,Quality,Hero
 rubick_01,纯金时空魔术师,skin,Artifact,npc_dota_hero_rubick
+rubick_02,魔导师秘钥,skin,Artifact,npc_dota_hero_rubick
+rubick_03,纯金魔导师秘钥,skin,Artifact,npc_dota_hero_rubick
 windrunner_01,纯金风行者,skin,Artifact,npc_dota_hero_windrunner
 phantom_assassin_01,纯金影月守望者,skin,Artifact,npc_dota_hero_phantom_assassin
 wing_01,纯金翅膀,particle,Artifact,

@@ -3,6 +3,9 @@ LinkLuaModifier( "modifier_rubick_0", "abilities/heroes/rubick/rubick_0.lua", LU
 if rubick_0 == nil then
 	rubick_0 = class({})
 end
+function rubick_0:GetAbilityTextureName()
+	return AssetModifiers:GetAbilityTextureReplacement(self:GetAbilityName(), self:GetCaster())
+end
 function rubick_0:SpaceRift(vPosition)
 	local hCaster = self:GetCaster()
 	local flRadius = self:GetSpecialValueFor("radius")
@@ -18,10 +21,7 @@ function rubick_0:SpaceRift(vPosition)
 		hCaster:DealDamage(hUnit, self, _flDamage)
 	end
 	-- particle
-	local sParticleName = "particles/heroes/chronos_magic/space_phase.vpcf"
-	if hCaster.gift then
-		sParticleName = "particles/heroes/chronos_magic/space_gold_phase.vpcf"
-	end
+	local sParticleName = AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/space_phase.vpcf", hCaster)
 	local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
 	EmitSoundOnLocationWithCaster(vPosition, "Hero_SkywrathMage.MysticFlare.Target", hCaster)

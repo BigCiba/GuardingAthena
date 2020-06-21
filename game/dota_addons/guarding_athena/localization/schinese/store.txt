@@ -1,5 +1,7 @@
 // 皮肤
 "rubick_01"					"纯金时空魔术师"
+"rubick_02"					"魔导师秘钥"
+"rubick_03"					"纯金魔导师秘钥"
 "windrunner_01"				"纯金风行者"
 "phantom_assassin_01"		"纯金影月守望者"
 // 特效

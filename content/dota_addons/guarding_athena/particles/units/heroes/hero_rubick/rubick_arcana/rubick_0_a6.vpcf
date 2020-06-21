@@ -89,7 +89,7 @@
 		{
 			_class = "C_INIT_RandomColor"
 			m_ColorMax = [ 77, 255, 69, 255 ]
-			m_ColorMin = [ 134, 255, 134, 255 ]
+			m_ColorMin = [ 88, 255, 131, 255 ]
 		},
 		{
 			_class = "C_INIT_RemapParticleCountToScalar"

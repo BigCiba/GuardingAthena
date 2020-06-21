@@ -458,7 +458,10 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	for i, tItemData in ipairs(tSkinData) do
 		heroEntity.gift = true	--待完善
 		-- 新方法
-		heroEntity:AddNewModifier(heroEntity, self, "modifier_"..tItemData.ItemName, nil)
+		heroEntity:GameTimer(0.5, function ()
+			AssetModifiers:ReplaceWearables(tItemData.ItemName, heroEntity)
+			heroEntity:AddNewModifier(heroEntity, self, "modifier_"..tItemData.ItemName, nil)
+		end)
 	end
 	-- 宠物
 	for i, tItemData in ipairs(tPetData) do

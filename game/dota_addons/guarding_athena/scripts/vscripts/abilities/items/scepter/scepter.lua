@@ -36,6 +36,13 @@ end
 function item_npc_dota_hero_nevermore:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+-- 拉比克
+if item_npc_dota_hero_rubick == nil then
+	item_npc_dota_hero_rubick = class({})
+end
+function item_npc_dota_hero_rubick:GetIntrinsicModifierName()
+	return "modifier_scepter"
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_scepter == nil then

@@ -39,7 +39,7 @@ function Server:GetScore(playerID)
     req:Send(function(res)
         if res.Body ~= "null" then
             local ScoreInfo = JSON:decode(res.Body)
-            player.Score = ScoreInfo.score
+            player.Score = ScoreInfo and ScoreInfo.score or 0
             --PrintTable(JSON:decode(res.Body))
         end
     end)

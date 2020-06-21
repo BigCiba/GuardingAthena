@@ -48,7 +48,7 @@ function modifier_rubick_4_thinker:GetModifierAura()
 	return "modifier_rubick_4_debuff"
 end
 function modifier_rubick_4_thinker:OnCreated(params)
-	self.count = self:GetAbilitySpecialValueFor("count")
+	self.count = self:GetCaster():GetScepterLevel() >= 4 and self:GetAbilitySpecialValueFor("scepter_count") or self:GetAbilitySpecialValueFor("count")
 	self.interval = self:GetAbilitySpecialValueFor("interval")
 	self.interval_reduction = self:GetAbilitySpecialValueFor("interval_reduction")
 	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")

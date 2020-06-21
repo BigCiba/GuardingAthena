@@ -5,7 +5,7 @@
 // }
 "skin_modifiers" // 替换技能/图标/特效/音效/模型
 {
-	"rubick_01"
+	"rubick_01"	// 纯金时空魔术师
 	{
 		"asset_modifier0"
 		{
@@ -38,22 +38,183 @@
 			"modifier"	"particles/heroes/chronos_magic/fluctuation_gold.vpcf"
 		}
 	}
-	"rubick_02"
+	"rubick_02"	// 魔导师秘钥
 	{
 		"asset_modifier0"
+		{
+			"type"		"entity_model"
+			"asset"		"npc_dota_hero_rubick"
+			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_base.vmdl"
+		}
+		"asset_modifier1"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
+			"criteria"	"0,0,255"
+		}
+		"asset_modifier2"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
+			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_ambient_default.vpcf"
+		}
+		"asset_modifier3"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/force_staff/force_staff.vmdl"
+		}
+		"asset_modifier4"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/rubick/force_staff/force_staff.vmdl"
+			"modifier"		"particles/econ/items/rubick/rubick_force_ambient/rubick_force_ambient.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"0"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_staff_ambient"
+				}
+			}
+		}
+		"asset_modifier5"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
+		}
+		"asset_modifier6"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
+			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_shoulders_ambient.vpcf"
+		}
+		"asset_modifier7"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/vestments_of_stellar_abyss_head/vestments_of_stellar_abyss_head.vmdl"
+		}
+		"asset_modifier8"
+		{
+			"type"		"ability_icon"
+			"asset"		"rubick_0"
+			"modifier"	"rubick/ti8_immortal_shoulder/rubick_fade_bolt_immortal"
+		}
+		"asset_modifier9"
+		{
+			"type"		"ability_icon"
+			"asset"		"rubick_1"
+			"modifier"	"rubick/arcana/rubick_spell_steal_arcana"
+		}
+		"asset_modifier10"
+		{
+			"type"		"ability_icon"
+			"asset"		"rubick_2"
+			"modifier"	"rubick/staff_of_perplex/rubick_telekinesis"
+		}
+		"asset_modifier11"
 		{
 			"type"		"particle"
 			"asset"		"particles/heroes/chronos_magic/space_phase.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0.vpcf"
 		}
+		"asset_modifier13"
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/space_barrier.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_3.vpcf"
+		}
 	}
-	"rubick_03"
+	"rubick_03"	// 纯金魔导师秘钥
 	{
 		"asset_modifier0"
+		{
+			"type"		"entity_model"
+			"asset"		"npc_dota_hero_rubick"
+			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_base.vmdl"
+		}
+		"asset_modifier1"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
+			"criteria"	"0,0,255"
+		}
+		"asset_modifier2"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
+			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_ambient_default.vpcf"
+		}
+		"asset_modifier3"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/force_staff/force_staff.vmdl"
+			"skin"		"1"
+		}
+		"asset_modifier4"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/rubick/force_staff/force_staff.vmdl"
+			"modifier"		"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_force_ambient_gold.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"0"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_staff_ambient"
+				}
+			}
+		}
+		"asset_modifier5"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
+		}
+		"asset_modifier6"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
+			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_shoulders_ambient.vpcf"
+		}
+		"asset_modifier7"
+		{
+			"type"		"wearable"
+			"modifier"	"models/items/rubick/vestments_of_stellar_abyss_head/vestments_of_stellar_abyss_head.vmdl"
+		}
+		"asset_modifier8"
+		{
+			"type"		"ability_icon"
+			"asset"		"rubick_0"
+			"modifier"	"rubick/ti8_immortal_shoulder/rubick_fade_bolt_immortal"
+		}
+		"asset_modifier9"
+		{
+			"type"		"ability_icon"
+			"asset"		"rubick_1"
+			"modifier"	"rubick/arcana/rubick_spell_steal_arcana"
+		}
+		"asset_modifier10"
+		{
+			"type"		"ability_icon"
+			"asset"		"rubick_2"
+			"modifier"	"rubick/staff_of_perplex/rubick_telekinesis_gold"
+		}
+		"asset_modifier11"
 		{
 			"type"		"particle"
 			"asset"		"particles/heroes/chronos_magic/space_phase.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0.vpcf"
+		}
+		"asset_modifier13"
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/space_barrier.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_3.vpcf"
 		}
 	}
 }

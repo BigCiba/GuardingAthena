@@ -4,6 +4,9 @@ LinkLuaModifier( "modifier_rubick_1_thinker", "abilities/heroes/rubick/rubick_1.
 if rubick_1 == nil then
 	rubick_1 = class({})
 end
+function rubick_1:GetAbilityTextureName()
+	return AssetModifiers:GetAbilityTextureReplacement(self:GetAbilityName(), self:GetCaster())
+end
 function rubick_1:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
@@ -16,13 +19,16 @@ function rubick_1:OnSpellStart()
 	tTargets = FindUnitsInRadiusWithAbility(hCaster, hCaster:GetAbsOrigin(), flRadius, self)
 	for _, hUnit in pairs(tTargets) do
 		hUnit:AddNewModifier(hCaster, self, "modifier_rubick_1", {duration = flDuration, flUnitCount = #tTargets, vPosition = vPosition})
+		local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_arcana/rbck_arc_skywrath_mage_mystic_flare_ambient_hit.vpcf", PATTACH_ABSORIGIN_FOLLOW, hUnit)
 	end
 	-- 传送伤害
 	CreateModifierThinker(hCaster, self, "modifier_rubick_1_thinker", {duration = flDuration, iHashIndex = iHashIndex}, vPosition, hCaster:GetTeamNumber(), false)
 	-- 天赋
 	hCaster:SpaceRift(hCaster:GetAbsOrigin() + RandomVector(RandomInt(0, flRadius)))
 	-- particle
-	local iParticleID = ParticleManager:CreateParticle("particles/skills/chronos_magic.vpcf", PATTACH_CENTER_FOLLOW, hCaster)
+	-- local iParticleID = ParticleManager:CreateParticle("particles/skills/chronos_magic.vpcf", PATTACH_CENTER_FOLLOW, hCaster)
+	local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_arcana/rbck_arc_sandking_epicenter.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
+	ParticleManager:SetParticleControl(iParticleID, 1, Vector(600,600,600))
 	-- sound
 	hCaster:EmitSound("Hero_Dark_Seer.Vacuum")
 end
@@ -89,7 +95,6 @@ function modifier_rubick_1:CheckState()
 	}
 end
 ---------------------------------------------------------------------
---Modifiers
 if modifier_rubick_1_thinker == nil then
 	modifier_rubick_1_thinker = class({}, nil, ModifierThinker)
 end
@@ -126,6 +131,6 @@ function modifier_rubick_1_thinker:OnDestroy()
 		-- 清空哈希
 		RemoveHashtable(self.iHashIndex)
 		-- 播放投掷动作
-		hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_5)
+		-- hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_5)
 	end
 end

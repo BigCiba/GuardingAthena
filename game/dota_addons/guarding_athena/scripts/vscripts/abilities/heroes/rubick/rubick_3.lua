@@ -48,8 +48,8 @@ function modifier_rubick_3_thinker:GetModifierAura()
 	return "modifier_rubick_3_debuff"
 end
 function modifier_rubick_3_thinker:OnCreated(params)
-	self.delay = self:GetAbilitySpecialValueFor("delay")
-	self.interval = self:GetAbilitySpecialValueFor("interval")
+	self.delay = self:GetCaster():GetScepterLevel() >= 3 and self:GetAbilitySpecialValueFor("scepter_delay") or self:GetAbilitySpecialValueFor("delay")
+	self.interval = self:GetCaster():GetScepterLevel() >= 3 and self:GetAbilitySpecialValueFor("scepter_interval") or self:GetAbilitySpecialValueFor("interval")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
 	self.damage = self:GetAbilitySpecialValueFor("damage")
@@ -57,10 +57,7 @@ function modifier_rubick_3_thinker:OnCreated(params)
 		self.flDamage = self.base_damage + self.damage * self:GetCaster():GetIntellect()
 		self:StartIntervalThink(self.delay)
 		-- 特效
-		local sParticleName = "particles/heroes/chronos_magic/space_barrier.vpcf"
-		if self:GetCaster().gift then
-			sParticleName = "particles/heroes/chronos_magic/space_barrier_gold.vpcf"
-		end
+		local sParticleName = AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/space_barrier.vpcf", self:GetCaster())
 		local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl( iParticleID, 0, self:GetParent():GetAbsOrigin() )
 		ParticleManager:SetParticleControl( iParticleID, 1, Vector(self.radius,self.radius,0) )
