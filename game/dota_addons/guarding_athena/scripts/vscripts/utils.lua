@@ -617,3 +617,36 @@ function GetDayTime()
 	iMin = iMin * 60
 	return iHour, iMin
 end
+--矢量夹角
+function AngleBetween(v1, v2)
+	local sin = v1.x * v2.y - v2.x * v1.y;
+	local cos = v1.x * v2.x + v1.y * v2.y;
+	local a = math.atan2(sin, cos) * (180 / math.pi)
+	local sign = v1:Cross(v2):Normalized():Dot(v1:Normalized():Cross(v2:Normalized()))
+	return a * sign
+end
+---计算距离
+function CalculateDistance(ent1, ent2, b3D)
+	if ent1 == nil or ent2 == nil then return 0 end
+	local pos1 = ent1
+	local pos2 = ent2
+	if ent1.GetAbsOrigin then pos1 = ent1:GetAbsOrigin() end
+	if ent2.GetAbsOrigin then pos2 = ent2:GetAbsOrigin() end
+	local vector = (pos1 - pos2)
+	if b3D then
+		return vector:Length()
+	else
+		return vector:Length2D()
+	end
+end
+---计算方向
+function CalculateDirection(ent1, ent2)
+	if ent1 == nil or ent2 == nil then return vec3_invalid end
+	local pos1 = ent1
+	local pos2 = ent2
+	if ent1.GetAbsOrigin then pos1 = ent1:GetAbsOrigin() end
+	if ent2.GetAbsOrigin then pos2 = ent2:GetAbsOrigin() end
+	local direction = pos1 - pos2
+	direction.z = 0
+	return direction:Normalized()
+end

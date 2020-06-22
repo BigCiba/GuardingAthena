@@ -6,6 +6,41 @@ end
 function rubick_0:GetAbilityTextureName()
 	return AssetModifiers:GetAbilityTextureReplacement(self:GetAbilityName(), self:GetCaster())
 end
+function rubick_0:Bounce(hTarget, tTargets, flRadius, flDamage, max_count)
+	local hCaster = self:GetCaster()
+	if IsValid(hCaster) and IsValid(hTarget) then
+		local hNewTarget = nil
+		local tUnitGroup = FindUnitsInRadiusWithAbility(hCaster, hTarget:GetAbsOrigin(), flRadius, self, FIND_CLOSEST)
+		for i = 1, #tUnitGroup do
+			if TableFindKey(tTargets, tUnitGroup[i]) == nil then
+				hNewTarget = tUnitGroup[i]
+				hCaster:DealDamage(hNewTarget, self, flDamage)
+				table.insert(tTargets, hNewTarget)
+				-- 特效
+				local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_ti8_immortal/rubick_ti8_immortal_fade_bolt_head.vpcf", PATTACH_CUSTOMORIGIN, nil)
+				ParticleManager:SetParticleControlEnt(iParticleID, 0, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetAbsOrigin(), false)
+				ParticleManager:SetParticleControlEnt(iParticleID, 1, hNewTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hNewTarget:GetAbsOrigin(), false)
+				ParticleManager:ReleaseParticleIndex(iParticleID)
+				break
+			end
+		end
+		max_count = max_count - 1
+		if max_count > 0 and hNewTarget then
+			self:Bounce(hNewTarget, tTargets, flRadius, flDamage, max_count)
+		end
+	end
+end
+function rubick_0:FadeBolt(hTarget)
+	local hCaster = self:GetCaster()
+	local flDamage = hCaster:GetIntellect() * self:GetSpecialValueFor("damage_factor")
+	local max_count = self:GetSpecialValueFor("max_count")
+	local flRadius = self:GetSpecialValueFor("bounce_radius")
+	local tTargets = {}
+	hCaster:DealDamage(hTarget, self, flDamage)
+	table.insert(tTargets, hTarget)
+	print(hTarget)
+	self:Bounce(hTarget, tTargets, flRadius, flDamage, max_count - 1)
+end
 function rubick_0:SpaceRift(vPosition)
 	local hCaster = self:GetCaster()
 	local flRadius = self:GetSpecialValueFor("radius")

@@ -1,4 +1,5 @@
 LinkLuaModifier( "modifier_rubick_2_root", "abilities/heroes/rubick/rubick_2.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_rubick_2_shield", "abilities/heroes/rubick/rubick_2.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if rubick_2 == nil then
 	rubick_2 = class({})
@@ -48,10 +49,12 @@ function rubick_2:OnSpellStart()
 	local vCasterLoc = hCaster:GetAbsOrigin()
 	local vPosition = self:GetCursorPosition()
 	local flRadius = self:GetSpecialValueFor("radius")
+	local shield_duration = self:GetSpecialValueFor("shield_duration")
 	local flDelay = hCaster:GetScepterLevel() >= 2 and self:GetSpecialValueFor("scepter_delay") or self:GetSpecialValueFor("delay")
 	local flDamage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("damage") * hCaster:GetIntellect()
 	flDamage = hCaster:GetScepterLevel() >= 2 and flDamage * 2 or flDamage
 	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_root", {duration = flDelay})
+	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_shield", {duration = shield_duration})
 	hCaster:GameTimer(flDelay, function ()
 		-- 伤害
 		local tTargets = FindUnitsInRadiusWithAbility(hCaster, vCasterLoc, flRadius, self)
@@ -83,4 +86,40 @@ function modifier_rubick_2_root:CheckState()
 	return {
 		[MODIFIER_STATE_ROOTED] = true,
 	}
+end
+---------------------------------------------------------------------
+if modifier_rubick_2_shield == nil then
+	modifier_rubick_2_shield = class({}, nil, ModifierPositiveBuff)
+end
+function modifier_rubick_2_shield:OnCreated(params)
+	self.shield_factor = self:GetAbilitySpecialValueFor("shield_factor")
+	local hParent = self:GetParent()
+	if IsServer() then
+		self.flShieldHealth = hParent:GetIntellect() * self.shield_factor
+	else
+		-- particle
+		local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_rubick/rubick_2_shield.vpcf", hParent), PATTACH_ABSORIGIN_FOLLOW, hParent)
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+	end
+end
+function modifier_rubick_2_shield:OnRefresh(params)
+	self.shield_factor = self:GetAbilitySpecialValueFor("shield_factor")
+	if IsServer() then
+		self.flShieldHealth = self.flShieldHealth + self:GetParent():GetIntellect() * self.shield_factor
+	end
+end
+function modifier_rubick_2_shield:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK,
+	}
+end
+function modifier_rubick_2_shield:GetModifierTotal_ConstantBlock(params)
+	if IsServer() then
+		local flBlock = self.flShieldHealth
+		self.flShieldHealth = self.flShieldHealth - params.damage
+		if self.flShieldHealth < 0 then
+			self:Destroy()
+		end
+		return flBlock
+	end
 end

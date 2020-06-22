@@ -15,6 +15,19 @@ function public:init(bReload)
 	end
 end
 
+function public:HasWearables(sModelName, hUnit)
+	local bHasWearable = false
+	local hModel = hUnit:FirstMoveChild()
+	while hModel ~= nil do
+		if hModel:GetClassname() ~= "" and hModel:GetClassname() == "dota_item_wearable" and hModel:GetModelName() == sModelName then
+			bHasWearable = true
+			break
+		end
+		hModel = hModel:NextMovePeer()
+	end
+	return bHasWearable, hModel
+end
+
 -- 替换饰品
 function public:ReplaceWearables(sSkinName, hUnit)
 	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
@@ -30,29 +43,37 @@ function public:ReplaceWearables(sSkinName, hUnit)
 		-- 创建饰品
 		for _, tAssetModifier in pairs(tAssetModifiers) do
 			if tAssetModifier.type == "wearable" then
-				local hWearable = SpawnEntityFromTableSynchronous("prop_dynamic", { model = tAssetModifier.modifier, origin = hUnit:GetAbsOrigin() })
-				hWearable:FollowEntity(hUnit, true)
-				if tAssetModifier.criteria then
-					local tColor = string.split(tAssetModifier.criteria, ",")
-					hWearable:SetRenderColor(tonumber(tColor[1]), tonumber(tColor[2]), tonumber(tColor[3]))
-				end
-				if tAssetModifier.skin then
-					hWearable:SetSkin(tonumber(tAssetModifier.skin))
-				end
-				-- 饰品特效
-				for _, _tAssetModifier in pairs(tAssetModifiers) do
-					if _tAssetModifier.type == "particle_create" and _tAssetModifier.asset == tAssetModifier.modifier then
-						local iAttachType = PATTACH_ABSORIGIN_FOLLOW
-						if _tAssetModifier.attach_type == "customorigin" then
-							iAttachType = PATTACH_CUSTOMORIGIN
-						end
-						local iParticleID = ParticleManager:CreateParticle(_tAssetModifier.modifier, iAttachType, hWearable)
-						if _tAssetModifier.attach_type == "customorigin" then
-							for i, tControlPoint in pairs(_tAssetModifier.control_points) do
-								ParticleManager:SetParticleControlEnt(iParticleID, tonumber(tControlPoint.control_point_index), hWearable, self.ATTACH_TYPE[tControlPoint.attach_type], tControlPoint.attachment, hWearable:GetAbsOrigin(), false)
+				local bHasWearable, _hModel = self:HasWearables(tAssetModifier.modifier, hUnit)
+				if bHasWearable and tAssetModifier.modifier == tAssetModifier.asset then
+					_hModel:RemoveEffects(EF_NODRAW)
+					if tAssetModifier.skin then
+						_hModel:SetSkin(tonumber(tAssetModifier.skin))
+					end
+				else
+					local hWearable = SpawnEntityFromTableSynchronous("prop_dynamic", { model = tAssetModifier.modifier, origin = hUnit:GetAbsOrigin() })
+					hWearable:FollowEntity(hUnit, true)
+					if tAssetModifier.criteria then
+						local tColor = string.split(tAssetModifier.criteria, ",")
+						hWearable:SetRenderColor(tonumber(tColor[1]), tonumber(tColor[2]), tonumber(tColor[3]))
+					end
+					if tAssetModifier.skin then
+						hWearable:SetSkin(tonumber(tAssetModifier.skin))
+					end
+					-- 饰品特效
+					for _, _tAssetModifier in pairs(tAssetModifiers) do
+						if _tAssetModifier.type == "particle_create" and _tAssetModifier.asset == tAssetModifier.modifier then
+							local iAttachType = PATTACH_ABSORIGIN_FOLLOW
+							if _tAssetModifier.attach_type == "customorigin" then
+								iAttachType = PATTACH_CUSTOMORIGIN
 							end
+							local iParticleID = ParticleManager:CreateParticle(_tAssetModifier.modifier, iAttachType, hWearable)
+							if _tAssetModifier.attach_type == "customorigin" then
+								for i, tControlPoint in pairs(_tAssetModifier.control_points) do
+									ParticleManager:SetParticleControlEnt(iParticleID, tonumber(tControlPoint.control_point_index), hWearable, self.ATTACH_TYPE[tControlPoint.attach_type], tControlPoint.attachment, hWearable:GetAbsOrigin(), false)
+								end
+							end
+							ParticleManager:ReleaseParticleIndex(iParticleID)
 						end
-						ParticleManager:ReleaseParticleIndex(iParticleID)
 					end
 				end
 			end

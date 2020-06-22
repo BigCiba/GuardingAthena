@@ -94,24 +94,14 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 7, 201, 162, 255 ]
-			m_ColorMax = [ 128, 242, 217, 255 ]
+			m_ColorMin = [ 255, 241, 124, 255 ]
+			m_ColorMax = [ 238, 232, 170, 255 ]
 		},
 	]
 	m_Emitters = 
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
 			m_flEmitRate = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
@@ -146,13 +136,6 @@
 					m_iControlPoint = 1
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 1.0, 1.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 62
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
 					m_angOffset = [ null, null, null ]
 					m_entityName = "self"
 				},

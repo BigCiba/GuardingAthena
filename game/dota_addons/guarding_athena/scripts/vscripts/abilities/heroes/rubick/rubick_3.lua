@@ -30,7 +30,7 @@ if modifier_rubick_3_thinker == nil then
 	modifier_rubick_3_thinker = class({}, nil, ModifierThinker)
 end
 function modifier_rubick_3_thinker:IsAura()
-	return self:GetElapsedTime() > self.delay
+	return true
 end
 function modifier_rubick_3_thinker:GetAuraRadius()
 	return self.radius
@@ -72,11 +72,17 @@ function modifier_rubick_3_thinker:OnIntervalThink()
 	hCaster:DealDamage(tTargets, self:GetAbility(), self.flDamage)
 	-- 天赋
 	local vPosition = hParent:GetAbsOrigin() + RandomVector(RandomInt(0, self.radius))
-	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, 200, self:GetAbility())
-	for k, hUnit in pairs(tTargets) do
-		hUnit:SetAbsOrigin(vPosition)
-	end
+	-- local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, 200, self:GetAbility())
+	-- for k, hUnit in pairs(tTargets) do
+	-- 	hUnit:SetAbsOrigin(vPosition)
+	-- end
 	hCaster:SpaceRift(vPosition)
+	-- 吸入中心
+	for _, hUnit in pairs(tTargets) do
+		local flDistance = CalculateDistance(hParent, hUnit)
+		local vDirection = CalculateDirection(hParent, hUnit)
+		hUnit:SetAbsOrigin(hUnit:GetAbsOrigin() + vDirection * flDistance / 20)
+	end
 	self:StartIntervalThink(self.interval)
 end
 ---------------------------------------------------------------------
