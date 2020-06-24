@@ -103,6 +103,7 @@ function modifier_rubick_1_thinker:OnCreated(params)
 	self.base_damage = self:GetAbilitySpecialValueFor("base_damage")
 	self.open_damage = self:GetAbilitySpecialValueFor("open_damage")
 	self.pull_bonus = self:GetAbilitySpecialValueFor("pull_bonus")
+	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
 	if IsServer() then
 		self.iHashIndex = params.iHashIndex
 	end
@@ -118,6 +119,12 @@ function modifier_rubick_1_thinker:OnDestroy()
 		-- 造成伤害
 		local flDamage = (self.base_damage + self.open_damage * hCaster:GetIntellect()) * (1 + #tTargets * self.pull_bonus * 0.01)
 		hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
+		-- 魔导师秘钥
+		if hCaster.HasArcana then
+			for _, hUnit in pairs(tTargets) do
+				hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_stunned", {duration = self.stun_duration * hUnit:GetStatusResistanceFactor()})
+			end
+		end
 		-- 天赋
 		hCaster:SpaceRift(hParent:GetAbsOrigin() + RandomVector(RandomInt(0, self.radius)))
 		-- particle

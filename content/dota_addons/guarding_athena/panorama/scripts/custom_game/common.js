@@ -67,6 +67,18 @@ function GetHeroesRebornCount(iEntity) {
 	}
 	return 0
 }
+// 获取英雄穿戴的皮肤
+function GetSkinName(iEntity) {
+	for (const sItemName in GameUI.PlayerItemsKV) {
+		let tItemData = GameUI.PlayerItemsKV[sItemName];
+		if (tItemData.Hero && tItemData.Hero == Entities.GetUnitName(iEntity)) {
+			if (Entities.HasModifier(iEntity, "modifier_" + sItemName)) {
+				return sItemName;
+			}
+		}
+	}
+	return false;
+}
 Entities.HasModifier = function (iEntIndex, sModifierName) {
 	for (let index = 0; index < Entities.GetNumBuffs(iEntIndex); index++) {
 		const buff = Entities.GetBuff( iEntIndex, index );

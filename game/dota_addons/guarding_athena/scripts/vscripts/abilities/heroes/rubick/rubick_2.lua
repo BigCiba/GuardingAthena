@@ -93,6 +93,7 @@ if modifier_rubick_2_shield == nil then
 end
 function modifier_rubick_2_shield:OnCreated(params)
 	self.shield_factor = self:GetAbilitySpecialValueFor("shield_factor")
+	self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	local hParent = self:GetParent()
 	if IsServer() then
 		self.flShieldHealth = hParent:GetIntellect() * self.shield_factor
@@ -104,6 +105,7 @@ function modifier_rubick_2_shield:OnCreated(params)
 end
 function modifier_rubick_2_shield:OnRefresh(params)
 	self.shield_factor = self:GetAbilitySpecialValueFor("shield_factor")
+	self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	if IsServer() then
 		self.flShieldHealth = self.flShieldHealth + self:GetParent():GetIntellect() * self.shield_factor
 	end
@@ -111,6 +113,7 @@ end
 function modifier_rubick_2_shield:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK,
+		MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE
 	}
 end
 function modifier_rubick_2_shield:GetModifierTotal_ConstantBlock(params)
@@ -121,5 +124,10 @@ function modifier_rubick_2_shield:GetModifierTotal_ConstantBlock(params)
 			self:Destroy()
 		end
 		return flBlock
+	end
+end
+function modifier_rubick_2_shield:GetModifierPercentageCooldown()
+	if self:GetParent().HasArcana then
+		return self.cooldown_reduction
 	end
 end

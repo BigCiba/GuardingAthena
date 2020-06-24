@@ -335,7 +335,12 @@ function GuardingAthena:OnNPCSpawned(keys)
 	if hUnit:GetUnitName() == "npc_dota_companion" then
 		UTIL_Remove(hUnit)
 		return
+	end	
+	-- 傀儡目标
+	if hUnit:GetUnitName() ==	"npc_dota_hero_target_dummy" then
+		return
 	end
+
 	if not hUnit.bIsNotFirstSpawn then
 		hUnit.bIsNotFirstSpawn = true
 		FireGameEvent("custom_npc_first_spawned", {entindex=hUnit:entindex()})
@@ -402,9 +407,13 @@ end
 -- 监听玩家选择英雄
 function GuardingAthena:OnPlayerPickHero(keys)
 	--print ('[GuardingAthena] OnPlayerPickHero')
-	--PrintTable(keys)
+	-- PrintTable(keys)
 	local heroEntity = EntIndexToHScript(keys.heroindex)
 	if keys.player == -1 then
+		return
+	end
+	-- 傀儡目标
+	if keys.hero ==	"npc_dota_hero_target_dummy" then
 		return
 	end
 	

@@ -99,7 +99,7 @@ function Update() {
 						text += "<br></br>";
 					}
 	
-					// 技能伤害
+					// 技能持续时间
 					let AbilityDuration = Abilities.GetDuration( AbilityIndex );
 					if (AbilityDuration != null && AbilityDuration != "") {
 						let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilityduration";
@@ -180,12 +180,36 @@ function Update() {
 							localization = localization.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
 						}
 						Description.text = localization;
+						
 						if (PurgeType != "0") {
 							Description.text += "<br></br><br></br>" + $.Localize("Custom_Tooltip_ability_PurgeType") + $.Localize("Custom_Tooltip_ability_" + PurgeType);
 						}
 						if (IgnoreCooldownReduction == "1") {
 							Description.text += "<br></br><br></br><font color='#d63c2d'>" + $.Localize("Custom_Tooltip_ability_IgnoreCooldownReduction") + "</font>";
 							Tooltips.FindChildTraverse("AbilityCooldown").text = Abilities.GetCooldown(AbilityIndex);
+						}
+					}
+					// 添加皮肤额外描述
+					let sSkinName = GetSkinName(Unit);
+					let SkinHeader = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(1);
+					let SkinDesc = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(2);
+					if (sSkinName == false) {
+						if (SkinHeader != null || SkinHeader != undefined) {
+							SkinHeader.style.visibility = "collapse";
+							SkinDesc.style.visibility = "collapse";
+						}
+					} else {
+						let Name = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_" + sSkinName);
+						if (Name.search("DOTA_Tooltip_ability_") == -1) {
+							for (const key in AbilitySpecial) {
+								const SpecialName = Object.keys(AbilitySpecial[key])[1];
+								Name = Name.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+								Name = Name.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+							}
+							SkinHeader.text = "<font color='gold'>" + $.Localize(sSkinName) + "</font>";
+							SkinHeader.SetHasClass("Active", true);
+							SkinDesc.text = Name;
+							SkinDesc.style.backgroundColor = "#1f282c55";
 						}
 					}
 					// 修正位置

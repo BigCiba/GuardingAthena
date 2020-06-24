@@ -17,7 +17,7 @@ function rubick_0:Bounce(hTarget, tTargets, flRadius, flDamage, max_count)
 				hCaster:DealDamage(hNewTarget, self, flDamage)
 				table.insert(tTargets, hNewTarget)
 				-- 特效
-				local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_ti8_immortal/rubick_ti8_immortal_fade_bolt_head.vpcf", PATTACH_CUSTOMORIGIN, nil)
+				local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_rubick/rubick_base_attack.vpcf", hCaster), PATTACH_CUSTOMORIGIN, nil)
 				ParticleManager:SetParticleControlEnt(iParticleID, 0, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetAbsOrigin(), false)
 				ParticleManager:SetParticleControlEnt(iParticleID, 1, hNewTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hNewTarget:GetAbsOrigin(), false)
 				ParticleManager:ReleaseParticleIndex(iParticleID)

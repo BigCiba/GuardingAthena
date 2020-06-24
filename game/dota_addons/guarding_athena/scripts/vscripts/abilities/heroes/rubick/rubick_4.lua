@@ -36,7 +36,7 @@ function modifier_rubick_4_thinker:GetAuraRadius()
 	return self.radius
 end
 function modifier_rubick_4_thinker:GetAuraSearchTeam()
-	return DOTA_UNIT_TARGET_TEAM_ENEMY
+	return DOTA_UNIT_TARGET_TEAM_BOTH
 end
 function modifier_rubick_4_thinker:GetAuraSearchType()
 	return DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
@@ -76,7 +76,7 @@ end
 function modifier_rubick_4_thinker:OnIntervalThink()
 	local hCaster = self:GetCaster()
 	local hParent = self:GetParent()
-	local flDamage = self.flDamage * (1 + self:GetStackCount() * self.damage_deepen * 0.01)
+	local flDamage = hCaster.HasArcana and self.flDamage or self.flDamage * (1 + self:GetStackCount() * self.damage_deepen * 0.01)
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, hParent:GetAbsOrigin(), self.radius, self:GetAbility())
 	hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
 	-- 天赋
@@ -96,26 +96,40 @@ end
 if modifier_rubick_4_debuff == nil then
 	modifier_rubick_4_debuff = class({}, nil, ModifierBasic)
 end
+function modifier_rubick_4_debuff:IsHidden()
+	return self:GetParent():IsFriendly(self:GetCaster())
+end
 function modifier_rubick_4_debuff:IsDebuff()
-	return true
+	return not self:GetParent():IsFriendly(self:GetCaster())
 end
 function modifier_rubick_4_debuff:OnCreated(params)
 	self.movespeed = self:GetAbilitySpecialValueFor("movespeed")
 	self.attackspeed = self:GetAbilitySpecialValueFor("attackspeed")
+	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
 end
 function modifier_rubick_4_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_LIMIT,
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE
 	}
 end
-function modifier_rubick_4_debuff:CheckState()
-	return {
-	}
+function modifier_rubick_4_debuff:GetModifierTotalDamageOutgoing_Percentage()
+	if IsServer() then
+		if self:GetParent():IsFriendly(self:GetCaster()) and
+		self:GetParent().HasArcana and
+		IsValid(self:GetAuraOwner()) then
+			return self:GetAuraOwner():FindModifierByName("modifier_rubick_4_thinker"):GetStackCount() * self.damage_deepen
+		end
+	end
 end
 function modifier_rubick_4_debuff:GetModifierMoveSpeed_Limit()
-	return self.movespeed
+	if not self:GetParent():IsFriendly(self:GetCaster()) then
+		return self.movespeed
+	end
 end
 function modifier_rubick_4_debuff:GetModifierAttackSpeedBonus_Constant()
-	return -self.attackspeed
+	if not self:GetParent():IsFriendly(self:GetCaster()) then
+		return -self.attackspeed
+	end
 end

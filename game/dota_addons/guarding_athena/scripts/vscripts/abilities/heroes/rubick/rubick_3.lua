@@ -36,7 +36,7 @@ function modifier_rubick_3_thinker:GetAuraRadius()
 	return self.radius
 end
 function modifier_rubick_3_thinker:GetAuraSearchTeam()
-	return DOTA_UNIT_TARGET_TEAM_ENEMY
+	return DOTA_UNIT_TARGET_TEAM_BOTH
 end
 function modifier_rubick_3_thinker:GetAuraSearchType()
 	return DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
@@ -87,7 +87,13 @@ function modifier_rubick_3_thinker:OnIntervalThink()
 end
 ---------------------------------------------------------------------
 if modifier_rubick_3_debuff == nil then
-	modifier_rubick_3_debuff = class({}, nil, ModifierDebuff)
+	modifier_rubick_3_debuff = class({}, nil, ModifierBasic)
+end
+function modifier_rubick_3_debuff:IsHidden()
+	return self:GetParent():IsFriendly(self:GetCaster())
+end
+function modifier_rubick_3_debuff:IsDebuff()
+	return not self:GetParent():IsFriendly(self:GetCaster())
 end
 function modifier_rubick_3_debuff:OnCreated(params)
 	if IsServer() then
@@ -96,8 +102,22 @@ function modifier_rubick_3_debuff:OnCreated(params)
 end
 function modifier_rubick_3_debuff:CheckState()
 	return {
-		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
-		[MODIFIER_STATE_STUNNED] = true,
-		[MODIFIER_STATE_FROZEN] = true,
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = self:GetParent():IsFriendly(self:GetCaster()),
+		[MODIFIER_STATE_STUNNED] = not self:GetParent():IsFriendly(self:GetCaster()),
+		[MODIFIER_STATE_FROZEN] = not self:GetParent():IsFriendly(self:GetCaster()),
 	}
+end
+function modifier_rubick_3_debuff:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_AVOID_DAMAGE,
+	}
+end
+function modifier_rubick_3_debuff:GetModifierAvoidDamage(params)
+	local hCaster = self:GetCaster()
+	local hParent = self:GetParent()
+	if hParent:IsFriendly(hCaster) and
+	hParent.HasArcana and
+	params.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK then
+		return 1
+	end
 end

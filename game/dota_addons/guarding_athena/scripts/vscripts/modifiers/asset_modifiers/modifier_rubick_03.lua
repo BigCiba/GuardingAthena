@@ -5,8 +5,14 @@ local public = modifier_rubick_03
 
 function public:OnCreated(params)
 	self:Init()
+	self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	local hParent = self:GetParent()
+	-- 是否装备魔导师秘钥
+	hParent.HasArcana = function (hParent)
+		return true
+	end
 	if IsServer() then
+		-- 空间裂缝
 		self.hAbility = hParent:FindAbilityByName("rubick_0")
 	else
 		local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_arcana/rubick_arc_ambient_lines.vpcf", PATTACH_ABSORIGIN_FOLLOW, hParent)
@@ -37,7 +43,7 @@ function public:GetModifierModelChange()
 	return AssetModifiers:GetEntityModelReplacement(self:GetParent():GetSkinName())
 end
 function public:GetModifierProjectileName()
-	return "particles/econ/items/rubick/rubick_ti8_immortal/rubick_ti8_immortal_fade_bolt_head.vpcf"
+	return AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_rubick/rubick_base_attack.vpcf", self:GetParent())
 end
 function public:GetModifierProjectileSpeedBonus()
 	return 10000
