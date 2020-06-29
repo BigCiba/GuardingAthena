@@ -47,6 +47,9 @@
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d695 ) );
 	/* saturation: 1.4; */
 }
+#CommonPopupYes:disabled {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #292e2e ), to( #191e1e ) );
+}
 #CommonPopupNo {
 	width: 90px;
 	height: 36px;

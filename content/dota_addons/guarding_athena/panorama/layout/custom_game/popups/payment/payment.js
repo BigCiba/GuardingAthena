@@ -1,6 +1,6 @@
 function SetupPaymentConfirm() {
 	let CostType = $.GetContextPanel().GetAttributeString("CostType", "");
-	
+	$("#CommonPopupYes").enabled = true;
 	if (CostType == "Shard") {
 		let Shard = $.GetContextPanel().GetAttributeInt("Shard", 0);
 		$("#ShardCost").SetDialogVariable("shard_cost", Shard);
@@ -15,6 +15,7 @@ function SetupPaymentConfirm() {
 function Confirm() {
 	let CostType = $.GetContextPanel().GetAttributeString("CostType", "");
 	let ItemName = $.GetContextPanel().GetAttributeString("ItemName", "0");
+	$("#CommonPopupYes").enabled = false;
 	if (CostType == "Shard") {
 		let ShardCost = $.GetContextPanel().GetAttributeInt("Shard", 0);
 		let Shard = GetPlayerShard(Players.GetLocalPlayer());

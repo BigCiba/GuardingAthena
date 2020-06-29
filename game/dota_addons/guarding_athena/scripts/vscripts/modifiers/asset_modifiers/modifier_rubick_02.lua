@@ -12,6 +12,8 @@ function public:OnCreated(params)
 		return true
 	end
 	if IsServer() then
+		-- 替换饰品
+		AssetModifiers:ReplaceWearables("rubick_02", hParent)
 		-- 空间裂缝
 		self.hAbility = hParent:FindAbilityByName("rubick_0")
 	else

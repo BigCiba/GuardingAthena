@@ -61,6 +61,7 @@ function LoadItem(self) {
 			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
 				ItemName: this.id,
 				Type: this.Type,
+				HeroName: PreviewHeroName,
 			});
 			// this.Panel.SetImage(this.Image);
 			$("#ContextMenuBody").ToggleClass("ContextMenuBodyShow");

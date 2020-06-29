@@ -106,6 +106,10 @@ function modifier_rubick_1_thinker:OnCreated(params)
 	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
 	if IsServer() then
 		self.iHashIndex = params.iHashIndex
+	else
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_chaos_fly.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin())
+		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
 function modifier_rubick_1_thinker:OnDestroy()
@@ -132,7 +136,7 @@ function modifier_rubick_1_thinker:OnDestroy()
 		if hCaster.gift then
 			sParticleName = "particles/heroes/chronos_magic/chronos_magic_gold_open.vpcf"
 		end
-		local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_rain_of_chaos_explosion.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 		-- 清空哈希

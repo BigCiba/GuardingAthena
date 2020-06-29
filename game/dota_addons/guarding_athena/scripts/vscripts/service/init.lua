@@ -325,9 +325,9 @@ function public:IsVipPlayer(iPlayerID)
 	return false
 end
 -- 获取某个类型的已装备物品
-function public:GetEquippedItem(iPlayerID, sType)
+function public:GetEquippedItem(iPlayerID, sType, sHeroName)
 	local tData = {}
-	local tPlayerServiceData = sType == "skin" and self.tPlayerServiceData[iPlayerID][sType][GuardingAthena.tPlayerSelectionInfo[iPlayerID].player_selected_hero] or self.tPlayerServiceData[iPlayerID][sType]
+	local tPlayerServiceData = sType == "skin" and self.tPlayerServiceData[iPlayerID][sType][(sHeroName or GuardingAthena.tPlayerSelectionInfo[iPlayerID].player_selected_hero)] or self.tPlayerServiceData[iPlayerID][sType]
 	if tPlayerServiceData then
 		for _, tItemData in ipairs(tPlayerServiceData) do
 			if tonumber(tItemData.Equip) == 1 and tItemData.ItemName ~= "default_no_item" then
@@ -349,6 +349,11 @@ function public:OnToggleItemEquipState(eventSourceIndex, events)
 	local sItemName = events.ItemName
 	local sType = events.Type
 	if sType == "skin" then
+		if sItemName == "default_no_item" then
+			print(events.HeroName)
+			sItemName = self:GetEquippedItem(iPlayerID, "skin", events.HeroName)[1].ItemName
+			print(sItemName)
+		end
 		local sHeroName = KeyValues.PlayerItemsKV[sItemName].Hero
 		for i, tItemData in pairs(self.tPlayerServiceData[iPlayerID][sType][sHeroName]) do
 			if tItemData.ItemName == sItemName then
@@ -440,6 +445,15 @@ end
 function public:OnRefreshPlayerData(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID
 	local player = PlayerResource:GetPlayer(iPlayerID)
-	self:RequestPlayerData(iPlayerID)
+	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
+	self:HTTPRequest("POST", "GetPrice", {SteamID = SteamID}, function(iStatusCode, sBody)
+		if iStatusCode == 200 then
+			local hBody = json.decode(sBody)
+			print(sBody)
+			self.tPlayerServiceData[iPlayerID].Shard = hBody.Shard
+			self.tPlayerServiceData[iPlayerID].Price = hBody.Price
+			self:UpdateNetTables()
+		end
+	end, REQUEST_TIME_OUT)
 end
 return public

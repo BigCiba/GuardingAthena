@@ -193,6 +193,7 @@ function Update() {
 					let sSkinName = GetSkinName(Unit);
 					let SkinHeader = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(1);
 					let SkinDesc = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(2);
+
 					if (sSkinName == false) {
 						if (SkinHeader != null || SkinHeader != undefined) {
 							SkinHeader.style.visibility = "collapse";
@@ -210,6 +211,9 @@ function Update() {
 							SkinHeader.SetHasClass("Active", true);
 							SkinDesc.text = Name;
 							SkinDesc.style.backgroundColor = "#1f282c55";
+						} else {
+							SkinHeader.style.visibility = "collapse";
+							SkinDesc.style.visibility = "collapse";
 						}
 					}
 					// 修正位置
@@ -451,10 +455,7 @@ function MoneyComeButton() {
 		{});
 }
 function RefreshButton() {
-	GameEvents.SendCustomGameEventToServer("PurchaseItem", {
-		ItemName: ItemName,
-		Currency: "Shard"
-	});
+	GameEvents.SendCustomGameEventToServer("RefreshPlayerData", {});
 }
 function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	let localPlayerID = Players.GetLocalPlayer();

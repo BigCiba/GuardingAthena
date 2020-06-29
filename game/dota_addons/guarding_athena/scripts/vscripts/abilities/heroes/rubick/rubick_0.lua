@@ -38,7 +38,6 @@ function rubick_0:FadeBolt(hTarget)
 	local tTargets = {}
 	hCaster:DealDamage(hTarget, self, flDamage)
 	table.insert(tTargets, hTarget)
-	print(hTarget)
 	self:Bounce(hTarget, tTargets, flRadius, flDamage, max_count - 1)
 end
 function rubick_0:SpaceRift(vPosition)
