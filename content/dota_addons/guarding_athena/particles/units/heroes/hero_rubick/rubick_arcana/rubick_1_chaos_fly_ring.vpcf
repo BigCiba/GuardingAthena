@@ -9,7 +9,7 @@
 			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0_a6.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_chaos_fly_ring_a.vpcf"
 		},
 	]
 	m_controlPointConfigurations = 

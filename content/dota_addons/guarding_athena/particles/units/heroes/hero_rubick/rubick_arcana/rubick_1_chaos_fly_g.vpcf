@@ -9,7 +9,7 @@
 			_class = "C_OP_RenderSprites"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
 			m_bBlendFramesSeq0 = false
-			m_hTexture = resource:"materials/particle/smoke1/smoke1.vtex"
+			m_hTexture = resource:"materials/particle/smoke/static/static_smoke.vtex"
 			m_nHSVShiftControlPoint = 62
 		},
 	]
@@ -97,16 +97,6 @@
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
 			m_flEmitRate = 
 			{
 				m_nType = "PF_TYPE_LITERAL"

@@ -16,11 +16,6 @@
 			m_flAnimationRate = 1.0
 			m_flFinalTextureScaleV = -1.0
 			m_flFinalTextureOffsetV = 1.0
-			m_flRadiusTaper = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 1.0
-			}
 			m_flRadiusScale = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
@@ -30,11 +25,6 @@
 			{
 				m_nType = "PVEC_TYPE_LITERAL"
 				m_vLiteralValue = [ 0.8, 0.8, 1.0 ]
-			}
-			m_flTailAlphaScale = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 1.0
 			}
 		},
 	]
@@ -125,16 +115,6 @@
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
 			m_flEmitRate = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
