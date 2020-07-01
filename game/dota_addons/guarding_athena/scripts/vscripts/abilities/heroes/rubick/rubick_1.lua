@@ -27,10 +27,11 @@ function rubick_1:OnSpellStart()
 	hCaster:SpaceRift(hCaster:GetAbsOrigin() + RandomVector(RandomInt(0, flRadius)))
 	-- particle
 	-- local iParticleID = ParticleManager:CreateParticle("particles/skills/chronos_magic.vpcf", PATTACH_CENTER_FOLLOW, hCaster)
-	local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_arcana/rbck_arc_sandking_epicenter.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
-	ParticleManager:SetParticleControl(iParticleID, 1, Vector(600,600,600))
+	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
+	ParticleManager:SetParticleControl(iParticleID, 1, Vector(500,500,1))
+	ParticleManager:SetParticleControl(iParticleID, 2, Vector(500,0,0))
 	-- sound
-	hCaster:EmitSound("Hero_Dark_Seer.Vacuum")
+	hCaster:EmitSound("Hero_Zuus.Righteous.Layer")
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -107,7 +108,7 @@ function modifier_rubick_1_thinker:OnCreated(params)
 	if IsServer() then
 		self.iHashIndex = params.iHashIndex
 	else
-		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_chaos_fly.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_chaos_fly.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
@@ -143,5 +144,6 @@ function modifier_rubick_1_thinker:OnDestroy()
 		RemoveHashtable(self.iHashIndex)
 		-- 播放投掷动作
 		-- hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_5)
+		hCaster:EmitSound("Hero_Invoker.ChaosMeteor.Impact")
 	end
 end

@@ -1,0 +1,187 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf26:version{26288658-411e-4f14-b698-2e1e5d00dec6} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 12
+	m_flConstantRadius = 1.0
+	m_ConstantColor = [ 22, 143, 64, 255 ]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flAnimationRate = 1.0
+			m_flAddSelfAmount = 2.0
+			m_bAdditive = true
+			m_flOverbrightFactor = 5.0
+			m_hTexture = resource:"materials/particle/particle_flares/aircraft_white_v2.vtex"
+			m_nOrientationType = 2
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_nOpEndCapState = 0
+			m_fDrag = 0.05
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 5.0
+			m_flStartTime = 0.5
+			m_flStartScale = 0.5
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SpinYaw"
+			m_fSpinRateStopTime = 1.0
+			m_nSpinRateDegrees = 55
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_Orient2DRelToCP"
+			m_flRotOffset = 90.0
+		},
+		{
+			_class = "C_OP_SetPerChildControlPoint"
+			m_nFirstControlPoint = 6
+			m_nNumControlPoints = 8
+			m_bSetOrientation = true
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 155
+			m_nAlphaMax = 155
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.8
+			m_fLifetimeMin = 0.8
+		},
+		{
+			_class = "C_INIT_RandomScalar"
+			m_flMin = -90.0
+			m_flMax = -90.0
+			m_nFieldOutput = "20"
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomSecondSequence"
+			m_nSequenceMax = 2
+			m_nSequenceMin = 2
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 0.6
+			m_flRadiusMax = 0.6
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 33, 228, 127, 255 ]
+			m_ColorMax = [ 6, 143, 99, 255 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 3.0, 3.0, 5.0 ]
+			m_OffsetMax = [ -3.0, -3.0, 5.0 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 8.0
+			}
+		},
+	]
+	m_Constraints = 
+	[
+		{
+			_class = "C_OP_ConstrainDistanceToPath"
+			m_fMinDistance = 5.0
+			m_flMaxDistance0 = 5.0
+			m_PathParameters = 
+			{
+				m_nEndControlPointNumber = 4
+				m_flMidPoint = 0.85
+			}
+			m_flTravelTime = 0.4
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0g.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start_j0d.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 7
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 4
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 6
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

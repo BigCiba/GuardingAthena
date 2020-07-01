@@ -39,8 +39,8 @@
 	[
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 69, 255, 218, 255 ]
-			m_ColorMax = [ 169, 203, 255, 255 ]
+			m_ColorMin = [ 134, 255, 134, 255 ]
+			m_ColorMax = [ 77, 255, 69, 255 ]
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
@@ -89,12 +89,6 @@
 			m_drivers = 
 			[
 				{
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
 					m_iControlPoint = 3
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 0.0, 0.0, 0.0 ]
@@ -104,6 +98,5 @@
 			]
 		},
 	]
-	m_PreEmissionOperators = [  ]
-	m_nBehaviorVersion = 4
+	m_nBehaviorVersion = 10
 }

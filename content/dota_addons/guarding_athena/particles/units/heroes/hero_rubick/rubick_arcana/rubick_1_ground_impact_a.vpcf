@@ -63,7 +63,7 @@
 		{
 			_class = "C_OP_ColorInterpolate"
 			m_flFadeStartTime = 0.5
-			m_ColorFade = [ 14, 80, 151, 255 ]
+			m_ColorFade = [ 0, 59, 39, 255 ]
 		},
 		{
 			_class = "C_OP_SpinUpdate"
@@ -91,8 +91,8 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 48, 242, 253, 255 ]
-			m_ColorMax = [ 34, 130, 255, 255 ]
+			m_ColorMin = [ 134, 255, 134, 255 ]
+			m_ColorMax = [ 77, 255, 69, 255 ]
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
@@ -134,6 +134,6 @@
 			]
 		},
 	]
-	m_nBehaviorVersion = 4
+	m_nBehaviorVersion = 10
 	m_nFirstMultipleOverride_BackwardCompat = 7
 }

@@ -1,0 +1,115 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf26:version{26288658-411e-4f14-b698-2e1e5d00dec6} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 1
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_h.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_i.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_m.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_k.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_j.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start_e.vpcf"
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 1.0, 1.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 4
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 6
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_StopAfterCPDuration"
+			m_flDuration = 2.0
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_vecCP1Pos = [ 500.0, 500.0, 1.0 ]
+			m_bDisableOperator = true
+		},
+	]
+	m_nBehaviorVersion = 10
+}

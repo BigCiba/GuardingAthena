@@ -100,6 +100,7 @@ function modifier_rubick_2_shield:OnCreated(params)
 	else
 		-- particle
 		local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_rubick/rubick_2_shield.vpcf", hParent), PATTACH_ABSORIGIN_FOLLOW, hParent)
+		ParticleManager:SetParticleControlEnt(iParticleID, 1, hParent, PATTACH_POINT_FOLLOW, "attach_hitloc", hParent:GetAbsOrigin(), false)
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
