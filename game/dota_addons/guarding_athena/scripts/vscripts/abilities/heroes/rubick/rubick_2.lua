@@ -7,6 +7,9 @@ end
 function rubick_2:GetAbilityTextureName()
 	return AssetModifiers:GetAbilityTextureReplacement(self:GetAbilityName(), self:GetCaster())
 end
+function rubick_2:GetAOERadius()
+	return self:GetSpecialValueFor("radius")
+end
 function rubick_2:GetCastRange(vLocation, hTarget)
 	if self:GetCaster():GetScepterLevel() >= 2 then
 		return self.BaseClass.GetCastRange(self, vLocation, hTarget) * self:GetSpecialValueFor("scepter_factor")
@@ -16,25 +19,26 @@ end
 function rubick_2:OnAbilityPhaseStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
-	local sParticleName = "particles/heroes/chronos_magic/teleport_open.vpcf"
-	if hCaster.gift then
-		sParticleName = "particles/heroes/chronos_magic/teleport_open_gold.vpcf"
-	end
 	self.tParticleID = {}
-	local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
+	local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/teleport_open.vpcf", hCaster), PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, hCaster:GetAbsOrigin())
+	ParticleManager:SetParticleControl(iParticleID, 1, Vector(200, 200, 1))
 	table.insert(self.tParticleID, iParticleID)
-	local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
+	local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/teleport_open.vpcf", hCaster), PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
+	ParticleManager:SetParticleControl(iParticleID, 1, Vector(200, 200, 1))
 	table.insert(self.tParticleID, iParticleID)
 	-- sound
-	hCaster:EmitSound("Hero_ObsidianDestroyer.AstralImprisonment.End")
+	hCaster:EmitSound(AssetModifiers:GetSoundReplacement("Hero_ObsidianDestroyer.AstralImprisonment.End", hCaster))
 	-- 动作
-	hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_4)
+	-- hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_4)
+	
+	hCaster:ClearActivityModifiers()
+	hCaster:AddActivityModifier("void_spirit_resonant_pulse")
 	return true
 end
 function rubick_2:OnAbilityPhaseInterrupted()
-	self:GetCaster():RemoveGesture(ACT_DOTA_CAST_ABILITY_4)
+	-- self:GetCaster():RemoveGesture(ACT_DOTA_CAST_ABILITY_4)
 
 	if self.tParticleID then
 		for i, iParticleID in ipairs(self.tParticleID) do
@@ -63,18 +67,22 @@ function rubick_2:OnSpellStart()
 		hCaster:DealDamage(tTargets, self, flDamage)
 		-- 传送
 		FindClearSpaceForUnit(hCaster, vPosition, true)
+		-- 动作
+		hCaster:ForcePlayActivityOnce(ACT_DOTA_MK_SPRING_END)
 		-- 天赋
 		hCaster:SpaceRift(vCasterLoc + RandomVector(RandomInt(0, flRadius)))
 		hCaster:SpaceRift(vPosition + RandomVector(RandomInt(0, flRadius)))
 		-- particle
-		local iParticleID = ParticleManager:CreateParticle("particles/heroes/chronos_magic/teleport_startleague.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/teleport_startleague.vpcf", hCaster), PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, vCasterLoc)
+		ParticleManager:SetParticleControl(iParticleID, 1, Vector(200, 200, 1))
 		ParticleManager:ReleaseParticleIndex(iParticleID)
-		local iParticleID = ParticleManager:CreateParticle("particles/heroes/chronos_magic/teleport_endflash_nexon_hero_cp_2014.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/teleport_endflash_nexon_hero_cp_2014.vpcf", hCaster), PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
+		ParticleManager:SetParticleControl(iParticleID, 1, Vector(200, 200, 1))
 		ParticleManager:ReleaseParticleIndex(iParticleID)
 		-- sound
-		hCaster:EmitSound("Hero_Furion.Teleport_Disappear")
+		hCaster:EmitSound(AssetModifiers:GetSoundReplacement("Hero_Furion.Teleport_Disappear", hCaster))
 	end)
 end
 ---------------------------------------------------------------------

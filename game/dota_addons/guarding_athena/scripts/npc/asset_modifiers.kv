@@ -40,32 +40,32 @@
 	}
 	"rubick_02"	// 魔导师秘钥
 	{
-		"asset_modifier0"
+		"asset_modifier0"	// 至宝模型替换
 		{
 			"type"		"entity_model"
 			"asset"		"npc_dota_hero_rubick"
 			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_base.vmdl"
 		}
-		"asset_modifier1"
+		"asset_modifier1"	// 至宝披风替换
 		{
 			"type"		"wearable"
 			"asset"		"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
 			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
 			"criteria"	"0,0,255"
 		}
-		"asset_modifier2"
+		"asset_modifier2"	// 至宝披风特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
 			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_ambient_default.vpcf"
 		}
-		"asset_modifier3"
+		"asset_modifier3"	// 不朽法杖替换
 		{
 			"type"		"wearable"
 			"asset"	"models/items/rubick/force_staff/force_staff.vmdl"
 			"modifier"	"models/items/rubick/force_staff/force_staff.vmdl"
 		}
-		"asset_modifier4"
+		"asset_modifier4"	// 不朽法杖特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/force_staff/force_staff.vmdl"
@@ -82,59 +82,119 @@
 				}
 			}
 		}
-		"asset_modifier5"
+		"asset_modifier5"	// 不朽肩膀替换
 		{
 			"type"		"wearable"
 			"modifier"	"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
 		}
-		"asset_modifier6"
+		"asset_modifier6"	// 不朽肩膀特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
 			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_shoulders_ambient.vpcf"
 		}
-		"asset_modifier7"
+		"asset_modifier7"	// 头部替换
 		{
 			"type"		"wearable"
 			"modifier"	"models/items/rubick/vestments_of_stellar_abyss_head/vestments_of_stellar_abyss_head.vmdl"
 		}
-		"asset_modifier8"
+		"asset_modifier8"	// 技能0图标替换
 		{
 			"type"		"ability_icon"
 			"asset"		"rubick_0"
 			"modifier"	"rubick/ti8_immortal_shoulder/rubick_fade_bolt_immortal"
 		}
-		"asset_modifier9"
+		"asset_modifier9"	// 技能1图标替换
 		{
 			"type"		"ability_icon"
 			"asset"		"rubick_1"
 			"modifier"	"rubick/arcana/rubick_spell_steal_arcana"
 		}
-		"asset_modifier10"
+		"asset_modifier10"	// 技能2图标替换
 		{
 			"type"		"ability_icon"
 			"asset"		"rubick_2"
 			"modifier"	"rubick/staff_of_perplex/rubick_telekinesis"
 		}
-		"asset_modifier11"
+		"asset_modifier11"	// 技能0特效替换
 		{
 			"type"		"particle"
 			"asset"		"particles/heroes/chronos_magic/space_phase.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_0.vpcf"
 		}
-		"asset_modifier12"
+		"asset_modifier12"	// 技能1吸引特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/skills/chronos_magic.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_start.vpcf"
+		}
+		"asset_modifier13"	// 技能1陨石特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/units/heroes/hero_rubick/rubick_1_chaos_fly.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_1_chaos_fly.vpcf"
+		}
+		"asset_modifier14"	// 技能1落地特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/chronos_magic_open.vpcf"
+			"modifier"	""
+		}
+		"asset_modifier15"	// 技能1吸引音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_Dark_Seer.Vacuum"
+			"modifier"	"Hero_Zuus.Righteous.Layer"
+		}
+		"asset_modifier16"	// 技能1落地音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_FacelessVoid.TimeWalk"
+			"modifier"	"Hero_Invoker.ChaosMeteor.Impact"
+		}
+		"asset_modifier17"	// 技能2法阵特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/teleport_open.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_2_start.vpcf"
+		}
+		"asset_modifier18"	// 技能2起点特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/teleport_startleague.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_2_appear.vpcf"
+		}
+		"asset_modifier19"	// 技能2终点特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/teleport_endflash_nexon_hero_cp_2014.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_2_appear.vpcf"
+		}
+		"asset_modifier20"	// 技能2护盾特效替换
 		{
 			"type"		"particle"
 			"asset"		"particles/units/heroes/hero_rubick/rubick_2_shield.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_2_shield.vpcf"
 		}
-		"asset_modifier13"
+		"asset_modifier21"	// 技能2法阵音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_ObsidianDestroyer.AstralImprisonment.End"
+			"modifier"	"Hero_VoidSpirit.Dissimilate.Cast"
+		}
+		"asset_modifier22"	// 技能2传送音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_Furion.Teleport_Disappear"
+			"modifier"	"Hero_VoidSpirit.Dissimilate.TeleportIn"
+		}
+		"asset_modifier23"	// 技能3特效替换
 		{
 			"type"		"particle"
 			"asset"		"particles/heroes/chronos_magic/space_barrier.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana/rubick_3.vpcf"
 		}
-		"asset_modifier14"
+		"asset_modifier24"	// 攻击弹道替换
 		{
 			"type"		"particle"
 			"asset"		"particles/units/heroes/hero_rubick/rubick_base_attack.vpcf"
@@ -143,32 +203,32 @@
 	}
 	"rubick_03"	// 纯金魔导师秘钥
 	{
-		"asset_modifier0"
+		"asset_modifier0"	// 至宝模型替换
 		{
 			"type"		"entity_model"
 			"asset"		"npc_dota_hero_rubick"
 			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_base.vmdl"
 		}
-		"asset_modifier1"
+		"asset_modifier1"	// 至宝披风替换
 		{
 			"type"		"wearable"
 			"asset"		"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
 			"modifier"	"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
 			"criteria"	"0,0,255"
 		}
-		"asset_modifier2"
+		"asset_modifier2"	// 至宝披风特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/rubick_arcana/rubick_arcana_back.vmdl"
 			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_ambient_default.vpcf"
 		}
-		"asset_modifier3"
+		"asset_modifier3"	// 不朽法杖替换
 		{
 			"type"		"wearable"
 			"modifier"	"models/items/rubick/force_staff/force_staff.vmdl"
 			"skin"		"1"
 		}
-		"asset_modifier4"
+		"asset_modifier4"	// 不朽法杖特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/force_staff/force_staff.vmdl"
@@ -185,65 +245,125 @@
 				}
 			}
 		}
-		"asset_modifier5"
+		"asset_modifier5"	// 不朽肩膀替换
 		{
 			"type"		"wearable"
 			"modifier"	"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
 		}
-		"asset_modifier6"
+		"asset_modifier6"	// 不朽肩膀特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/rubick_ti8_immortal_shoulders/rubick_ti8_immortal_shoulders.vmdl"
 			"modifier"		"particles/econ/items/rubick/rubick_arcana/rubick_arc_shoulders_ambient.vpcf"
 		}
-		"asset_modifier7"
+		"asset_modifier7"	// 头部替换
 		{
 			"type"		"wearable"
 			"modifier"	"models/items/rubick/vestments_of_stellar_abyss_head/vestments_of_stellar_abyss_head.vmdl"
 		}
-		"asset_modifier8"
+		"asset_modifier8"	// 技能0图标替换
 		{
 			"type"		"ability_icon"
 			"asset"		"rubick_0"
 			"modifier"	"rubick/ti8_immortal_shoulder/rubick_fade_bolt_immortal"
 		}
-		"asset_modifier9"
+		"asset_modifier9"	// 技能1图标替换
 		{
 			"type"		"ability_icon"
 			"asset"		"rubick_1"
 			"modifier"	"rubick/arcana/rubick_spell_steal_arcana"
 		}
-		"asset_modifier10"
+		"asset_modifier10"	// 技能2图标替换
 		{
 			"type"		"ability_icon"
 			"asset"		"rubick_2"
 			"modifier"	"rubick/staff_of_perplex/rubick_telekinesis_gold"
 		}
-		"asset_modifier11"
+		"asset_modifier11"	// 技能0特效替换
 		{
 			"type"		"particle"
 			"asset"		"particles/heroes/chronos_magic/space_phase.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0.vpcf"
 		}
-		"asset_modifier12"
+		"asset_modifier12"	// 技能1吸引特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/skills/chronos_magic.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_start.vpcf"
+		}
+		"asset_modifier13"	// 技能1陨石特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/units/heroes/hero_rubick/rubick_1_chaos_fly.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_1_chaos_fly.vpcf"
+		}
+		"asset_modifier14"	// 技能1落地特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/chronos_magic_open.vpcf"
+			"modifier"	""
+		}
+		"asset_modifier15"	// 技能1吸引音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_Dark_Seer.Vacuum"
+			"modifier"	"Hero_Zuus.Righteous.Layer"
+		}
+		"asset_modifier16"	// 技能1落地音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_FacelessVoid.TimeWalk"
+			"modifier"	"Hero_Invoker.ChaosMeteor.Impact"
+		}
+		"asset_modifier17"	// 技能2法阵特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/teleport_open.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_2_start.vpcf"
+		}
+		"asset_modifier18"	// 技能2起点特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/teleport_startleague.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_2_appear.vpcf"
+		}
+		"asset_modifier19"	// 技能2终点特效替换
+		{
+			"type"		"particle"
+			"asset"		"particles/heroes/chronos_magic/teleport_endflash_nexon_hero_cp_2014.vpcf"
+			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_2_appear.vpcf"
+		}
+		"asset_modifier20"	// 技能2护盾特效替换
 		{
 			"type"		"particle"
 			"asset"		"particles/units/heroes/hero_rubick/rubick_2_shield.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_2_shield.vpcf"
 		}
-		"asset_modifier13"
+		"asset_modifier21"	// 技能2法阵音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_ObsidianDestroyer.AstralImprisonment.End"
+			"modifier"	"Hero_VoidSpirit.Dissimilate.Cast"
+		}
+		"asset_modifier22"	// 技能2传送音效替换
+		{
+			"type"		"sound"
+			"asset"		"Hero_Furion.Teleport_Disappear"
+			"modifier"	"Hero_VoidSpirit.Dissimilate.TeleportIn"
+		}
+		"asset_modifier23"	// 技能3特效替换
 		{
 			"type"		"particle"
 			"asset"		"particles/heroes/chronos_magic/space_barrier.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_3.vpcf"
 		}
-		"asset_modifier14"
+		"asset_modifier24"	// 攻击弹道替换
 		{
 			"type"		"particle"
 			"asset"		"particles/units/heroes/hero_rubick/rubick_base_attack.vpcf"
 			"modifier"	"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_0_fade_bolt.vpcf"
 		}
-		"asset_modifier18"
+		"asset_modifier25"	// 额外武器特效
 		{
 			"type"		"particle_create"
 			"asset"		"models/items/rubick/force_staff/force_staff.vmdl"

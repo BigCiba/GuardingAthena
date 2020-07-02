@@ -147,8 +147,8 @@ function public:GetSoundReplacement(sSoundName, hUnit)
 	if not IsValid(hUnit) then
 		return sSoundName
 	end
-	local sUnitName = hUnit:GetUnitName()
-	local tAssetModifiers = KeyValues.AssetModifiersKv[sUnitName]
+	local sSkinName = hUnit.GetSkinName and hUnit:GetSkinName() or ""
+	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
 	if tAssetModifiers ~= nil then
 		for _, tAssetModifier in pairs(tAssetModifiers) do
 			if tAssetModifier.type == "sound" then
