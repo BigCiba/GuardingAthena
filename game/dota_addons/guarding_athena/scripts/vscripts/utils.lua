@@ -34,7 +34,7 @@ function table.max(t)
 	local key = nil
 	local value = nil
 	for k, v in pairs(t) do
-		if value == nil or value < v then
+		if value == nil or value <= v then
 			value = v
 			key = k
 		end
