@@ -2,6 +2,29 @@ ModifierBasic = class({})
 
 if ModifierBasic == nil then
 	ModifierBasic = class({})
+
+	--封装OnCreated等到子类同函数
+	-- local _class = class
+	-- function class(...)
+	-- 	local c = _class(...)
+	-- 	if instanceof(c, ModifierBasic) then
+	-- 		getmetatable(c).__newindex = function(...)
+	-- 			return c._newindex(...)
+	-- 		end
+	-- 	end
+	-- 	return c
+	-- end
+	-- function ModifierBasic._newindex(t, k, v)
+	-- 	if 'OnCreated' == k or 'OnRefresh' == k or 'OnDestroy' == k then
+	-- 		rawset(t, k, function(...)
+	-- 			local res = v(...)
+	-- 			ModifierBasic[k](...)
+	-- 			return res
+	-- 		end)
+	-- 	else
+	-- 		rawset(t, k, v)
+	-- 	end
+	-- end
 end
 function ModifierBasic:IsHidden()
 	return false

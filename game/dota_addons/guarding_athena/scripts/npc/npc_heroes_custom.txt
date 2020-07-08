@@ -61,7 +61,7 @@
 		"ArmorPhysical"							"0.38"
 		"MagicalResistance"						"0"
 		"ProjectileModel"						"particles/heroes/windrunner/windrunner_base_attack.vpcf"
-		"Ability1"								"chase_moon_and_star"
+		"Ability1"								"windrunner_0"
 		"Ability2"								"multiple_shoot"
 		"Ability3"								"gust"
 		"Ability4"								"alacrity"
