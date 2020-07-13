@@ -561,8 +561,11 @@ if IsServer() then
 		return self:SetCurrentCharges(self:GetCurrentCharges() + 1)
 	end
 	function CDOTABaseAbility:GetIntrinsicModifier()
-		if IsValid(self:GetCaster()) then
-			return self:GetCaster():FindModifierByName(self:GetIntrinsicModifierName())
+		local tModifiers = self:GetCaster():FindAllModifiersByName(self:GetIntrinsicModifierName())
+		for i, hModifier in ipairs(tModifiers) do
+			if hModifier:GetAbility() == self then
+				return hModifier
+			end
 		end
 		return nil
 	end
@@ -671,7 +674,7 @@ if IsServer() then
 	ATTACK_STATE_NO_EXTENDATTACK = 512 -- 没有触发额外攻击
 	ATTACK_STATE_SKIPCOUNTING = 1024 -- 不减少各种攻击计数
 	ATTACK_STATE_CRIT = 2048 -- 暴击，暴击技能里添加，Attack里加入无效
-	function CDOTA_BaseNPC:Attack(hTarget, iAttackState,ExtarData)
+	function CDOTA_BaseNPC:Attack(hTarget, iAttackState, ExtarData)
 		local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(ATTACK_SYSTEM_DUMMY, nil, "modifier_attack_system", {iAttacker=self:entindex(), iAttackState=iAttackState})
 
 		local bUseCastAttackOrb = (bit.band(iAttackState, ATTACK_STATE_NOT_USECASTATTACKORB) ~= ATTACK_STATE_NOT_USECASTATTACKORB)
@@ -692,7 +695,7 @@ if IsServer() then
 				for i = #tModifiers, 1, -1 do
 					local hModifier = tModifiers[i]
 					if IsValid(hModifier) and hModifier.OnAttackStart_AttackSystem then
-						hModifier:OnAttackStart_AttackSystem(params,ExtarData)
+						hModifier:OnAttackStart_AttackSystem(params, ExtarData)
 					end
 				end
 			end
@@ -701,13 +704,14 @@ if IsServer() then
 				for i = #tModifiers, 1, -1 do
 					local hModifier = tModifiers[i]
 					if IsValid(hModifier) and hModifier.OnAttackStart_AttackSystem then
-						hModifier:OnAttackStart_AttackSystem(params,ExtarData)
+						hModifier:OnAttackStart_AttackSystem(params, ExtarData)
 					end
 				end
 			end
 		end
 
 		self:PerformAttack(hTarget, bUseCastAttackOrb, bProcessProcs, bSkipCooldown, bIgnoreInvis, bUseProjectile, bFakeAttack, bNeverMiss)
+		print(modifier.record)
 		return modifier.record
 	end
 	function CDOTA_BaseNPC:AttackFilter(iRecord, ...)

@@ -2505,22 +2505,22 @@
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
 		"MaxLevel"								"1"
-		"AbilityCastRange"						"550"
+		"AbilityCastRange"						"800"
 		"AbilityCharges"						"3"
 		"AbilityChargeRestoreTime"				"16"
 		"AbilityManaCost"						"100"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"chance"						"60"
+				"bonus_attack_range"			"250"
 			}
 			"02"
 			{
@@ -2530,12 +2530,17 @@
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"duration"						"8"
+				"attacktime"					"1"
 			}
 			"04"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"delay_pct"						"30"
+				"duration"						"8"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"delay_pct"						"20"
 			}
 		}
 	}
@@ -2548,6 +2553,43 @@
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"						"1500"
+		"AbilityCastPoint"						"0.5"
+		"AbilityCooldown"						"9"
+		"AbilityManaCost"						"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"30 60 90 120 150 180 210 240 270 300 330 360 390 420 450 480 510 540 570 600"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"range"							"1200"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"3000"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"125"
+			}
+		}
 	}
 	"windrunner_2"
 	{

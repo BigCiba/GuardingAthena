@@ -815,11 +815,15 @@
 		"npc_dota_hero_windrunner"	"风行者"
 		
 		"DOTA_Tooltip_ability_windrunner_0"	"追星逐月"
-		"DOTA_Tooltip_ability_windrunner_0_Description"	"每次攻击有几率额外攻击一次，该次攻击造成魔法伤害，额外攻击有一半的几率再次触发该效果。主动使用时集中火力攻击一个目标并在持续时间内提升大量攻速。"
+		"DOTA_Tooltip_ability_windrunner_0_Description"	"每次攻击发射两枚箭矢。主动使用时集中火力攻击一个目标并在持续时间内提升大量攻速。"
 		"DOTA_Tooltip_ability_windrunner_0_Lore"	"风行者的诸多弓技中，有一种用连续不断的攻击来缠住敌人让其难以逃脱的箭矢。"
 		"DOTA_Tooltip_ability_windrunner_0_chance"	"额外攻击几率："
+		"DOTA_Tooltip_ability_windrunner_0_attacktime"	"攻击间隔："
+		"DOTA_Tooltip_ability_windrunner_0_bonus_attack_range"	"额外攻击距离："
 		"DOTA_Tooltip_ability_windrunner_0_bonus_attackspeed"	"额外攻速："
-		"DOTA_Tooltip_ability_windrunner_0_duration"	"额外攻速持续时间："
+		"DOTA_Tooltip_ability_windrunner_0_duration"	"持续时间："
+		"DOTA_Tooltip_modifier_windrunner_0_active"	"追星逐月"
+		"DOTA_Tooltip_modifier_windrunner_0_active_Description"	"攻击速度提升了%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%%%。"
 		
 		"DOTA_Tooltip_ability_windrunner_1"	"多重射击"
 		"DOTA_Tooltip_ability_windrunner_1_Description"	"一次射出5支箭矢，对前方扇形区域造成伤害，伤害与距离成正比，触发天赋时将额外施放一次魔法伤害的多重射击<br></br>-----------------------------------------------<br></br>伤害：攻击力 * 技能等级<br></br>基础伤害：30 * 技能等级<br></br>最大距离：1200<br></br>-----------------------------------------------"
