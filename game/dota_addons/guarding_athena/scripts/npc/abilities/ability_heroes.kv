@@ -2555,10 +2555,10 @@
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastRange"						"1500"
-		"AbilityCastPoint"						"0.5"
 		"AbilityCooldown"						"9"
 		"AbilityManaCost"						"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityChannelTime"					"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
@@ -2588,6 +2588,16 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"radius"						"125"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"delay"							"0.4"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cooldown_reduction"			"60"
 			}
 		}
 	}
