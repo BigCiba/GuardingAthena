@@ -838,8 +838,8 @@
 		"DOTA_Tooltip_modifier_gust"	"狂风"
 		"DOTA_Tooltip_modifier_gust_Description"	"该单位降低了命中率"
 		
-		"DOTA_Tooltip_ability_windrunner_3"	"风行"
-		"DOTA_Tooltip_ability_windrunner_3_Description"	"风行者被动获得移动速度与闪避加成，主动使用召唤风环绕自身，暂时突破移速上限并闪避所有物理攻击"
+		"DOTA_Tooltip_ability_windrunner_3"	"灵动迅捷"
+		"DOTA_Tooltip_ability_windrunner_3_Description"	"风的加持被动提升移动速度与闪避，主动使用时获得100%%的闪避与相位状态并减速周围的单位，但是冷却时会失去所有效果<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>移动速度提升：%movespeed%<br></br>闪避几率：10 + 2 * 技能等级<br></br>持续时间：4<br></br>减速：%reduce_movespeed%<br></br><font color='#ffffff'>-----------------------------------------------</font>"
 		"DOTA_Tooltip_ability_windrunner_3_Lore"	"风行者运用疾风之力抵御来临的攻击。"
 		"DOTA_Tooltip_modifier_alacrity"	"灵动迅捷"
 		"DOTA_Tooltip_modifier_alacrity_Description"	"暂时获得100%%的闪避"
