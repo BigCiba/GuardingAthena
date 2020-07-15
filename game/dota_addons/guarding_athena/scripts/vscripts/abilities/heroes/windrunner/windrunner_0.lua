@@ -24,8 +24,11 @@ function modifier_windrunner_0:OnCreated(params)
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 	self.delay_pct = self:GetAbilitySpecialValueFor("delay_pct")
 	if IsServer() then
+		self.tRecord = {}
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK, self, self:GetParent())
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD, self, self:GetParent())
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY, self, self:GetParent())
 end
 function modifier_windrunner_0:OnRefresh(params)
 	if IsServer() then
@@ -35,6 +38,20 @@ function modifier_windrunner_0:OnDestroy()
 	if IsServer() then
 	end
 	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK, self, self:GetParent())
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD, self, self:GetParent())
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY, self, self:GetParent())
+end
+function modifier_windrunner_0:OnAttackRecord(params)
+	if params.target == nil then return end
+	if params.target:GetClassname() == "dota_item_drop" then return end
+
+	local hParent = self:GetParent()
+	if hParent:HasModifier("modifier_windrunner_0_bonus_attack") then
+		table.insert(self.tRecord, params.record)
+	end
+end
+function modifier_windrunner_0:OnAttackRecordDestroy(params)
+	ArrayRemove(self.tRecord, params.record)
 end
 function modifier_windrunner_0:OnAttack(params)
 	if params.target == nil then return end
@@ -45,6 +62,22 @@ function modifier_windrunner_0:OnAttack(params)
 		self.hModifier = hParent:AddNewModifier(hParent, self:GetAbility(), "modifier_windrunner_0_bonus_attack", nil)
 	else
 		hParent:RemoveModifierByName("modifier_windrunner_0_bonus_attack")
+	end
+end
+function modifier_windrunner_0:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL,
+		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL,
+	}
+end
+function modifier_windrunner_0:GetOverrideAttackMagical(params)
+	if TableFindKey(self.tRecord, params.record) then
+		return 1
+	end
+end
+function modifier_windrunner_0:GetModifierProcAttack_BonusDamage_Magical(params)
+	if TableFindKey(self.tRecord, params.record) then
+		return params.damage
 	end
 end
 ---------------------------------------------------------------------

@@ -195,7 +195,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 	end
 	--策略阶段
 	if newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
-		local tVoteList = {0,0,1,1,0}
+		local tVoteList = {0,0,0,0,0}
 		-- 选择英雄
 		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 			local hPlayer = PlayerResource:GetPlayer(iPlayerID)

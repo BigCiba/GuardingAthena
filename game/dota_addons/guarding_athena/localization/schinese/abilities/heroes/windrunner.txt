@@ -1,7 +1,7 @@
 "npc_dota_hero_windrunner"	"风行者"
 
 "DOTA_Tooltip_ability_windrunner_0"	"追星逐月"
-"DOTA_Tooltip_ability_windrunner_0_Description"	"每次攻击发射两枚箭矢。主动使用时集中火力攻击一个目标并在持续时间内提升大量攻速。"
+"DOTA_Tooltip_ability_windrunner_0_Description"	"每次攻击发射两枚箭矢，额外箭矢造成魔法伤害。主动使用时集中火力攻击一个目标并在持续时间内提升大量攻速。"
 "DOTA_Tooltip_ability_windrunner_0_Lore"	"风行者的诸多弓技中，有一种用连续不断的攻击来缠住敌人让其难以逃脱的箭矢。"
 "DOTA_Tooltip_ability_windrunner_0_chance"	"额外攻击几率："
 "DOTA_Tooltip_ability_windrunner_0_attacktime"	"攻击间隔："
@@ -12,8 +12,11 @@
 "DOTA_Tooltip_modifier_windrunner_0_active_Description"	"攻击速度提升了%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%%%。"
 
 "DOTA_Tooltip_ability_windrunner_1"	"多重射击"
-"DOTA_Tooltip_ability_windrunner_1_Description"	"一次射出5支箭矢，对前方扇形区域造成伤害，伤害与距离成正比，触发天赋时将额外施放一次魔法伤害的多重射击<br></br>-----------------------------------------------<br></br>伤害：攻击力 * 技能等级<br></br>基础伤害：30 * 技能等级<br></br>最大距离：1200<br></br>-----------------------------------------------"
+"DOTA_Tooltip_ability_windrunner_1_Description"	"风行者为她的弓蓄力，射出5支强力的箭矢，最长可蓄力%abilitychanneltime%秒，其间可以打断蓄力，蓄力时间越长箭矢越集中，蓄力时间越短冷却时间越短，最多减少%cooldown_reduction%%%的冷却时间。一共射出两轮箭矢，第二轮箭矢造成魔法伤害。"
 "DOTA_Tooltip_ability_windrunner_1_Lore"	"在早年的训练生涯，风行者学会了射出足以破开树木击中目标的强力箭矢。"
+"DOTA_Tooltip_ability_windrunner_1_base_damage"	"基础伤害："
+"DOTA_Tooltip_ability_windrunner_1_damage"	"攻击力伤害系数："
+"DOTA_Tooltip_ability_windrunner_1_range"	"最大距离："
 
 "DOTA_Tooltip_ability_windrunner_2"	"狂风"
 "DOTA_Tooltip_ability_windrunner_2_Description"	"运用风的力量对敌人造成伤害与晕眩并使其攻击无法命中，触发天赋时将在持续时间内减少目标护甲<br></br>-----------------------------------------------<br></br>伤害：2 * 敏捷 * 技能等级<br></br>基础伤害：100 * 技能等级<br></br>丢失几率：29 + 技能等级<br></br>晕眩时间：1<br></br>持续时间：1.8 + 0.2 * 技能等级<br></br>护甲减少：2 * 技能等级<br></br>最大距离：900<br></br>-----------------------------------------------"
