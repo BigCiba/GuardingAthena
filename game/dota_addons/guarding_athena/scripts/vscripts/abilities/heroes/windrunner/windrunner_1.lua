@@ -55,3 +55,31 @@ function windrunner_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 		hCaster:KnockBack(hCaster:GetAbsOrigin() + hCaster:GetForwardVector() * -hCaster:GetHullRadius(), hTarget, flDistance, 0, 0.3, false)
 	end
 end
+function windrunner_1:GetIntrinsicModifierName()
+	return "modifier_windrunner_1"
+end
+---------------------------------------------------------------------
+--Modifiers
+if modifier_windrunner_1 == nil then
+	modifier_windrunner_1 = class({}, nil, ModifierHidden)
+end
+function modifier_windrunner_1:OnCreated(params)
+	self.scepter_chance = self:GetAbilitySpecialValueFor("scepter_chance")
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK, self, self:GetParent())
+end
+function modifier_windrunner_1:OnDestroy()
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK, self, self:GetParent())
+end
+function modifier_windrunner_1:OnAttack(params)
+	if params.target == nil then return end
+	if params.target:GetClassname() == "dota_item_drop" then return end
+	
+	local hParent = self:GetParent()
+	if hParent:GetScepterLevel() >= 4 and RollPercentage(self.scepter_chance) then
+		if hParent:HasModifier("modifier_windrunner_0_bonus_attack") then
+			self:GetAbility():MultipleShoot(params.target:GetAbsOrigin(), 15, DAMAGE_TYPE_PHYSICAL)
+		else
+			self:GetAbility():MultipleShoot(params.target:GetAbsOrigin(), 15, DAMAGE_TYPE_MAGICAL)
+		end
+	end
+end

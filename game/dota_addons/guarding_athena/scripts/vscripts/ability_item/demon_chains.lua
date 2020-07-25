@@ -19,7 +19,7 @@ function CreateDemon(caster,ability)
     local spawnLoc = GetRandomPoint(caster:GetAbsOrigin(), 200, 400)
     ability.demon = CreateUnitByName("demon_chains_summoned", spawnLoc, true, caster, caster, DOTA_TEAM_GOODGUYS )
     ability.demon:SetControllableByPlayer(caster:GetPlayerID(), true)
-    ability.demon:SetOwner(caster:GetPlayerOwner())
+    -- ability.demon:SetOwner(caster:GetPlayerOwner())
     ability:ApplyDataDrivenModifier(caster, ability.demon, "modifier_item_demon_chains_buff", nil)
     SetMaxHealth(ability.demon,ability.demon:GetMaxHealth() + caster:GetPrimaryStatValue() * 1000)
     ability.demon:SetBaseDamageMin(ability.demon:GetBaseDamageMin() + caster:GetPrimaryStatValue() * 100)
@@ -74,7 +74,7 @@ function OnAttackLanded(t)
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = ability:GetSpecialValueFor("bonus_damage") * caster:GetOwner():GetAssignedHero():GetPrimaryStatValue()
+    local damage = ability:GetSpecialValueFor("bonus_damage") * caster:GetOwner():GetPrimaryStatValue()
     local damageType = ability:GetAbilityDamageType()
     local cleave_radius = ability:GetSpecialValueFor("cleave_radius")
     local unitGroup = GetUnitsInRadius(caster,ability,target:GetAbsOrigin(),cleave_radius)
@@ -84,7 +84,7 @@ function OnIntervalThink(t)
     local caster = t.caster
     local target = t.target
     local ability = t.ability
-    local damage = ability:GetSpecialValueFor("damage") * caster:GetOwner():GetAssignedHero():GetPrimaryStatValue()
+    local damage = ability:GetSpecialValueFor("damage") * caster:GetOwner():GetPrimaryStatValue()
     local damageType = ability:GetAbilityDamageType()
     CauseDamage(caster,target,damage,damageType,ability)
 end

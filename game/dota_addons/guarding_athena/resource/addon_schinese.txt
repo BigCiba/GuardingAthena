@@ -838,8 +838,8 @@
 		"DOTA_Tooltip_modifier_gust"	"狂风"
 		"DOTA_Tooltip_modifier_gust_Description"	"该单位降低了命中率"
 		
-		"DOTA_Tooltip_ability_windrunner_3"	"灵动迅捷"
-		"DOTA_Tooltip_ability_windrunner_3_Description"	"风的加持被动提升移动速度与闪避，主动使用时获得100%%的闪避与相位状态并减速周围的单位，但是冷却时会失去所有效果<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>移动速度提升：%movespeed%<br></br>闪避几率：10 + 2 * 技能等级<br></br>持续时间：4<br></br>减速：%reduce_movespeed%<br></br><font color='#ffffff'>-----------------------------------------------</font>"
+		"DOTA_Tooltip_ability_windrunner_3"	"风行"
+		"DOTA_Tooltip_ability_windrunner_3_Description"	"风行者被动获得移动速度与闪避加成，主动使用召唤风环绕自身，暂时突破移速上限并闪避所有物理攻击"
 		"DOTA_Tooltip_ability_windrunner_3_Lore"	"风行者运用疾风之力抵御来临的攻击。"
 		"DOTA_Tooltip_modifier_alacrity"	"灵动迅捷"
 		"DOTA_Tooltip_modifier_alacrity_Description"	"暂时获得100%%的闪避"
@@ -880,7 +880,7 @@
 		"DOTA_Tooltip_ability_arrow_strom_Lore"	"箭雨"
 		
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner"	"射日"
-		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：伤害强化</h1>追星逐月额外箭矢伤害加倍\n<h1>二转：鹰眼</h1>使得箭矢风暴具有跟踪效果\n<h1>三转：箭矢风暴</h1>增加箭矢风暴4秒持续时间\n<h1>四转：多重射击</h1>普通攻击有10%%的几率触发多重射击，天赋额外箭矢有一半几率触发\n这把神弓并非奥林匹斯山的神器，而是一位无名的异界旅者留下的武器"
+		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：追星逐月</h1>追星逐月额外箭矢伤害加倍\n<h1>二转：鹰眼</h1>使得箭矢风暴具有跟踪效果\n<h1>三转：箭矢风暴</h1>增加箭矢风暴4秒持续时间\n<h1>四转：多重射击</h1>普通攻击有10%%的几率触发多重射击\n这把神弓并非奥林匹斯山的神器，而是一位无名的异界旅者留下的武器"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Lore"	"别手贱点他！"
 
 		"DOTA_Tooltip_ability_hell_beast_aura"	"哥布林光环"
