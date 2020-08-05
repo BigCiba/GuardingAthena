@@ -1,100 +1,100 @@
-﻿技能名,备注,基类,脚本,,,技能图标,技能行为,物品ID,最大等级,基础等级,价格,是否出售,能否购买,永久的,可叠加,拾取使用,初始数量,,键值,键值,键值,键值,键值,键值,键值,键值
-Name,,BaseClass,ScriptFile,Model,Effect,AbilityTextureName,AbilityBehavior,ID,MaxUpgradeLevel,ItemBaseLevel,ItemCost,ItemSellable,ItemPurchasable,ItemPermanent,ItemStackable,ItemCastOnPickup,ItemInitialCharges,AbilityCastRange,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial
-item_essence_str_1,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1134,15,1,500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,20,10,10,200,100,20,5,150
-item_essence_str_2,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1135,15,2,1000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,40,20,20,400,200,40,10,150
-item_essence_str_3,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1136,15,3,1500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,60,30,30,600,300,60,15,150
-item_essence_str_4,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1137,15,4,2000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,80,40,40,800,400,80,20,150
-item_essence_str_5,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1138,15,5,2500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,100,50,50,1000,500,100,25,150
-item_essence_str_6,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1139,15,6,3000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,120,60,60,1200,600,120,30,150
-item_essence_str_7,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1140,15,7,3500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,140,70,70,1400,700,140,35,150
-item_essence_str_8,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1141,15,8,4000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,160,80,80,1600,800,160,40,150
-item_essence_str_9,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1142,15,9,4500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,180,90,90,1800,900,180,45,150
-item_essence_str_10,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1143,15,10,5000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,200,100,100,2000,1000,200,50,150
-item_essence_str_11,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1144,15,11,5500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,220,110,110,2200,1100,220,55,150
-item_essence_str_12,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1145,15,12,6000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,240,120,120,2400,1200,240,60,150
-item_essence_str_13,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1146,15,13,6500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,260,130,130,2600,1300,260,65,150
-item_essence_str_14,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1147,15,14,7000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,280,140,140,2800,1400,280,70,150
-item_essence_str_15,力量原核,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,item_original_str_15,DOTA_ABILITY_BEHAVIOR_PASSIVE,1148,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
-,,,,,,,,,,,,,,,,,,,400,200,200,4000,2000,400,100,
-item_essence_agi_1,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1149,15,1,500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,10,20,10,200,100,20,5,150
-item_essence_agi_2,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1150,15,2,1000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,20,40,20,400,200,40,10,150
-item_essence_agi_3,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1151,15,3,1500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,30,60,30,600,300,60,15,150
-item_essence_agi_4,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1152,15,4,2000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,40,80,40,800,400,80,20,150
-item_essence_agi_5,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1153,15,5,2500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,50,100,50,1000,500,100,25,150
-item_essence_agi_6,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1154,15,6,3000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,60,120,60,1200,600,120,30,150
-item_essence_agi_7,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1155,15,7,3500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,70,140,70,1400,700,140,35,150
-item_essence_agi_8,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1156,15,8,4000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,80,160,80,1600,800,160,40,150
-item_essence_agi_9,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1157,15,9,4500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,90,180,90,1800,900,180,45,150
-item_essence_agi_10,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1158,15,10,5000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,100,200,100,2000,1000,200,50,150
-item_essence_agi_11,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1159,15,11,5500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,110,220,110,2200,1100,220,55,150
-item_essence_agi_12,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1160,15,12,6000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,120,240,120,2400,1200,240,60,150
-item_essence_agi_13,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1161,15,13,6500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,130,260,130,2600,1300,260,65,150
-item_essence_agi_14,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1162,15,14,7000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,140,280,140,2800,1400,280,70,150
-item_essence_agi_15,虚幻原核,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,item_original_agi_15,DOTA_ABILITY_BEHAVIOR_PASSIVE,1163,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
-,,,,,,,,,,,,,,,,,,,200,400,200,4000,2000,400,100,
-item_essence_int_1,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1164,15,1,500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,10,10,20,200,100,20,5,150
-item_essence_int_2,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1165,15,2,1000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,20,20,40,400,200,40,10,150
-item_essence_int_3,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1166,15,3,1500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,30,30,60,600,300,60,15,150
-item_essence_int_4,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1167,15,4,2000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,40,40,80,800,400,80,20,150
-item_essence_int_5,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1168,15,5,2500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,50,50,100,1000,500,100,25,150
-item_essence_int_6,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1169,15,6,3000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,60,60,120,1200,600,120,30,150
-item_essence_int_7,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1170,15,7,3500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,70,70,140,1400,700,140,35,150
-item_essence_int_8,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1171,15,8,4000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,80,80,160,1600,800,160,40,150
-item_essence_int_9,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1172,15,9,4500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,90,90,180,1800,900,180,45,150
-item_essence_int_10,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1173,15,10,5000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,100,100,200,2000,1000,200,50,150
-item_essence_int_11,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1174,15,11,5500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,110,110,220,2200,1100,220,55,150
-item_essence_int_12,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1175,15,12,6000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,120,120,240,2400,1200,240,60,150
-item_essence_int_13,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1176,15,13,6500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,130,130,260,2600,1300,260,65,150
-item_essence_int_14,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1177,15,14,7000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
-,,,,,,,,,,,,,,,,,,,140,140,280,2800,1400,280,70,150
-item_essence_int_15,能量原核,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,item_original_int_15,DOTA_ABILITY_BEHAVIOR_PASSIVE,1178,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
-,,,,,,,,,,,,,,,,,,,200,200,400,4000,2000,400,100,
-item_essence_core,世界之心,item_lua,abilities/items/essence/essence,models/props_gameplay/aegis.vmdl,,item_core_original,DOTA_ABILITY_BEHAVIOR_PASSIVE,1179,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
-,,,,,,,,,,,,,,,,,,,1000,1000,1000,15000,10000,1500,500,
-item_essence_small,小精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_invisibility01.vmdl,particles/generic_gameplay/rune_invisibility.vpcf,rune_invis,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1778,,,,0,0,0,1,1,1,100,charges,,,,,,,
-,,,,,,,,,,,,,,,,,,,30,,,,,,,
-item_essence_medium,中精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_invisibility01.vmdl,particles/generic_gameplay/rune_invisibility.vpcf,rune_invis,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1779,,,,0,0,0,1,1,1,100,charges,,,,,,,
-,,,,,,,,,,,,,,,,,,,60,,,,,,,
-item_essence_big,大精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_invisibility01.vmdl,particles/generic_gameplay/rune_invisibility.vpcf,rune_invis,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,1780,,,,0,0,0,1,1,1,100,charges,,,,,,,
-,,,,,,,,,,,,,,,,,,,90,,,,,,,
+﻿技能名,备注,基类,脚本,,,技能图标,技能行为,目标类型,目标标记,物品ID,最大等级,基础等级,价格,是否出售,能否购买,永久的,可叠加,拾取使用,初始数量,,键值,键值,键值,键值,键值,键值,键值,键值
+Name,,BaseClass,ScriptFile,Model,Effect,AbilityTextureName,AbilityBehavior,AbilityUnitTargetType,AbilityUnitTargetFlags,ID,MaxUpgradeLevel,ItemBaseLevel,ItemCost,ItemSellable,ItemPurchasable,ItemPermanent,ItemStackable,ItemCastOnPickup,ItemInitialCharges,AbilityCastRange,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial,AbilitySpecial
+item_essence_str_1,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1134,15,1,500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,20,10,10,200,100,20,5,150
+item_essence_str_2,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1135,15,2,1000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,40,20,20,400,200,40,10,150
+item_essence_str_3,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1136,15,3,1500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,60,30,30,600,300,60,15,150
+item_essence_str_4,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1137,15,4,2000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,80,40,40,800,400,80,20,150
+item_essence_str_5,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1138,15,5,2500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,100,50,50,1000,500,100,25,150
+item_essence_str_6,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1139,15,6,3000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,120,60,60,1200,600,120,30,150
+item_essence_str_7,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1140,15,7,3500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,140,70,70,1400,700,140,35,150
+item_essence_str_8,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1141,15,8,4000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,160,80,80,1600,800,160,40,150
+item_essence_str_9,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1142,15,9,4500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,180,90,90,1800,900,180,45,150
+item_essence_str_10,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1143,15,10,5000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,200,100,100,2000,1000,200,50,150
+item_essence_str_11,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1144,15,11,5500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,220,110,110,2200,1100,220,55,150
+item_essence_str_12,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1145,15,12,6000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,240,120,120,2400,1200,240,60,150
+item_essence_str_13,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1146,15,13,6500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,260,130,130,2600,1300,260,65,150
+item_essence_str_14,力量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,power_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1147,15,14,7000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,280,140,140,2800,1400,280,70,150
+item_essence_str_15,力量原核,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_haste01.vmdl,,item_original_str_15,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,1148,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
+,,,,,,,,,,,,,,,,,,,,,400,200,200,4000,2000,400,100,
+item_essence_agi_1,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1149,15,1,500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,10,20,10,200,100,20,5,150
+item_essence_agi_2,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1150,15,2,1000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,20,40,20,400,200,40,10,150
+item_essence_agi_3,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1151,15,3,1500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,30,60,30,600,300,60,15,150
+item_essence_agi_4,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1152,15,4,2000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,40,80,40,800,400,80,20,150
+item_essence_agi_5,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1153,15,5,2500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,50,100,50,1000,500,100,25,150
+item_essence_agi_6,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1154,15,6,3000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,60,120,60,1200,600,120,30,150
+item_essence_agi_7,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1155,15,7,3500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,70,140,70,1400,700,140,35,150
+item_essence_agi_8,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1156,15,8,4000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,80,160,80,1600,800,160,40,150
+item_essence_agi_9,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1157,15,9,4500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,90,180,90,1800,900,180,45,150
+item_essence_agi_10,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1158,15,10,5000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,100,200,100,2000,1000,200,50,150
+item_essence_agi_11,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1159,15,11,5500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,110,220,110,2200,1100,220,55,150
+item_essence_agi_12,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1160,15,12,6000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,120,240,120,2400,1200,240,60,150
+item_essence_agi_13,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1161,15,13,6500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,130,260,130,2600,1300,260,65,150
+item_essence_agi_14,虚幻精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,fantasy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1162,15,14,7000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,140,280,140,2800,1400,280,70,150
+item_essence_agi_15,虚幻原核,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_regeneration01.vmdl,,item_original_agi_15,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,1163,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
+,,,,,,,,,,,,,,,,,,,,,200,400,200,4000,2000,400,100,
+item_essence_int_1,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1164,15,1,500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,10,10,20,200,100,20,5,150
+item_essence_int_2,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1165,15,2,1000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,20,20,40,400,200,40,10,150
+item_essence_int_3,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1166,15,3,1500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,30,30,60,600,300,60,15,150
+item_essence_int_4,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1167,15,4,2000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,40,40,80,800,400,80,20,150
+item_essence_int_5,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1168,15,5,2500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,50,50,100,1000,500,100,25,150
+item_essence_int_6,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1169,15,6,3000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,60,60,120,1200,600,120,30,150
+item_essence_int_7,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_essence,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1170,15,7,3500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,70,70,140,1400,700,140,35,150
+item_essence_int_8,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1171,15,8,4000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,80,80,160,1600,800,160,40,150
+item_essence_int_9,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1172,15,9,4500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,90,90,180,1800,900,180,45,150
+item_essence_int_10,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1173,15,10,5000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,100,100,200,2000,1000,200,50,150
+item_essence_int_11,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1174,15,11,5500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,110,110,220,2200,1100,220,55,150
+item_essence_int_12,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1175,15,12,6000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,120,120,240,2400,1200,240,60,150
+item_essence_int_13,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1176,15,13,6500,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,130,130,260,2600,1300,260,65,150
+item_essence_int_14,能量精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,energy_ball,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,,,1177,15,14,7000,0,0,1,1,,,,str,agi,int,hp,mp,hp_regen,mp_regen,require_count
+,,,,,,,,,,,,,,,,,,,,,140,140,280,2800,1400,280,70,150
+item_essence_int_15,能量原核,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_arcane.vmdl,,item_original_int_15,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,1178,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
+,,,,,,,,,,,,,,,,,,,,,200,200,400,4000,2000,400,100,
+item_essence_core,世界之心,item_lua,abilities/items/essence/essence,models/props_gameplay/aegis.vmdl,,item_core_original,DOTA_ABILITY_BEHAVIOR_PASSIVE,,,1179,15,15,10000,0,0,1,0,,,,str,agi,int,hp,mp,hp_regen,mp_regen,
+,,,,,,,,,,,,,,,,,,,,,1000,1000,1000,15000,10000,1500,500,
+item_essence_small,小精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_invisibility01.vmdl,particles/generic_gameplay/rune_invisibility.vpcf,rune_invis,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,DOTA_UNIT_TARGET_HERO,DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS,1778,,,,0,0,0,1,1,1,100,charges,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,30,,,,,,,
+item_essence_medium,中精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_invisibility01.vmdl,particles/generic_gameplay/rune_invisibility.vpcf,rune_invis,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,DOTA_UNIT_TARGET_HERO,DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS,1779,,,,0,0,0,1,1,1,100,charges,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,60,,,,,,,
+item_essence_big,大精华,item_lua,abilities/items/essence/essence,models/props_gameplay/rune_invisibility01.vmdl,particles/generic_gameplay/rune_invisibility.vpcf,rune_invis,DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE,DOTA_UNIT_TARGET_HERO,DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS,1780,,,,0,0,0,1,1,1,100,charges,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,90,,,,,,,

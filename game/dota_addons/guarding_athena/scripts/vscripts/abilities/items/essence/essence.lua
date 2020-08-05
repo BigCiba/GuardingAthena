@@ -119,6 +119,9 @@ end
 function modifier_essence:IsHidden()
 	return true
 end
+function modifier_essence:AllowIllusionDuplicate()
+	return false
+end
 function modifier_essence:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_MULTIPLE
 end
@@ -159,7 +162,7 @@ function modifier_essence:DeclareFunctions()
 	}
 end
 function modifier_essence:OnDeath(params)
-	if params.attacker == self:GetParent() and self:GetAbility().AddCharges then
+	if params.attacker == self:GetParent() and self:GetAbility().AddCharges and self:GetParent():IsRealHero() then
 		self:GetAbility():AddCharges(1)
 	end
 end

@@ -130,5 +130,5 @@ function modifier_spectre_1_debuff:DeclareFunctions()
 	}
 end
 function modifier_spectre_1_debuff:GetModifierMoveSpeedBonus_Percentage()
-	return self.movespeed
+	return -self.movespeed
 end

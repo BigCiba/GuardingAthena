@@ -170,8 +170,8 @@ function modifier_omniknight_4_debuff:DeclareFunctions()
 	}
 end
 function modifier_omniknight_4_debuff:GetModifierAttackSpeedBonus_Constant()
-	return self.palsy_attackspeed
+	return -self.palsy_attackspeed
 end
 function modifier_omniknight_4_debuff:GetModifierMoveSpeedBonus_Constant()
-	return self.palsy_movespeed
+	return -self.palsy_movespeed
 end

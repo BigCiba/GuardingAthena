@@ -25,10 +25,10 @@
 "DOTA_Tooltip_modifier_gust_Description"	"该单位降低了命中率"
 
 "DOTA_Tooltip_ability_windrunner_3"	"风行"
-"DOTA_Tooltip_ability_windrunner_3_Description"	"风行者被动获得移动速度与闪避加成，主动使用召唤风环绕自身，暂时突破移速上限并闪避所有物理攻击"
+"DOTA_Tooltip_ability_windrunner_3_Description"	"风行者利用风的流动增加自身移动速度。主动使用时突破移速上限并闪避一切物理攻击，同时降低周围敌人的移动速度。"
 "DOTA_Tooltip_ability_windrunner_3_Lore"	"风行者运用疾风之力抵御来临的攻击。"
-"DOTA_Tooltip_modifier_alacrity"	"灵动迅捷"
-"DOTA_Tooltip_modifier_alacrity_Description"	"暂时获得100%%的闪避"
+"DOTA_Tooltip_modifier_windrunner_3"	"风行"
+"DOTA_Tooltip_modifier_windrunner_3_Description"	"闪避所有物理攻击"
 
 "DOTA_Tooltip_ability_windrunner_4"	"箭矢风暴"
 "DOTA_Tooltip_ability_windrunner_4_Description"	"将箭矢射向天空，加持风之狂暴后对大范围的敌人进行毁灭性打击，触发天赋时将额外附加一次魔法伤害<br></br>-----------------------------------------------<br></br>伤害：5 * 攻击力 * 技能等级<br></br>每次伤害范围：200<br></br>持续时间：4<br></br>影响范围：1200<br></br>-----------------------------------------------"
