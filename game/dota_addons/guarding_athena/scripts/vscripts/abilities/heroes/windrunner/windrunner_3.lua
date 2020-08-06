@@ -1,5 +1,6 @@
 LinkLuaModifier( "modifier_windrunner_3", "abilities/heroes/windrunner/windrunner_3.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_windrunner_3_buff", "abilities/heroes/windrunner/windrunner_3.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_windrunner_3_debuff", "abilities/heroes/windrunner/windrunner_3.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if windrunner_3 == nil then
 	windrunner_3 = class({})
@@ -65,6 +66,9 @@ function modifier_windrunner_3_buff:OnCreated(params)
 	self.movespeed_pct = self:GetAbilitySpecialValueFor("movespeed_pct")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	if IsServer() then
+	else
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
 function modifier_windrunner_3_buff:OnRefresh(params)
@@ -81,7 +85,8 @@ function modifier_windrunner_3_buff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 		MODIFIER_PROPERTY_EVASION_CONSTANT,
-		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT
+		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT,
+		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS
 	}
 end
 function modifier_windrunner_3_buff:GetModifierMoveSpeedBonus_Percentage()
@@ -92,6 +97,9 @@ function modifier_windrunner_3_buff:GetModifierEvasion_Constant()
 end
 function modifier_windrunner_3_buff:GetModifierIgnoreMovespeedLimit()
 	return 1
+end
+function modifier_windrunner_3_buff:GetActivityTranslationModifiers()
+	return "windrun"
 end
 function modifier_windrunner_3_buff:CheckState()
 	return {

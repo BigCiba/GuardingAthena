@@ -841,6 +841,10 @@
 		"DOTA_Tooltip_ability_windrunner_3"	"风行"
 		"DOTA_Tooltip_ability_windrunner_3_Description"	"风行者利用风的流动增加自身移动速度。主动使用时突破移速上限并闪避一切物理攻击，同时降低周围敌人的移动速度。"
 		"DOTA_Tooltip_ability_windrunner_3_Lore"	"风行者运用疾风之力抵御来临的攻击。"
+		"DOTA_Tooltip_ability_windrunner_3_bonus_movespeed"	"移速提升："
+		"DOTA_Tooltip_ability_windrunner_3_movespeed_pct"	"%主动移速："
+		"DOTA_Tooltip_ability_windrunner_3_movespeed_reduce_pct"	"%移速降低："
+		"DOTA_Tooltip_ability_windrunner_3_radius"	"减速范围："
 		"DOTA_Tooltip_modifier_windrunner_3"	"风行"
 		"DOTA_Tooltip_modifier_windrunner_3_Description"	"闪避所有物理攻击"
 		
