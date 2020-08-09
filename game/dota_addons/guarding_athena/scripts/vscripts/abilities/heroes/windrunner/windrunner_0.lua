@@ -77,7 +77,11 @@ function modifier_windrunner_0:GetOverrideAttackMagical(params)
 end
 function modifier_windrunner_0:GetModifierProcAttack_BonusDamage_Magical(params)
 	if TableFindKey(self.tRecord, params.record) then
-		return params.damage
+		local flDamage = params.damage
+		if self:GetParent():GetScepterLevel() >= 1 then
+			flDamage = flDamage + self:GetAbilitySpecialValueFor("scepter_damage") * self:GetParent():GetAgility()
+		end
+		return flDamage 
 	end
 end
 ---------------------------------------------------------------------

@@ -43,6 +43,13 @@ end
 function item_npc_dota_hero_rubick:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+-- 风行者
+if item_npc_dota_hero_windrunner == nil then
+	item_npc_dota_hero_windrunner = class({})
+end
+function item_npc_dota_hero_windrunner:GetIntrinsicModifierName()
+	return "modifier_scepter"
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_scepter == nil then

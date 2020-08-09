@@ -63,7 +63,7 @@
 		"ProjectileModel"						"particles/heroes/windrunner/windrunner_base_attack.vpcf"
 		"Ability1"								"windrunner_0"
 		"Ability2"								"windrunner_1"
-		"Ability3"								"gust"
+		"Ability3"								"windrunner_2"
 		"Ability4"								"windrunner_3"
 		"Ability5"								"windrunner_4"
 		"Ability6"								"generic_hidden"

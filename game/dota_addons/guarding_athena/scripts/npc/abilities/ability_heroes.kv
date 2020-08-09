@@ -2508,6 +2508,8 @@
 		"AbilityCastRange"						"800"
 		"AbilityCharges"						"3"
 		"AbilityChargeRestoreTime"				"16"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
 		"AbilityManaCost"						"100"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2542,6 +2544,11 @@
 				"var_type"						"FIELD_INTEGER"
 				"delay_pct"						"20"
 			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_damage"				"10"
+			}
 		}
 	}
 	"windrunner_1"
@@ -2556,6 +2563,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastRange"						"1500"
 		"AbilityCooldown"						"9"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"4"
 		"AbilityManaCost"						"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270"
 		"AbilityChannelTime"					"1"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
@@ -2564,6 +2573,11 @@
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
 		"AbilitySpecial"
 		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_chance"				"15"
+			}
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
@@ -2599,6 +2613,16 @@
 				"var_type"						"FIELD_INTEGER"
 				"cooldown_reduction"			"60"
 			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_range"					"800"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_damage_pct"				"60"
+			}
 		}
 	}
 	"windrunner_2"
@@ -2611,6 +2635,64 @@
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
+		"AbilityCooldown"						"20"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"speed"							"1200"
+			}
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"spirit_count"					"3"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"12"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stun_duration"					"1"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"distance"						"1200"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"width"							"150"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"armor_reduce"					"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"reduce_duration"				"4"
+			}
+		}
 	}
 	"windrunner_3"
 	{
@@ -2670,6 +2752,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastPoint"						"0.3"
 		"AbilityCooldown"						"90"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2|3"
 		"AbilityManaCost"						"200 300 400 500 600 700 800 900"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -2678,6 +2762,16 @@
 		"SpellImmunityType"						"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySpecial"
 		{
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_interval"				"8"
+			}
+			"11"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_duration"				"1"
+			}
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
@@ -2712,6 +2806,16 @@
 			{
 				"var_type"						"FIELD_FLOAT"
 				"interval"						"0.03"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"						"40"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_bonus_duration"		"4"
 			}
 		}
 	}
