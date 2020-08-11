@@ -5,6 +5,13 @@ LinkLuaModifier( "modifier_windrunner_2_motion", "abilities/heroes/windrunner/wi
 if windrunner_2 == nil then
 	windrunner_2 = class({})
 end
+function windrunner_2:Precache(context)
+	PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_tornado.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_2.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado.vpcf", context)
+	PrecacheResource("particle", "particles/econ/events/ti10/cyclone_ti10.vpcf", context)
+end
 function windrunner_2:OnSpellStart()
 	local hCaster = self:GetCaster()
 	hCaster:AddNewModifier(hCaster, self, "modifier_windrunner_2", {duration = self:GetSpecialValueFor("duration")})
@@ -15,25 +22,28 @@ function windrunner_2:Action(hTarget)
 	local flDistance = self:GetSpecialValueFor("distance")
 	local flSpeed = self:GetSpecialValueFor("speed")
 	local vDirection = CalculateDirection(hTarget, hCaster)
-	CreateLinearProjectile(hCaster, self, "", hCaster:GetAbsOrigin(), flWidth, flDistance, vDirection, flSpeed)
+	CreateLinearProjectile(hCaster, self, AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_invoker/invoker_tornado.vpcf", hCaster), hCaster:GetAbsOrigin(), flWidth, flDistance, vDirection, flSpeed)
 end
 function windrunner_2:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	if IsValid(hTarget) then
 		local hCaster = self:GetCaster()
-		hTarget:AddNewModifier(hCaster, self, "modifier_windrunner_2_motion", {duration = self:GetSpecialValueFor("stun_duration")})
+		hTarget:AddNewModifier(hCaster, self, "modifier_windrunner_2_motion", {duration = self:GetSpecialValueFor("stun_duration") * hTarget:GetStatusResistanceFactor()})
 		hTarget:AddNewModifier(hCaster, self, "modifier_windrunner_2_debuff", {duration = self:GetSpecialValueFor("reduce_duration") * hTarget:GetStatusResistanceFactor()})
 	end
 end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_windrunner_2 == nil then
-	modifier_windrunner_2 = class({}, nil, ModifierHidden)
+	modifier_windrunner_2 = class({}, nil, ModifierBasic)
 end
 function modifier_windrunner_2:OnCreated(params)
 	self.spirit_count = self:GetAbilitySpecialValueFor("spirit_count")
 	if IsServer() then
 		self:SetStackCount(self.spirit_count)
-		---TODO: particle
+	else
+		self.iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_2.vpcf", self:GetParent()), PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControl(self.iParticleID, 1, Vector(self.spirit_count, 0, 0))
+		self:AddParticle(self.iParticleID, false, false, -1, false, false)
 	end
 end
 function modifier_windrunner_2:OnRefresh(params)
@@ -51,15 +61,23 @@ function modifier_windrunner_2:DeclareFunctions()
 		MODIFIER_PROPERTY_AVOID_DAMAGE
 	}
 end
-function modifier_windrunner_2:GetModifierAvoidSpell()
+function modifier_windrunner_2:GetModifierAvoidDamage(params)
 	if self:GetStackCount() > 0 then
 		self:DecrementStackCount()
+		self:GetAbility():Action(params.attacker)
 		return 1
 	end
 end
 function modifier_windrunner_2:OnStackCountChanged(iStackCount)
-	if self:GetStackCount() == 0 then
-		self:Destroy()
+	if IsServer() then
+		if self:GetStackCount() == 0 then
+			self:Destroy()
+		end
+	else
+		ParticleManager:DestroyParticle(self.iParticleID, true)
+		self.iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_2.vpcf", self:GetParent()), PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControl(self.iParticleID, 1, Vector(self:GetStackCount(), 0, 0))
+		self:AddParticle(self.iParticleID, false, false, -1, false, false)
 	end
 end
 -----------------------------------------
@@ -87,7 +105,7 @@ function modifier_windrunner_2_motion:OnCreated()
 			return
 		end
 	else
-		local iParticleID = ParticleManager:CreateParticle("particles/items_fx/cyclone.vpcf", PATTACH_ABSORIGIN, self:GetParent())
+		local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/items_fx/cyclone.vpcf", self:GetCaster()), PATTACH_ABSORIGIN, self:GetParent())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
@@ -165,5 +183,5 @@ function modifier_windrunner_2_debuff:DeclareFunctions()
 	}
 end
 function modifier_windrunner_2_debuff:GetModifierPhysicalArmorBonus()
-	return self.armor_reduce
+	return -self.armor_reduce
 end

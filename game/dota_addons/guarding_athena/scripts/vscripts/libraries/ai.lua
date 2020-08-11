@@ -58,12 +58,12 @@ function AI:SetAutoCast( caster )
                             local unitGroup = GetUnitsInRadius(caster,ability,point,radius)
                             if #unitGroup > 0 then
                                 castState = true
-                                ClearBuff(caster,"debuff")
+                                caster:Purge(false, true, false, true, true)
                                 CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
                             end
                         else
                             castState = true
-                            ClearBuff(caster,"debuff")
+                            caster:Purge(false, true, false, true, true)
                             CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
                         end
                     end
@@ -80,7 +80,7 @@ function AI:SetAutoCast( caster )
                         if #unitGroup > 0 then
                             for k,unit in pairs(unitGroup) do
                                 castState = true
-                                ClearBuff(caster,"debuff")
+                                caster:Purge(false, true, false, true, true)
                                 CastAbility(caster,DOTA_UNIT_ORDER_CAST_TARGET,ability,unit,nil)
                             end
                         end
@@ -98,7 +98,7 @@ function AI:SetAutoCast( caster )
                         if #unitGroup > 0 then
                             for k,unit in pairs(unitGroup) do
                                 castState = true
-                                ClearBuff(caster,"debuff")
+                                caster:Purge(false, true, false, true, true)
                                 CastAbility(caster,DOTA_UNIT_ORDER_CAST_POSITION,ability,nil,unit:GetAbsOrigin())
                             end
                         end

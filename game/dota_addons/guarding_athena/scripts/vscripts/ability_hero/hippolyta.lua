@@ -150,7 +150,7 @@ function WarGodStr( keys )
 	local str = caster:GetBaseStrength() * keys.ability:GetSpecialValueFor("str_percent")
 	PropertySystem(caster,DOTA_ATTRIBUTE_STRENGTH,str,5)
 	if HasExclusive(caster,1) then
-		ClearBuff(caster,"debuff")
+		caster:Purge(false, true, false, true, true)
 	end
 end
 function WarGodKill( keys )

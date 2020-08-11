@@ -886,18 +886,30 @@ if IsServer() then
 	end
 
 	-- 击退
-	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun)
+	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun, bBlock)
+		-- 官方
+		-- local kv =		{
+		-- 	center_x = vCenter.x,
+		-- 	center_y = vCenter.y,
+		-- 	center_z = vCenter.z,
+		-- 	should_stun = bStun,
+		-- 	duration = flDuration,
+		-- 	knockback_duration = flDuration,
+		-- 	knockback_distance = flDistance,
+		-- 	knockback_height = flHeight,
+		-- }
+		-- hTarget:AddNewModifier(self, nil, "modifier_knockback", kv)
+		-- 自定义
 		local kv =		{
-			center_x = vCenter.x,
-			center_y = vCenter.y,
-			center_z = vCenter.z,
-			should_stun = bStun,
+			vCenter = vCenter,
+			bStun = bStun,
 			duration = flDuration,
 			knockback_duration = flDuration,
 			knockback_distance = flDistance,
 			knockback_height = flHeight,
+			bBlock = bBlock
 		}
-		hTarget:AddNewModifier(self, nil, "modifier_knockback", kv)
+		hTarget:AddNewModifier(self, nil, "modifier_knockback_custom", kv)
 	end
 
 	function PfromC(c)

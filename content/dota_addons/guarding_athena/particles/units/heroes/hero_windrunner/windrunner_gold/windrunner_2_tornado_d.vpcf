@@ -1,0 +1,210 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 63
+	m_flConstantLifespan = 10.0
+	m_ConstantColor = [ 135, 127, 50, 255 ]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_ALPHA_FROM0_RGB_FROM_1"
+			m_flZoomAmount1 = 24.0
+			m_flStartFadeSize = 0.4
+			m_flEndFadeSize = 0.7
+			m_flAddSelfAmount = 3.0
+			m_bSaturateColorPreAlphaBlend = false
+			m_hTexture = resource:"materials/particle/dust/large_swirl_dust.vtex"
+			m_flAnimationRate = 20.0
+			m_bAnimateInFPS = true
+			m_nAnimationType = "ANIMATION_TYPE_FIT_LIFETIME"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.08
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+		},
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.25
+			m_flEndScale = 3.0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_Rate = 2.0
+			m_nField = "4"
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_nControlPointNumber = 3
+		},
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_nCP = 3
+			m_flRotRate = 2000.0
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_flFadeStartTime = 0.4
+			m_ColorFade = [ 251, 169, 7, 255 ]
+		},
+		{
+			_class = "C_OP_Spin"
+			m_nSpinRateDegrees = 32
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RingWave"
+			m_flParticlesPerOrbit = 10.0
+			m_nControlPointNumber = 3
+			m_bXYVelocityOnly = false
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 10.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 100.0
+			m_flRadiusMin = 50.0
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMax = 237
+			m_nAlphaMin = 214
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 2
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 1.3
+			m_fLifetimeMin = 1.3
+		},
+		{
+			_class = "C_INIT_RandomSecondSequence"
+			m_nSequenceMax = 52
+			m_nSequenceMin = 49
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 99, 107, 124, 255 ]
+			m_ColorMin = [ 123, 112, 124, 255 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 107, 101, 90, 255 ]
+			m_ColorMin = [ 106, 104, 99, 255 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_nControlPointNumber = 3
+			m_flNoiseScaleLoc = 1.0
+			m_vecOutputMin = [ -10.0, -10.0, 500.0 ]
+			m_vecOutputMax = [ 10.0, 10.0, 500.0 ]
+			m_bLocalSpace = true
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 10.0, 0.0, 0.0 ]
+			m_OffsetMin = [ 10.0, 0.0, 0.0 ]
+			m_nControlPointNumber = 3
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 32.0
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d0.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d7.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d6.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d4.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_2_tornado_d5.vpcf"
+			m_bDisableChild = true
+		},
+	]
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 9
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

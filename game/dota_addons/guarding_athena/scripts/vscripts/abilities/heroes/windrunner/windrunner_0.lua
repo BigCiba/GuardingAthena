@@ -5,6 +5,10 @@ LinkLuaModifier( "modifier_windrunner_0_active", "abilities/heroes/windrunner/wi
 if windrunner_0 == nil then
 	windrunner_0 = class({})
 end
+function windrunner_0:Precache(context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_0_magic_attack.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_0_magic_attack.vpcf", context)
+end
 function windrunner_0:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
@@ -109,7 +113,7 @@ function modifier_windrunner_0_bonus_attack:GetModifierBaseAttackTimeConstant()
 	end
 end
 function modifier_windrunner_0_bonus_attack:GetModifierProjectileName()
-	return "particles/skills/moonstar_gold.vpcf"
+	return AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_0_magic_attack.vpcf", self:GetParent())
 end
 ---------------------------------------------------------------------
 if modifier_windrunner_0_active == nil then

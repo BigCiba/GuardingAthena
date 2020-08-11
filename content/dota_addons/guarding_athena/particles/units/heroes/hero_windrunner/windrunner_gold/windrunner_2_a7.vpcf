@@ -1,0 +1,182 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 24
+	m_ConstantColor = [ 255, 0, 0, 255 ]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderTrails"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_flOverbrightFactor = 6.0
+			m_flAddSelfAmount = 2.0
+			m_bSaturateColorPreAlphaBlend = false
+			m_hTexture = resource:"materials/particle/sparks/sparks.vtex"
+			m_flLengthFadeInTime = 0.2
+			m_flFinalTextureScaleV = -1.0
+			m_flFinalTextureOffsetV = 1.0
+			m_nHSVShiftControlPoint = 62
+			m_flRadiusScale = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.5
+			}
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 1400.0 ]
+			m_fDrag = 0.05
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flEndFadeInTime = 0.125
+			m_flStartFadeOutTime = 0.75
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.2
+			m_flEndScale = 0.0
+			m_flStartScale = 2.0
+		},
+		{
+			_class = "C_OP_OscillateVector"
+			m_bProportional = false
+			m_RateMin = [ -6.0, -6.0, -6.0 ]
+			m_RateMax = [ 6.0, 6.0, 6.0 ]
+			m_FrequencyMax = [ 3.0, 3.0, 3.0 ]
+		},
+		{
+			_class = "C_OP_RampScalarLinear"
+			m_RateMax = 10.0
+			m_RateMin = -10.0
+			m_nField = "4"
+		},
+		{
+			_class = "C_OP_RampScalarLinear"
+			m_RateMax = 10.0
+			m_RateMin = -10.0
+			m_nField = "12"
+		},
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_flRotRate = 280.0
+			m_bLocalSpace = true
+		},
+		{
+			_class = "C_OP_OrientTo2dDirection"
+			m_flRotOffset = 180.0
+		},
+		{
+			_class = "C_OP_RemapVelocityToVector"
+			m_bNormalize = true
+			m_nFieldOutput = "21"
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 251, 169, 7, 255 ]
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_LocalCoordinateSystemSpeedMax = [ 200.0, 0.0, 200.0 ]
+			m_LocalCoordinateSystemSpeedMin = [ 100.0, 0.0, 100.0 ]
+			m_fSpeedMin = 24.0
+			m_fSpeedMax = 136.0
+			m_fRadiusMax = 32.0
+			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
+			m_fRadiusMin = 20.0
+		},
+		{
+			_class = "C_INIT_NormalAlignToCP"
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.2
+			m_fLifetimeMax = 0.8
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 8.0
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 255, 204, 95, 255 ]
+			m_ColorMin = [ 255, 241, 124, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMin = 5
+			m_nSequenceMax = 5
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMinLength = 0.01
+			m_flMaxLength = 0.03
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 64
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 40.0
+			}
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_fFalloffPower = 0.2
+			m_fForceAmount = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 2000.0
+			}
+			m_vecComponentScale = [ 1.0, 1.0, 0.0 ]
+			m_nOpEndCapState = 0
+		},
+		{
+			_class = "C_OP_TwistAroundAxis"
+			m_fForceAmount = -1100.0
+		},
+	]
+	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

@@ -67,7 +67,7 @@ function OnTakeDamage( t )
     local cd = ability:GetCooldown(1)
     local duration = ability:GetSpecialValueFor("duration")
     if ability:IsCooldownReady() then
-        ClearBuff(caster,"debuff")
+		caster:Purge(false, true, false, true, true)
         CreateSound("Hero_Lycan.Howl",caster)
         local runTime = 0
         Timers:CreateTimer(function ()
