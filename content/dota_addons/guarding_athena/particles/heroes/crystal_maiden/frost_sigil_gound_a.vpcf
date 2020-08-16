@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf10:version{b5ef673d-0450-4fb0-a91b-bacae6864827} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -22,6 +22,7 @@
 		},
 		{
 			_class = "C_OP_Decay"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_OscillateScalar"
@@ -41,7 +42,7 @@
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 0.75
+			m_flFadeOutTime = 0.1
 		},
 		{
 			_class = "C_OP_DistanceToCP"
@@ -60,7 +61,9 @@
 		},
 		{
 			_class = "C_OP_BasicMovement"
-			m_Gravity = [ 0.0, 0.0, -1.0 ]
+		},
+		{
+			_class = "C_OP_EndCapTimedDecay"
 		},
 	]
 	m_Initializers = 
@@ -90,8 +93,8 @@
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 6.0
-			m_fLifetimeMax = 6.0
+			m_fLifetimeMin = 10.0
+			m_fLifetimeMax = 10.0
 		},
 		{
 			_class = "C_INIT_RandomSequence"
@@ -107,7 +110,7 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ -50.0, -50.0, 25.0 ]
+			m_OffsetMin = [ -50.0, -50.0, 0.0 ]
 			m_OffsetMax = [ 50.0, 50.0, 25.0 ]
 		},
 		{
@@ -115,33 +118,41 @@
 		},
 		{
 			_class = "C_INIT_DistanceToCPInit"
-			m_bScaleInitialRange = true
 			m_flOutputMax = 0.0
 			m_flOutputMin = 1.0
 			m_flInputMax = 650.0
 			m_flInputMin = 400.0
 			m_bDisableOperator = true
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
 		},
 		{
 			_class = "C_INIT_DistanceToCPInit"
-			m_bScaleInitialRange = true
 			m_flOutputMax = 0.0
 			m_flOutputMin = 1.0
 			m_nFieldOutput = "7"
 			m_flInputMax = 2000.0
 			m_flInputMin = 800.0
 			m_bDisableOperator = true
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
 		},
 	]
 	m_Emitters = 
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 8.0
-			m_flEmissionDuration = 3.0
+			m_flEmissionDuration = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 3.0
+			}
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 8.0
+			}
 		},
 	]
-	m_nBehaviorVersion = 6
+	m_nBehaviorVersion = 7
 	m_nFirstMultipleOverride_BackwardCompat = 8
 	m_controlPointConfigurations = 
 	[

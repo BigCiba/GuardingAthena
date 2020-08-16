@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -52,14 +52,14 @@
 		{
 			_class = "C_OP_VectorNoise"
 			m_fl4NoiseScale = 0.15
-			m_nFieldOutput = 0
+			m_nFieldOutput = "0"
 			m_vecOutputMin = [ -5.0, -5.0, -5.0 ]
 			m_vecOutputMax = [ 5.0, 5.0, 5.0 ]
 			m_bAdditive = true
 		},
 		{
 			_class = "C_OP_RampScalarLinear"
-			m_nField = 12
+			m_nField = "12"
 			m_RateMax = 5.0
 			m_flEndTime_min = 9999.0
 			m_flEndTime_max = 9999.0
@@ -74,9 +74,21 @@
 		},
 		{
 			_class = "C_INIT_RingWave"
-			m_flInitialRadius = 0.5
-			m_flThickness = 150.0
-			m_flRoll = 90.0
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.5
+			}
+			m_flThickness = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 150.0
+			}
+			m_flRoll = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 90.0
+			}
 		},
 		{
 			_class = "C_INIT_RandomColor"
@@ -91,17 +103,6 @@
 			m_nAlphaMin = 200
 		},
 		{
-			_class = "C_INIT_InitialVelocityNoise"
-			m_flNoiseScaleLoc = 1.0
-			m_vecOutputMin = [ -100.0, -100.0, -100.0 ]
-			m_vecOutputMax = [ 100.0, 100.0, -100.0 ]
-		},
-		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMax = [ 0.0, 0.0, 400.0 ]
-			m_OffsetMin = [ 0.0, 0.0, 400.0 ]
-		},
-		{
 			_class = "C_INIT_RandomRotation"
 		},
 		{
@@ -112,6 +113,17 @@
 		{
 			_class = "C_INIT_RandomSequence"
 			m_nSequenceMax = 7
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_flNoiseScaleLoc = 1.0
+			m_vecOutputMin = [ -100.0, -100.0, -100.0 ]
+			m_vecOutputMax = [ 100.0, 100.0, -100.0 ]
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 400.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 400.0 ]
 		},
 	]
 	m_Emitters = 
@@ -125,8 +137,29 @@
 		{
 			_class = "C_OP_AttractToControlPoint"
 			m_fFalloffPower = 0.0
-			m_fForceAmount = 2500.0
+			m_fForceAmount = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 2500.0
+			}
 			m_nOpEndCapState = 1
+		},
+	]
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
 		},
 	]
 }

@@ -56,7 +56,7 @@ end
 
 MAXIMUM_ATTACK_SPEED = 800								-- 设置最大攻击速度
 MINIMUM_ATTACK_SPEED = 20								-- 设置最小攻击速度
-ATTRIBUTE_AGILITY_ARMOR = 0								-- 每点敏捷提供护甲
+ATTRIBUTE_AGILITY_ARMOR = 0.15							-- 每点敏捷提供护甲
 ATTRIBUTE_AGILITY_ATTACK_SPEED = 0.05					-- 每点敏捷提供攻速
 ATTRIBUTE_AGILITY_DAMAGE = 1							-- 每点敏捷提供攻击力
 ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT = 0.00001			-- 每点敏捷提供移速
