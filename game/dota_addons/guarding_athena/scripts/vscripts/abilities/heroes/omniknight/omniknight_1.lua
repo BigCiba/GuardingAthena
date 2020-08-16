@@ -1,4 +1,5 @@
 LinkLuaModifier("modifier_omniknight_1", "abilities/heroes/omniknight/omniknight_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_1_debuff", "abilities/heroes/omniknight/omniknight_1.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if omniknight_1 == nil then
 	omniknight_1 = class({})
@@ -9,15 +10,21 @@ function omniknight_1:OnSpellStart()
 	local vLocation = hCaster:GetAbsOrigin()
 	local radius = self:GetSpecialValueFor("radius")
 	local stun_duration = self:GetSpecialValueFor("stun_duration")
+	local damage_increase_pct = self:GetSpecialValueFor("damage_increase_pct")
 	local damage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("str_factor") * hCaster:GetStrength()
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vLocation,radius, hAbility)
 	for _, hUnit in pairs(tTargets) do
-		hCaster:DealDamage(hUnit, hAbility, damage)
+		local flDamage = damage * (1 + (hUnit:HasModifier("modifier_omniknight_1_debuff") and hUnit:FindModifierByName("modifier_omniknight_1_debuff"):GetStackCount() * damage_increase_pct * 0.01 or 0))
+		hCaster:DealDamage(hUnit, hAbility, flDamage)
 		hAbility:ThunderPower(hUnit)
 		hUnit:AddNewModifier(hCaster, self, "modifier_stunned", {duration = stun_duration * hUnit:GetStatusResistanceFactor()})
+		-- 雷霆战士皮肤
+		if hCaster:HasModifier("modifier_omniknight_01") then
+			hUnit:AddNewModifier(hCaster, self, "modifier_omniknight_1_debuff", {duration = stun_duration * hUnit:GetStatusResistanceFactor()})
+		end
 	end
 	-- particle
-	ParticleManager:CreateParticle("particles/skills/thunder_strike.vpcf", PATTACH_ABSORIGIN, hCaster)
+	ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_omniknight/omniknight_1.vpcf", hCaster), PATTACH_ABSORIGIN, hCaster)
 	-- sound
 	hCaster:EmitSound("n_creep_Thunderlizard_Big.Stomp")
 end
@@ -120,4 +127,15 @@ function modifier_omniknight_1:CalculateCharge()
 			self:GetAbility():StartCooldown(self:GetRemainingTime())
 		end
 	end
+end
+---------------------------------------------------------------------
+if modifier_omniknight_1_debuff == nil then
+	modifier_omniknight_1_debuff = class({}, nil, ModifierDebuff)
+end
+function modifier_omniknight_1_debuff:OnCreated(params)
+	if not IsServer() then return end
+	self:IncrementStackCount()
+end
+function modifier_omniknight_1_debuff:OnRefresh(params)
+	self:OnCreated(params)
 end

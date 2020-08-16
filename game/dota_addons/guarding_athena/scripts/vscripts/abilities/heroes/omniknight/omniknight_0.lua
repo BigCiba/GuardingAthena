@@ -1,10 +1,27 @@
 LinkLuaModifier("modifier_omniknight_0", "abilities/heroes/omniknight/omniknight_0.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_omniknight_0_active", "abilities/heroes/omniknight/omniknight_0.lua", LUA_MODIFIER_MOTION_NONE)
 -- Abilities
 if omniknight_0 == nil then
 	omniknight_0 = class({})
 end
+function omniknight_0:GetBehavior()
+	-- 雷霆战士皮肤
+	if self:GetCaster():HasModifier("modifier_omniknight_01") then
+		return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE
+	end
+	return self.BaseClass.GetBehavior(self)
+end
+function omniknight_0:GetCooldown(iLevel)
+	if self:GetCaster():HasModifier("modifier_omniknight_01") then
+		return self:GetSpecialValueFor("active_cooldown")
+	end
+	return self:GetSpecialValueFor("cooldown")
+end
 function omniknight_0:GetIntrinsicModifierName()
 	return "modifier_omniknight_0"
+end
+function omniknight_0:OnSpellStart()
+	self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_omniknight_0_active", nil)
 end
 -- 天罚
 function omniknight_0:ThunderPower(hTarget, bEmitSound)
@@ -20,7 +37,7 @@ function omniknight_0:ThunderPower(hTarget, bEmitSound)
 		end
 		hCaster:DealDamage(hVictim, self, damage)
 		-- particle
-		local particle = ParticleManager:CreateParticle("particles/heroes/mechanic/thunder_punish.vpcf", PATTACH_CUSTOMORIGIN, hTarget)
+		local particle = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_omniknight/omniknight_0.vpcf", hCaster), PATTACH_CUSTOMORIGIN, hTarget)
 		ParticleManager:SetParticleControl(particle, 0, hTarget:GetAbsOrigin() + Vector(0, 0, 5000))
 		ParticleManager:SetParticleControl(particle, 1, hTarget:GetAbsOrigin())
 		ParticleManager:SetParticleControl(particle, 3, hTarget:GetAbsOrigin())
@@ -28,6 +45,27 @@ function omniknight_0:ThunderPower(hTarget, bEmitSound)
 		if bEmitSound == true then
 			hTarget:EmitSound("Hero_Zuus.LightningBolt")
 		end
+	end
+end
+function omniknight_0:Action(hTarget, bEmitSound)
+	local hCaster = self:GetCaster()
+	local hAbility = hCaster:FindAbilityByName("omniknight_3")
+	local bonus_str_factor = IsValid(hAbility) and hAbility:GetSpecialValueWithLevel("bonus_str_factor") or 0
+	local damage = (self:GetSpecialValueFor("str_factor") + bonus_str_factor) * hCaster:GetStrength()
+	local scepter_radius = self:GetSpecialValueFor("scepter_radius")
+	local hVictim = hTarget
+	if hCaster:GetScepterLevel() >= 2 then
+		hVictim = FindUnitsInRadiusWithAbility(hCaster, hTarget:GetAbsOrigin(), scepter_radius, self)
+	end
+	hCaster:DealDamage(hVictim, self, damage)
+	-- particle
+	local particle = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_omniknight/omniknight_0.vpcf", hCaster), PATTACH_CUSTOMORIGIN, hTarget)
+	ParticleManager:SetParticleControl(particle, 0, hTarget:GetAbsOrigin() + Vector(0, 0, 5000))
+	ParticleManager:SetParticleControl(particle, 1, hTarget:GetAbsOrigin())
+	ParticleManager:SetParticleControl(particle, 3, hTarget:GetAbsOrigin())
+	-- sound
+	if bEmitSound == true then
+		hTarget:EmitSound("Hero_Zuus.LightningBolt")
 	end
 end
 ---------------------------------------------------------------------
@@ -62,6 +100,7 @@ end
 function modifier_omniknight_0:OnCreated(params)
 	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
 	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.cooldown = self:GetAbilitySpecialValueFor("cooldown")
 	if IsServer() then
 		local iParticleID = ParticleManager:CreateParticle("particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControlEnt(iParticleID, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_attack1", self:GetParent():GetAbsOrigin(), true)
@@ -71,6 +110,7 @@ end
 function modifier_omniknight_0:OnRefresh(params)
 	self.stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
 	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.cooldown = self:GetAbilitySpecialValueFor("cooldown")
 	if IsServer() then
 	end
 end
@@ -92,8 +132,8 @@ function modifier_omniknight_0:OnAttackLanded(params)
 		hAbility:ThunderPower(hTarget, true)
 		local hAbility3 = hParent:FindAbilityByName("omniknight_3")
 		local bonus_chance = IsValid(hAbility3) and hAbility3:GetSpecialValueWithLevel("bonus_chance") or 0
-		if hAbility:IsCooldownReady() and RollPercentage(self.chance + bonus_chance) then
-			local flCooldown = hAbility:GetCooldown(hAbility:GetLevel())
+		if (hAbility:IsCooldownReady() and RollPercentage(self.chance + bonus_chance)) or hParent:HasModifier("modifier_omniknight_0_active") then
+			local flCooldown = self.cooldown
 			if self:GetParent():HasModifier("modifier_omniknight_2_aura") then
 				if self:GetParent():FindModifierByName("modifier_omniknight_2_aura"):Roll() then
 					flCooldown = 0
@@ -102,9 +142,14 @@ function modifier_omniknight_0:OnAttackLanded(params)
 			hAbility:StartCooldown(flCooldown)
 			self:IncrementStackCount()
 			hTarget:AddNewModifier(hParent, hAbility, "modifier_stunned", {duration = self.stun_duration * hTarget:GetStatusResistanceFactor()})
+			hParent:RemoveModifierByName("modifier_omniknight_0_active")
 		end
 	end
 end
 function modifier_omniknight_0:GetModifierBonusStats_Strength()
 	return self:GetStackCount()
+end
+---------------------------------------------------------------------
+if modifier_omniknight_0_active == nil then
+	modifier_omniknight_0_active = class({}, nil, ModifierBasic)
 end

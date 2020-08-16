@@ -48,7 +48,7 @@ function modifier_omniknight_2:GetAuraRadius()
 	return self.radius
 end
 function modifier_omniknight_2:GetAuraSearchTeam()
-	return DOTA_UNIT_TARGET_TEAM_FRIENDLY
+	return DOTA_UNIT_TARGET_TEAM_BOTH
 end
 function modifier_omniknight_2:GetAuraSearchType()
 	return DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
@@ -60,7 +60,7 @@ function modifier_omniknight_2:GetModifierAura()
 	return "modifier_omniknight_2_aura"
 end
 function modifier_omniknight_2:GetEffectName()
-	return "particles/skills/heal_device.vpcf"
+	return AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_omniknight/omniknight_2.vpcf", self:GetCaster())
 end
 function modifier_omniknight_2:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
@@ -99,17 +99,27 @@ end
 if modifier_omniknight_2_aura == nil then
 	modifier_omniknight_2_aura = class({}, nil, ModifierBasic)
 end
+function modifier_omniknight_2_aura:IsDebuff()
+	if self:GetParent():IsFriendly(self:GetCaster()) then
+		return false
+	end
+	return true
+end
 function modifier_omniknight_2_aura:OnCreated(t)
 	self.health_regen = self:GetAbilitySpecialValueFor("health_regen")
 	self.mana_regen = self:GetAbilitySpecialValueFor("mana_regen")
 	self.health_regen_pct = self:GetAbilitySpecialValueFor("health_regen_pct")
 	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.attackspeed_reduce = self:GetAbilitySpecialValueFor("attackspeed_reduce")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 end
 function modifier_omniknight_2_aura:OnRefresh(t)
 	self.health_regen = self:GetAbilitySpecialValueFor("health_regen")
 	self.mana_regen = self:GetAbilitySpecialValueFor("mana_regen")
 	self.health_regen_pct = self:GetAbilitySpecialValueFor("health_regen_pct")
 	self.chance = self:GetAbilitySpecialValueFor("chance")
+	self.attackspeed_reduce = self:GetAbilitySpecialValueFor("attackspeed_reduce")
+	self.movespeed_reduce = self:GetAbilitySpecialValueFor("movespeed_reduce")
 end
 function modifier_omniknight_2_aura:OnDestroy()
 end
@@ -127,14 +137,32 @@ function modifier_omniknight_2_aura:DeclareFunctions()
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE,
 		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
 	}
 end
 function modifier_omniknight_2_aura:GetModifierConstantHealthRegen()
-	return self.health_regen
+	if self:GetParent():IsFriendly(self:GetCaster()) then
+		return self.health_regen
+	end
 end
 function modifier_omniknight_2_aura:GetModifierHealthRegenPercentage()
-	return self.health_regen_pct
+	if self:GetParent():IsFriendly(self:GetCaster()) then
+		return self.health_regen_pct
+	end
 end
 function modifier_omniknight_2_aura:GetModifierConstantManaRegen()
-	return self.mana_regen
+	if self:GetParent():IsFriendly(self:GetCaster()) then
+		return self.mana_regen
+	end
+end
+function modifier_omniknight_2_aura:GetModifierAttackSpeedBonus_Constant()
+	if not self:GetParent():IsFriendly(self:GetCaster()) then
+		return -self.attackspeed_reduce
+	end
+end
+function modifier_omniknight_2_aura:GetModifierMoveSpeedBonus_Percentage()
+	if not self:GetParent():IsFriendly(self:GetCaster()) then
+		return -self.movespeed_reduce
+	end
 end

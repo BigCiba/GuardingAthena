@@ -102,3 +102,10 @@ GameUI.GetHUDSeed = function () {
 GameUI.CorrectPositionValue = function (value) {
 	return GameUI.GetHUDSeed() * value;
 }
+function print(...args) {
+	let params = [];
+	for (let i = 0; i < arguments.length; i++) {
+		params.push(arguments[i], ' ');
+	}
+	return $.Msg(...params);
+}
