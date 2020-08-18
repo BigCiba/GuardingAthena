@@ -12,7 +12,7 @@ function crystal_maiden_1:OnSpellStart()
 	local tInfo = {
 		Ability = self,
 		Source = hCaster,
-		EffectName = "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf",
+		EffectName = "",
 		vSpawnOrigin = hCaster:GetAbsOrigin(),
 		vVelocity = Vector(1,0,0),
 		fDistance = 0.6,
@@ -37,7 +37,7 @@ end
 ---------------------------------------------------------------------
 --Modifiers
 if modifier_crystal_maiden_1 == nil then
-	modifier_crystal_maiden_1 = class({})
+	modifier_crystal_maiden_1 = class({}, nil, ModifierHidden)
 end
 function modifier_crystal_maiden_1:OnCreated(params)
 	if IsServer() then

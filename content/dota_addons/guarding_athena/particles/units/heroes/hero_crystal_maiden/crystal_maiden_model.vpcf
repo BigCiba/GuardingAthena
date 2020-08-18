@@ -1,0 +1,94 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 16
+	m_flConstantRadius = 1.0
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderModels"
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/particle/tusk_sigil.vmdl"
+				},
+			]
+			m_bAnimated = true
+			m_nLOD = 1
+			m_bOrientZ = true
+			m_bForceLoopingAnimation = true
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndTime = 0.1
+			m_flStartScale = 0.2
+			m_bEaseInAndOut = true
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 10.0
+			m_fLifetimeMax = 10.0
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 300.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 300.0 ]
+			m_bLocalCoords = true
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_crystal_maiden/crystal_maiden_model_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_crystal_maiden/crystal_maiden_model_a.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 2
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}
