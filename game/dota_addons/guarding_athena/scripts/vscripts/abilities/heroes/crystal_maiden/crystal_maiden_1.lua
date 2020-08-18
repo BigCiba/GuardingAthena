@@ -5,25 +5,16 @@ if crystal_maiden_1 == nil then
 end
 function crystal_maiden_1:OnSpellStart()
 	local hCaster = self:GetCaster()
-	local iParticleID = ParticleManager:CreateParticle("particles/heroes/crystal_maiden/chilliness_burst.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	local flRadius = self:GetSpecialValueFor("radius") + 
+	local tTargets = FindUnitsInRadiusWithAbility(hCaster, hCaster:GetAbsOrigin(), flRadius, self)
+	for _, hUnit in pairs(tTargets) do
+		hUnit:AddNewModifier(hCaster, self, "modifier_crystal_maiden_1_debuff", {duration = flDuration})
+	end
+
+	-- particle
+	local iParticleID = ParticleManager:CreateParticle("particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, hCaster:GetAbsOrigin())
 	ParticleManager:SetParticleControl(iParticleID, 1, Vector(900, 900, 900))
-	ParticleManager:ReleaseParticleIndex(iParticleID)
-	local tInfo = {
-		Ability = self,
-		Source = hCaster,
-		EffectName = "",
-		vSpawnOrigin = hCaster:GetAbsOrigin(),
-		vVelocity = Vector(1,0,0),
-		fDistance = 0.6,
-		fStartRadius = 0,
-		fEndRadius = 900,
-		iUnitTargetTeam = self:GetAbilityTargetTeam(),
-		iUnitTargetType = self:GetAbilityTargetType(),
-		iUnitTargetFlags = self:GetAbilityTargetFlags(),
-		fExpireTime = GameRules:GetGameTime() + 0.6
-	}
-	ProjectileManager:CreateLinearProjectile(tInfo)
 end
 function crystal_maiden_1:OnProjectileHit(hTarget, vLocation)
 	local hCaster = self:GetCaster()

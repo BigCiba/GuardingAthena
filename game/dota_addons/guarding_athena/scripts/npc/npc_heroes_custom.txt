@@ -3,6 +3,7 @@
 	"npc_dota_hero_omniknight"
 	{
 		"Name"									"机械师"
+		"vscripts"								"ai/heroes/omniknight"
 		"override_hero"							"npc_dota_hero_omniknight"
 		"HeroSelectSoundEffect"					"Hero_Omniknight.Pick"
 		"PickSound"								"omniknight_omni_spawn_01"
@@ -43,6 +44,7 @@
 	"npc_dota_hero_windrunner"
 	{
 		"Name"									"风行者"
+		"vscripts"								"ai/heroes/windrunner"
 		"override_hero"							"npc_dota_hero_windrunner"
 		"HeroSelectSoundEffect"					"Hero_Windrunner.Pick"
 		"PickSound"								"windrunner_wind_spawn_01"
@@ -84,6 +86,7 @@
 	"npc_dota_hero_drow_ranger"
 	{
 		"Name"									"卓尔游侠"
+		"vscripts"								"ai/heroes/drow_ranger"
 		"override_hero"							"npc_dota_hero_drow_ranger"
 		"HeroSelectSoundEffect"					"Hero_Drow_Ranger.Pick"
 		"PickSound"								"drowranger_dro_spawn_03"
@@ -126,6 +129,7 @@
 	"npc_dota_hero_phantom_assassin"
 	{
 		"Name"									"影月守望者"
+		"vscripts"								"ai/heroes/phantom_assassin"
 		"override_hero"							"npc_dota_hero_phantom_assassin"
 		"HeroSelectSoundEffect"					"Hero_Phantom_Assassin.Pick"
 		"PickSound"								"phantom_assassin_phass_spawn_01"
@@ -167,6 +171,7 @@
 	"npc_dota_hero_rubick"
 	{
 		"Name"									"时空魔术师"
+		"vscripts"								"ai/heroes/rubick"
 		"override_hero"							"npc_dota_hero_rubick"
 		"HeroSelectSoundEffect"					"Hero_Rubick.Pick"
 		"PickSound"								"rubick_rubick_spawn_04"
@@ -207,6 +212,7 @@
 	"npc_dota_hero_juggernaut"
 	{
 		"Name"									"剑圣"
+		"vscripts"								"ai/heroes/juggernaut"
 		"override_hero"							"npc_dota_hero_juggernaut"
 		"HeroSelectSoundEffect"					"Hero_Juggernaut.Pick"
 		"PickSound"								"juggernaut_jug_spawn_03"
@@ -247,6 +253,7 @@
 	"npc_dota_hero_antimage"
 	{
 		"Name"									"恶魔猎手"
+		"vscripts"								"ai/heroes/antimage"
 		"override_hero"							"npc_dota_hero_antimage"
 		"HeroSelectSoundEffect"					"Hero_Antimage.Pick"
 		"PickSound"								"antimage_anti_spawn_01"
@@ -288,6 +295,7 @@
 	"npc_dota_hero_lina"
 	{
 		"Name"									"莉莉丝"
+		"vscripts"								"ai/heroes/lina"
 		"override_hero"							"npc_dota_hero_lina"
 		"HeroSelectSoundEffect"					"Hero_Lina.Pick"
 		"PickSound"								"lina_lina_spawn_01"
@@ -328,6 +336,7 @@
 	"npc_dota_hero_nevermore"
 	{
 		"Name"									"塔耳塔洛斯"
+		"vscripts"								"ai/heroes/nevermore"
 		"override_hero"							"npc_dota_hero_nevermore"
 		"HeroSelectSoundEffect"					"Hero_Nevermore.Pick"
 		"PickSound"								"nevermore_nev_spawn_11"
@@ -369,6 +378,7 @@
 	"npc_dota_hero_legion_commander"
 	{
 		"Name"									"希波吕忒"
+		"vscripts"								"ai/heroes/legion_commander"
 		"override_hero"							"npc_dota_hero_legion_commander"
 		"HeroSelectSoundEffect"					"Hero_Legion_Commander.Pick"
 		"PickSound"								"legion_commander_legcom_spawn_01"
@@ -409,6 +419,7 @@
 	"npc_dota_hero_ember_spirit"
 	{
 		"Name"									"火焰之灵"
+		"vscripts"								"ai/heroes/ember_spirit"
 		"override_hero"							"npc_dota_hero_ember_spirit"
 		"HeroSelectSoundEffect"					"Hero_Ember_Spirit.Pick"
 		"PickSound"								"ember_spirit_embr_spawn_01"
@@ -449,6 +460,7 @@
 	"npc_dota_hero_templar_assassin"
 	{
 		"Name"									"天启者"
+		"vscripts"								"ai/heroes/templar_assassin"
 		"override_hero"							"npc_dota_hero_templar_assassin"
 		"HeroSelectSoundEffect"					"Hero_Templar_Assassin.Pick"
 		"PickSound"								"templar_assassin_temp_spawn_02"
@@ -490,6 +502,7 @@
 	"npc_dota_hero_crystal_maiden"
 	{
 		"Name"									"冰川女巫"
+		"vscripts"								"ai/heroes/crystal_maiden"
 		"override_hero"							"npc_dota_hero_crystal_maiden"
 		"HeroSelectSoundEffect"					"Hero_Crystal_Maiden.Pick"
 		"PickSound"								"crystalmaiden_cm_spawn_01"
@@ -530,6 +543,7 @@
 	"npc_dota_hero_monkey_king"
 	{
 		"Name"									"齐天大圣"
+		"vscripts"								"ai/heroes/monkey_king"
 		"override_hero"							"npc_dota_hero_monkey_king"
 		"HeroSelectSoundEffect"					"Hero_Monkey_King.Pick"
 		"PickSound"								"monkey_king_monkey_spawn_17"
@@ -570,6 +584,7 @@
 	"npc_dota_hero_spectre"
 	{
 		"Name"									" 墨丘利"
+		"vscripts"								"ai/heroes/spectre"
 		"override_hero"							"npc_dota_hero_spectre"
 		"HeroSelectSoundEffect"					"Hero_Spectre.Pick"
 		"PickSound"								"spectre_spec_spawn_01"
@@ -611,6 +626,7 @@
 	"npc_dota_hero_oracle"
 	{
 		"Name"									"神谕者"
+		"vscripts"								"ai/heroes/oracle"
 		"override_hero"							"npc_dota_hero_oracle"
 		"HeroSelectSoundEffect"					"Hero_Oracle.Pick"
 		"PickSound"								"oracle_orac_spawn_01"

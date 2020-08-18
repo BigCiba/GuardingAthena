@@ -7,6 +7,9 @@ LinkLuaModifier( "modifier_crystal_maiden_0_cold", "abilities/heroes/crystal_mai
 if crystal_maiden_0 == nil then
 	crystal_maiden_0 = class({})
 end
+function crystal_maiden_0:Spawn()
+	
+end
 function crystal_maiden_0:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
