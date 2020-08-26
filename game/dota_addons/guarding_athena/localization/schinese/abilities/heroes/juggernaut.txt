@@ -1,6 +1,6 @@
 "npc_dota_hero_juggernaut"	"主宰"
 
-"DOTA_Tooltip_ability_juggernaut_0"	"无双剑技[天赋]"
+"DOTA_Tooltip_ability_juggernaut_0"	"无双剑技"
 "DOTA_Tooltip_ability_juggernaut_0_Description"	"减少初始攻击间隔，每100点基础敏捷减少0.1秒，最多减少1秒。并且在持续时间内增加攻击力与%attackspeed%攻击速度。"
 "DOTA_Tooltip_ability_juggernaut_0_scepter_description_1"	"使得天赋对幻象有效"
 "DOTA_Tooltip_ability_juggernaut_0_duration"	"持续时间："

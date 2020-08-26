@@ -1,7 +1,18 @@
-"KVJSConfig"
+"EOMConfig"
 {
-	"HeroesKv"			"npc/npc_heroes_custom.txt"
-	"PlayerItemsKV"		"kv/player_items.kv"
-	"AbilitiesKv"		"npc/npc_abilities_custom.txt"
-	"PetsKv"			"npc/units/npc_pet.kv"
+	// 区块分为configs和kvfiles，名字无需大小写区分
+	// configs为配置信息，用于填写各种配置功能
+	// kvfiles为kv文件，格式为："转化js文件的名字.js" "以scripts文件夹为根目录的相对路径"
+	"configs"
+	{
+		// "OverrideHeroes"	"true"
+		"ObjectName"		"GameUI.CustomUIConfig()"
+	}
+	"kvfiles"
+	{
+		"HeroesKv"			"npc/npc_heroes_custom.txt"
+		"PlayerItemsKV"		"kv/player_items.kv"
+		"AbilitiesKv"		"npc/npc_abilities_custom.txt"
+		"PetsKv"			"npc/units/npc_pet.kv"
+	}
 }

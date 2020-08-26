@@ -36,7 +36,26 @@ function CDOTA_Buff:GetAbilitySpecialValueWithLevel(szName)
 	end
 	return hAbility:GetSpecialValueWithLevel(szName)
 end
-
+if CDOTA_Buff._IncrementStackCount == nil then
+	CDOTA_Buff._IncrementStackCount = CDOTA_Buff.IncrementStackCount
+end
+function CDOTA_Buff:IncrementStackCount(iStackCount)
+	if iStackCount == nil then
+		self:_IncrementStackCount()
+	else
+		self:SetStackCount(self:GetStackCount() + iStackCount)
+	end
+end
+if CDOTA_Buff._DecrementStackCount == nil then
+	CDOTA_Buff._DecrementStackCount = CDOTA_Buff.DecrementStackCount
+end
+function CDOTA_Buff:DecrementStackCount(iStackCount)
+	if iStackCount == nil then
+		self:_DecrementStackCount()
+	else
+		self:SetStackCount(self:GetStackCount() - iStackCount)
+	end
+end
 -- 技能暴击
 function SetSpellCriticalStrike(unit, chance, damage, key)
 	if unit.spellCriticalStrikes == nil then

@@ -58,6 +58,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_crystal_maiden/crystal_maiden_model.vpcf"
+			m_bDisableChild = true
 		},
 	]
 	m_controlPointConfigurations = 

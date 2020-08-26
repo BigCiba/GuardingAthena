@@ -112,7 +112,7 @@ function Update() {
 						text += "<br></br>";
 					}
 	
-					let AbilitySpecial = GameUI.AbilitiesKv[AbilityName].AbilitySpecial;
+					let AbilitySpecial = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].AbilitySpecial;
 					for (const key in AbilitySpecial) {
 						const SpecialName = Object.keys(AbilitySpecial[key])[1];
 						let localization = "DOTA_Tooltip_ability_" + AbilityName + "_" + SpecialName;
@@ -139,10 +139,10 @@ function Update() {
 	
 					// Tooltips.FindChildTraverse("ScepterUpgradeHeader").GetChild(0).style.backgroundImage = 'url("s2r://panorama/images/heroes/icons/'+Entities.GetUnitName(Players.GetLocalPlayerPortraitUnit())+'_png.vtex")';
 					// 神杖提示
-					if (GameUI.AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
+					if (GameUI.CustomUIConfig().AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
 						let localization = "";
 						let ShowTooltip = false;
-						let ScepterLevel = String(GameUI.AbilitiesKv[AbilityName].ScepterLevel).split("|");
+						let ScepterLevel = String(GameUI.CustomUIConfig().AbilitiesKv[AbilityName].ScepterLevel).split("|");
 						for (let i = 0; i < ScepterLevel.length; i++) {
 							const Level = ScepterLevel[i];
 							if (GetHeroesRebornCount(Unit) >= Level) {
@@ -198,9 +198,9 @@ function Update() {
 						}
 					}
 					// 添加不减少冷却提示
-					let IgnoreCooldownReduction = GameUI.AbilitiesKv[AbilityName].IgnoreCooldownReduction || "0";
+					let IgnoreCooldownReduction = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].IgnoreCooldownReduction || "0";
 					// 添加驱散类型
-					let PurgeType = GameUI.AbilitiesKv[AbilityName].PurgeType || "0";
+					let PurgeType = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].PurgeType || "0";
 					if (IgnoreCooldownReduction == "1" || PurgeType != "0") {
 						let Description = Tooltips.FindChildTraverse("AbilityDescriptionContainer").GetChild(0);
 						let localization = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_Description");
@@ -311,7 +311,7 @@ function LoadStoreItem(self) {
 		if (ItemData.Type == "pet") {
 			self.AddClass("Prefab_courier");
 			// 预览技能
-			const PetKV = GameUI.PetsKv[ItemName];
+			const PetKV = GameUI.CustomUIConfig().PetsKv[ItemName];
 			for (let index = 1; index <= 5; index++) {
 				const AbilityName = PetKV["Ability" + index];
 				if (AbilityName != undefined || AbilityName != null) {

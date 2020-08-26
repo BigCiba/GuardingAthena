@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf10:version{b5ef673d-0450-4fb0-a91b-bacae6864827} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_nMaxParticles = 16
@@ -14,6 +14,7 @@
 			m_flAddSelfAmount = 2.0
 			m_bAdditive = true
 			m_flOverbrightFactor = 2.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RenderScreenVelocityRotate"
@@ -82,7 +83,11 @@
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 32
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 32.0
+			}
 		},
 	]
 	m_Constraints = 
@@ -154,7 +159,7 @@
 			m_vecCP4Pos = [ 0.0, 0.0, 32.0 ]
 		},
 	]
-	m_nBehaviorVersion = 6
+	m_nBehaviorVersion = 10
 	m_nFirstMultipleOverride_BackwardCompat = 6
 	m_controlPointConfigurations = 
 	[

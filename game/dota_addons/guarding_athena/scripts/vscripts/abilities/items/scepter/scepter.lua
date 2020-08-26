@@ -50,6 +50,13 @@ end
 function item_npc_dota_hero_windrunner:GetIntrinsicModifierName()
 	return "modifier_scepter"
 end
+-- 水晶室女
+if item_npc_dota_hero_crystal_maiden == nil then
+	item_npc_dota_hero_crystal_maiden = class({})
+end
+function item_npc_dota_hero_crystal_maiden:GetIntrinsicModifierName()
+	return "modifier_scepter"
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_scepter == nil then

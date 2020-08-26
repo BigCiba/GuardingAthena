@@ -3,17 +3,22 @@ LinkLuaModifier( "modifier_crystal_maiden_0_buff", "abilities/heroes/crystal_mai
 LinkLuaModifier( "modifier_crystal_maiden_0_thinker", "abilities/heroes/crystal_maiden/crystal_maiden_0.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_crystal_maiden_0_debuff", "abilities/heroes/crystal_maiden/crystal_maiden_0.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_crystal_maiden_0_cold", "abilities/heroes/crystal_maiden/crystal_maiden_0.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_crystal_maiden_0_freeze", "abilities/heroes/crystal_maiden/crystal_maiden_0.lua", LUA_MODIFIER_MOTION_NONE )
 --Abilities
 if crystal_maiden_0 == nil then
 	crystal_maiden_0 = class({})
 end
 function crystal_maiden_0:Spawn()
-	
+	local hCaster = self:GetCaster()
+	hCaster.GetColdStackCount = function (hCaster)
+		local iStackCount = hCaster:HasModifier("modifier_crystal_maiden_0_cold") and hCaster:FindModifierByName("modifier_crystal_maiden_0_cold"):GetStackCount() or 0
+		return iStackCount
+	end
 end
 function crystal_maiden_0:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
-	hTarget:AddNewModifier(hCaster, self, "modifier_crystal_maiden_0_buff", {duration = self:GetSpecialValueFor("duration")})
+	hTarget:AddNewModifier(hCaster, self, "modifier_crystal_maiden_0_buff", {duration = self:GetSpecialValueFor("duration") * hTarget:GetStatusResistanceFactor()})
 end
 function crystal_maiden_0:GetIntrinsicModifierName()
 	return "modifier_crystal_maiden_0"
@@ -27,12 +32,19 @@ function modifier_crystal_maiden_0:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.cold_radius = self:GetAbilitySpecialValueFor("cold_radius")
 	self.mark_duration = self:GetAbilitySpecialValueFor("mark_duration")
+	self.max_count = self:GetAbilitySpecialValueFor("max_count")
 	if IsServer() then
 		self:GetCaster().tThinker = {}
 		self.flTick = 0.2	-- 计算间隔
 		self:StartIntervalThink(self.flTick)
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_ABILITY_EXECUTED, self, self:GetParent())
+end
+function modifier_crystal_maiden_0:OnRefresh(params)
+	self.radius = self:GetAbilitySpecialValueFor("radius")
+	self.cold_radius = self:GetAbilitySpecialValueFor("cold_radius")
+	self.mark_duration = self:GetAbilitySpecialValueFor("mark_duration")
+	self.max_count = self:GetAbilitySpecialValueFor("max_count")
 end
 function modifier_crystal_maiden_0:OnIntervalThink()
 	-- 用一个计时器模拟所有冰霜魔印的光环效果，减少消耗
@@ -82,8 +94,21 @@ function modifier_crystal_maiden_0:OnAbilityExecuted(params)
 			if hAbility == nil or hAbility:IsItem() or hAbility:IsToggle() or not hAbility:ProcsMagicStick() then
 				return
 			end
-
-			local hThinker = CreateModifierThinker(hParent, self:GetAbility(), "modifier_crystal_maiden_0_thinker", {duration = self.mark_duration}, hParent:GetAbsOrigin(), hParent:GetTeamNumber(), false)
+			-- 删除旧的冰霜魔印
+			if #self:GetCaster().tThinker >= self.max_count then
+				self:GetCaster().tThinker[1]:RemoveModifierByName("modifier_crystal_maiden_0_thinker")
+			end
+			-- 尽量不重叠冰霜魔印
+			local vPosition = hParent:GetAbsOrigin()
+			if vPosition == self:GetCaster().tThinker[#self:GetCaster().tThinker] then
+				vPosition = vPosition + RandomVector(self.radius)
+			end
+			for _, hThinker in ipairs(self:GetCaster().tThinker) do
+				if (vPosition - hThinker:GetAbsOrigin()):Length2D() < self.radius * 2 then
+					vPosition = hThinker:GetAbsOrigin() + (vPosition - hThinker:GetAbsOrigin()):Normalized() * self.radius * 2
+				end
+			end
+			local hThinker = CreateModifierThinker(hParent, self:GetAbility(), "modifier_crystal_maiden_0_thinker", {duration = self.mark_duration}, GetGroundPosition(vPosition, hParent), hParent:GetTeamNumber(), false)
 			table.insert(self:GetCaster().tThinker, hThinker)
 		end
 	end
@@ -109,6 +134,7 @@ function modifier_crystal_maiden_0_buff:CheckState()
 		[MODIFIER_STATE_FROZEN] = true,
 		[MODIFIER_STATE_ROOTED] = true,
 		[MODIFIER_STATE_DISARMED] = true,
+		[MODIFIER_STATE_MAGIC_IMMUNE] = (self:GetCaster():GetScepterLevel() >= 3 and self:GetParent():IsFriendly(self:GetCaster())) and true or false,
 	}
 end
 function modifier_crystal_maiden_0_buff:GetAbsoluteNoDamagePhysical()
@@ -142,8 +168,12 @@ if modifier_crystal_maiden_0_debuff == nil then
 end
 function modifier_crystal_maiden_0_debuff:OnCreated(params)
 	self.movespeed_reduce_pct = self:GetAbilitySpecialValueFor("movespeed_reduce_pct")
+	self.scepter_freeze_duration = self:GetAbilitySpecialValueFor("scepter_freeze_duration")
 	if IsServer() then
 		self:StartIntervalThink(1)
+		if self:GetCaster():GetScepterLevel() >= 1 then
+			self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_crystal_maiden_0_freeze", {duration = self.scepter_freeze_duration})
+		end
 	end
 end
 function modifier_crystal_maiden_0_debuff:OnRefresh(params)
@@ -184,4 +214,15 @@ end
 function modifier_crystal_maiden_0_cold:OnIntervalThink()
 	self:Destroy()
 	return
+end
+---------------------------------------------------------------------
+if modifier_crystal_maiden_0_freeze == nil then
+	modifier_crystal_maiden_0_freeze = class({}, nil, ModifierDebuff)
+end
+function modifier_crystal_maiden_0_freeze:CheckState()
+	return {
+		[MODIFIER_STATE_FROZEN] = true,
+		[MODIFIER_STATE_ROOTED] = true,
+		[MODIFIER_STATE_STUNNED] = true,
+	}
 end

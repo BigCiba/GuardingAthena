@@ -133,8 +133,8 @@ function OnButtonActive(buttonname) {
 function ShowHeroAbilities(heroName) {
     DeleteChildrenWithClass($("#HeroAbilities"), "AbilityLabel");
     let HeroInfo = {}
-    for (const key in GameUI.HeroesKv) {
-        const element = GameUI.HeroesKv[key];
+    for (const key in GameUI.CustomUIConfig().HeroesKv) {
+        const element = GameUI.CustomUIConfig().HeroesKv[key];
         if (element.override_hero == heroName) {
             HeroInfo = element
         }
