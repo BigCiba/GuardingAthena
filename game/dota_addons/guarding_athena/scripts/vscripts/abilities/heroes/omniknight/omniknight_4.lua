@@ -64,7 +64,7 @@ function modifier_omniknight_4:AllowIllusionDuplicate()
 	return false
 end
 function modifier_omniknight_4:GetEffectName()
-	return "particles/heroes/omni_knight/thunder_barrier.vpcf"
+	return AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_omniknight/omniknight_4.vpcf", self:GetParent())
 end
 function modifier_omniknight_4:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
@@ -79,11 +79,24 @@ function modifier_omniknight_4:OnCreated(params)
 	self.palsy_radius = self:GetAbilitySpecialValueFor("palsy_radius")
 	self.palsy_interval = self:GetAbilitySpecialValueFor("palsy_interval")
 	if IsServer() then
+		self.bTrigger = true
 		self:StartIntervalThink(self.palsy_interval)
+	end
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACKED, self, nil, self:GetParent())
+end
+function modifier_omniknight_4:OnDestroy()
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACKED, self, nil, self:GetParent())
+end
+function modifier_omniknight_4:OnAttacked(params)
+	-- 雷霆战士皮肤
+	if self:GetParent() == params.target and self:GetParent():HasModifier("modifier_omniknight_01") and self.bTrigger then
+		self.bTrigger = false
+		self:GetAbility():ThunderStorm(params.attacker)
 	end
 end
 function modifier_omniknight_4:OnIntervalThink()
 	if IsServer() then
+		self.bTrigger = true
 		local hCaster = self:GetCaster()
 		local hAbility = self:GetAbility()
 		hCaster:SpendMana(self.mana_cost, hAbility)
@@ -102,7 +115,7 @@ function modifier_omniknight_4:DeclareFunctions()
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
-		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE
+		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE，
 	}
 end
 function modifier_omniknight_4:GetModifierAttackSpeedBonus_Constant()

@@ -31,7 +31,7 @@ function OnCreated( t )
     end
     caster.percent_reduce_damage = caster.percent_reduce_damage + ability:GetSpecialValueFor("damage_reduce")
     caster.chaos_plate_timer = Timers:CreateTimer(function ()
-        ClearBuff(caster,"debuff")
+		caster:Purge(false, true, false, true, true)
         ability.shield_health = caster:GetMaxHealth() * sheildPercent
         if caster.shield_particle == nil then
             caster.shield_particle = CreateParticle("particles/items/chaos_plate/chaos_plate_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)

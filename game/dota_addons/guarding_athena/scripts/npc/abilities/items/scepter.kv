@@ -347,4 +347,43 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
+
+	// 水晶室女
+	"item_npc_dota_hero_crystal_maiden"
+	{
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/scepter/scepter"
+		"AbilityTextureName"		"npc_dota_hero_crystal_maiden"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"0.0"
+		"ID"						"1706"
+		"ItemQuality"				"epic"
+		"ItemCost"					"1"
+		"ItemSellable"				"0"
+		"ItemPurchasable"			"0"
+		"ItemIsNeutralDrop"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_freeze_duration"	"2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_max_count"	"3"
+			}
+		}
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
+	}
 }

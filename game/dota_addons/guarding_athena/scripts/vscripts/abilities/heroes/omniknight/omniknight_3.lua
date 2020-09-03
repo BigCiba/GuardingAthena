@@ -60,6 +60,11 @@ function modifier_omniknight_3:DeclareFunctions()
 end
 function modifier_omniknight_3:OnAttackLanded(params)
 	if self:GetParent() == params.attacker then
+		-- 雷霆战士皮肤
+		if self:GetParent():HasModifier("modifier_omniknight_01") and self:GetStackCount() == self.attack_count - 1 then
+			local hAbility = self:GetParent():FindAbilityByName("omniknight_0")
+			hAbility:Action(params.target, true)
+		end
 		self:IncrementStackCount()
 	end
 end

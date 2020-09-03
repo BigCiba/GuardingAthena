@@ -356,3 +356,5 @@
 "GameMode_Hard"					"困难"
 "GameMode_Nightmare"			"噩梦"
 "GameMode_Hell"					"地狱"
+
+"AbilitySkinTitleTip"			"【皮肤加成】"

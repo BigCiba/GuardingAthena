@@ -3,6 +3,11 @@ LinkLuaModifier( "modifier_windrunner_1", "abilities/heroes/windrunner/windrunne
 if windrunner_1 == nil then
 	windrunner_1 = class({})
 end
+function windrunner_1:Precache(context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_1.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_1_magic.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_1_magic.vpcf", context)
+end
 function windrunner_1:OnChannelFinish(bInterrupted)
 	local flChannelTime = GameRules:GetGameTime() - self:GetChannelStartTime()
 	local hCaster = self:GetCaster()
@@ -30,7 +35,7 @@ function windrunner_1:MultipleShoot(vPosition, flChannelTime, iDamageType)
 	local base_damage = self:GetSpecialValueFor("base_damage")
 	local iSpeed = self:GetSpecialValueFor("speed")
 	local flAngle = RemapVal(flChannelTime, 0, self:GetChannelTime(), 15, 5)
-	local sParticleName = iDamageType == DAMAGE_TYPE_PHYSICAL and "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf" or "particles/skills/multiple_shoot_magic.vpcf"
+	local sParticleName = iDamageType == DAMAGE_TYPE_PHYSICAL and AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf", hCaster) or AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_1_magic.vpcf", hCaster)
 	local tPosition = {
 		vPosition,
 		RotatePosition(vStart, QAngle(0, flAngle, 0), vPosition),
@@ -40,7 +45,8 @@ function windrunner_1:MultipleShoot(vPosition, flChannelTime, iDamageType)
 	}
 	local tExtraData = {
 		iDamageType = iDamageType, 
-		flChannelTime = flChannelTime
+		flChannelTime = flChannelTime,
+		flDistance = flDistance
 	}
 	for i, vTargetLoc in ipairs(tPosition) do
 		local vDirection = (vTargetLoc - vStart):Normalized()
@@ -54,13 +60,13 @@ function windrunner_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 		local hCaster = self:GetCaster()
 		local flRange = self:GetSpecialValueFor("range")
 		local bonus_damage_pct = self:GetSpecialValueFor("bonus_damage_pct")
-		local flDistance = RemapVal(CalculateDistance(hTarget, hCaster), 0, flRange, flRange * 0.5, 0)
+		local flDistance = RemapVal(CalculateDistance(hTarget, hCaster), 0, ExtraData.flDistance, ExtraData.flDistance * 0.5, 0)
 		local flDamageFactor = RemapVal(ExtraData.flChannelTime, 0, self:GetChannelTime(), 0, bonus_damage_pct)
 		local flDamage = (self:GetSpecialValueFor("base_damage") + hCaster:GetAverageTrueAttackDamage(hTarget) * self:GetSpecialValueFor("damage")) * (1 + flDamageFactor * 0.01)
 		local iDamageType = ExtraData.iDamageType
 		hCaster:DealDamage(hTarget, self, flDamage, iDamageType)
 		-- 击退
-		hCaster:KnockBack(hCaster:GetAbsOrigin() + hCaster:GetForwardVector() * -hCaster:GetHullRadius(), hTarget, flDistance, 0, 0.3, false)
+		hCaster:KnockBack(hCaster:GetAbsOrigin() + hCaster:GetForwardVector() * -hCaster:GetHullRadius(), hTarget, flDistance, 0, 0.3, false, true)
 	end
 end
 function windrunner_1:GetIntrinsicModifierName()

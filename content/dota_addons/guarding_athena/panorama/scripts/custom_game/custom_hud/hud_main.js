@@ -112,7 +112,7 @@ function Update() {
 						text += "<br></br>";
 					}
 	
-					let AbilitySpecial = GameUI.AbilitiesKv[AbilityName].AbilitySpecial;
+					let AbilitySpecial = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].AbilitySpecial;
 					for (const key in AbilitySpecial) {
 						const SpecialName = Object.keys(AbilitySpecial[key])[1];
 						let localization = "DOTA_Tooltip_ability_" + AbilityName + "_" + SpecialName;
@@ -139,10 +139,10 @@ function Update() {
 	
 					// Tooltips.FindChildTraverse("ScepterUpgradeHeader").GetChild(0).style.backgroundImage = 'url("s2r://panorama/images/heroes/icons/'+Entities.GetUnitName(Players.GetLocalPlayerPortraitUnit())+'_png.vtex")';
 					// 神杖提示
-					if (GameUI.AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
+					if (GameUI.CustomUIConfig().AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
 						let localization = "";
 						let ShowTooltip = false;
-						let ScepterLevel = String(GameUI.AbilitiesKv[AbilityName].ScepterLevel).split("|");
+						let ScepterLevel = String(GameUI.CustomUIConfig().AbilitiesKv[AbilityName].ScepterLevel).split("|");
 						for (let i = 0; i < ScepterLevel.length; i++) {
 							const Level = ScepterLevel[i];
 							if (GetHeroesRebornCount(Unit) >= Level) {
@@ -167,28 +167,7 @@ function Update() {
 						AbilityScepterDescriptionContainer.style.visibility = "collapse";
 					}
 	
-					// 添加不减少冷却提示
-					let IgnoreCooldownReduction = GameUI.AbilitiesKv[AbilityName].IgnoreCooldownReduction || "0";
-					// 添加驱散类型
-					let PurgeType = GameUI.AbilitiesKv[AbilityName].PurgeType || "0";
-					if (IgnoreCooldownReduction == "1" || PurgeType != "0") {
-						let Description = Tooltips.FindChildTraverse("AbilityDescriptionContainer").GetChild(0);
-						let localization = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_Description");
-						for (const key in AbilitySpecial) {
-							const SpecialName = Object.keys(AbilitySpecial[key])[1];
-							localization = localization.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
-							localization = localization.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
-						}
-						Description.text = localization;
-						
-						if (PurgeType != "0") {
-							Description.text += "<br></br><br></br>" + $.Localize("Custom_Tooltip_ability_PurgeType") + $.Localize("Custom_Tooltip_ability_" + PurgeType);
-						}
-						if (IgnoreCooldownReduction == "1") {
-							Description.text += "<br></br><br></br><font color='#d63c2d'>" + $.Localize("Custom_Tooltip_ability_IgnoreCooldownReduction") + "</font>";
-							Tooltips.FindChildTraverse("AbilityCooldown").text = Abilities.GetCooldown(AbilityIndex);
-						}
-					}
+					
 					// 添加皮肤额外描述
 					let sSkinName = GetSkinName(Unit);
 					let SkinHeader = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(1);
@@ -207,13 +186,40 @@ function Update() {
 								Name = Name.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
 								Name = Name.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
 							}
-							SkinHeader.text = "<font color='gold'>" + $.Localize(sSkinName) + "</font>";
+							SkinHeader.text = "<font color='gold'>" + $.Localize(sSkinName) + " " + $.Localize("AbilitySkinTitleTip") + "</font>";
 							SkinHeader.SetHasClass("Active", true);
 							SkinDesc.text = Name;
 							SkinDesc.style.backgroundColor = "#1f282c55";
 						} else {
-							SkinHeader.style.visibility = "collapse";
-							SkinDesc.style.visibility = "collapse";
+							if (SkinHeader != null) {
+								SkinHeader.style.visibility = "collapse";
+								SkinDesc.style.visibility = "collapse";
+							}
+						}
+					}
+					// 添加不减少冷却提示
+					let IgnoreCooldownReduction = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].IgnoreCooldownReduction || "0";
+					// 添加驱散类型
+					let PurgeType = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].PurgeType || "0";
+					if (IgnoreCooldownReduction == "1" || PurgeType != "0") {
+						let Description = Tooltips.FindChildTraverse("AbilityDescriptionContainer").GetChild(0);
+						let localization = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_Description");
+						for (const key in AbilitySpecial) {
+							const SpecialName = Object.keys(AbilitySpecial[key])[1];
+							localization = localization.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+							localization = localization.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+						}
+						Description.text = localization;
+						
+						Description.text = Description.text.replace("sSkinName", "");
+						Description.text = Description.text.replace("sSkinDescription", "");
+						
+						if (PurgeType != "0") {
+							Description.text += "<br></br><br></br>" + $.Localize("Custom_Tooltip_ability_PurgeType") + $.Localize("Custom_Tooltip_ability_" + PurgeType);
+						}
+						if (IgnoreCooldownReduction == "1") {
+							Description.text += "<br></br><br></br><font color='#d63c2d'>" + $.Localize("Custom_Tooltip_ability_IgnoreCooldownReduction") + "</font>";
+							Tooltips.FindChildTraverse("AbilityCooldown").text = Abilities.GetCooldown(AbilityIndex);
 						}
 					}
 					// 修正位置
@@ -305,7 +311,7 @@ function LoadStoreItem(self) {
 		if (ItemData.Type == "pet") {
 			self.AddClass("Prefab_courier");
 			// 预览技能
-			const PetKV = GameUI.PetsKv[ItemName];
+			const PetKV = GameUI.CustomUIConfig().PetsKv[ItemName];
 			for (let index = 1; index <= 5; index++) {
 				const AbilityName = PetKV["Ability" + index];
 				if (AbilityName != undefined || AbilityName != null) {

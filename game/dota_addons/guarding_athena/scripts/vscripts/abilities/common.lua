@@ -36,7 +36,26 @@ function CDOTA_Buff:GetAbilitySpecialValueWithLevel(szName)
 	end
 	return hAbility:GetSpecialValueWithLevel(szName)
 end
-
+if CDOTA_Buff._IncrementStackCount == nil then
+	CDOTA_Buff._IncrementStackCount = CDOTA_Buff.IncrementStackCount
+end
+function CDOTA_Buff:IncrementStackCount(iStackCount)
+	if iStackCount == nil then
+		self:_IncrementStackCount()
+	else
+		self:SetStackCount(self:GetStackCount() + iStackCount)
+	end
+end
+if CDOTA_Buff._DecrementStackCount == nil then
+	CDOTA_Buff._DecrementStackCount = CDOTA_Buff.DecrementStackCount
+end
+function CDOTA_Buff:DecrementStackCount(iStackCount)
+	if iStackCount == nil then
+		self:_DecrementStackCount()
+	else
+		self:SetStackCount(self:GetStackCount() - iStackCount)
+	end
+end
 -- 技能暴击
 function SetSpellCriticalStrike(unit, chance, damage, key)
 	if unit.spellCriticalStrikes == nil then
@@ -587,6 +606,21 @@ if IsServer() then
 		hCaster:Heal(flAmount, self)
 		SendOverheadEventMessage(hCaster:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, hCaster, flAmount, hCaster:GetPlayerOwner())
 	end
+	-- 治疗单位并默认显示数字，满血不接受治疗
+	if CDOTA_BaseNPC._Heal == nil then
+		CDOTA_BaseNPC._Heal = CDOTA_BaseNPC.Heal
+	end
+	function CDOTA_BaseNPC:Heal(flAmount, hInflictor, bShowOverhead)
+		local flHealthDeficit = self:GetHealthDeficit()
+		flAmount = math.min(flHealthDeficit, flAmount)
+		if flAmount > 0 then
+			self:_Heal(flAmount, hInflictor)
+			if bShowOverhead == nil then bShowOverhead = true end
+			if bShowOverhead then
+				SendOverheadEventMessage(self:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, self, flAmount, self:GetPlayerOwner())
+			end
+		end
+	end
 	function CDOTA_BaseNPC:GetAbilityNameSpecialValueFor(sAbilityName, sKey)
 		local hAbility = self:FindAbilityByName(sAbilityName)
 		if IsValid(hAbility) then
@@ -886,18 +920,30 @@ if IsServer() then
 	end
 
 	-- 击退
-	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun)
+	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun, bBlock)
+		-- 官方
+		-- local kv =		{
+		-- 	center_x = vCenter.x,
+		-- 	center_y = vCenter.y,
+		-- 	center_z = vCenter.z,
+		-- 	should_stun = bStun,
+		-- 	duration = flDuration,
+		-- 	knockback_duration = flDuration,
+		-- 	knockback_distance = flDistance,
+		-- 	knockback_height = flHeight,
+		-- }
+		-- hTarget:AddNewModifier(self, nil, "modifier_knockback", kv)
+		-- 自定义
 		local kv =		{
-			center_x = vCenter.x,
-			center_y = vCenter.y,
-			center_z = vCenter.z,
-			should_stun = bStun,
+			vCenter = vCenter,
+			bStun = bStun,
 			duration = flDuration,
 			knockback_duration = flDuration,
 			knockback_distance = flDistance,
 			knockback_height = flHeight,
+			bBlock = bBlock
 		}
-		hTarget:AddNewModifier(self, nil, "modifier_knockback", kv)
+		hTarget:AddNewModifier(self, nil, "modifier_knockback_custom", kv)
 	end
 
 	function PfromC(c)

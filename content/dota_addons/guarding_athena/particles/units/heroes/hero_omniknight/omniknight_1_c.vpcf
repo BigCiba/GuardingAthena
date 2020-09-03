@@ -1,0 +1,178 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 24
+	m_flConstantRadius = 550.0
+	m_ConstantColor = [ 168, 162, 255, 55 ]
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_nOrientationType = 3
+			m_hTexture = resource:"materials/particle/beam_edge_05.vtex"
+			m_nScaleCP2 = 1
+			m_nScaleCP1 = 0
+			m_flRadiusScale = 0.5
+			m_flTextureVWorldSize = 10000.0
+			m_flTextureVOffset = 3.90625
+			m_flTextureVScrollRate = 2000.0
+			m_nMaxTesselation = 4
+			m_nMinTesselation = 4
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.1
+			m_Gravity = [ 0.0, 0.0, 400.0 ]
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+		},
+		{
+			_class = "C_OP_VectorNoise"
+			m_bAdditive = true
+			m_vecOutputMax = [ 1.0, 1.0, 8.0 ]
+			m_vecOutputMin = [ -1.0, -1.0, 4.0 ]
+			m_nFieldOutput = 0
+			m_fl4NoiseScale = 0.01
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.85
+			m_flBias = 0.8
+			m_flStartScale = 0.0
+		},
+		{
+			_class = "C_OP_OscillateVector"
+			m_FrequencyMax = [ 0.0, 0.0, 3.0 ]
+			m_FrequencyMin = [ 0.0, 0.0, 1.0 ]
+			m_RateMax = [ 0.0, 0.0, 488.0 ]
+			m_RateMin = [ 0.0, 0.0, 246.0 ]
+			m_flOpEndFadeOutTime = 1.0
+			m_flOpStartFadeOutTime = 0.5
+		},
+		{
+			_class = "C_OP_MaxVelocity"
+			m_flMaxVelocity = 1460.0
+		},
+		{
+			_class = "C_OP_FadeOut"
+			m_flFadeBias = 0.75
+			m_bEaseInAndOut = false
+			m_flFadeOutTimeMax = 0.75
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 79, 126, 255, 255 ]
+			m_flFadeStartTime = 0.125
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.5
+			m_fLifetimeMin = 0.5
+		},
+		{
+			_class = "C_INIT_RingWave"
+			m_flParticlesPerOrbit = 12.0
+			m_bEvenDistribution = true
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 300.0
+			}
+			m_flThickness = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 590.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 600.0
+			}
+			m_flRoll = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_flPitch = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_flYaw = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMax = 75
+			m_nAlphaMin = 65
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 32.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 32.0 ]
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_bActiveRange = true
+			m_bScaleInitialRange = true
+			m_nFieldOutput = 7
+			m_nInputMax = 2
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_bActiveRange = true
+			m_bScaleInitialRange = true
+			m_flOutputMax = 0.0
+			m_flOutputMin = 1.0
+			m_nFieldOutput = 7
+			m_nInputMax = 49
+			m_nInputMin = 47
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_flStartTime = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 32.0
+			}
+		},
+	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 3
+}

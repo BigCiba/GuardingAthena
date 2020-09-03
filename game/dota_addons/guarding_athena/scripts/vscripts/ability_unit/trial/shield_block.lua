@@ -2,7 +2,7 @@ function ShieldBlockAI( t )
     local caster = t.caster
     local ability = t.ability
     if RollPercentage(30) then
-        ClearBuff(caster,"debuff")
+        caster:Purge(false, true, false, true, true)
         CastAbility(caster,DOTA_UNIT_ORDER_CAST_NO_TARGET,ability,nil,nil)
     end
 end

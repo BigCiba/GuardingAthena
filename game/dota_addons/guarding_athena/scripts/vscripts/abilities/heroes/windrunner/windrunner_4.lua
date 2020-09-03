@@ -5,8 +5,10 @@ if windrunner_4 == nil then
 	windrunner_4 = class({})
 end
 function windrunner_4:Precache(context)
-	PrecacheResource("particle", "particles/skills/arrow_strom.vpcf", context)
-	PrecacheResource("particle", "particles/skills/arrow_strom_1.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_4.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_4_magic.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_4.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_4_magic.vpcf", context)
 end
 function windrunner_4:OnSpellStart()
 	local hCaster = self:GetCaster()
@@ -86,7 +88,7 @@ function modifier_windrunner_4_buff:OnCreated(params)
 		self.flDamage = self.base_damage + self.damage * self:GetParent():GetAgility()
 	else
 		if self:GetDuration() > self.delay + self.scepter_duration then
-			local iParticleID = ParticleManager:CreateParticle("particles/skills/arrow_strom_1.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_4_a.vpcf", self:GetParent()), PATTACH_CUSTOMORIGIN, nil)
 			ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin() + Vector(0, 0, 2000))
 			ParticleManager:SetParticleControl(iParticleID, 6, self:GetParent():GetAbsOrigin() + Vector(0, 0, -300))
 			self:AddParticle(iParticleID, false, false, -1, false, false)
@@ -115,7 +117,7 @@ function modifier_windrunner_4_buff:OnIntervalThink()
 			local iDamageType = i == 1 and DAMAGE_TYPE_PHYSICAL or DAMAGE_TYPE_MAGICAL
 			hParent:DealDamage(tTargets, self:GetAbility(), self.flDamage, iDamageType)
 			-- particle
-			local sParticleName = i == 1 and "particles/skills/arrow_strom.vpcf" or "particles/skills/arrow_strom_magic.vpcf"
+			local sParticleName = i == 1 and AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_4.vpcf", hParent) or AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_windrunner/windrunner_4_magic.vpcf", hParent)
 			local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
 			ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
 			ParticleManager:SetParticleControl(iParticleID, 1, vPosition + Vector(0, 0, 2000))

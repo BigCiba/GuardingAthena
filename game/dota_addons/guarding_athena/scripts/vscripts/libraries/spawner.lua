@@ -1,4 +1,4 @@
---[[ 
+--[[
 	包含以下功能：
 	-进攻刷怪
 	-突袭刷怪
@@ -19,17 +19,17 @@ if Spawner == nil then
 end
 -- 初始化
 function Spawner:Init()
-  --print ( '[Spawner] Spawner Init' )
-  self:ReadKeyValue()
-  self:Setting()
-  self:AttackOnTarget()
-  self:QuestCountDown()
-  ListenToGameEvent('entity_killed', Dynamic_Wrap(Spawner, 'OnUnitKilled'), self)
+	--print ( '[Spawner] Spawner Init' )
+	self:ReadKeyValue()
+	self:Setting()
+	self:AttackOnTarget()
+	self:QuestCountDown()
+	ListenToGameEvent('entity_killed', Dynamic_Wrap(Spawner, 'OnUnitKilled'), self)
 end
 -- 读取kv数据
 function Spawner:ReadKeyValue()
-  --print ( '[Spawner] Spawner ReadKeyValue' )
-  self.kvTable = LoadKeyValues("scripts/kv/spawn_info.kv")
+	--print ( '[Spawner] Spawner ReadKeyValue' )
+	self.kvTable = LoadKeyValues("scripts/kv/spawn_info.kv")
 end
 -- 设定数据
 function Spawner:Setting()

@@ -26,24 +26,14 @@ function TrollBlink( keys )
     local damage = keys.DamageTaken
     local ability = keys.ability
     local cd = ability:GetSpecialValueFor("cooldown")
-    local point = GetRandomPoint(caster_location,400,600)
-    while(point.x > 7000 or point.y < -7000)
-    do
-        point = GetRandomPoint(caster_location,400,600)
-    end
+    local point = caster_location + RandomVector(RandomInt(400,600))
     if ability:IsCooldownReady() then
         Heal(caster,damage,0,false)
         CreateParticle("particles/units/troll_blink.vpcf",PATTACH_ABSORIGIN,caster,2)
         CreateSound("DOTA_Item.BlinkDagger.Activate",caster,2)
         SetUnitPosition(caster,point)
         ProjectileManager:ProjectileDodge(caster)
-        local modifier_table = caster:FindAllModifiers()
-        for i=1,#modifier_table do
-            local modifier_name = caster:GetModifierNameByIndex(i)
-            if modifier_name ~= "modifier_troll_fireball" then
-                caster:RemoveModifierByName(modifier_name)
-            end
-        end
+        caster:Purge(false, true, false, true, true)
         ability:StartCooldown(cd)
     end
 end

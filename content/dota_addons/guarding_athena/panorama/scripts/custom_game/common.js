@@ -44,7 +44,7 @@ function GetPlayerPrice(sPlayerID) {
 	return tData[sPlayerID].Price;
 }
 function GetCourierItemDef(sCourierName) {
-	return GameUI.PetsKv[sCourierName].ItemDef;
+	return GameUI.CustomUIConfig().PetsKv[sCourierName].ItemDef;
 }
 
 function ReadAttributeData(data) {
@@ -56,7 +56,7 @@ function ReadAttributeData(data) {
 }
 
 function GetCourierItemStyle(sCourierName) {
-	return GameUI.PetsKv[sCourierName].ItemStyle || 0;
+	return GameUI.CustomUIConfig().PetsKv[sCourierName].ItemStyle || 0;
 }
 function GetHeroesRebornCount(iEntity) {
 	for (let index = 0; index < Entities.GetNumBuffs(iEntity); index++) {
@@ -69,8 +69,8 @@ function GetHeroesRebornCount(iEntity) {
 }
 // 获取英雄穿戴的皮肤
 function GetSkinName(iEntity) {
-	for (const sItemName in GameUI.PlayerItemsKV) {
-		let tItemData = GameUI.PlayerItemsKV[sItemName];
+	for (const sItemName in GameUI.CustomUIConfig().PlayerItemsKV) {
+		let tItemData = GameUI.CustomUIConfig().PlayerItemsKV[sItemName];
 		if (tItemData.Hero && tItemData.Hero == Entities.GetUnitName(iEntity)) {
 			if (Entities.HasModifier(iEntity, "modifier_" + sItemName)) {
 				return sItemName;
@@ -101,4 +101,11 @@ GameUI.GetHUDSeed = function () {
 }
 GameUI.CorrectPositionValue = function (value) {
 	return GameUI.GetHUDSeed() * value;
+}
+function print(...args) {
+	let params = [];
+	for (let i = 0; i < arguments.length; i++) {
+		params.push(arguments[i], ' ');
+	}
+	return $.Msg(...params);
 }

@@ -45,7 +45,7 @@ function LoadPlayer(self) {
 function LoadItem(self) {
 	self.BLoadLayoutSnippet("EconItem");
 	self.SetItem = function(ItemData, Panel) {
-		let Quality = ItemData.ItemName == "default_no_item" ? "Common":GameUI.PlayerItemsKV[ItemData.ItemName].Quality
+		let Quality = ItemData.ItemName == "default_no_item" ? "Common":GameUI.CustomUIConfig().PlayerItemsKV[ItemData.ItemName].Quality
 		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
 		self.FindChildTraverse("Equipped").SetHasClass("hide", ItemData.Equip == "0");
 		self.FindChildTraverse("BottomLayer").AddClass(Quality);
@@ -73,7 +73,7 @@ function PreviewHero(HeroName) {
 		return;
 	}
 	$("#HeroInfoContent").SetHasClass("HeroLocked", $("#HeroListPanel").FindChildTraverse(HeroName).BHasClass("Unlock") == false)
-	const HeroKV = GameUI.HeroesKv[HeroName];
+	const HeroKV = GameUI.CustomUIConfig().HeroesKv[HeroName];
 	// 预览英雄属性与名字
 	$("#HeroNamePanel").FindChildTraverse("PrimaryAttributeImage").SetImage(GetAttributeIcon(HeroKV.AttributePrimary));
 	$("#HeroNamePanel").SetDialogVariable("heroname", $.Localize(HeroName));
@@ -111,7 +111,7 @@ function PreviewHero(HeroName) {
 		}
 	}
 	$("#ContextMenuBody").RemoveClass("ContextMenuBodyShow");
-	Game.EmitSound( GameUI.HeroesKv[PreviewHeroName].HeroSelectSoundEffect );
+	Game.EmitSound( GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].HeroSelectSoundEffect );
 }
 function ShowContextMenu(ID, Type) {
 	let LocalPlayerID = Players.GetLocalPlayer();
@@ -198,7 +198,7 @@ function PickHero() {
 	GameEvents.SendCustomGameEventToServer("hero_seletion", {
 		"HeroName": PreviewHeroName
 	});
-	Game.EmitSound( GameUI.HeroesKv[PreviewHeroName].PickSound );
+	Game.EmitSound( GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].PickSound );
 	$.GetContextPanel().SetHasClass("HeroLocked", true);
 	HeroLock = true;
 }
@@ -234,8 +234,8 @@ function SelectDifficulty(Difficulty) {
 	
 	Update();
 	// 加载英雄卡片
-	for (const key in GameUI.HeroesKv) {
-		const HeroKV = GameUI.HeroesKv[key];
+	for (const key in GameUI.CustomUIConfig().HeroesKv) {
+		const HeroKV = GameUI.CustomUIConfig().HeroesKv[key];
 		if (HeroKV.UnitLabel == "hide") {
 			continue;
 		}
@@ -261,7 +261,7 @@ function SelectDifficulty(Difficulty) {
 		Panel.SetPlayer(PlayerID);
 	}
 	// 默认预览
-	PreviewHero(Object.keys(GameUI.HeroesKv)[0]);
+	PreviewHero(Object.keys(GameUI.CustomUIConfig().HeroesKv)[0]);
 
 	CustomNetTables.SubscribeNetTableListener("common", UpdateCommonNetTable);
 

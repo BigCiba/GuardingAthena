@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -44,13 +44,13 @@
 		{
 			_class = "C_OP_RampScalarLinearSimple"
 			m_nOpEndCapState = 1
-			m_nField = 16
+			m_nField = "16"
 			m_Rate = -6.0
 			m_flEndTime = 9999999.0
 		},
 		{
 			_class = "C_OP_RampScalarLinear"
-			m_nField = 12
+			m_nField = "12"
 			m_RateMax = 2.0
 			m_flEndTime_min = 9999.0
 			m_flEndTime_max = 9999.0
@@ -71,9 +71,6 @@
 			m_fRadiusMax = 4.0
 		},
 		{
-			_class = "C_INIT_RandomYawFlip"
-		},
-		{
 			_class = "C_INIT_RandomRotation"
 			m_flDegreesMax = 30.0
 		},
@@ -88,11 +85,6 @@
 			m_flRadiusMin = 50.0
 		},
 		{
-			_class = "C_INIT_InitialVelocityNoise"
-			m_vecOutputMax = [ 24.0, 24.0, 124.0 ]
-			m_vecOutputMin = [ -24.0, -24.0, 16.0 ]
-		},
-		{
 			_class = "C_INIT_RandomLifeTime"
 			m_fLifetimeMin = 1.0
 			m_fLifetimeMax = 1.2
@@ -101,6 +93,14 @@
 			_class = "C_INIT_RandomColor"
 			m_ColorMin = [ 195, 223, 255, 255 ]
 			m_ColorMax = [ 132, 175, 255, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMax = [ 24.0, 24.0, 124.0 ]
+			m_vecOutputMin = [ -24.0, -24.0, 16.0 ]
 		},
 		{
 			_class = "C_INIT_PositionOffset"
@@ -112,7 +112,11 @@
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 24.0
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 24.0
+			}
 		},
 	]
 	m_Children = 
@@ -125,6 +129,23 @@
 		},
 		{
 			m_ChildRef = resource:"particles/heroes/crystal_maiden/frost_sigil_center_c.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 7
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
 		},
 	]
 }
