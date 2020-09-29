@@ -606,6 +606,21 @@ if IsServer() then
 		hCaster:Heal(flAmount, self)
 		SendOverheadEventMessage(hCaster:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, hCaster, flAmount, hCaster:GetPlayerOwner())
 	end
+	-- 治疗单位并默认显示数字，满血不接受治疗
+	if CDOTA_BaseNPC._Heal == nil then
+		CDOTA_BaseNPC._Heal = CDOTA_BaseNPC.Heal
+	end
+	function CDOTA_BaseNPC:Heal(flAmount, hInflictor, bShowOverhead)
+		local flHealthDeficit = self:GetHealthDeficit()
+		flAmount = math.min(flHealthDeficit, flAmount)
+		if flAmount > 0 then
+			self:_Heal(flAmount, hInflictor)
+			if bShowOverhead == nil then bShowOverhead = true end
+			if bShowOverhead then
+				SendOverheadEventMessage(self:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, self, flAmount, self:GetPlayerOwner())
+			end
+		end
+	end
 	function CDOTA_BaseNPC:GetAbilityNameSpecialValueFor(sAbilityName, sKey)
 		local hAbility = self:FindAbilityByName(sAbilityName)
 		if IsValid(hAbility) then
