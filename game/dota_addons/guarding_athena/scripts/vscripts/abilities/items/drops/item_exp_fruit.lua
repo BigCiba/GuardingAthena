@@ -5,7 +5,9 @@ end
 function item_exp_fruit:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local iLevel = GuardingAthena.clotho_lv
-	hCaster.exp_rate = hCaster.exp_rate + 0.1
+	if hCaster.AddExperienceGainPercent then
+		hCaster:AddExperienceGainPercent(10)
+	end
 	hCaster:ModifyPrimaryAttribute(RandomInt(iLevel, iLevel * 5))
 	self:Destroy()
 end

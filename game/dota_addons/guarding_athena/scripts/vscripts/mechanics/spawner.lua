@@ -72,9 +72,14 @@ function public:SummonRound(iRound, iCount)
 	end
 end
 
----
----监听事件
----
+-- 是否是进攻怪
+function public:IsRoundCreep(hUnit)
+	return hUnit:HasModifier("modifier_round")
+end
+
+--[[
+	监听
+]]--
 function public:OnGameRulesStateChange(t)
 	-- game_event_name	game_rules_state_change
 	-- game_event_listener	1468006405
@@ -88,7 +93,9 @@ function public:OnUnitKilled(t)
 	local hVictim = EntIndexToHScript(t.entindex_killed)
 	local hAttacker = EntIndexToHScript(t.entindex_attacker)
 	
-	ArrayRemove(self.tCreepMissing, hVictim)
+	if Spawner:IsRoundCreep(hVictim) then
+		ArrayRemove(self.tCreepMissing, hVictim)
+	end
 end
 
 -- 测试用
