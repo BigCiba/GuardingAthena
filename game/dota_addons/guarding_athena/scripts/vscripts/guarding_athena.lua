@@ -220,7 +220,7 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 		GameRules:SetGoldPerTick(DIFFICULTY_GOLD_TICK[iDifficulty])
 		GameRules:GetGameModeEntity():SetFixedRespawnTime(DIFFICULTY_RESPAWN_TIME[iDifficulty])
 		GameRules:SetStartingGold(DIFFICULTY_INIT_GOLD[iDifficulty])
-		-- Spawner:Init()
+		Spawner:Init()
 		updateScore(function ()
 		end)
 	end
@@ -240,8 +240,8 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 			return
 		end
 		-- 开始刷怪
-		-- Spawner:AutoSpawn()
-		-- Spawner:NatureStart()
+		Spawner:AutoSpawn()
+		Spawner:NatureStart()
 		-- 定时清除地上物品
 		Timers:CreateTimer(function()
 			local items = Entities:FindAllByClassname("dota_item_drop") 
