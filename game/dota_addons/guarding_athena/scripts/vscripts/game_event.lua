@@ -412,6 +412,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	if keys.player == -1 then
 		return
 	end
+	heroEntity:AddNewModifier(heroEntity, nil, "modifier_hero_attribute", nil)
 	-- 傀儡目标
 	if keys.hero ==	"npc_dota_hero_target_dummy" then
 		return
@@ -888,15 +889,16 @@ end
 function GuardingAthena:OnPlayerLevelUp(keys)
 	local hero = EntIndexToHScript(keys.hero_entindex)
 	local level = keys.level
+
 	-- 额外属性成长
-	if hero.str_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_STRENGTH,hero.str_gain)
+	if hero.GetBonusStrengthGain then
+		hero:ModifyStrength(hero:GetBonusStrengthGain())
 	end
-	if hero.agi_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_AGILITY,hero.agi_gain)
+	if hero.GetBonusAgilityGain then
+		hero:ModifyAgility(hero:GetBonusAgilityGain())
 	end
-	if hero.int_gain then
-		PropertySystem(hero,DOTA_ATTRIBUTE_INTELLECT,hero.int_gain)
+	if hero.GetBonusIntelligenceGain then
+		hero:ModifyIntellect(hero:GetBonusIntelligenceGain())
 	end
 	-- 修正技能点17 19 21-24 26-~不给技能点
 	-- 1-8技能给技能点，之后每3级给一个技能点11,14,17,20,23,26,29,32,...

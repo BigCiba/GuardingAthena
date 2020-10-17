@@ -4,6 +4,7 @@ LinkLuaModifier( "modifier_oracle_1_debuff", "abilities/heroes/oracle/oracle_1.l
 if oracle_1 == nil then
 	oracle_1 = class({})
 end
+-- 处理2技能的减冷却效果
 function oracle_1:GetCooldown(iLevel)
 	local hCaster = self:GetCaster()
 	local flCooldown = self.BaseClass.GetCooldown(self, iLevel)

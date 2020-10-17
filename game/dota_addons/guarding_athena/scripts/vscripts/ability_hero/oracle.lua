@@ -127,7 +127,8 @@ function OnSpellStart(t)
         end
         local point = t.target_points[1]
         local level = ability:GetLevel() - 1
-        \][jk890-\]
+        local increment_intellect_damage = ability:GetLevelSpecialValueFor("intellect_damage", 2) - ability:GetLevelSpecialValueFor("intellect_damage", 1)
+        local increment_base_damage = ability:GetLevelSpecialValueFor("base_damage", 2) - ability:GetLevelSpecialValueFor("base_damage", 1)
         local bonus_level = caster:HasModifier("modifier_oracle_2") and caster:FindAbilityByName("oracle_2"):GetSpecialValueFor("base_level") or 0
         local damage = (ability:GetSpecialValueFor("intellect_damage") + increment_intellect_damage * bonus_level) * caster:GetIntellect() + (ability:GetSpecialValueFor("base_damage") + increment_base_damage * bonus_level)
         local damageType = ability:GetAbilityDamageType()

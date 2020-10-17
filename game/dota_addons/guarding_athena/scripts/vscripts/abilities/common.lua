@@ -906,6 +906,9 @@ if IsServer() then
 		if iDamageFlags == nil then
 			iDamageFlags = DOTA_DAMAGE_FLAG_NONE
 		end
+		if flDamage == nil then
+			flDamage = hAbility:GetSpecialValueFor("base_damage") + hAbility:GetSpecialValueFor("damage") * self:GetPrimaryStatValue()
+		end
 		for i, hUnit in ipairs(tTargets) do
 			local tDamageInfo = {
 				attacker = self,
@@ -920,6 +923,7 @@ if IsServer() then
 	end
 
 	-- 击退
+	---@param bBlock 是否被障碍物阻挡
 	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun, bBlock)
 		-- 官方
 		-- local kv =		{

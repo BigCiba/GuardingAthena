@@ -562,6 +562,16 @@ if IsServer() then
 	function CDOTA_BaseNPC:GetScepterLevel()
 		return (self:HasModifier("modifier_reborn") and self:HasScepter()) and self:GetRebornTimes() or 0
 	end
+
+	function CDOTA_BaseNPC:GetSource()
+		if self:IsSummoned() or self:IsClone() or self:IsIllusion() then
+			return IsValid(self:GetSummoner()) and self:GetSummoner() or self
+		end
+		return self
+	end
+	function CDOTA_BaseNPC:IsRoundCreep()
+		return self:HasModifier("modifier_round")
+	end
 end
 
 Hashtables = Hashtables or {}
