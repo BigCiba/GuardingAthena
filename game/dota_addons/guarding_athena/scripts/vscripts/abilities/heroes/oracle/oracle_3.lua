@@ -4,6 +4,15 @@ LinkLuaModifier( "modifier_oracle_3_root", "abilities/heroes/oracle/oracle_3.lua
 if oracle_3 == nil then
 	oracle_3 = class({})
 end
+-- 处理2技能的减冷却效果
+function oracle_3:GetCooldown(iLevel)
+	local hCaster = self:GetCaster()
+	local flCooldown = self.BaseClass.GetCooldown(self, iLevel)
+	if hCaster:HasModifier("modifier_oracle_2") then
+		return hCaster:GetOracleCooldown(flCooldown)
+	end
+	return flCooldown
+end
 function oracle_3:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
@@ -26,9 +35,19 @@ end
 function oracle_3:OnProjectileHit(hTarget, vLocation)
 	local hCaster = self:GetCaster()
 	if IsValid(hTarget) then
-		hCaster:DealDamage(hTarget, self)
-		if hCaster:GetScepterLevel() >= 2 then
-			hTarget:AddNewModifier(hCaster, self, "modifier_oracle_3_root", {duration = self:GetSpecialValueFor("scepter_root_duration")})
+		if hCaster:GetScepterLevel() >= 3 then
+			local radius = self:GetSpecialValueFor("scepter_root_radius")
+			local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), vLocation, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, FIND_ANY_ORDER, false)
+			for _, hUnit in ipairs(tTargets) do
+				hCaster:DealDamage(hUnit, self)
+				hUnit:AddNewModifier(hCaster, self, "modifier_oracle_3_root", {duration = self:GetSpecialValueFor("scepter_root_duration")})
+				-- local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_oracle/oracle_fortune_aoe.vpcf", PATTACH_CUSTOMORIGIN, nil)
+				-- ParticleManager:SetParticleControl(iParticleID, 0, vLocation)
+				-- ParticleManager:SetParticleControl(iParticleID, 1, Vector(radius, 0, 0))
+				-- ParticleManager:ReleaseParticleIndex(iParticleID)
+			end
+		else
+			hCaster:DealDamage(hTarget, self)
 		end
 	end
 end
@@ -75,7 +94,7 @@ function modifier_oracle_3:GetModifierAvoidDamage(params)
 		if self.bCooldownReady == true then
 			self.bCooldownReady = false
 			self:StartIntervalThink(self.block_duration)
-			-- local iParticleID = ParticleManager:CreateParticle("particles/heroes/oracle/oracle_3_block.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+			local iParticleID = ParticleManager:CreateParticle("particles/heroes/oracle/oracle_3_block.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 			self:DecrementStackCount()
 			if self:GetStackCount() == 0 then
 				self:SetDuration(self.block_duration, true)

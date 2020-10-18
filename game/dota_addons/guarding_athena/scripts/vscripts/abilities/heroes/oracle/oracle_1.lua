@@ -4,6 +4,21 @@ LinkLuaModifier( "modifier_oracle_1_debuff", "abilities/heroes/oracle/oracle_1.l
 if oracle_1 == nil then
 	oracle_1 = class({})
 end
+function oracle_1:Spawn()
+	if IsServer() then
+		local hCaster = self:GetCaster()
+		local scepter_interval = self:GetLevelSpecialValueFor("scepter_interval", 1)
+		hCaster:GameTimer(0, function ()
+			if hCaster:GetScepterLevel() >= 4 and self:IsFullyCastable() then
+				local tTargets = FindUnitsInRadiusWithAbility(hCaster, hCaster:GetAbsOrigin(), self:GetCastRange(vec3_invalid, nil), self)
+				local hTarget = tTargets[1]
+				local vPosition = IsValid(hTarget) and hTarget:GetAbsOrigin() or hCaster:GetAbsOrigin() + RandomVector(RandomInt(0,self:GetCastRange(vec3_invalid, nil)))
+				self:PurifyingFlames(vPosition)
+			end
+			return scepter_interval
+		end)
+	end
+end
 -- 处理2技能的减冷却效果
 function oracle_1:GetCooldown(iLevel)
 	local hCaster = self:GetCaster()
@@ -16,23 +31,29 @@ end
 function oracle_1:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
-function oracle_1:OnSpellStart()
+function oracle_1:PurifyingFlames(vPosition)
 	local hCaster = self:GetCaster()
-	local vPosition = self:GetCursorPosition()
+	local radius = self:GetSpecialValueFor("radius")
 	local flDuration = self:GetSpecialValueFor("duration")
-	local flDamage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("damage") * hCaster:GetIntellect()
-	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, self:GetSpecialValueFor("radius"), self)
+	local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), vPosition, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, FIND_ANY_ORDER, false)
 	for _, hUnit in pairs(tTargets) do
-		hCaster:DealDamage(hUnit, self, flDamage)
+		hCaster:DealDamage(hUnit, self)
 		hUnit:AddNewModifier(hCaster, self, "modifier_oracle_1_debuff", {duration = flDuration})
 	end
-	-- 回血
-	hCaster:AddNewModifier(hCaster, self, "modifier_oracle_1_buff", {duration = flDuration})
 	-- particle
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
 	ParticleManager:SetParticleControl(iParticleID, 1, vPosition)
 	ParticleManager:ReleaseParticleIndex(iParticleID)
+end
+function oracle_1:OnSpellStart()
+	local hCaster = self:GetCaster()
+	local vPosition = self:GetCursorPosition()
+	local flDuration = self:GetSpecialValueFor("duration")
+
+	self:PurifyingFlames(vPosition)
+	-- 回血
+	hCaster:AddNewModifier(hCaster, self, "modifier_oracle_1_buff", {duration = flDuration})
 	-- sound
 	hCaster:EmitSound("Hero_Oracle.PurifyingFlames.Damage")
 end
@@ -63,7 +84,7 @@ function modifier_oracle_1_buff:OnIntervalThink()
 end
 ---------------------------------------------------------------------
 if modifier_oracle_1_debuff == nil then
-	modifier_oracle_1_debuff = class({}, nil, ModifierPositiveBuff)
+	modifier_oracle_1_debuff = class({}, nil, ModifierDebuff)
 end
 function modifier_oracle_1_debuff:OnCreated(params)
 	self.damage_dot = self:GetAbilitySpecialValueFor("damage_dot")

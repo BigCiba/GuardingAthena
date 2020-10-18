@@ -660,3 +660,12 @@ function CalculateDirection(ent1, ent2)
 	direction.z = 0
 	return direction:Normalized()
 end
+-- 间隔循环
+function ForInterval(flInterval, funcCallback)
+	GameRules:GetGameModeEntity():GameTimer(0, function ()
+		if funcCallback() == true then
+			return
+		end
+		return flInterval
+	end)
+end
