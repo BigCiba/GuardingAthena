@@ -1,0 +1,22 @@
+{
+	"include": [
+		"src"
+	],
+	"compilerOptions": {
+		"target": "es2017",
+		"lib": [
+			"es2017"
+		],
+		"types": [
+			"panorama-types",
+			"react",
+			"react-panorama"
+		],
+		"moduleResolution": "node",
+		"strict": true,
+		"preserveSymlinks": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"allowJs": true
+	}
+}
