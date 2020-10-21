@@ -1,0 +1,256 @@
+#Contents.unitStatsRoot {
+	background-color: black;
+	flow-children: down;
+	padding: 0px;
+	border: 0px;
+}
+
+#AttackDefenseContainer {
+	width: 540px;
+	height: 200px;
+	flow-children: right;
+}
+
+#AttackContainer {
+	width: 50%;
+	height: 100%;
+	border-top: 4px solid black;
+	border-right: 3px solid black;
+	border-bottom: 5px solid black;
+	border-left: 6px solid black;
+	padding: 8px;
+	background-color: gradient(linear, 0% 100%, 0% 0%, from(#1b1b1b), to(#000));
+}
+
+#DefenseContainer {
+	width: 50%;
+	height: 100%;
+	border-top: 4px solid black;
+	border-right: 6px solid black;
+	border-bottom: 5px solid black;
+	border-left: 3px solid black;
+	padding: 8px;
+	background-color: gradient(linear, 0% 100%, 0% 0%, from(#1b1b1b), to(#000));
+}
+
+
+.ContainerHeader {
+	font-size: 20px;
+	horizontal-align: center;
+	color: white;
+	letter-spacing: 2px;
+	font-weight: bold;
+	color: #656565;
+	margin-bottom: 5px;
+}
+
+.StatRow {
+	height: 20px;
+}
+
+.StatName {
+	font-weight: normal;
+	horizontal-align: left;
+	font-size: 16px;
+	margin-left: 8px;
+	color: #a2a2a2;
+}
+
+.BaseValue {
+	color: white;
+	text-align: left;
+	margin-left: 140px;
+	font-size: 16px;
+	text-overflow: shrink;
+}
+
+.AdditionalValue {
+	width: fill-parent-flow(1);
+	margin-left: 0px;
+	text-overflow: shrink;
+}
+
+.BonusValue {
+	color: #3ed038;
+	font-size: 16px;
+	text-overflow: shrink;
+}
+
+.NegativeValue .BonusValue {
+	color: red;
+}
+
+.NoBonus .BonusValue {
+	visibility: collapse;
+}
+
+#PhysicalDamagePercent {
+	color: #ae2f28;
+}
+
+#MagicalDamagePercent {
+	color: #5b93d1;
+}
+
+#PureDamagePercent {
+	color: #d8ae53;
+}
+
+
+#AttributesContainer {
+	height: 240px;
+	width: 100%;
+	visibility: collapse;
+}
+
+.Hero #AttributesContainer {
+	visibility: visible;
+}
+
+.AttributeRow {
+	height: fill-parent-flow(32.0);
+	width: 100%;
+	padding: 5px;
+}
+
+
+.AttributeRow.PrimaryAttribute {
+	height: fill-parent-flow(36.0);
+}
+
+#StrengthContainer.AttributeRow.PrimaryAttribute {
+	background-color: gradient(linear, 100% 0%, 0% 0%, from(#000), to(#380f01));
+	margin-left: 6px;
+}
+
+#AgilityContainer.AttributeRow.PrimaryAttribute {
+	background-color: gradient(linear, 100% 0%, 0% 0%, from(#000), to(#09360b));
+	margin-left: 6px;
+}
+
+#IntellectContainer.AttributeRow.PrimaryAttribute {
+	background-color: gradient(linear, 100% 0%, 0% 0%, from(#000), to(#003237));
+	margin-left: 6px;
+	margin-bottom: 6px;
+}
+
+.AttributeIcon {
+	width: 32px;
+	height: 32px;
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left: 8px;
+	background-size: 100%;
+	margin-top: 2px;
+}
+
+#StrengthIcon {
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+}
+
+#AgilityIcon {
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+}
+
+.ColorBlindModeEnabled #AgilityIcon {
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_colorblind_psd.vtex");
+}
+
+#IntellectIcon {
+	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+}
+
+.AttributeDetails {
+	width: 100%;
+	padding-top: 8px;
+	margin-left: 8px;
+}
+
+.BaseAttributeValue {
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+
+}
+
+.BonusAttributeValue {
+	color: #3ed038;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.NegativeValue .BonusAttributeValue {
+	color: #ec3d06;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.NoBonus .BonusAttributeValue {
+	visibility: collapse;
+}
+
+.AttributeGain {
+	font-size: 16px;
+	margin-top: 2px;
+	margin-left: 5px;
+}
+
+.PrimaryAttributeBonus {
+	color: #ec3d06;
+	visibility: collapse;
+	font-size: 16px;
+}
+
+
+#AgilityContainer .PrimaryAttributeBonus {
+	color: #3ed038;
+}
+
+#IntellectContainer .PrimaryAttributeBonus {
+	color: #00d9ec;
+}
+
+
+.PrimaryAttribute .PrimaryAttributeBonus {
+	visibility: visible;
+}
+
+.StatBreakdownLabel {
+	font-size: 16px;
+}
+
+.ShowBonusDamage #DamageBonus,
+.ShowBonusAttackSpeed #AttackSpeedBonus,
+.ShowBonusAttackRange #RangeBonus,
+.ShowBonusSpellAmp #SpellAmpBonus,
+.ShowBonusManaRegen #ManaRegenBonus,
+.ShowBonusHealthRegen #HealthRegenBonus,
+.ShowBonusArmor #ArmorBonus,
+.ShowBonusPhysicalResistance #PhysicalResistBonus,
+.ShowBonusMagicResistance #MagicResistBonus {
+	visibility: visible;
+}
+
+#BottomArrow {
+	wash-color: black;
+}
+
+
+#AbilityDraftHeroStatsTooltip #AttackSpeedRow {
+	flow-children: right;
+}
+
+.ShowBonusArmor #ArmorBonus,
+.ShowBonusPhysicalResistance #PhysicalResistBonus,
+.ShowBonusMagicResistance #MagicResistBonus {
+	visibility: visible;
+}
+
+#BottomArrow {
+	wash-color: black;
+}
+
+
+#AbilityDraftHeroStatsTooltip #AttackSpeedRow {
+	flow-children: right;
+}

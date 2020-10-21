@@ -1,7 +1,7 @@
 {
 	"scripts": {
-		"build": "node --preserve-symlinks node_modules/webpack/bin/webpack.js --config content/dota_addons/tui5/panorama/webpack.config.js",
-		"dev": "node --preserve-symlinks node_modules/webpack/bin/webpack.js --config content/dota_addons/tui5/panorama/webpack.config.js --watch"
+		"build": "node --preserve-symlinks node_modules/webpack/bin/webpack.js --config content/dota_addons/guarding_athena/panorama/webpack.config.js",
+		"dev": "node --preserve-symlinks node_modules/webpack/bin/webpack.js --config content/dota_addons/guarding_athena/panorama/webpack.config.js --watch"
 	},
 	"dependencies": {},
 	"devDependencies": {

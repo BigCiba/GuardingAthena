@@ -1,0 +1,19 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
+		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
+
+		<include src="./styles.less" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
+		<include src="file://{resources}/scripts/custom_game/common.js" />
+
+		<include src="./script.jsx" />
+	</scripts>
+
+	<Panel class="uiParticlesRoot" hittest="false">
+	</Panel>
+</root>

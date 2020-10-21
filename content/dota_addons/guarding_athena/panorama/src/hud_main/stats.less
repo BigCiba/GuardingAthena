@@ -1,0 +1,237 @@
+#Stats {
+	height: 100px;
+
+	opacity: 0;
+
+	flow-children: down;
+}
+
+.ShowDamageArmorMovement #Stats {
+	opacity: 1;
+}
+
+.StatRegionLabel.StatPositive {
+	color: #45DD3B;
+}
+
+.ColorBlindModeEnabled .StatRegionLabel.StatPositive {
+	color: #45CBFF;
+}
+
+.AnimatingUp .StatRegionLabel.StatPositive {
+	color: #A5FF9B;
+}
+
+.StatRegionLabel.StatNegative {
+	color: #FF3300;
+}
+
+//----------------------------------------------------------------------
+
+.StatIconLabel {
+	height: fill-parent-flow(1.0);
+	flow-children: right;
+
+	margin-bottom: 2px;
+
+	transition-property: width;
+	transition-duration: 0.22s;
+	transition-timing-function: ease-in-out;
+}
+
+.StatIcon {
+	width: 14px;
+	height: 14px;
+	margin-top: 4px;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#DamageIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex");
+}
+
+#SpellAmplifyIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/icon_attack_speed3_psd.vtex");
+}
+
+#PhysicalArmorIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex");
+}
+
+#MagicalArmorIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/icon_magic_resist_psd.vtex");
+}
+
+#MagicResistanceIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/icon_magic_resist_psd.vtex");
+}
+
+#MoveSpeedIcon {
+	height: 16px;
+	background-image: url("s2r://panorama/images/hud/reborn/icon_speed_psd.vtex");
+	margin-top: 2px;
+}
+
+.StatRegionLabel {
+	font-size: 14px;
+	font-weight: medium;
+	letter-spacing: 0px;
+	color: #ccc;
+	text-align: left;
+	horizontal-align: right;
+	margin-top: 3px;
+	text-shadow: 0px 0px 4px 4 #00000088;
+
+	font-family: RadianceM;
+
+	transition-property: transform, opacity, width, pre-transform-scale2d;
+	transition-duration: 0.12s;
+	transition-timing-function: ease-in-out;
+
+	color: #ccc;
+}
+
+.StatModifier {
+	width: 0px;
+	opacity: 0;
+	transition-duration: 0.12s;
+	font-weight: normal;
+	pre-transform-scale2d: 1;
+}
+
+.AnimatingUp.StatModifier {
+	pre-transform-scale2d: 1.25;
+	text-shadow: 0px 0px 2px 3 #33993366;
+}
+
+.AnimatingUp.StatModifier.StatNegative {
+	text-shadow: 0px 0px 2px 3 #99333366;
+}
+
+.BaseLabel {
+	opacity: 0;
+	width: 0px;
+}
+
+.ShowSplitLabels .StatModifier {
+	width: fit-children;
+	text-align: left;
+	margin-left: 2px;
+	opacity: 1;
+}
+
+.ShowSplitLabels .BaseLabel {
+	width: fit-children;
+	text-align: right;
+	opacity: 1;
+}
+
+.ShowSplitLabels .CombinedLabel {
+	opacity: 0;
+	width: 0px;
+}
+
+#PhysicalDamageResist,
+#MagicalDamageResist {
+	visibility: collapse;
+}
+
+.AltPressed #PhysicalDamageResist,
+.AltPressed #MagicalDamageResist {
+	visibility: visible;
+}
+
+.AltPressed #PhysicalArmorLabel,
+.AltPressed #PhysicalArmorBaseLabel,
+.AltPressed #PhysicalArmorModifierLabel,
+.AltPressed #MagicalArmorLabel,
+.AltPressed #MagicalArmorBaseLabel,
+.AltPressed #MagicalArmorModifierLabel {
+	visibility: collapse;
+}
+
+//----------------------------------------------------------------------
+
+#Attribute {
+	height: 80px;
+
+	opacity: 0;
+
+	flow-children: down;
+}
+
+.ShowStrAgiInt #Attribute {
+	opacity: 1;
+}
+
+.AttrIconContainer {
+	width: fit-children;
+	height: fill-parent-flow(1.0);
+	vertical-align: center;
+	flow-children: right;
+}
+
+.HighlightStatIcon {
+	width: 14px;
+	height: 14px;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	visibility: collapse;
+	vertical-align: center;
+}
+
+.StatLabel {
+	vertical-align: center;
+	margin-top: 3px;
+
+	font-size: 14px;
+	color: #ccc;
+	text-align: left;
+	font-weight: medium;
+	letter-spacing: 0px;
+	text-shadow: 0px 0px 4px 4 #00000088;
+	font-family: RadianceM;
+}
+
+#Attribute > .StatModifier {
+	vertical-align: center;
+	margin-top: 3px;
+	margin-left: 1px;
+	font-size: 14px;
+	font-weight: medium;
+	letter-spacing: 0px;
+	text-shadow: 1px 1px 2px 3 #00000066;
+	font-family: RadianceM;
+	text-align: left;
+	pre-transform-scale2d: 1;
+	transition-property: transform, opacity, width, pre-transform-scale2d;
+	transition-duration: 0.12s;
+	transition-timing-function: ease-in-out;
+}
+
+#Attribute > .StatIcon {
+	vertical-align: center;
+}
+
+#StrengthIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/mini_strength_icon_psd.vtex");
+}
+#ConstitutionIcon {
+	background-image: url("file://{images}/attribute/mini_constitution.png");
+
+	opacity: 0.5;
+}
+#AgilityIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/mini_agi_icon_psd.vtex");
+}
+#IntellectIcon {
+	background-image: url("s2r://panorama/images/hud/reborn/mini_int_icon_psd.vtex");
+}
+#SpiritIcon {
+	background-image: url("file://{images}/attribute/mini_spirit.png");
+
+	opacity: 0.5;
+}

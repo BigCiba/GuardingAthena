@@ -1,0 +1,109 @@
+const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { PanoramaManifestPlugin, PanoramaTargetPlugin } = require('webpack-panorama');
+
+/** @type {import('webpack').Configuration} */
+module.exports = {
+	mode: 'development', // production, development
+	context: path.resolve(__dirname, 'src'),
+	output: {
+		path: path.resolve(__dirname, 'layout/custom_game'),
+		publicPath: 'file://{resources}/layout/custom_game/',
+	},
+
+	module: {
+		rules: [
+			{
+				test: /\.xml$/,
+				loader: 'webpack-panorama/lib/layout-loader',
+			},
+			{
+				test: /\.[jt]sx$/,
+				issuer: /\.xml$/,
+				loader: 'webpack-panorama/lib/entry-loader',
+			},
+			{
+				test: /\.tsx?$/,
+				loader: 'ts-loader',
+				options: { transpileOnly: true },
+			},
+			{
+				test: /\.js?$|\.jsx?$/,
+				loader: 'babel-loader',
+				options: { presets: ['@babel/preset-react', '@babel/preset-env'] },
+			},
+			{
+				test: /\.css$/,
+				test: /\.(css|less)$/,
+				issuer: /\.xml$/,
+				loader: 'file-loader',
+				options: { name: '[path][name].css', esModule: false },
+			},
+			{
+				test: /\.less$/,
+				loader: 'less-loader',
+				options: {
+					lessOptions: {
+						relativeUrls: false,
+					}
+				}
+			},
+		],
+	},
+
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '...'],
+		symlinks: false,
+	},
+
+	plugins: [
+		new PanoramaTargetPlugin(),
+		new PanoramaManifestPlugin({
+			minify: {
+				caseSensitive: true,
+				keepClosingSlash: true,
+			},
+			entries: ((() => {
+				let list = [
+					{
+						import: './manifest.jsx',
+						filename: 'manifest/manifest.js'
+					},
+					{
+						import: './custom_loading_screen/layout.xml', filename: 'custom_loading_screen.xml',
+					},
+					{
+						import: './compile.xml', filename: 'compile.xml',
+					},
+					{ import: './hud_main/layout.xml', type: 'Hud' },
+					// { import: './hud_demo/layout.xml', type: 'Hud' },
+					// { import: './build/layout.xml', type: 'Hud' },
+					{ import: './ui_particles/layout.xml', type: 'Hud' },
+					// { import: './overhead/layout.xml', type: 'Hud' },
+					// { import: './ability_upgrades_selection/layout.xml', type: 'Hud' },
+				]
+				let tooltips = ['tooltip_ability', 'unit_stats'];
+				// let contextMenus = ['context_menu_inventory_item'];
+
+				tooltips.forEach(tooltipName => {
+					list.push({
+						import: './tooltips/' + tooltipName + '/layout.xml',
+						filename: 'tooltips/' + tooltipName + '/' + tooltipName + '.xml',
+					})
+				});
+				// contextMenus.forEach(contextMenuName => {
+				// 	list.push({
+				// 		import: './context_menu/' + contextMenuName + '/layout.xml',
+				// 		filename: 'context_menu/' + contextMenuName + '/' + contextMenuName + '.xml',
+				// 	})
+				// });
+				return list;
+			})()),
+		}),
+		new ForkTsCheckerWebpackPlugin({
+			typescript: {
+				configFile: path.resolve(__dirname, "tsconfig.json"),
+			},
+		}),
+	],
+};
