@@ -1,0 +1,8 @@
+<root>
+  <scripts><% for (const file of htmlWebpackPlugin.files.js) { %>
+    <include src="<%= file %>" /><% } %>
+  </scripts>
+  <Panel><% for (const { type, file } of htmlWebpackPlugin.files.xml ?? []) { %>
+    <CustomUIElement type="<%= type %>" layoutfile="<%= file %>" /><% } %>
+  </Panel>
+</root>
