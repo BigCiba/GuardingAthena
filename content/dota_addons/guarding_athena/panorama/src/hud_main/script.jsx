@@ -585,7 +585,8 @@ render(<AbilityUpgradesContainer />, $("#left_block"));
 
 				pXPCustom.SetHasClass("AltPressed", GameUI.IsAltDown());
 
-				let tBuildingData = CustomNetTables.GetTableValue("buildings", iLocalPortraitUnit.toString());
+				// let tBuildingData = CustomNetTables.GetTableValue("buildings", iLocalPortraitUnit.toString());
+				let tBuildingData = undefined;
 				let iLevel = 0;
 				let fXPPercent = 0;
 				let iNeedXP = 0;

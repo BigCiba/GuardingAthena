@@ -103,5 +103,25 @@
 	{
 		"good_id"					"string"
 	}
+	"custom_get_ability_cooldown"
+	{
+		"ability_ent_index"			"short"
+		"level"						"short"
+	}
+	"custom_get_ability_mana_cost"
+	{
+		"ability_ent_index"			"short"
+		"level"						"short"
+	}
+	"custom_get_ability_gold_cost"
+	{
+		"ability_ent_index"			"short"
+		"level"						"short"
+	}
+	"custom_ui_toggle_windows"
+	{
+		"last_window_name"			"string"
+		"window_name"				"string"
+	}
 }
 

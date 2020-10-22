@@ -870,6 +870,9 @@ function GuardingAthena:OnPlayerChat(keys)
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero:SetOriginalModel("models/props_structures/tower_bad_sfm.vmdl")
 	end
+	if text == "servercheck" then
+		CustomGameEventManager:Send_ServerToAllClients("server_checked", { server_checked = true })
+	end
 	if text == "numtest" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		-- MSG_BLOCK,MSG_ORIT,MSG_DAMAGE,MSG_EVADE,MSG_GOLD,MSG_HEAL,MSG_MANA_ADD,MSG_MANA_LOSS,MSG_MISS,MSG_POISION,MSG_SPELL,MSG_XP

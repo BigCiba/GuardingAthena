@@ -1,0 +1,358 @@
+.full {
+  width: 100%;
+  height: 100%;
+}
+.flow-down {
+  flow-children: down;
+}
+.HeroSelectionRoot {
+  width: 100%;
+  height: 100%;
+  background-color: #3B4553;
+}
+#BackGroundImage {
+  width: 100%;
+  height: 100%;
+}
+.HeroSelectionBackgroundScene {
+  blur: gaussian(2, 2, 1);
+  width: 50%;
+  height: 51%;
+  pre-transform-scale2d: 2;
+  vertical-align: middle;
+  horizontal-align: center;
+  background-color: #3B4553;
+  transform: none;
+  transition-property: transform, blur, opacity;
+  transition-duration: 0.45s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in;
+}
+#Waiting {
+  width: 100%;
+  height: 100%;
+  background-color: #3B4553;
+  z-index: 100;
+}
+#Waiting #WaitingContent {
+  align: center center;
+  flow-children: down;
+}
+#Waiting #WaitingContent #WaitingSpinner {
+  horizontal-align: center;
+  width: 128px;
+  height: 128px;
+  background-image: url("s2r://panorama/images/status_icons/loadingthrobber_round_psd.vtex");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+  animation-name: SpinnerRotate;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes 'SpinnerRotate' {
+  0% {
+    transform: rotateZ(360deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+#Waiting #WaitingContent #WaitingText {
+  horizontal-align: center;
+  margin-top: 10px;
+  font-size: 32px;
+  color: #ffffff;
+}
+.ServerNoChecked {
+  visibility: visible;
+}
+.ServerChecked {
+  visibility: collapse;
+}
+.MainSelectionPage {
+  width: 100%;
+  height: 100%;
+  flow-children: right;
+}
+.SideBar {
+  flow-children: down;
+  width: 25%;
+  height: 100%;
+  /* background-color: #222A35; */
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+  box-shadow: #161b22 -10px -10px 20px 20px;
+}
+.SideBar .PlayerList {
+  flow-children: down;
+  width: 100%;
+  height: 50%;
+  padding-top: 5%;
+  border-bottom: 2px solid #00000088;
+}
+.SideBar .PlayerList .PlayerContainer {
+  width: 100%;
+  height: 100px;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground {
+  align: center center;
+  flow-children: right;
+  width: 80%;
+  height: 72px;
+  border-radius: 5px;
+  background-color: #0E141Aaa;
+  background-image: url("s2r://panorama/images/textures/miniprofile_rock_psd.vtex");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100% 256px;
+  border-top: 1px solid #3b404777;
+  border-right: 1px solid #00000088;
+  border-left: 1px solid #4c434677;
+  border-bottom: 1px solid #00000088;
+  box-shadow: fill #00000055 -2px -2px 6px 6px;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .AvatarAndHeroContainer {
+  width: 72px;
+  height: 72px;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .AvatarAndHeroContainer .AvatarAndHero {
+  align: center center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid transparent;
+  margin: 4px;
+  vertical-align: center;
+  box-shadow: #000000aa 0px 0px 5px 0px;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .AvatarAndHeroContainer .Hidden {
+  visibility: collapse;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .UserInfoContainer {
+  vertical-align: center;
+  flow-children: down;
+  height: 56px;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .UserInfoContainer .UserName {
+  height: 50%;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .UserInfoContainer .UserName Label {
+  vertical-align: center;
+  font-weight: thin;
+  font-size: 24px;
+  color: white;
+  white-space: nowrap;
+  height: fit-children;
+  font-family: defaultFont;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .UserInfoContainer .SelectDiffBG {
+  height: 50%;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerBackground .UserInfoContainer .SelectDiffBG Label {
+  font-weight: bold;
+  vertical-align: center;
+  font-size: 18px;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerLevelContent {
+  horizontal-align: right;
+  margin-right: 5%;
+  height: 100%;
+  width: height-percentage(100%);
+}
+.SideBar .PlayerList .PlayerContainer .PlayerLevelContent Image {
+  width: 100%;
+  height: 100%;
+}
+.SideBar .PlayerList .PlayerContainer .PlayerLevelContent Image Label {
+  color: white;
+  align: center center;
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  width: 100%;
+  text-shadow: 1px 1px 2px 1 #000000;
+  margin-top: 66px;
+  font-family: defaultFont;
+}
+.SideBar .DiffList {
+  flow-children: down;
+  padding-top: 10%;
+  width: 100%;
+  height: 50%;
+}
+.SideBar .DiffList .DiffButton {
+  width: 80%;
+  height: 64px;
+  horizontal-align: center;
+  margin-bottom: 20px;
+  /* border-radius: 5px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+}
+.SideBar .DiffList .DiffButton:hover {
+  brightness: 2;
+}
+.SideBar .DiffList .DiffButton:active {
+  brightness: 1.5;
+  sound: "ui_generic_button_click";
+}
+.SideBar .DiffList .DiffButton Label {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 30px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  font-weight: bold;
+  text-shadow: 2px 2px 3px 3 #000000;
+}
+.SideBar .DiffList .DiffButton .DiffIcon {
+  width: 64px;
+  height: 64px;
+  horizontal-align: left;
+}
+.SideBar .DiffList .Easy {
+  border-bottom: 1px solid #00000060;
+  border-right: 1px solid #00000060;
+  border-top: 1px solid #ffffff06;
+  border-left: 1px solid #ffffff06;
+  wash-color: #aee2ff33;
+}
+.SideBar .DiffList .Easy:selected {
+  wash-color: #aee2ff;
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ff5757), to(#c43030));
+}
+.SideBar .DiffList .Common {
+  border-bottom: 1px solid #ffffff06;
+  border-right: 1px solid #ffffff06;
+  border-top: 1px solid #33333360;
+  border-left: 1px solid #33333360;
+  wash-color: #d5ff9a33;
+}
+.SideBar .DiffList .Common:selected {
+  wash-color: #d5ff9a;
+}
+.SideBar .DiffList .Hard {
+  border-bottom: 1px solid #ffffff06;
+  border-right: 1px solid #ffffff06;
+  border-top: 1px solid #33333360;
+  border-left: 1px solid #33333360;
+  wash-color: #ffcf4d33;
+}
+.SideBar .DiffList .Hard:selected {
+  wash-color: #ffcf4d;
+}
+.SideBar .DiffList .Nightmare {
+  border-bottom: 1px solid #ffffff06;
+  border-right: 1px solid #ffffff06;
+  border-top: 1px solid #33333360;
+  border-left: 1px solid #33333360;
+  wash-color: #b29aff33;
+}
+.SideBar .DiffList .Nightmare:selected {
+  wash-color: #b29aff;
+}
+.SideBar .DiffList .Hell {
+  border-bottom: 1px solid #ffffff06;
+  border-right: 1px solid #ffffff06;
+  border-top: 1px solid #33333360;
+  border-left: 1px solid #33333360;
+  wash-color: #ff9a9a33;
+}
+.SideBar .DiffList .Hell:selected {
+  wash-color: #ff9a9a;
+}
+.SideBar .DiffList .Easy:selected Label {
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #70dfff), to(#7bb7ff));
+}
+.SideBar .DiffList .Normal:selected Label {
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #c2ff57), to(#79e900));
+}
+.SideBar .DiffList .Hard:selected Label {
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ffef8a), to(#ffbb0f));
+}
+.SideBar .DiffList .Nightmare:selected Label {
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #8f57ff), to(#612fc4));
+}
+.SideBar .DiffList .Hell:selected Label {
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ff5757), to(#c43030));
+}
+.MainPage {
+  width: 75%;
+  height: 100%;
+}
+.MainPage .TimerContent {
+  horizontal-align: center;
+  vertical-align: top;
+  /* background-color: #222A35; */
+  width: 200px;
+  height: 100px;
+  /* box-shadow: #222A35 -10px -10px 20px 20px; */
+  /* clip: radial( 50% 100%, -27deg, 54deg ); */
+  background-image: url("file://{images}/custom_game/triangle.png");
+  background-repeat: no-repeat;
+  background-size: 99%;
+}
+.MainPage .TimerContent Label {
+  horizontal-align: center;
+  vertical-align: center;
+  margin-bottom: 30px;
+  font-size: 48px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+}
+.MainPage .HeroListAndChat {
+  width: 65%;
+  height: 100%;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-bottom: 3%;
+}
+.MainPage .HeroListAndChat .HeroList {
+  width: 100%;
+  height: 60%;
+  margin-bottom: 25%;
+  padding: 2%;
+  vertical-align: bottom;
+  flow-children: right-wrap;
+  box-shadow: #00000055 -2px -2px 1px 4px;
+  background-color: dotaPlusBgGradient;
+  border-top: 2px solid dotaPlusGold;
+  overflow: squish scroll;
+}
+.MainPage .HeroListAndChat .HeroList VerticalScrollBar .ScrollThumb,
+.MainPage .HeroListAndChat .HeroList HTMLVerticalScrollBar .ScrollThumb {
+  visibility: visible;
+  background-color: #bae3f1;
+  border-right: 0px;
+  border-radius: 20px;
+}
+.MainPage .HeroListAndChat .HeroList .HeroCard {
+  /* margin-left: 2%;
+				margin-top: 20px; */
+  saturation: 0.3;
+  width: 15%;
+  margin: 0.7%;
+  /* 3:4 */
+  height: width-percentage(133.3%);
+  border-radius: 4px;
+  /* border: 1px solid #87CEEBff; */
+  box-shadow: fill #191e25 6px 6px 18px 0px;
+  transition-property: brightness, pre-transform-scale2d;
+  transition-duration: 0.1s;
+}
+.MainPage .HeroListAndChat .HeroList .HeroCard:hover {
+  brightness: 1.4;
+  pre-transform-scale2d: 1.05;
+  box-shadow: fill #000000aa -2px -2px 8px 9px;
+}
+.MainPage .HeroListAndChat .HeroList .AspectRatio4x3 .HeroCard {
+  width: 15%;
+  margin: 0.68%;
+}

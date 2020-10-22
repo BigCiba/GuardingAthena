@@ -244,7 +244,6 @@ function public:RequestPlayerData(iPlayerID)
 				self.tPlayerServiceData[iPlayerID].Shard = hBody.player_data.Shard
 				self.tPlayerServiceData[iPlayerID].Price = hBody.player_data.Price
 				self.tPlayerServiceData[iPlayerID].Hero = ""
-				
 				self:UpdateNetTables()
 			end
 		end

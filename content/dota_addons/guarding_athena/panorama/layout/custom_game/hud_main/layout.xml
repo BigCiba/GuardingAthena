@@ -5,12 +5,15 @@
 		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
 		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
 		<include src="s2r://panorama/styles/hud/dota_hud_xp.vcss_c"></include>
+		<include src="s2r://panorama/styles/plus/plus_page_header.vcss_c"></include>
+		<include src="s2r://panorama/styles/plus/dashboard_page_plus_achievements.vcss_c"></include>
 
 		<include src="file://{resources}/layout/custom_game/hud_main/styles.css"></include>
 	</styles>
 	<scripts>
 		<include src="s2r://panorama/scripts/sequence_actions.vjs_c"></include>
 		<include src="file://{resources}/scripts/custom_game/common.js"></include>
+		
 
 		<include src="file://{resources}/layout/custom_game/hud_main/script.js"></include>
 	</scripts>

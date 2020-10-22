@@ -81,6 +81,7 @@ module.exports = {
 					{ import: './ui_particles/layout.xml', type: 'Hud' },
 					// { import: './overhead/layout.xml', type: 'Hud' },
 					// { import: './ability_upgrades_selection/layout.xml', type: 'Hud' },
+					{ import: './hero_selection/layout.xml', type: 'HeroSelection' },
 				]
 				let tooltips = ['tooltip_ability', 'unit_stats'];
 				// let contextMenus = ['context_menu_inventory_item'];
