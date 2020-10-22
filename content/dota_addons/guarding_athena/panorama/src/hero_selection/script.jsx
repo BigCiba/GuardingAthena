@@ -77,10 +77,21 @@ function DiffButton({ index, diff, selected }) {
 		</GenericPanel>
 	)
 }
-function HeroCard({ heroname }) {
+function HeroCard({ heroname, lock }) {
+	const [lockState, setLockState] = useState("LockImage");
+	// const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID];
+	// useEffect(() => {
+	// 	for (const key in PlayerData["hero"]) {
+	// 		const HeroInfo = PlayerData["hero"][key];
+	// 		const HeroName = "npc_dota_hero_" + HeroInfo.ItemName;
+	// 		if (HeroName == heroname) {
+	// 			setLockState("UnLockImage");
+	// 		}
+	// 	}
+	// }, [])
 	return (
 		<DOTAHeroMovie className="HeroCard Unlock" >
-			<Image className="full" src="file://{images}/custom_game/lock.png" heroname={heroname} />
+			<Image className={lockState} src="file://{images}/custom_game/lock.png" heroname={heroname} />
 		</DOTAHeroMovie>
 	)
 }
@@ -124,21 +135,7 @@ function HeroSelection() {
 					</Panel>
 					<Panel className="HeroListAndChat">
 						<Panel className="HeroList">
-							{(() => {
-								let HeroList = []
-								for (const key in GameUI.CustomUIConfig().HeroesKv) {
-									const HeroKV = GameUI.CustomUIConfig().HeroesKv[key];
-									if (HeroKV.UnitLabel == "hide") {
-										continue;
-									}
-									let HeroName = HeroKV.override_hero;
-								}
-								return [
-									<Panel key="1"/>,
-									<Panel key="2"/>,
-								]
-							})()
-							}
+							<HeroCard key="3" heroname="npc_dota_hero_axe" lock={true}/>
 						</Panel>
 						<GenericPanel type="DOTAChat" id="Chat" class="PreGameChat" chatstyle="hudpregame" oncancel="SetInputFocus( HeroGrid )" />
 					</Panel>

@@ -153,26 +153,43 @@ function DiffButton(_ref2) {
 }
 
 function HeroCard(_ref3) {
-  var heroname = _ref3.heroname;
+  var heroname = _ref3.heroname,
+      lock = _ref3.lock;
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("LockImage"),
+      _useState12 = _slicedToArray(_useState11, 2),
+      lockState = _useState12[0],
+      setLockState = _useState12[1]; // const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID];
+  // useEffect(() => {
+  // 	for (const key in PlayerData["hero"]) {
+  // 		const HeroInfo = PlayerData["hero"][key];
+  // 		const HeroName = "npc_dota_hero_" + HeroInfo.ItemName;
+  // 		if (HeroName == heroname) {
+  // 			setLockState("UnLockImage");
+  // 		}
+  // 	}
+  // }, [])
+
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAHeroMovie, {
     className: "HeroCard Unlock"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    className: "full",
+    className: lockState,
     src: "file://{images}/custom_game/lock.png",
     heroname: heroname
   }));
 }
 
 function HeroSelection() {
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState12 = _slicedToArray(_useState11, 2),
-      serverChecked = _useState12[0],
-      setServerChecked = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState14 = _slicedToArray(_useState13, 2),
-      countdown = _useState14[0],
-      setCountdown = _useState14[1];
+      serverChecked = _useState14[0],
+      setServerChecked = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
+      _useState16 = _slicedToArray(_useState15, 2),
+      countdown = _useState16[0],
+      setCountdown = _useState16[1];
 
   (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useGameEvent)('server_checked', function (info) {
     //info: {"server_checked":1}
@@ -247,25 +264,11 @@ function HeroSelection() {
     className: "HeroListAndChat"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "HeroList"
-  }, function () {
-    var HeroList = [];
-
-    for (var key in GameUI.CustomUIConfig().HeroesKv) {
-      var HeroKV = GameUI.CustomUIConfig().HeroesKv[key];
-
-      if (HeroKV.UnitLabel == "hide") {
-        continue;
-      }
-
-      var HeroName = HeroKV.override_hero;
-    }
-
-    return [/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      key: "1"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      key: "2"
-    })];
-  }()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroCard, {
+    key: "3",
+    heroname: "npc_dota_hero_axe",
+    lock: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
     type: "DOTAChat",
     id: "Chat",
     "class": "PreGameChat",
@@ -284,6 +287,7 @@ function HeroSelection() {
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -391,6 +395,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1381,6 +1386,7 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1490,6 +1496,7 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
