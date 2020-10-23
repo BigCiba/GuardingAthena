@@ -15,12 +15,12 @@
 	</scripts>
 	<snippets>
 		<snippet name="AvatarImage">
-			<Panel class="AvatarAndHeroContainer" >
+			<Panel >
 				<DOTAAvatarImage class="AvatarAndHero" hittest="false"/>
 			</Panel>
 		</snippet>
 		<snippet name="HeroImage">
-			<Panel class="AvatarAndHeroContainer Hidden">
+			<Panel >
 				<DOTAHeroImage class="AvatarAndHero"/>
 			</Panel>
 		</snippet>

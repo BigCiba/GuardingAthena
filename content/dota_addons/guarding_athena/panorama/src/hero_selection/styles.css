@@ -310,16 +310,16 @@
 .MainPage .HeroListAndChat {
   width: 65%;
   height: 100%;
+  margin-top: 150px;
   padding-left: 7%;
   padding-right: 7%;
   padding-bottom: 3%;
 }
 .MainPage .HeroListAndChat .HeroList {
   width: 100%;
-  height: 60%;
-  margin-bottom: 25%;
+  height: 70%;
+  vertical-align: top;
   padding: 2%;
-  vertical-align: bottom;
   flow-children: right-wrap;
   box-shadow: #00000055 -2px -2px 1px 4px;
   background-color: dotaPlusBgGradient;
@@ -352,6 +352,12 @@
   pre-transform-scale2d: 1.05;
   box-shadow: fill #000000aa -2px -2px 8px 9px;
 }
+.MainPage .HeroListAndChat .HeroList .HeroCard:selected {
+  saturation: 1;
+  brightness: 1.4;
+  pre-transform-scale2d: 1.05;
+  box-shadow: fill #000000aa -2px -2px 8px 9px;
+}
 .MainPage .HeroListAndChat .HeroList .HeroCard .LockImage {
   width: 100%;
   height: 100%;
@@ -362,4 +368,79 @@
 .MainPage .HeroListAndChat .HeroList .AspectRatio4x3 .HeroCard {
   width: 15%;
   margin: 0.68%;
+}
+.MainPage .HeroInfoContainer {
+  height: 100%;
+  width: 35%;
+  horizontal-align: right;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 100px;
+  flow-children: down;
+}
+.MainPage .HeroInfoContainer .HeroName {
+  width: 100%;
+  /* height: 200px; */
+  margin-bottom: 10px;
+  horizontal-align: right;
+  flow-children: right;
+}
+.MainPage .HeroInfoContainer .HeroName Label {
+  font-size: 48px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+  margin-left: 10px;
+}
+.MainPage .HeroInfoContainer .HeroAbilityList {
+  flow-children: right;
+  margin-bottom: 20px;
+  height: 64px;
+}
+.MainPage .HeroInfoContainer .HeroAbilityList .HeroAbility {
+  width: 64px;
+  height: 64px;
+  border-radius: 5px;
+  margin-right: 3%;
+  box-shadow: fill #222A35 6px 6px 8px 0px;
+}
+.MainPage .HeroInfoContainer .HeroSelectButton {
+  width: 80%;
+  height: 50px;
+  /* horizontal-align: center; */
+  /* border-radius: 5px; */
+  background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+  border-top: 1px solid #ffffff22;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+}
+.MainPage .HeroInfoContainer .HeroSelectButton:hover {
+  brightness: 2;
+}
+.MainPage .HeroInfoContainer .HeroSelectButton:active {
+  brightness: 1.5;
+  sound: "HeroPicker.Selected";
+}
+.MainPage .HeroInfoContainer .HeroSelectButton Label {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 30px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+}
+.MainPage .HeroScenePanel {
+  opacity-mask: url("s2r://panorama/images/masks/softedge_box_png.vtex");
+  width: 70%;
+  height: 100%;
+  x: 15%;
+  y: 5%;
+  vertical-align: bottom;
+  horizontal-align: Right;
+}
+.MainPage .HeroScenePanel .HeroScene {
+  width: 100%;
+  height: 100%;
 }
