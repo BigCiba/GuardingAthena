@@ -60,7 +60,8 @@ function Update() {
 }
 
 function PlayerCard(_ref) {
-  var playerID = _ref.playerID;
+  var playerID = _ref.playerID,
+      selectHero = _ref.selectHero;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
     return Game.GetPlayerInfo(playerID).player_steamid;
@@ -73,8 +74,6 @@ function PlayerCard(_ref) {
       _useState4 = _slicedToArray(_useState3, 2),
       level = _useState4[0],
       setLevel = _useState4[1];
-
-  var PlayerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("service", "player_data")[playerID];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("file://{images}/profile_badges/bg_01.psd"),
       _useState6 = _slicedToArray(_useState5, 2),
@@ -91,26 +90,49 @@ function PlayerCard(_ref) {
       profileLevel = _useState10[0],
       setProfileLevel = _useState10[1];
 
+  var PlayerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("service", "player_data")[playerID];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("AvatarAndHeroContainer"),
+      _useState12 = _slicedToArray(_useState11, 2),
+      userAvatarClass = _useState12[0],
+      setUserAvatarClass = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("AvatarAndHeroContainer Hidden"),
+      _useState14 = _slicedToArray(_useState13, 2),
+      heroAvatarClass = _useState14[0],
+      setHeroAvatarClass = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(selectHero),
+      _useState16 = _slicedToArray(_useState15, 2),
+      heroName = _useState16[0],
+      setHeroName = _useState16[1];
+
+  var heroAvatarImage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setLevel(PlayerData.Level);
     setBgImage(GetBadgesBackground(PlayerData.Level));
     setItemImage(GetBadgesLevel(PlayerData.Level));
     setProfileLevel(GetBadgesBackgroundNumber(PlayerData.Level));
-  }, []);
+  }, [PlayerData]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setUserAvatarClass("AvatarAndHeroContainer Hidden");
+    setHeroAvatarClass("AvatarAndHeroContainer");
+    setHeroName(selectHero);
+  }, [selectHero]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "PlayerContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "PlayerBackground"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
+    className: userAvatarClass,
     onload: function onload(panel) {
       panel.BLoadLayoutSnippet("AvatarImage");
       panel.GetChild(0).steamid = steamid;
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    onload: function onload(panel) {
-      panel.BLoadLayoutSnippet("HeroImage");
-      panel.GetChild(0).steamid = steamid;
-    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAHeroImage, {
+    className: heroAvatarClass,
+    ref: heroAvatarImage,
+    heroname: heroName
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "UserInfoContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAUserName, {
@@ -154,42 +176,48 @@ function DiffButton(_ref2) {
 
 function HeroCard(_ref3) {
   var heroname = _ref3.heroname,
-      lock = _ref3.lock;
+      lock = _ref3.lock,
+      setSelectHero = _ref3.setSelectHero;
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("LockImage"),
-      _useState12 = _slicedToArray(_useState11, 2),
-      lockState = _useState12[0],
-      setLockState = _useState12[1]; // const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(lock ? "LockImage" : "UnLockImage"),
+      _useState18 = _slicedToArray(_useState17, 2),
+      lockState = _useState18[0],
+      setLockState = _useState18[1]; // const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID]["hero"];
   // useEffect(() => {
-  // 	for (const key in PlayerData["hero"]) {
-  // 		const HeroInfo = PlayerData["hero"][key];
-  // 		const HeroName = "npc_dota_hero_" + HeroInfo.ItemName;
-  // 		if (HeroName == heroname) {
-  // 			setLockState("UnLockImage");
-  // 		}
-  // 	}
   // }, [])
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAHeroMovie, {
-    className: "HeroCard Unlock"
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
+    className: "HeroCard Unlock",
+    type: "TabButton",
+    group: "heroCard",
+    selected: false,
+    onselect: function onselect() {
+      return setSelectHero(heroname);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAHeroMovie, {
+    heroname: heroname
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
     className: lockState,
-    src: "file://{images}/custom_game/lock.png",
-    heroname: heroname
-  }));
+    src: "file://{images}/custom_game/lock.png"
+  })));
 }
 
 function HeroSelection() {
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState14 = _slicedToArray(_useState13, 2),
-      serverChecked = _useState14[0],
-      setServerChecked = _useState14[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState20 = _slicedToArray(_useState19, 2),
+      serverChecked = _useState20[0],
+      setServerChecked = _useState20[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
-      _useState16 = _slicedToArray(_useState15, 2),
-      countdown = _useState16[0],
-      setCountdown = _useState16[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
+      _useState22 = _slicedToArray(_useState21, 2),
+      countdown = _useState22[0],
+      setCountdown = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("npc_dota_hero_omniknight"),
+      _useState24 = _slicedToArray(_useState23, 2),
+      selectHero = _useState24[0],
+      setSelectHero = _useState24[1];
 
   (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useGameEvent)('server_checked', function (info) {
     //info: {"server_checked":1}
@@ -230,7 +258,8 @@ function HeroSelection() {
   }, Game.GetAllPlayerIDs().map(function (playerID) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(PlayerCard, {
       key: "PlayerCard" + playerID.toString(),
-      playerID: playerID
+      playerID: playerID,
+      selectHero: selectHero
     });
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "DiffList"
@@ -264,16 +293,76 @@ function HeroSelection() {
     className: "HeroListAndChat"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "HeroList"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroCard, {
-    key: "3",
-    heroname: "npc_dota_hero_axe",
-    lock: true
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
+  }, function () {
+    var HeroList = [];
+
+    for (var key in GameUI.CustomUIConfig().HeroesKv) {
+      var HeroKV = GameUI.CustomUIConfig().HeroesKv[key];
+
+      if (HeroKV.UnitLabel == "hide") {
+        continue;
+      }
+
+      var HeroName = HeroKV.override_hero;
+      HeroList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroCard, {
+        key: HeroName,
+        heroname: HeroName,
+        lock: HeroKV.UnitLabel == "lock",
+        setSelectHero: setSelectHero
+      }));
+    }
+
+    return HeroList;
+  }()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
     type: "DOTAChat",
     id: "Chat",
     "class": "PreGameChat",
     chatstyle: "hudpregame",
     oncancel: "SetInputFocus( HeroGrid )"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
+    className: "HeroInfoContainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
+    className: "HeroName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
+    src: "s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
+    key: selectHero,
+    localizedText: selectHero
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
+    className: "HeroAbilityList"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
+    className: "HeroAbility",
+    abilityname: "juggernaut_omni_slash"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
+    className: "HeroAbility",
+    abilityname: "juggernaut_omni_slash"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
+    className: "HeroAbility",
+    abilityname: "juggernaut_omni_slash"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
+    className: "HeroAbility",
+    abilityname: "juggernaut_omni_slash"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
+    className: "HeroAbility",
+    abilityname: "juggernaut_omni_slash"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, {
+    className: "HeroSelectButton",
+    localizedText: "#SelectHero"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
+    className: "HeroScenePanel",
+    hittest: "false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
+    type: "DOTAScenePanel",
+    className: "HeroScene",
+    unit: "npc_dota_hero_omniknight",
+    light: "global_light",
+    antialias: "true",
+    drawbackground: "false",
+    rotateonhover: "true",
+    yawmin: "-180",
+    yawmax: "180",
+    particleonly: "false",
+    "activity-modifier": "PostGameIdle"
   })))));
 }
 
@@ -287,7 +376,6 @@ function HeroSelection() {
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -395,7 +483,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1386,7 +1473,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1496,7 +1582,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
