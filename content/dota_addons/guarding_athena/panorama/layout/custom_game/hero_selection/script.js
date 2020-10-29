@@ -60,12 +60,9 @@ function Update() {
 }
 
 function PlayerCard(_ref) {
-  var playerID = _ref.playerID,
-      selectHero = _ref.selectHero;
+  var playerID = _ref.playerID;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-    return Game.GetPlayerInfo(playerID).player_steamid;
-  }),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Game.GetPlayerInfo(playerID).player_steamid),
       _useState2 = _slicedToArray(_useState, 2),
       steamid = _useState2[0],
       setSteamID = _useState2[1];
@@ -90,49 +87,33 @@ function PlayerCard(_ref) {
       profileLevel = _useState10[0],
       setProfileLevel = _useState10[1];
 
-  var PlayerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("service", "player_data")[playerID];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("AvatarAndHeroContainer"),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)($.Localize("GameMode_Easy")),
       _useState12 = _slicedToArray(_useState11, 2),
-      userAvatarClass = _useState12[0],
-      setUserAvatarClass = _useState12[1];
+      diff = _useState12[0],
+      setDiff = _useState12[1]; // 玩家数据
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("AvatarAndHeroContainer Hidden"),
-      _useState14 = _slicedToArray(_useState13, 2),
-      heroAvatarClass = _useState14[0],
-      setHeroAvatarClass = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(selectHero),
-      _useState16 = _slicedToArray(_useState15, 2),
-      heroName = _useState16[0],
-      setHeroName = _useState16[1];
-
-  var heroAvatarImage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var PlayerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("service", "player_data")[playerID];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setLevel(PlayerData.Level);
     setBgImage(GetBadgesBackground(PlayerData.Level));
     setItemImage(GetBadgesLevel(PlayerData.Level));
     setProfileLevel(GetBadgesBackgroundNumber(PlayerData.Level));
   }, [PlayerData]);
+  var selectData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("player_data", "player_datas");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setUserAvatarClass("AvatarAndHeroContainer Hidden");
-    setHeroAvatarClass("AvatarAndHeroContainer");
-    setHeroName(selectHero);
-  }, [selectHero]);
+    setDiff($.Localize(selectData[0].select_diff));
+  }, [selectData]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "PlayerContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "PlayerBackground"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: userAvatarClass,
+    className: "AvatarAndHeroContainer",
     onload: function onload(panel) {
       panel.BLoadLayoutSnippet("AvatarImage");
       panel.GetChild(0).steamid = steamid;
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAHeroImage, {
-    className: heroAvatarClass,
-    ref: heroAvatarImage,
-    heroname: heroName
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "UserInfoContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAUserName, {
@@ -141,7 +122,7 @@ function PlayerCard(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "SelectDiffBG"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    localizedText: "#GameMode_Hell"
+    text: diff
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "PlayerLevelContent"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
@@ -165,12 +146,16 @@ function DiffButton(_ref2) {
     type: "TabButton",
     group: "diffGroup",
     selected: selected,
-    localizedText: "#GameMode_Easy"
+    onactivate: function onactivate() {
+      GameEvents.SendCustomGameEventToServer("select_diff", {
+        diff: diff
+      });
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
     className: "DiffIcon",
     src: "s2r://panorama/images/hero_badges/hero_badge_rank_" + index + "_png.vtex"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    localizedText: "#GameMode_" + diff
+    localizedText: diff
   }));
 }
 
@@ -179,10 +164,10 @@ function HeroCard(_ref3) {
       lock = _ref3.lock,
       setSelectHero = _ref3.setSelectHero;
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(lock ? "LockImage" : "UnLockImage"),
-      _useState18 = _slicedToArray(_useState17, 2),
-      lockState = _useState18[0],
-      setLockState = _useState18[1]; // const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID]["hero"];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(lock ? "LockImage" : "UnLockImage"),
+      _useState14 = _slicedToArray(_useState13, 2),
+      lockState = _useState14[0],
+      setLockState = _useState14[1]; // const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID]["hero"];
   // useEffect(() => {
   // }, [])
 
@@ -204,25 +189,38 @@ function HeroCard(_ref3) {
 }
 
 function HeroSelection() {
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      serverChecked = _useState16[0],
+      setServerChecked = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
+      _useState18 = _slicedToArray(_useState17, 2),
+      countdown = _useState18[0],
+      setCountdown = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("npc_dota_hero_omniknight"),
       _useState20 = _slicedToArray(_useState19, 2),
-      serverChecked = _useState20[0],
-      setServerChecked = _useState20[1];
+      selectHero = _useState20[0],
+      setSelectHero = _useState20[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
-      _useState22 = _slicedToArray(_useState21, 2),
-      countdown = _useState22[0],
-      setCountdown = _useState22[1];
-
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("npc_dota_hero_omniknight"),
-      _useState24 = _slicedToArray(_useState23, 2),
-      selectHero = _useState24[0],
-      setSelectHero = _useState24[1];
-
+  var playerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("player_data", "player_datas");
   (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useGameEvent)('server_checked', function (info) {
     //info: {"server_checked":1}
     setServerChecked(true);
-  }, []);
+  }, []); // useEffect(() => {
+  // 	setSelectHero(playerData[Game.GetLocalPlayerID()].select_hero);
+  // }, [playerData])
+
+  var ShowAbilityToolTip = function ShowAbilityToolTip(panel) {
+    $.Msg(panel);
+    GameUI.CustomUIConfig().ShowAbilityTooltiop(panel, panel.abilityname);
+  };
+
+  var HideAbilityToolTip = function HideAbilityToolTip(panel) {
+    GameUI.CustomUIConfig().HideAbilityTooltiop(panel);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
     type: "MoviePanel",
     id: "BackgroundImage",
@@ -258,30 +256,29 @@ function HeroSelection() {
   }, Game.GetAllPlayerIDs().map(function (playerID) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(PlayerCard, {
       key: "PlayerCard" + playerID.toString(),
-      playerID: playerID,
-      selectHero: selectHero
+      playerID: playerID
     });
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "DiffList"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
     index: "0",
-    diff: "Easy",
+    diff: "GameMode_Easy",
     selected: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
     index: "1",
-    diff: "Common",
+    diff: "GameMode_Common",
     selected: false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
     index: "2",
-    diff: "Hard",
+    diff: "GameMode_Hard",
     selected: false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
     index: "3",
-    diff: "Nightmare",
+    diff: "GameMode_Nightmare",
     selected: false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
     index: "4",
-    diff: "Hell",
+    diff: "GameMode_Hell",
     selected: false
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "MainPage"
@@ -332,36 +329,48 @@ function HeroSelection() {
     className: "HeroAbilityList"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
     className: "HeroAbility",
-    abilityname: "juggernaut_omni_slash"
+    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability1,
+    onmouseover: ShowAbilityToolTip,
+    onmouseout: HideAbilityToolTip
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
     className: "HeroAbility",
-    abilityname: "juggernaut_omni_slash"
+    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability2,
+    onmouseover: ShowAbilityToolTip,
+    onmouseout: HideAbilityToolTip
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
     className: "HeroAbility",
-    abilityname: "juggernaut_omni_slash"
+    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability3,
+    onmouseover: ShowAbilityToolTip,
+    onmouseout: HideAbilityToolTip
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
     className: "HeroAbility",
-    abilityname: "juggernaut_omni_slash"
+    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability4,
+    onmouseover: ShowAbilityToolTip,
+    onmouseout: HideAbilityToolTip
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
     className: "HeroAbility",
-    abilityname: "juggernaut_omni_slash"
+    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability5,
+    onmouseover: ShowAbilityToolTip,
+    onmouseout: HideAbilityToolTip
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, {
     className: "HeroSelectButton",
     localizedText: "#SelectHero"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
     className: "HeroScenePanel",
-    hittest: "false"
+    hittest: false
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
+    key: selectHero,
     type: "DOTAScenePanel",
+    hittest: false,
     className: "HeroScene",
-    unit: "npc_dota_hero_omniknight",
+    unit: selectHero,
     light: "global_light",
     antialias: "true",
     drawbackground: "false",
     rotateonhover: "true",
     yawmin: "-180",
     yawmax: "180",
-    particleonly: "false",
+    particleonly: false,
     "activity-modifier": "PostGameIdle"
   })))));
 }

@@ -219,70 +219,70 @@
   height: 64px;
   horizontal-align: left;
 }
-.SideBar .DiffList .Easy {
+.SideBar .DiffList .GameMode_Easy {
   border-bottom: 1px solid #00000060;
   border-right: 1px solid #00000060;
   border-top: 1px solid #ffffff06;
   border-left: 1px solid #ffffff06;
   wash-color: #aee2ff33;
 }
-.SideBar .DiffList .Easy:selected {
+.SideBar .DiffList .GameMode_Easy:selected {
   wash-color: #aee2ff;
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ff5757), to(#c43030));
 }
-.SideBar .DiffList .Common {
+.SideBar .DiffList .GameMode_Common {
   border-bottom: 1px solid #ffffff06;
   border-right: 1px solid #ffffff06;
   border-top: 1px solid #33333360;
   border-left: 1px solid #33333360;
   wash-color: #d5ff9a33;
 }
-.SideBar .DiffList .Common:selected {
+.SideBar .DiffList .GameMode_Common:selected {
   wash-color: #d5ff9a;
 }
-.SideBar .DiffList .Hard {
+.SideBar .DiffList .GameMode_Hard {
   border-bottom: 1px solid #ffffff06;
   border-right: 1px solid #ffffff06;
   border-top: 1px solid #33333360;
   border-left: 1px solid #33333360;
   wash-color: #ffcf4d33;
 }
-.SideBar .DiffList .Hard:selected {
+.SideBar .DiffList .GameMode_Hard:selected {
   wash-color: #ffcf4d;
 }
-.SideBar .DiffList .Nightmare {
+.SideBar .DiffList .GameMode_Nightmare {
   border-bottom: 1px solid #ffffff06;
   border-right: 1px solid #ffffff06;
   border-top: 1px solid #33333360;
   border-left: 1px solid #33333360;
   wash-color: #b29aff33;
 }
-.SideBar .DiffList .Nightmare:selected {
+.SideBar .DiffList .GameMode_Nightmare:selected {
   wash-color: #b29aff;
 }
-.SideBar .DiffList .Hell {
+.SideBar .DiffList .GameMode_Hell {
   border-bottom: 1px solid #ffffff06;
   border-right: 1px solid #ffffff06;
   border-top: 1px solid #33333360;
   border-left: 1px solid #33333360;
   wash-color: #ff9a9a33;
 }
-.SideBar .DiffList .Hell:selected {
+.SideBar .DiffList .GameMode_Hell:selected {
   wash-color: #ff9a9a;
 }
-.SideBar .DiffList .Easy:selected Label {
+.SideBar .DiffList .GameMode_Easy:selected Label {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #70dfff), to(#7bb7ff));
 }
 .SideBar .DiffList .Normal:selected Label {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #c2ff57), to(#79e900));
 }
-.SideBar .DiffList .Hard:selected Label {
+.SideBar .DiffList .GameMode_Hard:selected Label {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ffef8a), to(#ffbb0f));
 }
-.SideBar .DiffList .Nightmare:selected Label {
+.SideBar .DiffList .GameMode_Nightmare:selected Label {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #8f57ff), to(#612fc4));
 }
-.SideBar .DiffList .Hell:selected Label {
+.SideBar .DiffList .GameMode_Hell:selected Label {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ff5757), to(#c43030));
 }
 .MainPage {

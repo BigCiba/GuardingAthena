@@ -1,4 +1,4 @@
-if PlayerData== nil then
+if PlayerData == nil then
 	PlayerData = class({})
 end
 local public = PlayerData
@@ -11,6 +11,7 @@ function public:init(bReload)
 	GameEvent("entity_killed", Dynamic_Wrap(public, "OnUnitKilled"), public)
 	GameEvent("game_rules_state_change", Dynamic_Wrap(public, "OnGameRulesStateChange"), public)
 
+	CustomUIEvent("select_diff", Dynamic_Wrap(public, "OnPlayerSelectDiff"), public)
 	self:UpdateNetTables()
 end
 
@@ -61,8 +62,8 @@ function public:AddRing(iPlayerID, hItem)
 	if #self.playerDatas[iPlayerID].rings < 2 then
 		table.insert(self.playerDatas[iPlayerID].rings, {
 			sName = hItem:GetAbilityName(),
-			iRingIndex = string.sub(hItem:GetAbilityName(),-1),
-			sModifierName = "ring_0_"..string.sub(hItem:GetAbilityName(),-1),
+			iRingIndex = string.sub(hItem:GetAbilityName(), -1),
+			sModifierName = "ring_0_" .. string.sub(hItem:GetAbilityName(), -1),
 			iStartTime = hItem:GetSpecialValueFor("time_start"),
 			iEndTime = hItem:GetSpecialValueFor("time_end")
 		})
@@ -81,8 +82,8 @@ function public:SwapRing(iPlayerID, sItemName, hItem)
 	end
 	table.insert(self.playerDatas[iPlayerID].rings, {
 		sName = hItem:GetAbilityName(),
-		iRingIndex = string.sub(hItem:GetAbilityName(),-1),
-		sModifierName = "ring_0_"..string.sub(hItem:GetAbilityName(),-1),
+		iRingIndex = string.sub(hItem:GetAbilityName(), -1),
+		sModifierName = "ring_0_" .. string.sub(hItem:GetAbilityName(), -1),
 		iStartTime = hItem:GetSpecialValueFor("time_start"),
 		iEndTime = hItem:GetSpecialValueFor("time_end")
 	})
@@ -92,31 +93,40 @@ function public:GetRingData(iPlayerID)
 	return self.playerDatas[iPlayerID].rings
 end
 
---[[
-	监听
-]]--
+--[[	监听
+]]
+--
 function public:OnGameRulesStateChange()
 	local state = GameRules:State_Get()
 
-	if state == DOTA_GAMERULES_STATE_PRE_GAME then
+	if state == DOTA_GAMERULES_STATE_HERO_SELECTION then
+		-- 初始化英雄选择数据
+		GuardingAthena:EachPlayer(function(n, iPlayerID)
+			self.playerDatas[iPlayerID] = {
+				select_hero = "npc_dota_hero_omniknight", -- 选择英雄
+				select_diff = "GameMode_Common", -- 选择的难度
+			}
+		end)
+		self:UpdateNetTables()
+	elseif state == DOTA_GAMERULES_STATE_PRE_GAME then
 		-- 初始化玩家数据
 		GuardingAthena:EachPlayer(function(n, iPlayerID)
 			self.playerDatas[iPlayerID] = {
-				rings = {},	-- 戒指
+				rings = {}, -- 戒指
 				killed = {
-					round = 0,	-- 防守数量
-					practice = 0,	-- 练功房击杀数量
+					round = 0, -- 防守数量
+					practice = 0, -- 练功房击杀数量
 				},
 				point = {
-					round = 0,	-- 防守积分
-					boss = 0,	-- boss积分
+					round = 0, -- 防守积分
+					boss = 0, -- boss积分
 					practice = 0	--练功房积分
 				},
-				courier = nil,	-- 信使
-				gold = 0,	--金钱总量
+				courier = nil, -- 信使
+				gold = 0, --金钱总量
 				damage_record = {
-					round = {0},
-					boss = {0},
+					round = { 0 },
+					boss = { 0 },
 				}
 			}
 		end)
@@ -126,7 +136,7 @@ end
 function public:OnUnitKilled(t)
 	local hVictim = EntIndexToHScript(t.entindex_killed)
 	local hAttacker = EntIndexToHScript(t.entindex_attacker)
-	
+
 	if hVictim:IsRoundCreep() then
 		local iPlayerID = hAttacker:GetSource():GetPlayerID()
 		if IsValidPlayerID(iPlayerID) then
@@ -134,9 +144,17 @@ function public:OnUnitKilled(t)
 			self:AddKills(iPlayerID, "round")
 			-- 记录进攻怪积分
 			---TODO
-			
 		end
 	end
+end
+
+--------------------------------
+---UI事件
+--------------------------------
+function public:OnPlayerSelectDiff(eventSourceIndex, events)
+	local iPlayerID = events.PlayerID
+	self.playerDatas[iPlayerID].select_diff = events.diff
+	self:UpdateNetTables()
 end
 
 return public

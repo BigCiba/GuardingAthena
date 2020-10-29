@@ -34,39 +34,33 @@ function Update() {
 	$.Schedule(1, Update);
 }
 
-function PlayerCard({ playerID, selectHero }) {
-	const [steamid, setSteamID] = useState(() => Game.GetPlayerInfo(playerID).player_steamid);
+function PlayerCard({ playerID }) {
+	const [steamid, setSteamID] = useState(Game.GetPlayerInfo(playerID).player_steamid);
 	const [level, setLevel] = useState(1);
 	const [bgImage, setBgImage] = useState("file://{images}/profile_badges/bg_01.psd");
 	const [itemImage, setItemImage] = useState("file://{images}/profile_badges/level_01.png");
 	const [profileLevel, setProfileLevel] = useState("file://{images}/profile_badges/bg_number_01.psd");
+	const [diff, setDiff] = useState($.Localize("GameMode_Easy"));
+	// 玩家数据
 	const PlayerData = useNetTableKey("service", "player_data")[playerID];
-	const [userAvatarClass, setUserAvatarClass] = useState("AvatarAndHeroContainer");
-	const [heroAvatarClass, setHeroAvatarClass] = useState("AvatarAndHeroContainer Hidden");
-	const [heroName, setHeroName] = useState(selectHero);
-	const heroAvatarImage = useRef(null);
 	useEffect(() => {
 		setLevel(PlayerData.Level);
 		setBgImage(GetBadgesBackground(PlayerData.Level));
 		setItemImage(GetBadgesLevel(PlayerData.Level));
 		setProfileLevel(GetBadgesBackgroundNumber(PlayerData.Level));
 	}, [PlayerData])
+	const selectData = useNetTableKey("player_data", "player_datas");
 	useEffect(() => {
-		setUserAvatarClass("AvatarAndHeroContainer Hidden");
-		setHeroAvatarClass("AvatarAndHeroContainer");
-		setHeroName(selectHero);
-	}, [selectHero]);
+		setDiff($.Localize(selectData[0].select_diff));
+	}, [selectData])
 	return (
 		<Panel className="PlayerContainer">
 			<Panel className="PlayerBackground">
-				<Panel className={userAvatarClass} onload={(panel) => { panel.BLoadLayoutSnippet("AvatarImage"); panel.GetChild(0).steamid = steamid; }} />
-				<DOTAHeroImage className={heroAvatarClass} ref={heroAvatarImage} heroname={heroName}/>
-				{/* <Panel className={heroAvatarClass}>
-				</Panel> */}
+				<Panel className="AvatarAndHeroContainer" onload={(panel) => { panel.BLoadLayoutSnippet("AvatarImage"); panel.GetChild(0).steamid = steamid; }} />
 				<Panel className="UserInfoContainer">
 					<DOTAUserName className="UserName" steamid={steamid} />
 					<Panel className="SelectDiffBG">
-						<Label localizedText="#GameMode_Hell"></Label>
+						<Label text={diff} />
 					</Panel>
 				</Panel>
 			</Panel>
@@ -82,20 +76,26 @@ function PlayerCard({ playerID, selectHero }) {
 }
 function DiffButton({ index, diff, selected }) {
 	return (
-		<GenericPanel className={"DiffButton " + diff} type="TabButton" group="diffGroup" selected={selected} localizedText="#GameMode_Easy" >
+		<GenericPanel
+			className={"DiffButton " + diff}
+			type="TabButton"
+			group="diffGroup"
+			selected={selected}
+			onactivate={() => { GameEvents.SendCustomGameEventToServer("select_diff", { diff: diff }) }}
+		>
 			<Image className="DiffIcon" src={"s2r://panorama/images/hero_badges/hero_badge_rank_" + index + "_png.vtex"} />
-			<Label localizedText={"#GameMode_" + diff} />
+			<Label localizedText={diff} />
 		</GenericPanel>
 	)
 }
 function HeroCard({ heroname, lock, setSelectHero }) {
 	const [lockState, setLockState] = useState(lock ? "LockImage" : "UnLockImage");
 	// const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID]["hero"];
-	
+
 	// useEffect(() => {
 	// }, [])
 	return (
-		<GenericPanel className="HeroCard Unlock" type="TabButton" group="heroCard" selected={false} onselect={()=>setSelectHero(heroname)}>
+		<GenericPanel className="HeroCard Unlock" type="TabButton" group="heroCard" selected={false} onselect={() => setSelectHero(heroname)}>
 			<DOTAHeroMovie heroname={heroname} >
 				<Image className={lockState} src="file://{images}/custom_game/lock.png" />
 			</DOTAHeroMovie>
@@ -106,10 +106,21 @@ function HeroSelection() {
 	const [serverChecked, setServerChecked] = useState(false);
 	const [countdown, setCountdown] = useState(15);
 	const [selectHero, setSelectHero] = useState("npc_dota_hero_omniknight");
+	const playerData = useNetTableKey("player_data", "player_datas")
 	useGameEvent('server_checked', (info) => {
 		//info: {"server_checked":1}
 		setServerChecked(true);
 	}, []);
+	// useEffect(() => {
+	// 	setSelectHero(playerData[Game.GetLocalPlayerID()].select_hero);
+	// }, [playerData])
+	const ShowAbilityToolTip = (panel) => {
+		$.Msg(panel);
+		GameUI.CustomUIConfig().ShowAbilityTooltiop(panel, panel.abilityname);
+	}
+	const HideAbilityToolTip = (panel) => {
+		GameUI.CustomUIConfig().HideAbilityTooltiop(panel)
+	}
 	return (
 		<>
 			{/* 背景 */}
@@ -126,15 +137,15 @@ function HeroSelection() {
 				<Panel className="SideBar">
 					<Panel className="PlayerList">
 						{Game.GetAllPlayerIDs().map((playerID) => {
-							return <PlayerCard key={"PlayerCard" + playerID.toString()} playerID={playerID} selectHero={selectHero}/>
+							return <PlayerCard key={"PlayerCard" + playerID.toString()} playerID={playerID} />
 						})}
 					</Panel>
 					<Panel className="DiffList">
-						<DiffButton index="0" diff="Easy" selected={true} />
-						<DiffButton index="1" diff="Common" selected={false} />
-						<DiffButton index="2" diff="Hard" selected={false} />
-						<DiffButton index="3" diff="Nightmare" selected={false} />
-						<DiffButton index="4" diff="Hell" selected={false} />
+						<DiffButton index="0" diff="GameMode_Easy" selected={true} />
+						<DiffButton index="1" diff="GameMode_Common" selected={false} />
+						<DiffButton index="2" diff="GameMode_Hard" selected={false} />
+						<DiffButton index="3" diff="GameMode_Nightmare" selected={false} />
+						<DiffButton index="4" diff="GameMode_Hell" selected={false} />
 					</Panel>
 				</Panel>
 				<Panel className="MainPage">
@@ -152,7 +163,7 @@ function HeroSelection() {
 									}
 									let HeroName = HeroKV.override_hero;
 									HeroList.push(
-										<HeroCard key={HeroName} heroname={HeroName} lock={HeroKV.UnitLabel == "lock"} setSelectHero={setSelectHero}/>
+										<HeroCard key={HeroName} heroname={HeroName} lock={HeroKV.UnitLabel == "lock"} setSelectHero={setSelectHero} />
 									);
 								}
 								return HeroList;
@@ -166,16 +177,30 @@ function HeroSelection() {
 							<Label key={selectHero} localizedText={selectHero} />
 						</Panel>
 						<Panel className="HeroAbilityList">
-							<DOTAAbilityImage className="HeroAbility" abilityname="juggernaut_omni_slash"/>
-							<DOTAAbilityImage className="HeroAbility" abilityname="juggernaut_omni_slash"/>
-							<DOTAAbilityImage className="HeroAbility" abilityname="juggernaut_omni_slash"/>
-							<DOTAAbilityImage className="HeroAbility" abilityname="juggernaut_omni_slash"/>
-							<DOTAAbilityImage className="HeroAbility" abilityname="juggernaut_omni_slash"/>
+							<DOTAAbilityImage className="HeroAbility" abilityname={GameUI.CustomUIConfig().HeroesKv[selectHero].Ability1} onmouseover={ShowAbilityToolTip} onmouseout={HideAbilityToolTip} />
+							<DOTAAbilityImage className="HeroAbility" abilityname={GameUI.CustomUIConfig().HeroesKv[selectHero].Ability2} onmouseover={ShowAbilityToolTip} onmouseout={HideAbilityToolTip} />
+							<DOTAAbilityImage className="HeroAbility" abilityname={GameUI.CustomUIConfig().HeroesKv[selectHero].Ability3} onmouseover={ShowAbilityToolTip} onmouseout={HideAbilityToolTip} />
+							<DOTAAbilityImage className="HeroAbility" abilityname={GameUI.CustomUIConfig().HeroesKv[selectHero].Ability4} onmouseover={ShowAbilityToolTip} onmouseout={HideAbilityToolTip} />
+							<DOTAAbilityImage className="HeroAbility" abilityname={GameUI.CustomUIConfig().HeroesKv[selectHero].Ability5} onmouseover={ShowAbilityToolTip} onmouseout={HideAbilityToolTip} />
 						</Panel>
-						<TextButton className="HeroSelectButton" localizedText="#SelectHero"/>
+						<TextButton className="HeroSelectButton" localizedText="#SelectHero" />
 					</Panel>
-					<Panel className="HeroScenePanel" hittest="false">
-						<GenericPanel type="DOTAScenePanel" className="HeroScene" unit="npc_dota_hero_omniknight" light="global_light" antialias="true" drawbackground="false" rotateonhover="true" yawmin="-180" yawmax="180" particleonly="false" activity-modifier="PostGameIdle"/>
+					<Panel className="HeroScenePanel" hittest={false}>
+						<GenericPanel
+							key={selectHero}
+							type="DOTAScenePanel"
+							hittest={false}
+							className="HeroScene"
+							unit={selectHero}
+							light="global_light"
+							antialias="true"
+							drawbackground="false"
+							rotateonhover="true"
+							yawmin="-180"
+							yawmax="180"
+							particleonly={false}
+							activity-modifier="PostGameIdle"
+						/>
 					</Panel>
 				</Panel>
 			</Panel>
