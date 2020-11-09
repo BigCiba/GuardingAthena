@@ -56,51 +56,58 @@ module.exports = {
 		symlinks: false,
 	},
 
+	entry: {
+		store: {
+			import: './store/layout.xml',
+			filename: 'store/store.xml',
+		},
+	},
+
 	plugins: [
 		new PanoramaTargetPlugin(),
-		new PanoramaManifestPlugin({
-			minify: {
-				caseSensitive: true,
-				keepClosingSlash: true,
-			},
-			entries: ((() => {
-				let list = [
-					{
-						import: './manifest.jsx',
-						filename: 'manifest/manifest.js'
-					},
-					{
-						import: './custom_loading_screen/layout.xml', filename: 'custom_loading_screen.xml',
-					},
-					{
-						import: './compile.xml', filename: 'compile.xml',
-					},
-					{ import: './hud_main/layout.xml', type: 'Hud' },
-					// { import: './hud_demo/layout.xml', type: 'Hud' },
-					// { import: './build/layout.xml', type: 'Hud' },
-					{ import: './ui_particles/layout.xml', type: 'Hud' },
-					// { import: './overhead/layout.xml', type: 'Hud' },
-					// { import: './ability_upgrades_selection/layout.xml', type: 'Hud' },
-					{ import: './hero_selection/layout.xml', type: 'HeroSelection' },
-				]
-				let tooltips = ['tooltip_ability', 'unit_stats'];
-				// let contextMenus = ['context_menu_inventory_item'];
+		// new PanoramaManifestPlugin({
+		// 	minify: {
+		// 		caseSensitive: true,
+		// 		keepClosingSlash: true,
+		// 	},
+		// 	entries: ((() => {
+		// 		let list = [
+		// 			{
+		// 				import: './manifest.jsx',
+		// 				filename: 'manifest/manifest.js'
+		// 			},
+		// 			{
+		// 				import: './custom_loading_screen/layout.xml', filename: 'custom_loading_screen.xml',
+		// 			},
+		// 			{
+		// 				import: './compile.xml', filename: 'compile.xml',
+		// 			},
+		// 			{ import: './hud_main/layout.xml', type: 'Hud' },
+		// 			// { import: './hud_demo/layout.xml', type: 'Hud' },
+		// 			// { import: './build/layout.xml', type: 'Hud' },
+		// 			{ import: './ui_particles/layout.xml', type: 'Hud' },
+		// 			// { import: './overhead/layout.xml', type: 'Hud' },
+		// 			// { import: './ability_upgrades_selection/layout.xml', type: 'Hud' },
+		// 			{ import: './hero_selection/layout.xml', type: 'HeroSelection' },
+		// 		]
+		// 		let tooltips = ['tooltip_ability', 'unit_stats'];
+		// 		// let contextMenus = ['context_menu_inventory_item'];
 
-				tooltips.forEach(tooltipName => {
-					list.push({
-						import: './tooltips/' + tooltipName + '/layout.xml',
-						filename: 'tooltips/' + tooltipName + '/' + tooltipName + '.xml',
-					})
-				});
-				// contextMenus.forEach(contextMenuName => {
-				// 	list.push({
-				// 		import: './context_menu/' + contextMenuName + '/layout.xml',
-				// 		filename: 'context_menu/' + contextMenuName + '/' + contextMenuName + '.xml',
-				// 	})
-				// });
-				return list;
-			})()),
-		}),
+		// 		tooltips.forEach(tooltipName => {
+		// 			list.push({
+		// 				import: './tooltips/' + tooltipName + '/layout.xml',
+		// 				filename: 'tooltips/' + tooltipName + '/' + tooltipName + '.xml',
+		// 			})
+		// 		});
+		// 		// contextMenus.forEach(contextMenuName => {
+		// 		// 	list.push({
+		// 		// 		import: './context_menu/' + contextMenuName + '/layout.xml',
+		// 		// 		filename: 'context_menu/' + contextMenuName + '/' + contextMenuName + '.xml',
+		// 		// 	})
+		// 		// });
+		// 		return list;
+		// 	})()),
+		// }),
 		new ForkTsCheckerWebpackPlugin({
 			typescript: {
 				configFile: path.resolve(__dirname, "tsconfig.json"),

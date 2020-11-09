@@ -1,391 +1,12 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./hero_selection/script.jsx":
-/*!***********************************!*\
-  !*** ./hero_selection/script.jsx ***!
-  \***********************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
- // 预处理禁用官方的选英雄相关功能
-
-var HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
-var PreGame = HUD.FindChildTraverse("PreGame");
-if (PreGame) PreGame.enabled = true;
-PreGame.style.opacity = "1";
-var HeroPickScreen = PreGame.FindChildTraverse("HeroPickScreen");
-if (HeroPickScreen) HeroPickScreen.enabled = false;
-HeroPickScreen.style.opacity = "0";
-var PreMinimapContainer = PreGame.FindChildTraverse("PreMinimapContainer");
-if (PreMinimapContainer) PreMinimapContainer.enabled = false;
-PreMinimapContainer.style.opacity = "0";
-var Header = PreGame.FindChildTraverse("Header");
-if (Header) Header.enabled = false;
-Header.style.opacity = "0"; // 
-
-var GameModeSelectionEndTime = 9999;
-var pSelf = $.GetContextPanel();
-Update();
-
-function Update() {
-  // if (Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME)) {
-  // 	return;
-  // }
-  if (GameModeSelectionEndTime != -1) {
-    var time = GameModeSelectionEndTime - Game.GetGameTime();
-    pSelf.SetDialogVariableInt("count_time", Math.ceil(time));
-  }
-
-  $.Schedule(1, Update);
-}
-
-function PlayerCard(_ref) {
-  var playerID = _ref.playerID;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Game.GetPlayerInfo(playerID).player_steamid),
-      _useState2 = _slicedToArray(_useState, 2),
-      steamid = _useState2[0],
-      setSteamID = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState4 = _slicedToArray(_useState3, 2),
-      level = _useState4[0],
-      setLevel = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("file://{images}/profile_badges/bg_01.psd"),
-      _useState6 = _slicedToArray(_useState5, 2),
-      bgImage = _useState6[0],
-      setBgImage = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("file://{images}/profile_badges/level_01.png"),
-      _useState8 = _slicedToArray(_useState7, 2),
-      itemImage = _useState8[0],
-      setItemImage = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("file://{images}/profile_badges/bg_number_01.psd"),
-      _useState10 = _slicedToArray(_useState9, 2),
-      profileLevel = _useState10[0],
-      setProfileLevel = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)($.Localize("GameMode_Easy")),
-      _useState12 = _slicedToArray(_useState11, 2),
-      diff = _useState12[0],
-      setDiff = _useState12[1]; // 玩家数据
-
-
-  var PlayerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("service", "player_data")[playerID];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setLevel(PlayerData.Level);
-    setBgImage(GetBadgesBackground(PlayerData.Level));
-    setItemImage(GetBadgesLevel(PlayerData.Level));
-    setProfileLevel(GetBadgesBackgroundNumber(PlayerData.Level));
-  }, [PlayerData]);
-  var selectData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("player_data", "player_datas");
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setDiff($.Localize(selectData[0].select_diff));
-  }, [selectData]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "PlayerContainer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "PlayerBackground"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "AvatarAndHeroContainer",
-    onload: function onload(panel) {
-      panel.BLoadLayoutSnippet("AvatarImage");
-      panel.GetChild(0).steamid = steamid;
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "UserInfoContainer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAUserName, {
-    className: "UserName",
-    steamid: steamid
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "SelectDiffBG"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    text: diff
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "PlayerLevelContent"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    src: bgImage
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    src: itemImage
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    src: profileLevel
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "ProfileLevelText",
-    text: level
-  }))));
-}
-
-function DiffButton(_ref2) {
-  var index = _ref2.index,
-      diff = _ref2.diff,
-      selected = _ref2.selected;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
-    className: "DiffButton " + diff,
-    type: "TabButton",
-    group: "diffGroup",
-    selected: selected,
-    onactivate: function onactivate() {
-      GameEvents.SendCustomGameEventToServer("select_diff", {
-        diff: diff
-      });
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    className: "DiffIcon",
-    src: "s2r://panorama/images/hero_badges/hero_badge_rank_" + index + "_png.vtex"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    localizedText: diff
-  }));
-}
-
-function HeroCard(_ref3) {
-  var heroname = _ref3.heroname,
-      lock = _ref3.lock,
-      setSelectHero = _ref3.setSelectHero;
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(lock ? "LockImage" : "UnLockImage"),
-      _useState14 = _slicedToArray(_useState13, 2),
-      lockState = _useState14[0],
-      setLockState = _useState14[1]; // const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID]["hero"];
-  // useEffect(() => {
-  // }, [])
-
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
-    className: "HeroCard Unlock",
-    type: "TabButton",
-    group: "heroCard",
-    selected: false,
-    onselect: function onselect() {
-      return setSelectHero(heroname);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAHeroMovie, {
-    heroname: heroname
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    className: lockState,
-    src: "file://{images}/custom_game/lock.png"
-  })));
-}
-
-function HeroSelection() {
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState16 = _slicedToArray(_useState15, 2),
-      serverChecked = _useState16[0],
-      setServerChecked = _useState16[1];
-
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
-      _useState18 = _slicedToArray(_useState17, 2),
-      countdown = _useState18[0],
-      setCountdown = _useState18[1];
-
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("npc_dota_hero_omniknight"),
-      _useState20 = _slicedToArray(_useState19, 2),
-      selectHero = _useState20[0],
-      setSelectHero = _useState20[1];
-
-  var playerData = (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useNetTableKey)("player_data", "player_datas");
-  (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useGameEvent)('server_checked', function (info) {
-    //info: {"server_checked":1}
-    setServerChecked(true);
-  }, []); // useEffect(() => {
-  // 	setSelectHero(playerData[Game.GetLocalPlayerID()].select_hero);
-  // }, [playerData])
-
-  var ShowAbilityToolTip = function ShowAbilityToolTip(panel) {
-    $.Msg(panel);
-    GameUI.CustomUIConfig().ShowAbilityTooltiop(panel, panel.abilityname);
-  };
-
-  var HideAbilityToolTip = function HideAbilityToolTip(panel) {
-    GameUI.CustomUIConfig().HideAbilityTooltiop(panel);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
-    type: "MoviePanel",
-    id: "BackgroundImage",
-    className: "HeroSelectionBackgroundScene",
-    src: "file://{resources}/videos/ti10_aegis_frontpage.webm",
-    repeat: "true",
-    autoplay: "onload"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "Waiting",
-    className: serverChecked ? "ServerChecked" : ""
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "WaitingContent",
-    hittest: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "WaitingSpinner",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "WaitingText",
-    localizedText: "#HeroSelection_Waiting",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, {
-    className: "ButtonBevel",
-    text: "check",
-    onactivate: function onactivate() {
-      return setServerChecked(true);
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "MainSelectionPage"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "SideBar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "PlayerList"
-  }, Game.GetAllPlayerIDs().map(function (playerID) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(PlayerCard, {
-      key: "PlayerCard" + playerID.toString(),
-      playerID: playerID
-    });
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "DiffList"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
-    index: "0",
-    diff: "GameMode_Easy",
-    selected: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
-    index: "1",
-    diff: "GameMode_Common",
-    selected: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
-    index: "2",
-    diff: "GameMode_Hard",
-    selected: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
-    index: "3",
-    diff: "GameMode_Nightmare",
-    selected: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DiffButton, {
-    index: "4",
-    diff: "GameMode_Hell",
-    selected: false
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "MainPage"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "TimerContent"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    localizedText: "{d:count_time}"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "HeroListAndChat"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "HeroList"
-  }, function () {
-    var HeroList = [];
-
-    for (var key in GameUI.CustomUIConfig().HeroesKv) {
-      var HeroKV = GameUI.CustomUIConfig().HeroesKv[key];
-
-      if (HeroKV.UnitLabel == "hide") {
-        continue;
-      }
-
-      var HeroName = HeroKV.override_hero;
-      HeroList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroCard, {
-        key: HeroName,
-        heroname: HeroName,
-        lock: HeroKV.UnitLabel == "lock",
-        setSelectHero: setSelectHero
-      }));
-    }
-
-    return HeroList;
-  }()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
-    type: "DOTAChat",
-    id: "Chat",
-    "class": "PreGameChat",
-    chatstyle: "hudpregame",
-    oncancel: "SetInputFocus( HeroGrid )"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "HeroInfoContainer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "HeroName"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, {
-    src: "s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    key: selectHero,
-    localizedText: selectHero
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "HeroAbilityList"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
-    className: "HeroAbility",
-    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability1,
-    onmouseover: ShowAbilityToolTip,
-    onmouseout: HideAbilityToolTip
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
-    className: "HeroAbility",
-    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability2,
-    onmouseover: ShowAbilityToolTip,
-    onmouseout: HideAbilityToolTip
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
-    className: "HeroAbility",
-    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability3,
-    onmouseover: ShowAbilityToolTip,
-    onmouseout: HideAbilityToolTip
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
-    className: "HeroAbility",
-    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability4,
-    onmouseover: ShowAbilityToolTip,
-    onmouseout: HideAbilityToolTip
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
-    className: "HeroAbility",
-    abilityname: GameUI.CustomUIConfig().HeroesKv[selectHero].Ability5,
-    onmouseover: ShowAbilityToolTip,
-    onmouseout: HideAbilityToolTip
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, {
-    className: "HeroSelectButton",
-    localizedText: "#SelectHero"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    className: "HeroScenePanel",
-    hittest: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, {
-    key: selectHero,
-    type: "DOTAScenePanel",
-    hittest: false,
-    className: "HeroScene",
-    unit: selectHero,
-    light: "global_light",
-    antialias: "true",
-    drawbackground: "false",
-    rotateonhover: "true",
-    yawmin: "-180",
-    yawmax: "180",
-    particleonly: false,
-    "activity-modifier": "PostGameIdle"
-  })))));
-}
-
-(0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroSelection, null), pSelf);
-
-/***/ }),
-
 /***/ "../../../../../node_modules/object-assign/index.js":
 /*!**********************************************************!*\
   !*** ../../../../../node_modules/object-assign/index.js ***!
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -493,7 +114,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1484,7 +1104,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1594,7 +1213,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -6211,6 +5829,57 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./store/script.tsx":
+/*!**************************!*\
+  !*** ./store/script.tsx ***!
+  \**************************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
+/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
+
+
+function Store() {
+    const storePage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer", ref: storePage },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "CurrencyContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "#Wallet" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "FillWidth" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "RefreshButton" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "MoneyComeButton" })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "CurrencyAmountContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "CurrentCurrencyAmount", text: "{s:shard}", html: true })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PriceAmountContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "EventPointsValueIcon PriceSubscription" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "CurrentPriceAmount", text: "{s:price}", html: true }))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SearchOptionsContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "#DOTA_Search" })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SearchContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SearchBox" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextEntry, { id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton" })))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SearchCategories" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", id: "AllItemCategory", selected: true, className: "SearchCategory", group: "search_categories" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SearchCategoryText" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryAll" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "SearchCategoryDetails", text: "# CategoryAll_Description" })))))));
+}
+(0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(Store, null), $.GetContextPanel());
+
+
+/***/ }),
+
 /***/ "?dd17":
 /*!********************************!*\
   !*** ./util.inspect (ignored) ***!
@@ -6292,7 +5961,7 @@ if (false) {} else {
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./hero_selection/script.jsx");
+/******/ 	__webpack_require__("./store/script.tsx");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;

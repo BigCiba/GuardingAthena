@@ -127,8 +127,8 @@
 	flow-children: right;
     width: 980px;
 	height: 940px;
-    margin: 0px 600px 0px 10px;
-    horizontal-align: center;
+    margin: 0px 0px 0px 10px;
+    horizontal-align: left;
     vertical-align: middle;
 }
 

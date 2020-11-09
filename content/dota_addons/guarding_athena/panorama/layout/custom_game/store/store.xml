@@ -1,0 +1,22 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hudstyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
+		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
+
+		<include src="file://{resources}/layout/custom_game/store/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/store/script.js"></include>
+	</scripts>
+	<snippets>
+		<snippet name="BannersNav">
+			<Panel>
+				<CarouselNav id="BannersNav" class="OverlayPips" carouselid="Banners" ignoredisabledchildren="{true}" maxpips="10"></CarouselNav>
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="StoreRoot" hittest="false">
+	</Panel>
+</root>
