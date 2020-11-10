@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
 function Store() {
 	const storePage = useRef<Panel>(null);
+	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
 	return (
 		<Panel id="StorePage" className="DotaPlusContainer" ref={storePage}>
 			<Panel id="SearchAndCategoriesContainer">
@@ -14,11 +15,11 @@ function Store() {
 					</Panel>
 					<Panel id="CurrencyAmountContainer">
 						<Panel className="EventPointsValueIcon ShardSubscription" />
-						<Label id="CurrentCurrencyAmount" text="{s:shard}" html={true} />
+						<Label id="CurrentCurrencyAmount" text={playerData[Game.GetLocalPlayerID()].Shard} />
 					</Panel>
 					<Panel id="PriceAmountContainer">
 						<Panel className="EventPointsValueIcon PriceSubscription" />
-						<Label id="CurrentPriceAmount" text="{s:price}" html={true} />
+						<Label id="CurrentPriceAmount" text={playerData[Game.GetLocalPlayerID()].Price} />
 					</Panel>
 				</Panel>
 				<Panel id="SearchOptionsContainer">
@@ -34,17 +35,78 @@ function Store() {
 					</Panel>
 				</Panel>
 				<Panel id="SearchCategories">
-					<GenericPanel type="TabButton" id="AllItemCategory" selected={true} className="SearchCategory" group="search_categories">
+					<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
 						<Panel className="SearchCategoryBackground" />
 						<Panel className="SearchCategoryArtOverlay" />
 						<Panel className="SearchCategoryText">
 							<Label className="SearchCategoryName" text="#CategoryAll" />
-							<Label className="SearchCategoryDetails" text="# CategoryAll_Description" />
+							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
+						</Panel>
+					</GenericPanel>
+					<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategoryHero" />
+							<Label className="SearchCategoryDetails" text="#CategoryHero_Description" />
+						</Panel>
+					</GenericPanel>
+					<GenericPanel type="TabButton" id="CategorySkin" className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategorySkin" />
+							<Label className="SearchCategoryDetails" text="#CategorySkin_Description" />
+						</Panel>
+					</GenericPanel>
+					<GenericPanel type="TabButton" id="CategoryParticle" className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategoryParticle" />
+							<Label className="SearchCategoryDetails" text="#CategoryParticle_Description" />
+						</Panel>
+					</GenericPanel>
+					<GenericPanel type="TabButton" id="CategoryPet" className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategoryPet" />
+							<Label className="SearchCategoryDetails" text="#CategoryPet_Description" />
+						</Panel>
+					</GenericPanel>
+					<GenericPanel type="TabButton" id="CategoryGamePlay" className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategoryGamePlay" />
+							<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
 						</Panel>
 					</GenericPanel>
 				</Panel>
 			</Panel>
+			<Panel className="StoreTabContents">
+				<StoreItemContainer tabid="CategoryAll" />
+				<StoreItemContainer tabid="CategoryHero" />
+				<StoreItemContainer tabid="CategorySkin" />
+				<StoreItemContainer tabid="CategoryParticle" />
+				<StoreItemContainer tabid="CategoryPet" />
+				<StoreItemContainer tabid="CategoryGamePlay" />
+			</Panel>
 		</Panel>
+	)
+}
+function StoreItemContainer({ tabid }: { tabid: string }) {
+	return (
+		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryAll" ? true : false}>
+			<Panel className="StoreHeader">
+				<Label localizedText={tabid} />
+				<Button className="CloseButton" />
+			</Panel>
+			<Panel className="StoreItemContainer">
+
+			</Panel>
+		</GenericPanel>
 	)
 }
 render(<Store />, $.GetContextPanel());

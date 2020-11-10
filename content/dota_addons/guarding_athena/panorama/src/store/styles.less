@@ -5,7 +5,7 @@
 #StorePage {
 	flow-children: right;
 	width: 980px;
-	height: 940px;
+	height: 850px;
 	margin: 0px 0px 0px 10px;
 	horizontal-align: right;
 	vertical-align: middle;
@@ -246,6 +246,126 @@
 				}
 			}
 		}
+		#CategoryAll .SearchCategoryBackground { wash-color: #ffcf4d33; brightness: 1.8; }
+		#CategoryHero .SearchCategoryBackground { wash-color: #aee2ff33; }
+		#CategorySkin .SearchCategoryBackground { wash-color: #d5ff9a33; }
+		#CategoryParticle .SearchCategoryBackground { wash-color: #b29aff33; }
+		#CategoryPet .SearchCategoryBackground { wash-color: #ff9a9a33; }
+		#CategoryGamePlay .SearchCategoryBackground { wash-color: #aee2ff33; }
+
+		#CategoryAll:selected .SearchCategoryBackground, #CategoryAll:active .SearchCategoryBackground { wash-color: #ffcf4d; brightness: 1.8; }
+		#CategoryHero:selected .SearchCategoryBackground, #CategoryHero:active .SearchCategoryBackground { wash-color: #aee2ff; }
+		#CategorySkin:selected .SearchCategoryBackground, #CategorySkin:active .SearchCategoryBackground { wash-color: #d5ff9a; }
+		#CategoryParticle:selected .SearchCategoryBackground, #CategoryParticle:active .SearchCategoryBackground { wash-color: #b29aff; }
+		#CategoryPet:selected .SearchCategoryBackground, #CategoryPet:active .SearchCategoryBackground { wash-color: #ff9a9a; }
+		#CategoryGamePlay:selected .SearchCategoryBackground, #CategoryGamePlay:active .SearchCategoryBackground { wash-color: #5e92df; }
+
+		#CategoryAll .SearchCategoryName { color:  gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ffef8a ), to( #ffbb0f ) ); }
+		#CategoryHero .SearchCategoryName { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #70dfff ), to( #7bb7ff ) ); }
+		#CategorySkin .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #c2ff57 ), to( #79e900 ) ); }
+		#CategoryParticle .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #8f57ff ), to( #612fc4 ) ); }
+		#CategoryPet .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #ff5757 ), to( #c43030 ) ); }
+		#CategoryGamePlay .SearchCategoryName  { color: gradient( linear, 0% 0%, 0% 100%, from( white ), color-stop( 0.5, #5e92df), to( #253699 ) ); }
+
+		#CategoryAll .SearchCategoryArtOverlay
+		{
+			width: 260px;
+			height: 200px;
+			margin-bottom: 9px;
+			ui-scale: 48%;
+
+			background-image: url("s2r://panorama/images/dota_plus/shop_exclusive_magnus_psd.vtex");
+		} 
+		#CategoryHero .SearchCategoryArtOverlay
+		{
+			width: 182px;
+			height: 177px;
+			margin-bottom: 3px;
+			ui-scale: 60%;
+
+			background-image: url("s2r://panorama/images/dota_plus/shop_legacy_silencer_psd.vtex");
+		}
+		#CategoryParticle .SearchCategoryArtOverlay
+		{
+			width: 260px;
+			height: 200px;
+			ui-scale: 46%;
+			margin-bottom: 10px;
+
+			background-image: url("s2r://panorama/images/dota_plus/shop_chat_wheel_psd.vtex");
+		}
+		#CategorySkin .SearchCategoryArtOverlay
+		{
+			width: 105px;
+			height: 166px;
+			margin-bottom: 10px;
+			margin-right: 12px;
+			ui-scale: 62%;
+
+			background-image: url("s2r://panorama/images/dota_plus/shop_relics_skullrelic_psd.vtex");
+		}
+		#CategoryPet .SearchCategoryArtOverlay
+		{
+			width: 150px;
+			height: 153px;
+			ui-scale: 66%;
+			margin-bottom: 10px;
+
+			background-image: url("s2r://panorama/images/dota_plus/shop_tools_psd.vtex");
+		}
+		#CategoryGamePlay .SearchCategoryArtOverlay
+		{
+			width: 260px;
+			height: 200px;
+			ui-scale: 46%;
+			margin-bottom: 10px;
+
+			background-image: url("s2r://panorama/images/dota_plus/shop_frostivus_psd.vtex");
+		}
+	}
+}
+.StoreTabContents {
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+	background-color: #0006;
+	padding: 10px 0px 0px 10px;
+	margin: 8px 8px 8px 0px;
+}
+.StoreItemContainer {
+	width: 100%;
+	height: 100%;
+	flow-children: down;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: .2s;
+	&:selected {
+		opacity: 1;
+	}
+	.StoreHeader {
+		width: 100%;
+		margin-bottom: 8px;
+		padding-right: 8px;
+		flow-children: right;
+		Label {
+			font-size: 24px;
+			letter-spacing: 1px;
+			color: #ccc;
+			text-transform: uppercase;
+			
+			text-transform: uppercase;
+			font-size: 30px;
+			margin: 0px;
+			margin-left: 8px;
+			color: #ccc;
+			font-weight: bold;
+			text-shadow: 2px 2px 4px black;
+			saturation: 0.3;
+		}
+		.CloseButton {
+			align: right top;
+		}
+	}
+	.StoreItemContainer {
 
 	}
 }
