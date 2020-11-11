@@ -187,35 +187,7 @@
 				background-size: cover;
 				background-repeat: no-repeat;
 			}
-			&:selected .SearchCategoryBackground,
-			&:active .SearchCategoryBackground
-			{
-				border-bottom: 1px solid #00000060;
-				border-right: 1px solid #00000060;
-				border-top: 1px solid #ffffff06;
-				border-left: 1px solid #ffffff06;
-			}
-			&:selected .SearchCategoryArtOverlay,
-			&:active .SearchCategoryArtOverlay
-			{
-				saturation: 1.0;
-			}
-			&:hover .SearchCategoryArtOverlay
-			{
-				saturation: 0.5;
-			}
-			.SearchCategoryArtOverlay
-			{
-				horizontal-align: right;
-				vertical-align: bottom;
-
-				saturation: 0.3;
-
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: bottom;
-				
-			}
+			
 			.SearchCategoryText
 			{
 				width: 100%;
@@ -244,6 +216,37 @@
 					text-transform: uppercase;
 					margin-top: -4px;
 				}
+			}
+			&:selected .SearchCategoryBackground,
+			&:active .SearchCategoryBackground
+			{
+				border-bottom: 1px solid #00000060;
+				border-right: 1px solid #00000060;
+				border-top: 1px solid #ffffff06;
+				border-left: 1px solid #ffffff06;
+			}
+			&:selected .SearchCategoryName,
+			&:active .SearchCategoryName,
+			&:selected .SearchCategoryArtOverlay,
+			&:active .SearchCategoryArtOverlay
+			{
+				saturation: 1.0;
+			}
+			&:hover .SearchCategoryArtOverlay
+			{
+				saturation: 0.5;
+			}
+			.SearchCategoryArtOverlay
+			{
+				horizontal-align: right;
+				vertical-align: bottom;
+
+				saturation: 0.3;
+
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: bottom;
+				
 			}
 		}
 		#CategoryAll .SearchCategoryBackground { wash-color: #ffcf4d33; brightness: 1.8; }
@@ -365,7 +368,100 @@
 			align: right top;
 		}
 	}
-	.StoreItemContainer {
-
+	.StoreItemList {
+		flow-children: right-wrap;
+		height: fill-parent-flow( 1.0 );
+		overflow: squish scroll;
 	}
+}
+.AthenaStoreItem
+{
+	background-color: black;
+	flow-children: down;
+	width: 204px;
+	height: 238px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	&:hover {
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( black ), to( #B7894610 ) );
+	}
+}
+#SkillPreview {
+	flow-children: right;
+	width:100%;
+	vertical-align: bottom;
+	padding: 5px;
+}
+#SkillPreview DOTAAbilityImage {
+	vertical-align: bottom;
+	horizontal-align: center;
+	max-width: 50px;
+	width: fill-parent-flow( 1.0 );
+	height: width-percentage( 100% );
+	margin: 5px;
+	border-radius: 5px;
+	opacity: 0;
+
+	transition-property: pre-transform-scale2d, opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+}
+#SkillPreview DOTAAbilityImage:hover {
+	pre-transform-scale2d: 1.3;
+}
+.PurchaseButtonList
+{
+	flow-children: right;
+	margin: 8px;
+	/* padding: 4px 2px 2px 2px; */
+	.DotaPlusPurchaseButton
+	{
+		horizontal-align: center;
+		padding: 4px 0px 2px 0px;
+		margin: 0px 4px 0px 4px;
+		width: fill-parent-flow( 1.0 );
+
+		border-top: 1px solid #ffffff22;
+		border-left: 1px solid #ffffff11;
+		border-right: 1px solid #00000044;
+		border-bottom: 1px solid #00000088;
+
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+		&:hover
+		{
+			brightness: 2.0;
+		}
+	
+		&:active
+		{
+			brightness: 1.5;
+		}
+	
+		Label
+		{
+			margin-left: 2px;
+			margin-right: 4px;
+			color: dotaPlusLightGold;
+			font-size: 18px;
+			padding: 0px;
+		}
+		.ButtonCenter
+		{
+			horizontal-align: center;
+			flow-children: right;
+		}
+		.DotaPlusCurrencyIcon
+		{
+			width: 20px;
+			height: 20px;
+			transform: translateY( 1px );
+			margin-bottom: 6px;
+
+			background-image: dotaPlusCurrencySmallIcon;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+
 }

@@ -35,14 +35,6 @@ function Store() {
 					</Panel>
 				</Panel>
 				<Panel id="SearchCategories">
-					<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryAll" />
-							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
-						</Panel>
-					</GenericPanel>
 					<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories">
 						<Panel className="SearchCategoryBackground" />
 						<Panel className="SearchCategoryArtOverlay" />
@@ -83,6 +75,14 @@ function Store() {
 							<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
 						</Panel>
 					</GenericPanel>
+					<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategoryAll" />
+							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
+						</Panel>
+					</GenericPanel>
 				</Panel>
 			</Panel>
 			<Panel className="StoreTabContents">
@@ -103,10 +103,53 @@ function StoreItemContainer({ tabid }: { tabid: string }) {
 				<Label localizedText={tabid} />
 				<Button className="CloseButton" />
 			</Panel>
-			<Panel className="StoreItemContainer">
-
+			<Panel className="StoreItemList">
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
+				<StoreItem />
 			</Panel>
 		</GenericPanel>
+	)
+}
+function StoreItem() {
+	return (
+		<Panel className="AthenaStoreItem">
+			<Panel id="ItemImageContainer">
+				<Image id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png">
+					<Panel id="SkillPreview">
+					</Panel>
+				</Image>
+			</Panel>
+			<Label id="ItemName" text="{s:item_name}" />
+			<Panel id="ItemType">
+				<Panel id="UnitIcon">
+					<DOTAHeroImage id="HeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_crystal_maiden" scaling="stretch-to-fit-preserve-aspect" />
+					<Panel id="ItemTypeIcon" />
+				</Panel>
+				<Label id="ItemTypeLabel" text="{s:item_type}" />
+			</Panel>
+
+			<Panel className="PurchaseButtonList">
+				<Button id="ShardPurchaseButton" className="DotaPlusPurchaseButton">
+					<Panel id="Contents" className="ButtonCenter">
+						<Panel id="EventIcon" className="DotaPlusCurrencyIcon" />
+						<Label id="ShardCost" text="{s:shard_cost}" />
+					</Panel>
+				</Button>
+			</Panel>
+		</Panel>
 	)
 }
 render(<Store />, $.GetContextPanel());
