@@ -19,6 +19,6 @@
 		</snippet>
 	</snippets>
 	<Panel class="StoreRoot" hittest="false">
-		<MoviePanel id="TreasureMovie" src="file://{resources}/videos/skin/omniknight_01.webm" repeat="true" autoplay="onload"  />
+		<!-- <MoviePanel id="TreasureMovie" src="file://{resources}/videos/skin/omniknight_01.webm" repeat="true" autoplay="onload"  /> -->
 	</Panel>
 </root>

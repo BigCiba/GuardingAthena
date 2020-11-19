@@ -183,4 +183,4 @@ function StoreItem({ itemData }: { itemData: any }) {
 		</Panel>
 	)
 }
-// render(<Store />, $.GetContextPanel());
+render(<Store />, $.GetContextPanel());
