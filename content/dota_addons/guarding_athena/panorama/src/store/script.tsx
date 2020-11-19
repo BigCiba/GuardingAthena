@@ -86,17 +86,18 @@ function Store() {
 				</Panel>
 			</Panel>
 			<Panel className="StoreTabContents">
-				<StoreItemContainer tabid="CategoryAll" />
-				<StoreItemContainer tabid="CategoryHero" />
-				<StoreItemContainer tabid="CategorySkin" />
-				<StoreItemContainer tabid="CategoryParticle" />
-				<StoreItemContainer tabid="CategoryPet" />
-				<StoreItemContainer tabid="CategoryGamePlay" />
+				<StoreItemContainer tabid="CategoryAll" type="" />
+				<StoreItemContainer tabid="CategoryHero" type="hero" />
+				<StoreItemContainer tabid="CategorySkin" type="skin" />
+				<StoreItemContainer tabid="CategoryParticle" type="particle" />
+				<StoreItemContainer tabid="CategoryPet" type="pet" />
+				<StoreItemContainer tabid="CategoryGamePlay" type="gameplay" />
 			</Panel>
 		</Panel>
 	)
 }
-function StoreItemContainer({ tabid }: { tabid: string }) {
+function StoreItemContainer({ tabid, type }: { tabid: string, type: string }) {
+	let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
 	return (
 		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryAll" ? true : false}>
 			<Panel className="StoreHeader">
@@ -104,52 +105,82 @@ function StoreItemContainer({ tabid }: { tabid: string }) {
 				<Button className="CloseButton" />
 			</Panel>
 			<Panel className="StoreItemList">
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
-				<StoreItem />
+				{Object.keys(itemDatas).map((key) => {
+					if (itemDatas[key].Type == type && itemDatas[key].Purchaseable == 1) {
+						return <StoreItem key={key} itemData={itemDatas[key]} />
+					}
+				})}
 			</Panel>
 		</GenericPanel>
 	)
 }
-function StoreItem() {
+function StoreItem({ itemData }: { itemData: any }) {
 	return (
-		<Panel className="AthenaStoreItem">
+		<Panel className={"AthenaStoreItem " + (() => {
+			if (itemData.Type == "hero") {
+				return "HeroItem";
+			} else if (itemData.Type == "pet") {
+				return "Prefab_courier";
+			} else if (itemData.Type == "particle") {
+				return "Prefab_ward";
+			} else if (itemData.Type == "gameplay") {
+				return "Prefab_bundle";
+			}
+		})()}
+			onmouseover={
+				(self) => {
+					if (itemData.Type == "pet") {
+						$.DispatchEvent(
+							"UIShowCustomLayoutParametersTooltip",
+							self,
+							"courier_tooltip",
+							"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
+							"courier_name=" + itemData.ItemName + "&rotationspeed=2");
+					}
+				}
+			}
+			onmouseout={(self) => {
+				if (itemData.Type == "pet") {
+					$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
+				}
+			}}
+		>
 			<Panel id="ItemImageContainer">
-				<Image id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src="file://{images}/econ/sets/DOTA_Item_Dota_Plus_Crystal_Maiden.png">
+				<Image id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src={"file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png"}>
 					<Panel id="SkillPreview">
 					</Panel>
 				</Image>
 			</Panel>
-			<Label id="ItemName" text="{s:item_name}" />
+			<Label id="ItemName" localizedText={itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName} />
 			<Panel id="ItemType">
 				<Panel id="UnitIcon">
-					<DOTAHeroImage id="HeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_crystal_maiden" scaling="stretch-to-fit-preserve-aspect" />
+					{itemData.Type == "hero" &&
+						<DOTAHeroImage id="HeroIcon" heroimagestyle="icon" heroname={"npc_dota_hero_" + itemData.ItemName} scaling="stretch-to-fit-preserve-aspect" />
+					}
 					<Panel id="ItemTypeIcon" />
 				</Panel>
-				<Label id="ItemTypeLabel" text="{s:item_type}" />
+				<Label id="ItemTypeLabel" text={"StoreItemType_" + itemData.Type} />
 			</Panel>
 
 			<Panel className="PurchaseButtonList">
-				<Button id="ShardPurchaseButton" className="DotaPlusPurchaseButton">
-					<Panel id="Contents" className="ButtonCenter">
-						<Panel id="EventIcon" className="DotaPlusCurrencyIcon" />
-						<Label id="ShardCost" text="{s:shard_cost}" />
-					</Panel>
-				</Button>
+				{itemData.Shard > 0 &&
+					<Button id="ShardPurchaseButton" className="DotaPlusPurchaseButton">
+						<Panel id="Contents" className="ButtonCenter">
+							<Panel id="EventIcon" className="DotaPlusCurrencyIcon" />
+							<Label id="ShardCost" text={itemData.Shard} />
+						</Panel>
+					</Button>
+				}
+				{itemData.Price > 0 &&
+					<Button id="PricePurchaseButton" className="DotaPlusPurchaseButton">
+						<Panel id="Contents" className="ButtonCenter">
+							<Panel id="EventIcon" className="DotaPlusPriceCurrencyIcon" />
+							<Label id="PriceCost" text={itemData.Price} />
+						</Panel>
+					</Button>
+				}
 			</Panel>
 		</Panel>
 	)
 }
-render(<Store />, $.GetContextPanel());
+// render(<Store />, $.GetContextPanel());

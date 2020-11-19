@@ -117,7 +117,7 @@ DIFFICULTY_INIT_GOLD = {		-- 初始金钱
 	[5] = 0,
 }
 TIME_BOSS_REBORN = 60			-- boss重生间隔
-HERO_SELECTION_TIME = IsInToolsMode() and 2 or 20
+HERO_SELECTION_TIME = IsInToolsMode() and 5 or 20
 -- 刷新排除技能
 REFRESH_EXCLUDE_ABILITIES = {
 }
@@ -175,7 +175,7 @@ function public:init(bReload)
 	SetTeamCustomHealthbarColor(DOTA_TEAM_BADGUYS, 243, 201, 9)			-- 自定义队伍颜色
 
 	-- 设置游戏规则
-	GameMode = GameRules:GetGameModeEntity()	
+	GameMode = GameRules:GetGameModeEntity()
 	-- GameMode:SetCustomGameForceHero( "npc_dota_hero_wisp" )				-- 强制所有玩家选择一个英雄(e.g. "npc_dota_hero_axe")
 	GameMode:SetRecommendedItemsDisabled(false)						-- 是否禁止打开英雄的推荐物品界面
 	GameMode:SetTopBarTeamValuesOverride(true)						-- 是否使用自定义的顶部计分数值

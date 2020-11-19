@@ -455,3 +455,19 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+.PurchaseButtonList .DotaPlusPurchaseButton .DotaPlusPriceCurrencyIcon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(1px);
+  margin-bottom: 6px;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
+}
+#TreasureMovie {
+  height: 480px;
+  height: 360px;
+  align: center center;
+}

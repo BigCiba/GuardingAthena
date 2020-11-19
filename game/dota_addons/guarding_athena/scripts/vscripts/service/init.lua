@@ -5,9 +5,9 @@ local public = Service
 
 require("service/payment")
 
---[[
-	一些需要用到的特殊函数
-]]--
+--[[	一些需要用到的特殊函数
+]]
+--
 function Sleep(fTime, szUnique)
 	local co = coroutine.running()
 	GameRules:GetGameModeEntity():Timer(fTime, function()
@@ -22,7 +22,6 @@ ServerKey = GetDedicatedServerKeyV2(KEY)
 REQUEST_TIME_OUT = 30 -- 默认请求超时时长（秒）
 
 --debug用
-
 --不用、活动下架后的接口记得注释或者删除以免出问题
 -- 所有接口都要用server_key
 -- 玩家
@@ -83,8 +82,6 @@ ACTION_GET_GUIDER_REWARD = "get_guider_reward"				-- 获取带新人奖励
 --似乎已经无用了
 -- ACTION_GET_RANK = "get_rank"									-- 获取排行
 -- ACTION_GET_PLAYERS_RECORD_INFO = "get_players_record_info"	-- 获取玩家记录信息
-
-
 function public:init(bReload)
 	if not bReload then
 		self.tPlayerServiceData = {}
@@ -106,9 +103,9 @@ function public:init(bReload)
 	-- Request:Event("get_recharge_url", Dynamic_Wrap(public, "OnGetRechargeUrl"), public)
 end
 
---[[
-	监听事件
-]]--
+--[[	监听事件
+]]
+--
 function public:OnGameRulesStateChange()
 	local state = GameRules:State_Get()
 	if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
@@ -125,7 +122,7 @@ end
 function public:RefreshAllData()
 	local state = GameRules:State_Get()
 
-	for iPlayerID = 0, PlayerResource:GetPlayerCount()-1, 1 do
+	for iPlayerID = 0, PlayerResource:GetPlayerCount() - 1, 1 do
 		if PlayerResource:IsValidPlayerID(iPlayerID) then
 			self:RequestPlayerData(iPlayerID)
 		end
@@ -153,7 +150,7 @@ function public:RequestStoreItem()
 		end
 	end, REQUEST_TIME_OUT)
 end
-function public:RequestMoneyCome(iPlayerID,price,istype)
+function public:RequestMoneyCome(iPlayerID, price, istype)
 	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
 	local params = {
 		SteamID = SteamID,
@@ -180,7 +177,7 @@ function public:RequestPlayerData(iPlayerID)
 	end
 	local Steamid = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
 	local Address = "http://bigciba.applinzi.com/dota2api/GetPlayerData.php"
-	local handle = CreateHTTPRequestScriptVM("POST",Address)
+	local handle = CreateHTTPRequestScriptVM("POST", Address)
 	handle:SetHTTPRequestGetOrPostParameter("SteamID", Steamid)
 	handle:SetHTTPRequestGetOrPostParameter("ServerKey", ServerKey)
 	handle:SetHTTPRequestAbsoluteTimeoutMS(REQUEST_TIME_OUT * 1000)
@@ -191,7 +188,7 @@ function public:RequestPlayerData(iPlayerID)
 			DeepPrintTable(hBody)
 			if hBody ~= nil then
 				-- 是否有装备
-				local tEquipped = {pet = false,skin = false,particle = false}
+				local tEquipped = { pet = false, skin = false, particle = false }
 				for i, v in ipairs(hBody.inventory) do
 					if self.tPlayerServiceData[iPlayerID][v.Type] == nil then
 						self.tPlayerServiceData[iPlayerID][v.Type] = {}
@@ -230,14 +227,14 @@ function public:RequestPlayerData(iPlayerID)
 				DeepPrintTable(tEquipped)
 				-- 添加默认物品
 				for sHeroName, tSkinList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
-					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], {ItemName = "default_no_item", Equip = tEquipped[sHeroName] and "0" or "1", Expiration = "9999-12-31", Type = "skin"})
+					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], { ItemName = "default_no_item", Equip = tEquipped[sHeroName] and "0" or "1", Expiration = "9999-12-31", Type = "skin" })
 				end
 				if #self.tPlayerServiceData[iPlayerID]["pet"] == 0 then
-					table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "pet_1", Equip = "1", Expiration = "9999-12-31", Type = "pet"})
+					table.insert(self.tPlayerServiceData[iPlayerID]["pet"], { ItemName = "pet_1", Equip = "1", Expiration = "9999-12-31", Type = "pet" })
 					tEquipped.pet = true
 				end
-				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], {ItemName = "default_no_item", Equip = tEquipped.pet and "0" or "1", Expiration = "9999-12-31", Type = "pet"})
-				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], {ItemName = "default_no_item", Equip = tEquipped.particle and "0" or "1", Expiration = "9999-12-31", Type = "particle"})
+				table.insert(self.tPlayerServiceData[iPlayerID]["pet"], { ItemName = "default_no_item", Equip = tEquipped.pet and "0" or "1", Expiration = "9999-12-31", Type = "pet" })
+				table.insert(self.tPlayerServiceData[iPlayerID]["particle"], { ItemName = "default_no_item", Equip = tEquipped.particle and "0" or "1", Expiration = "9999-12-31", Type = "particle" })
 				-- 分数等级金钱
 				self.tPlayerServiceData[iPlayerID].Score = hBody.player_data.Score
 				self.tPlayerServiceData[iPlayerID].Level = GuardingAthena:GetPlayerLevel(hBody.player_data.Score)
@@ -258,7 +255,7 @@ function public:RequestUpDataEquip(iPlayerID)
 		if sType ~= "skin" and type(tItemList) == "table" then
 			for _, tItemData in ipairs(tItemList) do
 				if tItemData.ItemName ~= "default_no_item" then
-					table.insert(ItemList, {ItemName = tItemData.ItemName, Equip = tItemData.Equip})
+					table.insert(ItemList, { ItemName = tItemData.ItemName, Equip = tItemData.Equip })
 				end
 			end
 		end
@@ -266,11 +263,11 @@ function public:RequestUpDataEquip(iPlayerID)
 	for sHeroName, tItemList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
 		for _, tItemData in ipairs(tItemList) do
 			if tItemData.ItemName ~= "default_no_item" then
-				table.insert(ItemList, {ItemName = tItemData.ItemName, Equip = tItemData.Equip})
+				table.insert(ItemList, { ItemName = tItemData.ItemName, Equip = tItemData.Equip })
 			end
 		end
 	end
-	self:HTTPRequest("POST", "ToggleEquipState", {SteamID = Steamid,ItemList = ItemList}, function(iStatusCode, sBody)
+	self:HTTPRequest("POST", "ToggleEquipState", { SteamID = Steamid, ItemList = ItemList }, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			local hBody = json.decode(sBody)
 			print(sBody)
@@ -280,7 +277,7 @@ function public:RequestUpDataEquip(iPlayerID)
 end
 
 function public:HTTPRequest(sMethod, sAction, hParams, hFunc, fTimeout)
-	local szURL = Address.."?action="..sAction.."&version=1.1"
+	local szURL = Address .. "?action=" .. sAction .. "&version=1.1"
 	local handle = CreateHTTPRequestScriptVM(sMethod, szURL)
 
 	-- handle:SetHTTPRequestHeaderValue("Dedicated-Server-Key", ServerKey)
@@ -290,9 +287,9 @@ function public:HTTPRequest(sMethod, sAction, hParams, hFunc, fTimeout)
 	hParams.server_key = ServerKey
 	handle:SetHTTPRequestRawPostBody("application/json", json.encode(hParams))
 
-	handle:SetHTTPRequestAbsoluteTimeoutMS((fTimeout or REQUEST_TIME_OUT)*1000)
-	
-	handle:Send(function( response )
+	handle:SetHTTPRequestAbsoluteTimeoutMS((fTimeout or REQUEST_TIME_OUT) * 1000)
+
+	handle:Send(function(response)
 		hFunc(response.StatusCode, response.Body, response)
 	end)
 
@@ -385,7 +382,7 @@ function public:OnPurchaseItem(eventSourceIndex, events)
 	local sItemName = events.ItemName
 	local Currency = events.Currency
 	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
-	self:HTTPRequest("POST", "PurchaseItem", {ItemName=sItemName,Currency=Currency,SteamID=SteamID}, function(iStatusCode, sBody)
+	self:HTTPRequest("POST", "PurchaseItem", { ItemName = sItemName, Currency = Currency, SteamID = SteamID }, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			print(sBody)
 			self:RequestPlayerData(iPlayerID)
@@ -399,7 +396,7 @@ function public:CheckHeroUnlock(iPlayerID, sHeroName)
 	end
 	local tPlayerHeroData = self.tPlayerServiceData[iPlayerID]["hero"]
 	for _, tItemData in ipairs(tPlayerHeroData) do
-		if sHeroName == "npc_dota_hero_"..tItemData.ItemName then
+		if sHeroName == "npc_dota_hero_" .. tItemData.ItemName then
 			return true
 		end
 	end
@@ -445,7 +442,7 @@ function public:OnRefreshPlayerData(eventSourceIndex, events)
 	local iPlayerID = events.PlayerID
 	local player = PlayerResource:GetPlayer(iPlayerID)
 	local SteamID = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
-	self:HTTPRequest("POST", "GetPrice", {SteamID = SteamID}, function(iStatusCode, sBody)
+	self:HTTPRequest("POST", "GetPrice", { SteamID = SteamID }, function(iStatusCode, sBody)
 		if iStatusCode == 200 then
 			local hBody = json.decode(sBody)
 			print(sBody)
