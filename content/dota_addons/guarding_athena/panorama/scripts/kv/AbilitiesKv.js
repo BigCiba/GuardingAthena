@@ -15341,7 +15341,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
-				"bonus_intellect":"5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43",
+				"bonus_intellect":"10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200",
 			},
 			"02":{
 				"var_type":"FIELD_INTEGER",

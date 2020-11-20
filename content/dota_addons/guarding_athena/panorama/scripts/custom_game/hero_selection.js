@@ -4,13 +4,13 @@ let HeroLock = false;
 // 默认物品
 let PlayerItemData = {
 	particle: {
-		"1": {ItemName: "default_no_item", Equip: "1", Type: "particle"},
+		"1": { ItemName: "default_no_item", Equip: "1", Type: "particle" },
 	},
 	skin: {},
 	pet: {
-		"1": {ItemName: "pet_01", Equip: "1", Type: "pet"},
-		"2": {ItemName: "pet_02", Equip: "0", Type: "pet"},
-		"3": {ItemName: "default_no_item", Equip: "0", Type: "pet"},
+		"1": { ItemName: "pet_01", Equip: "1", Type: "pet" },
+		"2": { ItemName: "pet_02", Equip: "0", Type: "pet" },
+		"3": { ItemName: "default_no_item", Equip: "0", Type: "pet" },
 	}
 }
 
@@ -20,7 +20,7 @@ function Update() {
 		return;
 	}
 	$.Schedule(0, Update);
-	
+
 	if (GameModeSelectionEndTime != -1) {
 		let time = GameModeSelectionEndTime - Game.GetGameTime();
 		$("#TimerContent").SetDialogVariableInt("time", Math.ceil(time));
@@ -28,11 +28,11 @@ function Update() {
 }
 function LoadPlayer(self) {
 	self.BLoadLayoutSnippet("PlayerCard");
-	self.SetPlayer = function(PlayerID) {
+	self.SetPlayer = function (PlayerID) {
 		const tPlayerInfo = Game.GetPlayerInfo(PlayerID);
 		let LocalPlayerID = Players.GetLocalPlayer();
 		let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
-		const iLevel = Data.Level == null ? 1:Data.Level;
+		const iLevel = Data.Level == null ? 1 : Data.Level;
 		self.FindChildTraverse("AvatarImage").steamid = tPlayerInfo.player_steamid;
 		self.FindChildTraverse("UserName").steamid = tPlayerInfo.player_steamid;
 		self.FindChildTraverse("BackGroundImage").SetImage(GetBadgesBackground(iLevel));
@@ -44,15 +44,15 @@ function LoadPlayer(self) {
 }
 function LoadItem(self) {
 	self.BLoadLayoutSnippet("EconItem");
-	self.SetItem = function(ItemData, Panel) {
-		let Quality = ItemData.ItemName == "default_no_item" ? "Common":GameUI.CustomUIConfig().PlayerItemsKV[ItemData.ItemName].Quality
-		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
+	self.SetItem = function (ItemData, Panel) {
+		let Quality = ItemData.ItemName == "default_no_item" ? "Common" : GameUI.CustomUIConfig().PlayerItemsKV[ItemData.ItemName].Quality
+		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/" + ItemData.Type + "/" + ItemData.ItemName + ".png");
 		self.FindChildTraverse("Equipped").SetHasClass("hide", ItemData.Equip == "0");
 		self.FindChildTraverse("BottomLayer").AddClass(Quality);
 		self.Type = ItemData.Type;
 		self.Panel = Panel;
-		self.Image = "file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png";
-		self.SetPanelEvent("onactivate", function() {
+		self.Image = "file://{images}/custom_game/" + ItemData.Type + "/" + ItemData.ItemName + ".png";
+		self.SetPanelEvent("onactivate", function () {
 			let Contents = $("#Contents").FindChildrenWithClassTraverse("EconItem");
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
@@ -81,37 +81,38 @@ function PreviewHero(HeroName) {
 	$("#HeroAbilityPanel").RemoveAndDeleteChildren();
 	for (let index = 1; index <= 5; index++) {
 		const AbilityName = HeroKV["Ability" + index];
-		let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", $("#HeroAbilityPanel"), AbilityName, {abilityname: AbilityName});
+		let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", $("#HeroAbilityPanel"), AbilityName, { abilityname: AbilityName });
 		AbilityPanel.AddClass("HeroAbility");
-		AbilityPanel.SetPanelEvent("onmouseover", function() {
+		AbilityPanel.SetPanelEvent("onmouseover", function () {
 			$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
 		});
-		AbilityPanel.SetPanelEvent("onmouseout", function() {
+		AbilityPanel.SetPanelEvent("onmouseout", function () {
 			$.DispatchEvent("DOTAHideAbilityTooltip");
 		});
 	}
-	
+
 	// 预览模型
 	$("#HeroScenePanel").RemoveAndDeleteChildren();
-	let HeroScenePanel = $.CreatePanelWithProperties("DOTAScenePanel", $("#HeroScenePanel"), HeroName, {unit: HeroName, light: "global_light", antialias: "true", drawbackground: "false", particleonly: "false", hittest: "false"});
+	let HeroScenePanel = $.CreatePanelWithProperties("DOTAScenePanel", $("#HeroScenePanel"), HeroName, { unit: HeroName, light: "global_light", antialias: "true", drawbackground: "false", particleonly: "false", hittest: "false" });
 	HeroScenePanel.AddClass("HeroScene");
+	HeroScenePanel.SetScenePanelToLocalHero(GameUI.CustomUIConfig().HeroesKv[HeroName].HeroID);
 	PreviewHeroName = HeroName;
 	// 更新英雄皮肤
 	let Data = CustomNetTables.GetTableValue("service", "player_data")[Players.GetLocalPlayer()];
-	let ItemList = Data == null ? PlayerItemData["skin"]:Data["skin"];
+	let ItemList = Data == null ? PlayerItemData["skin"] : Data["skin"];
 	ItemList = ItemList[PreviewHeroName];
 	if (ItemList == null) {
-		ItemList = {"1": {"Expiration":"9999-12-31","ItemName":"default_no_item","Equip":1,"Type":"skin"}};
+		ItemList = { "1": { "Expiration": "9999-12-31", "ItemName": "default_no_item", "Equip": 1, "Type": "skin" } };
 	}
 	for (const key in ItemList) {
 		const ItemData = ItemList[key];
 		if (ItemData.Equip == 1) {
-			$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/"+ItemData.ItemName+".png");
+			$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/" + ItemData.ItemName + ".png");
 			break;
 		}
 	}
 	$("#ContextMenuBody").RemoveClass("ContextMenuBodyShow");
-	Game.EmitSound( GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].HeroSelectSoundEffect );
+	Game.EmitSound(GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].HeroSelectSoundEffect);
 }
 function ShowContextMenu(ID, Type) {
 	let LocalPlayerID = Players.GetLocalPlayer();
@@ -120,11 +121,11 @@ function ShowContextMenu(ID, Type) {
 	let Posistion = GameUI.GetPanelCenter(SettingPanel.FindChildTraverse("MenuArrowContainer"));
 	$("#Contents").RemoveAndDeleteChildren();
 	let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
-	let ItemList = Data == null ? PlayerItemData[Type]:Data[Type];
+	let ItemList = Data == null ? PlayerItemData[Type] : Data[Type];
 	if (Type == "skin") {
 		ItemList = ItemList[PreviewHeroName];
 		if (ItemList == null) {
-			ItemList = {"1": {"Expiration":"9999-12-31","ItemName":"default_no_item","Equip":1,"Type":"skin"}};
+			ItemList = { "1": { "Expiration": "9999-12-31", "ItemName": "default_no_item", "Equip": 1, "Type": "skin" } };
 		}
 	}
 	for (const key in ItemList) {
@@ -164,14 +165,14 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 			for (const Type in tData) {
 				if (Type == "pet" || Type == "particle") {
 					let ItemList = tData[Type];
-					let id = "#Setting" + Type.replace(Type[0],Type[0].toUpperCase());
+					let id = "#Setting" + Type.replace(Type[0], Type[0].toUpperCase());
 					for (const key in ItemList) {
 						const ItemData = ItemList[key];
 						if (ItemData.Equip == 1) {
-							$(id).FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/"+ Type +"/"+ItemData.ItemName+".png");
+							$(id).FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/" + Type + "/" + ItemData.ItemName + ".png");
 							break;
 						}
-						$(id).FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/"+ Type +"/default_no_item.png");
+						$(id).FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/" + Type + "/default_no_item.png");
 					}
 				}
 			}
@@ -179,7 +180,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 			for (const key in ItemList) {
 				const ItemData = ItemList[key];
 				if (ItemData.Equip == 1) {
-					$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/"+ItemData.ItemName+".png");
+					$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/" + ItemData.ItemName + ".png");
 					break;
 				}
 				$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/default_no_item.png");
@@ -192,13 +193,13 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	$.GetContextPanel().SetHasClass("ServerChecked", true);
 }
 function PickHero() {
-	if ($("#HeroInfoContent").BHasClass("HeroLocked") == true){
+	if ($("#HeroInfoContent").BHasClass("HeroLocked") == true) {
 		return;
 	}
 	GameEvents.SendCustomGameEventToServer("hero_seletion", {
 		"HeroName": PreviewHeroName
 	});
-	Game.EmitSound( GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].PickSound );
+	Game.EmitSound(GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].PickSound);
 	$.GetContextPanel().SetHasClass("HeroLocked", true);
 	HeroLock = true;
 }
@@ -229,25 +230,25 @@ function SelectDifficulty(Difficulty) {
 	if (Chat)
 		Chat.style.opacity = "0";
 
-	
+
 	// GameModeSelectionEndTime = Game.GetGameTime() + Game.GetStateTransitionTime();
-	
+
 	Update();
 	// 加载英雄卡片
 	for (const key in GameUI.CustomUIConfig().HeroesKv) {
 		const HeroKV = GameUI.CustomUIConfig().HeroesKv[key];
-		if (HeroKV.UnitLabel == "hide") {
+		if (HeroKV.override_hero == undefined || HeroKV.UnitLabel == "hide") {
 			continue;
 		}
 		let HeroName = HeroKV.override_hero;
 		let Panel = $("#HeroListPanel").FindChildTraverse(HeroName);
-		Panel = ReloadPanelWithProperties(Panel, "DOTAHeroMovie", $("#HeroListPanel"), HeroName, {heroname: HeroName});
+		Panel = ReloadPanelWithProperties(Panel, "DOTAHeroMovie", $("#HeroListPanel"), HeroName, { heroname: HeroName });
 		Panel.BLoadLayoutSnippet("HeroCard")
 		// 上锁
-		if (HeroKV.UnitLabel == "lock" ) {
+		if (HeroKV.UnitLabel == "lock") {
 			Panel.RemoveClass("Unlock")
 		}
-		Panel.SetPanelEvent("onactivate", function() {
+		Panel.SetPanelEvent("onactivate", function () {
 			PreviewHero(HeroName);
 		});
 	}
@@ -261,7 +262,7 @@ function SelectDifficulty(Difficulty) {
 		Panel.SetPlayer(PlayerID);
 	}
 	// 默认预览
-	PreviewHero(Object.keys(GameUI.CustomUIConfig().HeroesKv)[0]);
+	PreviewHero("npc_dota_hero_omniknight");
 
 	CustomNetTables.SubscribeNetTableListener("common", UpdateCommonNetTable);
 
