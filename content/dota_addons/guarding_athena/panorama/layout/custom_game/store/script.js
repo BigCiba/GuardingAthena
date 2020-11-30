@@ -114,6 +114,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }

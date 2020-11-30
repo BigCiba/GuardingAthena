@@ -1,0 +1,65 @@
+@import "../utils/utils.less";
+.PopupRoot {
+	.Full;
+	background-color: #000000f9;
+}
+#Main
+{
+	@extend .Full;
+}
+#PopupPanel
+{
+	// background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eff ), to( #131617ff ) );
+	// border: 1px solid #5e6869;
+
+	width: 800px;
+	min-height: 600px;
+
+	background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
+	background-size: 100%;
+
+	align: center center;
+	padding: 90px 85px 90px 65px;
+	// opacity: 1.0;
+	// box-shadow: black -4px -4px 8px 8px;
+	//#FFFFFF66 -4px -4px 8px 8px
+
+	transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	transition-delay: 0.0s;
+
+	// flow-children: down;
+}
+.PopupTitle
+{
+	font-size: 30px;
+	//font-variant: small-caps;+
+	// font-weight: bold;
+	color: black;
+	margin-top: 15px;
+	// margin-bottom: 15px;
+	horizontal-align: center;
+	font-family: titleFont;
+}
+.CloseButton {
+	z-index: 100;
+	horizontal-align: right;
+	// margin-top: 69px;
+	// margin-right: 70px;
+	width: 46px;
+	height: 43px;
+}
+.ButtonCommon {
+	align: center bottom;
+	margin-bottom: 10px;
+	width: 119px;
+	height: 50px;
+	Label {
+		align: center center;
+		// margin-top: 17px;
+		font-size: 18px;
+		color: white;
+		text-shadow: 0px 0px 5px 3.0 black;
+	}
+}
