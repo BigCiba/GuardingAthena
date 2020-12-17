@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
+import { OpenPopup } from '../utils/utils';
 function Store() {
 	const storePage = useRef<Panel>(null);
 	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
@@ -75,18 +77,18 @@ function Store() {
 							<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
 						</Panel>
 					</GenericPanel>
-					<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
+					{/* <GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
 						<Panel className="SearchCategoryBackground" />
 						<Panel className="SearchCategoryArtOverlay" />
 						<Panel className="SearchCategoryText">
 							<Label className="SearchCategoryName" text="#CategoryAll" />
 							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
 						</Panel>
-					</GenericPanel>
+					</GenericPanel> */}
 				</Panel>
 			</Panel>
 			<Panel className="StoreTabContents">
-				<StoreItemContainer tabid="CategoryAll" type="" />
+				{/* <StoreItemContainer tabid="CategoryAll" type="" /> */}
 				<StoreItemContainer tabid="CategoryHero" type="hero" />
 				<StoreItemContainer tabid="CategorySkin" type="skin" />
 				<StoreItemContainer tabid="CategoryParticle" type="particle" />
@@ -115,35 +117,34 @@ function StoreItemContainer({ tabid, type }: { tabid: string, type: string }) {
 	)
 }
 function StoreItem({ itemData }: { itemData: any }) {
+	let ShowCourierTooltip = (self: Panel) => {
+		if (itemData.Type == "pet") {
+			$.DispatchEvent(
+				"UIShowCustomLayoutParametersTooltip",
+				self,
+				"courier_tooltip",
+				"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
+				"courier_name=" + itemData.ItemName + "&rotationspeed=2");
+		}
+	}
+	let HideCourierTooltip = (self: Panel) => {
+		if (itemData.Type == "pet") {
+			$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
+		}
+	}
+	let ShowItemDetail = (self: Panel) => {
+		OpenPopup("popup_store_item/popup_store_item", { itemData: JSON.stringify(itemData) });
+	}
 	return (
-		<Panel className={"AthenaStoreItem " + (() => {
-			if (itemData.Type == "hero") {
-				return "HeroItem";
-			} else if (itemData.Type == "pet") {
-				return "Prefab_courier";
-			} else if (itemData.Type == "particle") {
-				return "Prefab_ward";
-			} else if (itemData.Type == "gameplay") {
-				return "Prefab_bundle";
-			}
-		})()}
-			onmouseover={
-				(self) => {
-					if (itemData.Type == "pet") {
-						$.DispatchEvent(
-							"UIShowCustomLayoutParametersTooltip",
-							self,
-							"courier_tooltip",
-							"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
-							"courier_name=" + itemData.ItemName + "&rotationspeed=2");
-					}
-				}
-			}
-			onmouseout={(self) => {
-				if (itemData.Type == "pet") {
-					$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
-				}
-			}}
+		<Panel className={classNames("AthenaStoreItem",
+			{ HeroItem: itemData.Type == "hero" },
+			{ Prefab_courier: itemData.Type == "pet" },
+			{ Prefab_ward: itemData.Type == "particle" },
+			{ Prefab_bundle: itemData.Type == "gameplay" },
+		)}
+			onmouseover={ShowCourierTooltip}
+			onmouseout={HideCourierTooltip}
+			onactivate={ShowItemDetail}
 		>
 			<Panel id="ItemImageContainer">
 				<Image id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src={"file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png"}>

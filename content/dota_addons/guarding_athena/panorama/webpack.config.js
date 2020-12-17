@@ -61,6 +61,7 @@ module.exports = {
 			import: './store/layout.xml',
 			filename: 'store/store.xml',
 		},
+		popup_store_item: { import: './popups/popup_store_item/layout.xml', filename: 'popups/popup_store_item/popup_store_item.xml' },
 	},
 
 	plugins: [

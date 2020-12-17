@@ -1,0 +1,107 @@
+.Full {
+  width: 100%;
+  height: 100%;
+}
+.CloseButton {
+  width: 30px;
+  height: 30px;
+  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-size: 100%;
+  transition-property: wash-color;
+  transition-duration: 0.1s;
+}
+.CloseButton:active {
+  background-size: 100%;
+}
+.PopupRoot {
+  width: 100%;
+  height: 100%;
+  background-color: #060606F0;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+}
+.PopupPanel {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+  border: 1px solid #5e6869;
+  width: 800px;
+  min-height: 600px;
+  align: center center;
+  box-shadow: black -4px -4px 8px 8px;
+  animation-name: links-and-more-button-focus;
+  animation-duration: 0.6s;
+  animation-delay: 0s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+@keyframes 'links-and-more-button-focus' {
+  from {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8daee), to(#000000ee));
+  }
+  50% {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+  }
+  to {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+  }
+}
+.PopupTitle {
+  font-size: 30px;
+  color: #afb4b4;
+  margin-top: 15px;
+  horizontal-align: center;
+}
+.CloseButton {
+  z-index: 100;
+  horizontal-align: right;
+  width: 46px;
+  height: 43px;
+}
+.ButtonCommon {
+  align: center bottom;
+  margin-bottom: 10px;
+  width: 119px;
+  height: 50px;
+}
+.ButtonCommon Label {
+  align: center center;
+  font-size: 18px;
+  color: white;
+  text-shadow: 0px 0px 5px 3 black;
+}
+.PopupButtonRow {
+  flow-children: right;
+  horizontal-align: center;
+  vertical-align: bottom;
+  margin-bottom: 25px;
+}
+.PopupButton {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
+  border: 1px solid black;
+  margin: 8px;
+  min-width: 192px;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #ffffff44;
+  border-right: 1px solid #4e5b60;
+  border-left: 1px solid #4e5b60;
+  border-bottom: 1px solid #00000088;
+  transition-property: background-color, wash-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+.StoreItemDetail {
+  margin-top: 70px;
+  margin-left: 50px;
+  margin-right: 50px;
+  width: 100%;
+  height: 400px;
+}
+.PopupHeroScene {
+  width: 400px;
+  height: 400px;
+}

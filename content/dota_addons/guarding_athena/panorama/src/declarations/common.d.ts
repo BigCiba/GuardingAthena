@@ -4,5 +4,6 @@ declare interface Panel {
 }
 
 declare interface CustomUIConfig {
+	HeroesKv: any;
 	tMouseEvents: []
 }

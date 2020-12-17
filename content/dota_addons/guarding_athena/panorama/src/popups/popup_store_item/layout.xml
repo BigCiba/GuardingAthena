@@ -11,6 +11,6 @@
 	<scripts>
 		<include src="./script.tsx" />
 	</scripts>
-	<Panel class="PopupRoot" hittest="false">
+	<Panel class="PopupRoot" oncancel="UIPopupButtonClicked()" popupbackground="dim">
 	</Panel>
 </root>

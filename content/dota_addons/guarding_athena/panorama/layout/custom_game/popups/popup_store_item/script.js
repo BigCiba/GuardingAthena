@@ -1,82 +1,12 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "../../../../../node_modules/classnames/index.js":
-/*!*******************************************************!*\
-  !*** ../../../../../node_modules/classnames/index.js ***!
-  \*******************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
-/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
-/***/ ((module, exports, __webpack_require__) => {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-/* global define */
-(function () {
-  'use strict';
-
-  var hasOwn = {}.hasOwnProperty;
-
-  function classNames() {
-    var classes = [];
-
-    for (var i = 0; i < arguments.length; i++) {
-      var arg = arguments[i];
-      if (!arg) continue;
-
-      var argType = _typeof(arg);
-
-      if (argType === 'string' || argType === 'number') {
-        classes.push(arg);
-      } else if (Array.isArray(arg) && arg.length) {
-        var inner = classNames.apply(null, arg);
-
-        if (inner) {
-          classes.push(inner);
-        }
-      } else if (argType === 'object') {
-        for (var key in arg) {
-          if (hasOwn.call(arg, key) && arg[key]) {
-            classes.push(key);
-          }
-        }
-      }
-    }
-
-    return classes.join(' ');
-  }
-
-  if ( true && module.exports) {
-    classNames["default"] = classNames;
-    module.exports = classNames;
-  } else if ( true && _typeof(__webpack_require__.amdO) === 'object' && __webpack_require__.amdO) {
-    // register as 'classnames', consistent with npm package name
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-      return classNames;
-    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else {
-    window.classNames = classNames;
-  }
-})();
-
-/***/ }),
-
 /***/ "../../../../../node_modules/object-assign/index.js":
 /*!**********************************************************!*\
   !*** ../../../../../node_modules/object-assign/index.js ***!
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -184,7 +114,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1175,7 +1104,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1285,7 +1213,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -5902,138 +5829,62 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./store/script.tsx":
-/*!**************************!*\
-  !*** ./store/script.tsx ***!
-  \**************************/
+/***/ "./popups/popup_store_item/script.tsx":
+/*!********************************************!*\
+  !*** ./popups/popup_store_item/script.tsx ***!
+  \********************************************/
 /*! namespace exports */
 /*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/utils */ "./utils/utils.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
+/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/utils */ "./utils/utils.ts");
 
 
 
-
-function Store() {
-    const storePage = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer", ref: storePage },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyContainer" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#Wallet" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "FillWidth" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "MoneyComeButton" })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentCurrencyAmount", text: playerData[Game.GetLocalPlayerID()].Shard })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "PriceAmountContainer" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon PriceSubscription" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentPriceAmount", text: playerData[Game.GetLocalPlayerID()].Price }))),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchOptionsContainer" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#DOTA_Search" })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchContainer" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchBox" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton" })))),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchCategories" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryHero", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryHero" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryHero_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategorySkin", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategorySkin" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategorySkin_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryParticle", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryParticle" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryParticle_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryPet", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryPet" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryPet_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryGamePlay", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryGamePlay" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryGamePlay_Description" }))))),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreTabContents" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryHero", type: "hero" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategorySkin", type: "skin" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryParticle", type: "particle" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryPet", type: "pet" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryGamePlay", type: "gameplay" }))));
+function Popup({ itemData }) {
+    const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    const [title, setTitle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)($.Localize($.GetContextPanel().GetAttributeString("item_name", "商品")));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PopupPanel", className: "PopupPanel", ref: parent },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", text: title }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "StoreItemDetail" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroItemDetail, { heroName: itemData.ItemName })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopupButtonRow" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, { className: "PopupButton", text: "\u53D6\u6D88", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, { className: "PopupButton", text: "\u8D2D\u4E70", onactivate: () => {
+                    let conf = {
+                        itemid: $.GetContextPanel().GetAttributeInt("ID", 1),
+                        type: $.GetContextPanel().GetAttributeString("type", "free")
+                    };
+                    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.Request)('order.buyitem', conf, data => {
+                        if (data.code == 1) {
+                            // $.Msg("[Popup BuyItem] Success")
+                        }
+                        else {
+                            // $.Msg("[Popup BuyItem] Failure")
+                        }
+                    });
+                } }))));
 }
-function StoreItemContainer({ tabid, type }) {
-    let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabContents", tabid: tabid, group: "search_categories", className: "StoreItemContainer", selected: tabid == "CategoryAll" ? true : false },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreHeader" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: tabid }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { className: "CloseButton" })),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreItemList" }, Object.keys(itemDatas).map((key) => {
-            if (itemDatas[key].Type == type && itemDatas[key].Purchaseable == 1) {
-                return react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItem, { key: key, itemData: itemDatas[key] });
-            }
-        }))));
+function HeroItemDetail({ heroName }) {
+    const heroScene = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        var _a;
+        (_a = heroScene.current) === null || _a === void 0 ? void 0 : _a.SetScenePanelToLocalHero((0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.GetHeroIDByName)("npc_dota_hero_" + heroName));
+    }, []);
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, { unit: "npc_dota_hero_" + heroName, className: "PopupHeroScene", light: "global_light", antialias: true, drawbackground: false, particleonly: false, ref: heroScene })));
 }
-function StoreItem({ itemData }) {
-    let ShowCourierTooltip = (self) => {
-        if (itemData.Type == "pet") {
-            $.DispatchEvent("UIShowCustomLayoutParametersTooltip", self, "courier_tooltip", "file://{resources}/layout/custom_game/tooltips/courier/courier.xml", "courier_name=" + itemData.ItemName + "&rotationspeed=2");
-        }
-    };
-    let HideCourierTooltip = (self) => {
-        if (itemData.Type == "pet") {
-            $.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
-        }
-    };
-    let ShowItemDetail = (self) => {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.OpenPopup)("popup_store_item/popup_store_item", { itemData: JSON.stringify(itemData) });
-    };
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: classnames__WEBPACK_IMPORTED_MODULE_0___default()("AthenaStoreItem", { HeroItem: itemData.Type == "hero" }, { Prefab_courier: itemData.Type == "pet" }, { Prefab_ward: itemData.Type == "particle" }, { Prefab_bundle: itemData.Type == "gameplay" }), onmouseover: ShowCourierTooltip, onmouseout: HideCourierTooltip, onactivate: ShowItemDetail },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "ItemImageContainer" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Image, { id: "ItemImage", scaling: "stretch-to-fit-preserve-aspect", src: "file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SkillPreview" }))),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "ItemName", localizedText: itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "ItemType" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "UnitIcon" },
-                itemData.Type == "hero" &&
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(DOTAHeroImage, { id: "HeroIcon", heroimagestyle: "icon", heroname: "npc_dota_hero_" + itemData.ItemName, scaling: "stretch-to-fit-preserve-aspect" }),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "ItemTypeIcon" })),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "ItemTypeLabel", text: "StoreItemType_" + itemData.Type })),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "PurchaseButtonList" },
-            itemData.Shard > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ShardPurchaseButton", className: "DotaPlusPurchaseButton" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Contents", className: "ButtonCenter" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "EventIcon", className: "DotaPlusCurrencyIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "ShardCost", text: itemData.Shard }))),
-            itemData.Price > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "PricePurchaseButton", className: "DotaPlusPurchaseButton" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Contents", className: "ButtonCenter" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "EventIcon", className: "DotaPlusPriceCurrencyIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "PriceCost", text: itemData.Price }))))));
-}
-(0,react_panorama__WEBPACK_IMPORTED_MODULE_2__.render)(react__WEBPACK_IMPORTED_MODULE_1__.createElement(Store, null), $.GetContextPanel());
+$.GetContextPanel().SetPanelEvent("onload", () => {
+    let panel = $.GetContextPanel();
+    let itemData = JSON.parse($.GetContextPanel().GetAttributeString("itemData", "{}"));
+    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(Popup, { itemData: itemData }), panel);
+});
 
 
 /***/ }),
@@ -6141,11 +5992,6 @@ function GetHeroIDByName(heroName) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/amd options */
-/******/ 	(() => {
-/******/ 		__webpack_require__.amdO = {};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -6189,7 +6035,7 @@ function GetHeroIDByName(heroName) {
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./store/script.tsx");
+/******/ 	__webpack_require__("./popups/popup_store_item/script.tsx");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
