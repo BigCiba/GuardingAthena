@@ -33,6 +33,8 @@ function Popup({ itemData }: { itemData: any }) {
 }
 function HeroItemDetail({ heroName }: { heroName: string }) {
 	const heroScene = useRef<ScenePanel>(null);
+	const heroData = GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_" + heroName];
+	$.Msg(heroData.AttributeStrengthGain)
 	useEffect(() => {
 		heroScene.current?.SetScenePanelToLocalHero(GetHeroIDByName("npc_dota_hero_" + heroName));
 	}, []);
@@ -47,6 +49,28 @@ function HeroItemDetail({ heroName }: { heroName: string }) {
 				particleonly={false}
 				ref={heroScene}
 			/>
+			<Panel className="AbilityList">
+				<DOTAAbilityImage abilityname={heroData.Ability1} showtooltip={true} />
+				<DOTAAbilityImage abilityname={heroData.Ability2} showtooltip={true} />
+				<DOTAAbilityImage abilityname={heroData.Ability3} showtooltip={true} />
+				<DOTAAbilityImage abilityname={heroData.Ability4} showtooltip={true} />
+				<DOTAAbilityImage abilityname={heroData.Ability5} showtooltip={true} />
+			</Panel>
+			<Panel className="HeroStatsSection" onmouseover={(self) => { $.DispatchEvent("DOTAShowAttributesHelpTooltip", self) }} onmouseout={(self) => { $.DispatchEvent("DOTAHideAttributesHelpTooltip", self) }}>
+				<Label className="HeroStatsHeader" text="#DOTA_HeroStats_Castegory_Attributes" />
+				<Panel className="HeroStatsRow">
+					<Panel className="HeroStatsIcon StrengthIcon" />
+					<Label className="MonoNumbersFont" localizedText="DOTA_HeroLoadout_StrengthAttribute" dialogVariables={{ "base_str": heroData.AttributeBaseStrength, "str_per_level": heroData.AttributeStrengthGain }} />
+				</Panel>
+				<Panel className="HeroStatsRow">
+					<Panel className="HeroStatsIcon AgilityIcon" />
+					<Label className="MonoNumbersFont" text="#DOTA_HeroLoadout_AgilityAttribute" />
+				</Panel>
+				<Panel className="HeroStatsRow">
+					<Panel className="HeroStatsIcon IntelligenceIcon" />
+					<Label className="MonoNumbersFont" text="#DOTA_HeroLoadout_IntelligenceAttribute" />
+				</Panel>
+			</Panel>
 		</Panel>
 	)
 }

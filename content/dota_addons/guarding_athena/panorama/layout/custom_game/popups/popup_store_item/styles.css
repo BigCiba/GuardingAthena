@@ -105,3 +105,48 @@
   width: 400px;
   height: 400px;
 }
+.AbilityList {
+  horizontal-align: right;
+  height: 80px;
+  width: 50%;
+  flow-children: right;
+}
+.AbilityList DOTAAbilityImage {
+  vertical-align: center;
+  margin-left: 8px;
+  height: width-percentage(100%);
+  width: fill-parent-flow(1);
+}
+.HeroStatsSection {
+  flow-children: down;
+  margin-right: 16px;
+  tooltip-position: top;
+  tooltip-body-position: 50% 50%;
+}
+.HeroStatsSection .HeroStatsHeader {
+  text-transform: uppercase;
+  color: #ccc;
+}
+.HeroStatsSection .HeroStatsRow {
+  flow-children: right;
+}
+.HeroStatsSection .HeroStatsRow > Label {
+  color: #aaa;
+}
+.HeroStatsSection .HeroStatsIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.HeroStatsSection .StrengthIcon {
+  background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+}
+.HeroStatsSection .AgilityIcon {
+  background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+}
+.HeroStatsSection .IntelligenceIcon {
+  background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+}

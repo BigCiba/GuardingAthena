@@ -5873,12 +5873,31 @@ function Popup({ itemData }) {
 }
 function HeroItemDetail({ heroName }) {
     const heroScene = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    const heroData = GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_" + heroName];
+    $.Msg(heroData.AttributeStrengthGain);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         var _a;
         (_a = heroScene.current) === null || _a === void 0 ? void 0 : _a.SetScenePanelToLocalHero((0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.GetHeroIDByName)("npc_dota_hero_" + heroName));
     }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, { unit: "npc_dota_hero_" + heroName, className: "PopupHeroScene", light: "global_light", antialias: true, drawbackground: false, particleonly: false, ref: heroScene })));
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, { unit: "npc_dota_hero_" + heroName, className: "PopupHeroScene", light: "global_light", antialias: true, drawbackground: false, particleonly: false, ref: heroScene }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AbilityList" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability1, showtooltip: true }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability2, showtooltip: true }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability3, showtooltip: true }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability4, showtooltip: true }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability5, showtooltip: true })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection", onmouseover: (self) => { $.DispatchEvent("DOTAShowAttributesHelpTooltip", self); }, onmouseout: (self) => { $.DispatchEvent("DOTAHideAttributesHelpTooltip", self); } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Attributes" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon StrengthIcon" }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_StrengthAttribute", dialogVariables: { "base_str": heroData.AttributeBaseStrength, "str_per_level": heroData.AttributeStrengthGain } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon AgilityIcon" }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", text: "#DOTA_HeroLoadout_AgilityAttribute" })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon IntelligenceIcon" }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", text: "#DOTA_HeroLoadout_IntelligenceAttribute" })))));
 }
 $.GetContextPanel().SetPanelEvent("onload", () => {
     let panel = $.GetContextPanel();
