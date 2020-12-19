@@ -10,7 +10,18 @@ function Popup({ itemData }: { itemData: any }) {
 			<Button className="CloseButton" onactivate={() => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); }} />
 			<Label id="PopupTitle" className="PopupTitle" localizedText={ItemName} />
 			<Panel className="StoreItemDetail">
-				<HeroItemDetail heroName={itemData.ItemName} />
+				{itemData.Type == "hero" &&
+					<HeroItemDetail heroName={itemData.ItemName} />
+				}
+				{itemData.Type == "pet" &&
+					<PetItemDetail petName={itemData.ItemName} />
+				}
+				{(itemData.Type == "skin" || itemData.Type == "particle") &&
+					<ParticleItemDetail itemData={itemData} />
+				}
+				{itemData.Type == "gameplay" &&
+					<CommonItemDetail itemData={itemData} />
+				}
 			</Panel>
 			<Panel className="MoneyContainer">
 				<Panel className="CostContainer">
@@ -41,6 +52,7 @@ function Popup({ itemData }: { itemData: any }) {
 		</Panel>
 	)
 }
+// 宠物商品界面
 function HeroItemDetail({ heroName }: { heroName: string }) {
 	const heroScene = useRef<ScenePanel>(null);
 	const fullName = "npc_dota_hero_" + heroName;
@@ -142,6 +154,65 @@ function HeroItemDetail({ heroName }: { heroName: string }) {
 						</Panel>
 					</Panel>
 				</Panel>
+			</Panel>
+		</Panel>
+	)
+}
+// 宠物商品界面
+function PetItemDetail({ petName }: { petName: string }) {
+	const SetPreview = useRef<Panel>(null);
+	const petData = GameUI.CustomUIConfig().PetsKv[petName];
+	useEffect(() => {
+		if (SetPreview.current) {
+			$.DispatchEvent("DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 0);
+			$.DispatchEventAsync(2, "DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 2);
+		}
+	}, [])
+	return (
+		<Panel className="Full" >
+			<Panel id="SetPreview">
+				<GenericPanel type="DOTAUIEconSetPreview" itemdef={GameUI.CustomUIConfig().PetsKv[petName].ItemDef} itemstyle={GameUI.CustomUIConfig().PetsKv[petName].ItemStyle || 0} displaymode="loadout_small" drawbackground={true} antialias={true} ref={SetPreview} />
+			</Panel>
+			<Panel className="PetAbilityList">
+				{(() => {
+					let list = [];
+					for (let index = 1; index < 16; index++) {
+						const abilityName = petData["Ability" + index];
+						if (abilityName) {
+							list.push(
+								<DOTAAbilityImage key={abilityName} abilityname={abilityName} showtooltip={true} />
+							)
+						}
+					}
+					return list;
+				})()}
+			</Panel>
+		</Panel>
+	)
+}
+// 特效商品界面
+function ParticleItemDetail({ itemData }: { itemData: any }) {
+	return (
+		<Panel className="Full" >
+			<Panel className="MoviePanel">
+				<GenericPanel type="MoviePanel" id="ParticleViewContainer" key={itemData.ItemName} src={"file://{resources}/videos/" + itemData.Type + "/" + itemData.ItemName + ".webm"} repeat={true} autoplay="onload" />
+				<Label localizedText="特效预览" />
+			</Panel>
+			<Panel className="ParticleItemDescription">
+				<Label localizedText={itemData.ItemName + "_Description"} />
+			</Panel>
+		</Panel>
+	)
+}
+// 通用商品界面
+function CommonItemDetail({ itemData }: { itemData: any }) {
+	return (
+		<Panel className="Full" >
+			<Panel id="ItemImageContainer">
+				<Image id="ItemImage" scaling="stretch-to-fit-preserve-aspect" src={"file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png"} />
+			</Panel>
+			<Panel className="CommonItemDescription">
+				<Label localizedText={itemData.ItemName + "_Description"} />
 			</Panel>
 		</Panel>
 	)

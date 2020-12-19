@@ -317,3 +317,58 @@
   horizontal-align: right;
   text-shadow: 1px 1px 0px 1 #000000;
 }
+#SetPreview {
+  width: height-percentage(120%);
+  height: 100%;
+  horizontal-align: center;
+}
+.PetAbilityList {
+  horizontal-align: center;
+  height: 80px;
+  flow-children: right;
+}
+.PetAbilityList DOTAAbilityImage {
+  vertical-align: center;
+  margin-left: 8px;
+  height: width-percentage(100%);
+  width: fill-parent-flow(1);
+  max-width: 80px;
+  border-radius: 8px;
+}
+.CommonItemDescription {
+  width: 100%;
+  background-color: #000a;
+  padding: 16px;
+  horizontal-align: center;
+  margin-top: 150px;
+  height: 300px;
+}
+.MoviePanel {
+  width: 480px;
+  height: 270px;
+  border-radius: 8px;
+  horizontal-align: center;
+  opacity-mask: url("s2r://panorama/images/masks/scratched_box_psd.vtex");
+}
+.MoviePanel Label {
+  font-family: titleFont;
+  width: 100%;
+  height: 22px;
+  text-align: center;
+  vertical-align: bottom;
+  margin-bottom: 20px;
+  color: gradient(linear, 0% 100%, 0% 0%, from(#F4C856), color-stop(0.2, #A2790D), color-stop(0.4, #EBD197), to(#EBD197));
+  text-shadow: 0px 0px 5px 4 black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  text-overflow: shrink;
+}
+.ParticleItemDescription {
+  width: 100%;
+  background-color: #000a;
+  padding: 16px;
+  horizontal-align: center;
+  margin-top: 280px;
+  height: 150px;
+}

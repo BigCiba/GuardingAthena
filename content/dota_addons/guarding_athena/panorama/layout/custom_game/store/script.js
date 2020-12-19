@@ -7,8 +7,6 @@
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
-/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -76,7 +74,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -184,7 +181,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1175,7 +1171,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1285,7 +1280,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -5945,7 +5939,7 @@ function Store() {
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchContainer" },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchBox" },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton" })))),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.SetHasClass("Hidden", true); } })))),
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchCategories" },
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryHero", className: "SearchCategory", group: "search_categories" },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),

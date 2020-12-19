@@ -5960,7 +5960,14 @@ function Popup({ itemData }) {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", localizedText: ItemName }),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "StoreItemDetail" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroItemDetail, { heroName: itemData.ItemName })),
+            itemData.Type == "hero" &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroItemDetail, { heroName: itemData.ItemName }),
+            itemData.Type == "pet" &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(PetItemDetail, { petName: itemData.ItemName }),
+            (itemData.Type == "skin" || itemData.Type == "particle") &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(ParticleItemDetail, { itemData: itemData }),
+            itemData.Type == "gameplay" &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(CommonItemDetail, { itemData: itemData })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "MoneyContainer" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "CostContainer" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "\u82B1\u8D39\uFF1A" }),
@@ -5984,6 +5991,7 @@ function Popup({ itemData }) {
                     });
                 } }))));
 }
+// 宠物商品界面
 function HeroItemDetail({ heroName }) {
     const heroScene = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const fullName = "npc_dota_hero_" + heroName;
@@ -6054,6 +6062,47 @@ function HeroItemDetail({ heroName }) {
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon TurnRateIcon" }),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:turn_rate}", dialogVariables: { turn_rate: String(heroData.MovementTurnRate) } })))))));
+}
+// 宠物商品界面
+function PetItemDetail({ petName }) {
+    const SetPreview = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    const petData = GameUI.CustomUIConfig().PetsKv[petName];
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        if (SetPreview.current) {
+            $.DispatchEvent("DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 0);
+            $.DispatchEventAsync(2, "DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 2);
+        }
+    }, []);
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SetPreview" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "DOTAUIEconSetPreview", itemdef: GameUI.CustomUIConfig().PetsKv[petName].ItemDef, itemstyle: GameUI.CustomUIConfig().PetsKv[petName].ItemStyle || 0, displaymode: "loadout_small", drawbackground: true, antialias: true, ref: SetPreview })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PetAbilityList" }, (() => {
+            let list = [];
+            for (let index = 1; index < 16; index++) {
+                const abilityName = petData["Ability" + index];
+                if (abilityName) {
+                    list.push(react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { key: abilityName, abilityname: abilityName, showtooltip: true }));
+                }
+            }
+            return list;
+        })())));
+}
+// 特效商品界面
+function ParticleItemDetail({ itemData }) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "MoviePanel" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "MoviePanel", id: "ParticleViewContainer", key: itemData.ItemName, src: "file://{resources}/videos/" + itemData.Type + "/" + itemData.ItemName + ".webm", repeat: true, autoplay: "onload" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: "\u7279\u6548\u9884\u89C8" })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "ParticleItemDescription" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: itemData.ItemName + "_Description" }))));
+}
+// 通用商品界面
+function CommonItemDetail({ itemData }) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ItemImageContainer" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "ItemImage", scaling: "stretch-to-fit-preserve-aspect", src: "file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png" })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "CommonItemDescription" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: itemData.ItemName + "_Description" }))));
 }
 $.GetContextPanel().SetPanelEvent("onload", () => {
     let panel = $.GetContextPanel();

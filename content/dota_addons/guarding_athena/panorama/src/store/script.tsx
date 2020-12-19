@@ -32,7 +32,7 @@ function Store() {
 					<Panel id="SearchContainer">
 						<Panel id="SearchBox">
 							<TextEntry id="SearchTextEntry" placeholder="#DOTA_StoreBrowse_Search_Placeholder" />
-							<Button id="ClearSearchButton" className="CloseButton" />
+							<Button id="ClearSearchButton" className="CloseButton" onactivate={() => { storePage.current?.SetHasClass("Hidden", true) }} />
 						</Panel>
 					</Panel>
 				</Panel>
