@@ -12,7 +12,7 @@
 	border: 1px solid #5e6869;
 
 	width: 800px;
-	min-height: 600px;
+	min-height: 650px;
 
 	// background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
 	// background-size: 100%;
@@ -103,4 +103,25 @@
 	transition-property: background-color, wash-color;
 	transition-duration: .1s;
 	transition-timing-function: linear;
+}
+
+.MoneyContainer {
+	width: 90%;
+	// height: 50px;
+	flow-children: right;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 100px;
+	.CostContainer {
+		vertical-align: center;
+		flow-children: right;
+		// width: 50%;
+		Label {
+			font-size: 30px;
+		}
+	}
+	.RechargeContainer {
+		.CostContainer;
+		horizontal-align: right;
+	}
 }

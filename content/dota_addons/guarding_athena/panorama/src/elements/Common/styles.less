@@ -1,0 +1,39 @@
+@import "../../utils/utils.less";
+.CommonMoneyContainer {
+	flow-children: right;
+	vertical-align: center;
+	.ShardIcon {
+		width: 32px;
+		height: 32px;
+		margin-right: 8px;
+		transform: translateY(2px);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		tooltip-position: top;
+		background-image: dotaPlusCurrencySmallIcon;
+	}
+	.PriceIcon {
+		.ShardIcon;
+		background-image: url("file://{images}/dotaplus_logo_small.png");
+	}
+	Label {
+		font-size: 30px;
+		font-weight: bold;
+		vertical-align: bottom;
+		color: baseText;
+	}
+}
+.CommonBalance {
+	flow-children: right;
+	.CurrentBalance {
+		vertical-align: center;
+	}
+	.RechargeButton {
+		.CommonButton;
+		width: 150px;
+		Label {
+			horizontal-align: center;
+		}
+	}
+}

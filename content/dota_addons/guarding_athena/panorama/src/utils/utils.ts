@@ -42,3 +42,12 @@ export function OpenPopup(id: string | undefined, data?: { [x: string]: any; }) 
 export function GetHeroIDByName(heroName: string) {
 	return GameUI.CustomUIConfig().HeroesKv[heroName].HeroID;
 }
+export function GetHeroKV(heroName: string, key: string) {
+	if (GameUI.CustomUIConfig().HeroesKv[heroName][key]) {
+		return GameUI.CustomUIConfig().HeroesKv[heroName][key];
+	}
+	else if (GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key]) {
+		return GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key];
+	}
+	return 0;
+}

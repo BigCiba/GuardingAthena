@@ -1,6 +1,73 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "../../../../../node_modules/classnames/index.js":
+/*!*******************************************************!*\
+  !*** ../../../../../node_modules/classnames/index.js ***!
+  \*******************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+/* global define */
+(function () {
+  'use strict';
+
+  var hasOwn = {}.hasOwnProperty;
+
+  function classNames() {
+    var classes = [];
+
+    for (var i = 0; i < arguments.length; i++) {
+      var arg = arguments[i];
+      if (!arg) continue;
+
+      var argType = _typeof(arg);
+
+      if (argType === 'string' || argType === 'number') {
+        classes.push(arg);
+      } else if (Array.isArray(arg) && arg.length) {
+        var inner = classNames.apply(null, arg);
+
+        if (inner) {
+          classes.push(inner);
+        }
+      } else if (argType === 'object') {
+        for (var key in arg) {
+          if (hasOwn.call(arg, key) && arg[key]) {
+            classes.push(key);
+          }
+        }
+      }
+    }
+
+    return classes.join(' ');
+  }
+
+  if ( true && module.exports) {
+    classNames["default"] = classNames;
+    module.exports = classNames;
+  } else if ( true && _typeof(__webpack_require__.amdO) === 'object' && __webpack_require__.amdO) {
+    // register as 'classnames', consistent with npm package name
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return classNames;
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {
+    window.classNames = classNames;
+  }
+})();
+
+/***/ }),
+
 /***/ "../../../../../node_modules/object-assign/index.js":
 /*!**********************************************************!*\
   !*** ../../../../../node_modules/object-assign/index.js ***!
@@ -5829,6 +5896,44 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./elements/Common/Common.tsx":
+/*!************************************!*\
+  !*** ./elements/Common/Common.tsx ***!
+  \************************************/
+/*! namespace exports */
+/*! export CommonBalance [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export CommonMoneyContainer [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CommonMoneyContainer": () => /* binding */ CommonMoneyContainer,
+/* harmony export */   "CommonBalance": () => /* binding */ CommonBalance
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
+
+
+function CommonMoneyContainer({ type, count }) {
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CommonMoneyContainer" },
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Image, { className: classnames__WEBPACK_IMPORTED_MODULE_0___default()({ ShardIcon: type == "Shard", PriceIcon: type == "Price" }) }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: count })));
+}
+function CommonBalance({ type, count }) {
+    const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CommonBalance" },
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "CurrentBalance", text: "\u5F53\u524D\u4F59\u989D\uFF1A" }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: type, count: type == "Shard" ? playerData[Game.GetLocalPlayerID()].Shard : playerData[Game.GetLocalPlayerID()].Price }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "RechargeButton", text: "\u7ACB\u5373\u5145\u503C" })));
+}
+
+
+/***/ }),
+
 /***/ "./popups/popup_store_item/script.tsx":
 /*!********************************************!*\
   !*** ./popups/popup_store_item/script.tsx ***!
@@ -5842,18 +5947,26 @@ if (false) {} else {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
 /* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/utils */ "./utils/utils.ts");
+/* harmony import */ var _elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../elements/Common/Common */ "./elements/Common/Common.tsx");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./utils/utils.ts");
+
 
 
 
 function Popup({ itemData }) {
     const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    const [title, setTitle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)($.Localize($.GetContextPanel().GetAttributeString("item_name", "商品")));
+    const ItemName = itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName;
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PopupPanel", className: "PopupPanel", ref: parent },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", text: title }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", localizedText: ItemName }),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "StoreItemDetail" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroItemDetail, { heroName: itemData.ItemName })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "MoneyContainer" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "CostContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "\u82B1\u8D39\uFF1A" }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.CommonMoneyContainer, { type: Number(itemData.Shard) > 0 ? "Shard" : "Price", count: Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price) })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "RechargeContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.CommonBalance, { type: Number(itemData.Shard) > 0 ? "Shard" : "Price", count: Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price) }))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopupButtonRow" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, { className: "PopupButton", text: "\u53D6\u6D88", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, { className: "PopupButton", text: "\u8D2D\u4E70", onactivate: () => {
@@ -5861,7 +5974,7 @@ function Popup({ itemData }) {
                         itemid: $.GetContextPanel().GetAttributeInt("ID", 1),
                         type: $.GetContextPanel().GetAttributeString("type", "free")
                     };
-                    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.Request)('order.buyitem', conf, data => {
+                    (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.Request)('order.buyitem', conf, data => {
                         if (data.code == 1) {
                             // $.Msg("[Popup BuyItem] Success")
                         }
@@ -5873,31 +5986,74 @@ function Popup({ itemData }) {
 }
 function HeroItemDetail({ heroName }) {
     const heroScene = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    const heroData = GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_" + heroName];
-    $.Msg(heroData.AttributeStrengthGain);
+    const fullName = "npc_dota_hero_" + heroName;
+    const heroData = GameUI.CustomUIConfig().HeroesKv[fullName];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         var _a;
-        (_a = heroScene.current) === null || _a === void 0 ? void 0 : _a.SetScenePanelToLocalHero((0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.GetHeroIDByName)("npc_dota_hero_" + heroName));
+        (_a = heroScene.current) === null || _a === void 0 ? void 0 : _a.SetScenePanelToLocalHero((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroIDByName)(fullName));
     }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, { unit: "npc_dota_hero_" + heroName, className: "PopupHeroScene", light: "global_light", antialias: true, drawbackground: false, particleonly: false, ref: heroScene }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, { unit: fullName, className: "PopupHeroScene", light: "global_light", antialias: true, drawbackground: false, particleonly: false, ref: heroScene }),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AbilityList" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability1, showtooltip: true }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability2, showtooltip: true }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability3, showtooltip: true }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability4, showtooltip: true }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability5, showtooltip: true })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection", onmouseover: (self) => { $.DispatchEvent("DOTAShowAttributesHelpTooltip", self); }, onmouseout: (self) => { $.DispatchEvent("DOTAHideAttributesHelpTooltip", self); } },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Attributes" }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon StrengthIcon" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_StrengthAttribute", dialogVariables: { "base_str": heroData.AttributeBaseStrength, "str_per_level": heroData.AttributeStrengthGain } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon AgilityIcon" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", text: "#DOTA_HeroLoadout_AgilityAttribute" })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon IntelligenceIcon" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", text: "#DOTA_HeroLoadout_IntelligenceAttribute" })))));
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AttributeContainer" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "TopContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_HealthMana" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "HealthRow", className: "HeroResourceRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MaxResource MonoNumbersFont", localizedText: "{d:max_health}", dialogVariables: { max_health: heroData.AttributeBaseStrength * 20 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusHealth") } }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "ResourceRegen MonoNumbersFont", localizedText: "+{s:health_regen}", dialogVariables: { health_regen: (heroData.AttributeBaseStrength * 0.09 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusHealthRegen")).toFixed(1) } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ManaRow", className: "HeroResourceRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MaxResource MonoNumbersFont", localizedText: "{d:max_mana}", dialogVariables: { max_mana: heroData.AttributeBaseIntelligence * 12 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusMana") } }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "ResourceRegen MonoNumbersFont", localizedText: "+{s:mana_regen}", dialogVariables: { mana_regen: (heroData.AttributeBaseIntelligence * 0.05 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusManaRegen")).toFixed(1) } })))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "TopContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Attributes" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon StrengthIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_StrengthAttribute", dialogVariables: { base_str: String(heroData.AttributeBaseStrength), str_per_level: String(heroData.AttributeStrengthGain) } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon AgilityIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_AgilityAttribute", dialogVariables: { base_agi: String(heroData.AttributeBaseAgility), agi_per_level: String(heroData.AttributeAgilityGain) } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon IntelligenceIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_IntelligenceAttribute", dialogVariables: { base_int: String(heroData.AttributeBaseIntelligence), int_per_level: String(heroData.AttributeIntelligenceGain) } })))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "TopContainer" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Attack" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon DamageIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:damage_min} - {d:damage_max}", dialogVariables: { damage_min: heroData.AttackDamageMin, damage_max: heroData.AttackDamageMax } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon BaseAttackTimeIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:attack_rate}", dialogVariables: { attack_rate: String(heroData.AttackRate) } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon AttackRangeIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:attack_range}", dialogVariables: { attack_range: heroData.AttackRange } })),
+                    (heroData.ProjectileSpeed && heroData.ProjectileSpeed > 0) &&
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ProjectileSpeedRow", className: "HeroStatsRow" },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon ProjectileSpeedIcon" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:projectile_speed}", dialogVariables: { projectile_speed: heroData.ProjectileSpeed } }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Defense" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon ArmorIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:armor}", dialogVariables: { armor: String(heroData.ArmorPhysical) } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon MagicResistIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:magic_resistance}%", dialogVariables: { magic_resistance: heroData.MagicalResistance } }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Mobility" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon MovementSpeedIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:movement_speed}", dialogVariables: { movement_speed: heroData.MovementSpeed } })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon TurnRateIcon" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:turn_rate}", dialogVariables: { turn_rate: String(heroData.MovementTurnRate) } })))))));
 }
 $.GetContextPanel().SetPanelEvent("onload", () => {
     let panel = $.GetContextPanel();
@@ -5914,6 +6070,7 @@ $.GetContextPanel().SetPanelEvent("onload", () => {
   \************************/
 /*! namespace exports */
 /*! export GetHeroIDByName [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export GetHeroKV [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export OpenPopup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export Request [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -5925,7 +6082,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Request": () => /* binding */ Request,
 /* harmony export */   "OpenPopup": () => /* binding */ OpenPopup,
-/* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName
+/* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName,
+/* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV
 /* harmony export */ });
 const REQUEST_TIME_OUT = 60;
 let _Request_QueueIndex = 0;
@@ -5969,6 +6127,15 @@ function OpenPopup(id, data) {
 function GetHeroIDByName(heroName) {
     return GameUI.CustomUIConfig().HeroesKv[heroName].HeroID;
 }
+function GetHeroKV(heroName, key) {
+    if (GameUI.CustomUIConfig().HeroesKv[heroName][key]) {
+        return GameUI.CustomUIConfig().HeroesKv[heroName][key];
+    }
+    else if (GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key]) {
+        return GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key];
+    }
+    return 0;
+}
 
 
 /***/ }),
@@ -6011,6 +6178,11 @@ function GetHeroIDByName(heroName) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/amd options */
+/******/ 	(() => {
+/******/ 		__webpack_require__.amdO = {};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules

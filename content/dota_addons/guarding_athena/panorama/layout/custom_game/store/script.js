@@ -6044,6 +6044,7 @@ function StoreItem({ itemData }) {
   \************************/
 /*! namespace exports */
 /*! export GetHeroIDByName [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export GetHeroKV [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export OpenPopup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export Request [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
@@ -6055,7 +6056,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Request": () => /* binding */ Request,
 /* harmony export */   "OpenPopup": () => /* binding */ OpenPopup,
-/* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName
+/* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName,
+/* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV
 /* harmony export */ });
 const REQUEST_TIME_OUT = 60;
 let _Request_QueueIndex = 0;
@@ -6098,6 +6100,15 @@ function OpenPopup(id, data) {
 }
 function GetHeroIDByName(heroName) {
     return GameUI.CustomUIConfig().HeroesKv[heroName].HeroID;
+}
+function GetHeroKV(heroName, key) {
+    if (GameUI.CustomUIConfig().HeroesKv[heroName][key]) {
+        return GameUI.CustomUIConfig().HeroesKv[heroName][key];
+    }
+    else if (GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key]) {
+        return GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key];
+    }
+    return 0;
 }
 
 

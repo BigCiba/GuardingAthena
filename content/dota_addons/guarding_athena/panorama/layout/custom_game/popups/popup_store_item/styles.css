@@ -13,6 +13,35 @@
 .CloseButton:active {
   background-size: 100%;
 }
+.CommonButton {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
+  border: 1px solid black;
+  margin: 8px;
+  width: 192px;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #ffffff44;
+  border-right: 1px solid #4e5b60;
+  border-left: 1px solid #4e5b60;
+  border-bottom: 1px solid #00000088;
+  transition-property: background-color, wash-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+.CommonButton:hover {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8da), to(#596b75));
+}
+.CommonButton:active {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#272f33), to(#5a6c75));
+  border-top: 1px solid #00000088;
+  border-right: 1px solid #00000088;
+  border-left: 1px solid #00000088;
+  border-bottom: 1px solid #aaaaaa44;
+}
+.CommonButton Label {
+  color: white;
+  font-size: 24px;
+  align: center center;
+}
 .PopupRoot {
   width: 100%;
   height: 100%;
@@ -25,7 +54,7 @@
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
   border: 1px solid #5e6869;
   width: 800px;
-  min-height: 600px;
+  min-height: 650px;
   align: center center;
   box-shadow: black -4px -4px 8px 8px;
   animation-name: links-and-more-button-focus;
@@ -94,6 +123,100 @@
   transition-duration: 0.1s;
   transition-timing-function: linear;
 }
+.MoneyContainer {
+  width: 90%;
+  flow-children: right;
+  horizontal-align: center;
+  vertical-align: bottom;
+  margin-bottom: 100px;
+}
+.MoneyContainer .CostContainer {
+  vertical-align: center;
+  flow-children: right;
+}
+.MoneyContainer .CostContainer Label {
+  font-size: 30px;
+}
+.MoneyContainer .RechargeContainer {
+  vertical-align: center;
+  flow-children: right;
+  horizontal-align: right;
+}
+.MoneyContainer .RechargeContainer Label {
+  font-size: 30px;
+}
+.CommonMoneyContainer {
+  flow-children: right;
+  vertical-align: center;
+}
+.CommonMoneyContainer .ShardIcon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  transform: translateY(2px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  tooltip-position: top;
+  background-image: dotaPlusCurrencySmallIcon;
+}
+.CommonMoneyContainer .PriceIcon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  transform: translateY(2px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  tooltip-position: top;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
+}
+.CommonMoneyContainer Label {
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align: bottom;
+  color: baseText;
+}
+.CommonBalance {
+  flow-children: right;
+}
+.CommonBalance .CurrentBalance {
+  vertical-align: center;
+}
+.CommonBalance .RechargeButton {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
+  border: 1px solid black;
+  margin: 8px;
+  width: 192px;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #ffffff44;
+  border-right: 1px solid #4e5b60;
+  border-left: 1px solid #4e5b60;
+  border-bottom: 1px solid #00000088;
+  transition-property: background-color, wash-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  width: 150px;
+}
+.CommonBalance .RechargeButton:hover {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8da), to(#596b75));
+}
+.CommonBalance .RechargeButton:active {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#272f33), to(#5a6c75));
+  border-top: 1px solid #00000088;
+  border-right: 1px solid #00000088;
+  border-left: 1px solid #00000088;
+  border-bottom: 1px solid #aaaaaa44;
+}
+.CommonBalance .RechargeButton Label {
+  color: white;
+  font-size: 24px;
+  align: center center;
+}
+.CommonBalance .RechargeButton Label {
+  horizontal-align: center;
+}
 .StoreItemDetail {
   margin-top: 70px;
   margin-left: 50px;
@@ -117,23 +240,33 @@
   height: width-percentage(100%);
   width: fill-parent-flow(1);
 }
-.HeroStatsSection {
+.AttributeContainer {
+  horizontal-align: right;
+  margin-top: 100px;
+  width: 50%;
+  padding-left: 8px;
+  flow-children: down;
+}
+.AttributeContainer .TopContainer {
+  flow-children: right;
+}
+.AttributeContainer .HeroStatsSection {
   flow-children: down;
   margin-right: 16px;
   tooltip-position: top;
   tooltip-body-position: 50% 50%;
 }
-.HeroStatsSection .HeroStatsHeader {
+.AttributeContainer .HeroStatsSection .HeroStatsHeader {
   text-transform: uppercase;
   color: #ccc;
 }
-.HeroStatsSection .HeroStatsRow {
+.AttributeContainer .HeroStatsSection .HeroStatsRow {
   flow-children: right;
 }
-.HeroStatsSection .HeroStatsRow > Label {
+.AttributeContainer .HeroStatsSection .HeroStatsRow > Label {
   color: #aaa;
 }
-.HeroStatsSection .HeroStatsIcon {
+.AttributeContainer .HeroStatsSection .HeroStatsIcon {
   width: 20px;
   height: 20px;
   margin-right: 4px;
@@ -141,12 +274,46 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.HeroStatsSection .StrengthIcon {
+.AttributeContainer .HeroStatsSection .StrengthIcon {
   background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
 }
-.HeroStatsSection .AgilityIcon {
+.AttributeContainer .HeroStatsSection .AgilityIcon {
   background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
 }
-.HeroStatsSection .IntelligenceIcon {
+.AttributeContainer .HeroStatsSection .IntelligenceIcon {
   background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+}
+.AttributeContainer .HeroStatsSection #HealthRow {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#1A3D1A), color-stop(0.2, #67A163), color-stop(0.5, #187019), to(#175D17));
+}
+.AttributeContainer .HeroStatsSection #HealthRow .ResourceRegen {
+  color: #3ed038;
+}
+.AttributeContainer .HeroStatsSection #ManaRow {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#6A90BA), color-stop(0.4, #144B91), to(#2E5187));
+}
+.AttributeContainer .HeroStatsSection #ManaRow .ResourceRegen {
+  color: #83C2FE;
+}
+.AttributeContainer .HeroStatsSection .HeroResourceRow {
+  width: 400px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.AttributeContainer .HeroStatsSection .MaxResource {
+  horizontal-align: center;
+  text-shadow: 1px 1px 0px 2 #000000;
+  font-weight: bold;
+  color: white;
+  margin-top: 2px;
+}
+.AttributeContainer .HeroStatsSection .ResourceRegen {
+  margin-top: 2px;
+  margin-left: 4px;
+  margin-right: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  vertical-align: middle;
+  horizontal-align: right;
+  text-shadow: 1px 1px 0px 1 #000000;
 }
