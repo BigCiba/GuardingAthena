@@ -3712,20 +3712,25 @@
 		"AbilitySkinTitleTip"			"【皮肤加成】"
 
 		// 皮肤
-		"rubick_01"						"纯金时空魔术师"
-		"rubick_02"						"魔导师秘钥"
-		"rubick_03"						"纯金魔导师秘钥"
-		"windrunner_01"					"纯金风行者"
-		"phantom_assassin_01"			"纯金影月守望者"
-		"omniknight_01"					"雷霆战士"
-		"omniknight_01_Description"		"修改机械师所有技能的特效，并且所有技能都增加额外效果。"
+		"rubick_01"							"纯金时空魔术师"
+		"rubick_01_Description"				"时空魔术师纯金版本特效"
+		"rubick_02"							"魔导师秘钥"
+		"rubick_03"							"纯金魔导师秘钥"
+		"windrunner_01"						"纯金风行者"
+		"windrunner_01_Description"			"风行者纯金版本特效"
+		"phantom_assassin_01"				"纯金影月守望者"
+		"phantom_assassin_01_Description"	"影月守望者纯金版本特效"
+		"omniknight_01"						"雷霆战士"
+		"omniknight_01_Description"			"修改机械师所有技能的特效，并且所有技能都增加额外效果。"
 		// 特效
-		"wing_01"						"纯金翅膀"
+		"wing_01"							"纯金翅膀"
+		"wing_01_Description"				"装备后出生自带金色翅膀，适用于所有英雄。"
 		// 道具
-		"potion"						"药水礼包"
-		"potion_Description"			"购买后进入游戏会在信使上提供30个小回复药水和30个小净化药水。"
+		"potion"							"药水礼包"
+		"potion_Description"				"购买后进入游戏会在信使上提供30个小回复药水和30个小净化药水。"
 		// 其他
-		"vip"							"超级会员"
+		"vip"								"超级会员"
+		"vip_Description"					"仅通过作者发放给有缘的朋友。"
 		// 宠物
 		"pet_1"		"勇敢的小鸡"
 		"pet_2"		"火箭小鸡"

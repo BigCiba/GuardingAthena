@@ -1,19 +1,19 @@
 let SearchWord = "";
 // 显示错误提示
 function ShowError(data) {
-	$( "#ErrorMsg" ).text = $.Localize(data.text);
+	$("#ErrorMsg").text = $.Localize(data.text);
 	//$( "#DOTAErrorMsg" ).SetHasClass( "ShowErrorMsg", false );
-	$( "#DotaErrorMsg" ).RemoveClass("PopOutEffect");
-	$( "#DotaErrorMsg" ).RemoveClass("ShowErrorMsg");
-	$( "#DotaErrorMsg" ).AddClass("PopOutEffect");
-	$( "#DotaErrorMsg" ).AddClass("ShowErrorMsg");
-	$.Schedule(1,HideError);
+	$("#DotaErrorMsg").RemoveClass("PopOutEffect");
+	$("#DotaErrorMsg").RemoveClass("ShowErrorMsg");
+	$("#DotaErrorMsg").AddClass("PopOutEffect");
+	$("#DotaErrorMsg").AddClass("ShowErrorMsg");
+	$.Schedule(1, HideError);
 }
 function HideError() {
-	$( "#DotaErrorMsg" ).RemoveClass("PopOutEffect");
-	$( "#DotaErrorMsg" ).RemoveClass("ShowErrorMsg");
+	$("#DotaErrorMsg").RemoveClass("PopOutEffect");
+	$("#DotaErrorMsg").RemoveClass("ShowErrorMsg");
 }
-GameEvents.Subscribe( "show_error", ShowError );
+GameEvents.Subscribe("show_error", ShowError);
 
 function Update() {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
@@ -28,7 +28,7 @@ function Update() {
 		if (DOTAAbilityTooltip.BHasClass("IsItem") == true) {
 			let ItemName = DOTAAbilityTooltip.FindChildTraverse("ItemImage").itemname;
 			// 专属装备
-			if (ItemName == "item_" + Entities.GetUnitName( Unit )) {
+			if (ItemName == "item_" + Entities.GetUnitName(Unit)) {
 				for (let i = 2; i <= 9; i++) {
 					let Child = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(i);
 					if (GetHeroesRebornCount(Unit) * 2 + 1 >= i) {
@@ -57,7 +57,7 @@ function Update() {
 				let HasModifier = Entities.HasModifier(Unit, "ring_" + iFirstIndex + "_" + iSecondIndex);
 				Header.SetHasClass("Active", HasModifier);
 				Description.SetHasClass("Active", HasModifier);
-				Header.text += HasModifier ? $.Localize("Custom_Tooltip_ability_Active"):$.Localize("Custom_Tooltip_ability_NotActive");
+				Header.text += HasModifier ? $.Localize("Custom_Tooltip_ability_Active") : $.Localize("Custom_Tooltip_ability_NotActive");
 				for (const index in RingsData) {
 					const RingData = RingsData[index];
 					let Header = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(Number(index) * 2 + 2);
@@ -67,7 +67,7 @@ function Update() {
 					let HasModifier = Entities.HasModifier(Unit, RingData.sModifierName);
 					Header.SetHasClass("Active", HasModifier);
 					Description.SetHasClass("Active", HasModifier);
-					Header.text += HasModifier ? $.Localize("Custom_Tooltip_ability_Active"):$.Localize("Custom_Tooltip_ability_NotActive");
+					Header.text += HasModifier ? $.Localize("Custom_Tooltip_ability_Active") : $.Localize("Custom_Tooltip_ability_NotActive");
 					// 破碎创世之戒
 					if (ItemName == "item_ring_broken" || ItemName == "item_ring_world_broken") {
 						break;
@@ -80,14 +80,14 @@ function Update() {
 				if (Ability.BHasHoverStyle()) {
 					let Unit = Players.GetLocalPlayerPortraitUnit();
 					let AbilityName = Ability.FindChildTraverse("AbilityImage").abilityname;
-					let AbilityIndex = Entities.GetAbilityByName( Unit, AbilityName );
+					let AbilityIndex = Entities.GetAbilityByName(Unit, AbilityName);
 					let AbilityLevel = Abilities.GetLevel(AbilityIndex);
 					let Attribute = Tooltips.FindChildTraverse("AbilityExtraAttributes");
 					let text = "";
 					Attribute.text = "";
-					
+
 					// 技能伤害
-					let AbilityDamage = Abilities.GetAbilityDamage( AbilityIndex );
+					let AbilityDamage = Abilities.GetAbilityDamage(AbilityIndex);
 					if (AbilityDamage != null && AbilityDamage != "") {
 						let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilitydamage";
 						let Name = $.Localize(localization);
@@ -95,12 +95,12 @@ function Update() {
 							Name = $.Localize("DOTA_Tooltip_ability_common_abilitydamage");
 						}
 						let HasPct = Name.search("%") != -1
-						text += Name.replace("%","") + "<font color='white'>" + String(AbilityDamage.toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
+						text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDamage.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 						text += "<br></br>";
 					}
-	
+
 					// 技能持续时间
-					let AbilityDuration = Abilities.GetDuration( AbilityIndex );
+					let AbilityDuration = Abilities.GetDuration(AbilityIndex);
 					if (AbilityDuration != null && AbilityDuration != "") {
 						let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilityduration";
 						let Name = $.Localize(localization);
@@ -108,10 +108,10 @@ function Update() {
 							Name = $.Localize("DOTA_Tooltip_ability_common_abilityduration");
 						}
 						let HasPct = Name.search("%") != -1
-						text += Name.replace("%","") + "<font color='white'>" + String(AbilityDuration.toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
+						text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDuration.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 						text += "<br></br>";
 					}
-	
+
 					let AbilitySpecial = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].AbilitySpecial;
 					for (const key in AbilitySpecial) {
 						const SpecialName = Object.keys(AbilitySpecial[key])[1];
@@ -121,22 +121,22 @@ function Update() {
 							let HasPct = Name.search("%") != -1
 							let LevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1);
 							let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
-							text += Name.replace("%","") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
+							text += Name.replace("%", "") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 							if (Ability.BHasClass("show_level_up_tab") && NextLevelValue - LevelValue != 0) {
-								text += "<font color='#45DD3B'> +" +  String((NextLevelValue - LevelValue).toFixed(2)).replace(".00","").replace(/(\.[1-9])0/,"$1") + (HasPct ? "%":"") + "</font>";
+								text += "<font color='#45DD3B'> +" + String((NextLevelValue - LevelValue).toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 							}
 							text += "<br></br>";
 						}
 					}
 					Attribute.text = text;
-	
+
 					// 魔法消耗
 					Tooltips.FindChildTraverse("AbilityManaCost").text = Tooltips.FindChildTraverse("CurrentAbilityManaCost").text;
 					Tooltips.FindChildTraverse("AbilityCooldown").text = Tooltips.FindChildTraverse("CurrentAbilityCooldown").text;
-	
+
 					Tooltips.FindChildTraverse("CurrentAbilityManaCost").SetHasClass("Hidden", true);
 					Tooltips.FindChildTraverse("CurrentAbilityCooldown").SetHasClass("Hidden", true);
-	
+
 					// Tooltips.FindChildTraverse("ScepterUpgradeHeader").GetChild(0).style.backgroundImage = 'url("s2r://panorama/images/heroes/icons/'+Entities.GetUnitName(Players.GetLocalPlayerPortraitUnit())+'_png.vtex")';
 					// 神杖提示
 					if (GameUI.CustomUIConfig().AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
@@ -146,11 +146,11 @@ function Update() {
 						for (let i = 0; i < ScepterLevel.length; i++) {
 							const Level = ScepterLevel[i];
 							if (GetHeroesRebornCount(Unit) >= Level) {
-								let Description = (i == 0 ? "":"<br></br>") + $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_scepter_description_" + Level);
+								let Description = (i == 0 ? "" : "<br></br>") + $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_scepter_description_" + Level);
 								for (const key in AbilitySpecial) {
 									const SpecialName = Object.keys(AbilitySpecial[key])[1];
-									Description = Description.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
-									Description = Description.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+									Description = Description.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+									Description = Description.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
 								}
 								localization += Description;
 								ShowTooltip = true;
@@ -166,8 +166,8 @@ function Update() {
 					} else {
 						AbilityScepterDescriptionContainer.style.visibility = "collapse";
 					}
-	
-					
+
+
 					// 添加皮肤额外描述
 					let sSkinName = GetSkinName(Unit);
 					let SkinHeader = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(1);
@@ -183,8 +183,8 @@ function Update() {
 						if (Name.search("DOTA_Tooltip_ability_") == -1) {
 							for (const key in AbilitySpecial) {
 								const SpecialName = Object.keys(AbilitySpecial[key])[1];
-								Name = Name.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
-								Name = Name.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+								Name = Name.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+								Name = Name.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
 							}
 							SkinHeader.text = "<font color='gold'>" + $.Localize(sSkinName) + " " + $.Localize("AbilitySkinTitleTip") + "</font>";
 							SkinHeader.SetHasClass("Active", true);
@@ -206,14 +206,14 @@ function Update() {
 						let localization = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_Description");
 						for (const key in AbilitySpecial) {
 							const SpecialName = Object.keys(AbilitySpecial[key])[1];
-							localization = localization.replace(new RegExp("%"+SpecialName+"%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
-							localization = localization.replace(new RegExp("%"+SpecialName+"%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+							localization = localization.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+							localization = localization.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
 						}
 						Description.text = localization;
-						
+
 						Description.text = Description.text.replace("sSkinName", "");
 						Description.text = Description.text.replace("sSkinDescription", "");
-						
+
 						if (PurgeType != "0") {
 							Description.text += "<br></br><br></br>" + $.Localize("Custom_Tooltip_ability_PurgeType") + $.Localize("Custom_Tooltip_ability_" + PurgeType);
 						}
@@ -230,7 +230,7 @@ function Update() {
 					}
 				}
 			}
-	
+
 			let SearchText = $("#SearchTextEntry").text;
 			if (SearchText != SearchWord) {
 				SearchWord = SearchText;
@@ -286,7 +286,7 @@ function CategoryFilter(sType) {
 				EchoItem.style.visibility = "collapse";
 			}
 			break;
-	
+
 		default:
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
@@ -301,7 +301,7 @@ function CategoryFilter(sType) {
 }
 function LoadStoreItem(self) {
 	self.BLoadLayoutSnippet("StoreItem");
-	self.SetStoreItem = function(ItemData) {
+	self.SetStoreItem = function (ItemData) {
 		let ItemName = ItemData.ItemName;
 		if (ItemData.Type == "hero") {
 			ItemName = "npc_dota_hero_" + ItemData.ItemName;
@@ -315,11 +315,11 @@ function LoadStoreItem(self) {
 			for (let index = 1; index <= 5; index++) {
 				const AbilityName = PetKV["Ability" + index];
 				if (AbilityName != undefined || AbilityName != null) {
-					let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", self.FindChildTraverse("SkillPreview"), AbilityName, {abilityname: AbilityName});
-					AbilityPanel.SetPanelEvent("onmouseover", function() {
+					let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", self.FindChildTraverse("SkillPreview"), AbilityName, { abilityname: AbilityName });
+					AbilityPanel.SetPanelEvent("onmouseover", function () {
 						$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
 					});
-					AbilityPanel.SetPanelEvent("onmouseout", function() {
+					AbilityPanel.SetPanelEvent("onmouseout", function () {
 						$.DispatchEvent("DOTAHideAbilityTooltip");
 					});
 				}
@@ -332,7 +332,7 @@ function LoadStoreItem(self) {
 					"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
 					"courier_name=" + ItemName + "&rotationspeed=2");
 			}.bind(self));
-		
+
 			self.SetPanelEvent("onmouseout", function () {
 				$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
 			}.bind(self));
@@ -344,7 +344,7 @@ function LoadStoreItem(self) {
 		self.Shard = ItemData.Shard;
 		self.Price = ItemData.Price;
 		self.ItemName = ItemData.ItemName;
-		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
+		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/" + ItemData.Type + "/" + ItemData.ItemName + ".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
 		self.FindChildTraverse("ShardCost").SetDialogVariable("shard_cost", ItemData.Shard);
@@ -356,7 +356,7 @@ function LoadStoreItem(self) {
 			self.AddClass("NoPrice");
 		}
 		self.SetHasClass("StoreItem", true);
-		self.FindChildTraverse("ShardPurchaseButton").SetPanelEvent("onactivate", function() {
+		self.FindChildTraverse("ShardPurchaseButton").SetPanelEvent("onactivate", function () {
 			let Shard = GetPlayerShard(Players.GetLocalPlayer());
 			// if (Shard > this.Shard) {
 			// 	GameEvents.SendCustomGameEventToServer("PurchaseItem", {
@@ -372,10 +372,10 @@ function LoadStoreItem(self) {
 					Shard: this.Shard,
 					CostType: "Shard",
 					ItemName: self.ItemName,
-					Image: "file://{images}/custom_game/"+self.Type+"/"+self.ItemName+".png"
+					Image: "file://{images}/custom_game/" + self.Type + "/" + self.ItemName + ".png"
 				}));
 		}.bind(self));
-		self.FindChildTraverse("PricePurchaseButton").SetPanelEvent("onactivate", function() {
+		self.FindChildTraverse("PricePurchaseButton").SetPanelEvent("onactivate", function () {
 			let Price = GetPlayerPrice(Players.GetLocalPlayer());
 			// if (Shard > this.Shard) {
 			// 	GameEvents.SendCustomGameEventToServer("PurchaseItem", {
@@ -391,10 +391,10 @@ function LoadStoreItem(self) {
 					Price: this.Price,
 					CostType: "Price",
 					ItemName: self.ItemName,
-					Image: "file://{images}/custom_game/"+self.Type+"/"+self.ItemName+".png"
+					Image: "file://{images}/custom_game/" + self.Type + "/" + self.ItemName + ".png"
 				}));
 		}.bind(self));
-		
+
 	};
 	self.GetShardCost = function () {
 		return self.Shard
@@ -402,7 +402,7 @@ function LoadStoreItem(self) {
 	self.GetPriceCost = function () {
 		return self.Price
 	}
-	self.SetInventoryItem = function(ItemData) {
+	self.SetInventoryItem = function (ItemData) {
 		let ItemName = ItemData.ItemName;
 		if (ItemData.Type == "hero") {
 			ItemName = "npc_dota_hero_" + ItemData.ItemName;
@@ -419,7 +419,7 @@ function LoadStoreItem(self) {
 					"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
 					"courier_name=" + ItemName + "&rotationspeed=2");
 			}.bind(self));
-		
+
 			self.SetPanelEvent("onmouseout", function () {
 				$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
 			}.bind(self));
@@ -429,7 +429,7 @@ function LoadStoreItem(self) {
 		}
 		self.Type = ItemData.Type;
 		self.ItemName = ItemData.ItemName;
-		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/"+ItemData.Type+"/"+ItemData.ItemName+".png");
+		self.FindChildTraverse("ItemImage").SetImage("file://{images}/custom_game/" + ItemData.Type + "/" + ItemData.ItemName + ".png");
 		self.FindChildTraverse("ItemName").SetDialogVariable("item_name", $.Localize(ItemName));
 		self.FindChildTraverse("ItemTypeLabel").SetDialogVariable("item_type", $.Localize("StoreItemType_" + ItemData.Type));
 		// self.FindChildTraverse("ShardCost").SetDialogVariable("shard_cost", ItemData.Shard);
@@ -437,19 +437,19 @@ function LoadStoreItem(self) {
 		self.SetHasClass("InventoryItem", true);
 		self.SetHasClass("Equipped", ItemData.Equip == "1");
 		self.SetHasClass("UnEquipped", ItemData.Equip == "0");
-		self.FindChildTraverse("EquipButton").SetPanelEvent("onactivate", function() {
+		self.FindChildTraverse("EquipButton").SetPanelEvent("onactivate", function () {
 			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
 				ItemName: this.ItemName,
 				Type: this.Type,
 			});
 		}.bind(self));
-		self.FindChildTraverse("UnEquipButton").SetPanelEvent("onactivate", function() {
+		self.FindChildTraverse("UnEquipButton").SetPanelEvent("onactivate", function () {
 			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
 				ItemName: this.ItemName,
 				Type: this.Type,
 			});
 		}.bind(self));
-		
+
 	};
 
 }
@@ -483,7 +483,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 							}
 						}
 					}
-				} else if(typeof(tData[sType]) == "object") {
+				} else if (typeof (tData[sType]) == "object") {
 					const ItemList = tData[sType];
 					for (const Index in ItemList) {
 						const ItemData = ItemList[Index];
