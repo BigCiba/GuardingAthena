@@ -6,7 +6,7 @@ function Store() {
 	const storePage = useRef<Panel>(null);
 	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
 	return (
-		<Panel id="StorePage" className="DotaPlusContainer" ref={storePage}>
+		<Panel id="StorePage" className="DotaPlusContainer Hidden" ref={storePage}>
 			<Panel id="SearchAndCategoriesContainer">
 				<Panel id="CurrencyContainer">
 					<Panel className="SearchOptionsTitleCategories">

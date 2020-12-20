@@ -514,7 +514,175 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 }
 (function () {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
-	Update();
+	// Update();
+
+	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltip", function (pPanel, sAbilityName, c, d) {
+		$.Msg("DOTAShowAbilityTooltip",sAbilityName)
+	});
+	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltipForEntityIndex", function (Ability, AbilityName, iEntityIndex) {
+		$.Schedule(0, function () {
+			let Tooltips = HUD.FindChildTraverse("Tooltips");
+			let AbilityList = HUD.FindChildTraverse("abilities");
+			let DOTAAbilityTooltip = Tooltips.FindChildTraverse("DOTAAbilityTooltip");
+			let AbilityScepterDescriptionContainer = Tooltips.FindChildTraverse("AbilityScepterDescriptionContainer");
+			let AbilityIndex = Entities.GetAbilityByName(iEntityIndex, AbilityName);
+			let AbilityLevel = Abilities.GetLevel(AbilityIndex);
+			let Attribute = Tooltips.FindChildTraverse("AbilityExtraAttributes");
+			let text = "";
+			Attribute.text = "";
+
+			// 技能伤害
+			let AbilityDamage = Abilities.GetAbilityDamage(AbilityIndex);
+			if (AbilityDamage != null && AbilityDamage != "") {
+				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilitydamage";
+				let Name = $.Localize(localization);
+				if (Name.search("DOTA_Tooltip_ability_") != -1) {
+					Name = $.Localize("DOTA_Tooltip_ability_common_abilitydamage");
+				}
+				let HasPct = Name.search("%") != -1
+				text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDamage.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
+				text += "<br></br>";
+			}
+
+			// 技能持续时间
+			let AbilityDuration = Abilities.GetDuration(AbilityIndex);
+			if (AbilityDuration != null && AbilityDuration != "") {
+				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_abilityduration";
+				let Name = $.Localize(localization);
+				if (Name.search("DOTA_Tooltip_ability_") != -1) {
+					Name = $.Localize("DOTA_Tooltip_ability_common_abilityduration");
+				}
+				let HasPct = Name.search("%") != -1
+				text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDuration.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
+				text += "<br></br>";
+			}
+
+			// 键值
+			let AbilitySpecial = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].AbilitySpecial;
+			for (const key in AbilitySpecial) {
+				const SpecialName = Object.keys(AbilitySpecial[key])[1];
+				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_" + SpecialName;
+				if ($.Localize(localization) != localization) {
+					let Name = $.Localize(localization);
+					let HasPct = Name.search("%") != -1
+					let LevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1);
+					let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
+					text += Name.replace("%", "") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
+					if (Ability.FindAncestor("ButtonAndLevel").GetParent().BHasClass("show_level_up_tab") && NextLevelValue - LevelValue != 0) {
+						text += "<font color='#45DD3B'> +" + String((NextLevelValue - LevelValue).toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
+					}
+					text += "<br></br>";
+				}
+			}
+			Attribute.text = text;
+
+			// 魔法消耗
+			Tooltips.FindChildTraverse("AbilityManaCost").text = Tooltips.FindChildTraverse("CurrentAbilityManaCost").text;
+			Tooltips.FindChildTraverse("AbilityCooldown").text = Tooltips.FindChildTraverse("CurrentAbilityCooldown").text;
+
+			Tooltips.FindChildTraverse("CurrentAbilityManaCost").SetHasClass("Hidden", true);
+			Tooltips.FindChildTraverse("CurrentAbilityCooldown").SetHasClass("Hidden", true);
+			// 神杖提示
+			if (GameUI.CustomUIConfig().AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
+				let localization = "";
+				let ShowTooltip = false;
+				let ScepterLevel = String(GameUI.CustomUIConfig().AbilitiesKv[AbilityName].ScepterLevel).split("|");
+				for (let i = 0; i < ScepterLevel.length; i++) {
+					const Level = ScepterLevel[i];
+					if (GetHeroesRebornCount(iEntityIndex) >= Level) {
+						let Description = (i == 0 ? "" : "<br></br>") + $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_scepter_description_" + Level);
+						for (const key in AbilitySpecial) {
+							const SpecialName = Object.keys(AbilitySpecial[key])[1];
+							Description = Description.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+							Description = Description.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+						}
+						localization += Description;
+						ShowTooltip = true;
+						AbilityScepterDescriptionContainer.style.visibility = "visible"
+					}
+				}
+				if (ShowTooltip == true) {
+					AbilityScepterDescriptionContainer.style.visibility = "visible"
+					AbilityScepterDescriptionContainer.GetChild(1).text = localization;
+				} else {
+					AbilityScepterDescriptionContainer.style.visibility = "collapse"
+				}
+			} else {
+				AbilityScepterDescriptionContainer.style.visibility = "collapse";
+			}
+			// 添加皮肤额外描述
+			let sSkinName = GetSkinName(iEntityIndex);
+			let AbilityDescriptionContainer = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer");
+			AbilityDescriptionContainer.CreatePanelWithProperties
+			let SkinHeader = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(1);
+			let SkinDesc = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(2);
+			SkinDesc.style.backgroundColor = "#1f282c55";
+			if (sSkinName == false) {
+				if (SkinHeader != null || SkinHeader != undefined) {
+					SkinHeader.style.visibility = "collapse";
+					SkinDesc.style.visibility = "collapse";
+				}
+			} else {
+				let Name = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_" + sSkinName);
+				if (Name.search("DOTA_Tooltip_ability_") == -1) {
+					for (const key in AbilitySpecial) {
+						const SpecialName = Object.keys(AbilitySpecial[key])[1];
+						Name = Name.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+						Name = Name.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+					}
+					SkinHeader.text = "<font color='gold'>" + $.Localize(sSkinName) + " " + $.Localize("AbilitySkinTitleTip") + "</font>";
+					SkinHeader.SetHasClass("Active", true);
+					SkinDesc.text = Name;
+					SkinDesc.style.backgroundColor = "#1f282c55";
+				} else {
+					if (SkinHeader != null) {
+						SkinHeader.style.visibility = "collapse";
+						SkinDesc.style.visibility = "collapse";
+					}
+				}
+			}
+			// 添加不减少冷却提示
+			let IgnoreCooldownReduction = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].IgnoreCooldownReduction || "0";
+			// 添加驱散类型
+			let PurgeType = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].PurgeType || "0";
+			if (IgnoreCooldownReduction == "1" || PurgeType != "0") {
+				let Description = Tooltips.FindChildTraverse("AbilityDescriptionContainer").GetChild(0);
+				let localization = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_Description");
+				for (const key in AbilitySpecial) {
+					const SpecialName = Object.keys(AbilitySpecial[key])[1];
+					localization = localization.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+					localization = localization.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+				}
+				Description.text = localization;
+
+				Description.text = Description.text.replace("sSkinName", "");
+				Description.text = Description.text.replace("sSkinDescription", "");
+
+				if (PurgeType != "0") {
+					Description.text += "<br></br><br></br>" + $.Localize("Custom_Tooltip_ability_PurgeType") + $.Localize("Custom_Tooltip_ability_" + PurgeType);
+				}
+				if (IgnoreCooldownReduction == "1") {
+					Description.text += "<br></br><br></br><font color='#d63c2d'>" + $.Localize("Custom_Tooltip_ability_IgnoreCooldownReduction") + "</font>";
+					Tooltips.FindChildTraverse("AbilityCooldown").text = Abilities.GetCooldown(AbilityIndex);
+				}
+			}
+			// 修正位置
+			$.Schedule(0, function () {
+				let PositionY = GameUI.CorrectPositionValue(DOTAAbilityTooltip.GetPositionWithinWindow().y);
+				let Height = GameUI.CorrectPositionValue(DOTAAbilityTooltip.actuallayoutheight);
+				if (Math.floor(PositionY + Height) != 1080) {
+					$.Msg(PositionY + "  " + Height + "  " + (1080 - PositionY - Height))
+					DOTAAbilityTooltip.SetPositionInPixels(0, 1080 - PositionY - Height, 0);
+				}
+			});
+		});
+	});
+	$.RegisterForUnhandledEvent("DOTAShowAbilityInventoryItemTooltip", function (pPanel, iEntityIndex, iInventorySlot, d) {
+		$.Msg("DOTAShowAbilityInventoryItemTooltip",iEntityIndex,iInventorySlot)
+	});
+	$.RegisterForUnhandledEvent("DOTAShowAbilityShopItemTooltip", function (pPanel, sItemName, c, d) {
+		$.Msg(sItemName);
+	});
 
 	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
 
