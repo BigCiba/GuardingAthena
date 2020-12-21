@@ -46,7 +46,7 @@ function DemonHunter( keys )
                 caster:SetBaseStrength(caster:GetBaseStrength() + 10)
                 caster:SetBaseAgility(caster:GetBaseAgility() + 10)
                 caster:SetBaseIntellect(caster:GetBaseIntellect() + 10)
-                caster:CalculateStatBonus()
+                caster:CalculateStatBonus(false)
             end
         end
     end
@@ -60,13 +60,13 @@ function DemonHunter( keys )
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_demon_hunter_buff",nil)
 		caster:SetModifierStackCount("modifier_demon_hunter_buff",caster,1)
 		EmitSoundOn("Hero_Terrorblade.Attack.Rip", caster)
-		caster:CalculateStatBonus()
+		caster:CalculateStatBonus(false)
 	else
         local stackcount = caster:GetModifierStackCount("modifier_demon_hunter_buff", caster)
 		if stackcount < soulCount then
 			caster:SetModifierStackCount("modifier_demon_hunter_buff",caster,stackcount + add)
 			EmitSoundOn("Hero_Terrorblade.Attack.Rip", caster)
-			caster:CalculateStatBonus()
+			caster:CalculateStatBonus(false)
 		end
 	end
 end
@@ -89,7 +89,7 @@ function DemonHunterSpell( keys )
 			caster:SetBaseStrength(caster:GetBaseStrength() + 10)
 			caster:SetBaseAgility(caster:GetBaseAgility() + 10)
 			caster:SetBaseIntellect(caster:GetBaseIntellect() + 10)
-			caster:CalculateStatBonus()
+			caster:CalculateStatBonus(false)
 			caster:SetModifierStackCount("modifier_demon_hunter_buff", caster, caster:GetModifierStackCount("modifier_demon_hunter_buff", caster) - count)
 			EmitSoundOn("Hero_Terrorblade.Metamorphosis", caster)
 			local particle = CreateParticle( "particles/skills/dh_demonhunter_2.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
@@ -99,11 +99,11 @@ function DemonHunterSpell( keys )
 				caster:SetBaseStrength(caster:GetBaseStrength() + 10)
 				caster:SetBaseAgility(caster:GetBaseAgility() + 10)
 				caster:SetBaseIntellect(caster:GetBaseIntellect() + 10)
-				caster:CalculateStatBonus()
+				caster:CalculateStatBonus(false)
 			end
 		else
 			caster:SetModifierStackCount("modifier_demon_hunter_buff", caster, caster:GetModifierStackCount("modifier_demon_hunter_buff", caster) - count)
-			caster:CalculateStatBonus()
+			caster:CalculateStatBonus(false)
 		end
 	end)
 end

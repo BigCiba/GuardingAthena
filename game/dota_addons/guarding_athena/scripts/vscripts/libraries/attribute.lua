@@ -247,7 +247,7 @@ function Attributes:ModifyBonuses(hero)
         hero.agility = agility
         hero.intellect = intellect
 
-        hero:CalculateStatBonus()
+        hero:CalculateStatBonus(false)
         return 0.03
     end)
 end

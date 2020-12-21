@@ -100,7 +100,7 @@ function OnHpClick( index,keys )
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
 		local property = RandomInt(10, 50 + GuardingAthena.athena_hp_lv) / 10
 		hero:SetBaseStrength(hero:GetBaseStrength() + property)
-		hero:CalculateStatBonus()
+		hero:CalculateStatBonus(false)
 		GuardingAthena.athena_hp_lv = GuardingAthena.athena_hp_lv + 1
 		GuardingAthena.entAthena:SetBaseMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth() + 1000 + math.ceil(100 * 1.04 ^ GuardingAthena.athena_hp_lv) )
 		GuardingAthena.entAthena:SetMaxHealth(GuardingAthena.entAthena:GetBaseMaxHealth())
@@ -118,7 +118,7 @@ function OnRegenClick( index,keys )
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
 		local property = RandomInt(10, 50 + GuardingAthena.athena_regen_lv) / 10
 	    hero:SetBaseIntellect(hero:GetBaseIntellect() + property)
-	    hero:CalculateStatBonus()
+	    hero:CalculateStatBonus(false)
 	    GuardingAthena.athena_regen_lv = GuardingAthena.athena_regen_lv + 1
 		GuardingAthena.entAthena:SetBaseHealthRegen(GuardingAthena.entAthena:GetBaseHealthRegen() + 10 + math.ceil(1.04 ^ GuardingAthena.athena_regen_lv) )
 		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点智力", style={color="red"}, duration=2, class="LeftMessage", continue = false})
@@ -134,7 +134,7 @@ function OnArmorClick( index,keys )
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
 		local property = RandomInt(10, 50 + GuardingAthena.athena_armor_lv) / 10
 		hero:SetBaseAgility(hero:GetBaseAgility() + property) 
-	    hero:CalculateStatBonus()
+	    hero:CalculateStatBonus(false)
 	    GuardingAthena.athena_armor_lv = GuardingAthena.athena_armor_lv + 1
 		GuardingAthena.entAthena:SetPhysicalArmorBaseValue(GuardingAthena.entAthena:GetPhysicalArmorBaseValue() + 1)
 		Notifications:LeftBottom(keys.PlayerID, {text="升级雅典娜获得"..property.."点敏捷", style={color="red"}, duration=2, class="LeftMessage", continue = false})

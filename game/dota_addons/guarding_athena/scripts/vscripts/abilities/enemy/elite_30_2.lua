@@ -45,7 +45,7 @@ end
 function modifier_elite_30_2_debuff:OnRefresh(params)
 	if IsServer() then
 		self:IncrementStackCount()
-		self:GetParent():CalculateStatBonus()
+		self:GetParent():CalculateStatBonus(false)
 	end
 end
 function modifier_elite_30_2_debuff:DeclareFunctions()

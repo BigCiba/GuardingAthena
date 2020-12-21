@@ -32,7 +32,7 @@ function OnIntervalThink( t )
     if abilityIndex == 1 then
         if target:IsRealHero() then
             AddModifierStackCount( caster, target, ability, "modifier_heartstop_str" )
-            target:CalculateStatBonus()
+            target:CalculateStatBonus(false)
         end
     elseif abilityIndex == 3 then
         local percent = ability:GetSpecialValueFor("percent")
