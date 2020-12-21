@@ -24,7 +24,7 @@ function Update() {
 	let AbilityScepterDescriptionContainer = Tooltips.FindChildTraverse("AbilityScepterDescriptionContainer");
 	if (DOTAAbilityTooltip != null && DOTAAbilityTooltip.BHasClass("TooltipVisible") == true) {
 		DOTAAbilityTooltip.SetPositionInPixels(0, 0, 0);
-		AbilityScepterDescriptionContainer.style.visibility = "collapse"
+		AbilityScepterDescriptionContainer.style.visibility = "collapse";
 		if (DOTAAbilityTooltip.BHasClass("IsItem") == true) {
 			let ItemName = DOTAAbilityTooltip.FindChildTraverse("ItemImage").itemname;
 			// 专属装备
@@ -94,7 +94,7 @@ function Update() {
 						if (Name.search("DOTA_Tooltip_ability_") != -1) {
 							Name = $.Localize("DOTA_Tooltip_ability_common_abilitydamage");
 						}
-						let HasPct = Name.search("%") != -1
+						let HasPct = Name.search("%") != -1;
 						text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDamage.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 						text += "<br></br>";
 					}
@@ -107,7 +107,7 @@ function Update() {
 						if (Name.search("DOTA_Tooltip_ability_") != -1) {
 							Name = $.Localize("DOTA_Tooltip_ability_common_abilityduration");
 						}
-						let HasPct = Name.search("%") != -1
+						let HasPct = Name.search("%") != -1;
 						text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDuration.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 						text += "<br></br>";
 					}
@@ -118,7 +118,7 @@ function Update() {
 						let localization = "DOTA_Tooltip_ability_" + AbilityName + "_" + SpecialName;
 						if ($.Localize(localization) != localization) {
 							let Name = $.Localize(localization);
-							let HasPct = Name.search("%") != -1
+							let HasPct = Name.search("%") != -1;
 							let LevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1);
 							let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
 							text += Name.replace("%", "") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
@@ -154,14 +154,14 @@ function Update() {
 								}
 								localization += Description;
 								ShowTooltip = true;
-								AbilityScepterDescriptionContainer.style.visibility = "visible"
+								AbilityScepterDescriptionContainer.style.visibility = "visible";
 							}
 						}
 						if (ShowTooltip == true) {
-							AbilityScepterDescriptionContainer.style.visibility = "visible"
+							AbilityScepterDescriptionContainer.style.visibility = "visible";
 							AbilityScepterDescriptionContainer.GetChild(1).text = localization;
 						} else {
-							AbilityScepterDescriptionContainer.style.visibility = "collapse"
+							AbilityScepterDescriptionContainer.style.visibility = "collapse";
 						}
 					} else {
 						AbilityScepterDescriptionContainer.style.visibility = "collapse";
@@ -397,11 +397,11 @@ function LoadStoreItem(self) {
 
 	};
 	self.GetShardCost = function () {
-		return self.Shard
-	}
+		return self.Shard;
+	};
 	self.GetPriceCost = function () {
-		return self.Price
-	}
+		return self.Price;
+	};
 	self.SetInventoryItem = function (ItemData) {
 		let ItemName = ItemData.ItemName;
 		if (ItemData.Type == "hero") {
@@ -516,11 +516,13 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	let HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
 	// Update();
 
+	let fixed = false;
 	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltip", function (pPanel, sAbilityName, c, d) {
-		$.Msg("DOTAShowAbilityTooltip",sAbilityName)
+		$.Msg("DOTAShowAbilityTooltip", sAbilityName);
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltipForEntityIndex", function (Ability, AbilityName, iEntityIndex) {
 		$.Schedule(0, function () {
+			Ability.style["tooltip-position"] = "top";
 			let Tooltips = HUD.FindChildTraverse("Tooltips");
 			let AbilityList = HUD.FindChildTraverse("abilities");
 			let DOTAAbilityTooltip = Tooltips.FindChildTraverse("DOTAAbilityTooltip");
@@ -539,7 +541,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 				if (Name.search("DOTA_Tooltip_ability_") != -1) {
 					Name = $.Localize("DOTA_Tooltip_ability_common_abilitydamage");
 				}
-				let HasPct = Name.search("%") != -1
+				let HasPct = Name.search("%") != -1;
 				text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDamage.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 				text += "<br></br>";
 			}
@@ -552,7 +554,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 				if (Name.search("DOTA_Tooltip_ability_") != -1) {
 					Name = $.Localize("DOTA_Tooltip_ability_common_abilityduration");
 				}
-				let HasPct = Name.search("%") != -1
+				let HasPct = Name.search("%") != -1;
 				text += Name.replace("%", "") + "<font color='white'>" + String(AbilityDuration.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 				text += "<br></br>";
 			}
@@ -564,7 +566,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_" + SpecialName;
 				if ($.Localize(localization) != localization) {
 					let Name = $.Localize(localization);
-					let HasPct = Name.search("%") != -1
+					let HasPct = Name.search("%") != -1;
 					let LevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1);
 					let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
 					text += Name.replace("%", "") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
@@ -598,14 +600,14 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 						}
 						localization += Description;
 						ShowTooltip = true;
-						AbilityScepterDescriptionContainer.style.visibility = "visible"
+						AbilityScepterDescriptionContainer.style.visibility = "visible";
 					}
 				}
 				if (ShowTooltip == true) {
-					AbilityScepterDescriptionContainer.style.visibility = "visible"
+					AbilityScepterDescriptionContainer.style.visibility = "visible";
 					AbilityScepterDescriptionContainer.GetChild(1).text = localization;
 				} else {
-					AbilityScepterDescriptionContainer.style.visibility = "collapse"
+					AbilityScepterDescriptionContainer.style.visibility = "collapse";
 				}
 			} else {
 				AbilityScepterDescriptionContainer.style.visibility = "collapse";
@@ -613,16 +615,9 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 			// 添加皮肤额外描述
 			let sSkinName = GetSkinName(iEntityIndex);
 			let AbilityDescriptionContainer = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer");
-			AbilityDescriptionContainer.CreatePanelWithProperties
-			let SkinHeader = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(1);
-			let SkinDesc = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(2);
-			SkinDesc.style.backgroundColor = "#1f282c55";
-			if (sSkinName == false) {
-				if (SkinHeader != null || SkinHeader != undefined) {
-					SkinHeader.style.visibility = "collapse";
-					SkinDesc.style.visibility = "collapse";
-				}
-			} else {
+			if (sSkinName != false) {
+				let SkinHeader = $.CreatePanelWithProperties("Label", AbilityDescriptionContainer, "", { html: true, class: "Header" });
+				let SkinDesc = $.CreatePanelWithProperties("Label", AbilityDescriptionContainer, "", { html: true });
 				let Name = $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_" + sSkinName);
 				if (Name.search("DOTA_Tooltip_ability_") == -1) {
 					for (const key in AbilitySpecial) {
@@ -634,6 +629,15 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 					SkinHeader.SetHasClass("Active", true);
 					SkinDesc.text = Name;
 					SkinDesc.style.backgroundColor = "#1f282c55";
+					// if (fixed == true) {
+					// 	$.Schedule(0, function () {
+					// 		if (SkinHeader && SkinDesc) {
+					// 			let height = SkinHeader.actuallayoutheight + SkinDesc.actuallayoutheight + 20;
+					// 			$.Msg(height);
+					// 			DOTAAbilityTooltip.SetPositionInPixels(0, -height, 0);
+					// 		}
+					// 	});
+					// }
 				} else {
 					if (SkinHeader != null) {
 						SkinHeader.style.visibility = "collapse";
@@ -667,18 +671,17 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 				}
 			}
 			// 修正位置
-			$.Schedule(0, function () {
-				let PositionY = GameUI.CorrectPositionValue(DOTAAbilityTooltip.GetPositionWithinWindow().y);
-				let Height = GameUI.CorrectPositionValue(DOTAAbilityTooltip.actuallayoutheight);
-				if (Math.floor(PositionY + Height) != 1080) {
-					$.Msg(PositionY + "  " + Height + "  " + (1080 - PositionY - Height))
-					DOTAAbilityTooltip.SetPositionInPixels(0, 1080 - PositionY - Height, 0);
-				}
-			});
+			if (fixed != false) {
+				fixed = false;
+				return;
+			}
+			fixed = true;
+			$.DispatchEvent("DOTAHideAbilityTooltip", Ability);
+			$.DispatchEvent("DOTAShowAbilityTooltipForEntityIndex", Ability, AbilityName, iEntityIndex);
 		});
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityInventoryItemTooltip", function (pPanel, iEntityIndex, iInventorySlot, d) {
-		$.Msg("DOTAShowAbilityInventoryItemTooltip",iEntityIndex,iInventorySlot)
+		$.Msg("DOTAShowAbilityInventoryItemTooltip", iEntityIndex, iInventorySlot);
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityShopItemTooltip", function (pPanel, sItemName, c, d) {
 		$.Msg(sItemName);
