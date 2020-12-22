@@ -517,10 +517,68 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 	// Update();
 
 	let fixed = false;
-	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltip", function (pPanel, sAbilityName, c, d) {
-		$.Msg("DOTAShowAbilityTooltip", sAbilityName);
+	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltip", function (Ability, AbilityName, c, d) {
+		$.Msg("DOTAShowAbilityTooltip", AbilityName);
+		$.Schedule(0, function () {
+			Ability.style["tooltip-position"] = "top";
+			let Tooltips = HUD.FindChildTraverse("Tooltips");
+			let AbilityList = HUD.FindChildTraverse("abilities");
+			let DOTAAbilityTooltip = Tooltips.FindChildTraverse("DOTAAbilityTooltip");
+			let AbilityScepterDescriptionContainer = Tooltips.FindChildTraverse("AbilityScepterDescriptionContainer");
+			// let AbilityIndex = Entities.GetAbilityByName(iEntityIndex, AbilityName);
+			// let AbilityLevel = Abilities.GetLevel(AbilityIndex);
+			let Attribute = Tooltips.FindChildTraverse("AbilityExtraAttributes");
+			let text = "";
+			Attribute.text = "";
+
+			if (GameUI.CustomUIConfig().AbilitiesKv[AbilityName].HasScepterUpgrade == "1") {
+				let localization = "";
+				let ShowTooltip = false;
+				let ScepterLevel = String(GameUI.CustomUIConfig().AbilitiesKv[AbilityName].ScepterLevel).split("|");
+				for (let i = 0; i < ScepterLevel.length; i++) {
+					const Level = ScepterLevel[i];
+					if (GetHeroesRebornCount(iEntityIndex) >= Level) {
+						let Description = (i == 0 ? "" : "<br></br>") + $.Localize("DOTA_Tooltip_ability_" + AbilityName + "_scepter_description_" + Level);
+						for (const key in AbilitySpecial) {
+							const SpecialName = Object.keys(AbilitySpecial[key])[1];
+							Description = Description.replace(new RegExp("%" + SpecialName + "%(%+)"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "%</font>");
+							Description = Description.replace(new RegExp("%" + SpecialName + "%"), "<font color='white'>" + Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1) + "</font>");
+						}
+						localization += Description;
+						ShowTooltip = true;
+						AbilityScepterDescriptionContainer.style.visibility = "visible";
+					}
+				}
+				if (ShowTooltip == true) {
+					AbilityScepterDescriptionContainer.style.visibility = "visible";
+					AbilityScepterDescriptionContainer.GetChild(1).text = localization;
+				} else {
+					AbilityScepterDescriptionContainer.style.visibility = "collapse";
+				}
+			} else {
+				AbilityScepterDescriptionContainer.style.visibility = "collapse";
+			}
+
+			// 键值
+			let AbilitySpecial = GameUI.CustomUIConfig().AbilitiesKv[AbilityName].AbilitySpecial;
+			for (const key in AbilitySpecial) {
+				const SpecialName = Object.keys(AbilitySpecial[key])[1];
+				// $.Msg(GameUI.ReplaceDOTAAbilitySpecialValues(AbilityName, "%" + SpecialName + "%"));
+				let localization = "DOTA_Tooltip_ability_" + AbilityName + "_" + SpecialName;
+				if ($.Localize(localization) != localization) {
+					let Name = $.Localize(localization);
+					// let HasPct = Name.search("%") != -1;
+					// let LevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel - 1);
+					// let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
+					text += Name.replace("%", "") + GameUI.ReplaceDOTAAbilitySpecialValues(AbilityName, "%" + SpecialName + "%");
+					text += "<br></br>";
+				}
+			}
+			Attribute.text = text;
+		});
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltipForEntityIndex", function (Ability, AbilityName, iEntityIndex) {
+		// $.Msg("DOTAShowAbilityTooltipForEntityIndex", sAbilityName);
 		$.Schedule(0, function () {
 			Ability.style["tooltip-position"] = "top";
 			let Tooltips = HUD.FindChildTraverse("Tooltips");
@@ -571,7 +629,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 					let NextLevelValue = Abilities.GetLevelSpecialValueFor(AbilityIndex, SpecialName, AbilityLevel);
 					text += Name.replace("%", "") + "<font color='white'>" + String(LevelValue.toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 					if (Ability.FindAncestor("ButtonAndLevel").GetParent().BHasClass("show_level_up_tab") && NextLevelValue - LevelValue != 0) {
-						text += "<font color='#45DD3B'> +" + String((NextLevelValue - LevelValue).toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
+						text += "<font color='#45DD3B'> " + (NextLevelValue > LevelValue ? "+" : "") + String((NextLevelValue - LevelValue).toFixed(2)).replace(".00", "").replace(/(\.[1-9])0/, "$1") + (HasPct ? "%" : "") + "</font>";
 					}
 					text += "<br></br>";
 				}
@@ -629,15 +687,15 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 					SkinHeader.SetHasClass("Active", true);
 					SkinDesc.text = Name;
 					SkinDesc.style.backgroundColor = "#1f282c55";
-					// if (fixed == true) {
-					// 	$.Schedule(0, function () {
-					// 		if (SkinHeader && SkinDesc) {
-					// 			let height = SkinHeader.actuallayoutheight + SkinDesc.actuallayoutheight + 20;
-					// 			$.Msg(height);
-					// 			DOTAAbilityTooltip.SetPositionInPixels(0, -height, 0);
-					// 		}
-					// 	});
-					// }
+					if (fixed == true) {
+						$.Schedule(0, function () {
+							if (SkinHeader && SkinDesc) {
+								let height = (SkinHeader.actuallayoutheight || 0) + (SkinDesc.actuallayoutheight || 0) + 20;
+								// $.Msg(height);
+								DOTAAbilityTooltip.SetPositionInPixels(0, -height, 0);
+							}
+						});
+					}
 				} else {
 					if (SkinHeader != null) {
 						SkinHeader.style.visibility = "collapse";
