@@ -2,6 +2,8 @@
 "DOTA_Tooltip_ability_omniknight_0"										"雷霆动力"
 "DOTA_Tooltip_ability_omniknight_0_Description"							"使用以雷霆为动力的武器，能够发动雷霆之力毁灭敌人，有一定几率击晕目标，如果目标已经处于晕眩状态，则对其造成天罚。每次发动雷霆之力都会提升1点力量。"
 "DOTA_Tooltip_ability_omniknight_0_omniknight_01"						"增加主动效果：为武器充能使下一次攻击必定击晕敌人。"
+"DOTA_Tooltip_ability_omniknight_0_scepter_description"				"使天罚作用于%scepter_radius%范围内的敌方单位"
+"DOTA_Tooltip_ability_omniknight_2_scepter_description"				"使天罚作用于%scepter_radius%范围内的敌方单位"
 "DOTA_Tooltip_ability_omniknight_0_scepter_description_2"				"使天罚作用于%scepter_radius%范围内的敌方单位"
 "DOTA_Tooltip_ability_omniknight_0_stun_duration"						"晕眩时间："
 "DOTA_Tooltip_ability_omniknight_0_chance"								"%击晕几率："

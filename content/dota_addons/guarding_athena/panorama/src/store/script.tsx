@@ -32,7 +32,7 @@ function Store() {
 					<Panel id="SearchContainer">
 						<Panel id="SearchBox">
 							<TextEntry id="SearchTextEntry" placeholder="#DOTA_StoreBrowse_Search_Placeholder" />
-							<Button id="ClearSearchButton" className="CloseButton" onactivate={() => { storePage.current?.SetHasClass("Hidden", true) }} />
+							<Button id="ClearSearchButton" className="CloseButton" onactivate={() => { storePage.current?.SetHasClass("Hidden", true); }} />
 						</Panel>
 					</Panel>
 				</Panel>
@@ -96,9 +96,9 @@ function Store() {
 				<StoreItemContainer tabid="CategoryGamePlay" type="gameplay" />
 			</Panel>
 		</Panel>
-	)
+	);
 }
-function StoreItemContainer({ tabid, type }: { tabid: string, type: string }) {
+function StoreItemContainer({ tabid, type }: { tabid: string, type: string; }) {
 	let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
 	return (
 		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryAll" ? true : false}>
@@ -109,14 +109,14 @@ function StoreItemContainer({ tabid, type }: { tabid: string, type: string }) {
 			<Panel className="StoreItemList">
 				{Object.keys(itemDatas).map((key) => {
 					if (itemDatas[key].Type == type && itemDatas[key].Purchaseable == 1) {
-						return <StoreItem key={key} itemData={itemDatas[key]} />
+						return <StoreItem key={key} itemData={itemDatas[key]} />;
 					}
 				})}
 			</Panel>
 		</GenericPanel>
-	)
+	);
 }
-function StoreItem({ itemData }: { itemData: any }) {
+function StoreItem({ itemData }: { itemData: any; }) {
 	let ShowCourierTooltip = (self: Panel) => {
 		if (itemData.Type == "pet") {
 			$.DispatchEvent(
@@ -126,15 +126,15 @@ function StoreItem({ itemData }: { itemData: any }) {
 				"file://{resources}/layout/custom_game/tooltips/courier/courier.xml",
 				"courier_name=" + itemData.ItemName + "&rotationspeed=2");
 		}
-	}
+	};
 	let HideCourierTooltip = (self: Panel) => {
 		if (itemData.Type == "pet") {
 			$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
 		}
-	}
+	};
 	let ShowItemDetail = (self: Panel) => {
 		OpenPopup("popup_store_item/popup_store_item", { itemData: JSON.stringify(itemData) });
-	}
+	};
 	return (
 		<Panel className={classNames("AthenaStoreItem",
 			{ HeroItem: itemData.Type == "hero" },
@@ -182,6 +182,6 @@ function StoreItem({ itemData }: { itemData: any }) {
 				}
 			</Panel>
 		</Panel>
-	)
+	);
 }
 render(<Store />, $.GetContextPanel());
