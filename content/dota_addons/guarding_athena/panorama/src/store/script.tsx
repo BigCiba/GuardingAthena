@@ -2,9 +2,13 @@ import classNames from 'classnames';
 import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
 import { OpenPopup } from '../utils/utils';
+
 function Store() {
 	const storePage = useRef<Panel>(null);
+	const filterInput = useRef<TextEntry>(null);
+	const [filterWord, SetFilterWord] = useState("");	// 搜索过滤词
 	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
+
 	return (
 		<Panel id="StorePage" className="DotaPlusContainer" ref={storePage}>
 			<Panel id="SearchAndCategoriesContainer">
@@ -31,7 +35,7 @@ function Store() {
 
 					<Panel id="SearchContainer">
 						<Panel id="SearchBox">
-							<TextEntry id="SearchTextEntry" placeholder="#DOTA_StoreBrowse_Search_Placeholder" />
+							<TextEntry ref={filterInput} id="SearchTextEntry" placeholder="#DOTA_StoreBrowse_Search_Placeholder" ontextentrychange={(a) => { a.text == "" && SetFilterWord(""); }} oninputsubmit={(a) => SetFilterWord(a.text)} />
 							<Button id="ClearSearchButton" className="CloseButton" onactivate={() => { storePage.current?.SetHasClass("Hidden", true); }} />
 						</Panel>
 					</Panel>
@@ -89,16 +93,16 @@ function Store() {
 			</Panel>
 			<Panel className="StoreTabContents">
 				{/* <StoreItemContainer tabid="CategoryAll" type="" /> */}
-				<StoreItemContainer tabid="CategoryHero" type="hero" />
-				<StoreItemContainer tabid="CategorySkin" type="skin" />
-				<StoreItemContainer tabid="CategoryParticle" type="particle" />
-				<StoreItemContainer tabid="CategoryPet" type="pet" />
-				<StoreItemContainer tabid="CategoryGamePlay" type="gameplay" />
+				<StoreItemContainer word={filterWord} tabid="CategoryHero" type="hero" />
+				<StoreItemContainer word={filterWord} tabid="CategorySkin" type="skin" />
+				<StoreItemContainer word={filterWord} tabid="CategoryParticle" type="particle" />
+				<StoreItemContainer word={filterWord} tabid="CategoryPet" type="pet" />
+				<StoreItemContainer word={filterWord} tabid="CategoryGamePlay" type="gameplay" />
 			</Panel>
 		</Panel>
 	);
 }
-function StoreItemContainer({ tabid, type }: { tabid: string, type: string; }) {
+function StoreItemContainer({ word, tabid, type }: { word: string, tabid: string, type: string; }) {
 	let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
 	return (
 		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryAll" ? true : false}>
@@ -109,7 +113,13 @@ function StoreItemContainer({ tabid, type }: { tabid: string, type: string; }) {
 			<Panel className="StoreItemList">
 				{Object.keys(itemDatas).map((key) => {
 					if (itemDatas[key].Type == type && itemDatas[key].Purchaseable == 1) {
-						return <StoreItem key={key} itemData={itemDatas[key]} />;
+						let ItemName = itemDatas[key].ItemName;
+						if (itemDatas[key].Type == "hero") {
+							ItemName = "npc_dota_hero_" + ItemName;
+						}
+						if (word == "" || $.Localize(ItemName).search(word) != -1) {
+							return <StoreItem key={key} itemData={itemDatas[key]} />;
+						}
 					}
 				})}
 			</Panel>

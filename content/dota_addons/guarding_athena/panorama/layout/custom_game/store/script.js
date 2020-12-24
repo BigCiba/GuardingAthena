@@ -5918,6 +5918,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Store() {
     const storePage = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const filterInput = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const [filterWord, SetFilterWord] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""); // 搜索过滤词
     const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer", ref: storePage },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
@@ -5938,7 +5940,7 @@ function Store() {
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#DOTA_Search" })),
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchContainer" },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchBox" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { ref: filterInput, id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder", ontextentrychange: (a) => { a.text == "" && SetFilterWord(""); }, oninputsubmit: (a) => SetFilterWord(a.text) }),
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.SetHasClass("Hidden", true); } })))),
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchCategories" },
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryHero", className: "SearchCategory", group: "search_categories" },
@@ -5972,13 +5974,13 @@ function Store() {
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryGamePlay" }),
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryGamePlay_Description" }))))),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreTabContents" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryHero", type: "hero" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategorySkin", type: "skin" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryParticle", type: "particle" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryPet", type: "pet" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { tabid: "CategoryGamePlay", type: "gameplay" }))));
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryHero", type: "hero" }),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategorySkin", type: "skin" }),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryParticle", type: "particle" }),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryPet", type: "pet" }),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryGamePlay", type: "gameplay" }))));
 }
-function StoreItemContainer({ tabid, type }) {
+function StoreItemContainer({ word, tabid, type }) {
     let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabContents", tabid: tabid, group: "search_categories", className: "StoreItemContainer", selected: tabid == "CategoryAll" ? true : false },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreHeader" },
@@ -5986,7 +5988,13 @@ function StoreItemContainer({ tabid, type }) {
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { className: "CloseButton" })),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreItemList" }, Object.keys(itemDatas).map((key) => {
             if (itemDatas[key].Type == type && itemDatas[key].Purchaseable == 1) {
-                return react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItem, { key: key, itemData: itemDatas[key] });
+                let ItemName = itemDatas[key].ItemName;
+                if (itemDatas[key].Type == "hero") {
+                    ItemName = "npc_dota_hero_" + ItemName;
+                }
+                if (word == "" || $.Localize(ItemName).search(word) != -1) {
+                    return react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItem, { key: key, itemData: itemDatas[key] });
+                }
             }
         }))));
 }
