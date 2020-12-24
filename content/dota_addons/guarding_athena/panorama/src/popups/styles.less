@@ -89,6 +89,63 @@
 	horizontal-align: center;
 	vertical-align: bottom;
 	margin-bottom: 25px;
+	
+	.DotaPlusPurchaseButton
+	{
+		horizontal-align: center;
+		padding: 4px 0px 2px 0px;
+		margin: 8px;
+		// height: 33px;
+		width: 192px;
+
+		border-top: 1px solid #ffffff22;
+		border-left: 1px solid #ffffff11;
+		border-right: 1px solid #00000044;
+		border-bottom: 1px solid #00000088;
+
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+		&:hover
+		{
+			brightness: 2.0;
+		}
+
+		&:active
+		{
+			brightness: 1.5;
+		}
+
+		Label
+		{
+			vertical-align: center;
+			margin-left: 2px;
+			margin-right: 4px;
+			color: dotaPlusLightGold;
+			font-size: 24px;
+			padding: 0px;
+		}
+		.ButtonCenter
+		{
+			horizontal-align: center;
+			flow-children: right;
+		}
+		.DotaPlusCurrencyIcon
+		{
+			width: 24px;
+			height: 24px;
+			// transform: translateY( 1px );
+			// margin-bottom: 6px;
+			vertical-align: center;
+
+			background-image: dotaPlusCurrencySmallIcon;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		.DotaPlusPriceCurrencyIcon {
+			.DotaPlusCurrencyIcon;
+			background-image: url("file://{images}/dotaplus_logo_small.png");
+		}
+	}
 }
 .PopupButton {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5a6c75 ), to( #3d4a50 ) );
@@ -122,6 +179,6 @@
 	}
 	.RechargeContainer {
 		.CostContainer;
-		horizontal-align: right;
+		horizontal-align: center;
 	}
 }

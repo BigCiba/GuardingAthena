@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
-import { CommonBalance, CommonMoneyContainer } from '../../elements/Common/Common';
+import { BuyButton, CommonBalance, CommonMoneyContainer } from '../../elements/Common/Common';
 import { GetHeroIDByName, GetHeroKV, Request } from '../../utils/utils';
-function Popup({ itemData }: { itemData: any }) {
-	const parent = useRef<Panel>(null)
+function Popup({ itemData }: { itemData: any; }) {
+	const parent = useRef<Panel>(null);
 	const ItemName = itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName;
 	return (
 		<Panel id="PopupPanel" className="PopupPanel" ref={parent}>
@@ -24,36 +24,24 @@ function Popup({ itemData }: { itemData: any }) {
 				}
 			</Panel>
 			<Panel className="MoneyContainer">
-				<Panel className="CostContainer">
-					<Label text="花费：" />
-					<CommonMoneyContainer type={Number(itemData.Shard) > 0 ? "Shard" : "Price"} count={Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price)} />
-				</Panel>
 				<Panel className="RechargeContainer">
 					<CommonBalance type={Number(itemData.Shard) > 0 ? "Shard" : "Price"} count={Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price)} />
 				</Panel>
 			</Panel>
 			{/* 按钮 */}
 			<Panel className="PopupButtonRow">
-				<TextButton className="PopupButton" text="取消" onactivate={() => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); }} />
-				<TextButton className="PopupButton" text="购买" onactivate={() => {
-					let conf = {
-						itemid: $.GetContextPanel().GetAttributeInt("ID", 1),
-						type: $.GetContextPanel().GetAttributeString("type", "free")
-					}
-					Request('order.buyitem', conf, data => {
-						if (data.code == 1) {
-							// $.Msg("[Popup BuyItem] Success")
-						} else {
-							// $.Msg("[Popup BuyItem] Failure")
-						}
-					})
-				}} />
+				{itemData.Shard > 0 &&
+					<BuyButton type="Shard" count={itemData.Shard} />
+				}
+				{itemData.Price > 0 &&
+					<BuyButton type="Price" count={itemData.Price} />
+				}
 			</Panel>
 		</Panel>
-	)
+	);
 }
 // 宠物商品界面
-function HeroItemDetail({ heroName }: { heroName: string }) {
+function HeroItemDetail({ heroName }: { heroName: string; }) {
 	const heroScene = useRef<ScenePanel>(null);
 	const fullName = "npc_dota_hero_" + heroName;
 	const heroData = GameUI.CustomUIConfig().HeroesKv[fullName];
@@ -156,10 +144,10 @@ function HeroItemDetail({ heroName }: { heroName: string }) {
 				</Panel>
 			</Panel>
 		</Panel>
-	)
+	);
 }
 // 宠物商品界面
-function PetItemDetail({ petName }: { petName: string }) {
+function PetItemDetail({ petName }: { petName: string; }) {
 	const SetPreview = useRef<Panel>(null);
 	const petData = GameUI.CustomUIConfig().PetsKv[petName];
 	useEffect(() => {
@@ -167,7 +155,7 @@ function PetItemDetail({ petName }: { petName: string }) {
 			$.DispatchEvent("DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 0);
 			$.DispatchEventAsync(2, "DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 2);
 		}
-	}, [])
+	}, []);
 	return (
 		<Panel className="Full" >
 			<Panel id="SetPreview">
@@ -181,17 +169,17 @@ function PetItemDetail({ petName }: { petName: string }) {
 						if (abilityName) {
 							list.push(
 								<DOTAAbilityImage key={abilityName} abilityname={abilityName} showtooltip={true} />
-							)
+							);
 						}
 					}
 					return list;
 				})()}
 			</Panel>
 		</Panel>
-	)
+	);
 }
 // 特效商品界面
-function ParticleItemDetail({ itemData }: { itemData: any }) {
+function ParticleItemDetail({ itemData }: { itemData: any; }) {
 	return (
 		<Panel className="Full" >
 			<Panel className="MoviePanel">
@@ -202,10 +190,10 @@ function ParticleItemDetail({ itemData }: { itemData: any }) {
 				<Label localizedText={itemData.ItemName + "_Description"} />
 			</Panel>
 		</Panel>
-	)
+	);
 }
 // 通用商品界面
-function CommonItemDetail({ itemData }: { itemData: any }) {
+function CommonItemDetail({ itemData }: { itemData: any; }) {
 	return (
 		<Panel className="Full" >
 			<Panel id="ItemImageContainer">
@@ -215,10 +203,10 @@ function CommonItemDetail({ itemData }: { itemData: any }) {
 				<Label localizedText={itemData.ItemName + "_Description"} />
 			</Panel>
 		</Panel>
-	)
+	);
 }
 $.GetContextPanel().SetPanelEvent("onload", () => {
 	let panel = $.GetContextPanel();
 	let itemData = JSON.parse($.GetContextPanel().GetAttributeString("itemData", "{}"));
 	render(<Popup itemData={itemData} />, panel);
-})
+});

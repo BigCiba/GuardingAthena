@@ -5919,7 +5919,7 @@ __webpack_require__.r(__webpack_exports__);
 function Store() {
     const storePage = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer Hidden", ref: storePage },
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer", ref: storePage },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyContainer" },
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },

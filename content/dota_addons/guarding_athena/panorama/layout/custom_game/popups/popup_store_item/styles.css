@@ -109,6 +109,54 @@
   vertical-align: bottom;
   margin-bottom: 25px;
 }
+.PopupButtonRow .DotaPlusPurchaseButton {
+  horizontal-align: center;
+  padding: 4px 0px 2px 0px;
+  margin: 8px;
+  width: 192px;
+  border-top: 1px solid #ffffff22;
+  border-left: 1px solid #ffffff11;
+  border-right: 1px solid #00000044;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+}
+.PopupButtonRow .DotaPlusPurchaseButton:hover {
+  brightness: 2;
+}
+.PopupButtonRow .DotaPlusPurchaseButton:active {
+  brightness: 1.5;
+}
+.PopupButtonRow .DotaPlusPurchaseButton Label {
+  vertical-align: center;
+  margin-left: 2px;
+  margin-right: 4px;
+  color: dotaPlusLightGold;
+  font-size: 24px;
+  padding: 0px;
+}
+.PopupButtonRow .DotaPlusPurchaseButton .ButtonCenter {
+  horizontal-align: center;
+  flow-children: right;
+}
+.PopupButtonRow .DotaPlusPurchaseButton .DotaPlusCurrencyIcon {
+  width: 24px;
+  height: 24px;
+  vertical-align: center;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.PopupButtonRow .DotaPlusPurchaseButton .DotaPlusPriceCurrencyIcon {
+  width: 24px;
+  height: 24px;
+  vertical-align: center;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
+}
 .PopupButton {
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
   border: 1px solid black;
@@ -140,7 +188,7 @@
 .MoneyContainer .RechargeContainer {
   vertical-align: center;
   flow-children: right;
-  horizontal-align: right;
+  horizontal-align: center;
 }
 .MoneyContainer .RechargeContainer Label {
   font-size: 30px;
@@ -173,6 +221,7 @@
   background-image: url("file://{images}/dotaplus_logo_small.png");
 }
 .CommonMoneyContainer Label {
+  width: 100px;
   font-size: 30px;
   font-weight: bold;
   vertical-align: bottom;
@@ -197,7 +246,6 @@
   transition-property: background-color, wash-color;
   transition-duration: 0.1s;
   transition-timing-function: linear;
-  width: 150px;
 }
 .CommonBalance .RechargeButton:hover {
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8da), to(#596b75));
@@ -216,6 +264,55 @@
 }
 .CommonBalance .RechargeButton Label {
   horizontal-align: center;
+}
+.DotaPlusPurchaseButton {
+  horizontal-align: center;
+  padding: 4px 0px 2px 0px;
+  margin: 0px 4px 0px 4px;
+  width: fill-parent-flow(1);
+  border-top: 1px solid #ffffff22;
+  border-left: 1px solid #ffffff11;
+  border-right: 1px solid #00000044;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+}
+.DotaPlusPurchaseButton:hover {
+  brightness: 2;
+}
+.DotaPlusPurchaseButton:active {
+  brightness: 1.5;
+}
+.DotaPlusPurchaseButton Label {
+  margin-left: 2px;
+  margin-right: 4px;
+  color: dotaPlusLightGold;
+  font-size: 18px;
+  padding: 0px;
+}
+.DotaPlusPurchaseButton .ButtonCenter {
+  horizontal-align: center;
+  flow-children: right;
+}
+.DotaPlusPurchaseButton .DotaPlusCurrencyIcon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(1px);
+  margin-bottom: 6px;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.DotaPlusPurchaseButton .DotaPlusPriceCurrencyIcon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(1px);
+  margin-bottom: 6px;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
 }
 .StoreItemDetail {
   margin-top: 70px;

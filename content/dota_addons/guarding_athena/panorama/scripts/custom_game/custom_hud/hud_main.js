@@ -525,10 +525,11 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 		$.Schedule(0, function () {
 			// Ability.style["tooltip-position"] = "top";
 			// 测试
-			// let scepter = HUD.FindChildTraverse("AghsScepterContainer");
-			// let a = $.CreatePanel("Panel", scepter, AbilityName);
-			// a.BLoadLayoutSnippet("AghsHeroScepterSnippet");
-			// $.Msg(a);
+			let scepter = HUD.FindChildTraverse("AghsScepterContainer");
+			let a = $.CreatePanel("Panel", scepter, AbilityName);
+			a.BLoadLayoutSnippet("AghsHeroScepterSnippet");
+
+			$.Msg(a);
 
 
 			let Tooltips = HUD.FindChildTraverse("Tooltips");
