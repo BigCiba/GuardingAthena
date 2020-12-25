@@ -22,9 +22,19 @@ export function CommonBalance({ type, count }: { type: string, count: number; })
 		</Panel>
 	);
 }
-export function BuyButton({ type, count }: { type: string, count: number; }) {
+export function BuyButton({ type, count, id }: { type: string, count: number, id: number; }) {
+	const Buy = () => {
+		let Price = GetPlayerPrice(Players.GetLocalPlayer());
+		let Shard = GetPlayerShard(Players.GetLocalPlayer());
+		if ((type == "Shard" && Shard > count) || (type == "Price" && Price > count)) {
+			GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+				ItemName: id,
+				Currency: type
+			});
+		}
+	};
 	return (
-		<Button id={type == "Shard" ? "ShardPurchaseButton" : "PricePurchaseButton"} className="DotaPlusPurchaseButton">
+		<Button id={type == "Shard" ? "ShardPurchaseButton" : "PricePurchaseButton"} className="DotaPlusPurchaseButton" onactivate={Buy}>
 			<Panel id="Contents" className="ButtonCenter">
 				<Panel id="EventIcon" className={classNames({ DotaPlusCurrencyIcon: type == "Shard" }, { DotaPlusPriceCurrencyIcon: type == "Price" })} />
 				<Label id={type == "Shard" ? "ShardCost" : "PriceCost"} text={count} />

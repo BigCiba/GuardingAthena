@@ -6,5 +6,7 @@ declare interface Panel {
 declare interface CustomUIConfig {
 	PetsKv: any;
 	HeroesKv: any;
-	tMouseEvents: []
+	tMouseEvents: [];
 }
+declare function GetPlayerPrice(sPlayerID: number): number;
+declare function GetPlayerShard(sPlayerID: number): number;
