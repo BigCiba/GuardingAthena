@@ -9,6 +9,7 @@
 
 	width: 500px;
 	min-height: 420px;
+	padding-bottom: 20px;
 
 	// background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
 	// background-size: 100%;
@@ -73,32 +74,51 @@
 	flow-children: down;
 	margin-top: 70px;
 	width: 90%;
-	height: 320px;
-	.PayTypeList {
-		flow-children: right;
-		horizontal-align: center;
-		margin: 20px 0px;
-		#PaymentAlipay {
-			height: 42px;
-			background-repeat: no-repeat;
-			background-size: 100% 100%;
-			background-color: white;
-			border-radius: 5px;
-			margin: 0px 10px;
-			width: 120px;
-			background-image: url("file://{images}/custom_game/alipay.png");
-			&:hover {
-				brightness: 1.5;
+	min-height: 320px;
+	.FirstStep {
+		width: 100%;
+		flow-children: down;
+		.PayTypeList {
+			flow-children: right;
+			horizontal-align: center;
+			margin: 20px 0px;
+			#PaymentAlipay {
+				height: 42px;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				background-color: white;
+				border-radius: 5px;
+				margin: 0px 10px;
+				width: 120px;
+				background-image: url("file://{images}/custom_game/alipay.png");
+				&:hover {
+					brightness: 1.5;
+				}
+				&:selected {
+					border: 1px solid #87CEEBff;
+					box-shadow: skyblue 0px 0px 4px 0px;
+				}
 			}
-			&:selected {
-				border: 1px solid #87CEEBff;
-				box-shadow: skyblue 0px 0px 4px 0px;
+			#PaymentWeChatPay {
+				#PaymentAlipay;
+				width: 130px;
+				background-image: url("file://{images}/custom_game/wechatpay.png");
 			}
 		}
-		#PaymentWeChatPay {
-			#PaymentAlipay;
-			width: 130px;
-			background-image: url("file://{images}/custom_game/wechatpay.png");
+	}
+	.SecondStep {
+		width: 100%;
+		flow-children: down;
+		visibility: collapse;
+		.QRCodeContainer {
+			width: 100%;
+			#QRCode {
+				margin: 10px;
+				background-color: white;
+				padding: 10px;
+				border: 10px solid black;
+				horizontal-align: center;
+			}
 		}
 	}
 }
@@ -276,6 +296,7 @@
 .ShowQrcode #OrderID,
 .ShowQrcode #PaymentIcon,
 .ShowQrcode #PaymentNotice,
+.ShowQrcode .SecondStep,
 .ShowQrcode #ShowBrowser
 {
 	visibility: visible;
@@ -283,7 +304,35 @@
 .ShowQrcode #PaymentTypeBody,
 .ShowQrcode #PaymentAddition,
 .ShowQrcode .AdjustPanel,
+.ShowQrcode .FirstStep,
 .ShowQrcode #Pay
 {
 	visibility: collapse;
+}
+.Complete .PaymentResultPanel,
+.Faild .PaymentResultPanel 
+{
+	horizontal-align: center;
+	vertical-align: center;
+	width: 240px;
+	height: 240px;
+	background-color: #444242f9;
+	background-blur: gaussian( 2.5 );
+}
+.PaymentResult {
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 42px;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	visibility: collapse;
+}
+.Complete #PaymentCompleteLabel{
+	color: #40ff2f;
+	visibility: visible;
+}
+.Faild #PaymentFaildLabel{
+	color: #f70f0f;
+	visibility: visible;
 }

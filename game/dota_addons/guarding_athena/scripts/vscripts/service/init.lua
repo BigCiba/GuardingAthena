@@ -18,8 +18,7 @@ end
 
 KEY = "BIGCIBA"
 Address = "http://bigciba.applinzi.com/dota2api/Inventory.php"
--- ServerKey = GetDedicatedServerKeyV2(KEY)
-ServerKey = "83DABA2FD2006955AE0174213705123FE509106A"
+ServerKey = GetDedicatedServerKeyV2(KEY)
 REQUEST_TIME_OUT = 30 -- 默认请求超时时长（秒）
 
 --debug用

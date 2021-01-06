@@ -7,8 +7,6 @@
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
-/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -76,7 +74,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -184,7 +181,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1175,7 +1171,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1285,7 +1280,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -5927,6 +5921,14 @@ function Store() {
     const filterInput = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const [filterWord, SetFilterWord] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""); // 搜索过滤词
     const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
+            if ("player_data" === eventKey) {
+                UpdataPlayerData(eventValue);
+            }
+        });
+        return () => CustomNetTables.UnsubscribeNetTableListener(listener);
+    }, []);
     const OpenRecharge = () => {
         (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.OpenPopup)("popus_recharge/popus_recharge");
     };
@@ -5936,14 +5938,14 @@ function Store() {
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#Wallet" }),
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "FillWidth" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "MoneyComeButton", onactivate: OpenRecharge })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Refresh"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip })),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Shard_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentCurrencyAmount", text: playerData[Game.GetLocalPlayerID()].Shard })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "PriceAmountContainer" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "PriceAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Price_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon PriceSubscription" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentPriceAmount", text: playerData[Game.GetLocalPlayerID()].Price }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentPriceAmount", text: playerData[Game.GetLocalPlayerID()].Price }),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "Recharge", text: "\u5145\u503C", onactivate: OpenRecharge }))),
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchOptionsContainer" },
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#DOTA_Search" })),
@@ -6065,8 +6067,10 @@ function StoreItem({ itemData }) {
 /*! namespace exports */
 /*! export GetHeroIDByName [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export GetHeroKV [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export HideTextTooltip [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export OpenPopup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export Request [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export ShowTextTooltip [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -6077,7 +6081,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Request": () => /* binding */ Request,
 /* harmony export */   "OpenPopup": () => /* binding */ OpenPopup,
 /* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName,
-/* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV
+/* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV,
+/* harmony export */   "ShowTextTooltip": () => /* binding */ ShowTextTooltip,
+/* harmony export */   "HideTextTooltip": () => /* binding */ HideTextTooltip
 /* harmony export */ });
 const REQUEST_TIME_OUT = 60;
 let _Request_QueueIndex = 0;
@@ -6129,6 +6135,12 @@ function GetHeroKV(heroName, key) {
         return GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key];
     }
     return 0;
+}
+function ShowTextTooltip(panel, text) {
+    $.DispatchEvent("UIShowTextTooltip", panel, text);
+}
+function HideTextTooltip(panel) {
+    $.DispatchEvent("UIHideTextTooltip", panel);
 }
 
 

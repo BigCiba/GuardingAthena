@@ -1,13 +1,21 @@
 import classNames from 'classnames';
 import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
-import { OpenPopup } from '../utils/utils';
+import { HideTextTooltip, OpenPopup, ShowTextTooltip } from '../utils/utils';
 
 function Store() {
 	const storePage = useRef<Panel>(null);
 	const filterInput = useRef<TextEntry>(null);
 	const [filterWord, SetFilterWord] = useState("");	// 搜索过滤词
 	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
+	useEffect(() => {
+		const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
+			if ("player_data" === eventKey) {
+				UpdataPlayerData(eventValue);
+			}
+		});
+		return () => CustomNetTables.UnsubscribeNetTableListener(listener);
+	}, []);
 	const OpenRecharge = () => {
 		OpenPopup("popus_recharge/popus_recharge");
 	};
@@ -18,16 +26,17 @@ function Store() {
 					<Panel className="SearchOptionsTitleCategories">
 						<Label text="#Wallet" />
 						<Panel className="FillWidth" />
-						<Button id="RefreshButton" />
-						<Button id="MoneyComeButton" onactivate={OpenRecharge} />
+						<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} />
+						{/* <Button id="MoneyComeButton" onactivate={OpenRecharge} /> */}
 					</Panel>
-					<Panel id="CurrencyAmountContainer">
+					<Panel id="CurrencyAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Shard_Description")} onmouseout={HideTextTooltip}>
 						<Panel className="EventPointsValueIcon ShardSubscription" />
 						<Label id="CurrentCurrencyAmount" text={playerData[Game.GetLocalPlayerID()].Shard} />
 					</Panel>
-					<Panel id="PriceAmountContainer">
+					<Panel id="PriceAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Price_Description")} onmouseout={HideTextTooltip}>
 						<Panel className="EventPointsValueIcon PriceSubscription" />
 						<Label id="CurrentPriceAmount" text={playerData[Game.GetLocalPlayerID()].Price} />
+						<TextButton className="Recharge" text="充值" onactivate={OpenRecharge} />
 					</Panel>
 				</Panel>
 				<Panel id="SearchOptionsContainer">

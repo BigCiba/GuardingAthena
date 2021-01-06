@@ -326,6 +326,7 @@
   border-top: 2px solid dotaPlusGold;
   width: 500px;
   min-height: 420px;
+  padding-bottom: 20px;
   align: center center;
   box-shadow: black -4px -4px 8px 8px;
   animation-name: none;
@@ -380,14 +381,18 @@
   flow-children: down;
   margin-top: 70px;
   width: 90%;
-  height: 320px;
+  min-height: 320px;
 }
-.PaymentTypeSelection .PayTypeList {
+.PaymentTypeSelection .FirstStep {
+  width: 100%;
+  flow-children: down;
+}
+.PaymentTypeSelection .FirstStep .PayTypeList {
   flow-children: right;
   horizontal-align: center;
   margin: 20px 0px;
 }
-.PaymentTypeSelection .PayTypeList #PaymentAlipay {
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentAlipay {
   height: 42px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -397,14 +402,14 @@
   width: 120px;
   background-image: url("file://{images}/custom_game/alipay.png");
 }
-.PaymentTypeSelection .PayTypeList #PaymentAlipay:hover {
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentAlipay:hover {
   brightness: 1.5;
 }
-.PaymentTypeSelection .PayTypeList #PaymentAlipay:selected {
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentAlipay:selected {
   border: 1px solid #87CEEBff;
   box-shadow: skyblue 0px 0px 4px 0px;
 }
-.PaymentTypeSelection .PayTypeList #PaymentWeChatPay {
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentWeChatPay {
   height: 42px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -416,12 +421,27 @@
   width: 130px;
   background-image: url("file://{images}/custom_game/wechatpay.png");
 }
-.PaymentTypeSelection .PayTypeList #PaymentWeChatPay:hover {
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentWeChatPay:hover {
   brightness: 1.5;
 }
-.PaymentTypeSelection .PayTypeList #PaymentWeChatPay:selected {
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentWeChatPay:selected {
   border: 1px solid #87CEEBff;
   box-shadow: skyblue 0px 0px 4px 0px;
+}
+.PaymentTypeSelection .SecondStep {
+  width: 100%;
+  flow-children: down;
+  visibility: collapse;
+}
+.PaymentTypeSelection .SecondStep .QRCodeContainer {
+  width: 100%;
+}
+.PaymentTypeSelection .SecondStep .QRCodeContainer #QRCode {
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  border: 10px solid black;
+  horizontal-align: center;
 }
 #PaymentAddition {
   flow-children: right;
@@ -579,12 +599,40 @@
 .ShowQrcode #OrderID,
 .ShowQrcode #PaymentIcon,
 .ShowQrcode #PaymentNotice,
+.ShowQrcode .SecondStep,
 .ShowQrcode #ShowBrowser {
   visibility: visible;
 }
 .ShowQrcode #PaymentTypeBody,
 .ShowQrcode #PaymentAddition,
 .ShowQrcode .AdjustPanel,
+.ShowQrcode .FirstStep,
 .ShowQrcode #Pay {
   visibility: collapse;
+}
+.Complete .PaymentResultPanel,
+.Faild .PaymentResultPanel {
+  horizontal-align: center;
+  vertical-align: center;
+  width: 240px;
+  height: 240px;
+  background-color: #444242f9;
+  background-blur: gaussian(2.5);
+}
+.PaymentResult {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 42px;
+  text-align: center;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+  visibility: collapse;
+}
+.Complete #PaymentCompleteLabel {
+  color: #40ff2f;
+  visibility: visible;
+}
+.Faild #PaymentFaildLabel {
+  color: #f70f0f;
+  visibility: visible;
 }
