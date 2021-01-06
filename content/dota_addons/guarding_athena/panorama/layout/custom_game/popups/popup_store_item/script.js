@@ -7,6 +7,8 @@
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
+/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
+/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -74,6 +76,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -181,6 +184,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1171,6 +1175,7 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1280,6 +1285,7 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -5933,8 +5939,18 @@ function CommonBalance({ type, count }) {
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Price", count: playerData[Game.GetLocalPlayerID()].Price }),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "RechargeButton", text: "\u7ACB\u5373\u5145\u503C" })));
 }
-function BuyButton({ type, count }) {
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: type == "Shard" ? "ShardPurchaseButton" : "PricePurchaseButton", className: "DotaPlusPurchaseButton" },
+function BuyButton({ type, count, id }) {
+    const Buy = () => {
+        let Price = GetPlayerPrice(Players.GetLocalPlayer());
+        let Shard = GetPlayerShard(Players.GetLocalPlayer());
+        if ((type == "Shard" && Shard > count) || (type == "Price" && Price > count)) {
+            GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+                ItemName: id,
+                Currency: type
+            });
+        }
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: type == "Shard" ? "ShardPurchaseButton" : "PricePurchaseButton", className: "DotaPlusPurchaseButton", onactivate: Buy },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Contents", className: "ButtonCenter" },
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "EventIcon", className: classnames__WEBPACK_IMPORTED_MODULE_0___default()({ DotaPlusCurrencyIcon: type == "Shard" }, { DotaPlusPriceCurrencyIcon: type == "Price" }) }),
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: type == "Shard" ? "ShardCost" : "PriceCost", text: count }))));
@@ -5982,9 +5998,9 @@ function Popup({ itemData }) {
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.CommonBalance, { type: Number(itemData.Shard) > 0 ? "Shard" : "Price", count: Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price) }))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopupButtonRow" },
             itemData.Shard > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Shard", count: itemData.Shard }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Shard", count: itemData.Shard, id: itemData.ID }),
             itemData.Price > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Price", count: itemData.Price }))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Price", count: itemData.Price, id: itemData.ID }))));
 }
 // 宠物商品界面
 function HeroItemDetail({ heroName }) {

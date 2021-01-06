@@ -4,3 +4,4 @@ backup/
 *.bin
 *.vsnd_c
 ~$*.*
+/node_modules

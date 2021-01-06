@@ -4,6 +4,7 @@ declare interface Panel {
 }
 
 declare interface CustomUIConfig {
+	PlayerItemsKV: any;
 	PetsKv: any;
 	HeroesKv: any;
 	tMouseEvents: [];
