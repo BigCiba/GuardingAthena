@@ -31,10 +31,10 @@ function Popup({ itemData }: { itemData: any; }) {
 			{/* 按钮 */}
 			<Panel className="PopupButtonRow">
 				{itemData.Shard > 0 &&
-					<BuyButton type="Shard" count={itemData.Shard} />
+					<BuyButton type="Shard" count={itemData.Shard} id={itemData.ID} />
 				}
 				{itemData.Price > 0 &&
-					<BuyButton type="Price" count={itemData.Price} />
+					<BuyButton type="Price" count={itemData.Price} id={itemData.ID} />
 				}
 			</Panel>
 		</Panel>

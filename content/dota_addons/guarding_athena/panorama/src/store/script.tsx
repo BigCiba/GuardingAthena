@@ -8,7 +8,9 @@ function Store() {
 	const filterInput = useRef<TextEntry>(null);
 	const [filterWord, SetFilterWord] = useState("");	// 搜索过滤词
 	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
-
+	const OpenRecharge = () => {
+		OpenPopup("popus_recharge/popus_recharge");
+	};
 	return (
 		<Panel id="StorePage" className="DotaPlusContainer" ref={storePage}>
 			<Panel id="SearchAndCategoriesContainer">
@@ -17,7 +19,7 @@ function Store() {
 						<Label text="#Wallet" />
 						<Panel className="FillWidth" />
 						<Button id="RefreshButton" />
-						<Button id="MoneyComeButton" />
+						<Button id="MoneyComeButton" onactivate={OpenRecharge} />
 					</Panel>
 					<Panel id="CurrencyAmountContainer">
 						<Panel className="EventPointsValueIcon ShardSubscription" />
@@ -41,6 +43,14 @@ function Store() {
 					</Panel>
 				</Panel>
 				<Panel id="SearchCategories">
+					<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
+						<Panel className="SearchCategoryBackground" />
+						<Panel className="SearchCategoryArtOverlay" />
+						<Panel className="SearchCategoryText">
+							<Label className="SearchCategoryName" text="#CategoryAll" />
+							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
+						</Panel>
+					</GenericPanel>
 					<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories">
 						<Panel className="SearchCategoryBackground" />
 						<Panel className="SearchCategoryArtOverlay" />
@@ -81,18 +91,10 @@ function Store() {
 							<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
 						</Panel>
 					</GenericPanel>
-					{/* <GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryAll" />
-							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
-						</Panel>
-					</GenericPanel> */}
 				</Panel>
 			</Panel>
 			<Panel className="StoreTabContents">
-				{/* <StoreItemContainer tabid="CategoryAll" type="" /> */}
+				<StoreItemContainer word={filterWord} tabid="CategoryAll" type="all" />
 				<StoreItemContainer word={filterWord} tabid="CategoryHero" type="hero" />
 				<StoreItemContainer word={filterWord} tabid="CategorySkin" type="skin" />
 				<StoreItemContainer word={filterWord} tabid="CategoryParticle" type="particle" />
@@ -112,7 +114,7 @@ function StoreItemContainer({ word, tabid, type }: { word: string, tabid: string
 			</Panel>
 			<Panel className="StoreItemList">
 				{Object.keys(itemDatas).map((key) => {
-					if (itemDatas[key].Type == type && itemDatas[key].Purchaseable == 1) {
+					if ((itemDatas[key].Type == type || type == "all") && itemDatas[key].Purchaseable == 1) {
 						let ItemName = itemDatas[key].ItemName;
 						if (itemDatas[key].Type == "hero") {
 							ItemName = "npc_dota_hero_" + ItemName;
@@ -148,6 +150,7 @@ function StoreItem({ itemData }: { itemData: any; }) {
 	return (
 		<Panel className={classNames("AthenaStoreItem",
 			{ HeroItem: itemData.Type == "hero" },
+			{ HeroItem: itemData.Type == "skin" },
 			{ Prefab_courier: itemData.Type == "pet" },
 			{ Prefab_ward: itemData.Type == "particle" },
 			{ Prefab_bundle: itemData.Type == "gameplay" },
@@ -167,6 +170,9 @@ function StoreItem({ itemData }: { itemData: any; }) {
 				<Panel id="UnitIcon">
 					{itemData.Type == "hero" &&
 						<DOTAHeroImage id="HeroIcon" heroimagestyle="icon" heroname={"npc_dota_hero_" + itemData.ItemName} scaling="stretch-to-fit-preserve-aspect" />
+					}
+					{itemData.Type == "skin" &&
+						<DOTAHeroImage id="HeroIcon" heroimagestyle="icon" heroname={GameUI.CustomUIConfig().PlayerItemsKV[itemData.ItemName].Hero} scaling="stretch-to-fit-preserve-aspect" />
 					}
 					<Panel id="ItemTypeIcon" />
 				</Panel>

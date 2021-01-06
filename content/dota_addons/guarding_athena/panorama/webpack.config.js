@@ -62,6 +62,7 @@ module.exports = {
 			filename: 'store/store.xml',
 		},
 		popup_store_item: { import: './popups/popup_store_item/layout.xml', filename: 'popups/popup_store_item/popup_store_item.xml' },
+		popus_recharge: { import: './popups/popus_recharge/layout.xml', filename: 'popups/popus_recharge/popus_recharge.xml' },
 	},
 
 	plugins: [
