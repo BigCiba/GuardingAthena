@@ -57,3 +57,6 @@ export function ShowTextTooltip(panel: any, text: string) {
 export function HideTextTooltip(panel: any) {
 	$.DispatchEvent("UIHideTextTooltip", panel);
 }
+export function ToggleWindows(sName: string) {
+	GameEvents.SendEventClientSide("toggle_window", { name: sName });
+}

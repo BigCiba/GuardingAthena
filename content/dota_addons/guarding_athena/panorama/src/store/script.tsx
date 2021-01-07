@@ -9,107 +9,121 @@ function Store() {
 	const [filterWord, SetFilterWord] = useState("");	// 搜索过滤词
 	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
 	useEffect(() => {
+		// 切换面板
+		const toggleWindow = GameEvents.Subscribe("toggle_window", data => {
+			if (data.name === "Store") {
+				storePage.current?.ToggleClass('HideStorePage');
+			} else {
+				storePage.current?.SetHasClass("HideStorePage", true);
+			}
+		});
 		const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
 			if ("player_data" === eventKey) {
 				UpdataPlayerData(eventValue);
 			}
 		});
-		return () => CustomNetTables.UnsubscribeNetTableListener(listener);
+		return () => {
+			GameEvents.Unsubscribe(toggleWindow);
+			CustomNetTables.UnsubscribeNetTableListener(listener);
+		};
 	}, []);
 	const OpenRecharge = () => {
 		OpenPopup("popus_recharge/popus_recharge");
 	};
 	return (
-		<Panel id="StorePage" className="DotaPlusContainer" ref={storePage}>
-			<Panel id="SearchAndCategoriesContainer">
-				<Panel id="CurrencyContainer">
-					<Panel className="SearchOptionsTitleCategories">
-						<Label text="#Wallet" />
-						<Panel className="FillWidth" />
-						<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} />
-						{/* <Button id="MoneyComeButton" onactivate={OpenRecharge} /> */}
+		<Panel id="StorePage" className="DotaPlusContainer HideStorePage" ref={storePage}>
+			<Panel className="StorePageMain">
+				<Panel id="SearchAndCategoriesContainer">
+					<Panel id="CurrencyContainer">
+						<Panel className="SearchOptionsTitleCategories">
+							<Label text="#Wallet" />
+							<Panel className="FillWidth" />
+							<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} />
+							{/* <Button id="MoneyComeButton" onactivate={OpenRecharge} /> */}
+						</Panel>
+						<Panel id="CurrencyAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Shard_Description")} onmouseout={HideTextTooltip}>
+							<Panel className="EventPointsValueIcon ShardSubscription" />
+							<Label id="CurrentCurrencyAmount" text={playerData[Game.GetLocalPlayerID()].Shard} />
+						</Panel>
+						<Panel id="PriceAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Price_Description")} onmouseout={HideTextTooltip}>
+							<Panel className="EventPointsValueIcon PriceSubscription" />
+							<Label id="CurrentPriceAmount" text={playerData[Game.GetLocalPlayerID()].Price} />
+							<TextButton className="Recharge" text="充值" onactivate={OpenRecharge} />
+						</Panel>
 					</Panel>
-					<Panel id="CurrencyAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Shard_Description")} onmouseout={HideTextTooltip}>
-						<Panel className="EventPointsValueIcon ShardSubscription" />
-						<Label id="CurrentCurrencyAmount" text={playerData[Game.GetLocalPlayerID()].Shard} />
-					</Panel>
-					<Panel id="PriceAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Price_Description")} onmouseout={HideTextTooltip}>
-						<Panel className="EventPointsValueIcon PriceSubscription" />
-						<Label id="CurrentPriceAmount" text={playerData[Game.GetLocalPlayerID()].Price} />
-						<TextButton className="Recharge" text="充值" onactivate={OpenRecharge} />
-					</Panel>
-				</Panel>
-				<Panel id="SearchOptionsContainer">
-					<Panel className="SearchOptionsTitleCategories">
-						<Label text="#DOTA_Search" />
-					</Panel>
+					<Panel id="SearchOptionsContainer">
+						<Panel className="SearchOptionsTitleCategories">
+							<Label text="#DOTA_Search" />
+						</Panel>
 
-					<Panel id="SearchContainer">
-						<Panel id="SearchBox">
-							<TextEntry ref={filterInput} id="SearchTextEntry" placeholder="#DOTA_StoreBrowse_Search_Placeholder" ontextentrychange={(a) => { a.text == "" && SetFilterWord(""); }} oninputsubmit={(a) => SetFilterWord(a.text)} />
-							<Button id="ClearSearchButton" className="CloseButton" onactivate={() => { storePage.current?.SetHasClass("Hidden", true); }} />
+						<Panel id="SearchContainer">
+							<Panel id="SearchBox">
+								<TextEntry ref={filterInput} id="SearchTextEntry" placeholder="#DOTA_StoreBrowse_Search_Placeholder" ontextentrychange={(a) => { a.text == "" && SetFilterWord(""); }} oninputsubmit={(a) => SetFilterWord(a.text)} />
+								<Button id="ClearSearchButton" className="CloseButton" onactivate={() => { storePage.current?.SetHasClass("Hidden", true); }} />
+							</Panel>
 						</Panel>
 					</Panel>
+					<Panel id="SearchCategories">
+						<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategoryAll" />
+								<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
+							</Panel>
+						</GenericPanel>
+						<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategoryHero" />
+								<Label className="SearchCategoryDetails" text="#CategoryHero_Description" />
+							</Panel>
+						</GenericPanel>
+						<GenericPanel type="TabButton" id="CategorySkin" className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategorySkin" />
+								<Label className="SearchCategoryDetails" text="#CategorySkin_Description" />
+							</Panel>
+						</GenericPanel>
+						<GenericPanel type="TabButton" id="CategoryParticle" className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategoryParticle" />
+								<Label className="SearchCategoryDetails" text="#CategoryParticle_Description" />
+							</Panel>
+						</GenericPanel>
+						<GenericPanel type="TabButton" id="CategoryPet" className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategoryPet" />
+								<Label className="SearchCategoryDetails" text="#CategoryPet_Description" />
+							</Panel>
+						</GenericPanel>
+						<GenericPanel type="TabButton" id="CategoryGamePlay" className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategoryGamePlay" />
+								<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
+							</Panel>
+						</GenericPanel>
+					</Panel>
 				</Panel>
-				<Panel id="SearchCategories">
-					<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryAll" />
-							<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
-						</Panel>
-					</GenericPanel>
-					<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryHero" />
-							<Label className="SearchCategoryDetails" text="#CategoryHero_Description" />
-						</Panel>
-					</GenericPanel>
-					<GenericPanel type="TabButton" id="CategorySkin" className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategorySkin" />
-							<Label className="SearchCategoryDetails" text="#CategorySkin_Description" />
-						</Panel>
-					</GenericPanel>
-					<GenericPanel type="TabButton" id="CategoryParticle" className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryParticle" />
-							<Label className="SearchCategoryDetails" text="#CategoryParticle_Description" />
-						</Panel>
-					</GenericPanel>
-					<GenericPanel type="TabButton" id="CategoryPet" className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryPet" />
-							<Label className="SearchCategoryDetails" text="#CategoryPet_Description" />
-						</Panel>
-					</GenericPanel>
-					<GenericPanel type="TabButton" id="CategoryGamePlay" className="SearchCategory" group="search_categories">
-						<Panel className="SearchCategoryBackground" />
-						<Panel className="SearchCategoryArtOverlay" />
-						<Panel className="SearchCategoryText">
-							<Label className="SearchCategoryName" text="#CategoryGamePlay" />
-							<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
-						</Panel>
-					</GenericPanel>
+				<Panel className="StoreTabContents">
+					<StoreItemContainer word={filterWord} tabid="CategoryAll" type="all" />
+					<StoreItemContainer word={filterWord} tabid="CategoryHero" type="hero" />
+					<StoreItemContainer word={filterWord} tabid="CategorySkin" type="skin" />
+					<StoreItemContainer word={filterWord} tabid="CategoryParticle" type="particle" />
+					<StoreItemContainer word={filterWord} tabid="CategoryPet" type="pet" />
+					<StoreItemContainer word={filterWord} tabid="CategoryGamePlay" type="gameplay" />
 				</Panel>
 			</Panel>
-			<Panel className="StoreTabContents">
-				<StoreItemContainer word={filterWord} tabid="CategoryAll" type="all" />
-				<StoreItemContainer word={filterWord} tabid="CategoryHero" type="hero" />
-				<StoreItemContainer word={filterWord} tabid="CategorySkin" type="skin" />
-				<StoreItemContainer word={filterWord} tabid="CategoryParticle" type="particle" />
-				<StoreItemContainer word={filterWord} tabid="CategoryPet" type="pet" />
-				<StoreItemContainer word={filterWord} tabid="CategoryGamePlay" type="gameplay" />
-			</Panel>
+			<Button className="CloseButton" onactivate={() => { storePage.current?.ToggleClass('HideStorePage'); }} />
 		</Panel>
 	);
 }
@@ -119,7 +133,7 @@ function StoreItemContainer({ word, tabid, type }: { word: string, tabid: string
 		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryAll" ? true : false}>
 			<Panel className="StoreHeader">
 				<Label localizedText={tabid} />
-				<Button className="CloseButton" />
+				{/* <Button className="CloseButton" /> */}
 			</Panel>
 			<Panel className="StoreItemList">
 				{Object.keys(itemDatas).map((key) => {

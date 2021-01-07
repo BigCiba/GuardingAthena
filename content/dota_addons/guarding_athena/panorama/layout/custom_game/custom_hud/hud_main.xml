@@ -206,7 +206,7 @@
 		<Panel id="LeftTopButtons">
 			<!-- 背包 -->
 			<Panel id="HudInventoryButton" class="LeftTopPanel">
-				<Button class="LeftTopButton" onmouseover="DOTAShowTextTooltip('#Store')" onmouseout="DOTAHideTextTooltip()" onactivate="$('#AthenaStorePage').ToggleClass('PageVisible')" />
+				<Button class="LeftTopButton" onmouseover="DOTAShowTextTooltip('#Store')" onmouseout="DOTAHideTextTooltip()" onactivate="GameEvents.SendEventClientSide('toggle_window', { name: 'Store' });" />
 			</Panel>
 		</Panel>
 		<Panel id="AthenaStorePage" class="DashboardPage ShowChatWheel">

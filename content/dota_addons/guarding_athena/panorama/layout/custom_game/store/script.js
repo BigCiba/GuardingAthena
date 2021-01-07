@@ -7,8 +7,6 @@
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
-/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -76,7 +74,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -184,7 +181,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1175,7 +1171,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1285,7 +1280,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -5928,88 +5922,102 @@ function Store() {
     const [filterWord, SetFilterWord] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""); // 搜索过滤词
     const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        // 切换面板
+        const toggleWindow = GameEvents.Subscribe("toggle_window", data => {
+            var _a, _b;
+            if (data.name === "Store") {
+                (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.ToggleClass('HideStorePage');
+            }
+            else {
+                (_b = storePage.current) === null || _b === void 0 ? void 0 : _b.SetHasClass("HideStorePage", true);
+            }
+        });
         const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
             if ("player_data" === eventKey) {
                 UpdataPlayerData(eventValue);
             }
         });
-        return () => CustomNetTables.UnsubscribeNetTableListener(listener);
+        return () => {
+            GameEvents.Unsubscribe(toggleWindow);
+            CustomNetTables.UnsubscribeNetTableListener(listener);
+        };
     }, []);
     const OpenRecharge = () => {
         (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.OpenPopup)("popus_recharge/popus_recharge");
     };
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer", ref: storePage },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyContainer" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#Wallet" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "FillWidth" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Refresh"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Shard_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentCurrencyAmount", text: playerData[Game.GetLocalPlayerID()].Shard })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "PriceAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Price_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon PriceSubscription" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentPriceAmount", text: playerData[Game.GetLocalPlayerID()].Price }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "Recharge", text: "\u5145\u503C", onactivate: OpenRecharge }))),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchOptionsContainer" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#DOTA_Search" })),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchContainer" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchBox" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { ref: filterInput, id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder", ontextentrychange: (a) => { a.text == "" && SetFilterWord(""); }, oninputsubmit: (a) => SetFilterWord(a.text) }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.SetHasClass("Hidden", true); } })))),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchCategories" },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryAll", selected: true, className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryAll" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryAll_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryHero", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryHero" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryHero_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategorySkin", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategorySkin" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategorySkin_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryParticle", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryParticle" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryParticle_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryPet", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryPet" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryPet_Description" }))),
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryGamePlay", className: "SearchCategory", group: "search_categories" },
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryGamePlay" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryGamePlay_Description" }))))),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreTabContents" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryAll", type: "all" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryHero", type: "hero" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategorySkin", type: "skin" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryParticle", type: "particle" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryPet", type: "pet" }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryGamePlay", type: "gameplay" }))));
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer HideStorePage", ref: storePage },
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StorePageMain" },
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#Wallet" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "FillWidth" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Refresh"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip })),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Shard_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentCurrencyAmount", text: playerData[Game.GetLocalPlayerID()].Shard })),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "PriceAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Price_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon PriceSubscription" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentPriceAmount", text: playerData[Game.GetLocalPlayerID()].Price }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "Recharge", text: "\u5145\u503C", onactivate: OpenRecharge }))),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchOptionsContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#DOTA_Search" })),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchContainer" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchBox" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { ref: filterInput, id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder", ontextentrychange: (a) => { a.text == "" && SetFilterWord(""); }, oninputsubmit: (a) => SetFilterWord(a.text) }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.SetHasClass("Hidden", true); } })))),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchCategories" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryAll", selected: true, className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryAll" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryAll_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryHero", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryHero" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryHero_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategorySkin", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategorySkin" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategorySkin_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryParticle", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryParticle" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryParticle_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryPet", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryPet" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryPet_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryGamePlay", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryGamePlay" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryGamePlay_Description" }))))),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreTabContents" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryAll", type: "all" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryHero", type: "hero" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategorySkin", type: "skin" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryParticle", type: "particle" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryPet", type: "pet" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryGamePlay", type: "gameplay" }))),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.ToggleClass('HideStorePage'); } })));
 }
 function StoreItemContainer({ word, tabid, type }) {
     let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabContents", tabid: tabid, group: "search_categories", className: "StoreItemContainer", selected: tabid == "CategoryAll" ? true : false },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreHeader" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: tabid }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { className: "CloseButton" })),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: tabid })),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreItemList" }, Object.keys(itemDatas).map((key) => {
             if ((itemDatas[key].Type == type || type == "all") && itemDatas[key].Purchaseable == 1) {
                 let ItemName = itemDatas[key].ItemName;
@@ -6077,6 +6085,7 @@ function StoreItem({ itemData }) {
 /*! export OpenPopup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export Request [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export ShowTextTooltip [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export ToggleWindows [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -6089,7 +6098,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName,
 /* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV,
 /* harmony export */   "ShowTextTooltip": () => /* binding */ ShowTextTooltip,
-/* harmony export */   "HideTextTooltip": () => /* binding */ HideTextTooltip
+/* harmony export */   "HideTextTooltip": () => /* binding */ HideTextTooltip,
+/* harmony export */   "ToggleWindows": () => /* binding */ ToggleWindows
 /* harmony export */ });
 const REQUEST_TIME_OUT = 60;
 let _Request_QueueIndex = 0;
@@ -6147,6 +6157,9 @@ function ShowTextTooltip(panel, text) {
 }
 function HideTextTooltip(panel) {
     $.DispatchEvent("UIHideTextTooltip", panel);
+}
+function ToggleWindows(sName) {
+    GameEvents.SendEventClientSide("toggle_window", { name: sName });
 }
 
 

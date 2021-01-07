@@ -6135,6 +6135,7 @@ $.GetContextPanel().SetPanelEvent("onload", () => {
 /*! export OpenPopup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export Request [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export ShowTextTooltip [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export ToggleWindows [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -6147,7 +6148,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName,
 /* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV,
 /* harmony export */   "ShowTextTooltip": () => /* binding */ ShowTextTooltip,
-/* harmony export */   "HideTextTooltip": () => /* binding */ HideTextTooltip
+/* harmony export */   "HideTextTooltip": () => /* binding */ HideTextTooltip,
+/* harmony export */   "ToggleWindows": () => /* binding */ ToggleWindows
 /* harmony export */ });
 const REQUEST_TIME_OUT = 60;
 let _Request_QueueIndex = 0;
@@ -6205,6 +6207,9 @@ function ShowTextTooltip(panel, text) {
 }
 function HideTextTooltip(panel) {
     $.DispatchEvent("UIHideTextTooltip", panel);
+}
+function ToggleWindows(sName) {
+    GameEvents.SendEventClientSide("toggle_window", { name: sName });
 }
 
 

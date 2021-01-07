@@ -20,6 +20,11 @@
 
 "CustomEvents"
 {
+	"toggle_window"
+	{
+		"name"					"short"
+		"local"						"1"
+	}
 	"custom_npc_first_spawned"
 	{
 		"entindex"					"short"
