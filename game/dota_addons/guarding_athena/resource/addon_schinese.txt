@@ -896,6 +896,21 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin"	"日耀"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：灵刃</h1>灵气利刃会造成%scepter_stun_duration%秒晕眩。\n<h1>二转：魅隐之纱</h1>魅隐之纱破碎或者刷新时将对%scepter_radius%范围的单位造成%scepter_damage%倍敏捷的伤害。\n<h1>三转：神引</h1>每次释放神引有%scepter_refresh_chance%%%几率刷新神引充能。\n<h1>四转：天幕</h1>天幕利刃减少转向速率翻倍并有%scepter_chance%%%的几率使敌人强制转向。\n日耀石所打造的武器，能提供使用者源源不断的能量。"
 
+		"DOTA_Tooltip_ability_void_spirit_1"						"共鸣脉冲"
+		"DOTA_Tooltip_ability_void_spirit_1_Description"			"虚无之灵发出一次伤害性的脉冲，短时间内将伤害完全阻挡在外。随后将自己包裹在保护之中，可以吸收物理伤害。被击中的敌人攻击力会降低并且提升[%shield_per_attack%倍降低攻击力]护盾的生命值。"
+		"DOTA_Tooltip_ability_void_spirit_1_Lore"					"被迫与物质位面互动时，无玄从不犹豫将自己包裹在本真的精华中。"
+		"DOTA_Tooltip_ability_void_spirit_1_base_damage"			"基础伤害："
+		"DOTA_Tooltip_ability_void_spirit_1_damage"					"智力伤害："
+		"DOTA_Tooltip_ability_void_spirit_1_base_shield"			"基础护盾值："
+		"DOTA_Tooltip_ability_void_spirit_1_damage_reduce_pct"		"%攻击力降低："
+		"DOTA_Tooltip_ability_void_spirit_1_shield_per_attack"		"护盾吸收攻击力系数："
+		"DOTA_Tooltip_ability_void_spirit_1_radius"					"影响范围："
+		"DOTA_Tooltip_ability_void_spirit_1_duration"				"持续时间："
+		"DOTA_Tooltip_modifier_void_spirit_1_debuff"				"共鸣脉冲"
+		"DOTA_Tooltip_modifier_void_spirit_1_debuff_Description"	"降低了攻击力"
+		"DOTA_Tooltip_modifier_void_spirit_1_shield"				"共鸣脉冲护盾"
+		"DOTA_Tooltip_modifier_void_spirit_1_shield_Description"	"护盾生命值%dMODIFIER_PROPERTY_TOOLTIP%。"
+
 		"npc_dota_hero_windrunner"											"风行者"
 		
 		"DOTA_Tooltip_ability_windrunner_0"									"追星逐月"

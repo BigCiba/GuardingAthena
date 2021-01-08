@@ -1,5 +1,5 @@
-LinkLuaModifier( "modifier_rubick_2_root", "abilities/heroes/rubick/rubick_2.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_rubick_2_shield", "abilities/heroes/rubick/rubick_2.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_rubick_2_root", "abilities/heroes/rubick/rubick_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_rubick_2_shield", "abilities/heroes/rubick/rubick_2.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if rubick_2 == nil then
 	rubick_2 = class({})
@@ -32,14 +32,12 @@ function rubick_2:OnAbilityPhaseStart()
 	hCaster:EmitSound(AssetModifiers:GetSoundReplacement("Hero_ObsidianDestroyer.AstralImprisonment.End", hCaster))
 	-- 动作
 	-- hCaster:ForcePlayActivityOnce(ACT_DOTA_CAST_ABILITY_4)
-	
 	hCaster:ClearActivityModifiers()
 	hCaster:AddActivityModifier("void_spirit_resonant_pulse")
 	return true
 end
 function rubick_2:OnAbilityPhaseInterrupted()
 	-- self:GetCaster():RemoveGesture(ACT_DOTA_CAST_ABILITY_4)
-
 	if self.tParticleID then
 		for i, iParticleID in ipairs(self.tParticleID) do
 			ParticleManager:DestroyParticle(iParticleID, false)
@@ -57,9 +55,9 @@ function rubick_2:OnSpellStart()
 	local flDelay = hCaster:GetScepterLevel() >= 2 and self:GetSpecialValueFor("scepter_delay") or self:GetSpecialValueFor("delay")
 	local flDamage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("damage") * hCaster:GetIntellect()
 	flDamage = hCaster:GetScepterLevel() >= 2 and flDamage * 2 or flDamage
-	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_root", {duration = flDelay})
-	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_shield", {duration = shield_duration})
-	hCaster:GameTimer(flDelay, function ()
+	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_root", { duration = flDelay })
+	hCaster:AddNewModifier(hCaster, self, "modifier_rubick_2_shield", { duration = shield_duration })
+	hCaster:GameTimer(flDelay, function()
 		-- 伤害
 		local tTargets = FindUnitsInRadiusWithAbility(hCaster, vCasterLoc, flRadius, self)
 		hCaster:DealDamage(tTargets, self, flDamage)

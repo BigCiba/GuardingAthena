@@ -1727,8 +1727,8 @@
 			}
 			"03"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"input_damage"					"-27.5 -30 -32.5 -35 -37.5 -40 -42.5 -45 -47.5 -50 -52.5 -55 -57.5 -60 -62.5 -65 -67.5 -70 -72.5 -75"
+				"var_type"						"FIELD_INTEGER"
+				"input_damage"					"-1025"
 			}
 			"04"
 			{
@@ -3465,6 +3465,7 @@
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"						"10"
 		"AbilityManaCost"						"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -3472,6 +3473,54 @@
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_shield"					"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_reduce_pct"				"20"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shield_per_attack"				"4"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"500"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"10"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"active_duration"				"0.5"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"debuff_duration"				"6"
+			}
+		}
 	}
 	"void_spirit_2"
 	{
