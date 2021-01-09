@@ -13,8 +13,9 @@ function void_spirit_1:OnSpellStart()
 	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_1", { duration = active_duration })
 	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_1_shield", { duration = duration })
 	-- 特效
+	hCaster:StartGesture(ACT_DOTA_CAST_ABILITY_4)
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
-	ParticleManager:SetParticleControl(iParticleID, 1, Vector(radius * 2, 1, radius))
+	ParticleManager:SetParticleControl(iParticleID, 1, Vector(1200, 1, radius))
 	ParticleManager:ReleaseParticleIndex(iParticleID)
 	hCaster:EmitSound("Hero_VoidSpirit.Pulse")
 	hCaster:EmitSound("Hero_VoidSpirit.Pulse.Cast")
@@ -24,34 +25,30 @@ end
 if modifier_void_spirit_1 == nil then
 	modifier_void_spirit_1 = class({}, nil, ModifierHidden)
 end
-function modifier_void_spirit_1:IsAura()
-	return true
-end
-function modifier_void_spirit_1:GetAuraRadius()
-	return RemapVal(self:GetElapsedTime(), 0, self:GetDuration(), 0, self.radius)
-end
-function modifier_void_spirit_1:GetAuraSearchTeam()
-	return DOTA_UNIT_TARGET_TEAM_ENEMY
-end
-function modifier_void_spirit_1:GetAuraSearchType()
-	return DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
-end
-function modifier_void_spirit_1:GetAuraSearchFlags()
-	return DOTA_UNIT_TARGET_FLAG_NONE
-end
-function modifier_void_spirit_1:GetModifierAura()
-	return "modifier_void_spirit_1_debuff"
-end
-function modifier_void_spirit_1:GetAuraDuration()
-	return self.debuff_duration
+function modifier_void_spirit_1:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 function modifier_void_spirit_1:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.debuff_duration = self:GetAbilitySpecialValueFor("debuff_duration")
+	if IsServer() then
+		self:StartIntervalThink(0.1)
+		self.tTargets = {}
+	end
 end
 function modifier_void_spirit_1:OnRefresh(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.debuff_duration = self:GetAbilitySpecialValueFor("debuff_duration")
+end
+function modifier_void_spirit_1:OnIntervalThink()
+	local hParent = self:GetParent()
+	local tTargets = FindUnitsInRadiusWithAbility(hParent, hParent:GetAbsOrigin(), RemapVal(self:GetElapsedTime(), 0, self:GetDuration(), 0, self.radius), self:GetAbility())
+	for _, hUnit in ipairs(tTargets) do
+		if TableFindKey(self.tTargets, hUnit) == nil then
+			table.insert(self.tTargets, hUnit)
+			hUnit:AddNewModifier(hParent, self:GetAbility(), "modifier_void_spirit_1_debuff", { duration = self.debuff_duration })
+		end
+	end
 end
 function modifier_void_spirit_1:DeclareFunctions()
 	return {
