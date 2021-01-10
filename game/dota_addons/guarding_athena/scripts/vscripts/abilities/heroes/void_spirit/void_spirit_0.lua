@@ -5,6 +5,8 @@ if void_spirit_0 == nil then
 end
 function void_spirit_0:Spawn()
 	local hCaster = self:GetCaster()
+	self.tIllusion = {}
+	hCaster.tAetherRemnant = self.tIllusion
 	hCaster.AetherRemnant = function(hCaster, vPosition)
 		self:AetherRemnant(vPosition)
 	end
@@ -15,6 +17,7 @@ function void_spirit_0:AetherRemnant(vPosition)
 	local illusions = CreateIllusions(hCaster, hCaster, { duration = flDuration, outgoing_damage = 100, incoming_damage = 100 }, 1, 100, false, false)
 	illusions[1]:SetAbsOrigin(vPosition)
 	illusions[1]:AddNewModifier(hCaster, self, "modifier_void_spirit_0", nil)
+	table.insert(self.tIllusion, illusions[1])
 	return illusions[1]
 end
 function void_spirit_0:OnSpellStart()
@@ -34,9 +37,17 @@ end
 if modifier_void_spirit_0 == nil then
 	modifier_void_spirit_0 = class({}, nil, ModifierHidden)
 end
+function modifier_void_spirit_0:OnDestroy()
+	if IsServer() then
+		ArrayRemove(self:GetAbility().tIllusion, self:GetParent())
+	end
+end
 function modifier_void_spirit_0:CheckState()
 	return {
 		[MODIFIER_STATE_ROOTED] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+		[MODIFIER_STATE_UNSELECTABLE] = true,
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+		[MODIFIER_STATE_NO_TEAM_SELECT] = true,
 	}
 end

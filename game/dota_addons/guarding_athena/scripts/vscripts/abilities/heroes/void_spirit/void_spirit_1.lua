@@ -12,6 +12,11 @@ function void_spirit_1:OnSpellStart()
 	local duration = self:GetSpecialValueFor("duration")
 	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_1", { duration = active_duration })
 	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_1_shield", { duration = duration })
+	for _, hUnit in ipairs(hCaster.tAetherRemnant) do
+		if IsValid(hUnit) and hUnit:IsAlive() then
+			hUnit:FindAbilityByName("void_spirit_1"):OnSpellStart()
+		end
+	end
 	-- 特效
 	hCaster:StartGesture(ACT_DOTA_CAST_ABILITY_4)
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
@@ -32,6 +37,7 @@ function modifier_void_spirit_1:OnCreated(params)
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.debuff_duration = self:GetAbilitySpecialValueFor("debuff_duration")
 	if IsServer() then
+		-- self:OnIntervalThink()
 		self:StartIntervalThink(0.1)
 		self.tTargets = {}
 	end
@@ -95,11 +101,13 @@ function modifier_void_spirit_1_debuff:OnCreated(params)
 			hModifier:SetStackCount(hModifier.flShieldHealth)
 		end
 	else
-		-- 吸收特效
-		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse_absorb.vpcf", PATTACH_CUSTOMORIGIN, nil)
-		ParticleManager:SetParticleControlEnt(iParticleID, 0, hParent, PATTACH_POINT_FOLLOW, "attach_hitloc", hParent:GetAbsOrigin(), false)
-		ParticleManager:SetParticleControlEnt(iParticleID, 1, hCaster, PATTACH_POINT_FOLLOW, "attach_hitloc", hCaster:GetAbsOrigin(), false)
-		ParticleManager:ReleaseParticleIndex(iParticleID)
+		if not self:GetCaster():IsIllusion() then
+			-- 吸收特效
+			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse_absorb.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControlEnt(iParticleID, 0, hParent, PATTACH_POINT_FOLLOW, "attach_hitloc", hParent:GetAbsOrigin(), false)
+			ParticleManager:SetParticleControlEnt(iParticleID, 1, hCaster, PATTACH_POINT_FOLLOW, "attach_hitloc", hCaster:GetAbsOrigin(), false)
+			ParticleManager:ReleaseParticleIndex(iParticleID)
+		end
 	end
 end
 function modifier_void_spirit_1_debuff:DeclareFunctions()

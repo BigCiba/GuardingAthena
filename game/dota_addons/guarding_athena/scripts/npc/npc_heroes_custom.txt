@@ -686,6 +686,8 @@
 		"Ability1"								"void_spirit_0"
 		"Ability2"								"void_spirit_1"
 		"Ability3"								"void_spirit_2"
+		"Ability4"								"void_spirit_3"
+		"Ability5"								"void_spirit_4"
 		"Ability6"								"generic_hidden"
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
