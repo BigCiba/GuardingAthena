@@ -8,6 +8,7 @@ function void_spirit_3:OnSpellStart()
 	hCaster:EmitSound("Hero_VoidSpirit.Dissimilate.Cast")
 	hCaster:EmitSound("Hero_VoidSpirit.Dissimilate.Portals")
 	local disappear_time = self:GetSpecialValueFor("disappear_time")
+	hCaster:Stop()
 	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_3_phase", { duration = disappear_time })
 end
 ---------------------------------------------------------------------
@@ -51,7 +52,13 @@ function modifier_void_spirit_3_phase:OnDestroy()
 			local hParent = self:GetParent()
 			--现身
 			hParent:RemoveNoDraw()
-			-- FindClearSpaceForUnit(hParent, self.vPosition, true)
+			for iParticleID, vPosition in pairs(self.tDoors) do
+				if self.iDoorIDShow == iParticleID then
+					FindClearSpaceForUnit(hParent, self.tDoors[self.iDoorIDShow], true)
+				else
+					hParent:AetherRemnant(vPosition)
+				end
+			end
 			hParent:StartGesture(ACT_DOTA_CAST_ABILITY_3_END)
 			--特效
 			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/dissimilate/void_spirit_dissimilate_exit.vpcf", PATTACH_ABSORIGIN_FOLLOW, hParent)
@@ -77,15 +84,30 @@ function modifier_void_spirit_3_phase:CreateDoor(vPosition, bCenter)
 	ParticleManager:SetParticleControl(iParticleID, 1, Vector(self.radius + 30, 0, 0))
 	ParticleManager:SetParticleControl(iParticleID, 2, Vector(0, 0, 0))
 	self:AddParticle(iParticleID, false, false, -1, false, false)
-	if not bCenter then
-		table.insert(self.tDoors, {
-			iParticleID = iParticleID,
-			vPosition = vPosition,
-			bActive = false
-		})
-	else
+	self.tDoors[iParticleID] = vPosition
+	if bCenter then
+		self.iDoorIDShow = iParticleID
 		ParticleManager:SetParticleControl(iParticleID, 2, Vector(1, 0, 0))
 	end
+end
+function modifier_void_spirit_3_phase:ShowDoor(vPosition)
+	local fDis = nil
+	local iDoorID
+	for iParticleID, vDoorPosition in pairs(self.tDoors) do
+		local fDisCur = (vDoorPosition - vPosition):Length2D()
+		if not fDis or fDis > fDisCur then
+			fDis = fDisCur
+			iDoorID = iParticleID
+		end
+	end
+	ParticleManager:SetParticleControl(self.iDoorIDShow, 2, Vector(0, 0, 0))
+	self.iDoorIDShow = iDoorID
+	ParticleManager:SetParticleControl(iDoorID, 2, Vector(1, 0, 0))
+end
+function modifier_void_spirit_3_phase:DeclareFunctions()
+	return {
+		MODIFIER_EVENT_ON_ORDER,
+	}
 end
 function modifier_void_spirit_3_phase:CheckState()
 	return {
@@ -98,4 +120,17 @@ function modifier_void_spirit_3_phase:CheckState()
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_UNSELECTABLE] = true,
 	}
+end
+function modifier_void_spirit_3_phase:OnOrder(params)
+	if params.unit == self:GetParent() then
+		if DOTA_UNIT_ORDER_MOVE_TO_POSITION == params.order_type
+		or DOTA_UNIT_ORDER_ATTACK_MOVE == params.order_type then
+			self:ShowDoor(params.new_pos)
+		elseif DOTA_UNIT_ORDER_ATTACK_TARGET == params.order_type
+		or DOTA_UNIT_ORDER_MOVE_TO_TARGET == params.order_type then
+			if IsValid(params.target) then
+				self:ShowDoor(params.target:GetAbsOrigin())
+			end
+		end
+	end
 end

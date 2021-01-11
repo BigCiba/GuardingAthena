@@ -10,6 +10,24 @@ function void_spirit_0:Spawn()
 	hCaster.AetherRemnant = function(hCaster, vPosition)
 		self:AetherRemnant(vPosition)
 	end
+	hCaster:GameTimer(0, function()
+		if self:IsFullyCastable() and self:GetAutoCastState() == true then
+			local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), hCaster:GetAbsOrigin(), nil, self:GetCastRange(vec3_invalid, nil), DOTA_UNIT_TARGET_TEAM_ENEMY, self:GetAbilityTargetType(), self:GetAbilityTargetFlags(), FIND_ANY_ORDER, false)
+			if IsValid(tTargets[1]) then
+				hCaster:SetCursorPosition(tTargets[1]:GetAbsOrigin())
+				hCaster:StartGesture(ACT_DOTA_CAST_ABILITY_1)
+				self:OnSpellStart()
+				self:UseResources(true, false, true)
+				-- ExecuteOrder(self:GetCaster(), DOTA_UNIT_ORDER_CAST_POSITION, niil, self, tTargets[1]:GetAbsOrigin())
+			end
+		end
+		return AI_THINK_TICK_TIME
+	end)
+end
+function void_spirit_0:OnUpgrade()
+	if self:GetLevel() == 1 and not self:GetCaster():IsIllusion() then
+		self:ToggleAutoCast()
+	end
 end
 function void_spirit_0:AetherRemnant(vPosition)
 	local hCaster = self:GetCaster()

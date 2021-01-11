@@ -3451,8 +3451,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastRange"						"1200"
 		"AbilityCooldown"						"5"
-		"AbilityManaCost"						"50"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityManaCost"						"20"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -3547,7 +3547,6 @@
 		"AbilityCastPoint"						"0.2"
 		"AbilityCharges"						"2"
 		"AbilityChargeRestoreTime"				"12"
-		"AbilityCooldown"						"8"
 		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -3654,11 +3653,48 @@
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"
 		"LevelsBetweenUpgrades"					"24"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastPoint"						"0.2"
+		"AbilityCharges"						"2"
+		"AbilityChargeRestoreTime"				"20"
 		"AbilityManaCost"						"200 300 400 500 600 700 800 900"
-		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityUnitDamageType"					"DAMAGE_TYPE_MAGICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"175"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"min_travel_distance"			"200"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"max_travel_distance"			"1600"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"pop_damage_delay"				"1.25"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"pop_damage"					"100"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movement_slow_pct"				"80"
+			}
+		}
 	}
 }
