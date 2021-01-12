@@ -84,9 +84,9 @@ end
 function modifier_void_spirit_1_debuff:IsDebuff()
 	return true
 end
-function modifier_void_spirit_1_debuff:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE
-end
+-- function modifier_void_spirit_1_debuff:GetAttributes()
+-- 	return MODIFIER_ATTRIBUTE_MULTIPLE
+-- end
 function modifier_void_spirit_1_debuff:OnCreated(params)
 	self.damage_reduce_pct = self:GetAbilitySpecialValueFor("damage_reduce_pct")
 	self.shield_per_attack = self:GetAbilitySpecialValueFor("shield_per_attack")
