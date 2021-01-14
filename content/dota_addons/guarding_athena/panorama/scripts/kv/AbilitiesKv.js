@@ -15560,7 +15560,6 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastPoint":0.2,
 		"AbilityCharges":2,
 		"AbilityChargeRestoreTime":12,
-		"AbilityCooldown":8,
 		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
@@ -15598,10 +15597,67 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"MaxLevel":20,
 		"RequiredLevel":1,
 		"LevelsBetweenUpgrades":3,
+		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_2",
+		"AbilityCastPoint":0.2,
+		"AbilityCharges":2,
+		"AbilityChargeRestoreTime":20,
+		"AbilityManaCost":"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitTargetFlags":"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"radius":175,
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"min_travel_distance":200,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"max_travel_distance":1600,
+			},
+			"04":{
+				"var_type":"FIELD_FLOAT",
+				"pop_damage_delay":1.25,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"movement_slow_pct":80,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"search_radius":300,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"bonus_damage":"400 800 1200 1600 2000 2400 2800 3200 3600 4000 4400 4800 5200 5600 6000 6400 6800 7200 7600 8000",
+			},
+			"08":{
+				"var_type":"FIELD_INTEGER",
+				"damage":"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40",
+			},
+			"09":{
+				"var_type":"FIELD_INTEGER",
+				"damage_deepen":10,
+			},
+		},
+	},
+	"void_spirit_4":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/void_spirit/void_spirit_4",
+		"AbilityTextureName":"void_spirit_4",
+		"AbilityType":"DOTA_ABILITY_TYPE_ULTIMATE",
+		"MaxLevel":8,
+		"RequiredLevel":8,
+		"LevelsBetweenUpgrades":24,
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_3",
 		"AbilityCastPoint":0.2,
 		"AbilityCooldown":20,
-		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
+		"AbilityManaCost":"200 300 400 500 600 700 800 900",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15610,11 +15666,11 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
-				"base_damage":"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000",
+				"base_damage":"400 800 1200 1600 2000 2400 2800 3200",
 			},
 			"02":{
 				"var_type":"FIELD_INTEGER",
-				"damage":"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40",
+				"damage":"100 200 300 400 500 600 700 800",
 			},
 			"03":{
 				"var_type":"FIELD_INTEGER",
@@ -15640,50 +15696,9 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 				"var_type":"FIELD_INTEGER",
 				"first_ring_distance_offset":520,
 			},
-		},
-	},
-	"void_spirit_4":{
-		"BaseClass":"ability_lua",
-		"ScriptFile":"abilities/heroes/void_spirit/void_spirit_4",
-		"AbilityTextureName":"void_spirit_4",
-		"AbilityType":"DOTA_ABILITY_TYPE_ULTIMATE",
-		"MaxLevel":8,
-		"RequiredLevel":8,
-		"LevelsBetweenUpgrades":24,
-		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_2",
-		"AbilityCastPoint":0.2,
-		"AbilityCharges":2,
-		"AbilityChargeRestoreTime":20,
-		"AbilityManaCost":"200 300 400 500 600 700 800 900",
-		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
-		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
-		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
-		"AbilityUnitTargetFlags":"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
-		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
-		"AbilitySpecial":{
-			"01":{
+			"09":{
 				"var_type":"FIELD_INTEGER",
-				"radius":175,
-			},
-			"02":{
-				"var_type":"FIELD_INTEGER",
-				"min_travel_distance":200,
-			},
-			"03":{
-				"var_type":"FIELD_INTEGER",
-				"max_travel_distance":1600,
-			},
-			"04":{
-				"var_type":"FIELD_FLOAT",
-				"pop_damage_delay":1.25,
-			},
-			"05":{
-				"var_type":"FIELD_INTEGER",
-				"pop_damage":100,
-			},
-			"06":{
-				"var_type":"FIELD_INTEGER",
-				"movement_slow_pct":80,
+				"stun_duration":6,
 			},
 		},
 	},

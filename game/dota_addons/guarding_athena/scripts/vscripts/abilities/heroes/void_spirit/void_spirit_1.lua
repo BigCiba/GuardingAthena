@@ -92,12 +92,14 @@ function modifier_void_spirit_1_debuff:OnCreated(params)
 	self.shield_per_attack = self:GetAbilitySpecialValueFor("shield_per_attack")
 	local hCaster = self:GetCaster()
 	local hParent = self:GetParent()
+	-- 专属沉默
+	self.bSilence = hCaster:GetScepterLevel() >= 1
 	if IsServer() then
 		hCaster:DealDamage(hParent, self:GetAbility())
 		-- 护盾加生命
 		local hModifier = hCaster:FindModifierByName("modifier_void_spirit_1_shield")
 		if hModifier then
-			hModifier.flShieldHealth = hModifier.flShieldHealth + hParent:GetAverageTrueAttackDamage(hCaster) * self.damage_reduce_pct * 0.01 * self.shield_per_attack
+			hModifier.flShieldHealth = hModifier.flShieldHealth + hCaster:GetIntellect() * 0.01 * self.shield_per_attack
 			hModifier:SetStackCount(hModifier.flShieldHealth)
 		end
 	else
@@ -110,6 +112,9 @@ function modifier_void_spirit_1_debuff:OnCreated(params)
 		end
 	end
 end
+function modifier_void_spirit_1_debuff:OnRefresh(params)
+	self:OnCreated(params)
+end
 function modifier_void_spirit_1_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
@@ -117,6 +122,11 @@ function modifier_void_spirit_1_debuff:DeclareFunctions()
 end
 function modifier_void_spirit_1_debuff:GetModifierBaseDamageOutgoing_Percentage()
 	return -self.damage_reduce_pct
+end
+function modifier_void_spirit_1_debuff:CheckState()
+	return {
+		[MODIFIER_STATE_SILENCED] = self.bSilence
+	}
 end
 ---------------------------------------------------------------------
 if modifier_void_spirit_1_shield == nil then

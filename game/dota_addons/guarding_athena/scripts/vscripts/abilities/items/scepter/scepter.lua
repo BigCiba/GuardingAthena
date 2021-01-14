@@ -47,6 +47,10 @@ end
 if item_npc_dota_hero_oracle == nil then
 	item_npc_dota_hero_oracle = class({}, nil, item_scepter)
 end
+-- 神谕者
+if item_npc_dota_hero_void_spirit == nil then
+	item_npc_dota_hero_void_spirit = class({}, nil, item_scepter)
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_scepter == nil then

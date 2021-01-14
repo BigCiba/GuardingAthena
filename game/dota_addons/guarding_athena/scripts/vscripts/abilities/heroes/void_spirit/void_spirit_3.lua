@@ -24,6 +24,15 @@ function void_spirit_3:OnAbilityPhaseStart()
 		self.hIllusion:SetForwardVector((hCaster:GetAbsOrigin() - self.hIllusion:GetAbsOrigin()):Normalized())
 		self.hIllusion:StartGesture(ACT_DOTA_CAST_ABILITY_2)
 	end
+	-- 专属模仿
+	local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
+	ArrayRemove(tAetherRemnant, self.hIllusion)
+	for i, hUnit in ipairs(tAetherRemnant) do
+		if IsValid(hUnit) then
+			hUnit:SetForwardVector((hCaster:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized())
+			hUnit:StartGesture(ACT_DOTA_CAST_ABILITY_2)
+		end
+	end
 	return true
 end
 function void_spirit_3:OnAbilityPhaseInterrupted()
@@ -31,10 +40,36 @@ function void_spirit_3:OnAbilityPhaseInterrupted()
 		self.hIllusion:FadeGesture(ACT_DOTA_CAST_ABILITY_2)
 		self.hIllusion = nil
 	end
+	-- 专属模仿
+	local hCaster = self:GetCaster()
+	local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
+	for i, hUnit in ipairs(tAetherRemnant) do
+		if IsValid(hUnit) and hUnit:IsAlive() then
+			hUnit:FadeGesture(ACT_DOTA_CAST_ABILITY_2)
+		end
+	end
 end
 function void_spirit_3:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vTarget = self:GetCursorPosition()
+	local radius = self:GetSpecialValueFor("radius")
+	local min_travel_distance = self:GetSpecialValueFor("min_travel_distance")
+	local max_travel_distance = self:GetSpecialValueFor("max_travel_distance")
+	local pop_damage_delay = self:GetSpecialValueFor("pop_damage_delay")
+
+	-- 专属模仿
+	if not hCaster:IsIllusion() then
+		local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
+		if self.hIllusion then
+			ArrayRemove(tAetherRemnant, self.hIllusion)
+		end
+		for i, hUnit in ipairs(tAetherRemnant) do
+			if IsValid(hUnit) then
+				hUnit:SetCursorPosition(hUnit:GetAbsOrigin() + (hCaster:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized() * max_travel_distance)
+				hUnit:FindAbilityByName("void_spirit_3"):OnSpellStart()
+			end
+		end
+	end
 
 	-- 幻象
 	if not hCaster:IsIllusion() then
@@ -52,11 +87,6 @@ function void_spirit_3:OnSpellStart()
 	end
 
 	--范围打击
-	local radius = self:GetSpecialValueFor("radius")
-	local min_travel_distance = self:GetSpecialValueFor("min_travel_distance")
-	local max_travel_distance = self:GetSpecialValueFor("max_travel_distance")
-	local pop_damage_delay = self:GetSpecialValueFor("pop_damage_delay")
-
 	local vDir = (vTarget - hCaster:GetAbsOrigin()):Normalized()
 	local fDis = math.min(max_travel_distance, math.max((vTarget - hCaster:GetAbsOrigin()):Length2D(), min_travel_distance))
 	local vE = hCaster:GetAbsOrigin() + vDir * fDis
