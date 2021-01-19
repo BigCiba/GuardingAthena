@@ -25,12 +25,14 @@ function void_spirit_3:OnAbilityPhaseStart()
 		self.hIllusion:StartGesture(ACT_DOTA_CAST_ABILITY_2)
 	end
 	-- 专属模仿
-	local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
-	ArrayRemove(tAetherRemnant, self.hIllusion)
-	for i, hUnit in ipairs(tAetherRemnant) do
-		if IsValid(hUnit) then
-			hUnit:SetForwardVector((hCaster:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized())
-			hUnit:StartGesture(ACT_DOTA_CAST_ABILITY_2)
+	if hCaster:GetScepterLevel() >= 2 then
+		local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
+		ArrayRemove(tAetherRemnant, self.hIllusion)
+		for i, hUnit in ipairs(tAetherRemnant) do
+			if IsValid(hUnit) then
+				hUnit:SetForwardVector((hCaster:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized())
+				hUnit:StartGesture(ACT_DOTA_CAST_ABILITY_2)
+			end
 		end
 	end
 	return true
@@ -42,10 +44,12 @@ function void_spirit_3:OnAbilityPhaseInterrupted()
 	end
 	-- 专属模仿
 	local hCaster = self:GetCaster()
-	local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
-	for i, hUnit in ipairs(tAetherRemnant) do
-		if IsValid(hUnit) and hUnit:IsAlive() then
-			hUnit:FadeGesture(ACT_DOTA_CAST_ABILITY_2)
+	if hCaster:GetScepterLevel() >= 2 then
+		local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
+		for i, hUnit in ipairs(tAetherRemnant) do
+			if IsValid(hUnit) and hUnit:IsAlive() then
+				hUnit:FadeGesture(ACT_DOTA_CAST_ABILITY_2)
+			end
 		end
 	end
 end
@@ -58,14 +62,19 @@ function void_spirit_3:OnSpellStart()
 	local pop_damage_delay = self:GetSpecialValueFor("pop_damage_delay")
 
 	-- 专属模仿
-	if not hCaster:IsIllusion() then
+	if not hCaster:IsIllusion() and hCaster:GetScepterLevel() >= 2 then
 		local tAetherRemnant = shallowcopy(hCaster.tAetherRemnant)
 		if self.hIllusion then
 			ArrayRemove(tAetherRemnant, self.hIllusion)
 		end
 		for i, hUnit in ipairs(tAetherRemnant) do
 			if IsValid(hUnit) then
-				hUnit:SetCursorPosition(hUnit:GetAbsOrigin() + (hCaster:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized() * max_travel_distance)
+				local tTargets = FindUnitsInRadiusWithAbility(hCaster, hUnit:GetAbsOrigin(), max_travel_distance, self)
+				if IsValid(tTargets[1]) then
+					hUnit:SetCursorPosition(hUnit:GetAbsOrigin() + (tTargets[1]:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized() * max_travel_distance)
+				else
+					hUnit:SetCursorPosition(hUnit:GetAbsOrigin() + RandomVector(1) * RandomInt(min_travel_distance * 2, max_travel_distance))
+				end
 				hUnit:FindAbilityByName("void_spirit_3"):OnSpellStart()
 			end
 		end
@@ -132,6 +141,33 @@ function void_spirit_3:AstralStep(vPosition)
 	hCaster:SetAbsOrigin(vPosition)
 	FindClearSpaceForUnit(hCaster, vPosition, true)
 	hCaster:StartGesture(ACT_DOTA_CAST_ABILITY_2_END)
+	local iPtclID = ParticleManager:CreateParticle('particles/units/heroes/hero_void_spirit/void_spirit_attack_travel_strike_blur.vpcf', PATTACH_ABSORIGIN, hCaster)
+	ParticleManager:SetParticleControl(iPtclID, 0, hCaster:GetAbsOrigin())
+end
+function void_spirit_3:AstralStepScepter(vPosition)
+	local hCaster = self:GetCaster()
+	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_3", nil)
+	hCaster:EmitSound('Hero_VoidSpirit.AstralStep.Start')
+
+	--范围打击
+	local radius = self:GetSpecialValueFor("radius")
+	local pop_damage_delay = self:GetSpecialValueFor("pop_damage_delay")
+
+	local tTargets = FindUnitsInLine(hCaster:GetTeamNumber(), hCaster:GetAbsOrigin(), vPosition, nil, radius,
+	DOTA_UNIT_TARGET_TEAM_ENEMY,
+	DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+	DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
+	for _, hTarget in pairs(tTargets) do
+		--造成攻击
+		-- hCaster:PerformAttack(hTarget, true, true, true, true, false, false, true)
+		--减速
+		hTarget:AddNewModifier(hCaster, self, 'modifier_void_spirit_3_debuff', { duration = pop_damage_delay })
+	end
+	hCaster:RemoveModifierByName("modifier_void_spirit_3")
+	--位移
+	local iPtclID = ParticleManager:CreateParticle('particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step.vpcf', PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(iPtclID, 0, hCaster:GetAbsOrigin())
+	ParticleManager:SetParticleControl(iPtclID, 1, vPosition)
 	local iPtclID = ParticleManager:CreateParticle('particles/units/heroes/hero_void_spirit/void_spirit_attack_travel_strike_blur.vpcf', PATTACH_ABSORIGIN, hCaster)
 	ParticleManager:SetParticleControl(iPtclID, 0, hCaster:GetAbsOrigin())
 end

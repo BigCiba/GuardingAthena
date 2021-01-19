@@ -153,11 +153,21 @@ end
 function modifier_void_spirit_1_shield:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK,
+		MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK,
 		MODIFIER_PROPERTY_TOOLTIP,
 	}
 end
 function modifier_void_spirit_1_shield:GetModifierPhysical_ConstantBlock(params)
 	if params.damage < self.flShieldHealth then
+		self.flShieldHealth = self.flShieldHealth - params.damage
+		return params.damage
+	else
+		self:Destroy()
+		return self.flShieldHealth
+	end
+end
+function modifier_void_spirit_1_shield:GetModifierMagical_ConstantBlock(params)
+	if self:GetParent():GetScepterLevel() >= 3 and params.damage < self.flShieldHealth then
 		self.flShieldHealth = self.flShieldHealth - params.damage
 		return params.damage
 	else

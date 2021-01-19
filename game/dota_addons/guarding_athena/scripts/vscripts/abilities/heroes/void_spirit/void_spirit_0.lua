@@ -55,9 +55,38 @@ end
 if modifier_void_spirit_0 == nil then
 	modifier_void_spirit_0 = class({}, nil, ModifierHidden)
 end
+function modifier_void_spirit_0:OnCreated(params)
+	self.scepter_cooldown = self:GetAbilitySpecialValueFor("scepter_cooldown")
+	if IsServer() then
+		self:SetStackCount(1)
+		self.hAbility = self:GetParent():FindAbilityByName("void_spirit_3")
+		self.max_travel_distance = self.hAbility:GetSpecialValueFor("max_travel_distance")
+		self.tRecord = {}
+	end
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD, self, self:GetParent())
+	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY, self, self:GetParent())
+end
+function modifier_void_spirit_0:OnIntervalThink()
+	self:SetStackCount(1)
+	self:StartIntervalThink(-1)
+end
 function modifier_void_spirit_0:OnDestroy()
 	if IsServer() then
 		ArrayRemove(self:GetAbility().tIllusion, self:GetParent())
+	end
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD, self, self:GetParent())
+	RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY, self, self:GetParent())
+end
+function modifier_void_spirit_0:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS
+	}
+end
+function modifier_void_spirit_0:GetModifierAttackRangeBonus()
+	if self:GetStackCount() == 1 then
+		return self.max_travel_distance
 	end
 end
 function modifier_void_spirit_0:CheckState()
@@ -68,4 +97,23 @@ function modifier_void_spirit_0:CheckState()
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_NO_TEAM_SELECT] = true,
 	}
+end
+function modifier_void_spirit_0:OnAttackRecord(params)
+	if IsServer() then
+		table.insert(self.tRecord, params.record)
+	end
+end
+function modifier_void_spirit_0:OnAttackRecordDestroy(params)
+	if IsServer() then
+		ArrayRemove(self.tRecord, params.record)
+	end
+end
+function modifier_void_spirit_0:OnAttackLanded(params)
+	if IsServer() then
+		if TableFindKey(self.tRecord, params.record) then
+			self:SetStackCount(0)
+			self:StartIntervalThink(self.scepter_cooldown)
+			self.hAbility:AstralStepScepter(params.target:GetAbsOrigin())
+		end
+	end
 end
