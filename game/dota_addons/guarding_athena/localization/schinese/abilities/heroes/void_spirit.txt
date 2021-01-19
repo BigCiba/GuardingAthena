@@ -48,5 +48,5 @@
 "DOTA_Tooltip_ability_void_spirit_4_disappear_time"			"相位持续时间："
 "DOTA_Tooltip_ability_void_spirit_4_stun_duration"			"晕眩持续时间："
 
-"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin"	"太虚宝镜"
-"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：共鸣脉冲</h1>共鸣脉冲将沉默目标。\n<h1>二转：太虚守卫</h1>所有太虚守卫都会模仿虚无之灵施放太虚之径。\n<h1>三转：魔法护盾</h1>护盾可以吸收魔法伤害。\n<h1>四转：太虚之径</h1>使太虚守卫的攻击向目标方向施放太虚之径。冷却%scepter_cooldown%秒。\n隐之圣堂保管的宝器，传说通过镜面可以观察宇宙的运转。"
+"DOTA_Tooltip_ability_item_npc_dota_hero_void_spirit"	"太虚宝镜"
+"DOTA_Tooltip_ability_item_npc_dota_hero_void_spirit_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：共鸣脉冲</h1>共鸣脉冲将沉默目标。\n<h1>二转：太虚守卫</h1>所有太虚守卫都会模仿虚无之灵施放太虚之径。\n<h1>三转：魔法护盾</h1>护盾可以吸收魔法伤害。\n<h1>四转：太虚之径</h1>使太虚守卫的攻击向目标方向施放太虚之径。冷却%scepter_cooldown%秒。\n隐之圣堂保管的宝器，传说通过镜面可以观察宇宙的运转。"

@@ -33,7 +33,7 @@ function void_spirit_0:AetherRemnant(vPosition)
 	local hCaster = self:GetCaster()
 	local flDuration = self:GetSpecialValueFor("duration")
 	local illusions = CreateIllusions(hCaster, hCaster, { duration = flDuration, outgoing_damage = 100, incoming_damage = 100 }, 1, 100, false, false)
-	illusions[1]:SetAbsOrigin(vPosition)
+	illusions[1]:SetAbsOrigin(GetGroundPosition(vPosition, illusions[1]))
 	illusions[1]:AddNewModifier(hCaster, self, "modifier_void_spirit_0", nil)
 	table.insert(self.tIllusion, illusions[1])
 	return illusions[1]
@@ -61,7 +61,7 @@ function modifier_void_spirit_0:OnCreated(params)
 		self:SetStackCount(1)
 		self.hAbility = self:GetParent():FindAbilityByName("void_spirit_3")
 		self.max_travel_distance = self.hAbility:GetSpecialValueFor("max_travel_distance")
-		self.tRecord = {}
+		self.bScepter = self:GetCaster():GetScepterLevel() >= 4
 	end
 	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 	AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_RECORD, self, self:GetParent())
@@ -85,7 +85,7 @@ function modifier_void_spirit_0:DeclareFunctions()
 	}
 end
 function modifier_void_spirit_0:GetModifierAttackRangeBonus()
-	if self:GetStackCount() == 1 then
+	if self:GetStackCount() == 1 and self.bScepter then
 		return self.max_travel_distance
 	end
 end
@@ -98,19 +98,9 @@ function modifier_void_spirit_0:CheckState()
 		[MODIFIER_STATE_NO_TEAM_SELECT] = true,
 	}
 end
-function modifier_void_spirit_0:OnAttackRecord(params)
-	if IsServer() then
-		table.insert(self.tRecord, params.record)
-	end
-end
-function modifier_void_spirit_0:OnAttackRecordDestroy(params)
-	if IsServer() then
-		ArrayRemove(self.tRecord, params.record)
-	end
-end
 function modifier_void_spirit_0:OnAttackLanded(params)
 	if IsServer() then
-		if TableFindKey(self.tRecord, params.record) then
+		if self:GetStackCount() == 1 and self.bScepter then
 			self:SetStackCount(0)
 			self:StartIntervalThink(self.scepter_cooldown)
 			self.hAbility:AstralStepScepter(params.target:GetAbsOrigin())

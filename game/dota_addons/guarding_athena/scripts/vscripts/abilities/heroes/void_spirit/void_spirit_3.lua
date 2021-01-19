@@ -71,11 +71,12 @@ function void_spirit_3:OnSpellStart()
 			if IsValid(hUnit) then
 				local tTargets = FindUnitsInRadiusWithAbility(hCaster, hUnit:GetAbsOrigin(), max_travel_distance, self)
 				if IsValid(tTargets[1]) then
-					hUnit:SetCursorPosition(hUnit:GetAbsOrigin() + (tTargets[1]:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized() * max_travel_distance)
+					hUnit:FindAbilityByName("void_spirit_3"):AstralStepScepter(tTargets[1]:GetAbsOrigin())
+					-- hUnit:SetCursorPosition(tTargets[1]:GetAbsOrigin() + (tTargets[1]:GetAbsOrigin() - hUnit:GetAbsOrigin()):Normalized() * 125)
 				else
-					hUnit:SetCursorPosition(hUnit:GetAbsOrigin() + RandomVector(1) * RandomInt(min_travel_distance * 2, max_travel_distance))
+					hUnit:FindAbilityByName("void_spirit_3"):AstralStepScepter(hCaster:GetAbsOrigin())
 				end
-				hUnit:FindAbilityByName("void_spirit_3"):OnSpellStart()
+				-- hUnit:FindAbilityByName("void_spirit_3"):OnSpellStart()
 			end
 		end
 	end
@@ -146,6 +147,8 @@ function void_spirit_3:AstralStep(vPosition)
 end
 function void_spirit_3:AstralStepScepter(vPosition)
 	local hCaster = self:GetCaster()
+	local max_travel_distance = self:GetSpecialValueFor("max_travel_distance")
+	local vEnd = hCaster:GetAbsOrigin() + (vPosition - hCaster:GetAbsOrigin()):Normalized() * max_travel_distance * 0.5
 	hCaster:AddNewModifier(hCaster, self, "modifier_void_spirit_3", nil)
 	hCaster:EmitSound('Hero_VoidSpirit.AstralStep.Start')
 
@@ -153,13 +156,13 @@ function void_spirit_3:AstralStepScepter(vPosition)
 	local radius = self:GetSpecialValueFor("radius")
 	local pop_damage_delay = self:GetSpecialValueFor("pop_damage_delay")
 
-	local tTargets = FindUnitsInLine(hCaster:GetTeamNumber(), hCaster:GetAbsOrigin(), vPosition, nil, radius,
+	local tTargets = FindUnitsInLine(hCaster:GetTeamNumber(), hCaster:GetAbsOrigin(), vEnd, nil, radius,
 	DOTA_UNIT_TARGET_TEAM_ENEMY,
 	DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
 	DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
 	for _, hTarget in pairs(tTargets) do
 		--造成攻击
-		-- hCaster:PerformAttack(hTarget, true, true, true, true, false, false, true)
+		hCaster:PerformAttack(hTarget, true, true, true, true, false, false, true)
 		--减速
 		hTarget:AddNewModifier(hCaster, self, 'modifier_void_spirit_3_debuff', { duration = pop_damage_delay })
 	end
@@ -167,7 +170,7 @@ function void_spirit_3:AstralStepScepter(vPosition)
 	--位移
 	local iPtclID = ParticleManager:CreateParticle('particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step.vpcf', PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iPtclID, 0, hCaster:GetAbsOrigin())
-	ParticleManager:SetParticleControl(iPtclID, 1, vPosition)
+	ParticleManager:SetParticleControl(iPtclID, 1, vEnd)
 	local iPtclID = ParticleManager:CreateParticle('particles/units/heroes/hero_void_spirit/void_spirit_attack_travel_strike_blur.vpcf', PATTACH_ABSORIGIN, hCaster)
 	ParticleManager:SetParticleControl(iPtclID, 0, hCaster:GetAbsOrigin())
 end
