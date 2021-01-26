@@ -15489,6 +15489,10 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 				"var_type":"FIELD_INTEGER",
 				"duration":10,
 			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_cooldown":2,
+			},
 		},
 	},
 	"void_spirit_1":{
@@ -15527,7 +15531,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			},
 			"05":{
 				"var_type":"FIELD_INTEGER",
-				"shield_per_attack":4,
+				"shield_per_attack":"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40",
 			},
 			"06":{
 				"var_type":"FIELD_INTEGER",
@@ -15560,7 +15564,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastPoint":0.2,
 		"AbilityCharges":2,
 		"AbilityChargeRestoreTime":12,
-		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
+		"AbilityManaCost":"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15656,7 +15660,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"LevelsBetweenUpgrades":24,
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_3",
 		"AbilityCastPoint":0.2,
-		"AbilityCooldown":20,
+		"AbilityCooldown":40,
 		"AbilityManaCost":"200 300 400 500 600 700 800 900",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
