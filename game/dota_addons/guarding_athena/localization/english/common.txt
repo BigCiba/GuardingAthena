@@ -1,0 +1,4 @@
+"addon_game_name"	"守卫雅典娜"
+"addonname"	"守卫雅典娜"
+"DOTA_GoodGuys"	"雅典娜的走狗"
+"DOTA_BadGuys"	"正义人士"
