@@ -146,7 +146,7 @@
 "DOTA_AbilityTooltip_ScepterUpgrade_Header" 			"专属装备升级效果"
 
 "DOTA_Tooltip_ability_common_abilitydamage"				"伤害："
-"DOTA_Tooltip_ability_common_abilityduration"			"持续时间："
+"DOTA_Tooltip_ability_common_abilityduration"			"Duration: "
 
 
 

@@ -14,7 +14,7 @@
 "DOTA_Tooltip_ability_item_xiongpi_Note0"	"所有伤害都能格挡"
 "DOTA_Tooltip_ability_item_xiongpi_bonus_attack"	"%攻击力："
 "DOTA_Tooltip_ability_item_xiongpi_bonus_attack_speed"	"攻击速度："
-"DOTA_Tooltip_ability_item_xiongpi_radius"	"影响范围："
+"DOTA_Tooltip_ability_item_xiongpi_radius"	"Radius: "
 "DOTA_Tooltip_ability_item_xiongpi_damage_block"	"伤害减免："
 "DOTA_Tooltip_ability_item_xiongpi_bonus_armor"	"护甲："
 "DOTA_Tooltip_ability_item_hexin"	"奇怪的核心"

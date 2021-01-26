@@ -50,7 +50,7 @@
 "DOTA_Tooltip_ability_athena_heal_Description"	"自动对周围友方单位施放回复术，持续回复生命与魔法。<br></br>雅典娜每级<font color=\"#d9534f\">回复</font>属性提升40点生命回复<br></br>雅典娜每级<font color=\"#d9534f\">回复</font>属性提升8点魔法回复<br></br>雅典娜每级<font color=\"#d9534f\">生命</font>属性提升1秒持续时间"
 "DOTA_Tooltip_ability_athena_heal_health"	"每秒生命回复："
 "DOTA_Tooltip_ability_athena_heal_mana"	"每秒魔法回复："
-"DOTA_Tooltip_ability_athena_heal_duration"	"持续时间："
+"DOTA_Tooltip_ability_athena_heal_duration"	"Duration: "
 "DOTA_Tooltip_ability_athena_heal_cooldown"	"冷却时间："
 
 "DOTA_Tooltip_ability_shield_block"	"盾反"
@@ -63,7 +63,7 @@
 "DOTA_Tooltip_ability_item_stat_modifier"	"属性修正"
 "DOTA_Tooltip_ability_item_bet_1"	"赌博"
 "DOTA_Tooltip_ability_water_shield_attackspeed"	"攻速减少："
-"DOTA_Tooltip_ability_water_shield_radius"	"影响范围："
+"DOTA_Tooltip_ability_water_shield_radius"	"Radius: "
 "DOTA_Tooltip_ability_bash"	"残废"
 "DOTA_Tooltip_ability_bash_Description"	"攻击有%chance%%%的几率对目标造成%damage%%%伤害与残废效果，残废状态下攻速与移速各减少50%%，持续%duration%秒。"
 "DOTA_Tooltip_ability_mana_break"	"法力损毁"
@@ -72,7 +72,7 @@
 "DOTA_Tooltip_ability_item_exclusive_trial_Description"	"开启试炼，通过试炼将获得专属装备。"
 "DOTA_Tooltip_ability_elite_Description"	"精英怪拥有额外的攻击、生命、护甲与攻速，额外的属性跟难度与波数成正比。"
 
-"DOTA_Tooltip_ability_athena_heal_radius"	"影响范围："
+"DOTA_Tooltip_ability_athena_heal_radius"	"Radius: "
 "DOTA_Tooltip_modifier_athena_guard_buff"	"埃癸斯的守护"
 "DOTA_Tooltip_modifier_athena_guard_buff_Description"	"该单位受到较少的伤害"
 
@@ -88,7 +88,7 @@
 "DOTA_Tooltip_ability_demon_chains_2"	"献祭"
 "DOTA_Tooltip_ability_demon_chains_2_Description"	"燃烧周围的单位，使他们受到持续伤害。"
 "DOTA_Tooltip_ability_demon_chains_2_damage"	"召唤者主属性伤害系数："
-"DOTA_Tooltip_ability_demon_chains_2_radius"	"影响范围："
+"DOTA_Tooltip_ability_demon_chains_2_radius"	"Radius: "
 "DOTA_Tooltip_ability_demon_chains_3"	"魔鬼祭祀"
 "DOTA_Tooltip_ability_demon_chains_3_Description"	"提升周围友方单位的战斗力"
 "DOTA_Tooltip_modifier_demon_chains_3_buff"	"魔鬼祭祀"
