@@ -1,4 +1,5 @@
 declare interface Panel {
+	FindAncestor(arg0: string): Panel;
 	readonly actualuiscale_x: number;
 	readonly actualuiscale_y: number;
 }

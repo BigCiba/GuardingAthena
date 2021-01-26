@@ -5902,242 +5902,181 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./elements/Common/Common.tsx":
-/*!************************************!*\
-  !*** ./elements/Common/Common.tsx ***!
-  \************************************/
+/***/ "./inventory/script.tsx":
+/*!******************************!*\
+  !*** ./inventory/script.tsx ***!
+  \******************************/
 /*! namespace exports */
-/*! export BuyButton [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export CommonBalance [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export CommonMoneyContainer [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CommonMoneyContainer": () => /* binding */ CommonMoneyContainer,
-/* harmony export */   "CommonBalance": () => /* binding */ CommonBalance,
-/* harmony export */   "BuyButton": () => /* binding */ BuyButton
-/* harmony export */ });
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/utils */ "./utils/utils.ts");
+/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/utils */ "./utils/utils.ts");
 
 
 
-function CommonMoneyContainer({ type, count }) {
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CommonMoneyContainer" },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Image, { className: classnames__WEBPACK_IMPORTED_MODULE_0___default()({ ShardIcon: type == "Shard", PriceIcon: type == "Price" }) }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: count })));
-}
-function CommonBalance({ type, count }) {
+
+function Inventory() {
+    const storePage = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const filterInput = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const [filterWord, SetFilterWord] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""); // 搜索过滤词
     const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CommonBalance" },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "CurrentBalance", text: "\u5F53\u524D\u4F59\u989D\uFF1A" }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Shard", count: playerData[Game.GetLocalPlayerID()].Shard }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Price", count: playerData[Game.GetLocalPlayerID()].Price }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "RechargeButton", text: "\u7ACB\u5373\u5145\u503C", onactivate: () => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.OpenPopup)("popus_recharge/popus_recharge") })));
-}
-function BuyButton({ type, count, id, itemName }) {
-    const buyButton = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    const Buy = () => {
-        let tData = CustomNetTables.GetTableValue("service", "player_data");
-        let Price = tData[Players.GetLocalPlayer()].Price;
-        let Shard = tData[Players.GetLocalPlayer()].Shard;
-        if ((type == "Shard" && Shard > count) || (type == "Price" && Price > count)) {
-            GameEvents.SendCustomGameEventToServer("PurchaseItem", {
-                ItemName: itemName,
-                Currency: type
-            });
-        }
-    };
+    // $.Msg(playerData);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        const id = GameEvents.Subscribe("purchase_complete", (data) => {
-            var _a;
-            (_a = buyButton.current) === null || _a === void 0 ? void 0 : _a.FindAncestor("PopupPanel").AddClass("PaySuccess");
-            $.Schedule(2, () => {
-                $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel());
-            });
+        // 切换面板
+        const toggleWindow = GameEvents.Subscribe("toggle_window", data => {
+            var _a, _b;
+            if (data.name === "Inventory") {
+                (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.ToggleClass('HideStorePage');
+            }
+            else {
+                (_b = storePage.current) === null || _b === void 0 ? void 0 : _b.SetHasClass("HideStorePage", true);
+            }
+        });
+        const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
+            if ("player_data" === eventKey) {
+                UpdataPlayerData(eventValue);
+            }
         });
         return () => {
-            GameEvents.Unsubscribe(id);
+            GameEvents.Unsubscribe(toggleWindow);
+            CustomNetTables.UnsubscribeNetTableListener(listener);
         };
     }, []);
-    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: type == "Shard" ? "ShardPurchaseButton" : "PricePurchaseButton", className: "DotaPlusPurchaseButton", onactivate: Buy, ref: buyButton },
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Contents", className: "ButtonCenter" },
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "EventIcon", className: classnames__WEBPACK_IMPORTED_MODULE_0___default()({ DotaPlusCurrencyIcon: type == "Shard" }, { DotaPlusPriceCurrencyIcon: type == "Price" }) }),
-            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: type == "Shard" ? "ShardCost" : "PriceCost", text: count }))));
+    const OpenRecharge = () => {
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.OpenPopup)("popus_recharge/popus_recharge");
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer HideStorePage", ref: storePage },
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StorePageMain" },
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#Wallet" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "FillWidth" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Refresh"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip })),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Shard_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentCurrencyAmount", text: playerData[Game.GetLocalPlayerID()].Shard })),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "PriceAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Price_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon PriceSubscription" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentPriceAmount", text: playerData[Game.GetLocalPlayerID()].Price }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "Recharge", text: "\u5145\u503C", onactivate: OpenRecharge }))),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchOptionsContainer" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#DOTA_Search" })),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchContainer" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchBox" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntry, { ref: filterInput, id: "SearchTextEntry", placeholder: "#DOTA_StoreBrowse_Search_Placeholder", ontextentrychange: (a) => { a.text == "" && SetFilterWord(""); }, oninputsubmit: (a) => SetFilterWord(a.text) }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "ClearSearchButton", className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.SetHasClass("Hidden", true); } })))),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchCategories" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryAll", selected: true, className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryAll" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryAll_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryHero", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryHero" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryHero_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategorySkin", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategorySkin" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategorySkin_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryParticle", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryParticle" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryParticle_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryPet", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryPet" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryPet_Description" }))),
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabButton", id: "CategoryGamePlay", className: "SearchCategory", group: "search_categories" },
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryBackground" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryArtOverlay" }),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchCategoryText" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryName", text: "#CategoryGamePlay" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "SearchCategoryDetails", text: "#CategoryGamePlay_Description" }))))),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreTabContents" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryAll", type: "all" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryHero", type: "hero" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategorySkin", type: "skin" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryParticle", type: "particle" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryPet", type: "pet" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItemContainer, { word: filterWord, tabid: "CategoryGamePlay", type: "gameplay" }))),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { className: "CloseButton", onactivate: () => { var _a; (_a = storePage.current) === null || _a === void 0 ? void 0 : _a.ToggleClass('HideStorePage'); } })));
 }
-
-
-/***/ }),
-
-/***/ "./popups/popup_store_item/script.tsx":
-/*!********************************************!*\
-  !*** ./popups/popup_store_item/script.tsx ***!
-  \********************************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
-/* harmony import */ var _elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../elements/Common/Common */ "./elements/Common/Common.tsx");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./utils/utils.ts");
-
-
-
-
-function Popup({ itemData }) {
-    const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    const ItemName = itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PopupPanel", className: "PopupPanel", ref: parent },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", localizedText: ItemName }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "StoreItemDetail" },
-            itemData.Type == "hero" &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeroItemDetail, { heroName: itemData.ItemName }),
-            itemData.Type == "pet" &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(PetItemDetail, { petName: itemData.ItemName }),
-            (itemData.Type == "skin" || itemData.Type == "particle") &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(ParticleItemDetail, { itemData: itemData }),
-            itemData.Type == "gameplay" &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(CommonItemDetail, { itemData: itemData })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "MoneyContainer" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "RechargeContainer" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.CommonBalance, { type: Number(itemData.Shard) > 0 ? "Shard" : "Price", count: Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price) }))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopupButtonRow" },
-            itemData.Shard > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Shard", count: itemData.Shard, id: itemData.ID, itemName: itemData.ItemName }),
-            itemData.Price > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Price", count: itemData.Price, id: itemData.ID, itemName: itemData.ItemName })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopusNotify" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, null))));
-}
-// 宠物商品界面
-function HeroItemDetail({ heroName }) {
-    const heroScene = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    const fullName = "npc_dota_hero_" + heroName;
-    const heroData = GameUI.CustomUIConfig().HeroesKv[fullName];
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-        var _a;
-        (_a = heroScene.current) === null || _a === void 0 ? void 0 : _a.SetScenePanelToLocalHero((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroIDByName)(fullName));
-    }, []);
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, { unit: fullName, className: "PopupHeroScene", light: "global_light", antialias: true, drawbackground: false, particleonly: false, ref: heroScene }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AbilityList" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability1, showtooltip: true }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability2, showtooltip: true }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability3, showtooltip: true }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability4, showtooltip: true }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { abilityname: heroData.Ability5, showtooltip: true })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AttributeContainer" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "TopContainer" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_HealthMana" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "HealthRow", className: "HeroResourceRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MaxResource MonoNumbersFont", localizedText: "{d:max_health}", dialogVariables: { max_health: heroData.AttributeBaseStrength * 20 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusHealth") } }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "ResourceRegen MonoNumbersFont", localizedText: "+{s:health_regen}", dialogVariables: { health_regen: (heroData.AttributeBaseStrength * 0.09 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusHealthRegen")).toFixed(1) } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ManaRow", className: "HeroResourceRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MaxResource MonoNumbersFont", localizedText: "{d:max_mana}", dialogVariables: { max_mana: heroData.AttributeBaseIntelligence * 12 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusMana") } }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "ResourceRegen MonoNumbersFont", localizedText: "+{s:mana_regen}", dialogVariables: { mana_regen: (heroData.AttributeBaseIntelligence * 0.05 + (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.GetHeroKV)(fullName, "StatusManaRegen")).toFixed(1) } })))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "TopContainer" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Attributes" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon StrengthIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_StrengthAttribute", dialogVariables: { base_str: String(heroData.AttributeBaseStrength), str_per_level: String(heroData.AttributeStrengthGain) } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon AgilityIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_AgilityAttribute", dialogVariables: { base_agi: String(heroData.AttributeBaseAgility), agi_per_level: String(heroData.AttributeAgilityGain) } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon IntelligenceIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "DOTA_HeroLoadout_IntelligenceAttribute", dialogVariables: { base_int: String(heroData.AttributeBaseIntelligence), int_per_level: String(heroData.AttributeIntelligenceGain) } })))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "TopContainer" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Attack" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon DamageIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:damage_min} - {d:damage_max}", dialogVariables: { damage_min: heroData.AttackDamageMin, damage_max: heroData.AttackDamageMax } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon BaseAttackTimeIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:attack_rate}", dialogVariables: { attack_rate: String(heroData.AttackRate) } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon AttackRangeIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:attack_range}", dialogVariables: { attack_range: heroData.AttackRange } })),
-                    (heroData.ProjectileSpeed && heroData.ProjectileSpeed > 0) &&
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ProjectileSpeedRow", className: "HeroStatsRow" },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon ProjectileSpeedIcon" }),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:projectile_speed}", dialogVariables: { projectile_speed: heroData.ProjectileSpeed } }))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Defense" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon ArmorIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:armor}", dialogVariables: { armor: String(heroData.ArmorPhysical) } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon MagicResistIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:magic_resistance}%", dialogVariables: { magic_resistance: heroData.MagicalResistance } }))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsSection" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "HeroStatsHeader", text: "#DOTA_HeroStats_Castegory_Mobility" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon MovementSpeedIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{d:movement_speed}", dialogVariables: { movement_speed: heroData.MovementSpeed } })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsRow" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "HeroStatsIcon TurnRateIcon" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { className: "MonoNumbersFont", localizedText: "{s:turn_rate}", dialogVariables: { turn_rate: String(heroData.MovementTurnRate) } })))))));
-}
-// 宠物商品界面
-function PetItemDetail({ petName }) {
-    const SetPreview = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    const petData = GameUI.CustomUIConfig().PetsKv[petName];
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-        if (SetPreview.current) {
-            $.DispatchEvent("DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 0);
-            $.DispatchEventAsync(2, "DOTAEconSetPreviewSetRotationSpeed", SetPreview.current, 2);
-        }
-    }, []);
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "SetPreview" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "DOTAUIEconSetPreview", itemdef: GameUI.CustomUIConfig().PetsKv[petName].ItemDef, itemstyle: GameUI.CustomUIConfig().PetsKv[petName].ItemStyle || 0, displaymode: "loadout_small", drawbackground: true, antialias: true, ref: SetPreview })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PetAbilityList" }, (() => {
-            let list = [];
-            for (let index = 1; index < 16; index++) {
-                const abilityName = petData["Ability" + index];
-                if (abilityName) {
-                    list.push(react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, { key: abilityName, abilityname: abilityName, showtooltip: true }));
+function StoreItemContainer({ word, tabid, type }) {
+    let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
+    let inventoryData = CustomNetTables.GetTableValue("service", "inventory");
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(GenericPanel, { type: "TabContents", tabid: tabid, group: "search_categories", className: "StoreItemContainer", selected: tabid == "CategoryAll" ? true : false },
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreHeader" },
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: tabid })),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StoreItemList" }, Object.keys(itemDatas).map((key) => {
+            if ((itemDatas[key].Type == type || type == "all")) {
+                let ItemName = itemDatas[key].ItemName;
+                if (itemDatas[key].Type == "hero") {
+                    ItemName = "npc_dota_hero_" + ItemName;
+                }
+                // 遍历物品
+                for (const index in inventoryData[Game.GetLocalPlayerID()]) {
+                    const itemData = inventoryData[Game.GetLocalPlayerID()][index];
+                    if (itemData.ItemName == itemDatas[key].ItemName) {
+                        if (word == "" || $.Localize(ItemName).search(word) != -1) {
+                            return react__WEBPACK_IMPORTED_MODULE_1__.createElement(StoreItem, { key: key, itemData: itemDatas[key] });
+                        }
+                    }
                 }
             }
-            return list;
-        })())));
+        }))));
 }
-// 特效商品界面
-function ParticleItemDetail({ itemData }) {
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "MoviePanel" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "MoviePanel", id: "ParticleViewContainer", key: itemData.ItemName, src: "file://{resources}/videos/" + itemData.Type + "/" + itemData.ItemName + ".webm", repeat: true, autoplay: "onload" }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: "\u7279\u6548\u9884\u89C8" })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "ParticleItemDescription" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: itemData.ItemName + "_Description" }))));
+function StoreItem({ itemData }) {
+    let ShowCourierTooltip = (self) => {
+        if (itemData.Type == "pet") {
+            $.DispatchEvent("UIShowCustomLayoutParametersTooltip", self, "courier_tooltip", "file://{resources}/layout/custom_game/tooltips/courier/courier.xml", "courier_name=" + itemData.ItemName + "&rotationspeed=2");
+        }
+    };
+    let HideCourierTooltip = (self) => {
+        if (itemData.Type == "pet") {
+            $.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
+        }
+    };
+    let ShowItemDetail = (self) => {
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.OpenPopup)("popup_inventory_item/popup_inventory_item", { itemData: JSON.stringify(itemData) });
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: classnames__WEBPACK_IMPORTED_MODULE_0___default()("AthenaStoreItem", { HeroItem: itemData.Type == "hero" }, { HeroItem: itemData.Type == "skin" }, { Prefab_courier: itemData.Type == "pet" }, { Prefab_ward: itemData.Type == "particle" }, { Prefab_bundle: itemData.Type == "gameplay" }), onmouseover: ShowCourierTooltip, onmouseout: HideCourierTooltip, onactivate: ShowItemDetail },
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "ItemImageContainer" },
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Image, { id: "ItemImage", scaling: "stretch-to-fit-preserve-aspect", src: "file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SkillPreview" }))),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "ItemName", localizedText: itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "ItemType" },
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "UnitIcon" },
+                itemData.Type == "hero" &&
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(DOTAHeroImage, { id: "HeroIcon", heroimagestyle: "icon", heroname: "npc_dota_hero_" + itemData.ItemName, scaling: "stretch-to-fit-preserve-aspect" }),
+                itemData.Type == "skin" &&
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(DOTAHeroImage, { id: "HeroIcon", heroimagestyle: "icon", heroname: GameUI.CustomUIConfig().PlayerItemsKV[itemData.ItemName].Hero, scaling: "stretch-to-fit-preserve-aspect" }),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "ItemTypeIcon" })),
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "ItemTypeLabel", text: "StoreItemType_" + itemData.Type })),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "PurchaseButtonList" },
+            react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "PricePurchaseButton", className: "DotaPlusPurchaseButton" },
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Contents", className: "ButtonCenter" },
+                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "PriceCost", text: "\u5DF2\u62E5\u6709" }))))));
 }
-// 通用商品界面
-function CommonItemDetail({ itemData }) {
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "Full" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ItemImageContainer" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "ItemImage", scaling: "stretch-to-fit-preserve-aspect", src: "file://{images}/custom_game/" + itemData.Type + "/" + itemData.ItemName + ".png" })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "CommonItemDescription" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: itemData.ItemName + "_Description" }))));
-}
-$.GetContextPanel().SetPanelEvent("onload", () => {
-    let panel = $.GetContextPanel();
-    let itemData = JSON.parse($.GetContextPanel().GetAttributeString("itemData", "{}"));
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(Popup, { itemData: itemData }), panel);
-});
+(0,react_panorama__WEBPACK_IMPORTED_MODULE_2__.render)(react__WEBPACK_IMPORTED_MODULE_1__.createElement(Inventory, null), $.GetContextPanel());
 
 
 /***/ }),
@@ -6319,7 +6258,7 @@ function ToggleWindows(sName) {
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./popups/popup_store_item/script.tsx");
+/******/ 	__webpack_require__("./inventory/script.tsx");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;

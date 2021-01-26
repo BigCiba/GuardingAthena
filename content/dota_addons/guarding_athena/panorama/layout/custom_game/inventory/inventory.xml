@@ -6,12 +6,12 @@
 		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
 		<include src="s2r://panorama/styles/store_item.vcss_c"></include>
 
-		<include src="file://{resources}/layout/custom_game/store/styles.css"></include>
+		<include src="file://{resources}/layout/custom_game/inventory/styles.css"></include>
 	</styles>
 	<scripts>
-		<include src="file://{resources}/layout/custom_game/store/script.js"></include>
+		<include src="file://{resources}/layout/custom_game/inventory/script.js"></include>
 	</scripts>
-	<Panel class="StoreRoot" hittest="false">
+	<Panel class="InventoryRoot" hittest="false">
 		<!-- <MoviePanel id="TreasureMovie" src="file://{resources}/videos/skin/omniknight_01.webm" repeat="true" autoplay="onload"  /> -->
 	</Panel>
 </root>

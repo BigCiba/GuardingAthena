@@ -11,7 +11,7 @@
 	<scripts>
 		<include src="./script.tsx" />
 	</scripts>
-	<Panel class="StoreRoot" hittest="false">
+	<Panel class="InventoryRoot" hittest="false">
 		<!-- <MoviePanel id="TreasureMovie" src="file://{resources}/videos/skin/omniknight_01.webm" repeat="true" autoplay="onload"  /> -->
 	</Panel>
 </root>

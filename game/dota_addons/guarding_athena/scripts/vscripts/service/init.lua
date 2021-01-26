@@ -85,6 +85,7 @@ ACTION_GET_GUIDER_REWARD = "get_guider_reward"				-- 获取带新人奖励
 function public:init(bReload)
 	if not bReload then
 		self.tPlayerServiceData = {}
+		self.tInventoryData = {}
 		self.tStoreItemData = {}
 		-- self.tPlayerAllItems = {}
 	end
@@ -187,6 +188,7 @@ function public:RequestPlayerData(iPlayerID)
 			print("RequestPlayerData:")
 			DeepPrintTable(hBody)
 			if hBody ~= nil then
+				self.tInventoryData[iPlayerID] = hBody.inventory
 				-- 是否有装备
 				local tEquipped = { pet = false, skin = false, particle = false }
 				for i, v in ipairs(hBody.inventory) do
@@ -224,7 +226,7 @@ function public:RequestPlayerData(iPlayerID)
 						end
 					end
 				end
-				DeepPrintTable(tEquipped)
+				-- DeepPrintTable(tEquipped)
 				-- 添加默认物品
 				for sHeroName, tSkinList in pairs(self.tPlayerServiceData[iPlayerID]["skin"]) do
 					table.insert(self.tPlayerServiceData[iPlayerID]["skin"][sHeroName], { ItemName = "default_no_item", Equip = tEquipped[sHeroName] and "0" or "1", Expiration = "9999-12-31", Type = "skin" })
@@ -241,6 +243,7 @@ function public:RequestPlayerData(iPlayerID)
 				self.tPlayerServiceData[iPlayerID].Shard = hBody.player_data.Shard
 				self.tPlayerServiceData[iPlayerID].Price = hBody.player_data.Price
 				self.tPlayerServiceData[iPlayerID].Hero = ""
+				-- DeepPrintTable(self.tPlayerServiceData)
 				self:UpdateNetTables()
 			end
 		end
@@ -337,6 +340,7 @@ end
 --更新所有有关的NetTable
 function public:UpdateNetTables()
 	CustomNetTables:SetTableValue("service", "player_data", self.tPlayerServiceData)
+	CustomNetTables:SetTableValue("service", "inventory", self.tInventoryData)
 	CustomNetTables:SetTableValue("service", "store_item", self.tStoreItemData)
 end
 

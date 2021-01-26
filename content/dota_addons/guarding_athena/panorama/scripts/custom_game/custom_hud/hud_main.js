@@ -518,18 +518,12 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 
 	let fixed = false;
 	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltip", function (Ability, AbilityName, c, d) {
-		$.Msg("DOTAShowAbilityTooltip", AbilityName);
+		// $.Msg("DOTAShowAbilityTooltip", AbilityName);
 		if (Ability.paneltype != "DOTAAbilityImage") {
 			return;
 		}
 		$.Schedule(0, function () {
 			// Ability.style["tooltip-position"] = "top";
-			// 测试
-			let scepter = HUD.FindChildTraverse("AghsScepterContainer");
-			let a = $.CreatePanel("Panel", scepter, AbilityName);
-			a.BLoadLayoutSnippet("AghsHeroScepterSnippet");
-
-			$.Msg(a);
 
 
 			let Tooltips = HUD.FindChildTraverse("Tooltips");
@@ -585,7 +579,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 		});
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityTooltipForEntityIndex", function (Ability, AbilityName, iEntityIndex) {
-		$.Msg("DOTAShowAbilityTooltipForEntityIndex", iEntityIndex);
+		// $.Msg("DOTAShowAbilityTooltipForEntityIndex", iEntityIndex);
 		$.Schedule(0, function () {
 			Ability.style["tooltip-position"] = "top";
 			let Tooltips = HUD.FindChildTraverse("Tooltips");
@@ -746,7 +740,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 		});
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityInventoryItemTooltip", function (pPanel, iEntityIndex, iInventorySlot, d) {
-		$.Msg("DOTAShowAbilityInventoryItemTooltip", iEntityIndex, iInventorySlot, d);
+		// $.Msg("DOTAShowAbilityInventoryItemTooltip", iEntityIndex, iInventorySlot, d);
 		$.Schedule(0, function () {
 			let Tooltips = HUD.FindChildTraverse("Tooltips");
 			// let AbilityList = HUD.FindChildTraverse("abilities");
@@ -809,7 +803,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 		});
 	});
 	$.RegisterForUnhandledEvent("DOTAShowAbilityShopItemTooltip", function (pPanel, sItemName, c, d) {
-		$.Msg(sItemName);
+		// $.Msg(sItemName);
 		let Tooltips = HUD.FindChildTraverse("Tooltips");
 		let DOTAAbilityTooltip = Tooltips.FindChildTraverse("DOTAAbilityTooltip");
 		DOTAAbilityTooltip.SetPositionInPixels(0, 0, 0);

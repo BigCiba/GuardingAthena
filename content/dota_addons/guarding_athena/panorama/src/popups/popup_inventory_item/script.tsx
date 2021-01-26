@@ -23,20 +23,20 @@ function Popup({ itemData }: { itemData: any; }) {
 					<CommonItemDetail itemData={itemData} />
 				}
 			</Panel>
-			<Panel className="MoneyContainer">
+			{/* <Panel className="MoneyContainer">
 				<Panel className="RechargeContainer">
 					<CommonBalance type={Number(itemData.Shard) > 0 ? "Shard" : "Price"} count={Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price)} />
 				</Panel>
-			</Panel>
+			</Panel> */}
 			{/* 按钮 */}
-			<Panel className="PopupButtonRow">
+			{/* <Panel className="PopupButtonRow">
 				{itemData.Shard > 0 &&
 					<BuyButton type="Shard" count={itemData.Shard} id={itemData.ID} itemName={itemData.ItemName} />
 				}
 				{itemData.Price > 0 &&
 					<BuyButton type="Price" count={itemData.Price} id={itemData.ID} itemName={itemData.ItemName} />
 				}
-			</Panel>
+			</Panel> */}
 			{/* 通知界面 */}
 			<Panel className="PopusNotify">
 				<Image />

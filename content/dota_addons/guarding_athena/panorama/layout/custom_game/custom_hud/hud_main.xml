@@ -204,9 +204,13 @@
 	<Panel hittest="false" class="CustomHudRoot">
 		<!-- 左上角按钮 -->
 		<Panel id="LeftTopButtons">
+			<!-- 商店 -->
+			<Panel id="HudStoreButton" class="LeftTopPanel">
+				<TextButton class="LeftTopButton" text="#Store" onmouseover="DOTAShowTextTooltip('#Store')" onmouseout="DOTAHideTextTooltip()" onactivate="GameEvents.SendEventClientSide('toggle_window', { name: 'Store' });" />
+			</Panel>
 			<!-- 背包 -->
 			<Panel id="HudInventoryButton" class="LeftTopPanel">
-				<Button class="LeftTopButton" onmouseover="DOTAShowTextTooltip('#Store')" onmouseout="DOTAHideTextTooltip()" onactivate="GameEvents.SendEventClientSide('toggle_window', { name: 'Store' });" />
+				<TextButton class="LeftTopButton" text="#Inventory" onmouseover="DOTAShowTextTooltip('#Inventory')" onmouseout="DOTAHideTextTooltip()" onactivate="GameEvents.SendEventClientSide('toggle_window', { name: 'Inventory' });" />
 			</Panel>
 		</Panel>
 		<Panel id="AthenaStorePage" class="DashboardPage ShowChatWheel">

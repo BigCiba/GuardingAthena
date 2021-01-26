@@ -1818,29 +1818,33 @@ DOTAStorePlusPage.EventCavernCrawlActive .EventCavernCrawl
 #LeftTopButtons {
 	width: 550px;
 	align: left top;
-	margin-top: 6px;
-	padding-top: 8px;
-	padding-bottom: 8px;
+	/* margin-top: 6px; */
+	padding-top: 4px;
+	padding-bottom: 6px;
 	padding-left: 145px;
 	background-color: gradient(linear, 0px 0px, 380px 165px, from(#000000aa), color-stop(0.6, #000000aa), to(#00000000));
 	overflow: noclip;
 	flow-children: right;
 }
+#HudStoreButton .LeftTopButton {
+	background-image: url("file://{images}/custom_game/hud/icon_shop.png");
+}
 #HudInventoryButton .LeftTopButton {
-	background-image: url("s2r://panorama/images/dotaplus_logo_small_png.vtex");
+	background-image: url("file://{images}/custom_game/hud/icon_handbook.png");
 }
 .LeftTopPanel {
 	overflow: noclip;
 }
 .LeftTopButton {
-	height: 37px;
-	width: 32px;
+	height: 48px;
+	width: 40px;
+	border-radius: 4px;
 	margin-left: 16px;
 	tooltip-position: bottom;
 	/* opacity: 0.5; */
-	wash-color: #f3e8c2;
-	background-position: 50%;
-	background-size: 100%;
+	/* wash-color: #f3e8c2; */
+	/* background-position: 50%; */
+	background-size: 40px 40px;
 	background-repeat: no-repeat;
 	/* transition-property: opacity;
 	transition-duration: 0.2s; */
@@ -1848,6 +1852,18 @@ DOTAStorePlusPage.EventCavernCrawlActive .EventCavernCrawl
 .LeftTopButton:hover {
 	/* opacity: 1; */
 	brightness: 1.5;
+}
+.LeftTopButton Label {
+	width: 100%;
+	/* font-family: titleFont; */
+	text-align: center;
+	vertical-align: bottom;
+	horizontal-align: center;
+	font-size: 17px;
+	color: hsv-transform( guildColor17, 0.0, 1.0, 1.5 );
+	letter-spacing: 1px;
+	font-weight: light;
+	text-shadow: 0px 0px 4px 2.0 black;
 }
 .Hidden {
 	visibility: collapse;

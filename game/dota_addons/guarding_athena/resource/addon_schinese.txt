@@ -3736,6 +3736,7 @@
 		"Equip"							"装备"
 		"UnEquip"						"卸下"
 		"Store"							"商店"
+		"Inventory"						"背包"
 		"Wallet"						"我的钱包"
 		"Refresh"						"刷新金钱"
 		"Recharge"						"充值"
