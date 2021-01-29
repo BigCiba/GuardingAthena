@@ -44,7 +44,7 @@ function Popup({ itemData }: { itemData: any; }) {
 		</Panel>
 	);
 }
-// 宠物商品界面
+// 英雄商品界面
 function HeroItemDetail({ heroName }: { heroName: string; }) {
 	const heroScene = useRef<ScenePanel>(null);
 	const fullName = "npc_dota_hero_" + heroName;
