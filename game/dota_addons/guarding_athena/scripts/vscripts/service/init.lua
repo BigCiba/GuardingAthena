@@ -17,7 +17,7 @@ function Sleep(fTime, szUnique)
 end
 
 KEY = "BIGCIBA"
-Address = "http://bigciba.applinzi.com/dota2api/Inventory.php"
+Address = "http://42.192.225.121:8080/dota2api/Inventory.php"
 ServerKey = GetDedicatedServerKeyV2(KEY)
 REQUEST_TIME_OUT = 30 -- 默认请求超时时长（秒）
 
@@ -177,7 +177,7 @@ function public:RequestPlayerData(iPlayerID)
 		}
 	end
 	local Steamid = tostring(PlayerResource:GetSteamAccountID(iPlayerID))
-	local Address = "http://bigciba.applinzi.com/dota2api/GetPlayerData.php"
+	local Address = "http://42.192.225.121:8080/dota2api/GetPlayerData.php"
 	local handle = CreateHTTPRequestScriptVM("POST", Address)
 	handle:SetHTTPRequestGetOrPostParameter("SteamID", Steamid)
 	handle:SetHTTPRequestGetOrPostParameter("ServerKey", ServerKey)
