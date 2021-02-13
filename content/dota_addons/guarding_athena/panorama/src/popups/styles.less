@@ -1,0 +1,189 @@
+@import "../utils/utils.less";
+.PopupRoot {
+	.Full;
+	background-color: #060606F0;
+	transition-property: background-color;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in;
+}
+.PopupPanel
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eee ), to( #131617ee ) );
+	border: 1px solid #5e6869;
+
+	width: 800px;
+	min-height: 650px;
+
+	// background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
+	// background-size: 100%;
+
+	align: center center;
+	// padding: 90px 85px 90px 65px;
+	// opacity: 1.0;
+	box-shadow: black -4px -4px 8px 8px;
+	//#FFFFFF66 -4px -4px 8px 8px
+	animation-name: links-and-more-button-focus;
+	animation-duration: 0.6s;
+	animation-delay: 0.0s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+
+
+	transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	transition-delay: 0.0s;
+
+	// flow-children: down;
+}
+@keyframes 'links-and-more-button-focus'
+{
+	from
+	{
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #a9c8daee ), to( #000000ee ) );
+	}
+	50%
+	{
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eee ), to( #131617ee ) );
+	}
+	to
+	{
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eee ), to( #131617ee ) );
+	}
+}
+.PopupTitle
+{
+	font-size: 30px;
+	//font-variant: small-caps;+
+	// font-weight: bold;
+	color: #afb4b4;
+	margin-top: 15px;
+	// margin-bottom: 15px;
+	horizontal-align: center;
+	// font-family: titleFont;
+}
+.CloseButton {
+	z-index: 100;
+	horizontal-align: right;
+	// margin-top: 69px;
+	// margin-right: 70px;
+	width: 46px;
+	height: 43px;
+}
+.ButtonCommon {
+	align: center bottom;
+	margin-bottom: 10px;
+	width: 119px;
+	height: 50px;
+	Label {
+		align: center center;
+		// margin-top: 17px;
+		font-size: 18px;
+		color: white;
+		text-shadow: 0px 0px 5px 3.0 black;
+	}
+}
+.PopupButtonRow {
+	flow-children: right;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 25px;
+	
+	.DotaPlusPurchaseButton
+	{
+		horizontal-align: center;
+		padding: 4px 0px 2px 0px;
+		margin: 8px;
+		// height: 33px;
+		width: 192px;
+		height: 40px;
+		background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+		background-size: 100% 100%;
+		border-top: 1px solid #ffffff22;
+		border-left: 1px solid #ffffff11;
+		border-right: 1px solid #00000044;
+		border-bottom: 1px solid #00000088;
+
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( dotaPlusGold ), to( #141b21 ) );
+		// background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+		&:hover
+		{
+			brightness: 2.0;
+		}
+
+		&:active
+		{
+			brightness: 1.5;
+		}
+
+		Label
+		{
+			vertical-align: center;
+			margin-left: 2px;
+			margin-right: 4px;
+			color: dotaPlusLightGold;
+			font-size: 24px;
+			padding: 0px;
+			text-shadow: 0px 0px 4px 4 #000000;
+		}
+		.ButtonCenter
+		{
+			horizontal-align: center;
+			flow-children: right;
+		}
+		.DotaPlusCurrencyIcon
+		{
+			width: 24px;
+			height: 24px;
+			// transform: translateY( 1px );
+			// margin-bottom: 6px;
+			vertical-align: center;
+
+			background-image: dotaPlusCurrencySmallIcon;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			img-shadow: 0px 0px 3px 3 #000000;
+		}
+		.DotaPlusPriceCurrencyIcon {
+			.DotaPlusCurrencyIcon;
+			background-image: url("file://{images}/dotaplus_logo_small.png");
+		}
+	}
+}
+.PopupButton {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5a6c75 ), to( #3d4a50 ) );
+	border: 1px solid black;
+	margin: 8px;
+	min-width: 192px;
+	padding: 5px 10px 5px 10px;
+	border-top: 1px solid #ffffff44;
+	border-right: 1px solid #4e5b60;
+	border-left: 1px solid #4e5b60;
+	border-bottom: 1px solid #00000088;
+	transition-property: background-color, wash-color;
+	transition-duration: .1s;
+	transition-timing-function: linear;
+}
+
+.MoneyContainer {
+	width: 90%;
+	// height: 50px;
+	flow-children: right;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 100px;
+	.CostContainer {
+		vertical-align: center;
+		flow-children: right;
+		// width: 50%;
+		Label {
+			font-size: 30px;
+		}
+	}
+	.RechargeContainer {
+		.CostContainer;
+		horizontal-align: center;
+	}
+}

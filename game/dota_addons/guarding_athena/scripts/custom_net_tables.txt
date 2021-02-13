@@ -12,5 +12,6 @@
         "service",
         "common",
         "player_data",
+        "ability_upgrades_result",
     ]
 }

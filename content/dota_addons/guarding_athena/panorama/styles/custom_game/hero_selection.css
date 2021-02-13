@@ -127,6 +127,18 @@
 	transition-duration: 0.1s;
 	box-shadow: #000000aa 0px 0px 5px 0px;
 }
+.AvatarImage {
+	width: 56px;
+	height: 56px;
+	border: 2px solid transparent;
+	margin: 4px;
+	/* margin-left: 32px; */
+	horizontal-align: left;
+	vertical-align: center;
+	transition-property: border;
+	transition-duration: 0.1s;
+	box-shadow: #000000aa 0px 0px 5px 0px;
+}
 .ProfileTextDetails {
 	vertical-align: center;
 	margin-left: 10px;

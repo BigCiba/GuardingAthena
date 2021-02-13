@@ -1,0 +1,17 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hudstyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
+		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
+		<include src="s2r://panorama/styles/store_item.vcss_c"></include>
+
+		<include src="file://{resources}/layout/custom_game/store/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/store/script.js"></include>
+	</scripts>
+	<Panel class="StoreRoot" hittest="false">
+		<!-- <MoviePanel id="TreasureMovie" src="file://{resources}/videos/skin/omniknight_01.webm" repeat="true" autoplay="onload"  /> -->
+	</Panel>
+</root>

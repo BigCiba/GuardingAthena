@@ -474,6 +474,27 @@ if IsServer() then
 		self:SetContextThink(sContextName, nil, 0)
 	end
 
+	--[[		暂停计时器，包括游戏计时器
+	]]
+	--
+	function CBaseEntity:StopTimer(sContextName)
+		self:SetContextThink(sContextName, nil, -1)
+	end
+	--- 游戏计时器，游戏暂停会停下 GameRules:GetGameModeEntity():GameTimer()
+	function GameTimer(sContextName, fInterval, funcThink)
+		return GameRules:GetGameModeEntity():GameTimer(sContextName, fInterval, funcThink)
+	end
+	function StopGameTimer(sContextName)
+		return GameRules:GetGameModeEntity():StopTimer(sContextName)
+	end
+	--- 游戏计时器，游戏暂停bu会停下 GameRules:GetGameModeEntity():GameTimer()
+	function Timer(sContextName, fInterval, funcThink)
+		return GameRules:GetGameModeEntity():Timer(sContextName, fInterval, funcThink)
+	end
+	function StopTimer(sContextName)
+		return GameRules:GetGameModeEntity():StopTimer(sContextName)
+	end
+
 	function CDOTA_BaseNPC:GetItemSlot(hItem)
 		if hItem == nil or not hItem:IsItem() then
 			return -1
@@ -562,6 +583,16 @@ if IsServer() then
 	function CDOTA_BaseNPC:GetScepterLevel()
 		return (self:HasModifier("modifier_reborn") and self:HasScepter()) and self:GetRebornTimes() or 0
 	end
+
+	function CDOTA_BaseNPC:GetSource()
+		if self:IsSummoned() or self:IsClone() or self:IsIllusion() then
+			return IsValid(self:GetSummoner()) and self:GetSummoner() or self
+		end
+		return self
+	end
+	function CDOTA_BaseNPC:IsRoundCreep()
+		return self:HasModifier("modifier_round")
+	end
 end
 
 Hashtables = Hashtables or {}
@@ -649,4 +680,13 @@ function CalculateDirection(ent1, ent2)
 	local direction = pos1 - pos2
 	direction.z = 0
 	return direction:Normalized()
+end
+-- 间隔循环
+function ForInterval(flInterval, funcCallback)
+	GameRules:GetGameModeEntity():GameTimer(0, function ()
+		if funcCallback() == true then
+			return
+		end
+		return flInterval
+	end)
 end

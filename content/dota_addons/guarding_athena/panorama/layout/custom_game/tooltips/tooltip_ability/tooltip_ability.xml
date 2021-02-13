@@ -1,0 +1,14 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="file://{resources}/layout/custom_game/tooltips/tooltip_ability/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/sequence_actions.js"></include>
+		<include src="file://{resources}/scripts/custom_game/common.js"></include>
+
+		<include src="file://{resources}/layout/custom_game/tooltips/tooltip_ability/script.js"></include>
+	</scripts>
+	<Panel class="AbilityContents">
+	</Panel>
+</root>

@@ -1,0 +1,638 @@
+.Full {
+  width: 100%;
+  height: 100%;
+}
+.CloseButton {
+  width: 30px;
+  height: 30px;
+  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-size: 100%;
+  transition-property: wash-color;
+  transition-duration: 0.1s;
+}
+.CloseButton:active {
+  background-size: 100%;
+}
+.CommonButton {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
+  border: 1px solid black;
+  margin: 8px;
+  width: 192px;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #ffffff44;
+  border-right: 1px solid #4e5b60;
+  border-left: 1px solid #4e5b60;
+  border-bottom: 1px solid #00000088;
+  transition-property: background-color, wash-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+.CommonButton:hover {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8da), to(#596b75));
+}
+.CommonButton:active {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#272f33), to(#5a6c75));
+  border-top: 1px solid #00000088;
+  border-right: 1px solid #00000088;
+  border-left: 1px solid #00000088;
+  border-bottom: 1px solid #aaaaaa44;
+}
+.CommonButton Label {
+  color: white;
+  font-size: 24px;
+  align: center center;
+}
+.PopupRoot {
+  width: 100%;
+  height: 100%;
+  background-color: #060606F0;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+}
+.PopupPanel {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+  border: 1px solid #5e6869;
+  width: 800px;
+  min-height: 650px;
+  align: center center;
+  box-shadow: black -4px -4px 8px 8px;
+  animation-name: links-and-more-button-focus;
+  animation-duration: 0.6s;
+  animation-delay: 0s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+@keyframes 'links-and-more-button-focus' {
+  from {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8daee), to(#000000ee));
+  }
+  50% {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+  }
+  to {
+    background-color: gradient(linear, 0% 0%, 0% 100%, from(#272d2eee), to(#131617ee));
+  }
+}
+.PopupTitle {
+  font-size: 30px;
+  color: #afb4b4;
+  margin-top: 15px;
+  horizontal-align: center;
+}
+.CloseButton {
+  z-index: 100;
+  horizontal-align: right;
+  width: 46px;
+  height: 43px;
+}
+.ButtonCommon {
+  align: center bottom;
+  margin-bottom: 10px;
+  width: 119px;
+  height: 50px;
+}
+.ButtonCommon Label {
+  align: center center;
+  font-size: 18px;
+  color: white;
+  text-shadow: 0px 0px 5px 3 black;
+}
+.PopupButtonRow {
+  flow-children: right;
+  horizontal-align: center;
+  vertical-align: bottom;
+  margin-bottom: 25px;
+}
+.PopupButtonRow .DotaPlusPurchaseButton {
+  horizontal-align: center;
+  padding: 4px 0px 2px 0px;
+  margin: 8px;
+  width: 192px;
+  height: 40px;
+  background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+  background-size: 100% 100%;
+  border-top: 1px solid #ffffff22;
+  border-left: 1px solid #ffffff11;
+  border-right: 1px solid #00000044;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(dotaPlusGold), to(#141b21));
+}
+.PopupButtonRow .DotaPlusPurchaseButton:hover {
+  brightness: 2;
+}
+.PopupButtonRow .DotaPlusPurchaseButton:active {
+  brightness: 1.5;
+}
+.PopupButtonRow .DotaPlusPurchaseButton Label {
+  vertical-align: center;
+  margin-left: 2px;
+  margin-right: 4px;
+  color: dotaPlusLightGold;
+  font-size: 24px;
+  padding: 0px;
+  text-shadow: 0px 0px 4px 4 #000000;
+}
+.PopupButtonRow .DotaPlusPurchaseButton .ButtonCenter {
+  horizontal-align: center;
+  flow-children: right;
+}
+.PopupButtonRow .DotaPlusPurchaseButton .DotaPlusCurrencyIcon {
+  width: 24px;
+  height: 24px;
+  vertical-align: center;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  img-shadow: 0px 0px 3px 3 #000000;
+}
+.PopupButtonRow .DotaPlusPurchaseButton .DotaPlusPriceCurrencyIcon {
+  width: 24px;
+  height: 24px;
+  vertical-align: center;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  img-shadow: 0px 0px 3px 3 #000000;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
+}
+.PopupButton {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
+  border: 1px solid black;
+  margin: 8px;
+  min-width: 192px;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #ffffff44;
+  border-right: 1px solid #4e5b60;
+  border-left: 1px solid #4e5b60;
+  border-bottom: 1px solid #00000088;
+  transition-property: background-color, wash-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+.MoneyContainer {
+  width: 90%;
+  flow-children: right;
+  horizontal-align: center;
+  vertical-align: bottom;
+  margin-bottom: 100px;
+}
+.MoneyContainer .CostContainer {
+  vertical-align: center;
+  flow-children: right;
+}
+.MoneyContainer .CostContainer Label {
+  font-size: 30px;
+}
+.MoneyContainer .RechargeContainer {
+  vertical-align: center;
+  flow-children: right;
+  horizontal-align: center;
+}
+.MoneyContainer .RechargeContainer Label {
+  font-size: 30px;
+}
+.CommonMoneyContainer {
+  flow-children: right;
+  vertical-align: center;
+}
+.CommonMoneyContainer .ShardIcon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  transform: translateY(2px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  tooltip-position: top;
+  background-image: dotaPlusCurrencySmallIcon;
+}
+.CommonMoneyContainer .PriceIcon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  transform: translateY(2px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  tooltip-position: top;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
+}
+.CommonMoneyContainer Label {
+  width: 100px;
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align: bottom;
+  color: baseText;
+}
+.CommonBalance {
+  flow-children: right;
+}
+.CommonBalance .CurrentBalance {
+  vertical-align: center;
+}
+.CommonBalance .RechargeButton {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
+  border: 1px solid black;
+  margin: 8px;
+  width: 192px;
+  padding: 5px 10px 5px 10px;
+  border-top: 1px solid #ffffff44;
+  border-right: 1px solid #4e5b60;
+  border-left: 1px solid #4e5b60;
+  border-bottom: 1px solid #00000088;
+  transition-property: background-color, wash-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+.CommonBalance .RechargeButton:hover {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#a9c8da), to(#596b75));
+}
+.CommonBalance .RechargeButton:active {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#272f33), to(#5a6c75));
+  border-top: 1px solid #00000088;
+  border-right: 1px solid #00000088;
+  border-left: 1px solid #00000088;
+  border-bottom: 1px solid #aaaaaa44;
+}
+.CommonBalance .RechargeButton Label {
+  color: white;
+  font-size: 24px;
+  align: center center;
+}
+.CommonBalance .RechargeButton Label {
+  horizontal-align: center;
+}
+.DotaPlusPurchaseButton {
+  horizontal-align: center;
+  padding: 4px 0px 2px 0px;
+  margin: 0px 4px 0px 4px;
+  width: fill-parent-flow(1);
+  border-top: 1px solid #ffffff22;
+  border-left: 1px solid #ffffff11;
+  border-right: 1px solid #00000044;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+}
+.DotaPlusPurchaseButton:hover {
+  brightness: 2;
+}
+.DotaPlusPurchaseButton:active {
+  brightness: 1.5;
+}
+.DotaPlusPurchaseButton Label {
+  margin-left: 2px;
+  margin-right: 4px;
+  color: dotaPlusLightGold;
+  font-size: 18px;
+  padding: 0px;
+}
+.DotaPlusPurchaseButton .ButtonCenter {
+  horizontal-align: center;
+  flow-children: right;
+}
+.DotaPlusPurchaseButton .DotaPlusCurrencyIcon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(1px);
+  margin-bottom: 6px;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.DotaPlusPurchaseButton .DotaPlusPriceCurrencyIcon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(1px);
+  margin-bottom: 6px;
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("file://{images}/dotaplus_logo_small.png");
+}
+.PopupPanel {
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+  box-shadow: #00000055 -2px -2px 1px 4px;
+  border-top: 2px solid dotaPlusGold;
+  width: 500px;
+  min-height: 420px;
+  padding-bottom: 20px;
+  align: center center;
+  box-shadow: black -4px -4px 8px 8px;
+  animation-name: none;
+  transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+.AdjustPanel {
+  horizontal-align: center;
+  /* margin: 10px 0px; */
+}
+#PaymentTextEntry {
+  horizontal-align: right;
+  margin-right: 10px;
+  width: 150px;
+}
+#PaymentTextEntry > #PlaceholderText {
+  vertical-align: center;
+}
+#Pay {
+  width: 180px;
+  height: 40px;
+  horizontal-align: center;
+  margin-bottom: 15px;
+  background-size: 100% 100%;
+  /* background-repeat: no-repeat; */
+  /* border-radius: 5px; */
+  background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+  border-top: 1px solid #ffffff22;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(dotaPlusGold), to(#141b21));
+}
+#Pay:hover {
+  brightness: 2;
+}
+#Pay:active {
+  brightness: 1.5;
+}
+#Pay Label {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 24px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+}
+.PaymentTypeSelection {
+  background-color: #0009;
+  horizontal-align: center;
+  flow-children: down;
+  margin-top: 70px;
+  width: 90%;
+  min-height: 320px;
+}
+.PaymentTypeSelection .FirstStep {
+  width: 100%;
+  flow-children: down;
+}
+.PaymentTypeSelection .FirstStep .PayTypeList {
+  flow-children: right;
+  horizontal-align: center;
+  margin: 20px 0px;
+}
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentAlipay {
+  height: 42px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0px 10px;
+  width: 120px;
+  background-image: url("file://{images}/custom_game/alipay.png");
+}
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentAlipay:hover {
+  brightness: 1.5;
+}
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentAlipay:selected {
+  border: 1px solid #87CEEBff;
+  box-shadow: skyblue 0px 0px 4px 0px;
+}
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentWeChatPay {
+  height: 42px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0px 10px;
+  width: 120px;
+  background-image: url("file://{images}/custom_game/alipay.png");
+  width: 130px;
+  background-image: url("file://{images}/custom_game/wechatpay.png");
+}
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentWeChatPay:hover {
+  brightness: 1.5;
+}
+.PaymentTypeSelection .FirstStep .PayTypeList #PaymentWeChatPay:selected {
+  border: 1px solid #87CEEBff;
+  box-shadow: skyblue 0px 0px 4px 0px;
+}
+.PaymentTypeSelection .SecondStep {
+  width: 100%;
+  flow-children: down;
+  visibility: collapse;
+}
+.PaymentTypeSelection .SecondStep .QRCodeContainer {
+  width: 100%;
+}
+.PaymentTypeSelection .SecondStep .QRCodeContainer #QRCode {
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  border: 10px solid black;
+  horizontal-align: center;
+}
+#PaymentAddition {
+  flow-children: right;
+  padding: 10px 10px;
+}
+.PaymentAdditionButton {
+  flow-children: right;
+  horizontal-align: center;
+  padding: 4px 0px 2px 0px;
+  margin: 0px 4px 0px 4px;
+  width: fill-parent-flow(1);
+  height: 36px;
+  border-top: 1px solid #ffffff22;
+  border-left: 1px solid #ffffff11;
+  border-right: 1px solid #00000044;
+  border-bottom: 1px solid #00000088;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));
+}
+.PaymentAdditionButton:hover {
+  brightness: 2;
+}
+.PaymentAdditionButton:active {
+  brightness: 1.5;
+}
+.PaymentAdditionButton Label {
+  vertical-align: center;
+  margin-left: 2px;
+  margin-right: 4px;
+  color: dotaPlusLightGold;
+  font-size: 18px;
+  padding: 0px;
+}
+.PaymentAdditionButton Image {
+  vertical-align: center;
+  width: 19px;
+  height: 22px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  margin-left: 8px;
+}
+.ChatWheelItem.AlreadyOwned .PaymentAdditionButton {
+  visibility: collapse;
+}
+.PaymentAdditionButton .ButtonCenter {
+  horizontal-align: center;
+  flow-children: right;
+}
+.PaymentAdditionButton .DotaPlusCurrencyIcon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(1px);
+  background-image: dotaPlusCurrencySmallIcon;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#ChargeAmountShow {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  horizontal-align: center;
+  flow-children: right;
+}
+#ChargeAmountShow Label {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 24px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+}
+#ChargeAmountShow Image {
+  vertical-align: center;
+  width: 19px;
+  height: 22px;
+  margin-left: 6px;
+}
+#Notice {
+  margin-bottom: 15px;
+  horizontal-align: center;
+  flow-children: right;
+}
+#Notice Label {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 20px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+}
+#RealPrice {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 42px;
+  text-align: center;
+  color: #f70f0f;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+  visibility: collapse;
+}
+#OrderID {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 24px;
+  text-align: center;
+  color: #c1c5c6;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+  visibility: collapse;
+}
+#PaymentIcon {
+  horizontal-align: center;
+  height: 42px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px 10px 5px 10px;
+  visibility: collapse;
+}
+.Alipay {
+  width: 120px;
+  background-image: url("file://{images}/custom_game/alipay.png");
+}
+.WeChatPay {
+  width: 130px;
+  background-image: url("file://{images}/custom_game/wechatpay.png");
+}
+#PaymentNotice {
+  font-size: 20px;
+  text-align: center;
+  color: #f70f0f;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+  horizontal-align: center;
+  visibility: collapse;
+}
+#ShowBrowser {
+  font-size: 18px;
+  text-align: center;
+  /* color: #f70f0f; */
+  text-overflow: shrink;
+  text-shadow: 1px 1px 2px 3 #000000;
+  horizontal-align: center;
+  text-decoration: underline;
+  margin-bottom: 5px;
+  visibility: collapse;
+}
+#ShowBrowser:hover {
+  color: white;
+}
+.ShowQrcode #PaymentQrcode,
+.ShowQrcode #RealPrice,
+.ShowQrcode #OrderID,
+.ShowQrcode #PaymentIcon,
+.ShowQrcode #PaymentNotice,
+.ShowQrcode .SecondStep,
+.ShowQrcode #ShowBrowser {
+  visibility: visible;
+}
+.ShowQrcode #PaymentTypeBody,
+.ShowQrcode #PaymentAddition,
+.ShowQrcode .AdjustPanel,
+.ShowQrcode .FirstStep,
+.ShowQrcode #Pay {
+  visibility: collapse;
+}
+.Complete .PaymentResultPanel,
+.Faild .PaymentResultPanel {
+  horizontal-align: center;
+  vertical-align: center;
+  width: 240px;
+  height: 240px;
+  background-color: #444242f9;
+  background-blur: gaussian(2.5);
+}
+.PaymentResult {
+  horizontal-align: center;
+  vertical-align: center;
+  font-size: 42px;
+  text-align: center;
+  text-overflow: shrink;
+  text-shadow: 2px 2px 3px 3 #000000;
+  visibility: collapse;
+}
+.Complete #PaymentCompleteLabel {
+  color: #40ff2f;
+  visibility: visible;
+}
+.Faild #PaymentFaildLabel {
+  color: #f70f0f;
+  visibility: visible;
+}

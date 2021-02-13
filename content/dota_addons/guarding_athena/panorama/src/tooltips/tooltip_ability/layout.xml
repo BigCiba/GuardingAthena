@@ -1,0 +1,14 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="./styles.less" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/sequence_actions.js" />
+		<include src="file://{resources}/scripts/custom_game/common.js" />
+
+		<include src="./script.jsx" />
+	</scripts>
+	<Panel class="AbilityContents" >
+	</Panel>
+</root>

@@ -1,0 +1,152 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hudstyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
+		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
+		<include src="file://{resources}/layout/custom_game/tooltips/unit_stats/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c"></include>
+		<include src="file://{resources}/scripts/custom_game/common.js"></include>
+		<include src="file://{resources}/layout/custom_game/tooltips/unit_stats/script.js"></include>
+	</scripts>
+	<Panel class="unitStatsRoot">
+		<Panel id="AttackDefenseContainer">
+			<Panel id="AttackContainer" class="TopBottomFlow">
+				<Label id="AttackHeader" class="ContainerHeader" text="#DOTA_HUD_Attack"></Label>
+				<Panel id="AttackSpeedRow" class="StatRow">
+					<Label id="AttackSpeedLabel" text="#DOTA_HUD_AttackSpeed" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="AttackSpeed" text="{d:attack_speed}" class="BaseValue"></Label>
+						<Label id="AttacksPerSecond" text=" ({s:seconds_per_attack})" class="BaseValue AdditionalValue"></Label>
+					</Panel>
+				</Panel>
+				<Panel id="DamageRow" class="StatRow">
+					<Label id="DamageLabel" text="#DOTA_HUD_Damage" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="Damage" text="{d:base_damage_min} - {d:base_damage_max}" class="BaseValue"></Label>
+						<Label id="DamageBonus" text="{s:bonus_damage}" class="BonusValue"></Label>
+					</Panel>
+				</Panel>
+				<Panel id="AttackRangeRow" class="StatRow">
+					<Label id="RangeLabel" text="#DOTA_HUD_AttackRange" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="Range" text="{d:base_attack_range}" class="BaseValue"></Label>
+						<Label id="RangeBonus" text="{s:bonus_attack_range}" class="BonusValue"></Label>
+					</Panel>
+				</Panel>
+				<Panel id="SpellAmpRow" class="StatRow">
+					<Label id="SpellAmpLabel" text="#DOTA_HUD_SpellAmp" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="SpellAmp" text="{s:base_spell_amplify}%" class="BaseValue"></Label>
+						<!-- <Label id="SpellAmpBonus" text="{s:bonus_spell_amplify}%" class="BonusValue"/> -->
+					</Panel>
+				</Panel>
+				<!-- <Panel id="CooldownReductionRow" class="StatRow">
+					<Label id="CooldownReductionLabel" text="#DOTA_HUD_CooldownReduction" class="StatName"/>
+					<Panel class="LeftRightFlow">
+						<Label id="CooldownReduction" text="{s:cooldown_reduction}%" class="BaseValue"/>
+					</Panel>
+				</Panel> -->
+				<Panel id="ManaRegenRow" class="StatRow">
+					<Label id="ManaRegenLabel" text="#DOTA_HUD_ManaRegenDetail" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="ManaRegen" text="{s:base_mana_regen}" class="BaseValue"></Label>
+						<Label id="ManaRegenBonus" text="{s:bonus_mana_regen}" class="BonusValue"></Label>
+					</Panel>
+				</Panel>
+				<Panel id="MoveSpeedRow" class="StatRow">
+					<Label id="MoveSpeedLabel" text="#DOTA_HUD_MoveSpeed" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="MoveSpeed" text="{s:base_move_speed}" class="BaseValue"></Label>
+						<Label id="MoveSpeedBonus" text="{s:bonus_move_speed}" class="BonusValue"></Label>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="DefenseContainer" class="TopBottomFlow">
+				<Label id="DefenseHeader" class="ContainerHeader" text="#DOTA_HUD_Defense"></Label>
+				<!-- <Panel id="PhysicalArmorRow" class="StatRow">
+					<Label id="PhysicalArmorLabel" text="#DOTA_HUD_PhysicalArmor_Custom" class="StatName"/>
+					<Panel class="LeftRightFlow">
+						<Label id="PhysicalArmor" text="{s:base_physical_armor}" class="BaseValue"/>
+						<Label id="PhysicalArmorBonus" text="{s:bonus_physical_armor}" class="BonusValue"/>
+						<Label id="PhysicalResist" text=" ({s:physical_resistance}%)" class="BaseValue AdditionalValue" />
+					</Panel>
+				</Panel>
+				<Panel id="MagicalArmorRow" class="StatRow">
+					<Label id="MagicalArmorLabel" text="#DOTA_HUD_MagicalArmor_Custom" class="StatName"/>
+					<Panel class="LeftRightFlow">
+						<Label id="MagicalArmor" text="{s:base_magical_armor}" class="BaseValue"/>
+						<Label id="MagicalArmorBonus" text="{s:bonus_magical_armor}" class="BonusValue"/>
+						<Label id="MagicalResist" text=" ({s:magical_resistance}%)" class="BaseValue AdditionalValue" />
+					</Panel>
+				</Panel> -->
+				<!-- <Panel id="AcquisitionRangeRow" class="StatRow">
+					<Label id="RangeLabel" text="#DOTA_HUD_AcquisitionRange" class="StatName"/>
+					<Panel class="LeftRightFlow">
+						<Label id="Range" text="{d:base_acquisition_range}" class="BaseValue"/>
+						<Label id="RangeBonus" text="{s:bonus_acquisition_range}" class="BonusValue"/>
+					</Panel>
+				</Panel> -->
+				<Panel id="StatusResistRow" class="StatRow">
+					<Label id="StatusResistLabel" text="#DOTA_HUD_StatusResist" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="StatusResist=" text="{s:status_resistance}%" class="BaseValue"></Label>
+					</Panel>
+				</Panel>
+				<Panel id="EvasionRow" class="StatRow">
+					<Label id="EvasionLabel" text="#DOTA_HUD_Evasion" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="Evasion" text="{s:evasion}%" class="BaseValue"></Label>
+					</Panel>
+				</Panel>
+				<Panel id="HealthRegenRow" class="StatRow">
+					<Label id="HealthRegenLabel" text="#DOTA_HUD_HealthRegenDetail" class="StatName"></Label>
+					<Panel class="LeftRightFlow">
+						<Label id="HealthRegen" text="{s:base_health_regen}" class="BaseValue"></Label>
+						<Label id="HealthRegenBonus" text="{s:bonus_health_regen}" class="BonusValue"></Label>
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+		<Panel id="AttributesContainer" class="TopBottomFlow">
+			<Panel id="StrengthContainer" class="LeftRightFlow AttributeRow">
+				<Panel id="StrengthIcon" class="AttributeIcon"></Panel>
+				<Panel class="AttributeDetails TopBottomFlow">
+					<Panel id="AttributeValues" class="LeftRightFlow">
+						<Label id="BaseStrengthLabel" class="BaseAttributeValue" text="{d:base_strength}"></Label>
+						<Label id="BonusStrengthLabel" class="BonusAttributeValue" text="{s:bonus_strength}"></Label>
+						<Label id="StrengthGainLabel" class="AttributeGain" text="#DOTA_HUD_StrengthGain"></Label>
+					</Panel>
+					<Label id="StrengthDamageLabel" class="PrimaryAttributeBonus" text="#DOTA_HUD_PrimaryAttributeStrength"></Label>
+					<Label id="StrengthDetails" class="StatBreakdownLabel" text="#DOTA_HUD_StrengthDetails"></Label>
+				</Panel>
+			</Panel>
+			<Panel id="AgilityContainer" class="LeftRightFlow AttributeRow">
+				<Panel id="AgilityIcon" class="AttributeIcon"></Panel>
+				<Panel class="AttributeDetails TopBottomFlow">
+					<Panel id="AttributeValues" class="LeftRightFlow">
+						<Label id="BaseAgilityLabel" class="BaseAttributeValue" text="{d:base_agility}"></Label>
+						<Label id="BonusAgilityabel" class="BonusAttributeValue" text="{s:bonus_agility}"></Label>
+						<Label id="AgilityGainLabel" class="AttributeGain" text="#DOTA_HUD_AgilityGain"></Label>
+					</Panel>
+					<Label id="AgilityDamageLabel" class="PrimaryAttributeBonus" text="#DOTA_HUD_PrimaryAttributeAgility"></Label>
+					<Label id="AgilityDetails" class="StatBreakdownLabel" text="#DOTA_HUD_AgilityDetails"></Label>
+				</Panel>
+			</Panel>
+			<Panel id="IntellectContainer" class="LeftRightFlow AttributeRow">
+				<Panel id="IntellectIcon" class="AttributeIcon"></Panel>
+				<Panel class="AttributeDetails TopBottomFlow">
+					<Panel id="AttributeValues" class="LeftRightFlow">
+						<Label id="BaseIntellectLabel" class="BaseAttributeValue" text="{d:base_intellect}"></Label>
+						<Label id="BonusIntellectLabel" class="BonusAttributeValue" text="{s:bonus_intellect}"></Label>
+						<Label id="IntellectGainLabel" class="AttributeGain" text="#DOTA_HUD_IntelligenceGain"></Label>
+					</Panel>
+					<Label id="IntellectDamageLabel" class="PrimaryAttributeBonus" text="#DOTA_HUD_PrimaryAttributeIntelligence"></Label>
+					<Label id="IntellectDetails" class="StatBreakdownLabel" text="#DOTA_HUD_IntelligenceDetails"></Label>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

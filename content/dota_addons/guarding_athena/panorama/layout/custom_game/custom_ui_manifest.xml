@@ -62,5 +62,8 @@
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/overhead.xml" />
+		<!-- 商店 -->
+		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/store/store.xml" />
+		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/inventory/inventory.xml" />
 	</Panel>
 </root>

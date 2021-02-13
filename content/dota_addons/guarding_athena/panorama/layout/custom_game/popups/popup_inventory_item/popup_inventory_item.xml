@@ -1,0 +1,17 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hudstyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
+		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
+		<include src="s2r://panorama/styles/store_item.vcss_c"></include>
+		<include src="s2r://panorama/styles/hero_stat_icons.vcss_c"></include>
+
+		<include src="file://{resources}/layout/custom_game/popups/popup_inventory_item/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/layout/custom_game/popups/popup_inventory_item/script.js"></include>
+	</scripts>
+	<Panel class="PopupRoot" oncancel="UIPopupButtonClicked()" popupbackground="dim">
+	</Panel>
+</root>

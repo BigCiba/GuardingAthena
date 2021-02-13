@@ -125,7 +125,7 @@ function modifier_omniknight_2_aura:OnDestroy()
 end
 function modifier_omniknight_2_aura:Roll()
 	if RollPercentage(self.chance) then
-		local iParticleID = ParticleManager:CreateParticle("particles/heroes/mechanic/heal_refresh.vpcf", PATTACH_ABSORIGIN, self:GetParent() )
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_omniknight/omniknight_2_refresh.vpcf", PATTACH_ABSORIGIN, self:GetParent() )
 		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin() + Vector(0,0,100) )
 		self:GetParent():EmitSound("Hero_Tinker.RearmStart")
 		return true

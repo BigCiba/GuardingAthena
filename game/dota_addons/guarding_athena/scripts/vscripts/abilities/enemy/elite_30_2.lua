@@ -1,5 +1,5 @@
-LinkLuaModifier( "modifier_elite_30_2", "abilities/enemy/elite_30_2.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_elite_30_2_debuff", "abilities/enemy/elite_30_2.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elite_30_2", "abilities/enemy/elite_30_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_elite_30_2_debuff", "abilities/enemy/elite_30_2.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if elite_30_2 == nil then
 	elite_30_2 = class({})
@@ -29,7 +29,7 @@ end
 function modifier_elite_30_2:OnAttackLanded(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
 	if params.attacker == self:GetParent() and not params.attacker:PassivesDisabled() then
-		params.target:AddNewModifier(params.attacker, self:GetAbility(), "modifier_elite_30_2_debuff", {duration = self:GetAbilityDuration()})
+		params.target:AddNewModifier(params.attacker, self:GetAbility(), "modifier_elite_30_2_debuff", { duration = self:GetAbilityDuration() })
 	end
 end
 ---------------------------------------------------------------------
@@ -45,7 +45,7 @@ end
 function modifier_elite_30_2_debuff:OnRefresh(params)
 	if IsServer() then
 		self:IncrementStackCount()
-		self:GetParent():CalculateStatBonus(false)
+		self:GetParent():CalculateStatBonus(true)
 	end
 end
 function modifier_elite_30_2_debuff:DeclareFunctions()

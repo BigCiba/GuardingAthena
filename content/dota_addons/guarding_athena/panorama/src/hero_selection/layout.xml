@@ -1,0 +1,30 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
+		<include src="s2r://panorama/styles/custom_ui.vcss_c" />
+
+		<include src="./styles.less" />
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
+		<include src="file://{resources}/scripts/custom_game/common.js" />
+
+		<include src="./script.jsx" />
+	</scripts>
+	<snippets>
+		<snippet name="AvatarImage">
+			<Panel >
+				<DOTAAvatarImage class="AvatarAndHero" hittest="false"/>
+			</Panel>
+		</snippet>
+		<snippet name="HeroImage">
+			<Panel >
+				<DOTAHeroImage class="AvatarAndHero"/>
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="HeroSelectionRoot" hittest="false">
+	</Panel>
+</root>

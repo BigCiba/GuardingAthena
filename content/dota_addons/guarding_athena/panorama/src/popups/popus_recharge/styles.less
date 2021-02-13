@@ -1,0 +1,338 @@
+@import "../styles.less";
+@import "../../elements/Common/styles.less";
+
+.PopupPanel
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+	box-shadow: #00000055 -2px -2px 1px 4px;
+	border-top: 2px solid dotaPlusGold;
+
+	width: 500px;
+	min-height: 420px;
+	padding-bottom: 20px;
+
+	// background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
+	// background-size: 100%;
+
+	align: center center;
+	// padding: 90px 85px 90px 65px;
+	// opacity: 1.0;
+	box-shadow: black -4px -4px 8px 8px;
+	//#FFFFFF66 -4px -4px 8px 8px
+	animation-name: none;
+
+	transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	transition-delay: 0.0s;
+
+	// flow-children: down;
+}
+.AdjustPanel {
+	horizontal-align: center;
+	/* margin: 10px 0px; */
+}
+#PaymentTextEntry {
+	horizontal-align: right;
+	margin-right: 10px;
+	width: 150px;
+}
+#PaymentTextEntry > #PlaceholderText {
+	vertical-align: center;
+}
+#Pay{
+	width: 180px;
+	height: 40px;
+	horizontal-align: center;
+	margin-bottom: 15px;
+	background-size: 100% 100%;
+	/* background-repeat: no-repeat; */
+	/* border-radius: 5px; */
+	background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+	border-top: 1px solid #ffffff22;
+	border-bottom: 1px solid #00000088;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( dotaPlusGold ), to( #141b21 ) );
+}
+#Pay:hover{
+	brightness: 2.0;
+}
+#Pay:active{
+	brightness: 1.5;
+}
+#Pay Label{
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 24px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+}
+.PaymentTypeSelection {
+	background-color: #0009;
+	horizontal-align: center;
+	flow-children: down;
+	margin-top: 70px;
+	width: 90%;
+	min-height: 320px;
+	.FirstStep {
+		width: 100%;
+		flow-children: down;
+		.PayTypeList {
+			flow-children: right;
+			horizontal-align: center;
+			margin: 20px 0px;
+			#PaymentAlipay {
+				height: 42px;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				background-color: white;
+				border-radius: 5px;
+				margin: 0px 10px;
+				width: 120px;
+				background-image: url("file://{images}/custom_game/alipay.png");
+				&:hover {
+					brightness: 1.5;
+				}
+				&:selected {
+					border: 1px solid #87CEEBff;
+					box-shadow: skyblue 0px 0px 4px 0px;
+				}
+			}
+			#PaymentWeChatPay {
+				#PaymentAlipay;
+				width: 130px;
+				background-image: url("file://{images}/custom_game/wechatpay.png");
+			}
+		}
+	}
+	.SecondStep {
+		width: 100%;
+		flow-children: down;
+		visibility: collapse;
+		.QRCodeContainer {
+			width: 100%;
+			#QRCode {
+				margin: 10px;
+				background-color: white;
+				padding: 10px;
+				border: 10px solid black;
+				horizontal-align: center;
+			}
+		}
+	}
+}
+#PaymentAddition {
+	flow-children: right;
+	padding: 10px 10px;
+}
+.PaymentAdditionButton
+{
+	flow-children: right;
+	horizontal-align: center;
+	padding: 4px 0px 2px 0px;
+	margin: 0px 4px 0px 4px;
+	width: fill-parent-flow( 1.0 );
+	height: 36px;
+
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+}
+
+.PaymentAdditionButton:hover
+{
+	brightness: 2.0;
+}
+
+.PaymentAdditionButton:active
+{
+	brightness: 1.5;
+}
+
+.PaymentAdditionButton Label
+{
+	vertical-align: center;
+	margin-left: 2px;
+	margin-right: 4px;
+	color: dotaPlusLightGold;
+	font-size: 18px;
+	padding: 0px;
+}
+.PaymentAdditionButton Image
+{
+	vertical-align: center;
+	width: 19px;
+	height: 22px;
+	margin-bottom: 2px;
+	margin-right: 5px;
+	margin-left: 8px;
+}
+
+.ChatWheelItem.AlreadyOwned .PaymentAdditionButton
+{
+	visibility: collapse;
+}
+
+.PaymentAdditionButton .ButtonCenter
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.PaymentAdditionButton .DotaPlusCurrencyIcon
+{
+	width: 20px;
+	height: 20px;
+	transform: translateY( 1px );
+
+	background-image: dotaPlusCurrencySmallIcon;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#ChargeAmountShow {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	horizontal-align: center;
+	flow-children: right;
+}
+#ChargeAmountShow Label{
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 24px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+}
+#ChargeAmountShow Image {
+	vertical-align: center;
+	width: 19px;
+	height: 22px;
+	margin-left: 6px;
+}
+#Notice {
+	margin-bottom: 15px;
+	horizontal-align: center;
+	flow-children: right;
+}
+#Notice Label{
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 20px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+}
+#RealPrice {
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 42px;
+	text-align: center;
+	color: #f70f0f;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	visibility: collapse;
+}
+#OrderID {
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 24px;
+	text-align: center;
+	color: #c1c5c6;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	visibility: collapse;
+}
+#PaymentIcon {
+	horizontal-align: center;
+	height: 42px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: white;
+	border-radius: 5px;
+	margin: 10px 10px 5px 10px;
+	visibility: collapse;
+}
+.Alipay {
+	width: 120px;
+	background-image: url("file://{images}/custom_game/alipay.png");
+}
+.WeChatPay {
+	width: 130px;
+	background-image: url("file://{images}/custom_game/wechatpay.png");
+}
+#PaymentNotice {
+	font-size: 20px;
+	text-align: center;
+	color: #f70f0f;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	horizontal-align: center;
+	visibility: collapse;
+}
+#ShowBrowser {
+	font-size: 18px;
+	text-align: center;
+	/* color: #f70f0f; */
+	text-overflow: shrink;
+	text-shadow: 1px 1px 2px 3 #000000;
+	horizontal-align: center;
+	text-decoration: underline;
+	margin-bottom: 5px;
+
+	visibility: collapse;
+}
+#ShowBrowser:hover {
+	color: white;
+}
+.ShowQrcode #PaymentQrcode,
+.ShowQrcode #RealPrice,
+.ShowQrcode #OrderID,
+.ShowQrcode #PaymentIcon,
+.ShowQrcode #PaymentNotice,
+.ShowQrcode .SecondStep,
+.ShowQrcode #ShowBrowser
+{
+	visibility: visible;
+}
+.ShowQrcode #PaymentTypeBody,
+.ShowQrcode #PaymentAddition,
+.ShowQrcode .AdjustPanel,
+.ShowQrcode .FirstStep,
+.ShowQrcode #Pay
+{
+	visibility: collapse;
+}
+.Complete .PaymentResultPanel,
+.Faild .PaymentResultPanel 
+{
+	horizontal-align: center;
+	vertical-align: center;
+	width: 240px;
+	height: 240px;
+	background-color: #444242f9;
+	background-blur: gaussian( 2.5 );
+}
+.PaymentResult {
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 42px;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 2px 2px 3px 3 #000000;
+	visibility: collapse;
+}
+.Complete #PaymentCompleteLabel{
+	color: #40ff2f;
+	visibility: visible;
+}
+.Faild #PaymentFaildLabel{
+	color: #f70f0f;
+	visibility: visible;
+}

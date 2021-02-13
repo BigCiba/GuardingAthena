@@ -141,7 +141,7 @@ function SetIgnoreMagicResistanceValue(unit, value, key)
 	if unit.ignoreMagicResistanceValues == nil then
 		unit.ignoreMagicResistanceValues = {}
 	end
-	
+
 	key = key or DoUniqueString("IgnoreMagicResistanceValue")
 	unit.ignoreMagicResistanceValues[key] = value
 
@@ -176,10 +176,10 @@ function SetOutgoingDamagePercent(unit, damage_type, percent, key)
 		if IsValid(hModifier) then
 			if Round(hModifier:GetDuration(), 0.00001) ~= fNewValue then
 				hModifier:Destroy()
-				hModifier = unit:AddNewModifier(unit, nil, "modifier_physical_damage_percent", {duration = fNewValue})
+				hModifier = unit:AddNewModifier(unit, nil, "modifier_physical_damage_percent", { duration = fNewValue })
 			end
 		else
-			hModifier = unit:AddNewModifier(unit, nil, "modifier_physical_damage_percent", {duration = fNewValue})
+			hModifier = unit:AddNewModifier(unit, nil, "modifier_physical_damage_percent", { duration = fNewValue })
 		end
 
 		local fNewValue = Round(GetOutgoingDamagePercent(unit, DAMAGE_TYPE_MAGICAL) - 100, 0.00001)
@@ -187,10 +187,10 @@ function SetOutgoingDamagePercent(unit, damage_type, percent, key)
 		if IsValid(hModifier) then
 			if Round(hModifier:GetDuration(), 0.00001) ~= fNewValue then
 				hModifier:Destroy()
-				hModifier = unit:AddNewModifier(unit, nil, "modifier_magical_damage_percent", {duration = fNewValue})
+				hModifier = unit:AddNewModifier(unit, nil, "modifier_magical_damage_percent", { duration = fNewValue })
 			end
 		else
-			hModifier = unit:AddNewModifier(unit, nil, "modifier_magical_damage_percent", {duration = fNewValue})
+			hModifier = unit:AddNewModifier(unit, nil, "modifier_magical_damage_percent", { duration = fNewValue })
 		end
 
 		local fNewValue = Round(GetOutgoingDamagePercent(unit, DAMAGE_TYPE_PURE) - 100, 0.00001)
@@ -198,10 +198,10 @@ function SetOutgoingDamagePercent(unit, damage_type, percent, key)
 		if IsValid(hModifier) then
 			if Round(hModifier:GetDuration(), 0.00001) ~= fNewValue then
 				hModifier:Destroy()
-				hModifier = unit:AddNewModifier(unit, nil, "modifier_pure_damage_percent", {duration = fNewValue})
+				hModifier = unit:AddNewModifier(unit, nil, "modifier_pure_damage_percent", { duration = fNewValue })
 			end
 		else
-			hModifier = unit:AddNewModifier(unit, nil, "modifier_pure_damage_percent", {duration = fNewValue})
+			hModifier = unit:AddNewModifier(unit, nil, "modifier_pure_damage_percent", { duration = fNewValue })
 		end
 	end
 
@@ -266,13 +266,13 @@ function SetStatusResistance(hUnit, fValue, key)
 		if IsValid(hModifier) then
 			if Round(hModifier:GetDuration(), 0.00001) ~= math.abs(fNewValue) or hModifier:GetStackCount() ~= iSign then
 				hModifier:Destroy()
-				hModifier = hUnit:AddNewModifier(hUnit, nil, "modifier_status_resistance", {duration = math.abs(fNewValue)})
+				hModifier = hUnit:AddNewModifier(hUnit, nil, "modifier_status_resistance", { duration = math.abs(fNewValue) })
 				if IsValid(hModifier) then
 					hModifier:SetStackCount(iSign)
 				end
 			end
 		else
-			hModifier = hUnit:AddNewModifier(hUnit, nil, "modifier_status_resistance", {duration = math.abs(fNewValue)})
+			hModifier = hUnit:AddNewModifier(hUnit, nil, "modifier_status_resistance", { duration = math.abs(fNewValue) })
 			if IsValid(hModifier) then
 				hModifier:SetStackCount(iSign)
 			end
@@ -418,9 +418,9 @@ if IsClient() then
 		return tHero.StatusResistanceCaster or 0
 	end
 	function C_DOTA_BaseNPC:GetStatusResistanceFactor(hCaster)
-		local fValue = 1-self:GetStatusResistance()
+		local fValue = 1 - self:GetStatusResistance()
 		if IsValid(hCaster) then
-			fValue = fValue * (1-hCaster:GetStatusResistanceCaster())
+			fValue = fValue * (1 - hCaster:GetStatusResistanceCaster())
 		end
 		return fValue
 	end
@@ -606,6 +606,21 @@ if IsServer() then
 		hCaster:Heal(flAmount, self)
 		SendOverheadEventMessage(hCaster:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, hCaster, flAmount, hCaster:GetPlayerOwner())
 	end
+	-- 治疗单位并默认显示数字，满血不接受治疗
+	if CDOTA_BaseNPC._Heal == nil then
+		CDOTA_BaseNPC._Heal = CDOTA_BaseNPC.Heal
+	end
+	function CDOTA_BaseNPC:Heal(flAmount, hInflictor, bShowOverhead)
+		local flHealthDeficit = self:GetHealthDeficit()
+		flAmount = math.min(flHealthDeficit, flAmount)
+		if flAmount > 0 then
+			self:_Heal(flAmount, hInflictor)
+			if bShowOverhead == nil then bShowOverhead = true end
+			if bShowOverhead then
+				SendOverheadEventMessage(self:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, self, flAmount, self:GetPlayerOwner())
+			end
+		end
+	end
 	function CDOTA_BaseNPC:GetAbilityNameSpecialValueFor(sAbilityName, sKey)
 		local hAbility = self:FindAbilityByName(sAbilityName)
 		if IsValid(hAbility) then
@@ -643,9 +658,8 @@ if IsServer() then
 	-- 修正的技能
 	function CDOTA_BaseNPC:FixAbilities(source)
 		-- if not self:IsIllusion() then return end
-
 		-- 删除技能
-		for index = self:GetAbilityCount()-1, 0, -1 do
+		for index = self:GetAbilityCount() - 1, 0, -1 do
 			local hAbility = self:GetAbilityByIndex(index)
 			if hAbility then
 				self:RemoveAbility(hAbility:GetAbilityName())
@@ -654,7 +668,7 @@ if IsServer() then
 
 		self:SetAbilityPoints(0)
 
-		for index = 0, self:GetAbilityCount()-1, 1 do
+		for index = 0, self:GetAbilityCount() - 1, 1 do
 			local hAbility = source:GetAbilityByIndex(index)
 
 			if hAbility then
@@ -694,7 +708,7 @@ if IsServer() then
 	ATTACK_STATE_SKIPCOUNTING = 1024 -- 不减少各种攻击计数
 	ATTACK_STATE_CRIT = 2048 -- 暴击，暴击技能里添加，Attack里加入无效
 	function CDOTA_BaseNPC:Attack(hTarget, iAttackState, ExtarData)
-		local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(ATTACK_SYSTEM_DUMMY, nil, "modifier_attack_system", {iAttacker=self:entindex(), iAttackState=iAttackState})
+		local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(ATTACK_SYSTEM_DUMMY, nil, "modifier_attack_system", { iAttacker = self:entindex(), iAttackState = iAttackState })
 
 		local bUseCastAttackOrb = (bit.band(iAttackState, ATTACK_STATE_NOT_USECASTATTACKORB) ~= ATTACK_STATE_NOT_USECASTATTACKORB)
 		local bProcessProcs = (bit.band(iAttackState, ATTACK_STATE_NOT_PROCESSPROCS) ~= ATTACK_STATE_NOT_PROCESSPROCS)
@@ -736,7 +750,7 @@ if IsServer() then
 	function CDOTA_BaseNPC:AttackFilter(iRecord, ...)
 		local bool = false
 		if self.ATTACK_SYSTEM == nil then self.ATTACK_SYSTEM = {} end
-		for i, iAttackState in pairs({...}) do
+		for i, iAttackState in pairs({ ... }) do
 			bool = bool or (bit.band(self.ATTACK_SYSTEM[iRecord] or 0, iAttackState) == iAttackState)
 		end
 		return bool
@@ -749,7 +763,7 @@ if IsServer() then
 				self.ATTACK_SYSTEM[iRecord] = self.ATTACK_SYSTEM[iRecord] + ATTACK_STATE_CRIT
 			end
 		else
-			local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(self, nil, "modifier_attack_system", {iAttacker=self:entindex(), iAttackState=ATTACK_STATE_CRIT, iRecord=iRecord})
+			local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(self, nil, "modifier_attack_system", { iAttacker = self:entindex(), iAttackState = ATTACK_STATE_CRIT, iRecord = iRecord })
 			self.ATTACK_SYSTEM[iRecord] = ATTACK_STATE_CRIT
 		end
 	end
@@ -763,16 +777,16 @@ if IsServer() then
 
 		for sModifierName, _fValue in pairs(tModifiers) do
 			local iCount = #(self:FindAllModifiersByName(sModifierName))
-			fValue = 1- ((1-fValue) * math.pow(1+_fValue, iCount))
+			fValue = 1 - ((1 - fValue) * math.pow(1 + _fValue, iCount))
 		end
 
 		return fValue
 	end
 
 	function CDOTA_BaseNPC:GetStatusResistanceFactor(hCaster)
-		local fValue = 1-self:GetStatusResistance()
+		local fValue = 1 - self:GetStatusResistance()
 		if IsValid(hCaster) then
-			fValue = fValue * (1-hCaster:GetStatusResistanceCaster())
+			fValue = fValue * (1 - hCaster:GetStatusResistanceCaster())
 		end
 		return fValue
 	end
@@ -883,13 +897,16 @@ if IsServer() then
 	-- 造成伤害
 	function CDOTA_BaseNPC:DealDamage(tTargets, hAbility, flDamage, iDamageType, iDamageFlags)
 		if tTargets.IsHero ~= nil then
-			tTargets = {tTargets}
+			tTargets = { tTargets }
 		end
 		if hAbility ~= nil and iDamageType == nil then
 			iDamageType = hAbility:GetAbilityDamageType()
 		end
 		if iDamageFlags == nil then
 			iDamageFlags = DOTA_DAMAGE_FLAG_NONE
+		end
+		if flDamage == nil then
+			flDamage = hAbility:GetSpecialValueFor("base_damage") + hAbility:GetSpecialValueFor("damage") * self:GetPrimaryStatValue()
 		end
 		for i, hUnit in ipairs(tTargets) do
 			local tDamageInfo = {
@@ -905,6 +922,7 @@ if IsServer() then
 	end
 
 	-- 击退
+	---@param bBlock 是否被障碍物阻挡
 	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun, bBlock)
 		-- 官方
 		-- local kv =		{
@@ -936,13 +954,13 @@ if IsServer() then
 		local pProcOnN = 0
 		local pProcByN = 0
 		local sumNpProcOnN = 0
-		local maxFails = math.ceil(1/c)
+		local maxFails = math.ceil(1 / c)
 		for N = 1, maxFails, 1 do
-			pProcOnN = math.min(1, N*c)*(1-pProcByN)
+			pProcOnN = math.min(1, N * c) * (1 - pProcByN)
 			pProcByN = pProcByN + pProcOnN
 			sumNpProcOnN = sumNpProcOnN + N * pProcOnN
 		end
-		return 1/sumNpProcOnN
+		return 1 / sumNpProcOnN
 	end
 	function CfromP(p)
 		local Cupper = p
@@ -951,7 +969,7 @@ if IsServer() then
 		local p1
 		local p2 = 1
 		while true do
-			Cmid = (Cupper+Clower)/2
+			Cmid = (Cupper + Clower) / 2
 			p1 = PfromC(Cmid)
 			if math.abs(p1 - p2) <= 0 then break end
 			if p1 > p then
@@ -966,7 +984,7 @@ if IsServer() then
 
 	PSEUDO_RANDOM_C = {}
 	for i = 0, 100 do
-		local C = CfromP(i*0.01)
+		local C = CfromP(i * 0.01)
 		PSEUDO_RANDOM_C[i] = C
 	end
 	function PRD_C(chance)
@@ -978,7 +996,7 @@ if IsServer() then
 
 		local N = table.PSEUDO_RANDOM_RECORDING_LIST[pseudo_random_recording] or 1
 		local C = PRD_C(chance)
-		if RandomFloat(0, 1) <= C*N then
+		if RandomFloat(0, 1) <= C * N then
 			table.PSEUDO_RANDOM_RECORDING_LIST[pseudo_random_recording] = 1
 			return true
 		end
@@ -986,7 +1004,7 @@ if IsServer() then
 		return false
 	end
 
-	function CDOTA_BaseNPC:ReplaceItem(old_item,new_item)
+	function CDOTA_BaseNPC:ReplaceItem(old_item, new_item)
 		if type(old_item) ~= "table" then return end
 		if type(new_item) == "string" then
 			new_item = CreateItem(new_item, old_item:GetPurchaser(), old_item:GetPurchaser())
@@ -1015,22 +1033,22 @@ if IsServer() then
 		return new_item
 	end
 
-	--[[
-		获取弹射目标
+	--[[		获取弹射目标
 		现在目标，队伍，选择位置，范围，队伍过滤，类型过滤，特殊过滤，选择方式，单位记录表，是否可以弹射回来（缺省false）
-	]]--
+	]]
+	--
 	function GetBounceTarget(last_target, team_number, position, radius, team_filter, type_filter, flag_filter, order, unit_table, can_bounce_bounced_unit)
 		local first_targets = FindUnitsInRadius(team_number, position, nil, radius, team_filter, type_filter, flag_filter, order, false)
 
 		for i = #first_targets, 1, -1 do
 			local unit = first_targets[i]
 			if unit == last_target then
-				table.remove(first_targets,i)
+				table.remove(first_targets, i)
 			end
 		end
 
 		local second_targets = {}
-		for k,v in pairs(first_targets) do
+		for k, v in pairs(first_targets) do
 			second_targets[k] = v
 		end
 
@@ -1052,35 +1070,35 @@ if IsServer() then
 		end
 	end
 
-	--[[
-		进行分裂操作
+	--[[		进行分裂操作
 		攻击者，攻击目标，开始宽度，结束宽度，距离，操作函数
-	]]--
+	]]
+	--
 	function DoCleaveAction(hAttacker, hTarget, fStartWidth, fEndWidth, fDistance, func, iTeamFilter, iTypeFilter, iFlagFilter)
-		local fRadius = math.sqrt(fDistance^2+(fEndWidth/2)^2)
+		local fRadius = math.sqrt(fDistance ^ 2 + (fEndWidth / 2) ^ 2)
 		local vStart = hAttacker:GetAbsOrigin()
 		local vDirection = hTarget:GetAbsOrigin() - vStart
 		vDirection.z = 0
 		vDirection = vDirection:Normalized()
 
-		local vEnd = vStart + vDirection*fDistance
+		local vEnd = vStart + vDirection * fDistance
 		local v = Rotation2D(vDirection, math.rad(90))
 		local tPolygon = {
-			vStart + v*fStartWidth,
-			vEnd + v*fEndWidth,
-			vEnd - v*fEndWidth,
-			vStart - v*fStartWidth,
+			vStart + v * fStartWidth,
+			vEnd + v * fEndWidth,
+			vEnd - v * fEndWidth,
+			vStart - v * fStartWidth,
 		}
-		DebugDrawLine(tPolygon[1], tPolygon[2], 255,255,255, true, hAttacker:GetSecondsPerAttack())
-		DebugDrawLine(tPolygon[2], tPolygon[3], 255,255,255, true, hAttacker:GetSecondsPerAttack())
-		DebugDrawLine(tPolygon[3], tPolygon[4], 255,255,255, true, hAttacker:GetSecondsPerAttack())
-		DebugDrawLine(tPolygon[4], tPolygon[1], 255,255,255, true, hAttacker:GetSecondsPerAttack())
+		DebugDrawLine(tPolygon[1], tPolygon[2], 255, 255, 255, true, hAttacker:GetSecondsPerAttack())
+		DebugDrawLine(tPolygon[2], tPolygon[3], 255, 255, 255, true, hAttacker:GetSecondsPerAttack())
+		DebugDrawLine(tPolygon[3], tPolygon[4], 255, 255, 255, true, hAttacker:GetSecondsPerAttack())
+		DebugDrawLine(tPolygon[4], tPolygon[1], 255, 255, 255, true, hAttacker:GetSecondsPerAttack())
 
 		local iTeamNumber = hAttacker:GetTeamNumber()
 		iTeamFilter = iTeamFilter or (DOTA_UNIT_TARGET_TEAM_ENEMY)
 		iTypeFilter = iTypeFilter or (DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC)
 		iFlagFilter = iFlagFilter or (DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE)
-		local tTargets = FindUnitsInRadius(iTeamNumber, vStart, nil, fRadius+100, iTeamFilter, iTypeFilter, iFlagFilter, FIND_CLOSEST, false)
+		local tTargets = FindUnitsInRadius(iTeamNumber, vStart, nil, fRadius + 100, iTeamFilter, iTypeFilter, iFlagFilter, FIND_CLOSEST, false)
 		for _, hUnit in pairs(tTargets) do
 			if hUnit ~= hTarget then
 				if IsPointInPolygon(hUnit:GetAbsOrigin(), tPolygon) then
@@ -1092,7 +1110,7 @@ if IsServer() then
 		end
 	end
 
-	ONLY_REFLECT_ABILITIES = {"tusk_snowball_imba"}
+	ONLY_REFLECT_ABILITIES = { "tusk_snowball_imba" }
 	function IsAbilityOnlyReflect(hAbility)
 		if hAbility == nil then return false end
 		return TableFindKey(ONLY_REFLECT_ABILITIES, hAbility:GetName()) ~= nil
@@ -1125,9 +1143,9 @@ if IsServer() then
 		if hReflectAbility == nil then
 			hReflectAbility = hCaster:AddAbility(sAbilityName)
 			table.insert(hCaster.reflectSpellAbilities, 1, hReflectAbility)
-			if IsValid(hCaster.reflectSpellAbilities[MAX_REFLECT_ABILITIES_COUNT+1]) then
-				hCaster.reflectSpellAbilities[MAX_REFLECT_ABILITIES_COUNT+1]:RemoveSelf()
-				table.remove(hCaster.reflectSpellAbilities, MAX_REFLECT_ABILITIES_COUNT+1)
+			if IsValid(hCaster.reflectSpellAbilities[MAX_REFLECT_ABILITIES_COUNT + 1]) then
+				hCaster.reflectSpellAbilities[MAX_REFLECT_ABILITIES_COUNT + 1]:RemoveSelf()
+				table.remove(hCaster.reflectSpellAbilities, MAX_REFLECT_ABILITIES_COUNT + 1)
 			end
 		end
 
@@ -1146,9 +1164,9 @@ if IsServer() then
 		hCaster:SetCursorCastTarget(hRecordTarget)
 	end
 
-	--[[
-		创建幻象，tModifierKeys支持[outgoing_damage,incoming_damage,bounty_base,bounty_growth,outgoing_damage_structure,outgoing_damage_roshan]
-	]]--
+	--[[		创建幻象，tModifierKeys支持[outgoing_damage,incoming_damage,bounty_base,bounty_growth,outgoing_damage_structure,outgoing_damage_roshan]
+	]]
+	--
 	function CDOTA_BaseNPC_Hero:CreateIllusions(hOwner, tModifierKeys, nNumIllusions, nPadding, bScramblePosition, bFindClearSpace)
 		local illusions = CreateIllusions(hOwner, self, tModifierKeys, nNumIllusions, nPadding, bScramblePosition, bFindClearSpace)
 
@@ -1159,9 +1177,9 @@ if IsServer() then
 		return illusions
 	end
 
-	--[[
-		在范围内搜素拥有Modifier的单位的单位组
-	]]--
+	--[[		在范围内搜素拥有Modifier的单位的单位组
+	]]
+	--
 	function FindUnitsInRadiusByModifierName(sModifierName, iTeamNumber, vPosition, fRadius, iTeamFilter, iTypeFilter, iFlagFilter, iOrder)
 		local tUnits = FindUnitsInRadius(iTeamNumber, vPosition, nil, fRadius, iTeamFilter, iTypeFilter, iFlagFilter, iOrder, false)
 		for i = #tUnits, 1, -1 do
@@ -1184,10 +1202,9 @@ if IsServer() then
 		end
 		return FindUnitsInRadius(hCaster:GetTeamNumber(), vPosition, nil, flRadius, hAbility:GetAbilityTargetTeam(), hAbility:GetAbilityTargetType(), hAbility:GetAbilityTargetFlags(), iOrder, false)
 	end
-	
+
 	-- 发布指令
-	--[[
-		DOTA_UNIT_ORDER_NONE
+	--[[		DOTA_UNIT_ORDER_NONE
 		DOTA_UNIT_ORDER_MOVE_TO_POSITION
 		DOTA_UNIT_ORDER_MOVE_TO_TARGET
 		DOTA_UNIT_ORDER_ATTACK_MOVE

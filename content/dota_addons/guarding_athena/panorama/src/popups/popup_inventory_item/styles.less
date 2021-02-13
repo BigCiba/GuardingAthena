@@ -1,0 +1,213 @@
+@import "../styles.less";
+@import "../../elements/Common/styles.less";
+.StoreItemDetail {
+	margin-top: 70px;
+	// border: 1px solid red;
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 100%;
+	height: 400px;
+}
+.PopupHeroScene {
+	width: 400px;
+	height: 400px;
+}
+.AbilityList {
+	horizontal-align: right;
+	height: 80px;
+	width: 50%;
+	flow-children: right;
+	DOTAAbilityImage {
+		vertical-align: center;
+		margin-left: 8px;
+		height: width-percentage( 100% );
+		width: fill-parent-flow( 1 );
+	}
+}
+.AttributeContainer {
+	horizontal-align: right;
+	margin-top: 100px;
+	// height: 80px;
+	width: 50%;
+	padding-left: 8px;
+	flow-children: down;
+	.TopContainer {
+		flow-children: right;
+	}
+	.HeroStatsSection
+	{
+		flow-children: down;
+		margin-right: 16px;
+	
+		tooltip-position: top;
+		tooltip-body-position: 50% 50%;
+		.HeroStatsHeader
+		{
+			text-transform: uppercase;
+			color: #ccc;
+		}
+		
+		
+		.HeroStatsRow
+		{
+			flow-children: right;
+		}
+		
+		.HeroStatsRow > Label
+		{
+			color: #aaa;
+		}
+		
+		.HeroStatsIcon
+		{
+			width: 20px;
+			height: 20px;
+			margin-right: 4px;
+		
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.StrengthIcon {
+			background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+		}
+		.AgilityIcon {
+			background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+		}
+		.IntelligenceIcon {
+			background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+		}
+		#HealthRow
+		{
+			background-color: gradient( linear, 0% 0%, 0% 100%, from( #1A3D1A  ), color-stop( 0.2, #67A163 ), color-stop( .5, #187019), to( #175D17 ) );
+		}
+		#HealthRow .ResourceRegen
+		{
+			color: #3ed038;
+		}
+
+		#ManaRow
+		{
+			background-color: gradient( linear, 0% 0%, 0% 100%, from( #6A90BA  ), color-stop( 0.4, #144B91 ), to( #2E5187 ) );
+		}
+		#ManaRow .ResourceRegen
+		{
+			color: #83C2FE;
+		}
+		.HeroResourceRow
+		{
+			width: 400px;
+			border-radius: 4px;
+			margin-bottom: 4px;
+		}
+
+		.MaxResource
+		{
+			horizontal-align: center;
+			text-shadow: 1px 1px 0px 2.0 #000000;
+			font-weight: bold;
+			color: white;
+			margin-top: 2px;
+		}
+
+		.ResourceRegen
+		{
+			margin-top: 2px;
+			margin-left: 4px;
+			margin-right: 2px;
+			font-size: 16px;
+			font-weight: bold;
+			vertical-align: middle;
+			horizontal-align: right;
+			text-shadow: 1px 1px 0px 1.0 #000000;
+		}
+	}
+}
+#SetPreview
+{
+	width: height-percentage(120%);
+	height: 100%;
+	horizontal-align: center;
+}
+.PetAbilityList {
+	horizontal-align: center;
+	height: 80px;
+	// width: 50%;
+	flow-children: right;
+	DOTAAbilityImage {
+		vertical-align: center;
+		margin-left: 8px;
+		height: width-percentage( 100% );
+		width: fill-parent-flow( 1 );
+		max-width: 80px;
+		border-radius: 8px;
+	}
+}
+.CommonItemDescription {
+	width: 100%;
+	background-color: #000a;
+	padding: 16px;
+	horizontal-align: center;
+	margin-top: 150px;
+	height: 300px;
+}
+.MoviePanel {
+	width: 480px;
+	height: 270px;
+	border-radius: 8px;
+	horizontal-align: center;
+	opacity-mask: url("s2r://panorama/images/masks/scratched_box_psd.vtex");
+	Label {
+		font-family: titleFont;
+		width: 100%;
+		height: 22px;
+		text-align: center;
+		vertical-align: bottom;
+		margin-bottom: 20px;
+		color: gradient( linear, 0% 100%, 0% 0%, from( #F4C856 ), color-stop(.2, #A2790D), color-stop(.4, #EBD197), to( #EBD197 ));
+		text-shadow: 0px 0px 5px 4.0 black;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 20px;
+		text-overflow: shrink;
+	}
+}
+.ParticleViewContainer {
+	// width: 320px;
+	// height: 240px;
+	// border-radius: 8px;
+	// opacity-mask: url("s2r://panorama/images/masks/scratched_box_psd.vtex");
+}
+.ParticleItemDescription {
+	width: 100%;
+	background-color: #000a;
+	padding: 16px;
+	horizontal-align: center;
+	margin-top: 280px;
+	height: 150px;
+}
+.PopusNotify {
+	align: center center;
+	width: 300px;
+	height: 200px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eee ), to( #131617ee ) );
+	border: 1px solid #5e6869;
+	box-shadow: black -4px -4px 8px 8px;
+	
+	transition-property: opacity, pre-transform-scale2d;
+	transition-duration: 0.2s;
+	opacity: 0;
+	pre-transform-scale2d: 0.5;
+	Image {
+		width: 108px;
+		height: 96px;
+		align: center center;
+		background-image: url("s2r://panorama/images/compendium/international2020/compendium/gauntlet_check_png.vtex");
+		background-size: 100%;
+		wash-color: #0f0;
+	}
+}
+.PaySuccess .PopusNotify {
+	opacity: 1;
+	pre-transform-scale2d: 1;
+}

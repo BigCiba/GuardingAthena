@@ -17,9 +17,15 @@ function item_ice_egg:OnSpellStart()
 		end
 	end
 	if bHasEssence == false then
-		hCaster.str_gain = hCaster.str_gain + RandomInt(self:GetSpecialValueFor("max_attribute") * 10, self:GetSpecialValueFor("min_attribute") * 10) / 10
-		hCaster.agi_gain = hCaster.agi_gain + RandomInt(self:GetSpecialValueFor("max_attribute") * 10, self:GetSpecialValueFor("min_attribute") * 10) / 10
-		hCaster.int_gain = hCaster.int_gain + RandomInt(self:GetSpecialValueFor("max_attribute") * 10, self:GetSpecialValueFor("min_attribute") * 10) / 10
+		if hCaster.AddBonusStrengthGain then
+			hCaster:AddBonusStrengthGain(RandomInt(self:GetSpecialValueFor("max_gain") * 10, self:GetSpecialValueFor("min_gain") * 10) / 10)
+		end
+		if hCaster.AddBonusAgilityGain then
+			hCaster:AddBonusAgilityGain(RandomInt(self:GetSpecialValueFor("max_gain") * 10, self:GetSpecialValueFor("min_gain") * 10) / 10)
+		end
+		if hCaster.AddBonusIntelligenceGain then
+			hCaster:AddBonusIntelligenceGain(RandomInt(self:GetSpecialValueFor("max_gain") * 10, self:GetSpecialValueFor("min_gain") * 10) / 10)
+		end
 		hCaster:EmitSound("DOTA_Item.Refresher.Activate")
 	end
 	self:Destroy()
