@@ -30,6 +30,10 @@ function Store() {
 	const OpenRecharge = () => {
 		OpenPopup("popus_recharge/popus_recharge");
 	};
+	const Refresh = () => {
+		GameEvents.SendCustomGameEventToServer("RefreshPlayerData", {});
+
+	};
 	return (
 		<Panel id="StorePage" className="DotaPlusContainer HideStorePage" ref={storePage}>
 			<Panel className="StorePageMain">
@@ -38,7 +42,7 @@ function Store() {
 						<Panel className="SearchOptionsTitleCategories">
 							<Label text="#Wallet" />
 							<Panel className="FillWidth" />
-							<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} />
+							<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} onactivate={Refresh} />
 							{/* <Button id="MoneyComeButton" onactivate={OpenRecharge} /> */}
 						</Panel>
 						<Panel id="CurrencyAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Shard_Description")} onmouseout={HideTextTooltip}>

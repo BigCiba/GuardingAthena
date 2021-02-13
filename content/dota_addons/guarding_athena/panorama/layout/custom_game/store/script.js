@@ -5951,6 +5951,9 @@ function Store() {
     const OpenRecharge = () => {
         (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.OpenPopup)("popus_recharge/popus_recharge");
     };
+    const Refresh = () => {
+        GameEvents.SendCustomGameEventToServer("RefreshPlayerData", {});
+    };
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "StorePage", className: "DotaPlusContainer HideStorePage", ref: storePage },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "StorePageMain" },
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "SearchAndCategoriesContainer" },
@@ -5958,7 +5961,7 @@ function Store() {
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "SearchOptionsTitleCategories" },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: "#Wallet" }),
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "FillWidth" }),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Refresh"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip })),
+                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: "RefreshButton", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Refresh"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip, onactivate: Refresh })),
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "CurrencyAmountContainer", onmouseover: (self) => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.ShowTextTooltip)(self, "Shard_Description"), onmouseout: _utils_utils__WEBPACK_IMPORTED_MODULE_3__.HideTextTooltip },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "EventPointsValueIcon ShardSubscription" }),
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CurrentCurrencyAmount", text: playerData[Game.GetLocalPlayerID()].Shard })),
