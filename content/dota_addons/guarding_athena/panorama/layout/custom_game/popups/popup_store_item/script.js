@@ -5947,7 +5947,7 @@ function BuyButton({ type, count, id, itemName }) {
         let tData = CustomNetTables.GetTableValue("service", "player_data");
         let Price = tData[Players.GetLocalPlayer()].Price;
         let Shard = tData[Players.GetLocalPlayer()].Shard;
-        if ((type == "Shard" && Shard > count) || (type == "Price" && Price > count)) {
+        if ((type == "Shard" && Shard > count) || (type == "Price" && Price >= count)) {
             GameEvents.SendCustomGameEventToServer("PurchaseItem", {
                 ItemName: itemName,
                 Currency: type

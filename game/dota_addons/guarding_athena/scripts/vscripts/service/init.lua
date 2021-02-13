@@ -336,6 +336,19 @@ function public:GetEquippedItem(iPlayerID, sType, sHeroName)
 	end
 	return tData
 end
+-- 获取某个类型的物品
+function public:GetPlayerItem(iPlayerID, sType, sHeroName)
+	local tData = {}
+	local tPlayerServiceData = sType == "skin" and self.tPlayerServiceData[iPlayerID][sType][(sHeroName or GuardingAthena.tPlayerSelectionInfo[iPlayerID].player_selected_hero)] or self.tPlayerServiceData[iPlayerID][sType]
+	if tPlayerServiceData then
+		for _, tItemData in ipairs(tPlayerServiceData) do
+			if tItemData.ItemName ~= "default_no_item" then
+				table.insert(tData, tItemData)
+			end
+		end
+	end
+	return tData
+end
 
 --更新所有有关的NetTable
 function public:UpdateNetTables()
