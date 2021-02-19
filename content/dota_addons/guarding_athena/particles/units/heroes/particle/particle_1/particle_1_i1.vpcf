@@ -63,7 +63,7 @@
 	[
 		{
 			_class = "C_INIT_RingWave"
-			m_nControlPointNumber = 5
+			m_nControlPointNumber = 4
 			m_flParticlesPerOrbit = 32.0
 			m_bEvenDistribution = true
 			m_flInitialRadius = 

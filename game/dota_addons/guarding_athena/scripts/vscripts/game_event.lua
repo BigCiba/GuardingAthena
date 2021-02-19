@@ -449,13 +449,24 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	end)
 	-- 特效
 	EachEquippedParticles(playerID, function(tItemData)
-		print("bigciba", tItemData.ItemName)
+		-- 清除旧的
+		if heroEntity.ParticleModifier then
+			if type(heroEntity.ParticleModifier)  == "number" then
+				ParticleManager:DestroyParticle(heroEntity.ParticleModifier, false)
+			else
+				heroEntity.ParticleModifier:Destroy()
+			end
+		end
 		if tItemData.ItemName == "wing_01" then	-- 金色翅膀
 			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
-				local iParticleID = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
+				heroEntity.ParticleModifier = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
 			else
-				local particle = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
+				heroEntity.ParticleModifier = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
 			end
+		end
+		local Asset = GetItemInfo(tItemData.ItemName).Asset
+		if Asset then
+			heroEntity.ParticleModifier = heroEntity:AddNewModifier(heroEntity, nil, Asset, nil)
 		end
 	end)
 	-- 皮肤

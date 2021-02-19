@@ -187,7 +187,6 @@ function ParticleModifier:GetAttributes()
 end
 
 ---------------------------------------------------------------------
-
 ModifierThinker = class({})
 
 if ModifierThinker == nil then
@@ -336,10 +335,40 @@ function AssetModifier:GetAttributes()
 end
 function AssetModifier:Init()
 	local hParent = self:GetParent()
-	hParent.GetSkinName = function (hParent)
-		return string.sub( self:GetName(), 10, -1 )
+	hParent.GetSkinName = function(hParent)
+		return string.sub(self:GetName(), 10, -1)
 	end
 end
 function AssetModifier:OnCreated(params)
 	self:Init()
+end
+---------------------------------------------------------------------
+ParticleModifier = class({})
+
+if ParticleModifier == nil then
+	ParticleModifier = class({})
+end
+function ParticleModifier:IsHidden()
+	return true
+end
+function ParticleModifier:IsDebuff()
+	return false
+end
+function ParticleModifier:IsPurgable()
+	return false
+end
+function ParticleModifier:IsPurgeException()
+	return false
+end
+function ParticleModifier:IsStunDebuff()
+	return false
+end
+function ParticleModifier:IsHexDebuff()
+	return false
+end
+function ParticleModifier:AllowIllusionDuplicate()
+	return false
+end
+function ParticleModifier:GetAttributes()
+	return MODIFIER_ATTRIBUTE_PERMANENT
 end

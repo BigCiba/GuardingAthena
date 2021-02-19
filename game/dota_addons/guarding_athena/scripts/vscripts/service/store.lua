@@ -168,3 +168,15 @@ function public:OrderCheck(params)
 	end
 	return { status = -1 }
 end
+
+--[[	外部接口
+]]
+-- 获取商品配置表信息
+function GetItemInfo(sItemName)
+	local tData = CustomNetTables:GetTableValue("service", "info_store")
+	for i, tItemData in pairs(tData) do
+		if tItemData.ItemName == sItemName then
+			return tItemData
+		end
+	end
+end

@@ -36,8 +36,8 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 180.0
-			m_flRadiusMax = 180.0
+			m_flRadiusMin = 135.0
+			m_flRadiusMax = 135.0
 		},
 		{
 			_class = "C_INIT_PositionOffset"

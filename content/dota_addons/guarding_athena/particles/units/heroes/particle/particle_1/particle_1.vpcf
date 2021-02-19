@@ -3,6 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_nMaxParticles = 12
 	m_nBehaviorVersion = 10
+	m_flConstantRadius = 135.0
 	m_controlPointConfigurations = 
 	[
 		{
@@ -265,6 +266,11 @@
 			}
 			m_nCP = 5
 		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 4
+			m_vecCP1Pos = [ 0.0, 0.0, 50.0 ]
+		},
 	]
 	m_Emitters = 
 	[
@@ -311,8 +317,8 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 250.0
-			m_flRadiusMax = 270.0
+			m_flRadiusMin = 187.0
+			m_flRadiusMax = 202.0
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -392,7 +398,6 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/particle/particle_1/particle_1_i.vpcf"
-			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/particle/particle_1/particle_1_h.vpcf"

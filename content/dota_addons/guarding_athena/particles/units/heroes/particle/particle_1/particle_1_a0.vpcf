@@ -3,6 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
 	m_ConstantColor = [ 238, 238, 99, 255 ]
+	m_flConstantRadius = 135.0
 	m_controlPointConfigurations = 
 	[
 		{
@@ -38,6 +39,7 @@
 			_class = "C_INIT_RandomRadius"
 			m_flRadiusMin = 180.0
 			m_flRadiusMax = 180.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionOffset"

@@ -3742,8 +3742,8 @@
 		"particle_2_Description"			"装备后出生自带碧玉圣物特效，适用于所有英雄。"
 		"particle_3"						"爱心泛滥"
 		"particle_3_Description"			"装备后出生自带爱心泛滥特效，适用于所有英雄。"
-		"particle_4"						"青莲圣物"
-		"particle_4_Description"			"装备后出生自带青莲圣物特效，适用于所有英雄。"
+		"particle_4"						"红莲圣物"
+		"particle_4_Description"			"装备后出生自带红莲圣物特效，适用于所有英雄。"
 		"particle_5"						"一起摇摆"
 		"particle_5_Description"			"装备后出生自带一起摇摆特效，适用于所有英雄。"
 		// 道具

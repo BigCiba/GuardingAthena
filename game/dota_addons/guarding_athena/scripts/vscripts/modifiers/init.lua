@@ -14,3 +14,9 @@ LinkLuaModifier("modifier_windrunner_01", "modifiers/asset_modifiers/modifier_wi
 LinkLuaModifier("modifier_rubick_01", "modifiers/asset_modifiers/modifier_rubick_01.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_rubick_02", "modifiers/asset_modifiers/modifier_rubick_02.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_rubick_03", "modifiers/asset_modifiers/modifier_rubick_03.lua", LUA_MODIFIER_MOTION_NONE)
+-- 特效
+LinkLuaModifier("modifier_particle_1", "modifiers/particle/modifier_particle_1.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_particle_2", "modifiers/particle/modifier_particle_2.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_particle_3", "modifiers/particle/modifier_particle_3.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_particle_4", "modifiers/particle/modifier_particle_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_particle_5", "modifiers/particle/modifier_particle_5.lua", LUA_MODIFIER_MOTION_NONE)
