@@ -12,6 +12,16 @@
 // 特效
 "wing_01"							"纯金翅膀"
 "wing_01_Description"				"装备后出生自带金色翅膀，适用于所有英雄。"
+"particle_1"						"天龙人之壁"
+"particle_1_Description"			"装备后出生自带天龙人之壁特效，适用于所有英雄。"
+"particle_2"						"碧玉圣物"
+"particle_2_Description"			"装备后出生自带碧玉圣物特效，适用于所有英雄。"
+"particle_3"						"爱心泛滥"
+"particle_3_Description"			"装备后出生自带爱心泛滥特效，适用于所有英雄。"
+"particle_4"						"青莲圣物"
+"particle_4_Description"			"装备后出生自带青莲圣物特效，适用于所有英雄。"
+"particle_5"						"一起摇摆"
+"particle_5_Description"			"装备后出生自带一起摇摆特效，适用于所有英雄。"
 // 道具
 "potion"							"药水礼包"
 "potion_Description"				"购买后进入游戏会在信使上提供30个小回复药水和30个小净化药水。"

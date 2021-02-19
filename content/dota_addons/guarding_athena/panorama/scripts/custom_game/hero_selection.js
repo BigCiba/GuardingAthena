@@ -12,7 +12,7 @@ let PlayerItemData = {
 		"2": { ItemName: "pet_02", Equip: "0", Type: "pet" },
 		"3": { ItemName: "default_no_item", Equip: "0", Type: "pet" },
 	}
-}
+};
 
 function Update() {
 	if (Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME)) {
@@ -30,9 +30,8 @@ function LoadPlayer(self) {
 	self.BLoadLayoutSnippet("PlayerCard");
 	self.SetPlayer = function (PlayerID) {
 		const tPlayerInfo = Game.GetPlayerInfo(PlayerID);
-		let LocalPlayerID = Players.GetLocalPlayer();
-		let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
-		const iLevel = Data.Level == null ? 1 : Data.Level;
+		let Data = CustomNetTables.GetTableValue("service", "player_" + PlayerID) || {};
+		const iLevel = Data.Score == null ? 1 : Math.floor(Data.Score / 10);
 		self.FindChildTraverse("AvatarImage").steamid = tPlayerInfo.player_steamid;
 		self.FindChildTraverse("UserName").steamid = tPlayerInfo.player_steamid;
 		self.FindChildTraverse("BackGroundImage").SetImage(GetBadgesBackground(iLevel));
@@ -40,39 +39,53 @@ function LoadPlayer(self) {
 		self.FindChildTraverse("ProfileLevel").SetImage(GetBadgesBackgroundNumber(iLevel));
 		self.SetDialogVariableInt("level", iLevel);
 	};
-
 }
 function LoadItem(self) {
 	self.BLoadLayoutSnippet("EconItem");
-	self.SetItem = function (ItemData, Panel) {
-		let Quality = ItemData.ItemName == "default_no_item" ? "Common" : GameUI.CustomUIConfig().PlayerItemsKV[ItemData.ItemName].Quality
-		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/" + ItemData.Type + "/" + ItemData.ItemName + ".png");
+	self.SetItem = function (Type, ItemData, Panel) {
+		_Type = (Type == "courier" ? "pet" : Type);
+
+		let Quality = "Common";
+		// let Quality = ItemData.ItemName == "default_no_item" ? "Common" : GameUI.CustomUIConfig().PlayerItemsKV[ItemData.ItemName].Quality;
+		self.FindChildTraverse("EconItemImage").SetImage("file://{images}/custom_game/" + _Type + "/" + ItemData.ItemName + ".png");
 		self.FindChildTraverse("Equipped").SetHasClass("hide", ItemData.Equip == "0");
 		self.FindChildTraverse("BottomLayer").AddClass(Quality);
-		self.Type = ItemData.Type;
+		self.Type = _Type;
 		self.Panel = Panel;
-		self.Image = "file://{images}/custom_game/" + ItemData.Type + "/" + ItemData.ItemName + ".png";
+		self.Image = "file://{images}/custom_game/" + _Type + "/" + ItemData.ItemName + ".png";
 		self.SetPanelEvent("onactivate", function () {
 			let Contents = $("#Contents").FindChildrenWithClassTraverse("EconItem");
 			for (let index = 0; index < Contents.length; index++) {
 				const EchoItem = Contents[index];
 				EchoItem.FindChildTraverse("Equipped").SetHasClass("hide", EchoItem.id != this.id);
 			}
-			GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
-				ItemName: this.id,
-				Type: this.Type,
-				HeroName: PreviewHeroName,
+			Request("query.operate", {
+				"router": Type + "." + (ItemData.Equip == 0 ? "equip" : "unequip"),
+				"ItemName": ItemData.ItemName
+			}, data => {
+				if (data.status == 0) {
+					$.Msg(data);
+					if (ItemData.Equip == 0) {
+						this.Panel.SetImage(this.Image);
+					} else {
+						this.Panel.SetImage("file://{images}/custom_game/skin/default_no_item.png");
+					}
+				}
 			});
-			// this.Panel.SetImage(this.Image);
+			// GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
+			// 	ItemName: this.id,
+			// 	Type: this.Type,
+			// 	HeroName: PreviewHeroName,
+			// });
 			$("#ContextMenuBody").ToggleClass("ContextMenuBodyShow");
 		}.bind(self));
-	}
+	};
 }
 function PreviewHero(HeroName) {
 	if (HeroLock) {
 		return;
 	}
-	$("#HeroInfoContent").SetHasClass("HeroLocked", $("#HeroListPanel").FindChildTraverse(HeroName).BHasClass("Unlock") == false)
+	$("#HeroInfoContent").SetHasClass("HeroLocked", $("#HeroListPanel").FindChildTraverse(HeroName).BHasClass("Unlock") == false);
 	const HeroKV = GameUI.CustomUIConfig().HeroesKv[HeroName];
 	// 预览英雄属性与名字
 	$("#HeroNamePanel").FindChildTraverse("PrimaryAttributeImage").SetImage(GetAttributeIcon(HeroKV.AttributePrimary));
@@ -97,20 +110,21 @@ function PreviewHero(HeroName) {
 	HeroScenePanel.AddClass("HeroScene");
 	HeroScenePanel.SetScenePanelToLocalHero(GameUI.CustomUIConfig().HeroesKv[HeroName].HeroID);
 	PreviewHeroName = HeroName;
+	UpdataSkinSetting();
 	// 更新英雄皮肤
-	let Data = CustomNetTables.GetTableValue("service", "player_data")[Players.GetLocalPlayer()];
-	let ItemList = Data == null ? PlayerItemData["skin"] : Data["skin"];
-	ItemList = ItemList[PreviewHeroName];
-	if (ItemList == null) {
-		ItemList = { "1": { "Expiration": "9999-12-31", "ItemName": "default_no_item", "Equip": 1, "Type": "skin" } };
-	}
-	for (const key in ItemList) {
-		const ItemData = ItemList[key];
-		if (ItemData.Equip == 1) {
-			$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/" + ItemData.ItemName + ".png");
-			break;
-		}
-	}
+	// let Data = CustomNetTables.GetTableValue("service", "player_data")[Players.GetLocalPlayer()];
+	// let ItemList = Data == null ? PlayerItemData["skin"] : Data["skin"];
+	// ItemList = ItemList[PreviewHeroName];
+	// if (ItemList == null) {
+	// 	ItemList = { "1": { "Expiration": "9999-12-31", "ItemName": "default_no_item", "Equip": 1, "Type": "skin" } };
+	// }
+	// for (const key in ItemList) {
+	// 	const ItemData = ItemList[key];
+	// 	if (ItemData.Equip == 1) {
+	// 		$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/" + ItemData.ItemName + ".png");
+	// 		break;
+	// 	}
+	// }
 	$("#ContextMenuBody").RemoveClass("ContextMenuBodyShow");
 	Game.EmitSound(GameUI.CustomUIConfig().HeroesKv[PreviewHeroName].HeroSelectSoundEffect);
 }
@@ -120,31 +134,98 @@ function ShowContextMenu(ID, Type) {
 	let ContextMenuBody = $("#ContextMenuBody");
 	let Posistion = GameUI.GetPanelCenter(SettingPanel.FindChildTraverse("MenuArrowContainer"));
 	$("#Contents").RemoveAndDeleteChildren();
-	let Data = CustomNetTables.GetTableValue("service", "player_data")[LocalPlayerID];
-	let ItemList = Data == null ? PlayerItemData[Type] : Data[Type];
-	if (Type == "skin") {
-		ItemList = ItemList[PreviewHeroName];
-		if (ItemList == null) {
-			ItemList = { "1": { "Expiration": "9999-12-31", "ItemName": "default_no_item", "Equip": 1, "Type": "skin" } };
+	let Data = CustomNetTables.GetTableValue("service", "player_" + Type + "_" + LocalPlayerID);
+	for (const index in Data) {
+		const ItemData = Data[index];
+		if (Type != "skin" || ItemData.Hero == PreviewHeroName) {
+			let Panel = $("#Contents").FindChildTraverse(ItemData.ItemName);
+			Panel = ReloadPanel(Panel, "Panel", $("#Contents"), ItemData.ItemName);
+			LoadItem(Panel);
+			Panel.SetItem(Type, ItemData, SettingPanel.FindChildrenWithClassTraverse("SettingIcon")[0]);
 		}
 	}
-	for (const key in ItemList) {
-		const ItemData = ItemList[key];
-		let Panel = $("#Contents").FindChildTraverse(ItemData.ItemName);
-		Panel = ReloadPanel(Panel, "Panel", $("#Contents"), ItemData.ItemName);
-		LoadItem(Panel);
-		Panel.SetItem(ItemData, SettingPanel.FindChildrenWithClassTraverse("SettingIcon")[0]);
+	$.Schedule(0.06, () => {
+		let Width = ContextMenuBody.actuallayoutwidth / 2;
+		let Height = ContextMenuBody.actuallayoutheight + SettingPanel.FindChildTraverse("MenuArrowContainer").actuallayoutheight / 2;
+		ContextMenuBody.SetPositionInPixels(GameUI.CorrectPositionValue(Posistion.x - Width), GameUI.CorrectPositionValue(Posistion.y - Height), 0);
+	});
+	if (ContextMenuBody.Type != undefined && ContextMenuBody.Type == Type) {
+		ContextMenuBody.ToggleClass("ContextMenuBodyShow");
+	} else {
+		ContextMenuBody.AddClass("ContextMenuBodyShow");
 	}
-	ContextMenuBody.ToggleClass("ContextMenuBodyShow");
-	let Width = ContextMenuBody.actuallayoutwidth / 2;
-	let Height = ContextMenuBody.actuallayoutheight + SettingPanel.FindChildTraverse("MenuArrowContainer").actuallayoutheight / 2;
-	ContextMenuBody.SetPositionInPixels(GameUI.CorrectPositionValue(Posistion.x - Width), GameUI.CorrectPositionValue(Posistion.y - Height), 0);
+	ContextMenuBody.Type = Type;
 }
+
 function UpdateCommonNetTable(tableName, tableKeyName, table) {
 	var localPlayerID = Players.GetLocalPlayer();
 
 	if (tableKeyName == "game_mode_info") {
 		GameModeSelectionEndTime = table.game_mode_selection_end_time;
+	}
+}
+function UpdateServiceData() {
+	$.GetContextPanel().SetHasClass("ServerChecked", true);
+	let PlayerID = Players.GetLocalPlayer();
+	// 解锁英雄
+	let playerHeroData = CustomNetTables.GetTableValue("service", "player_hero_" + PlayerID);
+	for (const index in playerHeroData) {
+		const ItemData = playerHeroData[index];
+		const HeroName = "npc_dota_hero_" + ItemData.ItemName;
+		$("#HeroListPanel").FindChildTraverse(HeroName).AddClass("Unlock");
+	}
+	// 宠物
+	UpdataCourierSetting();
+	// 皮肤
+	UpdataSkinSetting();
+	// 特效
+	UpdataParticleSetting();
+	// 更新玩家卡片
+	let AllPlayerID = Game.GetAllPlayerIDs();
+	for (let index = 0; index < AllPlayerID.length; index++) {
+		const PlayerID = AllPlayerID[index];
+		$("#PlayerContent").FindChildTraverse("Player" + PlayerID).SetPlayer(Number(PlayerID));
+	}
+}
+// 更新信使设置预览
+function UpdataCourierSetting() {
+	let PlayerID = Players.GetLocalPlayer();
+	let playerCourierData = CustomNetTables.GetTableValue("service", "player_courier_" + PlayerID);
+	for (const index in playerCourierData) {
+		const ItemData = playerCourierData[index];
+		// $.Msg(ItemData);
+		if (ItemData.Equip == 1) {
+			$("#SettingPet").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/pet/" + ItemData.ItemName + ".png");
+			break;
+		}
+		$("#SettingPet").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/pet/default_no_item.png");
+	}
+}
+// 更新皮肤设置预览
+function UpdataSkinSetting() {
+	let PlayerID = Players.GetLocalPlayer();
+
+	let playerSkinData = CustomNetTables.GetTableValue("service", "player_skin_" + PlayerID);
+	for (const index in playerSkinData) {
+		const ItemData = playerSkinData[index];
+		if (ItemData.Equip == 1 && ItemData.Hero == PreviewHeroName) {
+			$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/" + ItemData.ItemName + ".png");
+			break;
+		}
+		$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/default_no_item.png");
+	}
+}
+// 更新特效设置预览
+function UpdataParticleSetting() {
+	let PlayerID = Players.GetLocalPlayer();
+	let playerParticleData = CustomNetTables.GetTableValue("service", "player_particle_" + PlayerID);
+	for (const index in playerParticleData) {
+		const ItemData = playerParticleData[index];
+		if (ItemData.Equip == 1) {
+			$("#SettingParticle").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/particle/" + ItemData.ItemName + ".png");
+			break;
+		}
+		$("#SettingParticle").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/particle/default_no_item.png");
 	}
 }
 function UpdateServiceNetTable(tableName, tableKeyName, table) {
@@ -243,17 +324,17 @@ function SelectDifficulty(Difficulty) {
 		let HeroName = HeroKV.override_hero;
 		let Panel = $("#HeroListPanel").FindChildTraverse(HeroName);
 		Panel = ReloadPanelWithProperties(Panel, "DOTAHeroMovie", $("#HeroListPanel"), HeroName, { heroname: HeroName });
-		Panel.BLoadLayoutSnippet("HeroCard")
+		Panel.BLoadLayoutSnippet("HeroCard");
 		// 上锁
 		if (HeroKV.UnitLabel == "lock") {
-			Panel.RemoveClass("Unlock")
+			Panel.RemoveClass("Unlock");
 		}
 		Panel.SetPanelEvent("onactivate", function () {
 			PreviewHero(HeroName);
 		});
 	}
 	// 加载玩家卡片
-	let AllPlayerID = Game.GetAllPlayerIDs()
+	let AllPlayerID = Game.GetAllPlayerIDs();
 	for (let index = 0; index < AllPlayerID.length; index++) {
 		const PlayerID = AllPlayerID[index];
 		let Panel = $("#PlayerContent").FindChildTraverse("Player" + PlayerID);
@@ -268,7 +349,11 @@ function SelectDifficulty(Difficulty) {
 
 	UpdateCommonNetTable("common", "game_mode_info", CustomNetTables.GetTableValue("common", "game_mode_info"));
 
-	CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
 
-	UpdateServiceNetTable("service", "player_data", CustomNetTables.GetTableValue("service", "player_data"));
+	// UpdateServiceData();
+
+	GameEvents.Subscribe("service_game_enter", UpdateServiceData);
+	// CustomNetTables.SubscribeNetTableListener("service", UpdateServiceNetTable);
+
+	// UpdateServiceNetTable("service", "player_data", CustomNetTables.GetTableValue("service", "player_data"));
 })();

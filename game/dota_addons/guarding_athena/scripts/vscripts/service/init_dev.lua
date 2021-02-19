@@ -23,7 +23,10 @@ end
 ---@type Service
 local public = Service
 
-require("service/payment")
+require("service/utils")
+require("service/operate")
+require("service/player")
+require("service/store")
 
 function public:init(bReload)
 	if not bReload then
@@ -39,10 +42,12 @@ function public:init(bReload)
 		self.tPlayerConnectState = {}
 	end
 
-	Recorder:Init(bReload)
-	HeroCard:Init(bReload)
-	Store:Init(bReload)
+	player:Init(bReload)
+	store:Init(bReload)
+
 	GameEvent("game_rules_state_change", Dynamic_Wrap(public, "OnGameRulesStateChange"), public)
+	-- CustomUIEvent("LANGUAGE", Dynamic_Wrap(self, "PlayerLanguage"), self)
+	-- ListenToGameEvent("player_chat", Dynamic_Wrap(public, "OnPlayerChat"), public)
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -61,22 +66,17 @@ function public:UpdateNetTables()
 	end
 	CustomNetTables:SetTableValue("service", "player_connect_state", tPlayerConnectState)
 	CustomNetTables:SetTableValue("service", "game_connect_state", self.tGameConnectState)
-	print('Service:UpdateNetTables ===============================')
-	DeepPrintTable(self.tGameRequestPool)
-	DeepPrintTable(self.tPlayerReqPool)
-	DeepPrintTable(self.tGameConnectState)
-	DeepPrintTable(self.tPlayerConnectState)
 end
 
 function public:OnGameRulesStateChange()
 	local state = GameRules:State_Get()
 	if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+		self:GameConnectToServer()
 		for iPlayerID = 0, PlayerResource:GetPlayerCount() - 1, 1 do
 			if PlayerResource:IsValidPlayerID(iPlayerID) then
 				self:PlayerConnectToServer(iPlayerID)
 			end
 		end
-		self:GameConnectToServer()
 		self:CheckRequestStatus()
 
 		self.hTimeOut = GameTimer(SERVER_INIT_TIME_OUT, function()
@@ -96,34 +96,46 @@ function public:OnGameRulesStateChange()
 			return 0.5
 		end)
 	end
+
+	if IsInToolsMode() then
+		if state == DOTA_GAMERULES_STATE_HERO_SELECTION then
+			self:GameConnectToServer()
+			for iPlayerID = 0, PlayerResource:GetPlayerCount() - 1, 1 do
+				if PlayerResource:IsValidPlayerID(iPlayerID) then
+					self:PlayerConnectToServer(iPlayerID)
+				end
+			end
+		end
+	end
 end
+
+function public:PlayerLanguage(eventSourceIndex, params)
+	self:POST('player.language', {
+		uid = GetAccountID(params.PlayerID),
+		language = params.language
+	}, function(data)
+		if data then
+			DeepPrintTable(data)
+		end
+	end)
+end
+
 function public:Enter()
 	StopGameTimer(self.hTimeOut)
 	StopGameTimer(self.hConnect)
 	CustomGameEventManager:Send_ServerToAllClients("service_game_enter", { game_connect_state = self.tGameConnectState })
+	if not IsInToolsMode() then
+	end
 end
 
 function public:GameConnectToServer()
 	self.tGameRequestPool = {
-		Recorder_StartMatch = StableRequest(Recorder, Recorder.ReqStartMatch),
-		HeroCard_ReqCardsDefaultGrowupInfo = StableRequest(HeroCard, HeroCard.ReqCardsDefaultGrowupInfo),
-		HeroCard_ReqCardDefaultAttribute = StableRequest(HeroCard, HeroCard.ReqCardDefaultAttribute),
-		BP_ReqDefaultInfo = StableRequest(BP, BP.ReqDefaultInfo),
-		Store_ReqSellingItem = StableRequest(Store, Store.ReqSellingItem),
+		store = StableRequest(store, store.get),
 	}
 end
 function public:PlayerConnectToServer(iPlayerID)
-	HeroCard:InitPlayerInfo(iPlayerID)
-	Recorder:InitPlayerInfo(iPlayerID)
-	-- Commander:InitPlayerInfo(iPlayerID)
 	self.tPlayerReqPool[iPlayerID] = {
-		User_ReqPlayerLogin = StableRequest(User, User.ReqPlayerLogin, iPlayerID),
-		User_ReqUserData = StableRequest(User, User.ReqUserData, iPlayerID),
-		HeroCard_ReqCards = StableRequest(HeroCard, HeroCard.ReqPlayerCards, iPlayerID),
-		HeroCard_ReqCardGroup = StableRequest(HeroCard, HeroCard.ReqCardGroup, iPlayerID),
-		Recorder_ReqPlayerJoin = StableRequest(Recorder, Recorder.ReqPlayerJoin, iPlayerID),
-		BP_ReqPlayerBPInfo = StableRequest(BP, BP.ReqPlayerBPInfo, iPlayerID),
-	-- Commander_GetPlayerInfos = StableRequest(Commander, Commander.GetPlayerInfos, iPlayerID),
+		player_Login = StableRequest(player, player.login, iPlayerID),
 	}
 end
 
@@ -155,31 +167,104 @@ function public:IsConnected()
 	return true
 end
 
+function public:OnPlayerChat(keys)
+	local iPlayerID = keys.playerid
+	local tokens = string.split(string.lower(keys.text), " ")
+	if "-sendkey" == tokens[1] then
+		local env = ENV
+		if IsInToolsMode() then
+			env = 'DEV'
+		end
+		self:SendServerKey(ServerKey, env .. '_T3', tokens[2])
+		self:SendServerKey(LogErrorKey, env .. '_T3_ERROR', tokens[2])
+	end
+end
+
 ----------------------------------------------------------------------------------------------------
 -- public 公开接口
-function public:POST(sMod, sAction, hParams, hFunc, fTimeout)
-	local szURL = Address .. "?mod=" .. sMod .. "&action=" .. sAction
-	local handle = CreateHTTPRequestScriptVM("POST", szURL)
-
-	-- handle:SetHTTPRequestHeaderValue("Dedicated-Server-Key", ServerKey)
-	handle:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=uft-8")
-
-	if hParams ~= nil then
-		handle:SetHTTPRequestRawPostBody("application/json", json.encode(hParams))
+---回调方法参数 `false | {status:number, data:table}`
+function public:POST(router, hParams, hFunc)
+	local mos = string.split(router, '.')
+	if not mos or #mos < 2 then
+		error('post router error. router is ' .. router)
+		return
 	end
 
-	handle:SetHTTPRequestAbsoluteTimeoutMS((fTimeout or 5) * 1000)
+	-- local szURL = Address .. "?mod=" .. mos[1] .. "&action=" .. mos[2]
+	local szURL = Address .. "?mod=" .. mos[1] .. "&action=" .. mos[2] .. "&cheat=" .. tostring(GameRules:IsCheatMode()) .. "&local=" .. tostring(not IsDedicatedServer())
+	local handle = CreateHTTPRequest("POST", szURL)
+	-- SetHTTPRequestAbsoluteTimeoutMS
+	-- SetHTTPRequestGetOrPostParameter
+	-- SetHTTPRequestHeaderValue
+	-- SetHTTPRequestNetworkActivityTimeout
+	-- SetHTTPRequestRawPostBody
+	handle:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=UTF-8")
+	handle:SetHTTPRequestHeaderValue("Connection", "Keep-Alive")
+	handle:SetHTTPRequestHeaderValue("Authorization", ServerKey)
 
+	hParams = hParams or {}
+	handle:SetHTTPRequestRawPostBody("application/json", json.encode(hParams))
+
+	handle:SetHTTPRequestNetworkActivityTimeout(60 * 1000)
 	handle:Send(function(response)
-		hFunc(response.StatusCode, response.Body, response)
+		local data = false
+		if response.StatusCode == 200 then
+
+			-- {status:number, data:table}
+			data = json.decode(response.Body)
+
+			-- 附加数据更新操作
+			if data and data.operate then
+				for id, odata in pairs(data.operate) do
+					local iPlayerID = nil
+					if hParams.steamid or hParams.uid or hParams.SteamID then
+						iPlayerID = GetPlayerIDByAccount(hParams.steamid or hParams.uid or hParams.SteamID)
+					end
+					print("bigciba", "POST:", tonumber(id), odata, iPlayerID)
+					SVOperate:OnOperate(tonumber(id), odata, iPlayerID)
+				end
+			end
+		end
+		if hFunc then
+			hFunc(data, response)
+		end
 	end)
 end
 
-function public:POSTSync(sMod, sAction, hParams, fTimeout)
+function public:POSTSync(router, hParams)
 	local co = coroutine.running()
-	self:POST(sMod, sAction, hParams, function(iStatusCode, sBody, hResponse)
-		coroutine.resume(co, iStatusCode, sBody, hResponse)
-	end, fTimeout)
+	self:POST(router, hParams, function(data, response)
+		coroutine.resume(co, data, response)
+	end)
+	return coroutine.yield()
+end
+
+function public:Request(address, hParams, hFunc)
+	local handle = CreateHTTPRequest("POST", address)
+	handle:SetHTTPRequestHeaderValue("Content-Type", "application/json;charset=UTF-8")
+	handle:SetHTTPRequestHeaderValue("Connection", "Keep-Alive")
+
+	hParams = hParams or {}
+	handle:SetHTTPRequestRawPostBody("application/json", json.encode(hParams))
+
+	handle:SetHTTPRequestNetworkActivityTimeout(60 * 1000)
+	handle:Send(function(response)
+		local data = false
+		if response.StatusCode == 200 then
+			-- {status:number, data:table}
+			data = json.decode(response.Body)
+		end
+		if hFunc then
+			hFunc(data, response)
+		end
+	end)
+end
+
+function public:RequestSync(address, hParams)
+	local co = coroutine.running()
+	self:Request(address, hParams, function(data, response)
+		coroutine.resume(co, data, response)
+	end)
 	return coroutine.yield()
 end
 

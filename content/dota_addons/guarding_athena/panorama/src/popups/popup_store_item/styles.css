@@ -499,3 +499,12 @@
   opacity: 1;
   pre-transform-scale2d: 1;
 }
+.DotaPlusPurchaseButton Label {
+  margin-left: 2px;
+  margin-right: 4px;
+  color: dotaPlusLightGold;
+  font-size: 18px;
+  padding: 0px;
+  horizontal-align: center;
+  flow-children: right;
+}

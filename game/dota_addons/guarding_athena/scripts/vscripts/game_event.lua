@@ -63,7 +63,7 @@ function GuardingAthena:OnEntityKilled(event)
 			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 				if IsValid(hPlayer) then
-					Service:GameReward(iPlayerID, false)
+					player:game_over(iPlayerID, false)
 				end
 			end)
 		end
@@ -77,7 +77,7 @@ function GuardingAthena:OnEntityKilled(event)
 					GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 						local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 						if IsValid(hPlayer) then
-							Service:GameReward(iPlayerID, true)
+							player:game_over(iPlayerID, true)
 						end
 					end)
 				end
@@ -263,7 +263,7 @@ function GuardingAthena:OnEntityKilled(event)
 				GuardingAthena.final_boss = unit
 				Spawner.bossCurrent = unit
 				--table.insert(SPAWNER, unit)
-				local t_order =				 {
+				local t_order =				{
 					UnitIndex = unit:entindex(),
 					OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
 					TargetIndex = nil,
@@ -436,13 +436,8 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	heroEntity.courier = courier
 	self.creatCourier = self.creatCourier + 1
 
-	-- DeepPrintTable(Service.tPlayerServiceData[playerID])
-	local tGamePlayData = Service:GetPlayerItem(playerID, "gameplay")
-	local tParticleData = Service:GetEquippedItem(playerID, "particle")
-	local tSkinData = Service:GetEquippedItem(playerID, "skin")
-	local tPetData = Service:GetEquippedItem(playerID, "pet")
 	-- 游戏内容相关
-	for i, tItemData in ipairs(tGamePlayData) do
+	EachPlayerGameplay(playerID, function(tItemData)
 		if tItemData.ItemName == "potion" then	-- 药水礼包
 			local clarity = CreateItem("item_clarity1", courier, courier)
 			local salve = CreateItem("item_salve1", courier, courier)
@@ -451,9 +446,10 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			clarity:SetCurrentCharges(30)
 			salve:SetCurrentCharges(30)
 		end
-	end
+	end)
 	-- 特效
-	for i, tItemData in ipairs(tParticleData) do
+	EachEquippedParticles(playerID, function(tItemData)
+		print("bigciba", tItemData.ItemName)
 		if tItemData.ItemName == "wing_01" then	-- 金色翅膀
 			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
 				local iParticleID = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
@@ -461,22 +457,30 @@ function GuardingAthena:OnPlayerPickHero(keys)
 				local particle = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
 			end
 		end
-	end
+	end)
 	-- 皮肤
-	for i, tItemData in ipairs(tSkinData) do
+	local tSkinData = GetEquippedSkin(playerID, heroEntity:GetUnitName())
+	if tSkinData then
 		heroEntity.gift = true	--待完善
 		-- 新方法
 		heroEntity:GameTimer(0.1, function()
 			-- AssetModifiers:ReplaceWearables(tItemData.ItemName, heroEntity)
-			heroEntity:AddNewModifier(heroEntity, self, "modifier_" .. tItemData.ItemName, nil)
+			heroEntity:AddNewModifier(heroEntity, self, "modifier_" .. tSkinData.ItemName, nil)
 		end)
 	end
 	-- 宠物
-	for i, tItemData in ipairs(tPetData) do
+	local tCourierData = GetEquippedCourier(playerID)
+	if tCourierData then
 		heroEntity:GameTimer(1, function()
-			heroEntity.pet = NewPet(tItemData.ItemName, heroEntity)
+			heroEntity.pet = NewPet(tCourierData.ItemName, heroEntity, tonumber(tCourierData.Experience))
 		end)
 	end
+	-- 其他
+	local tOther = EachPlayerOther(playerID, function(tItemData)
+		if tItemData.ItemName == "vip" then
+			CustomUI:DynamicHud_Create(playerID, "VipParticleBackGround", "file://{resources}/layout/custom_game/custom_hud/vip_particle.xml", nil)
+		end
+	end)
 	-- 设定通关积分
 	local count = 0
 	Timers:CreateTimer(function()
@@ -491,9 +495,9 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	end)
 
 
-	if Service:IsVipPlayer(playerID) then
-		CustomUI:DynamicHud_Create(playerID, "VipParticleBackGround", "file://{resources}/layout/custom_game/custom_hud/vip_particle.xml", nil)
-	end
+	-- if Service:IsVipPlayer(playerID) then
+	-- 	CustomUI:DynamicHud_Create(playerID, "VipParticleBackGround", "file://{resources}/layout/custom_game/custom_hud/vip_particle.xml", nil)
+	-- end
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)
@@ -504,7 +508,7 @@ function GuardingAthena:OnPlayerChat(keys)
 	--text( string ): chat text
 	local playerid = keys.userid - 1
 	local text = keys.text
-	Cheats =	 {
+	Cheats =	{
 		"-lvlup",
 		"-levelbots",
 		"-gold",
@@ -722,7 +726,7 @@ function GuardingAthena:OnPlayerChat(keys)
 	if string.sub(text, 0, 10) == "useskill" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local target = Entities:FindByName(nil, "boss_clotho")
-		local t_order =		 {
+		local t_order =		{
 			UnitIndex = hero:entindex(),
 			OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
 			TargetIndex = target:entindex(),

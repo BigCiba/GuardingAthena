@@ -330,9 +330,13 @@
 
 "Equip"							"装备"
 "UnEquip"						"卸下"
+"HasItem"						"已拥有"
+"NoHasItem"						"未拥有"
 "Store"							"商店"
 "Inventory"						"背包"
 "Wallet"						"我的钱包"
+"OrderCheck"					"补单"
+"OrderCheckTooltip"				"充值因为各种网络原因没有到账可通过该按钮尝试补单"
 "Refresh"						"刷新金钱"
 "Recharge"						"充值"
 "Shard_Description"				"碎片<br></br>通过完成游戏获得，根据难度获得不等的碎片。"
@@ -351,6 +355,8 @@
 "CategoryPet_Description"		"好伙伴"
 "CategoryGamePlay"				"道具"
 "CategoryGamePlay_Description"	"游戏内道具"
+"CategoryOther"					"其他"
+"CategoryOther_Description"		"其他特殊物品"
 
 "GameMode_Easy"					"简单"
 "GameMode_Common"				"普通"

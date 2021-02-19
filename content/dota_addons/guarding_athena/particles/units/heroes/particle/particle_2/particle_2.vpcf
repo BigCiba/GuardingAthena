@@ -1,0 +1,82 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf31:version{593cd181-a1d6-4c6f-9a8c-0534e8d44db0} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_ABSORIGIN_FOLLOW"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "parent"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_n.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_i.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_h.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_p.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_q.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_j.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_k.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_o.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_m.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_2/particle_2_b.vpcf"
+		},
+	]
+}
