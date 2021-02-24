@@ -57,32 +57,33 @@ function public:QueryOperate(params)
 		ItemName = ItemName
 	})
 	if data and data.status == 0 then
-		-- 装备
-		if router == "particle.equip" then
-			local hHero = PlayerResource:GetSelectedHeroEntity(iPlayerID)
-			EachEquippedParticles(iPlayerID, function(tItemData)
-				-- 清除旧的
-				if hHero.ParticleModifier then
-					if type(hHero.ParticleModifier) == "number" then
-						ParticleManager:DestroyParticle(hHero.ParticleModifier, false)
-					else
-						hHero.ParticleModifier:Destroy()
+		if GameRules:State_Get() >= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+			-- 装备
+			if router == "particle.equip" then
+				local hHero = PlayerResource:GetSelectedHeroEntity(iPlayerID)
+				EachEquippedParticles(iPlayerID, function(tItemData)
+					-- 清除旧的
+					if hHero.ParticleModifier then
+						if type(hHero.ParticleModifier) == "number" then
+							ParticleManager:DestroyParticle(hHero.ParticleModifier, false)
+						else
+							hHero.ParticleModifier:Destroy()
+						end
 					end
-				end
-				if tItemData.ItemName == "wing_01" then	-- 金色翅膀
-					if hHero:GetUnitName() == "npc_dota_hero_nevermore" then
-						hHero.ParticleModifier = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, hHero)
-					else
-						hHero.ParticleModifier = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, hHero)
+					if tItemData.ItemName == "wing_01" then	-- 金色翅膀
+						if hHero:GetUnitName() == "npc_dota_hero_nevermore" then
+							hHero.ParticleModifier = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, hHero)
+						else
+							hHero.ParticleModifier = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, hHero)
+						end
 					end
-				end
-
-				local Asset = GetItemInfo(tItemData.ItemName).Asset
-				print("bigciba", Asset)
-				if Asset then
-					hHero.ParticleModifier = hHero:AddNewModifier(hHero, nil, Asset, nil)
-				end
-			end)
+					local Asset = GetItemInfo(tItemData.ItemName).Asset
+					print("bigciba", Asset)
+					if Asset then
+						hHero.ParticleModifier = hHero:AddNewModifier(hHero, nil, Asset, nil)
+					end
+				end)
+			end
 		end
 		return {
 			status = data.status

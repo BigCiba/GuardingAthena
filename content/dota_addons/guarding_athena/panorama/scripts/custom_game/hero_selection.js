@@ -63,8 +63,8 @@ function LoadItem(self) {
 				"router": Type + "." + (ItemData.Equip == 0 ? "equip" : "unequip"),
 				"ItemName": ItemData.ItemName
 			}, data => {
+				$.Msg(data);
 				if (data.status == 0) {
-					$.Msg(data);
 					if (ItemData.Equip == 0) {
 						this.Panel.SetImage(this.Image);
 					} else {
@@ -219,6 +219,7 @@ function UpdataSkinSetting() {
 function UpdataParticleSetting() {
 	let PlayerID = Players.GetLocalPlayer();
 	let playerParticleData = CustomNetTables.GetTableValue("service", "player_particle_" + PlayerID);
+	$.Msg(playerParticleData);
 	for (const index in playerParticleData) {
 		const ItemData = playerParticleData[index];
 		if (ItemData.Equip == 1) {
