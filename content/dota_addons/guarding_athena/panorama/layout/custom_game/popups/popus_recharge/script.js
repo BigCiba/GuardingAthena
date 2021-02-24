@@ -7,8 +7,6 @@
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
-/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -76,7 +74,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -184,7 +181,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1175,7 +1171,6 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -1285,7 +1280,6 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -5928,9 +5922,11 @@ function Popup() {
     const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const PaymentTextEntry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const [payType, setPayType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1000);
+    const [price, setPrice] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0");
     const UpdateTicketsAmount = (count) => {
-        if (PaymentTextEntry.current) {
+        if (count && PaymentTextEntry.current) {
             PaymentTextEntry.current.text = String(count);
+            setPrice(String(count / 10));
         }
     };
     const Pay = () => {
@@ -6007,11 +6003,11 @@ function Popup() {
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "1000" }))),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AdjustPanel" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextEntry, { id: "PaymentTextEntry", placeholder: "\u8BF7\u8F93\u5165\u5145\u503C\u91D1\u989D", ref: PaymentTextEntry }))),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextEntry, { id: "PaymentTextEntry", placeholder: "\u8BF7\u8F93\u5165\u5145\u503C\u91D1\u989D", ref: PaymentTextEntry, ontextentrychange: (self) => { setPrice(String(Number(self.text) / 10)); } }))),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SecondStep" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "PaymentIcon", className: classnames__WEBPACK_IMPORTED_MODULE_4___default()({ Alipay: true }) }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "RealPrice", localizedText: "\uFFE5{s:price}" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentNotice", text: "\u8BF7\u652F\u4ED8\u6B63\u786E\u7684\u91D1\u989D\u5426\u5219\u4E0D\u4F1A\u81EA\u52A8\u5230\u8D26\uFF01\uFF01\uFF01" }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "RealPrice", localizedText: "\uFFE5{s:price}", dialogVariables: { price: price } }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentNotice", text: "\u5982\u679C\u56E0\u4E3A\u7F51\u7EDC\u539F\u56E0\u6CA1\u6709\u5230\u8D26\u8BF7\u4F7F\u7528\u8865\u5355\u529F\u80FD" }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "QRCodeContainer" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "QRCode" }),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PaymentResultPanel" },

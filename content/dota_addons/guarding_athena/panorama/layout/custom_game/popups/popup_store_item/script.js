@@ -6023,7 +6023,7 @@ function Popup({ itemData, hasItem }) {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopusNotify" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, null))));
 }
-// 宠物商品界面
+// 英雄商品界面
 function HeroItemDetail({ heroName }) {
     const heroScene = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const fullName = "npc_dota_hero_" + heroName;

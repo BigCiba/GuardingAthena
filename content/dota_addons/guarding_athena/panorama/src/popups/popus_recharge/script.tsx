@@ -8,9 +8,11 @@ function Popup() {
 	const parent = useRef<Panel>(null);
 	const PaymentTextEntry = useRef<TextEntry>(null);
 	const [payType, setPayType] = useState(1000);
+	const [price, setPrice] = useState("0");
 	const UpdateTicketsAmount = (count: number) => {
-		if (PaymentTextEntry.current) {
+		if (count && PaymentTextEntry.current) {
 			PaymentTextEntry.current.text = String(count);
+			setPrice(String(count / 10));
 		}
 	};
 	const Pay = () => {
@@ -90,13 +92,13 @@ function Popup() {
 						</Button>
 					</Panel>
 					<Panel className="AdjustPanel">
-						<TextEntry id="PaymentTextEntry" placeholder="请输入充值金额" ref={PaymentTextEntry} />
+						<TextEntry id="PaymentTextEntry" placeholder="请输入充值金额" ref={PaymentTextEntry} ontextentrychange={(self) => { setPrice(String(Number(self.text) / 10)); }} />
 					</Panel>
 				</Panel>
 				<Panel className="SecondStep">
 					<Image id="PaymentIcon" className={classNames({ Alipay: true })} />
-					<Label id="RealPrice" localizedText="￥{s:price}" />
-					<Label id="PaymentNotice" text="请支付正确的金额否则不会自动到账！！！" />
+					<Label id="RealPrice" localizedText="￥{s:price}" dialogVariables={{ price: price }} />
+					<Label id="PaymentNotice" text="如果因为网络原因没有到账请使用补单功能" />
 					<Panel className="QRCodeContainer" >
 						<Panel id="QRCode" />
 						<Panel className="PaymentResultPanel">
