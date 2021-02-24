@@ -22,6 +22,9 @@ function Popup({ itemData, hasItem }: { itemData: any; hasItem: boolean; }) {
 				{itemData.Type == "gameplay" &&
 					<CommonItemDetail itemData={itemData} />
 				}
+				{itemData.Type == "other" &&
+					<CommonItemDetail itemData={itemData} />
+				}
 			</Panel>
 			<Panel className="MoneyContainer">
 				<Panel className="RechargeContainer">

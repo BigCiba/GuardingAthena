@@ -6003,6 +6003,8 @@ function Popup({ itemData, hasItem }) {
             (itemData.Type == "skin" || itemData.Type == "particle") &&
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(ParticleItemDetail, { itemData: itemData }),
             itemData.Type == "gameplay" &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(CommonItemDetail, { itemData: itemData }),
+            itemData.Type == "other" &&
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(CommonItemDetail, { itemData: itemData })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "MoneyContainer" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "RechargeContainer" },
