@@ -26,8 +26,8 @@ export function BuyButton({ type, count, id, itemName }: { type: string, count: 
 	const buyButton = useRef<Panel>(null);
 	const Buy = () => {
 		let tData = CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID());
-		let Price = tData.Price;
-		let Shard = tData.Shard;
+		let Price = Number(tData.Price);
+		let Shard = Number(tData.Shard);
 		if ((type == "Shard" && Shard > count) || (type == "Price" && Price >= count)) {
 			Request("store.buy", {
 				ItemName: itemName,
