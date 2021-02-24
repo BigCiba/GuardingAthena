@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
 import { BuyButton, CommonBalance, CommonMoneyContainer } from '../../elements/Common/Common';
 import { GetHeroIDByName, GetHeroKV, Request } from '../../utils/utils';
-function Popup({ itemData }: { itemData: any; }) {
+function Popup({ itemData, hasItem }: { itemData: any; hasItem: boolean; }) {
 	const parent = useRef<Panel>(null);
 	const ItemName = itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName;
 	return (
@@ -30,11 +30,14 @@ function Popup({ itemData }: { itemData: any; }) {
 			</Panel>
 			{/* 按钮 */}
 			<Panel className="PopupButtonRow">
-				{itemData.Shard > 0 &&
+				{(!hasItem && itemData.Shard > 0) &&
 					<BuyButton type="Shard" count={itemData.Shard} id={itemData.ID} itemName={itemData.ItemName} />
 				}
-				{itemData.Price > 0 &&
+				{(!hasItem && itemData.Price > 0) &&
 					<BuyButton type="Price" count={itemData.Price} id={itemData.ID} itemName={itemData.ItemName} />
+				}
+				{hasItem &&
+					<TextButton localizedText="HasItem" className="DotaPlusPurchaseButton" />
 				}
 			</Panel>
 			{/* 通知界面 */}
@@ -212,5 +215,6 @@ function CommonItemDetail({ itemData }: { itemData: any; }) {
 $.GetContextPanel().SetPanelEvent("onload", () => {
 	let panel = $.GetContextPanel();
 	let itemData = JSON.parse($.GetContextPanel().GetAttributeString("itemData", "{}"));
-	render(<Popup itemData={itemData} />, panel);
+	let hasItem = $.GetContextPanel().GetAttributeString("hasItem", "0") == "1" ? true : false;
+	render(<Popup itemData={itemData} hasItem={hasItem} />, panel);
 });

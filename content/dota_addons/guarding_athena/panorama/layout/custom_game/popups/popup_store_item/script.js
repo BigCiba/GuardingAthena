@@ -5934,38 +5934,39 @@ function CommonMoneyContainer({ type, count }) {
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { text: count })));
 }
 function CommonBalance({ type, count }) {
-    const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_data"));
+    const [playerData, UpdataPlayerData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID()));
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CommonBalance" },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { className: "CurrentBalance", text: "\u5F53\u524D\u4F59\u989D\uFF1A" }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Shard", count: playerData[Game.GetLocalPlayerID()].Shard }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Price", count: playerData[Game.GetLocalPlayerID()].Price }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Shard", count: playerData.Shard }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonMoneyContainer, { type: "Price", count: playerData.Price }),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextButton, { className: "RechargeButton", text: "\u7ACB\u5373\u5145\u503C", onactivate: () => (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.OpenPopup)("popus_recharge/popus_recharge") })));
 }
 function BuyButton({ type, count, id, itemName }) {
     const buyButton = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const Buy = () => {
-        let tData = CustomNetTables.GetTableValue("service", "player_data");
-        let Price = tData[Players.GetLocalPlayer()].Price;
-        let Shard = tData[Players.GetLocalPlayer()].Shard;
-        if ((type == "Shard" && Shard > count) || (type == "Price" && Price > count)) {
-            GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+        let tData = CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID());
+        let Price = tData.Price;
+        let Shard = tData.Shard;
+        if ((type == "Shard" && Shard > count) || (type == "Price" && Price >= count)) {
+            (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.Request)("store.buy", {
                 ItemName: itemName,
-                Currency: type
+                paytype: type
+            }, data => {
+                var _a;
+                $.Msg(data);
+                if (data.status == 0) {
+                    (_a = buyButton.current) === null || _a === void 0 ? void 0 : _a.FindAncestor("PopupPanel").AddClass("PaySuccess");
+                    $.Schedule(2, () => {
+                        $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel());
+                    });
+                }
             });
+            // GameEvents.SendCustomGameEventToServer("PurchaseItem", {
+            // 	ItemName: itemName,
+            // 	Currency: type
+            // });
         }
     };
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        const id = GameEvents.Subscribe("purchase_complete", (data) => {
-            var _a;
-            (_a = buyButton.current) === null || _a === void 0 ? void 0 : _a.FindAncestor("PopupPanel").AddClass("PaySuccess");
-            $.Schedule(2, () => {
-                $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel());
-            });
-        });
-        return () => {
-            GameEvents.Unsubscribe(id);
-        };
-    }, []);
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(Button, { id: type == "Shard" ? "ShardPurchaseButton" : "PricePurchaseButton", className: "DotaPlusPurchaseButton", onactivate: Buy, ref: buyButton },
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Contents", className: "ButtonCenter" },
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "EventIcon", className: classnames__WEBPACK_IMPORTED_MODULE_0___default()({ DotaPlusCurrencyIcon: type == "Shard" }, { DotaPlusPriceCurrencyIcon: type == "Price" }) }),
@@ -5994,7 +5995,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Popup({ itemData }) {
+function Popup({ itemData, hasItem }) {
     const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const ItemName = itemData.Type == "hero" ? "npc_dota_hero_" + itemData.ItemName : itemData.ItemName;
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PopupPanel", className: "PopupPanel", ref: parent },
@@ -6013,10 +6014,12 @@ function Popup({ itemData }) {
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "RechargeContainer" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.CommonBalance, { type: Number(itemData.Shard) > 0 ? "Shard" : "Price", count: Number(itemData.Shard) > 0 ? Number(itemData.Shard) : Number(itemData.Price) }))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopupButtonRow" },
-            itemData.Shard > 0 &&
+            (!hasItem && itemData.Shard > 0) &&
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Shard", count: itemData.Shard, id: itemData.ID, itemName: itemData.ItemName }),
-            itemData.Price > 0 &&
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Price", count: itemData.Price, id: itemData.ID, itemName: itemData.ItemName })),
+            (!hasItem && itemData.Price > 0) &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_Common_Common__WEBPACK_IMPORTED_MODULE_2__.BuyButton, { type: "Price", count: itemData.Price, id: itemData.ID, itemName: itemData.ItemName }),
+            hasItem &&
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextButton, { localizedText: "HasItem", className: "DotaPlusPurchaseButton" })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PopusNotify" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, null))));
 }
@@ -6136,7 +6139,8 @@ function CommonItemDetail({ itemData }) {
 $.GetContextPanel().SetPanelEvent("onload", () => {
     let panel = $.GetContextPanel();
     let itemData = JSON.parse($.GetContextPanel().GetAttributeString("itemData", "{}"));
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(Popup, { itemData: itemData }), panel);
+    let hasItem = $.GetContextPanel().GetAttributeString("hasItem", "0") == "1" ? true : false;
+    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(Popup, { itemData: itemData, hasItem: hasItem }), panel);
 });
 
 

@@ -5915,9 +5915,11 @@ if (false) {} else {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
 /* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
-/* harmony import */ var _utils_qrcode__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/qrcode */ "./utils/qrcode.ts");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/utils */ "./utils/utils.ts");
+/* harmony import */ var _utils_qrcode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/qrcode */ "./utils/qrcode.ts");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -5925,29 +5927,41 @@ __webpack_require__.r(__webpack_exports__);
 function Popup() {
     const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const PaymentTextEntry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    const [payType, setPayType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
+    const [payType, setPayType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1000);
     const UpdateTicketsAmount = (count) => {
         if (PaymentTextEntry.current) {
             PaymentTextEntry.current.text = String(count);
         }
     };
     const Pay = () => {
-        // Request("RequestPay", {
+        var _a, _b;
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.Request)("order.create", {
+            amount: Number((_a = PaymentTextEntry.current) === null || _a === void 0 ? void 0 : _a.text) / 10,
+            itemcount: Number((_b = PaymentTextEntry.current) === null || _b === void 0 ? void 0 : _b.text),
+            paytype: payType,
+            pmid: "",
+            title: "Dota2守卫雅典娜勋章充值",
+            body: "Dota2守卫雅典娜勋章充值"
+        }, data => {
+            var _a, _b, _c;
+            $.Msg(data);
+            if (data.status == 1) {
+                (_a = parent.current) === null || _a === void 0 ? void 0 : _a.AddClass("ShowQrcode");
+                (0,_utils_qrcode__WEBPACK_IMPORTED_MODULE_3__.CreateQRCode)(data.data.link, (_b = parent.current) === null || _b === void 0 ? void 0 : _b.FindChildTraverse("QRCode"), 200);
+                // parent.current?.SetDialogVariable("price", String(Number(data.price).toFixed(2)));
+                (_c = parent.current) === null || _c === void 0 ? void 0 : _c.SetDialogVariable("orderid", data.data.order);
+            }
+        });
+        // GameEvents.SendCustomGameEventToServer("RequestPay", {
         // 	istype: payType,
         // 	price: Number(PaymentTextEntry.current?.text) / 10
-        // }, () => {
-        var _a;
         // });
-        GameEvents.SendCustomGameEventToServer("RequestPay", {
-            istype: payType,
-            price: Number((_a = PaymentTextEntry.current) === null || _a === void 0 ? void 0 : _a.text) / 10
-        });
     };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         const show_qrcode = GameEvents.Subscribe("show_qrcode", (data) => {
             var _a, _b, _c, _d;
             (_a = parent.current) === null || _a === void 0 ? void 0 : _a.AddClass("ShowQrcode");
-            (0,_utils_qrcode__WEBPACK_IMPORTED_MODULE_2__.CreateQRCode)(data.qrcode, (_b = parent.current) === null || _b === void 0 ? void 0 : _b.FindChildTraverse("QRCode"), 200);
+            (0,_utils_qrcode__WEBPACK_IMPORTED_MODULE_3__.CreateQRCode)(data.qrcode, (_b = parent.current) === null || _b === void 0 ? void 0 : _b.FindChildTraverse("QRCode"), 200);
             (_c = parent.current) === null || _c === void 0 ? void 0 : _c.SetDialogVariable("price", String(Number(data.price).toFixed(2)));
             (_d = parent.current) === null || _d === void 0 ? void 0 : _d.SetDialogVariable("orderid", data.orderid);
         });
@@ -5977,8 +5991,8 @@ function Popup() {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PaymentTypeSelection" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "FirstStep" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PayTypeList" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", selected: "true", group: "payment", id: "PaymentAlipay", onselect: () => setPayType(1) }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", group: "payment", id: "PaymentWeChatPay", onselect: () => setPayType(2) })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", selected: "true", group: "payment", id: "PaymentAlipay", onselect: () => setPayType(1000) }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", group: "payment", id: "PaymentWeChatPay", onselect: () => setPayType(2000) })),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PaymentAddition" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_0", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(10) },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
@@ -5995,7 +6009,7 @@ function Popup() {
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AdjustPanel" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextEntry, { id: "PaymentTextEntry", placeholder: "\u8BF7\u8F93\u5165\u5145\u503C\u91D1\u989D", ref: PaymentTextEntry }))),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SecondStep" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "PaymentIcon", className: classnames__WEBPACK_IMPORTED_MODULE_3___default()({ Alipay: true }) }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "PaymentIcon", className: classnames__WEBPACK_IMPORTED_MODULE_4___default()({ Alipay: true }) }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "RealPrice", localizedText: "\uFFE5{s:price}" }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentNotice", text: "\u8BF7\u652F\u4ED8\u6B63\u786E\u7684\u91D1\u989D\u5426\u5219\u4E0D\u4F1A\u81EA\u52A8\u5230\u8D26\uFF01\uFF01\uFF01" }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "QRCodeContainer" },
@@ -7034,6 +7048,97 @@ QRBitBuffer.prototype = {
         this.length++;
     }
 };
+
+
+/***/ }),
+
+/***/ "./utils/utils.ts":
+/*!************************!*\
+  !*** ./utils/utils.ts ***!
+  \************************/
+/*! namespace exports */
+/*! export GetHeroIDByName [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export GetHeroKV [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export HideTextTooltip [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export OpenPopup [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export Request [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export ShowTextTooltip [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export ToggleWindows [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Request": () => /* binding */ Request,
+/* harmony export */   "OpenPopup": () => /* binding */ OpenPopup,
+/* harmony export */   "GetHeroIDByName": () => /* binding */ GetHeroIDByName,
+/* harmony export */   "GetHeroKV": () => /* binding */ GetHeroKV,
+/* harmony export */   "ShowTextTooltip": () => /* binding */ ShowTextTooltip,
+/* harmony export */   "HideTextTooltip": () => /* binding */ HideTextTooltip,
+/* harmony export */   "ToggleWindows": () => /* binding */ ToggleWindows
+/* harmony export */ });
+const REQUEST_TIME_OUT = 60;
+let _Request_QueueIndex = 0;
+let _Request_Table = {};
+function Request(event, params, func) {
+    let index = "-1";
+    if (typeof func === "function") {
+        index = (_Request_QueueIndex++).toString();
+        _Request_Table[index] = func;
+    }
+    GameEvents.SendCustomGameEventToServer("service_events_req", {
+        eventName: event,
+        data: JSON.stringify(params),
+        queueIndex: index
+    });
+    $.Schedule(REQUEST_TIME_OUT, function () {
+        delete _Request_Table[index];
+    });
+}
+GameEvents.Subscribe("service_events_res", function (data) {
+    var index = data.queueIndex || "";
+    var func = _Request_Table[index];
+    if (!func)
+        return;
+    delete _Request_Table[index];
+    if (func) {
+        func(JSON.parse(data.result));
+    }
+    ;
+});
+function OpenPopup(id, data) {
+    let params = "";
+    if (data) {
+        for (let key in data) {
+            params += key + "=" + data[key] + "&";
+        }
+    }
+    // $.Msg("OpenPopup", params);
+    $.DispatchEvent("UIShowCustomLayoutPopupParameters", id, "file://{resources}/layout/custom_game/popups/" + id + ".xml", params);
+}
+function GetHeroIDByName(heroName) {
+    return GameUI.CustomUIConfig().HeroesKv[heroName].HeroID;
+}
+function GetHeroKV(heroName, key) {
+    if (GameUI.CustomUIConfig().HeroesKv[heroName][key]) {
+        return GameUI.CustomUIConfig().HeroesKv[heroName][key];
+    }
+    else if (GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key]) {
+        return GameUI.CustomUIConfig().HeroesKv["npc_dota_hero_base"][key];
+    }
+    return 0;
+}
+function ShowTextTooltip(panel, text) {
+    $.DispatchEvent("UIShowTextTooltip", panel, text);
+}
+function HideTextTooltip(panel) {
+    $.DispatchEvent("UIHideTextTooltip", panel);
+}
+function ToggleWindows(sName) {
+    GameEvents.SendEventClientSide("toggle_window", { name: sName });
+}
 
 
 /***/ }),

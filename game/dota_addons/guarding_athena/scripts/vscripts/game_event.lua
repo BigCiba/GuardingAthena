@@ -1,7 +1,6 @@
 -- 监听实体死亡
-function GuardingAthena:OnEntityKilled( event )
+function GuardingAthena:OnEntityKilled(event)
 	--print( '[GuardingAthena] OnEntityKilled Called' )
-	
 	-- The Unit that was Killed
 	local killedUnit = EntIndexToHScript(event.entindex_killed)
 	local killerUnit = EntIndexToHScript(event.entindex_attacker)
@@ -38,56 +37,56 @@ function GuardingAthena:OnEntityKilled( event )
 	-- 雅典娜重生
 	if killedUnit == self.entAthena then
 		if self.athena_reborn then
-			Timers:CreateTimer(0.1,function ()
-		    	killedUnit:RespawnUnit()
+			Timers:CreateTimer(0.1, function()
+				killedUnit:RespawnUnit()
 				--killedUnit:AddAbility("athena_reborn"):SetLevel(1)
 				local ability = killedUnit:FindAbilityByName("athena_reborn")
 				ability:ApplyDataDrivenModifier(killedUnit, killedUnit, "modifier_athena_reborn", nil)
-				PrecacheUnitByNameAsync("ciba",function()
-		            local unit = CreateUnitByName("ciba", killedUnit:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS )
-		            unit:AddNewModifier(nil, nil, "modifier_phased", {duration=60})
-		            Timers:CreateTimer(60,function ()
-		            	unit:ForceKill(true)
-			    	end) 
-		        end)
-				Timers:CreateTimer(60,function ()
+				PrecacheUnitByNameAsync("ciba", function()
+					local unit = CreateUnitByName("ciba", killedUnit:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS)
+					unit:AddNewModifier(nil, nil, "modifier_phased", { duration = 60 })
+					Timers:CreateTimer(60, function()
+						unit:ForceKill(true)
+					end)
+				end)
+				Timers:CreateTimer(60, function()
 					killedUnit:SetPhysicalArmorBaseValue(self.athena_armor_lv + 10)
 					killedUnit:SetBaseHealthRegen(self.athena_regen_lv * 10 + 10)
-		    	end)
-		    	self.athena_reborn = false
-		    end)
+				end)
+				self.athena_reborn = false
+			end)
 		else
-			Timers:CreateTimer(1,function ()
-				GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
+			Timers:CreateTimer(1, function()
+				GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
 			end)
 			HeroState:SendFinallyData()
 			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 				if IsValid(hPlayer) then
-					Service:GameReward(iPlayerID, false)
+					player:game_over(iPlayerID, false)
 				end
 			end)
 		end
 	end
 	if self.final_boss then
 		if self.final_boss:GetHealth() <= 0 then
-			Timers:CreateTimer(10,function ()
-				GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
+			Timers:CreateTimer(10, function()
+				GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 				if self.is_cheat == false then
 					Server:UpdataScore()
 					GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 						local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 						if IsValid(hPlayer) then
-							Service:GameReward(iPlayerID, true)
+							player:game_over(iPlayerID, true)
 						end
 					end)
 				end
-		    end)
+			end)
 			HeroState:SendFinallyData()
 		end
 	end
 	if killedUnit:IsCreature() then
-        RollDrops(killedUnit)
+		RollDrops(killedUnit)
 	end
 	if killerUnit.trial then
 		if killerUnit.trial == killedUnit then
@@ -100,16 +99,16 @@ function GuardingAthena:OnEntityKilled( event )
 		ParticleManager:DestroyParticle(killedUnit.trial.trial_wall, false)
 		killedUnit.trial = nil
 	end
-    if killedUnit and string.find(killedUnit:GetUnitName(), "guai") then
+	if killedUnit and string.find(killedUnit:GetUnitName(), "guai") then
 		-- 排除复活单位与非测试单位
 		if killedUnit.corpse or killedUnit.wave == nil then
 			return
 		end
-    	-- 守家buff
-    	if killerUnit:IsRealHero() then
-	    	killerUnit.killguai = killerUnit.killguai + 1
-	    	if killerUnit.killguai == 300 then
-	    		killerUnit:AddAbility("guarding_1")
+		-- 守家buff
+		if killerUnit:IsRealHero() then
+			killerUnit.killguai = killerUnit.killguai + 1
+			if killerUnit.killguai == 300 then
+				killerUnit:AddAbility("guarding_1")
 				killerUnit:FindAbilityByName("guarding_1"):SetLevel(1)
 			elseif killerUnit.killguai == 700 then
 				killerUnit:RemoveModifierByName("modifier_guarding_1")
@@ -128,173 +127,172 @@ function GuardingAthena:OnEntityKilled( event )
 				killerUnit:FindAbilityByName("guarding_4"):SetLevel(1)
 			end
 		end
-    end
-    
+	end
+
 	if killedUnit:GetUnitName() == "boss_sandking" then
 		local target_location = killedUnit:GetAbsOrigin()
-		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-		for _,unit in ipairs(units) do
+		local units = FindUnitsInRadius(0, target_location, nil, 600, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+		for _, unit in ipairs(units) do
 			if unit:IsRealHero() then
-				PropertySystem(unit,3,RandomInt(5, 10))
+				PropertySystem(unit, 3, RandomInt(5, 10))
 				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 20))
 			end
-	    end
+		end
 	end
 	if killedUnit:GetUnitName() == "boss_visage" then
 		local target_location = killedUnit:GetAbsOrigin()
-		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-		for _,unit in ipairs(units) do
+		local units = FindUnitsInRadius(0, target_location, nil, 600, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+		for _, unit in ipairs(units) do
 			if unit:IsRealHero() then
-				PropertySystem(unit,3,RandomInt(5, 10))
+				PropertySystem(unit, 3, RandomInt(5, 10))
 				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 15))
 			end
-	    end
-	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
-	    	local point = Entities:FindByName( nil, "boss_visage_reborn" ):GetAbsOrigin()
-	    	PrecacheUnitByNameAsync("boss_visage",
-			    function()
-					local unit = CreateUnitByName("boss_visage", point, true, nil, nil, DOTA_TEAM_BADGUYS )
+		end
+		Timers:CreateTimer(TIME_BOSS_REBORN, function()
+			local point = Entities:FindByName(nil, "boss_visage_reborn"):GetAbsOrigin()
+			PrecacheUnitByNameAsync("boss_visage",
+			function()
+				local unit = CreateUnitByName("boss_visage", point, true, nil, nil, DOTA_TEAM_BADGUYS)
 			end)
-	    end)
+		end)
 	end
 	if killedUnit:GetUnitName() == "boss_treant" then
 		local target_location = killedUnit:GetAbsOrigin()
-		local units = FindUnitsInRadius( killedUnit:GetTeamNumber(), target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-		for _,unit in ipairs(units) do
+		local units = FindUnitsInRadius(killedUnit:GetTeamNumber(), target_location, nil, 600, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+		for _, unit in ipairs(units) do
 			if unit:IsRealHero() then
-				PropertySystem(unit,3,RandomInt(5, 10))
+				PropertySystem(unit, 3, RandomInt(5, 10))
 				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 10))
 			end
-	    end
-	    Timers:CreateTimer(120,function ()
-	    	local point = Entities:FindByName( nil, "boss_treant_reborn" ):GetAbsOrigin()
-	    	PrecacheUnitByNameAsync("boss_treant",
-			    function()
-					local unit = CreateUnitByName("boss_treant", point, true, nil, nil, DOTA_TEAM_BADGUYS )
+		end
+		Timers:CreateTimer(120, function()
+			local point = Entities:FindByName(nil, "boss_treant_reborn"):GetAbsOrigin()
+			PrecacheUnitByNameAsync("boss_treant",
+			function()
+				local unit = CreateUnitByName("boss_treant", point, true, nil, nil, DOTA_TEAM_BADGUYS)
 			end)
-	    end)
+		end)
 	end
 	if killedUnit:GetUnitName() == "boss_fire_demon" then
 		local target_location = killedUnit:GetAbsOrigin()
-		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-		for _,unit in ipairs(units) do
+		local units = FindUnitsInRadius(0, target_location, nil, 600, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+		for _, unit in ipairs(units) do
 			if unit:IsRealHero() then
-				PropertySystem(unit,3,RandomInt(5, 10))
+				PropertySystem(unit, 3, RandomInt(5, 10))
 				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 25))
 			end
-	    end
-	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
-	    	local point = Entities:FindByName( nil, "boss_fire_demon_reborn" ):GetAbsOrigin()
-	    	PrecacheUnitByNameAsync("boss_fire_demon",
-			    function()
-					local unit = CreateUnitByName("boss_fire_demon", point, true, nil, nil, DOTA_TEAM_BADGUYS )
+		end
+		Timers:CreateTimer(TIME_BOSS_REBORN, function()
+			local point = Entities:FindByName(nil, "boss_fire_demon_reborn"):GetAbsOrigin()
+			PrecacheUnitByNameAsync("boss_fire_demon",
+			function()
+				local unit = CreateUnitByName("boss_fire_demon", point, true, nil, nil, DOTA_TEAM_BADGUYS)
 			end)
-	    end)
+		end)
 	end
 	if killedUnit:GetUnitName() == "boss_clotho" then
 		local target_location = killedUnit:GetAbsOrigin()
-		local units = FindUnitsInRadius( 0, target_location, nil, 600,  DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NONE , FIND_CLOSEST, false)
-		for _,unit in ipairs(units) do
+		local units = FindUnitsInRadius(0, target_location, nil, 600, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+		for _, unit in ipairs(units) do
 			if unit:IsRealHero() then
-				PropertySystem(unit,3,RandomInt(5, 10) * killedUnit:GetLevel())
+				PropertySystem(unit, 3, RandomInt(5, 10) * killedUnit:GetLevel())
 				unit.def_point = unit.def_point + (Spawner.gameRound * RandomInt(5, 10) * killedUnit:GetLevel())
 			end
-	    end
-	    Timers:CreateTimer(TIME_BOSS_REBORN,function ()
-	    	local point = Entities:FindByName( nil, "spawner_clotho" ):GetAbsOrigin()
-	    	PrecacheUnitByNameAsync("boss_clotho",
-			    function()
-					local unit = CreateUnitByName("boss_clotho", point, true, nil, nil, DOTA_TEAM_BADGUYS ) 
-	    			unit:CreatureLevelUp(self.clotho_lv)
-	    			for i=1,16 do
-						if unit:GetAbilityByIndex(i-1) then
-							local ability = unit:GetAbilityByIndex(i-1)
-						    ability:SetLevel(self.clotho_lv)
-						end
+		end
+		Timers:CreateTimer(TIME_BOSS_REBORN, function()
+			local point = Entities:FindByName(nil, "spawner_clotho"):GetAbsOrigin()
+			PrecacheUnitByNameAsync("boss_clotho",
+			function()
+				local unit = CreateUnitByName("boss_clotho", point, true, nil, nil, DOTA_TEAM_BADGUYS)
+				unit:CreatureLevelUp(self.clotho_lv)
+				for i = 1, 16 do
+					if unit:GetAbilityByIndex(i - 1) then
+						local ability = unit:GetAbilityByIndex(i - 1)
+						ability:SetLevel(self.clotho_lv)
 					end
-					self.clotho_lv = self.clotho_lv + 1
+				end
+				self.clotho_lv = self.clotho_lv + 1
 			end)
-	    end)
+		end)
 	end
 	if killedUnit:GetUnitName() == "boss_iapetos" then
 		GuardingAthena.iapetos = nil
 		local caller = killedUnit.caller
-		local hRelay = Entities:FindByName( nil, "gate_demon_relay" )
-		hRelay:Trigger(hRelay,caller)
+		local hRelay = Entities:FindByName(nil, "gate_demon_relay")
+		hRelay:Trigger(hRelay, caller)
 		-- 转生许可
 		caller.kill_iapetos = true
 		caller.limitRegion = nil
 		if caller:IsRealHero() then
-        	caller.can_reborn = true
+			caller.can_reborn = true
 		end
 		-- 掉落补天石
 		local item = CreateItem("item_butianshi", caller, caller)
-        item:SetPurchaseTime(GameRules:GetGameTime() - 10)
-        if not IsFullSolt(caller,12,false) then
-        	caller:AddItem(item)
-        else
-        	if not IsFullSolt(caller.courier,6,false) then
-        		caller.courier:AddItem(item)
-        	else
-		        local pos = killedUnit:GetAbsOrigin()
-		        local drop = CreateItemOnPositionSync( pos, item )
-		        local pos_launch = pos+RandomVector(RandomFloat(0,50))
-		        item:LaunchLoot(false, 200, 0.75, pos_launch)
-		    end
+		item:SetPurchaseTime(GameRules:GetGameTime() - 10)
+		if not IsFullSolt(caller, 12, false) then
+			caller:AddItem(item)
+		else
+			if not IsFullSolt(caller.courier, 6, false) then
+				caller.courier:AddItem(item)
+			else
+				local pos = killedUnit:GetAbsOrigin()
+				local drop = CreateItemOnPositionSync(pos, item)
+				local pos_launch = pos + RandomVector(RandomFloat(0, 50))
+				item:LaunchLoot(false, 200, 0.75, pos_launch)
+			end
 		end
 	end
 	if killedUnit:GetUnitName() == "zeus" then
 		PrecacheUnitByNameAsync("zeus_reborn",
-		    function()
-				Timers:CreateTimer(function ()
-					local Difficulty = GameRules:GetDifficulty()
-					local unit = CreateUnitByName("zeus_reborn", killedUnit:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS ) 
-					unit:MoveToPositionAggressive(Entities:FindByName( nil, "athena" ):GetAbsOrigin())
-					unit:SetBaseDamageMin(unit:GetBaseDamageMin() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
-					unit:SetBaseDamageMax(unit:GetBaseDamageMax() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
-					unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
-					unit:Heal(unit:GetBaseMaxHealth() - unit:GetHealth(), nil)
-					-- unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
-					for i=1,16 do
-						if unit:GetAbilityByIndex(i-1) then
-							local ability = unit:GetAbilityByIndex(i-1)
-						    ability:SetLevel(Difficulty)
-						end
+		function()
+			Timers:CreateTimer(function()
+				local Difficulty = GameRules:GetDifficulty()
+				local unit = CreateUnitByName("zeus_reborn", killedUnit:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS)
+				unit:MoveToPositionAggressive(Entities:FindByName(nil, "athena"):GetAbsOrigin())
+				unit:SetBaseDamageMin(unit:GetBaseDamageMin() * Difficulty * RandomFloat(1, (1.2 + Difficulty * 0.2)))
+				unit:SetBaseDamageMax(unit:GetBaseDamageMax() * Difficulty * RandomFloat(1, (1.2 + Difficulty * 0.2)))
+				unit:SetBaseMaxHealth(unit:GetBaseMaxHealth() * Difficulty * RandomFloat(1, (1.2 + Difficulty * 0.2)))
+				unit:Heal(unit:GetBaseMaxHealth() - unit:GetHealth(), nil)
+				-- unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue() * Difficulty * RandomFloat(1, (1.2+Difficulty*0.2)))
+				for i = 1, 16 do
+					if unit:GetAbilityByIndex(i - 1) then
+						local ability = unit:GetAbilityByIndex(i - 1)
+						ability:SetLevel(Difficulty)
 					end
-					GuardingAthena.final_boss = unit
-					Spawner.bossCurrent = unit
-					--table.insert(SPAWNER, unit)
-			        local t_order = 
-			        {
-			            UnitIndex = unit:entindex(),
-			            OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
-			            TargetIndex = nil,
-			            AbilityIndex = unit:FindAbilityByName("thunder_wrath"):entindex(),
-			            Position = nil,
-			            Queue = 0
-			        }
-			        unit:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0.1)
-				end)
+				end
+				GuardingAthena.final_boss = unit
+				Spawner.bossCurrent = unit
+				--table.insert(SPAWNER, unit)
+				local t_order =				{
+					UnitIndex = unit:entindex(),
+					OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
+					TargetIndex = nil,
+					AbilityIndex = unit:FindAbilityByName("thunder_wrath"):entindex(),
+					Position = nil,
+					Queue = 0
+				}
+				unit:SetContextThink(DoUniqueString("order"), function() ExecuteOrderFromTable(t_order) end, 0.1)
+			end)
 		end)
 	end
 end
 -- 监听玩家完全连接
 function GuardingAthena:OnConnectFull(keys)
 	--PrintTable(keys)
-	print ('[GuardingAthena] OnConnectFull')
+	print('[GuardingAthena] OnConnectFull')
 	local playerEntity = PlayerResource:GetPlayer(keys.PlayerID)
 	self.Players[keys.PlayerID] = playerEntity
-	local entIndex = keys.index+1
+	local entIndex = keys.index + 1
 	-- The Player entity of the joining user
 	local player = EntIndexToHScript(entIndex)
 
 	-- The Player ID of the joining player
 	local playerID = player:GetPlayerID()
 	local steamid = PlayerResource:GetSteamAccountID(playerID)
-	CustomNetTables:SetTableValue( "playerInfo", tostring(playerID), {steamid=tostring(steamid)} )
+	CustomNetTables:SetTableValue("playerInfo", tostring(playerID), { steamid = tostring(steamid) })
 	-- 初始化分数
 	--setScore(playerID,0)
-	Server:GetPlayerInfo(playerID,function()
+	Server:GetPlayerInfo(playerID, function()
 		--local hero = player:GetAssignedHero()
 		--hero.boss_point = player.ServerInfo.score
 	end)
@@ -317,10 +315,10 @@ function GuardingAthena:OnConnectFull(keys)
 				"npc_dota_hero_legion_commander",
 				"npc_dota_hero_ember_spirit"
 			}
-			local currentHero = randomHeroTable[RandomInt(1,9)]
+			local currentHero = randomHeroTable[RandomInt(1, 9)]
 			--print(currentHero)
-			PrecacheUnitByNameAsync(currentHero,function()
-				PlayerResource:ReplaceHeroWith(playerID,currentHero,PlayerResource:GetGold(heroEntity:GetPlayerID()),0)
+			PrecacheUnitByNameAsync(currentHero, function()
+				PlayerResource:ReplaceHeroWith(playerID, currentHero, PlayerResource:GetGold(heroEntity:GetPlayerID()), 0)
 				heroEntity:RemoveSelf()
 			end)
 		end
@@ -330,12 +328,12 @@ end
 function GuardingAthena:OnNPCSpawned(keys)
 	--print("[GuardingAthena] NPC Spawned")
 	--DeepPrintTable(keys)
-	local hUnit = EntIndexToHScript( keys.entindex )
+	local hUnit = EntIndexToHScript(keys.entindex)
 	-- 删除宠物
 	if hUnit:GetUnitName() == "npc_dota_companion" then
 		UTIL_Remove(hUnit)
 		return
-	end	
+	end
 	-- 傀儡目标
 	if hUnit:GetUnitName() ==	"npc_dota_hero_target_dummy" then
 		return
@@ -343,11 +341,11 @@ function GuardingAthena:OnNPCSpawned(keys)
 
 	if not hUnit.bIsNotFirstSpawn then
 		hUnit.bIsNotFirstSpawn = true
-		FireGameEvent("custom_npc_first_spawned", {entindex=hUnit:entindex()})
+		FireGameEvent("custom_npc_first_spawned", { entindex = hUnit:entindex() })
 	end
-	
+
 	if hUnit:IsRealHero() then
-		Timers:CreateTimer(0.1,function ()
+		Timers:CreateTimer(0.1, function()
 			if hUnit:IsNull() then
 				return
 			else
@@ -370,8 +368,8 @@ function GuardingAthena:OnNPCFirstSpawned(events)
 
 	if spawnedUnit:IsRealHero() then
 		-- 单人buff
-		local Players = PlayerResource:GetPlayerCountForTeam( DOTA_TEAM_GOODGUYS )
-		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false and self.is_cheat== false then
+		local Players = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+		if Players == 1 and spawnedUnit:HasAbility("singlehero") == false and self.is_cheat == false then
 			spawnedUnit:AddAbility("singlehero")
 			spawnedUnit:FindAbilityByName("singlehero"):SetLevel(1)
 		end
@@ -388,19 +386,19 @@ function GuardingAthena:OnNPCFirstSpawned(events)
 			spawnedUnit.practice = 0
 		end
 		-- 天赋技能
-	    local ability = spawnedUnit:GetAbilityByIndex(0)
-	    if ability:GetLevel() == 0 then
-	        ability:SetLevel(1)
+		local ability = spawnedUnit:GetAbilityByIndex(0)
+		if ability:GetLevel() == 0 then
+			ability:SetLevel(1)
 		end
-		
-	    -- 作者buff
-	    if PlayerResource:GetSteamAccountID(spawnedUnit:GetPlayerID()) == 128320546 then
-	    	--spawnedUnit:AddAbility("autor_buff")
+
+		-- 作者buff
+		if PlayerResource:GetSteamAccountID(spawnedUnit:GetPlayerID()) == 128320546 then
+			--spawnedUnit:AddAbility("autor_buff")
 			--spawnedUnit:FindAbilityByName("autor_buff"):SetLevel(1)
 			--CreateParticle( "particles/player/vip.vpcf", PATTACH_ABSORIGIN_FOLLOW, spawnedUnit )
 			--CustomUI:DynamicHud_Create(spawnedUnit:GetPlayerID(),"VipParticleBackGround","file://{resources}/layout/custom_game/vip_particle.xml",nil)
 		end
-		
+
 	end
 end
 
@@ -417,7 +415,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	if keys.hero ==	"npc_dota_hero_target_dummy" then
 		return
 	end
-	
+
 	local player = heroEntity:GetPlayerOwner()
 	local playerID = heroEntity:GetPlayerID()
 	HeroState:InitHero(heroEntity)
@@ -429,22 +427,17 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		end
 	end
 	heroEntity:AddNewModifier(heroEntity, nil, "modifier_no_health_bar", nil)
-	local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS )
+	local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS)
 	courier.bag = {}
 	courier:SetOwner(heroEntity:GetPlayerOwner())
-	courier:SetControllableByPlayer(heroEntity:GetPlayerID(),true)
+	courier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
 	courier.owner = heroEntity:GetPlayerOwner()
 	courier.currentHero = heroEntity
 	heroEntity.courier = courier
 	self.creatCourier = self.creatCourier + 1
 
-	-- DeepPrintTable(Service.tPlayerServiceData[playerID])
-	local tGamePlayData = Service:GetEquippedItem(playerID, "gameplay")
-	local tParticleData = Service:GetEquippedItem(playerID, "particle")
-	local tSkinData = Service:GetEquippedItem(playerID, "skin")
-	local tPetData = Service:GetEquippedItem(playerID, "pet")
 	-- 游戏内容相关
-	for i, tItemData in ipairs(tGamePlayData) do
+	EachPlayerGameplay(playerID, function(tItemData)
 		if tItemData.ItemName == "potion" then	-- 药水礼包
 			local clarity = CreateItem("item_clarity1", courier, courier)
 			local salve = CreateItem("item_salve1", courier, courier)
@@ -453,35 +446,55 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			clarity:SetCurrentCharges(30)
 			salve:SetCurrentCharges(30)
 		end
-	end
+	end)
 	-- 特效
-	for i, tItemData in ipairs(tParticleData) do
-		if tItemData.ItemName == "wing_01" then	-- 金色翅膀
-			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
-				local iParticleID = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
+	EachEquippedParticles(playerID, function(tItemData)
+		-- 清除旧的
+		if heroEntity.ParticleModifier then
+			if type(heroEntity.ParticleModifier)  == "number" then
+				ParticleManager:DestroyParticle(heroEntity.ParticleModifier, false)
 			else
-				local particle = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity )
+				heroEntity.ParticleModifier:Destroy()
 			end
 		end
-	end
+		if tItemData.ItemName == "wing_01" then	-- 金色翅膀
+			if heroEntity:GetUnitName() == "npc_dota_hero_nevermore" then
+				heroEntity.ParticleModifier = ParticleManager:CreateParticle("particles/wings/wing_sf_goldsky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
+			else
+				heroEntity.ParticleModifier = ParticleManager:CreateParticle("particles/skills/wing_sky_gold.vpcf", PATTACH_ABSORIGIN_FOLLOW, heroEntity)
+			end
+		end
+		local Asset = GetItemInfo(tItemData.ItemName).Asset
+		if Asset then
+			heroEntity.ParticleModifier = heroEntity:AddNewModifier(heroEntity, nil, Asset, nil)
+		end
+	end)
 	-- 皮肤
-	for i, tItemData in ipairs(tSkinData) do
+	local tSkinData = GetEquippedSkin(playerID, heroEntity:GetUnitName())
+	if tSkinData then
 		heroEntity.gift = true	--待完善
 		-- 新方法
-		heroEntity:GameTimer(0.1, function ()
+		heroEntity:GameTimer(0.1, function()
 			-- AssetModifiers:ReplaceWearables(tItemData.ItemName, heroEntity)
-			heroEntity:AddNewModifier(heroEntity, self, "modifier_"..tItemData.ItemName, nil)
+			heroEntity:AddNewModifier(heroEntity, self, "modifier_" .. tSkinData.ItemName, nil)
 		end)
 	end
 	-- 宠物
-	for i, tItemData in ipairs(tPetData) do
+	local tCourierData = GetEquippedCourier(playerID)
+	if tCourierData then
 		heroEntity:GameTimer(1, function()
-			heroEntity.pet = NewPet(tItemData.ItemName, heroEntity)
+			heroEntity.pet = NewPet(tCourierData.ItemName, heroEntity, tonumber(tCourierData.Experience))
 		end)
 	end
+	-- 其他
+	local tOther = EachPlayerOther(playerID, function(tItemData)
+		if tItemData.ItemName == "vip" then
+			CustomUI:DynamicHud_Create(playerID, "VipParticleBackGround", "file://{resources}/layout/custom_game/custom_hud/vip_particle.xml", nil)
+		end
+	end)
 	-- 设定通关积分
 	local count = 0
-	Timers:CreateTimer(function ()
+	Timers:CreateTimer(function()
 		if player.ServerInfo then
 			heroEntity.boss_point = player.ServerInfo.score
 		else
@@ -491,11 +504,11 @@ function GuardingAthena:OnPlayerPickHero(keys)
 			end
 		end
 	end)
-	
 
-	if Service:IsVipPlayer(playerID) then
-		CustomUI:DynamicHud_Create(playerID,"VipParticleBackGround","file://{resources}/layout/custom_game/custom_hud/vip_particle.xml",nil)
-	end
+
+	-- if Service:IsVipPlayer(playerID) then
+	-- 	CustomUI:DynamicHud_Create(playerID, "VipParticleBackGround", "file://{resources}/layout/custom_game/custom_hud/vip_particle.xml", nil)
+	-- end
 end
 -- 监听玩家聊天
 function GuardingAthena:OnPlayerChat(keys)
@@ -506,8 +519,7 @@ function GuardingAthena:OnPlayerChat(keys)
 	--text( string ): chat text
 	local playerid = keys.userid - 1
 	local text = keys.text
-	Cheats =
-	{
+	Cheats =	{
 		"-lvlup",
 		"-levelbots",
 		"-gold",
@@ -529,25 +541,25 @@ function GuardingAthena:OnPlayerChat(keys)
 		"-allvision",
 		"-normalvision",
 	}
-	for k,cheat in pairs(Cheats) do
-        if string.match(text, cheat) then
-            self.is_cheat = true
-        end
+	for k, cheat in pairs(Cheats) do
+		if string.match(text, cheat) then
+			self.is_cheat = true
+		end
 	end
 	--专属
 	if text == "-givezs" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local heroName = hero:GetUnitName()
-		hero:AddItem(CreateItem("item_"..heroName, hero, hero))
+		hero:AddItem(CreateItem("item_" .. heroName, hero, hero))
 	end
 	if text == "givezs" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local heroName = hero:GetUnitName()
-		hero:AddItem(CreateItem("item_"..heroName, hero, hero))
+		hero:AddItem(CreateItem("item_" .. heroName, hero, hero))
 	end
 	--设置波数
-	if string.sub(text,0,6) == "waveto" then
-		local wave = tonumber(string.sub(text,7,string.len(text)))
+	if string.sub(text, 0, 6) == "waveto" then
+		local wave = tonumber(string.sub(text, 7, string.len(text)))
 		if wave >= 0 then
 			Spawner.gameRound = wave - 1
 		end
@@ -559,10 +571,10 @@ function GuardingAthena:OnPlayerChat(keys)
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		self.testhero:SetAbsOrigin(hero:GetAbsOrigin())
 	end
-	if string.sub(text,0,5) == "troll" then
+	if string.sub(text, 0, 5) == "troll" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		PrecacheUnitByNameAsync(text,function()
-			local nature = CreateUnitByName(text, hero:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS ) 
+		PrecacheUnitByNameAsync(text, function()
+			local nature = CreateUnitByName(text, hero:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_BADGUYS)
 		end)
 	end
 	if text == "point" then
@@ -574,22 +586,22 @@ function GuardingAthena:OnPlayerChat(keys)
 	end
 	if text == "getlocation" then
 		print(tostring(PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()))
-	end 
+	end
 	if text == "getdisobb" then
 		local dis = CalcDistanceBetweenEntityOBB(PlayerResource:GetPlayer(playerid):GetAssignedHero(), Entities:FindByName(nil, "test_entity"))
 		print(dis)
-	end 
+	end
 	if text == "getscore" then
 		updateScore(function()
 
 			print("haha")
 			print(getPlayerScore(0))
 		end)
-	end 
+	end
 	if text == "defpoint" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		hero.practice_point = 90000
-	end 
+	end
 	if text == "time" then
 		print(GameRules:GetTimeOfDay())
 	end
@@ -619,10 +631,10 @@ function GuardingAthena:OnPlayerChat(keys)
 	end
 	--测试模式
 	if text == "test" then
-		PlayerResource:SetGold( playerid, 999999, false )
+		PlayerResource:SetGold(playerid, 999999, false)
 		self.player_gold_save[playerid + 1] = 99999999
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		for i=1,99 do
+		for i = 1, 99 do
 			hero:HeroLevelUp(false)
 		end
 		hero:SetAbilityPoints(0)
@@ -637,30 +649,30 @@ function GuardingAthena:OnPlayerChat(keys)
 		--hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
 		hero:AddItem(CreateItem("item_dun_5", hero, hero))
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
-		hero:AddItem(CreateItem("item_"..hero:GetUnitName(), hero, hero))
+		hero:AddItem(CreateItem("item_" .. hero:GetUnitName(), hero, hero))
 		hero.reborn_time = 4
 		hero:AddNewModifier(hero, nil, "modifier_reborn", nil):SetStackCount(4)
 	end
-	if string.sub(text,0,9) == "autospawn" then
+	if string.sub(text, 0, 9) == "autospawn" then
 		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()
-		local name = string.sub(text,10,string.len(text))
-		self.timer = Timers:CreateTimer(function (  )
-			PrecacheUnitByNameAsync(name,function()
-				local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS )
+		local name = string.sub(text, 10, string.len(text))
+		self.timer = Timers:CreateTimer(function()
+			PrecacheUnitByNameAsync(name, function()
+				local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS)
 			end)
 			return 1
 		end)
 	end
-	if string.sub(text,0,5) == "spawn" then
+	if string.sub(text, 0, 5) == "spawn" then
 		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()
-		local name = string.sub(text,6,string.len(text))
-		PrecacheUnitByNameAsync(name,function()
-			local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS )
-			nature:AddNewModifier(nature, nil, "modifier_kill", {duration=60})
+		local name = string.sub(text, 6, string.len(text))
+		PrecacheUnitByNameAsync(name, function()
+			local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS)
+			nature:AddNewModifier(nature, nil, "modifier_kill", { duration = 60 })
 			if name == "testunit" then
 				self.testunit = nature
 			end
-			Spawner:UnitProperty(nature,Spawner.unitFactor)
+			Spawner:UnitProperty(nature, Spawner.unitFactor)
 			AI:CreateAI(nature)
 		end)
 	end
@@ -668,8 +680,8 @@ function GuardingAthena:OnPlayerChat(keys)
 		local location = PlayerResource:GetPlayer(playerid):GetAssignedHero():GetAbsOrigin()
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local name = "trial_creep"
-		PrecacheUnitByNameAsync(name,function()
-			local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS )
+		PrecacheUnitByNameAsync(name, function()
+			local nature = CreateUnitByName(name, location, true, nil, nil, DOTA_TEAM_BADGUYS)
 			nature:SetBaseMaxHealth(hero:GetMaxHealth() * 10)
 			nature:SetMaxHealth(hero:GetMaxHealth() * 10)
 			nature:SetHealth(hero:GetMaxHealth() * 10)
@@ -679,16 +691,16 @@ function GuardingAthena:OnPlayerChat(keys)
 		end)
 	end
 	if text == "testpay" then
-		local ent = Entities:FindByName( nil, "athena" )
+		local ent = Entities:FindByName(nil, "athena")
 		ent:FireOutput("OnUser2", ent, ent, ent, 0)
 	end
-	if string.sub(text,0,8) == "addskill" then
+	if string.sub(text, 0, 8) == "addskill" then
 		local unit = self.testunit
-		unit:AddAbility(string.sub(text,9,string.len(text)))
+		unit:AddAbility(string.sub(text, 9, string.len(text)))
 	end
-	if string.sub(text,0,10) == "addability" then
+	if string.sub(text, 0, 10) == "addability" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
-		hero:AddAbility(string.sub(text,11,string.len(text)))
+		hero:AddAbility(string.sub(text, 11, string.len(text)))
 	end
 	if text == "endautospawn" then
 		Timers:RemoveTimer(self.timer)
@@ -722,23 +734,22 @@ function GuardingAthena:OnPlayerChat(keys)
 		print(tostring(hero))
 	end
 	--放技能
-	if string.sub(text,0,10) == "useskill" then
+	if string.sub(text, 0, 10) == "useskill" then
 		local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 		local target = Entities:FindByName(nil, "boss_clotho")
-		local t_order = 
-        {
-            UnitIndex = hero:entindex(),
-            OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
-            TargetIndex = target:entindex(),
-            AbilityIndex = hero:FindAbilityByName("clusters_stars"):entindex(),
-            Position = nil,
-            Queue = 0
-        }
-        hero:SetContextThink(DoUniqueString("order") , function() ExecuteOrderFromTable(t_order) end, 0.1)
+		local t_order =		{
+			UnitIndex = hero:entindex(),
+			OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
+			TargetIndex = target:entindex(),
+			AbilityIndex = hero:FindAbilityByName("clusters_stars"):entindex(),
+			Position = nil,
+			Queue = 0
+		}
+		hero:SetContextThink(DoUniqueString("order"), function() ExecuteOrderFromTable(t_order) end, 0.1)
 	end
 	--设置攻击力
-	if string.sub(text,0,10) == "-setattack" then
-		local attack = tonumber(string.sub(text,11,string.len(text)))
+	if string.sub(text, 0, 10) == "-setattack" then
+		local attack = tonumber(string.sub(text, 11, string.len(text)))
 		if attack >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseDamageMax(attack)
@@ -746,55 +757,55 @@ function GuardingAthena:OnPlayerChat(keys)
 		end
 	end
 	--设置攻击间隔
-	if string.sub(text,0,13) == "setattackrate" then
-		local attackrate = tonumber(string.sub(text,14,string.len(text)))
+	if string.sub(text, 0, 13) == "setattackrate" then
+		local attackrate = tonumber(string.sub(text, 14, string.len(text)))
 		if attackrate >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseAttackTime(attackrate)
 		end
 	end
 	--设置移动
-	if string.sub(text,0,7) == "setmove" then
-		local move = tonumber(string.sub(text,8,string.len(text)))
+	if string.sub(text, 0, 7) == "setmove" then
+		local move = tonumber(string.sub(text, 8, string.len(text)))
 		if move >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseMoveSpeed(move)
 		end
 	end
 	--设置移动
-	if string.sub(text,0,6) == "setint" then
-		local move = tonumber(string.sub(text,7,string.len(text)))
+	if string.sub(text, 0, 6) == "setint" then
+		local move = tonumber(string.sub(text, 7, string.len(text)))
 		if move >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseIntellect(move)
 		end
 	end
-	if string.sub(text,0,6) == "setagi" then
-		local move = tonumber(string.sub(text,7,string.len(text)))
+	if string.sub(text, 0, 6) == "setagi" then
+		local move = tonumber(string.sub(text, 7, string.len(text)))
 		if move >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseAgility(move)
 		end
 	end
-	if string.sub(text,0,6) == "setstr" then
-		local move = tonumber(string.sub(text,7,string.len(text)))
+	if string.sub(text, 0, 6) == "setstr" then
+		local move = tonumber(string.sub(text, 7, string.len(text)))
 		if move >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseStrength(move)
-			print("str:"..hero:GetStrength().."res:"..hero:GetMagicalArmorValue())
+			print("str:" .. hero:GetStrength() .. "res:" .. hero:GetMagicalArmorValue())
 		end
 	end
 	--设置最大生命
-	if string.sub(text,0,8) == "setmaxhp" then
-		local hp = tonumber(string.sub(text,9,string.len(text)))
+	if string.sub(text, 0, 8) == "setmaxhp" then
+		local hp = tonumber(string.sub(text, 9, string.len(text)))
 		if hp >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseMaxHealth(hp)
 		end
 	end
 	--设置生命
-	if string.sub(text,0,5) == "sethp" then
-		local hp = tonumber(string.sub(text,6,string.len(text)))
+	if string.sub(text, 0, 5) == "sethp" then
+		local hp = tonumber(string.sub(text, 6, string.len(text)))
 		if hp >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseMaxHealth(hp)
@@ -803,47 +814,47 @@ function GuardingAthena:OnPlayerChat(keys)
 			Spawner:CheckErrorSpawn()
 		end
 	end
-	if string.sub(text,0,4) == "time" then
-		local wave = string.sub(text,5,string.len(text))
-		CustomGameEventManager:Send_ServerToAllClients("time_remaining", {wave=wave})
+	if string.sub(text, 0, 4) == "time" then
+		local wave = string.sub(text, 5, string.len(text))
+		CustomGameEventManager:Send_ServerToAllClients("time_remaining", { wave = wave })
 	end
 	--设置生命回复
-	if string.sub(text,0,10) == "sethpregen" then
-		local hpregen = tonumber(string.sub(text,11,string.len(text)))
+	if string.sub(text, 0, 10) == "sethpregen" then
+		local hpregen = tonumber(string.sub(text, 11, string.len(text)))
 		if hpregen >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseHealthRegen(hpregen)
 		end
 	end
 	--设置魔法回复
-	if string.sub(text,0,10) == "setmpregen" then
-		local mpregen = tonumber(string.sub(text,11,string.len(text)))
+	if string.sub(text, 0, 10) == "setmpregen" then
+		local mpregen = tonumber(string.sub(text, 11, string.len(text)))
 		if mpregen >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseManaRegen(mpregen)
 		end
 	end
 	--设置护甲
-	if string.sub(text,0,8) == "setarmor" then
-		local armor = tonumber(string.sub(text,9,string.len(text)))
+	if string.sub(text, 0, 8) == "setarmor" then
+		local armor = tonumber(string.sub(text, 9, string.len(text)))
 		if armor >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetPhysicalArmorBaseValue(armor)
 		end
 	end
 	--设置魔抗
-	if string.sub(text,0,8) == "setmagic" then
-		local magic = tonumber(string.sub(text,9,string.len(text)))
+	if string.sub(text, 0, 8) == "setmagic" then
+		local magic = tonumber(string.sub(text, 9, string.len(text)))
 		if magic >= 0 then
 			local hero = PlayerResource:GetPlayer(playerid):GetAssignedHero()
 			hero:SetBaseMagicalResistanceValue(magic)
 		end
 	end
 	--设置胜利
-	if string.sub(text,0,7) == "victory" then
+	if string.sub(text, 0, 7) == "victory" then
 		--GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 		HeroState:SendFinallyData()
-		CustomUI:DynamicHud_Create(-1,"EndScreenPanel","file://{resources}/layout/custom_game/end_screen.xml",nil)
+		CustomUI:DynamicHud_Create(-1, "EndScreenPanel", "file://{resources}/layout/custom_game/end_screen.xml", nil)
 	end
 	--设置模型
 	if text == "modeldemon" then
@@ -878,10 +889,10 @@ function GuardingAthena:OnPlayerChat(keys)
 		-- MSG_BLOCK,MSG_ORIT,MSG_DAMAGE,MSG_EVADE,MSG_GOLD,MSG_HEAL,MSG_MANA_ADD,MSG_MANA_LOSS,MSG_MISS,MSG_POISION,MSG_SPELL,MSG_XP
 		-- red,orange,yellow,green,blue,indigo,purple
 		local time = GameRules:GetGameTime() + 200
-		Timers:CreateTimer(function ()
+		Timers:CreateTimer(function()
 			if GameRules:GetGameTime() < time then
 				for i = 1, 100 do
-					CreateNumberEffect(hero,RandomInt(100, 10000000),1,MSG_DAMAGE,"red",4)
+					CreateNumberEffect(hero, RandomInt(100, 10000000), 1, MSG_DAMAGE, "red", 4)
 				end
 				return 0.1
 			end
@@ -906,7 +917,7 @@ function GuardingAthena:OnPlayerLevelUp(keys)
 	-- 修正技能点17 19 21-24 26-~不给技能点
 	-- 1-8技能给技能点，之后每3级给一个技能点11,14,17,20,23,26,29,32,...
 	if level <= 188 then
-		local mod = math.fmod(level,3)
+		local mod = math.fmod(level, 3)
 		if level > 8 then
 			if mod == 2 then -- 给技能点的等级11,14,17,20,23,26,29,32,...
 				if level == 17 or level == 23 or level > 25 then
@@ -928,57 +939,57 @@ function GuardingAthena:OnUsedAbility(event)
 	if string.find(event.abilityname, "courier_") then
 		return
 	end
-    -- 获取玩家使用的英雄
-    local hero = PlayerResource:GetPlayer(event.PlayerID):GetAssignedHero()
-    -- 获取所使用的技能
-    local ability = hero:FindAbilityByName( event.abilityname )
-    if ability == nil then
-    	return
-    end
-    if ability.cooldown_reduce == nil then
-    	ability.cooldown_reduce = true
-    end
+	-- 获取玩家使用的英雄
+	local hero = PlayerResource:GetPlayer(event.PlayerID):GetAssignedHero()
+	-- 获取所使用的技能
+	local ability = hero:FindAbilityByName(event.abilityname)
+	if ability == nil then
+		return
+	end
+	if ability.cooldown_reduce == nil then
+		ability.cooldown_reduce = true
+	end
 	-- 忽略不受冷却效果影响的技能
-    if ability.cooldown_reduce == false then
-    	return
-    end
+	if ability.cooldown_reduce == false then
+		return
+	end
 
-    -- 如果技能在CD中
-    if ability:GetCooldownTimeRemaining() > 0 then
-        -- 减少固定数值
-        local reduction_const = hero.reduction_const or 0
+	-- 如果技能在CD中
+	if ability:GetCooldownTimeRemaining() > 0 then
+		-- 减少固定数值
+		local reduction_const = hero.reduction_const or 0
 		-- 减少百分比
-        local reduction = hero.reduceRate or 0
+		local reduction = hero.reduceRate or 0
 		-- 冰女光环
 		local frozenAura = hero.frozenAura or 0
 		-- 神谕者
 		local oracleReduce = hero.oracleReduce or 0
 		if hero:HasModifier("ring_1_6") then
-    		if RollPercentage(50) then
-	    		if reduction == 0 then
-	    			reduction = 0.5
-	    		else
-	    			reduction = reduction + 0.5
-	    		end
-	    	end
-    	end
+			if RollPercentage(50) then
+				if reduction == 0 then
+					reduction = 0.5
+				else
+					reduction = reduction + 0.5
+				end
+			end
+		end
 
-        -- 获取技能的CD时间
-        local cdDefault = ability:GetCooldown( ability:GetLevel() - 1 )
-        -- 计算减少后的CD
-        local cdReduced = (cdDefault - reduction_const) * ( 1.0 - reduction) * (1.0 - frozenAura) * (1.0 - oracleReduce)
-        -- 获取剩余的CD时间
-        local cdRemaining = ability:GetCooldownTimeRemaining()
+		-- 获取技能的CD时间
+		local cdDefault = ability:GetCooldown(ability:GetLevel() - 1)
+		-- 计算减少后的CD
+		local cdReduced = (cdDefault - reduction_const) * (1 - reduction) * (1 - frozenAura) * (1 - oracleReduce)
+		-- 获取剩余的CD时间
+		local cdRemaining = ability:GetCooldownTimeRemaining()
 
-        -- 如果技能的CD时间大于减少后的CD时间
-        if cdRemaining > cdReduced then
-            -- 计算减少后的CD
-            --cdRemaining = cdRemaining - reduction_const - (cdDefault - reduction_const) * (reduction + frozenAura)
-			cdRemaining = (cdRemaining - reduction_const) * ( 1.0 - reduction) * (1.0 - frozenAura) * (1.0 - oracleReduce)
-            -- 移除技能的CD
-            ability:EndCooldown()
-            -- 重新开始CD，CD时间为减少后的CD时间
-            ability:StartCooldown( cdRemaining )
-        end
-    end
+		-- 如果技能的CD时间大于减少后的CD时间
+		if cdRemaining > cdReduced then
+			-- 计算减少后的CD
+			--cdRemaining = cdRemaining - reduction_const - (cdDefault - reduction_const) * (reduction + frozenAura)
+			cdRemaining = (cdRemaining - reduction_const) * (1 - reduction) * (1 - frozenAura) * (1 - oracleReduce)
+			-- 移除技能的CD
+			ability:EndCooldown()
+			-- 重新开始CD，CD时间为减少后的CD时间
+			ability:StartCooldown(cdRemaining)
+		end
+	end
 end

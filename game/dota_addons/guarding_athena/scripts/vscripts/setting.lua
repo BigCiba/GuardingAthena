@@ -117,7 +117,7 @@ DIFFICULTY_INIT_GOLD = {		-- 初始金钱
 	[5] = 0,
 }
 TIME_BOSS_REBORN = 60			-- boss重生间隔
-HERO_SELECTION_TIME = IsInToolsMode() and 5 or 20
+HERO_SELECTION_TIME = IsInToolsMode() and 10 or 20
 -- 刷新排除技能
 REFRESH_EXCLUDE_ABILITIES = {
 }

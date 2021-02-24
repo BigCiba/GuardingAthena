@@ -36,10 +36,17 @@ function Pet.remove(hPet)
 	end
 	return false
 end
+function Pet.GetPetByPlayerID(iPlayerID)
+	for iIndex, _hPet in pairs(Pet.tPets) do
+		if _hPet.iPlayerID == iPlayerID then
+			return _hPet
+		end
+	end
+end
 
-function Pet:constructor(sName, hOwner)
+function Pet:constructor(sName, hOwner, iExp)
 	self.iIndex = Pet.insert(self)
-
+	self.iPlayerID = hOwner:GetPlayerID()
 	self.hOwner = hOwner
 	self.sName = sName
 
@@ -59,7 +66,6 @@ function Pet:constructor(sName, hOwner)
 		return hUnit
 	end
 
-	local iExp = Service:GetPetExperience(hOwner:GetPlayerOwnerID(), sName)
 	local iLevel = 1
 	for i, v in ipairs(PET_XP_TABLE) do
 		if iExp >= v then

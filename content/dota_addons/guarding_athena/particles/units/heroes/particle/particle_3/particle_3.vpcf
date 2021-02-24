@@ -1,0 +1,78 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf31:version{593cd181-a1d6-4c6f-9a8c-0534e8d44db0} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_POINT_FOLLOW"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self_with_wearables"
+					m_attachmentName = "attach_hitloc"
+				},
+				{
+					m_iControlPoint = 60
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 8.0, 229.0, 96.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 61
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_hitboxSetName = "default"
+			}
+		},
+	]
+	m_nMaxParticles = 0
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_a.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/particle/particle_3/particle_3_f.vpcf"
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_HSVShiftToCP"
+			m_DefaultHSVColor = [ 244, 13, 248, 255 ]
+		},
+	]
+	m_nBehaviorVersion = 10
+}

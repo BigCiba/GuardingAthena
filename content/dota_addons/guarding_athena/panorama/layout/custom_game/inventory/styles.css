@@ -42,6 +42,19 @@
   font-size: 24px;
   align: center center;
 }
+.CheckBox:selected Label {
+  color: white;
+}
+.CheckBox Label {
+  font-size: 18px;
+  color: #7d8688;
+  vertical-align: center;
+  margin: 0px;
+  padding-top: 4px;
+  padding-left: 5px;
+  letter-spacing: 1px;
+  font-weight: thin;
+}
 .InventoryRoot {
   width: 100%;
   height: 100%;
@@ -321,6 +334,9 @@
 #SearchAndCategoriesContainer #SearchCategories #CategoryGamePlay .SearchCategoryBackground {
   wash-color: #aee2ff33;
 }
+#SearchAndCategoriesContainer #SearchCategories #CategoryOther .SearchCategoryBackground {
+  wash-color: #aee2ff33;
+}
 #SearchAndCategoriesContainer #SearchCategories #CategoryAll:selected .SearchCategoryBackground,
 #SearchAndCategoriesContainer #SearchCategories #CategoryAll:active .SearchCategoryBackground {
   wash-color: #ffcf4d;
@@ -346,6 +362,10 @@
 #SearchAndCategoriesContainer #SearchCategories #CategoryGamePlay:active .SearchCategoryBackground {
   wash-color: #5e92df;
 }
+#SearchAndCategoriesContainer #SearchCategories #CategoryOther:selected .SearchCategoryBackground,
+#SearchAndCategoriesContainer #SearchCategories #CategoryOther:active .SearchCategoryBackground {
+  wash-color: #A0BBFF;
+}
 #SearchAndCategoriesContainer #SearchCategories #CategoryAll .SearchCategoryName {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ffef8a), to(#ffbb0f));
 }
@@ -362,6 +382,9 @@
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #ff5757), to(#c43030));
 }
 #SearchAndCategoriesContainer #SearchCategories #CategoryGamePlay .SearchCategoryName {
+  color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #5e92df), to(#253699));
+}
+#SearchAndCategoriesContainer #SearchCategories #CategoryOther .SearchCategoryName {
   color: gradient(linear, 0% 0%, 0% 100%, from(white), color-stop(0.5, #5e92df), to(#253699));
 }
 #SearchAndCategoriesContainer #SearchCategories #CategoryAll .SearchCategoryArtOverlay {
@@ -406,6 +429,13 @@
   ui-scale: 46%;
   margin-bottom: 10px;
   background-image: url("s2r://panorama/images/dota_plus/shop_frostivus_psd.vtex");
+}
+#SearchAndCategoriesContainer #SearchCategories #CategoryOther .SearchCategoryArtOverlay {
+  width: 260px;
+  height: 200px;
+  ui-scale: 46%;
+  margin-bottom: 10px;
+  background-image: url("s2r://panorama/images/dota_plus/shop_seasonal_psd.vtex");
 }
 .StoreTabContents {
   horizontal-align: right;

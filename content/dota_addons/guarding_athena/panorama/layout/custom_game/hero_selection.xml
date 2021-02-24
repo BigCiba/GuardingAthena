@@ -96,7 +96,7 @@
 					</Panel>
 					<!-- 设置界面 -->
 					<Panel id="HeroSettingPanel">
-						<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('SettingPet','pet')">
+						<Panel id="SettingPet" class="SettingPanel" onactivate="ShowContextMenu('SettingPet','courier')">
 							<Panel id="MenuArrowContainer" >
 								<Panel id="MenuArrow" />
 							</Panel>

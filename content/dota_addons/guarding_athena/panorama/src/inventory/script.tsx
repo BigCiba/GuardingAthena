@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import React, { useEffect, useState, useRef, useReducer } from 'react';
 import { render, useGameEvent, useNetTableKey } from 'react-panorama';
-import { HideTextTooltip, OpenPopup, ShowTextTooltip } from '../utils/utils';
+import { HideTextTooltip, OpenPopup, Request, ShowTextTooltip } from '../utils/utils';
 
 function Inventory() {
 	const storePage = useRef<Panel>(null);
 	const filterInput = useRef<TextEntry>(null);
 	const [filterWord, SetFilterWord] = useState("");	// 搜索过滤词
-	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_data"));
+	const [playerData, UpdataPlayerData] = useState(CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID()));
 	// $.Msg(playerData);
 	useEffect(() => {
 		// 切换面板
@@ -19,7 +19,7 @@ function Inventory() {
 			}
 		});
 		const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
-			if ("player_data" === eventKey) {
+			if ("player_" + Game.GetLocalPlayerID() === eventKey) {
 				UpdataPlayerData(eventValue);
 			}
 		});
@@ -31,6 +31,13 @@ function Inventory() {
 	const OpenRecharge = () => {
 		OpenPopup("popus_recharge/popus_recharge");
 	};
+	const Refresh = () => {
+		Request("query.operate", {
+			router: "player.get"
+		}, data => {
+			$.Msg(data);
+		});
+	};
 	return (
 		<Panel id="StorePage" className="DotaPlusContainer HideStorePage" ref={storePage}>
 			<Panel className="StorePageMain">
@@ -39,16 +46,16 @@ function Inventory() {
 						<Panel className="SearchOptionsTitleCategories">
 							<Label text="#Wallet" />
 							<Panel className="FillWidth" />
-							<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} />
+							<Button id="RefreshButton" onmouseover={(self) => ShowTextTooltip(self, "Refresh")} onmouseout={HideTextTooltip} onactivate={Refresh} />
 							{/* <Button id="MoneyComeButton" onactivate={OpenRecharge} /> */}
 						</Panel>
 						<Panel id="CurrencyAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Shard_Description")} onmouseout={HideTextTooltip}>
 							<Panel className="EventPointsValueIcon ShardSubscription" />
-							<Label id="CurrentCurrencyAmount" text={playerData[Game.GetLocalPlayerID()].Shard} />
+							<Label id="CurrentCurrencyAmount" text={playerData.Shard} />
 						</Panel>
 						<Panel id="PriceAmountContainer" onmouseover={(self) => ShowTextTooltip(self, "Price_Description")} onmouseout={HideTextTooltip}>
 							<Panel className="EventPointsValueIcon PriceSubscription" />
-							<Label id="CurrentPriceAmount" text={playerData[Game.GetLocalPlayerID()].Price} />
+							<Label id="CurrentPriceAmount" text={playerData.Price} />
 							<TextButton className="Recharge" text="充值" onactivate={OpenRecharge} />
 						</Panel>
 					</Panel>
@@ -65,15 +72,15 @@ function Inventory() {
 						</Panel>
 					</Panel>
 					<Panel id="SearchCategories">
-						<GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
+						{/* <GenericPanel type="TabButton" id="CategoryAll" selected={true} className="SearchCategory" group="search_categories">
 							<Panel className="SearchCategoryBackground" />
 							<Panel className="SearchCategoryArtOverlay" />
 							<Panel className="SearchCategoryText">
 								<Label className="SearchCategoryName" text="#CategoryAll" />
 								<Label className="SearchCategoryDetails" text="#CategoryAll_Description" />
 							</Panel>
-						</GenericPanel>
-						<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories">
+						</GenericPanel> */}
+						<GenericPanel type="TabButton" id="CategoryHero" className="SearchCategory" group="search_categories" selected={true}>
 							<Panel className="SearchCategoryBackground" />
 							<Panel className="SearchCategoryArtOverlay" />
 							<Panel className="SearchCategoryText">
@@ -113,15 +120,24 @@ function Inventory() {
 								<Label className="SearchCategoryDetails" text="#CategoryGamePlay_Description" />
 							</Panel>
 						</GenericPanel>
+						<GenericPanel type="TabButton" id="CategoryOther" className="SearchCategory" group="search_categories">
+							<Panel className="SearchCategoryBackground" />
+							<Panel className="SearchCategoryArtOverlay" />
+							<Panel className="SearchCategoryText">
+								<Label className="SearchCategoryName" text="#CategoryOther" />
+								<Label className="SearchCategoryDetails" text="#CategoryOther_Description" />
+							</Panel>
+						</GenericPanel>
 					</Panel>
 				</Panel>
 				<Panel className="StoreTabContents">
-					<StoreItemContainer word={filterWord} tabid="CategoryAll" type="all" />
+					{/* <StoreItemContainer word={filterWord} tabid="CategoryAll" type="all" /> */}
 					<StoreItemContainer word={filterWord} tabid="CategoryHero" type="hero" />
 					<StoreItemContainer word={filterWord} tabid="CategorySkin" type="skin" />
 					<StoreItemContainer word={filterWord} tabid="CategoryParticle" type="particle" />
 					<StoreItemContainer word={filterWord} tabid="CategoryPet" type="pet" />
 					<StoreItemContainer word={filterWord} tabid="CategoryGamePlay" type="gameplay" />
+					<StoreItemContainer word={filterWord} tabid="CategoryOther" type="other" />
 				</Panel>
 			</Panel>
 			<Button className="CloseButton" onactivate={() => { storePage.current?.ToggleClass('HideStorePage'); }} />
@@ -129,10 +145,21 @@ function Inventory() {
 	);
 }
 function StoreItemContainer({ word, tabid, type }: { word: string, tabid: string, type: string; }) {
-	let itemDatas = CustomNetTables.GetTableValue("service", "store_item");
-	let inventoryData = CustomNetTables.GetTableValue("service", "inventory");
+	let _type = type == "pet" ? "courier" : type;
+	let itemDatas = CustomNetTables.GetTableValue("service", "info_store");
+	let [inventoryData, setInventoryData] = useState(CustomNetTables.GetTableValue("service", "player_" + _type + "_" + Game.GetLocalPlayerID()));
+	useEffect(() => {
+		const listener = CustomNetTables.SubscribeNetTableListener("service", (_, eventKey, eventValue) => {
+			if ("player_" + _type + "_" + Game.GetLocalPlayerID() === eventKey) {
+				setInventoryData(eventValue);
+			}
+		});
+		return () => {
+			CustomNetTables.UnsubscribeNetTableListener(listener);
+		};
+	}, []);
 	return (
-		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryAll" ? true : false}>
+		<GenericPanel type="TabContents" tabid={tabid} group="search_categories" className="StoreItemContainer" selected={tabid == "CategoryHero" ? true : false}>
 			<Panel className="StoreHeader">
 				<Label localizedText={tabid} />
 				{/* <Button className="CloseButton" /> */}
@@ -145,11 +172,11 @@ function StoreItemContainer({ word, tabid, type }: { word: string, tabid: string
 							ItemName = "npc_dota_hero_" + ItemName;
 						}
 						// 遍历物品
-						for (const index in inventoryData[Game.GetLocalPlayerID()]) {
-							const itemData = inventoryData[Game.GetLocalPlayerID()][index];
+						for (const index in inventoryData) {
+							const itemData = inventoryData[index];
 							if (itemData.ItemName == itemDatas[key].ItemName) {
 								if (word == "" || $.Localize(ItemName).search(word) != -1) {
-									return <StoreItem key={key} itemData={itemDatas[key]} />;
+									return <StoreItem key={key} itemData={itemDatas[key]} playerData={itemData} />;
 								}
 							}
 						}
@@ -159,7 +186,8 @@ function StoreItemContainer({ word, tabid, type }: { word: string, tabid: string
 		</GenericPanel>
 	);
 }
-function StoreItem({ itemData }: { itemData: any; }) {
+function StoreItem({ itemData, playerData }: { itemData: any; playerData: any; }) {
+	let _type = itemData.Type == "pet" ? "courier" : itemData.Type;
 	let ShowCourierTooltip = (self: Panel) => {
 		if (itemData.Type == "pet") {
 			$.DispatchEvent(
@@ -174,6 +202,14 @@ function StoreItem({ itemData }: { itemData: any; }) {
 		if (itemData.Type == "pet") {
 			$.DispatchEvent("UIHideCustomLayoutTooltip", self, "courier_tooltip");
 		}
+	};
+	let Query = (mod: string, action: string) => {
+		Request("query.operate", {
+			"router": mod + "." + action,
+			"ItemName": itemData.ItemName
+		}, data => {
+			$.Msg(data);
+		});
 	};
 	let ShowItemDetail = (self: Panel) => {
 		OpenPopup("popup_inventory_item/popup_inventory_item", { itemData: JSON.stringify(itemData) });
@@ -227,12 +263,30 @@ function StoreItem({ itemData }: { itemData: any; }) {
 						</Panel>
 					</Button>
 				} */}
-				<Button id="PricePurchaseButton" className="DotaPlusPurchaseButton">
-					<Panel id="Contents" className="ButtonCenter">
-						{/* <Panel id="EventIcon" className="DotaPlusPriceCurrencyIcon" /> */}
-						<Label id="PriceCost" text="已拥有" />
-					</Panel>
-				</Button>
+				{(playerData.Equip && playerData.Equip == 0) &&
+					<Button id="PricePurchaseButton" className="DotaPlusPurchaseButton" onactivate={() => Query(_type, "equip")}>
+						<Panel id="Contents" className="ButtonCenter">
+							{/* <Panel id="EventIcon" className="DotaPlusPriceCurrencyIcon" /> */}
+							<Label id="PriceCost" localizedText="Equip" />
+						</Panel>
+					</Button>
+				}
+				{(playerData.Equip && playerData.Equip == 1) &&
+					<Button id="PricePurchaseButton" className="DotaPlusPurchaseButton" onactivate={() => Query(_type, "unequip")}>
+						<Panel id="Contents" className="ButtonCenter">
+							{/* <Panel id="EventIcon" className="DotaPlusPriceCurrencyIcon" /> */}
+							<Label id="PriceCost" localizedText="UnEquip" />
+						</Panel>
+					</Button>
+				}
+				{playerData.Equip == undefined &&
+					<Button id="PricePurchaseButton" className="DotaPlusPurchaseButton">
+						<Panel id="Contents" className="ButtonCenter">
+							{/* <Panel id="EventIcon" className="DotaPlusPriceCurrencyIcon" /> */}
+							<Label id="PriceCost" localizedText="HasItem" />
+						</Panel>
+					</Button>
+				}
 			</Panel>
 		</Panel>
 	);

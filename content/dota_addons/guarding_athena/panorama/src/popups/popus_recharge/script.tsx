@@ -7,23 +7,34 @@ import classNames from 'classnames';
 function Popup() {
 	const parent = useRef<Panel>(null);
 	const PaymentTextEntry = useRef<TextEntry>(null);
-	const [payType, setPayType] = useState(1);
+	const [payType, setPayType] = useState(1000);
 	const UpdateTicketsAmount = (count: number) => {
 		if (PaymentTextEntry.current) {
 			PaymentTextEntry.current.text = String(count);
 		}
 	};
 	const Pay = () => {
-		// Request("RequestPay", {
+		Request("order.create", {
+			amount: Number(PaymentTextEntry.current?.text) / 10,
+			itemcount: Number(PaymentTextEntry.current?.text),
+			paytype: payType,
+			pmid: "",
+			title: "Dota2守卫雅典娜勋章充值",
+			body: "Dota2守卫雅典娜勋章充值"
+		}, data => {
+			$.Msg(data);
+			if (data.status == 1) {
+
+				parent.current?.AddClass("ShowQrcode");
+				CreateQRCode(data.data.link, parent.current?.FindChildTraverse("QRCode"), 200);
+				// parent.current?.SetDialogVariable("price", String(Number(data.price).toFixed(2)));
+				parent.current?.SetDialogVariable("orderid", data.data.order);
+			}
+		});
+		// GameEvents.SendCustomGameEventToServer("RequestPay", {
 		// 	istype: payType,
 		// 	price: Number(PaymentTextEntry.current?.text) / 10
-		// }, () => {
-
 		// });
-		GameEvents.SendCustomGameEventToServer("RequestPay", {
-			istype: payType,
-			price: Number(PaymentTextEntry.current?.text) / 10
-		});
 	};
 	useEffect(() => {
 		const show_qrcode = GameEvents.Subscribe("show_qrcode", (data) => {
@@ -57,8 +68,8 @@ function Popup() {
 			<Panel className="PaymentTypeSelection">
 				<Panel className="FirstStep">
 					<Panel className="PayTypeList">
-						<GenericPanel type="TabButton" selected="true" group="payment" id="PaymentAlipay" onselect={() => setPayType(1)} />
-						<GenericPanel type="TabButton" group="payment" id="PaymentWeChatPay" onselect={() => setPayType(2)} />
+						<GenericPanel type="TabButton" selected="true" group="payment" id="PaymentAlipay" onselect={() => setPayType(1000)} />
+						<GenericPanel type="TabButton" group="payment" id="PaymentWeChatPay" onselect={() => setPayType(2000)} />
 					</Panel>
 					<Panel id="PaymentAddition">
 						<Button id="Addition_0" className="PaymentAdditionButton" onactivate={() => UpdateTicketsAmount(10)}>

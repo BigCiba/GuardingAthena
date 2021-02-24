@@ -9,17 +9,17 @@ var REQUEST_TIME_OUT = 30;
 
 String.prototype.replaceAll = function (s1, s2) {
 	return this.replace(new RegExp(s1, "gm"), s2);
-}
+};
 
 $.RandomInt = function (n, m) {
 	var random = RemapValClamped(Math.random(), 0, 1, n, m);
 	return Math.floor(random);
-}
+};
 
 $.RandomFloat = function (n, m) {
 	var random = RemapValClamped(Math.random(), 0, 1, n, m);
 	return random;
-}
+};
 
 function Round(fNumber, prec = 0) {
 	let i = Math.pow(10, prec);
@@ -60,7 +60,7 @@ function FindKey(o, v) {
 }
 
 function Float(f) {
-	return Math.round(f * 10000) / 10000
+	return Math.round(f * 10000) / 10000;
 }
 
 function VectorToString(vec) {
@@ -98,7 +98,7 @@ function DeepPrint(obj) {
 }
 
 function polygonArray(polygon) {
-	let p = []
+	let p = [];
 	for (let k in polygon) {
 		p.push(polygon[k]);
 	}
@@ -125,7 +125,7 @@ function ErrorMessage(msg, sound) {
 }
 
 function OnErrorMessage(data) {
-	ErrorMessage(data.message, data.sound)
+	ErrorMessage(data.message, data.sound);
 }
 
 function intToARGB(i) {
@@ -178,7 +178,7 @@ function GetHeroNameByHeroID(iHeroID) {
 		if (sHeroName != "Version") {
 			let tHeroData = CustomUIConfig.HeroesKv[sHeroName];
 			if (tHeroData && Number(tHeroData.HeroID) == iHeroID) {
-				return sHeroName
+				return sHeroName;
 			}
 		}
 	}
@@ -240,7 +240,7 @@ let aPropertyNames = [
 	"_max",
 	"_min",
 	"_move_speed",
-]
+];
 
 function GetSpecialNames(sAbilityName, iEntityIndex = -1) {
 	var tAbilityKeyValues = CustomUIConfig.AbilitiesKv[sAbilityName];
@@ -321,7 +321,7 @@ function GetSpecialValueForLevel(sAbilityName, sName, iLevel, iEntityIndex = -1)
 		}
 	}
 
-	return 0
+	return 0;
 }
 
 function StringToValues(sValues) {
@@ -437,7 +437,7 @@ Players.IsEntitySelected = function (iEntIndex) {
 		}
 	}
 	return false;
-}
+};
 
 // 清除本地玩家选择单位
 Players.RemoveSelection = function (iRemoveEntIndex) {
@@ -455,13 +455,13 @@ Players.RemoveSelection = function (iRemoveEntIndex) {
 		GameUI.SelectUnit(iEntIndex, true);
 	}
 
-}
+};
 
 Abilities.GetLevelCooldown = (iEntityIndex, iLevel = -1) => {
 	GameEvents.SendEventClientSide("custom_get_ability_cooldown", {
 		ability_ent_index: iEntityIndex,
 		level: iLevel,
-	})
+	});
 	let iCasterIndex = Abilities.GetCaster(iEntityIndex);
 	let iAbilityEntIndex = Entities.GetAbilityByName(iCasterIndex, "unit_state");
 	if (iAbilityEntIndex != -1) {
@@ -482,14 +482,14 @@ Abilities.GetLevelCooldown = (iEntityIndex, iLevel = -1) => {
 		}
 		return Number(sCooldown);
 	}
-	return 0
-}
+	return 0;
+};
 
 Abilities.GetLevelManaCost = (iEntityIndex, iLevel = -1) => {
 	GameEvents.SendEventClientSide("custom_get_ability_mana_cost", {
 		ability_ent_index: iEntityIndex,
 		level: iLevel,
-	})
+	});
 	let iCasterIndex = Abilities.GetCaster(iEntityIndex);
 	let iAbilityEntIndex = Entities.GetAbilityByName(iCasterIndex, "unit_state");
 	if (iAbilityEntIndex != -1) {
@@ -510,14 +510,14 @@ Abilities.GetLevelManaCost = (iEntityIndex, iLevel = -1) => {
 		}
 		return Number(sManaCost);
 	}
-	return 0
-}
+	return 0;
+};
 
 Abilities.GetLevelGoldCost = (iEntityIndex, iLevel = -1) => {
 	GameEvents.SendEventClientSide("custom_get_ability_gold_cost", {
 		ability_ent_index: iEntityIndex,
 		level: iLevel,
-	})
+	});
 	let iCasterIndex = Abilities.GetCaster(iEntityIndex);
 	let iAbilityEntIndex = Entities.GetAbilityByName(iCasterIndex, "unit_state");
 	if (iAbilityEntIndex != -1) {
@@ -538,8 +538,8 @@ Abilities.GetLevelGoldCost = (iEntityIndex, iLevel = -1) => {
 		}
 		return Number(sGoldCost);
 	}
-	return 0
-}
+	return 0;
+};
 
 Entities.GetAbilityIndex = function (iEntityIndex, iAbilityEntIndex) {
 	for (let i = 0; i < Entities.GetAbilityCount(iEntityIndex); i++) {
@@ -549,7 +549,7 @@ Entities.GetAbilityIndex = function (iEntityIndex, iAbilityEntIndex) {
 		}
 	}
 	return -1;
-}
+};
 
 Entities.HasBuff = function (unitEntIndex, buffName) {
 	for (let index = 0; index < Entities.GetNumBuffs(unitEntIndex); index++) {
@@ -558,7 +558,7 @@ Entities.HasBuff = function (unitEntIndex, buffName) {
 			return true;
 	}
 	return false;
-}
+};
 
 Entities.FindBuffByName = function (unitEntIndex, buffName) {
 	for (let index = 0; index < Entities.GetNumBuffs(unitEntIndex); index++) {
@@ -567,7 +567,7 @@ Entities.FindBuffByName = function (unitEntIndex, buffName) {
 			return buff;
 	}
 	return -1;
-}
+};
 
 Entities.GetEvasion = function (iEntityIndex) {
 	let value = 1;
@@ -581,7 +581,7 @@ Entities.GetEvasion = function (iEntityIndex) {
 		value = value * 0;
 
 	return 1 - value;
-}
+};
 
 CustomUIConfig.UnitState = [];
 Entities._updateUnitState = (iUnitEntIndex) => {
@@ -597,149 +597,149 @@ Entities._updateUnitState = (iUnitEntIndex) => {
 
 Entities.GetAverageAttackDamage = (iUnitEntIndex) => {
 	return (Entities.GetDamageMin(iUnitEntIndex) + Entities.GetDamageMax(iUnitEntIndex)) / 2 + Entities.GetDamageBonus(iUnitEntIndex);
-}
+};
 
 Entities.GetAttackSpeedPercent = (iUnitEntIndex) => {
 	return Entities.GetAttackSpeed(iUnitEntIndex) * 100;
-}
+};
 
 Entities.GetMoveSpeed = (iUnitEntIndex) => {
 	return Entities.GetMoveSpeedModifier(iUnitEntIndex, Entities.GetBaseMoveSpeed(iUnitEntIndex));
-}
+};
 
 Entities.GetBasePhysicalArmor = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][0];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetPhysicalArmor = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][1];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetBaseMagicalArmor = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][2];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetMagicalArmor = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][3];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetBaseSpellAmplify = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][4];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetSpellAmplify = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][5];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetHealthRegen = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][6];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetManaRegen = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][7];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetStatusResistance = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][8];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetEvasion = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][9];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetCooldownReduction = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][10];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetBaseAcquisitionRange = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][11];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetAcquisitionRange = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][12];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.HasHeroAttribute = (iUnitEntIndex) => {
 	if (CustomUIConfig.UnitState[iUnitEntIndex]) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][13] == 1;
 	}
-	return false
-}
+	return false;
+};
 Entities.GetBaseStrength = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][14];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetStrength = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][15];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetBaseAgility = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][16];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetAgility = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][17];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetBaseIntellect = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][18];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetIntellect = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		return CustomUIConfig.UnitState[iUnitEntIndex][19];
 	}
-	return 0
-}
+	return 0;
+};
 Entities.GetAllStats = (iUnitEntIndex) => {
 	return Entities.GetStrength(iUnitEntIndex) + Entities.GetAgility(iUnitEntIndex) + Entities.GetIntellect(iUnitEntIndex);
-}
+};
 Entities.GetBaseAllStats = (iUnitEntIndex) => {
 	return Entities.GetBaseStrength(iUnitEntIndex) + Entities.GetBaseAgility(iUnitEntIndex) + Entities.GetBaseIntellect(iUnitEntIndex);
-}
+};
 Entities.GetPrimaryAttribute = (iUnitEntIndex) => {
 	if (Entities.HasHeroAttribute(iUnitEntIndex)) {
 		let iBuffIndex = Entities.FindBuffByName(iUnitEntIndex, "modifier_hero_attribute");
 		if (iBuffIndex == -1) return -1;
 		return Buffs.GetStackCount(iUnitEntIndex, iBuffIndex);
 	}
-}
+};
 
 let tAddedProperties = {
 	_str: "GetStrength",
@@ -753,7 +753,7 @@ let tAddedProperties = {
 	_physical_armor: "GetPhysicalArmor",
 	_magical_armor: "GetMagicalArmor",
 	_move_speed: "GetMoveSpeed",
-}
+};
 
 function GetSpecialValuesWithCalculated(sAbilityName, sName, iEntityIndex) {
 	let aOriginalValues = GetSpecialValues(sAbilityName, sName, iEntityIndex);
@@ -796,7 +796,7 @@ function GetSpecialValuesWithCalculated(sAbilityName, sName, iEntityIndex) {
 				let factor = aFactors[Clamp(i, 0, aFactors.length)];
 				factor = CalcSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sName, key, factor);
 				tAddedFactors[key][i] = factor;
-				let addedValue = factor * func(iEntityIndex)
+				let addedValue = factor * func(iEntityIndex);
 				value = value + addedValue;
 				if (sType == "FIELD_INTEGER") {
 					value = parseInt(value);
@@ -813,13 +813,13 @@ function GetSpecialValuesWithCalculated(sAbilityName, sName, iEntityIndex) {
 
 	if (aMinValues) {
 		for (let i = 0; i < aValues.length; i++) {
-			aValues[i] = Math.max(aValues[i], aMinValues[Clamp(i, 0, aMinValues.length)])
+			aValues[i] = Math.max(aValues[i], aMinValues[Clamp(i, 0, aMinValues.length)]);
 		}
 	}
 
 	if (aMaxValues) {
 		for (let i = 0; i < aValues.length; i++) {
-			aValues[i] = Math.min(aValues[i], aMaxValues[Clamp(i, 0, aMaxValues.length)])
+			aValues[i] = Math.min(aValues[i], aMaxValues[Clamp(i, 0, aMaxValues.length)]);
 		}
 	}
 
@@ -846,7 +846,7 @@ CustomUIConfig.UPGRADES_KEY_DATA = 0;
 CustomUIConfig.UPGRADES_KEY_CACHED_RESULT = 1;
 
 function upzip(t1, t2) {
-	let object = {}
+	let object = {};
 	for (let index = 0; index < t2.length; index++) {
 		const k = t1[index];
 		const v = t2[index];
@@ -863,17 +863,17 @@ function GetSpecialValueUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, i
 	let t = CustomNetTables.GetTableValue("ability_upgrades_result", iEntityIndex.toString());
 	if (!t || typeof (t.json) != "string") return 0;
 
-	let tCachedResult = JSON.parse(t.json)
-	if (!tCachedResult) return 0
+	let tCachedResult = JSON.parse(t.json);
+	if (!tCachedResult) return 0;
 
 	let tAllSpecialValueCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_SPECIAL_VALUE];
 	if (typeof (tAllSpecialValueCachedResult) != "object" || typeof (tAllSpecialValueCachedResult[sAbilityName]) != "object" || typeof (tAllSpecialValueCachedResult[sAbilityName][sSpecialValueName]) != "object") return 0;
 
-	return tAllSpecialValueCachedResult[sAbilityName][sSpecialValueName][iOperator] || 0
+	return tAllSpecialValueCachedResult[sAbilityName][sSpecialValueName][iOperator] || 0;
 }
 
 function CalcSpecialValueUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, fValue) {
-	return Float((fValue + GetSpecialValueUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, CustomUIConfig.ABILITY_UPGRADES_OP_ADD)) * (1 + GetSpecialValueUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, CustomUIConfig.ABILITY_UPGRADES_OP_MUL) * 0.01))
+	return Float((fValue + GetSpecialValueUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, CustomUIConfig.ABILITY_UPGRADES_OP_ADD)) * (1 + GetSpecialValueUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, CustomUIConfig.ABILITY_UPGRADES_OP_MUL) * 0.01));
 }
 
 function GetSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, sSpecialValueProperty, iOperator) {
@@ -882,17 +882,17 @@ function GetSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValu
 	let t = CustomNetTables.GetTableValue("ability_upgrades_result", iEntityIndex.toString());
 	if (!t || typeof (t.json) != "string") return 0;
 
-	let tCachedResult = JSON.parse(t.json)
-	if (!tCachedResult) return 0
+	let tCachedResult = JSON.parse(t.json);
+	if (!tCachedResult) return 0;
 
 	let tAllSpecialValuePropertyCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_SPECIAL_VALUE_PROPERTY];
 	if (typeof (tAllSpecialValuePropertyCachedResult) != "object" || typeof (tAllSpecialValuePropertyCachedResult[sAbilityName]) != "object" || typeof (tAllSpecialValuePropertyCachedResult[sAbilityName][sSpecialValueName]) != "object" || typeof (tAllSpecialValuePropertyCachedResult[sAbilityName][sSpecialValueName][sSpecialValueProperty]) != "object") return 0;
 
-	return tAllSpecialValuePropertyCachedResult[sAbilityName][sSpecialValueName][sSpecialValueProperty][iOperator] || 0
+	return tAllSpecialValuePropertyCachedResult[sAbilityName][sSpecialValueName][sSpecialValueProperty][iOperator] || 0;
 }
 
 function CalcSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, sSpecialValueProperty, fValue) {
-	return Float((fValue + GetSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, sSpecialValueProperty, CustomUIConfig.ABILITY_UPGRADES_OP_ADD)) * (1 + GetSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, sSpecialValueProperty, CustomUIConfig.ABILITY_UPGRADES_OP_MUL) * 0.01))
+	return Float((fValue + GetSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, sSpecialValueProperty, CustomUIConfig.ABILITY_UPGRADES_OP_ADD)) * (1 + GetSpecialValuePropertyUpgrade(iEntityIndex, sAbilityName, sSpecialValueName, sSpecialValueProperty, CustomUIConfig.ABILITY_UPGRADES_OP_MUL) * 0.01));
 }
 
 function GetAbilityMechanicsUpgradeLevelSpecialValue(iEntityIndex, sAbilityName, sKey, iLevel) {
@@ -901,18 +901,18 @@ function GetAbilityMechanicsUpgradeLevelSpecialValue(iEntityIndex, sAbilityName,
 	let t = CustomNetTables.GetTableValue("ability_upgrades_result", iEntityIndex.toString());
 	if (!t || typeof (t.json) != "string") return;
 
-	let tCachedResult = JSON.parse(t.json)
+	let tCachedResult = JSON.parse(t.json);
 	if (!tCachedResult) return;
 
-	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS]
+	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS];
 	if (typeof (tAllAbilityMechanicsCachedResult) != "object" || typeof (tAllAbilityMechanicsCachedResult[sAbilityName]) != "object") return;
 
 	let tAbilityMechanicsCachedResult = tAllAbilityMechanicsCachedResult[sAbilityName];
 	for (const sDescription in tAbilityMechanicsCachedResult) {
 		const tValues = tAbilityMechanicsCachedResult[sDescription];
-		let aValues = tValues[sKey]
+		let aValues = tValues[sKey];
 		if (aValues && aValues.value) {
-			return aValues.value[Clamp(iLevel, 0, aValues.value.length - 1)]
+			return aValues.value[Clamp(iLevel, 0, aValues.value.length - 1)];
 		}
 	}
 
@@ -925,18 +925,18 @@ function GetAbilityMechanicsUpgradeLevelSpecialValueProperty(iEntityIndex, sAbil
 	let t = CustomNetTables.GetTableValue("ability_upgrades_result", iEntityIndex.toString());
 	if (!t || typeof (t.json) != "string") return;
 
-	let tCachedResult = JSON.parse(t.json)
+	let tCachedResult = JSON.parse(t.json);
 	if (!tCachedResult) return;
 
-	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS]
+	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS];
 	if (typeof (tAllAbilityMechanicsCachedResult) != "object" || typeof (tAllAbilityMechanicsCachedResult[sAbilityName]) != "object") return;
 
 	let tAbilityMechanicsCachedResult = tAllAbilityMechanicsCachedResult[sAbilityName];
 	for (const sDescription in tAbilityMechanicsCachedResult) {
 		const tValues = tAbilityMechanicsCachedResult[sDescription];
-		let aValues = tValues[sKey]
+		let aValues = tValues[sKey];
 		if (aValues) {
-			return aValues[sPropertyName]
+			return aValues[sPropertyName];
 		}
 	}
 
@@ -949,16 +949,16 @@ function GetAbilityMechanicsUpgradeSpecialValues(iEntityIndex, sAbilityName, sKe
 	let t = CustomNetTables.GetTableValue("ability_upgrades_result", iEntityIndex.toString());
 	if (!t || typeof (t.json) != "string") return;
 
-	let tCachedResult = JSON.parse(t.json)
+	let tCachedResult = JSON.parse(t.json);
 	if (!tCachedResult) return;
 
-	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS]
+	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS];
 	if (typeof (tAllAbilityMechanicsCachedResult) != "object" || typeof (tAllAbilityMechanicsCachedResult[sAbilityName]) != "object") return;
 
 	let tAbilityMechanicsCachedResult = tAllAbilityMechanicsCachedResult[sAbilityName];
 	for (const sDescription in tAbilityMechanicsCachedResult) {
 		const tValues = tAbilityMechanicsCachedResult[sDescription];
-		let aValues = tValues[sKey]
+		let aValues = tValues[sKey];
 		if (aValues && aValues.value) {
 			return aValues.value;
 		}
@@ -973,10 +973,10 @@ function GetAbilityMechanicsUpgradeSpecialNames(iEntityIndex, sAbilityName) {
 	let t = CustomNetTables.GetTableValue("ability_upgrades_result", iEntityIndex.toString());
 	if (!t || typeof (t.json) != "string") return [];
 
-	let tCachedResult = JSON.parse(t.json)
+	let tCachedResult = JSON.parse(t.json);
 	if (!tCachedResult) return [];
 
-	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS]
+	let tAllAbilityMechanicsCachedResult = tCachedResult[CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS];
 	if (typeof (tAllAbilityMechanicsCachedResult) != "object" || typeof (tAllAbilityMechanicsCachedResult[sAbilityName]) != "object") return [];
 
 	let aNames = [];
@@ -1012,7 +1012,7 @@ function GetItemValue(sItemName, sKeyName) {
 	var tItemKeyValues = CustomUIConfig.ItemsKv[sItemName];
 
 	if (tItemKeyValues) {
-		return tItemKeyValues[sKeyName]
+		return tItemKeyValues[sKeyName];
 	}
 	return;
 }
@@ -1059,18 +1059,18 @@ CustomUIConfig.GetCursorEntity = function (aPosition = GameUI.GetCursorPosition(
 		return -1;
 	}
 	targets.sort((a, b) => {
-		let a_loc = Entities.GetAbsOrigin(a.entityIndex)
-		let b_loc = Entities.GetAbsOrigin(b.entityIndex)
-		return Game.Length2D(a_loc, world_position) - Game.Length2D(b_loc, world_position)
-	})
+		let a_loc = Entities.GetAbsOrigin(a.entityIndex);
+		let b_loc = Entities.GetAbsOrigin(b.entityIndex);
+		return Game.Length2D(a_loc, world_position) - Game.Length2D(b_loc, world_position);
+	});
 	return targets[0].entityIndex;
-}
+};
 
 CustomUIConfig.GetCursorPhysicalItem = function (aPosition = GameUI.GetCursorPosition()) {
 	var targets = GameUI.FindScreenEntities(aPosition);
 	var world_position = GameUI.GetScreenWorldPosition(aPosition);
 	targets = targets.filter((e) => {
-		return Entities.IsItemPhysical(e.entityIndex)
+		return Entities.IsItemPhysical(e.entityIndex);
 	});
 	var targets1 = targets.filter((e) => {
 		return e.accurateCollision;
@@ -1086,12 +1086,12 @@ CustomUIConfig.GetCursorPhysicalItem = function (aPosition = GameUI.GetCursorPos
 		return -1;
 	}
 	targets.sort((a, b) => {
-		let a_loc = Entities.GetAbsOrigin(a.entityIndex)
-		let b_loc = Entities.GetAbsOrigin(b.entityIndex)
-		return Game.Length2D(a_loc, world_position) - Game.Length2D(b_loc, world_position)
-	})
+		let a_loc = Entities.GetAbsOrigin(a.entityIndex);
+		let b_loc = Entities.GetAbsOrigin(b.entityIndex);
+		return Game.Length2D(a_loc, world_position) - Game.Length2D(b_loc, world_position);
+	});
 	return targets[0].entityIndex;
-}
+};
 
 
 var _Request_QueueIndex = 0;
@@ -1104,22 +1104,22 @@ function Request(event, data, func, timeout) {
 		_Request_Table[index] = func;
 	}
 	GameEvents.SendCustomGameEventToServer("service_events_req", {
-		event: event,
+		eventName: event,
 		data: JSON.stringify(data),
 		queueIndex: index
 	});
 	timeout = timeout || REQUEST_TIME_OUT;
 	$.Schedule(timeout, function () {
-		delete _Request_Table[index]
+		delete _Request_Table[index];
 	});
 }
 GameEvents.Subscribe("service_events_res", function (data) {
-	var index = data.queueIndex || ""
+	var index = data.queueIndex || "";
 	var func = _Request_Table[index];
 	if (!func) return;
 	delete _Request_Table[index];
 	if (func) {
-		func(JSON.parse(data.result))
+		func(JSON.parse(data.result));
 	};
 });
 
@@ -1130,12 +1130,12 @@ GameEvents.Subscribe("service_events_res", function (data) {
 CustomUIConfig.GetCountingMode = function () {
 	var table = CustomNetTables.GetTableValue("common", "game_mode_info");
 	return table.counting_mode;
-}
+};
 CustomUIConfig.GetDifficulty = function () {
 	var slocalPlayerID = Players.GetLocalPlayer().toString();
 	var table = CustomNetTables.GetTableValue("common", "game_mode_info");
 	return table.difficulty[slocalPlayerID];
-}
+};
 
 function IsNull(variable) {
 	return variable == null || variable == undefined;
@@ -1259,14 +1259,14 @@ CustomUIConfig.ShowAbilityTooltiop = (panel, abilityname, entityindex = -1, inve
 		throw "abilityname is not a string type!";
 	}
 	$.DispatchEvent("UIShowCustomLayoutParametersTooltip", panel, "AbilityTooltiop", "file://{resources}/layout/custom_game/tooltips/tooltip_ability/tooltip_ability.xml", "abilityname=" + abilityname + "&entityindex=" + entityindex + "&inventoryslot=" + inventoryslot + "&level=" + level);
-}
+};
 
 CustomUIConfig.HideAbilityTooltiop = (panel) => {
 	if (typeof (panel) != "object" || typeof (panel.IsValid) != "function" || !panel.IsValid()) {
 		throw "ShowAbilityTooltiop must have a panel parameter!";
 	}
 	$.DispatchEvent("UIHideCustomLayoutTooltip", panel, "AbilityTooltiop");
-}
+};
 
 (function () {
 	GameEvents.Subscribe("error_message", OnErrorMessage);
@@ -1289,7 +1289,7 @@ function ReloadPanelWithProperties(Panel, PanelType, ParentPanel, PanelID, Prope
 	return Panel;
 }
 function GetBadgesBackground(iLevel) {
-	return "file://{images}/profile_badges/bg_0" + Math.ceil(iLevel / 100) + ".psd"
+	return "file://{images}/profile_badges/bg_0" + Math.ceil(iLevel / 100) + ".psd";
 }
 function GetBadgesLevel(iLevel) {
 	return "file://{images}/profile_badges/level_" + (Array(2).join(0) + iLevel).slice(-2) + ".png";
@@ -1334,12 +1334,12 @@ function GetCourierItemStyle(sCourierName) {
 }
 function GetHeroesRebornCount(iEntity) {
 	for (let index = 0; index < Entities.GetNumBuffs(iEntity); index++) {
-		const buff = Entities.GetBuff( iEntity, index );
-		if (Buffs.GetName( iEntity, buff ) == "modifier_reborn") {
-			return Buffs.GetStackCount(iEntity, buff)
+		const buff = Entities.GetBuff(iEntity, index);
+		if (Buffs.GetName(iEntity, buff) == "modifier_reborn") {
+			return Buffs.GetStackCount(iEntity, buff);
 		}
 	}
-	return 0
+	return 0;
 }
 // 获取英雄穿戴的皮肤
 function GetSkinName(iEntity) {
@@ -1355,27 +1355,27 @@ function GetSkinName(iEntity) {
 }
 Entities.HasModifier = function (iEntIndex, sModifierName) {
 	for (let index = 0; index < Entities.GetNumBuffs(iEntIndex); index++) {
-		const buff = Entities.GetBuff( iEntIndex, index );
-		if (Buffs.GetName( iEntIndex, buff ) == sModifierName) {
+		const buff = Entities.GetBuff(iEntIndex, index);
+		if (Buffs.GetName(iEntIndex, buff) == sModifierName) {
 			return true;
 		}
 	}
 	return false;
-}
+};
 GameUI.GetPanelCenter = function (Panel) {
 	let Position = GameUI.GetPanelPosition(Panel);
-	return {x: Position.x + Panel.actuallayoutwidth / 2, y: Position.y + Panel.actuallayoutheight / 2};
-}
+	return { x: Position.x + Panel.actuallayoutwidth / 2, y: Position.y + Panel.actuallayoutheight / 2 };
+};
 GameUI.GetPanelPosition = function (Panel) {
 	let Position = Panel.GetPositionWithinWindow();
-	return {x: Position.x, y: Position.y};
-}
+	return { x: Position.x, y: Position.y };
+};
 GameUI.GetHUDSeed = function () {
 	return 1080 / Game.GetScreenHeight();
-}
+};
 GameUI.CorrectPositionValue = function (value) {
 	return GameUI.GetHUDSeed() * value;
-}
+};
 function print(...args) {
 	let params = [];
 	for (let i = 0; i < arguments.length; i++) {
