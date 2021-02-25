@@ -12,3 +12,6 @@ declare interface CustomUIConfig {
 }
 declare function GetPlayerPrice(sPlayerID: number): number;
 declare function GetPlayerShard(sPlayerID: number): number;
+
+declare function GetPaytypes(): any;
+declare function GetPayTypeImg(paytype: string): string;
