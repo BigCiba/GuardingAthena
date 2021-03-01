@@ -8,7 +8,7 @@
 	border-top: 2px solid dotaPlusGold;
 
 	width: 500px;
-	min-height: 420px;
+	min-height: 500px;
 	padding-bottom: 20px;
 
 	// background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
@@ -335,4 +335,115 @@
 .Faild #PaymentFaildLabel{
 	color: #f70f0f;
 	visibility: visible;
+}
+
+#ExtraPaymentContainer {
+	margin-left: 980px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
+	box-shadow: #00000055 -2px -2px 1px 4px;
+	
+	width: 450px;
+	height: 500px;
+	padding-bottom: 20px;
+	
+	// background-image: url("s2r://panorama/images/custom_game/hud/bg_popup_png.vtex");
+	// background-size: 100%;
+	
+	align: center center;
+	box-shadow: black -4px -4px 8px 8px;
+	border: 1px solid #5e6869;
+	border-top: 2px solid dotaPlusGold;
+	// padding: 90px 85px 90px 65px;
+	// opacity: 1.0;
+	//#FFFFFF66 -4px -4px 8px 8px
+	// animation-name: none;
+
+	// transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+	// transition-duration: 0.2s;
+	// transition-timing-function: ease-in;
+	// transition-delay: 0.0s;
+
+    // visibility: collapse;
+}
+
+.ShowExtraPayment #ExtraPaymentContainer {
+    visibility: visible;
+}
+
+#ExtraPayment {
+    margin-top: 50px;
+    flow-children: right-wrap;
+    align: center center;
+    overflow: squish scroll;
+    // padding: 20px;
+}
+.Notice {
+    font-size: 24px;
+    color: red;
+    text-shadow: 0px 0px 4px 4 black;
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 100px;
+}
+
+#Payment {
+    align: center top;
+    flow-children: right-wrap;
+}
+.Paytype {
+    margin: 10px;
+    border-width: 2px;
+    border-radius: 5px;
+
+    flow-children: none;
+
+    &>.RadioBox {
+        visibility: collapse;
+    }
+
+    Image {
+        width: 171px;
+        height: 58px;
+        wash-color: #c5c5c5;
+        brightness: 0.5;
+		border-radius: 5px;
+    }
+
+    &:hover {
+        Image {
+            brightness: 0.75;
+            wash-color: #00000000;
+        }
+    }
+
+    &:selected {
+        border: 2px solid #000000;
+
+        Image {
+            brightness: 1.0;
+            wash-color: #00000000;
+        }
+    }
+}
+
+#ExtraPaytype {
+    Image {
+        background-color: white;
+    }
+
+    Label {
+        align: center center;
+        color: white;
+        font-size: 25px;
+        z-index: 1;
+    }
+}
+
+.SelectedExtraPayment {
+    #ExtraPaytype {
+        Label {
+            visibility: collapse;
+        }
+    }
 }

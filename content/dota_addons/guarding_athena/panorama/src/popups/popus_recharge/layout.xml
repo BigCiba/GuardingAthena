@@ -10,6 +10,9 @@
 		<include src="./styles.less" />
 	</styles>
 	<scripts>
+		<include src="file://{resources}/scripts/custom_game/popups/payssion.js" />
+		<include src="file://{resources}/scripts/custom_game/popups/paytype.js" />
+
 		<include src="./script.tsx" />
 	</scripts>
 	<Panel class="PopupRoot" oncancel="UIPopupButtonClicked()" popupbackground="dim">

@@ -5918,6 +5918,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+let iShowPaytypeCount = 3;
+const tPaytypes = GetPaytypes();
+var ORDER_STATUS;
+(function (ORDER_STATUS) {
+    ORDER_STATUS[ORDER_STATUS["ERR_NOT_FOUND"] = -1] = "ERR_NOT_FOUND";
+    ORDER_STATUS[ORDER_STATUS["ERR_QUERY_FAILED"] = -2] = "ERR_QUERY_FAILED";
+    ORDER_STATUS[ORDER_STATUS["ERR_UPDATE_FAILED"] = -3] = "ERR_UPDATE_FAILED";
+    ORDER_STATUS[ORDER_STATUS["ERR_NOTPAY"] = -4] = "ERR_NOTPAY";
+    ORDER_STATUS[ORDER_STATUS["ERR_CLOSED"] = -5] = "ERR_CLOSED";
+    ORDER_STATUS[ORDER_STATUS["ERR_THIRD"] = -6] = "ERR_THIRD";
+    ORDER_STATUS[ORDER_STATUS["WAIT"] = 0] = "WAIT";
+    ORDER_STATUS[ORDER_STATUS["SUCCESS"] = 1] = "SUCCESS";
+    ORDER_STATUS[ORDER_STATUS["EXIST"] = 2] = "EXIST";
+})(ORDER_STATUS || (ORDER_STATUS = {}));
+function PaymentResultToText(status) {
+    switch (status) {
+        case ORDER_STATUS.ERR_NOT_FOUND:
+            return $.Localize("#Pay_OrderError");
+        case ORDER_STATUS.ERR_QUERY_FAILED:
+            return $.Localize("#Pay_Waiting");
+        case ORDER_STATUS.ERR_UPDATE_FAILED:
+            return $.Localize("#Pay_Waiting");
+        case ORDER_STATUS.ERR_NOTPAY:
+            return $.Localize("#Pay_Waiting");
+        case ORDER_STATUS.ERR_CLOSED:
+            return $.Localize("#Pay_OrderError");
+        case ORDER_STATUS.ERR_THIRD:
+            return $.Localize("#Pay_Waiting");
+        case ORDER_STATUS.SUCCESS:
+            return $.Localize("#Pay_Success");
+        case ORDER_STATUS.EXIST:
+            return $.Localize("#Pay_Success");
+        case ORDER_STATUS.WAIT:
+            return $.Localize("#Pay_Waiting");
+        default:
+            return $.Localize("#Pay_Waiting");
+    }
+}
 function Popup() {
     const parent = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
     const PaymentTextEntry = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -5981,47 +6019,71 @@ function Popup() {
             GameEvents.Unsubscribe(payment_faild);
         };
     }, []);
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PopupPanel", className: "PopupPanel", ref: parent },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", localizedText: "充值" }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PaymentTypeSelection" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "FirstStep" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PayTypeList" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", selected: "true", group: "payment", id: "PaymentAlipay", onselect: () => setPayType(1000) }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", group: "payment", id: "PaymentWeChatPay", onselect: () => setPayType(2000) })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PaymentAddition" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_0", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(10) },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "10" })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_1", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(30) },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "30" })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_2", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(70) },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "70" })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_3", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(1000) },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "1000" }))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AdjustPanel" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextEntry, { id: "PaymentTextEntry", placeholder: "\u8BF7\u8F93\u5165\u5145\u503C\u91D1\u989D", ref: PaymentTextEntry, ontextentrychange: (self) => { setPrice(String(Number(self.text) / 10)); } }))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SecondStep" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "PaymentIcon", className: classnames__WEBPACK_IMPORTED_MODULE_4___default()({ Alipay: true }) }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "RealPrice", localizedText: "\uFFE5{s:price}", dialogVariables: { price: price } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentNotice", text: "\u5982\u679C\u56E0\u4E3A\u7F51\u7EDC\u539F\u56E0\u6CA1\u6709\u5230\u8D26\u8BF7\u4F7F\u7528\u8865\u5355\u529F\u80FD" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "QRCodeContainer" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "QRCode" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PaymentResultPanel" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentCompleteLabel", className: "PaymentResult", text: "\u652F\u4ED8\u6210\u529F" }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentFaildLabel", className: "PaymentResult", text: "\u4E8C\u7EF4\u7801\u8FC7\u671F" }))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "ShowBrowser", text: "\u4E8C\u7EF4\u7801\u65E0\u6CD5\u663E\u793A\uFF1F\u70B9\u51FB\u8FD9\u91CC" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "OrderID", localizedText: "\u8BA2\u5355\uFF1A{s:orderid}" })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ChargeAmountShow" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "1RMB = 10" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "Notice" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "\u5145\u503C\u7591\u95EE\u52A0QQ:584665414" })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Pay", onactivate: Pay },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "\u7ACB\u5373\u5145\u503C" })))));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PopupPanel", className: "PopupPanel", ref: parent },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { $.DispatchEvent("UIPopupButtonClicked", $.GetContextPanel()); } }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", localizedText: "充值" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PaymentTypeSelection" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "FirstStep" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Payment, { Pay: (data) => { setPayType(data); $.Msg(data); } }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "PaymentAddition" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_0", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(10) },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "10" })),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_1", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(30) },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "30" })),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_2", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(70) },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "70" })),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Addition_3", className: "PaymentAdditionButton", onactivate: () => UpdateTicketsAmount(1000) },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "1000" }))),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "AdjustPanel" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(TextEntry, { id: "PaymentTextEntry", placeholder: "\u8BF7\u8F93\u5165\u5145\u503C\u91D1\u989D", ref: PaymentTextEntry, ontextentrychange: (self) => { setPrice(String(Number(self.text) / 10)); } }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "SecondStep" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "PaymentIcon", className: classnames__WEBPACK_IMPORTED_MODULE_4___default()({ Alipay: true }) }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "RealPrice", localizedText: "\uFFE5{s:price}", dialogVariables: { price: price } }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentNotice", text: "\u5982\u679C\u56E0\u4E3A\u7F51\u7EDC\u539F\u56E0\u6CA1\u6709\u5230\u8D26\u8BF7\u4F7F\u7528\u8865\u5355\u529F\u80FD" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "QRCodeContainer" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "QRCode" }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { className: "PaymentResultPanel" },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentCompleteLabel", className: "PaymentResult", text: "\u652F\u4ED8\u6210\u529F" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PaymentFaildLabel", className: "PaymentResult", text: "\u4E8C\u7EF4\u7801\u8FC7\u671F" }))),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "ShowBrowser", text: "\u4E8C\u7EF4\u7801\u65E0\u6CD5\u663E\u793A\uFF1F\u70B9\u51FB\u8FD9\u91CC" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "OrderID", localizedText: "\u8BA2\u5355\uFF1A{s:orderid}" })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ChargeAmountShow" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "1RMB = 10" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: "file://{images}/dotaplus_logo_small.png" })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "Notice" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "\u5145\u503C\u7591\u95EE\u52A0QQ:584665414" })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "Pay", onactivate: Pay },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { text: "\u7ACB\u5373\u5145\u503C" })))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ExtraPaymentContainer" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { id: "PopupTitle", className: "PopupTitle", localizedText: "选择支付方式" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { className: "CloseButton", onactivate: () => { pSelf.RemoveClass("ShowExtraPayment"); } }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExtraPayment, { Pay: (data) => { $.Msg(data); } }))));
+}
+// <GenericPanel type="TabButton" selected="true" group="payment" id="PaymentAlipay" onselect={() => setPayType(1000)} />
+function Payment({ Pay }) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "Payment" },
+        tPaytypes.map((v, key) => {
+            if (key >= iShowPaytypeCount)
+                return;
+            return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", group: "payment", key: key.toString(), className: "Paytype", onactivate: panel => { Pay(v); } },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: GetPayTypeImg(v) })));
+        }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, { id: "ExtraPaytype", className: "Paytype", onactivate: (self) => { pSelf.AddClass("ShowExtraPayment"); }, onmouseover: (self) => { $.DispatchEvent("DOTAShowTextTooltip", self, "点击选择其他支付方式"); }, onmouseout: (self) => { $.DispatchEvent("DOTAHideTextTooltip", self); } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, { localizedText: "#Pay_ExtraPaytype" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { id: "ExtraPaytypeImage" }))));
+}
+function ExtraPayment({ Pay }) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "ExtraPayment" }, tPaytypes.map((v, key) => {
+        if (key < iShowPaytypeCount)
+            return;
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(GenericPanel, { type: "TabButton", group: "payment", key: key.toString(), className: "Paytype", onactivate: panel => { Pay(v); } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Image, { src: GetPayTypeImg(v) })));
+    })));
 }
 $.GetContextPanel().SetPanelEvent("onload", () => {
     let panel = $.GetContextPanel();
