@@ -66,7 +66,7 @@ function modifier_rubick_4_thinker:OnCreated(params)
 		if hCaster.gift then
 			sParticleName = "particles/heroes/chronos_magic/fluctuation_gold.vpcf"
 		end
-		local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_core_spiral.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	else

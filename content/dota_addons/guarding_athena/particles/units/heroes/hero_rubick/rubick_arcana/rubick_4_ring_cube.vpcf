@@ -322,12 +322,15 @@
 		},
 		{
 			m_ChildRef = resource:"particles/heroes/chronos_magic/fluctuation_gold.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_ring_cube_b.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_ring_spiral.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/econ/items/enigma/enigma_world_chasm/enigma_blackhole_ti5.vpcf"

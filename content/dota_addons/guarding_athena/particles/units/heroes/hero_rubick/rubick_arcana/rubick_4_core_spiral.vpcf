@@ -1,0 +1,264 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf31:version{593cd181-a1d6-4c6f-9a8c-0534e8d44db0} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 10
+	m_flConstantRadius = 64.0
+	m_nConstantSequenceNumber = 2
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_ABSORIGIN_FOLLOW"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 10
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 11
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 72.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 12
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 144.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 13
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 216.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 14
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 288.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 15
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/heroes/axe/axe.vmdl"
+				m_nModSpecificData = 2
+				m_sequenceName = "idle"
+				m_hitboxSetName = "default"
+			}
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_bUseWorldLocation = true
+			m_vecCP1Pos = [ 600.0, 1.0, 1.0 ]
+		},
+		{
+			_class = "C_OP_SetControlPointPositions"
+			m_bUseWorldLocation = true
+			m_nCP1 = 10
+			m_nCP2 = 11
+			m_nCP3 = 12
+			m_nCP4 = 13
+			m_vecCP1Pos = [ 0.0, 0.0, 0.0 ]
+			m_vecCP2Pos = [ 0.0, 72.0, 0.0 ]
+			m_vecCP3Pos = [ 0.0, 144.0, 0.0 ]
+			m_vecCP4Pos = [ 0.0, 216.0, 0.0 ]
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_bUseWorldLocation = true
+			m_nCP1 = 14
+			m_vecCP1Pos = [ 0.0, 288.0, 0.0 ]
+		},
+		{
+			_class = "C_OP_SetParentControlPointsToChildCP"
+			m_nChildGroupID = 5
+			m_nChildControlPoint = 15
+			m_nNumControlPoints = 5
+			m_nFirstSourcePoint = 10
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_bUseWorldLocation = true
+			m_nCP1 = 2
+			m_vecCP1Pos = [ 2.0, 0.0, 0.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 0
+			m_vecCP1Pos = [ 0.0, 0.0, 16.0 ]
+			m_bDisableOperator = true
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_nMapType = "PF_MAP_TYPE_DIRECT"
+				m_flLiteralValue = 1.0
+				m_nControlPoint = 0
+				m_nScalarAttribute = 3
+				m_nVectorAttribute = 6
+				m_nVectorComponent = 0
+				m_flRandomMin = 0.0
+				m_flRandomMax = 1.0
+				m_nRandomMode = "PF_RANDOM_MODE_CONSTANT"
+				m_flLOD0 = 0.0
+				m_flLOD1 = 0.0
+				m_flLOD2 = 0.0
+				m_flLOD3 = 0.0
+				m_flNoiseOutputMin = 0.0
+				m_flNoiseOutputMax = 1.0
+				m_flNoiseScale = 0.1
+				m_vecNoiseOffsetRate = [ 0.0, 0.0, 0.0 ]
+				m_flNoiseOffset = 0.0
+				m_nNoiseOctaves = 1
+				m_nNoiseTurbulence = "PF_NOISE_TURB_NONE"
+				m_nNoiseType = "PF_NOISE_TYPE_PERLIN"
+				m_nNoiseModifier = "PF_NOISE_MODIFIER_NONE"
+				m_flNoiseTurbulenceScale = 1.25
+				m_flNoiseTurbulenceMix = 0.5
+				m_flNoiseImgPreviewScale = 1.0
+				m_bNoiseImgPreviewLive = true
+				m_nInputMode = "PF_INPUT_MODE_CLAMPED"
+				m_flMultFactor = 1.0
+				m_flInput0 = 0.0
+				m_flInput1 = 1.0
+				m_flOutput0 = 0.0
+				m_flOutput1 = 1.0
+				m_nBiasType = "PF_BIAS_TYPE_STANDARD"
+				m_flBiasParameter = 0.0
+				m_Curve = 
+				{
+					m_spline = [  ]
+					m_tangents = [  ]
+					m_vDomainMins = [ 0.0, 0.0 ]
+					m_vDomainMaxs = [ 0.0, 0.0 ]
+				}
+			}
+			m_bDisableOperator = true
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bSaturateColorPreAlphaBlend = false
+			m_flOverbrightFactor = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_nMapType = "PF_MAP_TYPE_DIRECT"
+				m_flLiteralValue = 10.0
+				m_nControlPoint = 0
+				m_nScalarAttribute = 3
+				m_nVectorAttribute = 6
+				m_nVectorComponent = 0
+				m_flRandomMin = 0.0
+				m_flRandomMax = 1.0
+				m_nRandomMode = "PF_RANDOM_MODE_CONSTANT"
+				m_flLOD0 = 0.0
+				m_flLOD1 = 0.0
+				m_flLOD2 = 0.0
+				m_flLOD3 = 0.0
+				m_flNoiseOutputMin = 0.0
+				m_flNoiseOutputMax = 1.0
+				m_flNoiseScale = 0.1
+				m_vecNoiseOffsetRate = [ 0.0, 0.0, 0.0 ]
+				m_flNoiseOffset = 0.0
+				m_nNoiseOctaves = 1
+				m_nNoiseTurbulence = "PF_NOISE_TURB_NONE"
+				m_nNoiseType = "PF_NOISE_TYPE_PERLIN"
+				m_nNoiseModifier = "PF_NOISE_MODIFIER_NONE"
+				m_flNoiseTurbulenceScale = 1.25
+				m_flNoiseTurbulenceMix = 0.5
+				m_flNoiseImgPreviewScale = 1.0
+				m_bNoiseImgPreviewLive = true
+				m_nInputMode = "PF_INPUT_MODE_CLAMPED"
+				m_flMultFactor = 1.0
+				m_flInput0 = 0.0
+				m_flInput1 = 1.0
+				m_flOutput0 = 0.0
+				m_flOutput1 = 1.0
+				m_nBiasType = "PF_BIAS_TYPE_STANDARD"
+				m_flBiasParameter = 0.0
+				m_Curve = 
+				{
+					m_spline = [  ]
+					m_tangents = [  ]
+					m_vDomainMins = [ 0.0, 0.0 ]
+					m_vDomainMaxs = [ 0.0, 0.0 ]
+				}
+			}
+			m_bDisableOperator = true
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/lens_flare/pro_flares/pro_flares.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_OutlineColor = [ 255, 255, 255 ]
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_spiral.vpcf"
+			m_flDelay = 0.2
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_spiral.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_spiral.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_spiral.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_spiral.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_ring_cube.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_ring_star.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_start.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/outworld_devourer/od_ti8/od_ti8_santies_eclipse_area.vpcf"
+		},
+	]
+}
