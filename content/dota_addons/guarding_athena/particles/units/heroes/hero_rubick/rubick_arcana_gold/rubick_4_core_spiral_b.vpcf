@@ -1,0 +1,114 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf31:version{593cd181-a1d6-4c6f-9a8c-0534e8d44db0} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 500.0, 500.0, 1.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 500.0, 500.0, 500.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_StopAfterCPDuration"
+			m_flDuration = 2.0
+			m_bDestroyImmediately = true
+			m_bDisableOperator = true
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b13.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b11.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b16.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b7.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b9.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b8.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b15.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b17.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b4.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b12.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b10.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b5.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b18.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b6.vpcf"
+			m_flDelay = 0.8
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b14.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana_gold/rubick_4_core_spiral_b0.vpcf"
+		},
+	]
+}

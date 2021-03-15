@@ -84,6 +84,13 @@ function public:QueryOperate(params)
 					end
 				end)
 			end
+			if router == "skin.equip" then
+				local hHero = PlayerResource:GetSelectedHeroEntity(iPlayerID)
+				if hHero.GetSkinName then
+					hHero:RemoveModifierByName("modifier_" .. hHero:GetSkinName())
+				end
+				hHero:AddNewModifier(hHero, self, "modifier_" .. ItemName, nil)
+			end
 		end
 		return {
 			status = data.status

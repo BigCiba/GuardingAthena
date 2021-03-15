@@ -52,6 +52,7 @@ function rubick_2:OnSpellStart()
 	local vPosition = self:GetCursorPosition()
 	local flRadius = self:GetSpecialValueFor("radius")
 	local shield_duration = self:GetSpecialValueFor("shield_duration")
+	local stun_duration = self:GetSpecialValueFor("stun_duration")
 	local flDelay = hCaster:GetScepterLevel() >= 2 and self:GetSpecialValueFor("scepter_delay") or self:GetSpecialValueFor("delay")
 	local flDamage = self:GetSpecialValueFor("base_damage") + self:GetSpecialValueFor("damage") * hCaster:GetIntellect()
 	flDamage = hCaster:GetScepterLevel() >= 2 and flDamage * 2 or flDamage
@@ -61,8 +62,18 @@ function rubick_2:OnSpellStart()
 		-- 伤害
 		local tTargets = FindUnitsInRadiusWithAbility(hCaster, vCasterLoc, flRadius, self)
 		hCaster:DealDamage(tTargets, self, flDamage)
+		if hCaster.HasArcanaGold then
+			for _, hUnit in ipairs(tTargets) do
+				hUnit:AddNewModifier(hCaster, self, "modifier_stunned", { duration = stun_duration * hUnit:GetStatusResistanceFactor() })
+			end
+		end
 		local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, flRadius, self)
 		hCaster:DealDamage(tTargets, self, flDamage)
+		if hCaster.HasArcanaGold then
+			for _, hUnit in ipairs(tTargets) do
+				hUnit:AddNewModifier(hCaster, self, "modifier_stunned", { duration = stun_duration * hUnit:GetStatusResistanceFactor() })
+			end
+		end
 		-- 传送
 		FindClearSpaceForUnit(hCaster, vPosition, true)
 		-- 动作

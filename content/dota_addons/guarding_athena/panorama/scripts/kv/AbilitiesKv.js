@@ -14539,6 +14539,10 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
 		"AbilitySpecial":{
+			"10":{
+				"var_type":"FIELD_INTEGER",
+				"stun_duration":1,
+			},
 			"01":{
 				"var_type":"FIELD_INTEGER",
 				"base_damage":"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000",
@@ -14658,6 +14662,10 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			"10":{
 				"var_type":"FIELD_INTEGER",
 				"scepter_count":80,
+			},
+			"11":{
+				"var_type":"FIELD_INTEGER",
+				"health_reduce_pct":20,
 			},
 			"01":{
 				"var_type":"FIELD_INTEGER",

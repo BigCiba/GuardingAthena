@@ -248,17 +248,13 @@
 			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_spiral.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_ring_cube.vpcf"
-			m_bDisableChild = true
-		},
-		{
 			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_ring_star.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_start.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/econ/items/outworld_devourer/od_ti8/od_ti8_santies_eclipse_area.vpcf"
+			m_ChildRef = resource:"particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_eclipse.vpcf"
 		},
 	]
 }

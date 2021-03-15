@@ -1,0 +1,136 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf31:version{593cd181-a1d6-4c6f-9a8c-0534e8d44db0} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 16
+	m_ConstantColor = [ 255, 207, 132, 255 ]
+	m_nConstantSequenceNumber = 4
+	m_nBehaviorVersion = 10
+	m_nFirstMultipleOverride_BackwardCompat = 9
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 40.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.3
+			m_fLifetimeMin = 0.1
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 100.0
+			m_flRadiusMin = 25.0
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 400.0
+			m_vecDistanceBiasAbs = [ 0.0, 0.0, 1.0 ]
+			m_fSpeedMax = 500.0
+			m_fRadiusMin = 100.0
+			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
+			m_fSpeedMin = 250.0
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMaxLength = 0.2
+		},
+		{
+			_class = "C_INIT_RandomScalar"
+			m_nFieldOutput = "18"
+			m_flMax = 1.0
+			m_flMin = 0.1
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 255, 241, 124 ]
+			m_ColorMax = [ 255, 204, 95 ]
+			m_TintMin = [ 0, 0, 0 ]
+			m_TintMax = [ 255, 255, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 3
+		},
+		{
+			_class = "C_INIT_Orient2DRelToCP"
+			m_flRotOffset = 90.0
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 25.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 50.0 ]
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.1
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.75
+			m_flStartScale = 4.0
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_flFadeStartTime = 0.35
+			m_ColorFade = [ 251, 169, 7 ]
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flDepthBias = 15.0
+			m_flAddSelfAmount = 1.0
+			m_flOverbrightFactor = 10.0
+			VisibilityInputs = 
+			{
+				m_flCameraBias = -12.0
+			}
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/electrical_arc/electrical_arc02.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_OutlineColor = [ 255, 255, 255 ]
+		},
+	]
+}

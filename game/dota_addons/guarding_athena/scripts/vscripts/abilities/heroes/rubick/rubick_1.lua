@@ -1,5 +1,5 @@
-LinkLuaModifier( "modifier_rubick_1", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
-LinkLuaModifier( "modifier_rubick_1_thinker", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_rubick_1", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
+LinkLuaModifier("modifier_rubick_1_thinker", "abilities/heroes/rubick/rubick_1.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if rubick_1 == nil then
 	rubick_1 = class({})
@@ -18,17 +18,17 @@ function rubick_1:OnSpellStart()
 	local tTargets, iHashIndex = CreateHashtable()
 	tTargets = FindUnitsInRadiusWithAbility(hCaster, hCaster:GetAbsOrigin(), flRadius, self)
 	for _, hUnit in pairs(tTargets) do
-		hUnit:AddNewModifier(hCaster, self, "modifier_rubick_1", {duration = flDuration, flUnitCount = #tTargets, vPosition = vPosition})
+		hUnit:AddNewModifier(hCaster, self, "modifier_rubick_1", { duration = flDuration, flUnitCount = #tTargets, vPosition = vPosition })
 		-- local iParticleID = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_arcana/rbck_arc_skywrath_mage_mystic_flare_ambient_hit.vpcf", PATTACH_ABSORIGIN_FOLLOW, hUnit)
 	end
 	-- 传送伤害
-	CreateModifierThinker(hCaster, self, "modifier_rubick_1_thinker", {duration = flDuration, iHashIndex = iHashIndex}, vPosition, hCaster:GetTeamNumber(), false)
+	CreateModifierThinker(hCaster, self, "modifier_rubick_1_thinker", { duration = flDuration, iHashIndex = iHashIndex }, vPosition, hCaster:GetTeamNumber(), false)
 	-- 天赋
 	hCaster:SpaceRift(hCaster:GetAbsOrigin() + RandomVector(RandomInt(0, flRadius)))
 	-- particle
 	local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/skills/chronos_magic.vpcf", hCaster), PATTACH_CENTER_FOLLOW, hCaster)
-	ParticleManager:SetParticleControl(iParticleID, 1, Vector(500,500,1))
-	ParticleManager:SetParticleControl(iParticleID, 2, Vector(500,0,0))
+	ParticleManager:SetParticleControl(iParticleID, 1, Vector(500, 500, 1))
+	ParticleManager:SetParticleControl(iParticleID, 2, Vector(500, 0, 0))
 	ParticleManager:ReleaseParticleIndex(iParticleID)
 	-- sound
 	hCaster:EmitSound(AssetModifiers:GetSoundReplacement("Hero_Dark_Seer.Vacuum", hCaster))
@@ -47,6 +47,9 @@ function modifier_rubick_1:OnCreated(params)
 	self.pull_bonus = self:GetAbilitySpecialValueFor("pull_bonus")
 	if IsServer() then
 		local hCaster = self:GetCaster()
+		if hCaster.HasArcana then
+			self:GetParent():AddNoDraw()
+		end
 		self.vDir = (self:GetCaster():GetAbsOrigin() - self:GetParent():GetAbsOrigin()):Normalized()
 		self.vPosition = StringToVector(params.vPosition)
 		-- damage
@@ -63,6 +66,7 @@ function modifier_rubick_1:OnDestroy()
 	if IsServer() then
 		local hParent = self:GetParent()
 		hParent:RemoveHorizontalMotionController(self)
+		hParent:RemoveNoDraw()
 		-- 传送
 		FindClearSpaceForUnit(hParent, self.vPosition, true)
 	end
@@ -127,7 +131,7 @@ function modifier_rubick_1_thinker:OnDestroy()
 		-- 魔导师秘钥
 		if hCaster.HasArcana then
 			for _, hUnit in pairs(tTargets) do
-				hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_stunned", {duration = self.stun_duration * hUnit:GetStatusResistanceFactor()})
+				hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_stunned", { duration = self.stun_duration * hUnit:GetStatusResistanceFactor() })
 			end
 		end
 		-- 天赋

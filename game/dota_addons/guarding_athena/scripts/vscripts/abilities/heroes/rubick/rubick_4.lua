@@ -1,5 +1,5 @@
-LinkLuaModifier( "modifier_rubick_4_thinker", "abilities/heroes/rubick/rubick_4.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_rubick_4_debuff", "abilities/heroes/rubick/rubick_4.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_rubick_4_thinker", "abilities/heroes/rubick/rubick_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_rubick_4_debuff", "abilities/heroes/rubick/rubick_4.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if rubick_4 == nil then
 	rubick_4 = class({})
@@ -20,9 +20,17 @@ function rubick_4:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
 	local flDuration = self:GetSpecialValueFor("duration")
+	if hCaster.HasArcana then
+		local radius = self:GetSpecialValueFor("radius")
+		local health_reduce_pct = self:GetSpecialValueFor("health_reduce_pct")
+		local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, radius, self)
+		for _, hUnit in ipairs(tTargets) do
+			hCaster:DealDamage(hUnit, self, hUnit:GetMaxHealth() * health_reduce_pct * 0.01)
+		end
+	end
 	CreateModifierThinker(hCaster, self, "modifier_rubick_4_thinker", nil, vPosition, hCaster:GetTeamNumber(), false)
 	-- sound
-	EmitSoundOnLocationWithCaster(vPosition, "Hero_FacelessVoid.Chronosphere", hCaster)
+	EmitSoundOnLocationWithCaster(vPosition, AssetModifiers:GetSoundReplacement("Hero_FacelessVoid.Chronosphere", hCaster), hCaster)
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -36,7 +44,7 @@ function modifier_rubick_4_thinker:GetAuraRadius()
 	return self.radius
 end
 function modifier_rubick_4_thinker:GetAuraSearchTeam()
-	return DOTA_UNIT_TARGET_TEAM_BOTH
+	return DOTA_UNIT_TARGET_TEAM_ENEMY
 end
 function modifier_rubick_4_thinker:GetAuraSearchType()
 	return DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
@@ -62,11 +70,7 @@ function modifier_rubick_4_thinker:OnCreated(params)
 		self:StartIntervalThink(self.interval)
 
 		-- particle
-		local sParticleName = "particles/heroes/chronos_magic/fluctuation.vpcf"
-		if hCaster.gift then
-			sParticleName = "particles/heroes/chronos_magic/fluctuation_gold.vpcf"
-		end
-		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_arcana/rubick_4_core_spiral.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle(AssetModifiers:GetParticleReplacement("particles/heroes/chronos_magic/fluctuation.vpcf", hCaster), PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	else
@@ -76,7 +80,8 @@ end
 function modifier_rubick_4_thinker:OnIntervalThink()
 	local hCaster = self:GetCaster()
 	local hParent = self:GetParent()
-	local flDamage = hCaster.HasArcana and self.flDamage or self.flDamage * (1 + self:GetStackCount() * self.damage_deepen * 0.01)
+	local flDamage = self.flDamage * (1 + self:GetStackCount() * self.damage_deepen * 0.01)
+	-- hCaster.HasArcana and self.flDamage or 
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, hParent:GetAbsOrigin(), self.radius, self:GetAbility())
 	hCaster:DealDamage(tTargets, self:GetAbility(), flDamage)
 	-- 天赋
@@ -106,23 +111,49 @@ function modifier_rubick_4_debuff:OnCreated(params)
 	self.movespeed = self:GetAbilitySpecialValueFor("movespeed")
 	self.attackspeed = self:GetAbilitySpecialValueFor("attackspeed")
 	self.damage_deepen = self:GetAbilitySpecialValueFor("damage_deepen")
+	if IsServer() then
+		if self:GetCaster().HasArcanaGold then
+			self:StartIntervalThink(0)
+		end
+	end
+end
+function modifier_rubick_4_debuff:OnIntervalThink()
+	local hParent = self:GetParent()
+	local vOrigin = self:GetAuraOwner():GetAbsOrigin()
+	local pull_speed = 30
+	local pull_rotate_speed = 0.25
+	local vLocation = hParent:GetAbsOrigin()
+	-- 到达中心后不再移动
+	if (vLocation - vOrigin):Length2D() <= pull_speed * FrameTime() then
+		hParent:SetAbsOrigin(vOrigin)
+	else
+		local vDirection = (vOrigin - vLocation):Normalized()
+		vDirection.z = 0
+		local iDistance = pull_speed * FrameTime()
+		local vPoint = vLocation + vDirection * iDistance
+
+		local x = math.cos(pull_rotate_speed * FrameTime()) * (vPoint.x - vOrigin.x) - math.sin(pull_rotate_speed * FrameTime()) * (vPoint.y - vOrigin.y) + vOrigin.x
+		local y = math.sin(pull_rotate_speed * FrameTime()) * (vPoint.x - vOrigin.x) + math.cos(pull_rotate_speed * FrameTime()) * (vPoint.y - vOrigin.y) + vOrigin.y
+
+		hParent:SetAbsOrigin(Vector(x, y, vLocation.z))
+	end
 end
 function modifier_rubick_4_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_LIMIT,
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE
+	-- MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE
 	}
 end
-function modifier_rubick_4_debuff:GetModifierTotalDamageOutgoing_Percentage()
-	if IsServer() then
-		if self:GetParent():IsFriendly(self:GetCaster()) and
-		self:GetParent().HasArcana and
-		IsValid(self:GetAuraOwner()) then
-			return self:GetAuraOwner():FindModifierByName("modifier_rubick_4_thinker"):GetStackCount() * self.damage_deepen
-		end
-	end
-end
+-- function modifier_rubick_4_debuff:GetModifierTotalDamageOutgoing_Percentage()
+-- 	if IsServer() then
+-- 		if self:GetParent():IsFriendly(self:GetCaster()) and
+-- 		self:GetParent().HasArcana and
+-- 		IsValid(self:GetAuraOwner()) then
+-- 			return self:GetAuraOwner():FindModifierByName("modifier_rubick_4_thinker"):GetStackCount() * self.damage_deepen
+-- 		end
+-- 	end
+-- end
 function modifier_rubick_4_debuff:GetModifierMoveSpeed_Limit()
 	if not self:GetParent():IsFriendly(self:GetCaster()) then
 		return self.movespeed

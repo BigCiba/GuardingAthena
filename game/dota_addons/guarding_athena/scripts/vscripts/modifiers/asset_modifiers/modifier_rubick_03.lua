@@ -8,7 +8,10 @@ function public:OnCreated(params)
 	self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	local hParent = self:GetParent()
 	-- 是否装备魔导师秘钥
-	hParent.HasArcana = function (hParent)
+	hParent.HasArcana = function(hParent)
+		return true
+	end
+	hParent.HasArcanaGold = function(hParent)
 		return true
 	end
 	if IsServer() then
