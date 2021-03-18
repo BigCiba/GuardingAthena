@@ -17,6 +17,7 @@ function void_spirit_1:OnSpellStart()
 			hUnit:FindAbilityByName("void_spirit_1"):OnSpellStart()
 		end
 	end
+	ProjectileManager:ProjectileDodge(hCaster)
 	-- 特效
 	hCaster:StartGesture(ACT_DOTA_CAST_ABILITY_4)
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)

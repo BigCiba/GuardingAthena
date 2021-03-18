@@ -32,7 +32,7 @@ end
 function void_spirit_0:AetherRemnant(vPosition)
 	local hCaster = self:GetCaster()
 	local flDuration = self:GetSpecialValueFor("duration")
-	local illusions = CreateIllusions(hCaster, hCaster, { duration = flDuration, outgoing_damage = 100, incoming_damage = 100 }, 1, 100, false, false)
+	local illusions = CreateIllusions(hCaster, hCaster, { duration = flDuration, outgoing_damage = 100, incoming_damage = 0 }, 1, 100, false, false)
 	illusions[1].caster_hero = hCaster
 	illusions[1]:SetAbsOrigin(GetGroundPosition(vPosition, illusions[1]))
 	illusions[1]:AddNewModifier(hCaster, self, "modifier_void_spirit_0", nil)
