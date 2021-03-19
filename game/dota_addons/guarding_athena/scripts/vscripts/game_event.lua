@@ -63,7 +63,7 @@ function GuardingAthena:OnEntityKilled(event)
 			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 				if IsValid(hPlayer) then
-					player:game_over(iPlayerID, true)
+					player:game_over(iPlayerID, false)
 				end
 			end)
 		end

@@ -84,7 +84,8 @@ function AddBossRewardEvents(panel, cost, name, type) {
 function ApplyReward(panel, cost, name, type) {
     var m_IsBuyEnable = false;
     var previewPlayer = CustomNetTables.GetTableValue("shop", Players.GetLocalPlayer());
-    var gold = previewPlayer[type];
+    let playerData = CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID());
+    var gold = type == "boss_point" ? playerData.Score : previewPlayer[type];
     if (gold >= cost) {
         m_IsBuyEnable = true;
     }
