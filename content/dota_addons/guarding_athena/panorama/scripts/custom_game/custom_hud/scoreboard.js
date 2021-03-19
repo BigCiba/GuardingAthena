@@ -11,8 +11,9 @@ function PlayersUpdated() {
     for (var id = 0; id < playerCount; id++) {
         if (Players.IsValidPlayerID(id)) {
             var previewPlayer = CustomNetTables.GetTableValue("scoreboard", id.toString());
+            let playerData = CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID());
             lvLabel[id].text = previewPlayer.lv;
-            scoreLabel[id].text = previewPlayer.score;
+            scoreLabel[id].text = playerData.Score;
             goldLabel[id].text = previewPlayer.goldsave;
             strLabel[id].text = previewPlayer.str;
             agiLabel[id].text = previewPlayer.agi;
