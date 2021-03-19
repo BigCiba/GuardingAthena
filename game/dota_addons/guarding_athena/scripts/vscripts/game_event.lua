@@ -63,7 +63,7 @@ function GuardingAthena:OnEntityKilled(event)
 			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 				if IsValid(hPlayer) then
-					player:game_over(iPlayerID, false)
+					player:game_over(iPlayerID, true)
 				end
 			end)
 		end
@@ -451,7 +451,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 	EachEquippedParticles(playerID, function(tItemData)
 		-- 清除旧的
 		if heroEntity.ParticleModifier then
-			if type(heroEntity.ParticleModifier)  == "number" then
+			if type(heroEntity.ParticleModifier) == "number" then
 				ParticleManager:DestroyParticle(heroEntity.ParticleModifier, false)
 			else
 				heroEntity.ParticleModifier:Destroy()
@@ -721,6 +721,14 @@ function GuardingAthena:OnPlayerChat(keys)
 		--CustomUI:DynamicHud_Create(-1,"HeroSelectionBackground","file://{resources}/layout/custom_game/pick_hero.xml",nil)
 		self.testmode = true
 		--CustomUI:DynamicHud_Create(playerid,"Dialog","file://{resources}/layout/custom_game/custom_hud/dialog.xml",nil)
+	end
+	if text == "endgame" then
+		GuardingAthena:EachPlayer(function(iNth, iPlayerID)
+			local hPlayer = PlayerResource:GetPlayer(iPlayerID)
+			if IsValid(hPlayer) then
+				player:game_over(iPlayerID, true)
+			end
+		end)
 	end
 	--取消测试
 	if text == "untest" then

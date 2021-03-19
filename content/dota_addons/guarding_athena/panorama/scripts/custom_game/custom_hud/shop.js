@@ -1,19 +1,24 @@
-var ShopPanel = []
-var itemsPanel = []
-var activeShop = "def_point"
+var ShopPanel = [];
+var itemsPanel = [];
+var activeShop = "def_point";
 //更新任务
-function UpdataPoint(type){
+function UpdataPoint(type) {
     var previewPlayer = CustomNetTables.GetTableValue("shop", Players.GetLocalPlayer());
-    $("#Point").text = $.Localize("#" + type) + ":" + previewPlayer[type];
+    if (type == "boss_point") {
+        let playerData = CustomNetTables.GetTableValue("service", "player_" + Game.GetLocalPlayerID());
+        $("#Point").text = $.Localize("#" + type) + ":" + playerData.Score;
+    } else {
+        $("#Point").text = $.Localize("#" + type) + ":" + previewPlayer[type];
+    }
 }
 //初始化任务
-function CreateShop(){
+function CreateShop() {
     var ShopsPanel = $("#ShopPanel");
-    var DefShopList = CustomNetTables.GetTableValue("shop","DefShop");
-    var PraShopList = CustomNetTables.GetTableValue("shop","PracticeShop");
-    var BossShopList = CustomNetTables.GetTableValue("shop","BossShop");
-    var CostList = CustomNetTables.GetTableValue("shop","cost");
-    var RefreshList = CustomNetTables.GetTableValue("shop","refresh");
+    var DefShopList = CustomNetTables.GetTableValue("shop", "DefShop");
+    var PraShopList = CustomNetTables.GetTableValue("shop", "PracticeShop");
+    var BossShopList = CustomNetTables.GetTableValue("shop", "BossShop");
+    var CostList = CustomNetTables.GetTableValue("shop", "cost");
+    var RefreshList = CustomNetTables.GetTableValue("shop", "refresh");
     var DefShopPanel = $.CreatePanel("Panel", ShopsPanel, "");
     ShopPanel[1] = DefShopPanel;
     ShopPanel[1].SetHasClass("shop_visible", true);
@@ -31,7 +36,7 @@ function CreateShop(){
         var costLabel = $.CreatePanel("Label", itemPanel, "");
         costLabel.AddClass("CostLabel");
         costLabel.text = $.Localize("#cost") + CostList[itemName];
-        AddItemEvents(itemPanel,CostList[itemName],itemName,"def_point",RefreshList[itemName]);
+        AddItemEvents(itemPanel, CostList[itemName], itemName, "def_point", RefreshList[itemName]);
     }
     var PraShopPanel = $.CreatePanel("Panel", ShopsPanel, "");
     ShopPanel[2] = PraShopPanel;
@@ -49,7 +54,7 @@ function CreateShop(){
         var costLabel = $.CreatePanel("Label", itemPanel, "");
         costLabel.AddClass("CostLabel");
         costLabel.text = $.Localize("#cost") + CostList[itemName];
-        AddItemEvents(itemPanel,CostList[itemName],itemName,"practice_point",RefreshList[itemName]);
+        AddItemEvents(itemPanel, CostList[itemName], itemName, "practice_point", RefreshList[itemName]);
     }
     var BossShopPanel = $.CreatePanel("Panel", ShopsPanel, "");
     ShopPanel[3] = BossShopPanel;
@@ -67,126 +72,114 @@ function CreateShop(){
         var costLabel = $.CreatePanel("Label", itemPanel, "");
         costLabel.AddClass("CostLabel");
         costLabel.text = $.Localize("#cost") + CostList[itemName];
-        AddBossRewardEvents(itemPanel,CostList[itemName],itemName,"boss_point");
+        AddBossRewardEvents(itemPanel, CostList[itemName], itemName, "boss_point");
     }
 }
-function AddItemEvents(panel,cost,name,type,refreshTime){
-    panel.SetPanelEvent("oncontextmenu", function() {BuyItem(panel,cost,name,type,refreshTime);});
+function AddItemEvents(panel, cost, name, type, refreshTime) {
+    panel.SetPanelEvent("oncontextmenu", function () { BuyItem(panel, cost, name, type, refreshTime); });
 }
-function AddBossRewardEvents(panel,cost,name,type){
-    panel.SetPanelEvent("oncontextmenu", function() {ApplyReward(panel,cost,name,type);});
+function AddBossRewardEvents(panel, cost, name, type) {
+    panel.SetPanelEvent("oncontextmenu", function () { ApplyReward(panel, cost, name, type); });
 }
-function ApplyReward (panel,cost,name,type) {
+function ApplyReward(panel, cost, name, type) {
     var m_IsBuyEnable = false;
     var previewPlayer = CustomNetTables.GetTableValue("shop", Players.GetLocalPlayer());
     var gold = previewPlayer[type];
-    if( gold >= cost )
-    {
+    if (gold >= cost) {
         m_IsBuyEnable = true;
     }
-    if(!m_IsBuyEnable)
-    {
-        Game.EmitSound( "General.Cancel" );
+    if (!m_IsBuyEnable) {
+        Game.EmitSound("General.Cancel");
         return;
     }
 
     var unit = Players.GetPlayerHeroEntityIndex(Players.GetLocalPlayer());
-    if( unit != -1)
-    {
-        Game.EmitSound( "General.Buy" );
-        GameEvents.SendCustomGameEventToServer( "UI_BuyReward", { 'entindex':unit, 'itemName':name, 'cost':cost, 'type':type} );
+    if (unit != -1) {
+        Game.EmitSound("General.Buy");
+        GameEvents.SendCustomGameEventToServer("UI_BuyReward", { 'entindex': unit, 'itemName': name, 'cost': cost, 'type': type });
     }
-    else
-    {
-        Game.EmitSound( "ui_rollover_micro" );
+    else {
+        Game.EmitSound("ui_rollover_micro");
     }
 }
-function BuyItem (panel,cost,name,type,refreshTime) {
+function BuyItem(panel, cost, name, type, refreshTime) {
     var m_IsBuyEnable = false;
     var previewPlayer = CustomNetTables.GetTableValue("shop", Players.GetLocalPlayer());
     var buyEnable = CustomNetTables.GetTableValue("shop", "can_buy");
     var canBuy = buyEnable[name];
     var gold = previewPlayer[type];
-    if( gold >= cost  && canBuy == true && Game.IsGamePaused() == false )
-    {
+    if (gold >= cost && canBuy == true && Game.IsGamePaused() == false) {
         m_IsBuyEnable = true;
     }
-    if(!m_IsBuyEnable)
-    {
-        Game.EmitSound( "General.Cancel" );
+    if (!m_IsBuyEnable) {
+        Game.EmitSound("General.Cancel");
         return;
     }
 
     var unit = Players.GetPlayerHeroEntityIndex(Players.GetLocalPlayer());
-    if( unit != -1)
-    {
-        Game.EmitSound( "General.Buy" );
-        GameEvents.SendCustomGameEventToServer( "UI_BuyItem", { 'entindex':unit, 'itemName':name, 'cost':cost, 'type':type, 'cooldown':refreshTime} );
+    if (unit != -1) {
+        Game.EmitSound("General.Buy");
+        GameEvents.SendCustomGameEventToServer("UI_BuyItem", { 'entindex': unit, 'itemName': name, 'cost': cost, 'type': type, 'cooldown': refreshTime });
         panel.AddClass("ItemCantBuy");
-        $.Schedule(refreshTime, function(){
+        $.Schedule(refreshTime, function () {
             panel.RemoveClass("ItemCantBuy");
         });
     }
-    else
-    {
-        Game.EmitSound( "ui_rollover_micro" );
+    else {
+        Game.EmitSound("ui_rollover_micro");
     }
 }
-function DefShopActive(){
+function DefShopActive() {
     activeShop = "def_point";
     ShopPanel[1].SetHasClass("shop_visible", true);
     ShopPanel[2].SetHasClass("shop_visible", false);
     ShopPanel[3].SetHasClass("shop_visible", false);
 }
-function PracticeShopActive(){
+function PracticeShopActive() {
     activeShop = "practice_point";
     ShopPanel[1].SetHasClass("shop_visible", false);
     ShopPanel[2].SetHasClass("shop_visible", true);
     ShopPanel[3].SetHasClass("shop_visible", false);
 }
-function BossShopActive(){
+function BossShopActive() {
     activeShop = "boss_point";
     ShopPanel[1].SetHasClass("shop_visible", false);
     ShopPanel[2].SetHasClass("shop_visible", false);
     ShopPanel[3].SetHasClass("shop_visible", true);
 }
 function SetAbilityButtonTooltipEvents(button, name) {
-    button.SetPanelEvent("onmouseover", function() {
+    button.SetPanelEvent("onmouseover", function () {
         $.DispatchEvent("DOTAShowAbilityTooltip", button, name);
     });
 
-    button.SetPanelEvent("onmouseout", function() {
+    button.SetPanelEvent("onmouseout", function () {
         $.DispatchEvent("DOTAHideAbilityTooltip");
     });
 }
-function TimeRemaining(){
+function TimeRemaining() {
     UpdataPoint(activeShop);
-    $.GetContextPanel().SetHasClass( "flyout_shop_visible", GameUI.CustomUIConfig().shop );
+    $.GetContextPanel().SetHasClass("flyout_shop_visible", GameUI.CustomUIConfig().shop);
     $.Schedule(0.1, TimeRemaining);
 }
-function SetFlyoutQuestVisible( bVisible )
-{
-    $.GetContextPanel().SetHasClass( "flyout_shop_visible", bVisible );
+function SetFlyoutQuestVisible(bVisible) {
+    $.GetContextPanel().SetHasClass("flyout_shop_visible", bVisible);
 }
-function ShowShop()
-{
-    if(GameUI.CustomUIConfig().shop == false)
-    {
+function ShowShop() {
+    if (GameUI.CustomUIConfig().shop == false) {
         GameUI.CustomUIConfig().shop = true;
         GameUI.CustomUIConfig().quest = false;
         GameUI.CustomUIConfig().scoreboard = false;
     }
-    else
-    {
+    else {
         GameUI.CustomUIConfig().shop = false;
     }
 }
 (function () {
     GameUI.CustomUIConfig().shop = false;
     CreateShop();
-    SetFlyoutQuestVisible( false );
+    SetFlyoutQuestVisible(false);
     TimeRemaining();
-    Game.AddCommand( "SHOP", ShowShop, "", 0 );
+    Game.AddCommand("SHOP", ShowShop, "", 0);
     //$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 })();
 //GameEvents.Subscribe( "create_quest", CreateQuest);
