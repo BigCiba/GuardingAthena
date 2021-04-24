@@ -3,6 +3,7 @@
 	"Language"		"Schinese"
 	"Tokens"
 	{
+		//schinese/abilities/common.txt
 		"DOTA_Tooltip_modifier_wing"	"恶魔之翼"
 		"DOTA_Tooltip_modifier_wing_Description"	"提升100点全属性<br></br>增加30%%移动速度<br></br>减少技能2秒冷却<br></br>减免20%%的所有伤害"
 		"DOTA_Tooltip_modifier_singlehero"	"孤胆英雄"
@@ -128,6 +129,7 @@
 		"DOTA_Tooltip_ability_boss_blink"	"星界之门"
 		"DOTA_Tooltip_ability_boss_blink_Description"	"当处于无法移动的地形时，将开启一道传送门进行传送。"
 
+		//schinese/abilities/heroes/antimage.txt
 		"npc_dota_hero_antimage"	"恶魔猎手"
 		"DOTA_Tooltip_ability_demon_hunter"	"恶魔猎手[天赋]"
 		"DOTA_Tooltip_ability_demon_hunter_Description"	"恶魔猎手能在击杀目标后捕获他的灵魂，每收集一个灵魂将提升1点全属性，上限50。主动使用技能将收集的灵魂献祭，献祭持续时间内施放其他技能都将有额外的效果，献祭持续10秒。同时每献祭100个灵魂将获得全属性10点。"
@@ -158,6 +160,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_antimage_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：灵魂容器</h1>提升50点灵魂收集上限\n<h1>二转：收割</h1>击杀单位将获得两倍的灵魂\n<h1>三转：恶魔大炮</h1>每次攻击都将击退目标\n<h1>四转：恶魔祭坛</h1>开启变身后将处于持续献祭的状态，击杀的单位将立刻完成献祭\n作为死神的标配，能轻易收割敌人的灵魂"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_antimage_Lore"	"需要更多的灵魂"
 
+		//schinese/abilities/heroes/crystal_maiden.txt
 		"npc_dota_hero_crystal_maiden"	"冰川女巫"
 		
 		"DOTA_Tooltip_ability_crystal_maiden_0"							"冰霜魔印"
@@ -235,6 +238,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_crystal_maiden"	"月牙冰饰"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_crystal_maiden_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：寒冰侵蚀</h1>踏入冰霜魔印的敌人会被冰冻%scepter_freeze_duration%秒\n<h1>二转：冰霜结界</h1>使得冰霜结界对友军有效\n<h1>三转：极寒之拥</h1>冰霜魔印对友军施放时增加魔免效果\n<h1>四转：冰晶护盾</h1>释放技能时产生一个能抵挡一次伤害的护盾，最多叠加%scepter_max_count%层\n由深蓝冰川核心铸造的挂坠，冰冷的程度甚至能瞬间冻死一头猪。"
 
+		//schinese/abilities/heroes/drow_ranger.txt
 		"DOTA_Tooltip_ability_drow_ranger_0_1_agi_damage"						"敏捷伤害系数："
 		"DOTA_Tooltip_ability_drow_ranger_0_2_agi_factor"						"敏捷攻击力系数："
 		"DOTA_Tooltip_ability_drow_ranger_0_2_bonus_attack_range"				"额外攻击距离："
@@ -291,6 +295,7 @@
 		"DOTA_Tooltip_ability_drow_ranger_3_2_duration"							"额外敏捷持续时间："
 		"DOTA_Tooltip_ability_item_npc_dota_hero_drow_ranger_Description"		"彼岸枝材"
 
+		//schinese/abilities/heroes/ember_spirit.txt
 		"npc_dota_hero_ember_spirit"	"火焰之灵"
 		"DOTA_Tooltip_ability_fire_spirit_0"	"火之痕[天赋]"
 		"DOTA_Tooltip_ability_fire_spirit_0_Description"	"对敌方单位造成伤害时附加一层火之痕，在持续时间结束后造成敏捷*叠加层数的伤害。当火焰之灵对目标施放技能伤害时，每一层火之痕增加1%%的伤害。主动使用立即激活所有火之痕。最大增伤不会超过200%%。"
@@ -314,6 +319,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_ember_spirit1_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>被动：火之痕</h1>使每层火之痕造成每秒敏捷值的伤害\n<h1>被动：烈焰突袭</h1>使烈焰连袭的攻击中附带大范围100%%分裂效果\n<h1>被动：烈焰之躯</h1>使烈焰之躯每秒带有400范围烈焰连袭伤害\n<h1>被动：献祭</h1>减少一半的大招生命消耗\n刀上残留的余烬还带这些许温度"
 		
 
+		//schinese/abilities/heroes/juggernaut.txt
 		"npc_dota_hero_juggernaut"	"主宰"
 		
 		"DOTA_Tooltip_ability_juggernaut_0"	"无双剑技"
@@ -374,6 +380,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut"	"妖刀村正"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：无双剑技</h1>使得天赋对幻象有效\n<h1>二转：剑刃风暴</h1>持续时间内对魔法免疫\n<h1>三转：妖刀</h1>攻击时有%scepter_ignore_armor_chance%%%的几率无视护甲\n<h1>四转：剑舞</h1>每层剑舞将提升%scepter_damage_pct%%%的伤害输出并减少%scepter_reduce_pct%%%受到的伤害\n传说中的妖刀，锋利无比，杀人无数！"
 
+		//schinese/abilities/heroes/legion_commander.txt
 		"npc_dota_hero_legion_commander"	"希波吕忒"
 		"DOTA_Tooltip_ability_courage_moment"	"勇气之霎"
 		"DOTA_Tooltip_ability_courage_moment_Note0"	"该技能冷却时间不受减少冷却效果影响"
@@ -396,6 +403,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_legion_commander1"	"战神长戬"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_legion_commander1_Description"	"<h1>被动：战意</h1>使得触发天赋血量百分比降低至30%%\n<h1>被动：无尽战意</h1>减少无尽战意消耗的生命值到60%%\n<h1>被动：无尽嘲讽</h1>嘲讽时间增加至6秒\n<h1>被动：勇气之霎</h1>勇气之霎冷却时间减少至2秒\n上古神祗的武器，即使历经岁月也无法掩盖其光芒"
 
+		//schinese/abilities/heroes/lina.txt
 		"npc_dota_hero_lina"	"莉莉丝"
 		"DOTA_Tooltip_ability_ashes"	"炽红莲[天赋]"
 		"DOTA_Tooltip_ability_ashes_Description"	"每次施法都会产生火焰虚影包裹全身，根据施法技能的等级，每级对自身附加一层火焰虚影，每层火焰虚影每%interval%对周围%radius%范围的单位造成 %damage% * 智力 的伤害并减少 %reduce% * 智力 的伤害。每层虚影持续%duration%秒。"
@@ -427,6 +435,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_lina1"	"紫怨"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_lina1_Description"	"<h1>被动：法术精通</h1>使黑色火焰无需持续施法\n<h1>被动：火蝴蝶</h1>使目标在持续时间内受到80%%的减速效果\n<h1>被动：灰烬</h1>使点燃的持续时间增加至10秒\n<h1>被动：混乱之雨</h1>提升混乱之雨的伤害与范围,减少冷却并去除施法延迟\n一颗诞自火焰恶魔精华的榴石"
 
+		//schinese/abilities/heroes/monkey_king.txt
 		"npc_dota_hero_monkey_king"	"齐天大圣"
 		"DOTA_Tooltip_ability_piercing_eye"	"火眼金睛"
 		"DOTA_Tooltip_ability_piercing_eye_Description"	"齐天大圣的火眼金睛能够洞察敌人的弱点，目标每减少1%%生命值对齐天大圣造成的伤害减少%damage_reduce%%%，且齐天大圣对其伤害增加%damage_deep%%%。"
@@ -449,6 +458,7 @@
 		
 		"DOTA_Tooltip_ability_jingubang_Note0"	"晕眩效果无法驱散"
 
+		//schinese/abilities/heroes/nevermore.txt
 		"npc_dota_hero_nevermore"	"塔耳塔洛斯"
 		
 		"DOTA_Tooltip_ability_nevermore_0"	"破碎的灵魂"
@@ -513,6 +523,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_nevermore_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：破碎的灵魂</h1>使普通攻击也能触发效果并且冷却时间减少至%scepter_cooldown%\n<h1>二转：魂之挽歌</h1>使得魂之挽歌会回归\n<h1>三转：黑幕灭世</h1>地狱冥土期间每隔%scepter_interval%秒造成3次黑幕冲击\n<h1>四转：支配死灵</h1>开启后攻击变为物理魔法双重伤害\n撒旦的地狱之力，大大加强了灵魂控制能力"
 		
 
+		//schinese/abilities/heroes/omniknight.txt
 		"npc_dota_hero_omniknight"	"机械师"
 		"DOTA_Tooltip_ability_omniknight_0"										"雷霆动力"
 		"DOTA_Tooltip_ability_omniknight_0_Description"							"使用以雷霆为动力的武器，能够发动雷霆之力毁灭敌人，有一定几率击晕目标，如果目标已经处于晕眩状态，则对其造成天罚。每次发动雷霆之力都会提升1点力量。"
@@ -579,6 +590,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_omniknight_Description"		"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：雷霆一击</h1>雷霆一击能量点提升至%scepter_charges%\n<h1>二转：雷霆动力</h1>使天罚作用于%scepter_radius%范围内的敌方单位\n<h1>三转：悬浮装置</h1>使得治疗装置能够移动并且每%scepter_interval%秒对范围内的随机%scepter_count%个敌方单位施放闪电链造成%scepter_damage%倍力量伤害。\n<h1>四转：风暴屏障</h1>每次麻痹造成一次%scepter_damage%倍力量伤害。\n作为一个机械师，没有什么比齿轮更有用的了"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_omniknight_Lore"				"每次修理装置时总会多出一个齿轮没有装上。"
 
+		//schinese/abilities/heroes/oracle.txt
 		"npc_dota_hero_oracle"	"神谕者"
 		
 		"DOTA_Tooltip_ability_oracle_0"										"死亡预言"
@@ -651,6 +663,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_oracle_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：死亡预言</h1>可以对友军释放，持续时间内死亡会立即重生。\n<h1>二转：窥视未来</h1>额外提升%scepter_bonus_int_pct%%%的智力。\n<h1>三转：命运敕令</h1>反击造成%scepter_root_radius%范围的伤害并缠绕%scepter_root_duration%秒。\n<h1>四转：涤罪之焰</h1>每%scepter_interval%秒自动对周围的单位释放一次涤罪之焰。"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_oracle_Lore"	"星体天球充沛的力量让四周充斥着静电爆裂声，而生能射向八方，使敌人暂时魂魄出窍。"
 
+		//schinese/abilities/heroes/phantom_assassin.txt
 		"npc_dota_hero_phantom_assassin"	"影月守望者"
 		"DOTA_Tooltip_ability_clusters_stars"	"繁星"
 		"DOTA_Tooltip_ability_clusters_stars_Description"	"攻击后额外攻击一次，每次连击攻击有几率额外增加一次攻击次数。主动使用时对目标造成巨大伤害与晕眩并且在持续时间内减少目标护甲。<br></br>-----------------------------------------------<br></br>连击率：25%%<br></br>伤害：2 * 攻击力 * 技能等级<br></br>护甲减少：6 * 技能等级<br></br>晕眩时间：2<br></br>-----------------------------------------------"
@@ -679,6 +692,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_phantom_assassin_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：隐月加持</h1>天赋每次增加8%%的攻击力\n<h1>二转：银月加持</h1>影月轮舞将减少目标护甲，减甲效果与繁星相同\n<h1>三转：弱点打击</h1>暴击时对目标造成短暂晕眩并造成双倍伤害\n<h1>四转：擒月</h1>释放影缝绞杀时刷新影月轮舞并使基础冷却降低至0.5\n作为上古血月爆炸留下的遗物，这把武器经过两次月痕的浸礼"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_phantom_assassin_Lore"	"速度带来影子的攻击"
 
+		//schinese/abilities/heroes/rubick.txt
 		"npc_dota_hero_rubick"	"空间魔术师"
 		"DOTA_Tooltip_ability_rubick_0"	"空间裂缝"
 		"DOTA_Tooltip_ability_rubick_0_Description"	"每次施法都会引起周围空间的波动，根据法术的强度在周围形成一个具有致命伤害的空间裂缝，如果目标处于裂缝中心还会额外损失%center_damage%%%的最大生命。"
@@ -746,6 +760,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_rubick_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：能量暴走</h1>每次攻击都会生成空间裂缝\n<h1>二转：强化法阵</h1>传送距离与伤害加倍并移除施法延迟\n<h1>三转：空间结界</h1>移除施法延迟且伤害间隔降低至%scepter_interval%\n<h1>四转：世界投影</h1>最大伤害次数增加至%scepter_count%\n一个包含巨大能量且极其不稳定的魔方，会加剧周围空间的波动"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_rubick_Lore"	"大多数法师认为魔方谜题仅仅是个宝贝"
 
+		//schinese/abilities/heroes/spectre.txt
 		"DOTA_Tooltip_ability_spectre_0"	"百鬼夜行"
 		"DOTA_Tooltip_ability_spectre_0_Description"	"每次攻击时在周围生成一个鬼影。鬼影最多持续%duration%秒或造成%attack_count%次攻击。鬼影拥有幽鬼%health%%%的血量。鬼影继承幽鬼所有技能的伤害效，但只造成%damage%%%的伤害。最多同时存在%unit_limit%个鬼影。主动使用时可引爆周围所有鬼影。"
 		"DOTA_Tooltip_ability_spectre_0_scepter_description_1"	"鬼影造成%scepter_illusion_damage%%%的伤害"
@@ -825,6 +840,7 @@
 		"npc_dota_hero_spectre"	"墨丘利"
 		"spectre"	"幽鬼"
 
+		//schinese/abilities/heroes/templar_assassin.txt
 		"npc_dota_hero_templar_assassin"	"天启者"
 		"DOTA_Tooltip_ability_templar_assassin_0"						"魅隐[天赋]"
 		"DOTA_Tooltip_ability_templar_assassin_0_Description"			"生成魅隐之纱抵挡伤害。伤害超过最大生命值一定百分比才会消耗魅隐之纱。魅隐之纱最多叠加%max_charges%层。消耗魅隐之纱时会清除身上的负面状态。"
@@ -896,6 +912,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin"	"日耀"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：灵刃</h1>灵气利刃会造成%scepter_stun_duration%秒晕眩。\n<h1>二转：魅隐之纱</h1>魅隐之纱破碎或者刷新时将对%scepter_radius%范围的单位造成%scepter_damage%倍敏捷的伤害。\n<h1>三转：神引</h1>每次释放神引有%scepter_refresh_chance%%%几率刷新神引充能。\n<h1>四转：天幕</h1>天幕利刃减少转向速率翻倍并有%scepter_chance%%%的几率使敌人强制转向。\n日耀石所打造的武器，能提供使用者源源不断的能量。"
 
+		//schinese/abilities/heroes/void_spirit.txt
 		"DOTA_Tooltip_ability_void_spirit_0"						"太虚守卫"
 		"DOTA_Tooltip_ability_void_spirit_0_Description"			"召唤一个镜像守卫一片区域，镜像会自动攻击周围的单位并且会模仿虚无之灵施法，守卫无法移动并且不会受到伤害。"
 		"DOTA_Tooltip_ability_void_spirit_0_Lore"					"无玄的存在远超时间和空间中的一个点。"
@@ -949,6 +966,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_void_spirit"	"太虚宝镜"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_void_spirit_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：共鸣脉冲</h1>共鸣脉冲将沉默目标。\n<h1>二转：太虚守卫</h1>所有太虚守卫都会模仿虚无之灵施放太虚之径。\n<h1>三转：魔法护盾</h1>护盾可以吸收魔法伤害。\n<h1>四转：太虚之径</h1>使太虚守卫的攻击向目标方向施放太虚之径。冷却%scepter_cooldown%秒。\n隐之圣堂保管的宝器，传说通过镜面可以观察宇宙的运转。"
 
+		//schinese/abilities/heroes/windrunner.txt
 		"npc_dota_hero_windrunner"											"风行者"
 		
 		"DOTA_Tooltip_ability_windrunner_0"									"追星逐月"
@@ -1013,6 +1031,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：追星逐月</h1>追星逐月魔法箭矢造成%scepter_damage%倍敏捷的额外伤害\n<h1>二转：鹰眼</h1>箭矢风暴增加%scepter_bonus_duration%秒持续时间并具有跟踪效果\n<h1>三转：晴天风暴</h1>每隔%scepter_interval%秒自动对周围的敌人释放一波箭矢风暴，持续%scepter_duration%秒\n<h1>四转：多重射击</h1>普通攻击有%scepter_chance%%%的几率触发多重射击\n这把神弓并非奥林匹斯山的神器，而是一位无名的异界旅者留下的武器"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Lore"			"别手贱点他！"
 
+		//schinese/abilities/nature.txt
 		"DOTA_Tooltip_ability_hell_beast_aura"	"哥布林光环"
 		"DOTA_Tooltip_ability_hell_beast_aura_Description"	"提升50%%的攻击力、攻击速度与移动速度"
 		"DOTA_Tooltip_modifier_beast_aura_buff"	"哥布林光环"
@@ -1069,6 +1088,7 @@
 		"DOTA_Tooltip_ability_demon_sun_strike"	"毁天灭地"
 		"DOTA_Tooltip_ability_demon_sun_strike_Description"	"召唤大规模阳炎冲击对周围的单位造成伤害。"
 
+		//schinese/abilities/pets.txt
 		"DOTA_Tooltip_ability_pet_1_1"							"小鸡下蛋"
 		"DOTA_Tooltip_ability_pet_1_1_Description"				"每隔一段时间就会生下一个不知道是啥的东西。"
 		"DOTA_Tooltip_ability_pet_1_1_interval"					"下蛋间隔："
@@ -1211,6 +1231,7 @@
 		"DOTA_Tooltip_ability_pet_57_1_interval"				"触发间隔："
 		"DOTA_Tooltip_ability_pet_57_1_damage"					"主属性伤害系数："
 
+		//schinese/abilities/raid.txt
 		//突袭
 		"DOTA_Tooltip_ability_solar_lifesteal"	"吸血鬼"
 		"DOTA_Tooltip_ability_solar_lifesteal_Description"	"使得攻击时吸收目标一定百分比的当前生命并在6秒内提升攻速。"
@@ -1299,6 +1320,7 @@
 		"DOTA_Tooltip_ability_troll_concentrate_attackspeed"	"攻速提升："
 		
 
+		//schinese/abilities/round.txt
 		"DOTA_Tooltip_Ability_elite_28_1"					"不如跳舞"
 		"DOTA_Tooltip_Ability_elite_28_1_Description"		"跳舞嘲讽敌人并回复大量生命值。"
 		"DOTA_Tooltip_Ability_elite_28_2"					"传送"
@@ -1624,11 +1646,13 @@
 		"DOTA_Tooltip_modifier_poseidon_1_debuff"	"水怒"
 		"DOTA_Tooltip_modifier_poseidon_1_debuff_Description"	"该单位被水冲上天了"
 
+		//schinese/common.txt
 		"addon_game_name"	"守卫雅典娜"
 		"addonname"	"守卫雅典娜"
 		"DOTA_GoodGuys"	"雅典娜的走狗"
 		"DOTA_BadGuys"	"正义人士"
 
+		//schinese/items/accessory.txt
 		"DOTA_Tooltip_ability_item_recipe_shipin_6"	"一向箔合成卷轴"
 		"DOTA_Tooltip_ability_item_recipe_shipin_7"	"二向箔合成卷轴"
 		"DOTA_Tooltip_ability_item_shipin_1"	"海格力斯腰带"
@@ -1808,6 +1832,7 @@
 		"DOTA_Tooltip_ability_item_demon_chains_bonus_armor"	"+护甲"
 		"DOTA_Tooltip_ability_item_demon_chains_bonus_resistance"	"+魔抗"
 
+		//schinese/items/artifact.txt
 		"DOTA_Tooltip_ability_item_chaos_plate"	"混沌盘"
 		"DOTA_Tooltip_ability_item_chaos_plate_Description"	"<h1>被动：轮回</h1>死亡时会在1秒内复活并刷新所有技能。\n<h1>被动：重归混沌</h1>每%interval%秒为佩戴者清除一次负面效果，并生成一个%shield%%%最大生命值的护盾\n<h1>被动：混沌之力</h1>减少%damage_reduce%%%受到的所有伤害\n混沌初开时随宇宙诞生的远古神器"
 		"DOTA_Tooltip_modifier_item_chaos_plate_buff"	"无敌"
@@ -1838,6 +1863,7 @@
 		"DOTA_Tooltip_ability_item_yata_mirror_bonus_attribute"	"+全属性"
 		"DOTA_Tooltip_ability_item_yata_mirror_bonus_resistance"	"%+魔抗："
 
+		//schinese/items/common.txt
 		"DOTA_Tooltip_ability_item_athena_guard"	"埃癸斯的守护"
 		"DOTA_Tooltip_ability_item_athena_guard_Description"	"使用后减少雅典娜受到的伤害并提供一个大范围的光环效果。<br></br><font color=\"#5bc0de\">守护光环</font>：提升周围1200范围友军的护甲并减少一定百分比的伤害。<br></br>雅典娜每级<font color=\"#d9534f\">护甲</font>属性提升1点护甲<br></br>雅典娜每级<font color=\"#d9534f\">护甲</font>属性提升0.5%%伤害减免<br></br>雅典娜每级<font color=\"#d9534f\">生命</font>属性提升1秒持续时间"
 		"DOTA_Tooltip_ability_item_athena_heal"	"回复术"
@@ -1886,6 +1912,7 @@
 		"DOTA_Tooltip_ability_item_firecracker_big_Description"	"<h1>放烟花</h1>庆祝新年，真好看。"
 		"DOTA_Tooltip_ability_item_firecracker_Description"	"<h1>放鞭炮</h1>庆祝新年，对周围造成微量伤害。"
 
+		//schinese/items/consumable.txt
 		"DOTA_Tooltip_Ability_item_agi_book"	"虚幻之书"
 		"DOTA_Tooltip_Ability_item_agi_book_Description"	"<h1>主动：属性提升</h1>提升使用者%bonus_agi%点敏捷"
 		"DOTA_Tooltip_Ability_item_bag_of_coin"	"金袋"
@@ -1967,6 +1994,7 @@
 		"DOTA_Tooltip_modifier_item_salve4_Description"	"该单位正在回复生命"
 		"DOTA_Tooltip_modifier_item_salve_Description"	"该单位正在回复生命"
 
+		//schinese/items/drops.txt
 		"DOTA_Tooltip_Ability_item_bag_of_coin"	"金袋"
 		"DOTA_Tooltip_Ability_item_bag_of_coin_Description"	"一个金袋"
 		// 食人魔
@@ -2100,6 +2128,7 @@
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note1"	"生命值不足时会造成死亡"
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note2"	"该伤害不享受任何伤害加成与伤害减免"
 
+		//schinese/items/essence.txt
 		"DOTA_Tooltip_ability_item_essence_str_1"				"力量精华"
 		"DOTA_Tooltip_ability_item_essence_str_1_Description"	"<h1>主动：精华跃迁</h1>将主要属性在力量，敏捷以及智力三者间切换。\n<h1>被动：聚合</h1>每击杀1个单位提升1点能量，也可吸收精华来提升能量，每获得%require_count%点能量会提升精华等级。\n一个蕴含远古留下来的三种原始能量之一的球体，可以通过吸收生物死后的能量或未知的精髓来修复它"
 		"DOTA_Tooltip_ability_item_essence_str_1_Lore"			"内涵破碎的力量元素"
@@ -2565,6 +2594,7 @@
 		"DOTA_Tooltip_ability_item_essence_medium"				"中精华"
 		"DOTA_Tooltip_ability_item_essence_big"					"大精华"
 
+		//schinese/items/off_hand_weapon.txt
 		"DOTA_Tooltip_ability_item_chui_1"	"巨石钉锤"
 		"DOTA_Tooltip_ability_item_chui_1_Description"	"<h1>被动：重击</h1>攻击有一定%stun_chance%%%的几率对目标周围单位释放闪电并造成晕眩\n<font color=\"#337ab7\">副手装备只能装备一件</font><br></br>一整块巨大石头打造的钉锤"
 		"DOTA_Tooltip_ability_item_chui_1_Lore"	"这一锤子下来不是开玩笑的"
@@ -2824,6 +2854,7 @@
 		"DOTA_Tooltip_modifier_item_shu_active"	"启灵"
 		"DOTA_Tooltip_modifier_item_shu_active_Description"	"提升50%%的基础主属性"
 
+		//schinese/items/other.txt
 		"DOTA_Tooltip_Ability_item_blades1"	"阔剑"
 		"DOTA_Tooltip_Ability_item_blades1_Lore"	"500的剑也叫剑？"
 		"DOTA_Tooltip_Ability_item_blades2"	"大剑"
@@ -2888,6 +2919,7 @@
 		"DOTA_Tooltip_Ability_item_blades1_Description"	"这把刚出炉的剑剁骨头还是可以的，两把可以合成骨剑<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>+ 30伤害<br></br><font color='#ffffff'>-----------------------------------------------</font>"
 		"DOTA_Tooltip_Ability_item_blades2_Description"	"由于剁骨头太多了，于是就成精了，两把可以合成骨精剑<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>+ 60伤害<br></br>+ 15攻速<br></br>+ 攻击有到一定几率附加100点伤害<br></br><font color='#ffffff'>-----------------------------------------------</font>"
 
+		//schinese/items/primary_weapon.txt
 		"DOTA_Tooltip_ability_item_fazhang_1"	"魔力法杖"
 		"DOTA_Tooltip_ability_item_fazhang_1_Description"	"<h1>主动：奥术冲击</h1>对目标点%radius%范围造成主属性%damage%倍的伤害，每100点距离消耗100点魔法\n<h1>被动：法术增强</h1>提升一定百分比的魔法伤害\n<font color=\"#337ab7\">主手武器只能装备一件</font>\n一根再普通不过的法杖"
 		"DOTA_Tooltip_ability_item_fazhang_1_Lore"	"普通魔法师的入门标配。"
@@ -3224,6 +3256,7 @@
 		"DOTA_Tooltip_ability_item_xie_5_bonus_movement_speed"	"+移动速度"
 		"DOTA_Tooltip_ability_item_xie_5_bonus_resistance"	"+魔法抗性"
 
+		//schinese/items/quest.txt
 		"DOTA_Tooltip_ability_item_zhanqi"	"哥布林战旗"
 		"DOTA_Tooltip_ability_item_zhanqi_Description"	"<h1>被动：战鼓</h1>为900范围的友军提供攻击力与攻速加成\n哥布林部落的战旗，能唤起周围单位的战斗欲望"
 		"DOTA_Tooltip_ability_item_zhanqi_bonus_health"	"生命值："
@@ -3278,6 +3311,7 @@
 		"DOTA_Tooltip_Ability_item_yunshizhaohuan_Description"	"<h1>被动：陨石天降</h1>召唤一个陨石从天而降\n你确定要使用这个东西吗？使用后也许会带来毁灭性的后果。"
 		"DOTA_Tooltip_Ability_item_yunshizhaohuan_Lore"	"来自赤雨的陨石"
 
+		//schinese/items/ring.txt
 		"DOTA_Tooltip_ability_item_ring_1"	"晨辉之戒"
 		"DOTA_Tooltip_ability_item_ring_1_Description"	"<h1>被动：晨辉</h1>早晨的阳光给你带来%health_regen_percent%%%每秒的生命魔法回复\n早晨来临之时赋予佩带者晨辉效果。主动使用将暂时获得晨辉效果。"
 		"DOTA_Tooltip_ability_item_ring_1_Lore"	"早晨的阳光能带给你温暖"
@@ -3403,6 +3437,7 @@
 		"DOTA_Tooltip_Ability_item_ronghe_Description"	"将两枚戒指融合在一起，根据戒指的不同有可能发生奇妙的反应"
 		"DOTA_Tooltip_Ability_item_ronghe_Lore"	"1+1不一定等于2"
 
+		//schinese/panorama.txt
 		"hg_button"	"回城"
 		"hp_button"	"生命"
 		"armor_button"	"护甲"
@@ -3771,6 +3806,7 @@
 		
 		"AbilitySkinTitleTip"			"【皮肤加成】"
 
+		//schinese/store.txt
 		// 皮肤
 		"rubick_01"							"纯金时空魔术师"
 		"rubick_01_Description"				"时空魔术师纯金版本特效"
@@ -3895,6 +3931,7 @@
 		"pet_89"	"矿车鼠小弟"
 		"pet_90"	"黄金肉山宝宝"
 
+		//schinese/units/nature.txt
 		"hero_statue_1"	"英雄历练碑"
 		"hero_statue_2"	"英雄历练碑"
 		"practicer"	"练习傀儡"
@@ -3916,6 +3953,7 @@
 		"boss_fire_demon"	"地狱火焰恶魔"
 		"boss_visage"	"死灵龙"
 
+		//schinese/units/npc.txt
 		"majia"	"马甲"
 		"bounty_hunter"	"赏金猎人"
 		"cuihua"	"翠花"
@@ -3929,6 +3967,7 @@
 		"tree_2"	"树人"
 		"testunit"	"mdzz"
 
+		//schinese/units/raid.txt
 		
 		"solar_eye"	"魔眼"
 		"solar_eye_boss"	"恶魔之眼"
@@ -3948,6 +3987,7 @@
 		"troll_shaman"	"巨魔萨满"
 		"troll_mage"	"巨魔法师"
 
+		//schinese/units/round.txt
 		"wave_1"		"打死汀狗"
 		"wave_2"		"耶罗胖"
 		"wave_3"		"火焰骷髅"

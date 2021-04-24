@@ -3,6 +3,7 @@
 	"Language"		"English"
 	"Tokens"
 	{
+		//english/abilities/common.txt
 		"DOTA_Tooltip_modifier_wing"	"恶魔之翼"
 		"DOTA_Tooltip_modifier_wing_Description"	"提升100点全属性<br></br>增加30%%移动速度<br></br>减少技能2秒冷却<br></br>减免20%%的所有伤害"
 		"DOTA_Tooltip_modifier_singlehero"	"孤胆英雄"
@@ -128,6 +129,7 @@
 		"DOTA_Tooltip_ability_boss_blink"	"星界之门"
 		"DOTA_Tooltip_ability_boss_blink_Description"	"当处于无法移动的地形时，将开启一道传送门进行传送。"
 
+		//english/abilities/heroes/antimage.txt
 		"npc_dota_hero_antimage"												"Demon Hunter"
 		
 		"DOTA_Tooltip_ability_demon_hunter"										"Demon Hunter"
@@ -155,6 +157,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_antimage_Description"	"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Raise the upper limit of 50 points for the soul collection\n<h1>Second Reincarnation</h1>The killing unit will get two times the soul\n<h1>Third  Reincarnation</h1>Each attack will repulse the target\n<h1>Fourth Reincarnation</h1>When Metamorphosis, it will be in a state of continuous sacrifice. The unit will immediately complete the sacrifice\nAs the standard of death, it can easily reap the enemy's soul."
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_antimage_Lore"	"more soul"
 
+		//english/abilities/heroes/crystal_maiden.txt
 		"npc_dota_hero_crystal_maiden"									"Glacier Witch"
 		
 		"DOTA_Tooltip_ability_crystal_maiden_0"							"Frost Sigil"
@@ -232,9 +235,10 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_crystal_maiden"				"Crescent Ornament"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_crystal_maiden_Description"	"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Attack has %chance%%% chance of freezing target for %duration% second.\n<h1>Second Reincarnation</h1>Frost Boundary effect friendly units\n<h1>Third  Reincarnation</h1>There is a %refresh_chance%%% chance to refresh the skill immediately when the skill is released.\n<h1>Fourth Reincarnation</h1>When releasing skills, produce a shield that can withstand a single injury.\nThe pendant from the deep blue glacier core can even freeze a pig to death."
 
+		//english/abilities/heroes/drow_ranger.txt
 		"DOTA_Tooltip_ability_drow_ranger_0_1_agi_damage"						"Agi Damage Factor: "
 		"DOTA_Tooltip_ability_drow_ranger_0_2_agi_factor"						"敏捷攻击力系数："
-		"DOTA_Tooltip_ability_drow_ranger_0_2_bonus_attack_range"				"额外攻击距离："
+		"DOTA_Tooltip_ability_drow_ranger_0_2_bonus_attack_range"				"Bonus Attackrange: "
 		"DOTA_Tooltip_ability_drow_ranger_1_1_duration"							"Duration: "
 		"DOTA_Tooltip_modifier_drow_ranger_1_1_debuff"							"寒冰箭雨"
 		"DOTA_Tooltip_modifier_drow_ranger_1_1_debuff_Description"				"移速被减缓。"
@@ -288,6 +292,7 @@
 		"DOTA_Tooltip_ability_drow_ranger_3_2_duration"							"额外敏捷持续时间："
 		"DOTA_Tooltip_ability_item_npc_dota_hero_drow_ranger_Description"		"彼岸枝材"
 
+		//english/abilities/heroes/ember_spirit.txt
 		"npc_dota_hero_ember_spirit"	"Ember Spirit"
 		"DOTA_Tooltip_ability_fire_spirit_0"									"Fire Trace"
 		"DOTA_Tooltip_ability_fire_spirit_0_Description"						"Add 1 stack count marks on deal damage, at the end of the duration , apply stackcount * Agi damage. When the Fire Spirit deal damage with skills, each mark increase damage by 1 %%. Active use activating all marks <br></br>immediately."
@@ -311,6 +316,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_ember_spirit"					"Ember"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_ember_spirit_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Reduce Flame Heart`s cost of life by half\n<h1>Second Reincarnation</h1>Deal 100%% Cleave attack when using Flame Raid\n<h1>Third  Reincarnation</h1>Cause agility damage of each stack of Fire Trace per second \n<h1>Fourth Reincarnation</h1>Flame Body has 400 radius Flame Raid per sec\nThe remaining ashes on the knife also bring these temperatures"
 
+		//english/abilities/heroes/juggernaut.txt
 		"npc_dota_hero_juggernaut"	"Juggernaut"
 		
 		"DOTA_Tooltip_ability_juggernaut_0"								"Peerless Swordplay"
@@ -371,6 +377,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut"					"Muramasa"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Making talent effective for illusions\n<h1>Second Reincarnation</h1>Immune to magic for duration\n<h1>Third  Reincarnation</h1>Attack has a %scepter_ignore_armor_chance%%% chance to ignore armor\n<h1>Fourth Reincarnation</h1>Each level of sword dance will increase the damage output by %scepter_damage_pct%%% and reduce the damage taken by %scepter_reduce_pct%%%\nThe legendary sword is extremely sharp, killing countless!"
 
+		//english/abilities/heroes/legion_commander.txt
 		"npc_dota_hero_legion_commander"	"Hippolyta"
 		
 		"DOTA_Tooltip_ability_courage_moment"									"Moment of Courage"
@@ -387,6 +394,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_legion_commander"				"WarGod Ji"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_legion_commander_Description"	"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>War God Awaken clear debuff\n<h1>Second Reincarnation</h1>The time of mockery increased to 6 seconds\n<h1>Third  Reincarnation</h1>Reduce the percentage of trigger talent to 30%%\n<h1>Fourth Reincarnation</h1>Moment of Courage cooling time reduced by 50%%\nThe weapons of ancient gods can not hide their light even after years."
 
+		//english/abilities/heroes/lina.txt
 		"npc_dota_hero_lina"	"Lilith"
 		"DOTA_Tooltip_ability_ashes"											"Chi Honglian"
 		"DOTA_Tooltip_ability_ashes_Description"								"Each cast produces a Flame Shadow that wraps the whole body. Each level adds a Flame Shadow to itself according to the level of the casting skill. Each Flame Shadow causes %damage% * int damage and reduces %reduce% * int damage to units in the %radius% range around it every %interval%对周围 times. Each layer has a duration of %duration% seconds."
@@ -408,6 +416,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_lina"							"Orchid Malevolence"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"				"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>The black flame needs no continuous application and eliminates casting delays\n<h1>Second Reincarnation</h1>Increase the duration of the ignition to 10 seconds\n<h1>Third  Reincarnation</h1>Chi Honglian damage apply ignite with stack\n<h1>Fourth Reincarnation</h1>Increases damage and range of Rain of Chaos, reduces cooling and eliminates casting delays\nA garnet from the essence of the fiend of flame"
 
+		//english/abilities/heroes/monkey_king.txt
 		"npc_dota_hero_monkey_king"												"Monkey King"
 		
 		"DOTA_Tooltip_ability_piercing_eye"										"Piercing eye"
@@ -423,6 +432,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king"					"Jingubang"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Add %energy% with Havoc in heaven and regen per %interval% second\n<h1>Second Reincarnation</h1>Havoc in heaven always cause the maximum damage\n<h1>Third  Reincarnation</h1>When attacked, it has a %chance%%% chance to cause %critical% times of damage and ignore armor.\n<h1>Fourth Reincarnation</h1>Jingubang deal %count% times %damage_percent%%% damage\nIt was originally the iron God smelted by Emperor Tai Lao, and he was put in the East China Sea by the sea god's iron, which was left behind by water control."
 
+		//english/abilities/heroes/nevermore.txt
 		"npc_dota_hero_nevermore"	"Tartarus"
 		
 		"DOTA_Tooltip_ability_nevermore_0"							"Broken Soul"
@@ -487,6 +497,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_nevermore_Description"			"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>The normal attack can also trigger effect and the cooldown is reduced to %scepter_cooldown%\n<h1>Second Reincarnation</h1>The soul will return\n<h1>Third  Reincarnation</h1>During the hell underworld period, it causes 3 black shock every %scepter_interval% seconds\n<h1>Fourth Reincarnation</h1>After opening, the attack becomes double damage of physics and magic \nSatan's power of hell greatly strengthens the ability of soul control"
 		
 
+		//english/abilities/heroes/omniknight.txt
 		"npc_dota_hero_omniknight"												"Machinist"
 		"DOTA_Tooltip_ability_omniknight_0"										"Thunder Power"
 		"DOTA_Tooltip_ability_omniknight_0_Description"							"Use thunder power as weapon to launch thunder force to destroy the enemy; there is also a chance to stun the target. If the target is stunned, it will cast the scourge to it. Each time you stun the target, it increases your strength by 1 point."
@@ -532,6 +543,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_omniknight_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Additional one energy point\n<h1>Second Reincarnation</h1>Make a scourge damage to a 300 range injury\n<h1>Third  Reincarnation</h1>The Heal Device can be moved and the lightning chain can be placed in random three enemy units per second.\n<h1>Fourth Reincarnation</h1>The lightning chain is ejected three times\nAs a mechanic, nothing is more useful than a gear."
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_omniknight_Lore"				"There is always an extra gear left uninstalled every time the device is repaired."
 
+		//english/abilities/heroes/oracle.txt
 		"npc_dota_hero_oracle"	"神谕者"
 		
 		"DOTA_Tooltip_ability_oracle_0"										"Death Prediction"
@@ -603,6 +615,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_oracle_Description"		"<h1>Exclusive Equipment</h1>All property, health and mana increase %property%%%\n<h1>First Reincarnation: Death Prediction</h1>Can be released to friendly forces, within the duration of death will be immediately reborn. \n<h1>Second Reincarnation: Fate's Edict</h1> Units that are counterattacked are root in% duration% seconds.\n<h1>Third  Reincarnation: Future Peep</h1>Increase %bonus_intellect% intelligence.\n<h1>Fourth Reincarnation: Purifying Flames</h1>Each %interval% seconds automatically releases Purifying Flames to the surrounding units."
 		"DOTA_Tooltip_ability_item_npc_dota_hero_oracle_Lore"				"The astral orb crackles with power while raw energy lances out, temporarily disrupting and enemy's connection to their own body"
 
+		//english/abilities/heroes/phantom_assassin.txt
 		"npc_dota_hero_phantom_assassin"	"Shadowmoon Warden"
 		"DOTA_Tooltip_ability_clusters_stars"									"Clusters Stars"
 		"DOTA_Tooltip_ability_clusters_stars_Description"						"Making the attack after additional attack once, each combo attack a chance for an additional one times the number of attacks. At the same time, there is a certain chance of critical strikes. Acitive use apply damage and stun.active will regen health when kill target.<br></br>-----------------------------------------------<br></br>Combo rate: 25%%<br></br>Critical rate: 30<br></br>Critical strike factor: 1 + 0.25 * skill level<br></br>Damage: 2 * attack * skill level<br></br>Duration: 2<br></br>-----------------------------------------------"
@@ -630,6 +643,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_phantom_assassin_Description"	"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Talent`s percentage of lifesteal to 100%%\n<h1>Second Reincarnation</h1>Talent reduction effect is promoted to agi * 2\n<h1>Third  Reincarnation</h1>Crash will cause short time dizziness and double damage to the target\n<h1>Fourth Reincarnation</h1>Release Shadow Rift Garrotte while refreshing Shadow Moon Wheel Dance and reduce base cooldown to 0.5\nAs a legacy of the ancient blood moon explosion, this weapon has been baptized by two moon marks."
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_phantom_assassin_Lore"			"a perfect weapon"
 
+		//english/abilities/heroes/rubick.txt
 		"npc_dota_hero_rubick"											"Chronos Magician"
 		"DOTA_Tooltip_ability_rubick_0"									"空间裂缝"
 		"DOTA_Tooltip_ability_rubick_0_Description"						"每次施法都会引起周围空间的波动，根据法术的强度在周围形成一个具有致命伤害的空间裂缝，如果目标处于裂缝中心还会额外损失%center_damage%%%的最大生命。"
@@ -697,6 +711,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_rubick_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：能量暴走</h1>每次攻击都会生成空间裂缝\n<h1>二转：强化法阵</h1>传送距离与伤害加倍并移除施法延迟\n<h1>三转：空间结界</h1>移除施法延迟且伤害间隔降低至%scepter_interval%\n<h1>四转：世界投影</h1>最大伤害次数增加至%scepter_count%\n一个包含巨大能量且极其不稳定的魔方，会加剧周围空间的波动"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_rubick_Lore"			"大多数法师认为魔方谜题仅仅是个宝贝"
 
+		//english/abilities/heroes/spectre.txt
 		"DOTA_Tooltip_ability_spectre_0"	"百鬼夜行"
 		"DOTA_Tooltip_ability_spectre_0_Description"	"每次攻击时在周围生成一个鬼影。鬼影最多持续%duration%秒或造成%attack_count%次攻击。鬼影拥有幽鬼%health%%%的血量。鬼影继承幽鬼所有技能的伤害效，但只造成%damage%%%的伤害。最多同时存在%unit_limit%个鬼影。主动使用时可引爆周围所有鬼影。"
 		"DOTA_Tooltip_ability_spectre_0_scepter_description_1"	"鬼影造成%scepter_illusion_damage%%%的伤害"
@@ -776,6 +791,7 @@
 		"npc_dota_hero_spectre"													"Mercurial"
 		"spectre"	"Spectre"
 
+		//english/abilities/heroes/templar_assassin.txt
 		"npc_dota_hero_templar_assassin"	"Revelator"
 		"DOTA_Tooltip_ability_templar_assassin_0"								"MeiYin"
 		"DOTA_Tooltip_ability_templar_assassin_0_Description"					"Generate shields absorb damage. Damage exceeds a certain percentage of maximum health to consume shields. Shield stack up to %max_charges% charge. Removes debuffs When consuming shields.\nDISPEL TYPE: Strong Dispel"
@@ -847,6 +863,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin"				"Sunplate"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_templar_assassin_Description"	"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Automatically generate a layer of shields per %interval% sec.\n<h1>Second Reincarnation</h1>Reduce ShenYin %reduce% seconds recharge time\n<h1>Third  Reincarnation</h1>Prevent damage when using LinRen\n<h1>Fourth Reincarnation</h1>TianMu damage interval reduced to %reduce_interval%\nThe weapons created by RI Yao Shi can provide users with endless energy."
 
+		//english/abilities/heroes/void_spirit.txt
 		"DOTA_Tooltip_ability_void_spirit_0"						"太虚守卫"
 		"DOTA_Tooltip_ability_void_spirit_0_Description"			"召唤一个镜像守卫一片区域，镜像会自动攻击周围的单位并且会模仿虚无之灵施法，守卫无法移动。"
 		"DOTA_Tooltip_ability_void_spirit_0_Lore"					"无玄的存在远超时间和空间中的一个点。"
@@ -900,6 +917,7 @@
 		"DOTA_Tooltip_ability_item_npc_dota_hero_void_spirit"	"太虚宝镜"
 		"DOTA_Tooltip_ability_item_npc_dota_hero_void_spirit_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：共鸣脉冲</h1>共鸣脉冲将沉默目标。\n<h1>二转：太虚守卫</h1>所有太虚守卫都会模仿虚无之灵施放太虚之径。\n<h1>三转：魔法护盾</h1>护盾可以吸收魔法伤害。\n<h1>四转：太虚之径</h1>使太虚守卫的攻击向目标方向施放太虚之径。冷却%scepter_cooldown%秒。\n隐之圣堂保管的宝器，传说通过镜面可以观察宇宙的运转。"
 
+		//english/abilities/heroes/windrunner.txt
 		"npc_dota_hero_windrunner"											"风行者"
 		
 		"DOTA_Tooltip_ability_windrunner_0"									"追星逐月"
@@ -964,6 +982,7 @@
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：追星逐月</h1>追星逐月魔法箭矢造成%scepter_damage%倍敏捷的额外伤害\n<h1>二转：鹰眼</h1>箭矢风暴增加%scepter_bonus_duration%秒持续时间并具有跟踪效果\n<h1>三转：晴天风暴</h1>每隔%scepter_interval%秒自动对周围的敌人释放一波箭矢风暴，持续%scepter_duration%秒\n<h1>四转：多重射击</h1>普通攻击有%scepter_chance%%%的几率触发多重射击\n这把神弓并非奥林匹斯山的神器，而是一位无名的异界旅者留下的武器"
 		"DOTA_Tooltip_Ability_item_npc_dota_hero_windrunner_Lore"			"别手贱点他！"
 
+		//english/abilities/nature.txt
 		"DOTA_Tooltip_ability_hell_beast_aura"	"哥布林光环"
 		"DOTA_Tooltip_ability_hell_beast_aura_Description"	"提升50%%的攻击力、攻击速度与移动速度"
 		"DOTA_Tooltip_modifier_beast_aura_buff"	"哥布林光环"
@@ -1020,6 +1039,7 @@
 		"DOTA_Tooltip_ability_demon_sun_strike"	"毁天灭地"
 		"DOTA_Tooltip_ability_demon_sun_strike_Description"	"召唤大规模阳炎冲击对周围的单位造成伤害。"
 
+		//english/abilities/pets.txt
 		"DOTA_Tooltip_ability_pet_1_1"							"小鸡下蛋"
 		"DOTA_Tooltip_ability_pet_1_1_Description"				"每隔一段时间就会生下一个不知道是啥的东西。"
 		"DOTA_Tooltip_ability_pet_1_1_interval"					"下蛋间隔："
@@ -1162,6 +1182,7 @@
 		"DOTA_Tooltip_ability_pet_57_1_interval"				"触发间隔："
 		"DOTA_Tooltip_ability_pet_57_1_damage"					"主属性伤害系数："
 
+		//english/abilities/raid.txt
 		//突袭
 		"DOTA_Tooltip_ability_solar_lifesteal"	"吸血鬼"
 		"DOTA_Tooltip_ability_solar_lifesteal_Description"	"使得攻击时吸收目标一定百分比的当前生命并在6秒内提升攻速。"
@@ -1250,6 +1271,7 @@
 		"DOTA_Tooltip_ability_troll_concentrate_attackspeed"	"攻速提升："
 		
 
+		//english/abilities/round.txt
 		"DOTA_Tooltip_Ability_elite_28_1"					"不如跳舞"
 		"DOTA_Tooltip_Ability_elite_28_1_Description"		"跳舞嘲讽敌人并回复大量生命值。"
 		"DOTA_Tooltip_Ability_elite_28_2"					"传送"
@@ -1575,11 +1597,13 @@
 		"DOTA_Tooltip_modifier_poseidon_1_debuff"	"水怒"
 		"DOTA_Tooltip_modifier_poseidon_1_debuff_Description"	"该单位被水冲上天了"
 
+		//english/common.txt
 		"addon_game_name"	"守卫雅典娜"
 		"addonname"	"守卫雅典娜"
 		"DOTA_GoodGuys"	"雅典娜的走狗"
 		"DOTA_BadGuys"	"正义人士"
 
+		//english/items/accessory.txt
 		"DOTA_Tooltip_ability_item_recipe_shipin_6"	"一向箔合成卷轴"
 		"DOTA_Tooltip_ability_item_recipe_shipin_7"	"二向箔合成卷轴"
 		"DOTA_Tooltip_ability_item_shipin_1"	"海格力斯腰带"
@@ -1759,6 +1783,7 @@
 		"DOTA_Tooltip_ability_item_demon_chains_bonus_armor"	"+护甲"
 		"DOTA_Tooltip_ability_item_demon_chains_bonus_resistance"	"+魔抗"
 
+		//english/items/artifact.txt
 		"DOTA_Tooltip_ability_item_chaos_plate"	"混沌盘"
 		"DOTA_Tooltip_ability_item_chaos_plate_Description"	"<h1>被动：轮回</h1>死亡时会在1秒内复活并刷新所有技能。\n<h1>被动：重归混沌</h1>每%interval%秒为佩戴者清除一次负面效果，并生成一个%shield%%%最大生命值的护盾\n<h1>被动：混沌之力</h1>减少%damage_reduce%%%受到的所有伤害\n混沌初开时随宇宙诞生的远古神器"
 		"DOTA_Tooltip_modifier_item_chaos_plate_buff"	"无敌"
@@ -1789,6 +1814,7 @@
 		"DOTA_Tooltip_ability_item_yata_mirror_bonus_attribute"	"+全属性"
 		"DOTA_Tooltip_ability_item_yata_mirror_bonus_resistance"	"%+魔抗："
 
+		//english/items/common.txt
 		"DOTA_Tooltip_ability_item_athena_guard"	"埃癸斯的守护"
 		"DOTA_Tooltip_ability_item_athena_guard_Description"	"使用后减少雅典娜受到的伤害并提供一个大范围的光环效果。<br></br><font color=\"#5bc0de\">守护光环</font>：提升周围1200范围友军的护甲并减少一定百分比的伤害。<br></br>雅典娜每级<font color=\"#d9534f\">护甲</font>属性提升1点护甲<br></br>雅典娜每级<font color=\"#d9534f\">护甲</font>属性提升0.5%%伤害减免<br></br>雅典娜每级<font color=\"#d9534f\">生命</font>属性提升1秒持续时间"
 		"DOTA_Tooltip_ability_item_athena_heal"	"回复术"
@@ -1837,6 +1863,7 @@
 		"DOTA_Tooltip_ability_item_firecracker_big_Description"	"<h1>放烟花</h1>庆祝新年，真好看。"
 		"DOTA_Tooltip_ability_item_firecracker_Description"	"<h1>放鞭炮</h1>庆祝新年，对周围造成微量伤害。"
 
+		//english/items/consumable.txt
 		"DOTA_Tooltip_Ability_item_agi_book"	"虚幻之书"
 		"DOTA_Tooltip_Ability_item_agi_book_Description"	"<h1>主动：属性提升</h1>提升使用者%bonus_agi%点敏捷"
 		"DOTA_Tooltip_Ability_item_bag_of_coin"	"金袋"
@@ -1918,6 +1945,7 @@
 		"DOTA_Tooltip_modifier_item_salve4_Description"	"该单位正在回复生命"
 		"DOTA_Tooltip_modifier_item_salve_Description"	"该单位正在回复生命"
 
+		//english/items/drops.txt
 		"DOTA_Tooltip_Ability_item_bag_of_coin"	"金袋"
 		"DOTA_Tooltip_Ability_item_bag_of_coin_Description"	"一个金袋"
 		// 食人魔
@@ -2051,6 +2079,7 @@
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note1"	"生命值不足时会造成死亡"
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note2"	"该伤害不享受任何伤害加成与伤害减免"
 
+		//english/items/essence.txt
 		"DOTA_Tooltip_ability_item_essence_str_1"				"力量精华"
 		"DOTA_Tooltip_ability_item_essence_str_1_Description"	"<h1>主动：精华跃迁</h1>将主要属性在力量，敏捷以及智力三者间切换。\n<h1>被动：聚合</h1>每击杀1个单位提升1点能量，也可吸收精华来提升能量，每获得%require_count%点能量会提升精华等级。\n一个蕴含远古留下来的三种原始能量之一的球体，可以通过吸收生物死后的能量或未知的精髓来修复它"
 		"DOTA_Tooltip_ability_item_essence_str_1_Lore"			"内涵破碎的力量元素"
@@ -2516,6 +2545,7 @@
 		"DOTA_Tooltip_ability_item_essence_medium"				"中精华"
 		"DOTA_Tooltip_ability_item_essence_big"					"大精华"
 
+		//english/items/off_hand_weapon.txt
 		"DOTA_Tooltip_ability_item_chui_1"	"巨石钉锤"
 		"DOTA_Tooltip_ability_item_chui_1_Description"	"<h1>被动：重击</h1>攻击有一定%stun_chance%%%的几率对目标周围单位释放闪电并造成晕眩\n<font color=\"#337ab7\">副手装备只能装备一件</font><br></br>一整块巨大石头打造的钉锤"
 		"DOTA_Tooltip_ability_item_chui_1_Lore"	"这一锤子下来不是开玩笑的"
@@ -2775,6 +2805,7 @@
 		"DOTA_Tooltip_modifier_item_shu_active"	"启灵"
 		"DOTA_Tooltip_modifier_item_shu_active_Description"	"提升50%%的基础主属性"
 
+		//english/items/other.txt
 		"DOTA_Tooltip_Ability_item_blades1"	"阔剑"
 		"DOTA_Tooltip_Ability_item_blades1_Lore"	"500的剑也叫剑？"
 		"DOTA_Tooltip_Ability_item_blades2"	"大剑"
@@ -2839,6 +2870,7 @@
 		"DOTA_Tooltip_Ability_item_blades1_Description"	"这把刚出炉的剑剁骨头还是可以的，两把可以合成骨剑<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>+ 30伤害<br></br><font color='#ffffff'>-----------------------------------------------</font>"
 		"DOTA_Tooltip_Ability_item_blades2_Description"	"由于剁骨头太多了，于是就成精了，两把可以合成骨精剑<br></br><font color='#ffffff'>-----------------------------------------------</font><br></br>+ 60伤害<br></br>+ 15攻速<br></br>+ 攻击有到一定几率附加100点伤害<br></br><font color='#ffffff'>-----------------------------------------------</font>"
 
+		//english/items/primary_weapon.txt
 		"DOTA_Tooltip_ability_item_fazhang_1"	"魔力法杖"
 		"DOTA_Tooltip_ability_item_fazhang_1_Description"	"<h1>主动：奥术冲击</h1>对目标点%radius%范围造成主属性%damage%倍的伤害，每100点距离消耗100点魔法\n<h1>被动：法术增强</h1>提升一定百分比的魔法伤害\n<font color=\"#337ab7\">主手武器只能装备一件</font>\n一根再普通不过的法杖"
 		"DOTA_Tooltip_ability_item_fazhang_1_Lore"	"普通魔法师的入门标配。"
@@ -3175,6 +3207,7 @@
 		"DOTA_Tooltip_ability_item_xie_5_bonus_movement_speed"	"+移动速度"
 		"DOTA_Tooltip_ability_item_xie_5_bonus_resistance"	"+魔法抗性"
 
+		//english/items/quest.txt
 		"DOTA_Tooltip_ability_item_zhanqi"	"哥布林战旗"
 		"DOTA_Tooltip_ability_item_zhanqi_Description"	"<h1>被动：战鼓</h1>为900范围的友军提供攻击力与攻速加成\n哥布林部落的战旗，能唤起周围单位的战斗欲望"
 		"DOTA_Tooltip_ability_item_zhanqi_bonus_health"	"生命值："
@@ -3229,6 +3262,7 @@
 		"DOTA_Tooltip_Ability_item_yunshizhaohuan_Description"	"<h1>被动：陨石天降</h1>召唤一个陨石从天而降\n你确定要使用这个东西吗？使用后也许会带来毁灭性的后果。"
 		"DOTA_Tooltip_Ability_item_yunshizhaohuan_Lore"	"来自赤雨的陨石"
 
+		//english/items/ring.txt
 		"DOTA_Tooltip_ability_item_ring_1"	"晨辉之戒"
 		"DOTA_Tooltip_ability_item_ring_1_Description"	"<h1>被动：晨辉</h1>早晨的阳光给你带来%health_regen_percent%%%每秒的生命魔法回复\n早晨来临之时赋予佩带者晨辉效果。主动使用将暂时获得晨辉效果。"
 		"DOTA_Tooltip_ability_item_ring_1_Lore"	"早晨的阳光能带给你温暖"
@@ -3354,6 +3388,7 @@
 		"DOTA_Tooltip_Ability_item_ronghe_Description"	"将两枚戒指融合在一起，根据戒指的不同有可能发生奇妙的反应"
 		"DOTA_Tooltip_Ability_item_ronghe_Lore"	"1+1不一定等于2"
 
+		//english/panorama.txt
 		"hg_button"	"回城"
 		"hp_button"	"生命"
 		"armor_button"	"护甲"
@@ -3722,6 +3757,7 @@
 		
 		"AbilitySkinTitleTip"			"【皮肤加成】"
 
+		//english/store.txt
 		// 皮肤
 		"rubick_01"							"纯金时空魔术师"
 		"rubick_01_Description"				"时空魔术师纯金版本特效"
@@ -3846,6 +3882,7 @@
 		"pet_89"	"矿车鼠小弟"
 		"pet_90"	"黄金肉山宝宝"
 
+		//english/units/nature.txt
 		"hero_statue_1"	"英雄历练碑"
 		"hero_statue_2"	"英雄历练碑"
 		"practicer"	"练习傀儡"
@@ -3867,6 +3904,7 @@
 		"boss_fire_demon"	"地狱火焰恶魔"
 		"boss_visage"	"死灵龙"
 
+		//english/units/npc.txt
 		"majia"	"马甲"
 		"bounty_hunter"	"赏金猎人"
 		"cuihua"	"翠花"
@@ -3880,6 +3918,7 @@
 		"tree_2"	"树人"
 		"testunit"	"mdzz"
 
+		//english/units/raid.txt
 		
 		"solar_eye"	"魔眼"
 		"solar_eye_boss"	"恶魔之眼"
@@ -3899,6 +3938,7 @@
 		"troll_shaman"	"巨魔萨满"
 		"troll_mage"	"巨魔法师"
 
+		//english/units/round.txt
 		"wave_1"		"打死汀狗"
 		"wave_2"		"耶罗胖"
 		"wave_3"		"火焰骷髅"

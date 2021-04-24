@@ -1,6 +1,6 @@
 "DOTA_Tooltip_ability_drow_ranger_0_1_agi_damage"						"Agi Damage Factor: "
 "DOTA_Tooltip_ability_drow_ranger_0_2_agi_factor"						"敏捷攻击力系数："
-"DOTA_Tooltip_ability_drow_ranger_0_2_bonus_attack_range"				"额外攻击距离："
+"DOTA_Tooltip_ability_drow_ranger_0_2_bonus_attack_range"				"Bonus Attackrange: "
 "DOTA_Tooltip_ability_drow_ranger_1_1_duration"							"Duration: "
 "DOTA_Tooltip_modifier_drow_ranger_1_1_debuff"							"寒冰箭雨"
 "DOTA_Tooltip_modifier_drow_ranger_1_1_debuff_Description"				"移速被减缓。"
