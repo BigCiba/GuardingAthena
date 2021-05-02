@@ -5,7 +5,7 @@
 .CloseButton {
   width: 30px;
   height: 30px;
-  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
   background-size: 100%;
   transition-property: wash-color;
   transition-duration: 0.1s;
@@ -41,6 +41,19 @@
   color: white;
   font-size: 24px;
   align: center center;
+}
+.CheckBox:selected Label {
+  color: white;
+}
+.CheckBox Label {
+  font-size: 18px;
+  color: #7d8688;
+  vertical-align: center;
+  margin: 0px;
+  padding-top: 4px;
+  padding-left: 5px;
+  letter-spacing: 1px;
+  font-weight: thin;
 }
 .PopupRoot {
   width: 100%;
@@ -115,7 +128,7 @@
   margin: 8px;
   width: 192px;
   height: 40px;
-  background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+  background-image: url("file://{images}/backgrounds/background_play_button_2x_png.png");
   background-size: 100% 100%;
   border-top: 1px solid #ffffff22;
   border-left: 1px solid #ffffff11;
@@ -161,7 +174,7 @@
   background-position: center;
   background-repeat: no-repeat;
   img-shadow: 0px 0px 3px 3 #000000;
-  background-image: url("file://{images}/dotaplus_logo_small.png");
+  background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }
 .PopupButton {
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));

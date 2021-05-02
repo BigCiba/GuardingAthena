@@ -5,7 +5,7 @@
 .CloseButton {
   width: 30px;
   height: 30px;
-  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
   background-size: 100%;
   transition-property: wash-color;
   transition-duration: 0.1s;
@@ -128,7 +128,7 @@
   margin: 8px;
   width: 192px;
   height: 40px;
-  background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+  background-image: url("file://{images}/backgrounds/background_play_button_2x_png.png");
   background-size: 100% 100%;
   border-top: 1px solid #ffffff22;
   border-left: 1px solid #ffffff11;
@@ -174,7 +174,7 @@
   background-position: center;
   background-repeat: no-repeat;
   img-shadow: 0px 0px 3px 3 #000000;
-  background-image: url("file://{images}/dotaplus_logo_small.png");
+  background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }
 .PopupButton {
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#5a6c75), to(#3d4a50));
@@ -237,7 +237,7 @@
   background-position: center;
   tooltip-position: top;
   background-image: dotaPlusCurrencySmallIcon;
-  background-image: url("file://{images}/dotaplus_logo_small.png");
+  background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }
 .CommonMoneyContainer Label {
   width: 100px;
@@ -331,7 +331,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("file://{images}/dotaplus_logo_small.png");
+  background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }
 .StoreItemDetail {
   margin-top: 70px;
@@ -391,13 +391,13 @@
   background-position: center;
 }
 .AttributeContainer .HeroStatsSection .StrengthIcon {
-  background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+  background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_strength_psd.png");
 }
 .AttributeContainer .HeroStatsSection .AgilityIcon {
-  background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+  background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_agility_psd.png");
 }
 .AttributeContainer .HeroStatsSection .IntelligenceIcon {
-  background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+  background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_intelligence_psd.png");
 }
 .AttributeContainer .HeroStatsSection #HealthRow {
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#1A3D1A), color-stop(0.2, #67A163), color-stop(0.5, #187019), to(#175D17));
@@ -464,7 +464,7 @@
   height: 270px;
   border-radius: 8px;
   horizontal-align: center;
-  opacity-mask: url("s2r://panorama/images/masks/scratched_box_psd.vtex");
+  opacity-mask: url("file://{images}/masks/scratched_box_psd.png");
 }
 .MoviePanel Label {
   font-family: titleFont;
@@ -504,7 +504,7 @@
   width: 108px;
   height: 96px;
   align: center center;
-  background-image: url("s2r://panorama/images/compendium/international2020/compendium/gauntlet_check_png.vtex");
+  background-image: url("file://{images}/compendium/international2020/compendium/gauntlet_check_png.png");
   background-size: 100%;
   wash-color: #0f0;
 }

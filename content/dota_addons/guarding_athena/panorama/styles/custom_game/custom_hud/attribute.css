@@ -14,7 +14,7 @@
         transition-duration: 0.05s;
         transition-property: background-image;
         transition-timing-function: ease-in-out;
-        background-image: url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+        background-image: url("file://{images}/hud/reborn/ability_bg_psd.png");
         background-size: 100%;
         vertical-align: bottom;
 }
@@ -31,7 +31,7 @@
         margin-left: 12px;
         width: 28px;
         height: 28px;
-        background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+        background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_strength_psd.png");
         background-size: 100%;
 }
 .AgiIcon
@@ -41,7 +41,7 @@
         margin-left: 12px;
         width: 28px;
         height: 28px;
-        background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+        background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_agility_psd.png");
         background-size: 100%;
 }
 .IntIcon
@@ -51,7 +51,7 @@
         margin-left: 12px;
         width: 28px;
         height: 28px;
-        background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+        background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_intelligence_psd.png");
         background-size: 100%;
 }
 .NormalText
@@ -83,7 +83,7 @@
 .RightSide
 {
     align: center bottom;
-    background-image: url("s2r://panorama/images/hud/reborn/side_flare_tall_psd.vtex");
+    background-image: url("file://{images}/hud/reborn/side_flare_tall_psd.png");
     background-size: 100%;
     transform: scaleX(-1);
     width: 52px;

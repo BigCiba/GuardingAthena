@@ -24,7 +24,7 @@
 	width: 90px;
 	height: 36px;
 
-	/* background-image: url("s2r://panorama/images/red_large_off_png.vtex"); */
+	/* background-image: url("file://{images}/red_large_off_png.png"); */
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
 	background-size: 100% 100%;
 	background-position: 50% 50%;
@@ -39,7 +39,7 @@
 	border-bottom: 1px solid #00000088;
 }
 #CommonPopupYes:hover {
-	/* background-image: url("s2r://panorama/images/red_large_off_png.vtex");
+	/* background-image: url("file://{images}/red_large_off_png.png");
 	background-position: 50% 50%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat; */
@@ -54,7 +54,7 @@
 	width: 90px;
 	height: 36px;
 	/* background-color: gradient(linear, 0% 0%, 0% 100%, from(#862d00), to(#5f1c00)); */
-	background-image: url("s2r://panorama/images/red_large_off_png.vtex");
+	background-image: url("file://{images}/red_large_off_png.png");
 	background-size: 100% 100%;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
@@ -68,7 +68,7 @@
 	border-bottom: 1px solid #00000088;
 }
 #CommonPopupNo:hover {
-	background-image: url("s2r://panorama/images/red_large_off_png.vtex");
+	background-image: url("file://{images}/red_large_off_png.png");
 	background-position: 50% 50%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -88,7 +88,7 @@
 	horizontal-align: right;
 	vertical-align: top;
 
-	background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+	background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
 	background-position: 50% 50%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -151,7 +151,7 @@
 	transform: translateY( 1px );
 	margin-bottom: 6px;
 
-	background-image: url("file://{images}/dotaplus_logo_small.png");
+	background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;

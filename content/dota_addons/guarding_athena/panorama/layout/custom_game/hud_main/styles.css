@@ -34,23 +34,23 @@
   background-size: cover;
 }
 #DamageIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_damage_psd.png");
 }
 #SpellAmplifyIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/icon_attack_speed3_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_attack_speed3_psd.png");
 }
 #PhysicalArmorIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_armor_psd.png");
 }
 #MagicalArmorIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/icon_magic_resist_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_magic_resist_psd.png");
 }
 #MagicResistanceIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/icon_magic_resist_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_magic_resist_psd.png");
 }
 #MoveSpeedIcon {
   height: 16px;
-  background-image: url("s2r://panorama/images/hud/reborn/icon_speed_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_speed_psd.png");
   margin-top: 2px;
 }
 .StatRegionLabel {
@@ -169,17 +169,17 @@
   vertical-align: center;
 }
 #StrengthIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/mini_strength_icon_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/mini_strength_icon_psd.png");
 }
 #ConstitutionIcon {
   background-image: url("file://{images}/attribute/mini_constitution.png");
   opacity: 0.5;
 }
 #AgilityIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/mini_agi_icon_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/mini_agi_icon_psd.png");
 }
 #IntellectIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/mini_int_icon_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/mini_int_icon_psd.png");
 }
 #SpiritIcon {
   background-image: url("file://{images}/attribute/mini_spirit.png");
@@ -197,7 +197,7 @@
   width: 0px;
 }
 #UpgradeOverlay {
-  background-image: url("s2r://panorama/images/hud/learnspell_png.vtex");
+  background-image: url("file://{images}/hud/learnspell_png.png");
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -208,7 +208,7 @@
   opacity: 1;
 }
 #ActiveAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/active_ability_border_png.vtex");
+  background-image: url("file://{images}/hud/active_ability_border_png.png");
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -216,7 +216,7 @@
   margin: 2px;
 }
 .can_cast_again #ActiveAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/active_ability_border_down_png.vtex");
+  background-image: url("file://{images}/hud/active_ability_border_down_png.png");
 }
 .no_level #ActiveAbilityBorder:not(.show_level_up_frame) {
   brightness: 0.2;
@@ -228,7 +228,7 @@
   opacity: 0;
 }
 #PassiveAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+  background-image: url("file://{images}/hud/passive_ability_border_png.png");
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -242,11 +242,11 @@
   opacity: 0;
 }
 .can_cast_again #PassiveAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/passive_ability_border_down_png.vtex");
+  background-image: url("file://{images}/hud/passive_ability_border_down_png.png");
   margin: 8px;
 }
 #AutocastableAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+  background-image: url("file://{images}/hud/autocastable_ability_border_png.png");
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -256,7 +256,7 @@
   opacity: 1;
 }
 #SilencedOverlay {
-  background-image: url("s2r://panorama/images/hud/reborn/spells_silenced_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/spells_silenced_psd.png");
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -276,7 +276,7 @@
   pre-transform-scale2d: 1;
 }
 #CombineLockedOverlay {
-  background-image: url("s2r://panorama/images/hud/reborn/item_combine_lock_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/item_combine_lock_psd.png");
   background-size: 100% 100%;
   width: 16px;
   height: 16px;
@@ -370,7 +370,7 @@
 #LevelUpButton {
   width: 100%;
   height: 36px;
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_psd.png");
   background-size: 100% 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -380,7 +380,7 @@
   margin-bottom: -4px;
 }
 #LearnModeButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_learnmode_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_learnmode_psd.png");
   height: 92px;
   width: 72px;
   horizontal-align: center;
@@ -401,37 +401,37 @@
   height: 156px;
 }
 #Ability0 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_2_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_2_psd.png");
 }
 #Ability1 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_2_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_2_psd.png");
 }
 #Ability2 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_4_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_4_psd.png");
 }
 #Ability3 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_5_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_5_psd.png");
 }
 .FiveAbilities #Ability2 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_3_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_3_psd.png");
 }
 .FiveAbilities #Ability3 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_4_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_4_psd.png");
 }
 .FiveAbilities #Ability4 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_5_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_5_psd.png");
 }
 .SixAbilities #Ability2 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_3_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_3_psd.png");
 }
 .SixAbilities #Ability3 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_3_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_3_psd.png");
 }
 .SixAbilities #Ability4 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_4_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_4_psd.png");
 }
 .SixAbilities #Ability5 #LevelUpButton {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_button_5_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_button_5_psd.png");
 }
 .SixAbilities .npc_dota_hero_morphling #Ability3 #LevelUpButton,
 .SixAbilities .npc_dota_hero_morphling #Ability4 #LevelUpButton {
@@ -447,7 +447,7 @@
 #LevelUpLight {
   width: 100%;
   height: 82px;
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_lightcast_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_lightcast_psd.png");
   background-size: 100% 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -459,11 +459,11 @@
   transition-duration: 0.32s;
 }
 .auto_castable #LevelUpLight {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_lightcast_autocast_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_lightcast_autocast_psd.png");
   z-index: 1;
 }
 .auto_castable.no_level #LevelUpLight {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_lightcast_autocast_ul_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_lightcast_autocast_ul_psd.png");
   z-index: 1;
 }
 .show_level_up_tab #LevelUpLight {
@@ -474,7 +474,7 @@
   vertical-align: middle;
   width: 24px;
   height: 24px;
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_plus_well_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_plus_well_psd.png");
   background-size: 100% 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -482,7 +482,7 @@
   transition-duration: 0.12s;
 }
 #LevelUpTab:hover #LevelUpIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/levelup_plus_fill_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/levelup_plus_fill_psd.png");
 }
 .show_level_up_tab #LevelUpTab {
   opacity: 1;
@@ -698,7 +698,7 @@
   margin-bottom: 0px;
   vertical-align: bottom;
   horizontal-align: right;
-  background-image: url("s2r://panorama/images/hud/manaamount_bg_png.vtex");
+  background-image: url("file://{images}/hud/manaamount_bg_png.png");
   background-size: 100% 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -724,7 +724,7 @@
   margin-bottom: 0px;
   vertical-align: bottom;
   horizontal-align: left;
-  background-image: url("s2r://panorama/images/hud/goldamount_bg_png.vtex");
+  background-image: url("file://{images}/hud/goldamount_bg_png.png");
   background-size: 100% 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -901,7 +901,7 @@
 .LevelPanel {
   width: 17px;
   height: 16px;
-  background-image: url("s2r://panorama/images/hud/pip_off_png.vtex");
+  background-image: url("file://{images}/hud/pip_off_png.png");
   background-size: 100% 100%;
   visibility: visible;
 }
@@ -910,13 +910,13 @@
   height: 9px;
 }
 .active_level.LevelPanel {
-  background-image: url("s2r://panorama/images/hud/pip_on_png.vtex");
+  background-image: url("file://{images}/hud/pip_on_png.png");
   background-size: 75% 75%;
   background-position: 50% 35%;
   background-repeat: no-repeat;
 }
 .could_level_up .next_level.LevelPanel {
-  background-image: url("s2r://panorama/images/hud/pip_outline_png.vtex");
+  background-image: url("file://{images}/hud/pip_outline_png.png");
 }
 .ActiveLevelPanel {
   visibility: collapse;
@@ -1011,7 +1011,7 @@
   background-color: #00000000;
 }
 .Reborn .InventoryItem.dragging_from:not(.no_level) #ButtonSize {
-  background-image: url("s2r://panorama/images/hud/reborn/inventory_item_well_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/inventory_item_well_psd.png");
   background-size: cover;
   box-shadow: fill #00000000 -5px -5px 8px 8px;
 }
@@ -1102,16 +1102,16 @@
   vertical-align: bottom;
 }
 .Reborn #ActiveAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/reborn/active_ability_border_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/active_ability_border_psd.png");
   margin: 0px;
   visibility: collapse;
 }
 .Reborn .auto_castable #AutocastableAbilityBorder {
-  background-image: url("s2r://panorama/images/hud/reborn/autocastable_ability_border_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/autocastable_ability_border_psd.png");
   opacity: 0;
 }
 .Reborn .auto_castable #AutocastableBorder {
-  background-image: url("s2r://panorama/images/hud/reborn/autocastable_ability_border_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/autocastable_ability_border_psd.png");
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -1129,7 +1129,7 @@
   margin: 0px;
 }
 .Reborn .auto_cast_enabled.auto_castable #AutocastableBorder {
-  background-image: url("s2r://panorama/images/hud/reborn/autocastable_ability_border_active_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/autocastable_ability_border_active_psd.png");
 }
 .Reborn #abilities #AbilityImage,
 .Reborn #abilities #Cooldown {
@@ -1334,7 +1334,7 @@
   width: 100%;
   height: 100%;
   margin: 5px;
-  background-image: url("s2r://panorama/images/hud/reborn/ability_bevel_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/ability_bevel_psd.png");
   background-size: contain;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -1351,7 +1351,7 @@
 }
 .Reborn #inventory #AbilityBevel {
   margin: 0px;
-  background-image: url("s2r://panorama/images/hud/reborn/inventory_item_bevel_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/inventory_item_bevel_psd.png");
 }
 .Reborn #inventory .BackpackSlot #AbilityBevel {
   background-image: none;
@@ -1413,7 +1413,7 @@
   width: 64px;
   height: 64px;
   vertical-align: bottom;
-  background-image: url("s2r://panorama/images/hud/reborn/active_ability_border_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/active_ability_border_psd.png");
   background-size: 58px 58px;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -1440,7 +1440,7 @@
 .Reborn #QueryUnit #abilities #AbilityBevel {
   visibility: visible;
   margin: 0px;
-  background-image: url("s2r://panorama/images/hud/reborn/query_ability_bevel_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/query_ability_bevel_psd.png");
   background-size: 100%;
 }
 .Reborn .can_cast_again:not(.InventoryItem) #AbilityButton {
@@ -1561,7 +1561,7 @@
   margin-right: 3px;
   margin-top: 2px;
   margin-bottom: 2px;
-  background-image: url("s2r://panorama/images/hud/reborn/inventory_item_well_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/inventory_item_well_psd.png");
   box-shadow: fill #000000aa -1px -1px 2px 2px;
 }
 .Reborn .InventoryItem.TopBarIndicator #ButtonSize {
@@ -1581,7 +1581,7 @@
 }
 .Reborn .InventoryItem.can_cast_again #ButtonSize,
 .Reborn .InventoryItem.is_passive #ButtonSize {
-  background-image: url("s2r://panorama/images/hud/reborn/inventory_item_well_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/inventory_item_well_psd.png");
   box-shadow: fill #000000aa 0px 0px 0px 0px;
 }
 .Reborn .InventoryItem.is_passive #ButtonSize {
@@ -1716,7 +1716,7 @@
   font-size: 11px;
 }
 .Reborn #ManaCostBG {
-  background-image: url("s2r://panorama/images/hud/reborn/manaamount_bg_png.vtex");
+  background-image: url("file://{images}/hud/reborn/manaamount_bg_png.png");
   margin-right: -2px;
   margin-bottom: -1px;
 }
@@ -1849,7 +1849,7 @@
   visibility: collapse;
 }
 #InvokerSpellCardButton {
-  background-image: url("s2r://panorama/images/hud/invokercard_psd.vtex");
+  background-image: url("file://{images}/hud/invokercard_psd.png");
   background-size: 100%;
   height: 28px;
   width: 68px;
@@ -2062,7 +2062,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   visibility: collapse;
 }
 #SpellCardButton {
-  background-image: url("s2r://panorama/images/hud/invokercard_psd.vtex");
+  background-image: url("file://{images}/hud/invokercard_psd.png");
   background-size: 100%;
   height: 28px;
   width: 68px;
@@ -2106,7 +2106,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
 #inventory_items {
   width: 100%;
   height: 100%;
-  background-image: url("s2r://panorama/images/hud/reborn/inventory_bg_bg_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/inventory_bg_bg_psd.png");
   background-size: 100%;
   background-color: #221111;
   flow-children: down;
@@ -2118,7 +2118,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
 #InventoryBG {
   width: 100%;
   height: 105px;
-  background-image: url("s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/inventory_bg_psd.png");
   background-size: 100%;
   border-bottom: 1px solid #000e;
   background-repeat: no-repeat;
@@ -2165,7 +2165,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   align: right bottom;
   width: 16px;
   height: 16px;
-  background-image: url("file://{images}/hud/reborn/levelup_plus_fill.psd");
+  background-image: url("file://{images}/hud/reborn/levelup_plus_fill.png");
   background-size: 100%;
   background-repeat: no-repeat;
   animation-name: shine;
@@ -2237,7 +2237,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   margin-bottom: 145px;
   width: 128px;
   height: 36px;
-  background-image: url("s2r://panorama/images/hud/reborn/courier_gold_bg_262_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/courier_gold_bg_262_psd.png");
   background-size: 100%;
   background-repeat: no-repeat;
   tooltip-position: top;
@@ -2259,7 +2259,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   color: #ffcc33;
 }
 #GoldIcon {
-  background-image: url("s2r://panorama/images/hud/reborn/gold_small_psd.vtex");
+  background-image: url("file://{images}/hud/reborn/gold_small_psd.png");
   background-size: 100% 100%;
   width: 26px;
   height: 26px;
@@ -2360,7 +2360,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   width: 67px;
   height: 20px;
   vertical-align: middle;
-  background-image: url("s2r://panorama/images/hud/reborn/icon_disconnect_png.vtex");
+  background-image: url("file://{images}/hud/reborn/icon_disconnect_png.png");
   background-repeat: no-repeat;
   background-size: 100%;
   horizontal-align: center;
@@ -2427,7 +2427,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   height: 180px;
   transform: translateY(0px) translateX(0px);
   padding-bottom: 10px;
-  opacity-mask: url("s2r://panorama/images/masks/killcammask_left_psd.vtex") 1;
+  opacity-mask: url("file://{images}/masks/killcammask_left_psd.png") 1;
 }
 #left_block #death_panel_buyback {
   margin-left: 10.5px;
@@ -2625,7 +2625,7 @@ ClientUIDialogPanel .InventoryItem.BackpackSlot {
   width: 32px;
   height: 32px;
   align: right center;
-  background-image: url("file://{images}/control_icons/x_close_gradient.png");
+  background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
   background-size: 100%;
   background-repeat: no-repeat;
 }

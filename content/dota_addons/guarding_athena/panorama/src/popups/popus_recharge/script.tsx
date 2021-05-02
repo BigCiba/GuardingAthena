@@ -114,19 +114,19 @@ function Popup() {
 					</Panel> */}
 						<Panel id="PaymentAddition">
 							<Button id="Addition_0" className="PaymentAdditionButton" onactivate={() => UpdateTicketsAmount(10)}>
-								<Image src="file://{images}/dotaplus_logo_small.png" />
+								<Image src="file://{images}/dota_plus/dotaplus_logo_small_png.png" />
 								<Label text="10" />
 							</Button>
 							<Button id="Addition_1" className="PaymentAdditionButton" onactivate={() => UpdateTicketsAmount(30)}>
-								<Image src="file://{images}/dotaplus_logo_small.png" />
+								<Image src="file://{images}/dota_plus/dotaplus_logo_small_png.png" />
 								<Label text="30" />
 							</Button>
 							<Button id="Addition_2" className="PaymentAdditionButton" onactivate={() => UpdateTicketsAmount(70)}>
-								<Image src="file://{images}/dotaplus_logo_small.png" />
+								<Image src="file://{images}/dota_plus/dotaplus_logo_small_png.png" />
 								<Label text="70" />
 							</Button>
 							<Button id="Addition_3" className="PaymentAdditionButton" onactivate={() => UpdateTicketsAmount(1000)}>
-								<Image src="file://{images}/dotaplus_logo_small.png" />
+								<Image src="file://{images}/dota_plus/dotaplus_logo_small_png.png" />
 								<Label text="1000" />
 							</Button>
 						</Panel>
@@ -150,7 +150,7 @@ function Popup() {
 					</Panel>
 					<Panel id="ChargeAmountShow">
 						<Label text="1RMB = 10" />
-						<Image src="file://{images}/dotaplus_logo_small.png" />
+						<Image src="file://{images}/dota_plus/dotaplus_logo_small_png.png" />
 					</Panel>
 					<Panel id="Notice">
 						<Label text="充值疑问加QQ:584665414" />

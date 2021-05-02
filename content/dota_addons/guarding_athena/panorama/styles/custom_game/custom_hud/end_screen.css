@@ -199,7 +199,7 @@
 	align: center center;
 	width: 28px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/hud/icon_gold_psd.vtex");
+	background-image: url("file://{images}/hud/icon_gold_psd.png");
 	background-size: 100%;
 }
 .LevelIcon
@@ -209,7 +209,7 @@
     margin-left: 1px;
 	width: 24px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/control_icons/battlepass_logo_grayscale_small_png.vtex");
+	background-image: url("file://{images}/control_icons/battlepass_logo_grayscale_small_png.png");
 	background-size: 100%;
 }
 .RateIcon
@@ -218,7 +218,7 @@
     align: center center;
     width: 28px;
     height: 28px;
-    background-image: url("s2r://panorama/images/control_icons/escalation_arrow_psd.vtex");
+    background-image: url("file://{images}/control_icons/escalation_arrow_psd.png");
     background-size: 100%;
 }
 .NormalText
@@ -263,7 +263,7 @@
 	margin-left: 4%;
 	width: 28px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_strength_psd.vtex");
+	background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_strength_psd.png");
 	background-size: 100%;
 }
 .AgiIcon
@@ -272,7 +272,7 @@
 	align: center center;
 	width: 28px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_agility_psd.vtex");
+	background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_agility_psd.png");
 	background-size: 100%;
 }
 .IntIcon
@@ -281,7 +281,7 @@
 	align: center center;
 	width: 28px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/primary_attribute_icons/primary_attribute_icon_intelligence_psd.vtex");
+	background-image: url("file://{images}/primary_attribute_icons/primary_attribute_icon_intelligence_psd.png");
 	background-size: 100%;
 }
 .PrimaryAttribute
@@ -289,7 +289,7 @@
 	align: center center;
 	width: 32px;
 	height: 32px;
-	background-image: url("s2r://panorama/images/control_icons/wagertoken_psd.vtex");
+	background-image: url("file://{images}/control_icons/wagertoken_psd.png");
 	background-size: 100%;
 }
 .DefIcon
@@ -298,7 +298,7 @@
 	align: center center;
 	width: 28px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/status_icons/itemdrop_psd.vtex");
+	background-image: url("file://{images}/status_icons/itemdrop_psd.png");
 	background-size: 100%;
 }
 .DamageIcon
@@ -307,7 +307,7 @@
 	align: center center;
 	width: 28px;
 	height: 28px;
-	background-image: url("s2r://panorama/images/hud/icon_roshan_psd.vtex");
+	background-image: url("file://{images}/hud/icon_roshan_psd.png");
 	background-size: 100%;
 }
 .PracticeIcon
@@ -316,6 +316,6 @@
     align: center center;
     width: 28px;
     height: 28px;
-    background-image: url("s2r://panorama/images/icon_courier_psd.vtex");
+    background-image: url("file://{images}/icon_courier_psd.png");
     background-size: 100%;
 }

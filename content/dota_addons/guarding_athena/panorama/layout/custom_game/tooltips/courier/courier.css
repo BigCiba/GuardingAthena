@@ -47,7 +47,7 @@
 	border: 2px solid black;
 	border: 0px solid transparent;
 
-	background-image: url("s2r://panorama/images/textures/bubble_psd.vtex");
+	background-image: url("file://{images}/textures/bubble_psd.png");
 	background-size: 105% 105%;
 	background-position: 50% 50%;
 
@@ -93,7 +93,7 @@
 	/* wash-color: #5EC8FF; */
 	brightness: 3;
 
-	opacity-mask: url("s2r://panorama/images/masks/softedge_circle_png.vtex");
+	opacity-mask: url("file://{images}/masks/softedge_circle_png.png");
 
 	transition-property: pre-transform-scale2d, opacity, wash-color, brightness;
 	transition-duration: .35s, .35s, 1.2s;
@@ -121,7 +121,7 @@
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
 
-	background-image: url("s2r://panorama/images/textures/bubble_reflection_psd.vtex");
+	background-image: url("file://{images}/textures/bubble_reflection_psd.png");
 	background-size: 110% 110%;
 	background-position: 50% 50%;
 }

@@ -74,7 +74,7 @@
 	height: 16px;
 	vertical-align: middle;
 	horizontal-align: right;
-	background-image: url("s2r://panorama/images/control_icons/double_arrow_left_png.vtex");
+	background-image: url("file://{images}/control_icons/double_arrow_left_png.png");
 	background-position: 0% 50%;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -512,17 +512,17 @@
 #AbilityBevel {
 	width: 100%;
 	height: 100%;
-	background-image: url("s2r://panorama/images/hud/reborn/ability_bevel_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/ability_bevel_psd.png");
 	background-size: contain;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	z-index: 1;
 }
 .IsPassive #AbilityBevel {
-	background-image: url("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+	background-image: url("file://{images}/hud/passive_ability_border_png.png");
 }
 .IsAutoCast #AbilityBevel {
-	background-image: url("s2r://panorama/images/hud/reborn/autocastable_ability_border_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/autocastable_ability_border_psd.png");
 }
 
 #UpdateAbilityHeroContainer

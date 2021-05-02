@@ -293,7 +293,7 @@ TextEntry #PlaceholderText {
   margin-right: 10px;
   horizontal-align: right;
   vertical-align: top;
-  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
   background-position: 50% 50%;
   background-size: 100% 100%;
   background-repeat: no-repeat;

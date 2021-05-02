@@ -1,0 +1,133 @@
+@define NeutralTier1: #BEBEBE;
+@define NeutralTier2: #92E47E;
+@define NeutralTier3: #7F93FC;
+@define NeutralTier4: #D57BFF;
+@define NeutralTier5: #FFE195;
+@define NeutralTier6: #FF9595;
+.DragRarity0 .Rarity0:not(.dragging_from) {
+  box-shadow: inset NeutralTier1 2px 2px 2px 4px;
+}
+.DragRarity1 .Rarity1:not(.dragging_from) {
+  box-shadow: inset NeutralTier2 2px 2px 2px 4px;
+}
+.DragRarity2 .Rarity2:not(.dragging_from) {
+  box-shadow: inset NeutralTier3 2px 2px 2px 4px;
+}
+.DragRarity3 .Rarity3:not(.dragging_from) {
+  box-shadow: inset NeutralTier4 2px 2px 2px 4px;
+}
+.DragRarity4 .Rarity4:not(.dragging_from) {
+  box-shadow: inset NeutralTier5 2px 2px 2px 4px;
+}
+#inventory {
+  width: 202px;
+  height: 145px;
+}
+#inventory_items {
+  width: 100%;
+  height: 100%;
+  background-image: url("file://{images}/hud/reborn/inventory_bg_bg_psd.png");
+  background-size: 100%;
+  background-color: #221111;
+  flow-children: down;
+}
+#InventoryContainer {
+  width: 100%;
+  height: 100%;
+}
+#InventoryBG {
+  width: 100%;
+  height: 105px;
+  background-image: url("file://{images}/hud/reborn/inventory_bg_psd.png");
+  background-size: 100%;
+  border-bottom: 1px solid #000e;
+  background-repeat: no-repeat;
+}
+#inventory_list_container {
+  flow-children: down;
+  padding-left: 3px;
+  padding-top: 6px;
+  z-index: 2;
+}
+.inventory_list {
+  width: 200px;
+  height: 50px;
+  flow-children: right;
+}
+#inventory_backpack_list {
+  flow-children: right;
+  vertical-align: top;
+  margin-top: 104px;
+  margin-left: 4px;
+  z-index: 1;
+}
+.BackpackSlot {
+  width: 60px;
+  height: 34px;
+  margin-left: 3px;
+  margin-right: 3px;
+  horizontal-align: center;
+  border-bottom: 1px solid #ffffff06;
+}
+#BackpackShadow {
+  width: 100%;
+  height: 44px;
+  margin-top: 107px;
+  z-index: 3;
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#0000), color-stop(0.03, #000b), color-stop(0.1, #0009), color-stop(0.5, #0007), to(#0000));
+  background-color: gradient(linear, 0% 0%, 0% 100%, from(#0000), color-stop(0.03, #000b), color-stop(0.1, #0009), color-stop(0.3, #0007), to(#0000));
+}
+#dragImage {
+  width: 72px;
+  height: 54px;
+}
+#ItemUpgradeIcon {
+  align: right bottom;
+  width: 16px;
+  height: 16px;
+  background-image: url("file://{images}/hud/reborn/levelup_plus_fill_psd.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  animation-name: shine;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  visibility: collapse;
+}
+.IsUpgradable #ItemUpgradeIcon {
+  visibility: visible;
+}
+#ItemAdvanceIcon {
+  align: right bottom;
+  width: 16px;
+  height: 16px;
+  transform: rotateZ(-90deg);
+  wash-color: #fddf65;
+  background-image: url("file://{images}/control_icons/double_arrow_right_png.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  animation-name: shine;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  visibility: collapse;
+}
+.IsAdvanced #ItemAdvanceIcon {
+  visibility: visible;
+}
+@keyframes 'shine' {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#DroppedItemPanel {
+  tooltip-position: top;
+  tooltip-body-position: 50% 50%;
+  tooltip-arrow-position: 50% 50%;
+}
