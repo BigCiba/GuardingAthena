@@ -5,7 +5,7 @@
 .CloseButton {
   width: 30px;
   height: 30px;
-  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
   background-size: 100%;
   transition-property: wash-color;
   transition-duration: 0.1s;
@@ -42,6 +42,19 @@
   font-size: 24px;
   align: center center;
 }
+.CheckBox:selected Label {
+  color: white;
+}
+.CheckBox Label {
+  font-size: 18px;
+  color: #7d8688;
+  vertical-align: center;
+  margin: 0px;
+  padding-top: 4px;
+  padding-left: 5px;
+  letter-spacing: 1px;
+  font-weight: thin;
+}
 .CommonMoneyContainer {
   flow-children: right;
   vertical-align: center;
@@ -67,7 +80,7 @@
   background-position: center;
   tooltip-position: top;
   background-image: dotaPlusCurrencySmallIcon;
-  background-image: url("file://{images}/dotaplus_logo_small.png");
+  background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }
 .CommonMoneyContainer Label {
   width: 100px;
@@ -161,5 +174,5 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("file://{images}/dotaplus_logo_small.png");
+  background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }

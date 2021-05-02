@@ -5,7 +5,7 @@
 .CloseButton {
   width: 30px;
   height: 30px;
-  background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+  background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
   background-size: 100%;
   transition-property: wash-color;
   transition-duration: 0.1s;

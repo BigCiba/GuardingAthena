@@ -10,7 +10,7 @@
 	height: 100%;
 	background-size: 100%;
 	flow-children: right;
-	background-image: url("s2r://panorama/images/hud/reborn/quickbuy_bg_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/quickbuy_bg_psd.png");
 }
 .UpgradeButton{
 	align: left center;

@@ -31,7 +31,7 @@
 	height: 100%;
 	/* background-color: #222A35; */
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
-	box-shadow: #161b22 -10px -10px 20px 20px;
+	box-shadow: #161b22 0px 0px 30px 0px;
 }
 #PlayerContent {
 	flow-children: down;
@@ -92,7 +92,7 @@
 	background-color: #0E141Aaa;
 	/* border-bottom: 1px solid #aaaaaa09;
 	border-top: 1px solid #000000aa; */
-	background-image: url("s2r://panorama/images/textures/miniprofile_rock_psd.vtex");
+	background-image: url("file://{images}/textures/miniprofile_rock_psd.png");
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: 100% 256px;
@@ -101,7 +101,7 @@
 	border-right: 1px solid #00000088;
 	border-left: 1px solid #4c434677;
 	border-bottom: 1px solid #00000088; 
-	box-shadow: fill #00000055 -2px -2px 6px 6px;
+	box-shadow: fill #00000055 0px 0px 8px 0px;
 }
 #HeroIcon {
 	width: 96px;
@@ -203,7 +203,7 @@
 	border-top: 1px solid #ffffff06;
 	border-left: 1px solid #ffffff06;
 	wash-color: #aee2ff33;
-	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 	/* background-color: #DEEBF7; */
 }
 .Easy:selected{
@@ -216,7 +216,7 @@
 	border-top: 1px solid #33333360;
 	border-left: 1px solid #33333360;
 	wash-color: #d5ff9a33;
-	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 	/* background-color: #BDD7EE; */
 }
 .Normal:selected{
@@ -229,7 +229,7 @@
 	border-top: 1px solid #33333360;
 	border-left: 1px solid #33333360;
 	wash-color: #ffcf4d33;
-	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 	/* background-color: #9DC3E6; */
 }
 .Hard:selected{
@@ -241,7 +241,7 @@
 	border-top: 1px solid #33333360;
 	border-left: 1px solid #33333360;
 	wash-color: #b29aff33;
-	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 	/* background-color: #2E75B6; */
 }
 .Nightmare:selected{
@@ -253,7 +253,7 @@
 	border-top: 1px solid #33333360;
 	border-left: 1px solid #33333360;
 	wash-color: #ff9a9a33;
-	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 	/* background-color: #1F4E79; */
 }
 .Hell:selected{
@@ -320,7 +320,7 @@
 	/* box-shadow: fill #191e25 2px 2px 6px 0px; */
 	vertical-align: bottom;
 	flow-children: right-wrap;
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	box-shadow: fill #00000055 0px 0px 7px 0px;
 	background-color: dotaPlusBgGradient;
 	border-top: 2px solid dotaPlusGold;
 	overflow: squish scroll;
@@ -345,7 +345,7 @@
 	height: width-percentage( 133.3% );
 	border-radius: 4px;
 	/* border: 1px solid #87CEEBff; */
-	box-shadow: fill #191e25 6px 6px 18px 0px;
+	box-shadow: fill #191e25 0px 0px 12px 0px;
 	transition-property: brightness, pre-transform-scale2d;
 	transition-duration: 0.1s;
 }
@@ -356,7 +356,7 @@
 .HeroCard:hover {
 	brightness: 1.4;
 	pre-transform-scale2d: 1.05;
-	box-shadow: fill #000000aa -2px -2px 8px 9px;
+	box-shadow: fill #000000aa 2px 2px 9px 0px;
 }
 .Unlock Image{
 	visibility: collapse;
@@ -373,7 +373,7 @@
 	vertical-align: bottom;
 	flow-children: right;
 	
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	box-shadow: #00000055 0px 0px 4px 0px;
 	background-color: dotaPlusBgGradient;
 	border-top: 2px solid dotaPlusGold;
 }
@@ -413,7 +413,7 @@
 	width: 16px;
 	height: 16px;
 	horizontal-align: center;
-	background-image: url("s2r://panorama/images/control_icons/arrow_solid_up_png.vtex");
+	background-image: url("file://{images}/control_icons/arrow_solid_up_png.png");
 	background-size: 16px 11px;
 	background-position: center 2px;
 	background-repeat: no-repeat;
@@ -443,7 +443,7 @@
 	transition-timing-function: ease-in-out;
 }
 #BottomArrow {
-	background-image: url("s2r://panorama/images/tooltips/black_tooltip_arrow_bottom_png.vtex");
+	background-image: url("file://{images}/tooltips/black_tooltip_arrow_bottom_png.png");
 	height: 14px;
 	width: 27px;
 	margin-top: -1px;
@@ -470,7 +470,7 @@
 	width: 89px;
 	height: 96px;
 	/* box-shadow: fill #000000aa 0px 0px 2px 2px; */
-	box-shadow: fill #00000077 0px 0px 8px 4px;
+	box-shadow: fill #00000077 0px 0px 8px 0px;
 	pre-transform-scale2d: 1.0;
 	/* border: 2px solid black; */
 	border-top: 1px solid #ffffff09;
@@ -500,7 +500,7 @@
 #Equipped {
 	width: 23%;
 	height: 21%;
-	background-image: url("s2r://panorama/images/status_icons/econtooltip_equipped_immortal_psd.vtex");
+	background-image: url("file://{images}/status_icons/econtooltip_equipped_immortal_psd.png");
 	horizontal-align: right;
 	background-repeat: no-repeat;
 	background-position: right top;
@@ -529,7 +529,7 @@
 	background-color: gradient( linear, 0% 100%, 0% 0%, from( #222 ), to( #333 ) );
 	border-top: 1px solid #444;
 	border-left: 1px solid #ffffff01;
-	box-shadow: fill #00000077 0px 0px 8px 4px;
+	box-shadow: fill #00000077 0px 0px 8px 0px;
 }
 .HeroSelectionBackgroundScene
 {
@@ -590,7 +590,7 @@
 	height: 64px;
 	border-radius: 5px;
 	margin-right: 3%;
-	box-shadow: fill #222A35 6px 6px 8px 0px;
+	box-shadow: fill #222A35 0px 0px 7px 0px;
 }
 .HeroLocked #HeroSelectPanel {
 	saturation: 0;
@@ -600,7 +600,7 @@
 	height: 50px;
 	/* horizontal-align: center; */
 	/* border-radius: 5px; */
-	background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+	background-image: url("file://{images}/backgrounds/background_play_button_2x_png.png");
 	border-top: 1px solid #ffffff22;
 	border-bottom: 1px solid #00000088;
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #433620 ), to( #141b21 ) );
@@ -623,8 +623,8 @@
 }
 #HeroScenePanel
 {
-	/*opacity-mask: url("s2r://panorama/images/masks/hud_hero_inspect_psd.vtex");*/
-	opacity-mask: url("s2r://panorama/images/masks/softedge_box_png.vtex");
+	/*opacity-mask: url("file://{images}/masks/hud_hero_inspect_psd.png");*/
+	opacity-mask: url("file://{images}/masks/softedge_box_png.png");
     width: 70%; 
 	height: 100%;
 	x:15%;
@@ -657,7 +657,7 @@
 	horizontal-align: center;
 	width: 128px;
 	height: 128px;
-	background-image: url("s2r://panorama/images/status_icons/loadingthrobber_round_psd.vtex");
+	background-image: url("file://{images}/status_icons/loadingthrobber_round_psd.png");
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: contain;
@@ -925,7 +925,7 @@
 	vertical-align: center;
 	width: 30px;
 	height: 30px;
-	background-image: url("file://{images}/status_icons/information_psd.vtex");
+	background-image: url("file://{images}/status_icons/information_psd.png");
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
@@ -1053,7 +1053,7 @@
 	align: center center;
 	width: 30px;
 	height: 30px;
-	background-image: url("file://{images}/status_icons/challenge_locked_psd.vtex");
+	background-image: url("file://{images}/status_icons/challenge_locked_psd.png");
 	background-size: 30px 30px;
 	background-repeat: no-repeat;
 	opacity: 0;
@@ -1140,14 +1140,14 @@
 	width: 30px;
 	height: 30px;
 	wash-color: #ffcc00;
-	background-image: url("file://{images}/control_icons/check_png.vtex");
+	background-image: url("file://{images}/control_icons/check_png.png");
 	background-size: 100%;
 	background-position: 0px 0px;
 	background-repeat: no-repeat;
 }
 .no_check .DifficultyCheckBox {
 	wash-color: #ff0000;
-	background-image: url("file://{images}/control_icons/purgatory_png.vtex");
+	background-image: url("file://{images}/control_icons/purgatory_png.png");
 }
 #CourierSelectionPanel {
 	horizontal-align: center;
@@ -1563,7 +1563,7 @@
 	height: 100%;
 	background-color: black;
 	border-radius: 50%;
-	box-shadow: rgba(102, 202, 254, 0.561) -1px -1px 2px 2px;
+	box-shadow: rgba(102, 202, 254, 0.561) 0px 0px 4px 0px;
 }
 #PlayerAvatarFxBorder {
 	align: center center;
@@ -1589,14 +1589,14 @@
 	background-repeat: no-repeat;
 }
 .Plus.border_default #PlayerAvatarImage {
-	box-shadow: rgba(255, 255, 225, 0.561) -10.5px -10.5px 21px 21px;
+	box-shadow: rgba(255, 255, 225, 0.561) 0px 0px 21px 0px;
 }
 .Plus.border_default #PlayerAvatarBorder {
 	margin-left: -3.36px;
 	background-image: url("file://{images}/custom_game/avatar/border/avatar_border_plus.png");
 }
 .border_1 #PlayerAvatarImage {
-	box-shadow: rgba(255, 225, 243, 0.561) -10.5px -10.5px 21px 21px;
+	box-shadow: rgba(255, 225, 243, 0.561) 0px 0px 21px 0px;
 }
 .border_1 #PlayerAvatarBorder {
 	width: 123.2px;
@@ -1694,7 +1694,7 @@
 	}
 }
 .border_7 #PlayerAvatarImage {
-	box-shadow: rgba(255, 255, 225, 0.561) -10.5px -10.5px 21px 21px;
+	box-shadow: rgba(255, 255, 225, 0.561) 0px 0px 21px 0px;
 }
 .border_7 #PlayerAvatarBorder {
 	visibility: collapse;

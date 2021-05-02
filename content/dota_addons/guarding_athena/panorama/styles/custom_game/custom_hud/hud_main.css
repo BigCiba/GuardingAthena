@@ -173,7 +173,7 @@
 	background-image: dotaPlusCurrencySmallIcon;
 }
 .PriceSubscription{
-	background-image: url("file://{images}/dotaplus_logo_small.png");
+	background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 }
 
 #CurrentCurrencyAmount,
@@ -226,7 +226,7 @@
 
 	wash-color: dotaPlusGold;
 
-    background-image: url("s2r://panorama/images/hud/reborn/icon_combat_log_psd.vtex");
+    background-image: url("file://{images}/hud/reborn/icon_combat_log_psd.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 
@@ -252,7 +252,7 @@
 
 	/* wash-color: dotaPlusGold; */
 
-    background-image: url("file://{images}/control_icons/refresh.psd");
+    background-image: url("file://{images}/control_icons/refresh_psd.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 
@@ -267,7 +267,7 @@
 
 	/* wash-color: dotaPlusGold; */
 
-    background-image: url("file://{images}/dotaplus_logo_small.png");
+    background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 
@@ -328,7 +328,7 @@
 	border-top: 1px solid #33333360;
 	border-left: 1px solid #33333360;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -464,7 +464,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_new_bloom_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_new_bloom_psd.png");
 }
 #AllItemCategory .SearchCategoryArtOverlay
 {
@@ -473,7 +473,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	margin-bottom: 9px;
 	ui-scale: 48%;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_exclusive_magnus_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_exclusive_magnus_psd.png");
 } 
 #HeroCategory .SearchCategoryArtOverlay
 {
@@ -482,7 +482,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	margin-bottom: 3px;
 	ui-scale: 60%;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_legacy_silencer_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_legacy_silencer_psd.png");
 }
 #SkinCategory .SearchCategoryArtOverlay
 {
@@ -492,7 +492,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	margin-right: 12px;
 	ui-scale: 62%;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_relics_skullrelic_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_relics_skullrelic_psd.png");
 }
 #ParticleCategory .SearchCategoryArtOverlay
 {
@@ -501,7 +501,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_chat_wheel_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_chat_wheel_psd.png");
 }
 #PetCategory .SearchCategoryArtOverlay
 {
@@ -510,7 +510,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 66%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_tools_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_tools_psd.png");
 }
 .Season_Frostivus2018 #EventCategory .SearchCategoryArtOverlay
 {
@@ -519,7 +519,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_frostivus_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_frostivus_psd.png");
 }
 .Season_NewBloom2019 #EventCategory .SearchCategoryArtOverlay
 {
@@ -528,7 +528,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_new_bloom_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_new_bloom_psd.png");
 }
 .Season_International2019 #EventCategory .SearchCategoryArtOverlay
 {
@@ -537,7 +537,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_new_bloom_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_new_bloom_psd.png");
 }
 .Season_Frostivus #EventCategory .SearchCategoryArtOverlay
 {
@@ -546,7 +546,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_frostivus_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_frostivus_psd.png");
 }
 
 .Season_NewBloom #EventCategory .SearchCategoryArtOverlay {
@@ -554,7 +554,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
     height: 220px;
     ui-scale: 46%;
     margin-bottom: 10px;
-    background-image: url("s2r://panorama/images/dota_plus/shop_new_bloom_psd.vtex");
+    background-image: url("file://{images}/dota_plus/shop_new_bloom_psd.png");
 }
 #GamePlayCategory .SearchCategoryArtOverlay
 {
@@ -563,7 +563,7 @@ DOTAStorePlusPage.Season_NewBloom #EventCategory .SearchCategoryName.NewBloom {
 	ui-scale: 46%;
 	margin-bottom: 10px;
 
-	background-image: url("s2r://panorama/images/dota_plus/shop_frostivus_psd.vtex");
+	background-image: url("file://{images}/dota_plus/shop_frostivus_psd.png");
 }
 
 .SearchModeContainer
@@ -682,7 +682,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	margin-left: 1030px;
 	margin-bottom: 80px;
 
-	opacity-mask: url("s2r://panorama/images/masks/softedge_box_png.vtex");
+	opacity-mask: url("file://{images}/masks/softedge_box_png.png");
 }
 
 .AspectRatio4x3 #ModelContainer
@@ -786,7 +786,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 
 	background-color: #0009;
 
-	background-image: url("s2r://panorama/images/control_icons/icon_search_png.vtex");
+	background-image: url("file://{images}/control_icons/icon_search_png.png");
 	background-size: 55%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
@@ -1015,14 +1015,14 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 #PreviousHeroButton
 {
 	margin-right: 8px;
-	background-image: url("s2r://panorama/images/control_icons/arrow_solid_left_png.vtex");
+	background-image: url("file://{images}/control_icons/arrow_solid_left_png.png");
 }
 
 #NextHeroButton
 {
 	margin-left: 8px;
 	margin-right: 8px;
-	background-image: url("s2r://panorama/images/control_icons/arrow_solid_right_png.vtex");
+	background-image: url("file://{images}/control_icons/arrow_solid_right_png.png");
 }
 
 #SingleHeroRelicsShop
@@ -1062,7 +1062,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 {
 	height: 200px;
 	margin-right: 8px;
-	background-image: url("s2r://panorama/images/hero_relics/random_relic_button_backer_psd.vtex");
+	background-image: url("file://{images}/hero_relics/random_relic_button_backer_psd.png");
 	background-size: 73% 100%; 
 	background-repeat: no-repeat; 
 	background-color: #000000aa; 
@@ -1079,7 +1079,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	margin-left: 14px;
 	margin-top: 1px;
 	margin-bottom: 2px;
-	background-image: url("s2r://panorama/images/hero_relics/hero_relic_empty_psd.vtex");
+	background-image: url("file://{images}/hero_relics/hero_relic_empty_psd.png");
 	vertical-align: middle;
 }
 
@@ -1089,7 +1089,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	margin-left: 18px;
 	margin-top: 1px;
 	margin-bottom: 2px;
-	background-image: url("s2r://panorama/images/hero_relics/hero_relic_rare_empty_socket_png.vtex");
+	background-image: url("file://{images}/hero_relics/hero_relic_rare_empty_socket_png.png");
 	vertical-align: middle;
 }
 
@@ -1105,7 +1105,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 {
 	width: 45px;
 	height: 49px;
-	background-image: url("s2r://panorama/images/hero_relics/hero_relic_random_psd.vtex");
+	background-image: url("file://{images}/hero_relics/hero_relic_random_psd.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
@@ -1239,7 +1239,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 .RelicShopItem.Owned
 {
 	padding: 3px;
-	background-image: url("s2r://panorama/images/hero_relics/relic_shop_item_backer_store_psd.vtex");
+	background-image: url("file://{images}/hero_relics/relic_shop_item_backer_store_psd.png");
 	background-size: 100%; 
 }
 
@@ -1310,7 +1310,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	margin-right: 10px; */
 	horizontal-align: right;
 	vertical-align: top;
-	background-image: url("s2r://panorama/images/control_icons/x_close_gradient_png.vtex");
+	background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
 	background-position: 50% 50%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -1380,7 +1380,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	height: 36px;
 	horizontal-align: center;
 
-	background-image: url("s2r://panorama/images/hud/reborn/icon_scoreboard_mute_sound_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/icon_scoreboard_mute_sound_psd.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1486,7 +1486,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	transform: translateY( 1px );
 	margin-bottom: 6px;
 
-	background-image: url("file://{images}/dotaplus_logo_small.png");
+	background-image: url("file://{images}/dota_plus/dotaplus_logo_small_png.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1523,28 +1523,28 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 
 .Season_Frostivus2018 #EventContainer
 {
-	background-image: url("s2r://panorama/images/dota_plus/frostivus_shop_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/frostivus_shop_bg_psd.png");
 }
 
 .Season_NewBloom2019 #EventContainer
 {
-	background-image: url("s2r://panorama/images/dota_plus/new_bloom_shop_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/new_bloom_shop_bg_psd.png");
 	background-size: 100% 100%;
 }
 
 .Season_International2019 #EventContainer
 {
-	background-image: url("s2r://panorama/images/dota_plus/new_bloom_shop_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/new_bloom_shop_bg_psd.png");
 	background-size: 100% 100%;
 }
 
 .Season_Frostivus #EventContainer
 {
-	background-image: url("s2r://panorama/images/dota_plus/frostivus_shop_bg_psd.vtex");
+	background-image: url("file://{images}/dota_plus/frostivus_shop_bg_psd.png");
 }
 
 .Season_NewBloom #EventContainer {
-    background-image: url("s2r://panorama/images/dota_plus/new_bloom_shop_bg_psd.vtex");
+    background-image: url("file://{images}/dota_plus/new_bloom_shop_bg_psd.png");
     background-size: 100% 100%;
 }
 
@@ -1557,7 +1557,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 	text-shadow: 2px 2px 4px black;*/
 	visibility: collapse;
 	margin-top: 36px;
-	background-image: url("s2r://panorama/images/front_page/newbloom2020_title_psd.vtex");
+	background-image: url("file://{images}/front_page/newbloom2020_title_psd.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1568,7 +1568,7 @@ DOTAStorePlusPage DOTAStoreItem:not(.InvalidItemDef):hover
 .Language_schinese .NewBloom,
 .Language_tchinese .NewBloom
 {
-	background-image: url("s2r://panorama/images/front_page/newbloom2020_title_cn_psd.vtex");
+	background-image: url("file://{images}/front_page/newbloom2020_title_cn_psd.png");
 }
 
 DOTAStorePlusPage.Season_Frostivus2018 .EventTitle.Frostivus

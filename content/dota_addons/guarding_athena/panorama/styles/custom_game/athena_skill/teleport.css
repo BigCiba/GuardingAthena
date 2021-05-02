@@ -19,12 +19,12 @@
 	brightness: 1.0;
 	z-index: -1;
 	tooltip-position: top;
-	background-image: url("s2r://panorama/images/hud/reborn/shop_launcher_button_inrange_psd.vtex"); 
+	background-image: url("file://{images}/hud/reborn/shop_launcher_button_inrange_psd.png"); 
 	box-shadow: #000000aa 0px 0px 2px 2px;
 }
 #GoldButton:active
 {
-	background-image: url("s2r://panorama/images/hud/reborn/shop_launcher_button_psd.vtex"); 
+	background-image: url("file://{images}/hud/reborn/shop_launcher_button_psd.png"); 
 	sound: "ui_generic_button_click";
 }
 #TeleportButton{
@@ -71,7 +71,7 @@
 }
 #GlyphIcon
 {
-	background-image: url("s2r://panorama/images/hud/reborn/icon_glyph_on_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/icon_glyph_on_psd.png");
 	background-size: 100%;
 	width: 26px;
 	height: 26px;
@@ -81,7 +81,7 @@
 	margin-bottom: 2px;
 }
 #GoldIcon{
-	background-image: url("s2r://panorama/images/hud/reborn/gold_small_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/gold_small_psd.png");
 	background-size: 100%;
 	width: 26px;
 	height: 26px;

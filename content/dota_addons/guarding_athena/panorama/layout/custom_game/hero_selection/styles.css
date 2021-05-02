@@ -46,7 +46,7 @@
   horizontal-align: center;
   width: 128px;
   height: 128px;
-  background-image: url("s2r://panorama/images/status_icons/loadingthrobber_round_psd.vtex");
+  background-image: url("file://{images}/status_icons/loadingthrobber_round_psd.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: contain;
@@ -109,7 +109,7 @@
   height: 72px;
   border-radius: 5px;
   background-color: #0E141Aaa;
-  background-image: url("s2r://panorama/images/textures/miniprofile_rock_psd.vtex");
+  background-image: url("file://{images}/textures/miniprofile_rock_psd.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 100% 256px;
@@ -195,7 +195,7 @@
   /* border-radius: 5px; */
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("s2r://panorama/images/dota_plus/shop_button_bg_psd.vtex");
+  background-image: url("file://{images}/dota_plus/shop_button_bg_psd.png");
 }
 .SideBar .DiffList .DiffButton:hover {
   brightness: 2;
@@ -414,7 +414,7 @@
   height: 50px;
   /* horizontal-align: center; */
   /* border-radius: 5px; */
-  background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
+  background-image: url("file://{images}/backgrounds/background_play_button_2x_png.png");
   border-top: 1px solid #ffffff22;
   border-bottom: 1px solid #00000088;
   background-color: gradient(linear, 0% 0%, 0% 100%, from(#433620), to(#141b21));

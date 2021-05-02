@@ -52,12 +52,12 @@
 }
 .DayIcon
 {
-	background-image: url("s2r://panorama/images/hud/reborn/icon_sun_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/icon_sun_psd.png");
 }
 .NightIcon
 {
 	transform: scaleX(-1);
-	background-image: url("s2r://panorama/images/hud/reborn/icon_moon_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/icon_moon_psd.png");
 }
 #DayGlow
 {
@@ -68,7 +68,7 @@
 	opacity: 0.2;
 	z-index: 2;
 	background-size: cover;
-	background-image: url("s2r://panorama/images/hud/reborn/glow_day_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/glow_day_psd.png");
 	background-repeat: no-repeat;
 }
 #NightGlow
@@ -80,7 +80,7 @@
 	opacity: 0.2;
 	z-index: 2;
 	background-size: cover;
-	background-image: url("s2r://panorama/images/hud/reborn/glow_night_psd.vtex");
+	background-image: url("file://{images}/hud/reborn/glow_night_psd.png");
 	background-repeat: no-repeat;
 }
 .HideElement

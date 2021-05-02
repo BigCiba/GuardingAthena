@@ -215,7 +215,7 @@ DOTAAbilityGuideBuilder #AbilityCoreDetails
 {
 	width: 23px;
 	height: 23px;
-	background-image: url("s2r://panorama/images/hud/icon_gold_psd.vtex");
+	background-image: url("file://{images}/hud/icon_gold_psd.png");
 	background-size: 100%;
 	margin-right: 5px;
 	margin-left: 4px;
@@ -413,7 +413,7 @@ DOTAAbilityGuideBuilder #AbilityCoreDetails
 	height: 28px;
 	background-repeat: no-repeat;
 	background-position: top;
-	background-image: url("s2r://panorama/images/hud/item_tooltip_passive_psd.vtex");
+	background-image: url("file://{images}/hud/item_tooltip_passive_psd.png");
 }
 
 .ShowScepterOnly #AbilityDescriptionContainer
@@ -440,7 +440,7 @@ DOTAAbilityGuideBuilder #AbilityCoreDetails
 
 .IsItem #AbilityDescriptionContainer Label.Active.Header
 {
-	background-image: url("s2r://panorama/images/hud/item_tooltip_active_psd.vtex");
+	background-image: url("file://{images}/hud/item_tooltip_active_psd.png");
 }
 
 .IsItem #AbilityDescriptionContainer Label.Active
@@ -468,7 +468,7 @@ DOTAAbilityGuideBuilder #AbilityCoreDetails
 
 .IsItem.Consumable #AbilityDescriptionContainer Label.Active.Header
 {
-	background-image: url("s2r://panorama/images/hud/item_tooltip_use_psd.vtex");
+	background-image: url("file://{images}/hud/item_tooltip_use_psd.png");
 	color: #95c07a;
 }
 
@@ -655,7 +655,7 @@ h1
 
 .Cooldown
 {
-	background-image: url("s2r://panorama/images/status_icons/ability_cooldown_icon_psd.vtex");
+	background-image: url("file://{images}/status_icons/ability_cooldown_icon_psd.png");
 	text-overflow: shrink;
 	margin-left: 5px;
 	margin-right: 2px;
@@ -666,7 +666,7 @@ h1
 	margin-left: 5px;
 	margin-right: 2px;
 	text-overflow: shrink;
-	background-image: url("s2r://panorama/images/status_icons/ability_manacost_icon_psd.vtex");
+	background-image: url("file://{images}/status_icons/ability_manacost_icon_psd.png");
 }
 
 #AbilityLore
@@ -815,7 +815,7 @@ DOTAAbilityGuideBuilder #AbilityBuildCommentEdit
 
 .MainShopIcon
 {
-	background-image: url("s2r://panorama/images/control_icons/shop_icon_main_psd.vtex");
+	background-image: url("file://{images}/control_icons/shop_icon_main_psd.png");
 	width: 24px;
 	height: 24px;
 	//background-position: 50% 50%;
@@ -825,7 +825,7 @@ DOTAAbilityGuideBuilder #AbilityBuildCommentEdit
 
 .SecretShopIcon
 {
-	background-image: url("s2r://panorama/images/control_icons/shop_icon_secret_psd.vtex");
+	background-image: url("file://{images}/control_icons/shop_icon_secret_psd.png");
 	width: 24px;
 	height: 24px;
 	background-repeat: no-repeat;
@@ -834,7 +834,7 @@ DOTAAbilityGuideBuilder #AbilityBuildCommentEdit
 
 .SideShopIcon
 {
-	background-image: url("s2r://panorama/images/control_icons/shop_icon_side_psd.vtex");
+	background-image: url("file://{images}/control_icons/shop_icon_side_psd.png");
 	width: 24px;
 	height: 24px;
 	background-repeat: no-repeat;
@@ -866,13 +866,13 @@ DOTAAbilityGuideBuilder #AbilityBuildCommentEdit
 
 #CurrentAbilityCosts #CurrentAbilityCooldown
 {
-	background-image: url("s2r://panorama/images/status_icons/ability_cooldown_icon_psd.vtex");
+	background-image: url("file://{images}/status_icons/ability_cooldown_icon_psd.png");
 	text-overflow: shrink;
 }
 
 #CurrentAbilityCosts #CurrentAbilityManaCost
 {
-	background-image: url("s2r://panorama/images/status_icons/ability_manacost_icon_psd.vtex");
+	background-image: url("file://{images}/status_icons/ability_manacost_icon_psd.png");
 }
 
 #AbilityCosts
