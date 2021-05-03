@@ -920,33 +920,61 @@ if IsServer() then
 			ApplyDamage(tDamageInfo)
 		end
 	end
-
-	-- 击退
-	---@param bBlock 是否被障碍物阻挡
-	function CDOTA_BaseNPC:KnockBack(vCenter, hTarget, flDistance, flHeight, flDuration, bStun, bBlock)
-		-- 官方
-		-- local kv =		{
-		-- 	center_x = vCenter.x,
-		-- 	center_y = vCenter.y,
-		-- 	center_z = vCenter.z,
-		-- 	should_stun = bStun,
-		-- 	duration = flDuration,
-		-- 	knockback_duration = flDuration,
-		-- 	knockback_distance = flDistance,
-		-- 	knockback_height = flHeight,
-		-- }
-		-- hTarget:AddNewModifier(self, nil, "modifier_knockback", kv)
-		-- 自定义
+	
+	---使目标向某个方向冲刺
+	---@param vDirection 方向
+	---@param flDistance 距离
+	---@param flHeight 最大高度
+	---@param flDuration 持续时间
+	---@param callback 结束回调
+	function CDOTA_BaseNPC:Dash(vDirection, flDistance, flHeight, flDuration, callback)
 		local kv =		{
-			vCenter = vCenter,
-			bStun = bStun,
+			vDirection = vDirection,
 			duration = flDuration,
 			knockback_duration = flDuration,
 			knockback_distance = flDistance,
 			knockback_height = flHeight,
-			bBlock = bBlock
 		}
-		hTarget:AddNewModifier(self, nil, "modifier_knockback_custom", kv)
+		self:RemoveModifierByName("modifier_dash")
+		local hModifier = self:AddNewModifier(self, nil, "modifier_dash", kv)
+		if IsValid(hModifier) then
+			hModifier.callback = callback
+		end
+		FireModifierEvent({
+			event_name = MODIFIER_EVENT_ON_DASH,
+			unit = self
+		})
+	end
+	
+	-- 击退
+	---@param vDirection 方向
+	---@param flDistance 距离
+	---@param flHeight 最大高度
+	---@param flDuration 持续时间
+	---@param bStun 是否晕眩
+	---@param bBlock 是否被障碍物阻挡
+	---@param callback 结束回调
+	function CDOTA_BaseNPC:KnockBack(vDirection, flDistance, flHeight, flDuration, bStun, bBlock, callback)
+		if bStun == nil then bStun = true end
+		if bBlock == nil then bBlock = false end
+		local kv =		{
+			vDirection = vDirection,
+			duration = flDuration,
+			knockback_duration = flDuration,
+			knockback_distance = flDistance,
+			knockback_height = flHeight,
+			bStun = bStun,
+			bBlock = bBlock,
+		}
+		self:RemoveModifierByName("modifier_knockback_custom")
+		local hModifier = self:AddNewModifier(self, nil, "modifier_knockback_custom", kv)
+		if IsValid(hModifier) then
+			hModifier.callback = callback
+		end
+		FireModifierEvent({
+			event_name = MODIFIER_EVENT_ON_DASH,
+			unit = self
+		})
 	end
 
 	function PfromC(c)

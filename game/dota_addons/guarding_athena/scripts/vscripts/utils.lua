@@ -1,3 +1,17 @@
+-- 获取文件域
+function getFileScope(self)
+	local level = 1
+	while true do
+		local info = debug.getinfo(level, "S")
+		if info and (info.what == "main") then
+			return {
+				getfenv(level),
+				info.source
+			}
+		end
+		level = level + 1
+	end
+end
 -- 分割字符串
 function string.split(str, delimiter)
 	if str == nil or str == '' or delimiter == nil then

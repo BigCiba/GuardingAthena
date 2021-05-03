@@ -206,6 +206,15 @@ function ExtendInstance( instance, luaClass )
 	end
 	setmetatable( base_class, getmetatable( instance ) )
 	setmetatable( instance, { __index = luaClass } )
+
+	for i,v in pairs(luaClass.__initprops__) do
+		instance[i] = v
+	end
+
+	if instance.constructor then
+		instance:constructor()
+	end
+
 	return instance
 end
 

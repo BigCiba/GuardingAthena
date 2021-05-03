@@ -8,8 +8,8 @@ function oracle_1:Spawn()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local scepter_interval = self:GetLevelSpecialValueFor("scepter_interval", 1)
-		hCaster:GameTimer(0, function ()
-			if hCaster:GetScepterLevel() >= 4 and self:IsFullyCastable() then
+		self:GameTimer(0, function ()
+			if hCaster:GetScepterLevel() >= 4 then
 				local tTargets = FindUnitsInRadiusWithAbility(hCaster, hCaster:GetAbsOrigin(), self:GetCastRange(vec3_invalid, nil), self)
 				local hTarget = tTargets[1]
 				local vPosition = IsValid(hTarget) and hTarget:GetAbsOrigin() or hCaster:GetAbsOrigin() + RandomVector(RandomInt(0,self:GetCastRange(vec3_invalid, nil)))

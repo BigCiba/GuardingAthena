@@ -1,5 +1,5 @@
----@class 击退
-modifier_knockback_custom = eom_modifier({
+---@class 冲刺
+modifier_dash = eom_modifier({
 	IsHidden = true,
 	IsDebuff = false,
 	IsPurgable = false,
@@ -9,7 +9,7 @@ modifier_knockback_custom = eom_modifier({
 	LuaModifierType = LUA_MODIFIER_MOTION_BOTH
 })
 
-local public = modifier_knockback_custom
+local public = modifier_dash
 
 function public:OnCreated(params)
 	if IsServer() then
@@ -19,7 +19,6 @@ function public:OnCreated(params)
 		self.knockback_duration = params.knockback_duration
 		self.knockback_distance = params.knockback_distance
 		self.knockback_height = params.knockback_height
-		self.bStun = params.bStun
 		self.bBlock = params.bBlock
 		-- 计算参数
 		self.vStart = hParent:GetAbsOrigin()
@@ -34,13 +33,13 @@ function public:OnCreated(params)
 		if not self:ApplyVerticalMotionController() or not self:ApplyHorizontalMotionController() then
 			self:Destroy()
 		end
-		hParent.GetKnockbackDirection = function(hParent)
+		hParent.GetDashDirection = function(hParent)
 			return self.vDirection
 		end
-		hParent.GetKnockbackDistance = function(hParent)
+		hParent.GetDashDistance = function(hParent)
 			return self.knockback_distance
 		end
-		hParent.GetKnockbackDuration = function(hParent)
+		hParent.GetDashDuration = function(hParent)
 			return self.knockback_duration
 		end
 	end
@@ -53,10 +52,10 @@ function public:OnDestroy()
 		if self.callback then
 			self.callback()
 		end
-		-- FireModifierEvent({
-		-- 	event_name = MODIFIER_EVENT_ON_DASH_END,
-		-- 	unit = hParent
-		-- })
+		FireModifierEvent({
+			event_name = MODIFIER_EVENT_ON_DASH_END,
+			unit = hParent
+		})
 	end
 end
 function public:OnHorizontalMotionInterrupted()
@@ -67,7 +66,7 @@ function public:OnVerticalMotionInterrupted()
 end
 function public:UpdateHorizontalMotion(hParent, dt)
 	local vPosition = hParent:GetAbsOrigin() + self.vDirection * self.vSpeed * dt
-	if self.bBlock == true and not GridNav:CanFindPath(hParent:GetAbsOrigin(), vPosition) then
+	if self.bBlock and not GridNav:CanFindPath(hParent:GetAbsOrigin(), vPosition) then
 		return
 	end
 	hParent:SetAbsOrigin(vPosition)
@@ -78,20 +77,22 @@ function public:UpdateVerticalMotion(hParent, dt)
 	local vPosition = hParent:GetAbsOrigin()
 	hParent:SetAbsOrigin(Vector(vPosition.x, vPosition.y, flHeight))
 end
-function public:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
-	-- MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS
-	}
-end
-function public:GetOverrideAnimation(params)
-	return ACT_DOTA_FLAIL
-end
+-- function public:DeclareFunctions()
+-- 	return {
+-- 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
+-- 		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS
+-- 	}
+-- end
+-- function public:GetOverrideAnimation(params)
+-- 	return ACT_DOTA_FLAIL
+-- end
 -- function public:GetActivityTranslationModifiers()
 -- 	return "forcestaff_friendly"
 -- end
-function public:CheckState()
-	return {
-		[MODIFIER_STATE_STUNNED] = self.bStun,
-	}
-end
+-- function public:ECheckState()
+-- 	return {
+-- 		[MODIFIER_STATE_STUNNED] = true,
+-- 		[MODIFIER_STATE_DODGE_PROJECTILE] = true,
+-- 		[MODIFIER_STATE_DODGE_TRAP] = true
+-- 	}
+-- end

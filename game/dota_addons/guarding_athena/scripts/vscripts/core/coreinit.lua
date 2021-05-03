@@ -1,47 +1,32 @@
-require("abilities/common")
-require("utils")
-require("modifiers/BaseClass")
-require("abilities/BaseClass")
-require("modifiers/init")
+-- if not IsClient() then return end
 
-LinkLuaModifier("modifier_reborn", "modifiers/generic/modifier_reborn.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_wave", "modifiers/generic/modifier_wave.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_fix_damage", "modifiers/modifier_fix_damage.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_events", "modifiers/modifier_events.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_attack_system", "modifiers/modifier_attack_system.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_pet_base", "modifiers/generic/modifier_pet_base.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_nature", "modifiers/generic/modifier_nature.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_no_health_bar", "modifiers/generic/modifier_no_health_bar.lua", LUA_MODIFIER_MOTION_NONE)
+-- require("mechanics/asset_modifiers")
 
-if not IsClient() then return end
-
-require("mechanics/asset_modifiers")
-
-require("kv")
+-- require("kv")
 
 
-if Activated == nil then
-	_G.Activated = false
-	_G.GameEventListenerIDs = {}
-else
-	_G.Activated = true
-end
+-- if Activated == nil then
+-- 	_G.Activated = false
+-- 	_G.GameEventListenerIDs = {}
+-- else
+-- 	_G.Activated = true
+-- end
 
-function GameEvent(eventName, func, context)
-	table.insert(GameEventListenerIDs, ListenToGameEvent(eventName, func, context))
-end
+-- function GameEvent(eventName, func, context)
+-- 	table.insert(GameEventListenerIDs, ListenToGameEvent(eventName, func, context))
+-- end
 
-function init(bReload)
-	if not bReload then
-	end
-end
+-- function init(bReload)
+-- 	if not bReload then
+-- 	end
+-- end
 
-if Activated == true then
-	for i = #GameEventListenerIDs, 1, -1 do
-		StopListeningToGameEvent(GameEventListenerIDs[i])
-	end
-	_G.GameEventListenerIDs = {}
-	init(true)
-else
-	init(false)
-end
+-- if Activated == true then
+-- 	for i = #GameEventListenerIDs, 1, -1 do
+-- 		StopListeningToGameEvent(GameEventListenerIDs[i])
+-- 	end
+-- 	_G.GameEventListenerIDs = {}
+-- 	init(true)
+-- else
+-- 	init(false)
+-- end

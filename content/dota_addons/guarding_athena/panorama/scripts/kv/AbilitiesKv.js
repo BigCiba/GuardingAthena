@@ -15486,7 +15486,6 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_1",
 		"AbilityCastRange":1200,
 		"AbilityCooldown":5,
-		"AbilityManaCost":20,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15531,7 +15530,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			},
 			"03":{
 				"var_type":"FIELD_INTEGER",
-				"base_shield":"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000",
+				"base_shield":"2000 4000 6000 8000 10000 12000 14000 16000 18000 20000 22000 24000 26000 28000 30000 32000 34000 36000 38000 40000",
 			},
 			"04":{
 				"var_type":"FIELD_INTEGER",
@@ -15539,7 +15538,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			},
 			"05":{
 				"var_type":"FIELD_INTEGER",
-				"shield_per_attack":"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40",
+				"shield_per_attack":40,
 			},
 			"06":{
 				"var_type":"FIELD_INTEGER",
@@ -15612,8 +15611,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_2",
 		"AbilityCastPoint":0.2,
 		"AbilityCharges":2,
-		"AbilityChargeRestoreTime":20,
-		"AbilityManaCost":"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250",
+		"AbilityChargeRestoreTime":8,
+		"AbilityManaCost":"20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15711,6 +15710,199 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			"09":{
 				"var_type":"FIELD_INTEGER",
 				"stun_duration":6,
+			},
+		},
+	},
+	"monkey_king_0":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/monkey_king/monkey_king_0",
+		"AbilityTextureName":"monkey_king_0",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":1,
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_PURE",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_FLOAT",
+				"damage_reduce":0.5,
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"damage_deep":2,
+			},
+		},
+	},
+	"monkey_king_1":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/monkey_king/monkey_king_1",
+		"AbilityTextureName":"monkey_king_1",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":20,
+		"RequiredLevel":1,
+		"LevelsBetweenUpgrades":3,
+		"AbilityCastAnimation":"ACT_DOTA_MK_STRIKE",
+		"AbilityCooldown":10,
+		"AbilityManaCost":"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_PHYSICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"base_damage":"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000",
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"damage":"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20",
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"strike_damage":"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40",
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"radius":350,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"miss":60,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"distance":1200,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"duration":4,
+			},
+		},
+	},
+	"monkey_king_2":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/monkey_king/monkey_king_2",
+		"AbilityTextureName":"monkey_king_2",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":20,
+		"RequiredLevel":1,
+		"LevelsBetweenUpgrades":3,
+		"AbilityCooldown":16,
+		"AbilityManaCost":"80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_FLOAT",
+				"damage_reduce_percent":"2.5 5 7.5 10 12.5 15 17.5 20 22.5 25 27.5 30 32.5 35 37.5 40 42.5 45 47.5 50",
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"bonus_armor":"10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 105",
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"duration":10,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"radius":600,
+			},
+		},
+	},
+	"monkey_king_3":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/monkey_king/monkey_king_3",
+		"AbilityTextureName":"monkey_king_3",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":20,
+		"RequiredLevel":1,
+		"LevelsBetweenUpgrades":3,
+		"AbilityCastAnimation":"mk_attack_01_near",
+		"AbilityCooldown":20,
+		"AbilityManaCost":"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"near_angle":360,
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"mid_angle":270,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"far_angle":180,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"near_range":150,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"mid_range":225,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"far_range":300,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"cleave_damage":"60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440",
+			},
+			"08":{
+				"var_type":"FIELD_FLOAT",
+				"duration":"6.5 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14 14.5 15 15.5 16",
+			},
+		},
+	},
+	"monkey_king_4":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/monkey_king/monkey_king_4",
+		"AbilityTextureName":"monkey_king_4",
+		"AbilityType":"DOTA_ABILITY_TYPE_ULTIMATE",
+		"MaxLevel":8,
+		"RequiredLevel":8,
+		"LevelsBetweenUpgrades":24,
+		"AbilityCastAnimation":"ACT_DOTA_MK_STRIKE",
+		"AbilityCastRange":1200,
+		"AbilityCooldown":60,
+		"AbilityManaCost":"200 300 400 500 600 700 800 900",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_PHYSICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"thump_damage":"40 80 120 160 200 240 280 320",
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"thump_radius":1200,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"thump_duration":1,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"crush_damage":"80 160 240 320 400 480 560 640",
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"crush_radius":400,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"crush_duration":4,
 			},
 		},
 	},

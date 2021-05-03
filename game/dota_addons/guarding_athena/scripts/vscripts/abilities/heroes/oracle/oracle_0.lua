@@ -7,7 +7,7 @@ if oracle_0 == nil then
 end
 function oracle_0:Spawn()
 	local hCaster = self:GetCaster()
-	hCaster:GameTimer(0, function ()
+	self:GameTimer(0, function ()
 		if self:IsFullyCastable() and self:GetAutoCastState() == true then
 			local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), hCaster:GetAbsOrigin(), nil, self:GetCastRange(vec3_invalid, nil), DOTA_UNIT_TARGET_TEAM_ENEMY, self:GetAbilityTargetType(), self:GetAbilityTargetFlags(), FIND_ANY_ORDER, false)
 			if IsValid(tTargets[1]) then

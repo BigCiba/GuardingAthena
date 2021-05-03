@@ -32,6 +32,23 @@ else
 		return a
 	end
 end
+require("abilities/common")
+require("modifiers/events")
+require("modifiers/eom_modifier")
+require("utils")
+require("modifiers/BaseClass")
+require("abilities/BaseClass")
+require("modifiers/init")
+
+LinkLuaModifier("modifier_reborn", "modifiers/generic/modifier_reborn.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_wave", "modifiers/generic/modifier_wave.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_fix_damage", "modifiers/modifier_fix_damage.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_events", "modifiers/modifier_events.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_attack_system", "modifiers/modifier_attack_system.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_pet_base", "modifiers/generic/modifier_pet_base.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_nature", "modifiers/generic/modifier_nature.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_no_health_bar", "modifiers/generic/modifier_no_health_bar.lua", LUA_MODIFIER_MOTION_NONE)
+
 
 require("kv")
 
