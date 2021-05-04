@@ -30,12 +30,16 @@ function public:game_over(iPlayerID, bWin)
 	local Score = bWin and SCORE_REWARD[diff] or 0
 	local Shard = bWin and SHARD_REWARD[diff] or iLoseShard
 	local PetXP = bWin and PETXP_REWARD[diff] or 0
+	local sItemName = ""
+	if Pet.GetPetByPlayerID(iPlayerID) then
+		sItemName = Pet.GetPetByPlayerID(iPlayerID):GetUnitEntityName()
+	end
 	Service:POST('player.game_over',
 	{
 		SteamID = GetAccountID(iPlayerID),
 		Score = Score,
 		Shard = Shard,
-		ItemName = Pet.GetPetByPlayerID(iPlayerID):GetUnitEntityName(),
+		ItemName = sItemName,
 		Experience = PetXP
 	}, function(data)
 		if data and data.status == 0 then

@@ -49,7 +49,7 @@ function modifier_spectre_3:OnTakeDamage(params)
 	if IsServer() then
 		local hParent = self:GetParent()
 		if params.unit == hParent then
-			if params.damage_flags and bit.band(params.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) == DOTA_DAMAGE_FLAG_REFLECTION and bit.band(params.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS  then
+			if params.damage_flags and (bit.band(params.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) == DOTA_DAMAGE_FLAG_REFLECTION or bit.band(params.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS) then
 				return
 			end
 			-- 反弹伤害

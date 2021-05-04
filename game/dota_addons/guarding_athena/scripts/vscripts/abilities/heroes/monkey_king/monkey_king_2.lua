@@ -106,6 +106,7 @@ end
 function modifier_monkey_king_2_buff:GetModifierAvoidDamage(params)
 	if IsServer() then
 		self.flDamage = self.flDamage + params.original_damage
+		return 1
 	end
 end
 ---------------------------------------------------------------------

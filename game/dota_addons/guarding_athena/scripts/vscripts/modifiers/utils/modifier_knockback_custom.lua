@@ -19,8 +19,8 @@ function public:OnCreated(params)
 		self.knockback_duration = params.knockback_duration
 		self.knockback_distance = params.knockback_distance
 		self.knockback_height = params.knockback_height
-		self.bStun = params.bStun
-		self.bBlock = params.bBlock
+		self.bStun = params.bStun == 1 and true or false
+		self.bBlock = params.bBlock == 1 and true or false
 		-- 计算参数
 		self.vStart = hParent:GetAbsOrigin()
 		self.vSpeed = self.knockback_distance / self.knockback_duration
