@@ -47,9 +47,13 @@ end
 if item_npc_dota_hero_oracle == nil then
 	item_npc_dota_hero_oracle = class({}, nil, item_scepter)
 end
--- 神谕者
+-- 虚无之灵
 if item_npc_dota_hero_void_spirit == nil then
 	item_npc_dota_hero_void_spirit = class({}, nil, item_scepter)
+end
+-- 齐天大圣 
+if item_npc_dota_hero_monkey_king == nil then
+	item_npc_dota_hero_monkey_king = class({}, nil, item_scepter)
 end
 ---------------------------------------------------------------------
 -- Modifiers

@@ -89,7 +89,7 @@ function modifier_monkey_king_3:OnRefresh(params)
 	end
 end
 function modifier_monkey_king_3:OnIntervalThink()
-	if not self:GetParent():IsSummoned() then
+	if not self:GetParent():IsSummoned() and self:GetParent():GetScepterLevel() >= 1 then
 		local hAbility = self:GetAbility()
 		hAbility:CreateSoldier(self:GetParent():GetAbsOrigin() + RandomVector(300), self.scepter_duration)
 	end

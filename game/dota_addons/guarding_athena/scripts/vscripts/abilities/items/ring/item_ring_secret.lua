@@ -50,7 +50,8 @@ function modifier_ring_secret:OnCreated(params)
 	if IsServer() then
 		local hParent = self:GetParent()
 		if hParent:IsRealHero() then
-			self.tRingData = PlayerData:GetRingData(hParent:GetPlayerOwnerID())
+			local iPlayerID = hParent:IsSummoned() and hParent:GetOwner():GetPlayerOwnerID() or hParent:GetPlayerOwnerID()
+			self.tRingData = PlayerData:GetRingData(iPlayerID)
 			local iFirstIndex = math.min(self.tRingData[1].iRingIndex, self.tRingData[2].iRingIndex)
 			local iSecondIndex = math.max(self.tRingData[1].iRingIndex, self.tRingData[2].iRingIndex)
 			self.sModifierName = "ring_"..iFirstIndex.."_"..iSecondIndex

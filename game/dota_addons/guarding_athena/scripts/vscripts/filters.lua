@@ -306,7 +306,7 @@ function public:ItemAddedToInventoryFilter( keys )
 		end
 		return false
 	elseif string.sub(currentItemName,0,10) == "item_ring_" then
-		if currentUnit:IsRealHero() then
+		if currentUnit:IsRealHero() and not currentUnit:IsSummoned() then
 			local id = tonumber(string.sub(currentItemName,11,12))
 			if type(id) == "number" then
 				table.insert(currentUnit.ringList,id)

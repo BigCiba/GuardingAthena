@@ -473,7 +473,7 @@
 		"DOTA_Tooltip_ability_monkey_king_4_pure_pct"				"%额外纯粹伤害："
 		
 		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king"	"金箍棒"
-		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%。\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"
+		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"
 
 		//schinese/abilities/heroes/nevermore.txt
 		"npc_dota_hero_nevermore"	"塔耳塔洛斯"
@@ -2095,9 +2095,6 @@
 		"DOTA_Tooltip_ability_item_poison_water_gun_Description"	"一把掺毒的水枪，将它朝着目标的脸上发射吧。被射中的单位增加750点移动速度，但是会减少5%每秒的生命回复，持续5秒。由于质量低劣，每次用完就要加水。"
 		"DOTA_Tooltip_ability_item_poison_water_gun_Lore"	"大概是水人小时候的玩具"
 		
-		"DOTA_Tooltip_Ability_item_battlefury_ring"	"狂战陨戒"
-		"DOTA_Tooltip_Ability_item_battlefury_ring_Description"	"<h1>主动：核聚变</h1>一次性吸收周围单位2%%的最大生命值，并将吸收的生命值转化为伤害，并额外附加全属性 * 100 * 难度系数的伤害。但自身会受到50%%的最大生命值的伤害。使用后3秒内，所有伤害将提升50%%。\n<h1>被动：陨星之核</h1>每3秒吸收周围所有单位1%%的最大生命值和攻击力，并提升1点全属性，攻击力只持续10秒，每当生命值减少10%%，吸收间隔降低0.2秒。\n<h1>被动：遇强则强</h1>每经过一波进攻，核聚变的伤害提升1%%。\n只有最强的战士能驾驭这枚戒指，而大多数人都将沉迷于其强大的力量而自我毁灭。"
-		"DOTA_Tooltip_Ability_item_battlefury_ring_Lore"	"赤雨传奇工匠郎布宁的为神打造的兵器"
 		// 宠物
 		"DOTA_Tooltip_Ability_item_fire_egg"	"小火蛋"
 		"DOTA_Tooltip_Ability_item_fire_egg_Description"	"<h1>主动：强身健体</h1>吃下这颗小火蛋，强身健体提升主属性。"
@@ -2130,17 +2127,11 @@
 		"DOTA_Tooltip_ability_item_baoshi_5_Lore"	"据说是东方的女娲补天时的余料"
 		
 		// 狂战陨戒
-		"DOTA_Tooltip_ability_item_battlefury_ring_skill_radius"	"核聚变作用范围："
-		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_str"	"力量："
-		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_agi"	"敏捷："
-		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_int"	"智力："
-		"DOTA_Tooltip_ability_item_battlefury_ring_skill_damage"	"核聚变全属性伤害系数："
-		"DOTA_Tooltip_ability_item_battlefury_ring_aura_damage"	"%陨星之核吸收百分比："
-		"DOTA_Tooltip_ability_item_battlefury_ring_aura_radius"	"陨星之核作用范围："
-		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_damage"	"%百分比所有伤害提升："
-		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_all_stats"	"全属性："
-		"DOTA_Tooltip_ability_item_battlefury_ring_aura_interval"	"陨星之核初始吸收间隔："
-		"DOTA_Tooltip_ability_item_battlefury_ring_suicide"	"%核聚变消耗生命值："
+		"DOTA_Tooltip_Ability_item_battlefury_ring"	"狂战陨戒"
+		"DOTA_Tooltip_Ability_item_battlefury_ring_Description"	"<h1>主动：核聚变</h1>一次性吸收周围单位%absorb_pct%%%的最大生命值，并将吸收的生命值转化为伤害，并额外附加全属性 * %skill_damage% * 难度系数的伤害。但自身会受到%suicide%%%的最大生命值的伤害。使用后%abilityduration%秒内，所有伤害将提升%skill_damage_increase%%%。\n<h1>被动：陨星之核</h1>每%aura_interval%秒吸收周围%aura_radius%范围所有单位%aura_damage%%%的最大生命值和攻击力，并提升1点全属性，攻击力只持续10秒，每当生命值减少10%%，吸收间隔降低0.2秒。\n<h1>被动：遇强则强</h1>每经过一波进攻，核聚变的伤害提升1%%。\n只有最强的战士能驾驭这枚戒指，而大多数人都将沉迷于其强大的力量而自我毁灭。"
+		"DOTA_Tooltip_Ability_item_battlefury_ring_Lore"	"赤雨传奇工匠郎布宁的为神打造的兵器"
+		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_damage"	"%+所有伤害"
+		"DOTA_Tooltip_ability_item_battlefury_ring_bonus_all_stats"	"+全属性"
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note0"	"消耗生命效果无视无敌状态"
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note1"	"生命值不足时会造成死亡"
 		"DOTA_Tooltip_ability_item_battlefury_ring_Note2"	"该伤害不享受任何伤害加成与伤害减免"
