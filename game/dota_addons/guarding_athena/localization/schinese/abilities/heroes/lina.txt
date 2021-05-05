@@ -1,6 +1,6 @@
 "npc_dota_hero_lina"	"莉莉丝"
 "DOTA_Tooltip_ability_ashes"	"炽红莲[天赋]"
-"DOTA_Tooltip_ability_ashes_Description"	"每次施法都会产生火焰虚影包裹全身，根据施法技能的等级，每级对自身附加一层火焰虚影，每层火焰虚影每%interval%对周围%radius%范围的单位造成 %damage% * 智力 的伤害并减少 %reduce% * 智力 的伤害。每层虚影持续%duration%秒。"
+"DOTA_Tooltip_ability_ashes_Description"	"每次施法都会产生火焰虚影包裹全身，根据施法技能的等级，每级对自身附加一层火焰虚影，每层火焰虚影每%interval%秒对周围%radius%范围的单位造成[%damage% * 智力]的伤害并减少[%reduce% * 智力]的伤害。每层虚影持续%duration%秒。"
 "DOTA_Tooltip_ability_ashes_Lore"	"火之高兴"
 "DOTA_Tooltip_ability_ashes_Note1"	"点燃效果不可驱散点燃效果不可驱散"
 "DOTA_Tooltip_modifier_ashes_buff"	"炽红莲[天赋]"
