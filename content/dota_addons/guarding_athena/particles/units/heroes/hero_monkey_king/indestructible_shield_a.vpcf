@@ -1,0 +1,150 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 8
+	m_flConstantRadius = 64.0
+	m_ConstantColor = [ 255, 174, 88, 255 ]
+	m_nConstantSequenceNumber = 1
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_vecCP1Pos = [ 0.0, 0.0, 75.0 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 6.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 11.0
+			m_fLifetimeMax = 11.0
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 70.0
+			m_flRadiusMin = 70.0
+		},
+		{
+			_class = "C_INIT_RingWave"
+			m_flParticlesPerOrbit = 6.0
+			m_bEvenDistribution = true
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 75.0
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 100.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 100.0
+			}
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMax = 0.0
+			m_flDegrees = 90.0
+			m_bRandomlyFlipDirection = false
+		},
+		{
+			_class = "C_INIT_RemapInitialDirectionToCPToVector"
+			m_nFieldOutput = 21
+			m_bNormalize = true
+			m_vecOffsetAxis = [ 0.0, 0.0, 1.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 75.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 75.0 ]
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+			m_bDisableOperator = true
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_OFF"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.34
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.2
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.05
+		},
+		{
+			_class = "C_OP_InheritFromParentParticles"
+		},
+		{
+			_class = "C_OP_InheritFromParentParticles"
+			m_nFieldOutput = 0
+		},
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_RemapDirectionToCPToVector"
+			m_nFieldOutput = 21
+			m_vecOffsetAxis = [ 1.0, 0.0, 0.0 ]
+			m_bNormalize = true
+			m_nCP = 1
+		},
+		{
+			_class = "C_OP_EndCapTimedDecay"
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nOrientationType = "PARTICLE_ORIENTATION_ALIGN_TO_PARTICLE_NORMAL"
+			m_flAddSelfAmount = 1.0
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/monkey_king/mk_dragon.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_OutlineColor = [ 255, 255, 255 ]
+		},
+	]
+}

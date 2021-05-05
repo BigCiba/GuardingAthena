@@ -115,7 +115,7 @@ function modifier_monkey_king_4_thinker:OnCreated(params)
 	if IsServer() then
 	else
 		local hParent = self:GetParent()
-		local iParticleID = ParticleManager:CreateParticle("particles/heroes/monkey_king/jingubang.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/jingubang.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		ParticleManager:SetParticleControl(iParticleID, 1, hParent:GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)

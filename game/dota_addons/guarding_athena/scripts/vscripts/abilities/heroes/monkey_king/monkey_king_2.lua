@@ -134,7 +134,7 @@ function modifier_monkey_king_2_shield:OnCreated(params)
 		self.flDamage = self.flShieldHealth
 	else
 		local hParent = self:GetParent()
-		local iParticleID = ParticleManager:CreateParticle("particles/heroes/monkey_king/indestructible_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, hParent)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/indestructible_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, hParent)
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
