@@ -472,6 +472,12 @@ function public:OnAbilityExecuted(params)
 			end
 		end
 	end
+	-- 只触发有效的技能（去除toggle、没有冷却和不计算魔棒等）
+	if IsValid(params.ability) and not params.ability:IsItem() and not params.ability:IsToggle() and params.ability:ProcsMagicStick() then
+		local newParams = vlua.clone(params)
+		newParams.event_name = MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED
+		FireModifierEvent(newParams)
+	end
 end
 function public:OnAbilityFullyCast(params)
 	if IsValid(params.unit) and params.unit.tSourceModifierEvents and params.unit.tSourceModifierEvents[MODIFIER_EVENT_ON_ABILITY_FULLY_CAST] then

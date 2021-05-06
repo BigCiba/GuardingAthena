@@ -1,0 +1,159 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 100
+	m_hSnapshot = resource:"particles/models/items/lina/bewitching_flame_belt/bewitched_skirt.vsnap"
+	m_nSnapshotControlPoint = 7
+	m_flConstantRadius = 20.0
+	m_flConstantLifespan = 1.5
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			VisibilityInputs = 
+			{
+				m_flCameraBias = -10.0
+			}
+			m_flOverbrightFactor = 10.0
+			m_flAnimationRate = 0.5
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/smoke/steam/steam.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_nFogType = "PARTICLE_FOG_GAME_DEFAULT"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_SnapshotRigidSkinToBones"
+			m_bTransformNormals = true
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.125
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 0.0
+			m_flBias = 0.9
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 255, 85, 0, 255 ]
+			m_flFadeStartTime = 0.35
+			m_flFadeEndTime = 0.0
+		},
+		{
+			_class = "C_OP_SnapshotSkinToBones"
+			m_flLifeTimeFadeStart = 0.0
+			m_flLifeTimeFadeEnd = 0.25
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.1
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_InitSkinnedPositionFromCPSnapshot"
+			m_nSnapshotControlPointNumber = 7
+			m_bRandom = true
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 1
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 40.0
+			m_flRadiusMax = 80.0
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 248, 224, 41, 255 ]
+			m_ColorMin = [ 248, 119, 13, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMax = 250
+			m_nAlphaMin = 128
+		},
+		{
+			_class = "C_INIT_InitFromCPSnapshot"
+			m_nControlPointNumber = 7
+			m_bRandom = true
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_CreationNoise"
+			m_nFieldOutput = 26
+			m_flNoiseScaleLoc = 0.0001
+		},
+		{
+			_class = "C_INIT_SequenceLifeTime"
+			m_flFramerate = 15.0
+		},
+		{
+			_class = "C_INIT_RemapScalarToVector"
+			m_nFieldInput = 26
+			m_nFieldOutput = 6
+			m_vecOutputMin = [ 1.0, 0.2, 0.0 ]
+			m_vecOutputMax = [ 0.0, 0.2, 0.8 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_flStartTime = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 40.0
+			}
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_fForceAmount = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = -100.0
+			}
+			m_fFalloffPower = 0.15
+			m_fForceAmountMin = null
+			m_bApplyMinForce = false
+		},
+	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 8
+}

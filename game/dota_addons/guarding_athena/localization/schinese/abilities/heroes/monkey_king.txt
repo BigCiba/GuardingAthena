@@ -1,6 +1,7 @@
 "npc_dota_hero_monkey_king"	"齐天大圣"
 "DOTA_Tooltip_ability_monkey_king_0"						"火眼金睛"
 "DOTA_Tooltip_ability_monkey_king_0_Description"			"齐天大圣的火眼金睛能够洞察敌人的弱点，目标每减少1%%生命值对齐天大圣造成的伤害减少%damage_reduce%%%，且齐天大圣对其伤害增加%damage_deep%%%。"
+"DOTA_Tooltip_ability_monkey_king_0_scepter_description_3"	"攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲"
 
 "DOTA_Tooltip_ability_monkey_king_1"						"大闹天宫"
 "DOTA_Tooltip_ability_monkey_king_1_Description"			"齐天大圣高速旋转向目标点横扫敌方单位，受到伤害的单位将在持续时间内降低攻击命中率，效果结束后造成一次范围伤害并击飞周围目标。旋转过程中免疫魔法伤害。"
@@ -24,6 +25,8 @@
 "DOTA_Tooltip_ability_monkey_king_3_cleave_damage"			"%分裂伤害："
 "DOTA_Tooltip_ability_monkey_king_3_duration"				"猴子猴孙持续时间："
 "DOTA_Tooltip_ability_monkey_king_3_max_count"				"猴子猴孙最大数量："
+"DOTA_Tooltip_ability_monkey_king_3_scepter_description_1"	"每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒"
+"DOTA_Tooltip_ability_monkey_king_3_scepter_description_2"	"每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点"
 
 "DOTA_Tooltip_ability_monkey_king_4"						"定海神针"
 "DOTA_Tooltip_ability_monkey_king_4_Description"			"齐天大圣重击地面对周围区域造成伤害并击飞目标。然后召唤巨大金箍棒从天而降砸向目标点，造成重大伤害与晕眩。晕眩期间齐天大圣对其造成额外的纯粹伤害。"
@@ -33,6 +36,7 @@
 "DOTA_Tooltip_ability_monkey_king_4_crush_radius"			"砸击范围："
 "DOTA_Tooltip_ability_monkey_king_4_crush_duration"			"砸击晕眩时间："
 "DOTA_Tooltip_ability_monkey_king_4_pure_pct"				"%额外纯粹伤害："
+"DOTA_Tooltip_ability_monkey_king_4_scepter_description_4"	"使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害"
 
 "DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king"	"金箍棒"
 "DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"

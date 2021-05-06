@@ -3461,6 +3461,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastRange"						"1200"
 		"AbilityCooldown"						"5"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"2"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -3492,6 +3494,8 @@
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"						"0"
 		"AbilityCooldown"						"10"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1|3"
 		"AbilityManaCost"						"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -3609,6 +3613,8 @@
 		"AbilityCastPoint"						"0.2"
 		"AbilityCharges"						"2"
 		"AbilityChargeRestoreTime"				"8"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"4"
 		"AbilityManaCost"						"20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -4008,8 +4014,10 @@
 	}
 	"lina_0"
 	{
-		"BaseClass"								"ability_datadriven"
-		"AbilityTextureName"					"ashes"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/lina/lina_0"
+		"AbilityTextureName"					"lina_0"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"1"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -4051,14 +4059,16 @@
 	}
 	"lina_1"
 	{
-		"BaseClass"								"ability_datadriven"
-		"AbilityTextureName"					"dark_fire"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/lina/lina_1"
+		"AbilityTextureName"					"lina_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastRange"						"2000"
-		"AbilityCastPoint"						"0.25"
+		"AbilityCastPoint"						"0.48"
 		"AbilityCooldown"						"12"
 		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
@@ -4070,7 +4080,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage"						"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
+				"base_damage"					"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
 			}
 			"02"
 			{
@@ -4080,7 +4090,7 @@
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"intellect"						"3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60"
+				"damage"						"3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60"
 			}
 			"04"
 			{
@@ -4116,14 +4126,16 @@
 	}
 	"lina_2"
 	{
-		"BaseClass"								"ability_datadriven"
-		"AbilityTextureName"					"light_array"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/lina/lina_2"
+		"AbilityTextureName"					"lina_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
 		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastRange"						"1300"
-		"AbilityCastPoint"						"0.25"
+		"AbilityCastPoint"						"0.48"
 		"AbilityCooldown"						"6"
 		"AbilityManaCost"						"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500"
 		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
@@ -4140,7 +4152,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"intellect"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
 			}
 			"03"
 			{
@@ -4155,19 +4167,24 @@
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"duration"						"3"
+				"tick_damage"					"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
 			}
 			"06"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"interval"						"1"
+				"duration"						"3"
 			}
 			"07"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"movespeed"						"80"
+				"interval"						"1"
 			}
 			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"80"
+			}
+			"09"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"ignite_count"					"3"
@@ -4176,8 +4193,10 @@
 	}
 	"lina_3"
 	{
-		"BaseClass"								"ability_datadriven"
-		"AbilityTextureName"					"endless_ignite"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/lina/lina_3"
+		"AbilityTextureName"					"lina_3"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
@@ -4216,8 +4235,9 @@
 	}
 	"lina_4"
 	{
-		"BaseClass"								"ability_datadriven"
-		"AbilityTextureName"					"meteor_storm"
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/lina/lina_4"
+		"AbilityTextureName"					"lina_4"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"
