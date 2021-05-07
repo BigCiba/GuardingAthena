@@ -8243,156 +8243,6 @@ GameUI.CustomUIConfig().ItemsKv = {
 		},
 		"Model":"models/props_gameplay/red_box.vmdl",
 	},
-	"item_npc_dota_hero_monkey_king1":{
-		"BaseClass":"item_datadriven",
-		"AbilityTextureName":"item_monkey_king_bar",
-		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
-		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
-		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
-		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
-		"ID":1655,
-		"ItemQuality":"component",
-		"ItemCost":1,
-		"ItemSellable":0,
-		"ItemPurchasable":0,
-		"ItemShopTags":"magic_resist",
-		"ItemRequirements":{
-		},
-		"ItemDisassembleRule":"DOTA_ITEM_DISASSEMBLE_NEVER",
-		"precache":{
-			"particle":"particles/items_fx/aegis_respawn.vpcf",
-		},
-		"Modifiers":{
-			"modifier_npc_dota_hero_monkey_king":{
-				"Passive":1,
-				"IsHidden":1,
-				"Properties":{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS":"%str",
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS":"%agi",
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS":"%int",
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE":"%bonus_damage",
-					"MODIFIER_PROPERTY_HEALTH_BONUS":"%hp",
-					"MODIFIER_PROPERTY_MANA_BONUS":"%mp",
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT":"%hp_regen",
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT":"%mp_regen",
-				},
-			},
-		},
-		"AbilitySpecial":{
-			"01":{
-				"var_type":"FIELD_INTEGER",
-				"str":200,
-			},
-			"02":{
-				"var_type":"FIELD_INTEGER",
-				"agi":400,
-			},
-			"03":{
-				"var_type":"FIELD_INTEGER",
-				"int":200,
-			},
-			"04":{
-				"var_type":"FIELD_INTEGER",
-				"hp":4000,
-			},
-			"05":{
-				"var_type":"FIELD_INTEGER",
-				"mp":2000,
-			},
-			"06":{
-				"var_type":"FIELD_INTEGER",
-				"hp_regen":400,
-			},
-			"07":{
-				"var_type":"FIELD_INTEGER",
-				"mp_regen":100,
-			},
-			"08":{
-				"var_type":"FIELD_FLOAT",
-				"duration":0.5,
-			},
-			"09":{
-				"var_type":"FIELD_INTEGER",
-				"critical_chance":10,
-			},
-		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-	},
-	"item_npc_dota_hero_monkey_king":{
-		"BaseClass":"item_datadriven",
-		"AbilityTextureName":"item_monkey_king_bar",
-		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
-		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
-		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
-		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
-		"AbilityCooldown":0.0,
-		"ID":1654,
-		"ItemQuality":"epic",
-		"ItemCost":1,
-		"ItemSellable":0,
-		"ItemPurchasable":0,
-		"ItemIsNeutralDrop":1,
-		"ItemDeclarations":"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS",
-		"ItemRequirements":{
-		},
-		"Modifiers":{
-			"modifier_npc_dota_hero_monkey_king":{
-				"Passive":1,
-				"IsHidden":1,
-				"Attributes":"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE",
-				"Properties":{
-				},
-				"OnCreated":{
-					"RunScript":{
-						"ScriptFile":"scripts/vscripts/ability_hero/monkey_king.lua",
-						"Function":"OnExclusiveCreated",
-					},
-				},
-				"OnDestroy":{
-					"RunScript":{
-						"ScriptFile":"scripts/vscripts/ability_hero/monkey_king.lua",
-						"Function":"OnExclusiveDestory",
-					},
-				},
-			},
-		},
-		"AbilitySpecial":{
-			"01":{
-				"var_type":"FIELD_INTEGER",
-				"property":15,
-			},
-			"02":{
-				"var_type":"FIELD_INTEGER",
-				"chance":25,
-			},
-			"03":{
-				"var_type":"FIELD_INTEGER",
-				"critical":50,
-			},
-			"04":{
-				"var_type":"FIELD_INTEGER",
-				"count":9,
-			},
-			"05":{
-				"var_type":"FIELD_INTEGER",
-				"damage_percent":20,
-			},
-			"06":{
-				"var_type":"FIELD_INTEGER",
-				"interval":5,
-			},
-			"07":{
-				"var_type":"FIELD_INTEGER",
-				"energy":1,
-			},
-			"08":{
-				"var_type":"FIELD_INTEGER",
-				"illusion_damage":60,
-			},
-		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
-	},
 	"item_npc_dota_hero_antimage1":{
 		"BaseClass":"item_datadriven",
 		"AbilityTextureName":"item_zhuanshudh1",
@@ -12788,8 +12638,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_damage":10,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_templar_assassin":{
 		"BaseClass":"item_lua",
@@ -12832,8 +12682,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_damage":10,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_spectre":{
 		"BaseClass":"item_lua",
@@ -12872,8 +12722,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_cooldown":50,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_juggernaut":{
 		"BaseClass":"item_lua",
@@ -12908,8 +12758,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_ignore_armor_chance":35,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_nevermore":{
 		"BaseClass":"item_lua",
@@ -12944,8 +12794,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_interval":0.5,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_rubick":{
 		"BaseClass":"item_lua",
@@ -12984,8 +12834,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_factor":2,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_windrunner":{
 		"BaseClass":"item_lua",
@@ -13028,8 +12878,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_chance":15,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_crystal_maiden":{
 		"BaseClass":"item_lua",
@@ -13060,8 +12910,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_max_count":3,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_oracle":{
 		"BaseClass":"item_lua",
@@ -13100,8 +12950,8 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_interval":1,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_npc_dota_hero_void_spirit":{
 		"BaseClass":"item_lua",
@@ -13128,8 +12978,60 @@ GameUI.CustomUIConfig().ItemsKv = {
 				"scepter_cooldown":1,
 			},
 		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-		"Effect":"particles/generic_gameplay/dropped_item.vpcf",
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
+	},
+	"item_npc_dota_hero_monkey_king":{
+		"BaseClass":"item_lua",
+		"ScriptFile":"abilities/items/scepter/scepter",
+		"AbilityTextureName":"item_monkey_king_bar",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilityCooldown":0.0,
+		"ID":1654,
+		"ItemQuality":"epic",
+		"ItemCost":1,
+		"ItemSellable":0,
+		"ItemPurchasable":0,
+		"ItemIsNeutralDrop":1,
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"property":15,
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_interval":4,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_duration":12,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_counter_attack":1,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_chance":15,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_critical":50,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_count":9,
+			},
+			"08":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_count_damage_pct":20,
+			},
+		},
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
 	},
 	"item_bag_of_coin":{
 		"BaseClass":"item_lua",

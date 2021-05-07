@@ -15486,6 +15486,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_1",
 		"AbilityCastRange":1200,
 		"AbilityCooldown":5,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":2,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15513,6 +15515,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_4",
 		"AbilityCastPoint":0,
 		"AbilityCooldown":10,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":"1|3",
 		"AbilityManaCost":"60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
@@ -15612,6 +15616,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastPoint":0.2,
 		"AbilityCharges":2,
 		"AbilityChargeRestoreTime":8,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":4,
 		"AbilityManaCost":"20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
@@ -15731,6 +15737,14 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			"02":{
 				"var_type":"FIELD_INTEGER",
 				"damage_deep":2,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_chance":15,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_critical":50,
 			},
 		},
 	},
@@ -15865,6 +15879,18 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 				"var_type":"FIELD_INTEGER",
 				"scepter_interval":4,
 			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_duration":12,
+			},
+			"08":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_counter_duration":2,
+			},
+			"09":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_counter_attack":1,
+			},
 		},
 	},
 	"monkey_king_4":{
@@ -15919,6 +15945,249 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			"09":{
 				"var_type":"FIELD_INTEGER",
 				"scepter_damage":20,
+			},
+		},
+	},
+	"lina_0":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/lina/lina_0",
+		"AbilityTextureName":"lina_0",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":1,
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"damage":1,
+			},
+			"02":{
+				"var_type":"FIELD_FLOAT",
+				"reduce":0.5,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"duration":10,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"radius":350,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"interval":1,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"ignite_count":1,
+			},
+		},
+	},
+	"lina_1":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/lina/lina_1",
+		"AbilityTextureName":"lina_1",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":20,
+		"RequiredLevel":1,
+		"LevelsBetweenUpgrades":3,
+		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_1",
+		"AbilityCastRange":2000,
+		"AbilityCastPoint":0.48,
+		"AbilityCooldown":12,
+		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"base_damage":"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000",
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"duration":3,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"damage":"3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60",
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"distance":2000,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"width":200,
+			},
+			"06":{
+				"var_type":"FIELD_FLOAT",
+				"stun_duration":1.5,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"miss":100,
+			},
+			"08":{
+				"var_type":"FIELD_FLOAT",
+				"miss_duration":3.5,
+			},
+			"09":{
+				"var_type":"FIELD_INTEGER",
+				"ignite_count":6,
+			},
+		},
+	},
+	"lina_2":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/lina/lina_2",
+		"AbilityTextureName":"lina_2",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":20,
+		"RequiredLevel":1,
+		"LevelsBetweenUpgrades":3,
+		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_1",
+		"AbilityCastRange":1300,
+		"AbilityCastPoint":0.48,
+		"AbilityCooldown":6,
+		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_FLOAT",
+				"stun_duration":1.5,
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"damage":"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40",
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"radius":350,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"base_damage":"80 160 240 320 400 480 560 640 720 800 880 960 1040 1120 1200 1280 1360 1440 1520 1600",
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"tick_damage":"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20",
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"duration":3,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"interval":1,
+			},
+			"08":{
+				"var_type":"FIELD_INTEGER",
+				"movespeed":80,
+			},
+			"09":{
+				"var_type":"FIELD_INTEGER",
+				"ignite_count":3,
+			},
+		},
+	},
+	"lina_3":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/lina/lina_3",
+		"AbilityTextureName":"lina_3",
+		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
+		"MaxLevel":20,
+		"RequiredLevel":1,
+		"LevelsBetweenUpgrades":3,
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_FLOAT",
+				"damage":"0.25 0.5 0.75 1.0 1.25 1.5 1.75 2 2.25 2.5 2.75 3.0 3.25 3.5 3.75 4.0 4.25 4.5 4.75 5.0",
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"bonus_attack_speed":10,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"duration":5,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"interval":1,
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"ignite_count":1,
+			},
+		},
+	},
+	"lina_4":{
+		"BaseClass":"ability_lua",
+		"ScriptFile":"abilities/heroes/lina/lina_4",
+		"AbilityTextureName":"lina_4",
+		"AbilityType":"DOTA_ABILITY_TYPE_ULTIMATE",
+		"MaxLevel":8,
+		"RequiredLevel":8,
+		"LevelsBetweenUpgrades":24,
+		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_2",
+		"AbilityCastPoint":0.3,
+		"AbilityCooldown":30,
+		"AbilityManaCost":"200 300 400 500 600 700 800 900",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilitySpecial":{
+			"10":{
+				"var_type":"FIELD_INTEGER",
+				"ignite_count":2,
+			},
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"damage":"12 24 36 48 60 72 84 96",
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"radius":250,
+			},
+			"03":{
+				"var_type":"FIELD_INTEGER",
+				"max_radius":800,
+			},
+			"04":{
+				"var_type":"FIELD_FLOAT",
+				"stun_duration":"1.25 1.5 1.75 2 2.25 2.5 2.75 3",
+			},
+			"05":{
+				"var_type":"FIELD_INTEGER",
+				"delay":1,
+			},
+			"06":{
+				"var_type":"FIELD_INTEGER",
+				"wave_count":12,
+			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"count_per_wave":2,
+			},
+			"08":{
+				"var_type":"FIELD_FLOAT",
+				"interval":0.25,
+			},
+			"09":{
+				"var_type":"FIELD_INTEGER",
+				"duration":3,
 			},
 		},
 	},

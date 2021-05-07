@@ -1,0 +1,158 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 150
+	m_hSnapshot = resource:"particles/particle_snapshots/radiant_building_emissions/good_barracks_lvl3_lightdisintegration.vsnap"
+	m_nSnapshotControlPoint = 3
+	m_flConstantRadius = 1.0
+	m_nBehaviorVersion = 11
+	m_nFirstMultipleOverride_BackwardCompat = 7
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_nCP1 = 4
+			m_vecCP1Pos = [ 0.0, 0.0, 300.0 ]
+			m_bDisableOperator = true
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 751.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 70.0
+			m_flRadiusMax = 100.0
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 4.0
+			m_fLifetimeMax = 6.0
+			m_fLifetimeRandExponent = 1.25
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMin = 15
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 85
+			m_nAlphaMax = 125
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 83, 168, 255 ]
+			m_ColorMin = [ 167, 82, 105 ]
+			m_TintMin = [ 255, 255, 255 ]
+			m_TintMax = [ 255, 255, 255 ]
+		},
+		{
+			_class = "C_INIT_RingWave"
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 200.0
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 900.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1200.0
+			}
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_flNoiseScaleLoc = 0.02
+			m_vecOffsetLoc = [ 1.0, 1.0, 1.0 ]
+			m_vecOutputMin = [ -666.0, -666.0, 125.0 ]
+			m_vecOutputMax = [ 666.0, 666.0, 444.0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_bDisableOperator = true
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.05
+			m_Gravity = [ 0.0, 0.0, 150.0 ]
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 1.25
+			m_flBias = 0.9
+			m_flEndScale = 2.0
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flEndFadeInTime = 0.1
+			m_flStartFadeOutTime = 0.1
+		},
+		{
+			_class = "C_OP_OscillateVector"
+			m_bDisableOperator = true
+			m_flOpEndFadeOutTime = 1.5
+			m_RateMin = [ -5.0, -5.0, -5.0 ]
+			m_RateMax = [ 5.0, 5.0, 5.0 ]
+			m_FrequencyMin = [ 2.0, 2.0, 2.0 ]
+			m_FrequencyMax = [ 4.0, 4.0, 4.0 ]
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_flFadeEndTime = 0.75
+			m_flFadeStartTime = 0.33
+			m_ColorFade = [ 51, 50, 48 ]
+		},
+		{
+			_class = "C_OP_Spin"
+			m_nSpinRateDegrees = 15
+			m_fSpinRateStopTime = 0.75
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 2.0
+			m_flEndScale = 5.0
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bBlendFramesSeq0 = false
+			m_flAnimationRate = 0.5
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/smoke/steam/steam.vtex"
+				},
+			]
+			m_OutlineColor = [ 255, 255, 255 ]
+		},
+	]
+}

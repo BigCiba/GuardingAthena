@@ -26,9 +26,27 @@ function modifier_lina_3:GetAbilitySpecialValue()
 	self.ignite_count = self:GetAbilitySpecialValueFor("ignite_count")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 end
+function modifier_lina_3:OnCreated(params)
+	if IsServer() then
+	else
+		---@type CDOTA_BaseNPC
+		local hParent = self:GetParent()
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_3_ambient.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControlEnt(iParticleID, 0, hParent, PATTACH_POINT_FOLLOW, "attach_attack1", hParent:GetAbsOrigin(), false)
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_3_ambient.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControlEnt(iParticleID, 0, hParent, PATTACH_POINT_FOLLOW, "attach_attack2", hParent:GetAbsOrigin(), false)
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+	end
+end
+function modifier_lina_3:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_PROJECTILE_NAME = "particles/units/heroes/hero_lina/lina_3_attack.vpcf"
+	}
+end
 function modifier_lina_3:EDeclareFunctions()
 	return {
-		MODIFIER_EVENT_ON_DAMAGE_CALCULATED = { self:GetParent() }
+		MODIFIER_EVENT_ON_DAMAGE_CALCULATED = { self:GetParent() },
 	}
 end
 function modifier_lina_3:OnDamageCalculated(params)
