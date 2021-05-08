@@ -51,9 +51,13 @@ end
 if item_npc_dota_hero_void_spirit == nil then
 	item_npc_dota_hero_void_spirit = class({}, nil, item_scepter)
 end
--- 齐天大圣 
+-- 齐天大圣
 if item_npc_dota_hero_monkey_king == nil then
 	item_npc_dota_hero_monkey_king = class({}, nil, item_scepter)
+end
+-- 莉娜
+if item_npc_dota_hero_lina == nil then
+	item_npc_dota_hero_lina = class({}, nil, item_scepter)
 end
 ---------------------------------------------------------------------
 -- Modifiers

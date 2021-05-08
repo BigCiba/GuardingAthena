@@ -533,4 +533,68 @@
 		"Model"	"models/props_gameplay/aghanim_scepter.vmdl"
 		"Effect"	"particles/items4_fx/scepter_aura.vpcf"
 	}
+
+	// 莉娜
+	"item_npc_dota_hero_lina"
+	{
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/scepter/scepter"
+		"AbilityTextureName"		"item_orchid"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"0.0"
+		"ID"						"1683"
+		"ItemQuality"				"epic"
+		"ItemCost"					"1"
+		"ItemSellable"				"0"
+		"ItemPurchasable"			"0"
+		"ItemIsNeutralDrop"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_duration"	"4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_damage_pct"	"20"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_counter_attack"	"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_chance"	"15"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_critical"	"50"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_count"	"9"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_count_damage_pct"	"20"
+			}
+		}
+		"Model"	"models/props_gameplay/aghanim_scepter.vmdl"
+		"Effect"	"particles/items4_fx/scepter_aura.vpcf"
+	}
 }

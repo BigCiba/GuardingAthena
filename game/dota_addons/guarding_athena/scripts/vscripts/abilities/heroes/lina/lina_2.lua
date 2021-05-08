@@ -14,6 +14,24 @@ function lina_2:OnSpellStart()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
+	self:LightStrikeArray(vPosition)
+	if hCaster:GetScepterLevel() >= 2 then
+		local count = 2
+		self:GameTimer(0.2, function()
+			if count > 0 then
+				count = count - 1
+				self:LightStrikeArray(vPosition, "particles/units/heroes/hero_lina/lina_2_secondary.vpcf")
+				hCaster:FindModifierByName("modifier_lina_0"):OnValidAbilityExecuted()
+				return 0.2
+			end
+		end)
+	end
+end
+function lina_2:LightStrikeArray(vPosition, sEffect)
+	---@type CDOTA_BaseNPC
+	local hCaster = self:GetCaster()
+	local sParticleName = sEffect or "particles/units/heroes/hero_lina/lina_2.vpcf"
+	-- local vPosition = self:GetCursorPosition()
 	local radius = self:GetSpecialValueFor("radius")
 	local stun_duration = self:GetSpecialValueFor("stun_duration")
 	local duration = self:GetSpecialValueFor("duration")
@@ -24,7 +42,7 @@ function lina_2:OnSpellStart()
 		hCaster:DealDamage(hUnit, self)
 		hCaster:_LinaIgnite(hUnit, ignite_count)
 	end
-	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_2.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	local iParticleID = ParticleManager:CreateParticle(sParticleName, PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID, 0, vPosition)
 	ParticleManager:SetParticleControl(iParticleID, 1, Vector(radius, 0, 0))
 	ParticleManager:ReleaseParticleIndex(iParticleID)

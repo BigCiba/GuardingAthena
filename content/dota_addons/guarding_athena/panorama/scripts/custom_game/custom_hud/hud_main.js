@@ -748,6 +748,8 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 			DOTAAbilityTooltip.SetPositionInPixels(0, 0, 0);
 			let AbilityScepterDescriptionContainer = Tooltips.FindChildTraverse("AbilityScepterDescriptionContainer");
 			AbilityScepterDescriptionContainer.style.visibility = "collapse";
+			let Attribute = Tooltips.FindChildTraverse("AbilityExtraAttributes");
+			Attribute.text = "";
 			// let AbilityScepterDescriptionContainer = Tooltips.FindChildTraverse("AbilityScepterDescriptionContainer");
 			// let AbilityIndex = Entities.GetAbilityByName(iEntityIndex, AbilityName);
 			// let AbilityLevel = Abilities.GetLevel(AbilityIndex);
@@ -790,6 +792,7 @@ function UpdateServiceNetTable(tableName, tableKeyName, table) {
 					Header.text = $.Localize("DOTA_Tooltip_ring_0_" + RingData.iRingIndex);
 					let Description = DOTAAbilityTooltip.FindChildTraverse("AbilityDescriptionContainer").GetChild(Number(index) * 2 + 3);
 					Description.text = $.Localize("DOTA_Tooltip_ring_0_" + RingData.iRingIndex + "_Description");
+					Description.text = Description.text.replace("%%", "%");
 					let HasModifier = Entities.HasModifier(iEntityIndex, RingData.sModifierName);
 					Header.SetHasClass("Active", HasModifier);
 					Description.SetHasClass("Active", HasModifier);
