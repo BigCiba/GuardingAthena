@@ -4,6 +4,7 @@ for sCourierName, tData in pairs(LoadKeyValues("scripts/npc/units/npc_pet.kv")) 
 		LinkLuaModifier(sModifierName, "modifiers/courier_fx/" .. sModifierName .. ".lua", LUA_MODIFIER_MOTION_NONE)
 	end
 end
+
 -- 通用
 LinkLuaModifier("modifier_dash", "modifiers/utils/modifier_dash.lua", LUA_MODIFIER_MOTION_BOTH)
 LinkLuaModifier("modifier_knockback_custom", "modifiers/utils/modifier_knockback_custom.lua", LUA_MODIFIER_MOTION_BOTH)

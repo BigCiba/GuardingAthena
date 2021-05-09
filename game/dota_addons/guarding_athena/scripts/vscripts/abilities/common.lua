@@ -695,6 +695,45 @@ if IsServer() then
 		end
 		return false
 	end
+	-- 获取下次record
+	function GetNextRecord()
+		if RECORD_SYSTEM_DUMMY.iLastRecord == nil then RECORD_SYSTEM_DUMMY.iLastRecord = 0 end
+		if RECORD_SYSTEM_DUMMY.iLastRecord and RECORD_SYSTEM_DUMMY.iLastRecord >= 255 then
+			RECORD_SYSTEM_DUMMY.iLastRecord = RECORD_SYSTEM_DUMMY.iLastRecord - 256
+		end
+		return RECORD_SYSTEM_DUMMY.iLastRecord + 1
+	end
+
+	DAMAGE_STATE_SPELL_CRIT = 1 -- 技能暴击
+	if ApplyDamage_Engine == nil then
+		ApplyDamage_Engine = ApplyDamage
+	end
+	function ApplyDamage(tDamageTable, iState)
+		if iState == nil then iState = 0 end
+		local iNextRecord = GetNextRecord()
+
+		if RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM == nil then RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM = {} end
+		RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iNextRecord] = iState
+
+		return ApplyDamage_Engine(tDamageTable), iNextRecord
+	end
+	function DamageFilter(iRecord, ...)
+		local bool = false
+		if RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM == nil then RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM = {} end
+		for i, iState in pairs({ ... }) do
+			bool = bool or (bit.band(RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iRecord] or 0, iState) == iState)
+		end
+		return bool
+	end
+	-- 在法术暴击效果里插入
+	function _SpellCrit(iRecord)
+		if RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM == nil then RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM = {} end
+		if RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iRecord] == nil then RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iRecord] = 0 end
+
+		if bit.band(RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iRecord], DAMAGE_STATE_SPELL_CRIT) ~= DAMAGE_STATE_SPELL_CRIT then
+			RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iRecord] = RECORD_SYSTEM_DUMMY.DAMAGE_SYSTEM[iRecord] + DAMAGE_STATE_SPELL_CRIT
+		end
+	end
 
 	ATTACK_STATE_NOT_USECASTATTACKORB = 1 -- 不触发攻击法球
 	ATTACK_STATE_NOT_PROCESSPROCS = 2 -- 不触发攻击特效
@@ -707,9 +746,9 @@ if IsServer() then
 	ATTACK_STATE_NO_EXTENDATTACK = 512 -- 没有触发额外攻击
 	ATTACK_STATE_SKIPCOUNTING = 1024 -- 不减少各种攻击计数
 	ATTACK_STATE_CRIT = 2048 -- 暴击，暴击技能里添加，Attack里加入无效
-	function CDOTA_BaseNPC:Attack(hTarget, iAttackState, ExtarData)
-		local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(ATTACK_SYSTEM_DUMMY, nil, "modifier_attack_system", { iAttacker = self:entindex(), iAttackState = iAttackState })
-
+	function CDOTA_BaseNPC:Attack(hTarget, iAttackState)
+		if iAttackState == nil then iAttackState = 0 end
+		local iNextRecord = GetNextRecord()
 		local bUseCastAttackOrb = (bit.band(iAttackState, ATTACK_STATE_NOT_USECASTATTACKORB) ~= ATTACK_STATE_NOT_USECASTATTACKORB)
 		local bProcessProcs = (bit.band(iAttackState, ATTACK_STATE_NOT_PROCESSPROCS) ~= ATTACK_STATE_NOT_PROCESSPROCS)
 		local bSkipCooldown = (bit.band(iAttackState, ATTACK_STATE_SKIPCOOLDOWN) == ATTACK_STATE_SKIPCOOLDOWN)
@@ -718,17 +757,33 @@ if IsServer() then
 		local bFakeAttack = (bit.band(iAttackState, ATTACK_STATE_FAKEATTACK) == ATTACK_STATE_FAKEATTACK)
 		local bNeverMiss = (bit.band(iAttackState, ATTACK_STATE_NEVERMISS) == ATTACK_STATE_NEVERMISS)
 
+		if RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM == nil then RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM = {} end
+		RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iNextRecord] = iAttackState
+
 		if not bFakeAttack and bProcessProcs and bUseCastAttackOrb then
 			local params = {
 				attacker = self,
 				target = hTarget,
 			}
-			if self.tSourceModifierEvents and self.tSourceModifierEvents[MODIFIER_EVENT_ON_ATTACK_START] then
-				local tModifiers = self.tSourceModifierEvents[MODIFIER_EVENT_ON_ATTACK_START]
+			if IsValid(params.attacker) and params.attacker.tSourceModifierEvents and params.attacker.tSourceModifierEvents[MODIFIER_EVENT_ON_ATTACK_START] then
+				local tModifiers = params.attacker.tSourceModifierEvents[MODIFIER_EVENT_ON_ATTACK_START]
 				for i = #tModifiers, 1, -1 do
 					local hModifier = tModifiers[i]
-					if IsValid(hModifier) and hModifier.OnAttackStart_AttackSystem then
-						hModifier:OnAttackStart_AttackSystem(params, ExtarData)
+					if IsValid(params.attacker) and IsValid(hModifier) and hModifier.OnAttackStart_AttackSystem then
+						hModifier:OnAttackStart_AttackSystem(params)
+					else
+						table.remove(tModifiers, i)
+					end
+				end
+			end
+			if IsValid(params.target) and params.target.tTargetModifierEvents and params.target.tTargetModifierEvents[MODIFIER_EVENT_ON_ATTACK_START] then
+				local tModifiers = params.target.tTargetModifierEvents[MODIFIER_EVENT_ON_ATTACK_START]
+				for i = #tModifiers, 1, -1 do
+					local hModifier = tModifiers[i]
+					if IsValid(params.target) and IsValid(hModifier) and hModifier.OnAttackStart_AttackSystem then
+						hModifier:OnAttackStart_AttackSystem(params)
+					else
+						table.remove(tModifiers, i)
 					end
 				end
 			end
@@ -737,34 +792,33 @@ if IsServer() then
 				for i = #tModifiers, 1, -1 do
 					local hModifier = tModifiers[i]
 					if IsValid(hModifier) and hModifier.OnAttackStart_AttackSystem then
-						hModifier:OnAttackStart_AttackSystem(params, ExtarData)
+						hModifier:OnAttackStart_AttackSystem(params)
+					else
+						table.remove(tModifiers, i)
 					end
 				end
 			end
 		end
 
 		self:PerformAttack(hTarget, bUseCastAttackOrb, bProcessProcs, bSkipCooldown, bIgnoreInvis, bUseProjectile, bFakeAttack, bNeverMiss)
-		print(modifier.record)
-		return modifier.record
+
+		return iNextRecord
 	end
-	function CDOTA_BaseNPC:AttackFilter(iRecord, ...)
+	function AttackFilter(iRecord, ...)
 		local bool = false
-		if self.ATTACK_SYSTEM == nil then self.ATTACK_SYSTEM = {} end
+		if RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM == nil then RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM = {} end
 		for i, iAttackState in pairs({ ... }) do
-			bool = bool or (bit.band(self.ATTACK_SYSTEM[iRecord] or 0, iAttackState) == iAttackState)
+			bool = bool or (bit.band(RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iRecord] or 0, iAttackState) == iAttackState)
 		end
 		return bool
 	end
 	-- 在暴击效果里插入
-	function CDOTA_BaseNPC:Crit(iRecord)
-		if self.ATTACK_SYSTEM == nil then self.ATTACK_SYSTEM = {} end
-		if self.ATTACK_SYSTEM[iRecord] ~= nil then
-			if bit.band(self.ATTACK_SYSTEM[iRecord], ATTACK_STATE_CRIT) ~= ATTACK_STATE_CRIT then
-				self.ATTACK_SYSTEM[iRecord] = self.ATTACK_SYSTEM[iRecord] + ATTACK_STATE_CRIT
-			end
-		else
-			local modifier = ATTACK_SYSTEM_DUMMY:AddNewModifier(self, nil, "modifier_attack_system", { iAttacker = self:entindex(), iAttackState = ATTACK_STATE_CRIT, iRecord = iRecord })
-			self.ATTACK_SYSTEM[iRecord] = ATTACK_STATE_CRIT
+	function _Crit(iRecord)
+		if RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM == nil then RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM = {} end
+		if RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iRecord] == nil then RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iRecord] = 0 end
+
+		if bit.band(RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iRecord], ATTACK_STATE_CRIT) ~= ATTACK_STATE_CRIT then
+			RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iRecord] = RECORD_SYSTEM_DUMMY.ATTACK_SYSTEM[iRecord] + ATTACK_STATE_CRIT
 		end
 	end
 
@@ -920,7 +974,7 @@ if IsServer() then
 			ApplyDamage(tDamageInfo)
 		end
 	end
-	
+
 	---使目标向某个方向冲刺
 	---@param vDirection 方向
 	---@param flDistance 距离
@@ -945,7 +999,7 @@ if IsServer() then
 			unit = self
 		})
 	end
-	
+
 	-- 击退
 	---@param vDirection 方向
 	---@param flDistance 距离

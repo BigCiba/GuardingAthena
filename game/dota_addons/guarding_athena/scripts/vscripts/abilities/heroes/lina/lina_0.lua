@@ -1,4 +1,13 @@
 lina_0 = class({})
+function lina_0:OnProjectileHit(hTarget, vLocation)
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		if hTarget then
+			hCaster:Attack(hTarget, ATTACK_STATE_SKIPCOOLDOWN + ATTACK_STATE_NOT_USEPROJECTILE)
+		end
+	end
+end
 function lina_0:GetIntrinsicModifierName()
 	return "modifier_lina_0"
 end
@@ -24,15 +33,54 @@ function modifier_lina_0:OnRefresh(params)
 	if IsServer() then
 	end
 end
+function modifier_lina_0:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL
+	}
+end
+function modifier_lina_0:GetModifierProcAttack_BonusDamage_Magical()
+	if self:GetParent():IsAttackProjectileDisabled() then
+		return self:GetParent():GetIntellect() * 5
+	end
+end
 function modifier_lina_0:EDeclareFunctions()
 	return {
-		MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED = { self:GetParent() }
+		MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED = { self:GetParent() },
+		MODIFIER_EVENT_ON_ATTACK_PROJECTILE_DISABLED = { self:GetParent() },
 	}
 end
 function modifier_lina_0:OnValidAbilityExecuted(params)
 	if IsServer() then
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_lina_0_buff", { duration = self.duration })
 	end
+end
+function modifier_lina_0:OnAttackProjectileDisabled(params)
+	---@type CDOTA_BaseNPC
+	local hCaster = params.unit
+	---@type CDOTA_BaseNPC
+	local hTarget = params.target
+	---@type CDOTABaseAbility
+	local hAbility = self:GetAbility()
+	local vDirection = CalculateDirection(hTarget, hCaster)
+	local tInfo = {
+		Ability = hAbility,
+		Source = hCaster,
+		EffectName = "particles/units/heroes/hero_lina/lina_attack_dragon_slave.vpcf",
+		vSpawnOrigin = hCaster:GetAbsOrigin(),
+		fDistance = 1075,
+		fStartRadius = 275,
+		fEndRadius = 200,
+		vVelocity = vDirection * 1200,
+		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
+		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+	}
+	ProjectileManager:CreateLinearProjectile(tInfo)
+end
+function modifier_lina_0:ECheckState()
+	return {
+		[MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED] = self:GetParent():GetScepterLevel() >= 3
+	}
 end
 ---------------------------------------------------------------------
 modifier_lina_0_buff = eom_modifier({

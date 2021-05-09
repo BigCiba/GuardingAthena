@@ -1,0 +1,134 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 128
+	m_flConstantRadius = 128.0
+	m_ConstantColor = [ 255, 108, 0, 25 ]
+	m_nBehaviorVersion = 11
+	m_nFirstMultipleOverride_BackwardCompat = 2
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.5
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.6
+			m_fLifetimeMin = 0.6
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_nControlPointNumber = 3
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_nControlPointNumber = 3
+			m_OffsetMin = [ 0.0, 110.0, 115.0 ]
+			m_OffsetMax = [ 0.0, 110.0, 120.0 ]
+			m_bLocalCoords = true
+		},
+		{
+			_class = "C_INIT_RemapScalar"
+			m_flOutputMax = 250.0
+			m_flInputMax = 0.5
+		},
+		{
+			_class = "C_INIT_RemapScalar"
+			m_nFieldOutput = 7
+			m_flInputMax = 0.1
+			m_flStartTime = 0.0
+			m_flEndTime = 0.1
+		},
+		{
+			_class = "C_INIT_PositionWarp"
+			m_flWarpTime = 0.5
+			m_vecWarpMin = [ 1.0, 0.0, 1.0 ]
+		},
+		{
+			_class = "C_INIT_RemapScalar"
+			m_flStartTime = 0.1
+			m_flEndTime = 1.0
+			m_flInputMin = 0.35
+			m_flInputMax = 0.5
+			m_nFieldOutput = 7
+			m_flOutputMin = 1.0
+			m_flOutputMax = 0.0
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_OFF"
+			m_fDrag = 0.05
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.75
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+			m_nField = 16
+			m_Rate = -1.0
+			m_flEndTime = 9999.0
+		},
+		{
+			_class = "C_OP_Decay"
+			m_flOpEndFadeInTime = 2.0
+			m_flOpStartFadeInTime = 2.0
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 0, 0, 0 ]
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.25
+			m_flEndScale = 0.0
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_flEndTime_max = 0.5
+			m_flEndTime_min = 0.5
+			m_flStartTime_max = 0.0
+			m_flStartTime_min = 0.0
+			m_nControlPointNumber = 3
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_nOrientationType = "PARTICLE_ORIENTATION_ALIGN_TO_PARTICLE_NORMAL"
+			m_bDisableZBuffering = true
+			m_flOverbrightFactor = 4.0
+			m_flAddSelfAmount = 1.0
+			m_bSaturateColorPreAlphaBlend = false
+			m_flRadiusScale = 0.5
+			m_flTextureVWorldSize = 400.0
+			m_flTextureVScrollRate = -400.0
+			m_nMaxTesselation = 5
+			m_nMinTesselation = 5
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/beam_plasma_04.vtex"
+				},
+			]
+		},
+	]
+}

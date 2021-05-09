@@ -451,9 +451,31 @@ function public:ModifyGoldFilter( keys )
 	return true
 end
 function public:TrackingProjectileFilter(params)
-	PrintTable(params)
+	--[[
+		params = {
+			is_attack	1
+			entindex_ability_const	-1
+			max_impact_time	0
+			entindex_target_const	145
+			move_speed	1000
+			entindex_source_const	281
+			dodgeable	1
+			expire_time	0
+		}
+	]]
+	local hCaster = EntIndexToHScript(params.entindex_source_const)
+	local hTarget = EntIndexToHScript(params.entindex_target_const)
+	if params.is_attack and params.is_attack == 1 and hCaster:IsAttackProjectileDisabled() then
+		FireModifierEvent({
+			event_name = MODIFIER_EVENT_ON_ATTACK_PROJECTILE_DISABLED,
+			unit = hCaster,
+			target = hTarget
+		})
+		return false
+	end
 	return true
 end
+
 function public:init(bReload)
 	local GameMode = GameRules:GetGameModeEntity()
 
@@ -467,7 +489,7 @@ function public:init(bReload)
 	GameMode:SetModifyExperienceFilter(Dynamic_Wrap(public, "ModifyExperienceFilter"), public)
 	GameMode:SetModifyGoldFilter(Dynamic_Wrap(public, "ModifyGoldFilter"), public)
 	-- GameMode:SetRuneSpawnFilter(Dynamic_Wrap(public, "RuneSpawnFilter"), public)
-	-- GameMode:SetTrackingProjectileFilter(Dynamic_Wrap(public, "TrackingProjectileFilter"), public)
+	GameMode:SetTrackingProjectileFilter(Dynamic_Wrap(public, "TrackingProjectileFilter"), public)
 end
 
 return public

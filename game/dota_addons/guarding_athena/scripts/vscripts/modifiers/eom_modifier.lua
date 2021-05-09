@@ -740,27 +740,19 @@ _G.EOM_MODIFIER_EVENTS = {
 	[MODIFIER_EVENT_ON_ATTACK_CANCELLED] = true,
 
 -- 自定义
--- [MODIFIER_EVENT_ON_ATTACK_START_CUSTOM] = true,
--- [MODIFIER_EVENT_ON_SUMMONNED] = true,
--- [MODIFIER_EVENT_ON_ENEMY_SPAWN] = true,
--- [MODIFIER_EVENT_ON_DASH] = true,
--- [MODIFIER_EVENT_ON_DASH_END] = true,
--- [MODIFIER_EVENT_ON_CUSTOM_ATTACK] = true,
--- [MODIFIER_EVENT_ON_CHAPTER_START] = true,
--- [MODIFIER_EVENT_ON_CHAPTER_END] = true,
-[MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED] = true,
--- [MODIFIER_EVENT_ON_ROOM_START] = true,
--- [MODIFIER_EVENT_ON_ROOM_END] = true,
+	[MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED] = true,
+	[MODIFIER_EVENT_ON_ATTACK_PROJECTILE_DISABLED] = true,
 }
 
 --------------------------------------------------------------------------------
 -- 自定义状态常数
 --------------------------------------------------------------------------------
--- MODIFIER_STATE_DODGE_PROJECTILE = 0			---闪避弹道
+MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED = 0		---无效远程攻击弹道
 -- MODIFIER_STATE_COUNTER_PROJECTILE = 1		---反弹弹道
 -- MODIFIER_STATE_DESTROY_PROJECTILE = 2		---销毁弹道
 -- MODIFIER_STATE_BREAKABLE = 3				---可破坏物
 -- MODIFIER_STATE_DODGE_TRAP = 4				---闪避陷阱
+
 _G.EOM_MODIFIER_PROPERTY_NAME = {}
 _G.EOM_MODIFIER_PROPERTY_FUNCTIONS = {}
 _G.EOM_MODIFIER_PROPERTY_INDEXES = {}
@@ -1017,25 +1009,9 @@ end
 ---@type CDOTA_BaseNPC 
 local BaseNPC = IsServer() and CDOTA_BaseNPC or C_DOTA_BaseNPC
 
----是否闪避弹道
-function BaseNPC:IsDodgeProjectile()
-	return GetModifierState(self, MODIFIER_STATE_DODGE_PROJECTILE)
-end
----是否反弹弹道
-function BaseNPC:IsCounterProjectile()
-	return GetModifierState(self, MODIFIER_STATE_COUNTER_PROJECTILE)
-end
----是否销毁弹道
-function BaseNPC:IsDestroyProjectile()
-	return GetModifierState(self, MODIFIER_STATE_DESTROY_PROJECTILE)
-end
----是否是可破坏物
-function BaseNPC:IsBreakable()
-	return GetModifierState(self, MODIFIER_STATE_BREAKABLE)
-end
----是否闪避陷阱
-function BaseNPC:IsDodgeTrap()
-	return GetModifierState(self, MODIFIER_STATE_DODGE_TRAP)
+---是否无效远程攻击弹道
+function BaseNPC:IsAttackProjectileDisabled()
+	return GetModifierState(self, MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED)
 end
 --------------------------------------------------------------------------------
 -- 自定义属性

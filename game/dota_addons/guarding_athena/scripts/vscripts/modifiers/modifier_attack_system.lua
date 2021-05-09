@@ -65,7 +65,7 @@ function public:OnAttackRecordDestroy(params)
 	if self.record == params.record then
 		params.attacker.ATTACK_SYSTEM[params.record] = nil
 		self:Destroy()
-		print("OnAttackRecordDestroy:", params.record)
+		-- print("OnAttackRecordDestroy:", params.record)
 	end
 end
 function public:OnAttackRecord(params)
@@ -73,6 +73,6 @@ function public:OnAttackRecord(params)
 		if params.attacker.ATTACK_SYSTEM == nil then params.attacker.ATTACK_SYSTEM = {} end
 		params.attacker.ATTACK_SYSTEM[params.record] = self.iAttackState
 		self.record = params.record
-		print("OnAttackRecord:", self.record)
+		-- print("OnAttackRecord:", self.record)
 	end
 end
