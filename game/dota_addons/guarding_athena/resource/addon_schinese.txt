@@ -447,7 +447,7 @@
 		"DOTA_Tooltip_ability_lina_4_Lore"						"混乱之雨"
 		
 		"DOTA_Tooltip_ability_item_npc_dota_hero_lina"	"紫怨"
-		"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：法术精通</h1>使极光留下燃烧路径造成持续%scepter_duration%秒的燃烧伤害，每秒造成极光%scepter_damage_pct%%%的伤害\n<h1>二转：火蝴蝶</h1>额外触发两次火蝴蝶\n<h1>三转：龙破斩</h1>普攻替换为龙破斩，造成%scepter_damage%倍智力的额外伤害。\n<h1>四转：混乱之雨</h1>提升混乱之雨的伤害并使陨石具有追踪效果\n一颗诞自火焰恶魔精华的榴石"
+		"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：极光</h1>使极光留下燃烧路径造成持续%scepter_duration%秒的燃烧伤害，每秒造成极光%scepter_damage_pct%%%的伤害\n<h1>二转：火蝴蝶</h1>额外触发%scepter_count%次火蝴蝶\n<h1>三转：龙破斩</h1>普攻替换为龙破斩，造成%scepter_damage%倍智力的额外伤害。\n<h1>四转：混乱之雨</h1>提升混乱之雨%scepter_meteor_damage_pct%%%的伤害并使陨石具有追踪效果\n一颗诞自火焰恶魔精华的榴石"
 
 		//schinese/abilities/heroes/monkey_king.txt
 		"npc_dota_hero_monkey_king"	"齐天大圣"
