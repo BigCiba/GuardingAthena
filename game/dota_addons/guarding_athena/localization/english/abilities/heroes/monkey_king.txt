@@ -1,6 +1,7 @@
 "npc_dota_hero_monkey_king"									"Monkey King"
 "DOTA_Tooltip_ability_monkey_king_0"						"Piercing Eye"
 "DOTA_Tooltip_ability_monkey_king_0_Description"			"Monkey King’s piercing eye can see into the enemy’s weakness. For every 1%% reduction in the target’s health, the damage caused by Monkey King is reduced by %damage_reduce%%%, and Monkey King’s damage is increased by %damage_deep%%%."
+"DOTA_Tooltip_ability_monkey_king_0_scepter_description_3"	"Attacks have a %scepter_chance%%%% chance to cause %scepter_critical% damage and ignore the armor"
 
 "DOTA_Tooltip_ability_monkey_king_1"						"Heaven Uproar"
 "DOTA_Tooltip_ability_monkey_king_1_Description"			"Monkey King rotates to the target point at high speed and sweeps the enemy units. The damaged unit will reduce the attack hit rate for the duration. After the effect is over, it will cause a range of damage and knock the surrounding targets away. Immune to magic damage during rotation."
@@ -24,8 +25,10 @@
 "DOTA_Tooltip_ability_monkey_king_3_cleave_damage"			"%Cleave damage: "
 "DOTA_Tooltip_ability_monkey_king_3_duration"				"Soldier duration: "
 "DOTA_Tooltip_ability_monkey_king_3_max_count"				"Soldier max count: "
+"DOTA_Tooltip_ability_monkey_king_3_scepter_description_1"	"Every %scepter_interval% seconds automatically spawn a monkey grandchild for %scepter_duration% seconds"
+"DOTA_Tooltip_ability_monkey_king_3_scepter_description_2"	"Each attack makes the target superimpose the mark, and each layer makes Monkey King’s attack increase [%scepter_counter_attack% * agility] points"
 
-"DOTA_Tooltip_ability_monkey_king_4"						"Jin Gu Bang"
+"DOTA_Tooltip_ability_monkey_king_4"						"Dinghai Shenzhen"
 "DOTA_Tooltip_ability_monkey_king_4_Description"			"Monkey King slammed the ground, causing damage to the surrounding area and knocking away the target. Then summon a huge golden hoop to drop from the sky to the target point, causing heavy damage and dizziness. Monkey King causes additional pure damage to him during the stun."
 "DOTA_Tooltip_ability_monkey_king_4_thump_damage"			"Knock-up attack damage factor: "
 "DOTA_Tooltip_ability_monkey_king_4_thump_radius"			"Knock-up range: "
@@ -33,6 +36,7 @@
 "DOTA_Tooltip_ability_monkey_king_4_crush_radius"			"Jin Gu radius: "
 "DOTA_Tooltip_ability_monkey_king_4_crush_duration"			"Jin Gu stun duration: "
 "DOTA_Tooltip_ability_monkey_king_4_pure_pct"				"%Additional pure damage:"
+"DOTA_Tooltip_ability_monkey_king_4_scepter_description_4"	"Causes Dinghai Shenzhen to cause %scepter_count% times %scepter_damage_pct%%% pure damage"
 
 "DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king"	"Monkey King Bar"
 "DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Every %scepter_interval% seconds automatically spawn a monkey grandchild for %scepter_duration% seconds\n<h1>Second Reincarnation</h1>Each attack makes the target superimpose the mark, and each layer makes Monkey King increase his attack by [%scepter_counter_attack% * agility]\n<h1>Third  Reincarnation</h1>Attacks have a %scepter_chance%%% chance to cause %scepter_critical% damage and ignore the armor\n<h1>Fourth Reincarnation</h1>Causes Dinghai Shenzhen to cause %scepter_count% times %scepter_count_damage_pct%%% pure damage\nIt was originally the sacred iron smelted by Taishang Laojun, and Dayu borrowed the Dinghai Shenzhen iron left over after the flood control and placed it in the East China Sea."

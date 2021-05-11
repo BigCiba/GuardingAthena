@@ -38,7 +38,7 @@ function monkey_king_4:OnSpellStart()
 	local iCount = 1
 	if hCaster:GetScepterLevel() >= 4 then
 		iCount = self:GetSpecialValueFor("scepter_count")
-		crush_damage = crush_damage * self:GetSpecialValueFor("scepter_damage") * 0.01
+		crush_damage = crush_damage * self:GetSpecialValueFor("scepter_damage_pct") * 0.01
 	end
 	self:GameTimer(1, function()
 		if iCount > 0 then

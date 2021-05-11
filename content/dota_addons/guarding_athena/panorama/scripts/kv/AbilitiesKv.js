@@ -15725,6 +15725,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityTextureName":"monkey_king_0",
 		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
 		"MaxLevel":1,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":3,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15849,6 +15851,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"LevelsBetweenUpgrades":3,
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_2",
 		"AbilityCooldown":20,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":"1|2",
 		"AbilityManaCost":"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
@@ -15904,6 +15908,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastAnimation":"ACT_DOTA_MK_STRIKE",
 		"AbilityCastRange":1200,
 		"AbilityCooldown":60,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":4,
 		"AbilityManaCost":"200 300 400 500 600 700 800 900",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
@@ -15944,7 +15950,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			},
 			"09":{
 				"var_type":"FIELD_INTEGER",
-				"scepter_damage":20,
+				"scepter_damage_pct":20,
 			},
 		},
 	},
@@ -15954,6 +15960,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityTextureName":"lina_0",
 		"AbilityType":"DOTA_ABILITY_TYPE_BASIC",
 		"MaxLevel":1,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":4,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
@@ -15983,6 +15991,10 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 				"var_type":"FIELD_INTEGER",
 				"ignite_count":1,
 			},
+			"07":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_damage":15,
+			},
 		},
 	},
 	"lina_1":{
@@ -15997,12 +16009,22 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastRange":2000,
 		"AbilityCastPoint":0.48,
 		"AbilityCooldown":12,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":1,
 		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
 		"AbilitySpecial":{
+			"10":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_duration":6,
+			},
+			"11":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_damage_pct":20,
+			},
 			"01":{
 				"var_type":"FIELD_INTEGER",
 				"base_damage":"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000",
@@ -16053,12 +16075,18 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastRange":1300,
 		"AbilityCastPoint":0.48,
 		"AbilityCooldown":6,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":2,
 		"AbilityManaCost":"120 140 160 180 200 220 240 260 280 300 320 340 360 380 400 420 440 460 480 500",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
 		"AbilitySpecial":{
+			"10":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_count":2,
+			},
 			"01":{
 				"var_type":"FIELD_FLOAT",
 				"stun_duration":1.5,
@@ -16143,6 +16171,8 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastAnimation":"ACT_DOTA_CAST_ABILITY_2",
 		"AbilityCastPoint":0.3,
 		"AbilityCooldown":30,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":3,
 		"AbilityManaCost":"200 300 400 500 600 700 800 900",
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
@@ -16152,6 +16182,10 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			"10":{
 				"var_type":"FIELD_INTEGER",
 				"ignite_count":2,
+			},
+			"11":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_meteor_damage_pct":60,
 			},
 			"01":{
 				"var_type":"FIELD_INTEGER",

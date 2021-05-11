@@ -22,6 +22,7 @@ function modifier_lina_4:GetAbilitySpecialValue()
 	self.count_per_wave = self:GetAbilitySpecialValueFor("count_per_wave")
 	self.delay = self:GetAbilitySpecialValueFor("delay")
 	self.max_radius = self:GetAbilitySpecialValueFor("max_radius")
+	self.radius = self:GetAbilitySpecialValueFor("radius")
 end
 function modifier_lina_4:OnCreated(params)
 	if IsServer() then
@@ -53,10 +54,10 @@ function modifier_lina_4:OnIntervalThink()
 	local hAbility = self:GetAbility()
 	for i = 1, self.count_per_wave do
 		local vPosition = hParent:GetAbsOrigin() + RandomVector(RandomInt(0, self.max_radius))
-		if hCaster:GetScepterLevel() >= 4 then
+		if hCaster:GetScepterLevel() >= 3 then
 			local tTargets = FindUnitsInRadiusWithAbility(hCaster, hParent:GetAbsOrigin(), self.max_radius, hAbility)
 			if IsValid(tTargets[1]) then
-				vPosition = tTargets[1]:GetAbsOrigin()
+				vPosition = tTargets[1]:GetAbsOrigin() + RandomVector(RandomInt(0, self.radius))
 			end
 		end
 		CreateModifierThinker(hCaster, hAbility, "modifier_lina_4_meteor", {duration = 1.3}, vPosition, hCaster:GetTeamNumber(), false)
@@ -112,7 +113,7 @@ function modifier_lina_4_meteor:OnDestroy()
 		---@type CDOTABaseAbility
 		local hAbility = self:GetAbility()
 		local vPosition = hParent:GetAbsOrigin()
-		local flDamage = hAbility:GetSpecialValueFor("base_damage") + hAbility:GetSpecialValueFor("damage") * self:GetPrimaryStatValue()
+		local flDamage = hAbility:GetSpecialValueFor("base_damage") + hAbility:GetSpecialValueFor("damage") * hCaster:GetPrimaryStatValue()
 		if hCaster:GetScepterLevel() >= 4 then
 			flDamage = flDamage * (1 + hAbility:GetSpecialValueFor("scepter_damage_pct") * 0.01)
 		end

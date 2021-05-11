@@ -406,8 +406,9 @@
 		//schinese/abilities/heroes/lina.txt
 		"npc_dota_hero_lina"									"莉莉丝"
 		"DOTA_Tooltip_ability_lina_0"							"炽红莲"
-		"DOTA_Tooltip_ability_lina_0_Description"				"每次施法都会产生火焰虚影包裹全身，根据施法技能的等级，每级对自身附加一层火焰虚影，每层火焰虚影每%interval%秒对周围%radius%范围的单位造成[%damage% * 智力]的伤害并减少[%reduce% * 智力]的伤害。每层虚影持续%duration%秒。"
+		"DOTA_Tooltip_ability_lina_0_Description"				"每次施法都会产生火焰虚影包裹全身，每层火焰虚影每%interval%秒对周围%radius%范围的单位造成[%damage% * 智力]的伤害并减少[%reduce% * 智力]的伤害。每层虚影持续%duration%秒。"
 		"DOTA_Tooltip_ability_lina_0_Lore"						"火之高兴"
+		"DOTA_Tooltip_ability_lina_0_scepter_description_4"		"普攻替换为龙破斩，造成%scepter_damage%倍智力的额外伤害。"
 		"DOTA_Tooltip_modifier_lina_0_buff"						"炽红莲"
 		"DOTA_Tooltip_modifier_lina_0_buff_Description"			"每次施法都会产生火焰虚影包裹全身，对周围的单位造成持续伤害并减少受到的伤害。"
 		
@@ -419,10 +420,14 @@
 		"DOTA_Tooltip_ability_lina_1_miss_duration"				"丢失命中率持续时间："
 		"DOTA_Tooltip_ability_lina_1_distance"					"最大距离："
 		"DOTA_Tooltip_ability_lina_1_ignite_count"				"点燃层数："
-		"DOTA_Tooltip_ability_lina_1_Lore"						"来自异界的黑色火焰"
+		"DOTA_Tooltip_ability_lina_1_Lore"						"来自异界的极光"
+		"DOTA_Tooltip_ability_lina_1_scepter_description_1"		"使极光留下燃烧路径造成持续%scepter_duration%秒的燃烧伤害，每秒造成极光%scepter_damage_pct%%%的伤害"
+		"DOTA_Tooltip_modifier_lina_1_debuff"					"极光"
+		"DOTA_Tooltip_modifier_lina_1_debuff_Description"		"攻击有几率丢失。"
+		
 		
 		"DOTA_Tooltip_ability_lina_2"							"火蝴蝶"
-		"DOTA_Tooltip_ability_lina_2_Description"				"召唤火蝴蝶冲击目标区域的敌人，造成%stun_duration%秒的晕眩并对范围内的单位造成持续伤害"
+		"DOTA_Tooltip_ability_lina_2_Description"				"召唤火蝴蝶冲击目标区域的敌人，造成%stun_duration%秒的晕眩并对范围内的单位造成持续伤害。"
 		"DOTA_Tooltip_ability_lina_2_base_damage"				"冲击基础伤害："
 		"DOTA_Tooltip_ability_lina_2_damage"					"冲击智力伤害系数："
 		"DOTA_Tooltip_ability_lina_2_tick_damage"				"持续伤害智力系数："
@@ -430,12 +435,15 @@
 		"DOTA_Tooltip_ability_lina_2_duration"					"持续时间："
 		"DOTA_Tooltip_ability_lina_2_ignite_count"				"点燃层数："
 		"DOTA_Tooltip_ability_lina_2_Lore"						"飞蛾扑火，火蝶重生"
+		"DOTA_Tooltip_ability_lina_2_scepter_description_2"		"额外触发%scepter_count%次火蝴蝶"
 		
 		"DOTA_Tooltip_ability_lina_3"							"点燃"
 		"DOTA_Tooltip_ability_lina_3_Description"				"攻击与技能对目标造成伤害时，对目标造成点燃效果。"
 		"DOTA_Tooltip_ability_lina_3_damage"					"智力伤害系数："
 		"DOTA_Tooltip_ability_lina_3_duration"					"持续时间："
 		"DOTA_Tooltip_ability_lina_3_Note0"						"点燃效果不可驱散"
+		"DOTA_Tooltip_modifier_lina_3_debuff"					"点燃"
+		"DOTA_Tooltip_modifier_lina_3_debuff_Description"		"受到持续伤害。"
 		
 		"DOTA_Tooltip_ability_lina_4"							"混乱之雨"
 		"DOTA_Tooltip_ability_lina_4_Description"				"刻画禁忌法阵召唤混沌陨石，陨石短暂延迟后对范围内的单位造成巨大的伤害并晕眩。"
@@ -444,10 +452,11 @@
 		"DOTA_Tooltip_ability_lina_4_stun_duration"				"晕眩时间："
 		"DOTA_Tooltip_ability_lina_4_duration"					"持续时间："
 		"DOTA_Tooltip_ability_lina_4_ignite_count"				"点燃层数："
-		"DOTA_Tooltip_ability_lina_4_Lore"						"混乱之雨"
+		"DOTA_Tooltip_ability_lina_4_Lore"						"雨下整夜，我的爱液出就像雨水"
+		"DOTA_Tooltip_ability_lina_4_scepter_description_3"		"提升混乱之雨%scepter_meteor_damage_pct%%%的伤害并使陨石具有追踪效果"
 		
 		"DOTA_Tooltip_ability_item_npc_dota_hero_lina"	"紫怨"
-		"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：极光</h1>使极光留下燃烧路径造成持续%scepter_duration%秒的燃烧伤害，每秒造成极光%scepter_damage_pct%%%的伤害\n<h1>二转：火蝴蝶</h1>额外触发%scepter_count%次火蝴蝶\n<h1>三转：龙破斩</h1>普攻替换为龙破斩，造成%scepter_damage%倍智力的额外伤害。\n<h1>四转：混乱之雨</h1>提升混乱之雨%scepter_meteor_damage_pct%%%的伤害并使陨石具有追踪效果\n一颗诞自火焰恶魔精华的榴石"
+		"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：极光</h1>使极光留下燃烧路径造成持续%scepter_duration%秒的燃烧伤害，每秒造成极光%scepter_damage_pct%%%的伤害\n<h1>二转：火蝴蝶</h1>额外触发%scepter_count%次火蝴蝶\n<h1>三转：混乱之雨</h1>提升混乱之雨%scepter_meteor_damage_pct%%%的伤害并使陨石具有追踪效果\n<h1>四转：龙破斩</h1>普攻替换为龙破斩，造成%scepter_damage%倍智力的额外伤害。\n一颗诞自火焰恶魔精华的榴石"
 
 		//schinese/abilities/heroes/monkey_king.txt
 		"npc_dota_hero_monkey_king"	"齐天大圣"
@@ -488,10 +497,10 @@
 		"DOTA_Tooltip_ability_monkey_king_4_crush_radius"			"砸击范围："
 		"DOTA_Tooltip_ability_monkey_king_4_crush_duration"			"砸击晕眩时间："
 		"DOTA_Tooltip_ability_monkey_king_4_pure_pct"				"%额外纯粹伤害："
-		"DOTA_Tooltip_ability_monkey_king_4_scepter_description_4"	"使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害"
+		"DOTA_Tooltip_ability_monkey_king_4_scepter_description_4"	"使得定海神针造成%scepter_count%次%scepter_damage_pct%%%的纯粹伤害"
 		
 		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king"	"金箍棒"
-		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"
+		"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"
 
 		//schinese/abilities/heroes/nevermore.txt
 		"npc_dota_hero_nevermore"	"塔耳塔洛斯"

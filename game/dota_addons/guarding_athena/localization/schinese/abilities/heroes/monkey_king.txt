@@ -36,7 +36,7 @@
 "DOTA_Tooltip_ability_monkey_king_4_crush_radius"			"砸击范围："
 "DOTA_Tooltip_ability_monkey_king_4_crush_duration"			"砸击晕眩时间："
 "DOTA_Tooltip_ability_monkey_king_4_pure_pct"				"%额外纯粹伤害："
-"DOTA_Tooltip_ability_monkey_king_4_scepter_description_4"	"使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害"
+"DOTA_Tooltip_ability_monkey_king_4_scepter_description_4"	"使得定海神针造成%scepter_count%次%scepter_damage_pct%%%的纯粹伤害"
 
 "DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king"	"金箍棒"
-"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_count_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"
+"DOTA_Tooltip_ability_item_npc_dota_hero_monkey_king_Description"	"<h1>专属装备</h1>全属性、生命值与魔法值各提升%property%%%\n<h1>一转：猴子猴孙</h1>每%scepter_interval%秒自动产生一个猴子猴孙，持续%scepter_duration%秒\n<h1>二转：无尽攻势</h1>每次攻击使目标叠加标记，每层使得齐天大圣对其攻击增加[%scepter_counter_attack% * 敏捷]点\n<h1>三转：火眼金睛</h1>攻击有%scepter_chance%%%的几率造成%scepter_critical%倍伤害且无视护甲\n<h1>四转：定海神针</h1>使得定海神针造成%scepter_count%次%scepter_damage_pct%%%的纯粹伤害\n原是太上老君冶炼的神铁，大禹借走治水后遗下的定海神珍铁，放在东海。"

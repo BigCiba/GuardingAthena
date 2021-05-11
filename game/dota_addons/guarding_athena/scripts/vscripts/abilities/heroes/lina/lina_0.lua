@@ -76,10 +76,11 @@ function modifier_lina_0:OnAttackProjectileDisabled(params)
 		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
 	}
 	ProjectileManager:CreateLinearProjectile(tInfo)
+	self:OnValidAbilityExecuted()
 end
 function modifier_lina_0:ECheckState()
 	return {
-		[MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED] = self:GetParent():GetScepterLevel() >= 3
+		[MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED] = self:GetParent():GetScepterLevel() >= 4
 	}
 end
 ---------------------------------------------------------------------
