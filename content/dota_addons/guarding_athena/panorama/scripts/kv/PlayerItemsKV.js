@@ -35,6 +35,12 @@ GameUI.CustomUIConfig().PlayerItemsKV = {
 		"Quality":"Artifact",
 		"Hero":"npc_dota_hero_omniknight",
 	},
+	"juggernaut_01":{
+		"Name":"鬼面武士",
+		"Type":"skin",
+		"Quality":"Artifact",
+		"Hero":"npc_dota_hero_juggernaut",
+	},
 	"wing_01":{
 		"Name":"纯金翅膀",
 		"Type":"particle",

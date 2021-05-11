@@ -206,6 +206,7 @@ function UpdataSkinSetting() {
 	let PlayerID = Players.GetLocalPlayer();
 
 	let playerSkinData = CustomNetTables.GetTableValue("service", "player_skin_" + PlayerID);
+	$.Msg(playerSkinData)
 	for (const index in playerSkinData) {
 		const ItemData = playerSkinData[index];
 		if (ItemData.Equip == 1 && ItemData.Hero == PreviewHeroName) {

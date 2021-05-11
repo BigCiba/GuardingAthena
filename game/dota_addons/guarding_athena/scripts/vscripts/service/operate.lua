@@ -16,6 +16,7 @@ public.msg = {
 }
 
 function public:OnOperate(id, data, playerid)
+	DeepPrintTable(data)
 	if nil == self.msg[id] then
 		return
 	end

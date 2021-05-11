@@ -1,5 +1,5 @@
-LinkLuaModifier( "modifier_juggernaut_4", "abilities/heroes/juggernaut/juggernaut_4.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_juggernaut_4_buff", "abilities/heroes/juggernaut/juggernaut_4.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_juggernaut_4", "abilities/heroes/juggernaut/juggernaut_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_juggernaut_4_buff", "abilities/heroes/juggernaut/juggernaut_4.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if juggernaut_4 == nil then
 	juggernaut_4 = class({})
@@ -11,7 +11,7 @@ function juggernaut_4:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
 	local duration = self:GetSpecialValueFor("duration")
-	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_4", {duration = duration, vPosition = vPosition})
+	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_4", { duration = duration, vPosition = vPosition })
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -27,12 +27,17 @@ function modifier_juggernaut_4:OnCreated(params)
 		self.vPosition = StringToVector(params.vPosition)
 		self:StartIntervalThink(self.interval)
 		self:OnIntervalThink()
+
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_riki/riki_tricks.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(iParticleID, 0, self.vPosition)
+		ParticleManager:SetParticleControl(iParticleID, 1, Vector(self.radius, 1, 1))
+		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
 function modifier_juggernaut_4:OnDestroy()
 	if IsServer() then
 		FindClearSpaceForUnit(self:GetParent(), self.vPosition, true)
-		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_juggernaut_4_buff", {duration = self.buff_duration})
+		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_juggernaut_4_buff", { duration = self.buff_duration })
 		self:GetParent():EmitSound("Hero_Juggernaut.ArcanaTrigger")
 	end
 end
@@ -42,12 +47,15 @@ function modifier_juggernaut_4:OnIntervalThink()
 	local vRandom = RandomVector(RandomInt(300, self.radius))
 	local vStart = self.vPosition + vRandom
 	local vEnd = self.vPosition + Rotation2D(vRandom, math.rad(RandomInt(120, 240)))
-	local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_slash_tgt_serrakura.vpcf", PATTACH_ABSORIGIN, hParent)
-	ParticleManager:SetParticleControl( iParticleID, 0, vStart)
-	ParticleManager:SetParticleControl( iParticleID, 1, vEnd + Vector(0,0,50))
-	local iParticleID = ParticleManager:CreateParticle("particles/heroes/juggernaut/phantom_sword_dance_a.vpcf", PATTACH_ABSORIGIN, hParent)
-	ParticleManager:SetParticleControl( iParticleID, 0, vStart)
-	ParticleManager:SetParticleControl( iParticleID, 2, vEnd + Vector(0,0,50))
+	-- local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_slash_tgt_serrakura.vpcf", PATTACH_ABSORIGIN, hParent)
+	-- ParticleManager:SetParticleControl( iParticleID, 0, vStart)
+	-- ParticleManager:SetParticleControl( iParticleID, 1, vEnd + Vector(0,0,50))
+	-- local iParticleID = ParticleManager:CreateParticle("particles/heroes/juggernaut/phantom_sword_dance_a.vpcf", PATTACH_ABSORIGIN, hParent)
+	-- ParticleManager:SetParticleControl( iParticleID, 0, vStart)
+	-- ParticleManager:SetParticleControl( iParticleID, 2, vEnd + Vector(0,0,50))
+	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step.vpcf", PATTACH_ABSORIGIN, hParent)
+	ParticleManager:SetParticleControl(iParticleID, 0, vStart)
+	ParticleManager:SetParticleControl(iParticleID, 1, vEnd)
 	local hTarget = RandomValue(tTargets)
 	if IsValid(hTarget) then
 		hParent:SetAbsOrigin(hTarget:GetAbsOrigin())
