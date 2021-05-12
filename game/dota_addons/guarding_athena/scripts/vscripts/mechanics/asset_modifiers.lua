@@ -28,7 +28,7 @@ function public:HasWearables(sModelName, hUnit)
 	return bHasWearable, hModel
 end
 
--- 替换饰品
+---替换饰品
 function public:ReplaceWearables(sSkinName, hUnit)
 	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
 	if tAssetModifiers ~= nil then
@@ -80,7 +80,22 @@ function public:ReplaceWearables(sSkinName, hUnit)
 		end
 	end
 end
--- 替换模型
+
+---替换技能
+function public:ReplaceAbilities(sSkinName, hUnit)
+	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
+	if tAssetModifiers ~= nil then
+		for _, tAssetModifier in pairs(tAssetModifiers) do
+			if tAssetModifier.type == "ability" then
+				local hAbility = hUnit:AddAbility(tAssetModifier.modifier)
+				hUnit:SwapAbilities(tAssetModifier.modifier, tAssetModifier.asset, true, false)
+				hUnit:RemoveAbility(tAssetModifier.asset)
+			end
+		end
+	end
+end
+
+---替换主体模型
 function public:GetEntityModelReplacement(sSkinName)
 	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
 	if tAssetModifiers ~= nil then
@@ -92,7 +107,19 @@ function public:GetEntityModelReplacement(sSkinName)
 	end
 end
 
--- 通过皮肤名字获取单位名字
+---获取主体模型皮肤
+function public:GetEntityModelReplacementSkin(sSkinName)
+	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
+	if tAssetModifiers ~= nil then
+		for _, tAssetModifier in pairs(tAssetModifiers) do
+			if tAssetModifier.type == "entity_model" then
+				return tAssetModifier.skin
+			end
+		end
+	end
+end
+
+---通过皮肤名字获取单位名字
 function public:GetUnitNameBySkinName(sSkinName)
 	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
 	if tAssetModifiers ~= nil then
@@ -104,7 +131,7 @@ function public:GetUnitNameBySkinName(sSkinName)
 	end
 end
 
--- 获取替换特效
+---获取替换特效
 function public:GetParticleReplacement(sParticlePath, hUnit)
 	if not IsValid(hUnit) then
 		return sParticlePath
@@ -123,7 +150,7 @@ function public:GetParticleReplacement(sParticlePath, hUnit)
 	return sParticlePath
 end
 
--- 获取替换技能图标
+---获取替换技能图标
 function public:GetAbilityTextureReplacement(sAbilityTexture, hUnit)
 	if not IsValid(hUnit) then
 		return sAbilityTexture
@@ -142,7 +169,7 @@ function public:GetAbilityTextureReplacement(sAbilityTexture, hUnit)
 	return sAbilityTexture
 end
 
--- 获取替换音效
+---获取替换音效
 function public:GetSoundReplacement(sSoundName, hUnit)
 	if not IsValid(hUnit) then
 		return sSoundName
@@ -161,7 +188,7 @@ function public:GetSoundReplacement(sSoundName, hUnit)
 	return sSoundName
 end
 
--- 获取替换模型
+---获取替换模型
 function public:GetModelReplacement(sModelName, hUnit)
 	if not IsValid(hUnit) then
 		return sModelName

@@ -1,17 +1,18 @@
-LinkLuaModifier( "modifier_juggernaut_0", "abilities/heroes/juggernaut/juggernaut_0.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_juggernaut_0", "abilities/heroes/juggernaut/juggernaut_0.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if juggernaut_0 == nil then
 	juggernaut_0 = class({})
 end
 function juggernaut_0:OnSpellStart()
 	local hCaster = self:GetCaster()
-	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_0", {duration = self:GetSpecialValueFor("duration")})
+	hCaster:SetSkin(1)
+	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_0", { duration = self:GetSpecialValueFor("duration") })
 	if hCaster:GetScepterLevel() >= 1 then
 		local illusions = Load(hCaster, "manta_illusion_table") or {}
 		for i = #illusions, 1, -1 do
 			local hIllusion = illusions[i]
-			if not hIllusion:IsNull() then 
-				hIllusion:AddNewModifier(hCaster, self, "modifier_juggernaut_0", {duration = self:GetSpecialValueFor("duration")})
+			if not hIllusion:IsNull() then
+				hIllusion:AddNewModifier(hCaster, self, "modifier_juggernaut_0", { duration = self:GetSpecialValueFor("duration") })
 			end
 		end
 	end

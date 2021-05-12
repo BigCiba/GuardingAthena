@@ -7,13 +7,18 @@ function public:OnCreated(params)
 	self:Init()
 	-- self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	local hParent = self:GetParent()
+
+	
 	-- -- 是否装备魔导师秘钥
 	-- hParent.HasArcana = function (hParent)
-	-- 	return true
+		-- 	return true
 	-- end
 	if IsServer() then
+		self:StartIntervalThink(0.1)
 		-- 替换饰品
 		AssetModifiers:ReplaceWearables("juggernaut_01", hParent)
+		-- 替换技能
+		AssetModifiers:ReplaceAbilities("juggernaut_01", hParent)
 		-- -- 空间裂缝
 		-- self.hAbility = hParent:FindAbilityByName("juggernaut_0")
 	else
@@ -24,7 +29,9 @@ function public:OnCreated(params)
 	end
 	-- AddModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
-function public:OnDestroy()
+function public:OnIntervalThink()
+	self:GetParent():SetSkin(1)
+	self:StartIntervalThink(-1)
 	-- RemoveModifierEvents(MODIFIER_EVENT_ON_ATTACK_LANDED, self, self:GetParent())
 end
 function public:OnAttackLanded(params)
