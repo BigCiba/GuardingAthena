@@ -90,6 +90,9 @@ function public:ReplaceAbilities(sSkinName, hUnit)
 				local hAbility = hUnit:AddAbility(tAssetModifier.modifier)
 				hUnit:SwapAbilities(tAssetModifier.modifier, tAssetModifier.asset, true, false)
 				hUnit:RemoveAbility(tAssetModifier.asset)
+				if hAbility:GetAbilityIndex() == 0 then
+					hAbility:SetLevel(1)
+				end
 			end
 		end
 	end
@@ -208,38 +211,9 @@ function public:GetModelReplacement(sModelName, hUnit)
 end
 
 if IsServer() then
-	function public:_updateActivityModifier(hUnit)
-		if not IsValid(hUnit) then return end
-		if hUnit.AssetModifiers_tActivityModifiers == nil then hUnit.AssetModifiers_tActivityModifiers = {} end
-
-		hUnit:ClearActivityModifiers()
-
-		for i = #hUnit.AssetModifiers_tActivityModifiers, 1, -1 do
-			hUnit:AddActivityModifier(hUnit.AssetModifiers_tActivityModifiers[i])
-		end
-	end
-
-	function public:AddActivityModifier(hUnit, sName)
-		if not IsValid(hUnit) then return end
-		if hUnit.AssetModifiers_tActivityModifiers == nil then hUnit.AssetModifiers_tActivityModifiers = {} end
-
-		table.insert(hUnit.AssetModifiers_tActivityModifiers, sName)
-
-		self:_updateActivityModifier(hUnit)
-	end
-
-	function public:RemoveActivityModifier(hUnit, sName)
-		if not IsValid(hUnit) then return end
-		if hUnit.AssetModifiers_tActivityModifiers == nil then hUnit.AssetModifiers_tActivityModifiers = {} end
-
-		ArrayRemove(hUnit.AssetModifiers_tActivityModifiers, sName)
-
-		self:_updateActivityModifier(hUnit)
-	end
-
-	--[[
-		监听事件
-	]]--
+	--[[		监听事件
+	]]
+	--
 	function public:OnNPCFirstSpawned(tEvents)
 		local hSpawnedUnit = EntIndexToHScript(tEvents.entindex)
 

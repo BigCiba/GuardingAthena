@@ -20,8 +20,8 @@ function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 
-	_G.ATTACK_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
-	_G.ATTACK_SYSTEM_DUMMY = CreateModifierThinker(nil, nil, "modifier_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
+	-- _G.ATTACK_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
+	-- _G.ATTACK_SYSTEM_DUMMY = CreateModifierThinker(nil, nil, "modifier_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
 
 	-- 初始化游戏参数
 	self.entAthena = Entities:FindByName(nil, "athena")				--寻找基地

@@ -607,6 +607,35 @@ if IsServer() then
 	function CDOTA_BaseNPC:IsRoundCreep()
 		return self:HasModifier("modifier_round")
 	end
+	if CDOTA_BaseNPC.AddActivityModifier_Engine == nil then
+		CDOTA_BaseNPC.AddActivityModifier_Engine = CDOTA_BaseNPC.AddActivityModifier
+	end
+	---@private
+	function CDOTA_BaseNPC:_updateActivityModifier()
+		if self._tActivityModifiers == nil then self._tActivityModifiers = {} end
+
+		self:ClearActivityModifiers()
+
+		for i = #self._tActivityModifiers, 1, -1 do
+			self:AddActivityModifier_Engine(self._tActivityModifiers[i])
+		end
+	end
+
+	function CDOTA_BaseNPC:AddActivityModifier(sName)
+		if self._tActivityModifiers == nil then self._tActivityModifiers = {} end
+
+		table.insert(self._tActivityModifiers, sName)
+
+		self:_updateActivityModifier(self)
+	end
+
+	function CDOTA_BaseNPC:RemoveActivityModifier(sName)
+		if self._tActivityModifiers == nil then self._tActivityModifiers = {} end
+
+		ArrayRemove(self._tActivityModifiers, sName)
+
+		self:_updateActivityModifier(self)
+	end
 end
 
 Hashtables = Hashtables or {}

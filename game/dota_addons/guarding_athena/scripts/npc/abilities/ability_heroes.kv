@@ -1893,6 +1893,76 @@
 			}
 		}
 	}
+	"juggernaut_0_juggernaut_01"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_01/juggernaut_0_juggernaut_01"
+		"AbilityTextureName"					"juggernaut/bladekeeper/juggernaut_omni_slash"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
+		"MaxLevel"								"1"
+		"AbilityCastRange"						"1200"
+		"AbilityCooldown"						"0"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityDuration"						"6"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"threshold"						"8"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"10"
+			}
+		}
+	}
+	"juggernaut_1_juggernaut_01"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/juggernaut/juggernaut_01/juggernaut_1_juggernaut_01"
+		"AbilityTextureName"					"juggernaut/ti8_immortal_weapon/juggernaut_blade_fury_immortal"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
+		"MaxLevel"								"1"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastRange"						"1200"
+		"AbilityCastPoint"						"0"
+		"AbilityCooldown"						"6"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
+		"AbilityManaCost"						"80"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilityDuration"						"6"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"450"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+		}
+	}
 	"nevermore_0"
 	{
 		"BaseClass"								"ability_lua"
@@ -4226,8 +4296,6 @@
 	"lina_3"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/lina/lina_3"
-		"AbilityTextureName"					"lina_3"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
@@ -4268,8 +4336,6 @@
 	"lina_4"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/lina/lina_4"
-		"AbilityTextureName"					"lina_4"
 		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"								"8"
 		"RequiredLevel"							"8"

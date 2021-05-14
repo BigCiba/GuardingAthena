@@ -5,7 +5,6 @@ if juggernaut_0 == nil then
 end
 function juggernaut_0:OnSpellStart()
 	local hCaster = self:GetCaster()
-	hCaster:SetSkin(1)
 	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_0", { duration = self:GetSpecialValueFor("duration") })
 	if hCaster:GetScepterLevel() >= 1 then
 		local illusions = Load(hCaster, "manta_illusion_table") or {}
