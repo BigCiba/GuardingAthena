@@ -10,6 +10,9 @@ function PracticeStart(trigger)
 			caster = caster.caster_hero
 		end
 	end
+	if caster and caster:IsRealHero() and caster:IsSummoned() then
+		caster = caster:GetOwner()
+	end
 	if caller.unitRemaining == nil then
 		caller.unitRemaining = {}
 	end

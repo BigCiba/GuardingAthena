@@ -8,10 +8,10 @@ function public:OnCreated(params)
 	-- self.cooldown_reduction = self:GetAbilitySpecialValueFor("cooldown_reduction")
 	local hParent = self:GetParent()
 
-	
+
 	-- -- 是否装备魔导师秘钥
 	-- hParent.HasArcana = function (hParent)
-		-- 	return true
+	-- 	return true
 	-- end
 	if IsServer() then
 		self:StartIntervalThink(0.1)
@@ -49,7 +49,7 @@ function public:DeclareFunctions()
 	}
 end
 function public:GetModifierModelChange()
-	return AssetModifiers:GetEntityModelReplacement(self:GetParent():GetSkinName())
+	return AssetModifiers:GetEntityModelReplacement("juggernaut_01")
 end
 function public:GetModifierProjectileName()
 	return AssetModifiers:GetParticleReplacement("particles/units/heroes/hero_juggernaut/juggernaut_base_attack.vpcf", self:GetParent())

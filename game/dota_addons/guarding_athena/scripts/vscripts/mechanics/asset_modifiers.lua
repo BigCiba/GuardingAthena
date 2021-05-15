@@ -52,6 +52,8 @@ function public:ReplaceWearables(sSkinName, hUnit)
 				else
 					local hWearable = SpawnEntityFromTableSynchronous("prop_dynamic", { model = tAssetModifier.modifier, origin = hUnit:GetAbsOrigin() })
 					hWearable:FollowEntity(hUnit, true)
+					hUnit._tWearable = hUnit._tWearable or {}
+					table.insert(hUnit._tWearable, hWearable)
 					if tAssetModifier.criteria then
 						local tColor = string.split(tAssetModifier.criteria, ",")
 						hWearable:SetRenderColor(tonumber(tColor[1]), tonumber(tColor[2]), tonumber(tColor[3]))

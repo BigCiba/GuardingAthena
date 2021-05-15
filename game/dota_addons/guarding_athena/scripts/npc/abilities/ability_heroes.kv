@@ -1938,8 +1938,9 @@
 		"MaxLevel"								"1"
 		"RequiredLevel"							"1"
 		"LevelsBetweenUpgrades"					"3"
-		"AbilityCastRange"						"1200"
-		"AbilityCastPoint"						"0"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastRange"						"900"
+		"AbilityCastPoint"						"0.15"
 		"AbilityCooldown"						"6"
 		"HasScepterUpgrade"						"1"
 		"ScepterLevel"							"1"
@@ -1954,12 +1955,174 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"radius"						"450"
+				"base_damage"					"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
 			}
 			"02"
 			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"450"
+			}
+			"04"
+			{
 				"var_type"						"FIELD_FLOAT"
 				"interval"						"0.1"
+			}
+		}
+	}
+	"juggernaut_2_juggernaut_01"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/juggernaut_2_juggernaut_/juggernaut_2_juggernaut_01"
+		"AbilityTextureName"					"juggernaut_fall20_healingward"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
+		"MaxLevel"								"1"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"						"900"
+		"AbilityCastPoint"						"0"
+		"AbilityCooldown"						"6"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
+		"AbilityManaCost"						"80"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilityDuration"						"6"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"450"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+		}
+	}
+	"juggernaut_3_juggernaut_01"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/juggernaut_3_juggernaut_/juggernaut_3_juggernaut_01"
+		"AbilityTextureName"					"juggernaut/bladekeeper/juggernaut_blade_dance"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_YES"
+		"MaxLevel"								"1"
+		"RequiredLevel"							"1"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastRange"						"900"
+		"AbilityCastPoint"						"0.15"
+		"AbilityCooldown"						"6"
+		"HasScepterUpgrade"						"1"
+		"ScepterLevel"							"1"
+		"AbilityManaCost"						"80"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilityDuration"						"6"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"450"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+		}
+	}
+	"juggernaut_4_juggernaut_01"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/juggernaut_4_juggernaut_/juggernaut_4_juggernaut_01"
+		"AbilityTextureName"					"invoker/dark_artistry/invoker_deafening_blast"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"					"SPELL_DISPELLABLE_NO"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCastAnimation"					"ACT_DOTA_GENERIC_CHANNEL_1"
+		"AbilityCastRange"						"600"
+		"AbilityCastPoint"						"0"
+		"AbilityCooldown"						"16"
+		"AbilityManaCost"						"110"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_NO_INVIS"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilityDuration"						"9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"1.5 1.6 1.7 1.8 1.9 2 2.1 2.2"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.05"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"3.6 7.2 10.8 14.4 18 21.6 25.2 28.8"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"buff_duration"					"4"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"3"
 			}
 		}
 	}
@@ -4091,8 +4254,6 @@
 	"lina_0"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/lina/lina_0"
-		"AbilityTextureName"					"lina_0"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"1"
 		"HasScepterUpgrade"						"1"
@@ -4143,8 +4304,6 @@
 	"lina_1"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/lina/lina_1"
-		"AbilityTextureName"					"lina_1"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"
@@ -4222,8 +4381,6 @@
 	"lina_2"
 	{
 		"BaseClass"								"ability_lua"
-		"ScriptFile"							"abilities/heroes/lina/lina_2"
-		"AbilityTextureName"					"lina_2"
 		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"								"20"
 		"RequiredLevel"							"1"

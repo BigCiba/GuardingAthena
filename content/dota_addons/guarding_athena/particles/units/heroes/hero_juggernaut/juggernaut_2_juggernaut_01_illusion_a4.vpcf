@@ -1,0 +1,108 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 8
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flOverbrightFactor = 5.0
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/particle_flares/aircraft_white_v2.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_nFogType = "PARTICLE_FOG_GAME_DEFAULT"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 5.0
+			m_flEndScale = 0.0
+		},
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 78, 3, 3, 255 ]
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_nControlPointNumber = 5
+			m_bLockRot = true
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 150
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.25
+			m_fLifetimeMax = 0.25
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 50.0
+			m_flRadiusMax = 60.0
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_nControlPointNumber = 5
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_flStartTime = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 3.0
+			}
+		},
+	]
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_ConstantColor = [ 255, 92, 92, 255 ]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_illusion_a4a.vpcf"
+		},
+	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 5
+}

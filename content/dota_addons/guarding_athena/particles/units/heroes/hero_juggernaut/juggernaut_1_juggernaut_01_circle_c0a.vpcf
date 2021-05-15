@@ -1,0 +1,157 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 16
+	m_flConstantRadius = 32.0
+	m_nConstantSequenceNumber = 6
+	m_bShouldSort = false
+	m_nBehaviorVersion = 11
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 4
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 5
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 6
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 60
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 255.0, 255.0, 255.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 61
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 500.0
+			m_fRadiusMin = 500.0
+			m_nControlPointNumber = 3
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.3
+			m_fLifetimeMin = 0.3
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 255, 137, 11 ]
+			m_ColorMin = [ 255, 137, 11 ]
+			m_TintMin = [ 0, 0, 0 ]
+			m_TintMax = [ 255, 255, 255 ]
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_SetChildControlPoints"
+			m_nFirstControlPoint = 3
+			m_nNumControlPoints = 3
+			m_bSetOrientation = true
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_nControlPointNumber = 3
+		},
+	]
+	m_Constraints = 
+	[
+		{
+			_class = "C_OP_ConstrainDistanceToPath"
+			m_flTravelTime = 0.1
+			m_flMaxDistance0 = 0.0
+			m_PathParameters = 
+			{
+				m_nStartControlPointNumber = 6
+			}
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bDisableOperator = true
+			m_nHSVShiftControlPoint = 62
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/particle_glow_irregular1.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_OutlineColor = [ 255, 255, 255 ]
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_1_juggernaut_01_circle_c0a1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_1_juggernaut_01_circle_c0a0.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_1_juggernaut_01_circle_c0a2.vpcf"
+		},
+	]
+}

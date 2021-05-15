@@ -2,11 +2,29 @@ juggernaut_1_juggernaut_01 = class({})
 function juggernaut_1_juggernaut_01:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
+-- function juggernaut_1_juggernaut_01:OnAbilityPhaseStart()
+-- 	local hCaster = self:GetCaster()
+-- 	local vStart = hCaster:GetAbsOrigin()
+-- 	local vPosition = self:GetCursorPosition()
+-- 	local vDirection = (vPosition - vStart):Normalized()
+-- 	local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_dash.vpcf", PATTACH_CUSTOMORIGIN, nil)
+-- 	ParticleManager:SetParticleControl(iParticleID, 0, vStart)
+-- 	ParticleManager:SetParticleControlForward(iParticleID, 0, -vDirection)
+-- 	ParticleManager:SetParticleControl(iParticleID, 1, vPosition)
+-- 	ParticleManager:SetParticleControl(iParticleID, 2, vPosition)
+-- 	ParticleManager:ReleaseParticleIndex(iParticleID)
+-- 	return true
+-- end
 function juggernaut_1_juggernaut_01:OnSpellStart()
 	local hCaster = self:GetCaster()
+	local vStart = hCaster:GetAbsOrigin()
 	local vPosition = self:GetCursorPosition()
 	local duration = self:GetSpecialValueFor("duration")
 	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_1_juggernaut_01", { vCenter = vPosition })
+	local hUnit = hCaster:GetMaskGhost()
+	if hUnit then
+		hUnit:AddNewModifier(hUnit, self, "modifier_juggernaut_1_juggernaut_01", { vCenter = hUnit:GetAbsOrigin() })
+	end
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -25,7 +43,7 @@ function modifier_juggernaut_1_juggernaut_01:OnCreated(params)
 	if IsServer() then
 		---@type CDOTA_BaseNPC
 		local hParent = self:GetParent()
-		hParent:AddNoDraw()
+		-- hParent:AddNoDraw()
 		self.vCenter = StringToVector(params.vCenter)
 		self.vInitDirection = self.vCenter + RandomVector(self.radius)
 		self.tPosition = {
@@ -39,7 +57,7 @@ function modifier_juggernaut_1_juggernaut_01:OnCreated(params)
 		self:StartIntervalThink(self.interval)
 		self:OnIntervalThink()
 
-		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_riki/riki_tricks.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_1_juggernaut_01_circle.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, self.vCenter)
 		ParticleManager:SetParticleControl(iParticleID, 1, Vector(self.radius, 1, 1))
 		self:AddParticle(iParticleID, false, false, -1, false, false)
@@ -50,16 +68,22 @@ function modifier_juggernaut_1_juggernaut_01:OnDestroy()
 	if IsServer() then
 		---@type CDOTA_BaseNPC
 		local hParent = self:GetParent()
-		hParent:RemoveNoDraw()
+		-- hParent:RemoveNoDraw()
 		FindClearSpaceForUnit(hParent, self.vCenter, true)
-		hParent:EmitSound("Hero_Juggernaut.ArcanaTrigger")
+		-- hParent:EmitSound("Hero_Juggernaut.ArcanaTrigger")
 		hParent:RemoveGesture(ACT_DOTA_OVERRIDE_ABILITY_4)
 	end
 end
 function modifier_juggernaut_1_juggernaut_01:OnIntervalThink()
 	---@type CDOTA_BaseNPC
 	local hParent = self:GetParent()
-	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	---@type CDOTABaseAbility
+	local hAbility = self:GetAbility()
+	local tTargets = FindUnitsInRadiusWithAbility(hParent, self.vCenter, self.radius, hAbility)
+	for _, hUnit in ipairs(tTargets) do
+		hParent:DealDamage(hUnit, hAbility)
+	end
+	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_1_juggernaut_01_path.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	local vStart = self.tPosition[self.count]
 	FindClearSpaceForUnit(hParent, vStart, true)
 	local vEnd
@@ -68,7 +92,9 @@ function modifier_juggernaut_1_juggernaut_01:OnIntervalThink()
 	else
 		vEnd = self.tPosition[1]
 	end
+	hParent:SetForwardVector((vEnd - vStart):Normalized())
 	FindClearSpaceForUnit(hParent, vEnd, true)
+	hParent:EmitSound("Hero_Juggernaut.OmniSlash.Damage")
 	ParticleManager:SetParticleControl(iParticleID, 0, vStart)
 	ParticleManager:SetParticleControl(iParticleID, 1, vEnd)
 	ParticleManager:ReleaseParticleIndex(iParticleID)
@@ -83,7 +109,7 @@ function modifier_juggernaut_1_juggernaut_01:DeclareFunctions()
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
-		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL
+	-- MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL
 	}
 end
 function modifier_juggernaut_1_juggernaut_01:CheckState()
