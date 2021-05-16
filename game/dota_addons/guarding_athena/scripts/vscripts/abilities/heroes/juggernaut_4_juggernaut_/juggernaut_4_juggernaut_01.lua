@@ -1,6 +1,9 @@
 juggernaut_4_juggernaut_01 = class({})
-function juggernaut_4_juggernaut_01:OnSpellStart()
+function juggernaut_4_juggernaut_01:OnpellStart()
+	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
+	local hCaster = self:GetCaster()
+	-- hCaster:Dash()
 	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_4_juggernaut_01", { duration = self:GetSpecialValueFor("duration") })
 end
 ---------------------------------------------------------------------

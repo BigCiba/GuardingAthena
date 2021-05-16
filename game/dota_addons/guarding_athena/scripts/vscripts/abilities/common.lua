@@ -982,7 +982,10 @@ if IsServer() then
 	---@param flDuration 持续时间
 	---@param callback 结束回调
 	function CDOTA_BaseNPC:Dash(vDirection, flDistance, flHeight, flDuration, callback)
-		local kv =		{
+		if not self:IsAlive() then
+			return
+		end
+		local kv = {
 			vDirection = vDirection,
 			duration = flDuration,
 			knockback_duration = flDuration,
@@ -993,11 +996,11 @@ if IsServer() then
 		local hModifier = self:AddNewModifier(self, nil, "modifier_dash", kv)
 		if IsValid(hModifier) then
 			hModifier.callback = callback
+			FireModifierEvent({
+				event_name = MODIFIER_EVENT_ON_DASH,
+				unit = self
+			})
 		end
-		FireModifierEvent({
-			event_name = MODIFIER_EVENT_ON_DASH,
-			unit = self
-		})
 	end
 
 	-- 击退

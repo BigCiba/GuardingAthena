@@ -18,7 +18,8 @@ end
 function juggernaut_1_juggernaut_01:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vStart = hCaster:GetAbsOrigin()
-	local vPosition = self:GetCursorPosition()
+	-- local vPosition = self:GetCursorPosition()
+	local vPosition = vStart
 	local duration = self:GetSpecialValueFor("duration")
 	hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_1_juggernaut_01", { vCenter = vPosition })
 	local hUnit = hCaster:GetMaskGhost()

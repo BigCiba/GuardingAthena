@@ -1,4 +1,12 @@
 juggernaut_2_juggernaut_01 = class({})
+function juggernaut_2_juggernaut_01:CastFilterResultTarget(hTarget)
+	---@type CDOTA_BaseNPC
+	local hCaster = self:GetCaster()
+	if hTarget:GetUnitName() ~= hCaster:GetUnitName() then
+		return UF_FAIL_ENEMY
+	end
+	return UF_SUCCESS
+end
 function juggernaut_2_juggernaut_01:Spawn()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
@@ -38,14 +46,45 @@ function juggernaut_2_juggernaut_01:CreateMaskGhost(vPosition)
 		local hAbility = hCaster:GetAbilityByIndex(i)
 		hUnit:GetAbilityByIndex(i):SetLevel(hAbility:GetLevel())
 	end
+	hUnit:SetAbilityPoints(0)
+	for i = 1, hCaster:GetLevel() - 1 do
+		hUnit:HeroLevelUp(false)
+	end
+	hUnit:SetBaseStrength(hCaster:GetBaseStrength())
+	hUnit:SetBaseAgility(hCaster:GetBaseAgility())
+	hUnit:SetBaseIntellect(hCaster:GetBaseIntellect())
 	self.hMaskGhost = hUnit
 end
 function juggernaut_2_juggernaut_01:OnSpellStart()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
+	local hTarget = self:GetCursorTarget()
 	local vPosition = self:GetCursorPosition()
-	CreateModifierThinker(hCaster, self, "modifier_juggernaut_2_juggernaut_01_thinker", { duration = 1 }, vPosition, hCaster:GetTeamNumber(), false)
-	hCaster:EmitSound("Hero_Juggernaut.MaskGhost.Cast")
+	if hTarget then
+		if hTarget == hCaster then
+			local hUnit = self.hMaskGhost
+			if self.hMaskGhost then
+				local tProjectileInfo = {
+					Ability = self,
+					Target = hCaster,
+					EffectName = "particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_return.vpcf",
+					bDodgeable = false,
+					iMoveSpeed = 900,
+					vSourceLoc = hUnit:GetAttachmentOrigin(hUnit:ScriptLookupAttachment("attach_hitloc")),
+				}
+				ProjectileManager:CreateTrackingProjectile(tProjectileInfo)
+				self.hMaskGhost:Kill(self, hCaster)
+				self.hMaskGhost = nil
+			end
+		else
+			local vCasterLoc = hCaster:GetAbsOrigin()
+			hTarget:SetAbsOrigin(vCasterLoc)
+			hCaster:SetAbsOrigin(vPosition)
+		end
+	else
+		CreateModifierThinker(hCaster, self, "modifier_juggernaut_2_juggernaut_01_thinker", { duration = 1 }, vPosition, hCaster:GetTeamNumber(), false)
+		hCaster:EmitSound("Hero_Juggernaut.MaskGhost.Cast")
+	end
 end
 ---------------------------------------------------------------------
 --Modifiers
@@ -132,8 +171,9 @@ function modifier_juggernaut_2_juggernaut_01_illusion:OnDestroy()
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
-function modifier_juggernaut_2_juggernaut_01_illusion:DeclareFunctions()
+function modifier_juggernaut_2_juggernaut_01_illusion:CheckState()
 	return {
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true
 	}
 end
 function modifier_juggernaut_2_juggernaut_01_illusion:EDeclareFunctions()
