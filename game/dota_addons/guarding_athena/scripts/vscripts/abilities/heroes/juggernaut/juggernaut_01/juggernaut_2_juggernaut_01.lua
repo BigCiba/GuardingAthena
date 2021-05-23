@@ -70,20 +70,44 @@ function juggernaut_2_juggernaut_01:OnSpellStart()
 					EffectName = "particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_return.vpcf",
 					bDodgeable = false,
 					iMoveSpeed = 900,
-					vSourceLoc = hUnit:GetAttachmentOrigin(hUnit:ScriptLookupAttachment("attach_hitloc")),
+					vSourceLoc = hUnit:GetAttachmentPosition("attach_hitloc"),
 				}
 				ProjectileManager:CreateTrackingProjectile(tProjectileInfo)
 				self.hMaskGhost:Kill(self, hCaster)
 				self.hMaskGhost = nil
 			end
 		else
-			local vCasterLoc = hCaster:GetAbsOrigin()
-			hTarget:SetAbsOrigin(vCasterLoc)
-			hCaster:SetAbsOrigin(vPosition)
+			local tProjectileInfo = {
+				Ability = self,
+				Target = hTarget,
+				EffectName = "particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_return.vpcf",
+				bDodgeable = false,
+				iMoveSpeed = 900,
+				vSourceLoc = hCaster:GetAttachmentPosition("attach_hitloc"),
+			}
+			ProjectileManager:CreateTrackingProjectile(tProjectileInfo)
+			hCaster:SetAbsOrigin(hCaster:GetAbsOrigin() + Vector(0, 0, -1000))
+			hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_2_juggernaut_01_ghost", { duration = 3 })
+			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_grimstroke/grimstroke_death.vpcf", PATTACH_CUSTOMORIGIN, nil)
+			ParticleManager:SetParticleControl(iParticleID, 0, hCaster:GetAbsOrigin())
+			ParticleManager:ReleaseParticleIndex(iParticleID)
 		end
 	else
 		CreateModifierThinker(hCaster, self, "modifier_juggernaut_2_juggernaut_01_thinker", { duration = 1 }, vPosition, hCaster:GetTeamNumber(), false)
 		hCaster:EmitSound("Hero_Juggernaut.MaskGhost.Cast")
+	end
+end
+function juggernaut_2_juggernaut_01:OnProjectileHit(hTarget, vLocation)
+	---@type CDOTA_BaseNPC
+	local hCaster = self:GetCaster()
+	if hTarget then
+		if hTarget == self.hMaskGhost then
+			hCaster:SetAbsOrigin(self.hMaskGhost:GetAbsOrigin())
+			self.hMaskGhost:Kill(self, hCaster)
+			self.hMaskGhost = nil
+		end
+		hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_2_juggernaut_01_buff", { duration = 10 })
+		hCaster:RemoveModifierByName("modifier_juggernaut_2_juggernaut_01_ghost")
 	end
 end
 ---------------------------------------------------------------------
@@ -178,5 +202,68 @@ function modifier_juggernaut_2_juggernaut_01_illusion:CheckState()
 end
 function modifier_juggernaut_2_juggernaut_01_illusion:EDeclareFunctions()
 	return {
+	}
+end
+---------------------------------------------------------------------
+modifier_juggernaut_2_juggernaut_01_buff = eom_modifier({
+	Name = "modifier_juggernaut_2_juggernaut_01_buff",
+	IsHidden = false,
+	IsDebuff = false,
+	IsPurgable = false,
+	IsPurgeException = false,
+	IsStunDebuff = false,
+	AllowIllusionDuplicate = false,
+})
+function modifier_juggernaut_2_juggernaut_01_buff:GetAbilitySpecialValue()
+	self.damage = self:GetAbilitySpecialValueFor("damage")
+end
+function modifier_juggernaut_2_juggernaut_01_buff:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = self:GetParent():GetBaseStrength(),
+		MODIFIER_PROPERTY_STATS_AGILITY_BONUS = self:GetParent():GetBaseAgility(),
+		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = self:GetParent():GetBaseIntellect(),
+	}
+end
+---------------------------------------------------------------------
+modifier_juggernaut_2_juggernaut_01_ghost = eom_modifier({
+	Name = "modifier_juggernaut_2_juggernaut_01_ghost",
+	IsHidden = true,
+	IsDebuff = false,
+	IsPurgable = false,
+	IsPurgeException = false,
+	IsStunDebuff = false,
+	AllowIllusionDuplicate = false,
+})
+function modifier_juggernaut_2_juggernaut_01_ghost:OnCreated()
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		-- hCaster:AddNoDraw()
+		-- for i, v in ipairs(hCaster._tWearable) do
+		-- 	v:AddEffects(EF_NODRAW)
+		-- end
+	end
+end
+function modifier_juggernaut_2_juggernaut_01_ghost:OnDestroy()
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		-- hCaster:RemoveNoDraw()
+		-- for i, v in ipairs(hCaster._tWearable) do
+		-- 	v:RemoveEffects(EF_NODRAW)
+		-- end
+	end
+end
+function modifier_juggernaut_2_juggernaut_01_ghost:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL = 1,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL = 1,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE = 1,
+	}
+end
+function modifier_juggernaut_2_juggernaut_01_ghost:CheckState()
+	return {
+		[MODIFIER_STATE_OUT_OF_GAME] = true,
+		[MODIFIER_STATE_STUNNED] = true,
 	}
 end

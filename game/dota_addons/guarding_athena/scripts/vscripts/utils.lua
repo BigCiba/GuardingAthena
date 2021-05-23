@@ -19,7 +19,7 @@ function string.split(str, delimiter)
 	end
 
 	local result = {}
-	for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+	for match in (str .. delimiter):gmatch("(.-)" .. delimiter) do
 		table.insert(result, match)
 	end
 	return result
@@ -29,10 +29,10 @@ end
 function string.gsplit(str)
 	local str_tb = {}
 	if string.len(str) ~= 0 then
-		for i=1,string.len(str) do
-			new_str= string.sub(str,i,i)			
-			if (string.byte(new_str) >=48 and string.byte(new_str) <=57) or (string.byte(new_str)>=65 and string.byte(new_str)<=90) or (string.byte(new_str)>=97 and string.byte(new_str)<=122) then
-				table.insert(str_tb,string.sub(str,i,i))				
+		for i = 1, string.len(str) do
+			new_str = string.sub(str, i, i)
+			if (string.byte(new_str) >= 48 and string.byte(new_str) <= 57) or (string.byte(new_str) >= 65 and string.byte(new_str) <= 90) or (string.byte(new_str) >= 97 and string.byte(new_str) <= 122) then
+				table.insert(str_tb, string.sub(str, i, i))	
 			else
 				return nil
 			end
@@ -60,11 +60,11 @@ function table.max(t)
 end
 
 function IsLeapYear(iYear)
-	return (iYear%4 == 0 and iYear%100 ~= 0) or (iYear%400 == 0)
+	return (iYear % 4 == 0 and iYear % 100 ~= 0) or (iYear % 400 == 0)
 end
 
 function toUnixTime(iYear, iMonth, iDay, iHour, iMin, iSec)
-	local iTotalSec = iSec + iMin*60 + iHour*60*60 + (iDay - 1)*86400
+	local iTotalSec = iSec + iMin * 60 + iHour * 60 * 60 + (iDay - 1) * 86400
 
 	-- 此年经过的秒
 	local iTotalDay = 0
@@ -84,7 +84,7 @@ function toUnixTime(iYear, iMonth, iDay, iHour, iMin, iSec)
 	end
 
 	-- 之前的年经过的秒
-	for i = 1970, iYear-1, 1 do
+	for i = 1970, iYear - 1, 1 do
 		if IsLeapYear(i) then
 			iTotalDay = iTotalDay + 366
 		else
@@ -92,24 +92,24 @@ function toUnixTime(iYear, iMonth, iDay, iHour, iMin, iSec)
 		end
 	end
 
-	iTotalSec = iTotalSec + iTotalDay*86400
+	iTotalSec = iTotalSec + iTotalDay * 86400
 
 	return iTotalSec
 end
 -- 返回表的值数量
-function TableCount( t )
+function TableCount(t)
 	local n = 0
-	for _ in pairs( t ) do
+	for _ in pairs(t) do
 		n = n + 1
 	end
 	return n
 end
 
 -- 获取表里随机一个值
-function RandomValue( t )
+function RandomValue(t)
 	local iRandom = RandomInt(1, TableCount(t))
 	local n = 0
-	for k, v in pairs( t ) do
+	for k, v in pairs(t) do
 		n = n + 1
 		if n == iRandom then
 			return v
@@ -118,17 +118,17 @@ function RandomValue( t )
 end
 
 -- 获取数组里随机一个值
-function GetRandomElement( table )
+function GetRandomElement(table)
 	return table[RandomInt(1, #table)]
 end
 
 -- 从表里寻找值的键
-function TableFindKey( t, v )
+function TableFindKey(t, v)
 	if t == nil then
 		return nil
 	end
 
-	for _k, _v in pairs( t ) do
+	for _k, _v in pairs(t) do
 		if v == _v then
 			return _k
 		end
@@ -137,7 +137,7 @@ function TableFindKey( t, v )
 end
 
 -- 从表里移除值
-function ArrayRemove( t, v )
+function ArrayRemove(t, v)
 	if t == nil then return end
 	for i = #t, 1, -1 do
 		if t[i] == v then
@@ -176,14 +176,14 @@ function shallowcopy(orig)
 end
 
 -- 乱序
-function ShuffledList( orig_list )
-	local list = shallowcopy( orig_list )
+function ShuffledList(orig_list)
+	local list = shallowcopy(orig_list)
 	local result = {}
 	local count = #list
 	for i = 1, count do
-		local pick = RandomInt( 1, #list )
-		result[ #result + 1 ] = list[ pick ]
-		table.remove( list, pick )
+		local pick = RandomInt(1, #list)
+		result[#result + 1] = list[pick]
+		table.remove(list, pick)
 	end
 	return result
 end
@@ -197,7 +197,7 @@ function TableOverride(mainTable, table)
 		return mainTable
 	end
 
-	for k, v in pairs( table ) do
+	for k, v in pairs(table) do
 		if type(v) == "table" then
 			mainTable[k] = TableOverride(mainTable[k], v)
 		else
@@ -215,7 +215,7 @@ function TableRemoveDuplicate(t)
 	end
 	local result = {}
 	for k, v in pairs(bExist) do
-		table.insert(result,k)
+		table.insert(result, k)
 	end
 
 	return result
@@ -229,12 +229,12 @@ function Round(n, s)
 		sign = -1
 	end
 	s = s or 1
-	local d = n/s
+	local d = n / s
 	local w = math.floor(d)
 	if d - w >= 0.5 then
-		return (w+1)*s * sign
+		return (w + 1) * s * sign
 	else
-		return w*s * sign
+		return w * s * sign
 	end
 	return 0
 end
@@ -256,7 +256,7 @@ end
 -- 判断两条线段是否相交
 function IsIntersect(p1, p2, p3, p4)
 	if IsLineCross(p1, p2, p3, p4) then
-		if IsCross(p1, p2, p3)*IsCross(p1, p2, p4) <= 0 and IsCross(p3, p4, p1)*IsCross(p3, p4, p2) <= 0 then
+		if IsCross(p1, p2, p3) * IsCross(p1, p2, p4) <= 0 and IsCross(p3, p4, p1) * IsCross(p3, p4, p2) <= 0 then
 			return true
 		end
 	end
@@ -265,7 +265,7 @@ end
 
 -- 计算两条线段的交点
 function GetCrossPoint(p1, p2, q1, q2)
-	if IsIntersect(p1 , p2 , q1 , q2) then
+	if IsIntersect(p1, p2, q1, q2) then
 		local x = 0
 		local y = 0
 		local left = (q2.x - q1.x) * (p1.y - p2.y) - (p2.x - p1.x) * (q1.y - q2.y)
@@ -274,14 +274,14 @@ function GetCrossPoint(p1, p2, q1, q2)
 		if left == 0 then
 			return vec3_invalid
 		end
-		x = right/left
+		x = right / left
 
 		left = (p1.x - p2.x) * (q2.y - q1.y) - (p2.y - p1.y) * (q1.x - q2.x)
 		right = p2.y * (p1.x - p2.x) * (q2.y - q1.y) + (q2.x - p2.x) * (q2.y - q1.y) * (p1.y - p2.y) - q2.y * (q1.x - q2.x) * (p2.y - p1.y)
 		if left == 0 then
 			return vec3_invalid
 		end
-		y = right/left
+		y = right / left
 
 		return Vector(x, y, 0)
 	end
@@ -302,7 +302,7 @@ function Rotation2D(vVector, radian)
 	local vUnitVector2D = vVector / fLength2D
 	local fCos = math.cos(radian)
 	local fSin = math.sin(radian)
-	return Vector(vUnitVector2D.x*fCos-vUnitVector2D.y*fSin, vUnitVector2D.x*fSin+vUnitVector2D.y*fCos, vUnitVector2D.z)*fLength2D
+	return Vector(vUnitVector2D.x * fCos - vUnitVector2D.y * fSin, vUnitVector2D.x * fSin + vUnitVector2D.y * fCos, vUnitVector2D.z) * fLength2D
 end
 
 -- 判断点是否在不规则图形里（不规则图形里是点集，点集每个都是固定住的）
@@ -313,7 +313,7 @@ function IsPointInPolygon(point, polygonPoints)
 		local polygonPoint1 = polygonPoints[j]
 		local polygonPoint2 = polygonPoints[i]
 		if ((polygonPoint2.y < point.y and polygonPoint1.y >= point.y) or (polygonPoint1.y < point.y and polygonPoint2.y >= point.y)) and (polygonPoint2.x <= point.x or polygonPoint1.x <= point.x) then
-			bool = bit.bxor(bool, ((polygonPoint2.x + (point.y-polygonPoint2.y)/(polygonPoint1.y-polygonPoint2.y)*(polygonPoint1.x-polygonPoint2.x)) < point.x and 1 or 0))
+			bool = bit.bxor(bool, ((polygonPoint2.x + (point.y - polygonPoint2.y) / (polygonPoint1.y - polygonPoint2.y) * (polygonPoint1.x - polygonPoint2.x)) < point.x and 1 or 0))
 		end
 		j = i
 	end
@@ -325,14 +325,14 @@ function PrintAllModifiers(hUnit)
 	local modifiers = hUnit:FindAllModifiers()
 	for n, modifier in pairs(modifiers) do
 		local str = ""
-		str = str .. "modifier name: "..modifier:GetName()
+		str = str .. "modifier name: " .. modifier:GetName()
 		if modifier:GetCaster() ~= nil then
-			str = str .. "\tcaster: "..modifier:GetCaster():GetName()
-			str = str .. "\t("..tostring(modifier:GetCaster())..")"
+			str = str .. "\tcaster: " .. modifier:GetCaster():GetName()
+			str = str .. "\t(" .. tostring(modifier:GetCaster()) .. ")"
 		end
 		if modifier:GetAbility() ~= nil then
-			str = str .. "\tability: "..modifier:GetAbility():GetName()
-			str = str .. "\t("..tostring(modifier:GetAbility())..")"
+			str = str .. "\tability: " .. modifier:GetAbility():GetName()
+			str = str .. "\t(" .. tostring(modifier:GetAbility()) .. ")"
 		end
 		print(str)
 	end
@@ -348,10 +348,10 @@ function ErrorMessage(playerID, message, sound)
 		assert(type(playerID) == "number", "playerID is not a number")
 	end
 	if playerID == nil then
-		CustomGameEventManager:Send_ServerToAllClients("error_message", {message=message,sound=sound})
+		CustomGameEventManager:Send_ServerToAllClients("error_message", { message = message, sound = sound })
 	else
 		local player = PlayerResource:GetPlayer(playerID)
-		CustomGameEventManager:Send_ServerToPlayer(player, "error_message", {message=message,sound=sound})
+		CustomGameEventManager:Send_ServerToPlayer(player, "error_message", { message = message, sound = sound })
 	end
 end
 
@@ -367,6 +367,13 @@ end
 -- 判断一个handle是否为无效值
 function IsValid(h)
 	return h ~= nil and not h:IsNull()
+end
+
+---默认值
+function default(v, def)
+	if def == nil then return v end
+	if v == nil then return def end
+	return v
 end
 
 if IsClient() then
@@ -431,8 +438,7 @@ if IsClient() then
 end
 
 if IsServer() then
-	--[[
-		计时器
+	--[[		计时器
 		sContextName，计时器索引，可缺省
 		fInterval，第一次运行延迟
 		funcThink，回调函数，函数返回number将会再次延迟运行
@@ -444,7 +450,8 @@ if IsServer() then
 			print(math.random())
 			return 0.5
 		end)
-	]]--
+	]]
+	--
 	function CBaseEntity:Timer(sContextName, fInterval, funcThink)
 		if funcThink == nil then
 			funcThink = fInterval
@@ -460,9 +467,9 @@ if IsServer() then
 		end, fInterval)
 		return sContextName
 	end
-	--[[
-		游戏计时器，游戏暂停会停下
-	]]--
+	--[[		游戏计时器，游戏暂停会停下
+	]]
+	--
 	function CBaseEntity:GameTimer(sContextName, fInterval, funcThink)
 		if funcThink == nil then
 			funcThink = fInterval
@@ -481,9 +488,9 @@ if IsServer() then
 			return 0
 		end)
 	end
-	--[[
-		暂停计时器，包括游戏计时器
-	]]--
+	--[[		暂停计时器，包括游戏计时器
+	]]
+	--
 	function CBaseEntity:StopTimer(sContextName)
 		self:SetContextThink(sContextName, nil, 0)
 	end
@@ -531,27 +538,26 @@ if IsServer() then
 			self:ModifyIntellect(fChanged)
 		end
 	end
-	
+
 	function CDOTA_BaseNPC:ModifyMaxHealth(fChanged)
-		local fHealthPercent = self:GetHealth()/self:GetMaxHealth()
+		local fHealthPercent = self:GetHealth() / self:GetMaxHealth()
 		self.fBaseHealth = (self.fBaseHealth or self:GetMaxHealth()) + fChanged
-		local fBonusHealth = (GetBonusHealthPercentage ~= nil and GetBonusHealthPercentage(self)*0.01 or 0) * self.fBaseHealth
+		local fBonusHealth = (GetBonusHealthPercentage ~= nil and GetBonusHealthPercentage(self) * 0.01 or 0) * self.fBaseHealth
 		local fHealth = self.fBaseHealth + fBonusHealth
 		local fCorrectHealth = math.min(math.max(1, fHealth), MAX_HEALTH)
 		self:SetBaseMaxHealth(fCorrectHealth)
 		self:SetMaxHealth(fCorrectHealth)
-		self:ModifyHealth(fHealthPercent*fCorrectHealth, nil, false, 0)
+		self:ModifyHealth(fHealthPercent * fCorrectHealth, nil, false, 0)
 	end
 
 	function CDOTA_BaseNPC:ModifyMaxMana(fChanged)
-		local fManaPercent = self:GetMana()/self:GetMaxMana()
+		local fManaPercent = self:GetMana() / self:GetMaxMana()
 		self.fBaseMana = (self.fBaseMana or self:GetMaxMana()) + fChanged
-		local fBonusMana = (GetBonusManaPercentage ~= nil and GetBonusManaPercentage(self)*0.01 or 0) * self.fBaseMana
+		local fBonusMana = (GetBonusManaPercentage ~= nil and GetBonusManaPercentage(self) * 0.01 or 0) * self.fBaseMana
 		local fMana = self.fBaseMana + fBonusMana
 		local fCorrectMana = math.min(math.max(1, fMana), MAX_MANA)
 		-- self:SetMaxMana(fCorrectMana)
 		-- self:SetMana(fManaPercent*fCorrectMana)
-
 		local hModifier = self:FindModifierByName("modifier_max_mana")
 		if not IsValid(hModifier) then
 			hModifier = self:AddNewModifier(self, nil, "modifier_max_mana", nil)
@@ -560,7 +566,7 @@ if IsServer() then
 			end
 		end
 		if IsValid(hModifier) then
-			hModifier:SetStackCount(fCorrectMana-hModifier.fBaseMana)
+			hModifier:SetStackCount(fCorrectMana - hModifier.fBaseMana)
 		end
 	end
 	function CDOTA_BaseNPC:IsRoshan()
@@ -578,7 +584,7 @@ if IsServer() then
 	function CDOTA_BaseNPC:RefreshAbilities()
 		for i = 1, self:GetAbilityCount() do
 			local ability = self:GetAbilityByIndex(i - 1)
-			if ability ~= nil and FindValueByKey(REFRESH_EXCLUDE_ABILITIES,ability:GetAbilityName()) == false then
+			if ability ~= nil and FindValueByKey(REFRESH_EXCLUDE_ABILITIES, ability:GetAbilityName()) == false then
 				ability:EndCooldown()
 			end
 		end
@@ -586,7 +592,7 @@ if IsServer() then
 	function CDOTA_BaseNPC:RefreshItems()
 		for i = 1, 16 do
 			local item = self:GetItemInSlot(i - 1)
-			if item ~= nil and FindValueByKey(REFRESH_EXCLUDE_ITEMS,item:GetAbilityName()) == false then
+			if item ~= nil and FindValueByKey(REFRESH_EXCLUDE_ITEMS, item:GetAbilityName()) == false then
 				item:EndCooldown()
 			end
 		end
@@ -636,6 +642,11 @@ if IsServer() then
 
 		self:_updateActivityModifier(self)
 	end
+
+	---获取附着点位置
+	function CDOTA_BaseNPC:GetAttachmentPosition(sAttach)
+		return self:GetAttachmentOrigin(self:ScriptLookupAttachment(sAttach))
+	end
 end
 
 Hashtables = Hashtables or {}
@@ -650,8 +661,8 @@ function CreateHashtable(table)
 	else
 		Hashtables[index] = new_hastable
 	end
-	
-	return Hashtables[index],index
+
+	return Hashtables[index], index
 end
 function RemoveHashtable(hastable_or_index)
 	local index
@@ -687,7 +698,7 @@ function GetRespawnPosition()
 end
 function GetDayTime()
 	local flTime = GameRules:GetTimeOfDay()
-	local iHour, iMin = math.modf(flTime/ (1 / 24))
+	local iHour, iMin = math.modf(flTime / (1 / 24))
 	iMin = iMin * 60
 	return iHour, iMin
 end
@@ -726,7 +737,7 @@ function CalculateDirection(ent1, ent2)
 end
 -- 间隔循环
 function ForInterval(flInterval, funcCallback)
-	GameRules:GetGameModeEntity():GameTimer(0, function ()
+	GameRules:GetGameModeEntity():GameTimer(0, function()
 		if funcCallback() == true then
 			return
 		end
