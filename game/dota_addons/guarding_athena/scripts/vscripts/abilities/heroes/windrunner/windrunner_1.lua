@@ -1,4 +1,4 @@
-LinkLuaModifier( "modifier_windrunner_1", "abilities/heroes/windrunner/windrunner_1.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_windrunner_1", "abilities/heroes/windrunner/windrunner_1.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if windrunner_1 == nil then
 	windrunner_1 = class({})
@@ -15,7 +15,7 @@ function windrunner_1:OnChannelFinish(bInterrupted)
 	self:MultipleShoot(vPosition, flChannelTime, DAMAGE_TYPE_PHYSICAL)
 	-- 第二次魔法伤害多重射击
 	local delay = self:GetSpecialValueFor("delay")
-	hCaster:GameTimer(delay, function ()
+	hCaster:GameTimer(delay, function()
 		self:MultipleShoot(hCaster:GetAbsOrigin() + hCaster:GetForwardVector(), flChannelTime, DAMAGE_TYPE_MAGICAL)
 	end)
 	-- 冷却
@@ -44,7 +44,7 @@ function windrunner_1:MultipleShoot(vPosition, flChannelTime, iDamageType)
 		RotatePosition(vStart, QAngle(0, -flAngle * 2, 0), vPosition)
 	}
 	local tExtraData = {
-		iDamageType = iDamageType, 
+		iDamageType = iDamageType,
 		flChannelTime = flChannelTime,
 		flDistance = flDistance
 	}
@@ -66,7 +66,7 @@ function windrunner_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 		local iDamageType = ExtraData.iDamageType
 		hCaster:DealDamage(hTarget, self, flDamage, iDamageType)
 		-- 击退
-		hCaster:KnockBack(hCaster:GetAbsOrigin() + hCaster:GetForwardVector() * -hCaster:GetHullRadius(), hTarget, flDistance, 0, 0.3, false, true)
+		hTarget:KnockBack((hTarget:GetAbsOrigin() - hCaster:GetAbsOrigin()):Normalized(), flDistance, 0, 0.3)
 	end
 end
 function windrunner_1:GetIntrinsicModifierName()
@@ -87,7 +87,7 @@ end
 function modifier_windrunner_1:OnAttack(params)
 	if params.target == nil then return end
 	if params.target:GetClassname() == "dota_item_drop" then return end
-	
+
 	local hParent = self:GetParent()
 	if hParent:GetScepterLevel() >= 4 and RollPercentage(self.scepter_chance) then
 		if hParent:HasModifier("modifier_windrunner_0_bonus_attack") then

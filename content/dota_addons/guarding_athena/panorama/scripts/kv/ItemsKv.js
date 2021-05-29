@@ -16284,4 +16284,16 @@ GameUI.CustomUIConfig().ItemsKv = {
 			},
 		},
 	},
+	"item_ronghe":{
+		"BaseClass":"item_datadriven",
+		"Model":"models/props_gameplay/neutral_box.vmdl",
+		"AbilityTextureName":"item_ronghe",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"ID":1794,
+		"ItemCost":2400,
+		"ItemSellable":1,
+		"ItemPurchasable":0,
+		"ItemKillable":0,
+		"ItemPermanent":1,
+	},
 };

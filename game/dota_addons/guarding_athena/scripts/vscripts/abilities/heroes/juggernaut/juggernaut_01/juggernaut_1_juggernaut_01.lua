@@ -2,19 +2,6 @@ juggernaut_1_juggernaut_01 = class({})
 function juggernaut_1_juggernaut_01:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
--- function juggernaut_1_juggernaut_01:OnAbilityPhaseStart()
--- 	local hCaster = self:GetCaster()
--- 	local vStart = hCaster:GetAbsOrigin()
--- 	local vPosition = self:GetCursorPosition()
--- 	local vDirection = (vPosition - vStart):Normalized()
--- 	local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_dash.vpcf", PATTACH_CUSTOMORIGIN, nil)
--- 	ParticleManager:SetParticleControl(iParticleID, 0, vStart)
--- 	ParticleManager:SetParticleControlForward(iParticleID, 0, -vDirection)
--- 	ParticleManager:SetParticleControl(iParticleID, 1, vPosition)
--- 	ParticleManager:SetParticleControl(iParticleID, 2, vPosition)
--- 	ParticleManager:ReleaseParticleIndex(iParticleID)
--- 	return true
--- end
 function juggernaut_1_juggernaut_01:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local vStart = hCaster:GetAbsOrigin()
@@ -70,9 +57,10 @@ function modifier_juggernaut_1_juggernaut_01:OnDestroy()
 		---@type CDOTA_BaseNPC
 		local hParent = self:GetParent()
 		-- hParent:RemoveNoDraw()
-		FindClearSpaceForUnit(hParent, self.vCenter, true)
+		FindClearSpaceForUnit(hParent, self.vCenter, false)
 		-- hParent:EmitSound("Hero_Juggernaut.ArcanaTrigger")
 		hParent:RemoveGesture(ACT_DOTA_OVERRIDE_ABILITY_4)
+		ExecuteOrder(hParent, DOTA_UNIT_ORDER_ATTACK_MOVE, nil, nil, hParent:GetAbsOrigin())
 	end
 end
 function modifier_juggernaut_1_juggernaut_01:OnIntervalThink()
@@ -83,6 +71,10 @@ function modifier_juggernaut_1_juggernaut_01:OnIntervalThink()
 	local tTargets = FindUnitsInRadiusWithAbility(hParent, self.vCenter, self.radius, hAbility)
 	for _, hUnit in ipairs(tTargets) do
 		hParent:DealDamage(hUnit, hAbility)
+	end
+	local hTarget = RandomValue(tTargets)
+	if IsValid(hTarget) then
+		hParent:PerformAttack(hTarget, true, true, true, false, false, false, false)
 	end
 	local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_1_juggernaut_01_path.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	local vStart = self.tPosition[self.count]
@@ -110,6 +102,7 @@ function modifier_juggernaut_1_juggernaut_01:DeclareFunctions()
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
+		MODIFIER_PROPERTY_MAX_ATTACK_RANGE = 99999
 	-- MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL
 	}
 end

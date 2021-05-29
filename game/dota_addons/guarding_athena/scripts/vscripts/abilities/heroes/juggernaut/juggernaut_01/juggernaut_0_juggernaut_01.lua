@@ -1,20 +1,20 @@
 juggernaut_0_juggernaut_01 = class({})
-function juggernaut_0_juggernaut_01:CastFilterResultTarget(hTarget)
-	if not hTarget:HasModifier("modifier_juggernaut_0_juggernaut_01_mark") then
-		return UF_FAIL_ENEMY
-	end
-	return UF_SUCCESS
-end
+-- function juggernaut_0_juggernaut_01:CastFilterResultTarget(hTarget)
+-- 	if not hTarget:HasModifier("modifier_juggernaut_0_juggernaut_01_mark") then
+-- 		return UF_FAIL_ENEMY
+-- 	end
+-- 	return UF_SUCCESS
+-- end
 function juggernaut_0_juggernaut_01:OnSpellStart()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
 	---@type CDOTA_BaseNPC
 	local hTarget = self:GetCursorTarget()
-	local hModifier = hTarget:FindModifierByName("modifier_juggernaut_0_juggernaut_01_mark")
-	if IsValid(hModifier) then
-		hCaster:AddNewModifier(hTarget, self, "modifier_juggernaut_0_juggernaut_01_buff", { iStackCount = hModifier:GetStackCount() })
-		hModifier:Destroy()
-	end
+	hCaster:AddNewModifier(hTarget, self, "modifier_juggernaut_0_juggernaut_01_buff", { iStackCount = self:GetSpecialValueFor("threshold") })
+	-- local hModifier = hTarget:FindModifierByName("modifier_juggernaut_0_juggernaut_01_mark")
+	-- if IsValid(hModifier) then
+	-- 	hModifier:Destroy()
+	-- end
 end
 function juggernaut_0_juggernaut_01:GetIntrinsicModifierName()
 	return "modifier_juggernaut_0_juggernaut_01"
@@ -99,7 +99,7 @@ end
 ---------------------------------------------------------------------
 modifier_juggernaut_0_juggernaut_01_buff = eom_modifier({
 	Name = "modifier_juggernaut_0_juggernaut_01_buff",
-	IsHidden = false,
+	IsHidden = true,
 	IsDebuff = false,
 	IsPurgable = false,
 	IsPurgeException = false,

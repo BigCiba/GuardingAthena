@@ -1152,6 +1152,43 @@ GameUI.CustomUIConfig().UnitsKv = {
 		"particle_folder":"particles/units/heroes/hero_chen",
 		"HasInventory":1,
 	},
+	"juggernaut_01":{
+		"BaseClass":"npc_dota_creature",
+		"Model":"models/heroes/juggernaut/juggernaut_arcana.vmdl",
+		"ModelScale":1,
+		"Skin":1,
+		"AttackCapabilities":"DOTA_UNIT_CAP_MELEE_ATTACK",
+		"AttackDamageMin":660,
+		"AttackDamageMax":660,
+		"AttackRate":1.3,
+		"AttackRange":175,
+		"ArmorPhysical":70,
+		"MagicalResistance":38,
+		"MovementCapabilities":"DOTA_UNIT_CAP_MOVE_GROUND",
+		"MovementSpeed":380,
+		"StatusHealth":9400,
+		"StatusMana":0,
+		"Level":1,
+		"Creature":{
+			"AttachWearables":{
+				"Wearable1":{
+					"ItemDef":14955,
+				},
+				"Wearable2":{
+					"ItemDef":14956,
+				},
+				"Wearable3":{
+					"ItemDef":14957,
+				},
+				"Wearable4":{
+					"ItemDef":14958,
+				},
+				"Wearable5":{
+					"ItemDef":14959,
+				},
+			},
+		},
+	},
 	"wave_1":{
 		"Name":"打死汀狗",
 		"BaseClass":"npc_dota_creature",

@@ -3,7 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 1
-	m_flConstantRadius = 20.0
+	m_flConstantRadius = 30.0
 	m_ConstantColor = [ 255, 233, 208, 255 ]
 	m_ConstantNormal = [ 1.0, 0.0, 0.0 ]
 	m_bShouldSort = false
@@ -12,7 +12,6 @@
 	[
 		{
 			m_name = "preview"
-			m_drivers = [  ]
 		},
 	]
 	m_Emitters = 
@@ -60,6 +59,7 @@
 			m_nField = 4
 			m_Rate = 0.01
 			m_flEndTime = 99999997952.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_FadeInSimple"
@@ -86,6 +86,7 @@
 		{
 			_class = "C_OP_ColorInterpolate"
 			m_ColorFade = [ 254, 61, 61 ]
+			m_bDisableOperator = true
 		},
 	]
 	m_Renderers = 

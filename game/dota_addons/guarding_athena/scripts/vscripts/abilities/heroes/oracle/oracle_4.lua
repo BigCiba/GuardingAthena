@@ -1,6 +1,6 @@
-LinkLuaModifier( "modifier_oracle_4_thinker", "abilities/heroes/oracle/oracle_4.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_4_pull", "abilities/heroes/oracle/oracle_4.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_4_debuff", "abilities/heroes/oracle/oracle_4.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_oracle_4_thinker", "abilities/heroes/oracle/oracle_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_oracle_4_pull", "abilities/heroes/oracle/oracle_4.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_oracle_4_debuff", "abilities/heroes/oracle/oracle_4.lua", LUA_MODIFIER_MOTION_NONE)
 --Abilities
 if oracle_4 == nil then
 	oracle_4 = class({})
@@ -25,10 +25,10 @@ function oracle_4:OnSpellStart()
 	local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, self:GetSpecialValueFor("radius"), self)
 	for _, hUnit in ipairs(tTargets) do
 		hCaster:DealDamage(hUnit, self)
-		hUnit:AddNewModifier(hCaster, self, "modifier_stunned", {duration = stun_duration})
+		hUnit:AddNewModifier(hCaster, self, "modifier_stunned", { duration = stun_duration })
 	end
 	-- 延迟造成吸引
-	CreateModifierThinker(hCaster, self, "modifier_oracle_4_thinker", {duration = stun_duration}, vPosition, hCaster:GetTeamNumber(), false)
+	CreateModifierThinker(hCaster, self, "modifier_oracle_4_thinker", { duration = stun_duration }, vPosition, hCaster:GetTeamNumber(), false)
 	-- particle
 	local iParticleID = ParticleManager:CreateParticle("particles/heroes/oracle/oracle_4_circle.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(iParticleID,	0, vPosition)
@@ -54,7 +54,7 @@ function modifier_oracle_4_thinker:OnDestroy()
 		local iParticleID = ParticleManager:CreateParticle("particles/heroes/oracle/oracle_4_imprison.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin())
 		EmitSoundOnLocationWithCaster(self:GetParent():GetAbsOrigin(), "Hero_ObsidianDestroyer.AstralImprisonment.Cast", self:GetCaster())
-		self:GetCaster():GameTimer(self.imprison_duration, function ()
+		self:GetCaster():GameTimer(self.imprison_duration, function()
 			ParticleManager:DestroyParticle(iParticleID, false)
 			ParticleManager:ReleaseParticleIndex(iParticleID)
 		end)
@@ -67,8 +67,8 @@ function modifier_oracle_4_thinker:OnIntervalThink()
 		local vPosition = hParent:GetAbsOrigin()
 		local tTargets = FindUnitsInRadiusWithAbility(hCaster, vPosition, self.radius, self:GetAbility())
 		for _, hUnit in ipairs(tTargets) do
-			hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_oracle_4_pull", {duration = self.pull_duration})
-			hCaster:KnockBack((hUnit:GetAbsOrigin() - vPosition):Normalized() + hUnit:GetAbsOrigin(), hUnit, (hUnit:GetAbsOrigin() - vPosition):Length2D(), 0, self.pull_duration, true, false)
+			hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_oracle_4_pull", { duration = self.pull_duration })
+			hUnit:KnockBack((vPosition - hUnit:GetAbsOrigin()):Normalized(), (vPosition - hUnit:GetAbsOrigin()):Length2D(), 0, self.pull_duration)
 		end
 		self:StartIntervalThink(-1)
 	end
@@ -86,7 +86,7 @@ function modifier_oracle_4_pull:OnDestroy()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local hParent = self:GetParent()
-		hParent:AddNewModifier(hCaster, self:GetAbility(), "modifier_oracle_4_debuff", {duration = self.imprison_duration})
+		hParent:AddNewModifier(hCaster, self:GetAbility(), "modifier_oracle_4_debuff", { duration = self.imprison_duration })
 	end
 end
 ---------------------------------------------------------------------

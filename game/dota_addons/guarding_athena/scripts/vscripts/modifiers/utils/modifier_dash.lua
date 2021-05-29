@@ -6,7 +6,7 @@ modifier_dash = eom_modifier({
 	IsPurgeException = false,
 	IsStunDebuff = false,
 	AllowIllusionDuplicate = false,
-	LuaModifierType = LUA_MODIFIER_MOTION_BOTH
+-- LuaModifierType = LUA_MODIFIER_MOTION_BOTH
 })
 
 local public = modifier_dash
@@ -44,12 +44,12 @@ function public:OnCreated(params)
 		hParent.GetDashDuration = function(hParent)
 			return self.knockback_duration
 		end
-		if hParent:HasModifier("modifier_counter_helix") then
-			self.hCounterModifier = hParent:AddNewModifier(hParent, nil, "modifier_counter_projectile", { duration = self:GetDuration() })
-		end
-		if hParent:IsDestroyProjectile() then
-			self.hDestroyModifier = hParent:AddNewModifier(hParent, nil, "modifier_destroy_projectile", { duration = self:GetDuration() })
-		end
+		-- if hParent:HasModifier("modifier_counter_helix") then
+		-- 	self.hCounterModifier = hParent:AddNewModifier(hParent, nil, "modifier_counter_projectile", { duration = self:GetDuration() })
+		-- end
+		-- if hParent:IsDestroyProjectile() then
+		-- 	self.hDestroyModifier = hParent:AddNewModifier(hParent, nil, "modifier_destroy_projectile", { duration = self:GetDuration() })
+		-- end
 	end
 end
 function public:OnDestroy()
@@ -64,12 +64,12 @@ function public:OnDestroy()
 			event_name = MODIFIER_EVENT_ON_DASH_END,
 			unit = hParent
 		})
-		if self.hCounterModifier then
-			self.hCounterModifier:Destroy()
-		end
-		if self.hDestroyModifier then
-			self.hDestroyModifier:Destroy()
-		end
+		-- if self.hCounterModifier then
+		-- 	self.hCounterModifier:Destroy()
+		-- end
+		-- if self.hDestroyModifier then
+		-- 	self.hDestroyModifier:Destroy()
+		-- end
 	end
 end
 function public:OnHorizontalMotionInterrupted()
@@ -84,22 +84,22 @@ function public:UpdateHorizontalMotion(hParent, dt)
 	end
 	self.flTime = self.flTime + dt
 	local vPosition = hParent:GetAbsOrigin() + self.vDirection * self.vSpeed * dt
-	if not GridNav:CanFindPath(hParent:GetAbsOrigin(), vPosition) then
-		local vNormal = ProjectileSystem:_GetNormal(vPosition)
-		local vCross = self.vDirection:Cross(vNormal)
-		if not VectorIsZero(vCross) then
-			local yaw = vCross.z < 0 and 90 or -90
-			local vRef = RotatePosition(vec3_zero, QAngle(0, yaw, 0), vNormal)
-			local vNewPositin = hParent:GetAbsOrigin() + vRef * self.vSpeed * dt * self.vDirection:Normalized():Dot(vRef)
-			if GridNav:CanFindPath(hParent:GetAbsOrigin(), vNewPositin) and GridNav:IsTraversable(vNewPositin) then
-				vPosition = vNewPositin
-			end
-			local vDraw = vPosition
-			vDraw.z = 128
-		else
-			return
-		end
-	end
+	-- if not GridNav:CanFindPath(hParent:GetAbsOrigin(), vPosition) then
+	-- 	local vNormal = ProjectileSystem:_GetNormal(vPosition)
+	-- 	local vCross = self.vDirection:Cross(vNormal)
+	-- 	if not VectorIsZero(vCross) then
+	-- 		local yaw = vCross.z < 0 and 90 or -90
+	-- 		local vRef = RotatePosition(vec3_zero, QAngle(0, yaw, 0), vNormal)
+	-- 		local vNewPositin = hParent:GetAbsOrigin() + vRef * self.vSpeed * dt * self.vDirection:Normalized():Dot(vRef)
+	-- 		if GridNav:CanFindPath(hParent:GetAbsOrigin(), vNewPositin) and GridNav:IsTraversable(vNewPositin) then
+	-- 			vPosition = vNewPositin
+	-- 		end
+	-- 		local vDraw = vPosition
+	-- 		vDraw.z = 128
+	-- 	else
+	-- 		return
+	-- 	end
+	-- end
 	hParent:SetAbsOrigin(vPosition)
 end
 function public:UpdateVerticalMotion(hParent, dt)
@@ -120,10 +120,8 @@ end
 -- function public:GetActivityTranslationModifiers()
 -- 	return "forcestaff_friendly"
 -- end
-function public:ECheckState()
+function public:CheckState()
 	return {
 		[MODIFIER_STATE_STUNNED] = true,
-		[MODIFIER_STATE_DODGE_PROJECTILE] = true,
-		[MODIFIER_STATE_DODGE_TRAP] = true
 	}
 end

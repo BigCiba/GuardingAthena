@@ -6,12 +6,12 @@ function PracticeStart(trigger)
 			caster = caster:GetOwner()
 		elseif caster.currentHero then
 			caster = caster.currentHero
+		elseif caster:IsSummoned() then
+			caster = caster:GetOwner()
 		elseif caster:IsIllusion() then
+			print("bigciba", caster, caster:IsRealHero())
 			caster = caster.caster_hero
 		end
-	end
-	if caster and caster:IsRealHero() and caster:IsSummoned() then
-		caster = caster:GetOwner()
 	end
 	if caller.unitRemaining == nil then
 		caller.unitRemaining = {}

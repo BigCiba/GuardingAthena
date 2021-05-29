@@ -1,11 +1,6 @@
 juggernaut_2_juggernaut_01 = class({})
-function juggernaut_2_juggernaut_01:CastFilterResultTarget(hTarget)
-	---@type CDOTA_BaseNPC
-	local hCaster = self:GetCaster()
-	if hTarget:GetUnitName() ~= hCaster:GetUnitName() then
-		return UF_FAIL_ENEMY
-	end
-	return UF_SUCCESS
+function juggernaut_2_juggernaut_01:GetAssociatedSecondaryAbilities()
+	return "juggernaut_2_juggernaut_01_1"
 end
 function juggernaut_2_juggernaut_01:Spawn()
 	---@type CDOTA_BaseNPC
@@ -50,52 +45,19 @@ function juggernaut_2_juggernaut_01:CreateMaskGhost(vPosition)
 	for i = 1, hCaster:GetLevel() - 1 do
 		hUnit:HeroLevelUp(false)
 	end
-	hUnit:SetBaseStrength(hCaster:GetBaseStrength())
-	hUnit:SetBaseAgility(hCaster:GetBaseAgility())
-	hUnit:SetBaseIntellect(hCaster:GetBaseIntellect())
+	local property_pct = self:GetSpecialValueFor("property_pct")
+	hUnit:SetBaseStrength(hCaster:GetBaseStrength() * property_pct * 0.01)
+	hUnit:SetBaseAgility(hCaster:GetBaseAgility() * property_pct * 0.01)
+	hUnit:SetBaseIntellect(hCaster:GetBaseIntellect() * property_pct * 0.01)
 	self.hMaskGhost = hUnit
 end
 function juggernaut_2_juggernaut_01:OnSpellStart()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
-	local hTarget = self:GetCursorTarget()
+	print("bigciba", hCaster:GetTogglableWearable(DOTA_LOADOUT_TYPE_HEAD))
 	local vPosition = self:GetCursorPosition()
-	if hTarget then
-		if hTarget == hCaster then
-			local hUnit = self.hMaskGhost
-			if self.hMaskGhost then
-				local tProjectileInfo = {
-					Ability = self,
-					Target = hCaster,
-					EffectName = "particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_return.vpcf",
-					bDodgeable = false,
-					iMoveSpeed = 900,
-					vSourceLoc = hUnit:GetAttachmentPosition("attach_hitloc"),
-				}
-				ProjectileManager:CreateTrackingProjectile(tProjectileInfo)
-				self.hMaskGhost:Kill(self, hCaster)
-				self.hMaskGhost = nil
-			end
-		else
-			local tProjectileInfo = {
-				Ability = self,
-				Target = hTarget,
-				EffectName = "particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_return.vpcf",
-				bDodgeable = false,
-				iMoveSpeed = 900,
-				vSourceLoc = hCaster:GetAttachmentPosition("attach_hitloc"),
-			}
-			ProjectileManager:CreateTrackingProjectile(tProjectileInfo)
-			hCaster:SetAbsOrigin(hCaster:GetAbsOrigin() + Vector(0, 0, -1000))
-			hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_2_juggernaut_01_ghost", { duration = 3 })
-			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_grimstroke/grimstroke_death.vpcf", PATTACH_CUSTOMORIGIN, nil)
-			ParticleManager:SetParticleControl(iParticleID, 0, hCaster:GetAbsOrigin())
-			ParticleManager:ReleaseParticleIndex(iParticleID)
-		end
-	else
-		CreateModifierThinker(hCaster, self, "modifier_juggernaut_2_juggernaut_01_thinker", { duration = 1 }, vPosition, hCaster:GetTeamNumber(), false)
-		hCaster:EmitSound("Hero_Juggernaut.MaskGhost.Cast")
-	end
+	CreateModifierThinker(hCaster, self, "modifier_juggernaut_2_juggernaut_01_thinker", { duration = 1 }, vPosition, hCaster:GetTeamNumber(), false)
+	hCaster:EmitSound("Hero_Juggernaut.MaskGhost.Cast")
 end
 function juggernaut_2_juggernaut_01:OnProjectileHit(hTarget, vLocation)
 	---@type CDOTA_BaseNPC
@@ -106,7 +68,8 @@ function juggernaut_2_juggernaut_01:OnProjectileHit(hTarget, vLocation)
 			self.hMaskGhost:Kill(self, hCaster)
 			self.hMaskGhost = nil
 		end
-		hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_2_juggernaut_01_buff", { duration = 10 })
+		hCaster:StartGesture(ACT_DOTA_TAUNT_SPECIAL)
+		hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_2_juggernaut_01_buff", { duration = self:GetSpecialValueFor("duration") })
 		hCaster:RemoveModifierByName("modifier_juggernaut_2_juggernaut_01_ghost")
 	end
 end
@@ -121,19 +84,12 @@ modifier_juggernaut_2_juggernaut_01_thinker = eom_modifier({
 	IsStunDebuff = false,
 	AllowIllusionDuplicate = false,
 }, nil, ModifierThinker)
-function modifier_juggernaut_2_juggernaut_01_thinker:GetAbilitySpecialValue()
-	self.damage = self:GetAbilitySpecialValueFor("damage")
-end
 function modifier_juggernaut_2_juggernaut_01_thinker:OnCreated(params)
 	if IsServer() then
 	else
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_blob.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, self:GetParent():GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
-	end
-end
-function modifier_juggernaut_2_juggernaut_01_thinker:OnRefresh(params)
-	if IsServer() then
 	end
 end
 function modifier_juggernaut_2_juggernaut_01_thinker:OnDestroy()
@@ -145,14 +101,6 @@ function modifier_juggernaut_2_juggernaut_01_thinker:OnDestroy()
 		hAbility:CreateMaskGhost(hParent:GetAbsOrigin())
 	end
 end
-function modifier_juggernaut_2_juggernaut_01_thinker:DeclareFunctions()
-	return {
-	}
-end
-function modifier_juggernaut_2_juggernaut_01_thinker:EDeclareFunctions()
-	return {
-	}
-end
 ---------------------------------------------------------------------
 modifier_juggernaut_2_juggernaut_01_illusion = eom_modifier({
 	Name = "modifier_juggernaut_2_juggernaut_01_illusion",
@@ -163,9 +111,6 @@ modifier_juggernaut_2_juggernaut_01_illusion = eom_modifier({
 	IsStunDebuff = false,
 	AllowIllusionDuplicate = false,
 })
-function modifier_juggernaut_2_juggernaut_01_illusion:GetAbilitySpecialValue()
-	self.damage = self:GetAbilitySpecialValueFor("damage")
-end
 function modifier_juggernaut_2_juggernaut_01_illusion:OnCreated(params)
 	if IsServer() then
 	else
@@ -178,14 +123,12 @@ function modifier_juggernaut_2_juggernaut_01_illusion:OnCreated(params)
 		self:AddParticle(iParticleID, false, false, -1, false, false)
 	end
 end
-function modifier_juggernaut_2_juggernaut_01_illusion:OnRefresh(params)
-	if IsServer() then
-	end
-end
 function modifier_juggernaut_2_juggernaut_01_illusion:OnDestroy()
 	if IsServer() then
 		---@type CDOTA_BaseNPC
 		local hParent = self:GetParent()
+		---@type CDOTABaseAbility
+		local hAbility = self:GetAbility()
 		for _, v in ipairs(hParent._tWearable) do
 			UTIL_Remove(v)
 		end
@@ -193,15 +136,12 @@ function modifier_juggernaut_2_juggernaut_01_illusion:OnDestroy()
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_grimstroke/grimstroke_death.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 		self:AddParticle(iParticleID, false, false, -1, false, false)
+		hAbility.hMaskGhost = nil
 	end
 end
 function modifier_juggernaut_2_juggernaut_01_illusion:CheckState()
 	return {
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true
-	}
-end
-function modifier_juggernaut_2_juggernaut_01_illusion:EDeclareFunctions()
-	return {
 	}
 end
 ---------------------------------------------------------------------
@@ -215,13 +155,26 @@ modifier_juggernaut_2_juggernaut_01_buff = eom_modifier({
 	AllowIllusionDuplicate = false,
 })
 function modifier_juggernaut_2_juggernaut_01_buff:GetAbilitySpecialValue()
-	self.damage = self:GetAbilitySpecialValueFor("damage")
+	self.property_pct = self:GetAbilitySpecialValueFor("property_pct")
+end
+function modifier_juggernaut_2_juggernaut_01_buff:OnCreated()
+	---@type CDOTA_BaseNPC
+	local hParent = self:GetParent()
+	if IsServer() then
+		hParent:EmitSound("Hero_Juggernaut.ArcanaTrigger")
+	else
+		local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_trigger.vpcf", PATTACH_ABSORIGIN, hParent)
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_2_juggernaut_01_return_a.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControlEnt(iParticleID, 3, hParent, PATTACH_POINT_FOLLOW, "blade_attachment", hParent:GetAbsOrigin(), false)
+		self:AddParticle(iParticleID, false, false, -1, false, false)
+	end
 end
 function modifier_juggernaut_2_juggernaut_01_buff:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = self:GetParent():GetBaseStrength(),
-		MODIFIER_PROPERTY_STATS_AGILITY_BONUS = self:GetParent():GetBaseAgility(),
-		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = self:GetParent():GetBaseIntellect(),
+		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = self:GetParent():GetBaseStrength() * (self.property_pct or 0) * 0.01,
+		MODIFIER_PROPERTY_STATS_AGILITY_BONUS = self:GetParent():GetBaseAgility() * (self.property_pct or 0) * 0.01,
+		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = self:GetParent():GetBaseIntellect() * (self.property_pct or 0) * 0.01,
 	}
 end
 ---------------------------------------------------------------------
@@ -234,26 +187,6 @@ modifier_juggernaut_2_juggernaut_01_ghost = eom_modifier({
 	IsStunDebuff = false,
 	AllowIllusionDuplicate = false,
 })
-function modifier_juggernaut_2_juggernaut_01_ghost:OnCreated()
-	if IsServer() then
-		---@type CDOTA_BaseNPC
-		local hCaster = self:GetCaster()
-		-- hCaster:AddNoDraw()
-		-- for i, v in ipairs(hCaster._tWearable) do
-		-- 	v:AddEffects(EF_NODRAW)
-		-- end
-	end
-end
-function modifier_juggernaut_2_juggernaut_01_ghost:OnDestroy()
-	if IsServer() then
-		---@type CDOTA_BaseNPC
-		local hCaster = self:GetCaster()
-		-- hCaster:RemoveNoDraw()
-		-- for i, v in ipairs(hCaster._tWearable) do
-		-- 	v:RemoveEffects(EF_NODRAW)
-		-- end
-	end
-end
 function modifier_juggernaut_2_juggernaut_01_ghost:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL = 1,

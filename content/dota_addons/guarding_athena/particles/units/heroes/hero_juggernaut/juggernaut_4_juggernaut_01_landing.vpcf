@@ -1,0 +1,72 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 11
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_flPlaybackSpeed = 0.0
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_j.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_g.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_i.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_m.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_k.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_f.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_h.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_landing_a.vpcf"
+		},
+	]
+}

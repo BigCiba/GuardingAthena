@@ -14,6 +14,8 @@ function public:OnCreated(params)
 	-- 	return true
 	-- end
 	if IsServer() then
+		hParent:AddActivityModifier("arcana_style")
+		hParent:AddActivityModifier("red")
 		self:StartIntervalThink(0.1)
 		-- 替换饰品
 		AssetModifiers:ReplaceWearables("juggernaut_01", hParent)
