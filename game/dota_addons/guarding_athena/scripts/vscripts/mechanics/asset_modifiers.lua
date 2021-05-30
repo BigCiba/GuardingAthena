@@ -198,8 +198,8 @@ function public:GetModelReplacement(sModelName, hUnit)
 	if not IsValid(hUnit) then
 		return sModelName
 	end
-	local sUnitName = hUnit:GetUnitName()
-	local tAssetModifiers = KeyValues.AssetModifiersKv[sUnitName]
+	local sSkinName = hUnit.GetSkinName and hUnit:GetSkinName() or ""
+	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
 	if tAssetModifiers ~= nil then
 		for _, tAssetModifier in pairs(tAssetModifiers) do
 			if tAssetModifier.type == "model" then
@@ -210,6 +210,25 @@ function public:GetModelReplacement(sModelName, hUnit)
 		end
 	end
 	return sModelName
+end
+
+---获取专属替换
+function public:GetScepterReplacement(sScepterName, hUnit)
+	if not IsValid(hUnit) then
+		return sScepterName
+	end
+	local sSkinName = hUnit.GetSkinName and hUnit:GetSkinName() or ""
+	local tAssetModifiers = KeyValues.AssetModifiersKv[sSkinName]
+	if tAssetModifiers ~= nil then
+		for _, tAssetModifier in pairs(tAssetModifiers) do
+			if tAssetModifier.type == "scepter" then
+				if tAssetModifier.asset == sScepterName then
+					return tAssetModifier.modifier
+				end
+			end
+		end
+	end
+	return sScepterName
 end
 
 if IsServer() then

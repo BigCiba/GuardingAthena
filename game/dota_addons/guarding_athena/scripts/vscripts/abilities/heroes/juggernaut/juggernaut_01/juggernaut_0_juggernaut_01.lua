@@ -35,6 +35,24 @@ function modifier_juggernaut_0_juggernaut_01:GetAbilitySpecialValue()
 	self.interval = self:GetAbilitySpecialValueFor("interval")
 	self.duration = self:GetAbilitySpecialValueFor("duration")
 end
+function modifier_juggernaut_0_juggernaut_01:OnCreated()
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		---@type CDOTABaseAbility
+		local hAbility = self:GetAbility()
+		hCaster.AddGhostMark = function(hCaster, hTarget)
+			hTarget:AddNewModifier(hCaster, hAbility, "modifier_juggernaut_0_juggernaut_01_mark", { duration = self.duration })
+		end
+	end
+end
+function modifier_juggernaut_0_juggernaut_01:OnDestroy()
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		hCaster.AddGhostMark = nil
+	end
+end
 function modifier_juggernaut_0_juggernaut_01:EDeclareFunctions()
 	return {
 		MODIFIER_EVENT_ON_ATTACK_LANDED = { self:GetParent() }
@@ -65,6 +83,7 @@ modifier_juggernaut_0_juggernaut_01_mark = eom_modifier({
 })
 function modifier_juggernaut_0_juggernaut_01_mark:GetAbilitySpecialValue()
 	self.threshold = self:GetAbilitySpecialValueFor("threshold")
+	self.scepter_mark_damage = self:GetAbilitySpecialValueFor("scepter_mark_damage")
 end
 function modifier_juggernaut_0_juggernaut_01_mark:OnCreated(params)
 	if IsServer() then
@@ -91,8 +110,26 @@ function modifier_juggernaut_0_juggernaut_01_mark:OnRefresh(params)
 			local hParent = self:GetParent()
 			---@type CDOTABaseAbility
 			local hAbility = self:GetAbility()
-			hCaster:AddNewModifier(hParent, hAbility, "modifier_juggernaut_0_juggernaut_01_buff", { iStackCount = self:GetStackCount() })
+			if not hCaster:HasModifier("modifier_juggernaut_0_juggernaut_01_buff") then
+				hCaster:AddNewModifier(hParent, hAbility, "modifier_juggernaut_0_juggernaut_01_buff", { iStackCount = self:GetStackCount() })
+			end
 			self:Destroy()
+		end
+	end
+end
+function modifier_juggernaut_0_juggernaut_01_mark:OnDestroy()
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		if IsValid(hCaster) then
+			if hCaster:GetScepterLevel() >= 1 then
+				---@type CDOTA_BaseNPC
+				local hParent = self:GetParent()
+				---@type CDOTABaseAbility
+				local hAbility = self:GetAbility()
+				local flDamage = hCaster:GetAgility() * self.scepter_mark_damage * self:GetStackCount()
+				hCaster:DealDamage(hParent, hAbility, flDamage, DAMAGE_TYPE_MAGICAL)
+			end
 		end
 	end
 end
@@ -135,10 +172,10 @@ function modifier_juggernaut_0_juggernaut_01_buff:OnCreated(params)
 
 		AddFOWViewer(hParent:GetTeamNumber(), hTarget:GetAbsOrigin(), 300, self.interval, false)
 
-		local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_slash_trail.vpcf", PATTACH_CUSTOMORIGIN, hParent)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_trail.vpcf", PATTACH_CUSTOMORIGIN, hParent)
 		ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 
-		FindClearSpaceForUnit(hParent, vPosition, true)
+		FindClearSpaceForUnit(hParent, vPosition, false)
 
 		ParticleManager:SetParticleControl(iParticleID, 1, hParent:GetAbsOrigin())
 		ParticleManager:ReleaseParticleIndex(iParticleID)
@@ -172,16 +209,16 @@ function modifier_juggernaut_0_juggernaut_01_buff:OnIntervalThink()
 		if IsValid(hTarget) then
 			local vDirection = hTarget:GetAbsOrigin() - hParent:GetAbsOrigin()
 			vDirection.z = 0
-			local vPosition = hTarget:GetAbsOrigin() + vDirection:Normalized() * (hParent:GetHullRadius() + hTarget:GetHullRadius())
+			local vPosition = hTarget:GetAbsOrigin() + RandomVector(hParent:GetHullRadius() + hTarget:GetHullRadius())
 
 			hParent:EmitSound("Hero_Juggernaut.OmniSlash")
 
 			AddFOWViewer(hParent:GetTeamNumber(), hTarget:GetAbsOrigin(), 300, self.interval, false)
 
-			local iParticleID = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_slash_trail.vpcf", PATTACH_CUSTOMORIGIN, hParent)
+			local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_trail.vpcf", PATTACH_CUSTOMORIGIN, hParent)
 			ParticleManager:SetParticleControl(iParticleID, 0, hParent:GetAbsOrigin())
 
-			FindClearSpaceForUnit(hParent, vPosition, true)
+			FindClearSpaceForUnit(hParent, vPosition, false)
 
 			ParticleManager:SetParticleControl(iParticleID, 1, hParent:GetAbsOrigin())
 			ParticleManager:ReleaseParticleIndex(iParticleID)
@@ -223,8 +260,25 @@ function modifier_juggernaut_0_juggernaut_01_buff:CheckState()
 		[MODIFIER_STATE_ROOTED] = true,
 		-- [MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
-		[MODIFIER_STATE_INVULNERABLE] = true,
+		-- [MODIFIER_STATE_INVULNERABLE] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
 	}
+end
+function modifier_juggernaut_0_juggernaut_01_buff:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+		MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR
+	}
+end
+function modifier_juggernaut_0_juggernaut_01_buff:GetAbsoluteNoDamageMagical()
+	return 1
+end
+function modifier_juggernaut_0_juggernaut_01_buff:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+function modifier_juggernaut_0_juggernaut_01_buff:GetAbsoluteNoDamagePure()
+	return 1
 end

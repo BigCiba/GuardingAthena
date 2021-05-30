@@ -19,6 +19,7 @@
 		"AbilitiesKv"		"npc/npc_abilities_custom.txt"
 		"PetsKv"			"npc/units/npc_pet.kv"
 		"UnitsKv"			"npc/npc_units_custom.txt",
-		"ItemsKv"	"npc/npc_items_custom.txt",
+		"ItemsKv"			"npc/npc_items_custom.txt",
+		"AssetsKv"			"npc/asset_modifiers.kv",
 	}
 }

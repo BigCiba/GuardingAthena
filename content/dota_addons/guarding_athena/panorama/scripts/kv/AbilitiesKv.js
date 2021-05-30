@@ -14183,7 +14183,6 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
-		"AbilityDuration":6,
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
@@ -14196,6 +14195,10 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 			"03":{
 				"var_type":"FIELD_INTEGER",
 				"duration":10,
+			},
+			"04":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_mark_damage":8,
 			},
 		},
 	},
@@ -14213,13 +14216,12 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastPoint":0.15,
 		"AbilityCooldown":6,
 		"HasScepterUpgrade":1,
-		"ScepterLevel":1,
+		"ScepterLevel":2,
 		"AbilityManaCost":80,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_PHYSICAL",
-		"AbilityDuration":6,
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
@@ -14256,7 +14258,6 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_FRIENDLY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_PHYSICAL",
-		"AbilityDuration":6,
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
@@ -14282,7 +14283,6 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_FRIENDLY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO",
-		"AbilityDuration":6,
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
@@ -14311,13 +14311,12 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"AbilityCastRange":900,
 		"AbilityCooldown":6,
 		"HasScepterUpgrade":1,
-		"ScepterLevel":1,
+		"ScepterLevel":3,
 		"AbilityManaCost":80,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_PHYSICAL",
-		"AbilityDuration":6,
 		"AbilitySpecial":{
 			"01":{
 				"var_type":"FIELD_INTEGER",
@@ -14347,7 +14346,7 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 	},
 	"juggernaut_4_juggernaut_01":{
 		"BaseClass":"ability_lua",
-		"ScriptFile":"abilities/heroes/juggernaut_4_juggernaut_/juggernaut_4_juggernaut_01",
+		"ScriptFile":"abilities/heroes/juggernaut/juggernaut_01/juggernaut_4_juggernaut_01",
 		"AbilityTextureName":"juggernaut_4_juggernaut_01",
 		"AbilityType":"DOTA_ABILITY_TYPE_ULTIMATE",
 		"SpellDispellableType":"SPELL_DISPELLABLE_NO",
@@ -14355,15 +14354,15 @@ GameUI.CustomUIConfig().AbilitiesKv = {
 		"RequiredLevel":8,
 		"LevelsBetweenUpgrades":24,
 		"AbilityCastAnimation":"ACT_DOTA_TAUNT",
-		"AbilityCastRange":1200,
 		"AbilityCastPoint":0.72,
 		"AbilityCooldown":16,
+		"HasScepterUpgrade":1,
+		"ScepterLevel":4,
 		"AbilityManaCost":110,
 		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
 		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
 		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
 		"AbilityUnitDamageType":"DAMAGE_TYPE_PHYSICAL",
-		"AbilityDuration":9,
 		"AbilitySpecial":{
 			"10":{
 				"var_type":"FIELD_INTEGER",

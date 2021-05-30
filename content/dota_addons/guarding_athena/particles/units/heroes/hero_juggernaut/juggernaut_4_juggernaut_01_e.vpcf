@@ -4,73 +4,60 @@
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 48
 	m_flConstantRadius = 1.0
-	m_ConstantColor = [ 255, 147, 96, 255 ]
+	m_ConstantColor = [ 246, 123, 123, 255 ]
 	m_nConstantSequenceNumber = 7
-	m_Renderers = 
+	m_nBehaviorVersion = 11
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_controlPointConfigurations = 
 	[
 		{
-			_class = "C_OP_RenderTrails"
-			m_flOverbrightFactor = 6.0
-			m_flAddSelfAmount = 2.0
-			m_bSaturateColorPreAlphaBlend = false
-			m_bIgnoreDT = true
-			m_flLengthFadeInTime = 0.025
-			m_nHSVShiftControlPoint = 62
-			m_flRadiusScale = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.5
-			}
-			m_flTailAlphaScale = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_vecTexturesInput = 
+			m_name = "preview"
+			m_drivers = 
 			[
 				{
-					m_hTexture = resource:"materials/particle/smoke1/smoke1.vtex"
-					m_TextureControls = 
-					{
-						m_flFinalTextureScaleV = 
-						{
-							m_nType = "PF_TYPE_LITERAL"
-							m_flLiteralValue = -1.0
-						}
-						m_flFinalTextureOffsetV = 
-						{
-							m_nType = "PF_TYPE_LITERAL"
-							m_flLiteralValue = 1.0
-						}
-					}
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
 				},
 			]
-			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ALPHA"
-			m_nFogType = "PARTICLE_FOG_GAME_DEFAULT"
 		},
 	]
-	m_Operators = 
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 1.0
-		},
-		{
-			_class = "C_OP_Decay"
-		},
-		{
-			_class = "C_OP_LerpScalar"
-			m_nFieldOutput = "10"
-			m_flOutput = 0.0
-		},
-		{
-			_class = "C_OP_InterpolateRadius"
-			m_flStartScale = 0.0
-			m_flBias = 0.75
-		},
-		{
-			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 184, 85, 19, 255 ]
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_nMapType = "PF_MAP_TYPE_DIRECT"
+				m_flLiteralValue = 200.0
+				m_nControlPoint = 0
+				m_nScalarAttribute = 3
+				m_nVectorAttribute = 6
+				m_nVectorComponent = 0
+				m_flRandomMin = 0.0
+				m_flRandomMax = 1.0
+				m_nRandomMode = "PF_RANDOM_MODE_CONSTANT"
+				m_flLOD0 = 0.0
+				m_flLOD1 = 0.0
+				m_flLOD2 = 0.0
+				m_flLOD3 = 0.0
+				m_nInputMode = "PF_INPUT_MODE_CLAMPED"
+				m_flMultFactor = 1.0
+				m_flInput0 = 0.0
+				m_flInput1 = 1.0
+				m_flOutput0 = 0.0
+				m_flOutput1 = 1.0
+				m_nBiasType = "PF_BIAS_TYPE_STANDARD"
+				m_flBiasParameter = 0.0
+				m_Curve = 
+				{
+					m_spline = [  ]
+					m_tangents = [  ]
+					m_vDomainMins = [ 0.0, 0.0 ]
+					m_vDomainMaxs = [ 0.0, 0.0 ]
+				}
+			}
 		},
 	]
 	m_Initializers = 
@@ -85,7 +72,7 @@
 		},
 		{
 			_class = "C_INIT_InheritFromParentParticles"
-			m_nFieldOutput = "21"
+			m_nFieldOutput = 21
 			m_bDisableOperator = true
 		},
 		{
@@ -110,8 +97,8 @@
 		{
 			_class = "C_INIT_AddVectorToVector"
 			m_vecScale = [ 600.0, 600.0, 600.0 ]
-			m_nFieldInput = "21"
-			m_nFieldOutput = "2"
+			m_nFieldInput = 21
+			m_nFieldOutput = 2
 		},
 		{
 			_class = "C_INIT_PositionOffset"
@@ -181,6 +168,7 @@
 				}
 			}
 			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_InitFloat"
@@ -240,8 +228,9 @@
 					m_vDomainMaxs = [ 1.5, 1.0 ]
 				}
 			}
-			m_nOutputField = "10"
+			m_nOutputField = 10
 			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_InitFloat"
@@ -301,62 +290,72 @@
 					m_vDomainMaxs = [ 1.5, 1.0 ]
 				}
 			}
-			m_nOutputField = "16"
+			m_nOutputField = 16
 			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+			m_bDisableOperator = true
 		},
 	]
-	m_Emitters = 
+	m_Operators = 
 	[
 		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_LerpScalar"
+			m_nFieldOutput = 10
+			m_flOutput = 0.0
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 0.0
+			m_flBias = 0.75
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 150, 28, 24 ]
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderTrails"
+			m_flOverbrightFactor = 6.0
+			m_flAddSelfAmount = 2.0
+			m_bSaturateColorPreAlphaBlend = false
+			m_bIgnoreDT = true
+			m_flLengthFadeInTime = 0.025
+			m_nHSVShiftControlPoint = 62
+			m_flRadiusScale = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
-				m_nMapType = "PF_MAP_TYPE_DIRECT"
-				m_flLiteralValue = 200.0
-				m_nControlPoint = 0
-				m_nScalarAttribute = 3
-				m_nVectorAttribute = 6
-				m_nVectorComponent = 0
-				m_flRandomMin = 0.0
-				m_flRandomMax = 1.0
-				m_nRandomMode = "PF_RANDOM_MODE_CONSTANT"
-				m_flLOD0 = 0.0
-				m_flLOD1 = 0.0
-				m_flLOD2 = 0.0
-				m_flLOD3 = 0.0
-				m_nInputMode = "PF_INPUT_MODE_CLAMPED"
-				m_flMultFactor = 1.0
-				m_flInput0 = 0.0
-				m_flInput1 = 1.0
-				m_flOutput0 = 0.0
-				m_flOutput1 = 1.0
-				m_nBiasType = "PF_BIAS_TYPE_STANDARD"
-				m_flBiasParameter = 0.0
-				m_Curve = 
-				{
-					m_spline = [  ]
-					m_tangents = [  ]
-					m_vDomainMins = [ 0.0, 0.0 ]
-					m_vDomainMaxs = [ 0.0, 0.0 ]
-				}
+				m_flLiteralValue = 0.5
 			}
-		},
-	]
-	m_nBehaviorVersion = 11
-	m_nFirstMultipleOverride_BackwardCompat = 5
-	m_controlPointConfigurations = 
-	[
-		{
-			m_name = "preview"
-			m_drivers = 
+			m_flTailAlphaScale = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.0
+			}
+			m_vecTexturesInput = 
 			[
 				{
-					m_iControlPoint = 62
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
+					m_hTexture = resource:"materials/particle/smoke1/smoke1.vtex"
+					m_TextureControls = 
+					{
+						m_flFinalTextureScaleV = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = -1.0
+						}
+						m_flFinalTextureOffsetV = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = 1.0
+						}
+					}
 				},
 			]
 		},

@@ -4,6 +4,7 @@
 		<include src="file://{resources}/scripts/kv/PlayerItemsKV.js" />
 		<include src="file://{resources}/scripts/kv/AbilitiesKv.js" />
 		<include src="file://{resources}/scripts/kv/PetsKv.js" />
+		<include src="file://{resources}/scripts/kv/AssetsKv.js" />
 		<include src="file://{resources}/scripts/init.js" />
 	</scripts>
 	<script>

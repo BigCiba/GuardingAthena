@@ -70,6 +70,7 @@ function LoadItem(self) {
 					} else {
 						this.Panel.SetImage("file://{images}/custom_game/skin/default_no_item.png");
 					}
+					PreviewHero(PreviewHeroName);
 				}
 			});
 			// GameEvents.SendCustomGameEventToServer("ToggleItemEquipState", {
@@ -92,16 +93,18 @@ function PreviewHero(HeroName) {
 	$("#HeroNamePanel").SetDialogVariable("heroname", $.Localize(HeroName));
 	// 预览技能
 	$("#HeroAbilityPanel").RemoveAndDeleteChildren();
-	for (let index = 1; index <= 5; index++) {
+	for (let index = 1; index <= 6; index++) {
 		const AbilityName = HeroKV["Ability" + index];
-		let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", $("#HeroAbilityPanel"), AbilityName, { abilityname: AbilityName });
-		AbilityPanel.AddClass("HeroAbility");
-		AbilityPanel.SetPanelEvent("onmouseover", function () {
-			$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
-		});
-		AbilityPanel.SetPanelEvent("onmouseout", function () {
-			$.DispatchEvent("DOTAHideAbilityTooltip");
-		});
+		if (AbilityName != "generic_hidden") {
+			let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", $("#HeroAbilityPanel"), AbilityName, { abilityname: AbilityName });
+			AbilityPanel.AddClass("HeroAbility");
+			AbilityPanel.SetPanelEvent("onmouseover", function () {
+				$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
+			});
+			AbilityPanel.SetPanelEvent("onmouseout", function () {
+				$.DispatchEvent("DOTAHideAbilityTooltip");
+			});
+		}
 	}
 
 	// 预览模型
@@ -211,6 +214,50 @@ function UpdataSkinSetting() {
 		const ItemData = playerSkinData[index];
 		if (ItemData.Equip == 1 && ItemData.Hero == PreviewHeroName) {
 			$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/" + ItemData.ItemName + ".png");
+			let AssetData = GameUI.CustomUIConfig().AssetsKv[ItemData.ItemName]
+			if (AssetData) {
+				let AssetAbilities = {}
+				let itemdef
+				for (const key in AssetData) {
+					let AssetModifier = AssetData[key];
+					if (AssetModifier.type == "ability") {
+						AssetAbilities[AssetModifier.asset] = AssetModifier.modifier
+					}
+					if (AssetModifier.type == "itemdef") {
+						itemdef = AssetModifier.modifier
+					}
+				}
+				// 名字
+				if ($.Localize(PreviewHeroName + "_" + ItemData.ItemName) != PreviewHeroName + "_" + ItemData.ItemName) {
+					$("#HeroNamePanel").SetDialogVariable("heroname", $.Localize(PreviewHeroName + "_" + ItemData.ItemName));
+				}
+				// 更新模型预览
+				if (itemdef) {
+					$("#HeroScenePanel").RemoveAndDeleteChildren();
+					let HeroScenePanel = $.CreatePanelWithProperties("DOTAUIEconSetPreview", $("#HeroScenePanel"), PreviewHeroName, { itemdef: itemdef, antialias: "true", drawbackground: "true", particleonly: "false", hittest: "false" });
+					HeroScenePanel.AddClass("HeroScene");
+					HeroScenePanel.FindChildTraverse("Preview3DItems").hittest = false;
+				}
+				// 预览技能
+				$("#HeroAbilityPanel").RemoveAndDeleteChildren();
+				const HeroKV = GameUI.CustomUIConfig().HeroesKv[PreviewHeroName];
+				for (let index = 1; index <= 6; index++) {
+					let AbilityName = HeroKV["Ability" + index];
+					if (AssetAbilities[AbilityName]) {
+						AbilityName = AssetAbilities[AbilityName];
+					}
+					if (AbilityName != "generic_hidden") {
+						let AbilityPanel = $.CreatePanelWithProperties("DOTAAbilityImage", $("#HeroAbilityPanel"), AbilityName, { abilityname: AbilityName });
+						AbilityPanel.AddClass("HeroAbility");
+						AbilityPanel.SetPanelEvent("onmouseover", function () {
+							$.DispatchEvent("DOTAShowAbilityTooltip", AbilityPanel, AbilityName);
+						});
+						AbilityPanel.SetPanelEvent("onmouseout", function () {
+							$.DispatchEvent("DOTAHideAbilityTooltip");
+						});
+					}
+				}
+			}
 			break;
 		}
 		$("#SettingSkin").FindChildrenWithClassTraverse("SettingIcon")[0].SetImage("file://{images}/custom_game/skin/default_no_item.png");

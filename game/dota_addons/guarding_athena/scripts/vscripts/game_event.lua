@@ -649,7 +649,7 @@ function GuardingAthena:OnPlayerChat(keys)
 		--hero:AddItem(CreateItem("item_ring_world_3_6", hero, hero))
 		hero:AddItem(CreateItem("item_dun_5", hero, hero))
 		hero:AddItem(CreateItem("item_jian_9", hero, hero))
-		hero:AddItem(CreateItem("item_" .. hero:GetUnitName(), hero, hero))
+		hero:AddItem(CreateItem(AssetModifiers:GetScepterReplacement("item_" .. hero:GetUnitName(), hero), hero, hero))
 		hero.reborn_time = 4
 		hero:AddNewModifier(hero, nil, "modifier_reborn", nil):SetStackCount(4)
 	end

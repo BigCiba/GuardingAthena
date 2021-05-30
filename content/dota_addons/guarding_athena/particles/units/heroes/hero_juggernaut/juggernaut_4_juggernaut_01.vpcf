@@ -767,21 +767,6 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_s.vpcf"
-			m_bDisableChild = true
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_a.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_k.vpcf"
-			m_bDisableChild = true
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_b.vpcf"
-			m_bDisableChild = true
-		},
-		{
 			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_j.vpcf"
 		},
 		{
@@ -795,6 +780,49 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_l.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_f.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_e.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_n.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_z.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_t.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_m.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_h.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_d.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_a.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_s.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_k.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_b.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_i.vpcf"
@@ -817,15 +845,6 @@
 			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_f.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_e.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_n.vpcf"
-		},
-		{
 			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_p.vpcf"
 			m_bDisableChild = true
 		},
@@ -840,21 +859,6 @@
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_u.vpcf"
 			m_bDisableChild = true
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_z.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_t.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_m.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_h.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_juggernaut/juggernaut_4_juggernaut_01_d.vpcf"
 		},
 	]
 }

@@ -71,6 +71,9 @@ function modifier_juggernaut_1_juggernaut_01:OnIntervalThink()
 	local tTargets = FindUnitsInRadiusWithAbility(hParent, self.vCenter, self.radius, hAbility)
 	for _, hUnit in ipairs(tTargets) do
 		hParent:DealDamage(hUnit, hAbility)
+		if hParent:GetScepterLevel() >= 2 then
+			hParent:AddGhostMark(hUnit)
+		end
 	end
 	local hTarget = RandomValue(tTargets)
 	if IsValid(hTarget) then
@@ -102,7 +105,7 @@ function modifier_juggernaut_1_juggernaut_01:DeclareFunctions()
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
-		MODIFIER_PROPERTY_MAX_ATTACK_RANGE = 99999
+		MODIFIER_PROPERTY_MAX_ATTACK_RANGE = (self.radius or 0) * 2
 	-- MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL
 	}
 end

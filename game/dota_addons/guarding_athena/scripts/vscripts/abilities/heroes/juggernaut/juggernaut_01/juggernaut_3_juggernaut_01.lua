@@ -1,4 +1,12 @@
 juggernaut_3_juggernaut_01 = class({})
+function juggernaut_3_juggernaut_01:GetBehavior()
+	---@type CDOTA_BaseNPC
+	local hCaster = self:GetCaster()
+	if hCaster:GetScepterLevel() >= 3 then
+		return DOTA_ABILITY_BEHAVIOR_PASSIVE
+	end
+	return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE
+end
 function juggernaut_3_juggernaut_01:OnSpellStart()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
@@ -13,7 +21,24 @@ function juggernaut_3_juggernaut_01:OnProjectileHit(hTarget, vLocation)
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
 	if hTarget then
-		hCaster:DealDamage(hTarget, self)
+		if hCaster:GetScepterLevel() >= 3 then
+			hCaster:DealDamage(hTarget, self, nil, DAMAGE_TYPE_PHYSICAL, DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR)
+		else
+			hCaster:DealDamage(hTarget, self)
+		end
+	end
+end
+function juggernaut_3_juggernaut_01:OnInventoryContentsChanged()
+	---@type CDOTA_BaseNPC
+	local hCaster = self:GetCaster()
+	if hCaster:GetScepterLevel() >= 3 then
+		if not hCaster:HasModifier("modifier_juggernaut_3_juggernaut_01") then
+			hCaster:AddNewModifier(hCaster, self, "modifier_juggernaut_3_juggernaut_01", nil)
+		end
+	else
+		if hCaster:HasModifier("modifier_juggernaut_3_juggernaut_01") then
+			hCaster:RemoveModifierByName("modifier_juggernaut_3_juggernaut_01")
+		end
 	end
 end
 ---------------------------------------------------------------------
@@ -26,6 +51,7 @@ modifier_juggernaut_3_juggernaut_01 = eom_modifier({
 	IsPurgeException = false,
 	IsStunDebuff = false,
 	AllowIllusionDuplicate = false,
+	RemoveOnDeath = false,
 })
 function modifier_juggernaut_3_juggernaut_01:GetAbilitySpecialValue()
 	self.distance = self:GetAbilitySpecialValueFor("distance")

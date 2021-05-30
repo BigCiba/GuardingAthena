@@ -31,15 +31,19 @@ function juggernaut_2_juggernaut_01:CreateMaskGhost(vPosition)
 	hUnit:StartGesture(ACT_DOTA_SPAWN)
 	hUnit:EmitSound("Hero_Grimstroke.InkCreature.Cast")
 	hUnit:SetControllableByPlayer(hCaster:GetPlayerOwnerID(), false)
-	for i = 0, 5 do
-		local hItem = hCaster:GetItemInSlot(i)
-		if hItem then
-			hUnit:AddItemByName(hItem:GetAbilityName())
-		end
+	-- 转生
+	if hCaster:HasModifier("modifier_reborn") then
+		hUnit:AddNewModifier(hUnit, nil, "modifier_reborn", nil):SetStackCount(4)
 	end
 	for i = 1, 4 do
 		local hAbility = hCaster:GetAbilityByIndex(i)
 		hUnit:GetAbilityByIndex(i):SetLevel(hAbility:GetLevel())
+	end
+	for i = 0, 16 do
+		local hItem = hCaster:GetItemInSlot(i)
+		if hItem then
+			hUnit:AddItemByName(hItem:GetAbilityName())
+		end
 	end
 	hUnit:SetAbilityPoints(0)
 	for i = 1, hCaster:GetLevel() - 1 do
@@ -54,7 +58,6 @@ end
 function juggernaut_2_juggernaut_01:OnSpellStart()
 	---@type CDOTA_BaseNPC
 	local hCaster = self:GetCaster()
-	print("bigciba", hCaster:GetTogglableWearable(DOTA_LOADOUT_TYPE_HEAD))
 	local vPosition = self:GetCursorPosition()
 	CreateModifierThinker(hCaster, self, "modifier_juggernaut_2_juggernaut_01_thinker", { duration = 1 }, vPosition, hCaster:GetTeamNumber(), false)
 	hCaster:EmitSound("Hero_Juggernaut.MaskGhost.Cast")

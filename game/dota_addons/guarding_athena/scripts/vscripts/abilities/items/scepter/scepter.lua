@@ -23,6 +23,10 @@ end
 if item_npc_dota_hero_juggernaut == nil then
 	item_npc_dota_hero_juggernaut = class({}, nil, item_scepter)
 end
+-- 鬼面武士
+if item_npc_dota_hero_juggernaut_juggernaut_01 == nil then
+	item_npc_dota_hero_juggernaut_juggernaut_01 = class({}, nil, item_scepter)
+end
 -- 影魔
 if item_npc_dota_hero_nevermore == nil then
 	item_npc_dota_hero_nevermore = class({}, nil, item_scepter)
@@ -86,7 +90,7 @@ end
 function modifier_scepter:GetModifierHealthBonus(t)
 	return self:GetParent():GetBaseMaxHealth() * self.property
 end
-function modifier_scepter:GetModifierManaBonus( t )
+function modifier_scepter:GetModifierManaBonus(t)
 	return self:GetParent():GetMaxMana() * self.property
 end
 function modifier_scepter:GetModifierBonusStats_Strength(t)

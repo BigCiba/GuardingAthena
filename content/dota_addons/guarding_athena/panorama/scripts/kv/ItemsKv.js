@@ -8243,80 +8243,6 @@ GameUI.CustomUIConfig().ItemsKv = {
 		},
 		"Model":"models/props_gameplay/red_box.vmdl",
 	},
-	"item_npc_dota_hero_antimage1":{
-		"BaseClass":"item_datadriven",
-		"AbilityTextureName":"item_zhuanshudh1",
-		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
-		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
-		"AbilityCastPoint":0.2,
-		"AbilityCastRange":900,
-		"ID":1131,
-		"ItemQuality":"component",
-		"ItemCost":550,
-		"ItemSellable":0,
-		"ItemPurchasable":0,
-		"ItemShopTags":"magic_resist",
-		"ItemRequirements":{
-		},
-		"ItemDisassembleRule":"DOTA_ITEM_DISASSEMBLE_NEVER",
-		"Modifiers":{
-			"modifier_npc_dota_hero_antimage":{
-				"Passive":1,
-				"IsHidden":1,
-				"Properties":{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS":"%str",
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS":"%agi",
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS":"%int",
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE":"%bonus_damage",
-					"MODIFIER_PROPERTY_HEALTH_BONUS":"%hp",
-					"MODIFIER_PROPERTY_MANA_BONUS":"%mp",
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT":"%hp_regen",
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT":"%mp_regen",
-				},
-				"OnAttackLanded":{
-					"RunScript":{
-						"ScriptFile":"scripts/vscripts/ability_hero/demon_hunter.lua",
-						"Function":"OnAttackLanded",
-					},
-				},
-			},
-		},
-		"AbilitySpecial":{
-			"01":{
-				"var_type":"FIELD_INTEGER",
-				"str":200,
-			},
-			"02":{
-				"var_type":"FIELD_INTEGER",
-				"agi":400,
-			},
-			"03":{
-				"var_type":"FIELD_INTEGER",
-				"int":200,
-			},
-			"04":{
-				"var_type":"FIELD_INTEGER",
-				"hp":4000,
-			},
-			"05":{
-				"var_type":"FIELD_INTEGER",
-				"mp":2000,
-			},
-			"06":{
-				"var_type":"FIELD_INTEGER",
-				"hp_regen":400,
-			},
-			"07":{
-				"var_type":"FIELD_INTEGER",
-				"mp_regen":100,
-			},
-			"08":{
-				"var_type":"FIELD_FLOAT",
-				"duration":2.5,
-			},
-		},
-		"Model":"models/props_gameplay/red_box.vmdl",
-	},
 	"item_npc_dota_hero_spectre1":{
 		"BaseClass":"item_datadriven",
 		"AbilityTextureName":"item_diffusal_blade",
@@ -12610,6 +12536,34 @@ GameUI.CustomUIConfig().ItemsKv = {
 			"04":{
 				"var_type":"FIELD_FLOAT",
 				"scepter_ignore_armor_chance":35,
+			},
+		},
+		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect":"particles/items4_fx/scepter_aura.vpcf",
+	},
+	"item_npc_dota_hero_juggernaut_juggernaut_01":{
+		"BaseClass":"item_lua",
+		"ScriptFile":"abilities/items/scepter/scepter",
+		"AbilityTextureName":"item_npc_dota_hero_juggernaut_juggernaut_01",
+		"AbilityBehavior":"DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"AbilityUnitTargetType":"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitTargetTeam":"DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitDamageType":"DAMAGE_TYPE_MAGICAL",
+		"AbilityCooldown":0.0,
+		"ID":1131,
+		"ItemQuality":"epic",
+		"ItemCost":1,
+		"ItemSellable":0,
+		"ItemPurchasable":0,
+		"ItemIsNeutralDrop":1,
+		"AbilitySpecial":{
+			"01":{
+				"var_type":"FIELD_INTEGER",
+				"property":15,
+			},
+			"02":{
+				"var_type":"FIELD_INTEGER",
+				"scepter_mark_damage":8,
 			},
 		},
 		"Model":"models/props_gameplay/aghanim_scepter.vmdl",
