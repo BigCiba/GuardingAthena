@@ -63,6 +63,7 @@ function GuardingAthena:OnEntityKilled(event)
 			GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 				if IsValid(hPlayer) then
+					print("game_over lose: player", iPlayerID)
 					player:game_over(iPlayerID, false)
 				end
 			end)
@@ -77,6 +78,7 @@ function GuardingAthena:OnEntityKilled(event)
 					GuardingAthena:EachPlayer(function(iNth, iPlayerID)
 						local hPlayer = PlayerResource:GetPlayer(iPlayerID)
 						if IsValid(hPlayer) then
+							print("game_over win: player", iPlayerID)
 							player:game_over(iPlayerID, true)
 						end
 					end)

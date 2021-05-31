@@ -318,6 +318,7 @@
 
 		//english/abilities/heroes/juggernaut.txt
 		"npc_dota_hero_juggernaut"	"Juggernaut"
+		"npc_dota_hero_juggernaut_juggernaut_01"	"GhostFace"
 		
 		"DOTA_Tooltip_ability_juggernaut_0"								"Peerless Swordplay"
 		"DOTA_Tooltip_ability_juggernaut_0_Description"					"Reduce the initial attack interval, reduce 0.1 second per 100 points of basic agility, and reduce 1 second at most. And increase attack power and %attackspeed% attack speed in duration."
@@ -375,7 +376,58 @@
 		"DOTA_Tooltip_modifier_juggernaut_4_buff"						"Invincible"
 		
 		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut"					"Muramasa"
-		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Making talent effective for illusions\n<h1>Second Reincarnation</h1>Immune to magic for duration\n<h1>Third  Reincarnation</h1>Attack has a %scepter_ignore_armor_chance%%% chance to ignore armor\n<h1>Fourth Reincarnation</h1>Each level of sword dance will increase the damage output by %scepter_damage_pct%%% and reduce the damage taken by %scepter_reduce_pct%%%\nThe legendary sword is extremely sharp, killing countless!"
+		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Making talent effective for illusions\n<h1>Second Reincarnation</h1>Immune to magic for duration\n<h1>Third Reincarnation</h1>Attack has a %scepter_ignore_armor_chance%%% chance to ignore armor\n<h1>Fourth Reincarnation</h1>Each level of sword dance will increase the damage output by %scepter_damage_pct%%% and reduce the damage taken by %scepter_reduce_pct%%%\nThe legendary sword is extremely sharp, killing countless!"
+		
+		"DOTA_Tooltip_ability_juggernaut_0_juggernaut_01"						"Ghost Mark"
+		"DOTA_Tooltip_ability_juggernaut_0_juggernaut_01_Description"			"The attack of the GhostFace makes the opponent superimpose the ghost mark, When the makes is superimposed on the %threshold% stack, GhostFace will launch several consecutive slashes on it. When actively used, it starts a continuous cut on a target."
+		"DOTA_Tooltip_ability_juggernaut_0_juggernaut_01_scepter_description_1"	"Deal [Stack * %scepter_mark_damage% * Agility] damage to the target when the ghost mark is destroyed"
+		"DOTA_Tooltip_ability_juggernaut_0_juggernaut_01_interval"				"Interval: "
+		"DOTA_Tooltip_ability_juggernaut_0_juggernaut_01_duration"				"Mark Duration:"
+		"DOTA_Tooltip_modifier_juggernaut_0_juggernaut_01_mark"					"Ghost Mark"
+		"DOTA_Tooltip_modifier_juggernaut_0_juggernaut_01_mark_Description"		""
+		
+		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01"						"Ghost Slash"
+		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_Description"			"The GhostFace quickly inflicted 5 slashes on the enemies in the range."
+		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_scepter_description_2"	"Ghost Slash stacks a ghost mark on the target every time it damages"
+		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_base_damage"			"Base Damage: "
+		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_damage"				"Agi Damage Factor: "
+		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_radius"				"Radius: "
+		
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01"						"Ghost Impermanence"
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_Description"			"The Ghostface summons a shadow clone, which inherits some attributes and equipment. Ghostface can choose self or shadow clone as the target to reintegrate, temporarily gaining extra attributes."
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_property_pct"			"%Shadow inherited properties:"
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_duration"				"Fusion duration:"
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_cooldown"				"Fusion cooldown:"
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_1"						"Fusion"
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_1_Description"			"Ghostface can choose self or shadow clone as the target to reintegrate, temporarily gaining extra attributes."
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_1_property_pct"		"%Fusion additional attributes:"
+		"DOTA_Tooltip_ability_juggernaut_2_juggernaut_01_1_duration"			"Fusion duration:"
+		"DOTA_Tooltip_modifier_juggernaut_2_juggernaut_01_buff"					"Fusion"
+		"DOTA_Tooltip_modifier_juggernaut_2_juggernaut_01_buff_Description"		"Ghostface temporarily gains additional attributes."
+		
+		"DOTA_Tooltip_ability_juggernaut_3_juggernaut_01"						"Ghost Ichimonji"
+		"DOTA_Tooltip_ability_juggernaut_3_juggernaut_01_Description"			"The attack of the Ghostface cuts the Jian Qi forward, hurting enemies in a straight line."
+		"DOTA_Tooltip_ability_juggernaut_3_juggernaut_01_scepter_description_3"	"Ghost Ichimonji becomes a passive skill and ignores armor"
+		"DOTA_Tooltip_ability_juggernaut_3_juggernaut_01_base_damage"			"Base Damage: "
+		"DOTA_Tooltip_ability_juggernaut_3_juggernaut_01_damage"				"Agi Damage Factor: "
+		"DOTA_Tooltip_modifier_juggernaut_3_juggernaut_01"						"Ghost Ichimonji"
+		"DOTA_Tooltip_modifier_juggernaut_3_juggernaut_01_Description"			"The attack of the Ghostface cuts the Jian Qi forward"
+		
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01"						"Purgatory Slash"
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_Description"			"The Ghostface locks onto a target, then falls from the sky after a short delay to cause area damage, and summons the shadow clone to cause %count% slashes on the target."
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_scepter_description_4"	"Casts the Ghost Mark on the target during Purgatory Slash"
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_base_damage"			"Base Damage: "
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_wave_damage"			"Slash Agi Damage Factor: "
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_damage"				"Impact Agi Damage Factor: "
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_radius"				"Radius: "
+		"DOTA_Tooltip_ability_juggernaut_4_juggernaut_01_duration"				"Duration: "
+		"DOTA_Tooltip_modifier_juggernaut_4_juggernaut_01_debuff"				"Purgatory Slash"
+		"DOTA_Tooltip_modifier_juggernaut_4_juggernaut_01_debuff_Description"	"The target cannot be moved"
+		"DOTA_Tooltip_modifier_juggernaut_4_juggernaut_01"						"Purgatory Slash"
+		"DOTA_Tooltip_modifier_juggernaut_4_juggernaut_01_Description"			"Ghostface is causing a devastating blow"
+		
+		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut_juggernaut_01"					"Demon Slayer"
+		"DOTA_Tooltip_ability_item_npc_dota_hero_juggernaut_juggernaut_01_Description"		"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>Deal [Stack * %scepter_mark_damage% * Agility] damage to the target when the ghost mark is destroyed\n<h1>Second Reincarnation</h1>Ghost Slash stacks a ghost mark on the target every time it damages\n<h1>Third Reincarnation</h1>Ghost Ichimonji becomes a passive skill and ignores armor\n<h1>Fourth Reincarnation</h1>Casts the Ghost Mark on the target during Purgatory Slash\nThe legendary sword is extremely sharp, killing countless!"
 
 		//english/abilities/heroes/legion_commander.txt
 		"npc_dota_hero_legion_commander"	"Hippolyta"
@@ -3830,6 +3882,8 @@
 		"phantom_assassin_01_Description"	"影月守望者纯金版本特效"
 		"omniknight_01"						"雷霆战士"
 		"omniknight_01_Description"			"修改机械师所有技能的特效，并且所有技能都增加额外效果。"
+		"juggernaut_01"						"鬼面剑客"
+		"juggernaut_01_Description"			"自带湮灭之缘套装，拥有一套全新的鬼面剑客技能与特效。"
 		// 特效
 		"wing_01"							"纯金翅膀"
 		"wing_01_Description"				"装备后出生自带金色翅膀，适用于所有英雄。"

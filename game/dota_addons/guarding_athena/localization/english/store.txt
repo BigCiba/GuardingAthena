@@ -11,6 +11,8 @@
 "phantom_assassin_01_Description"	"影月守望者纯金版本特效"
 "omniknight_01"						"雷霆战士"
 "omniknight_01_Description"			"修改机械师所有技能的特效，并且所有技能都增加额外效果。"
+"juggernaut_01"						"鬼面剑客"
+"juggernaut_01_Description"			"自带湮灭之缘套装，拥有一套全新的鬼面剑客技能与特效。"
 // 特效
 "wing_01"							"纯金翅膀"
 "wing_01_Description"				"装备后出生自带金色翅膀，适用于所有英雄。"

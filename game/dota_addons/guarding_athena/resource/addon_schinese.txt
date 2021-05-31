@@ -392,7 +392,6 @@
 		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01"						"鬼斩"
 		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_Description"			"鬼面剑客快速对范围内敌人造成5次斩击。"
 		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_scepter_description_2"	"鬼斩每次伤害对目标叠加一层鬼灭印记"
-		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_damage"				"额外攻击力系数："
 		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_base_damage"			"基础伤害："
 		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_damage"				"敏捷伤害系数："
 		"DOTA_Tooltip_ability_juggernaut_1_juggernaut_01_radius"				"影响范围："
