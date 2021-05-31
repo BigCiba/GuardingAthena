@@ -14,6 +14,7 @@ local mechanics = {
 
 local classes = {
 	require("class/pet"),
+	require("class/weight_pool"),
 }
 
 function public:init(bReload)

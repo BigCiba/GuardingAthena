@@ -35,7 +35,7 @@ end
 function public:SetCourier(iPlayerID, hCourier)
 	self.playerDatas[iPlayerID].courier = hCourier
 end
--- 获取信使
+-- 获取宠物
 function public:GetCourier(iPlayerID)
 	return self.playerDatas[iPlayerID].courier
 end

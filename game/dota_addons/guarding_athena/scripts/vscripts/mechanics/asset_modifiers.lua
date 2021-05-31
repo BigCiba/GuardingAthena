@@ -6,7 +6,9 @@ local public = AssetModifiers
 function public:init(bReload)
 	if not bReload then
 		self.ATTACH_TYPE = {
-			point_follow = PATTACH_POINT_FOLLOW
+			absorigin_follow = PATTACH_ABSORIGIN_FOLLOW,
+			point_follow = PATTACH_POINT_FOLLOW,
+			customorigin = PATTACH_CUSTOMORIGIN
 		}
 	end
 

@@ -429,22 +429,46 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		end
 	end
 	heroEntity:AddNewModifier(heroEntity, nil, "modifier_no_health_bar", nil)
-	local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS)
-	courier.bag = {}
-	courier:SetOwner(heroEntity:GetPlayerOwner())
-	courier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
-	courier.owner = heroEntity:GetPlayerOwner()
-	courier.currentHero = heroEntity
-	heroEntity.courier = courier
-	self.creatCourier = self.creatCourier + 1
-
+	local sCourierIndex = self.CourierPool:Random()
+	self.CourierPool:Remove(sCourierIndex)
+	local tData = {
+		MapUnitName = "ji",
+		Model = KeyValues.CouriersKV[sCourierIndex].Model,
+		teamnumber = heroEntity:GetTeamNumber(),
+		IsSummoned = "1",
+	}
+	local hCourier = CreateUnitFromTable(tData, GetRespawnPosition())
+	hCourier.bag = {}
+	hCourier:SetOwner(heroEntity)
+	hCourier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
+	hCourier.owner = heroEntity:GetPlayerOwner()
+	hCourier.currentHero = heroEntity
+	heroEntity.courier = hCourier
+	local AmbientParticle = KeyValues.CouriersKV[sCourierIndex].AmbientParticle
+	if KeyValues.CouriersKV[sCourierIndex].AmbientParticle then
+		local iAttachType = AssetModifiers.ATTACH_TYPE[AmbientParticle.attach_type]
+		local iParticleID = ParticleManager:CreateParticle(AmbientParticle.system, iAttachType, hCourier)
+		if AmbientParticle.control_points then
+			for i, tControlPoint in pairs(AmbientParticle.control_points) do
+				ParticleManager:SetParticleControlEnt(iParticleID, tonumber(tControlPoint.control_point_index), hCourier, AssetModifiers.ATTACH_TYPE[tControlPoint.attach_type], tControlPoint.attachment, hCourier:GetAbsOrigin(), false)
+			end
+		end
+		ParticleManager:ReleaseParticleIndex(iParticleID)
+	end
+	-- local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS)
+	-- courier.bag = {}
+	-- courier:SetOwner(heroEntity:GetPlayerOwner())
+	-- courier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
+	-- courier.owner = heroEntity:GetPlayerOwner()
+	-- courier.currentHero = heroEntity
+	-- heroEntity.courier = courier
 	-- 游戏内容相关
 	EachPlayerGameplay(playerID, function(tItemData)
 		if tItemData.ItemName == "potion" then	-- 药水礼包
-			local clarity = CreateItem("item_clarity1", courier, courier)
-			local salve = CreateItem("item_salve1", courier, courier)
-			courier:AddItem(clarity)
-			courier:AddItem(salve)
+			local clarity = CreateItem("item_clarity1", hCourier, hCourier)
+			local salve = CreateItem("item_salve1", hCourier, hCourier)
+			hCourier:AddItem(clarity)
+			hCourier:AddItem(salve)
 			clarity:SetCurrentCharges(30)
 			salve:SetCurrentCharges(30)
 		end

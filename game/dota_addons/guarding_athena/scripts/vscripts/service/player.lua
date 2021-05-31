@@ -34,10 +34,6 @@ function public:game_over(iPlayerID, bWin)
 	if Pet.GetPetByPlayerID(iPlayerID) then
 		sItemName = Pet.GetPetByPlayerID(iPlayerID):GetUnitEntityName()
 	end
-	print("Score: ", Score)
-	print("Shard: ", Shard)
-	print("PetXP: ", PetXP)
-	print("sItemName: ", sItemName)
 	Service:POST('player.game_over',
 	{
 		SteamID = GetAccountID(iPlayerID),

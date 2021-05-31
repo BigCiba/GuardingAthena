@@ -647,6 +647,13 @@ if IsServer() then
 	function CDOTA_BaseNPC:GetAttachmentPosition(sAttach)
 		return self:GetAttachmentOrigin(self:ScriptLookupAttachment(sAttach))
 	end
+
+	---传送
+	function CDOTA_BaseNPC:Teleport(vPosition, bInterruptMotion)
+		if not self:IsRooted() then
+			FindClearSpaceForUnit(hUnit, vPosition, bInterruptMotion)
+		end
+	end
 end
 
 Hashtables = Hashtables or {}
