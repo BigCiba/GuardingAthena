@@ -32,7 +32,7 @@ function string.gsplit(str)
 		for i = 1, string.len(str) do
 			new_str = string.sub(str, i, i)
 			if (string.byte(new_str) >= 48 and string.byte(new_str) <= 57) or (string.byte(new_str) >= 65 and string.byte(new_str) <= 90) or (string.byte(new_str) >= 97 and string.byte(new_str) <= 122) then
-				table.insert(str_tb, string.sub(str, i, i))	
+				table.insert(str_tb, string.sub(str, i, i))
 			else
 				return nil
 			end
@@ -653,6 +653,11 @@ if IsServer() then
 		if not self:IsRooted() then
 			FindClearSpaceForUnit(hUnit, vPosition, bInterruptMotion)
 		end
+	end
+
+	---获取信使
+	function CDOTA_BaseNPC:GetCourier()
+		return self._hCourier
 	end
 end
 

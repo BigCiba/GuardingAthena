@@ -42,6 +42,7 @@ function public:DeclareFunctions()
 		MODIFIER_PROPERTY_MODEL_CHANGE,
 		MODIFIER_PROPERTY_PROJECTILE_NAME,
 		MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS,
+		MODIFIER_EVENT_ON_RESPAWN
 	}
 end
 function public:GetModifierModelChange()
@@ -52,4 +53,12 @@ function public:GetModifierProjectileName()
 end
 function public:GetModifierProjectileSpeedBonus()
 	return 10000
+end
+function public:OnRespawn(params)
+	---@type CDOTA_BaseNPC
+	local hParent = self:GetParent()
+	if hParent == params.unit then
+		-- 重新替换饰品
+		AssetModifiers:ReplaceWearables("rubick_03", hParent)
+	end
 end

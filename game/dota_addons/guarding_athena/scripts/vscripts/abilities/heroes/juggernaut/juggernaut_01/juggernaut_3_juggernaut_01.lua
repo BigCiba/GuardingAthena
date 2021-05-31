@@ -135,8 +135,3 @@ function modifier_juggernaut_3_juggernaut_01:OnAttackFinished(params)
 	hParent:FadeGesture(ACT_DOTA_ATTACK_EVENT)
 	hParent:RemoveActivityModifier(self.sActivity)
 end
-function modifier_juggernaut_3_juggernaut_01:CheckState()
-	return {
-		[MODIFIER_STATE_ROOTED] = true
-	}
-end

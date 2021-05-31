@@ -8,7 +8,18 @@ function public:init(bReload)
 		self.ATTACH_TYPE = {
 			absorigin_follow = PATTACH_ABSORIGIN_FOLLOW,
 			point_follow = PATTACH_POINT_FOLLOW,
-			customorigin = PATTACH_CUSTOMORIGIN
+			customorigin = PATTACH_CUSTOMORIGIN,
+			follow_origin = PATTACH_ABSORIGIN_FOLLOW,
+			follow_overhead = PATTACH_OVERHEAD_FOLLOW,
+			attach_origin = PATTACH_ABSORIGIN,
+			attach_hitloc = PATTACH_POINT,
+			follow_hitloc = PATTACH_POINT_FOLLOW,
+			start_at_customorigin = PATTACH_CUSTOMORIGIN,
+			follow_customorigin = PATTACH_CUSTOMORIGIN_FOLLOW,
+			world_origin = PATTACH_WORLDORIGIN,
+			follow_eyes = PATTACH_EYES_FOLLOW,
+			follow_attachment_substepped = PATTACH_POINT_FOLLOW_SUBSTEPPED,
+			rootbone_follow = PATTACH_ROOTBONE_FOLLOW,
 		}
 	end
 
@@ -41,6 +52,11 @@ function public:ReplaceWearables(sSkinName, hUnit)
 				hModel:AddEffects(EF_NODRAW)
 			end
 			hModel = hModel:NextMovePeer()
+		end
+		if hUnit._tWearable then
+			for _, hModel in ipairs(hUnit._tWearable) do
+				UTIL_Remove(hModel)
+			end
 		end
 		-- 创建饰品
 		for _, tAssetModifier in pairs(tAssetModifiers) do

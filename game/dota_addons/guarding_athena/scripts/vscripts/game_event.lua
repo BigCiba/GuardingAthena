@@ -234,8 +234,8 @@ function GuardingAthena:OnEntityKilled(event)
 		if not IsFullSolt(caller, 12, false) then
 			caller:AddItem(item)
 		else
-			if not IsFullSolt(caller.courier, 6, false) then
-				caller.courier:AddItem(item)
+			if not IsFullSolt(caller:GetCourier(), 6, false) then
+				caller:GetCourier():AddItem(item)
 			else
 				local pos = killedUnit:GetAbsOrigin()
 				local drop = CreateItemOnPositionSync(pos, item)
@@ -429,6 +429,8 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		end
 	end
 	heroEntity:AddNewModifier(heroEntity, nil, "modifier_no_health_bar", nil)
+	----------------------------------------信使相关----------------------------------------
+	-- 创建信使
 	local sCourierIndex = self.CourierPool:Random()
 	self.CourierPool:Remove(sCourierIndex)
 	local tData = {
@@ -438,12 +440,11 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		IsSummoned = "1",
 	}
 	local hCourier = CreateUnitFromTable(tData, GetRespawnPosition())
-	hCourier.bag = {}
 	hCourier:SetOwner(heroEntity)
 	hCourier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
-	hCourier.owner = heroEntity:GetPlayerOwner()
 	hCourier.currentHero = heroEntity
-	heroEntity.courier = hCourier
+	heroEntity._hCourier = hCourier
+	-- 创建信使特效
 	local AmbientParticle = KeyValues.CouriersKV[sCourierIndex].AmbientParticle
 	if KeyValues.CouriersKV[sCourierIndex].AmbientParticle then
 		local iAttachType = AssetModifiers.ATTACH_TYPE[AmbientParticle.attach_type]
@@ -455,14 +456,8 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		end
 		ParticleManager:ReleaseParticleIndex(iParticleID)
 	end
-	-- local courier = CreateUnitByName("ji", GetRespawnPosition(), true, heroEntity, heroEntity, DOTA_TEAM_GOODGUYS)
-	-- courier.bag = {}
-	-- courier:SetOwner(heroEntity:GetPlayerOwner())
-	-- courier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
-	-- courier.owner = heroEntity:GetPlayerOwner()
-	-- courier.currentHero = heroEntity
-	-- heroEntity.courier = courier
-	-- 游戏内容相关
+	----------------------------------------游戏内容相关----------------------------------------
+	-- 道具
 	EachPlayerGameplay(playerID, function(tItemData)
 		if tItemData.ItemName == "potion" then	-- 药水礼包
 			local clarity = CreateItem("item_clarity1", hCourier, hCourier)

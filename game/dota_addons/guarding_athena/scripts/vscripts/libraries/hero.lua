@@ -37,7 +37,7 @@ function HeroState:InitHero(hero)
 	hero.ringCount = 0				  --记录戒指数量
 	hero.ringList = {}				  --记录最后获得的戒指
 
-	hero.courier = nil				  --信使
+	hero._hCourier = nil				  --信使
 	hero.bag_item = {}				  --背包物品
 	-- 三属性英雄基础属性
 	if hero:GetPrimaryAttribute() == DOTA_ATTRIBUTE_STRENGTH then

@@ -42,8 +42,17 @@ end
 function public:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MODEL_CHANGE,
+		MODIFIER_EVENT_ON_RESPAWN
 	}
 end
 function public:GetModifierModelChange()
 	return AssetModifiers:GetEntityModelReplacement("juggernaut_01")
+end
+function public:OnRespawn(params)
+	---@type CDOTA_BaseNPC
+	local hParent = self:GetParent()
+	if hParent == params.unit then
+		-- 重新替换饰品
+		AssetModifiers:ReplaceWearables("juggernaut_01", hParent)
+	end
 end
