@@ -659,6 +659,11 @@ if IsServer() then
 	function CDOTA_BaseNPC:GetCourier()
 		return self._hCourier
 	end
+
+	---是否是信使
+	function CDOTA_BaseNPC:IsCourier()
+		return self:GetUnitName() == "ji"
+	end
 end
 
 Hashtables = Hashtables or {}
