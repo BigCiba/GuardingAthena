@@ -28,7 +28,7 @@ function public:OnCreated(params)
 
 		local a = math.sqrt(self.knockback_height)
 		self.funcGetJmepHeight = function(x)
-			x = (x / self.knockback_distance) * a * 2 - a
+			x = (x / self.knockback_duration) * a * 2 - a
 			return -(x ^ 2) + self.knockback_height
 		end
 		if not self:ApplyVerticalMotionController() or not self:ApplyHorizontalMotionController() then

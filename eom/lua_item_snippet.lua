@@ -12,7 +12,9 @@ modifier_[filename] = eom_modifier({
 	IsPurgeException = false,
 	IsStunDebuff = false,
 	AllowIllusionDuplicate = true,
-})
+	RemoveOnDeath = false,
+	Super = true,
+}, nil, item_base)
 function modifier_[filename]:GetAbilitySpecialValue()
 	self.auto_attack			= self:GetAbilitySpecialValueFor("auto_attack")
 end

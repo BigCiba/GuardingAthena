@@ -8,10 +8,16 @@ function windrunner_1:Precache(context)
 	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_1_magic.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_windrunner/windrunner_gold/windrunner_1_magic.vpcf", context)
 end
+function windrunner_1:OnAbilityPhaseStart()
+	local hCaster = self:GetCaster()
+	hCaster:EmitSound("Hero_Windrunner.Powershot.Channel")
+	return true
+end
 function windrunner_1:OnChannelFinish(bInterrupted)
 	local flChannelTime = GameRules:GetGameTime() - self:GetChannelStartTime()
 	local hCaster = self:GetCaster()
 	local vPosition = self:GetCursorPosition()
+	hCaster:StopSound("Hero_Windrunner.Powershot.Channel")
 	self:MultipleShoot(vPosition, flChannelTime, DAMAGE_TYPE_PHYSICAL)
 	-- 第二次魔法伤害多重射击
 	local delay = self:GetSpecialValueFor("delay")
@@ -54,6 +60,7 @@ function windrunner_1:MultipleShoot(vPosition, flChannelTime, iDamageType)
 	end
 	-- 放箭动作
 	hCaster:StartGesture(ACT_DOTA_OVERRIDE_ABILITY_2)
+	hCaster:EmitSound("Ability.Powershot")
 end
 function windrunner_1:OnProjectileHit_ExtraData(hTarget, vLocation, ExtraData)
 	if hTarget then

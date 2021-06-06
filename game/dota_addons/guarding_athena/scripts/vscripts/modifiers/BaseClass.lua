@@ -372,3 +372,92 @@ end
 function ParticleModifier:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT
 end
+----------------------------------------物品基类----------------------------------------
+if item_base == nil then
+	item_base = class({})
+end
+function item_base:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE
+end
+function item_base:OnCreated(params)
+	self.auto_attack				= self:GetAbilitySpecialValueFor("auto_attack")
+	self.auto_attackspeed			= self:GetAbilitySpecialValueFor("auto_attackspeed")
+	self.auto_movespeed				= self:GetAbilitySpecialValueFor("auto_movespeed")
+	self.auto_health				= self:GetAbilitySpecialValueFor("auto_health")
+	self.auto_mana					= self:GetAbilitySpecialValueFor("auto_mana")
+	self.auto_health_regen			= self:GetAbilitySpecialValueFor("auto_health_regen")
+	self.auto_mana_regen			= self:GetAbilitySpecialValueFor("auto_mana_regen")
+	self.auto_physical_armor		= self:GetAbilitySpecialValueFor("auto_physical_armor")
+	self.auto_magical_resistance	= self:GetAbilitySpecialValueFor("auto_magical_resistance")
+	self.auto_evade					= self:GetAbilitySpecialValueFor("auto_evade")
+	self.auto_cast_range			= self:GetAbilitySpecialValueFor("auto_cast_range")
+	self.auto_projectile_speed		= self:GetAbilitySpecialValueFor("auto_projectile_speed")
+	self.auto_cooldown_reduce		= self:GetAbilitySpecialValueFor("auto_cooldown_reduce")
+	self.auto_spell_amp				= self:GetAbilitySpecialValueFor("auto_spell_amp")
+	self.auto_str					= self:GetAbilitySpecialValueFor("auto_str")
+	self.auto_agi					= self:GetAbilitySpecialValueFor("auto_agi")
+	self.auto_int					= self:GetAbilitySpecialValueFor("auto_int")
+	self.auto_all					= self:GetAbilitySpecialValueFor("auto_all")
+end
+function item_base:OnRefresh(params)
+	self.auto_attack				= self:GetAbilitySpecialValueFor("auto_attack")
+	self.auto_attackspeed			= self:GetAbilitySpecialValueFor("auto_attackspeed")
+	self.auto_movespeed				= self:GetAbilitySpecialValueFor("auto_movespeed")
+	self.auto_health				= self:GetAbilitySpecialValueFor("auto_health")
+	self.auto_mana					= self:GetAbilitySpecialValueFor("auto_mana")
+	self.auto_health_regen			= self:GetAbilitySpecialValueFor("auto_health_regen")
+	self.auto_mana_regen			= self:GetAbilitySpecialValueFor("auto_mana_regen")
+	self.auto_physical_armor		= self:GetAbilitySpecialValueFor("auto_physical_armor")
+	self.auto_magical_resistance	= self:GetAbilitySpecialValueFor("auto_magical_resistance")
+	self.auto_evade					= self:GetAbilitySpecialValueFor("auto_evade")
+	self.auto_cast_range			= self:GetAbilitySpecialValueFor("auto_cast_range")
+	self.auto_cooldown_reduce		= self:GetAbilitySpecialValueFor("auto_cooldown_reduce")
+	self.auto_spell_amp				= self:GetAbilitySpecialValueFor("auto_spell_amp")
+	self.auto_str					= self:GetAbilitySpecialValueFor("auto_str")
+	self.auto_agi					= self:GetAbilitySpecialValueFor("auto_agi")
+	self.auto_int					= self:GetAbilitySpecialValueFor("auto_int")
+	self.auto_all					= self:GetAbilitySpecialValueFor("auto_all")
+end
+function item_base:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE = self.auto_attack or 0,
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT = self.auto_attackspeed or 0,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT = self.auto_movespeed or 0,
+		MODIFIER_PROPERTY_HEALTH_BONUS = self.auto_health or 0,
+		MODIFIER_PROPERTY_MANA_BONUS = self.auto_mana or 0,
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = self.auto_health_regen or 0,
+		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT = self.auto_mana_regen or 0,
+		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS = self.auto_physical_armor or 0,
+		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS = self.auto_magical_resistance or 0,
+		MODIFIER_PROPERTY_EVASION_CONSTANT = self.auto_evade or 0,
+		MODIFIER_PROPERTY_CAST_RANGE_BONUS = self.auto_cast_range or 0,
+		MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE = self.auto_cooldown_reduce or 0,
+		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE = self.auto_spell_amp or 0,
+		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = (self.auto_str or 0) + (self.auto_all or 0),
+		MODIFIER_PROPERTY_STATS_AGILITY_BONUS = (self.auto_agi or 0) + (self.auto_all or 0),
+		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = (self.auto_int or 0) + (self.auto_all or 0),
+	}
+end
+function item_base:EDeclareFunctions()
+	return {
+		-- EOM_MODIFIER_PROPERTY_MANA_BONUS = self.auto_mana,
+		-- EOM_MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = self.auto_health_regen,
+		-- EOM_MODIFIER_PROPERTY_MANA_REGEN_CONSTANT = self.auto_mana_regen,
+		-- EOM_MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+		-- EOM_MODIFIER_PROPERTY_MAGICAL_ARMOR_BONUS,
+		EOM_MODIFIER_PROPERTY_EVASION_CONSTANT,
+		EOM_MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE,
+	}
+end
+-- function item_base:EOM_GetModifierPhysicalArmorBonus()
+-- 	return self.auto_physical_armor
+-- end
+-- function item_base:EOM_GetModifierMagicalArmorBonus()
+-- 	return self.auto_magical_resistance
+-- end
+-- function item_base:EOM_GetModifierEvasion_Constant()
+-- 	return self.auto_evade
+-- end
+-- function item_base:EOM_GetModifierPercentageCooldown()
+-- 	return self.auto_cooldown_reduce
+-- end

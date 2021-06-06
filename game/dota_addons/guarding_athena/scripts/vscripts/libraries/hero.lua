@@ -96,7 +96,7 @@ function HeroState:InitIllusion(unit)
 	unit.ringList = {}				  --记录最后获得的戒指
 end
 function HeroState:UpdateNetTable(hero)
-	if hero and hero:GetPlayerOwner() then
+	if IsValid(hero) and hero:GetPlayerOwner() then
 		local lv = hero:GetLevel()
 		local score = hero:GetPlayerOwner().Score
 		local str = math.floor(hero:GetStrength())
@@ -168,7 +168,7 @@ function HeroState:SendFinallyData()
 	end
 end
 function HeroState:UpdateItemInSlot(hero)
-	if hero then
+	if IsValid(hero) then
 		for i = 0, 5 do
 			local item = hero:GetItemInSlot(i)
 			if item then
@@ -179,7 +179,7 @@ function HeroState:UpdateItemInSlot(hero)
 	self:CheckItemOnly(hero)
 end
 function HeroState:CheckItemOnly(hero)
-	if hero then
+	if IsValid(hero) then
 		for slot = 0, 11 do
 			local itemType = "thing"
 			local nextItemType = "nothing"

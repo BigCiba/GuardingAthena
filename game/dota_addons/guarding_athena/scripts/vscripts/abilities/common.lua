@@ -1014,24 +1014,23 @@ if IsServer() then
 	function CDOTA_BaseNPC:KnockBack(vDirection, flDistance, flHeight, flDuration, bStun, bBlock, callback)
 		if bStun == nil then bStun = true end
 		if bBlock == nil then bBlock = false end
-		local kv =		{
+		local kv = {
 			vDirection = vDirection,
 			duration = flDuration,
 			knockback_duration = flDuration,
 			knockback_distance = flDistance,
 			knockback_height = flHeight,
-			bStun = bStun,
-			bBlock = bBlock,
 		}
-		self:RemoveModifierByName("modifier_knockback_custom")
-		local hModifier = self:AddNewModifier(self, nil, "modifier_knockback_custom", kv)
+		self:RemoveModifierByName("modifier_dash")
+		local hModifier = self:AddNewModifier(self, nil, "modifier_dash", kv)
 		if IsValid(hModifier) then
 			hModifier.callback = callback
+			hModifier._hIntrinsicModifier = hIntrinsicModifier
+			FireModifierEvent({
+				event_name = MODIFIER_EVENT_ON_DASH,
+				unit = self
+			})
 		end
-		FireModifierEvent({
-			event_name = MODIFIER_EVENT_ON_DASH,
-			unit = self
-		})
 	end
 
 	function PfromC(c)

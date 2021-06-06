@@ -68,7 +68,9 @@ function modifier_juggernaut_3_juggernaut_01:OnDestroy()
 	---@type CDOTA_BaseNPC
 	local hParent = self:GetParent()
 	if IsServer() then
-		hParent:RemoveActivityModifier(self.sActivity)
+		hParent:RemoveActivityModifier("favor")
+		hParent:RemoveActivityModifier("ti8")
+		hParent:RemoveActivityModifier("odachi")
 	end
 end
 function modifier_juggernaut_3_juggernaut_01:OnIntervalThink()

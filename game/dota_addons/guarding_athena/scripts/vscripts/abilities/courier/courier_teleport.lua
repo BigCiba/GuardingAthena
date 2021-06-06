@@ -1,12 +1,14 @@
 courier_teleport = class({})
 function courier_teleport:CastFilterResultLocation(vLocation)
-	---@type CDOTA_BaseNPC
-	local hCaster = self:GetCaster()
-	local hHero = hCaster:GetOwner()
-	if hHero:IsRooted() then
-		return UF_FAIL_CUSTOM
+	if IsServer() then
+		---@type CDOTA_BaseNPC
+		local hCaster = self:GetCaster()
+		local hHero = hCaster:GetOwner()
+		if hHero:IsRooted() then
+			return UF_FAIL_CUSTOM
+		end
+		return UF_SUCCESS
 	end
-	return UF_SUCCESS
 end
 function courier_teleport:GetCustomCastErrorLocation(vLocation)
 	return "dota_hud_error_ability_disabled_by_root"

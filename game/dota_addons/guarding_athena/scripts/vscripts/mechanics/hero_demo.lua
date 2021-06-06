@@ -228,6 +228,9 @@ end
 
 function public:OnRemoveSpawnedUnitsButtonPressed(eventSourceIndex)
 	for k, v in pairs(self.m_tAlliesList) do
+		if self.m_tAlliesList[k]:GetCourier() then
+			UTIL_Remove(self.m_tAlliesList[k]:GetCourier())
+		end
 		self.m_tAlliesList[k]:MakeIllusion()
 		self.m_tAlliesList[k]:ForceKill(false)
 		self.m_tAlliesList[k]:Destroy()
@@ -238,6 +241,7 @@ function public:OnRemoveSpawnedUnitsButtonPressed(eventSourceIndex)
 		self.m_tEnemiesList[k]:ForceKill(false)
 		self.m_tEnemiesList[k]:Destroy()
 		self.m_tEnemiesList[k] = nil
+		
 	end
 end
 

@@ -30,7 +30,8 @@ function modifier_item_salve:GetTexture()
 end
 function modifier_item_salve:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = self.hp_per_tick or 0
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = self.hp_per_tick or 0,
+		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE
 	}
 end
 ---------------------------------------------------------------------

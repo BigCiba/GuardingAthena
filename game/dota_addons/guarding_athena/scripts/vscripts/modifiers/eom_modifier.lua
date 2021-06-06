@@ -181,6 +181,7 @@ function eom_modifier:ECheckState(bUnregister)
 	return {}
 end
 function eom_modifier:OnCreated(params)
+	print("self.GetAbilitySpecialValue", self.GetAbilitySpecialValue)
 	if self.GetAbilitySpecialValue then
 		self:GetAbilitySpecialValue()
 	end

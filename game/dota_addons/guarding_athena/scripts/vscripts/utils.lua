@@ -223,18 +223,21 @@ end
 
 -- 四舍五入，s为精度
 function Round(n, s)
+	s = math.pow(10, -s)
 	local sign = 1
 	if n < 0 then
 		n = math.abs(n)
 		sign = -1
 	end
 	s = s or 1
-	local d = n / s
-	local w = math.floor(d)
-	if d - w >= 0.5 then
-		return (w + 1) * s * sign
-	else
-		return w * s * sign
+	if n ~= nil then
+		local d = n / s
+		local w = math.floor(d)
+		if d - w >= 0.5 then
+			return (w + 1) * s * sign
+		else
+			return w * s * sign
+		end
 	end
 	return 0
 end
