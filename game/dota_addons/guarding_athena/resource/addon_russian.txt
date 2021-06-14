@@ -1824,6 +1824,7 @@
 		"DOTA_Tooltip_ability_item_refresher1_bonus_health_regen"				"%+Health Regen Percent"
 		"DOTA_Tooltip_ability_item_demon_heart"									"Grimoire Heart"
 		"DOTA_Tooltip_ability_item_demon_heart_Description"						"Devil's heart, with strong vitality"
+		"DOTA_Tooltip_ability_item_demon_heart_auto_health"						"+$auto_health"
 		"DOTA_Tooltip_ability_item_urn_of_shadow"								"Urn of shadow"
 		"DOTA_Tooltip_ability_item_urn_of_shadow_Description"					"<h1>Active: Soul Capture</h1>Attempt to capture a soul and temporarily gain %damage_percent%% of the target's maximum health for %duration% seconds. Each captured soul increases its stealing ratio by %damage_per_soul%% and its total attributes by %attribute_per_soul% points.\n<h1>Passive: Spirit Vessel</h1>Capture %max_soul% of the soul and evolve into a Spirit Vessel."
 		"DOTA_Tooltip_ability_item_spirit_vessel_capture"						"Spirit Vessel"

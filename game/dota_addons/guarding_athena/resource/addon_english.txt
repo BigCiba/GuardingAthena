@@ -2123,6 +2123,7 @@
 		"DOTA_Tooltip_ability_fire_head_Description"	"陵墓守卫者的斗篷，能抵挡大量的魔法伤害。<br></br><br></br><font color=\"#5bc0de\">被动：魔法护盾 - 每5秒生成一个相当于最大生命值20%%的魔法护盾用来吸收魔法伤害。</font>"
 		"DOTA_Tooltip_ability_item_demon_heart"	"恶魔的心脏"
 		"DOTA_Tooltip_ability_item_demon_heart_Description"	"恶魔的心脏，拥有强大的生命力"
+		"DOTA_Tooltip_ability_item_demon_heart_auto_health"					"+$auto_health"
 		// 克洛托
 		"DOTA_Tooltip_Ability_item_blood_fruit"	"克洛托的精血"
 		"DOTA_Tooltip_Ability_item_blood_fruit_Description"	"<h1>主动：神之血</h1>喝下它能提升使用者的体质，全属性成长提升一点，并提升一定的主属性，提升量与与克洛托的等级有关。\n一滴蕴含强大神力的血"

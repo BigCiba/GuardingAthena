@@ -4179,25 +4179,6 @@
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
 
-	"item_recipe_demon_chains"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_recipe"
-		// Valve's version of this item uses the ID "153".
-		"ID"	"1772"
-		// Recipe
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"	"1"
-		"ItemResult"	"item_demon_chains"
-		"ItemRequirements"
-		{
-			"01"	"item_sun_emblem_4;item_spirit_vessel_capture;item_zhangu;item_demon_heart"
-		}
-		"Model"	"models/props_gameplay/recipe.mdl"
-	}
-
 	"item_tree_seed"
 	{
 		"BaseClass"	"item_datadriven"
@@ -4379,37 +4360,6 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"ID"	"1500"
 		"ItemRequirements"	{}
-	}
-
-	"item_demon_heart"
-	{
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_aegis"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"ID"	"1501"
-		"ItemPurchasable"	"0"
-		"ItemRequirements"	{}
-		"Modifiers"
-		{
-			"modifier_item_demon_heart"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_health"	"3000"
-			}
-		}
 	}
 
 	"fire_mask"
@@ -6246,8 +6196,7 @@
 		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"300"
 		"AbilityCastRange"	"1000"
-		"ID"	"1771"
-		"ItemPurchasable"	"0"
+		"ItemPurchasable"	"1"
 		"ItemRequirements"	{}
 		"precache"
 		{
