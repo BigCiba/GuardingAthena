@@ -55,10 +55,10 @@
             "item"                 "item_int_book"
             "item"                 "item_int_book_pack"
             "item"                 "item_int_book_pack_100"
-            "item"                 "item_fumo_xixue" 
-            "item"                 "item_fumo_jianjia"
-            "item"                 "item_fumo_mokang"
-            "item"                 "item_fumo_baoji" 
+            "item"                 "item_enchant_critical" 
+            "item"                 "item_enchant_reduce_armor"
+            "item"                 "item_enchant_reduce_resistance"
+            "item"                 "item_enchant_lifesteal"
         }        
         
         // Level 1 - Green Recipes

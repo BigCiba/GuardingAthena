@@ -2238,4 +2238,113 @@
 			}
 		}
 	}
+	"item_enchant_critical"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/consumable/item_enchant_critical"
+		"AbilityTextureName"					"item_enchant"
+		"ItemType"								"consumable"
+		"ItemQuality"							"component"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"ItemCost"								"4000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"1"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"critical_chance"				"25"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"critical_mutiple"				"40"
+			}
+		}
+	}
+	"item_enchant_reduce_armor"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/consumable/item_enchant_reduce_armor"
+		"AbilityTextureName"					"item_enchant"
+		"ItemType"								"consumable"
+		"ItemQuality"							"component"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"ItemCost"								"4000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"1"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"reduce"						"6"
+			}
+		}
+	}
+	"item_enchant_reduce_resistance"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/consumable/item_enchant_reduce_resistance"
+		"AbilityTextureName"					"item_enchant"
+		"ItemType"								"consumable"
+		"ItemQuality"							"component"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"ItemCost"								"4000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"1"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"reduce"						"2.5"
+			}
+		}
+	}
+	"item_enchant_lifesteal"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/consumable/item_enchant_lifesteal"
+		"AbilityTextureName"					"item_enchant"
+		"ItemType"								"consumable"
+		"ItemQuality"							"component"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"ItemCost"								"4000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"1"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"lifesteal"						"4"
+			}
+		}
+	}
 }

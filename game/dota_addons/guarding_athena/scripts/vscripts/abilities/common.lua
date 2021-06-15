@@ -8,7 +8,14 @@ function Load(table, key)
 	table.abilitydata = table.abilitydata or {}
 	return table.abilitydata[key]
 end
-
+local DOTA_Item = IsServer() and CDOTA_Item or C_DOTA_Item
+---获取物品的类型
+function DOTA_Item:GetItemType()
+	if KeyValues.ItemsKv[self:GetAbilityName()] and KeyValues.ItemsKv[self:GetAbilityName()].ItemType then
+		return KeyValues.ItemsKv[self:GetAbilityName()].ItemType
+	end
+	return ""
+end
 -- CDOTA_Buff
 function CDOTA_Buff:GetAbilitySpecialValueFor(szName)
 	if not IsValid(self:GetAbility()) then
@@ -1030,6 +1037,18 @@ if IsServer() then
 				event_name = MODIFIER_EVENT_ON_DASH,
 				unit = self
 			})
+		end
+	end
+
+	---遍历单位物品栏（不包括备用）
+	function CDOTA_BaseNPC:EachItem(callback)
+		for i = 0, 5 do
+			local hItem = self:GetItemInSlot(i)
+			if IsValid(hItem) then
+				if callback(hItem) == true then
+					break
+				end
+			end
 		end
 	end
 
