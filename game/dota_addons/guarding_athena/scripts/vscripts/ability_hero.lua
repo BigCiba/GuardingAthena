@@ -7,7 +7,7 @@ function Anneal( keys )
     --if award < 20 then award = 20 end
     if award > 100 then award = 100 end
 	if target:IsRealHero() then
-		if target:IsRealHero() and target:IsSummoned() then
+		if target:IsSummoned() then
 			target = target:GetOwner()
 		end
 		PlayerResource:ModifyGold(target:GetPlayerID(),20, true, 0)

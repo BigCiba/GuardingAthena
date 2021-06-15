@@ -9,7 +9,6 @@ function PracticeStart(trigger)
 		elseif caster:IsSummoned() then
 			caster = caster:GetOwner()
 		elseif caster:IsIllusion() then
-			print("bigciba", caster, caster:IsRealHero())
 			caster = caster.caster_hero
 		end
 	end

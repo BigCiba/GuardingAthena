@@ -51,7 +51,14 @@ function modifier_spectre_0:SummonIllusion()
 		local hTarget = RandomValue(tTargets)
 		if IsValid(hTarget) then
 			local vPosition = hTarget:GetAbsOrigin() + RandomVector(125)
-			local hUnit = CreateUnitByName("spectre", vPosition, true, hParent, hParent, hParent:GetTeamNumber())
+			local tData = {
+				MapUnitName = "spectre",
+				teamnumber = hParent:GetTeamNumber(),
+				IsSummoned = "1",
+			}
+			local hUnit = CreateUnitFromTable(tData, vPosition)
+			hUnit:SetAbsOrigin(vPosition)
+			hUnit:SetOwner(hParent)
 			hUnit:SetBaseMaxHealth(hParent:GetMaxHealth())
 			hUnit:SetMaxHealth(hParent:GetMaxHealth())
 			hUnit:SetHealth(hUnit:GetMaxHealth() * self.health * 0.01)

@@ -383,7 +383,7 @@ function Spawner:OnUnitKilled( t )
 	if not attacker:IsRealHero() then
 		HeroState:InitUnit(attacker)
 	end
-	if attacker:IsRealHero() and attacker:IsSummoned() then
+	if attacker:IsSummoned() then
 		attacker = attacker:GetOwner()
 	end
 	-- 练功房
