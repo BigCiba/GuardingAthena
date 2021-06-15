@@ -94,6 +94,9 @@ function Precache(context)
 			PrecacheResource( "particle", "*.vpcf", context )
 			PrecacheResource( "particle_folder", "particles/folder", context )
 	]]
+	for index, tData in pairs(KeyValues.CouriersKV) do
+		PrecacheResource("model", tData.Model, context)
+	end
 	for sPrecacheMode, tList in pairs(tPrecacheList) do
 		for _, sResource in pairs(tList) do
 			PrecacheResource(sPrecacheMode, sResource, context)
