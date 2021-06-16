@@ -33,8 +33,8 @@ function modifier_item_gong:OnCreated()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		local hAbility = self:GetAbility()
-		hAbility:SetCurrentCharges(hCaster._iEnchantStack)
-		hAbility:SetSecondaryCharges(hCaster._iEnchantType)
+		hAbility:SetCurrentCharges(hCaster._iEnchantStack or 0)
+		hAbility:SetSecondaryCharges(hCaster._iEnchantType or 0)
 	end
 end
 function modifier_item_gong:DeclareFunctions()
@@ -82,7 +82,7 @@ function modifier_item_gong:GetModifierAvoidDamage()
 end
 function modifier_item_gong:GetModifierPreAttack_CriticalStrike(params)
 	-- 附魔暴击
-		local hCaster = self:GetCaster()
+	local hCaster = self:GetCaster()
 	local hAbility = self:GetAbility()
 	if hAbility:GetSecondaryCharges() == 1 then
 		if PRD(self, 25, "modifier_item_gong") then
@@ -101,12 +101,12 @@ function modifier_item_gong:OnAttackLanded(params)
 	-- 附魔减魔抗
 	if hAbility:GetSecondaryCharges() == 3 then
 		local iStackCount = hCaster:GetEnchantValue() * hAbility:GetCurrentCharges()
-		params.target:AddNewModifier(params.attacker, hAbility, "modifier_item_gong_reduce_resistance", {duration = 10, iStackCount = iStackCount})
+		params.target:AddNewModifier(params.attacker, hAbility, "modifier_item_gong_reduce_resistance", { duration = 10, iStackCount = iStackCount })
 	end
 	-- 附魔减甲
 	if hAbility:GetSecondaryCharges() == 4 then
 		local iStackCount = hCaster:GetEnchantValue() * hAbility:GetCurrentCharges()
-		params.target:AddNewModifier(params.attacker, hAbility, "modifier_item_gong_reduce_armor", {duration = 10, iStackCount = iStackCount})
+		params.target:AddNewModifier(params.attacker, hAbility, "modifier_item_gong_reduce_armor", { duration = 10, iStackCount = iStackCount })
 	end
 end
 ---------------------------------------------------------------------

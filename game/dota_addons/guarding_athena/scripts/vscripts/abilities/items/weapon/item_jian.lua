@@ -34,8 +34,8 @@ function modifier_item_jian:OnCreated(params)
 		self.tRecord = {}
 		local hCaster = self:GetCaster()
 		local hAbility = self:GetAbility()
-		hAbility:SetCurrentCharges(hCaster._iEnchantStack)
-		hAbility:SetSecondaryCharges(hCaster._iEnchantType)
+		hAbility:SetCurrentCharges(hCaster._iEnchantStack or 0)
+		hAbility:SetSecondaryCharges(hCaster._iEnchantType or 0)
 	end
 end
 function modifier_item_jian:OnRefresh(params)

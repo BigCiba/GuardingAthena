@@ -8,6 +8,7 @@ end
 -- 通用
 LinkLuaModifier("modifier_dash", "modifiers/utils/modifier_dash.lua", LUA_MODIFIER_MOTION_BOTH)
 LinkLuaModifier("modifier_knockback_custom", "modifiers/utils/modifier_knockback_custom.lua", LUA_MODIFIER_MOTION_BOTH)
+LinkLuaModifier("modifier_courier", "modifiers/utils/modifier_courier.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_round", "modifiers/asset_modifiers/modifier_round.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_hero_attribute", "modifiers/modifier_hero_attribute.lua", LUA_MODIFIER_MOTION_NONE)
 -- 饰品特效

@@ -440,6 +440,7 @@ function GuardingAthena:OnPlayerPickHero(keys)
 		IsSummoned = "1",
 	}
 	local hCourier = CreateUnitFromTable(tData, GetRespawnPosition())
+	hCourier:AddNewModifier(hCourier, nil, "modifier_courier", nil)
 	hCourier:SetOwner(heroEntity)
 	hCourier:SetControllableByPlayer(heroEntity:GetPlayerID(), true)
 	hCourier.currentHero = heroEntity
