@@ -40,6 +40,14 @@ function monkey_king_3:CreateSoldier(vPosition, flDuration)
 			for i = 0, 4 do
 				hSoldier:GetAbilityByIndex(i):SetLevel(hCaster:GetAbilityByIndex(i):GetLevel())
 			end
+			if hSoldier:GetLevel() < hCaster:GetLevel() then
+				for i = 1, hCaster:GetLevel() - hSoldier:GetLevel() do
+					hSoldier:HeroLevelUp(false)
+				end
+			end
+			hSoldier:SetBaseStrength(hCaster:GetBaseStrength())
+			hSoldier:SetBaseAgility(hCaster:GetBaseAgility())
+			hSoldier:SetBaseIntellect(hCaster:GetBaseIntellect())
 			hSoldier:Stop()
 			ExecuteOrder(hSoldier, DOTA_UNIT_ORDER_ATTACK_MOVE, nil, nil, hSoldier:GetAbsOrigin())
 			return hSoldier

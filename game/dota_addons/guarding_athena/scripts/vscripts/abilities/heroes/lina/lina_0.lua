@@ -1,13 +1,4 @@
 lina_0 = class({})
-function lina_0:OnProjectileHit(hTarget, vLocation)
-	if IsServer() then
-		---@type CDOTA_BaseNPC
-		local hCaster = self:GetCaster()
-		if hTarget then
-			hCaster:Attack(hTarget, ATTACK_STATE_SKIPCOOLDOWN + ATTACK_STATE_NOT_USEPROJECTILE)
-		end
-	end
-end
 function lina_0:GetIntrinsicModifierName()
 	return "modifier_lina_0"
 end
@@ -24,6 +15,9 @@ modifier_lina_0 = eom_modifier({
 })
 function modifier_lina_0:GetAbilitySpecialValue()
 	self.duration = self:GetAbilitySpecialValueFor("duration")
+	self.scepter_chance = self:GetAbilitySpecialValueFor("scepter_chance")
+	self.scepter_damage = self:GetAbilitySpecialValueFor("scepter_damage")
+	self.scepter_ignite_count = self:GetAbilitySpecialValueFor("scepter_ignite_count")
 end
 function modifier_lina_0:OnCreated(params)
 	if IsServer() then
@@ -35,18 +29,19 @@ function modifier_lina_0:OnRefresh(params)
 end
 function modifier_lina_0:DeclareFunctions()
 	return {
-		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL
+	-- MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL
 	}
 end
 function modifier_lina_0:GetModifierProcAttack_BonusDamage_Magical()
-	if self:GetParent():IsAttackProjectileDisabled() then
-		return self:GetParent():GetIntellect() * 5
-	end
+	-- if self:GetParent():IsAttackProjectileDisabled() then
+	-- 	return self:GetParent():GetIntellect() * 5
+	-- end
 end
 function modifier_lina_0:EDeclareFunctions()
 	return {
 		MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED = { self:GetParent() },
-		MODIFIER_EVENT_ON_ATTACK_PROJECTILE_DISABLED = { self:GetParent() },
+		-- MODIFIER_EVENT_ON_ATTACK_PROJECTILE_DISABLED = { self:GetParent() },
+		MODIFIER_EVENT_ON_ATTACK_LANDED = { self:GetParent() },
 	}
 end
 function modifier_lina_0:OnValidAbilityExecuted(params)
@@ -54,33 +49,61 @@ function modifier_lina_0:OnValidAbilityExecuted(params)
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_lina_0_buff", { duration = self.duration })
 	end
 end
+function modifier_lina_0:OnAttackLanded(params)
+	if self:GetParent():GetScepterLevel() >= 4 and PRD(self, self.scepter_chance, "modifier_lina_0") then
+		---@type CDOTA_BaseNPC
+		local hCaster = params.attacker
+		---@type CDOTA_BaseNPC
+		local hTarget = params.target
+		---@type CDOTABaseAbility
+		local hAbility = self:GetAbility()
+		local flDamage = self.scepter_damage * hCaster:GetIntellect()
+		hCaster:DealDamage(hTarget, hAbility, flDamage)
+		hCaster:_LinaIgnite(hTarget, self.scepter_ignite_count)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControlEnt(iParticleID, 0, hCaster, PATTACH_POINT_FOLLOW, "attach_attack1", hCaster:GetAbsOrigin(), false)
+		ParticleManager:SetParticleControlEnt(iParticleID, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetAbsOrigin(), false)
+		ParticleManager:ReleaseParticleIndex(iParticleID)
+		self:OnValidAbilityExecuted()
+	end
+end
 function modifier_lina_0:OnAttackProjectileDisabled(params)
-	---@type CDOTA_BaseNPC
-	local hCaster = params.unit
-	---@type CDOTA_BaseNPC
-	local hTarget = params.target
-	---@type CDOTABaseAbility
-	local hAbility = self:GetAbility()
-	local vDirection = CalculateDirection(hTarget, hCaster)
-	local tInfo = {
-		Ability = hAbility,
-		Source = hCaster,
-		EffectName = "particles/units/heroes/hero_lina/lina_attack_dragon_slave.vpcf",
-		vSpawnOrigin = hCaster:GetAbsOrigin(),
-		fDistance = 1075,
-		fStartRadius = 275,
-		fEndRadius = 200,
-		vVelocity = vDirection * 1200,
-		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
-		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
-	}
-	ProjectileManager:CreateLinearProjectile(tInfo)
-	self:OnValidAbilityExecuted()
+	if not AttackFilter(params.record, ATTACK_STATE_NO_EXTENDATTACK) and PRD(self, self.scepter_chance, "modifier_lina_0") then
+		---@type CDOTA_BaseNPC
+		local hCaster = params.unit
+		---@type CDOTA_BaseNPC
+		local hTarget = params.target
+		---@type CDOTABaseAbility
+		local hAbility = self:GetAbility()
+		local flDamage = self.scepter_damage * hCaster:GetIntellect()
+		-- local vDirection = CalculateDirection(hTarget, hCaster)
+		-- local tInfo = {
+		-- 	Ability = hAbility,
+		-- 	Source = hCaster,
+		-- 	EffectName = "particles/units/heroes/hero_lina/lina_attack_dragon_slave.vpcf",
+		-- 	vSpawnOrigin = hCaster:GetAbsOrigin(),
+		-- 	fDistance = 1075,
+		-- 	fStartRadius = 275,
+		-- 	fEndRadius = 200,
+		-- 	vVelocity = vDirection * 1200,
+		-- 	iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
+		-- 	iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		-- 	iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+		-- }
+		-- ProjectileManager:CreateLinearProjectile(tInfo)
+		-- hCaster:Attack(hTarget, ATTACK_STATE_SKIPCOOLDOWN + ATTACK_STATE_NO_EXTENDATTACK + ATTACK_STATE_NOT_USEPROJECTILE)
+		hCaster:DealDamage(hTarget, hAbility, flDamage)
+		hCaster:_LinaIgnite(hTarget, self.scepter_ignite_count)
+		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControlEnt(iParticleID, 0, hCaster, PATTACH_POINT_FOLLOW, "attach_attack1", hCaster:GetAbsOrigin(), false)
+		ParticleManager:SetParticleControlEnt(iParticleID, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetAbsOrigin(), false)
+		ParticleManager:ReleaseParticleIndex(iParticleID)
+		self:OnValidAbilityExecuted()
+	end
 end
 function modifier_lina_0:ECheckState()
 	return {
-		[MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED] = self:GetParent():GetScepterLevel() >= 4
+	-- [MODIFIER_STATE_ATTACK_PROJECTILE_DISABLED] = self:GetParent():GetScepterLevel() >= 4
 	}
 end
 ---------------------------------------------------------------------

@@ -2,7 +2,7 @@
 "DOTA_Tooltip_ability_lina_0"							"Blazing Lotus"
 "DOTA_Tooltip_ability_lina_0_Description"				"Each time you cast a spell, a flame phantom will be generated to cover the whole body. Each flame phantom will cause units in the surrounding %radius% range every %interval% seconds [%damage % * Intelligence] damage and reduce [%reduce% * Intelligence] damage. Each stack of phantom lasts for %duration% seconds."
 "DOTA_Tooltip_ability_lina_0_Lore"						"Happy fire"
-"DOTA_Tooltip_ability_lina_0_scepter_description_4"		"The basic attack is replaced with Dragon Slash, causing additional damage of %scepter_damage% times the intelligence."
+"DOTA_Tooltip_ability_lina_0_scepter_description_4"		"Basic attack hits %scepter_chance%%% cast Divine Slash, causing %scepter_damage% damage to the intelligence and adding %scepter_ignite_count% to ignite."
 "DOTA_Tooltip_modifier_lina_0_buff"						"Blazing Lotus"
 "DOTA_Tooltip_modifier_lina_0_buff_Description"			"Every time a spell is cast, a flame phantom will envelop the whole body, causing continuous damage to surrounding units and reducing the damage received."
 
@@ -48,4 +48,4 @@
 "DOTA_Tooltip_ability_lina_4_Lore"						"Rain of chaos"
 "DOTA_Tooltip_ability_lina_4_scepter_description_3"		"Increase the damage of the rain of chaos %scepter_meteor_damage_pct%%% and make the meteorite have a tracking effect"
 
-"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"				"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>The aurora leaves a burning path, causing burning damage for %scepter_duration% seconds, and causing aurora %scepter_damage_pct%%% damage every second\n<h1>Second Reincarnation</h1>Trigger additional %scepter_count% fire butterflies\n<h1>Third Reincarnation</h1>Increase the damage of the rain of chaos %scepter_meteor_damage_pct%%% and make the meteorite have a tracking effect\n<h1>Fourth Reincarnation</h1>The basic attack is replaced with Dragon Slash, causing additional damage of [%scepter_damage% * intelligence].\nA garnet from the essence of the fiend of flame"
+"DOTA_Tooltip_ability_item_npc_dota_hero_lina_Description"				"<h1>Exclusive Equipment</h1> All property, health and mana increase %property%%%\n<h1>First Reincarnation</h1>The aurora leaves a burning path, causing burning damage for %scepter_duration% seconds, and causing aurora %scepter_damage_pct%%% damage every second\n<h1>Second Reincarnation</h1>Trigger additional %scepter_count% fire butterflies\n<h1>Third Reincarnation</h1>Increase the damage of the rain of chaos %scepter_meteor_damage_pct%%% and make the meteorite have a tracking effect\n<h1>Fourth Reincarnation</h1>Basic attack hits %scepter_chance%%% cast Divine Slash, causing %scepter_damage% damage to the intelligence and adding %scepter_ignite_count% to ignite.\nA garnet from the essence of the fiend of flame"
