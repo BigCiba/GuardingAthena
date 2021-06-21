@@ -53,13 +53,11 @@ end
 function modifier_item_gong:OnAttack(params)
 	if not IsValid(params.target) or params.target:GetClassname() == "dota_item_drop" then return end
 
-	if params.attacker == self:GetParent() and not AttackFilter(params.record, ATTACK_STATE_NO_EXTENDATTACK) then
+	if params.attacker == self:GetParent() and self:GetParent():IsRangedAttacker() and not AttackFilter(params.record, ATTACK_STATE_NO_EXTENDATTACK) then
 		local iAttackState = ATTACK_STATE_NOT_USECASTATTACKORB + ATTACK_STATE_SKIPCOOLDOWN + ATTACK_STATE_IGNOREINVIS + ATTACK_STATE_NO_CLEAVE + ATTACK_STATE_NO_EXTENDATTACK + ATTACK_STATE_SKIPCOUNTING
 		local tTargets = FindUnitsInRadius(params.attacker:GetTeamNumber(), params.attacker:GetAbsOrigin(), nil, params.attacker:Script_GetAttackRange() + params.attacker:GetHullRadius() + 300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST, false)
 		ArrayRemove(tTargets, params.target)
-		print("-1", params.record, params.target)
 		for i, hTarget in pairs(tTargets) do
-			print("1", params.attacker:Attack(hTarget, iAttackState), hTarget)
 			if i >= self.split_count then
 				break
 			end
