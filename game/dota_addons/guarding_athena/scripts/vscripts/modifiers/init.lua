@@ -11,6 +11,7 @@ LinkLuaModifier("modifier_knockback_custom", "modifiers/utils/modifier_knockback
 LinkLuaModifier("modifier_courier", "modifiers/utils/modifier_courier.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_round", "modifiers/asset_modifiers/modifier_round.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_hero_attribute", "modifiers/modifier_hero_attribute.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_fix_damage", "modifiers/modifier_fix_damage.lua", LUA_MODIFIER_MOTION_NONE)
 -- 饰品特效
 LinkLuaModifier("modifier_omniknight_01", "modifiers/asset_modifiers/modifier_omniknight_01.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_windrunner_01", "modifiers/asset_modifiers/modifier_windrunner_01.lua", LUA_MODIFIER_MOTION_NONE)

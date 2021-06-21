@@ -336,6 +336,7 @@ function GuardingAthena:OnNPCSpawned(keys)
 		UTIL_Remove(hUnit)
 		return
 	end
+	hUnit:AddNewModifier(hUnit, nil, "modifier_fix_damage", nil)
 	-- 傀儡目标
 	if hUnit:GetUnitName() ==	"npc_dota_hero_target_dummy" then
 		return

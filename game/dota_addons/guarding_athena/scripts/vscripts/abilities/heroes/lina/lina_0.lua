@@ -41,7 +41,7 @@ function modifier_lina_0:EDeclareFunctions()
 	return {
 		MODIFIER_EVENT_ON_VALID_ABILITY_EXECUTED = { self:GetParent() },
 		-- MODIFIER_EVENT_ON_ATTACK_PROJECTILE_DISABLED = { self:GetParent() },
-		MODIFIER_EVENT_ON_ATTACK_LANDED = { self:GetParent() },
+		MODIFIER_EVENT_ON_ATTACK = { self:GetParent() },
 	}
 end
 function modifier_lina_0:OnValidAbilityExecuted(params)
@@ -49,16 +49,19 @@ function modifier_lina_0:OnValidAbilityExecuted(params)
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_lina_0_buff", { duration = self.duration })
 	end
 end
-function modifier_lina_0:OnAttackLanded(params)
+function modifier_lina_0:OnAttack(params)
+	---@type CDOTA_BaseNPC
+	local hCaster = params.attacker
+	---@type CDOTA_BaseNPC
+	local hTarget = params.target
+	---@type CDOTABaseAbility
+	local hAbility = self:GetAbility()
+	local flDamage = self.scepter_damage * hCaster:GetIntellect()
+	hCaster:DealDamage(hTarget, hAbility, flDamage)
 	if self:GetParent():GetScepterLevel() >= 4 and PRD(self, self.scepter_chance, "modifier_lina_0") then
-		---@type CDOTA_BaseNPC
-		local hCaster = params.attacker
-		---@type CDOTA_BaseNPC
-		local hTarget = params.target
-		---@type CDOTABaseAbility
-		local hAbility = self:GetAbility()
-		local flDamage = self.scepter_damage * hCaster:GetIntellect()
-		hCaster:DealDamage(hTarget, hAbility, flDamage)
+		print("0", params.record, params.target)
+		print("2", GetNextRecord(), params.target)
+		print("3", GetNextRecord(), params.target)
 		hCaster:_LinaIgnite(hTarget, self.scepter_ignite_count)
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControlEnt(iParticleID, 0, hCaster, PATTACH_POINT_FOLLOW, "attach_attack1", hCaster:GetAbsOrigin(), false)

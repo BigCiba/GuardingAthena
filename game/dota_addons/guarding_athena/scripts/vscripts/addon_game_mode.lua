@@ -42,7 +42,6 @@ require("modifiers/init")
 
 LinkLuaModifier("modifier_reborn", "modifiers/generic/modifier_reborn.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_wave", "modifiers/generic/modifier_wave.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_fix_damage", "modifiers/modifier_fix_damage.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_events", "modifiers/modifier_events.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_dummy", "modifiers/modifier_dummy.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_record_system_dummy", "modifiers/modifier_record_system_dummy.lua", LUA_MODIFIER_MOTION_NONE)
@@ -255,7 +254,7 @@ function Activate()
 	print('[GuardingAthena] Creating game mode')
 	Initialize(false)
 	GuardingAthena:InitGameMode()
-	
+
 	_G.MODIFIER_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
 	_G.RECORD_SYSTEM_DUMMY = CreateModifierThinker(nil, nil, "modifier_record_system_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
 end
