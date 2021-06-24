@@ -67,6 +67,9 @@ function public:ReplaceWearables(sSkinName, hUnit)
 					if tAssetModifier.skin then
 						_hModel:SetSkin(tonumber(tAssetModifier.skin))
 					end
+					if tAssetModifier.body_group then
+						_hModel:SetBodygroupByName("arcana", 2)
+					end
 				else
 					local hWearable = SpawnEntityFromTableSynchronous("prop_dynamic", { model = tAssetModifier.modifier, origin = hUnit:GetAbsOrigin() })
 					hWearable:FollowEntity(hUnit, true)
@@ -78,6 +81,9 @@ function public:ReplaceWearables(sSkinName, hUnit)
 					end
 					if tAssetModifier.skin then
 						hWearable:SetSkin(tonumber(tAssetModifier.skin))
+					end
+					if tAssetModifier.body_group then
+						hWearable:SetBodygroupByName("arcana", 2)
 					end
 					-- 饰品特效
 					for _, _tAssetModifier in pairs(tAssetModifiers) do

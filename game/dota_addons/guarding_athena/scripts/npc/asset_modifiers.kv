@@ -496,7 +496,7 @@
 			"modifier"	"particles/units/heroes/hero_omniknight/thunder_warrior/omniknight_4.vpcf"
 		}
 	}
-	"juggernaut_01"	//鬼面武士
+	"juggernaut_01"	// 鬼面武士
 	{
 		"asset_modifier0"	// 至宝模型替换
 		{
@@ -599,6 +599,419 @@
 		{
 			"type"		"itemdef"
 			"modifier"	"21653"
+		}
+	}
+	"spectre_01"	// 幽鬼至宝
+	{
+		"asset_modifier0"	// 特效替换
+		{
+			"type"		"particle_create"
+			"asset"		"particles/units/heroes/hero_spectre/spectre_ambient.vpcf"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient.vpcf"
+		}
+		"asset_modifier1"	// 至宝模型替换
+		{
+			"type"		"entity_model"
+			"asset"		"npc_dota_hero_spectre"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_base.vmdl"
+		}
+		"asset_modifier2"	// 头部替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_hat.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_head.vmdl"
+		}
+		"asset_modifier3"	// 肩膀替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_wings.vmdl"
+			"modifier"	"models/items/spectre/immortal_shoulders/immortal_shoulders.vmdl"
+		}
+		"asset_modifier4"	// 裙子替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_dress.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_skirt.vmdl"
+		}
+		"asset_modifier5"	// 武器替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_weapon.vmdl"
+			"modifier"	"models/items/spectre/spectre_diffusal.vmdl"
+		}
+		"asset_modifier6"	// 头部特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_head.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_head.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"1"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_head_fx"
+				}
+				"1"
+				{
+					"control_point_index"		"2"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_hair_tip_fx"
+				}
+				"2"
+				{
+					"control_point_index"		"3"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_eye_r_fx"
+				}
+				"3"
+				{
+					"control_point_index"		"4"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_eye_l_fx"
+				}
+				"4"
+				{
+					"control_point_index"		"5"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_mouth_fx"
+				}
+			}
+		}
+		"asset_modifier7"	// 肩膀特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/immortal_shoulders/immortal_shoulders.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_transversant_soul/spectre_transversant_ambient.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"0"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_chest"
+				}
+			}
+		}
+		"asset_modifier8"	// 武器特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_diffusal.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_weapon_diffusal/spectre_diffusal_ambient.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"0"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_blade"
+				}
+			}
+		}
+		"asset_modifier9"	// 手臂模型
+		{
+			"type"		"wearable"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_misc.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_misc.vmdl"
+		}
+		"asset_modifier10"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_skirt.vmdl"
+			"modifier"		"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_skirt.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"1"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_fx"
+				}
+				"1"
+				{
+					"control_point_index"		"2"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_r_fx"
+				}
+				"2"
+				{
+					"control_point_index"		"3"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_l_fx"
+				}
+				"3"
+				{
+					"control_point_index"		"4"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_r_front_fx"
+				}
+				"4"
+				{
+					"control_point_index"		"5"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_l_front_fx"
+				}
+			}
+		}
+		"asset_modifier11"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_misc.vmdl"
+			"modifier"		"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_bracers.vpcf"
+		}
+		"asset_modifier12"	// 至宝肩膀模型
+		{
+			"type"		"wearable"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_shoulder.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_shoulder.vmdl"
+		}
+		"asset_modifier13"	// 至宝肩膀特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_shoulder.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_shoulder.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"5"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_spine_fx"
+				}
+				"1"
+				{
+					"control_point_index"		"7"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_pendant_fx"
+				}
+			}
+		}
+		"asset_modifier14"	// 武器特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_diffusal.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_weapon_ambient.vpcf"
+		}
+	}
+	"spectre_02"	// 幽鬼至宝
+	{
+		"asset_modifier0"	// 特效替换
+		{
+			"type"		"particle_create"
+			"asset"		"particles/units/heroes/hero_spectre/spectre_ambient.vpcf"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient.vpcf"
+		}
+		"asset_modifier1"	// 至宝模型替换
+		{
+			"type"		"entity_model"
+			"asset"		"npc_dota_hero_spectre"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_base.vmdl"
+		}
+		"asset_modifier2"	// 头部替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_hat.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_head.vmdl"
+			"body_group"		"arcana"
+			"body_group_value"		"2"
+		}
+		"asset_modifier3"	// 肩膀替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_wings.vmdl"
+			"modifier"	"models/items/spectre/immortal_shoulders/immortal_shoulders.vmdl"
+			"skin"		"1"
+		}
+		"asset_modifier4"	// 裙子替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_dress.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_skirt.vmdl"
+			"body_group"		"arcana"
+			"body_group_value"		"2"
+		}
+		"asset_modifier5"	// 武器替换
+		{
+			"type"		"wearable"
+			"asset"		"models/heroes/spectre/spectre_weapon.vmdl"
+			"modifier"	"models/items/spectre/spectre_diffusal.vmdl"
+		}
+		"asset_modifier6"	// 头部特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_head.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_v2_head.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"1"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_head_fx"
+				}
+				"1"
+				{
+					"control_point_index"		"2"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_hair_tip_fx"
+				}
+				"2"
+				{
+					"control_point_index"		"3"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_eye_r_fx"
+				}
+				"3"
+				{
+					"control_point_index"		"4"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_eye_l_fx"
+				}
+				"4"
+				{
+					"control_point_index"		"5"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_mouth_fx"
+				}
+			}
+		}
+		"asset_modifier7"	// 肩膀特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/immortal_shoulders/immortal_shoulders.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_transversant_soul/spectre_ti7_golden_transversant_ambient.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"0"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_chest"
+				}
+			}
+		}
+		"asset_modifier8"	// 武器特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_diffusal.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_weapon_diffusal/spectre_diffusal_ambient.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"0"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_blade"
+				}
+			}
+		}
+		"asset_modifier9"	// 手臂模型
+		{
+			"type"		"wearable"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_misc.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_misc.vmdl"
+			"body_group"		"arcana"
+			"body_group_value"		"2"
+		}
+		"asset_modifier10"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_skirt.vmdl"
+			"modifier"		"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_skirt_v2.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"1"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_fx"
+				}
+				"1"
+				{
+					"control_point_index"		"2"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_r_fx"
+				}
+				"2"
+				{
+					"control_point_index"		"3"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_l_fx"
+				}
+				"3"
+				{
+					"control_point_index"		"4"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_r_front_fx"
+				}
+				"4"
+				{
+					"control_point_index"		"5"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_skirt_l_front_fx"
+				}
+			}
+		}
+		"asset_modifier11"
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_misc.vmdl"
+			"modifier"		"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_v2_bracers.vpcf"
+		}
+		"asset_modifier12"	// 至宝肩膀模型
+		{
+			"type"		"wearable"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_shoulder.vmdl"
+			"modifier"	"models/items/spectre/spectre_arcana/spectre_arcana_shoulder.vmdl"
+			"body_group"		"arcana"
+			"body_group_value"		"2"
+		}
+		"asset_modifier13"	// 至宝肩膀特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_arcana/spectre_arcana_shoulder.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_shoulder_debut_v2.vpcf"
+			"attach_type"		"customorigin"
+			"attach_entity"		"self"
+			"control_points"
+			{
+				"0"
+				{
+					"control_point_index"		"5"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_spine_fx"
+				}
+				"1"
+				{
+					"control_point_index"		"7"
+					"attach_type"		"point_follow"
+					"attachment"		"attach_pendant_fx"
+				}
+			}
+		}
+		"asset_modifier14"	// 武器特效
+		{
+			"type"		"particle_create"
+			"asset"		"models/items/spectre/spectre_diffusal.vmdl"
+			"modifier"	"particles/econ/items/spectre/spectre_arcana/spectre_arcana_v2_weapon_ambient.vpcf"
 		}
 	}
 }

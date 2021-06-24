@@ -486,4 +486,42 @@ GameUI.CustomUIConfig().AssetsKv = {
 			"modifier":21653,
 		},
 	},
+	"spectre_01":{
+		"asset_modifier0":{
+			"type":"particle_create",
+			"asset":"particles/units/heroes/hero_spectre/spectre_ambient.vpcf",
+			"modifier":"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient.vpcf",
+		},
+		"asset_modifier1":{
+			"type":"entity_model",
+			"asset":"npc_dota_hero_spectre",
+			"modifier":"models/items/spectre/spectre_arcana/spectre_arcana_base.vmdl",
+		},
+		"asset_modifier2":{
+			"type":"wearable",
+			"asset":"models/heroes/spectre/spectre_hat.vmdl",
+			"modifier":"models/items/spectre/spectre_arcana/spectre_arcana_head.vmdl",
+		},
+		"asset_modifier3":{
+			"type":"wearable",
+			"asset":"models/heroes/spectre/spectre_wings.vmdl",
+			"modifier":"models/items/spectre/immortal_shoulders/immortal_shoulders.vmdl",
+		},
+		"asset_modifier4":{
+			"type":"wearable",
+			"asset":"models/heroes/spectre/spectre_dress.vmdl",
+			"modifier":"models/items/spectre/spectre_arcana/spectre_arcana_skirt.vmdl",
+		},
+		"asset_modifier5":{
+			"type":"wearable",
+			"asset":"models/heroes/spectre/spectre_weapon.vmdl",
+			"modifier":"models/items/spectre/spectre_diffusal.vmdl",
+		},
+		"asset_modifier6":{
+			"type":"particle_create",
+			"asset":"models/items/spectre/spectre_arcana/spectre_arcana_head.vmdl",
+			"modifier":"particles/econ/items/spectre/spectre_arcana/spectre_arcana_ambient_head.vpcf",
+			"style":0,
+		},
+	},
 };
