@@ -284,7 +284,7 @@ function public:ItemAddedToInventoryFilter(keys)
 		end]]
 		--
 		local time = GameRules:GetTimeOfDay()
-		if currentUnit.ringCount < 2 then
+		if currentUnit.ringCount < 9999 then
 			for i = 1, 6 do
 				if time > ringTable.timeStart[i] and time < ringTable.timeOver[i] then
 					local item = CreateItem(ringTable.ringName[i], currentUnit, currentUnit)
