@@ -58,6 +58,7 @@ function modifier_item_gong:OnAttack(params)
 		local tTargets = FindUnitsInRadius(params.attacker:GetTeamNumber(), params.attacker:GetAbsOrigin(), nil, params.attacker:Script_GetAttackRange() + params.attacker:GetHullRadius() + 300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST, false)
 		ArrayRemove(tTargets, params.target)
 		for i, hTarget in pairs(tTargets) do
+			params.attacker:Attack(hTarget, iAttackState)
 			if i >= self.split_count then
 				break
 			end
