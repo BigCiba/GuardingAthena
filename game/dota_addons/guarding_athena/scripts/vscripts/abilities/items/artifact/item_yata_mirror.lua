@@ -7,7 +7,7 @@ if item_yata_mirror == nil then
 end
 function item_yata_mirror:OnSpellStart()
 	local hCaster = self:GetCaster()
-	hCaster:AddNewModifier(hCaster, self, "modifier_item_yata_mirror_buff", {duration = self:GetSpecialValueFor("duration")})
+	hCaster:AddNewModifier(hCaster, self, "modifier_item_yata_mirror_buff", { duration = self:GetSpecialValueFor("duration") })
 	-- sound
 	hCaster:EmitSound("Hero_ObsidianDestroyer.EssenceAura")
 end
@@ -17,7 +17,7 @@ end
 ---------------------------------------------------------------------
 -- Modifier
 if modifier_item_yata_mirror == nil then
-	modifier_item_yata_mirror = class({}, nil, ModifierItemBasic)
+	modifier_item_yata_mirror = eom_modifier({}, nil, ModifierItemBasic)
 end
 function modifier_item_yata_mirror:OnCreated(params)
 	self.bonus_attribute = self:GetAbilitySpecialValueFor("bonus_attribute")
@@ -33,16 +33,16 @@ function modifier_item_yata_mirror:OnCreated(params)
 		ParticleManager:SetParticleControlEnt(p, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_attack1", self:GetParent():GetAbsOrigin(), false)
 		self:AddParticle(p, false, false, -1, false, false)
 	end
-	SetSpellCriticalStrike(self:GetParent(), self.ability_critical_chance, self.ability_critical_damage, self)
+	-- SetSpellCriticalStrike(self:GetParent(), 100, self.ability_critical_damage, self)
 end
 function modifier_item_yata_mirror:OnDestroy()
 	if IsServer() then
 		self:GetParent():RemoveModifierByName("modifier_item_yata_mirror_shield")
 	end
-	SetSpellCriticalStrike(self:GetParent(), nil, nil, self)
+	-- SetSpellCriticalStrike(self:GetParent(), nil, nil, self)
 end
 function modifier_item_yata_mirror:OnIntervalThink()
-	self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_item_yata_mirror_shield", {duration = self.duration})
+	self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_item_yata_mirror_shield", { duration = self.duration })
 end
 function modifier_item_yata_mirror:DeclareFunctions()
 	return {
@@ -50,6 +50,11 @@ function modifier_item_yata_mirror:DeclareFunctions()
 		MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
 		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS,
 		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
+	}
+end
+function modifier_item_yata_mirror:EDeclareFunctions()
+	return {
+		EOM_MODIFIER_PROPERTY_SPELL_CRITICALSTRIKE,
 	}
 end
 function modifier_item_yata_mirror:GetModifierMagicalResistanceBonus()
@@ -63,6 +68,13 @@ function modifier_item_yata_mirror:GetModifierBonusStats_Agility()
 end
 function modifier_item_yata_mirror:GetModifierBonusStats_Intellect()
 	return self.bonus_attribute
+end
+function modifier_item_yata_mirror:EOM_GetModifierSpellCriticalStrike()
+	if IsServer() then
+		if PRD(self, self.ability_critical_chance, "modifier_item_yata_mirror") then
+			return self.ability_critical_damage
+		end
+	end
 end
 ---------------------------------------------------------------------
 if modifier_item_yata_mirror_buff == nil then
@@ -91,10 +103,10 @@ end
 function modifier_item_yata_mirror_shield:OnCreated(params)
 	local hParent = self:GetParent()
 	if IsServer() then
-		for i=1,8 do
+		for i = 1, 8 do
 			local vPosition = hParent:GetAbsOrigin() + RotatePosition(Vector(0, 0, 0), QAngle(0, 45 * i, 0), hParent:GetForwardVector()) * 120
 			local p = ParticleManager:CreateParticle("particles/items/yata_mirror/yata_mirror.vpcf", PATTACH_CUSTOMORIGIN, nil)
-			ParticleManager:SetParticleControl( p, 0, vPosition)
+			ParticleManager:SetParticleControl(p, 0, vPosition)
 			ParticleManager:SetParticleControlForward(p, 0, (vPosition - hParent:GetAbsOrigin()):Normalized())
 		end
 	end

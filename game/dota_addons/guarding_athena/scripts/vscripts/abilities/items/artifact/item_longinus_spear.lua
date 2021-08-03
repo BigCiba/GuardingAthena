@@ -7,7 +7,7 @@ end
 function item_longinus_spear:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local hTarget = self:GetCursorTarget()
-	hTarget:AddNewModifier(hCaster, self, "modifier_item_longinus_spear_thinker", {duration = 0.3})
+	hTarget:AddNewModifier(hCaster, self, "modifier_item_longinus_spear_thinker", { duration = 0.3 })
 	-- sound
 	hCaster:EmitSound("Ability.StarfallImpact")
 end
@@ -80,7 +80,7 @@ function modifier_item_longinus_spear:GetModifierTotal_ConstantBlock(params)
 		end
 		if flShield > 0 then
 			local vDirection = (params.attacker:GetAbsOrigin() - hParent:GetAbsOrigin()):Normalized()
-			local p = ParticleManager:CreateParticle("particles/items/longinus_spear/longinus_spear_atfield.vpcf",PATTACH_ABSORIGIN,hParent)
+			local p = ParticleManager:CreateParticle("particles/items/longinus_spear/longinus_spear_atfield.vpcf", PATTACH_ABSORIGIN, hParent)
 			ParticleManager:SetParticleControl(p, 0, hParent:GetAbsOrigin() + vDirection * 100)
 			ParticleManager:SetParticleControlForward(p, 0, vDirection)
 		end
@@ -96,7 +96,7 @@ if modifier_item_longinus_spear_thinker == nil then
 end
 function modifier_item_longinus_spear_thinker:OnCreated(params)
 	if IsClient() then
-		local p = ParticleManager:CreateParticle("particles/items/longinus_spear/longinus_spear_active.vpcf",PATTACH_ABSORIGIN,self:GetParent())
+		local p = ParticleManager:CreateParticle("particles/items/longinus_spear/longinus_spear_active.vpcf", PATTACH_ABSORIGIN, self:GetParent())
 		ParticleManager:SetParticleControl(p, 0, self:GetParent():GetAbsOrigin())
 		ParticleManager:SetParticleControl(p, 1, self:GetCaster():GetAbsOrigin())
 		ParticleManager:ReleaseParticleIndex(p)
@@ -110,9 +110,9 @@ function modifier_item_longinus_spear_thinker:OnDestroy()
 		local stun_duration = self:GetAbilitySpecialValueFor("stun_duration")
 		local radius = self:GetAbilitySpecialValueFor("radius")
 		local tTargets = FindUnitsInRadius(hCaster:GetTeamNumber(), hParent:GetAbsOrigin(), hCaster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-		for _,hUnit in pairs(tTargets) do
+		for _, hUnit in pairs(tTargets) do
 			hCaster:DealDamage(tTargets, self:GetAbility(), hParent:GetMaxHealth() * damage_percent * 0.01, DAMAGE_TYPE_PURE, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS + DOTA_DAMAGE_FLAG_HPLOSS)
-			hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_stunned", {duration = stun_duration})
+			hUnit:AddNewModifier(hCaster, self:GetAbility(), "modifier_stunned", { duration = stun_duration })
 		end
 		EmitSoundOnLocationWithCaster(hParent:GetAbsOrigin(), "Hero_ElderTitan.EchoStomp", hCaster)
 	end

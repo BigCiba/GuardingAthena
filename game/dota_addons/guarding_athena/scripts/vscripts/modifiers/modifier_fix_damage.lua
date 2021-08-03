@@ -110,47 +110,48 @@ function public:GetModifierIncomingSpellDamageConstant(params)
 	end
 end
 function public:GetModifierTotalDamageOutgoing_Percentage(params)
-	-- local percent = 100
-	-- local bIsSpellCrit = false
+	local percent = 100
+	local bIsSpellCrit = false
 	if iDamageCategory ~= DOTA_DAMAGE_CATEGORY_ATTACK then
 		RECORD_SYSTEM_DUMMY.iLastRecord = params.record
 	end
 
 	-- 法术暴击
-	-- if	params.attacker == self:GetParent()
-	-- and params.damage_category == DOTA_DAMAGE_CATEGORY_SPELL
-	-- and bit.band(params.damage_flags, DOTA_DAMAGE_FLAG_NO_SPELL_CRIT) ~= DOTA_DAMAGE_FLAG_NO_SPELL_CRIT
-	-- then
-	-- 	local spell_crit_damage = GetSpellCriticalStrike(params.attacker)
-	-- 	if spell_crit_damage > 0 then
-	-- 		spell_crit_damage = spell_crit_damage + GetSpellCriticalStrikeDamage(params.attacker)
-	-- 		percent = percent * spell_crit_damage * 0.01
-	-- 		bIsSpellCrit = true
-	-- 	end
-	-- end
-	-- if bIsSpellCrit then
-	-- if percent > 0 then
-	-- FireModifiersEvents(MODIFIER_EVENT_ON_SPELL_CRIT, {
-	-- 	attacker = params.attacker,
-	-- 	target = params.target,
-	-- 	original_damage = params.original_damage,
-	-- 	damage = params.original_damage*percent*0.01,
-	-- 	damage_type = params.damage_type,
-	-- 	damage_flags = params.damage_flags,
-	-- 	damage_category = params.damage_category,
-	-- })
-	-- local iNumber = math.floor(params.original_damage * percent * 0.01)
-	-- local sNumber = tostring(iNumber)
-	-- local fDuration = 3
-	-- local vColor = Vector(0, 191, 255)
-	-- local iParticleID = ParticleManager:CreateParticle("particles/msg_fx/msg_crit.vpcf", PATTACH_OVERHEAD_FOLLOW, params.target)
-	-- ParticleManager:SetParticleControl(iParticleID, 1, Vector(0, iNumber, 4))
-	-- ParticleManager:SetParticleControl(iParticleID, 2, Vector(fDuration, #sNumber + 1, 0))
-	-- ParticleManager:SetParticleControl(iParticleID, 3, vColor)
-	-- ParticleManager:SetParticleShouldCheckFoW(iParticleID, false)
-	-- ParticleManager:ReleaseParticleIndex(iParticleID)
-	-- SendOverheadEventMessage(nil, OVERHEAD_ALERT_DAMAGE, params.target, params.original_damage*percent*0.01, params.attacker:GetPlayerOwner())
-	-- 	end
-	-- end
+	if	params.attacker == self:GetParent()
+	and params.damage_category == DOTA_DAMAGE_CATEGORY_SPELL
+	and bit.band(params.damage_flags, DOTA_DAMAGE_FLAG_NO_SPELL_CRIT) ~= DOTA_DAMAGE_FLAG_NO_SPELL_CRIT
+	then
+		local spell_crit_damage = GetSpellCriticalStrike(params.attacker)
+		if spell_crit_damage > 0 then
+			spell_crit_damage = spell_crit_damage + GetSpellCriticalStrikeDamage(params.attacker)
+			percent = percent * spell_crit_damage * 0.01
+			bIsSpellCrit = true
+		end
+	end
+	if bIsSpellCrit then
+		if percent > 0 then
+			-- FireModifiersEvents(MODIFIER_EVENT_ON_SPELL_CRIT, {
+			-- 	attacker = params.attacker,
+			-- 	target = params.target,
+			-- 	original_damage = params.original_damage,
+			-- 	damage = params.original_damage * percent * 0.01,
+			-- 	damage_type = params.damage_type,
+			-- 	damage_flags = params.damage_flags,
+			-- 	damage_category = params.damage_category,
+			-- })
+			local iNumber = math.floor(params.original_damage * (percent + 100) * 0.01)
+			local sNumber = tostring(iNumber)
+			local fDuration = 3
+			local vColor = Vector(0, 191, 255)
+			local iParticleID = ParticleManager:CreateParticle("particles/msg_fx/msg_crit.vpcf", PATTACH_OVERHEAD_FOLLOW, params.target)
+			ParticleManager:SetParticleControl(iParticleID, 1, Vector(0, iNumber, 4))
+			ParticleManager:SetParticleControl(iParticleID, 2, Vector(fDuration, #sNumber + 1, 0))
+			ParticleManager:SetParticleControl(iParticleID, 3, vColor)
+			ParticleManager:SetParticleShouldCheckFoW(iParticleID, false)
+			ParticleManager:ReleaseParticleIndex(iParticleID)
+			-- SendOverheadEventMessage(nil, OVERHEAD_ALERT_DAMAGE, params.target, params.original_damage * percent * 0.01, params.attacker:GetPlayerOwner())
+			return percent
+		end
+	end
 	return 0
 end

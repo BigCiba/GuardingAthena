@@ -312,6 +312,9 @@ function Reload()
 							hUnit:AddNewModifier(hUnit, hAbility, hAbility:GetIntrinsicModifierName(), nil)
 						end
 					end
+
+					hUnit:RemoveModifierByName("modifier_fix_damage")
+					hUnit:AddNewModifier(hUnit, nil, "modifier_fix_damage", nil)
 				end
 			end
 		end

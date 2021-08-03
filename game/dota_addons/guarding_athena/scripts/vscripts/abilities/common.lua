@@ -64,38 +64,38 @@ function CDOTA_Buff:DecrementStackCount(iStackCount)
 	end
 end
 -- 技能暴击
-function SetSpellCriticalStrike(unit, chance, damage, key)
-	if unit.spellCriticalStrikes == nil then
-		unit.spellCriticalStrikes = {}
-	end
+-- function SetSpellCriticalStrike(unit, chance, damage, key)
+-- 	if unit.spellCriticalStrikes == nil then
+-- 		unit.spellCriticalStrikes = {}
+-- 	end
 
-	key = key or DoUniqueString("SpellCriticalStrike")
-	if chance == nil or chance <= 0 then
-		unit.spellCriticalStrikes[key] = nil
-	else
-		unit.spellCriticalStrikes[key] = {
-			spell_crit_chance = chance,
-			spell_crit_damage = damage
-		}
-	end
+-- 	key = key or DoUniqueString("SpellCriticalStrike")
+-- 	if chance == nil or chance <= 0 then
+-- 		unit.spellCriticalStrikes[key] = nil
+-- 	else
+-- 		unit.spellCriticalStrikes[key] = {
+-- 			spell_crit_chance = chance,
+-- 			spell_crit_damage = damage
+-- 		}
+-- 	end
 
-	return key
-end
-function GetSpellCriticalStrike(unit)
-	if unit.spellCriticalStrikes == nil then
-		unit.spellCriticalStrikes = {}
-	end
+-- 	return key
+-- end
+-- function GetSpellCriticalStrike(unit)
+-- 	if unit.spellCriticalStrikes == nil then
+-- 		unit.spellCriticalStrikes = {}
+-- 	end
 
-	local crit_damage = 0
+-- 	local crit_damage = 0
 
-	for key, data in pairs(unit.spellCriticalStrikes) do
-		if PRD(unit, data.spell_crit_chance, key) then
-			crit_damage = math.max(crit_damage, data.spell_crit_damage)
-		end
-	end
+-- 	for key, data in pairs(unit.spellCriticalStrikes) do
+-- 		if PRD(unit, data.spell_crit_chance, key) then
+-- 			crit_damage = math.max(crit_damage, data.spell_crit_damage)
+-- 		end
+-- 	end
 
-	return crit_damage
-end
+-- 	return crit_damage
+-- end
 
 -- 技能暴击额外百分比
 function SetSpellCriticalStrikeDamage(unit, value, key)

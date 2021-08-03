@@ -15,6 +15,8 @@ function monkey_king_3:Spawn()
 				local hSoldier = CreateUnitFromTable(tData, hCaster:GetAbsOrigin())
 				hSoldier:AddNewModifier(hCaster, self, "modifier_monkey_king_3_soldier", nil)
 				hSoldier:SetOwner(hCaster)
+				hSoldier:MakeIllusion()
+				hSoldier:SetControllableByPlayer(hCaster:GetPlayerOwnerID(), false)
 				table.insert(self.tSoldiers, hSoldier)
 				table.insert(self.tFreeSoldiers, hSoldier)
 			end
@@ -104,13 +106,25 @@ function modifier_monkey_king_3:OnIntervalThink()
 end
 function modifier_monkey_king_3:EDeclareFunctions()
 	return {
-		MODIFIER_EVENT_ON_DAMAGE_CALCULATED = { self:GetParent() }
+		MODIFIER_EVENT_ON_ATTACK_LANDED = { self:GetParent() }
 	}
 end
-function modifier_monkey_king_3:OnDamageCalculated(params)
+function modifier_monkey_king_3:OnAttackLanded(params)
 	local hParent = self:GetParent()
 	local hAbility = self:GetAbility()
-	DoCleaveAttack(params.attacker, params.target, hAbility, self.cleave_damage, 260, 520, self.cleave_radius, "sCleaveParticle")
+	DoCleaveAction(params.attacker, params.target, 260, 520, self.cleave_radius, function(hTarget)
+		local tDamageTable = {
+			ability = self:GetAbility(),
+			victim = hTarget,
+			attacker = params.attacker,
+			damage = params.original_damage * self.cleave_damage * 0.01,
+			damage_type = DAMAGE_TYPE_PHYSICAL,
+			damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_USE_COMBAT_PROFICIENCY,
+		-- eom_flags = EOM_DAMAGE_FLAG_NO_SPELL_CRIT,
+		}
+		ApplyDamage(tDamageTable)
+	end)
+	-- DoCleaveAttack(params.attacker, params.target, hAbility, self.cleave_damage, 260, 520, self.cleave_radius, "sCleaveParticle")
 	if hParent:GetScepterLevel() >= 2 then
 		params.target:AddNewModifier(params.attacker, hAbility, "modifier_monkey_king_3_debuff", { duration = self.scepter_counter_duration })
 	end
