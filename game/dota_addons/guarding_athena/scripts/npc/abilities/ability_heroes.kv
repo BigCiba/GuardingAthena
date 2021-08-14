@@ -2172,6 +2172,11 @@
 				"var_type"						"FIELD_INTEGER"
 				"damage"						"100 200 300 400 500 600 700 800"
 			}
+			"12"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						""
+			}
 		}
 	}
 	"nevermore_0"
@@ -4631,6 +4636,182 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"scepter_meteor_damage_pct"		"60"
+			}
+		}
+	}
+	"ember_spirit_0"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/ember_spirit/ember_spirit_0"
+		"AbilityTextureName"					"ember_spirit_0"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"1"
+		"AbilityCooldown"						"2"
+		"AbilityManaCost"						"20"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilityDuration"						"6"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"4"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"critical"						"400"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"200"
+			}
+		}
+	}
+	"ember_spirit_1"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/ember_spirit/ember_spirit_1"
+		"AbilityTextureName"					"ember_spirit_1"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"0"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastRange"						"1000"
+		"AbilityCooldown"						"8"
+		"AbilityManaCost"						"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"1.25 1.5 1.75 2 2.25 2.5 2.75 3 3.25 3.5 3.75 4 4.25 4.5 4.75 5 5.25 5.5 5.75 6"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"200 400 600 800 1000 1200 1400 1600 1800 2000 2200 2400 2600 2800 3000 3200 3400 3600 3800 4000"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"interval"						"0.1"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"600"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"count"							"6"
+			}
+		}
+	}
+	"ember_spirit_2"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/ember_spirit/ember_spirit_2"
+		"AbilityTextureName"					"ember_spirit_2"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"0"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCastAnimation"					"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastRange"						"1000"
+		"AbilityCooldown"						"6"
+		"AbilityManaCost"						"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
+		"AbilityChannelTime"					"0.5"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
+			}
+		}
+	}
+	"ember_spirit_3"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/ember_spirit/ember_spirit_3"
+		"AbilityTextureName"					"ember_spirit_3"
+		"AbilityType"							"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"								"20"
+		"RequiredLevel"							"0"
+		"LevelsBetweenUpgrades"					"3"
+		"AbilityCooldown"						"24"
+		"AbilityManaCost"						"40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"					"DAMAGE_TYPE_PHYSICAL"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"physical_damage"				"-820"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"0.22 0.24 0.26 0.28 0.3 0.32 0.34 0.36 0.38 0.4 0.42 0.44 0.46 0.48 0.5 0.52 0.54 0.56 0.58 0.6"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"400"
+			}
+		}
+	}
+	"ember_spirit_4"
+	{
+		"BaseClass"								"ability_lua"
+		"ScriptFile"							"abilities/heroes/ember_spirit/ember_spirit_4"
+		"AbilityTextureName"					"ember_spirit_4"
+		"AbilityType"							"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"								"8"
+		"RequiredLevel"							"8"
+		"LevelsBetweenUpgrades"					"24"
+		"AbilityCastRange"						"0"
+		"AbilityCooldown"						"0"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"health_regen"					"0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack"						"5 10 15 20 25 30 35 40"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"1.15 1.3 1.45 1.6 1.75 1.9 2.05 2.2"
 			}
 		}
 	}
