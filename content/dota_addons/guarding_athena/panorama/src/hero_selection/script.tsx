@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { render, useGameEvent, useNetTableKey } from 'react-panorama';
+import { render, useGameEvent, useNetTableKey } from '@demon673/react-panorama';
 
 // 预处理禁用官方的选英雄相关功能
 let HUD = $.GetContextPanel()?.GetParent()?.GetParent()?.GetParent() as Panel;
@@ -38,7 +38,7 @@ function Update() {
 	$.Schedule(1, Update);
 }
 
-function PlayerCard({ playerID }: { playerID }) {
+function PlayerCard({ playerID }: { playerID; }) {
 	const [steamid, setSteamID] = useState(() => Game.GetPlayerInfo(playerID).player_steamid);
 	const [level, setLevel] = useState(1);
 	const PlayerData = useNetTableKey("service", "player_data")[playerID];
@@ -50,7 +50,7 @@ function PlayerCard({ playerID }: { playerID }) {
 		setBgImage(GetBadgesBackground(PlayerData.Level));
 		setItemImage(GetBadgesLevel(PlayerData.Level));
 		setProfileLevel(GetBadgesBackgroundNumber(PlayerData.Level));
-	}, [])
+	}, []);
 	return (
 		<Panel className="PlayerContainer">
 			<Panel className="PlayerBackground">
@@ -73,15 +73,15 @@ function PlayerCard({ playerID }: { playerID }) {
 		</Panel>
 	);
 }
-function DiffButton({ index, diff, selected }: { index: string, diff: string, selected: boolean }) {
+function DiffButton({ index, diff, selected }: { index: string, diff: string, selected: boolean; }) {
 	return (
 		<GenericPanel className={"DiffButton " + diff} type="TabButton" group="diffGroup" selected={selected} localizedText="#GameMode_Easy" >
 			<Image className="DiffIcon" src={"s2r://panorama/images/hero_badges/hero_badge_rank_" + index + "_png.vtex"} />
 			<Label localizedText={"#GameMode_" + diff} />
 		</GenericPanel>
-	)
+	);
 }
-function HeroCard({ heroname, lock }: { heroname: string, lock: boolean }) {
+function HeroCard({ heroname, lock }: { heroname: string, lock: boolean; }) {
 	const [lockState, setLockState] = useState("LockImage");
 	// const PlayerData = useNetTableKey("service", "player_data")[Game.GetLocalPlayerID];
 	// useEffect(() => {
@@ -97,7 +97,7 @@ function HeroCard({ heroname, lock }: { heroname: string, lock: boolean }) {
 		<DOTAHeroMovie className="HeroCard Unlock" heroname={heroname}>
 			<Image className={lockState} src="file://{images}/custom_game/lock.png" />
 		</DOTAHeroMovie>
-	)
+	);
 }
 function HeroSelection() {
 	const [serverChecked, setServerChecked] = useState(false);
@@ -122,7 +122,7 @@ function HeroSelection() {
 				<Panel className="SideBar">
 					<Panel className="PlayerList">
 						{Game.GetAllPlayerIDs().map((playerID) => {
-							return <PlayerCard key={"PlayerCard" + playerID.toString()} playerID={playerID} />
+							return <PlayerCard key={"PlayerCard" + playerID.toString()} playerID={playerID} />;
 						})}
 					</Panel>
 					<Panel className="DiffList">

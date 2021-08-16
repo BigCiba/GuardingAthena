@@ -1383,3 +1383,24 @@ function print(...args) {
 	}
 	return $.Msg(...params);
 }
+
+function ToggleWindows(sName) {
+	GameEvents.SendEventClientSide("custom_ui_toggle_windows", { window_name: sName });
+}
+function Transform(obj, sTagName) {
+	let tHeader = CustomNetTables.GetTableValue("header", sTagName);
+	let _obj = Array.isArray(obj) ? [] : {};
+	for (let i in obj) {
+		if (typeof obj[i] === 'object') {
+			_obj[tHeader[i] || i] = Transform(obj[i], sTagName);
+		}
+		else {
+			if (typeof obj[i] === 'string') {
+				_obj[tHeader[i] || i] = tHeader[obj[i]] || obj[i];
+			} else {
+				_obj[tHeader[i] || i] = obj[i];
+			}
+		}
+	}
+	return _obj;
+}

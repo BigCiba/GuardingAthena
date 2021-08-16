@@ -1,6 +1,6 @@
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const { PanoramaManifestPlugin, PanoramaTargetPlugin } = require('webpack-panorama');
+const { PanoramaManifestPlugin, PanoramaTargetPlugin } = require('@demon673/webpack-panorama');
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -15,12 +15,12 @@ module.exports = {
 		rules: [
 			{
 				test: /\.xml$/,
-				loader: 'webpack-panorama/lib/layout-loader',
+				loader: '@demon673/webpack-panorama/lib/layout-loader',
 			},
 			{
 				test: /\.[jt]sx$/,
 				issuer: /\.xml$/,
-				loader: 'webpack-panorama/lib/entry-loader',
+				loader: '@demon673/webpack-panorama/lib/entry-loader',
 			},
 			{
 				test: /\.tsx?$/,
@@ -64,6 +64,10 @@ module.exports = {
 		inventory: {
 			import: './inventory/layout.xml',
 			filename: 'inventory/inventory.xml',
+		},
+		hud_demo: {
+			import: './hud_demo/layout.xml',
+			filename: 'hud_demo/hud_demo.xml',
 		},
 		popup_store_item: { import: './popups/popup_store_item/layout.xml', filename: 'popups/popup_store_item/popup_store_item.xml' },
 		popup_inventory_item: { import: './popups/popup_inventory_item/layout.xml', filename: 'popups/popup_inventory_item/popup_inventory_item.xml' },

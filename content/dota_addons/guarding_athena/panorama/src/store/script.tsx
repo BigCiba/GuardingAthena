@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useEffect, useState, useRef, useReducer } from 'react';
-import { render, useGameEvent, useNetTableKey } from 'react-panorama';
+import { render, useGameEvent, useNetTableKey } from '@demon673/react-panorama';
 import { HideTextTooltip, OpenPopup, Request, ShowTextTooltip } from '../utils/utils';
 
 function Store() {

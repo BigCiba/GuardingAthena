@@ -3,8 +3,10 @@
 		<include src="file://{resources}/scripts/kv/HeroesKv.js" />
 		<include src="file://{resources}/scripts/kv/PlayerItemsKV.js" />
 		<include src="file://{resources}/scripts/kv/AbilitiesKv.js" />
+		<include src="file://{resources}/scripts/kv/ItemsKv.js" />
 		<include src="file://{resources}/scripts/kv/PetsKv.js" />
 		<include src="file://{resources}/scripts/kv/AssetsKv.js" />
+		<include src="file://{resources}/scripts/kv/UnitsKv.js" />
 		<include src="file://{resources}/scripts/init.js" />
 	</scripts>
 	<script>
@@ -68,5 +70,6 @@
 		<!-- 商店 -->
 		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/store/store.xml" />
 		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/inventory/inventory.xml" />
+		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/hud_demo/hud_demo.xml" />
 	</Panel>
 </root>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useReducer } from 'react';
-import { render, useGameEvent, useNetTableKey } from 'react-panorama';
+import { render, useGameEvent, useNetTableKey } from '@demon673/react-panorama';
 import { BuyButton, CommonBalance, CommonMoneyContainer } from '../../elements/Common/Common';
 import { GetHeroIDByName, GetHeroKV, Request } from '../../utils/utils';
 function Popup({ itemData, hasItem }: { itemData: any; hasItem: boolean; }) {
@@ -65,6 +65,7 @@ function HeroItemDetail({ heroName }: { heroName: string; }) {
 				className="PopupHeroScene"
 				light="global_light"
 				antialias={true}
+				// @ts-ignore
 				drawbackground={false}
 				particleonly={false}
 				ref={heroScene}

@@ -1,4 +1,41 @@
 "use strict";
+var offsetX = null;
+var offsetY = null;
+var Draggable = false;
+var DragPanel = null;
+function DragCallback() {
+	var isLeftPressed = GameUI.IsMouseDown(0);
+	if (isLeftPressed && DragPanel != null) {
+		let position = GameUI.GetCursorPosition();
+		if (offsetX == null || offsetY == null) {
+			offsetX = DragPanel.GetPositionWithinWindow().x - position[0];
+			offsetY = DragPanel.GetPositionWithinWindow().y - position[1];
+			DragPanel.style.align = "left top";
+			DragPanel.style.margin = "0px 0px 0px 0px";
+		}
+		if (offsetX != null && offsetY != null) {
+			DragPanel.SetPositionInPixels((position[0] + offsetX) * DragPanel.actualuiscale_x, (position[1] + offsetY) * DragPanel.actualuiscale_y, 0);
+		}
+	}
+	else {
+		offsetX = null;
+		offsetY = null;
+	}
+	if (Draggable || isLeftPressed) {
+		$.Schedule(Game.GetGameFrameTime(), DragCallback);
+	}
+	else {
+		DragPanel = null;
+	}
+}
+GameUI.CustomUIConfig().StartDrag = function (panel) {
+	Draggable = true;
+	DragPanel = panel;
+	DragCallback();
+};
+GameUI.CustomUIConfig().EndDrag = function () {
+	Draggable = false;
+};
 
 function EmitSoundForPlayer(tData) {
 	Game.EmitSound(tData.soundname);

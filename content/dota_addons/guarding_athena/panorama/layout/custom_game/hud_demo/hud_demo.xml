@@ -1,0 +1,16 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hudstyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
+		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
+		<include src="file://{resources}/layout/custom_game/hud_demo/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/common.js"></include>
+		<include src="file://{resources}/layout/custom_game/hud_demo/script.js"></include>
+	</scripts>
+
+	<Panel class="CustomHudRoot" hittest="false">
+	</Panel>
+</root>

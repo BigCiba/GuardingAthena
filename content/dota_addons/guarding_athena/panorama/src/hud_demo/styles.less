@@ -1,0 +1,1194 @@
+@ContainerHeight: 10px+2px+6px+23px+38px*6+5px;
+@SelectContainerMarginTop: @ContainerHeight+40px;
+
+.CustomHudRoot {
+	width: 100%;
+	height: 100%;
+
+	z-index: 10;
+}
+
+.DemoHud {
+	flow-children: right;
+	height: 100%;
+	width: 100%;
+}
+
+.ControlPanel {
+	transform: translateY(-@ContainerHeight );
+	vertical-align: top;
+	horizontal-align: center;
+
+	transition-property: background-color, transform;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+}
+
+.ControlPanelContainer {
+	flow-children: right;
+	vertical-align: middle;
+	horizontal-align: left;
+	height: @ContainerHeight;
+	font-size: 16;
+	background-color: #181818dd;
+	border: 2px solid #222222;
+	box-shadow: #000000aa 0px 0px 8px 0px;
+}
+
+.HUDFlipped .ControlPanelContainer {
+	horizontal-align: right;
+	box-shadow: #000000aa 0px 0px 8px 0px;
+}
+
+#ControlPanelSlideThumb {
+	width: 96px;
+	height: 32px;
+	transform: translateX(0px);
+	background-color: #181818cc;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+	box-shadow: #00000055 0px 0px 8px 0px;
+	horizontal-align: center;
+}
+
+.HUDFlipped #ControlPanelSlideThumb {
+	transform: scaleX(-1);
+}
+
+.BottomArrowButtonIcon {
+	// width: 64px;
+	height: 24px;
+	vertical-align: center;
+	horizontal-align: center;
+	// background-image: url("file://{images}/textures/pickarrow_down_outline.png");
+	// background-position: 50% 50%;
+	// background-size: contain;
+	// background-repeat: no-repeat;
+	wash-color: #91aba6;
+
+	transition-property: transform, wash-color;
+	transition-delay: 0.0s;
+	transition-duration: 0.25s;
+	transition-timing-function: ease-in-out;
+}
+
+#ControlPanelSlideThumb:hover {
+	background-color: #383838cc;
+}
+
+#ControlPanelSlideThumb:hover .BottomArrowButtonIcon {
+	transform: translateY(3px);
+	wash-color: white;
+}
+
+// .Minimized .ControlPanel .BottomArrowButtonIcon {
+// 	transform: rotateZ(180deg) translateY(6px);
+// }
+
+// .Minimized .ControlPanel #ControlPanelSlideThumb:hover .BottomArrowButtonIcon {
+// 	transform: translateY(-3px) rotateZ(180deg);
+// 	wash-color: white;
+// }
+
+.Minimized .ControlPanel {
+	transform: translateX(0px);
+}
+
+.QuitPausePanel {
+	flow-children: right;
+	transform: translateX(0px) translateY(0px);
+	vertical-align: top;
+	horizontal-align: right;
+	height: 45px;
+	width: 100%;
+	background-color: #181818;
+	border: 2px solid #222222;
+}
+
+.QuitPausePanel .DemoButton {
+	height: 100%;
+	width: 48%;
+}
+
+.Category .QuitPausePanel {}
+
+.Category .QuitPausePanel .DemoButton Label {
+	margin-top: 5px;
+	margin-left: 5px;
+
+}
+
+.QuitPausePanel .QuitButton {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#441111), to(#662222));
+	height: 100%;
+	width: 48%;
+
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+
+	border-style: solid;
+	border-width: 2px;
+
+	border-top-color: #661111;
+	border-left-color: #591111;
+	border-bottom-color: #441111;
+	border-right-color: #502222;
+
+	transition-property: background-color;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+}
+
+.Category .QuitPausePanel .QuitButton Label {
+	margin-top: 5px;
+	margin-left: 5px;
+	color: #ffffff;
+	font-size: 16;
+	vertical-align: middle;
+}
+
+.QuitPausePanel .QuitButton:hover {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#441111), to(#aa2222));
+}
+
+.QuitPausePanel.QuitButton:active {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#aa8888), to(#ffaaaa));
+	pre-transform-scale2d: 1.02;
+}
+
+.QuitPausePanel .QuitButton:selected {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#777777), to(#999999));
+}
+
+.ControlPanelContainer Label {
+	flow-children: down;
+
+	horizontal-align: left;
+	font-size: 24;
+	color: #444444;
+	margin-top: 7px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+.ControlPanelContainer .Category Label {
+	horizontal-align: left;
+	margin-left: 0%;
+	margin-top: 2px;
+	font-size: 20;
+	color: #888888;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	text-align: left;
+}
+
+.ControlPanelContainer #Maximized {
+	flow-children: right;
+	visibility: visible;
+}
+
+.ControlPanelContainer #Maximized #MinimizeButton {
+	flow-children: down;
+	vertical-align: top;
+	horizontal-align: center;
+	height: 100%;
+	background-color: #181818;
+	border: 2px solid #111111;
+	visibility: visible;
+}
+
+.ControlPanelContainer #Maximized #MinimizeButton Label {
+	font-size: 18;
+	color: #666666;
+}
+
+#MinimizeButton {
+	width: 24px;
+	horizontal-align: right;
+}
+
+#MinimizeButton Label {
+	vertical-align: center;
+	font-size: 16;
+	color: #666666;
+
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+#MinimizeButton:hover Label {
+	font-size: 16;
+	color: #aaaaaa;
+}
+
+.CategoryContainer {
+	flow-children: down;
+	border-style: solid;
+	border-color: #00000022;
+	border-width: 0%;
+	//border-radius: 5px;
+
+	box-shadow: fill #00000011 0px 0px 8px 0px;
+
+	margin: 5px;
+
+	background-color: #11111166;
+}
+
+.CategoryContainer Label {
+	horizontal-align: center;
+	margin-left: 0%;
+	margin-top: 2px;
+	font-size: 20;
+	color: #888888;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	text-align: left;
+}
+
+.Category {
+	flow-children: down-wrap;
+}
+
+.Row {
+	flow-children: right;
+	margin-top: 0%;
+	margin-bottom: 0%;
+	margin-right: 0%;
+}
+
+.Category .Row Label {
+	horizontal-align: right;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-size: 18;
+	color: #888888;
+}
+
+.Row #DemoButton {}
+
+.Row TextEntry {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#111111FF), to(#222222FF));
+	border: 1px solid baseBorder;
+
+	color: lightgrey;
+	font-size: 16;
+
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+
+	height: 20px;
+	width: 40px;
+
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+.Row TextEntry #PlaceholderText {
+	opacity: 1.0;
+
+	transition-property: opacity;
+	transition-duration: 0.1s;
+
+	vertical-align: middle;
+
+	color: #444444;
+	font-size: 16;
+}
+
+.Row TextEntry:focus {
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.Row TextEntry:focus #PlaceholderText,
+TextEntry.HasInput #PlaceholderText {
+	opacity: 0.0;
+}
+
+.DemoButton {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#333333), to(#444444));
+
+	height: 32px;
+	width: 140px;
+
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+
+	border-style: solid;
+	border-width: 1px;
+
+	border-top-color: #444444;
+	border-left-color: #494949;
+	border-bottom-color: #111111;
+	border-right-color: #404040;
+
+	transition-property: background-color;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+}
+
+.Category .Row .DemoButton#FieldButton {
+	height: 40px;
+	width: 140px;
+}
+
+.Category .DemoButton Label {
+	margin-top: 5px;
+	/*	padding: 6% 12% 6% 3%;*/
+	color: #cccccc;
+	font-size: 15;
+	font-weight: thin;
+	vertical-align: middle;
+	text-transform: none;
+	letter-spacing: 0px;
+}
+
+.Category .DemoButton:hover {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#444444), to(#555555));
+}
+
+.Category .DemoButton:hover Label {
+	//color: #cccccc;
+}
+
+.Category .DemoButton:active {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#888888), to(#aaaaaa));
+	pre-transform-scale2d: 1.02;
+}
+
+.Category .DemoButton:active Label {
+	//color: #eeeeee;
+}
+
+.Category .DemoButton:selected {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#777777), to(#999999));
+}
+
+.Category ToggleButton.DemoButton:active Label {
+	//color: #eeeeee;
+}
+
+.Category ToggleButton:selected Label {
+	//color: #cccccc;
+}
+
+#SelectHeroInfo {
+	height: 100%;
+	flow-children: right;
+}
+
+#SelectHeroImage {
+	vertical-align: center;
+	width: 24px;
+	height: 24px;
+}
+
+#SelectHeroName {
+	vertical-align: center;
+	width: 40px;
+	text-overflow: shrink;
+}
+
+#SelectHeroContainer {
+	align: center top;
+	margin-top: @SelectContainerMarginTop;
+	background-color: #000c;
+
+	opacity: 0.0;
+	transform: translateY(-60px);
+
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+}
+
+#SelectHeroContainer.Show {
+	opacity: 1.0;
+	transform: translateY(0px);
+}
+
+#CancelButton {
+	horizontal-align: right;
+	width: 14px;
+	height: 14px;
+}
+
+#SelectAbilityContainer {
+	align: center top;
+	margin-top: @SelectContainerMarginTop;
+	background-color: #000c;
+
+	opacity: 0.0;
+	transform: translateY(-60px);
+
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+}
+
+#SelectAbilityContainer.Show {
+	opacity: 1.0;
+	transform: translateY(0px);
+}
+
+#AbilityPicker {
+	flow-children: down;
+	width: 864px;
+	height: 620px;
+}
+
+#AbilityPickerHeader {
+	flow-children: right;
+	width: 100%;
+	background-color: #242d39;
+	padding: 16px 16px 12px 16px;
+}
+
+#SelectionChoice {
+	text-align: left;
+	text-overflow: shrink;
+	font-size: 22px;
+	color: #bfd2ee;
+	vertical-align: middle;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.SearchBox {
+	flow-children: right;
+	width: 100px;
+	margin-left: 10px;
+	background-color: black;
+	vertical-align: center;
+}
+
+.SearchBox TextEntry {
+	width: fill-parent-flow(1);
+	border: 0px solid transparent;
+	background-color: none;
+}
+
+.SearchBox TextEntry #PlaceholderText {
+	margin-top: 2px;
+	color: #8a8a8a;
+}
+
+.SearchBox Button {
+	background-image: url("file://{images}/control_icons/icon_search.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+
+	width: 27px;
+	height: 27px;
+	margin: 0px 8px;
+	vertical-align: middle;
+
+	wash-color: #4f4f4f;
+
+	transition-property: wash-color;
+	transition-duration: 0.1s;
+}
+
+.SearchBox Button:hover {
+	wash-color: #cccccc;
+}
+
+.SearchBox Button:active {
+	wash-color: #ffffff;
+}
+
+.Resize {
+	width: 24px;
+	height: 24px;
+	background-image: url("s2r://panorama/images/control_icons/arrow_popout_png.vtex");
+	background-size: 100%;
+	margin-left: 8px;
+	vertical-align: center;
+	tooltip-position: top;
+
+	&:hover {
+		brightness: 1.5;
+	}
+
+	&:active {
+		brightness: 2.0;
+		sound: "ui_generic_button_click";
+	}
+}
+
+.RowMode {
+	width: 24px;
+	height: 24px;
+	background-image: url("s2r://panorama/images/control_icons/swap_psd.vtex");
+	background-size: 100%;
+	margin-left: 8px;
+	vertical-align: center;
+	tooltip-position: top;
+
+	&:hover {
+		brightness: 1.5;
+	}
+
+	&:active {
+		brightness: 2.0;
+		sound: "ui_generic_button_click";
+	}
+}
+
+.LockWindow .Lock {
+	background-image: url("s2r://panorama/images/control_icons/lock_png.vtex");
+}
+
+.Lock {
+	width: 24px;
+	height: 24px;
+	background-image: url("s2r://panorama/images/control_icons/unlock_png.vtex");
+	background-size: 100%;
+	margin-left: 8px;
+	vertical-align: center;
+	tooltip-position: top;
+
+	&:hover {
+		brightness: 1.5;
+	}
+
+	&:active {
+		brightness: 2.0;
+		sound: "ui_generic_button_click";
+	}
+}
+
+#SelectAbilityInfo {
+	height: 100%;
+	flow-children: right;
+}
+
+#SelectAbilityImage {
+	vertical-align: center;
+	width: 24px;
+	height: 24px;
+}
+
+#SelectAbilityName {
+	vertical-align: center;
+	width: 40px;
+	text-overflow: shrink;
+}
+
+#AbilityList {
+	width: 100%;
+	overflow: squish scroll;
+	padding: 16px 8px 0px 16px;
+
+	flow-children: right-wrap;
+}
+
+.AbilityPickerCard {
+	flow-children: down;
+
+	transition-property: border, saturation, opacity;
+	transition-duration: 0.2s;
+
+	&:active {
+		sound: "ui_generic_button_click";
+	}
+
+	&:enabled:hover {
+		brightness: 2;
+	}
+
+	&:disabled {
+		saturation: 0.0;
+		opacity: 0.2;
+	}
+}
+
+#AbilityPickerCardImage {
+	width: 60px;
+	height: width-percentage(100%);
+	margin: 8px 8px 8px 8px;
+	border: 1px solid black;
+}
+
+#AbilityPickerCardName {
+	width: 100%;
+	height: 20px;
+	color: #ffffff;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 0px 1px 2px 3 #00000066;
+}
+
+#SelectItemContainer {
+	align: center top;
+	margin-top: @SelectContainerMarginTop;
+	background-color: #000c;
+
+	opacity: 0.0;
+	transform: translateY(-60px);
+
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+}
+
+#SelectItemContainer.Show {
+	opacity: 1.0;
+	transform: translateY(0px);
+}
+
+#ItemPicker {
+	flow-children: down;
+	width: 864px;
+	height: 620px;
+}
+
+#ItemPickerHeader {
+	flow-children: right;
+	width: 100%;
+	background-color: #242d39;
+	padding: 16px 16px 12px 16px;
+}
+
+#SelectItemInfo {
+	height: 100%;
+	flow-children: right;
+}
+
+#SelectItemImage {
+	vertical-align: center;
+	width: 24px;
+	height: 24px;
+}
+
+#SelectItemName {
+	vertical-align: center;
+	width: 40px;
+	text-overflow: shrink;
+}
+
+#ItemList {
+	width: 100%;
+	overflow: squish scroll;
+	padding: 16px 8px 0px 16px;
+
+	flow-children: right-wrap;
+}
+
+.ItemPickerCard {
+	flow-children: down;
+
+	transition-property: border, saturation, opacity, pre-transform-scale2d, position;
+	transition-duration: 0.2s;
+
+
+	&:active {
+		sound: "ui_generic_button_click";
+	}
+
+	&:enabled:hover {
+		brightness: 2;
+	}
+
+	&:disabled {
+		saturation: 0.0;
+		opacity: 0.2;
+	}
+}
+
+#ItemPickerCardImage {
+	width: 60px;
+	height: width-percentage(75%);
+	margin: 8px 8px 8px 8px;
+	border: 1px solid black;
+}
+
+#ItemPickerCardName {
+	width: 100%;
+	height: 20px;
+	color: #ffffff;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 0px 1px 2px 3 #00000066;
+}
+
+#SelectRoundContainer {
+	align: center top;
+	margin-top: @SelectContainerMarginTop;
+	background-color: #000c;
+
+	opacity: 0.0;
+	transform: translateY(-60px);
+
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+}
+
+#SelectRoundContainer.Show {
+	opacity: 1.0;
+	transform: translateY(0px);
+}
+
+#RoundPicker {
+	flow-children: down;
+	width: 864px;
+	height: 620px;
+}
+
+#RoundPickerHeader {
+	flow-children: right;
+	width: 100%;
+	background-color: #242d39;
+	padding: 16px 16px 12px 16px;
+}
+
+#SelectRoundInfo {
+	height: 100%;
+	flow-children: right;
+}
+
+#SelectRoundNumber {
+	vertical-align: center;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+#SelectRoundName {
+	vertical-align: center;
+	width: 40px;
+	text-overflow: shrink;
+}
+
+#RoundList {
+	width: 100%;
+	overflow: squish scroll;
+	padding: 16px 8px 0px 16px;
+
+	flow-children: right-wrap;
+}
+
+.RoundPickerCard {
+	flow-children: right;
+
+	transition-property: border, saturation, opacity;
+	transition-duration: 0.2s;
+
+	&:enabled:hover {
+		brightness: 2;
+	}
+
+	&:disabled {
+		saturation: 0.0;
+		opacity: 0.2;
+	}
+}
+
+#RoundPickerCardNumber {
+	vertical-align: center;
+	width: 20px;
+	height: width-percentage(100%);
+	margin-left: 5px;
+	color: #ffffff;
+}
+
+#RoundPickerCardName {
+	vertical-align: center;
+	width: fill-parent-flow(1);
+	height: 20px;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 0px 1px 2px 3 #00000066;
+}
+
+.CommonSelectionItem {
+	flow-children: right;
+	width: 134px;
+
+	transition-property: border, saturation, opacity;
+	transition-duration: 0.25s;
+
+	&:active {
+		sound: "ui_generic_button_click";
+	}
+
+	&:enabled:hover {
+		brightness: 2;
+	}
+
+	&:disabled {
+		saturation: 0.0;
+		opacity: 0.2;
+	}
+}
+
+.AbilitySelectionItem {}
+
+#CommonSelectionItemName {
+	vertical-align: center;
+	width: fill-parent-flow(1);
+	height: 20px;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 0px 1px 2px 3 #00000066;
+}
+
+#SelectBuildingContainer {
+	align: center top;
+	margin-top: @SelectContainerMarginTop;
+	background-color: #000c;
+
+	opacity: 0.0;
+	transform: translateY(-60px);
+
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+}
+
+#SelectBuildingContainer.Show {
+	opacity: 1.0;
+	transform: translateY(0px);
+}
+
+#BuildingPicker {
+	flow-children: down;
+	width: 864px;
+	height: 620px;
+}
+
+#BuildingPickerHeader {
+	flow-children: right;
+	width: 100%;
+	background-color: #242d39;
+	padding: 16px 16px 12px 16px;
+}
+
+#SelectBuildingInfo {
+	height: 100%;
+	flow-children: right;
+}
+
+#SelectBuildingNumber {
+	vertical-align: center;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+#SelectBuildingName {
+	vertical-align: center;
+	width: 74px;
+	text-overflow: shrink;
+}
+
+#BuildingList {
+	width: 100%;
+	overflow: squish scroll;
+	padding: 16px 8px 0px 16px;
+
+	flow-children: right-wrap;
+}
+
+.BuildingPickerCard {
+	flow-children: right;
+
+	transition-property: border, saturation, opacity;
+	transition-duration: 0.2s;
+
+	&:enabled:hover {
+		brightness: 2;
+	}
+
+	&:disabled {
+		saturation: 0.0;
+		opacity: 0.2;
+	}
+}
+
+#BuildingPickerCardNumber {
+	vertical-align: center;
+	width: 20px;
+	height: width-percentage(100%);
+	margin-left: 5px;
+	color: #ffffff;
+}
+
+#BuildingPickerCardName {
+	vertical-align: center;
+	width: fill-parent-flow(1);
+	height: 20px;
+	text-align: center;
+	text-overflow: shrink;
+	text-shadow: 0px 1px 2px 3 #00000066;
+}
+
+
+#BaseHealthNumberEntry {
+	vertical-align: center;
+	width: 28px;
+	padding: 0px;
+}
+
+#DemoDropDown {
+	width: 64px;
+
+	padding: 0px 8px 0px 0px;
+
+	background-size: 16px 16px;
+
+	background-position: right 20px 35%;
+
+	Label {
+		text-overflow: shrink;
+	}
+}
+
+.DropDownOption {
+	width: 64px;
+}
+
+DropDownMenu {
+	width: fit-children;
+}
+
+.Row .DemoButton .DemoTextEntry {
+	margin: 0px;
+	height: 41px;
+	font-size: 24px;
+	width: 64px;
+	padding: 0px 8px 0px 0px;
+}
+
+.SelectionContainer {
+	align: center top;
+	margin-top: 300px;
+	background-color: gradient(linear, 0% 0%, 0% 25%, from(#232326), to(#1c1d20));
+	box-shadow: #00000099 0px 0px 8px 0px;
+	border: 2px solid #32383677;
+	opacity: 0.0;
+	transform: translateY(-60px);
+
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+	// sound: "ui_settings_out_multi";
+}
+
+.SelectionContainer.Show {
+	opacity: 1.0;
+	transform: translateY(0px);
+	sound: "ui_rollover_micro";
+}
+
+#SelectionPicker {
+	flow-children: down;
+	width: 864px;
+	height: 620px;
+	transition-property: width, height;
+	transition-duration: 0.2s;
+
+	&.ThinSize {
+		width: 635px;
+		height: 970px;
+	}
+
+	&.WidthSize {
+		width: 1700px;
+		height: 320px;
+	}
+}
+
+#SelectionPickerHeader {
+	flow-children: right;
+	width: 100%;
+	background-color: #00000077;
+	padding: 8px 12px 8px 12px;
+
+	ToggleButton {
+		vertical-align: center;
+		padding: 0px;
+
+		Label {
+			margin-left: 4px;
+		}
+	}
+
+}
+
+
+#SelectSelectionInfo {
+	height: 100%;
+	flow-children: right;
+}
+
+#SelectSelectionNumber {
+	vertical-align: center;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+#SelectSelectionName {
+	vertical-align: center;
+	width: 40px;
+	text-overflow: shrink;
+}
+
+#SelectionList {
+	width: 100%;
+	overflow: squish scroll;
+	padding: 16px 12px 0px 12px;
+
+	flow-children: right-wrap;
+}
+
+.CloseButton {
+	background-image: url("s2r://panorama/images/control_icons/gear_return_png.vtex");
+	background-size: 100%;
+	margin-right: 14px;
+	horizontal-align: left;
+	width: 32px;
+	height: 32px;
+
+	&:active {
+		background-size: 100%;
+	}
+}
+
+.WearablePickerCard {
+	// width: 89px;
+	// height: 96px;
+	flow-children: down;
+	margin: 6px;
+	box-shadow: fill #000000aa 1px 0px 2px 2px;
+	pre-transform-scale2d: 1.0;
+	border: 2px solid black;
+	background-color: black;
+	wash-color: #899aa944;
+	saturation: 0.9;
+	transition-property: height, width, pre-transform-scale2d, box-shadow, background-color, border, saturation, brightness;
+	transition-duration: 0.28s;
+	transition-timing-function: ease-in-out;
+	tooltip-position: right left;
+	context-menu-position: top;
+
+	&:active {
+		sound: "ui_generic_button_click";
+	}
+}
+
+.WearablePickerCard.IsDefaultItem {
+	saturation: 0.0;
+	wash-color: #c4e8fe;
+}
+
+.WearablePickerCard.IsDefaultItem:hover {
+	saturation: 0.0;
+	wash-color: #c4e8fe;
+}
+
+.WearablePickerCard #EconItemIcon {
+	width: 89px;
+	height: 96px;
+	horizontal-align: center;
+	margin-top: -2px;
+	margin-bottom: 2px;
+}
+
+.HeroPickerCard {
+	width: 48px;
+	height: 48px;
+	margin: 4px;
+	flow-children: down;
+
+	&:active {
+		sound: "ui_generic_button_click";
+	}
+
+	#HeroPickerCardImage {
+		width: 48px;
+		height: 48px;
+		border: 1px solid black;
+
+		&:hover {
+			brightness: 2;
+			contrast: 0.95;
+			saturation: 1;
+		}
+	}
+}
+
+.AbilityUpgradePickerCard {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(#333333), to(#444444));
+
+	// height: 32px;
+	// width: 140px;
+
+	// margin-top: 3px;
+	// margin-bottom: 3px;
+	// margin-left: 3px;
+	// margin-right: 3px;
+	margin: 4px;
+
+	border-style: solid;
+	border-width: 1px;
+
+	border-top-color: #444444;
+	border-left-color: #494949;
+	border-bottom-color: #111111;
+	border-right-color: #404040;
+
+	transition-property: background-color;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+	width: 408px;
+	flow-children: right;
+
+	&:hover {
+		background-color: gradient(linear, 0% 0%, 0% 100%, from(#444444), to(#555555));
+	}
+
+	&:active {
+		background-color: gradient(linear, 0% 0%, 0% 100%, from(#393939), to(#555555));
+		// pre-transform-scale2d: 1.02;
+		border-top-color: #222222;
+		border-left-color: #303030;
+		border-bottom-color: #666666;
+		border-right-color: #444444;
+		sound: "ui_generic_button_click";
+	}
+
+	&:selected {
+		background-color: gradient(linear, 0% 0%, 0% 100%, from(#777777), to(#999999));
+	}
+
+	#AbilityPickerCardImage {
+		width: 45px;
+		height: width-percentage(100%);
+		margin: 8px 8px 8px 8px;
+		border: 1px solid black;
+	}
+
+	#AbilityUpgradePickerCardName {
+		vertical-align: center;
+		width: 100%;
+		height: 20px;
+		color: #ffffff;
+		// text-align: center;
+		text-overflow: shrink;
+		text-shadow: 0px 1px 2px 3 #00000066;
+	}
+}
+
+.SelectionButtonIcon {
+	vertical-align: center;
+	width: 24px;
+	height: 24px;
+	margin-left: 2px;
+	background-image: url("s2r://panorama/images/control_icons/grid_3x3_png.vtex");
+	background-size: 100%;
+	wash-color: gray;
+}

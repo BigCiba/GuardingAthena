@@ -341,6 +341,19 @@ function PrintAllModifiers(hUnit)
 	end
 end
 
+function CEntityInstance:Remove()
+	FireGameEvent("custom_entity_removed", {
+		entindex = self:entindex(),
+	})
+	if type(self.FindAllModifiers) == "function" then
+		local tModifiers = self:FindAllModifiers()
+		for k, v in pairs(tModifiers) do
+			v:Destroy()
+		end
+	end
+	UTIL_Remove(self)
+end
+
 -- 显示错误信息
 function ErrorMessage(playerID, message, sound)
 	if message == nil then
@@ -358,13 +371,34 @@ function ErrorMessage(playerID, message, sound)
 	end
 end
 
-function DropItemAroundUnit(unit, item)
-	local hHero = PlayerResource:GetSelectedHeroEntity(unit:GetPlayerOwnerID())
-	local position = unit:GetAbsOrigin() + Vector(RandomFloat(-50, 50), RandomFloat(-50, 50), 0)
-	unit:TakeItem(item)
-	hHero:AddItem(item)
-	hHero:TakeItem(item)
-	unit:DropItemAtPositionImmediate(item, position)
+---在单位周围丢下物品
+function DropItemAroundUnit(hDropUnit, item, hTargetUnit)
+	if not IsValid(hDropUnit) then
+		return
+	end
+	if not IsValid(hTargetUnit) then
+		hTargetUnit = hDropUnit
+	end
+	local position = hTargetUnit:GetAbsOrigin() + Vector(RandomFloat(-50, 50), RandomFloat(-50, 50), 0)
+	hDropUnit:TakeItem(item)
+	CreateItemOnPosition(position, item)
+end
+
+function CreateItemOnPosition(position, item)
+	local hContainer = CreateItemOnPositionForLaunch(position, item)
+
+	return hContainer
+end
+
+-- 创建一个物品给单位，如果单位身上没地方放了，就扔在他附近随机位置
+function CreateItemToUnit(hUnit, sItemName)
+	local hItem = CreateItem(sItemName, hUnit, hUnit)
+	hItem:SetPurchaseTime(0)
+	hUnit:AddItem(hItem)
+	if IsValid(hItem) and hItem:GetParent() ~= hUnit and hItem:GetContainer() == nil then
+		hItem:SetParent(hUnit, "")
+		CreateItemOnPosition(hUnit:GetAbsOrigin() + Vector(RandomFloat(-50, 50), RandomFloat(-50, 50), 0), hItem)
+	end
 end
 
 -- 判断一个handle是否为无效值
@@ -531,6 +565,58 @@ if IsServer() then
 		end
 		return -1
 	end
+	---获取单位kv的数值
+	function CDOTA_BaseNPC:GetUnitKeyValue(sKey)
+		if KeyValues.UnitsKv[self:GetUnitName()] then
+			return KeyValues.UnitsKv[self:GetUnitName()][sKey]
+		end
+	end
+
+	if CDOTA_BaseNPC_Hero.ModifyGold_Engine == nil then
+		CDOTA_BaseNPC_Hero.ModifyGold_Engine = CDOTA_BaseNPC_Hero.ModifyGold
+	end
+	---调整单位金钱
+	---@return boolean
+	function CDOTA_BaseNPC_Hero:ModifyGold(iGold, bShow, nReason)
+		if not self:IsHero() then
+			return
+		end
+		bShow = bShow or true
+		nReason = nReason or DOTA_ModifyGold_CreepKill
+		if self:GetGold() + iGold < 0 then
+			return false
+		end
+		self:ModifyGold_Engine(iGold, true, nReason)
+		if bShow then
+			if iGold > 0 then
+				local iPlayerID = self:GetPlayerID()
+				local hPlayer = PlayerResource:GetPlayer(iPlayerID)
+				SendOverheadEventMessage(hPlayer, OVERHEAD_ALERT_GOLD, self, iGold, hPlayer)
+			elseif iGold < 0 then
+				local iNumberCount = #tostring(math.floor(iGold))
+				local iParticleID = ParticleManager:CreateParticle("particles/msg_fx/msg_gold.vpcf", PATTACH_CUSTOMORIGIN, self)
+				ParticleManager:SetParticleControlEnt(iParticleID, 0, self, PATTACH_CENTER_FOLLOW, nil, self:GetAbsOrigin(), true)
+				ParticleManager:SetParticleControl(iParticleID, 1, Vector(1, math.abs(iGold), 0))
+				ParticleManager:SetParticleControl(iParticleID, 2, Vector(2, iNumberCount, 0))
+				ParticleManager:SetParticleControl(iParticleID, 3, Vector(200, 165, 0))
+				ParticleManager:ReleaseParticleIndex(iParticleID)
+				local iParticleID = ParticleManager:CreateParticle("particles/generic_gameplay/lasthit_coins.vpcf", PATTACH_CUSTOMORIGIN, self)
+				ParticleManager:SetParticleControlEnt(iParticleID, 1, self, PATTACH_CENTER_FOLLOW, nil, self:GetAbsOrigin(), true)
+				ParticleManager:ReleaseParticleIndex(iParticleID)
+				self:EmitSound("General.Buy")
+			end
+		end
+		return true
+	end
+
+	function CDOTA_BaseNPC:FindModifierByNameAndAbility(sModifierName, hAbility)
+		local tModifiers = self:FindAllModifiersByName(sModifierName)
+		for _, hModifier in pairs(tModifiers) do
+			if hModifier:GetAbility() == hAbility then
+				return hModifier
+			end
+		end
+	end
 
 	function CDOTA_BaseNPC:ModifyPrimaryAttribute(fChanged)
 		if self:GetPrimaryAttribute() == DOTA_ATTRIBUTE_STRENGTH then
@@ -598,6 +684,70 @@ if IsServer() then
 			if item ~= nil and FindValueByKey(REFRESH_EXCLUDE_ITEMS, item:GetAbilityName()) == false then
 				item:EndCooldown()
 			end
+		end
+	end
+	function CDOTABaseAbility:IsChargeable()
+		return true
+	end
+
+	function CDOTABaseAbility:GetMaxCharges()
+		return self.max_charges or 1
+	end
+
+	function CDOTABaseAbility:AddMaxCharges(max_charges)
+		self:SetMaxCharges(self:GetMaxCharges() + max_charges)
+	end
+
+	function CDOTABaseAbility:AddCharges(iCharges)
+		local hCaster = self:GetCaster()
+		local iOldCharges = self:GetCharges()
+		if iOldCharges + iCharges >= self:GetMaxCharges() then
+			iCharges = self:GetMaxCharges() - iOldCharges
+		end
+		if iCharges > 0 then
+			self:EndCooldown()
+			local hModifier = hCaster:FindModifierByNameAndAbility("modifier_charges", self)
+			if IsValid(hModifier) then
+				hModifier:SetStackCount(iOldCharges + iCharges)
+				if hModifier:GetStackCount() >= self:GetMaxCharges() then
+					hModifier:StartIntervalThink(-1)
+					hModifier:SetDuration(-1, true)
+				end
+			end
+		end
+	end
+
+	function CDOTABaseAbility:GetCharges()
+		local hCaster = self:GetCaster()
+		local hModifier = hCaster:FindModifierByNameAndAbility("modifier_charges", self)
+		if IsValid(hModifier) then
+			return hModifier:GetStackCount()
+		else
+			if self:IsCooldownReady() then
+				return 1
+			else
+				return 0
+			end
+		end
+	end
+
+	function CDOTABaseAbility:SetMaxCharges(max_charges, charge_restore_time)
+		if self:IsChargeable() == false then
+			return
+		end
+
+		self.max_charges = math.max(1, math.floor(max_charges))
+
+		local hCaster = self:GetCaster()
+		local params = {
+			max_charges = max_charges,
+			charge_restore_time = charge_restore_time,
+		}
+		local hModifier = hCaster:FindModifierByNameAndAbility("modifier_charges", self)
+		if IsValid(hModifier) then
+			hModifier:OnRefresh(params)
+		else
+			hCaster:AddNewModifier(hCaster, self, "modifier_charges", params)
 		end
 	end
 	function CDOTA_BaseNPC:GetRebornTimes()

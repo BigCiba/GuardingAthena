@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useReducer } from 'react';
-import { render, useGameEvent, useNetTableKey } from 'react-panorama';
+import { render, useGameEvent, useNetTableKey } from '@demon673/react-panorama';
 import { BuyButton, CommonBalance, CommonMoneyContainer } from '../../elements/Common/Common';
 import { GetHeroIDByName, GetHeroKV, Request } from '../../utils/utils';
 import { CreateQRCode } from '../../utils/qrcode';
