@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "dev",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: dev",
+			"detail": "node --preserve-symlinks node_modules/webpack/bin/webpack.js --config content/dota_addons/tui5/panorama/webpack.config.js --watch"
+		},
+	]
+}

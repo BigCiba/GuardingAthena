@@ -68,7 +68,6 @@ end
 -- 	if unit.spellCriticalStrikes == nil then
 -- 		unit.spellCriticalStrikes = {}
 -- 	end
-
 -- 	key = key or DoUniqueString("SpellCriticalStrike")
 -- 	if chance == nil or chance <= 0 then
 -- 		unit.spellCriticalStrikes[key] = nil
@@ -78,25 +77,20 @@ end
 -- 			spell_crit_damage = damage
 -- 		}
 -- 	end
-
 -- 	return key
 -- end
 -- function GetSpellCriticalStrike(unit)
 -- 	if unit.spellCriticalStrikes == nil then
 -- 		unit.spellCriticalStrikes = {}
 -- 	end
-
 -- 	local crit_damage = 0
-
 -- 	for key, data in pairs(unit.spellCriticalStrikes) do
 -- 		if PRD(unit, data.spell_crit_chance, key) then
 -- 			crit_damage = math.max(crit_damage, data.spell_crit_damage)
 -- 		end
 -- 	end
-
 -- 	return crit_damage
 -- end
-
 -- 技能暴击额外百分比
 function SetSpellCriticalStrikeDamage(unit, value, key)
 	if unit.spellCriticalStrikeDamage == nil then
@@ -1050,6 +1044,16 @@ if IsServer() then
 				end
 			end
 		end
+	end
+
+	---消耗生命
+	function CDOTA_BaseNPC:SpendHealth(flHealthSpend, hAbility, bLethal)
+		self:ModifyHealth(self:GetHealth() - flHealthSpend, hAbility, bLethal, 0)
+	end
+
+	---给生命
+	function CDOTA_BaseNPC:GiveHealth(flHealth, hAbility)
+		self:ModifyHealth(self:GetHealth() + flHealth, hAbility, false, 0)
 	end
 
 	function PfromC(c)

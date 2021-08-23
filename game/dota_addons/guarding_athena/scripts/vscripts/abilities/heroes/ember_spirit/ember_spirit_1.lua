@@ -36,12 +36,43 @@ function ember_spirit_1:OnSpellStart()
 	hCaster:RemoveModifierByName("modifier_ember_spirit_1")
 	hCaster:AddNewModifier(hCaster, self, "modifier_ember_spirit_1", { vPosition = vPosition })
 	hCaster:EmitSound("Hero_EmberSpirit.SleightOfFist.Cast")
+
+	local fCooldown = self:GetCooldownTime()
+	local hChargeCounter = hCaster:FindModifierByName(self:GetIntrinsicModifierName())
+	if IsValid(hChargeCounter) and fCooldown > 0 then
+		if hChargeCounter:GetDuration() == -1 then
+			hChargeCounter:StartIntervalThink(fCooldown)
+			hChargeCounter:SetDuration(fCooldown, true)
+		end
+
+		hChargeCounter:DecrementStackCount()
+
+		if hChargeCounter:GetStackCount() == 0 then
+			self:EndCooldown()
+			self:StartCooldown(hChargeCounter:GetRemainingTime())
+		else
+			self:EndCooldown()
+		end
+	end
+end
+function ember_spirit_1:RefreshCharges()
+	local hCaster = self:GetCaster()
+	local hChargeCounter = hCaster:FindModifierByName(self:GetIntrinsicModifierName())
+	if IsValid(hChargeCounter) then
+		local iMaxCharges = hCaster:GetScepterLevel() >= 4 and self:GetSpecialValueFor("scepter_bonus_charges") or 0
+		hChargeCounter:SetStackCount(iMaxCharges)
+		hChargeCounter:StartIntervalThink(-1)
+		hChargeCounter:SetDuration(-1, true)
+	end
+end
+function ember_spirit_1:GetIntrinsicModifierName()
+	return "modifier_ember_spirit_1_charge_counter"
 end
 ---------------------------------------------------------------------
 --Modifiers
 modifier_ember_spirit_1 = eom_modifier({
 	Name = "modifier_ember_spirit_1",
-	IsHidden = false,
+	IsHidden = true,
 	IsDebuff = false,
 	IsPurgable = false,
 	IsPurgeException = false,
@@ -54,12 +85,10 @@ function modifier_ember_spirit_1:GetAbilitySpecialValue()
 	self.interval = self:GetAbilitySpecialValueFor("interval")
 	self.radius = self:GetAbilitySpecialValueFor("radius")
 	self.count = self:GetAbilitySpecialValueFor("count")
-	if IsServer() then
-		self.flDamage = self.base_damage + self.damage * self:GetParent():GetAverageTrueAttackDamage(self:GetParent())
-	end
 end
 function modifier_ember_spirit_1:OnCreated(params)
 	if IsServer() then
+		self.flDamage = self.base_damage + self.damage * self:GetParent():GetAverageTrueAttackDamage(self:GetParent())
 		local hParent = self:GetParent()
 		hParent:AddNoDraw()
 		local hAbility = self:GetAbility()
@@ -130,4 +159,41 @@ function modifier_ember_spirit_1:CheckState()
 		[MODIFIER_STATE_ROOTED] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
 	}
+end
+---------------------------------------------------------------------
+modifier_ember_spirit_1_charge_counter = eom_modifier({
+	Name = "modifier_ember_spirit_1_charge_counter",
+	IsDebuff = false,
+	IsPurgable = false,
+	IsPurgeException = false,
+	IsStunDebuff = false,
+	AllowIllusionDuplicate = false,
+})
+function modifier_ember_spirit_1_charge_counter:IsHidden()
+	return self:GetParent():GetScepterLevel() < 4
+end
+function modifier_ember_spirit_1_charge_counter:GetAbilitySpecialValue()
+	if IsServer() then
+		if not self.initialized and self:GetAbility():GetLevel() ~= 0 then
+			self.initialized = true
+			local iCharge = self:GetParent():GetScepterLevel() >= 4 and self:GetAbilitySpecialValueFor("scepter_bonus_charges") or 0
+			self:SetStackCount(iCharge)
+		end
+	end
+end
+function modifier_ember_spirit_1_charge_counter:OnIntervalThink()
+	if IsServer() then
+		local iMaxCharges = self:GetParent():GetScepterLevel() >= 4 and self:GetAbilitySpecialValueFor("scepter_bonus_charges") or 0
+		if self:GetStackCount() < iMaxCharges then
+			self:IncrementStackCount()
+		end
+		if self:GetStackCount() >= iMaxCharges then
+			self:SetDuration(-1, true)
+			self:StartIntervalThink(-1)
+		else
+			local charge_restore_time = self:GetAbility():GetEffectiveCooldown(-1)
+			self:SetDuration(charge_restore_time, true)
+			self:StartIntervalThink(charge_restore_time)
+		end
+	end
 end

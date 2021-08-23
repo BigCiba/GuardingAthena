@@ -2840,70 +2840,6 @@ GameUI.CustomUIConfig().ItemsKv = {
 		},
 		"Model": "models/props_gameplay/red_box.vmdl",
 	},
-	"item_npc_dota_hero_ember_spirit1": {
-		"BaseClass": "item_datadriven",
-		"AbilityTextureName": "item_zhuanshufs1",
-		"AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-		"AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
-		"AbilityCastPoint": 0.2,
-		"AbilityCastRange": 900,
-		"ID": 1691,
-		"ItemQuality": "component",
-		"ItemCost": 550,
-		"ItemSellable": 0,
-		"ItemPurchasable": 0,
-		"ItemShopTags": "magic_resist",
-		"ItemRequirements": {
-		},
-		"ItemDisassembleRule": "DOTA_ITEM_DISASSEMBLE_NEVER",
-		"Modifiers": {
-			"modifier_npc_dota_hero_ember_spirit": {
-				"Passive": 1,
-				"IsHidden": 1,
-				"Properties": {
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS": "%str",
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS": "%agi",
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS": "%int",
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE": "%bonus_damage",
-					"MODIFIER_PROPERTY_HEALTH_BONUS": "%hp",
-					"MODIFIER_PROPERTY_MANA_BONUS": "%mp",
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT": "%hp_regen",
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT": "%mp_regen",
-				},
-			},
-		},
-		"AbilitySpecial": {
-			"01": {
-				"var_type": "FIELD_INTEGER",
-				"str": 200,
-			},
-			"02": {
-				"var_type": "FIELD_INTEGER",
-				"agi": 400,
-			},
-			"03": {
-				"var_type": "FIELD_INTEGER",
-				"int": 200,
-			},
-			"04": {
-				"var_type": "FIELD_INTEGER",
-				"hp": 4000,
-			},
-			"05": {
-				"var_type": "FIELD_INTEGER",
-				"mp": 2000,
-			},
-			"06": {
-				"var_type": "FIELD_INTEGER",
-				"hp_regen": 400,
-			},
-			"07": {
-				"var_type": "FIELD_INTEGER",
-				"mp_regen": 100,
-			},
-		},
-		"Model": "models/props_gameplay/red_box.vmdl",
-	},
 	"item_npc_dota_hero_templar_assassin1": {
 		"BaseClass": "item_datadriven",
 		"AbilityTextureName": "item_zhuanshuta1",
@@ -3172,55 +3108,6 @@ GameUI.CustomUIConfig().ItemsKv = {
 					"RunScript": {
 						"ScriptFile": "scripts/vscripts/ability_item/exclusive.lua",
 						"Function": "OnDestroy",
-					},
-				},
-			},
-		},
-		"AbilitySpecial": {
-			"01": {
-				"var_type": "FIELD_INTEGER",
-				"property": 15,
-			},
-		},
-		"Model": "models/props_gameplay/red_box.vmdl",
-		"Effect": "particles/generic_gameplay/dropped_item.vpcf",
-	},
-	"item_npc_dota_hero_ember_spirit": {
-		"BaseClass": "item_datadriven",
-		"AbilityTextureName": "item_zhuanshufs",
-		"AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
-		"AbilityUnitTargetType": "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
-		"AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
-		"AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
-		"AbilityCooldown": 0.0,
-		"ID": 1690,
-		"ItemQuality": "epic",
-		"ItemCost": 1,
-		"ItemSellable": 0,
-		"ItemPurchasable": 0,
-		"ItemIsNeutralDrop": 1,
-		"ItemDeclarations": "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS",
-		"ItemShopTags": "damage;str;hard_to_tag",
-		"ItemAliases": "skull basher",
-		"ItemRequirements": {
-		},
-		"Modifiers": {
-			"modifier_npc_dota_hero_ember_spirit": {
-				"Passive": 1,
-				"IsHidden": 1,
-				"Attributes": "MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE",
-				"Properties": {
-				},
-				"OnCreated": {
-					"RunScript": {
-						"ScriptFile": "scripts/vscripts/ability_hero/fire_spirit.lua",
-						"Function": "OnExclusiveCreated",
-					},
-				},
-				"OnDestroy": {
-					"RunScript": {
-						"ScriptFile": "scripts/vscripts/ability_hero/fire_spirit.lua",
-						"Function": "OnExclusiveDestroy",
 					},
 				},
 			},
@@ -7622,6 +7509,37 @@ GameUI.CustomUIConfig().ItemsKv = {
 			"08": {
 				"var_type": "FIELD_INTEGER",
 				"scepter_meteor_damage_pct": 60,
+			},
+		},
+		"Model": "models/props_gameplay/aghanim_scepter.vmdl",
+		"Effect": "particles/items4_fx/scepter_aura.vpcf",
+	},
+	"item_npc_dota_hero_ember_spirit": {
+		"BaseClass": "item_lua",
+		"ScriptFile": "abilities/items/scepter/scepter",
+		"AbilityTextureName": "item_zhuanshufs",
+		"AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+		"AbilityUnitTargetType": "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC",
+		"AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+		"AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+		"AbilityCooldown": 0.0,
+		"ItemQuality": "epic",
+		"ItemCost": 1,
+		"ItemSellable": 0,
+		"ItemPurchasable": 0,
+		"ItemIsNeutralDrop": 1,
+		"AbilitySpecial": {
+			"01": {
+				"var_type": "FIELD_INTEGER",
+				"property": 15,
+			},
+			"02": {
+				"var_type": "FIELD_INTEGER",
+				"scepter_max_charges": 6,
+			},
+			"03": {
+				"var_type": "FIELD_INTEGER",
+				"scepter_bonus_charges": 2,
 			},
 		},
 		"Model": "models/props_gameplay/aghanim_scepter.vmdl",
@@ -12973,6 +12891,29 @@ GameUI.CustomUIConfig().ItemsKv = {
 			"01": {
 				"var_type": "FIELD_INTEGER",
 				"lifesteal": 4,
+			},
+		},
+	},
+	"item_summon_dummy": {
+		"BaseClass": "item_lua",
+		"ScriptFile": "abilities/items/consumable/item_summon_dummy",
+		"AbilityTextureName": "item_courier_dire",
+		"ItemType": "consumable",
+		"ItemQuality": "component",
+		"ItemShareability": "ITEM_FULLY_SHAREABLE",
+		"ItemDisassembleRule": "DOTA_ITEM_DISASSEMBLE_NEVER",
+		"AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_POINT",
+		"ItemCost": 10000,
+		"ItemSellable": 1,
+		"ItemPurchasable": 1,
+		"ItemPermanent": 0,
+		"ItemStackable": 1,
+		"ItemInitialCharges": 1,
+		"AbilityCastRange": 1000,
+		"AbilitySpecial": {
+			"01": {
+				"var_type": "FIELD_INTEGER",
+				"duration": 20,
 			},
 		},
 	},

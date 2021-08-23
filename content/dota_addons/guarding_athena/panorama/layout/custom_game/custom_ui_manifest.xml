@@ -7,6 +7,10 @@
 		<include src="file://{resources}/scripts/kv/PetsKv.js" />
 		<include src="file://{resources}/scripts/kv/AssetsKv.js" />
 		<include src="file://{resources}/scripts/kv/UnitsKv.js" />
+		<include src="file://{resources}/scripts/kv/UnitsKv.js" />
+		<include src="file://{resources}/scripts/kv/EnemiesKv.js" />
+		<include src="file://{resources}/scripts/kv/SpecialEnemiesKv.js" />
+		<include src="file://{resources}/scripts/kv/NaturesKv.js" />
 		<include src="file://{resources}/scripts/init.js" />
 	</scripts>
 	<script>
@@ -64,12 +68,13 @@
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/shop.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/time.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/bubble.xml" />
-		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" />
+		<!-- <CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/hud_hero_demo.xml" /> -->
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/custom_hud/hud_main.xml" />
 		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/overhead.xml" />
 		<!-- 商店 -->
 		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/store/store.xml" />
 		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/inventory/inventory.xml" />
 		<CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/hud_demo/hud_demo.xml" />
+		<!-- <CustomUIElement type="FlyoutScoreboard" 				layoutfile="file://{resources}/layout/custom_game/hud_main/hud_main.xml" /> -->
 	</Panel>
 </root>

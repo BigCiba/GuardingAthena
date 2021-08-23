@@ -79,6 +79,9 @@ function PracticeDoSpawn(caller, caster)
 end
 function PracticeEnd(trigger)
 	local caster = trigger.activator
+	if caster == nil then
+		return
+	end
 	local caller = trigger.caller
 	if caster:IsRealHero() == false then
 		if caster:GetUnitName() == "heal_device" or caster:GetUnitName() == "heal_device_move" then
@@ -90,9 +93,6 @@ function PracticeEnd(trigger)
 		end
 	end
 
-	if caster == nil then
-		return
-	end
 	for i = 1, 4 do
 		if caller:GetName() == "practice_" .. tostring(i) then
 			if caster:IsRealHero() then

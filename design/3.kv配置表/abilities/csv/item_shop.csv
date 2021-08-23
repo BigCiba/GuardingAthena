@@ -120,3 +120,5 @@ item_enchant_reduce_resistance,,item_lua,abilities/items/consumable/item_enchant
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2.5,,,,,,,,,,
 item_enchant_lifesteal,,item_lua,abilities/items/consumable/item_enchant_lifesteal,,,,item_enchant,consumable,component,ITEM_FULLY_SHAREABLE,DOTA_ITEM_DISASSEMBLE_NEVER,DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK,,,,,,,4000,1,1,0,1,,1,100,,,lifesteal,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,4,,,,,,,,,,
+item_summon_dummy,,item_lua,abilities/items/consumable/item_summon_dummy,,,,item_courier_dire,consumable,component,ITEM_FULLY_SHAREABLE,DOTA_ITEM_DISASSEMBLE_NEVER,DOTA_ABILITY_BEHAVIOR_POINT,,,,,,,10000,1,1,0,1,,1,1000,,,duration,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,20,,,,,,,,,,

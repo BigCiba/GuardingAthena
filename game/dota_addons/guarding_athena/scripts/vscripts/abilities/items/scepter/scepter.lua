@@ -63,6 +63,10 @@ end
 if item_npc_dota_hero_lina == nil then
 	item_npc_dota_hero_lina = class({}, nil, item_scepter)
 end
+-- 灰烬之灵
+if item_npc_dota_hero_ember_spirit == nil then
+	item_npc_dota_hero_ember_spirit = class({}, nil, item_scepter)
+end
 ---------------------------------------------------------------------
 -- Modifiers
 if modifier_scepter == nil then

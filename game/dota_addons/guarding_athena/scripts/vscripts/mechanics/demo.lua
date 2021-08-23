@@ -11,6 +11,7 @@ function public:OnRefreshButtonPressed(iEventSourceIndex)
 			local hAbility = hHero:GetAbilityByIndex(i)
 			if hAbility then
 				hAbility:AddCharges(1)
+				hAbility:RefreshCharges()
 			end
 		end
 
@@ -143,7 +144,7 @@ function public:OnAllyMaxLevelButtonPressed(iEventSourceIndex)
 	for k, v in pairs(self.m_tAlliesList) do
 		local hUnit = EntIndexToHScript(v)
 		if IsValid(hUnit) and hUnit:IsRealHero() then
-			hUnit:AddExperience(HERO_XP_PER_LEVEL_TABLE[#HERO_XP_PER_LEVEL_TABLE], false, false) -- for some reason maxing your level this way fixes the bad interact with OnHeroReplaced
+			hUnit:AddExperience(XP_PER_LEVEL_TABLE[#XP_PER_LEVEL_TABLE], false, false) -- for some reason maxing your level this way fixes the bad interact with OnHeroReplaced
 
 			for i = 0, hUnit:GetAbilityCount() - 1 do
 				local hAbility = hUnit:GetAbilityByIndex(i)
@@ -226,6 +227,9 @@ function public:OnRemoveSpawnedUnitsButtonPressed(iEventSourceIndex)
 	for k, v in pairs(self.m_tAlliesList) do
 		CustomNetTables:SetTableValue("respawn_state", string.format("%d", v), nil)
 		local hUnit = EntIndexToHScript(v)
+		if hUnit:GetCourier() then
+			UTIL_Remove(hUnit:GetCourier())
+		end
 		if IsValid(hUnit) then
 			hUnit:MakeIllusion()
 			hUnit:AddNoDraw()
@@ -433,7 +437,7 @@ function public:OnClickMap(iEventSourceIndex, tData)
 	if hChapter then
 		for _, hRoom in ipairs(hChapter:GetRoomList()) do
 			if hRoom:GetIndex() == Vector(vOrigin[1], vOrigin[2], 0) then
-				local hDummy = CreateModifierThinker(nil, nil, "modifier_dummy", { duration = 1 }, hRoom:GetOrigin(), DOTA_TEAM_NOTEAM, false)
+				local hDummy = CreateModifierThinker(GameRules:GetGameModeEntity(), nil, "modifier_dummy", { duration = 1 }, hRoom:GetOrigin(), DOTA_TEAM_NOTEAM, false)
 				FindClearSpaceForUnit(hDummy, hRoom:GetOrigin(), true)
 				CenterCameraOnUnit(tData.Unit:GetPlayerID(), hDummy)
 				-- 传送
@@ -569,6 +573,26 @@ function public:OnSwitchHero(iEventSourceIndex, tData)
 	CustomNetTables:SetTableValue("wearable_data", tostring(iEntIndex), AssetModifier.tWearableNetTable[iEntIndex])
 	UTIL_Remove(tData.Unit)
 end
+---创建友军
+function public:OnAllyHero(iEventSourceIndex, tData)
+	CreateUnitByNameAsync(
+	tData.str,
+	tData.Unit:GetAbsOrigin(),
+	true,
+	tData.Unit,
+	tData.Unit,
+	tData.Unit:GetTeamNumber(),
+	function(hUnit)
+		table.insert(self.m_tAlliesList, hUnit:entindex())
+		hUnit:SetControllableByPlayer(tData.PlayerID, false)
+		hUnit:SetRespawnPosition(tData.Unit:GetAbsOrigin())
+		FindClearSpaceForUnit(hUnit, tData.Unit:GetAbsOrigin(), false)
+		hUnit:Hold()
+		hUnit:SetIdleAcquire(false)
+		hUnit:SetAcquisitionRange(0)
+	end
+	)
+end
 ---添加技能词条
 function public:OnAddAbilityUpgrade(iEventSourceIndex, tData)
 	if IsValid(tData.Unit) then
@@ -609,6 +633,7 @@ function public:OnCreateEnemy(iEventSourceIndex, tData)
 		IsSummoned = "1",
 	}
 	local hUnit = CreateUnitFromTable(tUnitData, tData.Position)
+	table.insert(self.m_tAlliesList, hUnit)
 	if self.m_bEnemyControlable then
 		hUnit:SetControllableByPlayer(tData.PlayerID, true)
 	end
@@ -663,6 +688,25 @@ end
 function public:OnRespawnHero(iEventSourceIndex, tData)
 	tData.Unit:RespawnHero(false, false)
 	tData.Unit:SetAbsOrigin(tData.Position)
+end
+---重生次数
+function public:OnRebornButtonPressed(iEventSourceIndex, tData)
+	if tData.Unit then
+		tData.Unit:RemoveModifierByName("modifier_reborn")
+		local iRebornCount = tonumber(tData.str)
+		if iRebornCount > 0 then
+			tData.Unit:AddNewModifier(tData.Unit, nil, "modifier_reborn", nil):SetStackCount(math.min(4, iRebornCount))
+		end
+	end
+end
+---刷怪
+function public:OnToggleSpawnerButtonPressed(iEventSourceIndex, tData)
+	Spawner:TogglePauseSpawn()
+	self.m_bHasFog = Spawner.bPause
+end
+---刷怪
+function public:OnChangeRound(iEventSourceIndex, tData)
+	Spawner.gameRound = tData.str - 1
 end
 
 ------------------------------------------------------------------------------------
@@ -739,7 +783,7 @@ function public:init(bReload)
 
 		self.m_bFreeSpellsEnabled = false
 		self.m_bInvulnerabilityEnabled = false
-		self.m_bHasFog = true
+		self.m_bHasFog = false
 		self.m_bLockCamera = true
 		self.m_bUnockMouse = false
 		self.m_bCreepsEnabled = true

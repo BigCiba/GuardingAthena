@@ -69,6 +69,10 @@ module.exports = {
 			import: './hud_demo/layout.xml',
 			filename: 'hud_demo/hud_demo.xml',
 		},
+		hud_main: {
+			import: './hud_main/layout.xml',
+			filename: 'hud_main/hud_main.xml',
+		},
 		popup_store_item: { import: './popups/popup_store_item/layout.xml', filename: 'popups/popup_store_item/popup_store_item.xml' },
 		popup_inventory_item: { import: './popups/popup_inventory_item/layout.xml', filename: 'popups/popup_inventory_item/popup_inventory_item.xml' },
 		popus_recharge: { import: './popups/popus_recharge/layout.xml', filename: 'popups/popus_recharge/popus_recharge.xml' },

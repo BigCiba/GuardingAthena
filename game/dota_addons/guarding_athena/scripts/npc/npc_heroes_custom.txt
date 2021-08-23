@@ -440,7 +440,7 @@
 		"Ability3"								"ember_spirit_2"
 		"Ability4"								"ember_spirit_3"
 		"Ability6"								"ember_spirit_4"
-		"Ability5"								"generic_hidden"
+		"Ability5"								"ember_spirit_4_1"
 		"Ability7"								"generic_hidden"
 		"Ability8"								"generic_hidden"
 		"Ability9"								"generic_hidden"

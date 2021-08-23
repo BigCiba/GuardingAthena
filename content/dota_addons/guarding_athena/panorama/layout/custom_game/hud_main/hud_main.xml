@@ -1,0 +1,129 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hudstyles.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c"></include>
+		<include src="s2r://panorama/styles/custom_ui.vcss_c"></include>
+		<include src="s2r://panorama/styles/hud/dota_hud_stat_branch.vcss_c"></include>		
+		<include src="s2r://panorama/styles/hud/dota_hud_ability_panel.vcss_c"></include>	
+
+		<include src="file://{resources}/layout/custom_game/hud_main/styles.css"></include>
+	</styles>
+	<scripts>
+		<include src="s2r://panorama/scripts/sequence_actions.vjs_c"></include>
+		<include src="file://{resources}/scripts/custom_game/common.js"></include>
+		
+
+		<include src="file://{resources}/layout/custom_game/hud_main/script.js"></include>
+	</scripts>
+
+	<snippets>
+	</snippets>
+
+	<Panel class="CustomHudRoot" hittest="false">
+		<Panel class="MinimapBorder">
+			<DOTAMinimap id="OverlayMap" renderbackground="true"></DOTAMinimap>
+		</Panel>
+
+		<!-- 金钱 -->
+		<!-- <Button id="GoldButton" onmouseover="DOTAHUDShowGoldTooltip()" onmouseout="DOTAHUDHideGoldTooltip()" onactivate="DOTAHUDToggleShop();">
+			<Label id="GoldLabel" hittest="false" class="MonoNumbersFont ShopButtonValueLabel" text="{d:r:gold}" />
+			<Panel id="GoldIcon" hittest="false" />
+		</Button> -->
+
+		<Panel id="HUDContents" class="CustomHudContents" hittest="false">
+			<Panel id="lower_hud" hittest="false" disallowedstyleflags="hover,descendantfocus">
+				<!-- <DOTAMinimap id="minimap"/> -->
+				<Panel id="center_with_stats" hittest="false" disallowedstyleflags="hover,descendantfocus">
+					<Panel id="center_block" hittest="false" disallowedstyleflags="hover,descendantfocus">
+						<!-- <Panel id="left_flare" /> -->
+						<Panel id="center_bg">
+							<Image id="left_decoration"></Image>
+							<Image id="right_decoration"></Image>
+							<Image id="left_ice"></Image>
+							<Image id="right_ice"></Image>
+						</Panel>
+						<Panel id="HUDSkinPortrait" hittest="false"></Panel>
+						<Panel id="HUDSkinXPBackground" hittest="false"></Panel>
+						<!-- <DOTAMultiUnit id="multiunit" class="PortraitLocation" /> -->
+						<Panel id="PortraitGroup">
+							<DOTAParticleScenePanel id="PortraitStreakParticle" particleonly="true" cameraOrigin="-300 0 150" lookAt="0 0 180" fov="50" hittest="false"></DOTAParticleScenePanel>
+							<!-- <Panel id="PortraitStreakParticleBorder" hittest="false" class="" /> -->
+							<!-- <Panel id="PortraitBacker" hittest="false"/> -->
+							<!-- <Panel id="PortraitBackerColor" hittest="false"/> -->
+							<Image id="PortraitIceLeft"></Image>
+							<!-- <Image id="PortraitIceRight"/> -->
+							<Panel id="PortraitContainer" hittest="false">
+								<DOTAPortrait id="portraitHUD" class="PortraitLocation" onmouseover="DOTAHUDShowVisionRange();" onmouseout="DOTAHUDHideVisionRange();"></DOTAPortrait>
+								<DOTAPortrait id="portraitHUDOverlay" class="PortraitLocation"></DOTAPortrait>
+								<Image id="RightSideHeroBlur" src="panel://portraitHUD" hittest="false"></Image>
+								<Panel id="SilenceIcon" hittest="false" always-cache-composition-layer="true"></Panel>
+								<Panel id="MutedIcon" hittest="false" always-cache-composition-layer="true"></Panel>
+								<Panel id="DeathGradient"></Panel>
+							</Panel>
+						</Panel>
+						<DOTAHUDDeathPanel id="death_panel_buyback"></DOTAHUDDeathPanel>
+						<DOTAXP id="xp" hittest="false" always-cache-composition-layer="true" require-composition-layer="true"></DOTAXP>
+						<Panel id="stats_container" hittest="false">
+							<!-- <Panel id="stats_container_bg" hittest="false" />
+							<Panel id="HUDSkinStatBranchBG" hittest="false"/> -->
+							<!-- <Panel id="HUDSkinStatBranchGlow" hittest="false"/>							 -->
+							<DOTAStatsRegion id="stats" class="ShowSplitLabels" hittest="false"></DOTAStatsRegion>	
+							<DOTAHUDStrAgiInt id="stragiint" always-cache-composition-layer="true" require-composition-layer="true" hittest="false"></DOTAHUDStrAgiInt>
+							<DOTAPortraitStatsClickRegion id="stats_tooltip_region" acceptsinput="true" onmouseover="DOTAHUDShowDamageArmorTooltip();" onmouseout="DOTAHUDHideDamageArmorTooltip();"></DOTAPortraitStatsClickRegion>
+						</Panel>
+						<Panel hittest="false" id="RecommendedUpgradeOverlay">
+							<Panel hittest="false" class="BorderEdge BorderTop"></Panel>
+							<Panel hittest="false" class="BorderEdge BorderRight"></Panel>
+							<Panel hittest="false" class="BorderEdge BorderBottom"></Panel>
+							<Panel hittest="false" class="BorderEdge BorderLeft"></Panel>
+						</Panel>
+						<DOTAUnitName id="unitname" hittest="false"></DOTAUnitName>
+						<Button id="KillGraphButton" class="DotaPlusBrightButton" onactivate="DOTAKillGraphShow();">
+							<Label text="#DOTA_Plus_Death_Screen"></Label>
+						</Button>
+						<DOTAUnitHeroBadge id="unitbadge" hittest="false" hittestchildren="false">
+							<Panel id="PortraitHeroBadge" class="PlusHeroBadgeIconSmall"></Panel>
+							<Panel id="PortraitHeroBadgeOverlay"></Panel>
+						</DOTAUnitHeroBadge>
+						<DOTAHUDLevelStatsFrame id="level_stats_frame" hittest="false"></DOTAHUDLevelStatsFrame>						
+						<DOTALevelUpButton id="levelup" hittest="false"></DOTALevelUpButton>
+						<DOTAHealthMana id="health_mana"></DOTAHealthMana>
+						<Panel id="HUDSkinAbilityContainerBG" hittest="false"></Panel>
+						<Panel class="AbilityInsetShadowLeft"></Panel>
+						<!-- <DOTAHotkey id="StatBranchHotkey" keybind="LearnStats" hittest="false" /> -->
+						<Panel id="SecondaryAbilityContainer" hittest="false">
+							<DOTASecondaryAbilitiesBar id="SecondaryAbilitiesBar" class="HideWhenCanLevelAbilities"></DOTASecondaryAbilitiesBar>
+							<Panel class="TertiaryAbilityContainer" hittest="false">
+								<DOTASecondaryAbilitiesBar id="TertiaryAbilitiesBar" secondary_ability_type="2"></DOTASecondaryAbilitiesBar>							
+							</Panel>
+						</Panel>
+						<Panel id="AbilitiesAndStatBranch" hittest="false">
+							<Panel class="LeftRightFlow" hittest="false">
+								<DOTATalentDisplay id="StatBranch"></DOTATalentDisplay>
+								<DOTAAbilityList id="abilities" hittest="false"></DOTAAbilityList>
+								<DOTAAghsStatusDisplay id="AghsStatusContainer"></DOTAAghsStatusDisplay>
+							</Panel>
+							<ProgressBar id="MorphProgress" min="0" max="1" value="0.5"></ProgressBar>
+						</Panel>
+						<Panel class="AbilityInsetShadowRight" require-composition-layer="true" always-cache-composition-layer="true"></Panel>
+						<DOTAUnitEconItem id="econ_item"></DOTAUnitEconItem>
+						<DOTAInventory id="inventory" slotsDraggable="true"></DOTAInventory>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="upper_hud" hittest="false" disallowedstyleflags="hover,descendantfocus">
+				<!-- 回合 -->
+				<!-- <Panel id="Rounds" hittest="false">
+					<Label id="RoundNumber" class="MonoNumbersFont" text="{d:round_number}" hittest="false" />
+					<ProgressBar id="RoundProgressBar" hittest="false">
+						<Label id="RoundTarget" class="MonoNumbersFont" text="{d:round_killed}/{d:round_total}" hittest="false" />
+					</ProgressBar>
+					<Label id="RoundTime" class="MonoNumbersFont" text="{d:round_time}" hittest="false" />
+				</Panel> -->
+			</Panel>
+		</Panel>
+
+		<Panel id="DroppedItemPanel" hittest="fasle"></Panel>
+	</Panel>
+</root>

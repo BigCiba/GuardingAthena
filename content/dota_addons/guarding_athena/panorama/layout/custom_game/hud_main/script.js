@@ -1,3908 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./elements/AbilityDetails/utils.js":
-/*!******************************************!*\
-  !*** ./elements/AbilityDetails/utils.js ***!
-  \******************************************/
-/*! namespace exports */
-/*! export compose [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getCastType [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getDamageType [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getDispelType [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getItemDispelType [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getSpellImmunity [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export getTargetType [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isActive [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export replaceValues [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isActive": () => /* binding */ isActive,
-/* harmony export */   "getCastType": () => /* binding */ getCastType,
-/* harmony export */   "getTargetType": () => /* binding */ getTargetType,
-/* harmony export */   "getDamageType": () => /* binding */ getDamageType,
-/* harmony export */   "getSpellImmunity": () => /* binding */ getSpellImmunity,
-/* harmony export */   "getDispelType": () => /* binding */ getDispelType,
-/* harmony export */   "getItemDispelType": () => /* binding */ getItemDispelType,
-/* harmony export */   "compose": () => /* binding */ compose,
-/* harmony export */   "replaceValues": () => /* binding */ replaceValues
-/* harmony export */ });
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function isActive(iBehavior) {
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_TOGGLE) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_TOGGLE) {
-    return true;
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_NO_TARGET) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_NO_TARGET) {
-    return true;
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_POINT) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_POINT) {
-    return true;
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) {
-    return true;
-  }
-
-  return false;
-}
-function getCastType(iBehavior) {
-  // "DOTA_ToolTip_Ability_NoTarget" "无目标"
-  // "DOTA_ToolTip_Ability_Passive" "被动"
-  // "DOTA_ToolTip_Ability_Channeled" "持续施法"
-  // "DOTA_ToolTip_Ability_AutoCast" "自动施放"
-  // "DOTA_ToolTip_Ability_Aura" "光环"
-  // "DOTA_ToolTip_Ability_Toggle" "切换"
-  // "DOTA_ToolTip_Ability_Target" "单位目标"
-  // "DOTA_ToolTip_Ability_Point" "点目标"
-  // "DOTA_ToolTip_Ability_UnitOrPoint_Target" "点目标"
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_AURA) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_AURA) {
-    return "DOTA_ToolTip_Ability_Aura";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_AUTOCAST) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_AUTOCAST) {
-    return "DOTA_ToolTip_Ability_AutoCast";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_PASSIVE) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_PASSIVE) {
-    return "DOTA_ToolTip_Ability_Passive";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_TOGGLE) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_TOGGLE) {
-    return "DOTA_ToolTip_Ability_Toggle";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_CHANNELLED) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_CHANNELLED) {
-    return "DOTA_ToolTip_Ability_Channeled";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_NO_TARGET) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_NO_TARGET) {
-    return "DOTA_ToolTip_Ability_NoTarget";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_POINT + DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_POINT + DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) {
-    return "DOTA_ToolTip_Ability_UnitOrPoint_Target";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_POINT) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_POINT) {
-    return "DOTA_ToolTip_Ability_Point";
-  }
-
-  if ((iBehavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) == DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) {
-    return "DOTA_ToolTip_Ability_Target";
-  }
-
-  return "";
-}
-function getTargetType(iTeam, iType) {
-  if (iTeam == DOTA_UNIT_TARGET_TEAM.DOTA_UNIT_TARGET_TEAM_FRIENDLY) {
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) {
-      return "DOTA_ToolTip_Targeting_AlliedUnitsAndBuildings";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) {
-      return "DOTA_ToolTip_Targeting_AlliedHeroesAndBuildings";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) {
-      return "DOTA_ToolTip_Targeting_AlliedUnits";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) {
-      return "DOTA_ToolTip_Targeting_AlliedHeroes";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP) {
-      return "DOTA_ToolTip_Targeting_AlliedCreeps";
-    }
-
-    return "DOTA_ToolTip_Targeting_Allies";
-  }
-
-  if (iTeam == DOTA_UNIT_TARGET_TEAM.DOTA_UNIT_TARGET_TEAM_ENEMY) {
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) {
-      return "DOTA_ToolTip_Targeting_EnemyUnitsAndBuildings";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_BUILDING) {
-      return "DOTA_ToolTip_Targeting_EnemyHeroesAndBuildings";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) {
-      return "DOTA_ToolTip_Targeting_EnemyUnits";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_HERO) {
-      return "DOTA_ToolTip_Targeting_EnemyHero";
-    }
-
-    if ((iType & DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP) == DOTA_UNIT_TARGET_TYPE.DOTA_UNIT_TARGET_CREEP) {
-      return "DOTA_ToolTip_Targeting_EnemyCreeps";
-    }
-
-    return "DOTA_ToolTip_Targeting_Enemy";
-  }
-
-  return "";
-}
-function getDamageType(iDamageType) {
-  if (iDamageType == DAMAGE_TYPES.DAMAGE_TYPE_PHYSICAL) {
-    return "DOTA_ToolTip_Damage_Physical";
-  }
-
-  if (iDamageType == DAMAGE_TYPES.DAMAGE_TYPE_MAGICAL) {
-    return "DOTA_ToolTip_Damage_Magical";
-  }
-
-  if (iDamageType == DAMAGE_TYPES.DAMAGE_TYPE_PURE) {
-    return "DOTA_ToolTip_Damage_Pure";
-  }
-
-  return "";
-}
-function getSpellImmunity(iSpellImmunityType) {
-  if (iSpellImmunityType == SPELL_IMMUNITY_TYPES.SPELL_IMMUNITY_ALLIES_YES) {
-    return "DOTA_ToolTip_PiercesSpellImmunity_Yes";
-  }
-
-  if (iSpellImmunityType == SPELL_IMMUNITY_TYPES.SPELL_IMMUNITY_ALLIES_NO) {
-    return "DOTA_ToolTip_PiercesSpellImmunity_No";
-  }
-
-  if (iSpellImmunityType == SPELL_IMMUNITY_TYPES.SPELL_IMMUNITY_ENEMIES_YES) {
-    return "DOTA_ToolTip_PiercesSpellImmunity_Yes";
-  }
-
-  if (iSpellImmunityType == SPELL_IMMUNITY_TYPES.SPELL_IMMUNITY_ENEMIES_NO) {
-    return "DOTA_ToolTip_PiercesSpellImmunity_No";
-  }
-
-  if (iSpellImmunityType == SPELL_IMMUNITY_TYPES.SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO) {
-    return "DOTA_ToolTip_PiercesSpellImmunity_AlliesYesEnemiesNo";
-  }
-
-  return "";
-}
-function getDispelType(sSpellDispellableType) {
-  if (sSpellDispellableType == "SPELL_DISPELLABLE_YES") {
-    return "DOTA_ToolTip_Dispellable_Yes_Soft";
-  }
-
-  if (sSpellDispellableType == "SPELL_DISPELLABLE_NO") {
-    return "DOTA_ToolTip_Dispellable_No";
-  }
-
-  if (sSpellDispellableType == "SPELL_DISPELLABLE_YES_STRONG") {
-    return "DOTA_ToolTip_Dispellable_Yes_Strong";
-  }
-
-  return "";
-}
-function getItemDispelType(sSpellDispellableType) {
-  if (sSpellDispellableType == "SPELL_DISPELLABLE_YES") {
-    return "DOTA_ToolTip_Dispellable_Item_Yes_Soft";
-  }
-
-  if (sSpellDispellableType == "SPELL_DISPELLABLE_YES_STRONG") {
-    return "DOTA_ToolTip_Dispellable_Item_Yes_Strong";
-  }
-
-  return "";
-}
-function compose(aValues) {
-  var iLevel = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
-  var sTemp = "";
-  var sTempPS = "";
-
-  for (var level = 0; level < aValues.length; level++) {
-    var value = aValues[level];
-
-    if (sTemp != "") {
-      sTemp = sTemp + " / ";
-      sTempPS = sTempPS + " / ";
-    }
-
-    var sValue = Math.abs(value) + "";
-    var sValuePS = sValue + "%";
-
-    if (iLevel != -1 && level + 1 == Math.min(iLevel, aValues.length)) {
-      sValue = "<span class='GameplayVariable'>" + sValue + "</span>";
-      sValuePS = "<span class='GameplayVariable'>" + sValuePS + "</span>";
-    }
-
-    sTemp = sTemp + sValue;
-    sTempPS = sTempPS + sValuePS;
-  }
-
-  if (iLevel == -1) {
-    sTemp = "<span class='GameplayValues GameplayVariable'>" + sTemp + "</span>";
-    sTempPS = "<span class='GameplayValues GameplayVariable'>" + sTempPS + "</span>";
-  } else {
-    sTemp = "<span class='GameplayValues'>" + sTemp + "</span>";
-    sTempPS = "<span class='GameplayValues'>" + sTempPS + "</span>";
-  }
-
-  return [sTemp, sTempPS];
-}
-function replaceValues(sStr, bShowExtra, sAbilityName, iLevel) {
-  var iEntityIndex = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : -1;
-  var bIsDescription = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-  var tAbility = CustomUIConfig.AbilitiesKv[sAbilityName];
-  var tItem = CustomUIConfig.ItemsKv[sAbilityName];
-  var tData = tAbility || tItem;
-  var aValueNames = GetSpecialNames(sAbilityName, iEntityIndex);
-
-  for (var index = 0; index < aValueNames.length; index++) {
-    var sValueName = aValueNames[index];
-    var block = new RegExp("%" + sValueName + "%", "g");
-    var blockPS = new RegExp("%" + sValueName + "%%", "g");
-    var iResult = sStr.search(block);
-    var iResultPS = sStr.search(blockPS);
-    if (iResult == -1 && iResultPS == -1) continue;
-    var tResult = GetSpecialValuesWithCalculated(sAbilityName, sValueName, iEntityIndex);
-    var aValues = void 0;
-
-    switch (sValueName) {
-      case "abilitycastrange":
-        aValues = StringToValues(tData.AbilityCastRange || "");
-        break;
-
-      case "abilitycastpoint":
-        aValues = StringToValues(tData.AbilityCastPoint || "");
-        break;
-
-      case "abilityduration":
-        aValues = StringToValues(tData.AbilityDuration || "");
-        break;
-
-      case "abilitychanneltime":
-        aValues = StringToValues(tData.AbilityChannelTime || "");
-        break;
-
-      case "abilitydamage":
-        aValues = StringToValues(tData.AbilityDamage || "");
-        break;
-
-      default:
-        if (bIsDescription) {
-          aValues = tResult.aValues;
-        } else {
-          aValues = tResult.aOriginalValues;
-        }
-
-        break;
-    }
-
-    if (!bIsDescription) {
-      var CalculateSpellDamageTooltip = GetSpecialValueProperty(sAbilityName, sValueName, "CalculateSpellDamageTooltip", iEntityIndex);
-      var bCalculateSpellDamage = CalculateSpellDamageTooltip != undefined ? Number(CalculateSpellDamageTooltip) == 1 : sValueName.indexOf("damage") != -1;
-      bCalculateSpellDamage = bCalculateSpellDamage && iEntityIndex && Entities.IsValidEntity(iEntityIndex);
-      var fSpellAmplify = Entities.GetSpellAmplify(iEntityIndex) * 0.01;
-
-      if (bShowExtra && bCalculateSpellDamage) {
-        for (var j = 0; j < aValues.length; j++) {
-          var value = aValues[j];
-          aValues[j] = Math.round(value * (1 + fSpellAmplify) * 100) / 100;
-        }
-
-        for (var _j = 0; _j < tResult.aValues.length; _j++) {
-          var _value = tResult.aValues[_j];
-          tResult.aValues[_j] = Math.round(_value * (1 + fSpellAmplify) * 100) / 100;
-        }
-
-        if (tResult.aMinValues) {
-          for (var _j2 = 0; _j2 < tResult.aMinValues.length; _j2++) {
-            var _value2 = tResult.aMinValues[_j2];
-            tResult.aMinValues[_j2] = Math.round(_value2 * (1 + fSpellAmplify) * 100) / 100;
-          }
-        }
-
-        if (tResult.aMaxValues) {
-          for (var _j3 = 0; _j3 < tResult.aMaxValues.length; _j3++) {
-            var _value3 = tResult.aMaxValues[_j3];
-            tResult.aMaxValues[_j3] = Math.round(_value3 * (1 + fSpellAmplify) * 100) / 100;
-          }
-        }
-
-        for (var key in tResult.tAddedValues) {
-          var aAddedValues = tResult.tAddedValues[key];
-
-          for (var _j4 = 0; _j4 < aAddedValues.length; _j4++) {
-            var _value4 = aAddedValues[_j4];
-            aAddedValues[_j4] = Math.round(_value4 * (1 + fSpellAmplify) * 100) / 100;
-          }
-        }
-      }
-    }
-
-    var _compose = compose(aValues, iLevel),
-        _compose2 = _slicedToArray(_compose, 2),
-        sValues = _compose2[0],
-        sValuesPS = _compose2[1];
-
-    if (!bIsDescription) {
-      if (!bShowExtra || !(iEntityIndex && Entities.IsValidEntity(iEntityIndex))) {
-        var tAddedFactors = tResult.tAddedFactors;
-
-        for (var _key in tAddedFactors) {
-          var aAddedFactors = tAddedFactors[_key];
-
-          var _compose3 = compose(aAddedFactors, iLevel),
-              _compose4 = _slicedToArray(_compose3, 2),
-              sTemp = _compose4[0],
-              sTempPS = _compose4[1];
-
-          sValues = sValues + "[+" + $.Localize("dota_tooltip_ability_variable" + _key) + "x" + sTemp + "]";
-          sValuesPS = sValuesPS + "[+" + $.Localize("dota_tooltip_ability_variable" + _key) + "x" + sTempPS + "]";
-        }
-      } else {
-        var tAddedValues = tResult.tAddedValues;
-        var bHasAdded = false;
-
-        for (var _key2 in tAddedValues) {
-          var _aAddedValues = tAddedValues[_key2];
-          bHasAdded = true;
-
-          var _compose5 = compose(_aAddedValues, iLevel),
-              _compose6 = _slicedToArray(_compose5, 2),
-              _sTemp = _compose6[0],
-              _sTempPS = _compose6[1];
-
-          sValues = sValues + "[+" + _sTemp + "]";
-          sValuesPS = sValuesPS + "[+" + _sTempPS + "]";
-        }
-
-        if (bHasAdded) {
-          var _compose7 = compose(tResult.aValues, iLevel),
-              _compose8 = _slicedToArray(_compose7, 2),
-              _sTemp2 = _compose8[0],
-              _sTempPS2 = _compose8[1];
-
-          sValues = sValues + " = " + _sTemp2;
-          sValuesPS = sValuesPS + " = " + _sTempPS2;
-        }
-      }
-
-      if (bShowExtra && (tResult.aMinValues || tResult.aMaxValues)) {
-        if (tResult.aMinValues) {
-          var _compose9 = compose(tResult.aMinValues, iLevel),
-              _compose10 = _slicedToArray(_compose9, 2),
-              _sTemp3 = _compose10[0],
-              _sTempPS3 = _compose10[1];
-
-          sValues = sValues + "[" + $.Localize("dota_tooltip_ability_variable_min") + _sTemp3 + "]";
-          sValuesPS = sValuesPS + "[" + $.Localize("dota_tooltip_ability_variable_min") + _sTempPS3 + "]";
-        }
-
-        if (tResult.aMaxValues) {
-          var _compose11 = compose(tResult.aMaxValues, iLevel),
-              _compose12 = _slicedToArray(_compose11, 2),
-              _sTemp4 = _compose12[0],
-              _sTempPS4 = _compose12[1];
-
-          sValues = sValues + "[" + $.Localize("dota_tooltip_ability_variable_max") + _sTemp4 + "]";
-          sValuesPS = sValuesPS + "[" + $.Localize("dota_tooltip_ability_variable_max") + _sTempPS4 + "]";
-        }
-      }
-    }
-
-    sStr = sStr.replace(blockPS, sValuesPS);
-    sStr = sStr.replace(block, sValues);
-  }
-
-  return sStr;
-}
-
-/***/ }),
-
-/***/ "./elements/AbilityPanel/AbilityPanel.jsx":
-/*!************************************************!*\
-  !*** ./elements/AbilityPanel/AbilityPanel.jsx ***!
-  \************************************************/
-/*! namespace exports */
-/*! export AbilityPanel [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AbilityPanel": () => /* binding */ AbilityPanel
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-function AbilityPanel(_ref) {
-  var _ref$overrideentityin = _ref.overrideentityindex,
-      overrideentityindex = _ref$overrideentityin === void 0 ? -1 : _ref$overrideentityin,
-      _ref$overridedisplayk = _ref.overridedisplaykeybind,
-      overridedisplaykeybind = _ref$overridedisplayk === void 0 ? -1 : _ref$overridedisplayk,
-      _ref$slot = _ref.slot,
-      slot = _ref$slot === void 0 ? -1 : _ref$slot,
-      className = _ref.className,
-      other = _objectWithoutProperties(_ref, ["overrideentityindex", "overridedisplaykeybind", "slot", "className"]);
-
-  var refSelf = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      m_is_item = _useState2[0],
-      set_is_item = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      m_max_level = _useState4[0],
-      set_max_level = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState6 = _slicedToArray(_useState5, 2),
-      m_level = _useState6[0],
-      set_level = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState8 = _slicedToArray(_useState7, 2),
-      m_charges_percent = _useState8[0],
-      set_charges_percent = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState10 = _slicedToArray(_useState9, 2),
-      m_cooldown_percent = _useState10[0],
-      set_cooldown_percent = _useState10[1];
-
-  function update() {
-    var pSelf = refSelf.current;
-    if (!pSelf) return;
-    var iActiveAbility = Abilities.GetLocalPlayerActiveAbility();
-    var iCasterIndex = Abilities.GetCaster(overrideentityindex);
-    var bControllable = Entities.IsControllableByPlayer(iCasterIndex, Players.GetLocalPlayer());
-    var bIsValid = overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex);
-    pSelf.SetHasClass("no_ability", !bIsValid);
-    var bIsItem = Abilities.IsItem(overrideentityindex) || slot != -1;
-
-    if (bIsItem != pSelf.m_is_item) {
-      pSelf.m_is_item = bIsItem;
-      set_is_item(bIsItem);
-    }
-
-    pSelf.SetHasClass("no_item", bIsItem && !bIsValid);
-    var iMaxLevel = !bIsValid || Entities.IsEnemy(iCasterIndex) ? 0 : Abilities.GetMaxLevel(overrideentityindex);
-
-    if (iMaxLevel != pSelf.m_max_level) {
-      pSelf.m_max_level = iMaxLevel;
-      set_max_level(iMaxLevel);
-    }
-
-    var iLevel = !bIsValid || Entities.IsEnemy(iCasterIndex) ? 0 : Abilities.GetLevel(overrideentityindex);
-
-    if (iLevel != pSelf.m_level) {
-      pSelf.m_level = iLevel;
-      set_level(iLevel);
-      pSelf.SetDialogVariableInt("level", pSelf.m_level);
-    }
-
-    var iCasterMana = iCasterIndex == -1 ? 0 : Entities.GetMana(iCasterIndex);
-    var iAbilityPoints = Entities.GetAbilityPoints(iCasterIndex);
-    var iKeybindCommand = Entities.GetAbilityIndex(iCasterIndex, overrideentityindex) + DOTAKeybindCommand_t.DOTA_KEYBIND_ABILITY_PRIMARY1;
-
-    if (bIsItem) {
-      iKeybindCommand = slot + DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1;
-    }
-
-    var sHotkey = iKeybindCommand >= DOTAKeybindCommand_t.DOTA_KEYBIND_ABILITY_PRIMARY1 && iKeybindCommand <= DOTAKeybindCommand_t.DOTA_KEYBIND_ABILITY_ULTIMATE ? Game.GetKeybindForCommand(iKeybindCommand) : "";
-
-    if (bIsItem) {
-      sHotkey = iKeybindCommand >= DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1 && iKeybindCommand <= DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6 ? Game.GetKeybindForCommand(iKeybindCommand) : "";
-    }
-
-    if (overridedisplaykeybind != -1) {
-      sHotkey = Game.GetKeybindForCommand(overridedisplaykeybind);
-    }
-
-    var pAbilityImage = pSelf.FindChildTraverse("AbilityImage");
-
-    if (pAbilityImage) {
-      pAbilityImage.contextEntityIndex = bIsItem ? -1 : overrideentityindex;
-    }
-
-    var pItemImage = pSelf.FindChildTraverse("ItemImage");
-
-    if (pItemImage) {
-      pItemImage.contextEntityIndex = bIsItem ? overrideentityindex : -1;
-    }
-
-    var bInAbilityPhase = !bIsValid || Entities.IsEnemy(iCasterIndex) ? false : Abilities.IsInAbilityPhase(overrideentityindex);
-    var bCooldownReady = !bIsValid || Entities.IsEnemy(iCasterIndex) ? true : Abilities.IsCooldownReady(overrideentityindex);
-    var iManaCost = !bIsValid || Entities.IsEnemy(iCasterIndex) ? 0 : Abilities.GetManaCost(overrideentityindex);
-    iManaCost = CalcSpecialValueUpgrade(iCasterIndex, Abilities.GetAbilityName(overrideentityindex), "mana_cost", iManaCost);
-    var iGoldCost = !bIsValid || Entities.IsEnemy(iCasterIndex) ? 0 : Abilities.GetLevelGoldCost(overrideentityindex, iLevel);
-    pSelf.SetHasClass("unitmuted", Entities.IsMuted(iCasterIndex));
-    pSelf.SetHasClass("silenced", Entities.IsSilenced(iCasterIndex));
-    pSelf.SetHasClass("auto_castable", bIsValid && Abilities.IsAutocast(overrideentityindex));
-    pSelf.SetHasClass("is_passive", bIsValid && Abilities.IsPassive(overrideentityindex));
-    pSelf.SetHasClass("is_toggle", bIsValid && Abilities.IsToggle(overrideentityindex));
-    pSelf.SetHasClass("insufficient_mana", iManaCost > iCasterMana);
-    pSelf.SetHasClass("auto_cast_enabled", bIsValid && Abilities.GetAutoCastState(overrideentityindex));
-    pSelf.SetHasClass("toggle_enabled", bIsValid && Abilities.GetToggleState(overrideentityindex));
-    pSelf.SetHasClass("can_cast_again", iManaCost > iCasterMana || !bCooldownReady);
-    pSelf.SetHasClass("no_level", iLevel == 0 || !Abilities.IsActivated(overrideentityindex));
-    pSelf.SetHasClass("could_level_up", bControllable && iAbilityPoints > 0 && Abilities.CanAbilityBeUpgraded(overrideentityindex) == AbilityLearnResult_t.ABILITY_CAN_BE_UPGRADED);
-    pSelf.SetHasClass("show_level_up_tab", pSelf.BHasClass("could_level_up"));
-    pSelf.SetHasClass("show_level_up_frame", Game.IsInAbilityLearnMode() && pSelf.BHasClass("could_level_up"));
-    pSelf.SetHasClass("is_active", iActiveAbility == overrideentityindex);
-    pSelf.SetHasClass("ability_phase", bInAbilityPhase);
-    pSelf.SetHasClass("in_cooldown", !bCooldownReady);
-    pSelf.SetHasClass("no_mana_cost", iManaCost == 0);
-    pSelf.SetDialogVariableInt("mana_cost", iManaCost);
-    pSelf.SetHasClass("no_gold_cost", iGoldCost == 0);
-    pSelf.SetDialogVariableInt("gold_cost", iGoldCost);
-    pSelf.SetHasClass("no_hotkey", sHotkey == "" || !bControllable || !(!pSelf.BHasClass("no_level") && !pSelf.BHasClass("is_passive") || pSelf.BHasClass("show_level_up_frame") || GameUI.IsControlDown() && pSelf.BHasClass("could_level_up")));
-    pSelf.RemoveClass("hotkey_alt");
-    pSelf.RemoveClass("hotkey_ctrl");
-    var aHotkeys = sHotkey.split("-");
-
-    if (aHotkeys) {
-      var _iterator = _createForOfIteratorHelper(aHotkeys),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var sKey = _step.value;
-
-          if (sKey.toUpperCase().indexOf("ALT") != -1) {
-            pSelf.AddClass("hotkey_alt");
-          } else if (sKey.toUpperCase().indexOf("CTRL") != -1) {
-            pSelf.AddClass("hotkey_ctrl");
-          } else {
-            pSelf.SetDialogVariable("hotkey", Abilities.GetKeybind(overrideentityindex));
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    }
-
-    var fCooldownLength = Abilities.GetCooldownLength(overrideentityindex);
-    pSelf.RemoveClass("show_ability_charges");
-
-    if (!Entities.IsEnemy(iCasterIndex)) {
-      for (var i = 0; i < Entities.GetNumBuffs(iCasterIndex); i++) {
-        var iModifier = Entities.GetBuff(iCasterIndex, i);
-        var sModifierName = Buffs.GetName(iCasterIndex, iModifier);
-
-        if (iModifier != -1 && Buffs.GetAbility(iCasterIndex, iModifier) == overrideentityindex && FindKey(CustomUIConfig.ChargeCounterKv, sModifierName) && !Buffs.IsDebuff(iCasterIndex, iModifier)) {
-          pSelf.AddClass("show_ability_charges");
-          pSelf.SetDialogVariableInt("ability_charge_count", Buffs.GetStackCount(iCasterIndex, iModifier));
-          values.charge_count = Buffs.GetStackCount(iCasterIndex, iModifier);
-          fCooldownLength = Buffs.GetDuration(iCasterIndex, iModifier) == -1 ? 0 : Buffs.GetDuration(iCasterIndex, iModifier);
-          var fPercent = Clamp(Buffs.GetRemainingTime(iCasterIndex, iModifier) / fCooldownLength, 0, 1);
-          var fChargesPercent = 1 - fPercent;
-
-          if (fChargesPercent != pSelf.m_charges_percent) {
-            pSelf.m_charges_percent = fChargesPercent;
-            set_charges_percent(fChargesPercent);
-          }
-
-          break;
-        }
-      }
-    }
-
-    var fCastStartTime = pSelf.m_cast_start_time;
-
-    if (bInAbilityPhase) {
-      if (fCastStartTime == -1) fCastStartTime = Game.GetGameTime() - Game.GetGameFrameTime();
-      var fCastTime = Clamp(Game.GetGameTime() - fCastStartTime, 0, Abilities.GetCastPoint(overrideentityindex));
-
-      var _fPercent = fCastTime / Abilities.GetCastPoint(overrideentityindex);
-
-      if (_fPercent != pSelf.m_cooldown_percent) {
-        pSelf.m_cooldown_percent = _fPercent;
-        set_cooldown_percent(_fPercent);
-      }
-    } else {
-      fCastStartTime = -1;
-    }
-
-    if (fCastStartTime != pSelf.m_cast_start_time) {
-      pSelf.m_cast_start_time = fCastStartTime;
-    }
-
-    if (!bCooldownReady) {
-      var fCooldownTimeRemaining = Abilities.GetCooldownTimeRemaining(overrideentityindex);
-
-      var _fPercent2 = fCooldownTimeRemaining / fCooldownLength;
-
-      if (fCooldownLength == 0) _fPercent2 = 1;
-
-      if (_fPercent2 != pSelf.m_cooldown_percent) {
-        pSelf.m_cooldown_percent = _fPercent2;
-        set_cooldown_percent(_fPercent2);
-      }
-
-      pSelf.SetDialogVariableInt("cooldown_timer", Math.ceil(fCooldownTimeRemaining));
-    }
-
-    var pShine = pSelf.FindChildTraverse("Shine");
-
-    if (pShine) {
-      if (bCooldownReady == true && bInAbilityPhase == false && bInAbilityPhase != pSelf.m_in_ability_phase || bCooldownReady == true && bCooldownReady != pSelf.m_cooldown_ready) {
-        pShine.TriggerClass("do_shine");
-      }
-    }
-
-    pSelf.RemoveClass("show_item_charges");
-    pSelf.RemoveClass("show_item_alt_charges");
-    pSelf.RemoveClass("muted");
-
-    if (Abilities.IsItem(overrideentityindex)) {
-      pSelf.SetHasClass("muted", Items.IsMuted(overrideentityindex));
-      var iChargeCount = 0;
-      var bHasCharges = false;
-      var iAltChargeCount = 0;
-      var bHasAltCharges = false;
-
-      if (Items.ShowSecondaryCharges(overrideentityindex)) {
-        bHasCharges = true;
-        bHasAltCharges = true;
-
-        if (Abilities.GetToggleState(overrideentityindex)) {
-          iChargeCount = Items.GetCurrentCharges(overrideentityindex);
-          iAltChargeCount = Items.GetSecondaryCharges(overrideentityindex);
-        } else {
-          iAltChargeCount = Items.GetCurrentCharges(overrideentityindex);
-          iChargeCount = Items.GetSecondaryCharges(overrideentityindex);
-        }
-      } else if (Items.ShouldDisplayCharges(overrideentityindex)) {
-        bHasCharges = true;
-        iChargeCount = Items.GetCurrentCharges(overrideentityindex);
-      }
-
-      pSelf.SetHasClass("show_item_charges", bHasCharges);
-      pSelf.SetHasClass("show_item_alt_charges", bHasAltCharges);
-      pSelf.SetDialogVariableInt("item_charge_count", iChargeCount);
-      pSelf.SetDialogVariableInt("item_alt_charge_count", iAltChargeCount);
-    }
-
-    if (bInAbilityPhase != pSelf.m_in_ability_phase) {
-      pSelf.m_in_ability_phase = bInAbilityPhase;
-    }
-
-    if (bCooldownReady != pSelf.m_cooldown_ready) {
-      pSelf.m_cooldown_ready = bCooldownReady;
-    }
-  }
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var pSelf = refSelf.current;
-
-    if (pSelf) {
-      pSelf.m_is_item = false;
-      pSelf.m_max_level = 0;
-      pSelf.m_level = 0;
-      pSelf.m_cooldown_ready = true;
-      pSelf.m_in_ability_phase = false;
-      pSelf.m_charges_percent = 1;
-      pSelf.m_cooldown_percent = 1;
-      pSelf.m_cast_start_time = -1;
-      pSelf.update = update;
-    }
-
-    update();
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var pSelf = refSelf.current;
-
-    if (pSelf) {
-      pSelf.update = update;
-    }
-
-    update();
-  }, [overrideentityindex, overridedisplaykeybind, slot]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, _extends({
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()("AbilityPanel", className, "AbilityMaxLevel" + m_max_level)
-  }, other, {
-    ref: refSelf
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "ButtonAndLevel",
-    "require-composition-layer": "true",
-    "always-cache-composition-layer": "true",
-    hittest: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "LevelUpBurstFXContainer",
-    hittest: false
-  }, !m_is_item && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, {
-    id: "LevelUpBurstFX",
-    map: "scenes/hud/levelupburst",
-    renderdeferred: false,
-    rendershadows: false,
-    camera: "camera_1",
-    hittest: false,
-    particleonly: true
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "ButtonWithLevelUpTab",
-    hittest: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Button, {
-    id: "LevelUpTab",
-    hittest: true,
-    onactivate: function onactivate() {
-      if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-        Abilities.AttemptToUpgrade(overrideentityindex);
-      }
-    },
-    onmouseover: function onmouseover(self) {
-      var pAbilityButton = self.GetParent().FindChildTraverse("AbilityButton");
-
-      if (pAbilityButton) {
-        if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-          CustomUIConfig.ShowAbilityTooltiop(pAbilityButton, Abilities.GetAbilityName(overrideentityindex), Abilities.GetCaster(overrideentityindex), slot);
-        }
-      }
-    },
-    onmouseout: function onmouseout(self) {
-      var pAbilityButton = self.GetParent().FindChildTraverse("AbilityButton");
-
-      if (pAbilityButton) {
-        CustomUIConfig.HideAbilityTooltiop(pAbilityButton);
-      }
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "LevelUpButton"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "LevelUpIcon"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "LearnModeButton",
-    hittest: false
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "LevelUpLight",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "ButtonWell"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "AutocastableBorder"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "AutoCastingContainer",
-    hittest: false
-  },  true && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAScenePanel, {
-    id: "AutoCasting",
-    map: "scenes/hud/autocasting",
-    renderdeferred: false,
-    rendershadows: false,
-    camera: "camera_1",
-    hittest: false,
-    particleonly: true
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "ButtonSize"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "AbilityButton",
-    onactivate: function onactivate(self) {
-      if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-        if (GameUI.IsAltDown()) {
-          Abilities.PingAbility(overrideentityindex);
-          return;
-        }
-
-        if (GameUI.IsControlDown()) {
-          Abilities.AttemptToUpgrade(overrideentityindex);
-          return;
-        }
-
-        var iCasterIndex = Abilities.GetCaster(overrideentityindex);
-        Abilities.ExecuteAbility(overrideentityindex, iCasterIndex, false);
-      }
-    },
-    oncontextmenu: function oncontextmenu(self) {
-      if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-        if (Abilities.IsAutocast(overrideentityindex)) {
-          Game.PrepareUnitOrders({
-            OrderType: dotaunitorder_t.DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO,
-            AbilityIndex: overrideentityindex,
-            UnitIndex: Abilities.GetCaster(overrideentityindex)
-          });
-        }
-      }
-    },
-    onmouseover: function onmouseover(self) {
-      if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-        CustomUIConfig.ShowAbilityTooltiop(self, Abilities.GetAbilityName(overrideentityindex), Abilities.GetCaster(overrideentityindex), slot);
-      }
-    },
-    onmouseout: function onmouseout(self) {
-      CustomUIConfig.HideAbilityTooltiop(self);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, {
-    id: "AbilityImage",
-    showtooltip: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAItemImage, {
-    id: "ItemImage",
-    scaling: "stretch-to-fit-x-preserve-aspect",
-    showtooltip: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "AbilityBevel"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "ShineContainer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "Shine"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "TopBarUltimateCooldown",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "Cooldown",
-    hittest: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "CooldownOverlay",
-    hittest: false,
-    style: {
-      clip: "radial(50.0% 50.0%, 0.0deg, " + -m_cooldown_percent * 360 + "deg)"
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "CooldownTimer",
-    className: "MonoNumbersFont",
-    localizedText: "{d:cooldown_timer}",
-    hittest: false
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "ActiveAbility",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "InactiveOverlay",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "ItemCharges",
-    localizedText: "{d:item_charge_count}",
-    hittest: false
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "ItemAltCharges",
-    localizedText: "{d:item_alt_charge_count}",
-    hittest: false
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "ActiveAbilityBorder"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "PassiveAbilityBorder"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "AutocastableAbilityBorder"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "GoldCostBG"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    hittest: false,
-    id: "GoldCost",
-    localizedText: "{d:gold_cost}"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "ManaCostBG"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    hittest: false,
-    id: "ManaCost",
-    localizedText: "{d:mana_cost}"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "CombineLockedOverlay"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "SilencedOverlay"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "AbilityStatusOverlay"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "UpgradeOverlay"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "DropTargetHighlight"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "HotkeyContainer",
-    hittest: false,
-    hittestchildren: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "Hotkey"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "HotkeyText",
-    localizedText: "{s:hotkey}"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "HotkeyModifier"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "AltText",
-    localizedText: "#DOTA_Keybind_ALT"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "HotkeyCtrlModifier"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "CtrlText",
-    localizedText: "#DOTA_Keybind_CTRL"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "LevelContainer",
-    hittest: false,
-    hittestchildren: false
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "AbilityLevel"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    id: "AbilityLevelText",
-    localizedText: "{d:level}"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(CircularProgressBar, {
-    id: "AbilityCharges",
-    hittest: false,
-    hittestchildren: false,
-    value: m_charges_percent
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-    localizedText: "{d:ability_charge_count}"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    hittest: false,
-    id: "AbilityLevelContainer"
-  })));
-}
-
-/***/ }),
-
-/***/ "./elements/AbilityPanel/index.jsx":
-/*!*****************************************!*\
-  !*** ./elements/AbilityPanel/index.jsx ***!
-  \*****************************************/
-/*! namespace exports */
-/*! export AbilityPanel [provided] [no usage info] [missing usage info prevents renaming] -> ./elements/AbilityPanel/AbilityPanel.jsx .AbilityPanel */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.d, __webpack_require__.r, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AbilityPanel": () => /* reexport safe */ _AbilityPanel__WEBPACK_IMPORTED_MODULE_0__.AbilityPanel
-/* harmony export */ });
-/* harmony import */ var _AbilityPanel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AbilityPanel */ "./elements/AbilityPanel/AbilityPanel.jsx");
-
-
-
-/***/ }),
-
-/***/ "./elements/AbilityUpgrade/AbilityUpgradeImage.jsx":
-/*!*********************************************************!*\
-  !*** ./elements/AbilityUpgrade/AbilityUpgradeImage.jsx ***!
-  \*********************************************************/
-/*! namespace exports */
-/*! export AbilityUpgradeImage [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AbilityUpgradeImage": () => /* binding */ AbilityUpgradeImage
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./elements/AbilityUpgrade/utils.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-function AbilityUpgradeImage(_ref) {
-  var abilityData = _ref.abilityData,
-      _ref$showtooltip = _ref.showtooltip,
-      showtooltip = _ref$showtooltip === void 0 ? true : _ref$showtooltip,
-      other = _objectWithoutProperties(_ref, ["abilityData", "showtooltip"]);
-
-  var laterPanelEvent = function laterPanelEvent(element) {
-    if (element != null) {
-      element.SetPanelEvent("onmouseover", function () {
-        if (showtooltip) {
-          $.DispatchEvent("DOTAShowTextTooltip", element, (0,_utils__WEBPACK_IMPORTED_MODULE_1__.GetAbilityUpgradeDescription)(abilityData));
-        }
-      });
-      element.SetPanelEvent("onmouseout", function () {
-        $.DispatchEvent("DOTAHideTextTooltip", element);
-      });
-    }
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DOTAAbilityImage, _extends({
-    showtooltip: false
-  }, other, {
-    abilityname: abilityData.type - 1 == CustomUIConfig.ABILITY_UPGRADES_TYPE_STATS ? "attribute_bonus" : abilityData.ability_name,
-    ref: laterPanelEvent
-  }));
-}
-
-/***/ }),
-
-/***/ "./elements/AbilityUpgrade/index.jsx":
-/*!*******************************************!*\
-  !*** ./elements/AbilityUpgrade/index.jsx ***!
-  \*******************************************/
-/*! namespace exports */
-/*! export AbilityUpgradeImage [provided] [no usage info] [missing usage info prevents renaming] -> ./elements/AbilityUpgrade/AbilityUpgradeImage.jsx .AbilityUpgradeImage */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.d, __webpack_require__.r, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AbilityUpgradeImage": () => /* reexport safe */ _AbilityUpgradeImage__WEBPACK_IMPORTED_MODULE_0__.AbilityUpgradeImage
-/* harmony export */ });
-/* harmony import */ var _AbilityUpgradeImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AbilityUpgradeImage */ "./elements/AbilityUpgrade/AbilityUpgradeImage.jsx");
-
-
-
-/***/ }),
-
-/***/ "./elements/AbilityUpgrade/utils.js":
-/*!******************************************!*\
-  !*** ./elements/AbilityUpgrade/utils.js ***!
-  \******************************************/
-/*! namespace exports */
-/*! export GetAbilityUpgradeDescription [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "GetAbilityUpgradeDescription": () => /* binding */ GetAbilityUpgradeDescription
-/* harmony export */ });
-/* harmony import */ var _AbilityDetails_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AbilityDetails/utils */ "./elements/AbilityDetails/utils.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
-function GetAbilityUpgradeDescription(tData) {
-  function _replaceValues(sStr, tValues) {
-    for (var sValueName in tValues) {
-      var value = tValues[sValueName];
-      var block = new RegExp("%" + sValueName + "%", "g");
-      var blockPS = new RegExp("%" + sValueName + "%%", "g");
-      var iResult = sStr.search(block);
-      var iResultPS = sStr.search(blockPS);
-      if (iResult == -1 && iResultPS == -1) continue;
-      var aValues = void 0;
-
-      if (typeof value == "number") {
-        aValues = [Float(value)];
-      } else if (typeof value == "string") {
-        aValues = StringToValues(value);
-      } else if (_typeof(value) == "object" && value.value) {
-        if (typeof value.value == "number") {
-          aValues = [Float(value.value)];
-        } else if (typeof value.value == "string") {
-          aValues = StringToValues(value.value);
-        } else {
-          continue;
-        }
-      } else {
-        continue;
-      }
-
-      var _compose = (0,_AbilityDetails_utils__WEBPACK_IMPORTED_MODULE_0__.compose)(aValues),
-          _compose2 = _slicedToArray(_compose, 2),
-          sValues = _compose2[0],
-          sValuesPS = _compose2[1];
-
-      var tAddedFactors = {};
-
-      for (var key in tAddedProperties) {
-        var sFuncName = tAddedProperties[key];
-        var func = Entities[sFuncName];
-        if (typeof func != "function") continue;
-        var factor = value[key];
-        var aAddedFactor = void 0;
-
-        if (typeof factor == "number") {
-          aAddedFactor = [Float(factor)];
-        } else if (typeof factor == "string") {
-          aAddedFactor = StringToValues(factor);
-        }
-
-        if (aAddedFactor) {
-          tAddedFactors[key] = aAddedFactor;
-        }
-      }
-
-      for (var _key in tAddedFactors) {
-        var aAddedFactors = tAddedFactors[_key];
-
-        var _compose3 = (0,_AbilityDetails_utils__WEBPACK_IMPORTED_MODULE_0__.compose)(aAddedFactors),
-            _compose4 = _slicedToArray(_compose3, 2),
-            sTemp = _compose4[0],
-            sTempPS = _compose4[1];
-
-        sValues = sValues + "[+" + $.Localize("dota_tooltip_ability_variable" + _key) + "x" + sTemp + "]";
-        sValuesPS = sValuesPS + "[+" + $.Localize("dota_tooltip_ability_variable" + _key) + "x" + sTempPS + "]";
-      }
-
-      sStr = sStr.replace(blockPS, sValuesPS);
-      sStr = sStr.replace(block, sValues);
-    }
-
-    return sStr;
-  }
-
-  var iType = tData.type - 1;
-  var iOperator = tData.operator - 1;
-  var fValue = tData.value;
-  var sSpecialValueName = tData.special_value_name;
-  var sSpecialValueProperty = tData.special_value_property;
-  var sAbilityName = tData.ability_name;
-  var sDescription = tData.description;
-  var tValues = tData.values;
-
-  switch (iType) {
-    case CustomUIConfig.ABILITY_UPGRADES_TYPE_SPECIAL_VALUE:
-      {
-        var sLocAbilityName = $.Localize("DOTA_Tooltip_ability_" + sAbilityName);
-        var bHasPercentSign = iOperator == CustomUIConfig.ABILITY_UPGRADES_OP_MUL;
-        var sLocSpecialValueName;
-
-        switch (sSpecialValueName) {
-          case "mana_cost":
-            sLocSpecialValueName = $.Localize("dota_tooltip_ability_upgrades_mana_cost");
-            break;
-
-          case "cooldown":
-            sLocSpecialValueName = $.Localize("dota_tooltip_ability_upgrades_cooldown");
-            break;
-
-          default:
-            sLocSpecialValueName = $.Localize("dota_tooltip_ability_" + sAbilityName + "_" + sSpecialValueName);
-
-            if (sLocSpecialValueName.search(/%/g) == 0) {
-              bHasPercentSign = true;
-              sLocSpecialValueName = sLocSpecialValueName.substr(1);
-            }
-
-            break;
-        }
-
-        var sValue = fValue > 0 ? "+" + Float(fValue) : fValue.toString();
-
-        if (bHasPercentSign) {
-          sValue = sValue + "%";
-        }
-
-        sLocSpecialValueName = sLocSpecialValueName.replace(/:/g, "");
-        sLocSpecialValueName = sLocSpecialValueName.replace(/：/g, "");
-        return sValue + " " + sLocAbilityName + sLocSpecialValueName;
-      }
-
-    case CustomUIConfig.ABILITY_UPGRADES_TYPE_SPECIAL_VALUE_PROPERTY:
-      {
-        var _sLocAbilityName = $.Localize("DOTA_Tooltip_ability_" + sAbilityName);
-
-        var _sLocSpecialValueName;
-
-        switch (sSpecialValueName) {
-          case "mana_cost":
-            _sLocSpecialValueName = $.Localize("dota_tooltip_ability_upgrades_mana_cost");
-            break;
-
-          case "cooldown":
-            _sLocSpecialValueName = $.Localize("dota_tooltip_ability_upgrades_cooldown");
-            break;
-
-          default:
-            _sLocSpecialValueName = $.Localize("dota_tooltip_ability_" + sAbilityName + "_" + sSpecialValueName);
-            break;
-        }
-
-        var _sValue = fValue > 0 ? "+" + Float(fValue) : fValue.toString();
-
-        _sLocSpecialValueName = _sLocSpecialValueName.replace(/:/g, "");
-        _sLocSpecialValueName = _sLocSpecialValueName.replace(/：/g, "");
-        var sLocSpecialValueProperty = $.Localize("dota_tooltip_ability_variable" + sSpecialValueProperty);
-        return _sValue + " " + _sLocAbilityName + _sLocSpecialValueName + sLocSpecialValueProperty + $.Localize("dota_tooltip_ability_upgrades_factor");
-      }
-
-    case CustomUIConfig.ABILITY_UPGRADES_TYPE_STATS:
-      {
-        var _sLocSpecialValueName2 = $.Localize("dota_tooltip_ability_upgrades_stats_" + sSpecialValueName);
-
-        var _bHasPercentSign = false;
-
-        if (_sLocSpecialValueName2.search(/%/g) == 0) {
-          _bHasPercentSign = true;
-          _sLocSpecialValueName2 = _sLocSpecialValueName2.substr(1);
-        }
-
-        var _sValue2 = fValue > 0 ? "+" + Float(fValue) : fValue.toString();
-
-        if (_bHasPercentSign) {
-          _sValue2 = _sValue2 + "%";
-        }
-
-        return _sValue2 + " " + _sLocSpecialValueName2;
-      }
-
-    case CustomUIConfig.ABILITY_UPGRADES_TYPE_ABILITY_MECHANICS:
-      {
-        var s = $.Localize("dota_tooltip_ability_mechanics_" + sAbilityName + "_" + sDescription);
-        s = s.replace(/%%/g, "%");
-        return _replaceValues(s, tValues);
-      }
-
-    case CustomUIConfig.ABILITY_UPGRADES_TYPE_ADD_ABILITY:
-      {
-        return $.Localize(sDescription);
-      }
-
-    default:
-      {
-        return $.Localize(sDescription);
-      }
-  }
-}
-
-/***/ }),
-
-/***/ "./hud_main/script.jsx":
-/*!*****************************!*\
-  !*** ./hud_main/script.jsx ***!
-  \*****************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
-/* harmony import */ var react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-panorama */ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _elements_AbilityPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../elements/AbilityPanel */ "./elements/AbilityPanel/index.jsx");
-/* harmony import */ var _elements_AbilityUpgrade__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../elements/AbilityUpgrade */ "./elements/AbilityUpgrade/index.jsx");
-/* harmony import */ var _stats_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stats.js */ "./hud_main/stats.js");
-/* harmony import */ var _stats_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_stats_js__WEBPACK_IMPORTED_MODULE_5__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-var CustomUIConfig = GameUI.CustomUIConfig();
-var tSettings = CustomNetTables.GetTableValue("common", "settings");
-CustomNetTables.SubscribeNetTableListener("common", function () {
-  tSettings = CustomNetTables.GetTableValue("common", "settings");
-}); // 单位技能栏
-
-function AbilitiesContainer() {
-  var refAbilities = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-  function updateAbilityList() {
-    var aAbilities = [];
-    var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-    $("#HUDContents").SetHasClass("HasAbilityToSpend", Entities.GetAbilityPoints(iLocalPortraitUnit) > 0);
-
-    for (var i = 0; i < Entities.GetAbilityCount(iLocalPortraitUnit); i++) {
-      var iAbilityEntIndex = Entities.GetAbility(iLocalPortraitUnit, i);
-      if (iAbilityEntIndex == -1) continue;
-      if (!Abilities.IsDisplayedAbility(iAbilityEntIndex)) continue;
-      aAbilities.push({
-        overrideentityindex: iAbilityEntIndex
-      });
-    }
-
-    return aAbilities;
-  }
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-    return updateAbilityList();
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      abilities = _useState2[0],
-      setAbilities = _useState2[1];
-
-  var update = function update() {
-    if (refAbilities.current) {
-      for (var index = 0; index < refAbilities.current.GetChildCount(); index++) {
-        var element = refAbilities.current.GetChild(index);
-
-        if (element.update) {
-          element.update(element);
-        }
-      }
-    }
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var func = function func() {
-      setAbilities(updateAbilityList());
-    };
-
-    var listeners = [GameEvents.Subscribe("dota_portrait_ability_layout_changed", func), GameEvents.Subscribe("dota_player_update_selected_unit", func), GameEvents.Subscribe("dota_player_update_query_unit", func), GameEvents.Subscribe("dota_ability_changed", func), GameEvents.Subscribe("dota_hero_ability_points_changed", func)];
-    var iScheduleHandle;
-
-    var think = function think() {
-      iScheduleHandle = $.Schedule(Game.GetGameFrameTime(), think);
-      update();
-    };
-
-    think();
-    return function () {
-      listeners.forEach(function (listener) {
-        GameEvents.Unsubscribe(listener);
-      });
-      $.CancelScheduled(iScheduleHandle);
-    };
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (refAbilities.current) {
-      var iAbilityCount = abilities.length;
-      refAbilities.current.SetHasClass("FiveAbilities", iAbilityCount == 5);
-      refAbilities.current.SetHasClass("SixAbilities", iAbilityCount == 6);
-      refAbilities.current.SetHasClass("SevenAbilities", iAbilityCount == 7);
-      refAbilities.current.SetHasClass("EightAbilities", iAbilityCount == 8);
-      refAbilities.current.SetHasClass("NineAbilities", iAbilityCount == 9);
-    }
-  }, [abilities]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "abilities",
-    hittest: false,
-    ref: refAbilities
-  }, abilities.map(function (tAbilityData, key) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_AbilityPanel__WEBPACK_IMPORTED_MODULE_3__.AbilityPanel, _extends({
-      key: key.toString()
-    }, tAbilityData, {
-      hittest: false
-    }));
-  }));
-}
-
-(0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AbilitiesContainer, null), $("#AbilitiesAndStatBranch")); // 单位技能升级列表
-
-function AbilityUpgradesContainer() {
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Players.GetLocalPlayerPortraitUnit()),
-      _useState4 = _slicedToArray(_useState3, 2),
-      localPortraitUnit = _useState4[0],
-      setLocalPortraitUnit = _useState4[1];
-
-  var updateAbilityUpgradesList = function updateAbilityUpgradesList() {
-    var t = CustomNetTables.GetTableValue("ability_upgrades_list", localPortraitUnit.toString());
-    var aAbilityUpgradesList = [];
-
-    if (t && typeof t.json == "string") {
-      t.json = t.json.replace(/null/g, "\"null\"");
-
-      try {
-        aAbilityUpgradesList = JSON.parse(t.json);
-      } catch (error) {}
-    }
-
-    if (aAbilityUpgradesList.length > 0) {
-      for (var index = 1; index < aAbilityUpgradesList.length; index++) {
-        aAbilityUpgradesList[index] = upzip(aAbilityUpgradesList[0], aAbilityUpgradesList[index]);
-      }
-
-      aAbilityUpgradesList.splice(0, 1);
-    }
-
-    return aAbilityUpgradesList;
-  };
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-    return updateAbilityUpgradesList();
-  }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      abilityUpgradesList = _useState6[0],
-      setAbilityUpgradesList = _useState6[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var func = function func() {
-      setLocalPortraitUnit(Players.GetLocalPlayerPortraitUnit());
-    };
-
-    var listeners = [GameEvents.Subscribe("dota_player_update_selected_unit", func), GameEvents.Subscribe("dota_player_update_query_unit", func)];
-    return function () {
-      listeners.forEach(function (listener) {
-        GameEvents.Unsubscribe(listener);
-      });
-    };
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setAbilityUpgradesList(updateAbilityUpgradesList());
-    var listener = CustomNetTables.SubscribeNetTableListener("ability_upgrades_list", function (_, tableKey, table) {
-      if (tableKey === localPortraitUnit.toString()) {
-        setAbilityUpgradesList(updateAbilityUpgradesList());
-      }
-    });
-    return function () {
-      CustomNetTables.UnsubscribeNetTableListener(listener);
-    };
-  }, [localPortraitUnit]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-    id: "AbilityUpgradesContainer",
-    "require-composition-layer": "true",
-    "always-cache-composition-layer": "true"
-  }, abilityUpgradesList.map(function (tData, key) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      key: key.toString(),
-      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("AbilityUpgrade", "AbilityUpgradesType" + (tData.type - 1))
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_AbilityUpgrade__WEBPACK_IMPORTED_MODULE_4__.AbilityUpgradeImage, {
-      id: "AbilityUpgradeImage",
-      abilityData: tData
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-      id: "AbilityUpgradeNumber",
-      text: (key + 1).toString()
-    }));
-  }));
-}
-
-(0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AbilityUpgradesContainer, null), $("#left_block")); // 单位物品栏相关
-
-{
-  var InventorySlot = function InventorySlot(_ref) {
-    var _ref$overrideentityin = _ref.overrideentityindex,
-        overrideentityindex = _ref$overrideentityin === void 0 ? -1 : _ref$overrideentityin,
-        _ref$overridedisplayk = _ref.overridedisplaykeybind,
-        overridedisplaykeybind = _ref$overridedisplayk === void 0 ? -1 : _ref$overridedisplayk,
-        _ref$slot = _ref.slot,
-        slot = _ref$slot === void 0 ? -1 : _ref$slot,
-        _ref$isBackpack = _ref.isBackpack,
-        isBackpack = _ref$isBackpack === void 0 ? false : _ref$isBackpack,
-        pInventoryContainer = _ref.pInventoryContainer,
-        other = _objectWithoutProperties(_ref, ["overrideentityindex", "overridedisplaykeybind", "slot", "isBackpack", "pInventoryContainer"]);
-
-    var refSelf = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-    var update = function update() {
-      var pSelf = refSelf.current;
-
-      if (pSelf) {
-        var pAbilityPanel = pSelf.FindChildTraverse("AbilityPanel");
-
-        if (pAbilityPanel) {
-          if (pAbilityPanel.update) {
-            pAbilityPanel.update();
-          }
-
-          pAbilityPanel.RemoveClass("inactive_item");
-        }
-
-        pSelf.RemoveClass("IsUpgradable");
-        pSelf.RemoveClass("IsAdvanced");
-        pSelf.SwitchClass("ItemRarity", "");
-
-        if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-          var iCasterIndex = Abilities.GetCaster(overrideentityindex);
-          var sItemName = Abilities.GetAbilityName(overrideentityindex);
-
-          if (Abilities.GetLevel(overrideentityindex) < Abilities.GetMaxLevel(overrideentityindex) && iCasterIndex && Items.CanBeSoldByLocalPlayer(overrideentityindex)) {
-            var iGoldCost = GetItemUpgradedCost(sItemName) || 0;
-            var iGold = Players.GetGold(Players.GetLocalPlayer());
-            pSelf.SetHasClass("IsUpgradable", iGold >= iGoldCost);
-          }
-
-          var sItemAdvancedName = GetItemAdvancedName(sItemName);
-
-          if (Abilities.GetLevel(overrideentityindex) == Abilities.GetMaxLevel(overrideentityindex) && sItemAdvancedName && iCasterIndex && Items.CanBeSoldByLocalPlayer(overrideentityindex)) {
-            var _iGoldCost = GetItemAdvancedCost(sItemName) || 0;
-
-            var _iGold = Players.GetGold(Players.GetLocalPlayer());
-
-            pSelf.SetHasClass("IsAdvanced", _iGold >= _iGoldCost);
-          }
-
-          var iRarity = GetItemRarity(sItemName);
-
-          if (iRarity != undefined && iRarity != null && iRarity >= 0) {
-            pSelf.SwitchClass("ItemRarity", "Rarity" + iRarity);
-          }
-
-          if (isBackpack) {
-            if (pAbilityPanel) {
-              pAbilityPanel.AddClass("inactive_item");
-            }
-          }
-        }
-      }
-    };
-
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-      var pSelf = refSelf.current;
-
-      if (pSelf) {
-        pSelf.update = update;
-      }
-
-      update();
-    }, [overrideentityindex, overridedisplaykeybind, slot, pInventoryContainer]); // 拖拽相关
-
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useRegisterForUnhandledEvent)("DragStart", function (pPanel, tDragCallbacks) {
-      var pSelf = refSelf.current;
-
-      if (pSelf && pPanel == pSelf) {
-        var pAbilityPanel = pPanel.FindChildTraverse("AbilityPanel");
-
-        if (!pAbilityPanel || pAbilityPanel.BHasClass("no_ability")) {
-          return true;
-        }
-
-        CustomUIConfig.HideAbilityTooltiop(pPanel);
-        var iItemIndex = overrideentityindex;
-
-        if (iItemIndex != -1) {
-          var pDisplayPanel = $.CreatePanel("DOTAItemImage", $.GetContextPanel(), "dragImage");
-          pDisplayPanel.itemindex = iItemIndex;
-          pDisplayPanel.itemname = Abilities.GetAbilityName(iItemIndex);
-          pDisplayPanel.m_pPanel = pPanel;
-          pDisplayPanel.m_DragCompleted = false;
-          pDisplayPanel.m_DragType = "InventorySlot";
-          tDragCallbacks.displayPanel = pDisplayPanel;
-          tDragCallbacks.offsetX = 0;
-          tDragCallbacks.offsetY = 0;
-          pAbilityPanel.AddClass("dragging_from");
-          pPanel.AddClass("dragging_from");
-
-          if (pInventoryContainer) {
-            var iRarity = GetItemRarity(pDisplayPanel.itemname);
-
-            if (iRarity != undefined && iRarity != null && iRarity >= 0) {
-              pInventoryContainer.SwitchClass("DragRarity", "DragRarity" + iRarity);
-            }
-          }
-        }
-
-        return true;
-      }
-    }, [overrideentityindex, overridedisplaykeybind, slot, pInventoryContainer]);
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useRegisterForUnhandledEvent)("DragLeave", function (pPanel, pDraggedPanel) {
-      var pSelf = refSelf.current;
-
-      if (pSelf && pPanel == pSelf) {
-        if (pDraggedPanel.m_pPanel == undefined || pDraggedPanel.m_pPanel == null) {
-          return false;
-        }
-
-        if (pDraggedPanel.m_DragType != "InventorySlot") {
-          return false;
-        }
-
-        if (pDraggedPanel.m_pPanel == pPanel) {
-          return false;
-        }
-
-        var pAbilityPanel = pPanel.FindChildTraverse("AbilityPanel");
-
-        if (pAbilityPanel) {
-          pAbilityPanel.RemoveClass("potential_drop_target");
-        }
-
-        return true;
-      }
-
-      return false;
-    }, [overrideentityindex, overridedisplaykeybind, slot, pInventoryContainer]);
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useRegisterForUnhandledEvent)("DragEnter", function (pPanel, pDraggedPanel) {
-      var pSelf = refSelf.current;
-
-      if (pSelf && pPanel == pSelf) {
-        if (pDraggedPanel.m_pPanel == undefined || pDraggedPanel.m_pPanel == null) {
-          return true;
-        }
-
-        if (pDraggedPanel.m_DragType != "InventorySlot") {
-          return true;
-        }
-
-        if (pDraggedPanel.m_pPanel == pPanel) {
-          return true;
-        }
-
-        var pAbilityPanel = pPanel.FindChildTraverse("AbilityPanel");
-
-        if (pAbilityPanel) {
-          pAbilityPanel.AddClass("potential_drop_target");
-        }
-
-        return true;
-      }
-
-      return false;
-    }, [overrideentityindex, overridedisplaykeybind, slot, pInventoryContainer]);
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useRegisterForUnhandledEvent)("DragDrop", function (pPanel, pDraggedPanel) {
-      var pSelf = refSelf.current;
-
-      if (pSelf && pPanel == pSelf) {
-        if (pDraggedPanel.m_pPanel == undefined || pDraggedPanel.m_pPanel == null) {
-          return true;
-        }
-
-        if (pDraggedPanel.m_DragType != "InventorySlot") {
-          return true;
-        }
-
-        if (pDraggedPanel.m_pPanel == pSelf) {
-          pDraggedPanel.m_DragCompleted = true;
-          return true;
-        }
-
-        var iItemIndex = pDraggedPanel.itemindex;
-
-        if (iItemIndex != -1) {
-          var iCasterIndex = Abilities.GetCaster(iItemIndex);
-          Game.PrepareUnitOrders({
-            UnitIndex: iCasterIndex,
-            OrderType: dotaunitorder_t.DOTA_UNIT_ORDER_MOVE_ITEM,
-            TargetIndex: slot,
-            AbilityIndex: iItemIndex
-          });
-          pDraggedPanel.m_DragCompleted = true;
-        }
-
-        return true;
-      }
-
-      return false;
-    }, [overrideentityindex, overridedisplaykeybind, slot, pInventoryContainer]);
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useRegisterForUnhandledEvent)("DragEnd", function (pPanel, pDraggedPanel) {
-      var pSelf = refSelf.current;
-
-      if (pSelf && pPanel == pSelf) {
-        var pAbilityPanel = pPanel.FindChildTraverse("AbilityPanel");
-
-        if (pDraggedPanel.m_DragCompleted == false) {
-          var iItemIndex = pDraggedPanel.itemindex;
-
-          if (iItemIndex != -1) {
-            var iCasterIndex = Abilities.GetCaster(iItemIndex);
-            Game.DropItemAtCursor(iCasterIndex, iItemIndex);
-          }
-        }
-
-        pDraggedPanel.DeleteAsync(-1);
-        pPanel.RemoveClass("dragging_from");
-
-        if (pAbilityPanel) {
-          pAbilityPanel.RemoveClass("dragging_from");
-        }
-
-        if (pInventoryContainer) {
-          pInventoryContainer.SwitchClass("DragRarity", "");
-        }
-      }
-    }, [overrideentityindex, overridedisplaykeybind, slot, pInventoryContainer]);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, _extends({
-      className: "inventory_slot"
-    }, other, {
-      ref: refSelf,
-      draggable: true,
-      hittest: true,
-      onactivate: function onactivate(self) {
-        if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-          if (GameUI.IsAltDown()) {
-            Abilities.PingAbility(overrideentityindex);
-            return;
-          }
-
-          if (GameUI.IsControlDown()) {
-            Abilities.AttemptToUpgrade(overrideentityindex);
-            return;
-          }
-
-          var iCasterIndex = Abilities.GetCaster(overrideentityindex);
-          Abilities.ExecuteAbility(overrideentityindex, iCasterIndex, false);
-        }
-      },
-      oncontextmenu: function oncontextmenu(self) {
-        if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-          var iCasterIndex = Abilities.GetCaster(overrideentityindex);
-          var sItemName = Abilities.GetAbilityName(overrideentityindex);
-          var bSlotInStash = slot >= DOTA_ITEM_STASH_MIN;
-          var bControllable = Entities.IsControllableByPlayer(iCasterIndex, Game.GetLocalPlayerID());
-          var bSellable = Items.IsSellable(overrideentityindex) && Items.CanBeSoldByLocalPlayer(overrideentityindex);
-          var bDisassemble = Items.IsDisassemblable(overrideentityindex) && bControllable && !bSlotInStash;
-          var bAlertable = Items.IsAlertableItem(overrideentityindex);
-          var bUpgradable = Abilities.GetLevel(overrideentityindex) < Abilities.GetMaxLevel(overrideentityindex) && Items.CanBeSoldByLocalPlayer(overrideentityindex);
-          var bAdvanced = Abilities.GetLevel(overrideentityindex) == Abilities.GetMaxLevel(overrideentityindex) && GetItemAdvancedName(sItemName) != undefined && GetItemAdvancedName(sItemName) != null && Items.CanBeSoldByLocalPlayer(overrideentityindex); // let bShowInShop = Items.IsPurchasable(overrideentityindex);
-
-          var bShowInShop = false; // let bMoveToStash = !bSlotInStash && bControllable;
-          // let bDropFromStash = bSlotInStash && bControllable;
-
-          var bMoveToStash = false;
-          var bDropFromStash = false;
-
-          if (!bSellable && !bDisassemble && !bShowInShop && !bDropFromStash && !bAlertable && !bMoveToStash && !bUpgradable && !bAdvanced) {
-            return;
-          }
-
-          var pContextMenu = $.CreatePanel("ContextMenuScript", self, "");
-          pContextMenu.AddClass("ContextMenu_NoArrow");
-          pContextMenu.AddClass("ContextMenu_NoBorder");
-          var pContentsPanel = pContextMenu.GetContentsPanel();
-          pContentsPanel.BLoadLayout("file://{resources}/layout/custom_game/context_menu/context_menu_inventory_item/context_menu_inventory_item.xml", false, false);
-          pContentsPanel.SetItem(overrideentityindex);
-          pContentsPanel.SetHasClass("bSellable", bSellable);
-          pContentsPanel.SetHasClass("bDisassemble", bDisassemble);
-          pContentsPanel.SetHasClass("bShowInShop", bShowInShop);
-          pContentsPanel.SetHasClass("bDropFromStash", bDropFromStash);
-          pContentsPanel.SetHasClass("bAlertable", bAlertable);
-          pContentsPanel.SetHasClass("bMoveToStash", bMoveToStash);
-          pContentsPanel.SetHasClass("bUpgradable", bUpgradable);
-          pContentsPanel.SetHasClass("bAdvanced", bAdvanced);
-          pContentsPanel.pTargetPanel = self;
-        }
-      },
-      onmouseover: function onmouseover(self) {
-        if (overrideentityindex != -1 && Entities.IsValidEntity(overrideentityindex)) {
-          CustomUIConfig.ShowAbilityTooltiop(self, Abilities.GetAbilityName(overrideentityindex), Abilities.GetCaster(overrideentityindex), slot);
-        }
-      },
-      onmouseout: function onmouseout(self) {
-        CustomUIConfig.HideAbilityTooltiop(self);
-      }
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_elements_AbilityPanel__WEBPACK_IMPORTED_MODULE_3__.AbilityPanel, {
-      id: "AbilityPanel",
-      hittestchildren: false,
-      hittest: false,
-      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("InventoryItem", {
-        "BackpackSlot": isBackpack
-      }),
-      overrideentityindex: overrideentityindex,
-      overridedisplaykeybind: overridedisplaykeybind,
-      slot: slot
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "ItemUpgradeIcon",
-      hittest: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "ItemAdvanceIcon",
-      hittest: false
-    }));
-  };
-
-  var InventoryItems = function InventoryItems() {
-    var refInventoryList = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    var refInventoryList2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    var refBackpackList = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-    var refInventoryBG = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-    var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-        _useState8 = _slicedToArray(_useState7, 2),
-        pInventoryContainer = _useState8[0],
-        setInventoryContainer = _useState8[1];
-
-    function updateSlots() {
-      var aSlots = [];
-      var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-
-      for (var index = DOTA_ITEM_SLOT_MIN; index <= DOTA_ITEM_SLOT_MAX; index++) {
-        var iItemIndex = Entities.GetItemInSlot(iLocalPortraitUnit, index);
-        aSlots.push({
-          overrideentityindex: iItemIndex,
-          slot: index
-        });
-      }
-
-      return aSlots;
-    }
-
-    function updateBackpacks() {
-      var aBackpacks = [];
-      var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-
-      for (var index = DOTA_ITEM_BACKPACK_MIN; index <= DOTA_ITEM_BACKPACK_MAX; index++) {
-        var iItemIndex = Entities.GetItemInSlot(iLocalPortraitUnit, index);
-        aBackpacks.push({
-          overrideentityindex: iItemIndex,
-          slot: index
-        });
-      }
-
-      return aBackpacks;
-    }
-
-    var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      return updateSlots();
-    }),
-        _useState10 = _slicedToArray(_useState9, 2),
-        slots = _useState10[0],
-        setSlots = _useState10[1];
-
-    var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      return updateBackpacks();
-    }),
-        _useState12 = _slicedToArray(_useState11, 2),
-        backpacks = _useState12[0],
-        setBackpacks = _useState12[1];
-
-    var updateChildren = function updateChildren(ref) {
-      if (ref.current) {
-        for (var index = 0; index < ref.current.GetChildCount(); index++) {
-          var element = ref.current.GetChild(index);
-
-          if (element.update) {
-            element.update(element);
-          }
-        }
-      }
-    };
-
-    var update = function update() {
-      updateChildren(refInventoryList);
-      updateChildren(refInventoryList2);
-    };
-
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-      var func = function func() {
-        setSlots(updateSlots());
-        setBackpacks(updateBackpacks());
-      };
-
-      var listeners = [GameEvents.Subscribe("dota_inventory_changed", func), GameEvents.Subscribe("dota_inventory_item_changed", func), GameEvents.Subscribe("m_event_dota_inventory_changed_query_unit", func), GameEvents.Subscribe("m_event_keybind_changed", func), GameEvents.Subscribe("dota_player_update_selected_unit", func), GameEvents.Subscribe("dota_player_update_query_unit", func)];
-      var iScheduleHandle;
-
-      var think = function think() {
-        iScheduleHandle = $.Schedule(Game.GetGameFrameTime(), think);
-        update();
-      };
-
-      think();
-      return function () {
-        listeners.forEach(function (listener) {
-          GameEvents.Unsubscribe(listener);
-        });
-        $.CancelScheduled(iScheduleHandle);
-      };
-    }, []);
-    (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.useRegisterForUnhandledEvent)("DragDrop", function (pPanel, pDraggedPanel) {
-      if (pInventoryContainer && pPanel == pInventoryContainer) {
-        if (pDraggedPanel.m_pPanel == undefined || pDraggedPanel.m_pPanel == null) {
-          return true;
-        }
-
-        if (pDraggedPanel.m_DragType != "InventorySlot") {
-          return true;
-        }
-
-        pDraggedPanel.m_DragCompleted = true;
-        return true;
-      }
-
-      return false;
-    }, [pInventoryContainer]);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "inventory_items",
-      hittest: false,
-      "require-composition-layer": "true",
-      "always-cache-composition-layer": "true"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "InventoryContainer",
-      ref: setInventoryContainer,
-      draggable: true
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "InventoryBG",
-      className: "InventoryBackground",
-      hittest: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "HUDSkinInventoryBG",
-      className: "InventoryBackground",
-      hittest: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "inventory_list_container",
-      hittest: false
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "inventory_list",
-      className: "inventory_list",
-      hittest: false,
-      ref: refInventoryList
-    }, _toConsumableArray(Array(3).keys()).map(function (key) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(InventorySlot, _extends({
-        key: key.toString(),
-        id: "inventory_slot_" + key
-      }, slots[key], {
-        pInventoryContainer: pInventoryContainer
-      }));
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "inventory_list2",
-      className: "inventory_list",
-      hittest: false,
-      ref: refInventoryList2
-    }, _toConsumableArray(Array(3).keys()).map(function (key) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(InventorySlot, _extends({
-        key: key.toString(),
-        id: "inventory_slot_" + key + 3
-      }, slots[key + 3], {
-        pInventoryContainer: pInventoryContainer
-      }));
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "inventory_backpack_list",
-      hittest: false,
-      ref: refBackpackList
-    }, backpacks.map(function (t, key) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(InventorySlot, _extends({
-        key: key.toString(),
-        id: "inventory_slot_" + (key + DOTA_ITEM_BACKPACK_MIN)
-      }, t, {
-        isBackpack: true,
-        pInventoryContainer: pInventoryContainer
-      }));
-    }))));
-  };
-
-  var DOTA_ITEM_SLOT_MIN = 0;
-  var DOTA_ITEM_SLOT_MAX = 5;
-  var DOTA_ITEM_BACKPACK_MIN = 6;
-  var DOTA_ITEM_BACKPACK_MAX = 8;
-  var DOTA_ITEM_STASH_MIN = 9;
-  var DOTA_ITEM_STASH_MAX = 14;
-  (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(InventoryItems, null), $("#inventory"));
-} // 经验
-
-{
-  var XPCustom = function XPCustom() {
-    var pXP = $("#xp");
-    pXP.FindChildTraverse("LevelBackground").style.opacity = "0";
-    pXP.FindChildTraverse("LevelLabel").style.opacity = "0";
-    pXP.FindChildTraverse("XPProgress").style.opacity = "0";
-    var refXPCustom = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-    var update = function update() {
-      if (refXPCustom.current != null) {
-        var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-        var pXPCustom = refXPCustom.current;
-        pXPCustom.SetHasClass("ShowLifetimeBar", pXP.BHasClass("ShowLifetimeBar"));
-        pXPCustom.SetHasClass("ShowLevel", pXP.BHasClass("ShowLevel"));
-        pXPCustom.SetHasClass("AltPressed", GameUI.IsAltDown()); // let tBuildingData = CustomNetTables.GetTableValue("buildings", iLocalPortraitUnit.toString());
-
-        var tBuildingData = undefined;
-        var iLevel = 0;
-        var fXPPercent = 0;
-        var iNeedXP = 0;
-        var iLevelXP = 0;
-        var iLevelNeedXP = 0;
-
-        if (tBuildingData != undefined && tBuildingData != null) {
-          pXPCustom.AddClass("ShowXPBar");
-          iLevel = tBuildingData.iLevel;
-          var iXP = tBuildingData.iCurrentXP || 0;
-          iNeedXP = tBuildingData.iNeededXPToLevel || 0;
-          var BUILDING_XP_PER_LEVEL_TABLE = tSettings.BUILDING_XP_PER_LEVEL_TABLE || {};
-          iLevelXP = iXP - (BUILDING_XP_PER_LEVEL_TABLE[String(iLevel)] || 0);
-          iLevelNeedXP = iNeedXP - (BUILDING_XP_PER_LEVEL_TABLE[String(iLevel)] || 0);
-        } else {
-          pXPCustom.AddClass("ShowXPBar");
-          iLevel = Entities.GetLevel(iLocalPortraitUnit);
-
-          if (Entities.IsHero(iLocalPortraitUnit)) {
-            var _iXP = Entities.GetCurrentXP(iLocalPortraitUnit);
-
-            iNeedXP = Entities.GetNeededXPToLevel(iLocalPortraitUnit);
-            var HERO_XP_PER_LEVEL_TABLE = tSettings.HERO_XP_PER_LEVEL_TABLE || {};
-            iLevelXP = _iXP - (HERO_XP_PER_LEVEL_TABLE[String(iLevel)] || 0);
-            iLevelNeedXP = iNeedXP - (HERO_XP_PER_LEVEL_TABLE[String(iLevel)] || 0);
-          }
-        }
-
-        if (iNeedXP == 0) {
-          fXPPercent = 1;
-        } else {
-          fXPPercent = iLevelXP / iLevelNeedXP;
-        }
-
-        pXPCustom.SetHasClass("ShowXPLabel", Float(fXPPercent) != 1);
-        pXPCustom.SetDialogVariableInt("level", iLevel);
-        pXPCustom.SetDialogVariableInt("current_xp", iLevelXP);
-        pXPCustom.SetDialogVariableInt("xp_to_level", iLevelNeedXP);
-        var pCircularXPProgress = pXPCustom.FindChildTraverse("CircularXPProgress");
-
-        if (pCircularXPProgress && pCircularXPProgress.value != fXPPercent) {
-          pCircularXPProgress.value = fXPPercent;
-        }
-
-        var pCircularXPProgressBlur = pXPCustom.FindChildTraverse("CircularXPProgressBlur");
-
-        if (pCircularXPProgressBlur && pCircularXPProgressBlur.value != fXPPercent) {
-          pCircularXPProgressBlur.value = fXPPercent;
-        }
-      }
-    };
-
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-      var iScheduleHandle;
-
-      var think = function think() {
-        iScheduleHandle = $.Schedule(Game.GetGameFrameTime(), think);
-        update();
-      };
-
-      think();
-      return function () {
-        $.CancelScheduled(iScheduleHandle);
-      };
-    }, []);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "xp_custom",
-      hittest: false,
-      ref: refXPCustom
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, {
-      id: "LevelBackground"
-      /*onactivate="DOTAHUDXPBarClicked();"*/
-
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-      id: "LevelLabel",
-      className: "MonoNumbersFont",
-      localizedText: "{d:level}",
-      hittest: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(CircularProgressBar, {
-      id: "CircularXPProgress"
-      /*onactivate="DOTAHUDXPBarClicked();"*/
-
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(CircularProgressBar, {
-      id: "CircularXPProgressBlur",
-      hittest: false
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ProgressBar, {
-      id: "XPProgress"
-      /*onactivate="DOTAHUDXPBarClicked();"*/
-
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Label, {
-      id: "XPLabel",
-      localizedText: "#DOTA_Hud_XP",
-      hittest: false
-    })));
-  };
-
-  (0,react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(XPCustom, null), $("#center_block"));
-}
-
-(function () {
-  var Hud = $.GetContextPanel();
-
-  while (Hud.id != "Hud") {
-    Hud = Hud.GetParent();
-  }
-
-  var minimap_container = Hud.FindChildTraverse("minimap_container");
-
-  if (minimap_container) {
-    minimap_container.style.opacity = "0";
-  }
-
-  var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-  var iLastGold = Players.GetGold(Entities.GetPlayerOwnerID(iLocalPortraitUnit));
-  var iLastLocalPortraitUnit = iLocalPortraitUnit;
-  var fPrepTimeEnd = -1;
-  var fTimedRoundDurationEnd = -1;
-  var fTimedRoundPostGameEnd = -1;
-  var pRounds = $("#Rounds");
-  var tHitBoundsParticles = {};
-  var tHitBounds = {};
-
-  function Think() {
-    $.Schedule(Game.GetGameFrameTime(), Think);
-    var tLocalPlayerInfo = Game.GetLocalPlayerInfo();
-    var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-    var bAltPressed = GameUI.IsAltDown();
-    $.GetContextPanel().SetHasClass("AltPressed", bAltPressed); // 怪物伤害基地区域显示
-
-    {
-      if (bAltPressed) {
-        for (var sTeamNumber in tHitBounds) {
-          if (tHitBoundsParticles[sTeamNumber]) continue;
-          var tBounds = tHitBounds[sTeamNumber];
-          var iParticleID = Particles.CreateParticle("particles/ui_mouseactions/bounding_area_view.vpcf", ParticleAttachment_t.PATTACH_WORLDORIGIN, -1);
-          Particles.SetParticleControl(iParticleID, 0, [tBounds.MinX, tBounds.MinY, 128]);
-          Particles.SetParticleControl(iParticleID, 1, [tBounds.MinX, tBounds.MaxY, 128]);
-          Particles.SetParticleControl(iParticleID, 2, [tBounds.MaxX, tBounds.MaxY, 128]);
-          Particles.SetParticleControl(iParticleID, 3, [tBounds.MaxX, tBounds.MinY, 128]);
-          Particles.SetParticleControl(iParticleID, 15, [0, 255, 255]);
-          Particles.SetParticleControl(iParticleID, 16, [1, 0, 0]);
-          tHitBoundsParticles[sTeamNumber] = iParticleID;
-        }
-      } else {
-        for (var _sTeamNumber in tHitBoundsParticles) {
-          var _iParticleID = tHitBoundsParticles[_sTeamNumber];
-          Particles.DestroyParticleEffect(_iParticleID, false);
-        }
-
-        tHitBoundsParticles = {};
-      }
-    } // 金钱跳动特效
-
-    {
-      var iGold = Players.GetGold(Entities.GetPlayerOwnerID(iLocalPortraitUnit));
-      $("#GoldButton").SetDialogVariableInt("gold", iGold == -1 ? 0 : iGold);
-      if (iLastGold != iGold && iLocalPortraitUnit == iLastLocalPortraitUnit && typeof CustomUIConfig.FireChangeGold == "function") CustomUIConfig.FireChangeGold($("#GoldLabel"), iGold - iLastGold);
-      iLastGold = iGold;
-      iLastLocalPortraitUnit = iLocalPortraitUnit;
-    } // 回合
-    // {
-    // 	if (fPrepTimeEnd != -1) {
-    // 		let fTime = Math.max(fPrepTimeEnd - Game.GetGameTime(), 0);
-    // 		pRounds.SetDialogVariableInt("round_time", fTime);
-    // 	} else if (fTimedRoundDurationEnd != -1) {
-    // 		let fTime = fTimedRoundDurationEnd - Game.GetGameTime();
-    // 		if (fTime < 1) {
-    // 			fTime = Math.max(fTimedRoundPostGameEnd - Game.GetGameTime(), 0);
-    // 		}
-    // 		pRounds.SetDialogVariableInt("round_time", fTime);
-    // 	} else {
-    // 		pRounds.SetDialogVariableInt("round_time", 0);
-    // 	}
-    // }
-  }
-
-  Think();
-
-  function UpdateCommonNetTable(tableName, tableKeyName, table) {
-    var iLocalPlayerID = Players.GetLocalPlayer();
-
-    if (tableKeyName == "round_data") {
-      pRounds.SetDialogVariableInt("round_number", table.round_number || 0);
-      fPrepTimeEnd = table.prep_time_end || -1;
-      fTimedRoundDurationEnd = table.timed_round_duration_end || -1;
-      fTimedRoundPostGameEnd = table.timed_round_post_game_end || -1;
-      var iEnemiesTotal = table.enemies_total || 0;
-      var tEnemiesKilled = table.enemies_killed || {};
-      var iEnemiesKilled = tEnemiesKilled[Players.GetTeam(iLocalPlayerID)] || 0;
-      pRounds.SetDialogVariableInt("round_killed", iEnemiesKilled);
-      pRounds.SetDialogVariableInt("round_total", iEnemiesTotal);
-      var pRoundProgressBar = pRounds.FindChildTraverse("RoundProgressBar");
-
-      if (pRoundProgressBar) {
-        pRoundProgressBar.value = iEnemiesKilled / iEnemiesTotal || 0;
-      }
-    }
-
-    if (tableKeyName == "enemy_hit_trigger_bounds") {
-      tHitBounds = table || {};
-    }
-  } // CustomNetTables.SubscribeNetTableListener("common", UpdateCommonNetTable);
-  // UpdateCommonNetTable("common", "round_data", CustomNetTables.GetTableValue("common", "round_data"));
-  // UpdateCommonNetTable("common", "enemy_hit_trigger_bounds", CustomNetTables.GetTableValue("common", "enemy_hit_trigger_bounds"));
-  // 掉落物品显示等级
-
-
-  var pDroppedItemPanel = $("#DroppedItemPanel");
-  var bCheck = true;
-  $.RegisterForUnhandledEvent("DOTAShowDroppedItemTooltip", function (a, x, y, sAbilityName, e, f) {
-    if (bCheck) {
-      pDroppedItemPanel.SetPositionInPixels(x, y, 0);
-      var iPhysicalItemIndex = CustomUIConfig.GetCursorPhysicalItem();
-
-      if (Entities.IsItemPhysical(iPhysicalItemIndex)) {
-        var iItemIndex = Entities.GetContainedItem(iPhysicalItemIndex); // WHY???
-
-        iItemIndex &= ~0xFFFFC000;
-        $.Schedule(0, function () {
-          bCheck = false;
-          CustomUIConfig.ShowAbilityTooltiop(pDroppedItemPanel, sAbilityName, -1, -1, Abilities.GetLevel(iItemIndex));
-          $.Msg(Abilities.GetLevel(iItemIndex));
-          bCheck = true;
-        });
-      }
-    }
-  });
-  $.RegisterForUnhandledEvent("DOTAHideDroppedItemTooltip", function () {
-    CustomUIConfig.HideAbilityTooltiop(pDroppedItemPanel);
-  });
-})(); // 镜头
-
-
-(function () {
-  var pOverlayMap = $("#OverlayMap");
-  var MIN_CAMERA_DISTANCE = 1300;
-  var MAX_CAMERA_DISTANCE = 3500;
-  /* env_fog_controller实体里的Far Z Clip Plane需要适应调整
-  	其值设置为[距离/cos(角度)]会出现的最大值
-  */
-
-  var CAMERA_START_PITCH_DISTANCE = 3000;
-  var CAMERA_END_PITCH_DISTANCE = 3500;
-  var CAMERA_MIN_PITCH = 60;
-  var CAMERA_MAX_PITCH = 90;
-  var OVERLAY_MAP_SCALE = 6;
-  var MAX_LOOK_SCREEN = 1 / 5;
-  var START_OFFSET_SCREEN = 1 / 4;
-  var END_OFFSET_SCREEN = 1 / 3;
-  var fCameraDistance = 1300;
-  var fSmoothCameraDistance = 1300;
-  var vCameraTargetPosition = [0, 0, 0];
-  var vSmoothCameraTargetPosition = [0, 0, 0];
-  var vLastCameraTargetPosition = [0, 0, 0];
-
-  function SetDistance() {
-    var fPercent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    fCameraDistance = RemapValClamped(fPercent, 0, 1, MIN_CAMERA_DISTANCE, MAX_CAMERA_DISTANCE);
-  }
-
-  function Think() {
-    $.Schedule(Game.GetGameFrameTime(), Think);
-    var fScreenWidth = Game.GetScreenWidth();
-    var fScreenHeight = Game.GetScreenHeight();
-    var fStartScreenDistance = fScreenHeight * START_OFFSET_SCREEN;
-    var fEndScreenDistance = fScreenHeight * END_OFFSET_SCREEN;
-    var fMaxLookDistance = fScreenHeight * MAX_LOOK_SCREEN;
-    var fFrameTime = Game.GetGameFrameTime();
-    var localCamFollowIndex = (Players.GetSelectedEntities(Players.GetLocalPlayer()) || [])[0] || -1;
-
-    if (Players.IsLocalPlayerInPerspectiveCamera()) {
-      localCamFollowIndex = Players.GetPerspectivePlayerEntityIndex();
-    }
-
-    if (false) { var _vToCursor, step, _delta, _minStep, flDistance, vToCursor, vScreenWorldPos, fPercent, fCursorToCenterDistance, fCursorY, fCursorX, vCursorPos, fOffset; }
-
-    var minStep = 1;
-    var delta = fCameraDistance - fSmoothCameraDistance;
-
-    if (Math.abs(delta) < minStep) {
-      fSmoothCameraDistance = fCameraDistance;
-    } else {
-      var _step = delta * (5 * fFrameTime);
-
-      if (Math.abs(_step) < minStep) {
-        if (delta > 0) _step = minStep;else _step = -minStep;
-      }
-
-      fSmoothCameraDistance += _step;
-    }
-
-    var fCameraPitch = RemapValClamped(fSmoothCameraDistance, CAMERA_START_PITCH_DISTANCE, CAMERA_END_PITCH_DISTANCE, CAMERA_MIN_PITCH, CAMERA_MAX_PITCH);
-    GameUI.SetCameraPitchMin(fCameraPitch + 360);
-    GameUI.SetCameraPitchMax(fCameraPitch + 360);
-    GameUI.SetCameraDistance(fSmoothCameraDistance);
-    pOverlayMap.mapscale = RemapValClamped(fSmoothCameraDistance, MIN_CAMERA_DISTANCE, MAX_CAMERA_DISTANCE, OVERLAY_MAP_SCALE, MIN_CAMERA_DISTANCE / MAX_CAMERA_DISTANCE * OVERLAY_MAP_SCALE);
-  }
-
-  Think();
-  var CameraArg = {
-    min: 0,
-    value: 0,
-    max: 10
-  };
-  CustomUIConfig.SubscribeMouseEvent("camera", function (tData) {
-    var sEventName = tData.event_name;
-    var iValue = tData.value;
-    if (GameUI.GetClickBehaviors() != CLICK_BEHAVIORS.DOTA_CLICK_BEHAVIOR_NONE) return;
-
-    if (sEventName === "wheeled") {
-      CameraArg.value = Clamp(CameraArg.value - iValue, CameraArg.min, CameraArg.max);
-      SetDistance(CameraArg.value / (CameraArg.max - CameraArg.min));
-    }
-  });
-})();
-
-/***/ }),
-
-/***/ "./hud_main/stats.js":
-/*!***************************!*\
-  !*** ./hud_main/stats.js ***!
-  \***************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements:  */
-/***/ (() => {
-
-"use strict";
-
-
-var tSettings = CustomNetTables.GetTableValue("common", "settings");
-CustomNetTables.SubscribeNetTableListener("common", function () {
-  tSettings = CustomNetTables.GetTableValue("common", "settings");
-});
-var iAttackRangeParticleID = -1;
-
-function ShowStatsTooltip() {
-  var pStatsTooltipRegion = $("#StatsContainer");
-  $.DispatchEvent("UIShowCustomLayoutTooltip", pStatsTooltipRegion, "stats_tooltip_region_tooltips", "file://{resources}/layout/custom_game/tooltips/unit_stats/unit_stats.xml");
-  var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-
-  if (iAttackRangeParticleID != -1) {
-    Particles.DestroyParticleEffect(iAttackRangeParticleID, false);
-    iAttackRangeParticleID = -1;
-  }
-
-  var fRange = Entities.GetAttackRange(iLocalPortraitUnit) + Entities.GetHullRadius(iLocalPortraitUnit);
-  iAttackRangeParticleID = Particles.CreateParticle("particles/ui_mouseactions/range_display.vpcf", ParticleAttachment_t.PATTACH_ABSORIGIN_FOLLOW, iLocalPortraitUnit);
-  Particles.SetParticleControl(iAttackRangeParticleID, 1, [fRange, fRange, fRange]);
-}
-
-function HideStatsTooltip() {
-  var pStatsTooltipRegion = $("#StatsContainer");
-  $.DispatchEvent("UIHideCustomLayoutTooltip", pStatsTooltipRegion, "stats_tooltip_region_tooltips");
-
-  if (iAttackRangeParticleID != -1) {
-    Particles.DestroyParticleEffect(iAttackRangeParticleID, false);
-    iAttackRangeParticleID = -1;
-  }
-}
-
-(function () {
-  var pStatsContainer = $("#StatsContainer");
-  pStatsContainer.SetPanelEvent("onmouseover", ShowStatsTooltip);
-  pStatsContainer.SetPanelEvent("onmouseout", HideStatsTooltip);
-
-  function updateBonus(p, sVariableName, fValue) {
-    var iRetained = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-    var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-    if (IsNull(p.iUnit)) p.iUnit = -1;
-    if (!IsNull(p.fValue) && p.fValue == fValue) return;
-    if (IsNull(p.fSmoothValue)) p.fSmoothValue = 0;
-
-    if (fValue <= p.fSmoothValue || IsNull(p.fValue) || iLocalPortraitUnit != p.iUnit) {
-      if (!IsNull(p.iAnimatingUpSchedule)) {
-        $.CancelScheduled(p.iAnimatingUpSchedule);
-        p.iAnimatingUpSchedule = undefined;
-      }
-
-      var sSign = fValue == 0 ? "" : fValue > 0 ? "+" : "-";
-      var sValue;
-
-      if (sSign == "") {
-        sValue = "";
-      } else if (sSign == "+") {
-        sValue = sSign + fValue.toFixed(iRetained);
-      } else {
-        sValue = fValue.toFixed(iRetained);
-      }
-
-      p.SetHasClass("StatPositive", sSign == "+");
-      p.SetHasClass("StatNegative", sSign == "-");
-      p.SetDialogVariable(sVariableName, sValue);
-      p.fSmoothValue = fValue;
-      p.RemoveClass("AnimatingUp");
-    } else {
-      if (!IsNull(p.iAnimatingUpSchedule)) {
-        $.CancelScheduled(p.iAnimatingUpSchedule);
-        p.iAnimatingUpSchedule = undefined;
-      }
-
-      p.AddClass("AnimatingUp");
-      var fSpeed = 50;
-      var fStartValue = p.fValue;
-      var fEndValue = fValue;
-      var fStartTime = Game.Time();
-      var fEndTime = Game.Time() + Clamp(Math.abs(fEndValue - fStartValue) / fSpeed, 0, 0.5);
-
-      var func = function func() {
-        var fTime = Game.Time();
-        p.fSmoothValue = RemapValClamped(fTime, fStartTime, fEndTime, fStartValue, fEndValue);
-        var sSign = p.fSmoothValue == 0 ? "" : p.fSmoothValue > 0 ? "+" : "-";
-        var sValue;
-
-        if (sSign == "") {
-          sValue = "";
-        } else if (sSign == "+") {
-          sValue = sSign + p.fSmoothValue.toFixed(iRetained);
-        } else {
-          sValue = p.fSmoothValue.toFixed(iRetained);
-        }
-
-        p.SetHasClass("StatPositive", sSign == "+");
-        p.SetHasClass("StatNegative", sSign == "-");
-        p.SetDialogVariable(sVariableName, sValue);
-
-        if (fTime < fEndTime) {
-          p.iAnimatingUpSchedule = $.Schedule(Game.GetGameFrameTime(), func);
-        } else {
-          p.RemoveClass("AnimatingUp");
-          p.iAnimatingUpSchedule = undefined;
-          p.fSmoothValue = p.fValue;
-        }
-      };
-
-      p.iAnimatingUpSchedule = $.Schedule(Game.GetGameFrameTime(), func);
-    }
-
-    p.fValue = fValue;
-    p.iUnit = iLocalPortraitUnit;
-  }
-
-  Timer("stats", 1 / 30, function () {
-    var iLocalPortraitUnit = Players.GetLocalPlayerPortraitUnit();
-    if (iLocalPortraitUnit == -1) return 1 / 30;
-
-    Entities._updateUnitState(iLocalPortraitUnit);
-
-    pStatsContainer.SetHasClass("ShowDamageArmorMovement", true); // 攻击力
-
-    {
-      var pDamage = pStatsContainer.FindChildTraverse("Damage");
-      pDamage.SetHasClass("ShowSplitLabels", true);
-      var fBonusDamage = Entities.GetDamageBonus(iLocalPortraitUnit);
-      var fMinDamage = Entities.GetDamageMax(iLocalPortraitUnit);
-      var fMaxDamage = Entities.GetDamageMin(iLocalPortraitUnit);
-      var fBaseDamage = (fMinDamage + fMaxDamage) / 2;
-      pDamage.SetDialogVariable("combined_damage", (fBaseDamage + fBonusDamage).toFixed(0));
-      pDamage.SetDialogVariableInt("damage", fBaseDamage);
-      updateBonus(pDamage.FindChildTraverse("DamageModifierLabel"), "bonus_damage", fBonusDamage);
-    } // 物理防御
-
-    {
-      var pPhysicalArmor = pStatsContainer.FindChildTraverse("PhysicalArmor");
-      pPhysicalArmor.SetHasClass("ShowSplitLabels", true);
-      var fPhysicalArmor = Entities.GetPhysicalArmor(iLocalPortraitUnit);
-      var fBasePhysicalArmor = Entities.GetBasePhysicalArmor(iLocalPortraitUnit);
-      var fBonusPhysicalArmor = fPhysicalArmor - fBasePhysicalArmor;
-
-      var fPhysicalArmorReduction = function () {
-        var iSign = fPhysicalArmor >= 0 ? 1 : -1;
-        return iSign * tSettings.PHYSICAL_ARMOR_FACTOR * Math.abs(fPhysicalArmor) / (1 + tSettings.PHYSICAL_ARMOR_FACTOR * Math.abs(fPhysicalArmor));
-      }();
-
-      pPhysicalArmor.SetDialogVariable("combined_physical_armor", fPhysicalArmor.toFixed(0));
-      pPhysicalArmor.SetDialogVariable("physical_armor", fBasePhysicalArmor.toFixed(0));
-      pPhysicalArmor.SetDialogVariableInt("physical_resistance", parseInt((fPhysicalArmorReduction * 100).toFixed(0)));
-      updateBonus(pPhysicalArmor.FindChildTraverse("PhysicalArmorModifierLabel"), "bonus_physical_armor", fBonusPhysicalArmor);
-    } // 魔法防御
-
-    {
-      var pMagicalArmor = pStatsContainer.FindChildTraverse("MagicalArmor");
-      pMagicalArmor.SetHasClass("ShowSplitLabels", true);
-      var fMagicalArmor = Entities.GetMagicalArmor(iLocalPortraitUnit);
-      var fBaseMagicalArmor = Entities.GetBaseMagicalArmor(iLocalPortraitUnit);
-      var fBonusMagicalArmor = fMagicalArmor - fBaseMagicalArmor;
-
-      var fMagicalArmorReduction = function () {
-        var iSign = fMagicalArmor >= 0 ? 1 : -1;
-        return iSign * tSettings.MAGICAL_ARMOR_FACTOR * Math.abs(fMagicalArmor) / (1 + tSettings.MAGICAL_ARMOR_FACTOR * Math.abs(fMagicalArmor));
-      }();
-
-      pMagicalArmor.SetDialogVariable("combined_magical_armor", fMagicalArmor.toFixed(0));
-      pMagicalArmor.SetDialogVariable("magical_armor", fBaseMagicalArmor.toFixed(0));
-      pMagicalArmor.SetDialogVariableInt("magical_resistance", parseInt((fMagicalArmorReduction * 100).toFixed(0)));
-      updateBonus(pMagicalArmor.FindChildTraverse("MagicalArmorModifierLabel"), "bonus_magical_armor", fBonusMagicalArmor);
-    } // 移动速度
-
-    {
-      var pMoveSpeed = pStatsContainer.FindChildTraverse("MoveSpeed");
-      pMoveSpeed.SetHasClass("ShowSplitLabels", pMoveSpeed.BAscendantHasClass("AltPressed"));
-      var fBaseMoveSpeed = Entities.GetBaseMoveSpeed(iLocalPortraitUnit);
-      var fBonusMoveSpeed = Entities.GetMoveSpeedModifier(iLocalPortraitUnit, fBaseMoveSpeed) - fBaseMoveSpeed;
-      pMoveSpeed.SetDialogVariable("combined_move_speed", (fBaseMoveSpeed + fBonusMoveSpeed).toFixed(0));
-      pMoveSpeed.SetDialogVariableInt("base_move_speed", fBaseMoveSpeed);
-      updateBonus(pMoveSpeed.FindChildTraverse("MoveSpeedModifierLabel"), "bonus_move_speed", fBonusMoveSpeed);
-    }
-    pStatsContainer.SetHasClass("ShowStrAgiInt", Entities.HasHeroAttribute(iLocalPortraitUnit));
-
-    if (Entities.HasHeroAttribute(iLocalPortraitUnit)) {
-      // 力量
-      {
-        var pStrength = pStatsContainer.FindChildTraverse("Strength");
-        pStrength.SetHasClass("ShowSplitLabels", true);
-        var iStrength = Entities.GetStrength(iLocalPortraitUnit);
-        var iBaseStrength = Entities.GetBaseStrength(iLocalPortraitUnit);
-        var iBonusStrength = iStrength - iBaseStrength;
-        pStrength.SetDialogVariable("strength", iBaseStrength.toFixed(0));
-        updateBonus(pStrength.FindChildTraverse("StrengthModifierLabel"), "strength_bonus", iBonusStrength);
-      } // 敏捷
-
-      {
-        var pAgility = pStatsContainer.FindChildTraverse("Agility");
-        pAgility.SetHasClass("ShowSplitLabels", true);
-        var iAgility = Entities.GetAgility(iLocalPortraitUnit);
-        var iBaseAgility = Entities.GetBaseAgility(iLocalPortraitUnit);
-        var iBonusAgility = iAgility - iBaseAgility;
-        pAgility.SetDialogVariable("agility", iBaseAgility.toFixed(0));
-        updateBonus(pAgility.FindChildTraverse("AgilityModifierLabel"), "agility_bonus", iBonusAgility);
-      } // 智力
-
-      {
-        var pIntellect = pStatsContainer.FindChildTraverse("Intellect");
-        pIntellect.SetHasClass("ShowSplitLabels", true);
-        var iIntellect = Entities.GetIntellect(iLocalPortraitUnit);
-        var iBaseIntellect = Entities.GetBaseIntellect(iLocalPortraitUnit);
-        var iBonusIntellect = iIntellect - iBaseIntellect;
-        pIntellect.SetDialogVariable("intellect", iBaseIntellect.toFixed(0));
-        updateBonus(pIntellect.FindChildTraverse("IntellectModifierLabel"), "intellect_bonus", iBonusIntellect);
-      }
-    }
-
-    return 1 / 30;
-  });
-})();
-
-/***/ }),
-
-/***/ "../../../../../node_modules/classnames/index.js":
-/*!*******************************************************!*\
-  !*** ../../../../../node_modules/classnames/index.js ***!
-  \*******************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
-/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
-/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
-/***/ ((module, exports, __webpack_require__) => {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-/* global define */
-(function () {
-  'use strict';
-
-  var hasOwn = {}.hasOwnProperty;
-
-  function classNames() {
-    var classes = [];
-
-    for (var i = 0; i < arguments.length; i++) {
-      var arg = arguments[i];
-      if (!arg) continue;
-
-      var argType = _typeof(arg);
-
-      if (argType === 'string' || argType === 'number') {
-        classes.push(arg);
-      } else if (Array.isArray(arg) && arg.length) {
-        var inner = classNames.apply(null, arg);
-
-        if (inner) {
-          classes.push(inner);
-        }
-      } else if (argType === 'object') {
-        for (var key in arg) {
-          if (hasOwn.call(arg, key) && arg[key]) {
-            classes.push(key);
-          }
-        }
-      }
-    }
-
-    return classes.join(' ');
-  }
-
-  if ( true && module.exports) {
-    classNames["default"] = classNames;
-    module.exports = classNames;
-  } else if ( true && _typeof(__webpack_require__.amdO) === 'object' && __webpack_require__.amdO) {
-    // register as 'classnames', consistent with npm package name
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-      return classNames;
-    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else {
-    window.classNames = classNames;
-  }
-})();
-
-/***/ }),
-
-/***/ "../../../../../node_modules/object-assign/index.js":
-/*!**********************************************************!*\
-  !*** ../../../../../node_modules/object-assign/index.js ***!
-  \**********************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
-/***/ ((module) => {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-/* eslint-disable no-unused-vars */
-
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-  if (val === null || val === undefined) {
-    throw new TypeError('Object.assign cannot be called with null or undefined');
-  }
-
-  return Object(val);
-}
-
-function shouldUseNative() {
-  try {
-    if (!Object.assign) {
-      return false;
-    } // Detect buggy property enumeration order in older V8 versions.
-    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
-
-
-    var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
-
-    test1[5] = 'de';
-
-    if (Object.getOwnPropertyNames(test1)[0] === '5') {
-      return false;
-    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-
-
-    var test2 = {};
-
-    for (var i = 0; i < 10; i++) {
-      test2['_' + String.fromCharCode(i)] = i;
-    }
-
-    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-      return test2[n];
-    });
-
-    if (order2.join('') !== '0123456789') {
-      return false;
-    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-
-
-    var test3 = {};
-    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-      test3[letter] = letter;
-    });
-
-    if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
-      return false;
-    }
-
-    return true;
-  } catch (err) {
-    // We don't expect any of the above to throw, but better to be safe.
-    return false;
-  }
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-  var from;
-  var to = toObject(target);
-  var symbols;
-
-  for (var s = 1; s < arguments.length; s++) {
-    from = Object(arguments[s]);
-
-    for (var key in from) {
-      if (hasOwnProperty.call(from, key)) {
-        to[key] = from[key];
-      }
-    }
-
-    if (getOwnPropertySymbols) {
-      symbols = getOwnPropertySymbols(from);
-
-      for (var i = 0; i < symbols.length; i++) {
-        if (propIsEnumerable.call(from, symbols[i])) {
-          to[symbols[i]] = from[symbols[i]];
-        }
-      }
-    }
-  }
-
-  return to;
-};
-
-/***/ }),
-
-/***/ "../../../../../node_modules/object-inspect/index.js":
-/*!***********************************************************!*\
-  !*** ../../../../../node_modules/object-inspect/index.js ***!
-  \***********************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: __webpack_require__, module */
-/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var hasMap = typeof Map === 'function' && Map.prototype;
-var mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;
-var mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;
-var mapForEach = hasMap && Map.prototype.forEach;
-var hasSet = typeof Set === 'function' && Set.prototype;
-var setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;
-var setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;
-var setForEach = hasSet && Set.prototype.forEach;
-var hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;
-var weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;
-var hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;
-var weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;
-var booleanValueOf = Boolean.prototype.valueOf;
-var objectToString = Object.prototype.toString;
-var functionToString = Function.prototype.toString;
-var match = String.prototype.match;
-var bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;
-
-var inspectCustom = __webpack_require__(/*! ./util.inspect */ "?dd17").custom;
-
-var inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;
-
-module.exports = function inspect_(obj, options, depth, seen) {
-  var opts = options || {};
-
-  if (has(opts, 'quoteStyle') && opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double') {
-    throw new TypeError('option "quoteStyle" must be "single" or "double"');
-  }
-
-  if (has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number' ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity : opts.maxStringLength !== null)) {
-    throw new TypeError('option "maxStringLength", if provided, must be a positive integer, Infinity, or `null`');
-  }
-
-  var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;
-
-  if (typeof customInspect !== 'boolean') {
-    throw new TypeError('option "customInspect", if provided, must be `true` or `false`');
-  }
-
-  if (has(opts, 'indent') && opts.indent !== null && opts.indent !== '\t' && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)) {
-    throw new TypeError('options "indent" must be "\\t", an integer > 0, or `null`');
-  }
-
-  if (typeof obj === 'undefined') {
-    return 'undefined';
-  }
-
-  if (obj === null) {
-    return 'null';
-  }
-
-  if (typeof obj === 'boolean') {
-    return obj ? 'true' : 'false';
-  }
-
-  if (typeof obj === 'string') {
-    return inspectString(obj, opts);
-  }
-
-  if (typeof obj === 'number') {
-    if (obj === 0) {
-      return Infinity / obj > 0 ? '0' : '-0';
-    }
-
-    return String(obj);
-  }
-
-  if (typeof obj === 'bigint') {
-    // eslint-disable-line valid-typeof
-    return String(obj) + 'n';
-  }
-
-  var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;
-
-  if (typeof depth === 'undefined') {
-    depth = 0;
-  }
-
-  if (depth >= maxDepth && maxDepth > 0 && _typeof(obj) === 'object') {
-    return isArray(obj) ? '[Array]' : '[Object]';
-  }
-
-  var indent = getIndent(opts, depth);
-
-  if (typeof seen === 'undefined') {
-    seen = [];
-  } else if (indexOf(seen, obj) >= 0) {
-    return '[Circular]';
-  }
-
-  function inspect(value, from, noIndent) {
-    if (from) {
-      seen = seen.slice();
-      seen.push(from);
-    }
-
-    if (noIndent) {
-      var newOpts = {
-        depth: opts.depth
-      };
-
-      if (has(opts, 'quoteStyle')) {
-        newOpts.quoteStyle = opts.quoteStyle;
-      }
-
-      return inspect_(value, newOpts, depth + 1, seen);
-    }
-
-    return inspect_(value, opts, depth + 1, seen);
-  }
-
-  if (typeof obj === 'function') {
-    var name = nameOf(obj);
-    return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']';
-  }
-
-  if (isSymbol(obj)) {
-    var symString = Symbol.prototype.toString.call(obj);
-    return _typeof(obj) === 'object' ? markBoxed(symString) : symString;
-  }
-
-  if (isElement(obj)) {
-    var s = '<' + String(obj.nodeName).toLowerCase();
-    var attrs = obj.attributes || [];
-
-    for (var i = 0; i < attrs.length; i++) {
-      s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);
-    }
-
-    s += '>';
-
-    if (obj.childNodes && obj.childNodes.length) {
-      s += '...';
-    }
-
-    s += '</' + String(obj.nodeName).toLowerCase() + '>';
-    return s;
-  }
-
-  if (isArray(obj)) {
-    if (obj.length === 0) {
-      return '[]';
-    }
-
-    var xs = arrObjKeys(obj, inspect);
-
-    if (indent && !singleLineValues(xs)) {
-      return '[' + indentedJoin(xs, indent) + ']';
-    }
-
-    return '[ ' + xs.join(', ') + ' ]';
-  }
-
-  if (isError(obj)) {
-    var parts = arrObjKeys(obj, inspect);
-
-    if (parts.length === 0) {
-      return '[' + String(obj) + ']';
-    }
-
-    return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';
-  }
-
-  if (_typeof(obj) === 'object' && customInspect) {
-    if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {
-      return obj[inspectSymbol]();
-    } else if (typeof obj.inspect === 'function') {
-      return obj.inspect();
-    }
-  }
-
-  if (isMap(obj)) {
-    var mapParts = [];
-    mapForEach.call(obj, function (value, key) {
-      mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));
-    });
-    return collectionOf('Map', mapSize.call(obj), mapParts, indent);
-  }
-
-  if (isSet(obj)) {
-    var setParts = [];
-    setForEach.call(obj, function (value) {
-      setParts.push(inspect(value, obj));
-    });
-    return collectionOf('Set', setSize.call(obj), setParts, indent);
-  }
-
-  if (isWeakMap(obj)) {
-    return weakCollectionOf('WeakMap');
-  }
-
-  if (isWeakSet(obj)) {
-    return weakCollectionOf('WeakSet');
-  }
-
-  if (isNumber(obj)) {
-    return markBoxed(inspect(Number(obj)));
-  }
-
-  if (isBigInt(obj)) {
-    return markBoxed(inspect(bigIntValueOf.call(obj)));
-  }
-
-  if (isBoolean(obj)) {
-    return markBoxed(booleanValueOf.call(obj));
-  }
-
-  if (isString(obj)) {
-    return markBoxed(inspect(String(obj)));
-  }
-
-  if (!isDate(obj) && !isRegExp(obj)) {
-    var ys = arrObjKeys(obj, inspect);
-
-    if (ys.length === 0) {
-      return '{}';
-    }
-
-    if (indent) {
-      return '{' + indentedJoin(ys, indent) + '}';
-    }
-
-    return '{ ' + ys.join(', ') + ' }';
-  }
-
-  return String(obj);
-};
-
-function wrapQuotes(s, defaultStyle, opts) {
-  var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '"' : "'";
-  return quoteChar + s + quoteChar;
-}
-
-function quote(s) {
-  return String(s).replace(/"/g, '&quot;');
-}
-
-function isArray(obj) {
-  return toStr(obj) === '[object Array]';
-}
-
-function isDate(obj) {
-  return toStr(obj) === '[object Date]';
-}
-
-function isRegExp(obj) {
-  return toStr(obj) === '[object RegExp]';
-}
-
-function isError(obj) {
-  return toStr(obj) === '[object Error]';
-}
-
-function isSymbol(obj) {
-  return toStr(obj) === '[object Symbol]';
-}
-
-function isString(obj) {
-  return toStr(obj) === '[object String]';
-}
-
-function isNumber(obj) {
-  return toStr(obj) === '[object Number]';
-}
-
-function isBigInt(obj) {
-  return toStr(obj) === '[object BigInt]';
-}
-
-function isBoolean(obj) {
-  return toStr(obj) === '[object Boolean]';
-}
-
-var hasOwn = Object.prototype.hasOwnProperty || function (key) {
-  return key in this;
-};
-
-function has(obj, key) {
-  return hasOwn.call(obj, key);
-}
-
-function toStr(obj) {
-  return objectToString.call(obj);
-}
-
-function nameOf(f) {
-  if (f.name) {
-    return f.name;
-  }
-
-  var m = match.call(functionToString.call(f), /^function\s*([\w$]+)/);
-
-  if (m) {
-    return m[1];
-  }
-
-  return null;
-}
-
-function indexOf(xs, x) {
-  if (xs.indexOf) {
-    return xs.indexOf(x);
-  }
-
-  for (var i = 0, l = xs.length; i < l; i++) {
-    if (xs[i] === x) {
-      return i;
-    }
-  }
-
-  return -1;
-}
-
-function isMap(x) {
-  if (!mapSize || !x || _typeof(x) !== 'object') {
-    return false;
-  }
-
-  try {
-    mapSize.call(x);
-
-    try {
-      setSize.call(x);
-    } catch (s) {
-      return true;
-    }
-
-    return x instanceof Map; // core-js workaround, pre-v2.5.0
-  } catch (e) {}
-
-  return false;
-}
-
-function isWeakMap(x) {
-  if (!weakMapHas || !x || _typeof(x) !== 'object') {
-    return false;
-  }
-
-  try {
-    weakMapHas.call(x, weakMapHas);
-
-    try {
-      weakSetHas.call(x, weakSetHas);
-    } catch (s) {
-      return true;
-    }
-
-    return x instanceof WeakMap; // core-js workaround, pre-v2.5.0
-  } catch (e) {}
-
-  return false;
-}
-
-function isSet(x) {
-  if (!setSize || !x || _typeof(x) !== 'object') {
-    return false;
-  }
-
-  try {
-    setSize.call(x);
-
-    try {
-      mapSize.call(x);
-    } catch (m) {
-      return true;
-    }
-
-    return x instanceof Set; // core-js workaround, pre-v2.5.0
-  } catch (e) {}
-
-  return false;
-}
-
-function isWeakSet(x) {
-  if (!weakSetHas || !x || _typeof(x) !== 'object') {
-    return false;
-  }
-
-  try {
-    weakSetHas.call(x, weakSetHas);
-
-    try {
-      weakMapHas.call(x, weakMapHas);
-    } catch (s) {
-      return true;
-    }
-
-    return x instanceof WeakSet; // core-js workaround, pre-v2.5.0
-  } catch (e) {}
-
-  return false;
-}
-
-function isElement(x) {
-  if (!x || _typeof(x) !== 'object') {
-    return false;
-  }
-
-  if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {
-    return true;
-  }
-
-  return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';
-}
-
-function inspectString(str, opts) {
-  if (str.length > opts.maxStringLength) {
-    var remaining = str.length - opts.maxStringLength;
-    var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');
-    return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;
-  } // eslint-disable-next-line no-control-regex
-
-
-  var s = str.replace(/(['\\])/g, '\\$1').replace(/[\x00-\x1f]/g, lowbyte);
-  return wrapQuotes(s, 'single', opts);
-}
-
-function lowbyte(c) {
-  var n = c.charCodeAt(0);
-  var x = {
-    8: 'b',
-    9: 't',
-    10: 'n',
-    12: 'f',
-    13: 'r'
-  }[n];
-
-  if (x) {
-    return '\\' + x;
-  }
-
-  return '\\x' + (n < 0x10 ? '0' : '') + n.toString(16);
-}
-
-function markBoxed(str) {
-  return 'Object(' + str + ')';
-}
-
-function weakCollectionOf(type) {
-  return type + ' { ? }';
-}
-
-function collectionOf(type, size, entries, indent) {
-  var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');
-  return type + ' (' + size + ') {' + joinedEntries + '}';
-}
-
-function singleLineValues(xs) {
-  for (var i = 0; i < xs.length; i++) {
-    if (indexOf(xs[i], '\n') >= 0) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function getIndent(opts, depth) {
-  var baseIndent;
-
-  if (opts.indent === '\t') {
-    baseIndent = '\t';
-  } else if (typeof opts.indent === 'number' && opts.indent > 0) {
-    baseIndent = Array(opts.indent + 1).join(' ');
-  } else {
-    return null;
-  }
-
-  return {
-    base: baseIndent,
-    prev: Array(depth + 1).join(baseIndent)
-  };
-}
-
-function indentedJoin(xs, indent) {
-  if (xs.length === 0) {
-    return '';
-  }
-
-  var lineJoiner = '\n' + indent.prev + indent.base;
-  return lineJoiner + xs.join(',' + lineJoiner) + '\n' + indent.prev;
-}
-
-function arrObjKeys(obj, inspect) {
-  var isArr = isArray(obj);
-  var xs = [];
-
-  if (isArr) {
-    xs.length = obj.length;
-
-    for (var i = 0; i < obj.length; i++) {
-      xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';
-    }
-  }
-
-  for (var key in obj) {
-    // eslint-disable-line no-restricted-syntax
-    if (!has(obj, key)) {
-      continue;
-    } // eslint-disable-line no-restricted-syntax, no-continue
-
-
-    if (isArr && String(Number(key)) === key && key < obj.length) {
-      continue;
-    } // eslint-disable-line no-restricted-syntax, no-continue
-
-
-    if (/[^\w$]/.test(key)) {
-      xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));
-    } else {
-      xs.push(key + ': ' + inspect(obj[key], obj));
-    }
-  }
-
-  return xs;
-}
-
-/***/ }),
-
-/***/ "../../../../../node_modules/panorama-polyfill/lib/console.js":
-/*!********************************************************************!*\
-  !*** ../../../../../node_modules/panorama-polyfill/lib/console.js ***!
-  \********************************************************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_console__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/console */ "../../../../../node_modules/panorama-polyfill/lib/utils/console.js");
- // eslint-disable-next-line no-new-func
-
-var global = new Function('return this')();
-global.console = _utils_console__WEBPACK_IMPORTED_MODULE_0__.console;
-
-/***/ }),
-
-/***/ "../../../../../node_modules/panorama-polyfill/lib/timers.js":
-/*!*******************************************************************!*\
-  !*** ../../../../../node_modules/panorama-polyfill/lib/timers.js ***!
-  \*******************************************************************/
-/*! namespace exports */
-/*! exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_timers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/timers */ "../../../../../node_modules/panorama-polyfill/lib/utils/timers.js");
- // eslint-disable-next-line no-new-func
-
-var global = new Function('return this')();
-global.setInterval = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.setInterval;
-global.clearInterval = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.clearInterval;
-global.setTimeout = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.setTimeout;
-global.clearTimeout = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.clearTimeout;
-global.setImmediate = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.setImmediate;
-global.clearImmediate = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.clearImmediate;
-
-/***/ }),
-
-/***/ "../../../../../node_modules/panorama-polyfill/lib/utils/console.js":
-/*!**************************************************************************!*\
-  !*** ../../../../../node_modules/panorama-polyfill/lib/utils/console.js ***!
-  \**************************************************************************/
-/*! namespace exports */
-/*! export console [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "console": () => /* binding */ console
-/* harmony export */ });
-/* harmony import */ var _format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./format */ "../../../../../node_modules/panorama-polyfill/lib/utils/format.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-function write(text) {
-  var _iterator = _createForOfIteratorHelper(text.split('\n')),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var line = _step.value;
-
-      if (line.length > 2047) {
-        var postfix = '... (line have been trimmed because of a length limit)';
-        $.Warning("".concat(line.slice(0, 2047 - postfix.length)).concat(postfix));
-      } else {
-        $.Msg(line);
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-}
-
-function assert(value) {
-  var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'console.assert';
-
-  if (!value) {
-    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    error.apply(void 0, [new Error("Assertion failed: ".concat(message))].concat(args));
-  }
-}
-
-function error() {
-  $.Warning(_format__WEBPACK_IMPORTED_MODULE_0__.format.apply(void 0, arguments));
-}
-
-var warn = error;
-
-function log() {
-  write(_format__WEBPACK_IMPORTED_MODULE_0__.format.apply(void 0, arguments));
-}
-
-var debug = log;
-var info = log;
-var times = new Map();
-
-function time() {
-  var label = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
-  label = "".concat(label);
-
-  if (times.has(label)) {
-    warn("Timer '".concat(label, "' already exists"));
-    return;
-  }
-
-  times.set(label, Date.now());
-}
-
-function timeEnd() {
-  var label = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
-  label = "".concat(label);
-  var startTime = times.get(label);
-
-  if (startTime == null) {
-    warn("Timer '".concat(label, " does not exist'"));
-    return;
-  }
-
-  times["delete"](label);
-  write("".concat(label, ": ").concat(Date.now() - startTime, "ms"));
-}
-
-function trace() {
-  var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-  for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    args[_key2 - 1] = arguments[_key2];
-  }
-
-  var errorObject = {
-    message: _format__WEBPACK_IMPORTED_MODULE_0__.format.apply(void 0, [message].concat(args)),
-    name: 'Trace',
-    stack: ''
-  };
-  Error.captureStackTrace(errorObject, trace);
-  write((0,_format__WEBPACK_IMPORTED_MODULE_0__.format)(errorObject.stack));
-}
-
-function clear() {}
-
-function dir() {
-  throw new Error('console.dir is not implemented');
-}
-
-function dirxml() {
-  throw new Error('console.dirxml is not implemented');
-}
-
-function table() {
-  throw new Error('console.table is not implemented');
-}
-
-function count() {
-  throw new Error('console.count is not implemented');
-}
-
-function countReset() {
-  throw new Error('console.countReset is not implemented');
-}
-
-function group() {
-  throw new Error('console.group is not implemented');
-}
-
-function groupCollapsed() {
-  throw new Error('console.groupCollapsed is not implemented');
-}
-
-function groupEnd() {
-  throw new Error('console.groupEnd is not implemented');
-}
-
-function profile() {
-  throw new Error('console.profile is not implemented');
-}
-
-function profileEnd() {
-  throw new Error('console.profileEnd is not implemented');
-}
-
-function timeStamp() {
-  throw new Error('console.timeStamp is not implemented');
-}
-
-var console = {
-  assert: assert,
-  warn: warn,
-  error: error,
-  log: log,
-  debug: debug,
-  info: info,
-  time: time,
-  timeEnd: timeEnd,
-  trace: trace,
-  clear: clear,
-  dir: dir,
-  dirxml: dirxml,
-  table: table,
-  count: count,
-  countReset: countReset,
-  group: group,
-  groupCollapsed: groupCollapsed,
-  groupEnd: groupEnd,
-  profile: profile,
-  profileEnd: profileEnd,
-  timeStamp: timeStamp
-};
-
-/***/ }),
-
-/***/ "../../../../../node_modules/panorama-polyfill/lib/utils/format.js":
-/*!*************************************************************************!*\
-  !*** ../../../../../node_modules/panorama-polyfill/lib/utils/format.js ***!
-  \*************************************************************************/
-/*! namespace exports */
-/*! export format [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "format": () => /* binding */ format
-/* harmony export */ });
-/* harmony import */ var object_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! object-inspect */ "../../../../../node_modules/object-inspect/index.js");
-/* harmony import */ var object_inspect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(object_inspect__WEBPACK_IMPORTED_MODULE_0__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
- // Based on https://github.com/browserify/node-util/blob/4b1c0c79790d9968eabecd2e9c786454713e200f/util.js#L33
-
-function format(value) {
-  for (var _len = arguments.length, substitutions = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    substitutions[_key - 1] = arguments[_key];
-  }
-
-  if (typeof value !== 'string') {
-    return [value].concat(substitutions).map(inspect).join(' ');
-  }
-
-  var result = String(value).replace(/%[sdj%]/g, function (x) {
-    if (x === '%%') return '%';
-    if (substitutions.length === 0) return x;
-
-    switch (x) {
-      case '%s':
-        return String(substitutions.unshift());
-
-      case '%d':
-        return String(Number(substitutions.unshift()));
-
-      case '%j':
-        try {
-          return JSON.stringify(substitutions.unshift());
-        } catch (_a) {
-          return '[Circular]';
-        }
-
-      default:
-        return x;
-    }
-  });
-
-  for (var _i = 0, _substitutions = substitutions; _i < _substitutions.length; _i++) {
-    var x = _substitutions[_i];
-
-    if (_typeof(x) !== 'object' || x === null) {
-      result += " ".concat(x);
-    } else {
-      result += " ".concat(inspect(x));
-    }
-  }
-
-  return result;
-}
-
-var inspect = function inspect(value) {
-  return object_inspect__WEBPACK_IMPORTED_MODULE_0___default()(transformValueForFormat(value));
-};
-
-function transformValueForFormat(originalValue) {
-  var visitedValues = new Map();
-  return transform(originalValue);
-
-  function transform(value) {
-    if (visitedValues.has(value)) return visitedValues.get(value);
-    var result = rawTransform(value);
-    visitedValues.set(value, result);
-    return result;
-  }
-
-  function rawTransform(value) {
-    if (_typeof(value) !== 'object' || value == null) return value;
-    if (value instanceof Date || value instanceof RegExp) return value;
-    if (Array.isArray(value)) return value.map(transform);
-    if (value instanceof Set) return new Set(_toConsumableArray(value).map(transform));
-
-    if (value instanceof Map) {
-      return new Map(_toConsumableArray(value).map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            k = _ref2[0],
-            v = _ref2[1];
-
-        return [transform(k), transform(v)];
-      }));
-    }
-
-    if (isPanelBase(value)) {
-      return Object.assign(Object.assign({}, value), {
-        style: {
-          inspect: function inspect() {
-            return '[VCSSStyleDeclaration]';
-          }
-        }
-      });
-    }
-
-    var newObject = {};
-
-    for (var _i2 = 0, _Object$entries = Object.entries(value); _i2 < _Object$entries.length; _i2++) {
-      var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-          k = _Object$entries$_i[0],
-          v = _Object$entries$_i[1];
-
-      newObject[k] = transform(v);
-    }
-
-    Object.setPrototypeOf(newObject, Object.getPrototypeOf(value));
-    return newObject;
-  }
-}
-
-var isPanelBase = function isPanelBase(value) {
-  return 'paneltype' in value && 'rememberchildfocus' in value && 'SetPanelEvent' in value && 'RunScriptInPanelContext' in value;
-};
-
-/***/ }),
-
-/***/ "../../../../../node_modules/panorama-polyfill/lib/utils/timers.js":
-/*!*************************************************************************!*\
-  !*** ../../../../../node_modules/panorama-polyfill/lib/utils/timers.js ***!
-  \*************************************************************************/
-/*! namespace exports */
-/*! export clearImmediate [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export clearInterval [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export clearTimeout [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export setImmediate [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export setInterval [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export setTimeout [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "setTimeout": () => /* binding */ setTimeout,
-/* harmony export */   "setInterval": () => /* binding */ setInterval,
-/* harmony export */   "setImmediate": () => /* binding */ setImmediate,
-/* harmony export */   "clearTimeout": () => /* binding */ clearTimer,
-/* harmony export */   "clearInterval": () => /* binding */ clearTimer,
-/* harmony export */   "clearImmediate": () => /* binding */ clearTimer
-/* harmony export */ });
-var intervals = new Map();
-var nextIntervalId = -100000;
-var setTimeout = function setTimeout(callback) {
-  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  return $.Schedule(timeout / 1000, function () {
-    return callback.apply(void 0, args);
-  });
-};
-function setInterval(callback) {
-  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-  for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-    args[_key2 - 2] = arguments[_key2];
-  }
-
-  timeout /= 1000;
-  nextIntervalId -= 1;
-  var intervalId = nextIntervalId;
-
-  var run = function run() {
-    intervals.set(intervalId, $.Schedule(timeout, run));
-    callback.apply(void 0, args);
-  };
-
-  intervals.set(intervalId, $.Schedule(timeout, run));
-  return intervalId;
-}
-var setImmediate = function setImmediate(callback) {
-  for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-    args[_key3 - 1] = arguments[_key3];
-  }
-
-  return $.Schedule(0, function () {
-    return callback.apply(void 0, args);
-  });
-};
-
-function clearTimer(handle) {
-  if (typeof handle === 'number') {
-    // $.CancelScheduled throws on expired or non-existent timer handles
-    try {
-      if (handle < -100000) {
-        $.CancelScheduled(intervals.get(handle));
-      } else {
-        $.CancelScheduled(handle);
-      }
-    } catch (_a) {}
-  }
-}
-
-
-
-/***/ }),
-
-/***/ "../../../../../node_modules/prop-types/checkPropTypes.js":
-/*!****************************************************************!*\
-  !*** ../../../../../node_modules/prop-types/checkPropTypes.js ***!
-  \****************************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var printWarning = function printWarning() {};
-
-if (true) {
-  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "../../../../../node_modules/prop-types/lib/ReactPropTypesSecret.js");
-
-  var loggedTypeFailures = {};
-  var has = Function.call.bind(Object.prototype.hasOwnProperty);
-
-  printWarning = function printWarning(text) {
-    var message = 'Warning: ' + text;
-
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-}
-/**
- * Assert that the values match with the type specs.
- * Error messages are memorized and will only be shown once.
- *
- * @param {object} typeSpecs Map of name to a ReactPropType
- * @param {object} values Runtime values that need to be type-checked
- * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
- * @private
- */
-
-
-function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-  if (true) {
-    for (var typeSpecName in typeSpecs) {
-      if (has(typeSpecs, typeSpecName)) {
-        var error; // Prop type validation may throw. In case they do, we don't want to
-        // fail the render phase where it didn't fail before. So we log it.
-        // After these have been cleaned up, we'll let them throw.
-
-        try {
-          // This is intentionally an invariant that gets caught. It's the same
-          // behavior as without this statement except with a better message.
-          if (typeof typeSpecs[typeSpecName] !== 'function') {
-            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
-            err.name = 'Invariant Violation';
-            throw err;
-          }
-
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
-        } catch (ex) {
-          error = ex;
-        }
-
-        if (error && !(error instanceof Error)) {
-          printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + _typeof(error) + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
-        }
-
-        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-          // Only monitor this failure once because there tends to be a lot of the
-          // same error.
-          loggedTypeFailures[error.message] = true;
-          var stack = getStack ? getStack() : '';
-          printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
-        }
-      }
-    }
-  }
-}
-/**
- * Resets warning cache when testing.
- *
- * @private
- */
-
-
-checkPropTypes.resetWarningCache = function () {
-  if (true) {
-    loggedTypeFailures = {};
-  }
-};
-
-module.exports = checkPropTypes;
-
-/***/ }),
-
-/***/ "../../../../../node_modules/prop-types/lib/ReactPropTypesSecret.js":
-/*!**************************************************************************!*\
-  !*** ../../../../../node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
-  \**************************************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
-/***/ ((module) => {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-module.exports = ReactPropTypesSecret;
-
-/***/ }),
-
-/***/ "../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js":
-/*!*****************************************************************************************!*\
-  !*** ../../../../../node_modules/react-panorama/dist/esm/react-panorama.development.js ***!
-  \*****************************************************************************************/
+/***/ "../../../../../node_modules/@demon673/react-panorama/dist/esm/react-panorama.development.js":
+/*!***************************************************************************************************!*\
+  !*** ../../../../../node_modules/@demon673/react-panorama/dist/esm/react-panorama.development.js ***!
+  \***************************************************************************************************/
 /*! namespace exports */
 /*! export createPortal [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export render [provided] [no usage info] [missing usage info prevents renaming] */
@@ -3928,8 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var panorama_polyfill_lib_console__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! panorama-polyfill/lib/console */ "../../../../../node_modules/panorama-polyfill/lib/console.js");
 /* harmony import */ var panorama_polyfill_lib_timers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! panorama-polyfill/lib/timers */ "../../../../../node_modules/panorama-polyfill/lib/timers.js");
 function _createForOfIteratorHelper(o,allowArrayLike){var it;if(typeof Symbol==="undefined"||o[Symbol.iterator]==null){if(Array.isArray(o)||(it=_unsupportedIterableToArray(o))||allowArrayLike&&o&&typeof o.length==="number"){if(it)o=it;var i=0;var F=function F(){};return{s:F,n:function n(){if(i>=o.length)return{done:true};return{done:false,value:o[i++]};},e:function e(_e2){throw _e2;},f:F};}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion=true,didErr=false,err;return{s:function s(){it=o[Symbol.iterator]();},n:function n(){var step=it.next();normalCompletion=step.done;return step;},e:function e(_e3){didErr=true;err=_e3;},f:function f(){try{if(!normalCompletion&&it["return"]!=null)it["return"]();}finally{if(didErr)throw err;}}};}function _typeof(obj){"@babel/helpers - typeof";if(typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"){_typeof=function _typeof(obj){return typeof obj;};}else{_typeof=function _typeof(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};}return _typeof(obj);}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}function _slicedToArray(arr,i){return _arrayWithHoles(arr)||_iterableToArrayLimit(arr,i)||_unsupportedIterableToArray(arr,i)||_nonIterableRest();}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o,minLen){if(!o)return;if(typeof o==="string")return _arrayLikeToArray(o,minLen);var n=Object.prototype.toString.call(o).slice(8,-1);if(n==="Object"&&o.constructor)n=o.constructor.name;if(n==="Map"||n==="Set")return Array.from(o);if(n==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return _arrayLikeToArray(o,minLen);}function _arrayLikeToArray(arr,len){if(len==null||len>arr.length)len=arr.length;for(var i=0,arr2=new Array(len);i<len;i++){arr2[i]=arr[i];}return arr2;}function _iterableToArrayLimit(arr,i){if(typeof Symbol==="undefined"||!(Symbol.iterator in Object(arr)))return;var _arr=[];var _n=true;var _d=false;var _e=undefined;try{for(var _i=arr[Symbol.iterator](),_s;!(_n=(_s=_i.next()).done);_n=true){_arr.push(_s.value);if(i&&_arr.length===i)break;}}catch(err){_d=true;_e=err;}finally{try{if(!_n&&_i["return"]!=null)_i["return"]();}finally{if(_d)throw _e;}}return _arr;}function _arrayWithHoles(arr){if(Array.isArray(arr))return arr;}/**
- * React Panorama (https://github.com/ark120202/react-panorama)
- * @version 0.1.2
+ * React Panorama (https://github.com/Demon673/react-panorama)
+ * @version 0.2.0
  * @license MIT
  *//**
  * Executes `callback` every time `eventName` game event is fired.
@@ -3939,10 +41,10 @@ function _createForOfIteratorHelper(o,allowArrayLike){var it;if(typeof Symbol===
  * Gets the value of a key in a custom NetTable and updates component when it changes.
  */function useNetTableKey(name,key){var _useState=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function(){return CustomNetTables.GetTableValue(name,key);}),_useState2=_slicedToArray(_useState,2),value=_useState2[0],setValue=_useState2[1];(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function(){var listener=CustomNetTables.SubscribeNetTableListener(name,function(_,eventKey,eventValue){if(key===eventKey){setValue(eventValue);}});return function(){return CustomNetTables.UnsubscribeNetTableListener(listener);};},[name,key]);return value;}/**
  * Gets all values in a custom NetTable and updates component when it changes.
- */function useNetTableValues(name){var _useState3=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function(){return CustomNetTables.GetAllTableValues(name).reduce(function(accumulator,pair){return Object.assign(Object.assign({},accumulator),_defineProperty({},pair.key,pair.value));},{});}),_useState4=_slicedToArray(_useState3,2),values=_useState4[0],setValue=_useState4[1];(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function(){var listener=CustomNetTables.SubscribeNetTableListener(name,function(_,eventKey,eventValue){setValue(function(current){return Object.assign(Object.assign({},current),_defineProperty({},eventKey,eventValue));});});return function(){return CustomNetTables.UnsubscribeNetTableListener(listener);};},[name]);return values;}var _a;var noop=function noop(){};var microtaskPromise=Promise.resolve();function queueMicrotask(callback){// eslint-disable-next-line @typescript-eslint/no-floating-promises, promise/catch-or-return, promise/prefer-await-to-then, promise/no-callback-in-promise
+ */function useNetTableValues(name){var _useState3=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function(){return CustomNetTables.GetAllTableValues(name).reduce(function(accumulator,pair){return Object.assign(Object.assign({},accumulator),_defineProperty({},pair.key,pair.value));},{});}),_useState4=_slicedToArray(_useState3,2),values=_useState4[0],setValue=_useState4[1];(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function(){var listener=CustomNetTables.SubscribeNetTableListener(name,function(_,eventKey,eventValue){setValue(function(current){return Object.assign(Object.assign({},current),_defineProperty({},eventKey,eventValue));});});return function(){return CustomNetTables.UnsubscribeNetTableListener(listener);};},[name]);return values;}var _a,_b;var noop=function noop(){};var microtaskPromise=Promise.resolve();function queueMicrotask(callback){// eslint-disable-next-line @typescript-eslint/no-floating-promises, promise/catch-or-return, promise/prefer-await-to-then, promise/no-callback-in-promise
 microtaskPromise.then(callback);}var reactPanoramaSymbol=Symbol('_reactPanoramaSymbol');// TODO: Put it into a shared library?
-var dotaHud=function(){var panel=$.GetContextPanel();while(panel){if(panel.id==='DotaHud')return panel;panel=panel.GetParent();}}();var temporaryPanelHost=(_a=dotaHud.FindChild('__react_panorama_temporary_host__'))!==null&&_a!==void 0?_a:$.CreatePanel('Panel',dotaHud,'__react_panorama_temporary_host__');temporaryPanelHost.RemoveAndDeleteChildren();temporaryPanelHost.visible=false;// eslint-disable-next-line no-new-func
-var global=new Function('return this')();for(var _i2=0,_arr2=['Panel','Label','Image','DOTAAbilityImage','DOTAItemImage','DOTAHeroImage','DOTACountryFlagImage','DOTALeagueImage','EconItemImage','AnimatedImageStrip','DOTAEmoticon','Movie','DOTAHeroMovie','DOTAScenePanel','DOTAEconItem','ProgressBar','CircularProgressBar','ProgressBarWithMiddle','DOTAUserName','DOTAUserRichPresence','DOTAAvatarImage','Countdown','Button','TextButton','ToggleButton','RadioButton','TextEntry','NumberEntry','Slider','SlottedSlider','DropDown','ContextMenuScript','Carousel','CarouselNav','DOTAHUDOverlayMap','DOTAMinimap','HTML','CustomLayoutPanel','GenericPanel'];_i2<_arr2.length;_i2++){var panelName=_arr2[_i2];global[panelName]=panelName;}function createCommonjsModule(fn,basedir,module){return module={path:basedir,exports:{},require:function require(path,base){return commonjsRequire(path,base===undefined||base===null?module.path:base);}},fn(module,module.exports),module.exports;}function commonjsRequire(){throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');}/*
+var windowRoot=function(){var panel=$.GetContextPanel();while(panel){if(panel.BHasClass('WindowRoot'))return panel;panel=panel.GetParent();}}();var temporaryPanelHost=(_a=windowRoot.FindChild('__react_panorama_temporary_host__'))!==null&&_a!==void 0?_a:$.CreatePanel('Panel',windowRoot,'__react_panorama_temporary_host__');temporaryPanelHost.RemoveAndDeleteChildren();temporaryPanelHost.visible=false;var temporaryScenePanelHost=(_b=windowRoot.FindChild('__react_panorama_temporary_scene_host__'))!==null&&_b!==void 0?_b:$.CreatePanel('Panel',windowRoot,'__react_panorama_temporary_scene_host__');temporaryScenePanelHost.RemoveAndDeleteChildren();temporaryScenePanelHost.visible=false;GameUI.CustomUIConfig().temporaryScheduleHandle=-1;var checkFunc=function checkFunc(){for(var i=0;i<temporaryScenePanelHost.GetChildCount();i+=1){var child=temporaryScenePanelHost.GetChild(i);if(child!==null){if(child.BHasClass('SceneLoaded')){child.SetParent(temporaryPanelHost);}}}temporaryPanelHost.RemoveAndDeleteChildren();GameUI.CustomUIConfig().temporaryScheduleHandle=$.Schedule(1,checkFunc);};if(GameUI.CustomUIConfig().temporaryScheduleHandle!==-1){try{$.CancelScheduled(GameUI.CustomUIConfig().temporaryScheduleHandle);}catch(_c){}GameUI.CustomUIConfig().temporaryScheduleHandle=-1;}checkFunc();// eslint-disable-next-line no-new-func
+var global=new Function('return this')();for(var _i2=0,_arr2=['Panel','Label','Image','DOTAAbilityImage','DOTAItemImage','DOTAHeroImage','DOTACountryFlagImage','DOTALeagueImage','EconItemImage','AnimatedImageStrip','DOTAEmoticon','Movie','DOTAHeroMovie','DOTAScenePanel','DOTAParticleScenePanel','DOTAEconItem','ProgressBar','CircularProgressBar','ProgressBarWithMiddle','DOTAUserName','DOTAUserRichPresence','DOTAAvatarImage','Countdown','Button','TextButton','ToggleButton','RadioButton','TextEntry','NumberEntry','Slider','SlottedSlider','DropDown','ContextMenuScript','Carousel','CarouselNav','DOTAHUDOverlayMap','DOTAMinimap','HTML','TabButton','TabContents','CustomLayoutPanel','GenericPanel'];_i2<_arr2.length;_i2++){var panelName=_arr2[_i2];global[panelName]=panelName;}function createCommonjsModule(fn,basedir,module){return module={path:basedir,exports:{},require:function require(path,base){return commonjsRequire(path,base===undefined||base===null?module.path:base);}},fn(module,module.exports),module.exports;}function commonjsRequire(){throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');}/*
 object-assign
 (c) Sindre Sorhus
 @license MIT
@@ -3952,12 +54,12 @@ var test1=new String('abc');// eslint-disable-line no-new-wrappers
 test1[5]='de';if(Object.getOwnPropertyNames(test1)[0]==='5'){return false;}// https://bugs.chromium.org/p/v8/issues/detail?id=3056
 var test2={};for(var i=0;i<10;i++){test2['_'+String.fromCharCode(i)]=i;}var order2=Object.getOwnPropertyNames(test2).map(function(n){return test2[n];});if(order2.join('')!=='0123456789'){return false;}// https://bugs.chromium.org/p/v8/issues/detail?id=3056
 var test3={};'abcdefghijklmnopqrst'.split('').forEach(function(letter){test3[letter]=letter;});if(Object.keys(Object.assign({},test3)).join('')!=='abcdefghijklmnopqrst'){return false;}return true;}catch(err){// We don't expect any of the above to throw, but better to be safe.
-return false;}}var D__dev_dota__modules_reactPanorama_node_modules_objectAssign=shouldUseNative()?Object.assign:function(target,source){var from;var to=toObject(target);var symbols;for(var s=1;s<arguments.length;s++){from=Object(arguments[s]);for(var key in from){if(hasOwnProperty.call(from,key)){to[key]=from[key];}}if(getOwnPropertySymbols){symbols=getOwnPropertySymbols(from);for(var i=0;i<symbols.length;i++){if(propIsEnumerable.call(from,symbols[i])){to[symbols[i]]=from[symbols[i]];}}}}return to;};/**
+return false;}}var C__Users_Demon_Documents_Repertory_reactPanorama_node_modules_objectAssign=shouldUseNative()?Object.assign:function(target,source){var from;var to=toObject(target);var symbols;for(var s=1;s<arguments.length;s++){from=Object(arguments[s]);for(var key in from){if(hasOwnProperty.call(from,key)){to[key]=from[key];}}if(getOwnPropertySymbols){symbols=getOwnPropertySymbols(from);for(var i=0;i<symbols.length;i++){if(propIsEnumerable.call(from,symbols[i])){to[symbols[i]]=from[symbols[i]];}}}}return to;};/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var ReactPropTypesSecret='SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';var ReactPropTypesSecret_1=ReactPropTypesSecret;var printWarning=function printWarning(){};{var ReactPropTypesSecret$1=ReactPropTypesSecret_1;var loggedTypeFailures={};var has=Function.call.bind(Object.prototype.hasOwnProperty);printWarning=function printWarning(text){var message='Warning: '+text;if(typeof console!=='undefined'){console.error(message);}try{// --- Welcome to debugging React ---
+ */var ReactPropTypesSecret$1='SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';var ReactPropTypesSecret_1=ReactPropTypesSecret$1;var printWarning=function printWarning(){};{var ReactPropTypesSecret=ReactPropTypesSecret_1;var loggedTypeFailures={};var has=Function.call.bind(Object.prototype.hasOwnProperty);printWarning=function printWarning(text){var message='Warning: '+text;if(typeof console!=='undefined'){console.error(message);}try{// --- Welcome to debugging React ---
 // This error was thrown as a convenience so that you can use this stack
 // to find the callsite that caused this warning to fire.
 throw new Error(message);}catch(x){}};}/**
@@ -3975,7 +77,7 @@ throw new Error(message);}catch(x){}};}/**
 // After these have been cleaned up, we'll let them throw.
 try{// This is intentionally an invariant that gets caught. It's the same
 // behavior as without this statement except with a better message.
-if(typeof typeSpecs[typeSpecName]!=='function'){var err=Error((componentName||'React class')+': '+location+' type `'+typeSpecName+'` is invalid; '+'it must be a function, usually from the `prop-types` package, but received `'+_typeof(typeSpecs[typeSpecName])+'`.');err.name='Invariant Violation';throw err;}error=typeSpecs[typeSpecName](values,typeSpecName,componentName,location,null,ReactPropTypesSecret$1);}catch(ex){error=ex;}if(error&&!(error instanceof Error)){printWarning((componentName||'React class')+': type specification of '+location+' `'+typeSpecName+'` is invalid; the type checker '+'function must return `null` or an `Error` but returned a '+_typeof(error)+'. '+'You may have forgotten to pass an argument to the type checker '+'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and '+'shape all require an argument).');}if(error instanceof Error&&!(error.message in loggedTypeFailures)){// Only monitor this failure once because there tends to be a lot of the
+if(typeof typeSpecs[typeSpecName]!=='function'){var err=Error((componentName||'React class')+': '+location+' type `'+typeSpecName+'` is invalid; '+'it must be a function, usually from the `prop-types` package, but received `'+_typeof(typeSpecs[typeSpecName])+'`.');err.name='Invariant Violation';throw err;}error=typeSpecs[typeSpecName](values,typeSpecName,componentName,location,null,ReactPropTypesSecret);}catch(ex){error=ex;}if(error&&!(error instanceof Error)){printWarning((componentName||'React class')+': type specification of '+location+' `'+typeSpecName+'` is invalid; the type checker '+'function must return `null` or an `Error` but returned a '+_typeof(error)+'. '+'You may have forgotten to pass an argument to the type checker '+'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and '+'shape all require an argument).');}if(error instanceof Error&&!(error.message in loggedTypeFailures)){// Only monitor this failure once because there tends to be a lot of the
 // same error.
 loggedTypeFailures[error.message]=true;var stack=getStack?getStack():'';printWarning('Failed '+location+' type: '+error.message+(stack!=null?stack:''));}}}}}/**
  * Resets warning cache when testing.
@@ -4059,7 +161,7 @@ requestHostTimeout(handleTimeout,startTime-currentTime);}}else{newTask.sortIndex
 if(!isHostCallbackScheduled&&!isPerformingWork){isHostCallbackScheduled=true;_requestHostCallback(flushWork);}}return newTask;}function unstable_pauseExecution(){}function unstable_continueExecution(){if(!isHostCallbackScheduled&&!isPerformingWork){isHostCallbackScheduled=true;_requestHostCallback(flushWork);}}function unstable_getFirstCallbackNode(){return peek(taskQueue);}function unstable_cancelCallback(task){{if(task.isQueued){var currentTime=exports.unstable_now();markTaskCanceled(task,currentTime);task.isQueued=false;}}// Null out the callback to indicate the task has been canceled. (Can't
 // remove from the queue because you can't remove arbitrary nodes from an
 // array based heap, only the first one.)
-task.callback=null;}function unstable_getCurrentPriorityLevel(){return currentPriorityLevel;}function unstable_shouldYield(){var currentTime=exports.unstable_now();advanceTimers(currentTime);var firstTask=peek(taskQueue);return firstTask!==currentTask&&currentTask!==null&&firstTask!==null&&firstTask.callback!==null&&firstTask.startTime<=currentTime&&firstTask.expirationTime<currentTask.expirationTime||shouldYieldToHost();}var unstable_requestPaint=requestPaint;var unstable_Profiling={startLoggingProfilingEvents:startLoggingProfilingEvents,stopLoggingProfilingEvents:stopLoggingProfilingEvents,sharedProfilingBuffer:sharedProfilingBuffer};exports.unstable_IdlePriority=IdlePriority;exports.unstable_ImmediatePriority=ImmediatePriority;exports.unstable_LowPriority=LowPriority;exports.unstable_NormalPriority=NormalPriority;exports.unstable_Profiling=unstable_Profiling;exports.unstable_UserBlockingPriority=UserBlockingPriority;exports.unstable_cancelCallback=unstable_cancelCallback;exports.unstable_continueExecution=unstable_continueExecution;exports.unstable_getCurrentPriorityLevel=unstable_getCurrentPriorityLevel;exports.unstable_getFirstCallbackNode=unstable_getFirstCallbackNode;exports.unstable_next=unstable_next;exports.unstable_pauseExecution=unstable_pauseExecution;exports.unstable_requestPaint=unstable_requestPaint;exports.unstable_runWithPriority=unstable_runWithPriority;exports.unstable_scheduleCallback=unstable_scheduleCallback;exports.unstable_shouldYield=unstable_shouldYield;exports.unstable_wrapCallback=unstable_wrapCallback;})();}});var D__dev_dota__modules_reactPanorama_node_modules_scheduler=createCommonjsModule(function(module){{module.exports=scheduler_development;}});var schedulerTracing_development=createCommonjsModule(function(module,exports){{(function(){var DEFAULT_THREAD_ID=0;// Counters used to generate unique IDs.
+task.callback=null;}function unstable_getCurrentPriorityLevel(){return currentPriorityLevel;}function unstable_shouldYield(){var currentTime=exports.unstable_now();advanceTimers(currentTime);var firstTask=peek(taskQueue);return firstTask!==currentTask&&currentTask!==null&&firstTask!==null&&firstTask.callback!==null&&firstTask.startTime<=currentTime&&firstTask.expirationTime<currentTask.expirationTime||shouldYieldToHost();}var unstable_requestPaint=requestPaint;var unstable_Profiling={startLoggingProfilingEvents:startLoggingProfilingEvents,stopLoggingProfilingEvents:stopLoggingProfilingEvents,sharedProfilingBuffer:sharedProfilingBuffer};exports.unstable_IdlePriority=IdlePriority;exports.unstable_ImmediatePriority=ImmediatePriority;exports.unstable_LowPriority=LowPriority;exports.unstable_NormalPriority=NormalPriority;exports.unstable_Profiling=unstable_Profiling;exports.unstable_UserBlockingPriority=UserBlockingPriority;exports.unstable_cancelCallback=unstable_cancelCallback;exports.unstable_continueExecution=unstable_continueExecution;exports.unstable_getCurrentPriorityLevel=unstable_getCurrentPriorityLevel;exports.unstable_getFirstCallbackNode=unstable_getFirstCallbackNode;exports.unstable_next=unstable_next;exports.unstable_pauseExecution=unstable_pauseExecution;exports.unstable_requestPaint=unstable_requestPaint;exports.unstable_runWithPriority=unstable_runWithPriority;exports.unstable_scheduleCallback=unstable_scheduleCallback;exports.unstable_shouldYield=unstable_shouldYield;exports.unstable_wrapCallback=unstable_wrapCallback;})();}});createCommonjsModule(function(module){{module.exports=scheduler_development;}});var schedulerTracing_development=createCommonjsModule(function(module,exports){{(function(){var DEFAULT_THREAD_ID=0;// Counters used to generate unique IDs.
 var interactionIDCounter=0;var threadIDCounter=0;// Set of currently traced interactions.
 // Interactions "stack"–
 // Meaning that newly traced interactions are appended to the previously active set.
@@ -4081,7 +183,7 @@ hasRun=true;// Update pending async counts for all wrapped interactions.
 wrappedInteractions.forEach(function(interaction){interaction.__count--;if(subscriber!==null&&interaction.__count===0){subscriber.onInteractionScheduledWorkCompleted(interaction);}});}}}wrapped.cancel=function cancel(){subscriber=exports.__subscriberRef.current;try{if(subscriber!==null){subscriber.onWorkCanceled(wrappedInteractions,threadID);}}finally{// Update pending async counts for all wrapped interactions.
 // If this was the last scheduled async work for any of them,
 // Mark them as completed.
-wrappedInteractions.forEach(function(interaction){interaction.__count--;if(subscriber&&interaction.__count===0){subscriber.onInteractionScheduledWorkCompleted(interaction);}});}};return wrapped;}var subscribers=null;{subscribers=new Set();}function unstable_subscribe(subscriber){{subscribers.add(subscriber);if(subscribers.size===1){exports.__subscriberRef.current={onInteractionScheduledWorkCompleted:onInteractionScheduledWorkCompleted,onInteractionTraced:onInteractionTraced,onWorkCanceled:onWorkCanceled,onWorkScheduled:onWorkScheduled,onWorkStarted:onWorkStarted,onWorkStopped:onWorkStopped};}}}function unstable_unsubscribe(subscriber){{subscribers["delete"](subscriber);if(subscribers.size===0){exports.__subscriberRef.current=null;}}}function onInteractionTraced(interaction){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onInteractionTraced(interaction);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onInteractionScheduledWorkCompleted(interaction){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onInteractionScheduledWorkCompleted(interaction);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkScheduled(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkScheduled(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkStarted(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkStarted(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkStopped(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkStopped(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkCanceled(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkCanceled(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}exports.unstable_clear=unstable_clear;exports.unstable_getCurrent=unstable_getCurrent;exports.unstable_getThreadID=unstable_getThreadID;exports.unstable_subscribe=unstable_subscribe;exports.unstable_trace=unstable_trace;exports.unstable_unsubscribe=unstable_unsubscribe;exports.unstable_wrap=unstable_wrap;})();}});var tracing=createCommonjsModule(function(module){{module.exports=schedulerTracing_development;}});var reactReconciler_development=createCommonjsModule(function(module){{module.exports=function $$$reconciler($$$hostConfig){var _assign=D__dev_dota__modules_reactPanorama_node_modules_objectAssign;var React=react__WEBPACK_IMPORTED_MODULE_0__;var checkPropTypes=checkPropTypes_1;var Scheduler=D__dev_dota__modules_reactPanorama_node_modules_scheduler;var tracing$1=tracing;var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;// Prevent newer renderers from RTE when used with older react package versions.
+wrappedInteractions.forEach(function(interaction){interaction.__count--;if(subscriber&&interaction.__count===0){subscriber.onInteractionScheduledWorkCompleted(interaction);}});}};return wrapped;}var subscribers=null;{subscribers=new Set();}function unstable_subscribe(subscriber){{subscribers.add(subscriber);if(subscribers.size===1){exports.__subscriberRef.current={onInteractionScheduledWorkCompleted:onInteractionScheduledWorkCompleted,onInteractionTraced:onInteractionTraced,onWorkCanceled:onWorkCanceled,onWorkScheduled:onWorkScheduled,onWorkStarted:onWorkStarted,onWorkStopped:onWorkStopped};}}}function unstable_unsubscribe(subscriber){{subscribers["delete"](subscriber);if(subscribers.size===0){exports.__subscriberRef.current=null;}}}function onInteractionTraced(interaction){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onInteractionTraced(interaction);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onInteractionScheduledWorkCompleted(interaction){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onInteractionScheduledWorkCompleted(interaction);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkScheduled(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkScheduled(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkStarted(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkStarted(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkStopped(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkStopped(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}function onWorkCanceled(interactions,threadID){var didCatchError=false;var caughtError=null;subscribers.forEach(function(subscriber){try{subscriber.onWorkCanceled(interactions,threadID);}catch(error){if(!didCatchError){didCatchError=true;caughtError=error;}}});if(didCatchError){throw caughtError;}}exports.unstable_clear=unstable_clear;exports.unstable_getCurrent=unstable_getCurrent;exports.unstable_getThreadID=unstable_getThreadID;exports.unstable_subscribe=unstable_subscribe;exports.unstable_trace=unstable_trace;exports.unstable_unsubscribe=unstable_unsubscribe;exports.unstable_wrap=unstable_wrap;})();}});createCommonjsModule(function(module){{module.exports=schedulerTracing_development;}});var C__Users_Demon_Documents_Repertory_reactPanorama_node_modules_scheduler=createCommonjsModule(function(module){{module.exports=scheduler_development;}});var tracing=createCommonjsModule(function(module){{module.exports=schedulerTracing_development;}});var reactReconciler_development=createCommonjsModule(function(module){{module.exports=function $$$reconciler($$$hostConfig){var _assign=C__Users_Demon_Documents_Repertory_reactPanorama_node_modules_objectAssign;var React=react__WEBPACK_IMPORTED_MODULE_0__;var checkPropTypes=checkPropTypes_1;var Scheduler=C__Users_Demon_Documents_Repertory_reactPanorama_node_modules_scheduler;var tracing$1=tracing;var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;// Prevent newer renderers from RTE when used with older react package versions.
 // Current owner and dispatcher used to share the same ref,
 // but PR #14548 split them out to better support the react-debug-tools package.
 if(!ReactSharedInternals.hasOwnProperty('ReactCurrentDispatcher')){ReactSharedInternals.ReactCurrentDispatcher={current:null};}if(!ReactSharedInternals.hasOwnProperty('ReactCurrentBatchConfig')){ReactSharedInternals.ReactCurrentBatchConfig={suspense:null};}// by calls to these methods by a Babel plugin.
@@ -4192,19 +294,19 @@ return null;}// This is a host config that's used for the `react-reconciler` pac
 // eslint-disable-line no-undef
 // eslint-disable-line no-undef
 // eslint-disable-line no-undef
-var getPublicInstance=$$$hostConfig.getPublicInstance;var getRootHostContext=$$$hostConfig.getRootHostContext;var getChildHostContext=$$$hostConfig.getChildHostContext;var prepareForCommit=$$$hostConfig.prepareForCommit;var resetAfterCommit=$$$hostConfig.resetAfterCommit;var createInstance=$$$hostConfig.createInstance;var appendInitialChild=$$$hostConfig.appendInitialChild;var finalizeInitialChildren=$$$hostConfig.finalizeInitialChildren;var prepareUpdate=$$$hostConfig.prepareUpdate;var shouldSetTextContent=$$$hostConfig.shouldSetTextContent;var shouldDeprioritizeSubtree=$$$hostConfig.shouldDeprioritizeSubtree;var createTextInstance=$$$hostConfig.createTextInstance;var scheduleTimeout=$$$hostConfig.setTimeout;var cancelTimeout=$$$hostConfig.clearTimeout;var noTimeout=$$$hostConfig.noTimeout;var now=$$$hostConfig.now;var isPrimaryRenderer=$$$hostConfig.isPrimaryRenderer;var warnsIfNotActing=$$$hostConfig.warnsIfNotActing;var supportsMutation=$$$hostConfig.supportsMutation;var supportsPersistence=$$$hostConfig.supportsPersistence;var supportsHydration=$$$hostConfig.supportsHydration;var DEPRECATED_mountResponderInstance=$$$hostConfig.DEPRECATED_mountResponderInstance;var DEPRECATED_unmountResponderInstance=$$$hostConfig.DEPRECATED_unmountResponderInstance;var getFundamentalComponentInstance=$$$hostConfig.getFundamentalComponentInstance;var mountFundamentalComponent=$$$hostConfig.mountFundamentalComponent;var shouldUpdateFundamentalComponent=$$$hostConfig.shouldUpdateFundamentalComponent;var getInstanceFromNode=$$$hostConfig.getInstanceFromNode;var beforeRemoveInstance=$$$hostConfig.beforeRemoveInstance;// -------------------
+var getPublicInstance=$$$hostConfig.getPublicInstance;var getRootHostContext=$$$hostConfig.getRootHostContext;var getChildHostContext=$$$hostConfig.getChildHostContext;var prepareForCommit=$$$hostConfig.prepareForCommit;var resetAfterCommit=$$$hostConfig.resetAfterCommit;var createInstance=$$$hostConfig.createInstance;var appendInitialChild=$$$hostConfig.appendInitialChild;var finalizeInitialChildren=$$$hostConfig.finalizeInitialChildren;var prepareUpdate=$$$hostConfig.prepareUpdate;var shouldSetTextContent=$$$hostConfig.shouldSetTextContent;var shouldDeprioritizeSubtree=$$$hostConfig.shouldDeprioritizeSubtree;var createTextInstance=$$$hostConfig.createTextInstance;var scheduleTimeout=$$$hostConfig.setTimeout;var cancelTimeout=$$$hostConfig.clearTimeout;var noTimeout=$$$hostConfig.noTimeout;$$$hostConfig.now;var isPrimaryRenderer=$$$hostConfig.isPrimaryRenderer;var warnsIfNotActing=$$$hostConfig.warnsIfNotActing;var supportsMutation=$$$hostConfig.supportsMutation;var supportsPersistence=$$$hostConfig.supportsPersistence;var supportsHydration=$$$hostConfig.supportsHydration;$$$hostConfig.DEPRECATED_mountResponderInstance;$$$hostConfig.DEPRECATED_unmountResponderInstance;$$$hostConfig.getFundamentalComponentInstance;$$$hostConfig.mountFundamentalComponent;$$$hostConfig.shouldUpdateFundamentalComponent;$$$hostConfig.getInstanceFromNode;$$$hostConfig.beforeRemoveInstance;// -------------------
 //      Mutation
 //     (optional)
 // -------------------
-var appendChild=$$$hostConfig.appendChild;var appendChildToContainer=$$$hostConfig.appendChildToContainer;var commitTextUpdate=$$$hostConfig.commitTextUpdate;var commitMount=$$$hostConfig.commitMount;var commitUpdate=$$$hostConfig.commitUpdate;var insertBefore=$$$hostConfig.insertBefore;var insertInContainerBefore=$$$hostConfig.insertInContainerBefore;var removeChild=$$$hostConfig.removeChild;var removeChildFromContainer=$$$hostConfig.removeChildFromContainer;var resetTextContent=$$$hostConfig.resetTextContent;var hideInstance=$$$hostConfig.hideInstance;var hideTextInstance=$$$hostConfig.hideTextInstance;var unhideInstance=$$$hostConfig.unhideInstance;var unhideTextInstance=$$$hostConfig.unhideTextInstance;var updateFundamentalComponent=$$$hostConfig.updateFundamentalComponent;var unmountFundamentalComponent=$$$hostConfig.unmountFundamentalComponent;// -------------------
+var appendChild=$$$hostConfig.appendChild;var appendChildToContainer=$$$hostConfig.appendChildToContainer;var commitTextUpdate=$$$hostConfig.commitTextUpdate;var commitMount=$$$hostConfig.commitMount;var commitUpdate=$$$hostConfig.commitUpdate;var insertBefore=$$$hostConfig.insertBefore;var insertInContainerBefore=$$$hostConfig.insertInContainerBefore;var removeChild=$$$hostConfig.removeChild;var removeChildFromContainer=$$$hostConfig.removeChildFromContainer;var resetTextContent=$$$hostConfig.resetTextContent;var hideInstance=$$$hostConfig.hideInstance;var hideTextInstance=$$$hostConfig.hideTextInstance;var unhideInstance=$$$hostConfig.unhideInstance;var unhideTextInstance=$$$hostConfig.unhideTextInstance;$$$hostConfig.updateFundamentalComponent;$$$hostConfig.unmountFundamentalComponent;// -------------------
 //     Persistence
 //     (optional)
 // -------------------
-var cloneInstance=$$$hostConfig.cloneInstance;var createContainerChildSet=$$$hostConfig.createContainerChildSet;var appendChildToContainerChildSet=$$$hostConfig.appendChildToContainerChildSet;var finalizeContainerChildren=$$$hostConfig.finalizeContainerChildren;var replaceContainerChildren=$$$hostConfig.replaceContainerChildren;var cloneHiddenInstance=$$$hostConfig.cloneHiddenInstance;var cloneHiddenTextInstance=$$$hostConfig.cloneHiddenTextInstance;var cloneFundamentalInstance=$$$hostConfig.cloneInstance;// -------------------
+var cloneInstance=$$$hostConfig.cloneInstance;var createContainerChildSet=$$$hostConfig.createContainerChildSet;var appendChildToContainerChildSet=$$$hostConfig.appendChildToContainerChildSet;var finalizeContainerChildren=$$$hostConfig.finalizeContainerChildren;var replaceContainerChildren=$$$hostConfig.replaceContainerChildren;var cloneHiddenInstance=$$$hostConfig.cloneHiddenInstance;var cloneHiddenTextInstance=$$$hostConfig.cloneHiddenTextInstance;$$$hostConfig.cloneInstance;// -------------------
 //     Hydration
 //     (optional)
 // -------------------
-var canHydrateInstance=$$$hostConfig.canHydrateInstance;var canHydrateTextInstance=$$$hostConfig.canHydrateTextInstance;var canHydrateSuspenseInstance=$$$hostConfig.canHydrateSuspenseInstance;var isSuspenseInstancePending=$$$hostConfig.isSuspenseInstancePending;var isSuspenseInstanceFallback=$$$hostConfig.isSuspenseInstanceFallback;var registerSuspenseInstanceRetry=$$$hostConfig.registerSuspenseInstanceRetry;var getNextHydratableSibling=$$$hostConfig.getNextHydratableSibling;var getFirstHydratableChild=$$$hostConfig.getFirstHydratableChild;var hydrateInstance=$$$hostConfig.hydrateInstance;var hydrateTextInstance=$$$hostConfig.hydrateTextInstance;var hydrateSuspenseInstance=$$$hostConfig.hydrateSuspenseInstance;var getNextHydratableInstanceAfterSuspenseInstance=$$$hostConfig.getNextHydratableInstanceAfterSuspenseInstance;var commitHydratedContainer=$$$hostConfig.commitHydratedContainer;var commitHydratedSuspenseInstance=$$$hostConfig.commitHydratedSuspenseInstance;var clearSuspenseBoundary=$$$hostConfig.clearSuspenseBoundary;var clearSuspenseBoundaryFromContainer=$$$hostConfig.clearSuspenseBoundaryFromContainer;var didNotMatchHydratedContainerTextInstance=$$$hostConfig.didNotMatchHydratedContainerTextInstance;var didNotMatchHydratedTextInstance=$$$hostConfig.didNotMatchHydratedTextInstance;var didNotHydrateContainerInstance=$$$hostConfig.didNotHydrateContainerInstance;var didNotHydrateInstance=$$$hostConfig.didNotHydrateInstance;var didNotFindHydratableContainerInstance=$$$hostConfig.didNotFindHydratableContainerInstance;var didNotFindHydratableContainerTextInstance=$$$hostConfig.didNotFindHydratableContainerTextInstance;var didNotFindHydratableContainerSuspenseInstance=$$$hostConfig.didNotFindHydratableContainerSuspenseInstance;var didNotFindHydratableInstance=$$$hostConfig.didNotFindHydratableInstance;var didNotFindHydratableTextInstance=$$$hostConfig.didNotFindHydratableTextInstance;var didNotFindHydratableSuspenseInstance=$$$hostConfig.didNotFindHydratableSuspenseInstance;var BEFORE_SLASH_RE=/^(.*)[\\\/]/;function describeComponentFrame(name,source,ownerName){var sourceInfo='';if(source){var path=source.fileName;var fileName=path.replace(BEFORE_SLASH_RE,'');{// In DEV, include code for a common special case:
+var canHydrateInstance=$$$hostConfig.canHydrateInstance;var canHydrateTextInstance=$$$hostConfig.canHydrateTextInstance;$$$hostConfig.canHydrateSuspenseInstance;var isSuspenseInstancePending=$$$hostConfig.isSuspenseInstancePending;var isSuspenseInstanceFallback=$$$hostConfig.isSuspenseInstanceFallback;$$$hostConfig.registerSuspenseInstanceRetry;var getNextHydratableSibling=$$$hostConfig.getNextHydratableSibling;var getFirstHydratableChild=$$$hostConfig.getFirstHydratableChild;var hydrateInstance=$$$hostConfig.hydrateInstance;var hydrateTextInstance=$$$hostConfig.hydrateTextInstance;$$$hostConfig.hydrateSuspenseInstance;var getNextHydratableInstanceAfterSuspenseInstance=$$$hostConfig.getNextHydratableInstanceAfterSuspenseInstance;var commitHydratedContainer=$$$hostConfig.commitHydratedContainer;var commitHydratedSuspenseInstance=$$$hostConfig.commitHydratedSuspenseInstance;$$$hostConfig.clearSuspenseBoundary;$$$hostConfig.clearSuspenseBoundaryFromContainer;var didNotMatchHydratedContainerTextInstance=$$$hostConfig.didNotMatchHydratedContainerTextInstance;var didNotMatchHydratedTextInstance=$$$hostConfig.didNotMatchHydratedTextInstance;var didNotHydrateContainerInstance=$$$hostConfig.didNotHydrateContainerInstance;var didNotHydrateInstance=$$$hostConfig.didNotHydrateInstance;var didNotFindHydratableContainerInstance=$$$hostConfig.didNotFindHydratableContainerInstance;var didNotFindHydratableContainerTextInstance=$$$hostConfig.didNotFindHydratableContainerTextInstance;var didNotFindHydratableContainerSuspenseInstance=$$$hostConfig.didNotFindHydratableContainerSuspenseInstance;var didNotFindHydratableInstance=$$$hostConfig.didNotFindHydratableInstance;var didNotFindHydratableTextInstance=$$$hostConfig.didNotFindHydratableTextInstance;var didNotFindHydratableSuspenseInstance=$$$hostConfig.didNotFindHydratableSuspenseInstance;var BEFORE_SLASH_RE=/^(.*)[\\\/]/;function describeComponentFrame(name,source,ownerName){var sourceInfo='';if(source){var path=source.fileName;var fileName=path.replace(BEFORE_SLASH_RE,'');{// In DEV, include code for a common special case:
 // prefer "folder/index.js" instead of just "index.js".
 if(/^index\./.test(fileName)){var match=path.match(BEFORE_SLASH_RE);if(match){var pathBeforeSlash=match[1];if(pathBeforeSlash){var folderName=pathBeforeSlash.replace(BEFORE_SLASH_RE,'');fileName=folderName+'/'+fileName;}}}}sourceInfo=' (at '+fileName+':'+source.lineNumber+')';}else if(ownerName){sourceInfo=' (created by '+ownerName+')';}return'\n    in '+(name||'Unknown')+sourceInfo;}var ReactDebugCurrentFrame=ReactSharedInternals.ReactDebugCurrentFrame;function describeFiber(fiber){switch(fiber.tag){case HostRoot:case HostPortal:case HostText:case Fragment:case ContextProvider:case ContextConsumer:return'';default:var owner=fiber._debugOwner;var source=fiber._debugSource;var name=getComponentName(fiber.type);var ownerName=null;if(owner){ownerName=getComponentName(owner.type);}return describeComponentFrame(name,source,ownerName);}}function getStackByFiberInDevAndProd(workInProgress){var info='';var node=workInProgress;do{info+=describeFiber(node);node=node["return"];}while(node);return info;}var current=null;var isRendering=false;function getCurrentFiberOwnerNameInDevOrNull(){{if(current===null){return null;}var owner=current._debugOwner;if(owner!==null&&typeof owner!=='undefined'){return getComponentName(owner.type);}}return null;}function getCurrentFiberStackInDev(){{if(current===null){return'';}// Safe because if current fiber exists, we are reconciling,
 // and it is guaranteed to be the work-in-progress version.
@@ -6497,30 +2599,30 @@ try{if(actingUpdatesScopeDepth===1&&(isSchedulerMocked===false||previousIsSomeRe
 flushWork();}onDone();}catch(err){onDone();throw err;}// in the sync case, the returned thenable only warns *if* await-ed
 return{then:function then(resolve){{error('Do not await the result of calling act(...) with sync logic, it is not a Promise.');}resolve();}};}}var ReactFiberReconciler=/*#__PURE__*/Object.freeze({__proto__:null,createContainer:createContainer,updateContainer:updateContainer,batchedEventUpdates:batchedEventUpdates,batchedUpdates:batchedUpdates,unbatchedUpdates:unbatchedUpdates,deferredUpdates:deferredUpdates,syncUpdates:syncUpdates,discreteUpdates:discreteUpdates,flushDiscreteUpdates:flushDiscreteUpdates,flushControlled:flushControlled,flushSync:flushSync,flushPassiveEffects:flushPassiveEffects,IsThisRendererActing:IsThisRendererActing,getPublicRootInstance:getPublicRootInstance,attemptSynchronousHydration:attemptSynchronousHydration,attemptUserBlockingHydration:attemptUserBlockingHydration,attemptContinuousHydration:attemptContinuousHydration,attemptHydrationAtCurrentPriority:attemptHydrationAtCurrentPriority,findHostInstance:findHostInstance,findHostInstanceWithWarning:findHostInstanceWithWarning,findHostInstanceWithNoPortals:findHostInstanceWithNoPortals,shouldSuspend:shouldSuspend,injectIntoDevTools:injectIntoDevTools,act:act});function getCjsExportFromNamespace(n){return n&&n['default']||n;}var ReactFiberReconciler$1=getCjsExportFromNamespace(ReactFiberReconciler);// TODO: decide on the top-level export form.
 // This is hacky but makes it work with both Rollup and Jest.
-var reactReconciler=ReactFiberReconciler$1["default"]||ReactFiberReconciler$1;module.exports=reactReconciler;var $$$renderer=module.exports;module.exports=$$$reconciler;return $$$renderer;};}});var reactReconciler=createCommonjsModule(function(module){{module.exports=reactReconciler_development;}});var panelBaseNames=new Set(['CircularProgressBar','Slider','SlottedSlider']);function fixPanelBase(panel){for(var _i3=0,_Object$entries=Object.entries(temporaryPanelHost);_i3<_Object$entries.length;_i3++){var _Object$entries$_i=_slicedToArray(_Object$entries[_i3],2),key=_Object$entries$_i[0],value=_Object$entries$_i[1];if(typeof value==='function'){panel[key]=value;}}}/* eslint-disable @typescript-eslint/prefer-optional-chain */var panelPropertyInformation={};function definePanelPropertyInformation(name,properties){panelPropertyInformation[name]=properties;}var PANORAMA_INVALID_DATE=Math.pow(2,52);var propertiesInformation={id:{type:2/* INITIAL_ONLY */,initial:false},enabled:{type:0/* SET */,name:'enabled',initial:true,throwOnIncomplete:true},visible:{type:0/* SET */,name:'visible',initial:true,throwOnIncomplete:true},hittest:{type:0/* SET */,name:'hittest',initial:true,throwOnIncomplete:true},hittestchildren:{type:0/* SET */,name:'hittestchildren',initial:true,throwOnIncomplete:true},acceptsfocus:{type:1/* SETTER */,name:'SetAcceptsFocus',initial:true},// @ts-expect-error tabindex setter accepts 'auto'
+var reactReconciler=ReactFiberReconciler$1["default"]||ReactFiberReconciler$1;module.exports=reactReconciler;var $$$renderer=module.exports;module.exports=$$$reconciler;return $$$renderer;};}});var reactReconciler=createCommonjsModule(function(module){{module.exports=reactReconciler_development;}});var panelBaseNames=new Set(['CircularProgressBar','Slider','SlottedSlider']);function fixPanelBase(panel){for(var _i3=0,_Object$entries=Object.entries(temporaryPanelHost);_i3<_Object$entries.length;_i3++){var _Object$entries$_i=_slicedToArray(_Object$entries[_i3],2),key=_Object$entries$_i[0],value=_Object$entries$_i[1];if(typeof value==='function'){panel[key]=value;}}}/* eslint-disable @typescript-eslint/prefer-optional-chain */var panelPropertyInformation={};function definePanelPropertyInformation(name,properties){panelPropertyInformation[name]=properties;}var PANORAMA_INVALID_DATE=Math.pow(2,52);var propertiesInformation={id:{type:2/* INITIAL_ONLY */,initial:false},enabled:{type:0/* SET */,name:'enabled'},visible:{type:0/* SET */,name:'visible'},hittest:{type:0/* SET */,name:'hittest',initial:true,throwOnIncomplete:true},hittestchildren:{type:0/* SET */,name:'hittestchildren',initial:true,throwOnIncomplete:true},acceptsfocus:{type:1/* SETTER */,name:'SetAcceptsFocus',initial:true},// @ts-expect-error tabindex setter accepts 'auto'
 tabindex:{type:0/* SET */,name:'tabindex',initial:true,throwOnIncomplete:true},inputnamespace:{type:0/* SET */,name:'inputnamespace',initial:true,throwOnIncomplete:true},dangerouslyCreateChildren:{type:3/* CUSTOM */,update:function update(panel,newValue){panel.RemoveAndDeleteChildren();if(newValue){var status=panel.BCreateChildren(newValue);if(!status){var indentedLayout=newValue.replace(/^/gm,'    ');throw new Error("Cannot create children for \"dangerouslyCreateChildren\":\n".concat(indentedLayout));}}}},dialogVariables:{type:3/* CUSTOM */,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};var oldValue=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{};function unassignDialogVariable(key,old){if(old!==undefined)return;if(typeof old==='string'){panel.SetDialogVariable(key,"[!s:".concat(key,"]"));}else if(typeof old==='number'){// eslint-disable-next-line unicorn/prefer-number-properties
 panel.SetDialogVariableInt(key,NaN);}else{panel.SetDialogVariableTime(key,PANORAMA_INVALID_DATE);}}for(var key in newValue){var value=newValue[key];if(value!==oldValue[key]){// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 if(value===undefined){unassignDialogVariable(key,oldValue[key]);}else if(typeof value==='string'){panel.SetDialogVariable(key,value);}else if(typeof value==='number'){panel.SetDialogVariableInt(key,value);}else{panel.SetDialogVariableTime(key,Math.floor(value.getTime()/1000));}}}for(var _key3 in oldValue){if(!(_key3 in newValue)){unassignDialogVariable(_key3,oldValue[_key3]);}}}},style:{type:3/* CUSTOM */,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};var oldValue=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{};for(var styleName in newValue){if(newValue[styleName]!==oldValue[styleName]){panel.style[styleName]=newValue[styleName];}}for(var _styleName in oldValue){if(!(_styleName in newValue)){panel.style[_styleName]=null;}}},throwOnIncomplete:true},className:{type:3/* CUSTOM */,initial:'class',update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:'';var oldValue=arguments.length>2&&arguments[2]!==undefined?arguments[2]:'';var newClasses=newValue.split(' ');var _iterator=_createForOfIteratorHelper(newClasses),_step2;try{for(_iterator.s();!(_step2=_iterator.n()).done;){var className=_step2.value;panel.AddClass(className);}}catch(err){_iterator.e(err);}finally{_iterator.f();}var _iterator2=_createForOfIteratorHelper(oldValue.split(' ')),_step3;try{for(_iterator2.s();!(_step3=_iterator2.n()).done;){var _className=_step3.value;if(!newClasses.includes(_className)){panel.RemoveClass(_className);}}}catch(err){_iterator2.e(err);}finally{_iterator2.f();}}},draggable:{type:1/* SETTER */,name:'SetDraggable'}};var labelTextAttributes={// Number can be assigned to text
 text:{type:0/* SET */,name:'text'},localizedText:{type:2/* INITIAL_ONLY */,initial:'text'},// Label.html setter doesn't appear to work correctly
-html:{type:2/* INITIAL_ONLY */,initial:true}};definePanelPropertyInformation('Label',Object.assign(Object.assign({},labelTextAttributes),{allowtextselection:{type:2/* INITIAL_ONLY */,initial:true}}));var imageAttributes={scaling:{type:1/* SETTER */,name:'SetScaling',initial:true},src:{type:1/* SETTER */,name:'SetImage',initial:true}};definePanelPropertyInformation('Image',imageAttributes);definePanelPropertyInformation('DOTAAbilityImage',Object.assign(Object.assign({},imageAttributes),{abilityname:{type:0/* SET */,name:'abilityname',initial:true},contextEntityIndex:{type:0/* SET */,name:'contextEntityIndex'},showtooltip:{type:2/* INITIAL_ONLY */,initial:true},abilityid:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTAItemImage',Object.assign(Object.assign({},imageAttributes),{itemname:{type:0/* SET */,name:'itemname',initial:true},contextEntityIndex:{type:0/* SET */,name:'contextEntityIndex'},showtooltip:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTAHeroImage',Object.assign(Object.assign({},imageAttributes),{heroid:{type:0/* SET */,name:'heroid',initial:true},heroname:{type:0/* SET */,name:'heroname',initial:true},heroimagestyle:{type:0/* SET */,name:'heroimagestyle',initial:true},usedefaultimage:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTACountryFlagImage',Object.assign(Object.assign({},imageAttributes),{country_code:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTALeagueImage',Object.assign(Object.assign({},imageAttributes),{leagueid:{type:0/* SET */,name:'leagueid',initial:true},leagueimagestyle:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('EconItemImage',Object.assign(Object.assign({},imageAttributes),{itemdef:{type:2/* INITIAL_ONLY */,initial:true}}));var animatedImageStripAttributes=Object.assign(Object.assign({},imageAttributes),{frametime:{type:2/* INITIAL_ONLY */,initial:true},defaultframe:{type:2/* INITIAL_ONLY */,initial:true},animating:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('AnimatedImageStrip',animatedImageStripAttributes);definePanelPropertyInformation('DOTAEmoticon',Object.assign(Object.assign({},animatedImageStripAttributes),{emoticonid:{type:2/* INITIAL_ONLY */,initial:true},alias:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('Movie',{src:{type:1/* SETTER */,name:'SetMovie',initial:true},controls:{type:1/* SETTER */,name:'SetControls',initial:true},repeat:{type:1/* SETTER */,name:'SetRepeat',initial:true},title:{type:1/* SETTER */,name:'SetTitle',initial:true},autoplay:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('DOTAHeroMovie',{heroid:{type:0/* SET */,name:'heroid',initial:true},heroname:{type:0/* SET */,name:'heroname',initial:true},persona:{type:0/* SET */,name:'persona'},autoplay:{type:2/* INITIAL_ONLY */,initial:true}});var createSceneRotationSetter=function createSceneRotationSetter(propName){return{type:3/* CUSTOM */,update:function update(panel,newValue){if(panel._rotateParams===undefined)panel._rotateParams={};panel._rotateParams[propName]=newValue;panel.SetRotateParams(panel._rotateParams.yawmin||0,panel._rotateParams.yawmax||0,panel._rotateParams.pitchmin||0,panel._rotateParams.pitchmax||0);}};};definePanelPropertyInformation('DOTAScenePanel',{// TODO: panel.SetUnit?
-unit:{type:2/* INITIAL_ONLY */,initial:true},'activity-modifier':{type:2/* INITIAL_ONLY */,initial:true},map:{type:2/* INITIAL_ONLY */,initial:true},camera:{type:2/* INITIAL_ONLY */,initial:true},light:{type:2/* INITIAL_ONLY */,initial:true},pitchmin:createSceneRotationSetter('pitchmin'),pitchmax:createSceneRotationSetter('pitchmax'),yawmin:createSceneRotationSetter('yawmin'),yawmax:createSceneRotationSetter('yawmax'),allowrotation:{type:2/* INITIAL_ONLY */,initial:true},rotateonhover:{type:2/* INITIAL_ONLY */,initial:true},rotateonmousemove:{type:2/* INITIAL_ONLY */,initial:true},antialias:{type:2/* INITIAL_ONLY */,initial:true},panoramasurfaceheight:{type:2/* INITIAL_ONLY */,initial:true},panoramasurfacewidth:{type:2/* INITIAL_ONLY */,initial:true},panoramasurfacexml:{type:2/* INITIAL_ONLY */,initial:true},particleonly:{type:2/* INITIAL_ONLY */,initial:true},renderdeferred:{type:2/* INITIAL_ONLY */,initial:true},rendershadows:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('DOTAEconItem',{itemdef:{type:3/* CUSTOM */,update:function update(panel,newValue){panel._econItemDef=newValue;panel.SetItemByDefinitionAndStyle(panel._econItemDef||0,panel._econItemStyle||0);}},itemstyle:{type:3/* CUSTOM */,update:function update(panel,newValue){panel._econItemStyle=newValue;panel.SetItemByDefinitionAndStyle(panel._econItemDef||0,panel._econItemStyle||0);}}});var progressBarAttributes={value:{type:0/* SET */,name:'value',initial:true},min:{type:0/* SET */,name:'min',initial:true},max:{type:0/* SET */,name:'max',initial:true}};definePanelPropertyInformation('ProgressBar',progressBarAttributes);definePanelPropertyInformation('CircularProgressBar',progressBarAttributes);definePanelPropertyInformation('ProgressBarWithMiddle',{lowervalue:{type:0/* SET */,name:'lowervalue',initial:true},uppervalue:{type:0/* SET */,name:'uppervalue',initial:true},min:{type:0/* SET */,name:'min',initial:true},max:{type:0/* SET */,name:'max',initial:true}});var steamIdAttribute={type:3/* CUSTOM */,initial:true,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:'0';// XML attribute supports "local" value, but JS setter doesn't
+html:{type:2/* INITIAL_ONLY */,initial:true}};definePanelPropertyInformation('Label',Object.assign(Object.assign({},labelTextAttributes),{allowtextselection:{type:2/* INITIAL_ONLY */,initial:true}}));var imageAttributes={scaling:{type:1/* SETTER */,name:'SetScaling',initial:true},src:{type:1/* SETTER */,name:'SetImage',initial:true}};definePanelPropertyInformation('Image',imageAttributes);definePanelPropertyInformation('DOTAAbilityImage',Object.assign(Object.assign({},imageAttributes),{abilityname:{type:0/* SET */,name:'abilityname',initial:true},contextEntityIndex:{type:0/* SET */,name:'contextEntityIndex'},showtooltip:{type:2/* INITIAL_ONLY */,initial:true},abilityid:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTAItemImage',Object.assign(Object.assign({},imageAttributes),{itemname:{type:0/* SET */,name:'itemname',initial:true},contextEntityIndex:{type:0/* SET */,name:'contextEntityIndex'},showtooltip:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTAHeroImage',Object.assign(Object.assign({},imageAttributes),{heroid:{type:0/* SET */,name:'heroid',initial:true},heroname:{type:0/* SET */,name:'heroname',initial:true},heroimagestyle:{type:0/* SET */,name:'heroimagestyle',initial:true},usedefaultimage:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTACountryFlagImage',Object.assign(Object.assign({},imageAttributes),{country_code:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTALeagueImage',Object.assign(Object.assign({},imageAttributes),{leagueid:{type:0/* SET */,name:'leagueid',initial:true},leagueimagestyle:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('EconItemImage',Object.assign(Object.assign({},imageAttributes),{itemdef:{type:2/* INITIAL_ONLY */,initial:true}}));var animatedImageStripAttributes=Object.assign(Object.assign({},imageAttributes),{frametime:{type:2/* INITIAL_ONLY */,initial:true},defaultframe:{type:2/* INITIAL_ONLY */,initial:true},animating:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('AnimatedImageStrip',animatedImageStripAttributes);definePanelPropertyInformation('DOTAEmoticon',Object.assign(Object.assign({},animatedImageStripAttributes),{emoticonid:{type:2/* INITIAL_ONLY */,initial:true},alias:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('Movie',{src:{type:1/* SETTER */,name:'SetMovie',initial:true},controls:{type:1/* SETTER */,name:'SetControls',initial:true},repeat:{type:1/* SETTER */,name:'SetRepeat',initial:true},title:{type:1/* SETTER */,name:'SetTitle',initial:true},autoplay:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('DOTAHeroMovie',{heroid:{type:0/* SET */,name:'heroid',initial:true},heroname:{type:0/* SET */,name:'heroname',initial:true},persona:{type:0/* SET */,name:'persona'},autoplay:{type:2/* INITIAL_ONLY */,initial:true}});var createSceneRotationSetter=function createSceneRotationSetter(propName){return{type:3/* CUSTOM */,update:function update(panel,newValue){if(panel._rotateParams===undefined)panel._rotateParams={};panel._rotateParams[propName]=newValue;panel.SetRotateParams(panel._rotateParams.yawmin||0,panel._rotateParams.yawmax||0,panel._rotateParams.pitchmin||0,panel._rotateParams.pitchmax||0);}};};var scenePanelAttributes={// TODO: panel.SetUnit?
+unit:{type:2/* INITIAL_ONLY */,initial:true},'activity-modifier':{type:2/* INITIAL_ONLY */,initial:true},map:{type:2/* INITIAL_ONLY */,initial:true},camera:{type:2/* INITIAL_ONLY */,initial:true},light:{type:2/* INITIAL_ONLY */,initial:true},pitchmin:createSceneRotationSetter('pitchmin'),pitchmax:createSceneRotationSetter('pitchmax'),yawmin:createSceneRotationSetter('yawmin'),yawmax:createSceneRotationSetter('yawmax'),allowrotation:{type:2/* INITIAL_ONLY */,initial:true},rotateonhover:{type:2/* INITIAL_ONLY */,initial:true},rotateonmousemove:{type:2/* INITIAL_ONLY */,initial:true},antialias:{type:2/* INITIAL_ONLY */,initial:true},panoramasurfaceheight:{type:2/* INITIAL_ONLY */,initial:true},panoramasurfacewidth:{type:2/* INITIAL_ONLY */,initial:true},panoramasurfacexml:{type:2/* INITIAL_ONLY */,initial:true},particleonly:{type:2/* INITIAL_ONLY */,initial:true},renderdeferred:{type:2/* INITIAL_ONLY */,initial:true},rendershadows:{type:2/* INITIAL_ONLY */,initial:true}};definePanelPropertyInformation('DOTAScenePanel',Object.assign({},scenePanelAttributes));definePanelPropertyInformation('DOTAParticleScenePanel',Object.assign(Object.assign({},scenePanelAttributes),{particleName:{type:2/* INITIAL_ONLY */,initial:true},cameraOrigin:{type:2/* INITIAL_ONLY */,initial:true,preOperation:function preOperation(value){if(Array.isArray(value)){value=value.join(' ');}return value;}},lookAt:{type:2/* INITIAL_ONLY */,initial:true,preOperation:function preOperation(value){if(Array.isArray(value)){value=value.join(' ');}return value;}},fov:{type:2/* INITIAL_ONLY */,initial:true},squarePixels:{type:2/* INITIAL_ONLY */,initial:true},startActive:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DOTAEconItem',{itemdef:{type:3/* CUSTOM */,update:function update(panel,newValue){panel._econItemDef=newValue;panel.SetItemByDefinitionAndStyle(panel._econItemDef||0,panel._econItemStyle||0);}},itemstyle:{type:3/* CUSTOM */,update:function update(panel,newValue){panel._econItemStyle=newValue;panel.SetItemByDefinitionAndStyle(panel._econItemDef||0,panel._econItemStyle||0);}}});var progressBarAttributes={value:{type:0/* SET */,name:'value',initial:true},min:{type:0/* SET */,name:'min',initial:true},max:{type:0/* SET */,name:'max',initial:true}};definePanelPropertyInformation('ProgressBar',progressBarAttributes);definePanelPropertyInformation('CircularProgressBar',progressBarAttributes);definePanelPropertyInformation('ProgressBarWithMiddle',{lowervalue:{type:0/* SET */,name:'lowervalue',initial:true},uppervalue:{type:0/* SET */,name:'uppervalue',initial:true},min:{type:0/* SET */,name:'min',initial:true},max:{type:0/* SET */,name:'max',initial:true}});var steamIdAttribute={type:3/* CUSTOM */,initial:true,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:'0';// XML attribute supports "local" value, but JS setter doesn't
 if(newValue==='local'){panel.steamid=Game.GetLocalPlayerInfo().player_steamid;}else{panel.steamid=newValue;}}};definePanelPropertyInformation('DOTAUserName',{steamid:steamIdAttribute});definePanelPropertyInformation('DOTAUserRichPresence',{steamid:steamIdAttribute});definePanelPropertyInformation('DOTAAvatarImage',{steamid:steamIdAttribute,nocompendiumborder:{type:2/* INITIAL_ONLY */,initial:true},lazy:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('Countdown',{startTime:{type:0/* SET */,name:'startTime',initial:'start-time'},endTime:{type:0/* SET */,name:'endTime',initial:'end-time'},updateInterval:{type:0/* SET */,name:'updateInterval'},timeDialogVariable:{type:0/* SET */,name:'timeDialogVariable'}});definePanelPropertyInformation('TextButton',labelTextAttributes);definePanelPropertyInformation('ToggleButton',Object.assign(Object.assign({},labelTextAttributes),{selected:{type:0/* SET */,name:'checked'},html:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('RadioButton',{group:{type:2/* INITIAL_ONLY */,initial:true},text:{type:2/* INITIAL_ONLY */,initial:true},html:{type:2/* INITIAL_ONLY */,initial:true},selected:{type:0/* SET */,name:'checked'}});definePanelPropertyInformation('TextEntry',{text:{type:0/* SET */,name:'text'},multiline:{type:2/* INITIAL_ONLY */,initial:true},maxchars:{type:1/* SETTER */,name:'SetMaxChars',initial:true},placeholder:{type:2/* INITIAL_ONLY */,initial:true},textmode:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('NumberEntry',{value:{type:0/* SET */,name:'value',initial:true},increment:{type:0/* SET */,name:'increment',initial:true},// panel.value = panel.value refreshes increment and decrement buttons
-/* eslint-disable no-self-assign */min:{type:3/* CUSTOM */,initial:true,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;panel.min=newValue;panel.value=panel.value;}},max:{type:3/* CUSTOM */,initial:true,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:1000000;panel.max=newValue;panel.value=panel.value;}}});var sliderAttributes={// panel.SetDirection doesn't seem to work
+/* eslint-disable no-self-assign */min:{type:3/* CUSTOM */,initial:true,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;panel.min=newValue;panel.value=panel.value;}},max:{type:3/* CUSTOM */,initial:true,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:1000000;panel.max=newValue;panel.value=panel.value;}}/* eslint-enable no-self-assign */});var sliderAttributes={// panel.SetDirection doesn't seem to work
 direction:{type:2/* INITIAL_ONLY */,initial:true},value:{type:1/* SETTER */,name:'SetValueNoEvents'},min:{type:0/* SET */,name:'min'},max:{type:0/* SET */,name:'max'}};definePanelPropertyInformation('Slider',sliderAttributes);definePanelPropertyInformation('SlottedSlider',Object.assign(Object.assign({},sliderAttributes),{notches:{type:2/* INITIAL_ONLY */,initial:true}}));definePanelPropertyInformation('DropDown',{selected:{type:3/* CUSTOM */,update:function update(panel,newValue){// Defer update until children are created
-queueMicrotask(function(){return newValue&&panel.SetSelected(newValue);});}}});definePanelPropertyInformation('Carousel',{focus:{type:2/* INITIAL_ONLY */,initial:true},'focus-offset':{type:2/* INITIAL_ONLY */,initial:true},wrap:{type:2/* INITIAL_ONLY */,initial:true},selectionposboundary:{type:2/* INITIAL_ONLY */,initial:true},'panels-visible':{type:2/* INITIAL_ONLY */,initial:true},clipaftertransform:{type:2/* INITIAL_ONLY */,initial:true},AllowOversized:{type:2/* INITIAL_ONLY */,initial:true},'autoscroll-delay':{type:2/* INITIAL_ONLY */,initial:true},'x-offset':{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('CarouselNav',{carouselid:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('DOTAHUDOverlayMap',{maptexture:{type:0/* SET */,name:'maptexture',initial:true},mapscale:{type:0/* SET */,name:'mapscale',initial:true},mapscroll:{type:0/* SET */,name:'mapscroll'},fixedoffsetenabled:{type:0/* SET */,name:'fixedoffsetenabled'},fixedOffset:{type:3/* CUSTOM */,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};panel.SetFixedOffset(newValue.x||0,newValue.y||0);}},fixedBackgroundTexturePosition:{type:3/* CUSTOM */,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};panel.SetFixedBackgroundTexturePosition(newValue.size||0,newValue.x||0,newValue.y||0);}}});definePanelPropertyInformation('HTML',{url:{type:1/* SETTER */,name:'SetURL',initial:true}});definePanelPropertyInformation('CustomLayoutPanel',{layout:{type:2/* INITIAL_ONLY */,initial:true}});var genericPanelPropertyInfo={type:2/* INITIAL_ONLY */,initial:true};var uiEventPropertyInfo={type:3/* CUSTOM */,update:function update(panel,newValue,_oldValue,propName){var _a;(_a=panel._eventHandlers)!==null&&_a!==void 0?_a:panel._eventHandlers={};// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+queueMicrotask(function(){return newValue&&panel.SetSelected(newValue);});}}});definePanelPropertyInformation('Carousel',{focus:{type:2/* INITIAL_ONLY */,initial:true},'focus-offset':{type:2/* INITIAL_ONLY */,initial:true},wrap:{type:2/* INITIAL_ONLY */,initial:true},selectionposboundary:{type:2/* INITIAL_ONLY */,initial:true},'panels-visible':{type:2/* INITIAL_ONLY */,initial:true},clipaftertransform:{type:2/* INITIAL_ONLY */,initial:true},AllowOversized:{type:2/* INITIAL_ONLY */,initial:true},'autoscroll-delay':{type:2/* INITIAL_ONLY */,initial:true},'x-offset':{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('CarouselNav',{carouselid:{type:2/* INITIAL_ONLY */,initial:true}});definePanelPropertyInformation('DOTAHUDOverlayMap',{maptexture:{type:0/* SET */,name:'maptexture',initial:true},mapscale:{type:0/* SET */,name:'mapscale',initial:true},mapscroll:{type:0/* SET */,name:'mapscroll'},fixedoffsetenabled:{type:0/* SET */,name:'fixedoffsetenabled'},fixedOffset:{type:3/* CUSTOM */,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};panel.SetFixedOffset(newValue.x||0,newValue.y||0);}},fixedBackgroundTexturePosition:{type:3/* CUSTOM */,update:function update(panel){var newValue=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};panel.SetFixedBackgroundTexturePosition(newValue.size||0,newValue.x||0,newValue.y||0);}}});definePanelPropertyInformation('HTML',{url:{type:1/* SETTER */,name:'SetURL',initial:true}});definePanelPropertyInformation('TabButton',{group:{type:2/* INITIAL_ONLY */,initial:true},text:{type:2/* INITIAL_ONLY */,initial:true},html:{type:2/* INITIAL_ONLY */,initial:true},tabid:{type:2/* INITIAL_ONLY */,initial:true},selected:{type:0/* SET */,name:'checked'}});definePanelPropertyInformation('TabContents',{group:{type:2/* INITIAL_ONLY */,initial:true},tabid:{type:2/* INITIAL_ONLY */,initial:true},selected:{type:0/* SET */,name:'checked'}});definePanelPropertyInformation('CustomLayoutPanel',{layout:{type:2/* INITIAL_ONLY */,initial:true}});var genericPanelPropertyInfo={type:2/* INITIAL_ONLY */,initial:true};var uiEventPropertyInfo={type:3/* CUSTOM */,update:function update(panel,newValue,_oldValue,propName){var _a;(_a=panel._eventHandlers)!==null&&_a!==void 0?_a:panel._eventHandlers={};// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 if(panel._eventHandlers[propName]===undefined){$.RegisterEventHandler(propName.slice(6),panel,function(){var _panel$_eventHandlers;return(_panel$_eventHandlers=panel._eventHandlers)[propName].apply(_panel$_eventHandlers,arguments);});}panel._eventHandlers[propName]=newValue!==undefined?newValue:noop;}};var panelEventPropertyInfo={type:3/* CUSTOM */,update:function update(panel,newValue,_oldValue,propName){var _a;// Unlike UI event handlers, it's not required to use an object here,
 // because SetPanelEvent overrides previous listener,
 // but we're still using it here as a potential performance optimization
 (_a=panel._eventHandlers)!==null&&_a!==void 0?_a:panel._eventHandlers={};// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 if(panel._eventHandlers[propName]===undefined){panel.SetPanelEvent(propName,function(){return panel._eventHandlers[propName](panel);});}panel._eventHandlers[propName]=newValue!==undefined?newValue:noop;}};function getPropertyInfo(type,propName){var _a;var propertyInformation=propertiesInformation[propName];if(// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-propertyInformation!==undefined&&!(panelBaseNames.has(type)&&propertyInformation.type===0/* SET */)){return propertyInformation;}var panelProperty=(_a=panelPropertyInformation[type])===null||_a===void 0?void 0:_a[propName];if(panelProperty)return panelProperty;if(propName==='children')return undefined;if(propName.startsWith('on-ui-'))return uiEventPropertyInfo;if(propName.startsWith('on'))return panelEventPropertyInfo;if(type==='GenericPanel')return genericPanelPropertyInfo;}function splitInitialProps(type,props){var hasInitialProps=false;var initialProps={};var otherProps={};for(var propName in props){var propertyInformation=getPropertyInfo(type,propName);if(propertyInformation&&propertyInformation.initial){var initialName=typeof propertyInformation.initial==='string'?propertyInformation.initial:propName;hasInitialProps=true;initialProps[initialName]=props[propName];}else if(propName!=='id'){otherProps[propName]=props[propName];}}return{initialProps:hasInitialProps?initialProps:undefined,otherProps:otherProps};}function updateProperty(type,panel,propName,oldValue,newValue){var propertyInformation=getPropertyInfo(type,propName);if(!propertyInformation){// Ignore unknown properties
-return;}if(panelBaseNames.has(type)&&propertyInformation.throwOnIncomplete){throw new Error("Attribute \"".concat(propName,"\" cannot be ").concat(propertyInformation.initial?'changed on':'added to'," incomplete ").concat(type," panel type.").concat(propertyInformation.initial?' Add a "key" attribute to force re-mount.':''));}switch(propertyInformation.type){case 0/* SET */:panel[propertyInformation.name]=newValue;break;case 1/* SETTER */:panel[propertyInformation.name](newValue);break;case 2/* INITIAL_ONLY */:throw new Error("Attribute \"".concat(propName,"\" cannot be changed. Add a \"key\" attribute to force re-mount."));case 3/* CUSTOM */:propertyInformation.update(panel,newValue,oldValue,propName);break;}}var rootHostContext={};var childHostContext={};function appendChild(parent,child){if(parent.paneltype==='DropDown'){parent.AddOption(child);return;}if(parent.paneltype==='ContextMenuScript'){parent=parent.GetContentsPanel();}if(parent===child.GetParent()){parent.MoveChildAfter(child,parent.GetChild(parent.GetChildCount()-1));}else{child.SetParent(parent);}}function insertBefore(parent,child,beforeChild){if(parent.paneltype==='DropDown'){parent.AddOption(child);parent.AccessDropDownMenu().MoveChildBefore(child,beforeChild);return;}if(parent.paneltype==='ContextMenuScript'){parent=parent.GetContentsPanel();}child.SetParent(parent);parent.MoveChildBefore(child,beforeChild);}function removeChild(parent,child){if(parent.paneltype==='DropDown'){parent.RemoveOption(child.id);}else{child.SetParent(temporaryPanelHost);temporaryPanelHost.RemoveAndDeleteChildren();// TODO: child.DeleteAsync(0)?
+propertyInformation!==undefined&&!(panelBaseNames.has(type)&&propertyInformation.type===0/* SET */)){return propertyInformation;}var panelProperty=(_a=panelPropertyInformation[type])===null||_a===void 0?void 0:_a[propName];if(panelProperty)return panelProperty;if(propName==='children')return undefined;if(propName.startsWith('on-ui-'))return uiEventPropertyInfo;if(propName.startsWith('on'))return panelEventPropertyInfo;if(type==='GenericPanel')return genericPanelPropertyInfo;}function splitInitialProps(type,props){var hasInitialProps=false;var initialProps={};var otherProps={};for(var propName in props){var value=props[propName];var propertyInformation=getPropertyInfo(type,propName);if(propertyInformation&&typeof propertyInformation.preOperation==='function'){value=propertyInformation.preOperation(value);}if(propertyInformation&&propertyInformation.initial){var initialName=typeof propertyInformation.initial==='string'?propertyInformation.initial:propName;hasInitialProps=true;initialProps[initialName]=value;}else if(propName!=='id'){otherProps[propName]=value;}}return{initialProps:hasInitialProps?initialProps:undefined,otherProps:otherProps};}function updateProperty(type,panel,propName,oldValue,newValue){var propertyInformation=getPropertyInfo(type,propName);if(!propertyInformation){// Ignore unknown properties
+return;}if(panelBaseNames.has(type)&&propertyInformation.throwOnIncomplete){throw new Error("Attribute \"".concat(propName,"\" cannot be ").concat(propertyInformation.initial?'changed on':'added to'," incomplete ").concat(type," panel type.").concat(propertyInformation.initial?' Add a "key" attribute to force re-mount.':''));}if(typeof propertyInformation.preOperation==='function'){newValue=propertyInformation.preOperation(newValue);}switch(propertyInformation.type){case 0/* SET */:panel[propertyInformation.name]=newValue;break;case 1/* SETTER */:panel[propertyInformation.name](newValue);break;case 2/* INITIAL_ONLY */:throw new Error("Attribute \"".concat(propName,"\" cannot be changed. Add a \"key\" attribute to force re-mount."));case 3/* CUSTOM */:propertyInformation.update(panel,newValue,oldValue,propName);break;}}var rootHostContext={};var childHostContext={};function appendChild(parent,child){if(parent.paneltype==='DropDown'){parent.AddOption(child);return;}if(parent.paneltype==='ContextMenuScript'){parent=parent.GetContentsPanel();}if(parent===child.GetParent()){parent.MoveChildAfter(child,parent.GetChild(parent.GetChildCount()-1));}else{child.SetParent(parent);}}function insertBefore(parent,child,beforeChild){if(parent.paneltype==='DropDown'){parent.AddOption(child);parent.AccessDropDownMenu().MoveChildBefore(child,beforeChild);return;}if(parent.paneltype==='ContextMenuScript'){parent=parent.GetContentsPanel();}child.SetParent(parent);parent.MoveChildBefore(child,beforeChild);}function removeChild(parent,child){if(parent.paneltype==='DropDown'){parent.RemoveOption(child.id);}else if((child.paneltype==='DOTAScenePanel'||child.paneltype==='DOTAParticleScenePanel')&&!child.BHasClass('SceneLoaded')){child.SetParent(temporaryScenePanelHost);}else{child.SetParent(temporaryPanelHost);temporaryPanelHost.RemoveAndDeleteChildren();// TODO: child.DeleteAsync(0)?
 }}var hostConfig={getPublicInstance:function getPublicInstance(instance){return instance;},getRootHostContext:function getRootHostContext(){return rootHostContext;},getChildHostContext:function getChildHostContext(){return childHostContext;},prepareForCommit:noop,resetAfterCommit:noop,// https://github.com/facebook/react/pull/14984
 scheduleDeferredCallback:undefined,cancelDeferredCallback:undefined,// https://github.com/facebook/react/pull/19124
 shouldDeprioritizeSubtree:undefined,setTimeout:setTimeout,clearTimeout:clearTimeout,noTimeout:-1,now:Date.now,isPrimaryRenderer:true,supportsMutation:true,supportsPersistence:false,supportsHydration:false,shouldSetTextContent:function shouldSetTextContent(){return false;},createInstance:function createInstance(type,newProps){var _splitInitialProps=splitInitialProps(type,newProps),initialProps=_splitInitialProps.initialProps,otherProps=_splitInitialProps.otherProps;if(type==='GenericPanel')type=newProps.type;var panel=initialProps?// Create it on the context panel instead of rootContainerInstance to
 // preserve style context for elements rendered outside of the main tree
 $.CreatePanelWithProperties(type,$.GetContextPanel(),newProps.id||'',initialProps):$.CreatePanel(type,$.GetContextPanel(),newProps.id||'');if(panelBaseNames.has(type)){fixPanelBase(panel);}for(var propName in otherProps){updateProperty(type,panel,propName,undefined,otherProps[propName]);}return panel;},createTextInstance:function createTextInstance(){throw new Error('react-panorama does not support text nodes. Use <Label /> element instead.');},appendInitialChild:appendChild,finalizeInitialChildren:function finalizeInitialChildren(){return false;},appendChild:appendChild,appendChildToContainer:appendChild,insertBefore:insertBefore,insertInContainerBefore:insertBefore,removeChild:removeChild,removeChildFromContainer:removeChild,// https://github.com/facebook/react/pull/8607
-prepareUpdate:function prepareUpdate(){return true;},commitUpdate:function commitUpdate(panel,_updatePayload,type,oldProps,newProps){for(var propName in newProps){var oldValue=oldProps[propName];var newValue=newProps[propName];if(oldValue!==newValue){updateProperty(type,panel,propName,oldValue,newValue);}}for(var _propName in oldProps){if(!(_propName in newProps)){updateProperty(type,panel,_propName,undefined,oldProps[_propName]);}}}};var reconciler=reactReconciler(hostConfig);/**
+prepareUpdate:function prepareUpdate(){return true;},commitUpdate:function commitUpdate(panel,_updatePayload,type,oldProps,newProps){for(var propName in newProps){var oldValue=oldProps[propName];var newValue=newProps[propName];var propertyInformation=getPropertyInfo(type,propName);if(propertyInformation&&typeof propertyInformation.preOperation==='function'){newValue=propertyInformation.preOperation(newValue);oldValue=propertyInformation.preOperation(oldValue);}if(oldValue!==newValue){updateProperty(type,panel,propName,oldValue,newValue);}}for(var _propName in oldProps){if(!(_propName in newProps)){updateProperty(type,panel,_propName,undefined,oldProps[_propName]);}}}};var reconciler=reactReconciler(hostConfig);/**
  * Render a React element into the layout in the supplied container.
  *
  * See [ReactDOM.render](https://reactjs.org/docs/react-dom.html#render) for more information.
@@ -6530,6 +2632,1238 @@ reconciler.updateContainer(element,panel._rootContainer,null,callback);}// https
 var REACT_PORTAL_TYPE=Symbol["for"]('react.portal');/**
  * Creates a [React Portal](https://reactjs.org/docs/portals.html).
  */function createPortal(children,container,key){var portal={$$typeof:REACT_PORTAL_TYPE,key:key==null?null:String(key),children:children,containerInfo:container};return portal;}
+
+/***/ }),
+
+/***/ "../../../../../node_modules/object-assign/index.js":
+/*!**********************************************************!*\
+  !*** ../../../../../node_modules/object-assign/index.js ***!
+  \**********************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
+/***/ ((module) => {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/* eslint-disable no-unused-vars */
+
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+  if (val === null || val === undefined) {
+    throw new TypeError('Object.assign cannot be called with null or undefined');
+  }
+
+  return Object(val);
+}
+
+function shouldUseNative() {
+  try {
+    if (!Object.assign) {
+      return false;
+    } // Detect buggy property enumeration order in older V8 versions.
+    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
+
+
+    var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
+
+    test1[5] = 'de';
+
+    if (Object.getOwnPropertyNames(test1)[0] === '5') {
+      return false;
+    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+
+
+    var test2 = {};
+
+    for (var i = 0; i < 10; i++) {
+      test2['_' + String.fromCharCode(i)] = i;
+    }
+
+    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+      return test2[n];
+    });
+
+    if (order2.join('') !== '0123456789') {
+      return false;
+    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+
+
+    var test3 = {};
+    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+      test3[letter] = letter;
+    });
+
+    if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    // We don't expect any of the above to throw, but better to be safe.
+    return false;
+  }
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+  var from;
+  var to = toObject(target);
+  var symbols;
+
+  for (var s = 1; s < arguments.length; s++) {
+    from = Object(arguments[s]);
+
+    for (var key in from) {
+      if (hasOwnProperty.call(from, key)) {
+        to[key] = from[key];
+      }
+    }
+
+    if (getOwnPropertySymbols) {
+      symbols = getOwnPropertySymbols(from);
+
+      for (var i = 0; i < symbols.length; i++) {
+        if (propIsEnumerable.call(from, symbols[i])) {
+          to[symbols[i]] = from[symbols[i]];
+        }
+      }
+    }
+  }
+
+  return to;
+};
+
+/***/ }),
+
+/***/ "../../../../../node_modules/object-inspect/index.js":
+/*!***********************************************************!*\
+  !*** ../../../../../node_modules/object-inspect/index.js ***!
+  \***********************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var hasMap = typeof Map === 'function' && Map.prototype;
+var mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;
+var mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;
+var mapForEach = hasMap && Map.prototype.forEach;
+var hasSet = typeof Set === 'function' && Set.prototype;
+var setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;
+var setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;
+var setForEach = hasSet && Set.prototype.forEach;
+var hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;
+var weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;
+var hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;
+var weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;
+var booleanValueOf = Boolean.prototype.valueOf;
+var objectToString = Object.prototype.toString;
+var functionToString = Function.prototype.toString;
+var match = String.prototype.match;
+var bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;
+
+var inspectCustom = __webpack_require__(/*! ./util.inspect */ "?dd17").custom;
+
+var inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;
+
+module.exports = function inspect_(obj, options, depth, seen) {
+  var opts = options || {};
+
+  if (has(opts, 'quoteStyle') && opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double') {
+    throw new TypeError('option "quoteStyle" must be "single" or "double"');
+  }
+
+  if (has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number' ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity : opts.maxStringLength !== null)) {
+    throw new TypeError('option "maxStringLength", if provided, must be a positive integer, Infinity, or `null`');
+  }
+
+  var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;
+
+  if (typeof customInspect !== 'boolean') {
+    throw new TypeError('option "customInspect", if provided, must be `true` or `false`');
+  }
+
+  if (has(opts, 'indent') && opts.indent !== null && opts.indent !== '\t' && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)) {
+    throw new TypeError('options "indent" must be "\\t", an integer > 0, or `null`');
+  }
+
+  if (typeof obj === 'undefined') {
+    return 'undefined';
+  }
+
+  if (obj === null) {
+    return 'null';
+  }
+
+  if (typeof obj === 'boolean') {
+    return obj ? 'true' : 'false';
+  }
+
+  if (typeof obj === 'string') {
+    return inspectString(obj, opts);
+  }
+
+  if (typeof obj === 'number') {
+    if (obj === 0) {
+      return Infinity / obj > 0 ? '0' : '-0';
+    }
+
+    return String(obj);
+  }
+
+  if (typeof obj === 'bigint') {
+    // eslint-disable-line valid-typeof
+    return String(obj) + 'n';
+  }
+
+  var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;
+
+  if (typeof depth === 'undefined') {
+    depth = 0;
+  }
+
+  if (depth >= maxDepth && maxDepth > 0 && _typeof(obj) === 'object') {
+    return isArray(obj) ? '[Array]' : '[Object]';
+  }
+
+  var indent = getIndent(opts, depth);
+
+  if (typeof seen === 'undefined') {
+    seen = [];
+  } else if (indexOf(seen, obj) >= 0) {
+    return '[Circular]';
+  }
+
+  function inspect(value, from, noIndent) {
+    if (from) {
+      seen = seen.slice();
+      seen.push(from);
+    }
+
+    if (noIndent) {
+      var newOpts = {
+        depth: opts.depth
+      };
+
+      if (has(opts, 'quoteStyle')) {
+        newOpts.quoteStyle = opts.quoteStyle;
+      }
+
+      return inspect_(value, newOpts, depth + 1, seen);
+    }
+
+    return inspect_(value, opts, depth + 1, seen);
+  }
+
+  if (typeof obj === 'function') {
+    var name = nameOf(obj);
+    return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']';
+  }
+
+  if (isSymbol(obj)) {
+    var symString = Symbol.prototype.toString.call(obj);
+    return _typeof(obj) === 'object' ? markBoxed(symString) : symString;
+  }
+
+  if (isElement(obj)) {
+    var s = '<' + String(obj.nodeName).toLowerCase();
+    var attrs = obj.attributes || [];
+
+    for (var i = 0; i < attrs.length; i++) {
+      s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);
+    }
+
+    s += '>';
+
+    if (obj.childNodes && obj.childNodes.length) {
+      s += '...';
+    }
+
+    s += '</' + String(obj.nodeName).toLowerCase() + '>';
+    return s;
+  }
+
+  if (isArray(obj)) {
+    if (obj.length === 0) {
+      return '[]';
+    }
+
+    var xs = arrObjKeys(obj, inspect);
+
+    if (indent && !singleLineValues(xs)) {
+      return '[' + indentedJoin(xs, indent) + ']';
+    }
+
+    return '[ ' + xs.join(', ') + ' ]';
+  }
+
+  if (isError(obj)) {
+    var parts = arrObjKeys(obj, inspect);
+
+    if (parts.length === 0) {
+      return '[' + String(obj) + ']';
+    }
+
+    return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';
+  }
+
+  if (_typeof(obj) === 'object' && customInspect) {
+    if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {
+      return obj[inspectSymbol]();
+    } else if (typeof obj.inspect === 'function') {
+      return obj.inspect();
+    }
+  }
+
+  if (isMap(obj)) {
+    var mapParts = [];
+    mapForEach.call(obj, function (value, key) {
+      mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));
+    });
+    return collectionOf('Map', mapSize.call(obj), mapParts, indent);
+  }
+
+  if (isSet(obj)) {
+    var setParts = [];
+    setForEach.call(obj, function (value) {
+      setParts.push(inspect(value, obj));
+    });
+    return collectionOf('Set', setSize.call(obj), setParts, indent);
+  }
+
+  if (isWeakMap(obj)) {
+    return weakCollectionOf('WeakMap');
+  }
+
+  if (isWeakSet(obj)) {
+    return weakCollectionOf('WeakSet');
+  }
+
+  if (isNumber(obj)) {
+    return markBoxed(inspect(Number(obj)));
+  }
+
+  if (isBigInt(obj)) {
+    return markBoxed(inspect(bigIntValueOf.call(obj)));
+  }
+
+  if (isBoolean(obj)) {
+    return markBoxed(booleanValueOf.call(obj));
+  }
+
+  if (isString(obj)) {
+    return markBoxed(inspect(String(obj)));
+  }
+
+  if (!isDate(obj) && !isRegExp(obj)) {
+    var ys = arrObjKeys(obj, inspect);
+
+    if (ys.length === 0) {
+      return '{}';
+    }
+
+    if (indent) {
+      return '{' + indentedJoin(ys, indent) + '}';
+    }
+
+    return '{ ' + ys.join(', ') + ' }';
+  }
+
+  return String(obj);
+};
+
+function wrapQuotes(s, defaultStyle, opts) {
+  var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '"' : "'";
+  return quoteChar + s + quoteChar;
+}
+
+function quote(s) {
+  return String(s).replace(/"/g, '&quot;');
+}
+
+function isArray(obj) {
+  return toStr(obj) === '[object Array]';
+}
+
+function isDate(obj) {
+  return toStr(obj) === '[object Date]';
+}
+
+function isRegExp(obj) {
+  return toStr(obj) === '[object RegExp]';
+}
+
+function isError(obj) {
+  return toStr(obj) === '[object Error]';
+}
+
+function isSymbol(obj) {
+  return toStr(obj) === '[object Symbol]';
+}
+
+function isString(obj) {
+  return toStr(obj) === '[object String]';
+}
+
+function isNumber(obj) {
+  return toStr(obj) === '[object Number]';
+}
+
+function isBigInt(obj) {
+  return toStr(obj) === '[object BigInt]';
+}
+
+function isBoolean(obj) {
+  return toStr(obj) === '[object Boolean]';
+}
+
+var hasOwn = Object.prototype.hasOwnProperty || function (key) {
+  return key in this;
+};
+
+function has(obj, key) {
+  return hasOwn.call(obj, key);
+}
+
+function toStr(obj) {
+  return objectToString.call(obj);
+}
+
+function nameOf(f) {
+  if (f.name) {
+    return f.name;
+  }
+
+  var m = match.call(functionToString.call(f), /^function\s*([\w$]+)/);
+
+  if (m) {
+    return m[1];
+  }
+
+  return null;
+}
+
+function indexOf(xs, x) {
+  if (xs.indexOf) {
+    return xs.indexOf(x);
+  }
+
+  for (var i = 0, l = xs.length; i < l; i++) {
+    if (xs[i] === x) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+function isMap(x) {
+  if (!mapSize || !x || _typeof(x) !== 'object') {
+    return false;
+  }
+
+  try {
+    mapSize.call(x);
+
+    try {
+      setSize.call(x);
+    } catch (s) {
+      return true;
+    }
+
+    return x instanceof Map; // core-js workaround, pre-v2.5.0
+  } catch (e) {}
+
+  return false;
+}
+
+function isWeakMap(x) {
+  if (!weakMapHas || !x || _typeof(x) !== 'object') {
+    return false;
+  }
+
+  try {
+    weakMapHas.call(x, weakMapHas);
+
+    try {
+      weakSetHas.call(x, weakSetHas);
+    } catch (s) {
+      return true;
+    }
+
+    return x instanceof WeakMap; // core-js workaround, pre-v2.5.0
+  } catch (e) {}
+
+  return false;
+}
+
+function isSet(x) {
+  if (!setSize || !x || _typeof(x) !== 'object') {
+    return false;
+  }
+
+  try {
+    setSize.call(x);
+
+    try {
+      mapSize.call(x);
+    } catch (m) {
+      return true;
+    }
+
+    return x instanceof Set; // core-js workaround, pre-v2.5.0
+  } catch (e) {}
+
+  return false;
+}
+
+function isWeakSet(x) {
+  if (!weakSetHas || !x || _typeof(x) !== 'object') {
+    return false;
+  }
+
+  try {
+    weakSetHas.call(x, weakSetHas);
+
+    try {
+      weakMapHas.call(x, weakMapHas);
+    } catch (s) {
+      return true;
+    }
+
+    return x instanceof WeakSet; // core-js workaround, pre-v2.5.0
+  } catch (e) {}
+
+  return false;
+}
+
+function isElement(x) {
+  if (!x || _typeof(x) !== 'object') {
+    return false;
+  }
+
+  if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {
+    return true;
+  }
+
+  return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';
+}
+
+function inspectString(str, opts) {
+  if (str.length > opts.maxStringLength) {
+    var remaining = str.length - opts.maxStringLength;
+    var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');
+    return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;
+  } // eslint-disable-next-line no-control-regex
+
+
+  var s = str.replace(/(['\\])/g, '\\$1').replace(/[\x00-\x1f]/g, lowbyte);
+  return wrapQuotes(s, 'single', opts);
+}
+
+function lowbyte(c) {
+  var n = c.charCodeAt(0);
+  var x = {
+    8: 'b',
+    9: 't',
+    10: 'n',
+    12: 'f',
+    13: 'r'
+  }[n];
+
+  if (x) {
+    return '\\' + x;
+  }
+
+  return '\\x' + (n < 0x10 ? '0' : '') + n.toString(16);
+}
+
+function markBoxed(str) {
+  return 'Object(' + str + ')';
+}
+
+function weakCollectionOf(type) {
+  return type + ' { ? }';
+}
+
+function collectionOf(type, size, entries, indent) {
+  var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');
+  return type + ' (' + size + ') {' + joinedEntries + '}';
+}
+
+function singleLineValues(xs) {
+  for (var i = 0; i < xs.length; i++) {
+    if (indexOf(xs[i], '\n') >= 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function getIndent(opts, depth) {
+  var baseIndent;
+
+  if (opts.indent === '\t') {
+    baseIndent = '\t';
+  } else if (typeof opts.indent === 'number' && opts.indent > 0) {
+    baseIndent = Array(opts.indent + 1).join(' ');
+  } else {
+    return null;
+  }
+
+  return {
+    base: baseIndent,
+    prev: Array(depth + 1).join(baseIndent)
+  };
+}
+
+function indentedJoin(xs, indent) {
+  if (xs.length === 0) {
+    return '';
+  }
+
+  var lineJoiner = '\n' + indent.prev + indent.base;
+  return lineJoiner + xs.join(',' + lineJoiner) + '\n' + indent.prev;
+}
+
+function arrObjKeys(obj, inspect) {
+  var isArr = isArray(obj);
+  var xs = [];
+
+  if (isArr) {
+    xs.length = obj.length;
+
+    for (var i = 0; i < obj.length; i++) {
+      xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';
+    }
+  }
+
+  for (var key in obj) {
+    // eslint-disable-line no-restricted-syntax
+    if (!has(obj, key)) {
+      continue;
+    } // eslint-disable-line no-restricted-syntax, no-continue
+
+
+    if (isArr && String(Number(key)) === key && key < obj.length) {
+      continue;
+    } // eslint-disable-line no-restricted-syntax, no-continue
+
+
+    if (/[^\w$]/.test(key)) {
+      xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));
+    } else {
+      xs.push(key + ': ' + inspect(obj[key], obj));
+    }
+  }
+
+  return xs;
+}
+
+/***/ }),
+
+/***/ "../../../../../node_modules/panorama-polyfill/lib/console.js":
+/*!********************************************************************!*\
+  !*** ../../../../../node_modules/panorama-polyfill/lib/console.js ***!
+  \********************************************************************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_console__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/console */ "../../../../../node_modules/panorama-polyfill/lib/utils/console.js");
+; // eslint-disable-next-line no-new-func
+
+var global = new Function('return this')();
+global.console = _utils_console__WEBPACK_IMPORTED_MODULE_0__.console;
+
+/***/ }),
+
+/***/ "../../../../../node_modules/panorama-polyfill/lib/timers.js":
+/*!*******************************************************************!*\
+  !*** ../../../../../node_modules/panorama-polyfill/lib/timers.js ***!
+  \*******************************************************************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils_timers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/timers */ "../../../../../node_modules/panorama-polyfill/lib/utils/timers.js");
+; // eslint-disable-next-line no-new-func
+
+var global = new Function('return this')();
+global.setInterval = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.setInterval;
+global.clearInterval = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.clearInterval;
+global.setTimeout = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.setTimeout;
+global.clearTimeout = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.clearTimeout;
+global.setImmediate = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.setImmediate;
+global.clearImmediate = _utils_timers__WEBPACK_IMPORTED_MODULE_0__.clearImmediate;
+
+/***/ }),
+
+/***/ "../../../../../node_modules/panorama-polyfill/lib/utils/console.js":
+/*!**************************************************************************!*\
+  !*** ../../../../../node_modules/panorama-polyfill/lib/utils/console.js ***!
+  \**************************************************************************/
+/*! namespace exports */
+/*! export console [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "console": () => /* binding */ console
+/* harmony export */ });
+/* harmony import */ var _format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./format */ "../../../../../node_modules/panorama-polyfill/lib/utils/format.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function write(text) {
+  var _iterator = _createForOfIteratorHelper(text.split('\n')),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var line = _step.value;
+
+      if (line.length > 2047) {
+        var postfix = '... (line have been trimmed because of a length limit)';
+        $.Warning("".concat(line.slice(0, 2047 - postfix.length)).concat(postfix));
+      } else {
+        $.Msg(line);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+}
+
+function assert(value) {
+  var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'console.assert';
+
+  if (!value) {
+    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    error.apply(void 0, [new Error("Assertion failed: ".concat(message))].concat(args));
+  }
+}
+
+function error() {
+  $.Warning(_format__WEBPACK_IMPORTED_MODULE_0__.format.apply(void 0, arguments));
+}
+
+var warn = error;
+
+function log() {
+  write(_format__WEBPACK_IMPORTED_MODULE_0__.format.apply(void 0, arguments));
+}
+
+var debug = log;
+var info = log;
+var times = new Map();
+
+function time() {
+  var label = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
+  label = "".concat(label);
+
+  if (times.has(label)) {
+    warn("Timer '".concat(label, "' already exists"));
+    return;
+  }
+
+  times.set(label, Date.now());
+}
+
+function timeEnd() {
+  var label = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
+  label = "".concat(label);
+  var startTime = times.get(label);
+
+  if (startTime == null) {
+    warn("Timer '".concat(label, " does not exist'"));
+    return;
+  }
+
+  times["delete"](label);
+  write("".concat(label, ": ").concat(Date.now() - startTime, "ms"));
+}
+
+function trace() {
+  var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    args[_key2 - 1] = arguments[_key2];
+  }
+
+  var errorObject = {
+    message: _format__WEBPACK_IMPORTED_MODULE_0__.format.apply(void 0, [message].concat(args)),
+    name: 'Trace',
+    stack: ''
+  };
+  Error.captureStackTrace(errorObject, trace);
+  write((0,_format__WEBPACK_IMPORTED_MODULE_0__.format)(errorObject.stack));
+}
+
+function clear() {}
+
+function dir() {
+  throw new Error('console.dir is not implemented');
+}
+
+function dirxml() {
+  throw new Error('console.dirxml is not implemented');
+}
+
+function table() {
+  throw new Error('console.table is not implemented');
+}
+
+function count() {
+  throw new Error('console.count is not implemented');
+}
+
+function countReset() {
+  throw new Error('console.countReset is not implemented');
+}
+
+function group() {
+  throw new Error('console.group is not implemented');
+}
+
+function groupCollapsed() {
+  throw new Error('console.groupCollapsed is not implemented');
+}
+
+function groupEnd() {
+  throw new Error('console.groupEnd is not implemented');
+}
+
+function profile() {
+  throw new Error('console.profile is not implemented');
+}
+
+function profileEnd() {
+  throw new Error('console.profileEnd is not implemented');
+}
+
+function timeStamp() {
+  throw new Error('console.timeStamp is not implemented');
+}
+
+var console = {
+  assert: assert,
+  warn: warn,
+  error: error,
+  log: log,
+  debug: debug,
+  info: info,
+  time: time,
+  timeEnd: timeEnd,
+  trace: trace,
+  clear: clear,
+  dir: dir,
+  dirxml: dirxml,
+  table: table,
+  count: count,
+  countReset: countReset,
+  group: group,
+  groupCollapsed: groupCollapsed,
+  groupEnd: groupEnd,
+  profile: profile,
+  profileEnd: profileEnd,
+  timeStamp: timeStamp
+};
+
+/***/ }),
+
+/***/ "../../../../../node_modules/panorama-polyfill/lib/utils/format.js":
+/*!*************************************************************************!*\
+  !*** ../../../../../node_modules/panorama-polyfill/lib/utils/format.js ***!
+  \*************************************************************************/
+/*! namespace exports */
+/*! export format [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "format": () => /* binding */ format
+/* harmony export */ });
+/* harmony import */ var object_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! object-inspect */ "../../../../../node_modules/object-inspect/index.js");
+/* harmony import */ var object_inspect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(object_inspect__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+ // Based on https://github.com/browserify/node-util/blob/4b1c0c79790d9968eabecd2e9c786454713e200f/util.js#L33
+
+function format(value) {
+  for (var _len = arguments.length, substitutions = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    substitutions[_key - 1] = arguments[_key];
+  }
+
+  if (typeof value !== 'string') {
+    return [value].concat(substitutions).map(inspect).join(' ');
+  }
+
+  var result = String(value).replace(/%[sdj%]/g, function (x) {
+    if (x === '%%') return '%';
+    if (substitutions.length === 0) return x;
+
+    switch (x) {
+      case '%s':
+        return String(substitutions.unshift());
+
+      case '%d':
+        return String(Number(substitutions.unshift()));
+
+      case '%j':
+        try {
+          return JSON.stringify(substitutions.unshift());
+        } catch (_a) {
+          return '[Circular]';
+        }
+
+      default:
+        return x;
+    }
+  });
+
+  for (var _i = 0, _substitutions = substitutions; _i < _substitutions.length; _i++) {
+    var x = _substitutions[_i];
+
+    if (_typeof(x) !== 'object' || x === null) {
+      result += " ".concat(x);
+    } else {
+      result += " ".concat(inspect(x));
+    }
+  }
+
+  return result;
+}
+
+var inspect = function inspect(value) {
+  return object_inspect__WEBPACK_IMPORTED_MODULE_0___default()(transformValueForFormat(value));
+};
+
+function transformValueForFormat(originalValue) {
+  var visitedValues = new Map();
+  return transform(originalValue);
+
+  function transform(value) {
+    if (visitedValues.has(value)) return visitedValues.get(value);
+    var result = rawTransform(value);
+    visitedValues.set(value, result);
+    return result;
+  }
+
+  function rawTransform(value) {
+    if (_typeof(value) !== 'object' || value == null) return value;
+    if (value instanceof Date || value instanceof RegExp) return value;
+    if (Array.isArray(value)) return value.map(transform);
+    if (value instanceof Set) return new Set(_toConsumableArray(value).map(transform));
+
+    if (value instanceof Map) {
+      return new Map(_toConsumableArray(value).map(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            k = _ref2[0],
+            v = _ref2[1];
+
+        return [transform(k), transform(v)];
+      }));
+    }
+
+    if (isPanelBase(value)) {
+      return Object.assign(Object.assign({}, value), {
+        style: {
+          inspect: function inspect() {
+            return '[VCSSStyleDeclaration]';
+          }
+        }
+      });
+    }
+
+    var newObject = {};
+
+    for (var _i2 = 0, _Object$entries = Object.entries(value); _i2 < _Object$entries.length; _i2++) {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+          k = _Object$entries$_i[0],
+          v = _Object$entries$_i[1];
+
+      newObject[k] = transform(v);
+    }
+
+    Object.setPrototypeOf(newObject, Object.getPrototypeOf(value));
+    return newObject;
+  }
+}
+
+var isPanelBase = function isPanelBase(value) {
+  return 'paneltype' in value && 'rememberchildfocus' in value && 'SetPanelEvent' in value && 'RunScriptInPanelContext' in value;
+};
+
+/***/ }),
+
+/***/ "../../../../../node_modules/panorama-polyfill/lib/utils/timers.js":
+/*!*************************************************************************!*\
+  !*** ../../../../../node_modules/panorama-polyfill/lib/utils/timers.js ***!
+  \*************************************************************************/
+/*! namespace exports */
+/*! export clearImmediate [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export clearInterval [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export clearTimeout [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export setImmediate [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export setInterval [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export setTimeout [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setTimeout": () => /* binding */ setTimeout,
+/* harmony export */   "setInterval": () => /* binding */ setInterval,
+/* harmony export */   "setImmediate": () => /* binding */ setImmediate,
+/* harmony export */   "clearTimeout": () => /* binding */ clearTimer,
+/* harmony export */   "clearInterval": () => /* binding */ clearTimer,
+/* harmony export */   "clearImmediate": () => /* binding */ clearTimer
+/* harmony export */ });
+var intervals = new Map();
+var nextIntervalId = -100000;
+var setTimeout = function setTimeout(callback) {
+  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  return $.Schedule(timeout / 1000, function () {
+    return callback.apply(void 0, args);
+  });
+};
+function setInterval(callback) {
+  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+    args[_key2 - 2] = arguments[_key2];
+  }
+
+  timeout /= 1000;
+  nextIntervalId -= 1;
+  var intervalId = nextIntervalId;
+
+  var run = function run() {
+    intervals.set(intervalId, $.Schedule(timeout, run));
+    callback.apply(void 0, args);
+  };
+
+  intervals.set(intervalId, $.Schedule(timeout, run));
+  return intervalId;
+}
+var setImmediate = function setImmediate(callback) {
+  for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+    args[_key3 - 1] = arguments[_key3];
+  }
+
+  return $.Schedule(0, function () {
+    return callback.apply(void 0, args);
+  });
+};
+
+function clearTimer(handle) {
+  if (typeof handle === 'number') {
+    // $.CancelScheduled throws on expired or non-existent timer handles
+    try {
+      if (handle < -100000) {
+        $.CancelScheduled(intervals.get(handle));
+      } else {
+        $.CancelScheduled(handle);
+      }
+    } catch (_a) {}
+  }
+}
+
+
+
+/***/ }),
+
+/***/ "../../../../../node_modules/prop-types/checkPropTypes.js":
+/*!****************************************************************!*\
+  !*** ../../../../../node_modules/prop-types/checkPropTypes.js ***!
+  \****************************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var printWarning = function printWarning() {};
+
+if (true) {
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "../../../../../node_modules/prop-types/lib/ReactPropTypesSecret.js");
+
+  var loggedTypeFailures = {};
+  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning = function printWarning(text) {
+    var message = 'Warning: ' + text;
+
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+
+
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (true) {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error; // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+
+        if (error && !(error instanceof Error)) {
+          printWarning((componentName || 'React class') + ': type specification of ' + location + ' `' + typeSpecName + '` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a ' + _typeof(error) + '. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).');
+        }
+
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+          var stack = getStack ? getStack() : '';
+          printWarning('Failed ' + location + ' type: ' + error.message + (stack != null ? stack : ''));
+        }
+      }
+    }
+  }
+}
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+
+
+checkPropTypes.resetWarningCache = function () {
+  if (true) {
+    loggedTypeFailures = {};
+  }
+};
+
+module.exports = checkPropTypes;
+
+/***/ }),
+
+/***/ "../../../../../node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!**************************************************************************!*\
+  !*** ../../../../../node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \**************************************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
+/***/ ((module) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
@@ -8499,6 +5833,33 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./hud_main/script.tsx":
+/*!*****************************!*\
+  !*** ./hud_main/script.tsx ***!
+  \*****************************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../../../../../node_modules/react/index.js");
+/* harmony import */ var _demon673_react_panorama__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @demon673/react-panorama */ "../../../../../node_modules/@demon673/react-panorama/dist/esm/react-panorama.development.js");
+;
+
+// import { AbilityPanel } from '../elements/AbilityPanel';
+// import { AbilityUpgradeImage } from '../elements/AbilityUpgrade';
+// import './stats.js';
+function HudMain() {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(Panel, { id: "TopBarRoot" })));
+}
+(0,_demon673_react_panorama__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(HudMain, null), $.GetContextPanel());
+
+
+/***/ }),
+
 /***/ "?dd17":
 /*!********************************!*\
   !*** ./util.inspect (ignored) ***!
@@ -8537,11 +5898,6 @@ if (false) {} else {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/amd options */
-/******/ 	(() => {
-/******/ 		__webpack_require__.amdO = {};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -8585,7 +5941,7 @@ if (false) {} else {
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./hud_main/script.jsx");
+/******/ 	__webpack_require__("./hud_main/script.tsx");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;

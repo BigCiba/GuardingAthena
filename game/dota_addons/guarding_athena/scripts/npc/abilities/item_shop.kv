@@ -2345,4 +2345,30 @@
 			}
 		}
 	}
+	"item_summon_dummy"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"abilities/items/consumable/item_summon_dummy"
+		"AbilityTextureName"					"item_courier_dire"
+		"ItemType"								"consumable"
+		"ItemQuality"							"component"
+		"ItemShareability"						"ITEM_FULLY_SHAREABLE"
+		"ItemDisassembleRule"					"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+		"ItemCost"								"10000"
+		"ItemSellable"							"1"
+		"ItemPurchasable"						"1"
+		"ItemPermanent"							"0"
+		"ItemStackable"							"1"
+		"ItemInitialCharges"					"1"
+		"AbilityCastRange"						"1000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"20"
+			}
+		}
+	}
 }

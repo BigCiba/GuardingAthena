@@ -631,4 +631,42 @@
 		"Model"	"models/props_gameplay/aghanim_scepter.vmdl"
 		"Effect"	"particles/items4_fx/scepter_aura.vpcf"
 	}
+
+	// 灰烬之灵
+	"item_npc_dota_hero_ember_spirit"
+	{
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"abilities/items/scepter/scepter"
+		"AbilityTextureName"		"item_zhuanshufs"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"			"0.0"
+		"ItemQuality"				"epic"
+		"ItemCost"					"1"
+		"ItemSellable"				"0"
+		"ItemPurchasable"			"0"
+		"ItemIsNeutralDrop"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"property"	"15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_max_charges"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"scepter_bonus_charges"	"2"
+			}
+		}
+		"Model"	"models/props_gameplay/aghanim_scepter.vmdl"
+		"Effect"	"particles/items4_fx/scepter_aura.vpcf"
+	}
 }

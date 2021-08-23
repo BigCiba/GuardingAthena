@@ -1,636 +1,160 @@
-@import './stats.less';
-@import '../elements/AbilityPanel/styles.less';
-@import './inventory.less';
-
-.Hidden {
-	visibility: collapse;
-}
-
-.HIDE_ACTION_PANEL #buffs,
-.HIDE_ACTION_PANEL #debuffs {
+.HIDE_ACTION_PANEL #center_with_stats {
 	visibility: visible;
 }
 
-.CustomHudRoot {
-	width: 100%;
-	height: 100%;
-}
-
-#OverlayMap {
-	align: right top;
-	margin-top: 48px;
-	width: 256px;
-	height: 256px;
-
-	opacity: 1;
-	// opacity-mask: url("file://{images}/minimap/custom_hero_mask.png") 1;
-	// background-color: gradient(radial, 50% 50%, 0% 0%, 300px 300px, from(#000d), color-stop(.5, #000d), to(#000d));
-
-	transition-property: width, height, opacity, transform, pre-transform-scale2d, wash-color, background-color, opacity-mask, border-radius;
-	transition-duration: 0.2s;
-	transition-timing-function: ease-in-out;
-}
-
-#GoldButton {
-	align: right bottom;
-	margin-bottom: 145px;
-	width: 128px;
-	height: 36px;
-
-	background-image: url("file://{images}/hud/reborn/courier_gold_bg_262_psd.png");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	tooltip-position: top;
-}
-
-#GoldButton Label {
-	margin-top: 3px;
-	font-size: 22px;
-	font-weight: bold;
-	text-align: right;
-	horizontal-align: right;
-	min-width: 60px;
-	vertical-align: center;
-	margin-right: 40px;
-	width: 100%;
-	letter-spacing: 1px;
-	text-shadow: 0px 1px 2px 3.0 #00000066;
-	text-overflow: shrink;
-	text-shadow: 0px 0px 1px 2.0 #000000;
-	color: #ffcc33;
-}
-
-#GoldButton:hover {}
-
-#GoldIcon {
-	background-image: url("file://{images}/hud/reborn/gold_small_psd.png");
-	background-size: 100% 100%;
-	width: 26px;
-	height: 26px;
-	horizontal-align: right;
-	margin-right: 8px;
-	vertical-align: center;
-	margin-bottom: 2px;
-}
-
+.CustomHudRoot,
 #HUDContents {
 	width: 100%;
 	height: 100%;
 }
 
-#PartyArrows {
-	height: 100%;
-	width: 100%;
-
-	opacity: 1;
-
-	transition-property: opacity;
-	transition-duration: .32s;
-	transition-timing-function: ease-in-out;
-
-	#PartyArrowImage {
-		width: 50px;
-		height: 82px;
-	}
-
-	.PartyArrow {
-		transition-property: opacity;
-		transition-duration: .32s;
-		transition-timing-function: ease-in-out;
-	}
-
-	#IconContainer {
-		align: center top;
-		margin-top: 38px;
-		width: 38px;
-		height: 38px;
-	}
-
-	#HeroImage {
-		align: center center;
-		width: 32px;
-		height: 32px;
-	}
-}
-
-#PartyPortraits {
-	margin-top: 58px;
-	margin-left: 16px;
-
-	.PartyPortrait {
-		margin-right: 10px;
-	}
-
-	.PartyPortraitHealthBar {
-		height: 10px;
-		width: 86px;
-		border-radius: 0px;
-		border: 0px solid black;
-	}
-
-	.PartyPortraitHealthBar .ProgressBarLeft {
-		background-color: gradient(linear, 0% 0%, 0% 100%, from(#00ff00), to(#004c00));
-
-		border-radius: 2px;
-
-		transition-property: width;
-		transition-duration: 1.0s;
-		transition-timing-function: linear;
-	}
-
-	.PartyPortraitManaBar {
-		height: 6px;
-		margin-top: 1px;
-		width: 86px;
-		border-radius: 0px;
-		border: 0px solid black;
-	}
-
-	.PartyPortraitManaBar .ProgressBarLeft {
-		background-color: gradient(linear, 0% 0%, 0% 100%, from(#2b4287), color-stop(0.2, #4165ce), color-stop(.5, #4a73ea), to(#2b4287));
-
-		border-radius: 2px;
-
-		transition-property: width;
-		transition-duration: 1.0s;
-		transition-timing-function: linear;
-	}
-
-
-	.PartyPortraitImage {
-		width: 88px;
-		height: 58px;
-		border-radius: 8px;
-		border: 2px solid black;
-		background-color: black;
-	}
-
-	.Disconnected #HeroIconContainer {
-		saturation: .3;
-		wash-color: #f00;
-	}
-
-	.PartyPortraitName {
-		color: white;
-		width: 86px;
-		text-align: center;
-		text-shadow: 1px 1px 0px 2.0 #000;
-		text-overflow: shrink;
-		height: 24px;
-
-	}
-
-	.Disconnected DOTAHeroImage {
-		opacity: 0.5;
-	}
-
-	#DisconnectIcon {
-		width: 67px;
-		height: 20px;
-		vertical-align: middle;
-		background-image: url("file://{images}/hud/reborn/icon_disconnect_png.png");
-		background-repeat: no-repeat;
-		background-size: 100%;
-		horizontal-align: center;
-		z-index: 5;
-		box-shadow: fill -6px -6px 12px 12px #000c;
-		border-radius: 16px;
-		visibility: collapse;
-	}
-
-	#HeroIconContainer {
-		width: fit-children;
-	}
-
-	.Disconnected #DisconnectIcon {
-		visibility: visible;
-	}
-
-	#PartyLifeRemainingContainer {
-		vertical-align: bottom;
-		flow-children: right;
-		tooltip-position: top;
-	}
-
-	.LifeLeftIcon {
-		width: 14px;
-		height: 14px;
-		margin-left: 2px;
-		margin-right: 2px;
-		margin-top: 2px;
-
-		box-shadow: fill #000000af -3px -3px 6px 6px;
-		border-radius: 50%;
-
-		saturation: 1;
-		wash-color: #fff;
-		contrast: 1;
-		transform: translateY(0px);
-
-		transition-property: saturation, wash-color, transform, box-shadow, contrast;
-		transition-timing-function: ease-out;
-		transition-duration: .4s;
-
-		&.LifeUsed {
-			saturation: 0;
-			wash-color: #533;
-			contrast: .7;
-			box-shadow: fill #0000008f -1px -1px 2px 2px;
-		}
-	}
-}
-
-#lower_hud {
-	width: 100%;
-	height: 100%;
-	horizontal-align: left;
+.MinimapBorder {
+	width: 280px;
+	height: 334px;
 	vertical-align: bottom;
+	background-image: url("file://{images}/custom_game/hud/minimap_bg.png");
+	background-size: 100%;
 
-	z-index: 0;
-}
-
-#left_block {
-	horizontal-align: left;
-	vertical-align: bottom;
-
-	#PortraitContainer {
-		align: left bottom;
-		margin-left: 0px;
-		opacity-mask: none;
-		width: 180px;
-		height: 180px;
-		z-index: -1;
-
-		#portraitHUDOverlay,
-		#portraitHUD {
-			width: 180px;
-			height: 180px;
-			transform: translateY(0px) translateX(0px);
-			padding-bottom: 10px;
-			opacity-mask: url("file://{images}/masks/killcammask_left_psd.png") 1;
-		}
-	}
-
-	#death_panel_buyback {
-		margin-left: 10.5px;
-	}
-
-	#StatsContainer {
-		align: left bottom;
-		min-width: 100px;
-		margin-left: 180px;
-
-		background-color: gradient(linear, 0% 0%, 100% 0%, from(#00000080), color-stop(.5, #00000055), to(#00000000));
-
-		tooltip-position: top;
-		tooltip-body-position: 50% 50%;
-
-		flow-children: down;
-	}
-
-	#unitname {
-		align: left bottom;
-		margin: 0px;
-		height: 20px;
-		width: 180px;
-	}
-
-	#AbilityUpgradesContainer {
-		align: left bottom;
-		max-width: 250px;
-		margin-bottom: 180px;
-		padding-left: 4px;
-		padding-right: 4px;
-
-		flow-children: right;
-
-		overflow: scroll squish;
-
-		HorizontalScrollBar {
-			height: 4px;
-		}
-
-		.AbilityUpgrade {
-			width: height-percentage(100%);
-			height: 48px;
-			margin-left: 2px;
-			margin-right: 2px;
-			margin-top: 6px;
-			margin-bottom: 6px;
-
-			&.AbilityUpgradesType0 {
-				#AbilityUpgradeImage {
-					border: 2px solid #D02B29;
-					box-shadow: 0 0 8px #D02B29;
-				}
-			}
-			&.AbilityUpgradesType1 {
-				#AbilityUpgradeImage {
-					border: 2px solid #D02B29;
-					box-shadow: 0 0 8px #D02B29;
-				}
-			}
-			&.AbilityUpgradesType2 {
-				#AbilityUpgradeImage {
-					border: 2px solid #88A6D9;
-					box-shadow: 0 0 8px #88A6D9;
-				}
-			}
-			&.AbilityUpgradesType3 {
-				#AbilityUpgradeImage {
-					border: 2px solid #7266FF;
-					box-shadow: 0 0 8px #7266FF;
-				}
-			}
-			&.AbilityUpgradesType4 {
-				#AbilityUpgradeImage {
-					border: 2px solid #3375FF;
-					box-shadow: 0 0 8px #3375FF;
-				}
-			}
-
-			#AbilityUpgradeImage {
-				width: 100%;
-				height: 100%;
-
-				border-radius: 25%;
-				border: 2px solid #4bc2a8;
-			}
-
-			#AbilityUpgradeNumber {
-				align: left bottom;
-				margin-bottom: -4px;
-
-				color: #ffffff;
-				text-shadow: 0px 0px 2px 3 black;
-			}
-		}
-	}
-}
-
-#BuffsLine {
-	horizontal-align: center;
-	vertical-align: bottom;
-	width: 100%;
-	margin-bottom: 140px;
-	z-index: -4;
-
-	flow-children: up;
-
-	#buffs {
-		horizontal-align: left;
-		width: 100%;
-		min-width: 256px;
-		height: 40px;
-		margin: 0px;
-
-		flow-children: right;
-	}
-
-	#debuffs {
-		horizontal-align: left;
-		width: 100%;
-		min-width: 256px;
-		height: 40px;
-		margin: 0px;
-
-		flow-children: right;
-	}
-}
-
-.HasAbilityToSpend #BuffsLine {
-	margin-bottom: 172px;
-
-	#buffs {
-		transform: translateY(0px);
-	}
-
-	#debuffs {
-		transform: translateY(0px);
+	#OverlayMap {
+		align: center bottom;
+		width: 255px;
+		height: 255px;
+		margin-bottom: 12px;
 	}
 }
 
 #center_block {
-	height: 100%;
-	min-width: 384px;
-	align: center bottom;
-	padding-left: 80px;
-	margin-right: 80px;
+	#center_bg {
+		// width: 457px;
+		margin-left: 210px;
+		margin-right: 292px;
+		background-image: url("file://{images}/custom_game/hud/action_bar_bg.png"),
+		url("file://{images}/custom_game/hud/health_bar_bg.png");
+		background-size: 100% 84px, 100% 62px;
+		background-position: 0% 0%, left bottom;
+		background-repeat: no-repeat;
 
-	#AbilitiesAndStatBranch {
-		align: left bottom;
-		height: 360px;
-		margin: 0px;
-		margin-bottom: 40px;
-		min-width: 0px;
+		#left_decoration {
+			width: 71px;
+			height: 84px;
+			background-image: url("file://{images}/custom_game/hud/action_bar_decoration_left.png");
+			background-size: 100%;
+			margin-left: 2px;
+		}
+
+		#right_decoration {
+			width: 71px;
+			height: 84px;
+			horizontal-align: right;
+			background-image: url("file://{images}/custom_game/hud/action_bar_decoration_right.png");
+			background-size: 100%;
+			margin-right: 2px;
+		}
+
+		#left_ice {
+			width: 42px;
+			height: 121px;
+			background-image: url("file://{images}/custom_game/hud/action_bar_ice_left.png");
+			background-size: 100%;
+			x: -5px;
+			y: -6px;
+		}
+
+		#right_ice {
+			width: 42px;
+			height: 121px;
+			horizontal-align: right;
+			background-image: url("file://{images}/custom_game/hud/action_bar_ice_right.png");
+			background-size: 100%;
+			// x: -5px;
+			y: -6px;
+		}
 	}
 
 	#health_mana {
-		align: center bottom;
-		margin: 0px;
-		padding-left: -223px;
-		padding-right: -266px;
-		padding-bottom: -8px;
+		y: 4px;
+
+		#HealthContainer {
+			height: 28px;
+		}
+
+		#ManaContainer {
+			height: 20px;
+		}
 	}
 
-
-	#xp {
-		margin-left: -80px;
-		horizontal-align: left;
-		vertical-align: bottom;
+	#inventory {
+		margin-right: 91px;
 	}
 
-	#xp_custom {
-		margin-left: -80px;
-		horizontal-align: left;
-		vertical-align: bottom;
-		z-index: 1012;
-	
-		visibility: visible;
-	}
-	
-	#abilities {
-		width: fit-children;
-		min-height: 80px;
-		padding-left: -2px;
-		padding-right: -2px;
+	#PortraitGroup {
+		background-image: url("file://{images}/custom_game/hud/portrait_border.png");
+		background-size: 100%;
 
-		flow-children: right;
-	}
-}
-
-#AbilityDeletion {
-	align: center top;
-	width: 100%;
-	height: 180px;
-
-	background-color: gradient(linear, 0% 0%, 0% 100%, from(#00a2ff80), color-stop(0.5, #00a2ff55), to(#00a2ff00));
-
-	visibility: collapse;
-
-	Label {
-		align: center top;
-		margin-top: 45px;
-		color: white;
-		text-align: center;
-		text-overflow: shrink;
-		text-transform: uppercase;
-		font-size: 40px;
-		text-shadow: 1px 1px 0px black;
-	}
-
-	&.potential_drop_target {
-		background-color: gradient(linear, 0% 0%, 0% 100%, from(#ff000080), color-stop(0.5, #ff000055), to(#ff000000));
-	}
-}
-
-.dragging_ability #AbilityDeletion {
-	visibility: visible;
-}
-
-
-#inventory {
-	align: right bottom;
-	margin: 0px;
-}
-
-#DrawAbilities {
-	align: center bottom;
-	margin-bottom: 200px;
-
-	transform: translateY(500px);
-
-	flow-children: down;
-
-	background-color: gradient(linear, 0% 0%, 0% 100%, from(#00000080), color-stop(0.5, #00000055), to(#00000000));
-
-	transition-property: transform;
-	transition-duration: 0.25s;
-	transition-timing-function: ease-in-out;
-
-	#DrawAbilitiesHeader {
-		width: 100%;
-		height: 32px;
-
-		#DrawAbilitiesTitle {
-			width: 100%;
+		#PortraitContainer {
 			align: center center;
-			color: #ffffff;
-			font-size: 24px;
-			text-overflow: shrink;
-			text-align: center;
+			width: 132px;
+			height: 119px;
 		}
 
-		#DrawAbilitiesCloseButton {
-			width: 32px;
-			height: 32px;
-			align: right center;
-
-			background-image: url("file://{images}/control_icons/x_close_gradient_png.png");
+		#PortraitIceLeft {
+			width: 38px;
+			height: 56px;
+			background-image: url("file://{images}/custom_game/hud/portrait_ice_left.png");
 			background-size: 100%;
-			background-repeat: no-repeat;
+			x: -10px;
+			// y: -10px;
+			z-index: 10;
+		}
 
-			&:hover {
-				brightness: 2.0;
-			}
-
-			&:active {
-				brightness: 0.5;
-			}
+		#PortraitIceRight {
+			horizontal-align: right;
+			width: 39px;
+			height: 73px;
+			background-image: url("file://{images}/custom_game/hud/portrait_ice_right.png");
+			background-size: 100%;
+			x: 12px;
+			y: -19px;
+			z-index: 10;
 		}
 	}
 
-	#DrawAbilitiesContainer {
-		flow-children: right;
-	}
+	#stats_container {
+		flow-children: down;
+		margin-left: 70px;
 
-	.DrawAbility {
-		margin: 2px;
-
-		&:hover {
-			brightness: 2.0;
-		}
-
-		&:active {
-			brightness: 0.5;
-		}
-
-		#DrawAbilityImage {
-			width: 60px;
+		#stats {
+			margin-top: 8px;
 			height: 60px;
 		}
 
-		#DrawAbilityName {
-			width: 100%;
-			height: 20px;
-
-			color: #ffffff;
-			text-align: center;
-			text-overflow: shrink;
-			text-shadow: 0px 1px 2px 3.0 #00000066;
+		#stragiint {
+			margin-top: 5px;
+			height: 60px;
+			vertical-align: top;
 		}
-
-		flow-children: down;
 	}
 
-	&.Draw {
-		transform: translateY(0px);
-		transition-duration: 0s;
+	#unitname {
+		margin-bottom: 150px;
+		margin-left: 70px;
+	}
+
+	#inventory {
+		#inventory_items {
+			background-image: none;
+		}
 	}
 }
 
-#dragImage {
-	width: 72px;
-	height: 72px;
-}
-
-#upper_hud {
+#TopBarRoot {
 	width: 100%;
-	height: 100%;
-	horizontal-align: left;
-	vertical-align: top;
-}
 
-#Rounds {
-	align: center top;
-	margin-top: 24px;
-
-	flow-children: right;
-}
-
-#RoundNumber {
-	align: left center;
-	width: 57px;
-
-	color: #ffffff;
-	font-size: 48px;
-	font-weight: bolder;
-	text-align: right;
-}
-
-#RoundProgressBar {
-	align: left center;
-	height: 32px;
-}
-
-#RoundProgressBar_Left {
-	background-color: #00a7a7;
-}
-
-#RoundTarget {
-	align: center center;
-
-	color: #ffffff;
-	font-weight: bold;
-	text-align: center;
-}
-
-#RoundTime {
-	align: left center;
-	width: 38px;
-
-	color: #ffffff;
-	font-size: 32px;
-	font-weight: bolder;
-	text-align: left;
+	.TopBarBG {
+		horizontal-align: center;
+		width: 958px;
+		height: 80px;
+		background-image: url("file://{images}/custom_game/hud/top_bar_bg.png");
+		background-size: 100%;
+	}
 }

@@ -3,7 +3,7 @@ function ember_spirit_0:Spawn()
 	if IsServer() then
 		local hCaster = self:GetCaster()
 		hCaster.ApplyEmber = function(hCaster, hTarget, iStackCount)
-			iStackCount = iStackCount or 1
+			iStackCount = (iStackCount or 1) + hCaster:GetBonusMarkStackCount()
 			local duration = self:GetSpecialValueFor("duration")
 			hTarget:AddNewModifier(hCaster, self, "modifier_ember_spirit_0_debuff", { duration = duration, iStackCount = iStackCount })
 		end
@@ -100,6 +100,9 @@ function modifier_ember_spirit_0_debuff:OnCreated(params)
 	if IsServer() then
 		table.insert(self:GetAbility().tEmberTargets, self:GetParent())
 		self:IncrementStackCount(params.iStackCount)
+		if self:GetCaster():GetScepterLevel() >= 3 then
+			self:StartIntervalThink(1)
+		end
 	else
 		local hParent = self:GetParent()
 		local iParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_targetted_marker.vpcf", PATTACH_OVERHEAD_FOLLOW, hParent)
@@ -110,6 +113,12 @@ function modifier_ember_spirit_0_debuff:OnRefresh(params)
 	if IsServer() then
 		self:IncrementStackCount(params.iStackCount)
 	end
+end
+function modifier_ember_spirit_0_debuff:OnIntervalThink()
+	local hCaster = self:GetCaster()
+	local hParent = self:GetParent()
+	local hAbility = self:GetAbility()
+	hCaster:DealDamage(hParent, hAbility, self:GetStackCount() * hCaster:GetAgility(), DAMAGE_TYPE_MAGICAL)
 end
 function modifier_ember_spirit_0_debuff:OnDestroy()
 	if IsServer() then

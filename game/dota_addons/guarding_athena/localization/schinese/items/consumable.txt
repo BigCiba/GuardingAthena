@@ -91,3 +91,5 @@
 "DOTA_Tooltip_ability_item_enchant_lifesteal"	"附魔●吸血"
 "DOTA_Tooltip_ability_item_enchant_lifesteal_Description"	"使主武器提供额外的吸血能力\n每次使用提升魔抗削\n每次使用覆盖之前的附魔效果\n最多使用10次"
 "DOTA_Tooltip_ability_item_enchant_lifesteal_lifesteal"	"%+吸血"
+"DOTA_Tooltip_ability_item_summon_dummy"	"召唤社畜"
+"DOTA_Tooltip_ability_item_summon_dummy_Description"	"召唤一个挨打的社畜，它不会反抗，不会埋怨，只会默默承受你的鞭挞。每层叠加数增加%duration%秒持续时间"

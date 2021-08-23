@@ -95,7 +95,7 @@ function public:init(bReload)
 		---弹道索引
 		self.iProjectileIndex = 1
 		---马甲
-		self.hProjectileSystemDummy = CreateModifierThinker(nil, nil, "modifier_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
+		self.hProjectileSystemDummy = CreateModifierThinker(GameRules:GetGameModeEntity(), nil, "modifier_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
 	end
 	---圆心检测半径
 	self.iCircleRadius = 32

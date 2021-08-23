@@ -675,6 +675,7 @@ if IsServer() then
 			local ability = self:GetAbilityByIndex(i - 1)
 			if ability ~= nil and FindValueByKey(REFRESH_EXCLUDE_ABILITIES, ability:GetAbilityName()) == false then
 				ability:EndCooldown()
+				ability:RefreshCharges()
 			end
 		end
 	end

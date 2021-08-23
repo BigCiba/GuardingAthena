@@ -71,6 +71,8 @@ function modifier_ember_spirit_2:OnRefresh(params)
 end
 function modifier_ember_spirit_2:OnDestroy()
 	if IsServer() then
+		local hParent = self:GetParent()
+		ProjectileManager:ProjectileDodge(hParent)
 	end
 end
 function modifier_ember_spirit_2:DeclareFunctions()

@@ -17943,7 +17943,7 @@ GameUI.CustomUIConfig().HeroesKv = {
 		"Ability2": "ember_spirit_1",
 		"Ability3": "ember_spirit_2",
 		"Ability4": "ember_spirit_3",
-		"Ability5": "generic_hidden",
+		"Ability5": "ember_spirit_4_1",
 		"Ability6": "ember_spirit_4",
 		"Ability10": "tt1",
 		"Ability11": "tt2",

@@ -2641,6 +2641,8 @@ var REACT_PORTAL_TYPE=Symbol["for"]('react.portal');/**
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.amdO, __webpack_exports__, __webpack_require__.* */
+/*! CommonJS bailout: module.exports is used directly at 44:39-53 */
+/*! CommonJS bailout: module.exports is used directly at 46:4-18 */
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -2708,6 +2710,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 69:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -2815,6 +2818,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -3805,6 +3809,7 @@ function clearTimer(handle) {
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 97:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -3914,6 +3919,7 @@ module.exports = checkPropTypes;
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 10:0-14 */
 /***/ ((module) => {
 
 "use strict";
@@ -6120,7 +6126,8 @@ function Root(_a) {
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectContainer, { eventName: "AddPassiveAbility", text: "\u6DFB\u52A0\u6280\u80FD", list: Object.keys(GameUI.CustomUIConfig().AbilitiesKv), type: SelectionItemType.SELECTION_ITEM_TYPE_ABILITY }),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectContainer, { eventName: "AddItem", text: "\u6DFB\u52A0\u7269\u54C1", list: itemsNames, type: SelectionItemType.SELECTION_ITEM_TYPE_ITEM }),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectContainer, { eventName: "SwitchHero", text: "\u66F4\u6362\u82F1\u96C4", list: heroNames, type: SelectionItemType.SELECTION_ITEM_TYPE_HERO }),
-        react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectContainer, { eventName: "CreateEnemy", text: "\u521B\u5EFA\u654C\u65B9\u5355\u4F4D", list: Object.keys(GameUI.CustomUIConfig().UnitsKv), type: SelectionItemType.SELECTION_ITEM_TYPE_COMMON }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectContainer, { eventName: "AllyHero", text: "\u53CB\u65B9\u82F1\u96C4", list: heroNames, type: SelectionItemType.SELECTION_ITEM_TYPE_HERO }),
+        react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectContainer, { eventName: "CreateEnemy", text: "\u521B\u5EFA\u654C\u65B9\u5355\u4F4D", list: Object.keys(GameUI.CustomUIConfig().EnemiesKv).concat(Object.keys(GameUI.CustomUIConfig().SpecialEnemiesKv)).concat(Object.keys(GameUI.CustomUIConfig().NaturesKv)), type: SelectionItemType.SELECTION_ITEM_TYPE_COMMON }),
         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "DemoPanel", className: "ControlPanel TopBottomFlow" },
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "ControlPanelContainer" },
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { id: "Maximized" },
@@ -6129,6 +6136,8 @@ function Root(_a) {
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CategoryContainer" },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: "\u5173\u5361" }),
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "Category" },
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonToggleButton, { eventName: "ToggleSpawnerButtonPressed", setting: "has_fog", text: "\u6682\u505C\u5237\u602A" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntryButton, { eventName: "ChangeRound", text: "\u8FDB\u653B\u6CE2\u6570" }),
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntryButton, { eventName: "ChangeHostTimescale", text: "\u4E3B\u673A\u901F\u5EA6" }))),
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CategoryContainer" },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: "\u6280\u80FD" }),
@@ -6144,6 +6153,7 @@ function Root(_a) {
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonToggleButton, { eventName: "FreeSpellsButtonPressed", setting: "free_spells", text: "#FreeSpells_Button" }),
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonToggleButton, { eventName: "InvulnerabilityButtonPressed", text: "\u65E0\u654C\u72B6\u6001" }),
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(TextEntryButton, { eventName: "LevelUpButtonPressed", text: "\u5347\u7EA7", defaultValue: "1" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(DropDownButton, { eventName: "RebornButtonPressed", text: "\u8F6C\u751F\u6B21\u6570", list: ["0", "1", "2", "3", "4"] }),
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonButton, { eventName: "PrintModifiers", text: "\u6253\u5370\u82F1\u96C4\u7684Modifier" }))),
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CategoryContainer" },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: "\u521B\u5EFA\u82F1\u96C4" }),
@@ -6153,7 +6163,10 @@ function Root(_a) {
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonButton, { eventName: "RemoveSpawnedUnitsButtonPressed", text: "#RemoveSpawns_Button" }),
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectionButton, { eventName: "CreateEnemy", text: "\u521B\u5EFA\u654C\u65B9\u5355\u4F4D" }),
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonToggleButton, { eventName: "ToggleEnemyControlable", setting: "enemy_controlable", text: "\u5F00\u542F\u654C\u4EBA\u63A7\u5236" }),
-                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonButton, { eventName: "RespawnHero", text: "\u590D\u6D3B\u82F1\u96C4" }))),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonButton, { eventName: "RespawnHero", text: "\u590D\u6D3B\u82F1\u96C4" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectionButton, { eventName: "AllyHero", text: "\u53CB\u65B9\u82F1\u96C4" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonButton, { eventName: "LevelUpAllyButtonPressed", text: "\u5347\u7EA7\u53CB\u65B9\u82F1\u96C4" }),
+                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(CommonButton, { eventName: "AllyMaxLevelButtonPressed", text: "\u53CB\u65B9\u82F1\u96C4\u6EE1\u7EA7" }))),
                     react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "CategoryContainer" },
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { localizedText: "#Other_ButtonCategory" }),
                         react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "Category" },
@@ -6317,7 +6330,7 @@ function SelectContainerItem({ eventName, itemName, type, textMode }) {
     return (react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null,
         type == SelectionItemType.SELECTION_ITEM_TYPE_COMMON &&
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { key: itemName, className: classnames__WEBPACK_IMPORTED_MODULE_0___default()("CommonSelectionItem", "DemoButton"), onactivate: () => FireEvent(eventName, itemName) },
-                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CommonSelectionItemName", text: textMode ? $.Localize(itemName) : itemName, html: true })),
+                react__WEBPACK_IMPORTED_MODULE_1__.createElement(Label, { id: "CommonSelectionItemName", text: textMode ? $.Localize(itemName) : itemName })),
         type == SelectionItemType.SELECTION_ITEM_TYPE_ABILITY &&
             react__WEBPACK_IMPORTED_MODULE_1__.createElement(Panel, { className: "AbilityPickerCard", onactivate: () => FireEvent(eventName, itemName) },
                 react__WEBPACK_IMPORTED_MODULE_1__.createElement(DOTAAbilityImage, { id: "AbilityPickerCardImage", abilityname: itemName, showtooltip: true }),

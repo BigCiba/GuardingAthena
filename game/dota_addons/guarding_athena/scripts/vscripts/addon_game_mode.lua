@@ -255,8 +255,8 @@ function Activate()
 	Initialize(false)
 	GuardingAthena:InitGameMode()
 
-	_G.MODIFIER_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
-	_G.RECORD_SYSTEM_DUMMY = CreateModifierThinker(nil, nil, "modifier_record_system_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
+	_G.MODIFIER_EVENTS_DUMMY = CreateModifierThinker(GameRules:GetGameModeEntity(), nil, "modifier_events", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
+	_G.RECORD_SYSTEM_DUMMY = CreateModifierThinker(GameRules:GetGameModeEntity(), nil, "modifier_record_system_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
 end
 function Require(requireList, bReload)
 	for k, v in pairs(requireList) do

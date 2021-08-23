@@ -120,6 +120,9 @@ declare interface DollarStatic {
 declare type MouseEvents = { fCallback: (tData: { event_name: MouseEvent, value: MouseButton | MouseScrollDirection, result: boolean; }) => boolean | void, iPriority: number; };
 
 declare interface CustomUIConfig {
+	EnemiesKv: Table;
+	NaturesKv: Table;
+	SpecialEnemiesKv: Table;
 	PlayerItemsKV: Table;
 	PetsKv: Table;
 

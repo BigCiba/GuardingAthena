@@ -20,8 +20,6 @@ function GuardingAthena:InitGameMode()
 	--print('[GuardingAthena] Starting to load GuardingAthena gamemode...')
 	_G.Activated = true
 
-	-- _G.ATTACK_EVENTS_DUMMY = CreateModifierThinker(nil, nil, "modifier_events", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
-	-- _G.ATTACK_SYSTEM_DUMMY = CreateModifierThinker(nil, nil, "modifier_dummy", nil, Vector(0, 0, 0), DOTA_TEAM_NOTEAM, false)
 	-- 初始化游戏参数
 	self.entAthena = Entities:FindByName(nil, "athena")				--寻找基地
 	self.athena_hp_lv = 0
@@ -114,7 +112,7 @@ function GuardingAthena:ReadGameConfiguration()
 	for k, v in pairs(KeyValues.CouriersKV) do
 		self.CourierPool:Add(k, 1)
 	end
-	
+
 	-- 商店
 	local shopInfo = LoadKeyValues("scripts/kv/shop.kv")
 	local costInfo = LoadKeyValues("scripts/npc/npc_items_custom.txt")
@@ -237,9 +235,9 @@ function GuardingAthena:OnGameRulesStateChange(keys)
 
 	--游戏开始
 	if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		if self.testmode then
-			return
-		end
+		-- if self.testmode then
+		-- 	return
+		-- end
 		-- 开始刷怪
 		Spawner:AutoSpawn()
 		Spawner:NatureStart()

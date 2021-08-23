@@ -128,7 +128,6 @@
 			}
 		}
 	}
-
 	"item_butianshi"
 	{
 		// Common
@@ -3604,86 +3603,6 @@
 		"Model"	"models/props_gameplay/red_box.vmdl"
 	}
 
-	"item_npc_dota_hero_ember_spirit1"
-	{
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_zhuanshufs1"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		// Casting
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"	"0.2"
-		"AbilityCastRange"	"900"
-		"ID"	"1691"
-		"ItemQuality"	"component"
-		"ItemCost"	"550"
-		"ItemSellable"	"0"
-		"ItemPurchasable"	"0"
-		"ItemShopTags"	"magic_resist"
-		"ItemRequirements"	{}
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"Modifiers"
-		{
-			"modifier_npc_dota_hero_ember_spirit"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int"
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%hp"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%mp"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mp_regen"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"str"	"200"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"agi"	"400"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"int"	"200"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"hp"	"4000"
-			}
-			"05"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"mp"	"2000"
-			}
-			"06"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"hp_regen"	"400"
-			}
-			"07"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"mp_regen"	"100"
-			}
-		}
-		"Model"	"models/props_gameplay/red_box.vmdl"
-	}
-
 	"item_npc_dota_hero_templar_assassin1"
 	{
 		// General
@@ -4028,72 +3947,6 @@
 		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
 	}
 
-	"item_npc_dota_hero_ember_spirit"
-	{
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_zhuanshufs"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityCooldown"	"0.0"
-		"ID"	"1690"
-		"ItemQuality"	"epic"
-		"ItemCost"	"1"
-		"ItemSellable"	"0"
-		"ItemPurchasable"	"0"
-		"ItemIsNeutralDrop"				"1"
-		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemShopTags"	"damage;str;hard_to_tag"
-		"ItemAliases"	"skull basher"
-		"ItemRequirements"	{}
-		"Modifiers"
-		{
-			"modifier_npc_dota_hero_ember_spirit"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"Properties"	{}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
-						"Function"	"OnCreated"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/fire_spirit.lua"
-						"Function"	"OnExclusiveCreated"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_item/exclusive.lua"
-						"Function"	"OnDestroy"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/ability_hero/fire_spirit.lua"
-						"Function"	"OnExclusiveDestroy"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"property"	"15"
-			}
-		}
-		"Model"	"models/props_gameplay/red_box.vmdl"
-		"Effect"	"particles/generic_gameplay/dropped_item.vpcf"
-	}
 
 	"item_reborn_1"
 	{

@@ -187,7 +187,8 @@ function Root({ ...other }) {
 			<SelectContainer eventName="AddItem" text="添加物品" list={itemsNames} type={SelectionItemType.SELECTION_ITEM_TYPE_ITEM} />
 			{/* <SelectContainer eventName="AddWearable" text="添加饰品" list={wearables} type={SelectionItemType.SELECTION_ITEM_TYPE_WEARABLE} /> */}
 			<SelectContainer eventName="SwitchHero" text="更换英雄" list={heroNames} type={SelectionItemType.SELECTION_ITEM_TYPE_HERO} />
-			<SelectContainer eventName="CreateEnemy" text="创建敌方单位" list={Object.keys(GameUI.CustomUIConfig().UnitsKv)} type={SelectionItemType.SELECTION_ITEM_TYPE_COMMON} />
+			<SelectContainer eventName="AllyHero" text="友方英雄" list={heroNames} type={SelectionItemType.SELECTION_ITEM_TYPE_HERO} />
+			<SelectContainer eventName="CreateEnemy" text="创建敌方单位" list={Object.keys(GameUI.CustomUIConfig().EnemiesKv).concat(Object.keys(GameUI.CustomUIConfig().SpecialEnemiesKv)).concat(Object.keys(GameUI.CustomUIConfig().NaturesKv))} type={SelectionItemType.SELECTION_ITEM_TYPE_COMMON} />
 			<Panel id="DemoPanel" className="ControlPanel TopBottomFlow" >
 				<Panel className="ControlPanelContainer">
 					<Panel id="Maximized">
@@ -199,9 +200,10 @@ function Root({ ...other }) {
 							<Label localizedText="关卡" />
 							<Panel className="Category" >
 								{/* <CommonButton eventName="ResetGameLevelPressed" text="#Button_ResetGameLevel" /> */}
-								{/* <CommonToggleButton eventName="ToggleFogButtonPressed" setting="has_fog" text="打开迷雾" />
-								<CommonToggleButton eventName="ToggleCameraButtonPressed" setting="lock_camera" text="锁定视角" />
-								<CommonToggleButton eventName="ToggleMouseButtonPressed" setting="unlock_mouse" text="解锁鼠标" /> */}
+								<CommonToggleButton eventName="ToggleSpawnerButtonPressed" setting="has_fog" text="暂停刷怪" />
+								{/* <CommonToggleButton eventName="ToggleCameraButtonPressed" setting="lock_camera" text="锁定视角" /> */}
+								{/* <CommonToggleButton eventName="ToggleMouseButtonPressed" setting="unlock_mouse" text="解锁鼠标" /> */}
+								<TextEntryButton eventName="ChangeRound" text="进攻波数" />
 								<TextEntryButton eventName="ChangeHostTimescale" text="主机速度" />
 								{/* <CommonButton eventName="UnlockMap" text="显示所有地图" /> */}
 							</Panel>
@@ -224,6 +226,7 @@ function Root({ ...other }) {
 								<CommonToggleButton eventName="FreeSpellsButtonPressed" setting="free_spells" text="#FreeSpells_Button" />
 								<CommonToggleButton eventName="InvulnerabilityButtonPressed" text="无敌状态" />
 								<TextEntryButton eventName="LevelUpButtonPressed" text="升级" defaultValue="1" />
+								<DropDownButton eventName="RebornButtonPressed" text="转生次数" list={["0", "1", "2", "3", "4"]} />
 								<CommonButton eventName="PrintModifiers" text="打印英雄的Modifier" />
 							</Panel>
 						</Panel>
@@ -234,12 +237,15 @@ function Root({ ...other }) {
 								<SelectionButton eventName="SwitchHero" text="切换英雄" />
 								{/* <SelectionButton eventName="SpawnEnemyButtonPressed" text="创建敌方英雄" />
 								<CommonButton eventName="LevelUpEnemyButtonPressed" text="#LevelUpEnemy_Button" />
-								<CommonButton eventName="EnemyMaxLevelButtonPressed" text="#EnemyMaxLevel_Button" /> */}
+							<CommonButton eventName="EnemyMaxLevelButtonPressed" text="#EnemyMaxLevel_Button" /> */}
 								<CommonButton eventName="DummyTargetButtonPressed" text="傀儡目标" />
 								<CommonButton eventName="RemoveSpawnedUnitsButtonPressed" text="#RemoveSpawns_Button" />
 								<SelectionButton eventName="CreateEnemy" text="创建敌方单位" />
 								<CommonToggleButton eventName="ToggleEnemyControlable" setting="enemy_controlable" text="开启敌人控制" />
 								<CommonButton eventName="RespawnHero" text="复活英雄" />
+								<SelectionButton eventName="AllyHero" text="友方英雄" />
+								<CommonButton eventName="LevelUpAllyButtonPressed" text="升级友方英雄" />
+								<CommonButton eventName="AllyMaxLevelButtonPressed" text="友方英雄满级" />
 							</Panel>
 						</Panel>
 						{/* 其他 */}
@@ -454,7 +460,7 @@ function SelectContainerItem({ eventName, itemName, type, textMode }: { eventNam
 		<>
 			{type == SelectionItemType.SELECTION_ITEM_TYPE_COMMON &&
 				<Panel key={itemName} className={classNames("CommonSelectionItem", "DemoButton")} onactivate={() => FireEvent(eventName, itemName)}>
-					<Label id="CommonSelectionItemName" text={textMode ? $.Localize(itemName) : itemName} html={true} />
+					<Label id="CommonSelectionItemName" text={textMode ? $.Localize(itemName) : itemName} />
 				</Panel>
 			}
 			{type == SelectionItemType.SELECTION_ITEM_TYPE_ABILITY &&

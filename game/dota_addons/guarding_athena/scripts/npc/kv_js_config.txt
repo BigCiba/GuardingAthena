@@ -21,5 +21,8 @@
 		"UnitsKv"			"npc/npc_units_custom.txt",
 		"ItemsKv"			"npc/npc_items_custom.txt",
 		"AssetsKv"			"npc/asset_modifiers.kv",
+		"EnemiesKv"			"npc/units/npc_enemy.kv",
+		"SpecialEnemiesKv"	"npc/units/npc_special_enemy.kv",
+		"NaturesKv"			"npc/units/npc_nature.kv",
 	}
 }
