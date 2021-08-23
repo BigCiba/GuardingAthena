@@ -22,7 +22,7 @@ function windrunner_1:OnChannelFinish(bInterrupted)
 	-- 第二次魔法伤害多重射击
 	local delay = self:GetSpecialValueFor("delay")
 	hCaster:GameTimer(delay, function()
-		self:MultipleShoot(hCaster:GetAbsOrigin() + hCaster:GetForwardVector(), flChannelTime, DAMAGE_TYPE_MAGICAL)
+		self:MultipleShoot(vPosition, flChannelTime, DAMAGE_TYPE_MAGICAL)
 	end)
 	-- 冷却
 	local flCooldown = self:GetCooldownTimeRemaining()
